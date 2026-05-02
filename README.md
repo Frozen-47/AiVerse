@@ -1,6 +1,6 @@
 # AIPedia
 
-> Your comprehensive guide to AI tools, models, and technologies — all in one place..
+> Your comprehensive guide to AI tools, models, and technologies — all in one place.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
