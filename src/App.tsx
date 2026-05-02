@@ -10,13 +10,20 @@ const typeTagClass: Record<string, string> = {
   Dataset:   'bg-sky-500/10    text-sky-600    dark:text-sky-400    border border-sky-500/20',
   Platform:  'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20',
 };
+
+// Fixed: added colors for all task types used in data.ts
 const taskTagClass: Record<string, string> = {
-  NLP:               'bg-blue-500/10  text-blue-600  dark:text-blue-400  border border-blue-500/20',
-  'Computer Vision': 'bg-pink-500/10  text-pink-600  dark:text-pink-400  border border-pink-500/20',
-  MLOps:             'bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20',
+  NLP:               'bg-blue-500/10   text-blue-600   dark:text-blue-400   border border-blue-500/20',
+  'Computer Vision': 'bg-pink-500/10   text-pink-600   dark:text-pink-400   border border-pink-500/20',
+  MLOps:             'bg-amber-500/10  text-amber-700  dark:text-amber-400  border border-amber-500/20',
+  Audio:             'bg-teal-500/10   text-teal-600   dark:text-teal-400   border border-teal-500/20',
+  Multimodal:        'bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20',
 };
-const getTypeTag = (t: string) => typeTagClass[t] ?? 'bg-black/5 dark:bg-white/5 text-secondary border border-black/10 dark:border-white/10';
-const getTaskTag = (t: string) => taskTagClass[t] ?? 'bg-black/5 dark:bg-white/5 text-secondary border border-black/10 dark:border-white/10';
+
+const getTypeTag = (t: string) =>
+  typeTagClass[t] ?? 'bg-black/5 dark:bg-white/5 text-secondary border border-black/10 dark:border-white/10';
+const getTaskTag = (t: string) =>
+  taskTagClass[t] ?? 'bg-black/5 dark:bg-white/5 text-secondary border border-black/10 dark:border-white/10';
 
 const animClass = "animate-fade-in-up opacity-0";
 
@@ -62,7 +69,7 @@ const DetailModal: React.FC<{ entry: Entry; onClose: () => void }> = ({ entry, o
           {[{ label: 'Organization', value: entry.org }, { label: 'Model Size', value: entry.size }].map(({ label, value }) => (
             <div key={label} className="rounded-xl bg-white/40 dark:bg-white/3 border border-black/5 dark:border-white/10 px-4 py-3">
               <p className="text-[10px] uppercase tracking-widest text-muted mb-1">{label}</p>
-              <p className="text-[13px] font-semibold text-primary wrap-break-word">{value}</p>
+              <p className="text-[13px] font-semibold text-primary break-words">{value}</p>
             </div>
           ))}
         </div>
@@ -162,6 +169,29 @@ const AddModal: React.FC<{
   const inputCls = "w-full bg-white/40 dark:bg-white/4 border border-black/10 dark:border-white/10 text-primary placeholder:text-muted px-3 py-2.5 rounded-lg text-[13px] focus:outline-none focus:border-black/30 dark:focus:border-white/30 focus:bg-white/60 dark:focus:bg-white/[0.07] transition-all";
   const labelCls = "block text-[10px] font-semibold text-muted mb-1.5 uppercase tracking-widest";
 
+  // ── Citation helpers ──
+  const addCitation = () => {
+    setNewEntry(prev => ({
+      ...prev,
+      citations: [...(prev.citations ?? []), { text: '', url: '' }],
+    }));
+  };
+
+  const removeCitation = (idx: number) => {
+    setNewEntry(prev => ({
+      ...prev,
+      citations: (prev.citations ?? []).filter((_, i) => i !== idx),
+    }));
+  };
+
+  const updateCitation = (idx: number, field: 'text' | 'url', value: string) => {
+    setNewEntry(prev => {
+      const updated = [...(prev.citations ?? [])];
+      updated[idx] = { ...updated[idx], [field]: value };
+      return { ...prev, citations: updated };
+    });
+  };
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 dark:bg-black/60 backdrop-blur-sm"
@@ -185,39 +215,39 @@ const AddModal: React.FC<{
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className={labelCls}>Tool Name *</label>
-              <input required type="text" value={newEntry.name} onChange={e => setNewEntry({ ...newEntry, name: e.target.value })} className={inputCls} placeholder="e.g. Gemini 1.5 Pro" />
+              <input required type="text" value={newEntry.name ?? ''} onChange={e => setNewEntry({ ...newEntry, name: e.target.value })} className={inputCls} placeholder="e.g. Gemini 1.5 Pro" />
             </div>
             <div>
               <label className={labelCls}>Organization</label>
-              <input type="text" value={newEntry.org} onChange={e => setNewEntry({ ...newEntry, org: e.target.value })} className={inputCls} placeholder="e.g. Google" />
+              <input type="text" value={newEntry.org ?? ''} onChange={e => setNewEntry({ ...newEntry, org: e.target.value })} className={inputCls} placeholder="e.g. Google" />
             </div>
             <div>
               <label className={labelCls}>Type</label>
-              <select value={newEntry.type} onChange={e => setNewEntry({ ...newEntry, type: e.target.value })} className={inputCls}>
+              <select value={newEntry.type ?? 'Model'} onChange={e => setNewEntry({ ...newEntry, type: e.target.value })} className={inputCls}>
                 {typeFilters.filter((t: string) => t !== 'All').map((t: string) => <option key={t} value={t}>{t}</option>)}
               </select>
             </div>
             <div>
               <label className={labelCls}>Task</label>
-              <select value={newEntry.task} onChange={e => setNewEntry({ ...newEntry, task: e.target.value })} className={inputCls}>
+              <select value={newEntry.task ?? 'NLP'} onChange={e => setNewEntry({ ...newEntry, task: e.target.value })} className={inputCls}>
                 {taskFilters.filter((t: string) => t !== 'All Tasks').map((t: string) => <option key={t} value={t}>{t}</option>)}
               </select>
             </div>
             <div>
               <label className={labelCls}>License</label>
-              <input type="text" value={newEntry.license} onChange={e => setNewEntry({ ...newEntry, license: e.target.value })} className={inputCls} placeholder="e.g. Apache-2.0" />
+              <input type="text" value={newEntry.license ?? ''} onChange={e => setNewEntry({ ...newEntry, license: e.target.value })} className={inputCls} placeholder="e.g. Apache-2.0" />
             </div>
             <div>
               <label className={labelCls}>Year</label>
-              <input type="number" value={newEntry.year} onChange={e => setNewEntry({ ...newEntry, year: parseInt(e.target.value) })} className={inputCls} min={1990} max={2099} />
+              <input type="number" value={newEntry.year ?? new Date().getFullYear()} onChange={e => setNewEntry({ ...newEntry, year: parseInt(e.target.value) })} className={inputCls} min={1990} max={2099} />
             </div>
             <div>
               <label className={labelCls}>Model Size</label>
-              <input type="text" value={newEntry.size} onChange={e => setNewEntry({ ...newEntry, size: e.target.value })} className={inputCls} placeholder="e.g. 7B params" />
+              <input type="text" value={newEntry.size ?? ''} onChange={e => setNewEntry({ ...newEntry, size: e.target.value })} className={inputCls} placeholder="e.g. 7B params" />
             </div>
             <div>
               <label className={labelCls}>Official URL</label>
-              <input type="url" value={newEntry.url} onChange={e => setNewEntry({ ...newEntry, url: e.target.value })} className={inputCls} placeholder="https://..." />
+              <input type="url" value={newEntry.url ?? ''} onChange={e => setNewEntry({ ...newEntry, url: e.target.value })} className={inputCls} placeholder="https://..." />
             </div>
           </div>
 
@@ -237,23 +267,69 @@ const AddModal: React.FC<{
 
           <div>
             <label className={labelCls}>Summary *</label>
-            <textarea required rows={3} value={newEntry.summary} onChange={e => setNewEntry({ ...newEntry, summary: e.target.value })} className={`${inputCls} resize-none`} placeholder="A brief description of this tool..." />
+            <textarea required rows={3} value={newEntry.summary ?? ''} onChange={e => setNewEntry({ ...newEntry, summary: e.target.value })} className={`${inputCls} resize-none`} placeholder="A brief description of this tool..." />
           </div>
           <div>
             <label className={labelCls}>Architecture</label>
-            <textarea rows={2} value={newEntry.architecture} onChange={e => setNewEntry({ ...newEntry, architecture: e.target.value })} className={`${inputCls} resize-none`} placeholder="Describe the model architecture..." />
+            <textarea rows={2} value={newEntry.architecture ?? ''} onChange={e => setNewEntry({ ...newEntry, architecture: e.target.value })} className={`${inputCls} resize-none`} placeholder="Describe the model architecture..." />
           </div>
           <div>
             <label className={labelCls}>Usage Example</label>
-            <textarea rows={4} value={newEntry.usage} onChange={e => setNewEntry({ ...newEntry, usage: e.target.value })} className={`${inputCls} font-mono resize-none`} placeholder="# Python code snippet..." />
+            <textarea rows={4} value={newEntry.usage ?? ''} onChange={e => setNewEntry({ ...newEntry, usage: e.target.value })} className={`${inputCls} font-mono resize-none`} placeholder="# Python code snippet..." />
           </div>
           <div>
             <label className={labelCls}>Benchmarks</label>
-            <input type="text" value={newEntry.benchmarks} onChange={e => setNewEntry({ ...newEntry, benchmarks: e.target.value })} className={inputCls} placeholder="e.g. MMLU: 86.4%, HumanEval: 67%" />
+            <input type="text" value={newEntry.benchmarks ?? ''} onChange={e => setNewEntry({ ...newEntry, benchmarks: e.target.value })} className={inputCls} placeholder="e.g. MMLU: 86.4%, HumanEval: 67%" />
           </div>
           <div>
             <label className={labelCls}>Limitations</label>
-            <input type="text" value={newEntry.limitations} onChange={e => setNewEntry({ ...newEntry, limitations: e.target.value })} className={inputCls} placeholder="Comma-separated limitations..." />
+            <input type="text" value={newEntry.limitations ?? ''} onChange={e => setNewEntry({ ...newEntry, limitations: e.target.value })} className={inputCls} placeholder="Comma-separated limitations..." />
+          </div>
+
+          {/* Fixed: Citations UI added to AddModal */}
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <label className={labelCls + ' mb-0'}>Citations</label>
+              <button
+                type="button"
+                onClick={addCitation}
+                className="inline-flex items-center gap-1 text-[11px] text-secondary hover:text-primary border border-black/10 dark:border-white/10 px-2 py-1 rounded-lg transition-colors hover:border-black/20 dark:hover:border-white/20"
+              >
+                <Plus size={10} /> Add
+              </button>
+            </div>
+            {(newEntry.citations ?? []).length === 0 && (
+              <p className="text-[11px] text-muted italic">No citations added yet.</p>
+            )}
+            <div className="space-y-2">
+              {(newEntry.citations ?? []).map((c, i) => (
+                <div key={i} className="flex gap-2 items-start">
+                  <div className="flex-1 space-y-1.5">
+                    <input
+                      type="text"
+                      value={c.text}
+                      onChange={e => updateCitation(i, 'text', e.target.value)}
+                      className={inputCls}
+                      placeholder="Citation label, e.g. Smith et al. (2024)"
+                    />
+                    <input
+                      type="url"
+                      value={c.url}
+                      onChange={e => updateCitation(i, 'url', e.target.value)}
+                      className={inputCls}
+                      placeholder="https://arxiv.org/..."
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => removeCitation(i)}
+                    className="mt-1 w-7 h-7 flex items-center justify-center rounded-full bg-red-500/10 text-red-500 hover:bg-red-500/20 transition-colors shrink-0"
+                  >
+                    <X size={12} />
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="flex justify-end gap-2 pt-2 border-t border-black/5 dark:border-white/10">
@@ -283,7 +359,8 @@ const App: React.FC = () => {
   const emptyEntry: Partial<Entry> = {
     name: '', type: 'Model', task: 'NLP', summary: '', license: 'Open Source',
     year: new Date().getFullYear(), org: '', size: 'Unknown',
-    architecture: '', usage: '', benchmarks: 'N/A', limitations: '', url: '', citations: [],
+    architecture: '', usage: '', benchmarks: 'N/A', limitations: '', url: '',
+    citations: [],
     popular: false,
   };
   const [newEntry, setNewEntry] = useState<Partial<Entry>>(emptyEntry);
@@ -300,7 +377,25 @@ const App: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newEntry.name || !newEntry.summary) return;
-    setEntriesList([newEntry as Entry, ...entriesList]);
+    // Ensure required fields have fallback values before casting
+    const complete: Entry = {
+      name:         newEntry.name ?? '',
+      type:         newEntry.type ?? 'Model',
+      summary:      newEntry.summary ?? '',
+      task:         newEntry.task ?? 'NLP',
+      license:      newEntry.license ?? 'Unknown',
+      year:         newEntry.year ?? new Date().getFullYear(),
+      org:          newEntry.org ?? '',
+      size:         newEntry.size ?? 'Unknown',
+      architecture: newEntry.architecture ?? '',
+      usage:        newEntry.usage ?? '',
+      benchmarks:   newEntry.benchmarks ?? 'N/A',
+      limitations:  newEntry.limitations ?? '',
+      url:          newEntry.url ?? '',
+      citations:    newEntry.citations ?? [],
+      popular:      newEntry.popular ?? false,
+    };
+    setEntriesList([complete, ...entriesList]);
     setNewEntry(emptyEntry);
     setIsAddOpen(false);
   };
@@ -315,7 +410,6 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen relative font-sans text-sm selection:bg-primary/10">
 
-      {/* Identical glow background from your portfolio */}
       <div className="fixed inset-0 pointer-events-none -z-20 bg-[radial-gradient(circle_at_20%_30%,rgba(var(--primary),0.04)_0,transparent_50%),radial-gradient(circle_at_80%_70%,rgba(var(--primary),0.03)_0,transparent_50%)] blur-[60px]" />
 
       <main className="max-w-4xl mx-auto px-4 pt-10 pb-12 flex flex-col gap-4">
@@ -376,7 +470,6 @@ const App: React.FC = () => {
               <button key={t} onClick={() => setCurrentTask(t)} className={filterBtnCls(currentTask === t)}>{t}</button>
             ))}
           </div>
-          {/* ── Popular filter row ── */}
           <div className="flex items-center gap-1.5">
             <span className="text-[10px] uppercase tracking-widest text-muted mr-1">Filter</span>
             <button

@@ -146,7 +146,7 @@ export const entries: Entry[] = [
     architecture: "Transformer decoder with sliding window attention (SWA) and grouped query attention (GQA).",
     usage: `from transformers import AutoModelForCausalLM, AutoTokenizer\nmodel = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-Instruct-v0.2")\ntokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.2")`,
     benchmarks: "MMLU: 60.1%, outperforms Llama 2 13B on most tasks",
-    limitations: "Smaller size limits complex reasoning; no native multimodal support.",
+    limitations: "Smaller size limits complex reasoning, no native multimodal support.",
     popular: true,
     url: "https://mistral.ai/",
     citations: [
@@ -220,7 +220,7 @@ export const entries: Entry[] = [
     architecture: "Dense transformer decoder trained on heavily curated 'textbook-quality' data.",
     usage: `from transformers import AutoModelForCausalLM, AutoTokenizer\nmodel = AutoModelForCausalLM.from_pretrained("microsoft/Phi-3-mini-4k-instruct")\ntokenizer = AutoTokenizer.from_pretrained("microsoft/Phi-3-mini-4k-instruct")`,
     benchmarks: "MMLU: 68.8%, outperforms Mistral 7B on many tasks",
-    limitations: "Small size limits knowledge breadth; not suitable for long-form tasks.",
+    limitations: "Small size limits knowledge breadth, not suitable for long-form tasks.",
     url: "https://azure.microsoft.com/en-us/products/phi-3",
     citations: [
       { text: "Phi-3 Technical Report", url: "https://arxiv.org/abs/2404.14219" }
@@ -238,7 +238,7 @@ export const entries: Entry[] = [
     architecture: "Transformer with GQA, long-context support up to 128K tokens.",
     usage: `from transformers import AutoModelForCausalLM, AutoTokenizer\nmodel = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2-72B-Instruct")\ntokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-72B-Instruct")`,
     benchmarks: "MMLU: 84.2%, HumanEval: 86.0%",
-    limitations: "Large VRAM requirement for local inference; license restrictions for commercial use.",
+    limitations: "Large VRAM requirement for local inference, license restrictions for commercial use.",
     url: "https://qwenlm.github.io/",
     citations: [
       { text: "Qwen2 Technical Report", url: "https://arxiv.org/abs/2407.10671" }
@@ -293,7 +293,7 @@ export const entries: Entry[] = [
     architecture: "Sparse MoE transformer with 8 experts.",
     usage: `# Grok-1 weights available on HuggingFace\n# Run locally with sufficient GPU cluster\nfrom transformers import AutoTokenizer\ntokenizer = AutoTokenizer.from_pretrained("xai-org/grok-1")`,
     benchmarks: "MMLU: 73%, HumanEval: 63.2%",
-    limitations: "Extremely large model requiring significant compute; not production-API accessible.",
+    limitations: "Extremely large model requiring significant compute, not production-API accessible.",
     popular: true,
     url: "https://x.ai/",
     citations: [
@@ -428,7 +428,7 @@ export const entries: Entry[] = [
     architecture: "Transformer encoder, same as BERT but with dynamic masking and longer training.",
     usage: `from transformers import RobertaTokenizer, RobertaModel\ntokenizer = RobertaTokenizer.from_pretrained('roberta-base')\nmodel = RobertaModel.from_pretrained('roberta-base')`,
     benchmarks: "GLUE: 88.5 (large), SQuAD 2.0: 89.4 F1",
-    limitations: "Still limited to 512 tokens; encoder-only, not generative.",
+    limitations: "Still limited to 512 tokens, encoder-only not generative.",
     url: "https://github.com/facebookresearch/fairseq/tree/main/examples/roberta",
     citations: [
       { text: "Liu et al. (2019) - RoBERTa Paper", url: "https://arxiv.org/abs/1907.11692" }
@@ -652,7 +652,7 @@ export const entries: Entry[] = [
     architecture: "Vision Transformer image encoder + prompt encoder + mask decoder.",
     usage: `from segment_anything import sam_model_registry, SamPredictor\nsam = sam_model_registry["vit_h"](checkpoint="sam_vit_h.pth")\npredictor = SamPredictor(sam)\npredictor.set_image(image)\nmasks, scores, logits = predictor.predict(point_coords=input_point, point_labels=input_label)`,
     benchmarks: "Zero-shot COCO AP: 46.5% (SAM ViT-H)",
-    limitations: "Does not track objects across frames; not designed for semantic labeling.",
+    limitations: "Does not track objects across frames, not designed for semantic labeling.",
     popular: true,
     url: "https://segment-anything.com/",
     citations: [
@@ -663,7 +663,7 @@ export const entries: Entry[] = [
     name: "Whisper",
     type: "Model",
     summary: "OpenAI's robust automatic speech recognition (ASR) model trained on 680K hours of multilingual and multitask supervised web data.",
-    task: "Audio / ASR",
+    task: "Audio",
     license: "MIT",
     year: 2022,
     org: "OpenAI",
@@ -671,7 +671,7 @@ export const entries: Entry[] = [
     architecture: "Encoder-decoder transformer operating on log-Mel spectrograms.",
     usage: `import whisper\nmodel = whisper.load_model("large-v3")\nresult = model.transcribe("audio.mp3")\nprint(result["text"])`,
     benchmarks: "WER competitive with commercial ASR on LibriSpeech",
-    limitations: "Real-time use requires optimization; struggles with heavy accents and rare languages.",
+    limitations: "Real-time use requires optimization, struggles with heavy accents and rare languages.",
     popular: true,
     url: "https://openai.com/research/whisper",
     citations: [
@@ -690,7 +690,7 @@ export const entries: Entry[] = [
     architecture: "Pure transformer applied to sequences of image patches.",
     usage: `from transformers import ViTImageProcessor, ViTForImageClassification\nfrom PIL import Image\nprocessor = ViTImageProcessor.from_pretrained('google/vit-base-patch16-224')\nmodel = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224')`,
     benchmarks: "ImageNet top-1: 88.55% (ViT-L/16)",
-    limitations: "Requires large datasets to train from scratch; less data-efficient than CNNs.",
+    limitations: "Requires large datasets to train from scratch, less data-efficient than CNNs.",
     url: "https://github.com/google-research/vision_transformer",
     citations: [
       { text: "Dosovitskiy et al. (2020) - ViT Paper", url: "https://arxiv.org/abs/2010.11929" }
@@ -843,7 +843,7 @@ export const entries: Entry[] = [
     architecture: "Transformer decoder with multi-query attention and Fill-in-the-Middle (FIM) training.",
     usage: `from transformers import AutoTokenizer, AutoModelForCausalLM\ntokenizer = AutoTokenizer.from_pretrained("bigcode/starcoder2-15b")\nmodel = AutoModelForCausalLM.from_pretrained("bigcode/starcoder2-15b")`,
     benchmarks: "HumanEval: 46.3% (15B pass@1), best open model at time of release",
-    limitations: "Not an instruction-tuned chat model by default; requires fine-tuning for dialogue.",
+    limitations: "Not an instruction-tuned chat model by default, requires fine-tuning for dialogue.",
     popular: true,
     url: "https://github.com/bigcode-project/starcoder2",
     citations: [
@@ -900,7 +900,7 @@ export const entries: Entry[] = [
     architecture: "Mistral 7B decoder fine-tuned with contrastive learning for embedding tasks.",
     usage: `from sentence_transformers import SentenceTransformer\nmodel = SentenceTransformer("intfloat/e5-mistral-7b-instruct")\nembeddings = model.encode(["Hello world", "Bonjour le monde"])`,
     benchmarks: "MTEB: 66.6% average (top open model at release)",
-    limitations: "7B params is large for an embedding model; slower than lighter alternatives.",
+    limitations: "7B params is large for an embedding model, slower than lighter alternatives.",
     url: "https://arxiv.org/abs/2401.00368",
     citations: [
       { text: "E5-Mistral Paper", url: "https://arxiv.org/abs/2401.00368" }
@@ -997,7 +997,7 @@ export const entries: Entry[] = [
     architecture: "Data connectors + indexing strategies + query engines for RAG pipelines.",
     usage: `from llama_index.core import VectorStoreIndex, SimpleDirectoryReader\ndocuments = SimpleDirectoryReader("data").load_data()\nindex = VectorStoreIndex.from_documents(documents)\nquery_engine = index.as_query_engine()\nresponse = query_engine.query("What did the author do growing up?")`,
     benchmarks: "Leading framework for RAG-based applications",
-    limitations: "Can be complex for advanced configurations; performance depends on vector store choice.",
+    limitations: "Can be complex for advanced configurations, performance depends on vector store choice.",
     url: "https://www.llamaindex.ai/",
     citations: [
       { text: "LlamaIndex Documentation", url: "https://docs.llamaindex.ai/" }
@@ -1052,7 +1052,7 @@ export const entries: Entry[] = [
     architecture: "Go-based server wrapping llama.cpp inference backend with a Docker-like model management CLI.",
     usage: `# Install and run from terminal\n$ ollama pull llama3\n$ ollama run llama3\n\n# Or use the REST API\nimport requests\nresponse = requests.post('http://localhost:11434/api/generate',\n  json={"model": "llama3", "prompt": "Why is the sky blue?", "stream": False})`,
     benchmarks: "N/A — inference speed depends on hardware",
-    limitations: "Local hardware constraints limit model size; not for production serving at scale.",
+    limitations: "Local hardware constraints limit model size, not for production serving at scale.",
     url: "https://ollama.com/",
     citations: [
       { text: "Ollama GitHub", url: "https://github.com/ollama/ollama" }
@@ -1128,7 +1128,7 @@ export const entries: Entry[] = [
     org: "GitHub (Microsoft) & OpenAI",
     size: "Based on customized OpenAI models",
     architecture: "Powered by OpenAI's Codex and newer GPT models tailored for code generation.",
-    usage: `// Type a comment in VS Code to trigger Copilot\n// function to parse a URL and return the domain name\nfunction getDomain(url) {\n  return new URL(url).hostname;\n}`,
+    usage: `// Type a comment in VS Code to trigger Copilot\n// function to parse a URL and return the domain name\nfunction getDomain(url) {\n  // Copilot suggests: return new URL(url).hostname;\n}`,
     benchmarks: "N/A",
     limitations: "Paid subscription required, can suggest insecure code patterns.",
     popular: true,
@@ -1222,7 +1222,7 @@ export const entries: Entry[] = [
     architecture: "Containerized model deployment with Cog packaging and pay-per-prediction pricing.",
     usage: `import replicate\noutput = replicate.run(\n  "meta/meta-llama-3-70b-instruct",\n  input={"prompt": "Write a haiku about AI"}\n)\nprint("".join(output))`,
     benchmarks: "N/A",
-    limitations: "Pay-per-second pricing can be costly for heavy use; cold start latency.",
+    limitations: "Pay-per-second pricing can be costly for heavy use, cold start latency.",
     url: "https://replicate.com",
     citations: [
       { text: "Replicate Documentation", url: "https://replicate.com/docs" }
@@ -1312,7 +1312,7 @@ export const entries: Entry[] = [
     org: "Pinecone Systems",
     size: "N/A",
     architecture: "Managed ANNS (Approximate Nearest Neighbor Search) vector store with hybrid search support.",
-    usage: `from pinecone import Pinecone, ServerlessSpec\npc = Pinecone(api_key="YOUR_API_KEY")\npc.create_index("my-index", dimension=1536, metric="cosine", spec=ServerlessSpec(cloud='aws', region='us-east-1'))\nindex = pc.Index("my-index")\nindex.upsert(vectors=[("vec1", [0.1, 0.2, ...], {"text": "hello"})])`,
+    usage: `from pinecone import Pinecone, ServerlessSpec\npc = Pinecone(api_key="YOUR_API_KEY")\npc.create_index("my-index", dimension=1536, metric="cosine", spec=ServerlessSpec(cloud='aws', region='us-east-1'))\nindex = pc.Index("my-index")\nindex.upsert(vectors=[("vec1", [0.1, 0.2], {"text": "hello"})])`,
     benchmarks: "Sub-10ms query latency at billion-vector scale",
     limitations: "Proprietary, can be expensive at scale vs. self-hosted alternatives.",
     popular: true,
@@ -1501,7 +1501,7 @@ export const entries: Entry[] = [
     architecture: "Multi-step word problems with natural language solutions and final numerical answers.",
     usage: `from datasets import load_dataset\ndataset = load_dataset("gsm8k", "main")\nprint(dataset['test'][0])`,
     benchmarks: "GPT-4: 92%, Claude 3 Opus: 95.0%, Llama 3 70B: 93%",
-    limitations: "Grade-school level only; top models now saturate this benchmark.",
+    limitations: "Grade-school level only, top models now saturate this benchmark.",
     popular: true,
     url: "https://github.com/openai/grade-school-math",
     citations: [
@@ -1520,7 +1520,7 @@ export const entries: Entry[] = [
     architecture: "Multi-language web data with 40+ quality annotation signals for filtering.",
     usage: `from datasets import load_dataset\ndataset = load_dataset("togethercomputer/RedPajama-Data-V2", name="sample-10B", split="train", streaming=True)`,
     benchmarks: "Enables competitive open LLM training at scale",
-    limitations: "Requires careful filtering; quality signals are heuristic-based.",
+    limitations: "Requires careful filtering, quality signals are heuristic-based.",
     url: "https://github.com/togethercomputer/RedPajama-Data",
     citations: [
       { text: "RedPajama-V2 Paper", url: "https://arxiv.org/abs/2402.06935" }
@@ -1547,4 +1547,7 @@ export const entries: Entry[] = [
 ];
 
 export const typeFilters = ["All", "Model", "Framework", "Dataset", "Platform"];
-export const taskFilters = ["All Tasks", "NLP", "Computer Vision", "MLOps", "Audio", "Audio / ASR", "Multimodal"];
+
+// Fixed: merged "Audio / ASR" into "Audio" so the filter label matches
+// all audio entries (Whisper task changed from "Audio / ASR" to "Audio").
+export const taskFilters = ["All Tasks", "NLP", "Computer Vision", "MLOps", "Audio", "Multimodal"];
