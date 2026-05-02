@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #f0f6fc;
+  --color-secondary: #8d96a0;
+  --color-muted: #484f58;
+  
+  /* Overrides the default Tailwind font to use Poppins */
+  --font-sans: "Poppins", sans-serif;
+
+  --animate-fade-in-up: fadeInUp 0.6s ease-out forwards;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+:root {
+  --primary: 255, 255, 255;
+  background-color: #000;
+  color: theme('color.primary');
+}
+
+/* Custom utility class to hide scrollbar but keep scrolling functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+/* Hide scrollbar globally for the main page (App.tsx) AND the modals */
+html, body, .no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar, .no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
