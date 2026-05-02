@@ -18,4 +18,5 @@ export interface Entry {
   limitations: string;
   url: string;
   citations: Citation[];
+  popular?: boolean;
 }

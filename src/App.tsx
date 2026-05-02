@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import type { Entry } from './types';
 import { entries as initialEntries, typeFilters, taskFilters } from './data';
-import { Search, Plus, X, ExternalLink, BookOpen, ChevronRight } from 'lucide-react';
+import { Search, Plus, X, ExternalLink, BookOpen, ChevronRight, Star } from 'lucide-react';
 
 // ─── Tag helpers ─────────────────────────────────────────────────────────────
 const typeTagClass: Record<string, string> = {
@@ -38,7 +38,14 @@ const DetailModal: React.FC<{ entry: Entry; onClose: () => void }> = ({ entry, o
 
       {/* Header */}
       <div className="px-6 pt-6 pb-5 border-b border-black/5 dark:border-white/10">
-        <h2 className="text-xl font-semibold text-primary mb-3">{entry.name}</h2>
+        <div className="flex items-center gap-2 mb-3">
+          <h2 className="text-xl font-semibold text-primary">{entry.name}</h2>
+          {entry.popular && (
+            <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-yellow-400/15 text-yellow-600 dark:text-yellow-400 border border-yellow-400/25">
+              <Star size={9} className="fill-current" /> Popular
+            </span>
+          )}
+        </div>
         <div className="flex flex-wrap gap-1.5 mb-3">
           <span className={`text-[11px] font-medium px-2 py-0.5 rounded-full ${getTypeTag(entry.type)}`}>{entry.type}</span>
           <span className={`text-[11px] font-medium px-2 py-0.5 rounded-full ${getTaskTag(entry.task)}`}>{entry.task}</span>
@@ -214,6 +221,20 @@ const AddModal: React.FC<{
             </div>
           </div>
 
+          {/* Popular toggle */}
+          <div className="flex items-center gap-3">
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                checked={!!newEntry.popular}
+                onChange={e => setNewEntry({ ...newEntry, popular: e.target.checked })}
+                className="sr-only peer"
+              />
+              <div className="w-8 h-4 bg-black/10 dark:bg-white/10 peer-checked:bg-yellow-400/70 rounded-full transition-colors after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:after:translate-x-4" />
+            </label>
+            <span className="text-[12px] text-secondary">Mark as Popular</span>
+          </div>
+
           <div>
             <label className={labelCls}>Summary *</label>
             <textarea required rows={3} value={newEntry.summary} onChange={e => setNewEntry({ ...newEntry, summary: e.target.value })} className={`${inputCls} resize-none`} placeholder="A brief description of this tool..." />
@@ -254,6 +275,7 @@ const App: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentFilter, setCurrentFilter] = useState('All');
   const [currentTask, setCurrentTask] = useState('All Tasks');
+  const [popularOnly, setPopularOnly] = useState(false);
   const [entriesList, setEntriesList] = useState<Entry[]>(initialEntries);
   const [selectedEntry, setSelectedEntry] = useState<Entry | null>(null);
   const [isAddOpen, setIsAddOpen] = useState(false);
@@ -261,17 +283,19 @@ const App: React.FC = () => {
   const emptyEntry: Partial<Entry> = {
     name: '', type: 'Model', task: 'NLP', summary: '', license: 'Open Source',
     year: new Date().getFullYear(), org: '', size: 'Unknown',
-    architecture: '', usage: '', benchmarks: 'N/A', limitations: '', url: '', citations: []
+    architecture: '', usage: '', benchmarks: 'N/A', limitations: '', url: '', citations: [],
+    popular: false,
   };
   const [newEntry, setNewEntry] = useState<Partial<Entry>>(emptyEntry);
 
   const filtered = useMemo(() => entriesList.filter(e => {
-    const matchType   = currentFilter === 'All' || e.type === currentFilter;
-    const matchTask   = currentTask === 'All Tasks' || e.task === currentTask;
+    const matchType    = currentFilter === 'All' || e.type === currentFilter;
+    const matchTask    = currentTask === 'All Tasks' || e.task === currentTask;
+    const matchPopular = !popularOnly || e.popular === true;
     const q = searchQuery.toLowerCase();
-    const matchSearch = !q || e.name.toLowerCase().includes(q) || e.summary.toLowerCase().includes(q) || e.org.toLowerCase().includes(q);
-    return matchType && matchTask && matchSearch;
-  }), [searchQuery, currentFilter, currentTask, entriesList]);
+    const matchSearch  = !q || e.name.toLowerCase().includes(q) || e.summary.toLowerCase().includes(q) || e.org.toLowerCase().includes(q);
+    return matchType && matchTask && matchPopular && matchSearch;
+  }), [searchQuery, currentFilter, currentTask, popularOnly, entriesList]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -346,11 +370,26 @@ const App: React.FC = () => {
               <button key={f} onClick={() => setCurrentFilter(f)} className={filterBtnCls(currentFilter === f)}>{f}</button>
             ))}
           </div>
-          <div className="flex flex-wrap gap-1.5 items-center">
+          <div className="flex flex-wrap gap-1.5 mb-2 items-center">
             <span className="text-[10px] uppercase tracking-widest text-muted mr-1">Task</span>
             {taskFilters.map(t => (
               <button key={t} onClick={() => setCurrentTask(t)} className={filterBtnCls(currentTask === t)}>{t}</button>
             ))}
+          </div>
+          {/* ── Popular filter row ── */}
+          <div className="flex items-center gap-1.5">
+            <span className="text-[10px] uppercase tracking-widest text-muted mr-1">Filter</span>
+            <button
+              onClick={() => setPopularOnly(p => !p)}
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-medium border transition-all ${
+                popularOnly
+                  ? 'bg-yellow-400/15 border-yellow-400/40 text-yellow-600 dark:text-yellow-400 shadow-sm'
+                  : 'bg-transparent border-black/5 dark:border-white/5 text-secondary hover:border-black/15 dark:hover:border-white/15 hover:text-primary'
+              }`}
+            >
+              <Star size={10} className={popularOnly ? 'fill-yellow-500 dark:fill-yellow-400' : ''} />
+              Popular
+            </button>
           </div>
         </section>
 
@@ -394,7 +433,12 @@ const App: React.FC = () => {
                   className="group flex flex-col bg-white/30 dark:bg-white/3 border border-black/5 dark:border-white/10 rounded-xl p-4 cursor-pointer hover:border-black/20 dark:hover:border-white/20 hover:bg-white/50 dark:hover:bg-white/6 hover:-translate-y-0.5 hover:shadow-md transition-all duration-200"
                 >
                   <div className="flex items-start justify-between mb-1.5">
-                    <h3 className="text-[14px] font-semibold text-primary leading-tight">{entry.name}</h3>
+                    <div className="flex items-center gap-1.5 flex-1 min-w-0">
+                      <h3 className="text-[14px] font-semibold text-primary leading-tight truncate">{entry.name}</h3>
+                      {entry.popular && (
+                        <Star size={10} className="fill-yellow-400 text-yellow-400 shrink-0" />
+                      )}
+                    </div>
                     <span className="text-[10px] font-mono text-muted ml-2 mt-0.5 shrink-0">{entry.year}</span>
                   </div>
 
