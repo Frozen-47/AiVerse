@@ -1,6 +1,6 @@
 import React from "react";
 import { Star, Layers, Box, Database, Server, LayoutGrid } from "lucide-react";
-import { useTokens, typeBadge, TYPE_GLYPH } from "../lib/theme";
+import { useTokens } from "../lib/theme";
 import { typeFilters, taskFilters } from "../data";
 import type { Entry, TypeFilter, TaskFilter } from "../types";
 
