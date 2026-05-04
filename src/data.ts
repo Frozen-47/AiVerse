@@ -54,6 +54,7 @@ export const entries: Entry[] = [
     usage: `import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model="claude-3-opus-20240229",\n  max_tokens=2048,\n  messages=[{"role": "user", "content": "Analyze this research paper."}]\n)`,
     benchmarks: "MMLU: 86.8%, GPQA: 50.4%",
     limitations: "Slower and more expensive than Sonnet, proprietary API.",
+    popular: true,
     url: "https://www.anthropic.com/claude",
     citations: [
       { text: "Claude 3 Model Card", url: "https://www.anthropic.com/news/claude-3-family" }
@@ -91,6 +92,7 @@ export const entries: Entry[] = [
     usage: `import google.generativeai as genai\ngenai.configure(api_key="YOUR_API_KEY")\nmodel = genai.GenerativeModel('gemini-1.5-flash')\nresponse = model.generate_content("Summarize this article quickly.")`,
     benchmarks: "MMLU: 78.9%, significantly faster than Pro",
     limitations: "Less capable than Gemini 1.5 Pro on complex reasoning tasks.",
+    popular: true,
     url: "https://deepmind.google/technologies/gemini/flash/",
     citations: [
       { text: "Gemini 1.5 Flash Announcement", url: "https://deepmind.google/technologies/gemini/flash/" }
@@ -185,6 +187,7 @@ export const entries: Entry[] = [
     usage: `from mistralai.client import MistralClient\nclient = MistralClient(api_key="YOUR_API_KEY")\nresponse = client.chat(\n  model="mistral-large-latest",\n  messages=[{"role": "user", "content": "Explain quantum entanglement."}]\n)`,
     benchmarks: "MMLU: 81.2%, MATH: 45.0%",
     limitations: "Proprietary API, pay-per-use pricing.",
+    popular: true,
     url: "https://mistral.ai/news/mistral-large/",
     citations: [
       { text: "Mistral Large Announcement", url: "https://mistral.ai/news/mistral-large/" }
@@ -203,6 +206,7 @@ export const entries: Entry[] = [
     usage: `import cohere\nco = cohere.Client("YOUR_API_KEY")\nresponse = co.chat(\n  model="command-r-plus",\n  message="What are the latest trends in AI?",\n  documents=[{"text": "...your documents here..."}]\n)`,
     benchmarks: "MMLU: 75.7%, strong RAG and tool use performance",
     limitations: "Proprietary, optimized for enterprise RAG — may underperform on general chat.",
+    popular: false,
     url: "https://cohere.com/command",
     citations: [
       { text: "Command R+ Announcement", url: "https://cohere.com/blog/command-r-plus-microsoft-azure" }
@@ -221,6 +225,7 @@ export const entries: Entry[] = [
     usage: `from transformers import AutoModelForCausalLM, AutoTokenizer\nmodel = AutoModelForCausalLM.from_pretrained("microsoft/Phi-3-mini-4k-instruct")\ntokenizer = AutoTokenizer.from_pretrained("microsoft/Phi-3-mini-4k-instruct")`,
     benchmarks: "MMLU: 68.8%, outperforms Mistral 7B on many tasks",
     limitations: "Small size limits knowledge breadth, not suitable for long-form tasks.",
+    popular: true,
     url: "https://azure.microsoft.com/en-us/products/phi-3",
     citations: [
       { text: "Phi-3 Technical Report", url: "https://arxiv.org/abs/2404.14219" }
@@ -239,6 +244,7 @@ export const entries: Entry[] = [
     usage: `from transformers import AutoModelForCausalLM, AutoTokenizer\nmodel = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2-72B-Instruct")\ntokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-72B-Instruct")`,
     benchmarks: "MMLU: 84.2%, HumanEval: 86.0%",
     limitations: "Large VRAM requirement for local inference, license restrictions for commercial use.",
+    popular: true,
     url: "https://qwenlm.github.io/",
     citations: [
       { text: "Qwen2 Technical Report", url: "https://arxiv.org/abs/2407.10671" }
@@ -257,6 +263,7 @@ export const entries: Entry[] = [
     usage: `from transformers import AutoModelForCausalLM, AutoTokenizer\ntokenizer = AutoTokenizer.from_pretrained("deepseek-ai/DeepSeek-V2")\nmodel = AutoModelForCausalLM.from_pretrained("deepseek-ai/DeepSeek-V2", trust_remote_code=True)`,
     benchmarks: "MMLU: 78.5%, strong on math and code",
     limitations: "Complex MoE deployment, license restricts certain commercial uses.",
+    popular: true,
     url: "https://www.deepseek.com/",
     citations: [
       { text: "DeepSeek-V2 Paper", url: "https://arxiv.org/abs/2405.04434" }
@@ -335,6 +342,7 @@ export const entries: Entry[] = [
     usage: `from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model="gpt-3.5-turbo",\n  messages=[{"role": "user", "content": "Hello!"}]\n)`,
     benchmarks: "MMLU: 70.0%, HumanEval: 48.1%",
     limitations: "Knowledge cutoff, prone to hallucination on niche topics.",
+    popular: true,
     url: "https://platform.openai.com/docs/models/gpt-3-5-turbo",
     citations: [
       { text: "ChatGPT Blog Post", url: "https://openai.com/blog/chatgpt" }
@@ -353,6 +361,7 @@ export const entries: Entry[] = [
     usage: `# GPT-3 is accessed via OpenAI's legacy completions API\nfrom openai import OpenAI\nclient = OpenAI()\nresponse = client.completions.create(\n  model="text-davinci-003",\n  prompt="Translate to French: Hello, world!",\n  max_tokens=60\n)`,
     benchmarks: "SuperGLUE: 71.8% (few-shot)",
     limitations: "Largely superseded, expensive, no chat interface natively.",
+    popular: false,
     url: "https://openai.com/research/language-models-are-few-shot-learners",
     citations: [
       { text: "Brown et al. (2020) - GPT-3 Paper", url: "https://arxiv.org/abs/2005.14165" }
@@ -390,6 +399,7 @@ export const entries: Entry[] = [
     usage: `from transformers import LlamaForCausalLM, LlamaTokenizer\nmodel = LlamaForCausalLM.from_pretrained("meta-llama/Llama-2-7b")\ntokenizer = LlamaTokenizer.from_pretrained("meta-llama/Llama-2-7b")`,
     benchmarks: "70B model competitive with GPT-3.5 on many tasks",
     limitations: "Restricted commercial use, requires significant compute.",
+    popular: true,
     url: "https://ai.meta.com/llama/",
     citations: [
       { text: "Touvron et al. (2023) - LLaMA Paper", url: "https://arxiv.org/abs/2302.13971" },
@@ -429,6 +439,7 @@ export const entries: Entry[] = [
     usage: `from transformers import RobertaTokenizer, RobertaModel\ntokenizer = RobertaTokenizer.from_pretrained('roberta-base')\nmodel = RobertaModel.from_pretrained('roberta-base')`,
     benchmarks: "GLUE: 88.5 (large), SQuAD 2.0: 89.4 F1",
     limitations: "Still limited to 512 tokens, encoder-only not generative.",
+    popular: false,
     url: "https://github.com/facebookresearch/fairseq/tree/main/examples/roberta",
     citations: [
       { text: "Liu et al. (2019) - RoBERTa Paper", url: "https://arxiv.org/abs/1907.11692" }
@@ -447,6 +458,7 @@ export const entries: Entry[] = [
     usage: `from transformers import T5Tokenizer, T5ForConditionalGeneration\ntokenizer = T5Tokenizer.from_pretrained("t5-base")\nmodel = T5ForConditionalGeneration.from_pretrained("t5-base")\ninput_ids = tokenizer("translate English to French: Hello world", return_tensors="pt").input_ids`,
     benchmarks: "SuperGLUE: 88.9 (11B), GLUE: 90.3 (11B)",
     limitations: "Encoder-decoder architecture slower than decoder-only for generation tasks.",
+    popular: true,
     url: "https://github.com/google-research/text-to-text-transfer-transformer",
     citations: [
       { text: "Raffel et al. (2019) - T5 Paper", url: "https://arxiv.org/abs/1910.10683" }
@@ -465,6 +477,7 @@ export const entries: Entry[] = [
     usage: `# Access via Google AI Studio or Vertex AI\nimport vertexai\nfrom vertexai.language_models import TextGenerationModel\nvertexai.init(project="YOUR_PROJECT", location="us-central1")\nmodel = TextGenerationModel.from_pretrained("text-bison@002")\nresponse = model.predict("Write a poem about AI.")`,
     benchmarks: "MMLU: 78.3%, multilingual reasoning leader in 2023",
     limitations: "Superseded by Gemini, proprietary API.",
+    popular: false,
     url: "https://ai.google/discover/palm2",
     citations: [
       { text: "PaLM 2 Technical Report", url: "https://arxiv.org/abs/2305.10403" }
@@ -483,6 +496,7 @@ export const entries: Entry[] = [
     usage: `from transformers import AutoTokenizer, AutoModelForCausalLM\ntokenizer = AutoTokenizer.from_pretrained("tiiuae/falcon-180B-chat")\nmodel = AutoModelForCausalLM.from_pretrained("tiiuae/falcon-180B-chat", trust_remote_code=True)`,
     benchmarks: "MMLU: 70.4%, competitive with PaLM 2-L",
     limitations: "Requires massive GPU cluster, commercial use needs separate license.",
+    popular: false,
     url: "https://falconllm.tii.ae/",
     citations: [
       { text: "Falcon 180B Release", url: "https://huggingface.co/tiiuae/falcon-180B" }
@@ -501,6 +515,7 @@ export const entries: Entry[] = [
     usage: `from transformers import AutoModelForCausalLM, AutoTokenizer\nmodel = AutoModelForCausalLM.from_pretrained("lmsys/vicuna-13b-v1.5")\ntokenizer = AutoTokenizer.from_pretrained("lmsys/vicuna-13b-v1.5")`,
     benchmarks: "GPT-4 judged 90% of ChatGPT quality on open questions",
     limitations: "Non-commercial, hallucinates more than proprietary models.",
+    popular: false,
     url: "https://lmsys.org/blog/2023-03-30-vicuna/",
     citations: [
       { text: "Vicuna Blog Post", url: "https://lmsys.org/blog/2023-03-30-vicuna/" }
@@ -519,6 +534,7 @@ export const entries: Entry[] = [
     usage: `# Weights available on HuggingFace\nfrom transformers import AutoModelForCausalLM, AutoTokenizer\nmodel = AutoModelForCausalLM.from_pretrained("tatsu-lab/alpaca-7b-wdiff")\ntokenizer = AutoTokenizer.from_pretrained("tatsu-lab/alpaca-7b-wdiff")`,
     benchmarks: "Comparable to GPT-3.5 text-davinci-003 in human evaluation",
     limitations: "Non-commercial license, now largely superseded by better open models.",
+    popular: false,
     url: "https://crfm.stanford.edu/2023/03/13/alpaca.html",
     citations: [
       { text: "Alpaca: A Strong Open-Source LLM", url: "https://crfm.stanford.edu/2023/03/13/alpaca.html" }
@@ -539,6 +555,7 @@ export const entries: Entry[] = [
     usage: `# Midjourney does not offer an official public API.\n# Usage is primarily through their Discord bot or web interface.\n/imagine prompt: A futuristic cyberpunk city in the rain, highly detailed --v 6.0`,
     benchmarks: "N/A (Subjective visual quality leader)",
     limitations: "No official API, requires Discord/web interface, paid subscription only.",
+    popular: true,
     url: "https://www.midjourney.com/",
     citations: [
       { text: "Midjourney Alpha", url: "https://www.midjourney.com/" }
@@ -615,6 +632,7 @@ export const entries: Entry[] = [
     usage: `from openai import OpenAI\nclient = OpenAI()\nresponse = client.images.generate(\n  model="dall-e-2",\n  prompt="A surrealist painting of a robot reading a book",\n  n=1,\n  size="1024x1024"\n)`,
     benchmarks: "FID: 10.39 on COCO",
     limitations: "Superseded by DALL-E 3, limited prompt comprehension vs. newer models.",
+    popular: false,
     url: "https://openai.com/dall-e-2",
     citations: [
       { text: "Hierarchical Text-Conditional Image Generation Paper", url: "https://arxiv.org/abs/2204.06125" }
@@ -691,6 +709,7 @@ export const entries: Entry[] = [
     usage: `from transformers import ViTImageProcessor, ViTForImageClassification\nfrom PIL import Image\nprocessor = ViTImageProcessor.from_pretrained('google/vit-base-patch16-224')\nmodel = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224')`,
     benchmarks: "ImageNet top-1: 88.55% (ViT-L/16)",
     limitations: "Requires large datasets to train from scratch, less data-efficient than CNNs.",
+    popular: true,
     url: "https://github.com/google-research/vision_transformer",
     citations: [
       { text: "Dosovitskiy et al. (2020) - ViT Paper", url: "https://arxiv.org/abs/2010.11929" }
@@ -768,6 +787,7 @@ export const entries: Entry[] = [
     usage: `from audiocraft.models import MusicGen\nmodel = MusicGen.get_pretrained('facebook/musicgen-large')\nmodel.set_generation_params(duration=8)\nwav = model.generate(["An upbeat jazz piano with drums"])`,
     benchmarks: "FAD: 4.93 (large model), Fréchet Audio Distance competitive with MusicLM",
     limitations: "Non-commercial license, 30-second max duration natively.",
+    popular: false,
     url: "https://github.com/facebookresearch/audiocraft",
     citations: [
       { text: "Copet et al. (2023) - MusicGen Paper", url: "https://arxiv.org/abs/2306.05284" }
@@ -786,6 +806,7 @@ export const entries: Entry[] = [
     usage: `from transformers import LlavaNextProcessor, LlavaNextForConditionalGeneration\nprocessor = LlavaNextProcessor.from_pretrained("llava-hf/llava-v1.6-mistral-7b-hf")\nmodel = LlavaNextForConditionalGeneration.from_pretrained("llava-hf/llava-v1.6-mistral-7b-hf")`,
     benchmarks: "MMBench: 76.3% (LLaVA-1.6 34B), ScienceQA: 90.92%",
     limitations: "Vision understanding still behind GPT-4V on complex visual tasks.",
+    popular: true,
     url: "https://llava-vl.github.io/",
     citations: [
       { text: "LLaVA Paper", url: "https://arxiv.org/abs/2304.08485" }
@@ -863,6 +884,7 @@ export const entries: Entry[] = [
     usage: `from transformers import AutoTokenizer, AutoModelForCausalLM\ntokenizer = AutoTokenizer.from_pretrained("deepseek-ai/deepseek-coder-33b-instruct")\nmodel = AutoModelForCausalLM.from_pretrained("deepseek-ai/deepseek-coder-33b-instruct")`,
     benchmarks: "HumanEval: 79.3% (33B), outperforms GPT-3.5 Turbo",
     limitations: "License restricts certain commercial applications.",
+    popular: true,
     url: "https://github.com/deepseek-ai/DeepSeek-Coder",
     citations: [
       { text: "DeepSeek-Coder Paper", url: "https://arxiv.org/abs/2401.14196" }
@@ -883,6 +905,7 @@ export const entries: Entry[] = [
     usage: `from openai import OpenAI\nclient = OpenAI()\nresponse = client.embeddings.create(\n  input="Your text string goes here",\n  model="text-embedding-3-large"\n)\nembedding = response.data[0].embedding`,
     benchmarks: "MTEB: 64.6% average across 56 tasks",
     limitations: "Proprietary, pay-per-use, no local inference.",
+    popular: true,
     url: "https://platform.openai.com/docs/guides/embeddings",
     citations: [
       { text: "New Embedding Models Announcement", url: "https://openai.com/blog/new-embedding-models-and-api-updates" }
@@ -901,6 +924,7 @@ export const entries: Entry[] = [
     usage: `from sentence_transformers import SentenceTransformer\nmodel = SentenceTransformer("intfloat/e5-mistral-7b-instruct")\nembeddings = model.encode(["Hello world", "Bonjour le monde"])`,
     benchmarks: "MTEB: 66.6% average (top open model at release)",
     limitations: "7B params is large for an embedding model, slower than lighter alternatives.",
+    popular: true,
     url: "https://arxiv.org/abs/2401.00368",
     citations: [
       { text: "E5-Mistral Paper", url: "https://arxiv.org/abs/2401.00368" }
@@ -961,6 +985,7 @@ export const entries: Entry[] = [
     usage: `import jax\nimport jax.numpy as jnp\n\n@jax.jit\ndef predict(params, x):\n  return jnp.dot(x, params['w']) + params['b']\n\ngrad_fn = jax.grad(lambda params, x, y: jnp.mean((predict(params, x) - y)**2))`,
     benchmarks: "Powers many state-of-the-art research papers at Google DeepMind",
     limitations: "Steeper learning curve, functional style requires adapting existing code.",
+    popular: true,
     url: "https://github.com/google/jax",
     citations: [
       { text: "JAX GitHub Repository", url: "https://github.com/google/jax" }
@@ -998,6 +1023,7 @@ export const entries: Entry[] = [
     usage: `from llama_index.core import VectorStoreIndex, SimpleDirectoryReader\ndocuments = SimpleDirectoryReader("data").load_data()\nindex = VectorStoreIndex.from_documents(documents)\nquery_engine = index.as_query_engine()\nresponse = query_engine.query("What did the author do growing up?")`,
     benchmarks: "Leading framework for RAG-based applications",
     limitations: "Can be complex for advanced configurations, performance depends on vector store choice.",
+    popular: true,
     url: "https://www.llamaindex.ai/",
     citations: [
       { text: "LlamaIndex Documentation", url: "https://docs.llamaindex.ai/" }
@@ -1035,6 +1061,7 @@ export const entries: Entry[] = [
     usage: `import keras\nmodel = keras.Sequential([\n  keras.layers.Dense(64, activation='relu'),\n  keras.layers.Dense(1, activation='sigmoid')\n])\nmodel.compile(optimizer='adam', loss='binary_crossentropy')\nmodel.fit(x_train, y_train, epochs=10)`,
     benchmarks: "N/A — high-level API; backend-dependent performance",
     limitations: "Less flexibility than raw PyTorch for custom training loops.",
+    popular: true,
     url: "https://keras.io",
     citations: [
       { text: "Keras Official Documentation", url: "https://keras.io/guides/" }
@@ -1053,6 +1080,7 @@ export const entries: Entry[] = [
     usage: `# Install and run from terminal\n$ ollama pull llama3\n$ ollama run llama3\n\n# Or use the REST API\nimport requests\nresponse = requests.post('http://localhost:11434/api/generate',\n  json={"model": "llama3", "prompt": "Why is the sky blue?", "stream": False})`,
     benchmarks: "N/A — inference speed depends on hardware",
     limitations: "Local hardware constraints limit model size, not for production serving at scale.",
+    popular: true,
     url: "https://ollama.com/",
     citations: [
       { text: "Ollama GitHub", url: "https://github.com/ollama/ollama" }
@@ -1150,6 +1178,7 @@ export const entries: Entry[] = [
     usage: `from openai import OpenAI\nclient = OpenAI(api_key="YOUR_API_KEY")\nresponse = client.chat.completions.create(\n  model="gpt-4o",\n  messages=[{"role": "user", "content": "Hello!"}]\n)`,
     benchmarks: "N/A",
     limitations: "Pay-per-token pricing, rate limits on free tier, proprietary.",
+    popular: true,
     url: "https://platform.openai.com",
     citations: [
       { text: "OpenAI API Documentation", url: "https://platform.openai.com/docs" }
@@ -1168,6 +1197,7 @@ export const entries: Entry[] = [
     usage: `import vertexai\nfrom vertexai.generative_models import GenerativeModel\nvertexai.init(project="YOUR_PROJECT", location="us-central1")\nmodel = GenerativeModel("gemini-1.5-pro")\nresponse = model.generate_content("Describe the water cycle.")`,
     benchmarks: "N/A",
     limitations: "GCP-locked, complex pricing, requires GCP account setup.",
+    popular: true,
     url: "https://cloud.google.com/vertex-ai",
     citations: [
       { text: "Vertex AI Documentation", url: "https://cloud.google.com/vertex-ai/docs" }
@@ -1186,6 +1216,7 @@ export const entries: Entry[] = [
     usage: `import boto3, json\nbedrock = boto3.client('bedrock-runtime', region_name='us-east-1')\nbody = json.dumps({"prompt": "\\n\\nHuman: Hi\\n\\nAssistant:", "max_tokens_to_sample": 300})\nresponse = bedrock.invoke_model(body=body, modelId='anthropic.claude-v2')`,
     benchmarks: "N/A",
     limitations: "AWS-locked, additional latency vs. direct API, complex IAM setup.",
+    popular: true,
     url: "https://aws.amazon.com/bedrock/",
     citations: [
       { text: "AWS Bedrock Documentation", url: "https://docs.aws.amazon.com/bedrock/" }
@@ -1223,6 +1254,7 @@ export const entries: Entry[] = [
     usage: `import replicate\noutput = replicate.run(\n  "meta/meta-llama-3-70b-instruct",\n  input={"prompt": "Write a haiku about AI"}\n)\nprint("".join(output))`,
     benchmarks: "N/A",
     limitations: "Pay-per-second pricing can be costly for heavy use, cold start latency.",
+    popular: true,
     url: "https://replicate.com",
     citations: [
       { text: "Replicate Documentation", url: "https://replicate.com/docs" }
@@ -1241,6 +1273,7 @@ export const entries: Entry[] = [
     usage: `from together import Together\nclient = Together(api_key="YOUR_API_KEY")\nresponse = client.chat.completions.create(\n  model="meta-llama/Llama-3-70b-chat-hf",\n  messages=[{"role": "user", "content": "What is RAG?"}]\n)`,
     benchmarks: "N/A",
     limitations: "Proprietary, model availability may change.",
+    popular: true,
     url: "https://www.together.ai/",
     citations: [
       { text: "Together AI Documentation", url: "https://docs.together.ai/" }
@@ -1297,6 +1330,7 @@ export const entries: Entry[] = [
     usage: `# Access via Discord or https://www.midjourney.com/\n/imagine prompt: Photograph of a cat wearing a spacesuit on the moon, cinematic lighting --v 6.1 --ar 16:9`,
     benchmarks: "N/A — subjective quality, widely regarded as leader for artistic output",
     limitations: "No official API, paid subscription, all generations are public on free tier.",
+    popular: true,
     url: "https://www.midjourney.com/",
     citations: [
       { text: "Midjourney Website", url: "https://www.midjourney.com/" }
@@ -1356,6 +1390,7 @@ export const entries: Entry[] = [
     usage: `# Access via AWS S3 public dataset\nimport boto3\ns3 = boto3.client('s3', region_name='us-east-1')\n# Browse at s3://commoncrawl/\nresponse = s3.list_objects_v2(Bucket='commoncrawl', Prefix='crawl-data/CC-MAIN-2024-10/')`,
     benchmarks: "Used to train GPT-3, LLaMA, Falcon, and virtually all frontier models",
     limitations: "Requires extensive filtering (toxic content, duplicates, low quality) before use.",
+    popular: true,
     url: "https://commoncrawl.org/",
     citations: [
       { text: "Common Crawl Official Site", url: "https://commoncrawl.org/" }
@@ -1374,6 +1409,7 @@ export const entries: Entry[] = [
     usage: `# Available on HuggingFace\nfrom datasets import load_dataset\ndataset = load_dataset("EleutherAI/pile", split="train", streaming=True)`,
     benchmarks: "Used to train GPT-NeoX, GPT-J, and other EleutherAI models",
     limitations: "Some components have license restrictions (Books3 removed after legal challenges).",
+    popular: true,
     url: "https://pile.eleuther.ai/",
     citations: [
       { text: "Gao et al. (2020) - The Pile Paper", url: "https://arxiv.org/abs/2101.00027" }
@@ -1392,6 +1428,7 @@ export const entries: Entry[] = [
     usage: `# Access subsets via HuggingFace\nfrom datasets import load_dataset\ndataset = load_dataset("laion/laion2B-en", split="train", streaming=True)`,
     benchmarks: "Enables training of SOTA text-to-image models",
     limitations: "Contains harmful/copyrighted content, filtered versions recommended.",
+    popular: true,
     url: "https://laion.ai/blog/laion-5b/",
     citations: [
       { text: "Schuhmann et al. (2022) - LAION-5B Paper", url: "https://arxiv.org/abs/2210.08402" }
@@ -1410,6 +1447,7 @@ export const entries: Entry[] = [
     usage: `from torchvision.datasets import CocoDetection\ndataset = CocoDetection(\n  root="./data/coco/images/train2017",\n  annFile="./data/coco/annotations/instances_train2017.json"\n)`,
     benchmarks: "Standard detection benchmark: mAP metric widely used in CV research",
     limitations: "Object categories limited to 80, some class imbalance.",
+    popular: true,
     url: "https://cocodataset.org/",
     citations: [
       { text: "Lin et al. (2014) - COCO Paper", url: "https://arxiv.org/abs/1405.0312" }
@@ -1428,6 +1466,7 @@ export const entries: Entry[] = [
     usage: `from datasets import load_dataset\ndataset = load_dataset("openwebtext", split="train")`,
     benchmarks: "Used as training data for GPT-2 replications",
     limitations: "English-only, Reddit bias toward certain demographics and topics.",
+    popular: false,
     url: "https://huggingface.co/datasets/openwebtext",
     citations: [
       { text: "OpenWebText on HuggingFace", url: "https://huggingface.co/datasets/openwebtext" }
@@ -1446,6 +1485,7 @@ export const entries: Entry[] = [
     usage: `from datasets import load_dataset\ndataset = load_dataset("squad_v2")\ntrain_data = dataset['train']`,
     benchmarks: "Standard reading comprehension benchmark; human baseline F1: 89.45%",
     limitations: "English-only, Wikipedia domain, extractive QA only.",
+    popular: true,
     url: "https://rajpurkar.github.io/SQuAD-explorer/",
     citations: [
       { text: "Rajpurkar et al. (2018) - SQuAD 2.0 Paper", url: "https://arxiv.org/abs/1806.03822" }
@@ -1521,6 +1561,7 @@ export const entries: Entry[] = [
     usage: `from datasets import load_dataset\ndataset = load_dataset("togethercomputer/RedPajama-Data-V2", name="sample-10B", split="train", streaming=True)`,
     benchmarks: "Enables competitive open LLM training at scale",
     limitations: "Requires careful filtering, quality signals are heuristic-based.",
+    popular: true,
     url: "https://github.com/togethercomputer/RedPajama-Data",
     citations: [
       { text: "RedPajama-V2 Paper", url: "https://arxiv.org/abs/2402.06935" }
@@ -1539,6 +1580,7 @@ export const entries: Entry[] = [
     usage: `from datasets import load_dataset\ndataset = load_dataset("tatsu-lab/alpaca")\nprint(dataset['train'][0])`,
     benchmarks: "Fine-tuning LLaMA 7B on this data produces near-ChatGPT quality",
     limitations: "Non-commercial license, GPT-3.5 generated (potential errors), English-only.",
+    popular: false,
     url: "https://github.com/tatsu-lab/stanford_alpaca",
     citations: [
       { text: "Alpaca Dataset Release", url: "https://crfm.stanford.edu/2023/03/13/alpaca.html" }
@@ -1547,7 +1589,4 @@ export const entries: Entry[] = [
 ];
 
 export const typeFilters = ["All", "Model", "Framework", "Dataset", "Platform"];
-
-// Fixed: merged "Audio / ASR" into "Audio" so the filter label matches
-// all audio entries (Whisper task changed from "Audio / ASR" to "Audio").
 export const taskFilters = ["All Tasks", "NLP", "Computer Vision", "MLOps", "Audio", "Multimodal"];
