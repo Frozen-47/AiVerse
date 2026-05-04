@@ -17,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
           <div className="w-8 h-8 rounded-lg bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center font-bold text-white text-sm">
             AI
           </div>
-          <h1 className={`text-lg font-black tracking-tight ${t.textPrimary}`}>AiPedia</h1>
+          <h1 className={`text-lg font-black tracking-tight ${t.textPrimary}`}>AiVerse</h1>
           <span className={`text-xs font-semibold ${t.textMuted}`}>{entryCount} entries</span>
         </div>
         
