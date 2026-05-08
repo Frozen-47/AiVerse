@@ -1,6 +1,6 @@
 import React from "react";
-import { Plus } from "lucide-react";
-import { useTokens } from "../lib/theme";
+import { Plus, Moon, Sun } from "lucide-react";
+import { useTokens, useTheme } from "../lib/theme";
 
 interface NavbarProps {
   onAddEntry: () => void;
@@ -9,6 +9,7 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
   const t = useTokens();
+  const { theme, setTheme } = useTheme();
 
   return (
     <nav className={`sticky top-0 z-40 border-b ${t.page} ${t.border} backdrop-blur-sm`}>
@@ -21,13 +22,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
           <span className={`text-xs font-semibold ${t.textMuted}`}>{entryCount} entries</span>
         </div>
         
-        <button
-          onClick={onAddEntry}
-          className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
-        >
-          <Plus size={16} />
-          Add Entry
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setTheme(theme === "amoled" ? "light" : "amoled")}
+            className={`p-2 rounded-lg transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
+            aria-label="Toggle theme"
+          >
+            {theme === "amoled" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          
+          <button
+            onClick={onAddEntry}
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
+          >
+            <Plus size={16} />
+            Add Entry
+          </button>
+        </div>
       </div>
     </nav>
   );

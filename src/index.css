@@ -24,7 +24,6 @@
 
 :root {
   --primary: 255, 255, 255;
-  background-color: #000;
   color: theme('color.primary');
 }
 

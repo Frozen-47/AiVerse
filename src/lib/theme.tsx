@@ -62,6 +62,8 @@ const amoled: TokenMap = {
   sidebarActive: "text-cyan-400 bg-cyan-500/10",
   // Tag
   limitTag: "bg-red-500/8 text-red-400 border-red-500/15",
+  // Link
+  link: "text-white/30 hover:text-white transition-colors font-semibold",
   // Scrollbar
   scrollbar: "scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10",
 };
@@ -101,6 +103,7 @@ const light: TokenMap = {
   sidebarItem: "text-gray-400 hover:text-gray-900 hover:bg-black/[0.04]",
   sidebarActive: "text-cyan-700 bg-cyan-500/8",
   limitTag: "bg-red-500/6 text-red-600 border-red-500/15",
+  link: "text-gray-400 hover:text-gray-900 transition-colors font-semibold",
   scrollbar: "scrollbar-thin scrollbar-track-transparent scrollbar-thumb-black/10",
 };
 

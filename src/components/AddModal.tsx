@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { X, Plus } from "lucide-react";
+import { X, Plus, Server } from "lucide-react";
 import { useTokens } from "../lib/theme";
 import { typeFilters, taskFilters } from "../data";
 import type { Entry } from "../types";
@@ -32,6 +32,7 @@ const emptyEntry = (): PartialEntry => ({
 export const AddModal: React.FC<AddModalProps> = ({ onClose, onSubmit }) => {
   const t = useTokens();
   const [entry, setEntry] = useState<PartialEntry>(emptyEntry());
+  const [showBackendMsg, setShowBackendMsg] = useState(false);
 
   const inputCls = `w-full px-3 py-2.5 rounded-xl text-[13px] border focus:outline-none transition-all ${t.input}`;
   const labelCls = `block text-[10px] font-semibold uppercase tracking-widest mb-1.5 ${t.textMuted}`;
@@ -53,7 +54,12 @@ export const AddModal: React.FC<AddModalProps> = ({ onClose, onSubmit }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!entry.name || !entry.summary) return;
-    onSubmit(entry);
+    
+    setShowBackendMsg(true);
+    setTimeout(() => {
+      setShowBackendMsg(false);
+      onClose();
+    }, 3000);
   };
 
   return (
@@ -176,12 +182,26 @@ export const AddModal: React.FC<AddModalProps> = ({ onClose, onSubmit }) => {
             </div>
           </div>
 
+          {/* Backend Progress Message */}
+          {showBackendMsg && (
+            <div className={`p-3.5 rounded-xl border flex items-center gap-3 text-[13px] bg-amber-500/10 border-amber-500/20 text-amber-500 font-medium animate-[fadeUp_0.3s_ease-out]`}>
+              <Server size={16} className="shrink-0" />
+              <span>
+                Backend integration is currently in progress. Entry submissions are temporarily disabled.
+              </span>
+            </div>
+          )}
+
           {/* ── Footer (inside form, stays at bottom of scroll) ── */}
           <div className={`flex justify-end gap-2 pt-4 border-t ${t.border}`}>
             <button type="button" onClick={onClose} className={`px-4 py-2 rounded-xl text-[13px] transition-colors ${t.btnGhost}`}>
               Cancel
             </button>
-            <button type="submit" className={`inline-flex items-center gap-1.5 px-6 py-2 rounded-full text-[13px] font-semibold transition-all ${t.btnPrimary}`}>
+            <button 
+              type="submit" 
+              disabled={showBackendMsg}
+              className={`inline-flex items-center gap-1.5 px-6 py-2 rounded-full text-[13px] font-semibold transition-all ${showBackendMsg ? 'opacity-50 cursor-not-allowed' : ''} ${t.btnPrimary}`}
+            >
               <Plus size={13} /> Submit Entry
             </button>
           </div>

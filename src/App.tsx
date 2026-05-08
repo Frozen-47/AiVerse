@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { ThemeContext } from "./lib/theme";
+import { Server } from "lucide-react";
+import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { entries as initialEntries } from "./data";
 import { Navbar } from "./components/Navbar";
@@ -13,13 +14,26 @@ import type { Entry, Theme, TypeFilter, TaskFilter } from "./types";
 // ─── Inner app (needs theme context) ─────────────────────────────────────────
 const Inner: React.FC = () => {
   const t = useTokens();
+  const { theme } = useTheme();
   const [entries, setEntries] = useState<Entry[]>(initialEntries);
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("All");
   const [taskFilter, setTaskFilter] = useState<TaskFilter>("All Tasks");
   const [popularOnly, setPopularOnly] = useState(false);
   const [selected, setSelected] = useState<Entry | null>(null);
-  const [isAdding, setIsAdding] = useState(false);
+  const [isAdding, setIsAdding] = useState(false); // We can leave this in case it's needed later, but we will use the toast instead.
+  const [showBackendToast, setShowBackendToast] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handleAddClick = () => {
+    setShowBackendToast(true);
+    setTimeout(() => setShowBackendToast(false), 3500);
+  };
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [typeFilter, taskFilter, popularOnly, search]);
 
   // ⌘K shortcut
   useEffect(() => {
@@ -36,6 +50,23 @@ const Inner: React.FC = () => {
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
   }, []);
+
+  // Sync document body and meta tags for an orderly global theme switch
+  useEffect(() => {
+    if (theme === "amoled") {
+      document.documentElement.style.backgroundColor = "#000000";
+      document.body.style.backgroundColor = "#000000";
+      document.documentElement.classList.remove("light");
+      document.documentElement.classList.add("dark");
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#000000");
+    } else {
+      document.documentElement.style.backgroundColor = "#f8fafc";
+      document.body.style.backgroundColor = "#f8fafc";
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#f8fafc");
+    }
+  }, [theme]);
 
   const filtered = useMemo(() =>
     entries.filter((e) => {
@@ -54,6 +85,10 @@ const Inner: React.FC = () => {
       return true;
     }),
   [entries, typeFilter, taskFilter, popularOnly, search]);
+
+  const ITEMS_PER_PAGE = 12;
+  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+  const paginatedEntries = filtered.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
   const handleAdd = (partial: Partial<Entry>) => {
     const complete: Entry = {
@@ -78,14 +113,14 @@ const Inner: React.FC = () => {
   };
 
   return (
-    <div className={`min-h-screen font-sans transition-colors duration-300 ${t.page}`}>
+    <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${t.page}`}>
       {/* Ambient glow */}
       <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-150 h-100 rounded-full bg-cyan-400/4 blur-[120px]" />
         <div className="absolute top-1/3 -right-20 w-75 h-100 rounded-full bg-violet-500/3 blur-[100px]" />
       </div>
 
-      <Navbar onAddEntry={() => setIsAdding(true)} entryCount={entries.length} />
+      <Navbar onAddEntry={handleAddClick} entryCount={entries.length} />
 
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Hero */}
@@ -160,23 +195,84 @@ const Inner: React.FC = () => {
                 </button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                {filtered.map((entry, i) => (
-                  <EntryCard
-                    key={entry.name}
-                    entry={entry}
-                    onClick={() => setSelected(entry)}
-                    index={i}
-                  />
-                ))}
+              <div className="flex flex-col">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                  {paginatedEntries.map((entry, i) => (
+                    <EntryCard
+                      key={entry.name}
+                      entry={entry}
+                      onClick={() => setSelected(entry)}
+                      index={i}
+                    />
+                  ))}
+                </div>
+
+                {totalPages > 1 && (
+                  <div className="flex items-center justify-center gap-2 mt-10">
+                    <button
+                      onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                      disabled={currentPage === 1}
+                      className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${t.surface} ${t.border} ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : `hover:${t.textPrimary}`}`}
+                    >
+                      Prev
+                    </button>
+                    
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                      <button
+                        key={page}
+                        onClick={() => {
+                          setCurrentPage(page);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className={`w-8 h-8 rounded-lg text-sm font-bold transition-all flex items-center justify-center ${
+                          currentPage === page 
+                            ? t.btnPrimary 
+                            : `${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ))}
+
+                    <button
+                      onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                      disabled={currentPage === totalPages}
+                      className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${t.surface} ${t.border} ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : `hover:${t.textPrimary}`}`}
+                    >
+                      Next
+                    </button>
+                  </div>
+                )}
               </div>
             )}
           </div>
         </div>
       </div>
 
+      <footer 
+        className={`mt-auto text-center text-[11px] ${t.textSecondary} border-t ${t.border} pt-6 pb-6`}
+        style={{ animation: 'fadeUp 0.4s ease-out 600ms forwards', opacity: 0 }}
+      >
+        <p>
+          Built by Sabareesh. Find me on <a href="https://discord.com/users/1272910357517701147" className={t.link}>Discord</a> and <a href="https://github.com/Frozen-47" className={t.link}>GitHub</a>
+        </p>
+      </footer>
+
       {selected && <DetailModal entry={selected} onClose={() => setSelected(null)} />}
       {isAdding && <AddModal onClose={() => setIsAdding(false)} onSubmit={handleAdd} />}
+
+      {/* Global Toast Notification */}
+      {showBackendToast && (
+        <div className="fixed bottom-6 right-6 z-50 animate-[fadeUp_0.3s_ease-out]">
+          <div className="p-4 rounded-xl border flex items-center gap-3 text-[13px] bg-red-500/10 border-red-500/20 text-red-500 font-medium shadow-2xl backdrop-blur-md">
+            <Server size={18} className="shrink-0" />
+            <span>
+              Backend integration is currently in progress.<br/>
+              Entry submissions are temporarily disabled.
+            </span>
+          </div>
+        </div>
+      )}
 
       <style>{`
         @keyframes fadeUp {
