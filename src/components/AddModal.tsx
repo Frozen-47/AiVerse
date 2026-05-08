@@ -29,7 +29,8 @@ const emptyEntry = (): PartialEntry => ({
   popular: false,
 });
 
-export const AddModal: React.FC<AddModalProps> = ({ onClose, onSubmit }) => {
+
+export const AddModal: React.FC<AddModalProps> = ({ onClose, onSubmit: _onSubmit }) => {
   const t = useTokens();
   const [entry, setEntry] = useState<PartialEntry>(emptyEntry());
   const [showBackendMsg, setShowBackendMsg] = useState(false);
