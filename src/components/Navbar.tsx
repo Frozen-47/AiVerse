@@ -15,8 +15,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
     <nav className={`sticky top-0 z-40 border-b ${t.page} ${t.border} backdrop-blur-sm`}>
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center font-bold text-white text-sm">
-            AI
+          <div className="shrink-0 flex items-center justify-center">
+            <img 
+              src="/av.svg" 
+              alt="AiVerse Logo" 
+              className={`w-8 h-8 rounded-lg transition-all ${theme === 'light' ? 'invert' : ''}`} 
+            />
           </div>
           <h1 className={`text-lg font-black tracking-tight ${t.textPrimary}`}>AiVerse</h1>
           <span className={`text-xs font-semibold ${t.textMuted}`}>{entryCount} entries</span>
