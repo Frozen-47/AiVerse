@@ -42,6 +42,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.status(200).json({ content: responseContent });
   } catch (error: any) {
     console.error("Groq API Error:", error);
-    res.status(500).json({ content: 'Sorry, I encountered an error communicating with my backend.' });
+    res.status(500).json({ content: `Backend Error: ${error.message}` });
   }
 }
