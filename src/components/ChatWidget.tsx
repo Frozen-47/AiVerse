@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send, Bot, Loader2, Minimize2, Maximize2, RefreshCw, Copy, Check } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 import { useTokens } from '../lib/theme';
 import { entries } from '../data';
 // Client-side Groq initialization removed for security.
@@ -175,19 +176,32 @@ export const ChatWidget: React.FC = () => {
           msg.role !== 'system' && (
             <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div 
-                className={`group relative max-w-[85%] rounded-2xl px-4 py-2 ${
+                className={`group relative max-w-[85%] rounded-2xl px-4 py-2 text-[13px] leading-relaxed ${
                   msg.role === 'user' 
                     ? `bg-blue-600 text-white rounded-br-sm` 
                     : `${t.surfaceHover} ${t.textPrimary} border ${t.border} rounded-bl-sm`
                 }`}
               >
-                {/* Very simple markdown rendering for bold text and line breaks, since we don't have a full markdown parser */}
-                {msg.content.split('\n').map((line, i) => (
-                  <React.Fragment key={i}>
-                    {line}
-                    {i < msg.content.split('\n').length - 1 && <br />}
-                  </React.Fragment>
-                ))}
+                {msg.role === 'user' ? (
+                  <div>{msg.content}</div>
+                ) : (
+                  <ReactMarkdown
+                    components={{
+                      h1: ({node, ...props}) => <h1 className="font-bold text-lg mt-2 mb-1" {...props} />,
+                      h2: ({node, ...props}) => <h2 className="font-bold text-base mt-2 mb-1" {...props} />,
+                      h3: ({node, ...props}) => <h3 className="font-bold text-[14px] mt-2 mb-1" {...props} />,
+                      p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
+                      ul: ({node, ...props}) => <ul className="list-disc pl-4 mb-2 space-y-1" {...props} />,
+                      ol: ({node, ...props}) => <ol className="list-decimal pl-4 mb-2 space-y-1" {...props} />,
+                      li: ({node, ...props}) => <li className="" {...props} />,
+                      strong: ({node, ...props}) => <strong className="font-semibold text-blue-400" {...props} />,
+                      code: ({node, ...props}) => <code className="bg-black/20 rounded px-1 py-0.5 font-mono text-[11px]" {...props} />,
+                      pre: ({node, ...props}) => <pre className="bg-black/30 rounded p-2 overflow-x-auto my-2 font-mono text-[11px]" {...props} />,
+                    }}
+                  >
+                    {msg.content}
+                  </ReactMarkdown>
+                )}
                 
                 {msg.role === 'assistant' && (
                   <div className="mt-2 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
@@ -215,9 +229,9 @@ export const ChatWidget: React.FC = () => {
 
         {/* Suggestions Inline at the bottom of the chat stream */}
         {!isLoading && messages.length > 0 && (
-          <div className={`mt-4 pt-4 border-t ${t.border}`}>
-            <div className="flex items-center justify-between mb-3 px-1">
-              <span className={`text-[10px] uppercase tracking-wider font-semibold ${t.textMuted}`}>Suggested Questions</span>
+          <div className={`mt-2 pt-2 border-t ${t.border}`}>
+            <div className="flex items-center justify-between mb-2 px-1">
+              <span className={`text-[9px] uppercase tracking-wider font-semibold ${t.textMuted}`}>Suggested Questions</span>
               <button 
                 onClick={refreshSuggestions}
                 className={`p-1 rounded-full ${t.surfaceHover} text-blue-400 hover:text-blue-300 transition-colors`}
@@ -226,12 +240,12 @@ export const ChatWidget: React.FC = () => {
                 <RefreshCw size={12} />
               </button>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5">
               {suggestions.map((s, i) => (
                 <button
                   key={i}
                   onClick={() => handleSend(s)}
-                  className={`text-left px-3 py-1.5 rounded-full text-[11px] transition-colors border ${t.border} ${t.surfaceHover} hover:border-blue-500/50 hover:text-blue-400 ${t.textPrimary}`}
+                  className={`text-left px-2.5 py-1 rounded-full text-[10px] transition-colors border ${t.border} ${t.surfaceHover} hover:border-blue-500/50 hover:text-blue-400 ${t.textPrimary}`}
                 >
                   {s}
                 </button>
