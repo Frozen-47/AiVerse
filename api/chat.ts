@@ -1,6 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import Groq from 'groq-sdk';
-import { entries } from '../src/data';
 
 // Initialize Groq client with environment variable
 // Vercel securely injects this at runtime
@@ -19,19 +18,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { messages } = req.body;
+    const { messages, catalogContext } = req.body;
 
     if (!Array.isArray(messages)) {
       return res.status(400).json({ error: 'Invalid request: messages array is required.' });
     }
 
-    // Format the encyclopedia data into a concise catalog
-    const catalogContext = entries.map(e => `- ${e.name} (${e.type}): ${e.summary}`).join('\n');
-
     // System prompt is kept securely on the backend
     const systemPrompt = {
       role: 'system',
-      content: `You are Vox, an AI assistant strictly dedicated to the AiVerse encyclopedia. You MUST REFUSE to answer any questions that are not related to Artificial Intelligence, machine learning, AI models, datasets, or the AiVerse platform itself. If a user asks about coding (like Rust loops, general web dev, etc. unless specifically about AI frameworks like PyTorch), general trivia, or off-topic subjects, politely decline and steer the conversation back to AI models and technologies.\n\nHere is the current catalog of AI items in the AiVerse database:\n\n${catalogContext}\n\nUse this catalog to inform your answers. If someone asks what models are available or asks for recommendations, draw from this list. Keep your answers concise, informative, and formatted with markdown when appropriate.`,
+      content: `You are Vox, an AI assistant strictly dedicated to the AiVerse encyclopedia. You MUST REFUSE to answer any questions that are not related to Artificial Intelligence, machine learning, AI models, datasets, or the AiVerse platform itself. If a user asks about coding (like Rust loops, general web dev, etc. unless specifically about AI frameworks like PyTorch), general trivia, or off-topic subjects, politely decline and steer the conversation back to AI models and technologies.\n\nHere is the current catalog of AI items available in the AiVerse database:\n${catalogContext || 'No catalog provided'}\n\nUse this catalog to inform your answers. If someone asks what models are available or asks for recommendations, draw from this list. Keep your answers concise, informative, and formatted with markdown when appropriate.`,
     };
 
     const chatCompletion = await groq.chat.completions.create({

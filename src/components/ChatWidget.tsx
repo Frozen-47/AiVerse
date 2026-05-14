@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send, Bot, Loader2, Minimize2, Maximize2, RefreshCw, Copy, Check } from 'lucide-react';
 import { useTokens } from '../lib/theme';
+import { entries } from '../data';
 // Client-side Groq initialization removed for security.
 // We now use the Vercel Serverless Function at /api/chat
 
@@ -78,6 +79,8 @@ export const ChatWidget: React.FC = () => {
     setIsLoading(true);
 
     try {
+      const catalogContext = entries.map(e => `- ${e.name} (${e.type})`).join('\n');
+      
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
@@ -85,6 +88,7 @@ export const ChatWidget: React.FC = () => {
         },
         body: JSON.stringify({
           messages: [...messages, userMessage],
+          catalogContext
         }),
       });
 
@@ -204,39 +208,40 @@ export const ChatWidget: React.FC = () => {
           <div className="flex justify-start">
             <div className={`max-w-[85%] rounded-2xl px-4 py-3 ${t.surfaceHover} border ${t.border} rounded-bl-sm flex items-center gap-2`}>
               <Loader2 size={16} className={`animate-spin ${t.textAccent}`} />
-              <span className={`text-xs ${t.textMuted}`}>Agent is thinking...</span>
+              <span className={`text-xs ${t.textMuted}`}>Vox is thinking...</span>
             </div>
           </div>
         )}
+
+        {/* Suggestions Inline at the bottom of the chat stream */}
+        {!isLoading && messages.length > 0 && (
+          <div className={`mt-4 pt-4 border-t ${t.border}`}>
+            <div className="flex items-center justify-between mb-3 px-1">
+              <span className={`text-[10px] uppercase tracking-wider font-semibold ${t.textMuted}`}>Suggested Questions</span>
+              <button 
+                onClick={refreshSuggestions}
+                className={`p-1 rounded-full ${t.surfaceHover} text-blue-400 hover:text-blue-300 transition-colors`}
+                title="Refresh suggestions"
+              >
+                <RefreshCw size={12} />
+              </button>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {suggestions.map((s, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleSend(s)}
+                  className={`text-left px-3 py-1.5 rounded-full text-[11px] transition-colors border ${t.border} ${t.surfaceHover} hover:border-blue-500/50 hover:text-blue-400 ${t.textPrimary}`}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div ref={messagesEndRef} />
       </div>
-
-      {/* Suggestions Area */}
-      {!isLoading && messages.length > 0 && (
-        <div className={`px-4 pb-3 pt-3 border-t ${t.border}`}>
-          <div className="flex items-center justify-between mb-2 px-1">
-            <span className={`text-[10px] uppercase tracking-wider font-semibold ${t.textMuted}`}>Suggested Questions</span>
-            <button 
-              onClick={refreshSuggestions}
-              className={`p-1 rounded-full ${t.surfaceHover} text-blue-400 hover:text-blue-300 transition-colors`}
-              title="Refresh suggestions"
-            >
-              <RefreshCw size={12} />
-            </button>
-          </div>
-          <div className="flex flex-col gap-1.5">
-            {suggestions.map((s, i) => (
-              <button
-                key={i}
-                onClick={() => handleSend(s)}
-                className={`text-left px-3 py-2 rounded-lg text-[12px] transition-colors border ${t.border} ${t.surfaceHover} hover:border-blue-500/50 hover:text-blue-400 ${t.textMuted}`}
-              >
-                {s}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
 
       {/* Input Area */}
       <div className={`p-3 ${isLoading ? `border-t ${t.border}` : ''}`}>
