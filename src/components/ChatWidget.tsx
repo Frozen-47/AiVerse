@@ -229,28 +229,23 @@ export const ChatWidget: React.FC = () => {
 
         {/* Suggestions Inline at the bottom of the chat stream */}
         {!isLoading && messages.length > 0 && (
-          <div className={`mt-2 pt-2 border-t ${t.border}`}>
-            <div className="flex items-center justify-between mb-2 px-1">
-              <span className={`text-[9px] uppercase tracking-wider font-semibold ${t.textMuted}`}>Suggested Questions</span>
-              <button 
-                onClick={refreshSuggestions}
-                className={`p-1 rounded-full ${t.surfaceHover} text-blue-400 hover:text-blue-300 transition-colors`}
-                title="Refresh suggestions"
+          <div className="mt-2 flex items-center gap-2 overflow-x-auto no-scrollbar px-1 pb-2">
+            <button 
+              onClick={refreshSuggestions}
+              className={`shrink-0 p-1.5 rounded-full border ${t.border} ${t.surfaceHover} text-gray-400 hover:text-blue-500 transition-colors`}
+              title="Refresh suggestions"
+            >
+              <RefreshCw size={13} />
+            </button>
+            {suggestions.map((s, i) => (
+              <button
+                key={i}
+                onClick={() => handleSend(s)}
+                className={`shrink-0 px-3 py-1.5 rounded-full text-[11px] whitespace-nowrap transition-colors border ${t.border} ${t.surfaceHover} hover:border-blue-500/50 hover:text-blue-500 ${t.textMuted}`}
               >
-                <RefreshCw size={12} />
+                {s}
               </button>
-            </div>
-            <div className="flex flex-wrap gap-1.5">
-              {suggestions.map((s, i) => (
-                <button
-                  key={i}
-                  onClick={() => handleSend(s)}
-                  className={`text-left px-2.5 py-1 rounded-full text-[10px] transition-colors border ${t.border} ${t.surfaceHover} hover:border-blue-500/50 hover:text-blue-400 ${t.textPrimary}`}
-                >
-                  {s}
-                </button>
-              ))}
-            </div>
+            ))}
           </div>
         )}
 
