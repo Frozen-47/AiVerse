@@ -307,6 +307,101 @@ export const entries: Entry[] = [
       { text: "Grok-1 Release", url: "https://x.ai/blog/grok-os" }
     ]
   },
+  {
+    name: "Llama 3.1 (405B)",
+    type: "Model",
+    summary: "Meta's flagship open-weights model and the first open model to rival top proprietary models like GPT-4o and Claude 3.5 Sonnet across general knowledge, steerability, math, tool use, and multilingual translation.",
+    task: "NLP",
+    license: "Llama 3.1 Community License",
+    year: 2024,
+    org: "Meta AI",
+    size: "405B params",
+    architecture: "Optimized transformer decoder architecture trained on 15T tokens with 128K context window.",
+    usage: `from transformers import pipeline\npipe = pipeline("text-generation", model="meta-llama/Meta-Llama-3.1-405B-Instruct")\npipe("Hello world!")`,
+    benchmarks: "MMLU: 88.6%, HumanEval: 89.0%, MATH: 73.8%",
+    limitations: "Massive hardware requirements for local inference due to 405B size.",
+    popular: true,
+    url: "https://llama.meta.com/",
+    citations: [
+      { text: "Llama 3.1 Announcement", url: "https://ai.meta.com/blog/meta-llama-3-1/" }
+    ]
+  },
+  {
+    name: "GPT-4o mini",
+    type: "Model",
+    summary: "OpenAI's most cost-efficient small model, replacing GPT-3.5 Turbo, offering significantly higher intelligence, broader multimodal capabilities, and a 128K context window at a fraction of the cost.",
+    task: "Multimodal",
+    license: "Proprietary",
+    year: 2024,
+    org: "OpenAI",
+    size: "Unknown",
+    architecture: "Transformer-based, natively multimodal omni-model.",
+    usage: `from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model="gpt-4o-mini",\n  messages=[{"role": "user", "content": "Hello!"}]\n)`,
+    benchmarks: "MMLU: 82.0%, HumanEval: 87.0%",
+    limitations: "Less capable on highly complex reasoning tasks compared to GPT-4o.",
+    popular: true,
+    url: "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+    citations: [
+      { text: "GPT-4o mini Announcement", url: "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/" }
+    ]
+  },
+  {
+    name: "Claude 3 Haiku",
+    type: "Model",
+    summary: "Anthropic's fastest and most compact model for near-instant responsiveness, ideal for quick queries and high-volume tasks.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2024,
+    org: "Anthropic",
+    size: "Unknown",
+    architecture: "Transformer-based LLM optimized for speed.",
+    usage: `import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model="claude-3-haiku-20240307",\n  max_tokens=1000,\n  messages=[{"role": "user", "content": "Summarize this quickly."}]\n)`,
+    benchmarks: "MMLU: 75.2%, HumanEval: 75.9%",
+    limitations: "Lacks the deep reasoning capabilities of Sonnet and Opus.",
+    popular: true,
+    url: "https://www.anthropic.com/claude",
+    citations: [
+      { text: "Claude 3 Model Card", url: "https://www.anthropic.com/news/claude-3-family" }
+    ]
+  },
+  {
+    name: "Gemma 2 (27B)",
+    type: "Model",
+    summary: "Google's open-weights model built from the same research and technology as the Gemini models, offering class-leading performance for its size.",
+    task: "NLP",
+    license: "Gemma License",
+    year: 2024,
+    org: "Google DeepMind",
+    size: "27B params",
+    architecture: "Transformer decoder with sliding window attention and soft-capping.",
+    usage: `from transformers import AutoTokenizer, AutoModelForCausalLM\ntokenizer = AutoTokenizer.from_pretrained("google/gemma-2-27b-it")\nmodel = AutoModelForCausalLM.from_pretrained("google/gemma-2-27b-it")`,
+    benchmarks: "MMLU: 81.5%, HumanEval: 71.5%",
+    limitations: "Commercial use permitted but subject to the Gemma license terms.",
+    popular: true,
+    url: "https://ai.google.dev/gemma",
+    citations: [
+      { text: "Gemma 2 Announcement", url: "https://blog.google/technology/developers/google-gemma-2/" }
+    ]
+  },
+  {
+    name: "Grok-2",
+    type: "Model",
+    summary: "xAI's frontier model demonstrating significant improvements in reasoning, coding, and mathematical capabilities, integrated with real-time X (Twitter) data and image generation.",
+    task: "Multimodal",
+    license: "Proprietary",
+    year: 2024,
+    org: "xAI",
+    size: "Unknown",
+    architecture: "Transformer-based multimodal LLM.",
+    usage: `# Accessed via X Premium subscription or xAI API\nimport os\nfrom openai import OpenAI\nclient = OpenAI(api_key=os.environ.get("XAI_API_KEY"), base_url="https://api.x.ai/v1")\nresponse = client.chat.completions.create(model="grok-2-latest", messages=[{"role": "user", "content": "Hi"}])`,
+    benchmarks: "Competitive with GPT-4o and Claude 3.5 Sonnet on LMSYS Chatbot Arena.",
+    limitations: "Requires subscription to X or API access, proprietary.",
+    popular: true,
+    url: "https://x.ai/",
+    citations: [
+      { text: "Grok-2 Announcement", url: "https://x.ai/blog/grok-2" }
+    ]
+  },
 
   // ─── FOUNDATION & LEGACY MODELS ───────────────────────────────────────────
   {
@@ -772,6 +867,44 @@ export const entries: Entry[] = [
       { text: "Ultralytics YOLOv8 Docs", url: "https://docs.ultralytics.com/" }
     ]
   },
+  {
+    name: "Flux.1",
+    type: "Model",
+    summary: "Black Forest Labs' state-of-the-art suite of text-to-image models (Pro, Dev, Schnell) pushing the boundaries of prompt adherence, visual quality, and image detail.",
+    task: "Computer Vision",
+    license: "Various (Pro: Proprietary, Dev: Non-commercial, Schnell: Apache 2.0)",
+    year: 2024,
+    org: "Black Forest Labs",
+    size: "12B params",
+    architecture: "Hybrid architecture of multimodal and parallel diffusion transformer blocks.",
+    usage: `# Via API or locally for open variants\nfrom diffusers import FluxPipeline\nimport torch\npipe = FluxPipeline.from_pretrained("black-forest-labs/FLUX.1-schnell", torch_dtype=torch.bfloat16)\nimage = pipe("A cat holding a sign that says 'Hello World'").images[0]`,
+    benchmarks: "State-of-the-art ELO scores surpassing Midjourney v6 and DALL-E 3 on prompt adherence.",
+    limitations: "High VRAM requirements for local inference of the full 12B model.",
+    popular: true,
+    url: "https://blackforestlabs.ai/",
+    citations: [
+      { text: "FLUX.1 Announcement", url: "https://blackforestlabs.ai/announcing-black-forest-labs/" }
+    ]
+  },
+  {
+    name: "Runway Gen-3 Alpha",
+    type: "Model",
+    summary: "Runway's advanced video generation model capable of highly photorealistic, consistent, and controllable video creation from text, images, or video inputs.",
+    task: "Computer Vision",
+    license: "Proprietary",
+    year: 2024,
+    org: "Runway",
+    size: "Unknown",
+    architecture: "Large-scale multimodal diffusion transformer trained jointly on video and images.",
+    usage: `# Accessed via Runway web interface or API\n# Provide a descriptive prompt to generate high-fidelity video clips.`,
+    benchmarks: "Major improvements in temporal consistency and photorealism over Gen-2.",
+    limitations: "Proprietary, paid service, max generation length limitations.",
+    popular: true,
+    url: "https://runwayml.com/",
+    citations: [
+      { text: "Gen-3 Alpha Release", url: "https://runwayml.com/research/introducing-gen-3-alpha" }
+    ]
+  },
 
   // ─── AUDIO & MULTIMODAL MODELS ────────────────────────────────────────────
   {
@@ -810,6 +943,63 @@ export const entries: Entry[] = [
     url: "https://llava-vl.github.io/",
     citations: [
       { text: "LLaVA Paper", url: "https://arxiv.org/abs/2304.08485" }
+    ]
+  },
+  {
+    name: "Suno v3.5",
+    type: "Model",
+    summary: "State-of-the-art AI music generation model capable of creating full, radio-quality songs with vocals and instrumentation from simple text prompts.",
+    task: "Audio",
+    license: "Proprietary",
+    year: 2024,
+    org: "Suno",
+    size: "Unknown",
+    architecture: "Proprietary audio generation architecture.",
+    usage: `# Accessed via Suno web platform or API\n# Prompt: "An upbeat pop song about coding late at night"`,
+    benchmarks: "High subjective quality for coherent musical structure and intelligible vocals.",
+    limitations: "Proprietary, max song length limits, potential copyright concerns regarding training data.",
+    popular: true,
+    url: "https://suno.com/",
+    citations: [
+      { text: "Suno v3.5 Announcement", url: "https://suno.com/blog/v3-5" }
+    ]
+  },
+  {
+    name: "ElevenLabs",
+    type: "Model",
+    summary: "Leading AI voice generation platform offering extremely natural, emotive text-to-speech, voice cloning, and dubbing across multiple languages.",
+    task: "Audio",
+    license: "Proprietary",
+    year: 2022,
+    org: "ElevenLabs",
+    size: "Unknown",
+    architecture: "Proprietary deep learning model for speech synthesis.",
+    usage: `import requests\nurl = "https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"\nheaders = {"xi-api-key": "YOUR_API_KEY", "Content-Type": "application/json"}\ndata = {"text": "Hello, world!", "model_id": "eleven_multilingual_v2"}\nresponse = requests.post(url, json=data, headers=headers)`,
+    benchmarks: "Industry-leading MOS (Mean Opinion Score) for voice naturalness.",
+    limitations: "Proprietary, paid API for higher usage or commercial rights.",
+    popular: true,
+    url: "https://elevenlabs.io/",
+    citations: [
+      { text: "ElevenLabs Official Site", url: "https://elevenlabs.io/" }
+    ]
+  },
+  {
+    name: "Llama 3.2 (90B Vision)",
+    type: "Model",
+    summary: "Meta's open-weights multimodal model, supporting high-resolution image reasoning alongside top-tier text capabilities.",
+    task: "Multimodal",
+    license: "Llama 3.2 Community License",
+    year: 2024,
+    org: "Meta AI",
+    size: "90B params",
+    architecture: "Transformer decoder integrated with vision encoder via cross-attention.",
+    usage: `from transformers import MllamaForConditionalGeneration, AutoProcessor\nmodel = MllamaForConditionalGeneration.from_pretrained("meta-llama/Llama-3.2-90B-Vision-Instruct")\nprocessor = AutoProcessor.from_pretrained("meta-llama/Llama-3.2-90B-Vision-Instruct")`,
+    benchmarks: "Highly competitive with closed models on MMMU and MathVista.",
+    limitations: "Significant hardware required for local inference.",
+    popular: true,
+    url: "https://llama.meta.com/",
+    citations: [
+      { text: "Llama 3.2 Announcement", url: "https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/" }
     ]
   },
 

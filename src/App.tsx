@@ -9,6 +9,7 @@ import { SearchBar } from "./components/SearchBar";
 import { EntryCard } from "./components/EntryCard";
 import { DetailModal } from "./components/DetailModal";
 import { AddModal } from "./components/AddModal";
+import { ChatWidget } from "./components/ChatWidget";
 import type { Entry, Theme, TypeFilter, TaskFilter } from "./types";
 
 // ─── Inner app (needs theme context) ─────────────────────────────────────────
@@ -273,6 +274,9 @@ const Inner: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Groq AI Agent */}
+      <ChatWidget />
 
       <style>{`
         @keyframes fadeUp {
