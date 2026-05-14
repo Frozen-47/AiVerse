@@ -32,7 +32,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const chatCompletion = await groq.chat.completions.create({
       messages: [systemPrompt, ...messages],
-      model: 'llama-3.1-70b-versatile',
+      model: 'llama3-70b-8192',
       temperature: 0.5,
       max_tokens: 1024,
     });
