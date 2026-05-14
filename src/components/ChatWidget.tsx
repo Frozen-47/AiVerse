@@ -227,33 +227,41 @@ export const ChatWidget: React.FC = () => {
           </div>
         )}
 
-        {/* Suggestions Inline at the bottom of the chat stream */}
-        {!isLoading && messages.length > 0 && (
-          <div className="mt-2 flex items-center gap-2 overflow-x-auto no-scrollbar px-1 pb-2">
-            <button 
+        <div ref={messagesEndRef} className="h-2 shrink-0" />
+      </div>
+
+      {/* Suggested Prompts */}
+      {!isLoading && messages.length > 0 && (
+        <div className={`shrink-0 px-4 pb-3 pt-3 border-t ${t.border} bg-transparent`}>
+          <div className="flex items-center justify-between mb-2">
+            <p className={`text-xs ${t.textMuted} font-medium`}>
+              Suggested questions:
+            </p>
+            <button
               onClick={refreshSuggestions}
-              className={`shrink-0 p-1.5 rounded-full border ${t.border} ${t.surfaceHover} text-gray-400 hover:text-blue-500 transition-colors`}
+              className={`flex items-center gap-1 text-[10px] uppercase tracking-wider ${t.textMuted} hover:text-blue-400 transition-colors`}
               title="Refresh suggestions"
             >
-              <RefreshCw size={13} />
+              <RefreshCw size={12} />
+              Refresh
             </button>
-            {suggestions.map((s, i) => (
+          </div>
+          <div className="flex overflow-x-auto gap-2 pb-1 no-scrollbar">
+            {suggestions.map((prompt, idx) => (
               <button
-                key={i}
-                onClick={() => handleSend(s)}
-                className={`shrink-0 px-3 py-1.5 rounded-full text-[11px] whitespace-nowrap transition-colors border ${t.border} ${t.surfaceHover} hover:border-blue-500/50 hover:text-blue-500 ${t.textMuted}`}
+                key={idx}
+                onClick={() => handleSend(prompt)}
+                className={`whitespace-nowrap flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium border ${t.border} ${t.surfaceHover} ${t.textMuted} hover:text-blue-500 hover:border-blue-500/30 transition-colors shadow-sm active:scale-95`}
               >
-                {s}
+                {prompt}
               </button>
             ))}
           </div>
-        )}
-
-        <div ref={messagesEndRef} />
-      </div>
+        </div>
+      )}
 
       {/* Input Area */}
-      <div className={`p-3 ${isLoading ? `border-t ${t.border}` : ''}`}>
+      <div className={`shrink-0 p-3 border-t ${t.border}`}>
         <div className={`flex items-center gap-2 rounded-full border px-4 py-2 ${t.surface} ${t.border} focus-within:border-blue-500/50 transition-colors`}>
           <input
             type="text"
