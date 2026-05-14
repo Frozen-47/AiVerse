@@ -88,7 +88,13 @@ export const ChatWidget: React.FC = () => {
         }),
       });
 
-      const data = await response.json().catch(() => ({}));
+      const responseText = await response.text();
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch (e) {
+        throw new Error(`Server returned non-JSON response (Status ${response.status}): ${responseText.substring(0, 100)}...`);
+      }
       
       if (!response.ok) {
         throw new Error(data.content || data.error || `HTTP error! status: ${response.status}`);
@@ -140,7 +146,7 @@ export const ChatWidget: React.FC = () => {
           </div>
           <div>
             <h3 className={`font-semibold text-sm ${t.textPrimary}`}>Agent Vox</h3>
-            <p className={`text-[10px] ${t.textMuted}`}>AI Encyclopedia Assistant</p>
+            <p className={`text-[10px] ${t.textMuted}`}>Powered by Groq</p>
           </div>
         </div>
         <div className="flex items-center gap-1 text-gray-400">
@@ -207,23 +213,28 @@ export const ChatWidget: React.FC = () => {
 
       {/* Suggestions Area */}
       {!isLoading && messages.length > 0 && (
-        <div className={`px-4 pb-2 pt-2 flex items-center gap-2 overflow-x-auto no-scrollbar border-t ${t.border}`}>
-          <button 
-            onClick={refreshSuggestions}
-            className={`shrink-0 p-1.5 rounded-full ${t.surfaceHover} text-blue-400 hover:text-blue-300 transition-colors border ${t.border}`}
-            title="Refresh suggestions"
-          >
-            <RefreshCw size={14} />
-          </button>
-          {suggestions.map((s, i) => (
-            <button
-              key={i}
-              onClick={() => handleSend(s)}
-              className={`shrink-0 px-3 py-1.5 rounded-full text-[11px] whitespace-nowrap transition-colors border ${t.border} ${t.surfaceHover} hover:border-blue-500/50 hover:text-blue-400 ${t.textMuted}`}
+        <div className={`px-4 pb-3 pt-3 border-t ${t.border}`}>
+          <div className="flex items-center justify-between mb-2 px-1">
+            <span className={`text-[10px] uppercase tracking-wider font-semibold ${t.textMuted}`}>Suggested Questions</span>
+            <button 
+              onClick={refreshSuggestions}
+              className={`p-1 rounded-full ${t.surfaceHover} text-blue-400 hover:text-blue-300 transition-colors`}
+              title="Refresh suggestions"
             >
-              {s}
+              <RefreshCw size={12} />
             </button>
-          ))}
+          </div>
+          <div className="flex flex-col gap-1.5">
+            {suggestions.map((s, i) => (
+              <button
+                key={i}
+                onClick={() => handleSend(s)}
+                className={`text-left px-3 py-2 rounded-lg text-[12px] transition-colors border ${t.border} ${t.surfaceHover} hover:border-blue-500/50 hover:text-blue-400 ${t.textMuted}`}
+              >
+                {s}
+              </button>
+            ))}
+          </div>
         </div>
       )}
 
