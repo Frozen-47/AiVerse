@@ -9,6 +9,7 @@ import { entries } from '../data';
 interface Message {
   role: 'user' | 'assistant' | 'system' | 'error';
   content: string;
+  isTyping?: boolean;
 }
 
 const PREBUILT_QUESTIONS = [
@@ -35,6 +36,42 @@ const PREBUILT_QUESTIONS = [
   "What is Grok-2's main advantage?",
   "Which model has the lowest latency?"
 ];
+
+const markdownComponents = {
+  h1: ({node, ...props}: any) => <h1 className="font-bold text-lg mt-2 mb-1" {...props} />,
+  h2: ({node, ...props}: any) => <h2 className="font-bold text-base mt-2 mb-1" {...props} />,
+  h3: ({node, ...props}: any) => <h3 className="font-bold text-[14px] mt-2 mb-1" {...props} />,
+  p: ({node, ...props}: any) => <p className="mb-2 last:mb-0" {...props} />,
+  ul: ({node, ...props}: any) => <ul className="list-disc pl-4 mb-2 space-y-1" {...props} />,
+  ol: ({node, ...props}: any) => <ol className="list-decimal pl-4 mb-2 space-y-1" {...props} />,
+  li: ({node, ...props}: any) => <li className="" {...props} />,
+  strong: ({node, ...props}: any) => <strong className="font-semibold text-blue-400" {...props} />,
+  code: ({node, ...props}: any) => <code className="bg-black/20 rounded px-1 py-0.5 font-mono text-[11px]" {...props} />,
+  pre: ({node, ...props}: any) => <pre className="bg-black/30 rounded p-2 overflow-x-auto my-2 font-mono text-[11px]" {...props} />,
+};
+
+const TypewriterMarkdown = ({ content, onComplete }: { content: string, onComplete: () => void }) => {
+  const [displayed, setDisplayed] = useState('');
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
+  
+  useEffect(() => {
+    let i = 0;
+    const timer = setInterval(() => {
+      i += 3;
+      if (i >= content.length) {
+        setDisplayed(content);
+        clearInterval(timer);
+        onCompleteRef.current();
+      } else {
+        setDisplayed(content.slice(0, i));
+      }
+    }, 15);
+    return () => clearInterval(timer);
+  }, [content]);
+
+  return <ReactMarkdown components={markdownComponents}>{displayed}</ReactMarkdown>;
+};
 
 const INITIAL_MESSAGES: Message[] = [
   { role: 'assistant', content: 'Hi there! I am Vox. How can I help you navigate the world of AI today?' }
@@ -99,7 +136,7 @@ export const ChatWidget: React.FC = () => {
       if (messages.length > 1) {
         localStorage.setItem('vox_chat_history', JSON.stringify({
           timestamp: Date.now(),
-          messages
+          messages: messages.map(m => ({ ...m, isTyping: false }))
         }));
       } else {
         localStorage.removeItem('vox_chat_history');
@@ -190,7 +227,7 @@ export const ChatWidget: React.FC = () => {
         throw new Error(data.error);
       }
       
-      setMessages(prev => [...prev, { role: 'assistant', content: data.content }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: data.content, isTyping: true }]);
     } catch (error: any) {
       console.error("Groq API Error:", error);
       let errorMessage = "Sorry, I encountered an error communicating with the backend.";
@@ -303,20 +340,16 @@ export const ChatWidget: React.FC = () => {
                       <p className="leading-snug">{msg.content}</p>
                     </div>
                   </div>
+                ) : msg.isTyping ? (
+                  <TypewriterMarkdown 
+                    content={msg.content} 
+                    onComplete={() => {
+                      setMessages(prev => prev.map((m, i) => i === idx ? { ...m, isTyping: false } : m));
+                    }} 
+                  />
                 ) : (
                   <ReactMarkdown
-                    components={{
-                      h1: ({node, ...props}) => <h1 className="font-bold text-lg mt-2 mb-1" {...props} />,
-                      h2: ({node, ...props}) => <h2 className="font-bold text-base mt-2 mb-1" {...props} />,
-                      h3: ({node, ...props}) => <h3 className="font-bold text-[14px] mt-2 mb-1" {...props} />,
-                      p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
-                      ul: ({node, ...props}) => <ul className="list-disc pl-4 mb-2 space-y-1" {...props} />,
-                      ol: ({node, ...props}) => <ol className="list-decimal pl-4 mb-2 space-y-1" {...props} />,
-                      li: ({node, ...props}) => <li className="" {...props} />,
-                      strong: ({node, ...props}) => <strong className="font-semibold text-blue-400" {...props} />,
-                      code: ({node, ...props}) => <code className="bg-black/20 rounded px-1 py-0.5 font-mono text-[11px]" {...props} />,
-                      pre: ({node, ...props}) => <pre className="bg-black/30 rounded p-2 overflow-x-auto my-2 font-mono text-[11px]" {...props} />,
-                    }}
+                    components={markdownComponents}
                   >
                     {msg.content}
                   </ReactMarkdown>
