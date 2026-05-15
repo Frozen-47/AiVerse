@@ -184,6 +184,33 @@ export function taskColor(task: string) {
     "Video Generation": "bg-indigo-500",
     Productivity: "bg-yellow-500",
     Education: "bg-cyan-500",
-    Research: "bg-amber-600",
+    Research: "bg-amber-500",
   }[task] ?? "bg-gray-500/50");
+}
+
+export function typeActiveColor(type: string, t: TokenMap) {
+  return ({
+    "All": t.sidebarActive,
+    Model: t.iconModel,
+    Framework: t.iconFramework,
+    Dataset: t.iconDataset,
+    Platform: t.iconPlatform,
+  }[type] ?? t.sidebarActive);
+}
+
+export function taskActiveColor(task: string, t: TokenMap) {
+  return ({
+    "All Tasks": t.sidebarActive,
+    NLP: "text-blue-400 bg-blue-500/10",
+    "Computer Vision": "text-rose-400 bg-rose-500/10",
+    MLOps: "text-orange-400 bg-orange-500/10",
+    Audio: "text-teal-400 bg-teal-500/10",
+    Multimodal: "text-purple-400 bg-purple-500/10",
+    "AI Coding": "text-emerald-400 bg-emerald-500/10",
+    "Image Generation": "text-fuchsia-400 bg-fuchsia-500/10",
+    "Video Generation": "text-indigo-400 bg-indigo-500/10",
+    Productivity: "text-yellow-400 bg-yellow-500/10",
+    Education: "text-cyan-400 bg-cyan-500/10",
+    Research: "text-amber-500 bg-amber-500/10",
+  }[task] ?? t.sidebarActive);
 }

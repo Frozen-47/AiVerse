@@ -1,6 +1,6 @@
 import React from "react";
 import { Star, Layers, Box, Database, Server, LayoutGrid, Bot } from "lucide-react";
-import { useTokens, taskColor } from "../lib/theme";
+import { useTokens, taskColor, taskActiveColor, typeActiveColor } from "../lib/theme";
 import type { Entry, TypeFilter, TaskFilter } from "../types";
 
 interface SidebarProps {
@@ -54,7 +54,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const popularCount = entries.filter((e) => e.popular).length;
 
   return (
-    <aside className="w-56 shrink-0 flex flex-col gap-6">
+    <aside className="w-full flex flex-col gap-6">
       {/* Stats */}
       <div className={`rounded-2xl border p-4 ${t.surface} ${t.border}`}>
         <p className={`text-[10px] uppercase tracking-widest font-semibold mb-3 ${t.textMuted}`}>
@@ -91,7 +91,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               className={`
                 w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-[13px] font-medium
                 transition-all duration-150
-                ${currentFilter === f ? t.sidebarActive : t.sidebarItem}
+                ${currentFilter === f ? typeActiveColor(f, t) : t.sidebarItem}
               `}
             >
               <span className="opacity-70">{TYPE_ICONS[f]}</span>
@@ -117,7 +117,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               className={`
                 w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-[13px] font-medium
                 transition-all duration-150
-                ${currentTask === f ? t.sidebarActive : t.sidebarItem}
+                ${currentTask === f ? taskActiveColor(f, t) : t.sidebarItem}
               `}
             >
               <span

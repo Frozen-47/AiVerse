@@ -183,24 +183,24 @@ const Inner: React.FC = () => {
 
         {/* Main layout */}
         <div className="flex gap-8 w-full">
-          {/* Sidebar — hidden on mobile */}
-          <div className="hidden lg:block sticky top-8 max-h-[calc(100vh-4rem)] overflow-y-auto">
-              <Sidebar
-                entries={entries}
-                currentFilter={typeFilter}
-                currentTask={taskFilter}
-                typeFilters={typeFilters}
-                taskFilters={taskFilters}
-                popularOnly={popularOnly}
-                filteredCount={filtered.length}
-                onTypeFilter={setTypeFilter}
-                onTaskFilter={setTaskFilter}
-                onPopularToggle={() => setPopularOnly((p) => !p)}
-              />
+          {/* Left pane: Sidebar */}
+          <div className="hidden lg:block w-56 shrink-0 pb-8">
+            <Sidebar
+              entries={entries}
+              currentFilter={typeFilter}
+              currentTask={taskFilter}
+              typeFilters={typeFilters}
+              taskFilters={taskFilters}
+              popularOnly={popularOnly}
+              filteredCount={filtered.length}
+              onTypeFilter={setTypeFilter}
+              onTaskFilter={setTaskFilter}
+              onPopularToggle={() => setPopularOnly((p) => !p)}
+            />
           </div>
 
-          {/* Grid */}
-          <div className="flex-1 min-w-0">
+          {/* Right pane: Content */}
+          <div className="flex-1 min-w-0 pb-32">
             {/* Mobile filters */}
             <div className="flex flex-wrap gap-2 mb-5 lg:hidden">
               {typeFilters.map((f) => (
@@ -283,7 +283,7 @@ const Inner: React.FC = () => {
       </div>
 
       <footer 
-        className={`mt-8 text-center text-[11px] ${t.textSecondary} border-t ${t.border} pt-6 pb-2 animate-fade-in-up opacity-0`}
+        className={`mt-auto text-center text-[11px] ${t.textSecondary} border-t ${t.border} py-6 animate-fade-in-up opacity-0`}
         style={{ animationDelay: '600ms' }}
       >
         <p>
