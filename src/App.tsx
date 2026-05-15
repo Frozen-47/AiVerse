@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { Server } from "lucide-react";
+import { Server, Filter, X } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
@@ -28,6 +28,7 @@ const Inner: React.FC = () => {
   const [isAdding, setIsAdding] = useState(false);
   const [showBackendToast, setShowBackendToast] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [showMobileSidebar, setShowMobileSidebar] = useState(false);
 
   useEffect(() => {
     fetch('/data.json')
@@ -201,19 +202,18 @@ const Inner: React.FC = () => {
 
           {/* Right pane: Content */}
           <div className="flex-1 min-w-0 pb-32">
-            {/* Mobile filters */}
-            <div className="flex flex-wrap gap-2 mb-5 lg:hidden">
-              {typeFilters.map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setTypeFilter(f as TypeFilter)}
-                  className={`px-3 py-1.5 rounded-full text-[12px] font-semibold border transition-all ${
-                    typeFilter === f ? t.pillActive : t.pillInactive
-                  }`}
-                >
-                  {f}
-                </button>
-              ))}
+            {/* Mobile filters button */}
+            <div className="flex mb-5 lg:hidden">
+              <button
+                onClick={() => setShowMobileSidebar(true)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[13px] font-semibold border shadow-sm transition-all ${t.surface} ${t.border} ${t.textPrimary} hover:border-cyan-500/30`}
+              >
+                <Filter size={14} />
+                Filters
+                {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly) && (
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 ml-1 animate-pulse" />
+                )}
+              </button>
             </div>
 
             {filtered.length === 0 ? (
@@ -310,10 +310,58 @@ const Inner: React.FC = () => {
       {/* Groq AI Agent */}
       <ChatWidget />
 
+      {/* Mobile Sidebar Overlay */}
+      {showMobileSidebar && (
+        <div className="fixed inset-0 z-50 flex lg:hidden">
+          <div 
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" 
+            onClick={() => setShowMobileSidebar(false)}
+          />
+          <div className={`relative flex w-[85%] max-w-sm flex-col overflow-y-auto px-6 py-6 shadow-2xl no-scrollbar ${t.modal} border-r ${t.border} animate-[slideRight_0.3s_ease-out]`}>
+            <div className="flex items-center justify-between mb-8 shrink-0">
+              <h2 className={`text-lg font-bold tracking-tight ${t.textPrimary}`}>Filters</h2>
+              <div className="flex items-center gap-1">
+                {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly) && (
+                  <button
+                    onClick={() => { setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); }}
+                    className={`text-[11px] font-semibold underline underline-offset-2 ${t.textAccent} hover:text-white transition-colors mr-1`}
+                  >
+                    Clear All
+                  </button>
+                )}
+                <button 
+                  onClick={() => setShowMobileSidebar(false)}
+                  className={`p-2 rounded-full border transition-colors ${t.surface} ${t.border} ${t.textMuted} hover:${t.textPrimary} hover:bg-white/5`}
+                >
+                  <X size={16} />
+                </button>
+              </div>
+            </div>
+            
+            <Sidebar
+              entries={entries}
+              currentFilter={typeFilter}
+              currentTask={taskFilter}
+              typeFilters={typeFilters}
+              taskFilters={taskFilters}
+              popularOnly={popularOnly}
+              filteredCount={filtered.length}
+              onTypeFilter={setTypeFilter}
+              onTaskFilter={setTaskFilter}
+              onPopularToggle={() => setPopularOnly((p) => !p)}
+            />
+          </div>
+        </div>
+      )}
+
       <style>{`
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(12px); }
           to   { opacity: 1; transform: translateY(0);    }
+        }
+        @keyframes slideRight {
+          from { transform: translateX(-100%); }
+          to   { transform: translateX(0); }
         }
       `}</style>
     </div>
