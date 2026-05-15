@@ -264,7 +264,7 @@ const Inner: React.FC = () => {
 
       {/* Global Toast Notification */}
       {showBackendToast && (
-        <div className="fixed bottom-6 right-6 z-50 animate-[fadeUp_0.3s_ease-out]">
+        <div className="fixed bottom-24 right-6 z-50 animate-[fadeUp_0.3s_ease-out]">
           <div className="p-4 rounded-xl border flex items-center gap-3 text-[13px] bg-red-500/10 border-red-500/20 text-red-500 font-medium shadow-2xl backdrop-blur-md">
             <Server size={18} className="shrink-0" />
             <span>

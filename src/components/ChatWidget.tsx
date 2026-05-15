@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Bot, Loader2, Minimize2, Maximize2, RefreshCw, Copy, Check } from 'lucide-react';
+import { MessageSquare, X, Send, Orbit, Loader2, Minimize2, Maximize2, RefreshCw, Copy, Check, AlertCircle, Trash2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { useTokens } from '../lib/theme';
 import { entries } from '../data';
@@ -7,7 +7,7 @@ import { entries } from '../data';
 // We now use the Vercel Serverless Function at /api/chat
 
 interface Message {
-  role: 'user' | 'assistant' | 'system';
+  role: 'user' | 'assistant' | 'system' | 'error';
   content: string;
 }
 
@@ -36,18 +36,53 @@ const PREBUILT_QUESTIONS = [
   "Which model has the lowest latency?"
 ];
 
+const INITIAL_MESSAGES: Message[] = [
+  { role: 'assistant', content: 'Hi there! I am Vox. How can I help you navigate the world of AI today?' }
+];
+
 export const ChatWidget: React.FC = () => {
   const t = useTokens();
   const [isOpen, setIsOpen] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: 'Hi there! I am Vox. How can I help you navigate the world of AI today?' }
-  ]);
+  const [messages, setMessages] = useState<Message[]>(() => {
+    try {
+      const saved = localStorage.getItem('vox_chat_history');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Date.now() - parsed.timestamp < 60 * 60 * 1000 && parsed.messages?.length > 0) {
+          return parsed.messages;
+        }
+      }
+    } catch (e) {
+      console.error('Error loading chat history', e);
+    }
+    return INITIAL_MESSAGES;
+  });
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    try {
+      if (messages.length > 1) {
+        localStorage.setItem('vox_chat_history', JSON.stringify({
+          timestamp: Date.now(),
+          messages
+        }));
+      } else {
+        localStorage.removeItem('vox_chat_history');
+      }
+    } catch (e) {
+      console.error('Error saving chat history', e);
+    }
+  }, [messages]);
+
+  const clearChat = () => {
+    setMessages(INITIAL_MESSAGES);
+    localStorage.removeItem('vox_chat_history');
+  };
 
   useEffect(() => {
     refreshSuggestions();
@@ -82,13 +117,15 @@ export const ChatWidget: React.FC = () => {
     try {
       const catalogContext = entries.map(e => `- ${e.name} (${e.type})`).join('\n');
       
+      const requestMessages = messages.filter(m => m.role !== 'error');
+      
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          messages: [...messages, userMessage],
+          messages: [...requestMessages, userMessage],
           catalogContext
         }),
       });
@@ -112,7 +149,19 @@ export const ChatWidget: React.FC = () => {
       setMessages(prev => [...prev, { role: 'assistant', content: data.content }]);
     } catch (error: any) {
       console.error("Groq API Error:", error);
-      setMessages(prev => [...prev, { role: 'assistant', content: error.message || 'Sorry, I encountered an error communicating with the backend.' }]);
+      let errorMessage = "Sorry, I encountered an error communicating with the backend.";
+      
+      if (error.message) {
+        if (error.message.includes("Failed to fetch")) {
+          errorMessage = "Network error: Unable to reach the AI servers. Please check your connection.";
+        } else if (error.message.includes("Server returned non-JSON") || error.message.includes("HTTP error")) {
+          errorMessage = "Server error: The backend returned an invalid response. The service might be temporarily down.";
+        } else {
+          errorMessage = error.message;
+        }
+      }
+      
+      setMessages(prev => [...prev, { role: 'error', content: errorMessage }]);
     } finally {
       setIsLoading(false);
     }
@@ -128,11 +177,11 @@ export const ChatWidget: React.FC = () => {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-50 p-4 rounded-full shadow-2xl transition-transform hover:scale-110 active:scale-95 ${t.btnPrimary}`}
+        className={`fixed bottom-6 right-6 z-50 p-4 rounded-full shadow-2xl ${t.btnPrimary}`}
       >
-        <MessageSquare size={24} />
+        <Orbit size={24} />
       </button>
-    );
+     );
   }
 
   return (
@@ -140,14 +189,14 @@ export const ChatWidget: React.FC = () => {
       className={`fixed z-50 flex flex-col shadow-2xl border transition-all duration-300 ease-in-out ${t.surface} ${t.border} ${
         isMaximized 
           ? 'bottom-4 right-4 left-4 top-4 rounded-2xl md:left-auto md:w-[600px]' 
-          : 'bottom-6 right-6 w-[350px] h-[500px] rounded-2xl sm:w-[400px]'
+          : 'bottom-6 right-6 w-[380px] h-[550px] rounded-2xl sm:w-[420px] sm:h-[600px]'
       }`}
     >
       {/* Header */}
       <div className={`flex items-center justify-between px-4 py-3 border-b ${t.border}`}>
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white">
-            <Bot size={18} />
+            <Orbit size={16} />
           </div>
           <div>
             <h3 className={`font-semibold text-sm ${t.textPrimary}`}>Agent Vox</h3>
@@ -155,6 +204,13 @@ export const ChatWidget: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center gap-1 text-gray-400">
+          <button 
+            onClick={clearChat}
+            className={`p-1.5 rounded hover:bg-red-500/10 hover:text-red-400 transition-colors`}
+            title="Clear chat"
+          >
+            <Trash2 size={16} />
+          </button>
           <button 
             onClick={() => setIsMaximized(!isMaximized)}
             className={`p-1.5 rounded hover:${t.surfaceHover} transition-colors`}
@@ -171,19 +227,29 @@ export const ChatWidget: React.FC = () => {
       </div>
 
       {/* Messages Area */}
-      <div className={`flex-1 overflow-y-auto no-scrollbar p-4 flex flex-col gap-4 text-sm ${isMaximized ? 'text-base' : ''}`}>
+      <div className={`flex-1 overflow-y-auto overscroll-contain no-scrollbar p-4 flex flex-col gap-4 text-sm ${isMaximized ? 'text-base' : ''}`}>
         {messages.map((msg, idx) => (
           msg.role !== 'system' && (
             <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div 
                 className={`group relative max-w-[85%] rounded-2xl px-4 py-2 text-[13px] leading-relaxed ${
                   msg.role === 'user' 
-                    ? `bg-blue-600 text-white rounded-br-sm` 
+                    ? `bg-linear-to-r from-cyan-500 via-cyan-600 to-sky-600 text-white font-medium rounded-br-sm shadow-sm` 
+                    : msg.role === 'error'
+                    ? `bg-red-500/10 border-red-500/20 text-red-500 rounded-bl-sm border`
                     : `${t.surfaceHover} ${t.textPrimary} border ${t.border} rounded-bl-sm`
                 }`}
               >
                 {msg.role === 'user' ? (
                   <div>{msg.content}</div>
+                ) : msg.role === 'error' ? (
+                  <div className="flex items-start gap-2">
+                    <AlertCircle size={14} className="mt-0.5 shrink-0" />
+                    <div>
+                      <p className="font-semibold text-[11px] uppercase tracking-wider mb-0.5 opacity-80">Connection Error</p>
+                      <p className="leading-snug">{msg.content}</p>
+                    </div>
+                  </div>
                 ) : (
                   <ReactMarkdown
                     components={{
@@ -220,9 +286,10 @@ export const ChatWidget: React.FC = () => {
         ))}
         {isLoading && (
           <div className="flex justify-start">
-            <div className={`max-w-[85%] rounded-2xl px-4 py-3 ${t.surfaceHover} border ${t.border} rounded-bl-sm flex items-center gap-2`}>
-              <Loader2 size={16} className={`animate-spin ${t.textAccent}`} />
-              <span className={`text-xs ${t.textMuted}`}>Vox is thinking...</span>
+            <div className={`max-w-[85%] rounded-2xl px-4 py-4 ${t.surfaceHover} border ${t.border} rounded-bl-sm flex items-center gap-1.5 ${t.textAccent}`}>
+              <div className="w-1.5 h-1.5 rounded-full bg-current animate-typing-dot [animation-delay:-0.32s]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-current animate-typing-dot [animation-delay:-0.16s]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-current animate-typing-dot" />
             </div>
           </div>
         )}
@@ -246,7 +313,7 @@ export const ChatWidget: React.FC = () => {
               Refresh
             </button>
           </div>
-          <div className="flex overflow-x-auto gap-2 pb-1 no-scrollbar">
+          <div className="flex overflow-x-auto overscroll-contain gap-2 pb-1 no-scrollbar">
             {suggestions.map((prompt, idx) => (
               <button
                 key={idx}

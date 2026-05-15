@@ -20,6 +20,19 @@
       transform: translateY(0);
     }
   }
+
+  --animate-typing-dot: typingDot 1.4s infinite ease-in-out;
+
+  @keyframes typingDot {
+    0%, 100% {
+      transform: translateY(0);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(-3px);
+      opacity: 1;
+    }
+  }
 }
 
 :root {
