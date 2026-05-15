@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Orbit, Loader2, Minimize2, Maximize2, RefreshCw, Copy, Check, AlertCircle, Trash2 } from 'lucide-react';
+import { X, Send, Minimize2, Maximize2, RefreshCw, Copy, Check, AlertCircle, RotateCcw } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { useTokens } from '../lib/theme';
 import { entries } from '../data';
@@ -40,6 +40,19 @@ const INITIAL_MESSAGES: Message[] = [
   { role: 'assistant', content: 'Hi there! I am Vox. How can I help you navigate the world of AI today?' }
 ];
 
+const ZapFastIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 -960 960 960"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path d="m480-336 128-184H494l80-280H360v320h120v144ZM400-80v-320H280v-480h400l-80 280h160L400-80Zm80-400H360h120Z" />
+  </svg>
+);
+
 export const ChatWidget: React.FC = () => {
   const t = useTokens();
   const [isOpen, setIsOpen] = useState(false);
@@ -63,6 +76,23 @@ export const ChatWidget: React.FC = () => {
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const widgetRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (widgetRef.current && !widgetRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     try {
@@ -91,6 +121,20 @@ export const ChatWidget: React.FC = () => {
   const refreshSuggestions = () => {
     const shuffled = [...PREBUILT_QUESTIONS].sort(() => 0.5 - Math.random());
     setSuggestions(shuffled.slice(0, 3));
+  };
+
+  const handleSuggestionClick = (prompt: string, idx: number) => {
+    handleSend(prompt);
+    setSuggestions(prev => {
+      const available = PREBUILT_QUESTIONS.filter(q => !prev.includes(q));
+      if (available.length > 0) {
+        const randomNew = available[Math.floor(Math.random() * available.length)];
+        const next = [...prev];
+        next[idx] = randomNew;
+        return next;
+      }
+      return prev;
+    });
   };
 
   const handleCopy = (text: string, idx: number) => {
@@ -177,15 +221,24 @@ export const ChatWidget: React.FC = () => {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-50 p-4 rounded-full shadow-2xl ${t.btnPrimary}`}
+        className={`group fixed bottom-6 right-6 z-50 flex items-center p-2.5 rounded-full shadow-2xl transition-all duration-500 ease-in-out hover:scale-105 ${t.btnPrimary}`}
       >
-        <Orbit size={24} />
+        <ZapFastIcon 
+          size={36} 
+          className="transition-transform duration-500 ease-in-out group-hover:rotate-12" 
+        />
+        <div className="grid grid-cols-[0fr] group-hover:grid-cols-[1fr] transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">
+          <div className="overflow-hidden whitespace-nowrap">
+            <span className="pl-2 pr-1 font-medium text-[15px] block">Ask Vox</span>
+          </div>
+        </div>
       </button>
      );
   }
 
   return (
     <div 
+      ref={widgetRef}
       className={`fixed z-50 flex flex-col shadow-2xl border transition-all duration-300 ease-in-out ${t.surface} ${t.border} ${
         isMaximized 
           ? 'bottom-4 right-4 left-4 top-4 rounded-2xl md:left-auto md:w-[600px]' 
@@ -196,7 +249,7 @@ export const ChatWidget: React.FC = () => {
       <div className={`flex items-center justify-between px-4 py-3 border-b ${t.border}`}>
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white">
-            <Orbit size={16} />
+            <ZapFastIcon size={18} />
           </div>
           <div>
             <h3 className={`font-semibold text-sm ${t.textPrimary}`}>Agent Vox</h3>
@@ -207,9 +260,9 @@ export const ChatWidget: React.FC = () => {
           <button 
             onClick={clearChat}
             className={`p-1.5 rounded hover:bg-red-500/10 hover:text-red-400 transition-colors`}
-            title="Clear chat"
+            title="Restart chat"
           >
-            <Trash2 size={16} />
+            <RotateCcw size={14} />
           </button>
           <button 
             onClick={() => setIsMaximized(!isMaximized)}
@@ -317,7 +370,7 @@ export const ChatWidget: React.FC = () => {
             {suggestions.map((prompt, idx) => (
               <button
                 key={idx}
-                onClick={() => handleSend(prompt)}
+                onClick={() => handleSuggestionClick(prompt, idx)}
                 className={`whitespace-nowrap flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium border ${t.border} ${t.surfaceHover} ${t.textMuted} hover:text-blue-500 hover:border-blue-500/30 transition-colors shadow-sm active:scale-95`}
               >
                 {prompt}
