@@ -158,7 +158,7 @@ const Inner: React.FC = () => {
         <div className="mb-10">
           <div className={`inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest border rounded-full px-4 py-1.5 mb-5 ${t.surface} ${t.border} ${t.textMuted}`}>
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-            Open AI Knowledge Base · {entries.length} Entities
+            Open-Source AI Knowledge Base · {entries.length} Entities
           </div>
           <h1 className={`text-[clamp(32px,5vw,52px)] font-black leading-[1.05] tracking-[-0.03em] mb-3 ${t.textPrimary}`}>
             Every AI tool,{" "}
