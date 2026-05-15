@@ -30,7 +30,7 @@ const Inner: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    fetch('/api/entries')
+    fetch('/data.json')
       .then(res => res.json())
       .then(data => {
         setEntries(data.entries || []);
