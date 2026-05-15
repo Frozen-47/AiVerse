@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { X, Star, ExternalLink, Copy, Check } from "lucide-react";
-import { useTokens, typeBadge, taskBadge, TYPE_GLYPH, TYPE_ICON_CLASS } from "../lib/theme";
+import { useTokens, typeBadge, taskBadge, TYPE_GLYPH, typeIcon } from "../lib/theme";
 import type { Entry } from "../types";
 
 interface DetailModalProps {
@@ -36,7 +36,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ entry, onClose }) => {
         {/* Header (fixed) */}
         <div className={`shrink-0 px-7 pt-7 pb-6 border-b ${t.border}`}>
           <div className="flex items-start gap-4 mb-4">
-            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-xl font-bold shrink-0 ${TYPE_ICON_CLASS[entry.type] ?? ""}`}>
+            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-xl font-bold shrink-0 ${typeIcon(entry.type, t)}`}>
               {TYPE_GLYPH[entry.type] ?? "◆"}
             </div>
             <div className="flex-1 min-w-0">

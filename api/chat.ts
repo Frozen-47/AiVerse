@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import Groq from 'groq-sdk';
+import { entries } from './data';
 
 // Initialize Groq client with environment variable
 // Vercel securely injects this at runtime
@@ -18,11 +19,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { messages, catalogContext } = req.body;
+    const { messages } = req.body;
 
     if (!Array.isArray(messages)) {
       return res.status(400).json({ error: 'Invalid request: messages array is required.' });
     }
+    
+    // Construct catalog context server-side
+    const catalogContext = entries.map(e => `- ${e.name} (${e.type})`).join('\n');
 
     // System prompt is kept securely on the backend
     const systemPrompt = {

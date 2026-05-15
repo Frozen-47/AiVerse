@@ -2,7 +2,6 @@ import React, { useState, useMemo, useEffect } from "react";
 import { Server } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
-import { entries as initialEntries, typeFilters } from "./data";
 import { Navbar } from "./components/Navbar";
 import { Sidebar } from "./components/Sidebar";
 import { SearchBar } from "./components/SearchBar";
@@ -16,15 +15,34 @@ import type { Entry, Theme, TypeFilter, TaskFilter } from "./types";
 const Inner: React.FC = () => {
   const t = useTokens();
   const { theme } = useTheme();
-  const [entries, setEntries] = useState<Entry[]>(initialEntries);
+  const [entries, setEntries] = useState<Entry[]>([]);
+  const [typeFilters, setTypeFilters] = useState<string[]>([]);
+  const [taskFilters, setTaskFilters] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("All");
   const [taskFilter, setTaskFilter] = useState<TaskFilter>("All Tasks");
   const [popularOnly, setPopularOnly] = useState(false);
   const [selected, setSelected] = useState<Entry | null>(null);
-  const [isAdding, setIsAdding] = useState(false); // We can leave this in case it's needed later, but we will use the toast instead.
+  const [isAdding, setIsAdding] = useState(false);
   const [showBackendToast, setShowBackendToast] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    fetch('/api/entries')
+      .then(res => res.json())
+      .then(data => {
+        setEntries(data.entries || []);
+        setTypeFilters(data.typeFilters || ["All"]);
+        setTaskFilters(data.taskFilters || ["All Tasks"]);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        console.error("Failed to load catalog", err);
+        setIsLoading(false);
+      });
+  }, []);
 
   const handleAddClick = () => {
     setShowBackendToast(true);
@@ -114,6 +132,17 @@ const Inner: React.FC = () => {
     setIsAdding(false);
   };
 
+  if (isLoading) {
+    return (
+      <div className={`min-h-screen flex items-center justify-center transition-colors duration-300 ${t.page}`}>
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-10 h-10 border-4 border-cyan-500/20 border-t-cyan-500 rounded-full animate-spin" />
+          <p className={`text-sm font-medium tracking-widest uppercase ${t.textMuted}`}>Loading Catalog</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${t.page}`}>
       {/* Ambient glow */}
@@ -156,16 +185,18 @@ const Inner: React.FC = () => {
         <div className="flex gap-8 w-full">
           {/* Sidebar — hidden on mobile */}
           <div className="hidden lg:block sticky top-8 max-h-[calc(100vh-4rem)] overflow-y-auto">
-            <Sidebar
-              entries={entries}
-              currentFilter={typeFilter}
-              currentTask={taskFilter}
-              popularOnly={popularOnly}
-              filteredCount={filtered.length}
-              onTypeFilter={setTypeFilter}
-              onTaskFilter={setTaskFilter}
-              onPopularToggle={() => setPopularOnly((p) => !p)}
-            />
+              <Sidebar
+                entries={entries}
+                currentFilter={typeFilter}
+                currentTask={taskFilter}
+                typeFilters={typeFilters}
+                taskFilters={taskFilters}
+                popularOnly={popularOnly}
+                filteredCount={filtered.length}
+                onTypeFilter={setTypeFilter}
+                onTaskFilter={setTaskFilter}
+                onPopularToggle={() => setPopularOnly((p) => !p)}
+              />
           </div>
 
           {/* Grid */}
@@ -261,12 +292,12 @@ const Inner: React.FC = () => {
       </footer>
 
       {selected && <DetailModal entry={selected} onClose={() => setSelected(null)} />}
-      {isAdding && <AddModal onClose={() => setIsAdding(false)} onSubmit={handleAdd} />}
+      {isAdding && <AddModal typeFilters={typeFilters} taskFilters={taskFilters} onClose={() => setIsAdding(false)} onSubmit={handleAdd} />}
 
       {/* Global Toast Notification */}
       {showBackendToast && (
-        <div className="fixed bottom-24 right-6 z-50 animate-[fadeUp_0.3s_ease-out]">
-          <div className="p-4 rounded-xl border flex items-center gap-3 text-[13px] bg-red-500/10 border-red-500/20 text-red-500 font-medium shadow-2xl backdrop-blur-md">
+        <div className="fixed bottom-24 right-6 z-50 animate-[fadeUp_0.15s_ease-out]">
+          <div className={`p-4 rounded-xl border flex items-center gap-3 text-[13px] font-medium shadow-2xl backdrop-blur-xl ${t.errorToast}`}>
             <Server size={18} className="shrink-0" />
             <span>
               Backend integration is currently in progress.<br/>

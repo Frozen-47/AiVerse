@@ -1,6 +1,6 @@
 import React from "react";
 import { Star, ChevronRight } from "lucide-react";
-import { useTokens, typeBadge, taskBadge, TYPE_GLYPH, TYPE_ICON_CLASS } from "../lib/theme";
+import { useTokens, typeBadge, taskBadge, TYPE_GLYPH, typeIcon } from "../lib/theme";
 import type { Entry } from "../types";
 
 interface EntryCardProps {
@@ -25,7 +25,7 @@ export const EntryCard: React.FC<EntryCardProps> = ({ entry, onClick, index }) =
     >
       {/* Header row */}
       <div className="flex items-start justify-between mb-4">
-        <div className={`w-10 h-10 rounded-2xl flex items-center justify-center text-[17px] font-bold shrink-0 ${TYPE_ICON_CLASS[entry.type] ?? ""}`}>
+        <div className={`w-10 h-10 rounded-2xl flex items-center justify-center text-[17px] font-bold shrink-0 ${typeIcon(entry.type, t)}`}>
           {TYPE_GLYPH[entry.type] ?? "◆"}
         </div>
         <div className="flex items-center gap-1.5 flex-wrap justify-end">

@@ -1,13 +1,14 @@
 import React from "react";
 import { Star, Layers, Box, Database, Server, LayoutGrid, Bot } from "lucide-react";
-import { useTokens } from "../lib/theme";
-import { typeFilters, taskFilters } from "../data";
+import { useTokens, taskColor } from "../lib/theme";
 import type { Entry, TypeFilter, TaskFilter } from "../types";
 
 interface SidebarProps {
   entries: Entry[];
   currentFilter: TypeFilter;
   currentTask: TaskFilter;
+  typeFilters: string[];
+  taskFilters: string[];
   popularOnly: boolean;
   filteredCount: number;
   onTypeFilter: (f: TypeFilter) => void;
@@ -24,25 +25,14 @@ const TYPE_ICONS: Record<string, React.ReactNode> = {
   Model: <Box size={14} />,
 };
 
-const TASK_COLORS: Record<string, string> = {
-  "All Tasks": "bg-white/10",
-  NLP: "bg-blue-500",
-  "Computer Vision": "bg-rose-500",
-  MLOps: "bg-orange-500",
-  Audio: "bg-teal-500",
-  Multimodal: "bg-purple-500",
-  "AI Coding": "bg-indigo-500",
-  "Image Generation": "bg-pink-500",
-  "Video Generation": "bg-red-500",
-  "Productivity": "bg-fuchsia-500",
-  "Education": "bg-green-500",
-  "Research": "bg-amber-500"
-};
+
 
 export const Sidebar: React.FC<SidebarProps> = ({
   entries,
   currentFilter,
   currentTask,
+  typeFilters,
+  taskFilters,
   popularOnly,
   filteredCount,
   onTypeFilter,
@@ -73,12 +63,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="space-y-2">
           {[
             { label: "Total Entries", value: entries.length, color: t.textAccent },
-            { label: "AI Assistants", value: typeCounts["AI"], color: "text-pink-400" },
-            { label: "Models", value: typeCounts["Model"], color: "text-violet-400" },
-            { label: "Frameworks", value: typeCounts["Framework"], color: "text-amber-400" },
-            { label: "Datasets", value: typeCounts["Dataset"], color: "text-sky-400" },
-            { label: "Platforms", value: typeCounts["Platform"], color: "text-emerald-400" },
-            { label: "Popular", value: popularCount, color: "text-amber-400" },
+            { label: "AI Assistants", value: typeCounts["AI"], color: t.textAI },
+            { label: "Models", value: typeCounts["Model"], color: t.textModel },
+            { label: "Frameworks", value: typeCounts["Framework"], color: t.textFramework },
+            { label: "Datasets", value: typeCounts["Dataset"], color: t.textDataset },
+            { label: "Platforms", value: typeCounts["Platform"], color: t.textPlatform },
+            { label: "Popular", value: popularCount, color: t.textPopular },
           ].map(({ label, value, color }) => (
             <div key={label} className="flex items-center justify-between">
               <span className={`text-[12px] ${t.textSecondary}`}>{label}</span>
@@ -131,7 +121,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               `}
             >
               <span
-                className={`w-2 h-2 rounded-full shrink-0 ${TASK_COLORS[f] ?? "bg-gray-500"} ${f === "All Tasks" ? "opacity-30" : "opacity-80"}`}
+                className={`w-2 h-2 rounded-full shrink-0 ${taskColor(f)} ${f === "All Tasks" ? "opacity-30" : "opacity-80"}`}
               />
               <span className="flex-1 text-left truncate">{f}</span>
               <span className={`text-[11px] tabular-nums font-semibold ${currentTask === f ? "" : t.textMuted}`}>

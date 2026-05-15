@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { X, Send, Minimize2, Maximize2, RefreshCw, Copy, Check, AlertCircle, RotateCcw } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { useTokens } from '../lib/theme';
-import { entries } from '../data';
 // Client-side Groq initialization removed for security.
 // We now use the Vercel Serverless Function at /api/chat
 
@@ -196,8 +195,6 @@ export const ChatWidget: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const catalogContext = entries.map(e => `- ${e.name} (${e.type})`).join('\n');
-      
       const requestMessages = messages.filter(m => m.role !== 'error');
       
       const response = await fetch('/api/chat', {
@@ -207,7 +204,6 @@ export const ChatWidget: React.FC = () => {
         },
         body: JSON.stringify({
           messages: [...requestMessages, userMessage],
-          catalogContext
         }),
       });
 
@@ -293,7 +289,7 @@ export const ChatWidget: React.FC = () => {
             <p className={`text-[10px] ${t.textMuted}`}>Powered by Groq</p>
           </div>
         </div>
-        <div className="flex items-center gap-1 text-gray-400">
+        <div className={`flex items-center gap-1 ${t.textSecondary}`}>
           <button 
             onClick={clearChat}
             className={`p-1.5 rounded hover:bg-red-500/10 hover:text-red-400 transition-colors`}
@@ -359,7 +355,7 @@ export const ChatWidget: React.FC = () => {
                   <div className="mt-2 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
                     <button
                       onClick={() => handleCopy(msg.content, idx)}
-                      className={`p-1 rounded text-gray-400 hover:text-white transition-colors`}
+                      className={`p-1 rounded transition-colors ${t.textMuted} hover:${t.textPrimary}`}
                       title="Copy response"
                     >
                       {copiedIndex === idx ? <Check size={14} className="text-green-400" /> : <Copy size={14} />}
@@ -429,7 +425,7 @@ export const ChatWidget: React.FC = () => {
             onClick={() => handleSend()}
             disabled={!input.trim() || isLoading}
             className={`p-1.5 rounded-full transition-colors ${
-              input.trim() && !isLoading ? `text-blue-500 hover:bg-blue-500/10` : 'text-gray-400'
+              input.trim() && !isLoading ? `text-blue-500 hover:bg-blue-500/10` : t.textMuted
             }`}
           >
             <Send size={16} />

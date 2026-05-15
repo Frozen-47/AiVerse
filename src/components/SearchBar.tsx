@@ -1,6 +1,6 @@
 import React, { useRef, useState, useMemo } from "react";
 import { Search, X } from "lucide-react";
-import { useTokens, typeBadge, TYPE_GLYPH, TYPE_ICON_CLASS } from "../lib/theme";
+import { useTokens, typeBadge, TYPE_GLYPH, typeIcon } from "../lib/theme";
 import type { Entry } from "../types";
 
 interface SearchBarProps {
@@ -98,7 +98,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
                   ${t.surfaceHover} border-b last:border-0 ${t.border}
                 `}
               >
-                <div className={`w-8 h-8 rounded-xl flex items-center justify-center text-sm font-bold shrink-0 ${TYPE_ICON_CLASS[e.type] ?? ""}`}>
+                <div className={`w-8 h-8 rounded-xl flex items-center justify-center text-sm font-bold shrink-0 ${typeIcon(e.type, t)}`}>
                   {TYPE_GLYPH[e.type] ?? "◆"}
                 </div>
                 <div className="flex-1 min-w-0">

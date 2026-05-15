@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { X, Plus, Server } from "lucide-react";
 import { useTokens } from "../lib/theme";
-import { typeFilters, taskFilters } from "../data";
 import type { Entry } from "../types";
 
 type PartialEntry = Partial<Entry>;
 
 interface AddModalProps {
+  typeFilters: string[];
+  taskFilters: string[];
   onClose: () => void;
   onSubmit: (e: PartialEntry) => void;
 }
@@ -30,7 +31,7 @@ const emptyEntry = (): PartialEntry => ({
 });
 
 
-export const AddModal: React.FC<AddModalProps> = ({ onClose, onSubmit: _onSubmit }) => {
+export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, onClose, onSubmit: _onSubmit }) => {
   const t = useTokens();
   const [entry, setEntry] = useState<PartialEntry>(emptyEntry());
   const [showBackendMsg, setShowBackendMsg] = useState(false);

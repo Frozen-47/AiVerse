@@ -57,11 +57,24 @@ const amoled: TokenMap = {
   badgeMultimodal: "bg-purple-500/10 text-purple-400 border-purple-500/20",
   // Popular
   popular: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+  // Typography Colors
+  textModel: "text-violet-400",
+  textFramework: "text-amber-400",
+  textDataset: "text-sky-400",
+  textPlatform: "text-emerald-400",
+  textAI: "text-pink-400",
+  textPopular: "text-amber-400",
+  // Icon Colors
+  iconModel: "text-violet-400 bg-violet-500/10",
+  iconFramework: "text-amber-400 bg-amber-500/10",
+  iconDataset: "text-sky-400 bg-sky-500/10",
+  iconPlatform: "text-emerald-400 bg-emerald-500/10",
   // Sidebar
   sidebarItem: "text-white/40 hover:text-white/80 hover:bg-white/[0.04]",
   sidebarActive: "text-cyan-400 bg-cyan-500/10",
   // Tag
   limitTag: "bg-red-500/8 text-red-400 border-red-500/15",
+  errorToast: "bg-red-500/10 border-red-500/20 text-red-500",
   // Link
   link: "text-white/30 hover:text-white transition-colors font-semibold",
   // Scrollbar
@@ -100,9 +113,20 @@ const light: TokenMap = {
   badgeAudio: "bg-teal-500/8 text-teal-700 border-teal-500/20",
   badgeMultimodal: "bg-purple-500/8 text-purple-700 border-purple-500/20",
   popular: "bg-amber-500/8 text-amber-700 border-amber-500/20",
-  sidebarItem: "text-gray-400 hover:text-gray-900 hover:bg-black/[0.04]",
+  textModel: "text-violet-700",
+  textFramework: "text-amber-700",
+  textDataset: "text-sky-700",
+  textPlatform: "text-emerald-700",
+  textAI: "text-pink-700",
+  textPopular: "text-amber-700",
+  iconModel: "text-violet-700 bg-violet-500/8",
+  iconFramework: "text-amber-700 bg-amber-500/8",
+  iconDataset: "text-sky-700 bg-sky-500/8",
+  iconPlatform: "text-emerald-700 bg-emerald-500/8",
+  sidebarItem: "text-gray-500 hover:text-gray-900 hover:bg-black/[0.04]",
   sidebarActive: "text-cyan-700 bg-cyan-500/8",
   limitTag: "bg-red-500/6 text-red-600 border-red-500/15",
+  errorToast: "bg-red-500/10 border-red-500/30 text-red-600",
   link: "text-gray-400 hover:text-gray-900 transition-colors font-semibold",
   scrollbar: "scrollbar-thin scrollbar-track-transparent scrollbar-thumb-black/10",
 };
@@ -138,9 +162,28 @@ export const TYPE_GLYPH: Record<string, string> = {
   Model: "◈", Framework: "⬡", Dataset: "◎", Platform: "◉",
 };
 
-export const TYPE_ICON_CLASS: Record<string, string> = {
-  Model: "text-violet-400 bg-violet-500/10",
-  Framework: "text-amber-400 bg-amber-500/10",
-  Dataset: "text-sky-400 bg-sky-500/10",
-  Platform: "text-emerald-400 bg-emerald-500/10",
-};
+export function typeIcon(type: string, t: TokenMap) {
+  return ({
+    Model: t.iconModel,
+    Framework: t.iconFramework,
+    Dataset: t.iconDataset,
+    Platform: t.iconPlatform,
+  }[type] ?? t.pillInactive);
+}
+
+export function taskColor(task: string) {
+  return ({
+    "All Tasks": "bg-gray-400/20",
+    NLP: "bg-blue-500",
+    "Computer Vision": "bg-rose-500",
+    MLOps: "bg-orange-500",
+    Audio: "bg-teal-500",
+    Multimodal: "bg-purple-500",
+    "AI Coding": "bg-emerald-500",
+    "Image Generation": "bg-fuchsia-500",
+    "Video Generation": "bg-indigo-500",
+    Productivity: "bg-yellow-500",
+    Education: "bg-cyan-500",
+    Research: "bg-amber-600",
+  }[task] ?? "bg-gray-500/50");
+}
