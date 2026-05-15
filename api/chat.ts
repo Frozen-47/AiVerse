@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import Groq from 'groq-sdk';
-import { entries } from './data';
+import { entries } from '../src/data';
 
 // Initialize Groq client with environment variable
 // Vercel securely injects this at runtime

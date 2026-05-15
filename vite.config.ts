@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import { entries, typeFilters, taskFilters } from './api/data'
+import { entries, typeFilters, taskFilters } from './src/data'
 
 export default defineConfig({
   plugins: [
