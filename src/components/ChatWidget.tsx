@@ -76,10 +76,10 @@ const INITIAL_MESSAGES: Message[] = [
   { role: 'assistant', content: 'Hi there! I am Vox. How can I help you navigate the world of AI today?' }
 ];
 
-const ZapFastIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
+const ZapFastIcon = ({ size, className = "" }: { size?: number | string, className?: string }) => (
   <svg
-    width={size}
-    height={size}
+    width={size || "1em"}
+    height={size || "1em"}
     viewBox="0 -960 960 960"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
@@ -254,15 +254,14 @@ export const ChatWidget: React.FC = () => {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className={`group fixed bottom-6 right-6 z-50 flex items-center p-2.5 rounded-full shadow-2xl transition-all duration-500 ease-in-out hover:scale-105 ${t.btnPrimary}`}
+        className={`group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center p-2 sm:p-2.5 rounded-full shadow-2xl transition-all duration-500 ease-in-out hover:scale-105 ${t.btnPrimary}`}
       >
         <ZapFastIcon 
-          size={36} 
-          className="transition-transform duration-500 ease-in-out group-hover:rotate-12" 
+          className="w-6 h-6 sm:w-9 sm:h-9 transition-transform duration-500 ease-in-out group-hover:rotate-12" 
         />
         <div className="grid grid-cols-[0fr] group-hover:grid-cols-[1fr] transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">
           <div className="overflow-hidden whitespace-nowrap">
-            <span className="pl-2 pr-1 font-medium text-[15px] block">Ask Vox</span>
+            <span className="pl-2 pr-1 font-medium text-[13px] sm:text-[15px] block">Ask Vox</span>
           </div>
         </div>
       </button>
