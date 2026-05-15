@@ -1,5 +1,5 @@
 import React from "react";
-import { Star, Layers, Box, Database, Server, LayoutGrid } from "lucide-react";
+import { Star, Layers, Box, Database, Server, LayoutGrid, Bot } from "lucide-react";
 import { useTokens } from "../lib/theme";
 import { typeFilters, taskFilters } from "../data";
 import type { Entry, TypeFilter, TaskFilter } from "../types";
@@ -17,10 +17,11 @@ interface SidebarProps {
 
 const TYPE_ICONS: Record<string, React.ReactNode> = {
   All: <LayoutGrid size={14} />,
-  Model: <Box size={14} />,
+  AI: <Bot size={14} />,
   Framework: <Layers size={14} />,
   Dataset: <Database size={14} />,
   Platform: <Server size={14} />,
+  Model: <Box size={14} />,
 };
 
 const TASK_COLORS: Record<string, string> = {
@@ -30,6 +31,12 @@ const TASK_COLORS: Record<string, string> = {
   MLOps: "bg-orange-500",
   Audio: "bg-teal-500",
   Multimodal: "bg-purple-500",
+  "AI Coding": "bg-indigo-500",
+  "Image Generation": "bg-pink-500",
+  "Video Generation": "bg-red-500",
+  "Productivity": "bg-fuchsia-500",
+  "Education": "bg-green-500",
+  "Research": "bg-amber-500"
 };
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -66,6 +73,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="space-y-2">
           {[
             { label: "Total Entries", value: entries.length, color: t.textAccent },
+            { label: "AI Assistants", value: typeCounts["AI"], color: "text-pink-400" },
             { label: "Models", value: typeCounts["Model"], color: "text-violet-400" },
             { label: "Frameworks", value: typeCounts["Framework"], color: "text-amber-400" },
             { label: "Datasets", value: typeCounts["Dataset"], color: "text-sky-400" },

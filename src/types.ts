@@ -8,8 +8,8 @@ export interface Citation {
 export interface Entry {
   name: string;
   org: string;
-  type: "Model" | "Framework" | "Dataset" | "Platform";
-  task: "NLP" | "Computer Vision" | "MLOps" | "Audio" | "Multimodal";
+  type: "Model" | "Framework" | "Dataset" | "Platform" | "AI";
+  task: string;
   license: string;
   year: number;
   size: string;

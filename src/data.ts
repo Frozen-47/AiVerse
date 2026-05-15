@@ -1776,7 +1776,1200 @@ export const entries: Entry[] = [
       { text: "Alpaca Dataset Release", url: "https://crfm.stanford.edu/2023/03/13/alpaca.html" }
     ]
   },
+  // ─── AI ASSISTANTS ────────────────────────────────────────────────────────
+  {
+    name: "ChatGPT",
+    type: "AI",
+    summary: "An advanced AI assistant by OpenAI, utilizing the GPT-4 family of models to converse, write code, and assist with a wide range of tasks.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2022,
+    org: "OpenAI",
+    size: "N/A",
+    architecture: "Web Application / Conversational Agent (Powered by GPT-4/GPT-4o)",
+    usage: `Visit chatgpt.com to interact via the web interface.`,
+    benchmarks: "N/A (See underlying models like GPT-4o)",
+    limitations: "May hallucinate, knowledge cutoff depends on the model version.",
+    popular: true,
+    url: "https://chatgpt.com",
+    citations: [
+      { text: "ChatGPT Announcement", url: "https://openai.com/blog/chatgpt" }
+    ]
+  },
+  {
+    name: "Claude",
+    type: "AI",
+    summary: "Anthropic's AI assistant, known for its high capabilities in coding, writing, and logical reasoning, and featuring a large context window.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2023,
+    org: "Anthropic",
+    size: "N/A",
+    architecture: "Web Application / Conversational Agent (Powered by Claude 3/3.5 Family)",
+    usage: `Visit claude.ai to interact via the web interface.`,
+    benchmarks: "N/A (See underlying models like Claude 3.5 Sonnet)",
+    limitations: "May refuse prompts due to strict safety filters.",
+    popular: true,
+    url: "https://claude.ai",
+    citations: [
+      { text: "Claude Announcement", url: "https://www.anthropic.com/claude" }
+    ]
+  },
+  {
+    name: "Perplexity",
+    type: "AI",
+    summary: "An AI-powered search engine that provides cited answers by searching the web in real-time, functioning as an intelligent research assistant.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2022,
+    org: "Perplexity AI",
+    size: "N/A",
+    architecture: "Answer Engine / Conversational Agent (Powered by various LLMs and search indices)",
+    usage: `Visit perplexity.ai to search and interact.`,
+    benchmarks: "N/A",
+    limitations: "Sometimes cites incorrect sources or misunderstands query intent.",
+    popular: true,
+    url: "https://www.perplexity.ai",
+    citations: [
+      { text: "Perplexity AI", url: "https://www.perplexity.ai" }
+    ]
+  },
+  {
+    name: "DeepSeek Chat",
+    type: "AI",
+    summary: "An intelligent AI assistant by DeepSeek, highly capable in coding, math, and logical reasoning, powered by efficient open-weight models.",
+    task: "NLP",
+    license: "Proprietary / DeepSeek License",
+    year: 2023,
+    org: "DeepSeek AI",
+    size: "N/A",
+    architecture: "Web Application / Conversational Agent (Powered by DeepSeek-V2 / DeepSeek Coder)",
+    usage: `Visit chat.deepseek.com to interact.`,
+    benchmarks: "N/A",
+    limitations: "May struggle with some niche topics compared to ChatGPT or Claude.",
+    popular: true,
+    url: "https://chat.deepseek.com",
+    citations: [
+      { text: "DeepSeek Chat", url: "https://chat.deepseek.com" }
+    ]
+  },
+  {
+    name: "Google Gemini",
+    type: "AI",
+    summary: "Google's flagship AI assistant (formerly Bard), featuring multimodal capabilities and tight integration with Google Workspace.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2023,
+    org: "Google DeepMind",
+    size: "N/A",
+    architecture: "Web Application / Conversational Agent (Powered by Gemini Pro / Ultra models)",
+    usage: `Visit gemini.google.com to interact.`,
+    benchmarks: "N/A",
+    limitations: "May hallucinate, some features are restricted by region.",
+    popular: true,
+    url: "https://gemini.google.com",
+    citations: [
+      { text: "Gemini Announcement", url: "https://blog.google/technology/ai/google-gemini-ai/" }
+    ]
+  },
+  {
+    name: "Microsoft Copilot",
+    type: "AI",
+    summary: "Microsoft's AI assistant (formerly Bing Chat), integrated with Windows and Microsoft 365, combining GPT-4 with real-time web search.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2023,
+    org: "Microsoft",
+    size: "N/A",
+    architecture: "Web Application / OS Integration (Powered by GPT-4 and Bing Search)",
+    usage: `Visit copilot.microsoft.com or use it directly in Windows 11 / Edge.`,
+    benchmarks: "N/A",
+    limitations: "Can be slow during peak times, responses are sometimes limited in length.",
+    popular: true,
+    url: "https://copilot.microsoft.com",
+    citations: [
+      { text: "Copilot Announcement", url: "https://blogs.microsoft.com/blog/2023/09/21/announcing-microsoft-copilot-your-everyday-ai-companion/" }
+    ]
+  },
+  {
+    name: "Grok",
+    type: "AI",
+    summary: "An AI assistant developed by xAI, designed to have a bit of wit, a rebellious streak, and real-time access to X (Twitter) data.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2023,
+    org: "xAI",
+    size: "N/A",
+    architecture: "Web Application / Conversational Agent (Powered by Grok models)",
+    usage: `Access via X Premium subscription.`,
+    benchmarks: "N/A",
+    limitations: "Requires an active X Premium subscription.",
+    popular: true,
+    url: "https://x.ai",
+    citations: [
+      { text: "Grok Announcement", url: "https://x.ai/blog/grok" }
+    ]
+  },
+  {
+    name: "Meta AI",
+    type: "AI",
+    summary: "Meta's smart assistant integrated into WhatsApp, Instagram, Facebook, and Messenger, capable of answering questions and generating images.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2023,
+    org: "Meta",
+    size: "N/A",
+    architecture: "Chatbot Integration (Powered by Llama 3 models)",
+    usage: `Use it directly inside Meta's messaging apps or at meta.ai.`,
+    benchmarks: "N/A",
+    limitations: "Feature availability varies by country and platform.",
+    popular: true,
+    url: "https://www.meta.ai",
+    citations: [
+      { text: "Meta AI Announcement", url: "https://about.fb.com/news/2023/09/introducing-ai-experiences-across-our-family-of-apps-and-devices/" }
+    ]
+  },
+  {
+    name: "HuggingChat",
+    type: "AI",
+    summary: "An open-source AI assistant by Hugging Face, allowing users to converse with various top-tier open-weight models.",
+    task: "NLP",
+    license: "Open Source UI / Various model licenses",
+    year: 2023,
+    org: "Hugging Face",
+    size: "N/A",
+    architecture: "Web Application (Supports Llama, Mistral, Command R, etc.)",
+    usage: `Visit huggingface.co/chat to interact.`,
+    benchmarks: "N/A",
+    limitations: "Model availability may rotate, performance depends on the selected underlying model.",
+    popular: true,
+    url: "https://huggingface.co/chat",
+    citations: [
+      { text: "HuggingChat", url: "https://huggingface.co/chat" }
+    ]
+  },
+  {
+    name: "GitHub Copilot",
+    type: "AI",
+    summary: "An AI pair programmer that offers autocomplete-style suggestions as you code, integrated directly into your IDE.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2021,
+    org: "GitHub",
+    size: "N/A",
+    architecture: "IDE Extension / Service (Powered by OpenAI models)",
+    usage: `Install the GitHub Copilot extension in VS Code or JetBrains IDEs.`,
+    benchmarks: "N/A",
+    limitations: "Paid subscription required, may suggest incorrect or insecure code.",
+    popular: true,
+    url: "https://github.com/features/copilot",
+    citations: [
+      { text: "GitHub Copilot", url: "https://github.com/features/copilot" }
+    ]
+  },
+  {
+    name: "Character.ai",
+    type: "AI",
+    summary: "A neural language model chatbot web application that can generate human-like text responses and participate in contextual conversation, often used for roleplay.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2022,
+    org: "Character Technologies",
+    size: "N/A",
+    architecture: "Web Application / Chatbot (Custom LLMs)",
+    usage: `Visit character.ai to chat with community-created characters.`,
+    benchmarks: "N/A",
+    limitations: "Highly filtered, mainly focused on entertainment rather than factual accuracy.",
+    popular: true,
+    url: "https://character.ai",
+    citations: [
+      { text: "Character.ai", url: "https://character.ai" }
+    ]
+  },
+  {
+    name: "Pi",
+    type: "AI",
+    summary: "A supportive and empathetic conversational AI assistant designed to be a companion rather than just a tool.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2023,
+    org: "Inflection AI",
+    size: "N/A",
+    architecture: "Web Application / Conversational Agent (Powered by Inflection models)",
+    usage: `Visit pi.ai to interact.`,
+    benchmarks: "N/A",
+    limitations: "Prioritizes conversational style over complex reasoning or coding tasks.",
+    popular: true,
+    url: "https://pi.ai",
+    citations: [
+      { text: "Meet Pi", url: "https://inflection.ai/press/meet-pi" }
+    ]
+  },
+  // ── Chat / Search ──────────────────────────────────────────────
+
+  {
+    name: "Mistral Le Chat",
+    type: "AI",
+    summary: "A fast and capable conversational AI assistant by Mistral AI, built on their own open-weight models with a focus on efficiency.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2024,
+    org: "Mistral AI",
+    size: "N/A",
+    architecture: "Web Application / Conversational Agent (Powered by Mistral Large / Mistral Small)",
+    usage: `Visit chat.mistral.ai to interact via the web interface.`,
+    benchmarks: "N/A",
+    limitations: "Smaller ecosystem compared to OpenAI or Google; some advanced features require a paid plan.",
+    popular: true,
+    url: "https://chat.mistral.ai",
+    citations: [
+      { text: "Mistral Le Chat", url: "https://chat.mistral.ai" }
+    ]
+  },
+  {
+    name: "Poe",
+    type: "AI",
+    summary: "A platform by Quora that provides access to multiple AI chatbots including GPT-4, Claude, Gemini, and community-created bots in one unified interface.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2023,
+    org: "Quora",
+    size: "N/A",
+    architecture: "Web Application / Multi-Model Platform (Aggregates GPT-4, Claude, Gemini, Llama, etc.)",
+    usage: `Visit poe.com or download the Poe app to access multiple AI models.`,
+    benchmarks: "N/A",
+    limitations: "Daily message limits on free tier; quality depends on the chosen underlying model.",
+    popular: true,
+    url: "https://poe.com",
+    citations: [
+      { text: "Poe by Quora", url: "https://poe.com" }
+    ]
+  },
+  {
+    name: "You.com",
+    type: "AI",
+    summary: "An AI-powered search and chat assistant that combines real-time web search with conversational AI, offering modes for research, coding, and writing.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2022,
+    org: "You.com",
+    size: "N/A",
+    architecture: "Answer Engine / Conversational Agent (Powered by multiple LLMs and web indices)",
+    usage: `Visit you.com to search and interact with the AI assistant.`,
+    benchmarks: "N/A",
+    limitations: "Quality varies depending on the selected AI mode; some features are behind a paywall.",
+    popular: false,
+    url: "https://you.com",
+    citations: [
+      { text: "You.com", url: "https://you.com" }
+    ]
+  },
+  {
+    name: "Cohere Coral",
+    type: "AI",
+    summary: "An enterprise-focused conversational AI assistant by Cohere, designed for business use cases like search, summarization, and knowledge retrieval.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2023,
+    org: "Cohere",
+    size: "N/A",
+    architecture: "Web Application / Conversational Agent (Powered by Command R+ models)",
+    usage: `Visit coral.cohere.com to interact via the web interface.`,
+    benchmarks: "N/A",
+    limitations: "Primarily optimized for enterprise workflows; less suited for casual general-purpose use.",
+    popular: false,
+    url: "https://coral.cohere.com",
+    citations: [
+      { text: "Cohere Coral", url: "https://coral.cohere.com" }
+    ]
+  },
+  {
+    name: "ERNIE Bot",
+    type: "AI",
+    summary: "Baidu's conversational AI assistant powered by the ERNIE large language model, strong in Chinese language tasks and integrated with Baidu Search.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2023,
+    org: "Baidu",
+    size: "N/A",
+    architecture: "Web Application / Conversational Agent (Powered by ERNIE 4.0)",
+    usage: `Visit yiyan.baidu.com to interact; primarily available in China.`,
+    benchmarks: "N/A",
+    limitations: "Primarily optimized for Chinese language; access outside China may be restricted.",
+    popular: false,
+    url: "https://yiyan.baidu.com",
+    citations: [
+      { text: "ERNIE Bot", url: "https://yiyan.baidu.com" }
+    ]
+  },
+  {
+    name: "HyperCLOVA X",
+    type: "AI",
+    summary: "Naver's large-scale Korean-English bilingual AI assistant, fine-tuned for Korean cultural context and integrated into Naver's search and services.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2023,
+    org: "Naver",
+    size: "N/A",
+    architecture: "Web Application / Conversational Agent (Powered by HyperCLOVA X model)",
+    usage: `Access via clova.ai or integrated directly into Naver Search and other Naver services.`,
+    benchmarks: "N/A",
+    limitations: "Primarily focused on Korean and English; limited global availability.",
+    popular: false,
+    url: "https://clova.ai",
+    citations: [
+      { text: "HyperCLOVA X", url: "https://clova.ai" }
+    ]
+  },
+
+  // ── Coding ─────────────────────────────────────────────────────
+
+  {
+    name: "Cursor",
+    type: "AI",
+    summary: "An AI-first code editor forked from VS Code, deeply integrating LLMs for inline code generation, multi-file edits, and natural language codebase chat.",
+    task: "AI Coding",
+    license: "Proprietary",
+    year: 2023,
+    org: "Anysphere",
+    size: "N/A",
+    architecture: "IDE Application (VS Code fork integrating GPT-4, Claude, and custom models)",
+    usage: `Download and install from cursor.com; works as a drop-in VS Code replacement.`,
+    benchmarks: "N/A",
+    limitations: "Paid subscription for full AI features; privacy concerns around sending code to external APIs.",
+    popular: true,
+    url: "https://cursor.com",
+    citations: [
+      { text: "Cursor", url: "https://cursor.com" }
+    ]
+  },
+  {
+    name: "Tabnine",
+    type: "AI",
+    summary: "An AI code completion assistant that integrates with most IDEs and supports local or cloud-based models, offering a privacy-conscious alternative to cloud-only tools.",
+    task: "AI Coding",
+    license: "Proprietary",
+    year: 2019,
+    org: "Tabnine",
+    size: "N/A",
+    architecture: "IDE Plugin (Supports local models + cloud models; integrates with VS Code, JetBrains, Neovim, etc.)",
+    usage: `Install the Tabnine extension from your IDE's marketplace (VS Code, JetBrains, Neovim, etc.).`,
+    benchmarks: "N/A",
+    limitations: "Free tier has limited completions; local model mode requires a capable machine.",
+    popular: false,
+    url: "https://www.tabnine.com",
+    citations: [
+      { text: "Tabnine", url: "https://www.tabnine.com" }
+    ]
+  },
+  {
+    name: "Replit Ghostwriter",
+    type: "AI",
+    summary: "An AI coding assistant built into the Replit online IDE, offering code completion, explanation, transformation, and a conversational chat interface for debugging.",
+    task: "AI Coding",
+    license: "Proprietary",
+    year: 2022,
+    org: "Replit",
+    size: "N/A",
+    architecture: "Web IDE Integration (Powered by custom models and third-party LLMs)",
+    usage: `Access at replit.com; Ghostwriter is available in the editor with a Replit Core subscription.`,
+    benchmarks: "N/A",
+    limitations: "Requires a paid Replit Core plan; primarily designed for use within the Replit environment.",
+    popular: true,
+    url: "https://replit.com/ai",
+    citations: [
+      { text: "Replit Ghostwriter", url: "https://replit.com/ai" }
+    ]
+  },
+  {
+    name: "Amazon CodeWhisperer",
+    type: "AI",
+    summary: "Amazon's AI code generator integrated into popular IDEs, trained on billions of lines of code and AWS APIs, with built-in security vulnerability scanning.",
+    task: "AI Coding",
+    license: "Proprietary",
+    year: 2022,
+    org: "Amazon Web Services",
+    size: "N/A",
+    architecture: "IDE Extension (Integrates with VS Code, JetBrains, AWS Cloud9, and more)",
+    usage: `Install the AWS Toolkit extension in VS Code or JetBrains and sign in with an AWS Builder ID.`,
+    benchmarks: "N/A",
+    limitations: "Best suited for AWS-related codebases; individual tier is free but team features are paid.",
+    popular: true,
+    url: "https://aws.amazon.com/codewhisperer",
+    citations: [
+      { text: "Amazon CodeWhisperer", url: "https://aws.amazon.com/codewhisperer" }
+    ]
+  },
+  {
+    name: "Windsurf",
+    type: "AI",
+    summary: "An AI-powered code editor by Codeium featuring 'Flows' — a deeply agentic coding experience where AI and developer collaborate on the same codebase simultaneously.",
+    task: "AI Coding",
+    license: "Proprietary",
+    year: 2024,
+    org: "Codeium",
+    size: "N/A",
+    architecture: "IDE Application (VS Code fork with proprietary Codeium AI and agentic flow engine)",
+    usage: `Download from codeium.com/windsurf and install as a standalone IDE.`,
+    benchmarks: "N/A",
+    limitations: "Newer product with a smaller community than Cursor; some agentic features are still maturing.",
+    popular: true,
+    url: "https://codeium.com/windsurf",
+    citations: [
+      { text: "Windsurf by Codeium", url: "https://codeium.com/windsurf" }
+    ]
+  },
+  {
+    name: "Bolt.new",
+    type: "AI",
+    summary: "A browser-based AI full-stack development environment by StackBlitz that lets users prompt, run, edit, and deploy complete web applications without any local setup.",
+    task: "AI Coding",
+    license: "Proprietary",
+    year: 2024,
+    org: "StackBlitz",
+    size: "N/A",
+    architecture: "Web Application (Powered by Claude and other LLMs with WebContainers runtime)",
+    usage: `Visit bolt.new and describe the app you want to build; it generates and runs the code instantly.`,
+    benchmarks: "N/A",
+    limitations: "Free tier has prompt/token limits; complex apps may require significant manual debugging.",
+    popular: true,
+    url: "https://bolt.new",
+    citations: [
+      { text: "Bolt.new", url: "https://bolt.new" }
+    ]
+  },
+
+  // ── Image Generation ───────────────────────────────────────────
+
+  {
+    name: "Midjourney",
+    type: "AI",
+    summary: "An AI image generation service known for producing highly artistic and aesthetically striking images from text prompts, operated via Discord.",
+    task: "Image Generation",
+    license: "Proprietary",
+    year: 2022,
+    org: "Midjourney Inc.",
+    size: "N/A",
+    architecture: "Web Application / Discord Bot (Proprietary diffusion model)",
+    usage: `Join the Midjourney Discord server at discord.gg/midjourney and use /imagine commands.`,
+    benchmarks: "N/A",
+    limitations: "Requires a paid subscription; primarily Discord-based; limited control over prompt precision.",
+    popular: true,
+    url: "https://www.midjourney.com",
+    citations: [
+      { text: "Midjourney", url: "https://www.midjourney.com" }
+    ]
+  },
+  {
+    name: "Adobe Firefly",
+    type: "AI",
+    summary: "Adobe's generative AI tool for image creation and editing, integrated into Photoshop and other Creative Cloud apps, trained exclusively on licensed content.",
+    task: "Image Generation",
+    license: "Proprietary",
+    year: 2023,
+    org: "Adobe",
+    size: "N/A",
+    architecture: "Web Application / Creative Suite Integration (Proprietary diffusion model)",
+    usage: `Visit firefly.adobe.com or use Generative Fill directly inside Adobe Photoshop.`,
+    benchmarks: "N/A",
+    limitations: "Requires an Adobe account; best features need a Creative Cloud subscription.",
+    popular: true,
+    url: "https://firefly.adobe.com",
+    citations: [
+      { text: "Adobe Firefly", url: "https://firefly.adobe.com" }
+    ]
+  },
+  {
+    name: "Leonardo.ai",
+    type: "AI",
+    summary: "A versatile AI image generation platform popular with game developers and artists, offering fine-tuned models, canvas editing, and consistent character generation.",
+    task: "Image Generation",
+    license: "Proprietary",
+    year: 2022,
+    org: "Leonardo.ai",
+    size: "N/A",
+    architecture: "Web Application (Powered by Stable Diffusion fine-tunes and proprietary models)",
+    usage: `Visit leonardo.ai, create an account, and generate images using built-in or custom models.`,
+    benchmarks: "N/A",
+    limitations: "Daily token limit on the free plan; advanced features like real-time canvas require paid credits.",
+    popular: true,
+    url: "https://leonardo.ai",
+    citations: [
+      { text: "Leonardo.ai", url: "https://leonardo.ai" }
+    ]
+  },
+  {
+    name: "Ideogram",
+    type: "AI",
+    summary: "An AI image generation tool that excels at rendering accurate, legible text within images — a long-standing weakness of most diffusion models.",
+    task: "Image Generation",
+    license: "Proprietary",
+    year: 2023,
+    org: "Ideogram AI",
+    size: "N/A",
+    architecture: "Web Application (Proprietary text-aware image generation model)",
+    usage: `Visit ideogram.ai, sign in, and generate images with text prompts including typographic elements.`,
+    benchmarks: "N/A",
+    limitations: "Free tier limits daily generations; less photorealistic than Midjourney for non-text images.",
+    popular: true,
+    url: "https://ideogram.ai",
+    citations: [
+      { text: "Ideogram AI", url: "https://ideogram.ai" }
+    ]
+  },
+  {
+    name: "Playground AI",
+    type: "AI",
+    summary: "A free-to-use online AI image generation platform offering a generous free tier and a canvas editor for creating and mixing images with various model styles.",
+    task: "Image Generation",
+    license: "Proprietary",
+    year: 2022,
+    org: "Playground AI",
+    size: "N/A",
+    architecture: "Web Application (Powered by Stable Diffusion variants and proprietary Playground v2 model)",
+    usage: `Visit playground.com to generate images for free with up to 500 images/day on the free tier.`,
+    benchmarks: "N/A",
+    limitations: "Heavy users need a paid plan; commercial use of generated images requires a paid subscription.",
+    popular: false,
+    url: "https://playground.com",
+    citations: [
+      { text: "Playground AI", url: "https://playground.com" }
+    ]
+  },
+  {
+    name: "NightCafe",
+    type: "AI",
+    summary: "An AI art generator and social community platform with multiple generation algorithms, daily free credits, and art challenges for creators.",
+    task: "Image Generation",
+    license: "Proprietary",
+    year: 2019,
+    org: "NightCafe Studio",
+    size: "N/A",
+    architecture: "Web Application (Supports Stable Diffusion, DALL·E, and other generation backends)",
+    usage: `Visit creator.nightcafe.studio to generate images and participate in the community.`,
+    benchmarks: "N/A",
+    limitations: "Limited free credits; best results often require purchased credit packs.",
+    popular: false,
+    url: "https://creator.nightcafe.studio",
+    citations: [
+      { text: "NightCafe Creator", url: "https://creator.nightcafe.studio" }
+    ]
+  },
+
+  // ── Video Generation ───────────────────────────────────────────
+
+  {
+    name: "Runway",
+    type: "AI",
+    summary: "An AI-powered creative platform for generating and editing videos from text or image prompts, widely used in professional film and content production.",
+    task: "Video Generation",
+    license: "Proprietary",
+    year: 2022,
+    org: "Runway",
+    size: "N/A",
+    architecture: "Web Application (Proprietary video diffusion model — Gen-2 / Gen-3 Alpha)",
+    usage: `Access via app.runwayml.com; generate videos from text or image prompts through the web interface.`,
+    benchmarks: "N/A",
+    limitations: "Expensive credits system; generation length is capped; occasional temporal inconsistencies.",
+    popular: true,
+    url: "https://runwayml.com",
+    citations: [
+      { text: "Runway Gen-3 Alpha", url: "https://runwayml.com/research/gen-3-alpha" }
+    ]
+  },
+  {
+    name: "Pika Labs",
+    type: "AI",
+    summary: "An AI video generation and editing tool that can create and modify short video clips from text or image prompts, known for fun and accessible creative outputs.",
+    task: "Video Generation",
+    license: "Proprietary",
+    year: 2023,
+    org: "Pika Labs",
+    size: "N/A",
+    architecture: "Web Application / Discord Bot (Proprietary video generation model — Pika 1.0/2.0)",
+    usage: `Visit pika.art to generate and edit videos from text or image prompts.`,
+    benchmarks: "N/A",
+    limitations: "Short maximum clip duration; free tier has watermarks and limited generation credits.",
+    popular: true,
+    url: "https://pika.art",
+    citations: [
+      { text: "Pika Labs", url: "https://pika.art" }
+    ]
+  },
+  {
+    name: "Kling AI",
+    type: "AI",
+    summary: "A powerful AI video generation model by Kuaishou capable of producing realistic 2-minute videos at 1080p from text or image inputs.",
+    task: "Video Generation",
+    license: "Proprietary",
+    year: 2024,
+    org: "Kuaishou",
+    size: "N/A",
+    architecture: "Web Application (Proprietary video diffusion model with 3D spatiotemporal attention)",
+    usage: `Access via klingai.com; generate videos from text prompts or reference images.`,
+    benchmarks: "N/A",
+    limitations: "Longer generation times compared to some competitors; some features require a paid plan.",
+    popular: true,
+    url: "https://klingai.com",
+    citations: [
+      { text: "Kling AI", url: "https://klingai.com" }
+    ]
+  },
+  {
+    name: "HeyGen",
+    type: "AI",
+    summary: "An AI video generation platform specializing in realistic AI avatar videos and video translation with lip-sync, widely used for marketing and corporate communications.",
+    task: "Video Generation",
+    license: "Proprietary",
+    year: 2020,
+    org: "HeyGen",
+    size: "N/A",
+    architecture: "Web Application (Proprietary talking-head synthesis and lip-sync AI model)",
+    usage: `Visit heygen.com, choose an avatar or upload your own, write a script, and generate a video.`,
+    benchmarks: "N/A",
+    limitations: "Free tier is very limited; video translation accuracy can vary with complex audio.",
+    popular: true,
+    url: "https://www.heygen.com",
+    citations: [
+      { text: "HeyGen", url: "https://www.heygen.com" }
+    ]
+  },
+  {
+    name: "Luma Dream Machine",
+    type: "AI",
+    summary: "Luma AI's fast and high-quality video generation model that creates realistic, physically accurate video clips from text prompts or still images.",
+    task: "Video Generation",
+    license: "Proprietary",
+    year: 2024,
+    org: "Luma AI",
+    size: "N/A",
+    architecture: "Web Application (Proprietary video diffusion model with physics-aware generation)",
+    usage: `Visit lumalabs.ai/dream-machine to generate videos from text or image inputs.`,
+    benchmarks: "N/A",
+    limitations: "Free tier has limited monthly generations; longer clips require paid credits.",
+    popular: true,
+    url: "https://lumalabs.ai/dream-machine",
+    citations: [
+      { text: "Luma Dream Machine", url: "https://lumalabs.ai/dream-machine" }
+    ]
+  },
+  {
+    name: "Synthesia",
+    type: "AI",
+    summary: "An AI video generation platform that creates professional videos with realistic AI avatars speaking from a script, used widely for corporate training and marketing.",
+    task: "Video Generation",
+    license: "Proprietary",
+    year: 2017,
+    org: "Synthesia",
+    size: "N/A",
+    architecture: "Web Application (Proprietary talking-head video synthesis model)",
+    usage: `Visit synthesia.io, write a script, choose an AI avatar, and generate a video in minutes.`,
+    benchmarks: "N/A",
+    limitations: "Limited avatar customization on lower-tier plans; video style can feel corporate.",
+    popular: true,
+    url: "https://www.synthesia.io",
+    citations: [
+      { text: "Synthesia", url: "https://www.synthesia.io" }
+    ]
+  },
+
+  // ── Voice / Audio ──────────────────────────────────────────────
+
+  {
+    name: "ElevenLabs",
+    type: "AI",
+    summary: "A leading AI voice synthesis platform capable of cloning voices and generating ultra-realistic speech in multiple languages from text.",
+    task: "Audio",
+    license: "Proprietary",
+    year: 2022,
+    org: "ElevenLabs",
+    size: "N/A",
+    architecture: "Web Application / API (Proprietary TTS and voice cloning models)",
+    usage: `Visit elevenlabs.io to generate speech or use the ElevenLabs API for programmatic access.`,
+    benchmarks: "N/A",
+    limitations: "Free tier has limited monthly character quota; voice cloning requires audio samples.",
+    popular: true,
+    url: "https://elevenlabs.io",
+    citations: [
+      { text: "ElevenLabs", url: "https://elevenlabs.io" }
+    ]
+  },
+  {
+    name: "Murf AI",
+    type: "AI",
+    summary: "An AI voice generator and text-to-speech studio offering 120+ realistic voices in 20+ languages, with a built-in editor for voiceovers and presentations.",
+    task: "Audio",
+    license: "Proprietary",
+    year: 2020,
+    org: "Murf Inc.",
+    size: "N/A",
+    architecture: "Web Application (Proprietary neural TTS model with studio-grade audio processing)",
+    usage: `Visit murf.ai to type or paste text, choose a voice, and generate and download audio.`,
+    benchmarks: "N/A",
+    limitations: "Free tier has a 10-minute voice generation limit; downloads require a paid plan.",
+    popular: false,
+    url: "https://murf.ai",
+    citations: [
+      { text: "Murf AI", url: "https://murf.ai" }
+    ]
+  },
+  {
+    name: "Descript",
+    type: "AI",
+    summary: "An AI-powered audio and video editing tool that lets users edit media by editing the transcript, with features like voice cloning, filler word removal, and overdub.",
+    task: "Audio",
+    license: "Proprietary",
+    year: 2017,
+    org: "Descript",
+    size: "N/A",
+    architecture: "Desktop / Web Application (Proprietary ASR + TTS + video editing pipeline)",
+    usage: `Download Descript from descript.com; import audio or video and edit by modifying the transcript.`,
+    benchmarks: "N/A",
+    limitations: "Overdub voice cloning requires recording samples; some AI features are in paid tiers only.",
+    popular: true,
+    url: "https://www.descript.com",
+    citations: [
+      { text: "Descript", url: "https://www.descript.com" }
+    ]
+  },
+  {
+    name: "Adobe Podcast",
+    type: "AI",
+    summary: "Adobe's AI audio enhancement tool that automatically removes background noise and enhances microphone quality to make any recording sound studio-recorded.",
+    task: "Audio",
+    license: "Proprietary",
+    year: 2022,
+    org: "Adobe",
+    size: "N/A",
+    architecture: "Web Application (Proprietary AI speech enhancement model — Project Shasta)",
+    usage: `Visit podcast.adobe.com, upload an audio file, and use Enhance Speech to clean up the recording.`,
+    benchmarks: "N/A",
+    limitations: "Works best on speech; music or mixed audio may degrade; requires an Adobe account.",
+    popular: true,
+    url: "https://podcast.adobe.com",
+    citations: [
+      { text: "Adobe Podcast", url: "https://podcast.adobe.com" }
+    ]
+  },
+  {
+    name: "Play.ht",
+    type: "AI",
+    summary: "An AI voice generator and text-to-speech platform with 900+ ultra-realistic voices, offering voice cloning and an API for developers to embed audio in apps.",
+    task: "Audio",
+    license: "Proprietary",
+    year: 2016,
+    org: "Play.ht",
+    size: "N/A",
+    architecture: "Web Application / API (Powered by proprietary PlayHT 2.0 and PlayDialog models)",
+    usage: `Visit play.ht to generate speech from text or access the API for programmatic voice generation.`,
+    benchmarks: "N/A",
+    limitations: "Voice cloning and API access require paid plans; free tier has limited word generation.",
+    popular: false,
+    url: "https://play.ht",
+    citations: [
+      { text: "Play.ht", url: "https://play.ht" }
+    ]
+  },
+
+  // ── Music Generation ───────────────────────────────────────────
+
+  {
+    name: "Suno",
+    type: "AI",
+    summary: "An AI music generation platform that creates full songs with vocals, instrumentation, and lyrics from a simple text prompt in seconds.",
+    task: "Audio",
+    license: "Proprietary",
+    year: 2023,
+    org: "Suno Inc.",
+    size: "N/A",
+    architecture: "Web Application (Proprietary audio diffusion and language model pipeline)",
+    usage: `Visit suno.com and type a prompt describing the style or lyrics to generate a full song.`,
+    benchmarks: "N/A",
+    limitations: "Limited control over fine-grained musical elements; commercial use requires a paid plan.",
+    popular: true,
+    url: "https://suno.com",
+    citations: [
+      { text: "Suno AI", url: "https://suno.com" }
+    ]
+  },
+  {
+    name: "Udio",
+    type: "AI",
+    summary: "An AI music creation tool that generates high-quality, diverse music tracks with vocals and instrumentation from short text descriptions.",
+    task: "Audio",
+    license: "Proprietary",
+    year: 2024,
+    org: "Udio",
+    size: "N/A",
+    architecture: "Web Application (Proprietary generative audio model)",
+    usage: `Visit udio.com, describe the music style or mood, and generate tracks instantly.`,
+    benchmarks: "N/A",
+    limitations: "Free tier has monthly generation limits; less genre variety compared to Suno in some styles.",
+    popular: true,
+    url: "https://www.udio.com",
+    citations: [
+      { text: "Udio", url: "https://www.udio.com" }
+    ]
+  },
+
+  // ── Productivity / Writing ─────────────────────────────────────
+
+  {
+    name: "Notion AI",
+    type: "AI",
+    summary: "An AI writing and productivity assistant built directly into Notion, capable of drafting, summarizing, translating, and brainstorming within your workspace.",
+    task: "Productivity",
+    license: "Proprietary",
+    year: 2023,
+    org: "Notion Labs",
+    size: "N/A",
+    architecture: "SaaS Integration (Powered by OpenAI GPT-4 and Anthropic Claude models)",
+    usage: `Access inside any Notion workspace by pressing the spacebar or typing /AI on any page.`,
+    benchmarks: "N/A",
+    limitations: "Requires a Notion AI add-on subscription; dependent on third-party LLM providers.",
+    popular: true,
+    url: "https://www.notion.so/product/ai",
+    citations: [
+      { text: "Notion AI", url: "https://www.notion.so/product/ai" }
+    ]
+  },
+  {
+    name: "Grammarly",
+    type: "AI",
+    summary: "An AI-powered writing assistant that checks grammar, spelling, tone, clarity, and style in real-time across browsers, documents, and email clients.",
+    task: "Productivity",
+    license: "Proprietary",
+    year: 2009,
+    org: "Grammarly Inc.",
+    size: "N/A",
+    architecture: "Browser Extension / SaaS (Proprietary NLP models + generative AI layer)",
+    usage: `Install the Grammarly browser extension from grammarly.com or use the desktop app.`,
+    benchmarks: "N/A",
+    limitations: "Premium plan required for advanced suggestions; can occasionally suggest unnatural rephrasing.",
+    popular: true,
+    url: "https://www.grammarly.com",
+    citations: [
+      { text: "Grammarly", url: "https://www.grammarly.com" }
+    ]
+  },
+  {
+    name: "Copy.ai",
+    type: "AI",
+    summary: "An AI-powered copywriting tool that generates marketing copy, product descriptions, email sequences, social media posts, and more from short prompts.",
+    task: "Productivity",
+    license: "Proprietary",
+    year: 2020,
+    org: "Copy.ai",
+    size: "N/A",
+    architecture: "Web Application (Powered by GPT-4 with marketing-specific workflows and templates)",
+    usage: `Visit copy.ai, select a content type template, enter your product info, and generate copy.`,
+    benchmarks: "N/A",
+    limitations: "Outputs often require editing; free tier limits monthly word count.",
+    popular: true,
+    url: "https://www.copy.ai",
+    citations: [
+      { text: "Copy.ai", url: "https://www.copy.ai" }
+    ]
+  },
+  {
+    name: "Jasper",
+    type: "AI",
+    summary: "An AI content writing platform designed for marketing teams, capable of generating blog posts, ad copy, social media content, and brand-consistent text at scale.",
+    task: "Productivity",
+    license: "Proprietary",
+    year: 2021,
+    org: "Jasper AI",
+    size: "N/A",
+    architecture: "Web Application (Powered by GPT-4 and other LLMs with marketing-specific fine-tuning)",
+    usage: `Visit jasper.ai to sign up and use the web editor for AI content generation.`,
+    benchmarks: "N/A",
+    limitations: "Expensive subscription plans; outputs may still require human editing for accuracy.",
+    popular: false,
+    url: "https://www.jasper.ai",
+    citations: [
+      { text: "Jasper AI", url: "https://www.jasper.ai" }
+    ]
+  },
+  {
+    name: "Writesonic",
+    type: "AI",
+    summary: "An AI writing assistant and chatbot platform that helps generate SEO-optimized articles, landing pages, ads, and social media content at scale.",
+    task: "Productivity",
+    license: "Proprietary",
+    year: 2020,
+    org: "Writesonic",
+    size: "N/A",
+    architecture: "Web Application (Powered by GPT-4 with SEO and marketing-specific tooling)",
+    usage: `Visit writesonic.com to access the editor and start generating content with templates.`,
+    benchmarks: "N/A",
+    limitations: "Quality can vary for niche topics; word credit limits apply on most plans.",
+    popular: false,
+    url: "https://writesonic.com",
+    citations: [
+      { text: "Writesonic", url: "https://writesonic.com" }
+    ]
+  },
+  {
+    name: "Tome",
+    type: "AI",
+    summary: "An AI-powered storytelling and presentation tool that generates complete slide decks with text, images, and layouts from a single prompt.",
+    task: "Productivity",
+    license: "Proprietary",
+    year: 2020,
+    org: "Tome",
+    size: "N/A",
+    architecture: "Web Application (Powered by GPT-4 for content + DALL·E for image generation)",
+    usage: `Visit tome.app, enter a prompt for your presentation topic, and Tome generates a full deck.`,
+    benchmarks: "N/A",
+    limitations: "Limited design customization compared to traditional tools; export options are restricted.",
+    popular: true,
+    url: "https://tome.app",
+    citations: [
+      { text: "Tome", url: "https://tome.app" }
+    ]
+  },
+  {
+    name: "Gamma",
+    type: "AI",
+    summary: "An AI presentation and document builder that generates beautiful, shareable decks, webpages, and documents from text prompts or outlines in seconds.",
+    task: "Productivity",
+    license: "Proprietary",
+    year: 2020,
+    org: "Gamma Tech",
+    size: "N/A",
+    architecture: "Web Application (Powered by GPT-4 with proprietary layout and design generation engine)",
+    usage: `Visit gamma.app, describe your content, and generate a fully designed presentation instantly.`,
+    benchmarks: "N/A",
+    limitations: "Free tier adds a Gamma watermark; advanced themes and AI credits require a paid plan.",
+    popular: true,
+    url: "https://gamma.app",
+    citations: [
+      { text: "Gamma", url: "https://gamma.app" }
+    ]
+  },
+  {
+    name: "Canva AI",
+    type: "AI",
+    summary: "A suite of AI-powered design tools inside Canva, including Magic Write for text generation, Magic Media for image creation, and one-click background removal.",
+    task: "Image Generation",
+    license: "Proprietary",
+    year: 2023,
+    org: "Canva",
+    size: "N/A",
+    architecture: "Web Application (Integrates Stable Diffusion, proprietary models, and third-party LLMs)",
+    usage: `Access at canva.com; AI tools are available within the design editor for all account types.`,
+    benchmarks: "N/A",
+    limitations: "Advanced AI features require a Canva Pro subscription; image generation credits are limited.",
+    popular: true,
+    url: "https://www.canva.com/ai-image-generator",
+    citations: [
+      { text: "Canva Magic Studio", url: "https://www.canva.com/magic-studio/" }
+    ]
+  },
+  {
+    name: "Otter.ai",
+    type: "AI",
+    summary: "An AI meeting assistant that automatically transcribes, summarizes, and generates action items from voice conversations and meetings in real time.",
+    task: "Productivity",
+    license: "Proprietary",
+    year: 2016,
+    org: "AISense Inc.",
+    size: "N/A",
+    architecture: "Web / Mobile Application (Proprietary ASR + NLP summarization pipeline)",
+    usage: `Visit otter.ai or install the mobile app; connect to Zoom, Google Meet, or MS Teams for auto-join.`,
+    benchmarks: "N/A",
+    limitations: "Free tier limited to 300 minutes/month; accuracy drops with heavy accents or noisy audio.",
+    popular: true,
+    url: "https://otter.ai",
+    citations: [
+      { text: "Otter.ai", url: "https://otter.ai" }
+    ]
+  },
+  {
+    name: "Copilot for Microsoft 365",
+    type: "AI",
+    summary: "Microsoft's AI assistant embedded in Word, Excel, PowerPoint, Outlook, and Teams, helping users draft, summarize, and analyze within their daily M365 workflow.",
+    task: "Productivity",
+    license: "Proprietary",
+    year: 2023,
+    org: "Microsoft",
+    size: "N/A",
+    architecture: "SaaS Integration (Powered by GPT-4 with Microsoft Graph data grounding)",
+    usage: `Requires a Microsoft 365 subscription with a Copilot add-on; accessible within all M365 apps.`,
+    benchmarks: "N/A",
+    limitations: "Expensive add-on ($30/user/month); quality depends heavily on organizational data quality.",
+    popular: true,
+    url: "https://www.microsoft.com/en-us/microsoft-365/copilot",
+    citations: [
+      { text: "Microsoft 365 Copilot", url: "https://blogs.microsoft.com/blog/2023/03/16/introducing-microsoft-365-copilot-your-copilot-for-work/" }
+    ]
+  },
+
+  // ── Education ──────────────────────────────────────────────────
+
+  {
+    name: "Khanmigo",
+    type: "AI",
+    summary: "An AI tutor by Khan Academy that guides students through topics using the Socratic method, asking questions rather than giving direct answers to encourage learning.",
+    task: "Education",
+    license: "Proprietary",
+    year: 2023,
+    org: "Khan Academy",
+    size: "N/A",
+    architecture: "Web Application (Powered by GPT-4 with educational fine-tuning and guardrails)",
+    usage: `Access at khanacademy.org; available to students and teachers with a Khan Academy account.`,
+    benchmarks: "N/A",
+    limitations: "Requires a Khan Academy account; primarily focused on K-12 curriculum topics.",
+    popular: false,
+    url: "https://www.khanacademy.org/khan-labs",
+    citations: [
+      { text: "Khanmigo by Khan Academy", url: "https://www.khanacademy.org/khan-labs" }
+    ]
+  },
+  {
+    name: "Socratic by Google",
+    type: "AI",
+    summary: "A Google AI-powered learning app that helps students understand homework questions by providing explanations, videos, and step-by-step breakdowns from a photo scan.",
+    task: "Education",
+    license: "Proprietary",
+    year: 2017,
+    org: "Google",
+    size: "N/A",
+    architecture: "Mobile Application (Powered by Google Lens OCR + Google Search + LLM explanations)",
+    usage: `Download the Socratic app on iOS or Android and take a photo of any homework question.`,
+    benchmarks: "N/A",
+    limitations: "Works best for standard K-12 subjects; may struggle with highly specialized or advanced topics.",
+    popular: true,
+    url: "https://socratic.org",
+    citations: [
+      { text: "Socratic by Google", url: "https://socratic.org" }
+    ]
+  },
+  {
+    name: "Duolingo Max",
+    type: "AI",
+    summary: "Duolingo's premium AI-powered tier featuring GPT-4 driven features like Explain My Answer for detailed feedback and Roleplay for open-ended AI conversation practice.",
+    task: "Education",
+    license: "Proprietary",
+    year: 2023,
+    org: "Duolingo",
+    size: "N/A",
+    architecture: "Mobile / Web Application (Powered by GPT-4 integrated into the Duolingo platform)",
+    usage: `Upgrade to Duolingo Max within the Duolingo iOS or Android app to access AI features.`,
+    benchmarks: "N/A",
+    limitations: "Only available for select languages; requires a paid Max subscription on top of Duolingo Plus.",
+    popular: true,
+    url: "https://blog.duolingo.com/duolingo-max",
+    citations: [
+      { text: "Duolingo Max", url: "https://blog.duolingo.com/duolingo-max" }
+    ]
+  },
+  {
+    name: "Quizlet AI",
+    type: "AI",
+    summary: "Quizlet's AI-powered study assistant that generates practice questions, explains concepts, and personalizes study sets based on what a student is struggling with.",
+    task: "Education",
+    license: "Proprietary",
+    year: 2023,
+    org: "Quizlet",
+    size: "N/A",
+    architecture: "Web / Mobile Application (Powered by OpenAI GPT models with Quizlet's study data)",
+    usage: `Visit quizlet.com or open the app; Q-Chat and AI features are available on Quizlet Plus.`,
+    benchmarks: "N/A",
+    limitations: "AI features require a Quizlet Plus subscription; AI-generated flashcards may contain errors.",
+    popular: true,
+    url: "https://quizlet.com/features/quizlet-ai",
+    citations: [
+      { text: "Quizlet AI", url: "https://quizlet.com/features/quizlet-ai" }
+    ]
+  },
+
+  // ── Research / Search ──────────────────────────────────────────
+
+  {
+    name: "Elicit",
+    type: "AI",
+    summary: "An AI research assistant that searches and summarizes academic papers, extracts key data from studies, and helps researchers synthesize literature at scale.",
+    task: "Research",
+    license: "Proprietary",
+    year: 2021,
+    org: "Ought",
+    size: "N/A",
+    architecture: "Web Application (Powered by LLMs with semantic search over academic paper databases)",
+    usage: `Visit elicit.com, enter a research question, and get summaries and data from relevant papers.`,
+    benchmarks: "N/A",
+    limitations: "Coverage limited to papers indexed in Semantic Scholar; may miss very recent publications.",
+    popular: false,
+    url: "https://elicit.com",
+    citations: [
+      { text: "Elicit", url: "https://elicit.com" }
+    ]
+  },
+  {
+    name: "Consensus",
+    type: "AI",
+    summary: "An AI-powered academic search engine that finds and synthesizes evidence from peer-reviewed research papers to answer scientific and factual questions.",
+    task: "Research",
+    license: "Proprietary",
+    year: 2022,
+    org: "Consensus",
+    size: "N/A",
+    architecture: "Web Application (Semantic search over 200M+ academic papers with LLM synthesis layer)",
+    usage: `Visit consensus.app, ask a research question, and get answers backed by peer-reviewed citations.`,
+    benchmarks: "N/A",
+    limitations: "Limited to published academic research; GPT-4 powered summaries require a premium plan.",
+    popular: false,
+    url: "https://consensus.app",
+    citations: [
+      { text: "Consensus", url: "https://consensus.app" }
+    ]
+  },
+  {
+    name: "Semantic Scholar",
+    type: "AI",
+    summary: "A free AI-powered academic search engine by the Allen Institute for AI that provides smart paper recommendations, citation graphs, and TLDR summaries of research papers.",
+    task: "Research",
+    license: "Free",
+    year: 2015,
+    org: "Allen Institute for AI (AI2)",
+    size: "N/A",
+    architecture: "Web Application (Proprietary NLP models for paper summarization and semantic search)",
+    usage: `Visit semanticscholar.org to search for papers and access AI-generated summaries and citations.`,
+    benchmarks: "N/A",
+    limitations: "TLDR summaries can oversimplify findings; coverage of non-English papers is limited.",
+    popular: false,
+    url: "https://www.semanticscholar.org",
+    citations: [
+      { text: "Semantic Scholar", url: "https://www.semanticscholar.org" }
+    ]
+  },
+
+  // ── Companion / Other ──────────────────────────────────────────
+
+  {
+    name: "Replika",
+    type: "AI",
+    summary: "An AI companion app designed for emotional support and personal conversation, allowing users to build a relationship with a customizable AI persona.",
+    task: "NLP",
+    license: "Proprietary",
+    year: 2017,
+    org: "Luka Inc.",
+    size: "N/A",
+    architecture: "Mobile / Web Application (Powered by custom fine-tuned LLMs)",
+    usage: `Download the Replika app on iOS or Android, or visit replika.com to chat with your AI companion.`,
+    benchmarks: "N/A",
+    limitations: "Some features require a paid subscription; content policies changed significantly in 2023.",
+    popular: true,
+    url: "https://replika.com",
+    citations: [
+      { text: "Replika", url: "https://replika.com" }
+    ]
+  }
 ];
 
-export const typeFilters = ["All", "Model", "Framework", "Dataset", "Platform"];
-export const taskFilters = ["All Tasks", "NLP", "Computer Vision", "MLOps", "Audio", "Multimodal"];
+export const typeFilters = ["All", "AI", "Framework", "Dataset", "Platform", "Model"];
+export const taskFilters = [
+  "All Tasks", "NLP", "Computer Vision", "MLOps", "Audio", "Multimodal",
+  "AI Coding", "Image Generation", "Video Generation", 
+  "Productivity", "Education", "Research"
+];

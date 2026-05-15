@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import { Server } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
-import { entries as initialEntries } from "./data";
+import { entries as initialEntries, typeFilters } from "./data";
 import { Navbar } from "./components/Navbar";
 import { Sidebar } from "./components/Sidebar";
 import { SearchBar } from "./components/SearchBar";
@@ -31,9 +31,10 @@ const Inner: React.FC = () => {
     setTimeout(() => setShowBackendToast(false), 3500);
   };
 
-  // Reset to page 1 when filters change
+  // Reset to page 1 and scroll to top when filters change
   useEffect(() => {
     setCurrentPage(1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [typeFilter, taskFilter, popularOnly, search]);
 
   // ⌘K shortcut
@@ -123,7 +124,7 @@ const Inner: React.FC = () => {
 
       <Navbar onAddEntry={handleAddClick} entryCount={entries.length} />
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="w-full px-6 xl:px-12 py-8">
         {/* Hero */}
         <div className="mb-10">
           <div className={`inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest border rounded-full px-4 py-1.5 mb-5 ${t.surface} ${t.border} ${t.textMuted}`}>
@@ -152,9 +153,9 @@ const Inner: React.FC = () => {
         </div>
 
         {/* Main layout */}
-        <div className="flex gap-8">
+        <div className="flex gap-8 w-full">
           {/* Sidebar — hidden on mobile */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:block sticky top-8 max-h-[calc(100vh-4rem)] overflow-y-auto">
             <Sidebar
               entries={entries}
               currentFilter={typeFilter}
@@ -171,7 +172,7 @@ const Inner: React.FC = () => {
           <div className="flex-1 min-w-0">
             {/* Mobile filters */}
             <div className="flex flex-wrap gap-2 mb-5 lg:hidden">
-              {["All", "Model", "Framework", "Dataset", "Platform"].map((f) => (
+              {typeFilters.map((f) => (
                 <button
                   key={f}
                   onClick={() => setTypeFilter(f as TypeFilter)}
@@ -251,11 +252,11 @@ const Inner: React.FC = () => {
       </div>
 
       <footer 
-        className={`mt-auto text-center text-[11px] ${t.textSecondary} border-t ${t.border} pt-6 pb-6`}
-        style={{ animation: 'fadeUp 0.4s ease-out 600ms forwards', opacity: 0 }}
+        className={`mt-8 text-center text-[11px] ${t.textSecondary} border-t ${t.border} pt-6 pb-2 animate-fade-in-up opacity-0`}
+        style={{ animationDelay: '600ms' }}
       >
         <p>
-          Built by Sabareesh. Find me on <a href="https://discord.com/users/1272910357517701147" className={t.link}>Discord</a> and <a href="https://github.com/Frozen-47" className={t.link}>GitHub</a>
+          Built by Sabareesh. Find me on <a href="https://discord.com/users/1272910357517701147" className={`${t.textMuted} font-semibold hover:underline`}>Discord</a> and <a href="https://github.com/Frozen-47" className={`${t.textMuted} font-semibold hover:underline`}>GitHub</a>
         </p>
       </footer>
 

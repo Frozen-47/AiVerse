@@ -13,7 +13,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
 
   return (
     <nav className={`sticky top-0 z-40 border-b ${t.page} ${t.border} backdrop-blur-sm`}>
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="w-full px-6 xl:px-12 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="shrink-0 flex items-center justify-center">
             <img 

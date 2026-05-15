@@ -48,12 +48,12 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
-/* Hide scrollbar globally for the main page (App.tsx) AND the modals */
-html, body, .no-scrollbar {
+/* Hide scrollbar globally for all elements */
+*, html, body, .no-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
 
-html::-webkit-scrollbar, body::-webkit-scrollbar, .no-scrollbar::-webkit-scrollbar {
+*::-webkit-scrollbar, html::-webkit-scrollbar, body::-webkit-scrollbar, .no-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari and Opera */
 }
