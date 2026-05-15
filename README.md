@@ -1,4 +1,4 @@
-# AIPedia
+# AiVerse
 
 > Your comprehensive guide to AI tools, models, and technologies — all in one place.
 
@@ -8,13 +8,13 @@
 
 ## 👋 About the Project
 
-**AIPedia** is an open-source platform that organizes and explains different AI tools, models, and technologies in one centralized location. Think of it as a Wikipedia for AI — making artificial intelligence more accessible and understandable for everyone.
+**AiVerse** is an open-source platform that organizes and explains different AI tools, models, and technologies in one centralized location. Think of it as a Wikipedia for AI — making artificial intelligence more accessible and understandable for everyone.
 
 ### Current Status
 🚧 **Early Development Phase** - Currently a static website, transitioning to a dynamic platform.
 
 ### Vision
-We're building AIPedia to become:
+We're building AiVerse to become:
 - 📚 A comprehensive database of AI tools and models
 - 🔍 An easily searchable AI knowledge base
 - 👥 A community-driven platform with user contributions
@@ -41,10 +41,10 @@ We're building AIPedia to become:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Frozen-47/AiPedia.git
+git clone https://github.com/Frozen-47/AiVerse.git
 
 # Navigate to project directory
-cd AiPedia
+cd AiVerse
 
 # Install dependencies
 npm install
@@ -55,7 +55,7 @@ npm run dev
 
 ## 🤝 Looking for Collaborators!
 
-Hey everyone! 👋 I'm a student working on this project, and I'm looking for collaborators who'd like to join and help build AIPedia together.
+Hey everyone! 👋 I'm a student working on this project, and I'm looking for collaborators who'd like to join and help build AiVerse together.
 
 **This is completely open source** — no payments, no hiring — just a team project for learning, contributing, and building something useful together.
 
@@ -101,7 +101,7 @@ Interested in joining the team? Have ideas or suggestions?
 
 - **Discord**: [Join our server](#) _(coming soon)_
 - **Email**: your.email@example.com
-- **Twitter**: [@AIPediaProject](#)
+- **Twitter**: [@AiVerseProject](#)
 - **Issues**: Feel free to open an issue for discussion!
 
 ## 📋 Project Roadmap
@@ -154,7 +154,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🌟 Support the Project
 
-If you find AIPedia useful, please consider:
+If you find AiVerse useful, please consider:
 - ⭐ Starring the repository
 - 🐛 Reporting bugs
 - 💡 Suggesting new features
@@ -163,7 +163,7 @@ If you find AIPedia useful, please consider:
 
 ## 🙏 Acknowledgments
 
-- Thanks to all contributors who help make AIPedia better!
+- Thanks to all contributors who help make AiVerse better!
 - Inspired by the open-source community and the need for organized AI resources.
 
 ---

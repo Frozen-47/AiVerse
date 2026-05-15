@@ -1,4 +1,4 @@
-# Contributing to AIPedia
+# Contributing to AiVerse
 
 Thank you for your interest in contributing! ✨
 

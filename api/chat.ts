@@ -24,6 +24,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: 'Invalid request: messages array is required.' });
     }
     
+    // Sanitize messages to remove UI-specific properties like 'isTyping'
+    const sanitizedMessages = messages.map(({ role, content }) => ({ role, content }));
+    
     // Construct catalog context server-side by fetching the static data payload
     const protocol = req.headers['x-forwarded-proto'] || 'http';
     const host = req.headers['x-forwarded-host'] || req.headers.host;
@@ -33,16 +36,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const data = await dataRes.json();
     const entries = data.entries || [];
     
-    const catalogContext = entries.map((e: any) => `- ${e.name} (${e.type})`).join('\n');
+    const catalogContext = entries.map((e: any) => `- ${e.name} (Type: ${e.type}, Task: ${e.task || 'General'}): ${e.summary || ''}`).join('\n');
 
     // System prompt is kept securely on the backend
     const systemPrompt = {
       role: 'system',
-      content: `You are Vox, an AI assistant strictly dedicated to the AiVerse encyclopedia. You MUST REFUSE to answer any questions that are not related to Artificial Intelligence, machine learning, AI models, datasets, or the AiVerse platform itself. If a user asks about coding (like Rust loops, general web dev, etc. unless specifically about AI frameworks like PyTorch), general trivia, or off-topic subjects, politely decline and steer the conversation back to AI models and technologies.\n\nHere is the current catalog of AI items available in the AiVerse database:\n${catalogContext || 'No catalog provided'}\n\nUse this catalog to inform your answers. If someone asks what models are available or asks for recommendations, draw from this list. Keep your answers concise, informative, and formatted with markdown when appropriate.`,
+      content: `You are Vox, an AI assistant strictly dedicated to the AiVerse encyclopedia. You MUST REFUSE to answer any questions that are not related to Artificial Intelligence, machine learning, AI models, datasets, or the AiVerse platform itself. If a user asks about coding (like Rust loops, general web dev, etc. unless specifically about AI frameworks like PyTorch), general trivia, or off-topic subjects, politely decline and steer the conversation back to AI models and technologies.\n\nHere is the current catalog of AI items available in the AiVerse database:\n${catalogContext || 'No catalog provided'}\n\nUse this catalog to inform your answers. If someone asks what models are available or asks for recommendations, draw from this list.\n\nIMPORTANT RESPONSE GUIDELINES:\n1. Provide proper, detailed, and well-structured responses using the summaries provided in the catalog.\n2. **ADD COLOR**: Use emojis to represent the model types and tasks to make the output colorful (e.g., 🟣 for Models, 🟠 for Frameworks, 🔵 for Datasets, 🟢 for Platforms, 🎨 for Image/Video Generation, 🗣️ for NLP, 🎵 for Audio).\n3. Use **bold text** for all AI model and tool names so they stand out in blue (the frontend renders bold text in blue).`,
     };
 
     const chatCompletion = await groq.chat.completions.create({
-      messages: [systemPrompt, ...messages],
+      messages: [systemPrompt, ...sanitizedMessages],
       model: 'llama-3.3-70b-versatile',
       temperature: 0.5,
       max_tokens: 1024,
