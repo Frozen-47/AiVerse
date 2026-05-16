@@ -1,7 +1,7 @@
+import React, { useState, useEffect } from "react";
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton, useUser } from "@clerk/clerk-react";
 import { Plus, Moon, Sun } from "lucide-react";
 import { useTokens, useTheme } from "../lib/theme";
-import { Logo } from "./Logo";
 
 interface NavbarProps {
   onAddEntry: () => void;
@@ -12,18 +12,64 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
   const t = useTokens();
   const { theme, setTheme } = useTheme();
   const { user } = useUser();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav className={`sticky top-0 z-40 border-b ${t.page} ${t.border} backdrop-blur-sm`}>
       <div className="w-full px-6 xl:px-12 h-16 flex items-center justify-between">
+
+        {/* Left: logo + entry count */}
         <div className="flex items-center gap-3">
-          <div className={`shrink-0 flex items-center justify-center w-9 h-9 rounded-xl transition-all ${theme === 'light' ? 'bg-black' : 'bg-white'}`}>
-            <Logo className={`w-6 h-6 transition-all ${theme === 'light' ? 'text-white' : 'text-black'}`} />
-          </div>
-          <h1 className={`text-lg font-black tracking-tight ${t.textPrimary}`}>AiVerse</h1>
-          <span className={`text-xs font-semibold ${t.textMuted}`}>{entryCount} entries</span>
+          <a
+            href="https://aiverse.frozenn.in"
+            className={`flex items-center ${t.textPrimary} hover:opacity-80 transition-opacity`}
+            style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "1.5rem", lineHeight: 1, letterSpacing: "-0.02em" }}
+          >
+            {/* Λ — inverted V for perfect stroke match */}
+            <span 
+              className="inline-block transform rotate-180 relative"
+              style={{ top: "-0.75px", marginRight: isScrolled ? "-3px" : "0" }}
+            >
+              V
+            </span>
+
+            {/* i — typewriter effect */}
+            <span
+              className="overflow-hidden whitespace-nowrap transition-all duration-75 flex items-center justify-center"
+              style={{
+                maxWidth: isScrolled ? "0px" : "14px",
+                opacity: isScrolled ? 0 : 1,
+                margin: isScrolled ? "0" : "0 1px",
+                transitionDelay: isScrolled ? "300ms" : "0ms"
+              }}
+            >
+              i
+            </span>
+
+            {/* V — always visible */}
+            <span className="relative">V</span>
+
+            {/* erse — typewriter effect */}
+            <span className="flex items-center">
+              <span className="overflow-hidden transition-all duration-75" style={{ maxWidth: isScrolled ? "0px" : "20px", opacity: isScrolled ? 0 : 1, transitionDelay: isScrolled ? "225ms" : "75ms" }}>e</span>
+              <span className="overflow-hidden transition-all duration-75" style={{ maxWidth: isScrolled ? "0px" : "20px", opacity: isScrolled ? 0 : 1, transitionDelay: isScrolled ? "150ms" : "150ms" }}>r</span>
+              <span className="overflow-hidden transition-all duration-75" style={{ maxWidth: isScrolled ? "0px" : "20px", opacity: isScrolled ? 0 : 1, transitionDelay: isScrolled ? "75ms" : "225ms" }}>s</span>
+              <span className="overflow-hidden transition-all duration-75" style={{ maxWidth: isScrolled ? "0px" : "20px", opacity: isScrolled ? 0 : 1, transitionDelay: isScrolled ? "0ms" : "300ms" }}>e</span>
+            </span>
+          </a>
+
+          <span className={`text-xs font-semibold whitespace-nowrap ${t.textMuted}`}>
+            {entryCount} entries
+          </span>
         </div>
-        
+
+        {/* Right: theme toggle + auth */}
         <div className="flex items-center gap-3">
           <button
             onClick={() => setTheme(theme === "amoled" ? "light" : "amoled")}
@@ -32,7 +78,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
           >
             {theme === "amoled" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
-          
+
           <SignedIn>
             <button
               onClick={onAddEntry}
@@ -45,16 +91,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
               <span className={`text-sm font-semibold hidden sm:block ${t.textPrimary}`}>
                 Hi, {user?.firstName || "Guest"}
               </span>
-              <UserButton 
+              <UserButton
                 appearance={{
-                  elements: {
-                    userButtonAvatarBox: "w-8 h-8 rounded-lg",
-                  }
+                  elements: { userButtonAvatarBox: "w-8 h-8 rounded-lg" },
                 }}
               />
             </div>
           </SignedIn>
-          
+
           <SignedOut>
             <div className="flex items-center gap-2">
               <SignInButton mode="modal">
@@ -74,6 +118,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
             </div>
           </SignedOut>
         </div>
+
       </div>
     </nav>
   );
