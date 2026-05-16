@@ -30,6 +30,7 @@ export const fetchEntries = async () => {
   const { data, error } = await supabase
     .from('entries')
     .select('*')
+    .eq('approved', true)
     .order('created_at', { ascending: false });
     
   if (error) throw error;

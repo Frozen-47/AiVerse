@@ -117,27 +117,11 @@ const Inner: React.FC = () => {
   const paginatedEntries = filtered.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
   const handleAdd = (partial: Partial<Entry>) => {
-    const complete: Entry = {
-      name: partial.name ?? "",
-      org: partial.org ?? "",
-      type: partial.type ?? "Model",
-      task: partial.task ?? "NLP",
-      license: partial.license ?? "Unknown",
-      year: partial.year ?? new Date().getFullYear(),
-      size: partial.size ?? "Unknown",
-      summary: partial.summary ?? "",
-      architecture: partial.architecture ?? "",
-      usage: partial.usage,
-      benchmarks: partial.benchmarks ?? "N/A",
-      limitations: partial.limitations ?? "",
-      url: partial.url,
-      citations: partial.citations ?? [],
-      popular: partial.popular ?? false,
-    };
-    setEntries((prev) => [complete, ...prev]);
+    // We no longer append to the local UI state immediately.
+    // The entry goes to Supabase as approved=false and will appear on refresh once an admin approves it.
     setIsAdding(false);
     setShowBackendToast(true);
-    setTimeout(() => setShowBackendToast(false), 3500);
+    setTimeout(() => setShowBackendToast(false), 5000);
   };
 
   if (isLoading) {
@@ -304,10 +288,13 @@ const Inner: React.FC = () => {
       {/* Global Toast Notification */}
       {showBackendToast && (
         <div className="fixed bottom-24 right-6 z-50 animate-[fadeUp_0.15s_ease-out]">
-          <div className={`p-4 rounded-xl border flex items-center gap-3 text-[13px] font-medium shadow-2xl backdrop-blur-xl ${t.errorToast}`}>
-            <Check size={18} className="shrink-0 text-emerald-400" />
-            <span>
-              Entry successfully added to the database!
+          <div className={`p-4 rounded-xl border flex flex-col gap-1 text-[13px] font-medium shadow-2xl backdrop-blur-xl ${t.errorToast}`}>
+            <div className="flex items-center gap-3">
+              <Check size={18} className="shrink-0 text-emerald-400" />
+              <span>Entry submitted successfully!</span>
+            </div>
+            <span className={`pl-7 text-[11px] opacity-80`}>
+              It will appear here once approved by an admin.
             </span>
           </div>
         </div>

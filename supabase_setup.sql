@@ -17,7 +17,8 @@ CREATE TABLE entries (
   limitations TEXT,
   url TEXT,
   citations JSONB DEFAULT '[]'::jsonb,
-  popular BOOLEAN DEFAULT false
+  popular BOOLEAN DEFAULT false,
+  approved BOOLEAN DEFAULT false
 );
 
 -- Enable Row Level Security (RLS)
