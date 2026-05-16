@@ -41,7 +41,8 @@ async function seed() {
 
   console.log(`Found ${entries.length} entries. Seeding to Supabase...`);
 
-  const { error } = await supabase.from('entries').insert(entries);
+  const entriesWithApproved = entries.map(e => ({ ...e, approved: true }));
+  const { error } = await supabase.from('entries').insert(entriesWithApproved);
   
   if (error) {
     console.error('Error seeding data:', error);
