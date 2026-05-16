@@ -116,7 +116,7 @@ const Inner: React.FC = () => {
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
   const paginatedEntries = filtered.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
-  const handleAdd = (partial: Partial<Entry>) => {
+  const handleAdd = (_partial: Partial<Entry>) => {
     // We no longer append to the local UI state immediately.
     // The entry goes to Supabase as approved=false and will appear on refresh once an admin approves it.
     setIsAdding(false);
