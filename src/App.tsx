@@ -12,7 +12,8 @@ import { ChatWidget } from "./components/ChatWidget";
 import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
 import type { Entry, Theme, TypeFilter, TaskFilter } from "./types";
 import { fetchEntries } from "./lib/supabase";
-import { useUser } from "@clerk/clerk-react";
+import { useUser, ClerkProvider } from "@clerk/clerk-react";
+import { dark } from "@clerk/themes";
 import { typeFilters as staticTypeFilters, taskFilters as staticTaskFilters } from "./data";
 
 // ─── Inner app (needs theme context) ─────────────────────────────────────────
@@ -381,9 +382,22 @@ const Inner: React.FC = () => {
 // ─── Root App (provides context) ──────────────────────────────────────────────
 const App: React.FC = () => {
   const [theme, setTheme] = useState<Theme>("amoled");
+  
+  const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+  if (!PUBLISHABLE_KEY) {
+    throw new Error("Missing Publishable Key");
+  }
+
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <Inner />
+      <ClerkProvider 
+        publishableKey={PUBLISHABLE_KEY}
+        appearance={{
+          baseTheme: theme === "amoled" ? dark : undefined,
+        }}
+      >
+        <Inner />
+      </ClerkProvider>
     </ThemeContext.Provider>
   );
 };

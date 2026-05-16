@@ -1,6 +1,7 @@
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton, useUser } from "@clerk/clerk-react";
 import { Plus, Moon, Sun } from "lucide-react";
 import { useTokens, useTheme } from "../lib/theme";
+import { Logo } from "./Logo";
 
 interface NavbarProps {
   onAddEntry: () => void;
@@ -16,12 +17,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
     <nav className={`sticky top-0 z-40 border-b ${t.page} ${t.border} backdrop-blur-sm`}>
       <div className="w-full px-6 xl:px-12 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="shrink-0 flex items-center justify-center">
-            <img 
-              src="/av.svg" 
-              alt="AiVerse Logo" 
-              className={`w-8 h-8 rounded-lg transition-all ${theme === 'light' ? 'invert' : ''}`} 
-            />
+          <div className={`shrink-0 flex items-center justify-center w-9 h-9 rounded-xl transition-all ${theme === 'light' ? 'bg-black' : 'bg-white'}`}>
+            <Logo className={`w-6 h-6 transition-all ${theme === 'light' ? 'text-white' : 'text-black'}`} />
           </div>
           <h1 className={`text-lg font-black tracking-tight ${t.textPrimary}`}>AiVerse</h1>
           <span className={`text-xs font-semibold ${t.textMuted}`}>{entryCount} entries</span>

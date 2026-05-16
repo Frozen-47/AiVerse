@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useTokens } from "../lib/theme";
 import { useUser } from "@clerk/clerk-react";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Logo } from "./Logo";
 
 interface WelcomeOnboardingProps {
   onComplete: () => void;
@@ -55,8 +56,8 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({ onComplete
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-linear-to-b from-blue-500/20 to-transparent pointer-events-none" />
         
         <div className="p-8">
-          <div className="w-12 h-12 rounded-2xl bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-500/30">
-            <Sparkles size={24} className="animate-pulse" />
+          <div className="mb-6 flex items-center justify-center">
+            <Logo className="w-14 h-14 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] text-white" />
           </div>
           
           <h2 className={`text-2xl font-black tracking-tight mb-2 ${t.textPrimary}`}>
