@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { X, Star, ExternalLink, Copy, Check } from "lucide-react";
+import { X, Star, ExternalLink, Copy, Check, Lock } from "lucide-react";
+import { useUser, SignInButton, SignUpButton } from "@clerk/clerk-react";
 import { useTokens, typeBadge, taskBadge, TYPE_GLYPH, typeIcon } from "../lib/theme";
 import type { Entry } from "../types";
 
@@ -10,6 +11,7 @@ interface DetailModalProps {
 
 export const DetailModal: React.FC<DetailModalProps> = ({ entry, onClose }) => {
   const t = useTokens();
+  const { user } = useUser();
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -76,7 +78,32 @@ export const DetailModal: React.FC<DetailModalProps> = ({ entry, onClose }) => {
         </div>
 
         {/* Scrollable body */}
-        <div className="flex-1 overflow-y-auto px-7 py-6 space-y-6">
+        <div className="relative flex-1 overflow-hidden flex flex-col">
+          {!user && (
+            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center bg-black/60 backdrop-blur-md">
+              <div className="w-14 h-14 rounded-2xl bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-500/30">
+                <Lock size={24} />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2 tracking-tight">Unlock Full Details</h3>
+              <p className="text-[13px] text-gray-300 mb-6 max-w-[280px] leading-relaxed">
+                Sign in to view architecture, benchmarks, code usage, and direct resources for this AI model.
+              </p>
+              <div className="flex items-center gap-3">
+                <SignInButton mode="modal">
+                  <button className="px-5 py-2.5 rounded-xl font-medium text-sm transition-all bg-white/10 text-white hover:bg-white/20 border border-white/10">
+                    Login
+                  </button>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <button className="px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white shadow-md shadow-cyan-500/20">
+                    Create Account
+                  </button>
+                </SignUpButton>
+              </div>
+            </div>
+          )}
+
+          <div className={`flex-1 px-7 py-6 space-y-6 ${!user ? 'overflow-hidden opacity-30 blur-md pointer-events-none select-none' : 'overflow-y-auto'}`}>
 
           {/* Meta grid */}
           <div className="grid grid-cols-2 gap-3">
@@ -191,6 +218,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ entry, onClose }) => {
               </div>
             </div>
           )}
+          </div>
         </div>
       </div>
     </div>

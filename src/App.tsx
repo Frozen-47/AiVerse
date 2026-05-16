@@ -9,14 +9,17 @@ import { EntryCard } from "./components/EntryCard";
 import { DetailModal } from "./components/DetailModal";
 import { AddModal } from "./components/AddModal";
 import { ChatWidget } from "./components/ChatWidget";
+import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
 import type { Entry, Theme, TypeFilter, TaskFilter } from "./types";
 import { fetchEntries } from "./lib/supabase";
+import { useUser } from "@clerk/clerk-react";
 import { typeFilters as staticTypeFilters, taskFilters as staticTaskFilters } from "./data";
 
 // ─── Inner app (needs theme context) ─────────────────────────────────────────
 const Inner: React.FC = () => {
   const t = useTokens();
   const { theme } = useTheme();
+  const { user, isLoaded } = useUser();
   const [entries, setEntries] = useState<Entry[]>([]);
   const [typeFilters, setTypeFilters] = useState<string[]>([]);
   const [taskFilters, setTaskFilters] = useState<string[]>([]);
@@ -31,6 +34,7 @@ const Inner: React.FC = () => {
   const [showBackendToast, setShowBackendToast] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [showMobileSidebar, setShowMobileSidebar] = useState(false);
+  const [hideWelcome, setHideWelcome] = useState(false);
 
   useEffect(() => {
     fetchEntries()
@@ -306,6 +310,11 @@ const Inner: React.FC = () => {
             </span>
           </div>
         </div>
+      )}
+
+      {/* Welcome Onboarding Modal */}
+      {isLoaded && user && !user.firstName && !hideWelcome && (
+        <WelcomeOnboarding onComplete={() => setHideWelcome(true)} />
       )}
 
       {/* Groq AI Agent */}

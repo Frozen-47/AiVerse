@@ -79,8 +79,8 @@ const TypewriterMarkdown = ({ content, onComplete }: { content: string, onComple
   return <ReactMarkdown components={markdownComponents}>{displayed}</ReactMarkdown>;
 };
 
-const INITIAL_MESSAGES: Message[] = [
-  { role: 'assistant', content: 'Hi there! I am Vox. How can I help you navigate the world of AI today?' }
+const getInitialMessages = (name?: string | null): Message[] => [
+  { role: 'assistant', content: name ? `Hi ${name}! I am Vox. How can I help you navigate the world of AI today?` : 'Hi there! I am Vox. How can I help you navigate the world of AI today?' }
 ];
 
 const GeminiIcon = ({ size, className = "" }: { size?: number | string, className?: string }) => (
@@ -99,6 +99,9 @@ const GeminiIcon = ({ size, className = "" }: { size?: number | string, classNam
 export const ChatWidget: React.FC = () => {
   const t = useTokens();
   const { user } = useUser();
+  const userId = user?.id || null;
+  const userName = user?.firstName || user?.username || null;
+
   const [isOpen, setIsOpen] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
   const [messages, setMessages] = useState<Message[]>(() => {
@@ -106,15 +109,34 @@ export const ChatWidget: React.FC = () => {
       const saved = localStorage.getItem('vox_chat_history');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Date.now() - parsed.timestamp < 60 * 60 * 1000 && parsed.messages?.length > 0) {
+        if (parsed.userId === userId && Date.now() - parsed.timestamp < 60 * 60 * 1000 && parsed.messages?.length > 0) {
           return parsed.messages;
         }
       }
     } catch (e) {
       console.error('Error loading chat history', e);
     }
-    return INITIAL_MESSAGES;
+    return getInitialMessages(userName);
   });
+  
+  // Clear chat history whenever the authenticated user changes
+  const previousUserId = useRef(userId);
+  const previousUserName = useRef(userName);
+  
+  useEffect(() => {
+    // If the user logs into a different account, completely wipe the chat
+    if (previousUserId.current !== userId) {
+      setMessages(getInitialMessages(userName));
+      localStorage.removeItem('vox_chat_history');
+      previousUserId.current = userId;
+      previousUserName.current = userName;
+    } 
+    // If the user's name updates (e.g. from the Welcome Modal) and they haven't chatted yet, update the greeting
+    else if (previousUserName.current !== userName && messages.length <= 1) {
+      setMessages(getInitialMessages(userName));
+      previousUserName.current = userName;
+    }
+  }, [userId, userName, messages.length]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [suggestions, setSuggestions] = useState<string[]>([]);
@@ -142,6 +164,7 @@ export const ChatWidget: React.FC = () => {
     try {
       if (messages.length > 1) {
         localStorage.setItem('vox_chat_history', JSON.stringify({
+          userId: userId,
           timestamp: Date.now(),
           messages: messages.map(m => ({ ...m, isTyping: false }))
         }));
@@ -153,8 +176,9 @@ export const ChatWidget: React.FC = () => {
     }
   }, [messages]);
 
+
   const clearChat = () => {
-    setMessages(INITIAL_MESSAGES);
+    setMessages(getInitialMessages(userName));
     localStorage.removeItem('vox_chat_history');
   };
 
