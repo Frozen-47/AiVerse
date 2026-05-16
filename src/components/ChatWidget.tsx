@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { X, Send, Minimize2, Maximize2, RefreshCw, Copy, Check, AlertCircle, RotateCcw, ExternalLink } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { useTokens } from '../lib/theme';
+import { useUser } from '@clerk/clerk-react';
 // Client-side Groq initialization removed for security.
 // We now use the Vercel Serverless Function at /api/chat
 
@@ -97,6 +98,7 @@ const GeminiIcon = ({ size, className = "" }: { size?: number | string, classNam
 
 export const ChatWidget: React.FC = () => {
   const t = useTokens();
+  const { user } = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
   const [messages, setMessages] = useState<Message[]>(() => {
@@ -210,6 +212,7 @@ export const ChatWidget: React.FC = () => {
         },
         body: JSON.stringify({
           messages: [...requestMessages, userMessage],
+          userName: user?.firstName || user?.username || undefined
         }),
       });
 

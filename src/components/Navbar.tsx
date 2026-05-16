@@ -59,8 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
               <button
                 className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
               >
-                <Plus size={16} />
-                Add Entry
+                Login
               </button>
             </SignInButton>
           </SignedOut>
