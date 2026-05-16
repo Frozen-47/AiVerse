@@ -3,7 +3,7 @@
 CREATE TABLE entries (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   created_at TIMESTAMPTZ DEFAULT now(),
-  name TEXT NOT NULL,
+  name TEXT NOT NULL UNIQUE,
   org TEXT,
   type TEXT NOT NULL,
   task TEXT NOT NULL,
