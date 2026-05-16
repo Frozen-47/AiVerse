@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { Server, Filter, X, Check } from "lucide-react";
+import { Filter, X, Check } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
@@ -131,6 +131,8 @@ const Inner: React.FC = () => {
     };
     setEntries((prev) => [complete, ...prev]);
     setIsAdding(false);
+    setShowBackendToast(true);
+    setTimeout(() => setShowBackendToast(false), 3500);
   };
 
   if (isLoading) {
