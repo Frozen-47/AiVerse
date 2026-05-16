@@ -41,7 +41,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
     }
 
-    const catalogContext = entries.map((e: any) => `- ${e.name} (Type: ${e.type}, Task: ${e.task || 'General'}): ${e.summary || ''}${e.url ? ` URL: ${e.url}` : ''}`).join('\n');
+    // Optimize the context payload: only include name, type, task, and URL to save ~90% of tokens
+    // We explicitly remove the summary because 153 summaries = ~9000 tokens per request!
+    const catalogContext = entries.map((e: any) => `- **${e.name}** (${e.type}, ${e.task || 'General'})${e.url ? ` - URL: ${e.url}` : ''}`).join('\n');
 
     const nameStr = userName ? `The user's name is ${userName}. Greet them or address them by this name occasionally to be polite and personal.` : '';
 
@@ -53,7 +55,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const chatCompletion = await groq.chat.completions.create({
       messages: [systemPrompt, ...sanitizedMessages],
-      model: 'llama-3.3-70b-versatile',
+      model: 'llama-3.1-8b-instant', // Switched to 8B model to bypass the 70B daily rate limit
       temperature: 0.5,
       max_tokens: 1024,
     });

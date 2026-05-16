@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
 import { Plus, Moon, Sun } from "lucide-react";
 import { useTokens, useTheme } from "../lib/theme";
 
@@ -55,13 +55,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
           </SignedIn>
           
           <SignedOut>
-            <SignInButton mode="modal">
-              <button
-                className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
-              >
-                Login
-              </button>
-            </SignInButton>
+            <div className="flex items-center gap-2">
+              <SignInButton mode="modal">
+                <button
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
+                >
+                  Login
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white shadow-md shadow-cyan-500/20`}
+                >
+                  Create Account
+                </button>
+              </SignUpButton>
+            </div>
           </SignedOut>
         </div>
       </div>
