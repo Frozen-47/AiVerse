@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { X, Send, Minimize2, Maximize2, RefreshCw, Copy, Check, AlertCircle, RotateCcw } from 'lucide-react';
+import { X, Send, Minimize2, Maximize2, RefreshCw, Copy, Check, AlertCircle, RotateCcw, ExternalLink } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { useTokens } from '../lib/theme';
 // Client-side Groq initialization removed for security.
@@ -47,7 +47,12 @@ const markdownComponents = {
   strong: ({node, ...props}: any) => <strong className="font-semibold text-blue-400" {...props} />,
   code: ({node, ...props}: any) => <code className="bg-black/20 rounded px-1 py-0.5 font-mono text-[11px]" {...props} />,
   pre: ({node, ...props}: any) => <pre className="bg-black/30 rounded p-2 overflow-x-auto my-2 font-mono text-[11px]" {...props} />,
-  a: ({node, ...props}: any) => <a className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors" target="_blank" rel="noopener noreferrer" {...props} />,
+  a: ({node, children, ...props}: any) => (
+    <a className="inline-flex items-baseline gap-1 text-blue-400 hover:text-blue-300 transition-colors font-medium" target="_blank" rel="noopener noreferrer" {...props}>
+      <span className="underline underline-offset-2">{children}</span>
+      <ExternalLink size={11} className="shrink-0 self-center" />
+    </a>
+  ),
 };
 
 const TypewriterMarkdown = ({ content, onComplete }: { content: string, onComplete: () => void }) => {
