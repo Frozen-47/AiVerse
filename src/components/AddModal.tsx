@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { X, Plus, Server } from "lucide-react";
 import { useTokens } from "../lib/theme";
 import type { Entry } from "../types";
@@ -35,6 +35,13 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
   const t = useTokens();
   const [entry, setEntry] = useState<PartialEntry>(emptyEntry());
   const [showBackendMsg, setShowBackendMsg] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
 
   const inputCls = `w-full px-3 py-2.5 rounded-xl text-[13px] border focus:outline-none transition-all ${t.input}`;
   const labelCls = `block text-[10px] font-semibold uppercase tracking-widest mb-1.5 ${t.textMuted}`;
@@ -83,10 +90,10 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
           <p className={`text-[12px] mt-0.5 ${t.textMuted}`}>Contribute to the AiVerse directory</p>
         </div>
 
-        {/* ── Scrollable body (hidden scrollbar) ── */}
+        {/* ── Scrollable body ── */}
         <form
           onSubmit={handleSubmit}
-          className="flex-1 overflow-y-auto px-7 py-6 space-y-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex-1 overflow-y-auto px-7 py-6 space-y-4"
         >
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2 sm:col-span-1">

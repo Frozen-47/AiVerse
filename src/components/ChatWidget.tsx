@@ -47,6 +47,7 @@ const markdownComponents = {
   strong: ({node, ...props}: any) => <strong className="font-semibold text-blue-400" {...props} />,
   code: ({node, ...props}: any) => <code className="bg-black/20 rounded px-1 py-0.5 font-mono text-[11px]" {...props} />,
   pre: ({node, ...props}: any) => <pre className="bg-black/30 rounded p-2 overflow-x-auto my-2 font-mono text-[11px]" {...props} />,
+  a: ({node, ...props}: any) => <a className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors" target="_blank" rel="noopener noreferrer" {...props} />,
 };
 
 const TypewriterMarkdown = ({ content, onComplete }: { content: string, onComplete: () => void }) => {
@@ -76,16 +77,16 @@ const INITIAL_MESSAGES: Message[] = [
   { role: 'assistant', content: 'Hi there! I am Vox. How can I help you navigate the world of AI today?' }
 ];
 
-const ZapFastIcon = ({ size, className = "" }: { size?: number | string, className?: string }) => (
+const GeminiIcon = ({ size, className = "" }: { size?: number | string, className?: string }) => (
   <svg
     width={size || "1em"}
     height={size || "1em"}
-    viewBox="0 -960 960 960"
+    viewBox="0 0 24 24"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
     className={className}
   >
-    <path d="m480-336 128-184H494l80-280H360v320h120v144ZM400-80v-320H280v-480h400l-80 280h160L400-80Zm80-400H360h120Z" />
+    <path d="M12 2.5C12 7.7467 16.2533 12 21.5 12C16.2533 12 12 16.2533 12 21.5C12 16.2533 7.7467 12 2.5 12C7.7467 12 12 7.7467 12 2.5Z" />
   </svg>
 );
 
@@ -256,8 +257,8 @@ export const ChatWidget: React.FC = () => {
         onClick={() => setIsOpen(true)}
         className={`group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center p-2 sm:p-2.5 rounded-full shadow-2xl transition-all duration-500 ease-in-out hover:scale-105 ${t.btnPrimary}`}
       >
-        <ZapFastIcon 
-          className="w-6 h-6 sm:w-9 sm:h-9 transition-transform duration-500 ease-in-out group-hover:rotate-12" 
+        <GeminiIcon 
+          className="w-6 h-6 sm:w-9 sm:h-9 transition-transform duration-500 ease-in-out group-hover:rotate-45" 
         />
         <div className="grid grid-cols-[0fr] group-hover:grid-cols-[1fr] transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">
           <div className="overflow-hidden whitespace-nowrap">
@@ -281,7 +282,7 @@ export const ChatWidget: React.FC = () => {
       <div className={`flex items-center justify-between px-4 py-3 border-b ${t.border}`}>
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white">
-            <ZapFastIcon size={18} />
+            <GeminiIcon size={18} />
           </div>
           <div>
             <h3 className={`font-semibold text-sm ${t.textPrimary}`}>Agent Vox</h3>

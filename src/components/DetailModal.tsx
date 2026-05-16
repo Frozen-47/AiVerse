@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { X, Star, ExternalLink, Copy, Check } from "lucide-react";
 import { useTokens, typeBadge, taskBadge, TYPE_GLYPH, typeIcon } from "../lib/theme";
 import type { Entry } from "../types";
@@ -11,6 +11,13 @@ interface DetailModalProps {
 export const DetailModal: React.FC<DetailModalProps> = ({ entry, onClose }) => {
   const t = useTokens();
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(entry.usage ?? "");
@@ -68,8 +75,8 @@ export const DetailModal: React.FC<DetailModalProps> = ({ entry, onClose }) => {
           <p className={`text-[13.5px] leading-relaxed ${t.textSecondary}`}>{entry.summary}</p>
         </div>
 
-        {/* Scrollable body (no scrollbar) */}
-        <div className="flex-1 overflow-y-auto px-7 py-6 space-y-6 no-scrollbar">
+        {/* Scrollable body */}
+        <div className="flex-1 overflow-y-auto px-7 py-6 space-y-6">
 
           {/* Meta grid */}
           <div className="grid grid-cols-2 gap-3">
@@ -122,7 +129,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ entry, onClose }) => {
                   </div>
                 </div>
                 {/* Code body — white bg in light theme, dark in amoled (via t.code token) */}
-                <pre className={`px-5 py-4 text-[12px] font-mono overflow-x-auto leading-relaxed no-scrollbar ${t.code}`}>
+                <pre className={`px-5 py-4 text-[12px] font-mono overflow-x-auto leading-relaxed ${t.code}`}>
                   {entry.usage}
                 </pre>
               </div>
