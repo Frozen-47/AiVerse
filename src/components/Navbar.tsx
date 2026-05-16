@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton, useUser } from "@clerk/clerk-react";
 import { Plus, Moon, Sun } from "lucide-react";
 import { useTokens, useTheme } from "../lib/theme";
 
@@ -10,6 +10,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
   const t = useTokens();
   const { theme, setTheme } = useTheme();
+  const { user } = useUser();
 
   return (
     <nav className={`sticky top-0 z-40 border-b ${t.page} ${t.border} backdrop-blur-sm`}>
@@ -43,7 +44,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
               <Plus size={16} />
               Add Entry
             </button>
-            <div className="ml-1 pl-3 border-l border-white/10 flex items-center">
+            <div className="ml-1 pl-3 border-l border-white/10 flex items-center gap-2.5">
+              <span className={`text-sm font-semibold hidden sm:block ${t.textPrimary}`}>
+                Hi, {user?.firstName || "Guest"}
+              </span>
               <UserButton 
                 appearance={{
                   elements: {
