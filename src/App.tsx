@@ -283,7 +283,7 @@ const Inner: React.FC = () => {
       </footer>
 
       {selected && <DetailModal entry={selected} onClose={() => setSelected(null)} />}
-      {isAdding && <AddModal typeFilters={typeFilters} taskFilters={taskFilters} onClose={() => setIsAdding(false)} onSubmit={handleAdd} />}
+      {isAdding && <AddModal typeFilters={staticTypeFilters} taskFilters={staticTaskFilters} onClose={() => setIsAdding(false)} onSubmit={handleAdd} />}
 
       {/* Global Toast Notification */}
       {showBackendToast && (
