@@ -1,4 +1,4 @@
-import React from "react";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import { Plus, Moon, Sun } from "lucide-react";
 import { useTokens, useTheme } from "../lib/theme";
 
@@ -35,13 +35,35 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
             {theme === "amoled" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           
-          <button
-            onClick={onAddEntry}
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
-          >
-            <Plus size={16} />
-            Add Entry
-          </button>
+          <SignedIn>
+            <button
+              onClick={onAddEntry}
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
+            >
+              <Plus size={16} />
+              Add Entry
+            </button>
+            <div className="ml-1 pl-3 border-l border-white/10 flex items-center">
+              <UserButton 
+                appearance={{
+                  elements: {
+                    userButtonAvatarBox: "w-8 h-8 rounded-lg",
+                  }
+                }}
+              />
+            </div>
+          </SignedIn>
+          
+          <SignedOut>
+            <SignInButton mode="modal">
+              <button
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
+              >
+                <Plus size={16} />
+                Add Entry
+              </button>
+            </SignInButton>
+          </SignedOut>
         </div>
       </div>
     </nav>
