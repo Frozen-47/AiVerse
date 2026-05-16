@@ -1,10 +1,15 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import Groq from 'groq-sdk';
+import { createClient } from '@supabase/supabase-js';
 
 // Initialize Groq client with environment variable
 // Vercel securely injects this at runtime
 const groqApiKey = process.env.GROQ_API_KEY;
 const groq = groqApiKey ? new Groq({ apiKey: groqApiKey }) : null;
+
+const supabaseUrl = process.env.VITE_SUPABASE_URL;
+const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY;
+const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
@@ -27,14 +32,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Sanitize messages to remove UI-specific properties like 'isTyping'
     const sanitizedMessages = messages.map(({ role, content }) => ({ role, content }));
 
-    // Construct catalog context server-side by fetching the static data payload
-    const protocol = req.headers['x-forwarded-proto'] || 'http';
-    const host = req.headers['x-forwarded-host'] || req.headers.host;
-    const dataUrl = `${protocol}://${host}/data.json`;
-
-    const dataRes = await fetch(dataUrl);
-    const data = await dataRes.json();
-    const entries = data.entries || [];
+    // Construct catalog context server-side by fetching the dynamic data from Supabase
+    let entries = [];
+    if (supabase) {
+      const { data, error } = await supabase.from('entries').select('*').order('created_at', { ascending: false });
+      if (!error && data) {
+        entries = data;
+      }
+    }
 
     const catalogContext = entries.map((e: any) => `- ${e.name} (Type: ${e.type}, Task: ${e.task || 'General'}): ${e.summary || ''}${e.url ? ` URL: ${e.url}` : ''}`).join('\n');
 

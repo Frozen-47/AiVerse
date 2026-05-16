@@ -60,15 +60,32 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
     set({ citations: updated });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!entry.name || !entry.summary) return;
     
-    setShowBackendMsg(true);
-    setTimeout(() => {
+    setShowBackendMsg(true); // Wait message
+    try {
+      const { insertEntry } = await import('../lib/supabase');
+      
+      const toSubmit = { ...entry };
+      // Ensure citations is a string or correct JSON if needed. Supabase handles JSONB arrays directly if we pass an array of objects.
+      
+      const inserted = await insertEntry(toSubmit);
+      
+      if (inserted && inserted.length > 0) {
+        _onSubmit(inserted[0]);
+      } else {
+        _onSubmit(entry); // Fallback
+      }
+    } catch (err) {
+      console.error("Failed to insert entry:", err);
+      // Fallback for UI if db fails
+      _onSubmit(entry);
+    } finally {
       setShowBackendMsg(false);
       onClose();
-    }, 3000);
+    }
   };
 
   return (

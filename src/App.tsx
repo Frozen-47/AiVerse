@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { Server, Filter, X } from "lucide-react";
+import { Server, Filter, X, Check } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
@@ -10,6 +10,8 @@ import { DetailModal } from "./components/DetailModal";
 import { AddModal } from "./components/AddModal";
 import { ChatWidget } from "./components/ChatWidget";
 import type { Entry, Theme, TypeFilter, TaskFilter } from "./types";
+import { fetchEntries } from "./lib/supabase";
+import { typeFilters as staticTypeFilters, taskFilters as staticTaskFilters } from "./data";
 
 // ─── Inner app (needs theme context) ─────────────────────────────────────────
 const Inner: React.FC = () => {
@@ -31,23 +33,21 @@ const Inner: React.FC = () => {
   const [showMobileSidebar, setShowMobileSidebar] = useState(false);
 
   useEffect(() => {
-    fetch('/data.json')
-      .then(res => res.json())
+    fetchEntries()
       .then(data => {
-        setEntries(data.entries || []);
-        setTypeFilters(data.typeFilters || ["All"]);
-        setTaskFilters(data.taskFilters || ["All Tasks"]);
+        setEntries(data || []);
+        setTypeFilters(staticTypeFilters || ["All"]);
+        setTaskFilters(staticTaskFilters || ["All Tasks"]);
         setIsLoading(false);
       })
       .catch(err => {
-        console.error("Failed to load catalog", err);
+        console.error("Failed to load catalog from Supabase", err);
         setIsLoading(false);
       });
   }, []);
 
   const handleAddClick = () => {
-    setShowBackendToast(true);
-    setTimeout(() => setShowBackendToast(false), 3500);
+    setIsAdding(true);
   };
 
   // Reset to page 1 and scroll to top when filters change
@@ -298,10 +298,9 @@ const Inner: React.FC = () => {
       {showBackendToast && (
         <div className="fixed bottom-24 right-6 z-50 animate-[fadeUp_0.15s_ease-out]">
           <div className={`p-4 rounded-xl border flex items-center gap-3 text-[13px] font-medium shadow-2xl backdrop-blur-xl ${t.errorToast}`}>
-            <Server size={18} className="shrink-0" />
+            <Check size={18} className="shrink-0 text-emerald-400" />
             <span>
-              Backend integration is currently in progress.<br/>
-              Entry submissions are temporarily disabled.
+              Entry successfully added to the database!
             </span>
           </div>
         </div>
