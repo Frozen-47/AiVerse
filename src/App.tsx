@@ -145,7 +145,7 @@ const Inner: React.FC = () => {
 
       <Navbar onAddEntry={handleAddClick} entryCount={entries.length} />
 
-      <div className="w-full px-6 xl:px-12 py-8">
+      <div className="w-full px-4 sm:px-6 xl:px-12 py-8">
         {/* Hero */}
         <div className="mb-10">
           <div className={`inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest border rounded-full px-4 py-1.5 mb-5 ${t.surface} ${t.border} ${t.textMuted}`}>
@@ -241,22 +241,23 @@ const Inner: React.FC = () => {
                       Prev
                     </button>
                     
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                      <button
-                        key={page}
-                        onClick={() => {
-                          setCurrentPage(page);
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}
-                        className={`w-8 h-8 rounded-lg text-sm font-bold transition-all flex items-center justify-center ${
-                          currentPage === page 
-                            ? t.btnPrimary 
-                            : `${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`
-                        }`}
-                      >
-                        {page}
-                      </button>
-                    ))}
+                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-xl shadow-sm border ${t.surface} ${t.border} mx-3`}>
+                      {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                        <button
+                          key={page}
+                          onClick={() => {
+                            setCurrentPage(page);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }}
+                          className={`relative transition-all duration-300 ease-out ${
+                            currentPage === page 
+                              ? 'w-6 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]' 
+                              : `w-2 h-2 rounded-full ${t.textMuted} bg-current opacity-40 hover:opacity-100 hover:bg-cyan-500/30`
+                          }`}
+                          aria-label={`Page ${page}`}
+                        />
+                      ))}
+                    </div>
 
                     <button
                       onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}

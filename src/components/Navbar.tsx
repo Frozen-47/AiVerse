@@ -22,7 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
 
   return (
     <nav className={`sticky top-0 z-40 border-b ${t.page} ${t.border} backdrop-blur-sm`}>
-      <div className="w-full px-6 xl:px-12 h-16 flex items-center justify-between">
+      <div className="w-full px-4 sm:px-6 xl:px-12 h-16 flex items-center justify-between">
 
         {/* Left: logo + entry count */}
         <div className="flex items-center gap-3">
@@ -64,7 +64,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
             </span>
           </a>
 
-          <span className={`text-xs font-semibold whitespace-nowrap ${t.textMuted}`}>
+          <span className={`hidden sm:inline-block text-xs font-semibold whitespace-nowrap ${t.textMuted}`}>
             {entryCount} entries
           </span>
         </div>
@@ -82,10 +82,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
           <SignedIn>
             <button
               onClick={onAddEntry}
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
+              className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
             >
               <Plus size={16} />
-              Add Entry
+              <span className="hidden sm:inline">Add Entry</span>
             </button>
             <div className="ml-1 pl-3 border-l border-white/10 flex items-center gap-2.5">
               <span className={`text-sm font-semibold hidden sm:block ${t.textPrimary}`}>
@@ -103,16 +103,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
             <div className="flex items-center gap-2">
               <SignInButton mode="modal">
                 <button
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
+                  className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
                 >
                   Login
                 </button>
               </SignInButton>
               <SignUpButton mode="modal">
                 <button
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white shadow-md shadow-cyan-500/20`}
+                  className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-semibold text-sm transition-all bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white shadow-md shadow-cyan-500/20`}
                 >
-                  Create Account
+                  <span className="hidden sm:inline">Create Account</span>
+                  <span className="sm:hidden">Sign Up</span>
                 </button>
               </SignUpButton>
             </div>
