@@ -15,6 +15,15 @@ import { fetchEntries } from "./lib/supabase";
 import { useUser, ClerkProvider } from "@clerk/clerk-react";
 import { dark } from "@clerk/themes";
 import { typeFilters as staticTypeFilters, taskFilters as staticTaskFilters } from "./data";
+import {
+  loadGuestOnboarding,
+  parseClerkOnboarding,
+  partitionByInterests,
+  roleHeadline,
+  roleLabel,
+  sortByInterestMatch,
+  type OnboardingProfile,
+} from "./lib/onboarding";
 
 // ─── Inner app (needs theme context) ─────────────────────────────────────────
 const Inner: React.FC = () => {
@@ -35,7 +44,33 @@ const Inner: React.FC = () => {
   const [showBackendToast, setShowBackendToast] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [showMobileSidebar, setShowMobileSidebar] = useState(false);
-  const [hideWelcome, setHideWelcome] = useState(false);
+  const [onboardingProfile, setOnboardingProfile] = useState<OnboardingProfile | null>(null);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+
+    if (user) {
+      const fromClerk = parseClerkOnboarding(user.unsafeMetadata as Record<string, unknown>);
+      if (fromClerk) {
+        setOnboardingProfile(fromClerk);
+        setShowOnboarding(false);
+      } else {
+        setOnboardingProfile(null);
+        setShowOnboarding(true);
+      }
+      return;
+    }
+
+    const guestProfile = loadGuestOnboarding();
+    if (guestProfile) {
+      setOnboardingProfile(guestProfile);
+      setShowOnboarding(false);
+    } else {
+      setOnboardingProfile(null);
+      setShowOnboarding(true);
+    }
+  }, [user, isLoaded]);
 
   useEffect(() => {
     fetchEntries()
@@ -112,9 +147,37 @@ const Inner: React.FC = () => {
     }),
   [entries, typeFilter, taskFilter, popularOnly, search]);
 
+  const personalized = useMemo(() => {
+    const interests = onboardingProfile?.interests ?? [];
+    if (!interests.length) {
+      return { forYou: [] as Entry[], explore: filtered, displayList: filtered };
+    }
+    const ranked = sortByInterestMatch(filtered, interests);
+    const { forYou, explore } = partitionByInterests(ranked, interests);
+    const displayList = [...forYou, ...explore];
+    return { forYou, explore, displayList };
+  }, [filtered, onboardingProfile]);
+
   const ITEMS_PER_PAGE = 12;
-  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
-  const paginatedEntries = filtered.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+  const listForPagination = personalized.displayList;
+  const totalPages = Math.ceil(listForPagination.length / ITEMS_PER_PAGE);
+  const paginatedEntries = listForPagination.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
+  const forYouNames = new Set(personalized.forYou.map((e) => e.name));
+  const showPersonalizedSections =
+    (onboardingProfile?.interests.length ?? 0) > 0 &&
+    !search &&
+    typeFilter === "All" &&
+    taskFilter === "All Tasks" &&
+    !popularOnly;
+  const pageForYou = showPersonalizedSections
+    ? paginatedEntries.filter((e) => forYouNames.has(e.name))
+    : [];
+  const pageExplore = showPersonalizedSections
+    ? paginatedEntries.filter((e) => !forYouNames.has(e.name))
+    : paginatedEntries;
 
   const handleAdd = (_partial: Partial<Entry>) => {
     // We no longer append to the local UI state immediately.
@@ -159,7 +222,15 @@ const Inner: React.FC = () => {
             </span>
           </h1>
           <p className={`text-[15px] leading-relaxed max-w-xl font-light ${t.textSecondary}`}>
-            A citation-backed encyclopedia of models, frameworks, datasets, and platforms — built for builders.
+            {onboardingProfile?.interests.length ? (
+              <>
+                Hi{user?.firstName ? ` ${user.firstName}` : ""} — here are{" "}
+                {roleHeadline(onboardingProfile.role)} as a{" "}
+                <span className={t.textAccent}>{roleLabel(onboardingProfile.role).toLowerCase()}</span>.
+              </>
+            ) : (
+              "A citation-backed encyclopedia of models, frameworks, datasets, and platforms — built for builders."
+            )}
           </p>
         </div>
 
@@ -220,13 +291,35 @@ const Inner: React.FC = () => {
               </div>
             ) : (
               <div className="flex flex-col">
+                {pageForYou.length > 0 && (
+                  <section className="mb-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <h2 className={`text-lg font-bold tracking-tight ${t.textPrimary}`}>
+                        Picked for you
+                      </h2>
+                      <span className={`text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border ${t.surface} ${t.border} ${t.textMuted}`}>
+                        {personalized.forYou.length} matches
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                      {pageForYou.map((entry, i) => (
+                        <EntryCard
+                          key={entry.name}
+                          entry={entry}
+                          onClick={() => setSelected(entry)}
+                          index={i}
+                        />
+                      ))}
+                    </div>
+                  </section>
+                )}
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                  {paginatedEntries.map((entry, i) => (
+                  {pageExplore.map((entry, i) => (
                     <EntryCard
                       key={entry.name}
                       entry={entry}
                       onClick={() => setSelected(entry)}
-                      index={i}
+                      index={i + pageForYou.length}
                     />
                   ))}
                 </div>
@@ -302,8 +395,14 @@ const Inner: React.FC = () => {
       )}
 
       {/* Welcome Onboarding Modal */}
-      {isLoaded && user && !user.firstName && !hideWelcome && (
-        <WelcomeOnboarding onComplete={() => setHideWelcome(true)} />
+      {isLoaded && showOnboarding && (
+        <WelcomeOnboarding
+          isGuest={!user}
+          onComplete={(profile) => {
+            setOnboardingProfile(profile);
+            setShowOnboarding(false);
+          }}
+        />
       )}
 
       {/* Groq AI Agent */}
