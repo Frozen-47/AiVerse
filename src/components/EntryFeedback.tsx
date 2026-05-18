@@ -175,14 +175,14 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
 
   if (unavailable) {
     return (
-      <div className={`border-t pt-6 ${t.border}`}>
+      <div className="pt-6">
         <p className={`text-[13px] leading-relaxed ${t.textSecondary}`}>{error}</p>
       </div>
     );
   }
 
   return (
-    <div className={`border-t pt-6 space-y-6 ${t.border}`}>
+    <div className="pt-6 space-y-6">
       {/* Ratings */}
       <section>
         <p className={`text-[10px] uppercase tracking-widest mb-3 ${t.textMuted}`}>

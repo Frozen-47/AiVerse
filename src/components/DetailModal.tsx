@@ -38,7 +38,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
-      <div className={`relative w-full max-w-2xl max-h-[90vh] flex flex-col rounded-3xl border shadow-2xl ${t.modal} ${t.border}`}>
+      <div className={`relative w-full max-w-2xl sm:max-w-3xl lg:max-w-4xl max-h-[92vh] flex flex-col rounded-3xl border shadow-2xl ${t.modal} ${t.border}`}>
 
         {/* Close */}
         <button
@@ -83,10 +83,11 @@ export const DetailModal: React.FC<DetailModalProps> = ({
           <p className={`text-[13.5px] leading-relaxed ${t.textSecondary}`}>{entry.summary}</p>
         </div>
 
-        {/* Scrollable body */}
-        <div className="relative flex-1 overflow-hidden flex flex-col">
-          {!user && (
-            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center bg-black/60 backdrop-blur-md">
+        {/* Scroll: entry details first, then ratings & comments at the bottom */}
+        <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain">
+          <div className="relative">
+            {!user && (
+              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center bg-black/60 backdrop-blur-md min-h-[280px]">
               <div className="w-14 h-14 rounded-2xl bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-500/30">
                 <Lock size={24} />
               </div>
@@ -109,7 +110,11 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             </div>
           )}
 
-          <div className={`flex-1 px-7 py-6 space-y-6 ${!user ? 'overflow-hidden opacity-30 blur-md pointer-events-none select-none' : 'overflow-y-auto'}`}>
+            <div
+              className={`px-7 py-6 space-y-6 ${
+                !user ? "opacity-30 blur-md pointer-events-none select-none" : ""
+              }`}
+            >
 
           {/* Meta grid */}
           <div className="grid grid-cols-2 gap-3">
@@ -224,9 +229,10 @@ export const DetailModal: React.FC<DetailModalProps> = ({
               </div>
             </div>
           )}
+            </div>
           </div>
 
-          <div className={`shrink-0 px-7 pb-7 border-t ${t.border} overflow-y-auto max-h-[min(48vh,440px)]`}>
+          <div className={`px-7 pb-7 border-t ${t.border}`}>
             <EntryFeedback
               entryName={entry.name}
               onRatingSummaryChange={onRatingSummaryChange}
