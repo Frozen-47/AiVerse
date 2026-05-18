@@ -78,3 +78,18 @@
 .cl-modalContent {
   margin: auto !important;
 }
+
+/* Mobile App Optimizations */
+html, body {
+  overscroll-behavior-y: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Allow text selection in inputs */
+input, textarea {
+  -webkit-user-select: auto;
+  user-select: auto;
+}
