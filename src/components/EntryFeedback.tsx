@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Star, MessageSquare, Loader2 } from "lucide-react";
 import { useUser, SignInButton } from "@clerk/clerk-react";
 import { useTokens } from "../lib/theme";
@@ -12,7 +12,10 @@ import {
 
 interface EntryFeedbackProps {
   entryName: string;
-  onSummaryChange?: (summary: EntryRatingSummary) => void;
+  onRatingSummaryChange?: (
+    entryName: string,
+    summary: EntryRatingSummary,
+  ) => void;
 }
 
 function formatRelativeTime(iso: string): string {
@@ -70,10 +73,12 @@ function StarRow({
 
 export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
   entryName,
-  onSummaryChange,
+  onRatingSummaryChange,
 }) => {
   const t = useTokens();
-  const { user, isLoaded } = useUser();
+  const { user } = useUser();
+  const onRatingSummaryChangeRef = useRef(onRatingSummaryChange);
+  onRatingSummaryChangeRef.current = onRatingSummaryChange;
   const [summary, setSummary] = useState<EntryRatingSummary>({ average: 0, count: 0 });
   const [userRating, setUserRating] = useState<number | null>(null);
   const [comments, setComments] = useState<EntryComment[]>([]);
@@ -82,6 +87,7 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
   const [commentText, setCommentText] = useState("");
   const [commentBusy, setCommentBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [unavailable, setUnavailable] = useState(false);
 
   const userKey = user ? feedbackUserKey(user.id) : undefined;
   const authorName =
@@ -93,23 +99,34 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
   const load = useCallback(async () => {
     setLoading(true);
     setError(null);
+    setUnavailable(false);
     try {
       const data = await fetchEntryFeedback(entryName, userKey);
       setSummary(data.summary);
       setUserRating(data.userRating);
       setComments(data.comments);
-      onSummaryChange?.(data.summary);
-    } catch {
-      setError("Could not load ratings and comments.");
+      onRatingSummaryChangeRef.current?.(entryName, data.summary);
+    } catch (err) {
+      const code =
+        err && typeof err === "object" && "code" in err
+          ? String((err as { code: string }).code)
+          : "";
+      if (code === "42P01" || code === "PGRST205") {
+        setUnavailable(true);
+        setError(
+          "Ratings and comments are not set up yet. Run supabase_entry_feedback.sql in your Supabase SQL editor.",
+        );
+      } else {
+        setError("Could not load ratings and comments.");
+      }
     } finally {
       setLoading(false);
     }
-  }, [entryName, userKey, onSummaryChange]);
+  }, [entryName, userKey]);
 
   useEffect(() => {
-    if (!isLoaded) return;
     void load();
-  }, [isLoaded, load]);
+  }, [load]);
 
   const handleRate = async (rating: number) => {
     if (!user || !userKey) return;
@@ -119,7 +136,7 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
       const next = await upsertEntryRating(entryName, userKey, authorName, rating);
       setUserRating(rating);
       setSummary(next);
-      onSummaryChange?.(next);
+      onRatingSummaryChangeRef.current?.(entryName, next);
     } catch {
       setError("Failed to save your rating.");
     } finally {
@@ -152,6 +169,14 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
     return (
       <div className={`flex items-center justify-center py-10 ${t.textMuted}`}>
         <Loader2 size={20} className="animate-spin" />
+      </div>
+    );
+  }
+
+  if (unavailable) {
+    return (
+      <div className={`border-t pt-6 ${t.border}`}>
+        <p className={`text-[13px] leading-relaxed ${t.textSecondary}`}>{error}</p>
       </div>
     );
   }

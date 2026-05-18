@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useCallback } from "react";
 import { Filter, X, Check } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
@@ -150,12 +150,12 @@ const Inner: React.FC = () => {
     fetchRatingSummaries().then(setRatingSummaries).catch(() => {});
   }, []);
 
-  const handleRatingSummaryChange = (
-    entryName: string,
-    summary: EntryRatingSummary,
-  ) => {
-    setRatingSummaries((prev) => ({ ...prev, [entryName]: summary }));
-  };
+  const handleRatingSummaryChange = useCallback(
+    (entryName: string, summary: EntryRatingSummary) => {
+      setRatingSummaries((prev) => ({ ...prev, [entryName]: summary }));
+    },
+    [],
+  );
 
   const handleAddClick = () => {
     setIsAdding(true);

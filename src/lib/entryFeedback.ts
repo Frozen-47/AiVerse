@@ -64,6 +64,15 @@ export async function fetchRatingSummaries(): Promise<
   return result;
 }
 
+function isMissingTableError(error: { code?: string; message?: string }): boolean {
+  return (
+    error.code === "42P01" ||
+    error.code === "PGRST205" ||
+    (error.message?.includes("entry_ratings") ?? false) ||
+    (error.message?.includes("entry_comments") ?? false)
+  );
+}
+
 export async function fetchEntryFeedback(
   entryName: string,
   userKey?: string,
@@ -76,6 +85,11 @@ export async function fetchEntryFeedback(
       .eq("entry_name", entryName)
       .order("created_at", { ascending: false }),
   ]);
+
+  const tableError = ratingsRes.error ?? commentsRes.error;
+  if (tableError && isMissingTableError(tableError)) {
+    throw tableError;
+  }
 
   if (ratingsRes.error) console.warn("Failed to load ratings", ratingsRes.error);
   if (commentsRes.error) console.warn("Failed to load comments", commentsRes.error);

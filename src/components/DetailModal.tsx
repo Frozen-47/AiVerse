@@ -229,9 +229,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
           <div className={`shrink-0 px-7 pb-7 border-t ${t.border} overflow-y-auto max-h-[min(48vh,440px)]`}>
             <EntryFeedback
               entryName={entry.name}
-              onSummaryChange={(summary) =>
-                onRatingSummaryChange?.(entry.name, summary)
-              }
+              onRatingSummaryChange={onRatingSummaryChange}
             />
           </div>
         </div>
