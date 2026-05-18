@@ -10,7 +10,8 @@ import { DetailModal } from "./components/DetailModal";
 import { AddModal } from "./components/AddModal";
 import { ChatWidget } from "./components/ChatWidget";
 import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
-import type { Entry, Theme, TypeFilter, TaskFilter } from "./types";
+import type { Entry, EntryRatingSummary, Theme, TypeFilter, TaskFilter } from "./types";
+import { fetchRatingSummaries } from "./lib/entryFeedback";
 import { fetchEntries } from "./lib/supabase";
 import { useUser, ClerkProvider } from "@clerk/clerk-react";
 import { dark } from "@clerk/themes";
@@ -52,6 +53,9 @@ const Inner: React.FC = () => {
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [showPreferencesEditor, setShowPreferencesEditor] = useState(false);
   const [prefsToast, setPrefsToast] = useState(false);
+  const [ratingSummaries, setRatingSummaries] = useState<
+    Record<string, EntryRatingSummary>
+  >({});
 
   useEffect(() => {
     if (!isLoaded) return;
@@ -142,7 +146,16 @@ const Inner: React.FC = () => {
         console.error("Failed to load catalog from Supabase", err);
         setIsLoading(false);
       });
+
+    fetchRatingSummaries().then(setRatingSummaries).catch(() => {});
   }, []);
+
+  const handleRatingSummaryChange = (
+    entryName: string,
+    summary: EntryRatingSummary,
+  ) => {
+    setRatingSummaries((prev) => ({ ...prev, [entryName]: summary }));
+  };
 
   const handleAddClick = () => {
     setIsAdding(true);
@@ -370,6 +383,7 @@ const Inner: React.FC = () => {
                           entry={entry}
                           onClick={() => setSelected(entry)}
                           index={i}
+                          ratingSummary={ratingSummaries[entry.name]}
                         />
                       ))}
                     </div>
@@ -382,6 +396,7 @@ const Inner: React.FC = () => {
                       entry={entry}
                       onClick={() => setSelected(entry)}
                       index={i + pageForYou.length}
+                      ratingSummary={ratingSummaries[entry.name]}
                     />
                   ))}
                 </div>
@@ -438,7 +453,13 @@ const Inner: React.FC = () => {
         </p>
       </footer>
 
-      {selected && <DetailModal entry={selected} onClose={() => setSelected(null)} />}
+      {selected && (
+        <DetailModal
+          entry={selected}
+          onClose={() => setSelected(null)}
+          onRatingSummaryChange={handleRatingSummaryChange}
+        />
+      )}
       {isAdding && <AddModal typeFilters={staticTypeFilters} taskFilters={staticTaskFilters} onClose={() => setIsAdding(false)} onSubmit={handleAdd} />}
 
       {/* Global Toast Notification */}

@@ -2,14 +2,20 @@ import React, { useState, useEffect } from "react";
 import { X, Star, ExternalLink, Copy, Check, Lock } from "lucide-react";
 import { useUser, SignInButton, SignUpButton } from "@clerk/clerk-react";
 import { useTokens, typeBadge, taskBadge, TYPE_GLYPH, typeIcon } from "../lib/theme";
-import type { Entry } from "../types";
+import type { Entry, EntryRatingSummary } from "../types";
+import { EntryFeedback } from "./EntryFeedback";
 
 interface DetailModalProps {
   entry: Entry;
   onClose: () => void;
+  onRatingSummaryChange?: (entryName: string, summary: EntryRatingSummary) => void;
 }
 
-export const DetailModal: React.FC<DetailModalProps> = ({ entry, onClose }) => {
+export const DetailModal: React.FC<DetailModalProps> = ({
+  entry,
+  onClose,
+  onRatingSummaryChange,
+}) => {
   const t = useTokens();
   const { user } = useUser();
   const [copied, setCopied] = useState(false);
@@ -218,6 +224,15 @@ export const DetailModal: React.FC<DetailModalProps> = ({ entry, onClose }) => {
               </div>
             </div>
           )}
+          </div>
+
+          <div className={`shrink-0 px-7 pb-7 border-t ${t.border} overflow-y-auto max-h-[min(48vh,440px)]`}>
+            <EntryFeedback
+              entryName={entry.name}
+              onSummaryChange={(summary) =>
+                onRatingSummaryChange?.(entry.name, summary)
+              }
+            />
           </div>
         </div>
       </div>

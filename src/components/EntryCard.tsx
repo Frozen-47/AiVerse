@@ -1,15 +1,21 @@
 import React from "react";
 import { Star, ChevronRight } from "lucide-react";
 import { useTokens, typeBadge, taskBadge, TYPE_GLYPH, typeIcon } from "../lib/theme";
-import type { Entry } from "../types";
+import type { Entry, EntryRatingSummary } from "../types";
 
 interface EntryCardProps {
   entry: Entry;
   onClick: () => void;
   index: number;
+  ratingSummary?: EntryRatingSummary;
 }
 
-export const EntryCard: React.FC<EntryCardProps> = ({ entry, onClick, index }) => {
+export const EntryCard: React.FC<EntryCardProps> = ({
+  entry,
+  onClick,
+  index,
+  ratingSummary,
+}) => {
   const t = useTokens();
 
   return (
@@ -62,10 +68,19 @@ export const EntryCard: React.FC<EntryCardProps> = ({ entry, onClick, index }) =
 
       {/* Footer */}
       <div className={`flex items-center justify-between pt-3 border-t ${t.border}`}>
-        <span className={`text-[11px] font-mono truncate max-w-[65%] ${t.textMuted}`}>
-          {entry.size}
-        </span>
-        <div className="flex items-center gap-1.5">
+        <div className="flex flex-col gap-0.5 min-w-0">
+          <span className={`text-[11px] font-mono truncate max-w-full ${t.textMuted}`}>
+            {entry.size}
+          </span>
+          {ratingSummary && ratingSummary.count > 0 && (
+            <span className={`inline-flex items-center gap-1 text-[10px] font-semibold ${t.textSecondary}`}>
+              <Star size={10} className="fill-amber-400 text-amber-400 shrink-0" />
+              {ratingSummary.average.toFixed(1)}
+              <span className={t.textMuted}>({ratingSummary.count})</span>
+            </span>
+          )}
+        </div>
+        <div className="flex items-center gap-1.5 shrink-0">
           <span className={`text-[11px] ${t.textMuted}`}>{entry.year}</span>
           <ChevronRight
             size={13}

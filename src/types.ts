@@ -26,3 +26,23 @@ export interface Entry {
 
 export type TypeFilter = "All" | Entry["type"];
 export type TaskFilter = "All Tasks" | Entry["task"];
+
+export interface EntryRatingSummary {
+  average: number;
+  count: number;
+}
+
+export interface EntryComment {
+  id: string;
+  entryName: string;
+  userKey: string;
+  authorName: string;
+  body: string;
+  createdAt: string;
+}
+
+export interface EntryFeedbackData {
+  summary: EntryRatingSummary;
+  userRating: number | null;
+  comments: EntryComment[];
+}
