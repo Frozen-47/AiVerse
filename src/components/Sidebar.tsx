@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo, useMemo } from "react";
 import { Star, Layers, Box, Database, Server, LayoutGrid, Bot } from "lucide-react";
 import { useTokens, taskColor, taskActiveColor, typeActiveColor } from "../lib/theme";
 import type { Entry, TypeFilter, TaskFilter } from "../types";
@@ -14,6 +14,9 @@ interface SidebarProps {
   onTypeFilter: (f: TypeFilter) => void;
   onTaskFilter: (f: TaskFilter) => void;
   onPopularToggle: () => void;
+  savedOnly?: boolean;
+  savedCount?: number;
+  onSavedToggle?: () => void;
 }
 
 const TYPE_ICONS: Record<string, React.ReactNode> = {
@@ -27,7 +30,7 @@ const TYPE_ICONS: Record<string, React.ReactNode> = {
 
 
 
-export const Sidebar: React.FC<SidebarProps> = ({
+export const Sidebar = memo(function Sidebar({
   entries,
   currentFilter,
   currentTask,
@@ -38,20 +41,31 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onTypeFilter,
   onTaskFilter,
   onPopularToggle,
-}) => {
+  savedOnly,
+  savedCount = 0,
+  onSavedToggle,
+}: SidebarProps) {
   const t = useTokens();
 
-  const typeCounts = typeFilters.reduce<Record<string, number>>((acc, f) => {
-    acc[f] = f === "All" ? entries.length : entries.filter((e) => e.type === f).length;
-    return acc;
-  }, {});
-
-  const taskCounts = taskFilters.reduce<Record<string, number>>((acc, f) => {
-    acc[f] = f === "All Tasks" ? entries.length : entries.filter((e) => e.task === f).length;
-    return acc;
-  }, {});
-
-  const popularCount = entries.filter((e) => e.popular).length;
+  const { typeCounts, taskCounts, popularCount } = useMemo(() => {
+    const byType: Record<string, number> = {};
+    const byTask: Record<string, number> = {};
+    let popular = 0;
+    for (const e of entries) {
+      byType[e.type] = (byType[e.type] ?? 0) + 1;
+      byTask[e.task] = (byTask[e.task] ?? 0) + 1;
+      if (e.popular) popular++;
+    }
+    const typeCounts = typeFilters.reduce<Record<string, number>>((acc, f) => {
+      acc[f] = f === "All" ? entries.length : byType[f] ?? 0;
+      return acc;
+    }, {});
+    const taskCounts = taskFilters.reduce<Record<string, number>>((acc, f) => {
+      acc[f] = f === "All Tasks" ? entries.length : byTask[f] ?? 0;
+      return acc;
+    }, {});
+    return { typeCounts, taskCounts, popularCount: popular };
+  }, [entries, typeFilters, taskFilters]);
 
   return (
     <aside className="w-full flex flex-col gap-6">
@@ -132,6 +146,25 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
       </div>
 
+      {onSavedToggle && (
+        <div>
+          <button
+            onClick={onSavedToggle}
+            className={`
+              w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-[13px] font-medium
+              transition-all duration-150
+              ${savedOnly ? t.sidebarActive : t.sidebarItem}
+            `}
+          >
+            <span className="text-sm">★</span>
+            <span className="flex-1 text-left">Saved only</span>
+            <span className={`text-[11px] tabular-nums font-semibold ${savedOnly ? "" : t.textMuted}`}>
+              {savedCount}
+            </span>
+          </button>
+        </div>
+      )}
+
       {/* Popular toggle */}
       <div>
         <button
@@ -156,4 +189,4 @@ export const Sidebar: React.FC<SidebarProps> = ({
       </div>
     </aside>
   );
-};
+});

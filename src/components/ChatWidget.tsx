@@ -56,28 +56,32 @@ const markdownComponents = {
   ),
 };
 
-const TypewriterMarkdown = ({ content, onComplete }: { content: string, onComplete: () => void }) => {
-  const [displayed, setDisplayed] = useState('');
-  const onCompleteRef = useRef(onComplete);
-  onCompleteRef.current = onComplete;
-  
-  useEffect(() => {
-    let i = 0;
-    const timer = setInterval(() => {
-      i += 3;
-      if (i >= content.length) {
-        setDisplayed(content);
-        clearInterval(timer);
-        onCompleteRef.current();
-      } else {
-        setDisplayed(content.slice(0, i));
+function buildMarkdownComponents(
+  entryNames: string[],
+  onEntrySelect?: (name: string) => void,
+) {
+  return {
+    ...markdownComponents,
+    strong: ({ children }: { children?: React.ReactNode }) => {
+      const text = String(children ?? "").trim();
+      const match = entryNames.find(
+        (n) => n === text || n.toLowerCase() === text.toLowerCase(),
+      );
+      if (match && onEntrySelect) {
+        return (
+          <button
+            type="button"
+            onClick={() => onEntrySelect(match)}
+            className="font-semibold text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
+          >
+            {match}
+          </button>
+        );
       }
-    }, 15);
-    return () => clearInterval(timer);
-  }, [content]);
-
-  return <ReactMarkdown components={markdownComponents}>{displayed}</ReactMarkdown>;
-};
+      return <strong className="font-semibold text-blue-400">{children}</strong>;
+    },
+  };
+}
 
 const getInitialMessages = (name?: string | null): Message[] => [
   { role: 'assistant', content: name ? `Hi ${name}! I am Vox. How can I help you navigate the world of AI today?` : 'Hi there! I am Vox. How can I help you navigate the world of AI today?' }
@@ -96,13 +100,27 @@ const GeminiIcon = ({ size, className = "" }: { size?: number | string, classNam
   </svg>
 );
 
-export const ChatWidget: React.FC = () => {
+interface ChatWidgetProps {
+  entryNames?: string[];
+  onEntrySelect?: (name: string) => void;
+  initialOpen?: boolean;
+}
+
+export const ChatWidget: React.FC<ChatWidgetProps> = ({
+  entryNames = [],
+  onEntrySelect,
+  initialOpen = false,
+}) => {
   const t = useTokens();
   const { user } = useUser();
   const userId = user?.id || null;
   const userName = user?.firstName || user?.username || null;
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(initialOpen);
+  const mdComponents = useRef(
+    buildMarkdownComponents(entryNames, onEntrySelect),
+  );
+  mdComponents.current = buildMarkdownComponents(entryNames, onEntrySelect);
   const [isMaximized, setIsMaximized] = useState(false);
   const [messages, setMessages] = useState<Message[]>(() => {
     try {
@@ -256,7 +274,7 @@ export const ChatWidget: React.FC = () => {
         throw new Error(data.error);
       }
       
-      setMessages(prev => [...prev, { role: 'assistant', content: data.content, isTyping: true }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: data.content }]);
     } catch (error: any) {
       console.error("Groq API Error:", error);
       let errorMessage = "Sorry, I encountered an error communicating with the backend.";
@@ -368,17 +386,8 @@ export const ChatWidget: React.FC = () => {
                       <p className="leading-snug">{msg.content}</p>
                     </div>
                   </div>
-                ) : msg.isTyping ? (
-                  <TypewriterMarkdown 
-                    content={msg.content} 
-                    onComplete={() => {
-                      setMessages(prev => prev.map((m, i) => i === idx ? { ...m, isTyping: false } : m));
-                    }} 
-                  />
                 ) : (
-                  <ReactMarkdown
-                    components={markdownComponents}
-                  >
+                  <ReactMarkdown components={mdComponents.current}>
                     {msg.content}
                   </ReactMarkdown>
                 )}

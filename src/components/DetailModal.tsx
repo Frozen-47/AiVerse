@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { X, Star, ExternalLink, Copy, Check, Lock } from "lucide-react";
+import { X, Star, ExternalLink, Copy, Check, Lock, Link2, Bookmark } from "lucide-react";
+import { shareUrlForEntry } from "../lib/entryUrl";
 import { useUser, SignInButton, SignUpButton } from "@clerk/clerk-react";
 import { useTokens, typeBadge, taskBadge, TYPE_GLYPH, typeIcon } from "../lib/theme";
 import type { Entry, EntryRatingSummary } from "../types";
@@ -9,16 +10,25 @@ interface DetailModalProps {
   entry: Entry;
   onClose: () => void;
   onRatingSummaryChange?: (entryName: string, summary: EntryRatingSummary) => void;
+  relatedEntries?: Entry[];
+  onSelectRelated?: (entry: Entry) => void;
+  isBookmarked?: boolean;
+  onToggleBookmark?: () => void;
 }
 
 export const DetailModal: React.FC<DetailModalProps> = ({
   entry,
   onClose,
   onRatingSummaryChange,
+  relatedEntries = [],
+  onSelectRelated,
+  isBookmarked,
+  onToggleBookmark,
 }) => {
   const t = useTokens();
   const { user } = useUser();
   const [copied, setCopied] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -33,20 +43,43 @@ export const DetailModal: React.FC<DetailModalProps> = ({
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleShareLink = () => {
+    navigator.clipboard.writeText(shareUrlForEntry(entry.name));
+    setLinkCopied(true);
+    setTimeout(() => setLinkCopied(false), 2000);
+  };
+
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
       <div className={`relative w-full max-w-2xl sm:max-w-3xl lg:max-w-4xl max-h-[92vh] flex flex-col rounded-3xl border shadow-2xl ${t.modal} ${t.border}`}>
 
-        {/* Close */}
-        <button
-          onClick={onClose}
-          className={`absolute top-5 right-5 z-10 w-8 h-8 flex items-center justify-center rounded-full border transition-all ${t.surface} ${t.border} ${t.textMuted} hover:${t.textSecondary}`}
-        >
-          <X size={13} />
-        </button>
+        <div className="absolute top-5 right-5 z-10 flex items-center gap-2">
+          <button
+            onClick={handleShareLink}
+            title="Copy share link"
+            className={`w-8 h-8 flex items-center justify-center rounded-full border transition-all ${t.surface} ${t.border} ${linkCopied ? "text-emerald-400" : t.textMuted}`}
+          >
+            {linkCopied ? <Check size={13} /> : <Link2 size={13} />}
+          </button>
+          {onToggleBookmark && (
+            <button
+              onClick={onToggleBookmark}
+              title={isBookmarked ? "Remove bookmark" : "Bookmark"}
+              className={`w-8 h-8 flex items-center justify-center rounded-full border transition-all ${t.surface} ${t.border} ${isBookmarked ? "text-amber-400 border-amber-500/30" : t.textMuted}`}
+            >
+              <Bookmark size={13} className={isBookmarked ? "fill-current" : ""} />
+            </button>
+          )}
+          <button
+            onClick={onClose}
+            className={`w-8 h-8 flex items-center justify-center rounded-full border transition-all ${t.surface} ${t.border} ${t.textMuted} hover:${t.textSecondary}`}
+          >
+            <X size={13} />
+          </button>
+        </div>
 
         {/* Header (fixed) */}
         <div className={`shrink-0 px-7 pt-7 pb-6 border-b ${t.border}`}>
@@ -87,7 +120,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
         <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain">
           <div className="relative">
             {!user && (
-              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center bg-black/60 backdrop-blur-md min-h-[280px]">
+              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center bg-black/70 min-h-[280px]">
               <div className="w-14 h-14 rounded-2xl bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-500/30">
                 <Lock size={24} />
               </div>
@@ -112,7 +145,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
             <div
               className={`px-7 py-6 space-y-6 ${
-                !user ? "opacity-30 blur-md pointer-events-none select-none" : ""
+                !user ? "opacity-25 pointer-events-none select-none" : ""
               }`}
             >
 
@@ -205,6 +238,25 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 <ExternalLink size={12} />
                 {entry.url}
               </a>
+            </div>
+          )}
+
+          {relatedEntries.length > 0 && onSelectRelated && (
+            <div>
+              <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Related entries</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {relatedEntries.map((related) => (
+                  <button
+                    key={related.name}
+                    type="button"
+                    onClick={() => onSelectRelated(related)}
+                    className={`text-left rounded-xl border px-4 py-3 transition-all ${t.surface} ${t.border} hover:border-cyan-500/30`}
+                  >
+                    <p className={`text-[13px] font-semibold ${t.textPrimary}`}>{related.name}</p>
+                    <p className={`text-[11px] mt-0.5 ${t.textMuted}`}>{related.type} · {related.task}</p>
+                  </button>
+                ))}
+              </div>
             </div>
           )}
 

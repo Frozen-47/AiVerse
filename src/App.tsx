@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useCallback } from "react";
+import React, { useState, useMemo, useEffect, useCallback, lazy, Suspense } from "react";
 import { Filter, X, Check } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
@@ -6,10 +6,22 @@ import { Navbar } from "./components/Navbar";
 import { Sidebar } from "./components/Sidebar";
 import { SearchBar } from "./components/SearchBar";
 import { EntryCard } from "./components/EntryCard";
-import { DetailModal } from "./components/DetailModal";
-import { AddModal } from "./components/AddModal";
-import { ChatWidget } from "./components/ChatWidget";
+import { CompareBar } from "./components/CompareBar";
 import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
+import { useDebouncedValue } from "./lib/useDebouncedValue";
+import { loadBookmarks, toggleBookmark } from "./lib/bookmarks";
+import { findEntryBySlug, entryToSlug } from "./lib/entryUrl";
+import { getRelatedEntries } from "./lib/relatedEntries";
+
+const DetailModal = lazy(() =>
+  import("./components/DetailModal").then((m) => ({ default: m.DetailModal })),
+);
+const AddModal = lazy(() =>
+  import("./components/AddModal").then((m) => ({ default: m.AddModal })),
+);
+const ChatWidget = lazy(() =>
+  import("./components/ChatWidget").then((m) => ({ default: m.ChatWidget })),
+);
 import type { Entry, EntryRatingSummary, Theme, TypeFilter, TaskFilter } from "./types";
 import { fetchRatingSummaries } from "./lib/entryFeedback";
 import { fetchEntries } from "./lib/supabase";
@@ -40,7 +52,12 @@ const Inner: React.FC = () => {
   const [taskFilters, setTaskFilters] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   
-  const [search, setSearch] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+  const debouncedSearch = useDebouncedValue(searchInput, 220);
+  const [bookmarks, setBookmarks] = useState<string[]>(() => loadBookmarks());
+  const [compareNames, setCompareNames] = useState<string[]>([]);
+  const [savedOnly, setSavedOnly] = useState(false);
+  const [chatEnabled, setChatEnabled] = useState(false);
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("All");
   const [taskFilter, setTaskFilter] = useState<TaskFilter>("All Tasks");
   const [popularOnly, setPopularOnly] = useState(false);
@@ -161,11 +178,66 @@ const Inner: React.FC = () => {
     setIsAdding(true);
   };
 
-  // Reset to page 1 and scroll to top when filters change
+  const entriesByName = useMemo(() => {
+    const map = new Map<string, Entry>();
+    for (const e of entries) map.set(e.name, e);
+    return map;
+  }, [entries]);
+
+  const entryNames = useMemo(() => entries.map((e) => e.name), [entries]);
+
+  const selectEntryByName = useCallback(
+    (name: string) => {
+      const entry = entriesByName.get(name);
+      if (entry) setSelected(entry);
+    },
+    [entriesByName],
+  );
+
+  const handleToggleBookmark = useCallback((name: string) => {
+    setBookmarks(toggleBookmark(name));
+  }, []);
+
+  const handleToggleCompare = useCallback((name: string) => {
+    setCompareNames((prev) => {
+      if (prev.includes(name)) return prev.filter((n) => n !== name);
+      if (prev.length >= 3) return prev;
+      return [...prev, name];
+    });
+  }, []);
+
+  const compareEntries = useMemo(
+    () =>
+      compareNames
+        .map((n) => entriesByName.get(n))
+        .filter((e): e is Entry => Boolean(e)),
+    [compareNames, entriesByName],
+  );
+
+  const relatedForSelected = useMemo(() => {
+    if (!selected) return [];
+    return getRelatedEntries(selected, entries, onboardingProfile?.interests ?? []);
+  }, [selected, entries, onboardingProfile]);
+
+  useEffect(() => {
+    if (!entries.length) return;
+    const slug = new URLSearchParams(window.location.search).get("entry");
+    if (!slug) return;
+    const entry = findEntryBySlug(entries, slug);
+    if (entry) setSelected(entry);
+  }, [entries]);
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (selected) url.searchParams.set("entry", entryToSlug(selected.name));
+    else url.searchParams.delete("entry");
+    window.history.replaceState({}, "", url);
+  }, [selected]);
+
   useEffect(() => {
     setCurrentPage(1);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [typeFilter, taskFilter, popularOnly, search]);
+    window.scrollTo({ top: 0 });
+  }, [typeFilter, taskFilter, popularOnly, debouncedSearch, savedOnly]);
 
   // ⌘K shortcut
   useEffect(() => {
@@ -205,8 +277,9 @@ const Inner: React.FC = () => {
       if (typeFilter !== "All" && e.type !== typeFilter) return false;
       if (taskFilter !== "All Tasks" && e.task !== taskFilter) return false;
       if (popularOnly && !e.popular) return false;
-      if (search) {
-        const q = search.toLowerCase();
+      if (savedOnly && !bookmarks.includes(e.name)) return false;
+      if (debouncedSearch) {
+        const q = debouncedSearch.toLowerCase();
         if (
           !e.name.toLowerCase().includes(q) &&
           !e.summary.toLowerCase().includes(q) &&
@@ -216,7 +289,7 @@ const Inner: React.FC = () => {
       }
       return true;
     }),
-  [entries, typeFilter, taskFilter, popularOnly, search]);
+  [entries, typeFilter, taskFilter, popularOnly, debouncedSearch, savedOnly, bookmarks]);
 
   const personalized = useMemo(() => {
     const interests = onboardingProfile?.interests ?? [];
@@ -239,10 +312,11 @@ const Inner: React.FC = () => {
   const forYouNames = new Set(personalized.forYou.map((e) => e.name));
   const showPersonalizedSections =
     (onboardingProfile?.interests.length ?? 0) > 0 &&
-    !search &&
+    !debouncedSearch &&
     typeFilter === "All" &&
     taskFilter === "All Tasks" &&
-    !popularOnly;
+    !popularOnly &&
+    !savedOnly;
   const pageForYou = showPersonalizedSections
     ? paginatedEntries.filter((e) => forYouNames.has(e.name))
     : [];
@@ -273,8 +347,8 @@ const Inner: React.FC = () => {
     <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${t.page}`}>
       {/* Ambient glow */}
       <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-150 h-100 rounded-full bg-cyan-400/4 blur-[120px]" />
-        <div className="absolute top-1/3 -right-20 w-75 h-100 rounded-full bg-violet-500/3 blur-[100px]" />
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-150 h-100 rounded-full bg-cyan-400/4 blur-3xl" />
+        <div className="absolute top-1/3 -right-20 w-75 h-100 rounded-full bg-violet-500/3 blur-3xl" />
       </div>
 
       <Navbar
@@ -312,10 +386,10 @@ const Inner: React.FC = () => {
         {/* Search */}
         <div className="mb-8 max-w-2xl">
           <SearchBar
-            query={search}
-            onChange={setSearch}
+            query={searchInput}
+            onChange={setSearchInput}
             entries={entries}
-            onSelect={(e) => { setSelected(e); setSearch(""); }}
+            onSelect={(e) => { setSelected(e); setSearchInput(""); }}
           />
         </div>
 
@@ -334,6 +408,9 @@ const Inner: React.FC = () => {
               onTypeFilter={setTypeFilter}
               onTaskFilter={setTaskFilter}
               onPopularToggle={() => setPopularOnly((p) => !p)}
+              savedOnly={savedOnly}
+              savedCount={bookmarks.length}
+              onSavedToggle={() => setSavedOnly((p) => !p)}
             />
           </div>
 
@@ -347,7 +424,7 @@ const Inner: React.FC = () => {
               >
                 <Filter size={14} />
                 Filters
-                {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly) && (
+                {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly || savedOnly) && (
                   <span className="w-2 h-2 rounded-full bg-cyan-400 ml-1 animate-pulse" />
                 )}
               </button>
@@ -358,7 +435,7 @@ const Inner: React.FC = () => {
                 <div className={`text-5xl opacity-10 ${t.textPrimary}`}>◌</div>
                 <p className={`text-[14px] ${t.textMuted}`}>No entries match your filters.</p>
                 <button
-                  onClick={() => { setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSearch(""); }}
+                  onClick={() => { setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); setSearchInput(""); }}
                   className={`text-[12px] underline underline-offset-2 ${t.textAccent}`}
                 >
                   Clear all filters
@@ -381,9 +458,15 @@ const Inner: React.FC = () => {
                         <EntryCard
                           key={entry.name}
                           entry={entry}
-                          onClick={() => setSelected(entry)}
+                          entryName={entry.name}
+                          onSelect={selectEntryByName}
                           index={i}
                           ratingSummary={ratingSummaries[entry.name]}
+                          isBookmarked={bookmarks.includes(entry.name)}
+                          onToggleBookmark={handleToggleBookmark}
+                          inCompare={compareNames.includes(entry.name)}
+                          onToggleCompare={handleToggleCompare}
+                          compareDisabled={compareNames.length >= 3}
                         />
                       ))}
                     </div>
@@ -394,9 +477,15 @@ const Inner: React.FC = () => {
                     <EntryCard
                       key={entry.name}
                       entry={entry}
-                      onClick={() => setSelected(entry)}
+                      entryName={entry.name}
+                      onSelect={selectEntryByName}
                       index={i + pageForYou.length}
                       ratingSummary={ratingSummaries[entry.name]}
+                      isBookmarked={bookmarks.includes(entry.name)}
+                      onToggleBookmark={handleToggleBookmark}
+                      inCompare={compareNames.includes(entry.name)}
+                      onToggleCompare={handleToggleCompare}
+                      compareDisabled={compareNames.length >= 3}
                     />
                   ))}
                 </div>
@@ -411,23 +500,9 @@ const Inner: React.FC = () => {
                       Prev
                     </button>
                     
-                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-xl shadow-sm border ${t.surface} ${t.border} mx-3`}>
-                      {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                        <button
-                          key={page}
-                          onClick={() => {
-                            setCurrentPage(page);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                          }}
-                          className={`relative transition-all duration-300 ease-out ${
-                            currentPage === page 
-                              ? 'w-6 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]' 
-                              : `w-2 h-2 rounded-full ${t.textMuted} bg-current opacity-40 hover:opacity-100 hover:bg-cyan-500/30`
-                          }`}
-                          aria-label={`Page ${page}`}
-                        />
-                      ))}
-                    </div>
+                    <span className={`text-[12px] tabular-nums px-3 ${t.textMuted}`}>
+                      Page {currentPage} of {totalPages}
+                    </span>
 
                     <button
                       onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
@@ -454,13 +529,35 @@ const Inner: React.FC = () => {
       </footer>
 
       {selected && (
-        <DetailModal
-          entry={selected}
-          onClose={() => setSelected(null)}
-          onRatingSummaryChange={handleRatingSummaryChange}
-        />
+        <Suspense fallback={null}>
+          <DetailModal
+            entry={selected}
+            onClose={() => setSelected(null)}
+            onRatingSummaryChange={handleRatingSummaryChange}
+            relatedEntries={relatedForSelected}
+            onSelectRelated={setSelected}
+            isBookmarked={bookmarks.includes(selected.name)}
+            onToggleBookmark={() => handleToggleBookmark(selected.name)}
+          />
+        </Suspense>
       )}
-      {isAdding && <AddModal typeFilters={staticTypeFilters} taskFilters={staticTaskFilters} onClose={() => setIsAdding(false)} onSubmit={handleAdd} />}
+      {isAdding && (
+        <Suspense fallback={null}>
+          <AddModal
+            typeFilters={staticTypeFilters}
+            taskFilters={staticTaskFilters}
+            onClose={() => setIsAdding(false)}
+            onSubmit={handleAdd}
+          />
+        </Suspense>
+      )}
+
+      <CompareBar
+        entries={compareEntries}
+        onRemove={handleToggleCompare}
+        onClear={() => setCompareNames([])}
+        onOpen={setSelected}
+      />
 
       {/* Global Toast Notification */}
       {showBackendToast && (
@@ -503,8 +600,23 @@ const Inner: React.FC = () => {
         </div>
       )}
 
-      {/* Groq AI Agent */}
-      <ChatWidget />
+      {chatEnabled ? (
+        <Suspense fallback={null}>
+          <ChatWidget
+            initialOpen
+            entryNames={entryNames}
+            onEntrySelect={selectEntryByName}
+          />
+        </Suspense>
+      ) : (
+        <button
+          type="button"
+          onClick={() => setChatEnabled(true)}
+          className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full shadow-2xl text-[13px] font-semibold ${t.btnPrimary}`}
+        >
+          Ask Vox
+        </button>
+      )}
 
       {/* Mobile Sidebar Overlay */}
       {showMobileSidebar && (
@@ -517,9 +629,9 @@ const Inner: React.FC = () => {
             <div className="flex items-center justify-between mb-8 shrink-0">
               <h2 className={`text-lg font-bold tracking-tight ${t.textPrimary}`}>Filters</h2>
               <div className="flex items-center gap-1">
-                {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly) && (
+                {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly || savedOnly) && (
                   <button
-                    onClick={() => { setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); }}
+                    onClick={() => { setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); }}
                     className={`text-[11px] font-semibold underline underline-offset-2 ${t.textAccent} hover:text-white transition-colors mr-1`}
                   >
                     Clear All
@@ -545,6 +657,9 @@ const Inner: React.FC = () => {
               onTypeFilter={setTypeFilter}
               onTaskFilter={setTaskFilter}
               onPopularToggle={() => setPopularOnly((p) => !p)}
+              savedOnly={savedOnly}
+              savedCount={bookmarks.length}
+              onSavedToggle={() => setSavedOnly((p) => !p)}
             />
           </div>
         </div>

@@ -1,40 +1,88 @@
-import React from "react";
-import { Star, ChevronRight } from "lucide-react";
+import { memo } from "react";
+import { Star, ChevronRight, Bookmark, Scale } from "lucide-react";
 import { useTokens, typeBadge, taskBadge, TYPE_GLYPH, typeIcon } from "../lib/theme";
 import type { Entry, EntryRatingSummary } from "../types";
 
 interface EntryCardProps {
   entry: Entry;
-  onClick: () => void;
+  entryName: string;
+  onSelect: (name: string) => void;
   index: number;
   ratingSummary?: EntryRatingSummary;
+  isBookmarked?: boolean;
+  onToggleBookmark?: (name: string) => void;
+  inCompare?: boolean;
+  onToggleCompare?: (name: string) => void;
+  compareDisabled?: boolean;
 }
 
-export const EntryCard: React.FC<EntryCardProps> = ({
+export const EntryCard = memo(function EntryCard({
   entry,
-  onClick,
+  entryName,
+  onSelect,
   index,
   ratingSummary,
-}) => {
+  isBookmarked,
+  onToggleBookmark,
+  inCompare,
+  onToggleCompare,
+  compareDisabled,
+}: EntryCardProps) {
   const t = useTokens();
+  const animate = index < 8;
 
   return (
     <article
-      onClick={onClick}
-      style={{ animationDelay: `${index * 40}ms` }}
+      onClick={() => onSelect(entryName)}
+      style={animate ? { animationDelay: `${index * 30}ms` } : undefined}
       className={`
         group flex flex-col border rounded-2xl p-5 cursor-pointer
-        transition-all duration-200 hover:-translate-y-0.5
-        animate-[fadeUp_0.35s_ease_both]
+        transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5
+        [content-visibility:auto]
+        ${animate ? "animate-[fadeUp_0.3s_ease_both]" : ""}
         ${t.card} ${t.border}
       `}
     >
-      {/* Header row */}
       <div className="flex items-start justify-between mb-4">
         <div className={`w-10 h-10 rounded-2xl flex items-center justify-center text-[17px] font-bold shrink-0 ${typeIcon(entry.type, t)}`}>
           {TYPE_GLYPH[entry.type] ?? "◆"}
         </div>
-        <div className="flex items-center gap-1.5 flex-wrap justify-end">
+        <div className="flex items-center gap-1 flex-wrap justify-end">
+          {onToggleBookmark && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggleBookmark(entryName);
+              }}
+              className={`p-1.5 rounded-lg border transition-colors ${
+                isBookmarked
+                  ? "border-amber-500/40 text-amber-400 bg-amber-500/10"
+                  : `${t.surface} ${t.border} ${t.textMuted} opacity-0 group-hover:opacity-100`
+              } ${isBookmarked ? "opacity-100" : ""}`}
+              aria-label={isBookmarked ? "Remove bookmark" : "Bookmark"}
+            >
+              <Bookmark size={12} className={isBookmarked ? "fill-current" : ""} />
+            </button>
+          )}
+          {onToggleCompare && (
+            <button
+              type="button"
+              disabled={compareDisabled && !inCompare}
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggleCompare(entryName);
+              }}
+              className={`p-1.5 rounded-lg border transition-colors ${
+                inCompare
+                  ? "border-cyan-500/40 text-cyan-400 bg-cyan-500/10"
+                  : `${t.surface} ${t.border} ${t.textMuted} opacity-0 group-hover:opacity-100`
+              } ${inCompare ? "opacity-100" : ""} disabled:opacity-30`}
+              aria-label={inCompare ? "Remove from compare" : "Add to compare"}
+            >
+              <Scale size={12} />
+            </button>
+          )}
           {entry.popular && (
             <span className={`inline-flex items-center gap-1 text-[9px] font-bold px-2 py-0.5 rounded-full border ${t.popular}`}>
               <Star size={7} className="fill-current" /> Popular
@@ -46,7 +94,6 @@ export const EntryCard: React.FC<EntryCardProps> = ({
         </div>
       </div>
 
-      {/* Title */}
       <h3 className={`text-[15px] font-black tracking-tight leading-tight mb-0.5 ${t.textPrimary}`}>
         {entry.name}
       </h3>
@@ -54,19 +101,16 @@ export const EntryCard: React.FC<EntryCardProps> = ({
         {entry.org}
       </p>
 
-      {/* Summary */}
       <p className={`text-[12.5px] leading-relaxed line-clamp-2 flex-1 mb-4 ${t.textSecondary}`}>
         {entry.summary}
       </p>
 
-      {/* Task badge */}
       <div className="mb-3">
         <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-md border ${taskBadge(entry.task, t)}`}>
           {entry.task}
         </span>
       </div>
 
-      {/* Footer */}
       <div className={`flex items-center justify-between pt-3 border-t ${t.border}`}>
         <div className="flex flex-col gap-0.5 min-w-0">
           <span className={`text-[11px] font-mono truncate max-w-full ${t.textMuted}`}>
@@ -90,4 +134,4 @@ export const EntryCard: React.FC<EntryCardProps> = ({
       </div>
     </article>
   );
-};
+});

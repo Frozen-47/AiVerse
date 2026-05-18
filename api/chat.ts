@@ -11,6 +11,32 @@ const supabaseUrl = process.env.VITE_SUPABASE_URL;
 const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY;
 const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 
+const CATALOG_CACHE_TTL_MS = 5 * 60 * 1000;
+let catalogCache: { context: string; at: number } | null = null;
+
+async function getCatalogContext(): Promise<string> {
+  if (catalogCache && Date.now() - catalogCache.at < CATALOG_CACHE_TTL_MS) {
+    return catalogCache.context;
+  }
+
+  let entries: { name: string; type: string; task?: string; url?: string }[] = [];
+  if (supabase) {
+    const { data, error } = await supabase
+      .from('entries')
+      .select('name, type, task, url')
+      .eq('approved', true)
+      .order('created_at', { ascending: false });
+    if (!error && data) entries = data;
+  }
+
+  const context = entries
+    .map((e) => `- **${e.name}** (${e.type}, ${e.task || 'General'})${e.url ? ` - URL: ${e.url}` : ''}`)
+    .join('\n');
+
+  catalogCache = { context, at: Date.now() };
+  return context;
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
@@ -32,18 +58,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Sanitize messages to remove UI-specific properties like 'isTyping'
     const sanitizedMessages = messages.map(({ role, content }) => ({ role, content }));
 
-    // Construct catalog context server-side by fetching the dynamic data from Supabase
-    let entries = [];
-    if (supabase) {
-      const { data, error } = await supabase.from('entries').select('*').order('created_at', { ascending: false });
-      if (!error && data) {
-        entries = data;
-      }
-    }
-
-    // Optimize the context payload: only include name, type, task, and URL to save ~90% of tokens
-    // We explicitly remove the summary because 153 summaries = ~9000 tokens per request!
-    const catalogContext = entries.map((e: any) => `- **${e.name}** (${e.type}, ${e.task || 'General'})${e.url ? ` - URL: ${e.url}` : ''}`).join('\n');
+    const catalogContext = await getCatalogContext();
 
     const nameStr = userName ? `The user's name is ${userName}. Greet them or address them by this name occasionally to be polite and personal.` : '';
 
