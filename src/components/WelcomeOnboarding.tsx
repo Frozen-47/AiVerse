@@ -5,7 +5,6 @@ import { ArrowLeft, ArrowRight, Check, X } from "lucide-react";
 import { Logo } from "./Logo";
 import {
   onboardingOptions,
-  saveGuestOnboarding,
   type OnboardingInterest,
   type OnboardingProfile,
   type ReferralSource,
@@ -119,10 +118,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
 
     setIsUpdating(true);
     try {
-      if (isGuest && !isEdit) {
-        saveGuestOnboarding(profile);
-      }
-      onComplete(profile, isGuest || isEdit ? undefined : { displayName: name.trim() });
+      onComplete(profile, isEdit ? undefined : { displayName: name.trim() });
     } finally {
       setIsUpdating(false);
     }
@@ -163,7 +159,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
       : "Continue";
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80">
       <div
         className={`relative w-full max-w-lg flex flex-col rounded-3xl border shadow-2xl overflow-hidden ${t.modal} ${t.border}`}
       >
@@ -171,7 +167,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className={`absolute top-4 right-4 z-20 p-2 rounded-lg border transition-colors ${t.surface} ${t.border} ${t.textMuted} hover:${t.textPrimary}`}
+            className={`absolute top-4 right-4 z-20 p-2 rounded-lg border ${t.surface} ${t.border} ${t.textMuted} hover:${t.textPrimary}`}
             aria-label="Close"
           >
             <X size={16} />
@@ -181,14 +177,14 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-linear-to-b from-cyan-500/15 to-transparent pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 h-1 bg-white/5 z-10">
           <div
-            className="h-full bg-linear-to-r from-cyan-400 to-sky-400 transition-all duration-300 ease-out"
+            className="h-full bg-linear-to-r from-cyan-400 to-sky-400"
             style={{ width: `${progress}%` }}
           />
         </div>
 
         <div className="p-8 pt-10">
           <div className="mb-5 flex items-center justify-center">
-            <Logo className="w-12 h-12 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] text-white" />
+            <Logo className="w-12 h-12 text-white" />
           </div>
 
           <p className={`text-[11px] font-semibold uppercase tracking-widest mb-2 ${t.textMuted}`}>
@@ -211,7 +207,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Jane Doe"
-                className={`w-full px-4 py-3 rounded-xl border font-medium outline-hidden transition-all ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10`}
+                className={`w-full px-4 py-3 rounded-xl border font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10`}
                 autoFocus
                 maxLength={50}
                 onKeyDown={(e) => e.key === "Enter" && canContinue() && handlePrimary()}
@@ -242,7 +238,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                     key={item.id}
                     type="button"
                     onClick={() => toggleInterest(item.id)}
-                    className={`text-left p-3 rounded-xl border transition-all ${
+                    className={`text-left p-3 rounded-xl border ${
                       selected
                         ? `${t.pillActive} ring-1 ring-cyan-500/30`
                         : `${t.surface} ${t.border} ${t.textSecondary} hover:border-white/20`
@@ -281,7 +277,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                 type="button"
                 onClick={goBack}
                 disabled={isUpdating}
-                className={`inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl font-semibold text-[14px] border transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary} disabled:opacity-50`}
+                className={`inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl font-semibold text-[14px] border ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary} disabled:opacity-50`}
               >
                 <ArrowLeft size={16} />
                 Back
@@ -291,31 +287,13 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
               type="button"
               onClick={handlePrimary}
               disabled={isUpdating || !canContinue()}
-              className="group flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-[15px] transition-all bg-white text-black hover:bg-gray-100 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] hover:-translate-y-0.5 disabled:opacity-50 disabled:pointer-events-none active:scale-95"
+              className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-[15px] bg-white text-black hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
             >
               {primaryLabel}
-              {!isUpdating && <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />}
+              {!isUpdating && <ArrowRight size={18} />}
             </button>
           </div>
 
-          {!isEdit && isGuest && step === "role" && (
-            <button
-              type="button"
-              onClick={() => {
-                const skipped: OnboardingProfile = {
-                  interests: [],
-                  role: "hobbyist",
-                  referralSource: "other",
-                  completedAt: new Date().toISOString(),
-                };
-                saveGuestOnboarding(skipped);
-                onComplete(skipped);
-              }}
-              className={`w-full mt-4 text-[12px] ${t.textMuted} hover:underline`}
-            >
-              Skip for now
-            </button>
-          )}
         </div>
       </div>
     </div>
@@ -337,7 +315,7 @@ function OptionButton({
     <button
       type="button"
       onClick={onClick}
-      className={`flex items-center justify-between w-full px-4 py-3 rounded-xl border text-left text-[14px] font-medium transition-all ${
+      className={`flex items-center justify-between w-full px-4 py-3 rounded-xl border text-left text-[14px] font-medium ${
         selected
           ? `${t.pillActive} ring-1 ring-cyan-500/30`
           : `${t.surface} ${t.border} ${t.textSecondary} hover:border-white/20`

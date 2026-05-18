@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Star, ChevronRight, Bookmark, Scale } from "lucide-react";
+import { Star, ChevronRight, Bookmark } from "lucide-react";
 import { useTokens, typeBadge, taskBadge, TYPE_GLYPH, typeIcon } from "../lib/theme";
 import type { Entry, EntryRatingSummary } from "../types";
 
@@ -11,9 +11,6 @@ interface EntryCardProps {
   ratingSummary?: EntryRatingSummary;
   isBookmarked?: boolean;
   onToggleBookmark?: (name: string) => void;
-  inCompare?: boolean;
-  onToggleCompare?: (name: string) => void;
-  compareDisabled?: boolean;
 }
 
 export const EntryCard = memo(function EntryCard({
@@ -24,9 +21,6 @@ export const EntryCard = memo(function EntryCard({
   ratingSummary,
   isBookmarked,
   onToggleBookmark,
-  inCompare,
-  onToggleCompare,
-  compareDisabled,
 }: EntryCardProps) {
   const t = useTokens();
   const animate = index < 8;
@@ -63,24 +57,6 @@ export const EntryCard = memo(function EntryCard({
               aria-label={isBookmarked ? "Remove bookmark" : "Bookmark"}
             >
               <Bookmark size={12} className={isBookmarked ? "fill-current" : ""} />
-            </button>
-          )}
-          {onToggleCompare && (
-            <button
-              type="button"
-              disabled={compareDisabled && !inCompare}
-              onClick={(e) => {
-                e.stopPropagation();
-                onToggleCompare(entryName);
-              }}
-              className={`p-1.5 rounded-lg border transition-colors ${
-                inCompare
-                  ? "border-cyan-500/40 text-cyan-400 bg-cyan-500/10"
-                  : `${t.surface} ${t.border} ${t.textMuted} opacity-0 group-hover:opacity-100`
-              } ${inCompare ? "opacity-100" : ""} disabled:opacity-30`}
-              aria-label={inCompare ? "Remove from compare" : "Add to compare"}
-            >
-              <Scale size={12} />
             </button>
           )}
           {entry.popular && (

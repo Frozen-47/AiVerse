@@ -87,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={onEditPreferences}
             className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
-            title="Edit preferences"
+            title={user ? "Edit your preferences" : "Sign in for personal preferences"}
           >
             <SlidersHorizontal size={16} />
             <span className="hidden md:inline">Preferences</span>

@@ -6,12 +6,13 @@ import { Navbar } from "./components/Navbar";
 import { Sidebar } from "./components/Sidebar";
 import { SearchBar } from "./components/SearchBar";
 import { EntryCard } from "./components/EntryCard";
-import { CompareBar } from "./components/CompareBar";
 import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
+import { PreferencesLoginPrompt } from "./components/PreferencesLoginPrompt";
+import { VoxLogo } from "./components/VoxLogo";
 import { useDebouncedValue } from "./lib/useDebouncedValue";
 import { loadBookmarks, toggleBookmark } from "./lib/bookmarks";
 import { findEntryBySlug, entryToSlug } from "./lib/entryUrl";
-import { getRelatedEntries } from "./lib/relatedEntries";
+import { getRelatedEntries, getCompareCandidates } from "./lib/relatedEntries";
 
 const DetailModal = lazy(() =>
   import("./components/DetailModal").then((m) => ({ default: m.DetailModal })),
@@ -29,8 +30,6 @@ import { useUser, ClerkProvider } from "@clerk/clerk-react";
 import { dark } from "@clerk/themes";
 import { typeFilters as staticTypeFilters, taskFilters as staticTaskFilters } from "./data";
 import {
-  getOrCreateGuestId,
-  loadGuestOnboarding,
   parseClerkOnboarding,
   partitionByInterests,
   persistOnboardingProfile,
@@ -55,7 +54,6 @@ const Inner: React.FC = () => {
   const [searchInput, setSearchInput] = useState("");
   const debouncedSearch = useDebouncedValue(searchInput, 220);
   const [bookmarks, setBookmarks] = useState<string[]>(() => loadBookmarks());
-  const [compareNames, setCompareNames] = useState<string[]>([]);
   const [savedOnly, setSavedOnly] = useState(false);
   const [chatEnabled, setChatEnabled] = useState(false);
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("All");
@@ -69,6 +67,7 @@ const Inner: React.FC = () => {
   const [onboardingProfile, setOnboardingProfile] = useState<OnboardingProfile | null>(null);
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [showPreferencesEditor, setShowPreferencesEditor] = useState(false);
+  const [showLoginForPrefs, setShowLoginForPrefs] = useState(false);
   const [prefsToast, setPrefsToast] = useState(false);
   const [ratingSummaries, setRatingSummaries] = useState<
     Record<string, EntryRatingSummary>
@@ -80,43 +79,26 @@ const Inner: React.FC = () => {
     let cancelled = false;
 
     (async () => {
-      if (user) {
-        const fromClerk = parseClerkOnboarding(user.unsafeMetadata as Record<string, unknown>);
-        if (fromClerk) {
-          if (!cancelled) {
-            setOnboardingProfile(fromClerk);
-            setShowOnboarding(false);
-          }
-          return;
-        }
-
-        const fromDb = await fetchUserPreferences(
-          preferencesUserKey({ clerkUserId: user.id }),
-        );
-        if (fromDb && !cancelled) {
-          setOnboardingProfile(fromDb);
-          setShowOnboarding(false);
-          return;
-        }
-
+      if (!user) {
         if (!cancelled) {
           setOnboardingProfile(null);
-          setShowOnboarding(true);
-        }
-        return;
-      }
-
-      const guestProfile = loadGuestOnboarding();
-      if (guestProfile) {
-        if (!cancelled) {
-          setOnboardingProfile(guestProfile);
           setShowOnboarding(false);
         }
         return;
       }
 
-      const guestId = getOrCreateGuestId();
-      const fromDb = await fetchUserPreferences(preferencesUserKey({ guestId }));
+      const fromClerk = parseClerkOnboarding(user.unsafeMetadata as Record<string, unknown>);
+      if (fromClerk) {
+        if (!cancelled) {
+          setOnboardingProfile(fromClerk);
+          setShowOnboarding(false);
+        }
+        return;
+      }
+
+      const fromDb = await fetchUserPreferences(
+        preferencesUserKey({ clerkUserId: user.id }),
+      );
       if (fromDb && !cancelled) {
         setOnboardingProfile(fromDb);
         setShowOnboarding(false);
@@ -133,6 +115,10 @@ const Inner: React.FC = () => {
       cancelled = true;
     };
   }, [user, isLoaded]);
+
+  useEffect(() => {
+    if (user) setShowLoginForPrefs(false);
+  }, [user]);
 
   const handleProfileComplete = async (
     profile: OnboardingProfile,
@@ -178,6 +164,14 @@ const Inner: React.FC = () => {
     setIsAdding(true);
   };
 
+  const handleEditPreferences = () => {
+    if (!user) {
+      setShowLoginForPrefs(true);
+      return;
+    }
+    setShowPreferencesEditor(true);
+  };
+
   const entriesByName = useMemo(() => {
     const map = new Map<string, Entry>();
     for (const e of entries) map.set(e.name, e);
@@ -198,25 +192,14 @@ const Inner: React.FC = () => {
     setBookmarks(toggleBookmark(name));
   }, []);
 
-  const handleToggleCompare = useCallback((name: string) => {
-    setCompareNames((prev) => {
-      if (prev.includes(name)) return prev.filter((n) => n !== name);
-      if (prev.length >= 3) return prev;
-      return [...prev, name];
-    });
-  }, []);
-
-  const compareEntries = useMemo(
-    () =>
-      compareNames
-        .map((n) => entriesByName.get(n))
-        .filter((e): e is Entry => Boolean(e)),
-    [compareNames, entriesByName],
-  );
-
   const relatedForSelected = useMemo(() => {
     if (!selected) return [];
     return getRelatedEntries(selected, entries, onboardingProfile?.interests ?? []);
+  }, [selected, entries, onboardingProfile]);
+
+  const compareCandidatesForSelected = useMemo(() => {
+    if (!selected) return [];
+    return getCompareCandidates(selected, entries, onboardingProfile?.interests ?? []);
   }, [selected, entries, onboardingProfile]);
 
   useEffect(() => {
@@ -353,7 +336,7 @@ const Inner: React.FC = () => {
 
       <Navbar
         onAddEntry={handleAddClick}
-        onEditPreferences={() => setShowPreferencesEditor(true)}
+        onEditPreferences={handleEditPreferences}
         entryCount={entries.length}
       />
 
@@ -464,9 +447,6 @@ const Inner: React.FC = () => {
                           ratingSummary={ratingSummaries[entry.name]}
                           isBookmarked={bookmarks.includes(entry.name)}
                           onToggleBookmark={handleToggleBookmark}
-                          inCompare={compareNames.includes(entry.name)}
-                          onToggleCompare={handleToggleCompare}
-                          compareDisabled={compareNames.length >= 3}
                         />
                       ))}
                     </div>
@@ -483,9 +463,6 @@ const Inner: React.FC = () => {
                       ratingSummary={ratingSummaries[entry.name]}
                       isBookmarked={bookmarks.includes(entry.name)}
                       onToggleBookmark={handleToggleBookmark}
-                      inCompare={compareNames.includes(entry.name)}
-                      onToggleCompare={handleToggleCompare}
-                      compareDisabled={compareNames.length >= 3}
                     />
                   ))}
                 </div>
@@ -538,6 +515,7 @@ const Inner: React.FC = () => {
             onSelectRelated={setSelected}
             isBookmarked={bookmarks.includes(selected.name)}
             onToggleBookmark={() => handleToggleBookmark(selected.name)}
+            compareCandidates={compareCandidatesForSelected}
           />
         </Suspense>
       )}
@@ -551,13 +529,6 @@ const Inner: React.FC = () => {
           />
         </Suspense>
       )}
-
-      <CompareBar
-        entries={compareEntries}
-        onRemove={handleToggleCompare}
-        onClear={() => setCompareNames([])}
-        onOpen={setSelected}
-      />
 
       {/* Global Toast Notification */}
       {showBackendToast && (
@@ -574,26 +545,26 @@ const Inner: React.FC = () => {
         </div>
       )}
 
-      {isLoaded && showOnboarding && (
-        <WelcomeOnboarding
-          isGuest={!user}
-          onComplete={handleProfileComplete}
-        />
+      {isLoaded && user && showOnboarding && (
+        <WelcomeOnboarding onComplete={handleProfileComplete} />
       )}
 
-      {showPreferencesEditor && (
+      {showPreferencesEditor && user && (
         <WelcomeOnboarding
           mode="edit"
-          isGuest={!user}
           initialProfile={onboardingProfile}
           onClose={() => setShowPreferencesEditor(false)}
           onComplete={handleProfileComplete}
         />
       )}
 
+      {showLoginForPrefs && (
+        <PreferencesLoginPrompt onClose={() => setShowLoginForPrefs(false)} />
+      )}
+
       {prefsToast && (
-        <div className="fixed bottom-24 left-6 z-50 animate-[fadeUp_0.15s_ease-out]">
-          <div className={`p-4 rounded-xl border flex items-center gap-3 text-[13px] font-medium shadow-2xl backdrop-blur-xl ${t.errorToast}`}>
+        <div className="fixed bottom-24 left-6 z-50">
+          <div className={`p-4 rounded-xl border flex items-center gap-3 text-[13px] font-medium shadow-2xl ${t.errorToast}`}>
             <Check size={18} className="shrink-0 text-emerald-400" />
             <span>Preferences saved — your feed is updated.</span>
           </div>
@@ -614,6 +585,7 @@ const Inner: React.FC = () => {
           onClick={() => setChatEnabled(true)}
           className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full shadow-2xl text-[13px] font-semibold ${t.btnPrimary}`}
         >
+          <VoxLogo size={20} variant="current" className="shrink-0" />
           Ask Vox
         </button>
       )}

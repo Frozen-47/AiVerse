@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { X, Star, ExternalLink, Copy, Check, Lock, Link2, Bookmark } from "lucide-react";
 import { shareUrlForEntry } from "../lib/entryUrl";
 import { useUser, SignInButton, SignUpButton } from "@clerk/clerk-react";
@@ -14,6 +14,53 @@ interface DetailModalProps {
   onSelectRelated?: (entry: Entry) => void;
   isBookmarked?: boolean;
   onToggleBookmark?: () => void;
+  compareCandidates?: Entry[];
+}
+
+const COMPARE_ROWS: { label: string; get: (e: Entry) => string }[] = [
+  { label: "Type", get: (e) => e.type },
+  { label: "Task", get: (e) => e.task },
+  { label: "License", get: (e) => e.license },
+  { label: "Year", get: (e) => String(e.year) },
+  { label: "Size", get: (e) => e.size },
+  { label: "Organization", get: (e) => e.org },
+  { label: "Benchmarks", get: (e) => e.benchmarks },
+];
+
+function CompareTable({
+  left,
+  right,
+  t,
+}: {
+  left: Entry;
+  right: Entry;
+  t: ReturnType<typeof useTokens>;
+}) {
+  return (
+    <div className={`rounded-2xl border overflow-hidden ${t.border}`}>
+      <div className={`grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] gap-px bg-white/5 text-[10px] uppercase tracking-widest font-semibold ${t.surface2}`}>
+        <div className={`px-3 py-2.5 ${t.textMuted}`} />
+        <div className={`px-3 py-2.5 truncate ${t.textPrimary}`}>{left.name}</div>
+        <div className={`px-3 py-2.5 truncate ${t.textAccent}`}>{right.name}</div>
+      </div>
+      {COMPARE_ROWS.map(({ label, get }) => (
+        <div
+          key={label}
+          className={`grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] gap-px border-t ${t.border} ${t.surface}`}
+        >
+          <div className={`px-3 py-2.5 text-[10px] uppercase tracking-widest font-semibold ${t.textMuted}`}>
+            {label}
+          </div>
+          <div className={`px-3 py-2.5 text-[12px] leading-snug ${label === "Benchmarks" ? "line-clamp-3" : ""} ${t.textSecondary}`}>
+            {get(left)}
+          </div>
+          <div className={`px-3 py-2.5 text-[12px] leading-snug ${label === "Benchmarks" ? "line-clamp-3" : ""} ${t.textSecondary}`}>
+            {get(right)}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export const DetailModal: React.FC<DetailModalProps> = ({
@@ -24,11 +71,20 @@ export const DetailModal: React.FC<DetailModalProps> = ({
   onSelectRelated,
   isBookmarked,
   onToggleBookmark,
+  compareCandidates = [],
 }) => {
   const t = useTokens();
   const { user } = useUser();
   const [copied, setCopied] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
+  const [compareName, setCompareName] = useState("");
+
+  const compareEntry = useMemo(
+    () => compareCandidates.find((e) => e.name === compareName),
+    [compareCandidates, compareName],
+  );
+
+  const selectCls = `w-full px-3 py-2.5 rounded-xl text-[13px] border focus:outline-none transition-all ${t.input}`;
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -36,6 +92,10 @@ export const DetailModal: React.FC<DetailModalProps> = ({
       document.body.style.overflow = "unset";
     };
   }, []);
+
+  useEffect(() => {
+    setCompareName("");
+  }, [entry.name]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(entry.usage ?? "");
@@ -118,6 +178,35 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
         {/* Scroll: entry details first, then ratings & comments at the bottom */}
         <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain">
+          {compareCandidates.length > 0 && (
+            <div className={`px-7 pt-5 pb-4 border-b ${t.border}`}>
+              <label
+                htmlFor="compare-with"
+                className={`block text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}
+              >
+                Compare with
+              </label>
+              <select
+                id="compare-with"
+                value={compareName}
+                onChange={(e) => setCompareName(e.target.value)}
+                className={selectCls}
+              >
+                <option value="">Choose an entry…</option>
+                {compareCandidates.map((c) => (
+                  <option key={c.name} value={c.name}>
+                    {c.name}
+                  </option>
+                ))}
+              </select>
+              {compareEntry && (
+                <div className="mt-4">
+                  <CompareTable left={entry} right={compareEntry} t={t} />
+                </div>
+              )}
+            </div>
+          )}
+
           <div className="relative">
             {!user && (
               <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center bg-black/70 min-h-[280px]">

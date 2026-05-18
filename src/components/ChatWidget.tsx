@@ -3,6 +3,7 @@ import { X, Send, Minimize2, Maximize2, RefreshCw, Copy, Check, AlertCircle, Rot
 import ReactMarkdown from 'react-markdown';
 import { useTokens } from '../lib/theme';
 import { useUser } from '@clerk/clerk-react';
+import { VoxLogo } from './VoxLogo';
 // Client-side Groq initialization removed for security.
 // We now use the Vercel Serverless Function at /api/chat
 
@@ -86,19 +87,6 @@ function buildMarkdownComponents(
 const getInitialMessages = (name?: string | null): Message[] => [
   { role: 'assistant', content: name ? `Hi ${name}! I am Vox. How can I help you navigate the world of AI today?` : 'Hi there! I am Vox. How can I help you navigate the world of AI today?' }
 ];
-
-const GeminiIcon = ({ size, className = "" }: { size?: number | string, className?: string }) => (
-  <svg
-    width={size || "1em"}
-    height={size || "1em"}
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    className={className}
-  >
-    <path d="M12 2.5C12 7.7467 16.2533 12 21.5 12C16.2533 12 12 16.2533 12 21.5C12 16.2533 7.7467 12 2.5 12C7.7467 12 12 7.7467 12 2.5Z" />
-  </svg>
-);
 
 interface ChatWidgetProps {
   entryNames?: string[];
@@ -305,12 +293,10 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className={`group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center p-2 sm:p-2.5 rounded-full shadow-2xl transition-all duration-500 ease-in-out hover:scale-105 ${t.btnPrimary}`}
+        className={`group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center p-2 sm:p-2.5 rounded-full shadow-2xl ${t.btnPrimary}`}
       >
-        <GeminiIcon 
-          className="w-6 h-6 sm:w-9 sm:h-9 transition-transform duration-500 ease-in-out group-hover:rotate-45" 
-        />
-        <div className="grid grid-cols-[0fr] group-hover:grid-cols-[1fr] transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">
+        <VoxLogo variant="current" className="w-6 h-6 sm:w-9 sm:h-9" />
+        <div className="grid grid-cols-[0fr] group-hover:grid-cols-[1fr] opacity-0 group-hover:opacity-100">
           <div className="overflow-hidden whitespace-nowrap">
             <span className="pl-2 pr-1 font-medium text-[13px] sm:text-[15px] block">Ask Vox</span>
           </div>
@@ -332,10 +318,10 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
       <div className={`flex items-center justify-between px-4 py-3 border-b ${t.border}`}>
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white">
-            <GeminiIcon size={18} />
+            <VoxLogo size={18} variant="current" />
           </div>
           <div>
-            <h3 className={`font-semibold text-sm ${t.textPrimary}`}>Agent Vox</h3>
+            <h3 className={`font-semibold text-sm ${t.textPrimary}`}>Vox</h3>
             <p className={`text-[10px] ${t.textMuted}`}>Powered by Groq</p>
           </div>
         </div>
