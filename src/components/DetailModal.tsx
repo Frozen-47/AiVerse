@@ -281,7 +281,10 @@ export const DetailModal: React.FC<DetailModalProps> = ({
               >
                 Compare with
               </label>
-              <div className={!user ? "opacity-25 pointer-events-none select-none" : ""}>
+              <div
+                className={!user ? "opacity-30 blur-[4px] pointer-events-none select-none" : ""}
+                {...(!user ? { inert: true } : {})}
+              >
               <CompareSelect
                 value={compareName}
                 onChange={setCompareName}
@@ -296,31 +299,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 </div>
               )}
               </div>
-              {!user && (
-                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-5 text-center bg-black/70">
-                  <div className="w-12 h-12 rounded-2xl bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white mb-3 shadow-lg shadow-blue-500/30">
-                    <Lock size={20} />
-                  </div>
-                  <h3 className="text-base font-bold text-white mb-1.5 tracking-tight">
-                    Sign in to compare
-                  </h3>
-                  <p className="text-[12px] text-gray-300 mb-4 max-w-[240px] leading-relaxed">
-                    Compare specs, benchmarks, and metadata side by side with another entry.
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <SignInButton mode="modal">
-                      <button className="px-4 py-2 rounded-xl font-medium text-[12px] transition-all bg-white/10 text-white hover:bg-white/20 border border-white/10">
-                        Login
-                      </button>
-                    </SignInButton>
-                    <SignUpButton mode="modal">
-                      <button className="px-4 py-2 rounded-xl font-semibold text-[12px] transition-all bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white shadow-md shadow-cyan-500/20">
-                        Create Account
-                      </button>
-                    </SignUpButton>
-                  </div>
-                </div>
-              )}
+
             </div>
           )}
 
@@ -331,8 +310,8 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 <Lock size={24} />
               </div>
               <h3 className="text-xl font-bold text-white mb-2 tracking-tight">Unlock Full Details</h3>
-              <p className="text-[13px] text-gray-300 mb-6 max-w-[280px] leading-relaxed">
-                Sign in to view architecture, benchmarks, code usage, and direct resources for this AI model.
+              <p className="text-[13px] text-gray-300 mb-6 max-w-[320px] leading-relaxed mx-auto">
+                Sign in to view architecture, benchmarks, code usage, direct resources, and compare with other AI models.
               </p>
               <div className="flex items-center gap-3">
                 <SignInButton mode="modal">
@@ -350,9 +329,10 @@ export const DetailModal: React.FC<DetailModalProps> = ({
           )}
 
             <div
-              className={`px-7 py-6 space-y-6 ${
-                !user ? "opacity-25 pointer-events-none select-none" : ""
+              className={`px-7 py-6 space-y-6 transition-all ${
+                !user ? "opacity-30 blur-[5px] pointer-events-none select-none max-h-[320px] overflow-hidden" : ""
               }`}
+              {...(!user ? { inert: true } : {})}
             >
 
           {/* Meta grid */}
