@@ -73,17 +73,19 @@ ALTER TABLE entry_ratings ENABLE ROW LEVEL SECURITY;
 ALTER TABLE entry_comments ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_bookmarks ENABLE ROW LEVEL SECURITY;
 
--- ─── 2. RLS helpers ──────────────────────────────────────────────────────────
--- Clerk + Supabase (for signed-in writes):
---   Supabase → Authentication → Third-party auth → Clerk
---   Clerk JWT must include `sub` (user id). App uses SupabaseAuthBridge.
+-- ─── 2. RLS helpers (private schema — not exposed via /rest/v1/rpc) ─────────
+-- Clerk + Supabase: Authentication → Third-party auth → Clerk; JWT `sub` = user id.
 
-CREATE OR REPLACE FUNCTION public.app_user_key()
+CREATE SCHEMA IF NOT EXISTS private;
+REVOKE ALL ON SCHEMA private FROM PUBLIC;
+GRANT USAGE ON SCHEMA private TO postgres, service_role, anon, authenticated;
+
+CREATE OR REPLACE FUNCTION private.app_user_key()
 RETURNS text
 LANGUAGE sql
 STABLE
-SECURITY DEFINER
-SET search_path = public
+SECURITY INVOKER
+SET search_path = ''
 AS $$
   SELECT CASE
     WHEN (auth.jwt() ->> 'sub') IS NOT NULL
@@ -92,32 +94,42 @@ AS $$
   END;
 $$;
 
-CREATE OR REPLACE FUNCTION public.is_guest_user_key(key text)
+CREATE OR REPLACE FUNCTION private.is_guest_user_key(key text)
 RETURNS boolean
 LANGUAGE sql
 IMMUTABLE
+SECURITY INVOKER
+SET search_path = ''
 AS $$
   SELECT key ~ '^guest_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$';
 $$;
 
-CREATE OR REPLACE FUNCTION public.can_access_user_key(key text)
+CREATE OR REPLACE FUNCTION private.can_access_user_key(key text)
 RETURNS boolean
 LANGUAGE sql
 STABLE
-SECURITY DEFINER
-SET search_path = public
+SECURITY INVOKER
+SET search_path = ''
 AS $$
-  SELECT key = public.app_user_key()
+  SELECT key = private.app_user_key()
     OR (
       auth.role() = 'anon'
-      AND public.app_user_key() IS NULL
-      AND public.is_guest_user_key(key)
+      AND private.app_user_key() IS NULL
+      AND private.is_guest_user_key(key)
     );
 $$;
 
-GRANT EXECUTE ON FUNCTION public.app_user_key() TO anon, authenticated;
-GRANT EXECUTE ON FUNCTION public.is_guest_user_key(text) TO anon, authenticated;
-GRANT EXECUTE ON FUNCTION public.can_access_user_key(text) TO anon, authenticated;
+REVOKE ALL ON FUNCTION private.app_user_key() FROM PUBLIC;
+REVOKE ALL ON FUNCTION private.is_guest_user_key(text) FROM PUBLIC;
+REVOKE ALL ON FUNCTION private.can_access_user_key(text) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION private.app_user_key() TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION private.is_guest_user_key(text) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION private.can_access_user_key(text) TO anon, authenticated;
+
+-- Remove legacy public helpers (callable via PostgREST RPC)
+DROP FUNCTION IF EXISTS public.can_access_user_key(text) CASCADE;
+DROP FUNCTION IF EXISTS public.app_user_key() CASCADE;
+DROP FUNCTION IF EXISTS public.is_guest_user_key(text) CASCADE;
 
 -- ─── 3. RLS policies ─────────────────────────────────────────────────────────
 
@@ -150,14 +162,14 @@ DROP POLICY IF EXISTS "Allow public read preferences" ON user_preferences;
 DROP POLICY IF EXISTS "Read own preferences" ON user_preferences;
 CREATE POLICY "Read own preferences"
   ON user_preferences FOR SELECT
-  USING (public.can_access_user_key(user_key));
+  USING (private.can_access_user_key(user_key));
 
 DROP POLICY IF EXISTS "Allow public upsert preferences" ON user_preferences;
 DROP POLICY IF EXISTS "Insert own preferences" ON user_preferences;
 CREATE POLICY "Insert own preferences"
   ON user_preferences FOR INSERT
   WITH CHECK (
-    public.can_access_user_key(user_key)
+    private.can_access_user_key(user_key)
     AND role IS NOT NULL
     AND btrim(role) <> ''
     AND referral_source IS NOT NULL
@@ -168,9 +180,9 @@ DROP POLICY IF EXISTS "Allow public update preferences" ON user_preferences;
 DROP POLICY IF EXISTS "Update own preferences" ON user_preferences;
 CREATE POLICY "Update own preferences"
   ON user_preferences FOR UPDATE
-  USING (public.can_access_user_key(user_key))
+  USING (private.can_access_user_key(user_key))
   WITH CHECK (
-    public.can_access_user_key(user_key)
+    private.can_access_user_key(user_key)
     AND role IS NOT NULL
     AND btrim(role) <> ''
     AND referral_source IS NOT NULL
@@ -189,8 +201,8 @@ DROP POLICY IF EXISTS "Insert own ratings" ON entry_ratings;
 CREATE POLICY "Insert own ratings"
   ON entry_ratings FOR INSERT
   WITH CHECK (
-    user_key = public.app_user_key()
-    AND public.app_user_key() IS NOT NULL
+    user_key = private.app_user_key()
+    AND private.app_user_key() IS NOT NULL
     AND rating BETWEEN 1 AND 5
     AND author_name IS NOT NULL
     AND btrim(author_name) <> ''
@@ -202,9 +214,9 @@ DROP POLICY IF EXISTS "Allow public update ratings" ON entry_ratings;
 DROP POLICY IF EXISTS "Update own ratings" ON entry_ratings;
 CREATE POLICY "Update own ratings"
   ON entry_ratings FOR UPDATE
-  USING (user_key = public.app_user_key())
+  USING (user_key = private.app_user_key())
   WITH CHECK (
-    user_key = public.app_user_key()
+    user_key = private.app_user_key()
     AND rating BETWEEN 1 AND 5
     AND author_name IS NOT NULL
     AND btrim(author_name) <> ''
@@ -223,8 +235,8 @@ DROP POLICY IF EXISTS "Insert own comments" ON entry_comments;
 CREATE POLICY "Insert own comments"
   ON entry_comments FOR INSERT
   WITH CHECK (
-    user_key = public.app_user_key()
-    AND public.app_user_key() IS NOT NULL
+    user_key = private.app_user_key()
+    AND private.app_user_key() IS NOT NULL
     AND author_name IS NOT NULL
     AND btrim(author_name) <> ''
     AND char_length(btrim(author_name)) <= 120
@@ -239,15 +251,15 @@ DROP POLICY IF EXISTS "Allow public read bookmarks" ON user_bookmarks;
 DROP POLICY IF EXISTS "Read own bookmarks" ON user_bookmarks;
 CREATE POLICY "Read own bookmarks"
   ON user_bookmarks FOR SELECT
-  USING (user_key = public.app_user_key());
+  USING (user_key = private.app_user_key());
 
 DROP POLICY IF EXISTS "Allow public insert bookmarks" ON user_bookmarks;
 DROP POLICY IF EXISTS "Insert own bookmarks" ON user_bookmarks;
 CREATE POLICY "Insert own bookmarks"
   ON user_bookmarks FOR INSERT
   WITH CHECK (
-    user_key = public.app_user_key()
-    AND public.app_user_key() IS NOT NULL
+    user_key = private.app_user_key()
+    AND private.app_user_key() IS NOT NULL
     AND entry_name IS NOT NULL
     AND btrim(entry_name) <> ''
   );
@@ -256,4 +268,4 @@ DROP POLICY IF EXISTS "Allow public delete bookmarks" ON user_bookmarks;
 DROP POLICY IF EXISTS "Delete own bookmarks" ON user_bookmarks;
 CREATE POLICY "Delete own bookmarks"
   ON user_bookmarks FOR DELETE
-  USING (user_key = public.app_user_key());
+  USING (user_key = private.app_user_key());
