@@ -4,9 +4,17 @@ import { useTokens } from "../lib/theme";
 
 interface PreferencesLoginPromptProps {
   onClose: () => void;
+  label?: string;
+  title?: string;
+  description?: string;
 }
 
-export function PreferencesLoginPrompt({ onClose }: PreferencesLoginPromptProps) {
+export function PreferencesLoginPrompt({
+  onClose,
+  label = "Personal preferences",
+  title = "Sign in to personalize AiVerse",
+  description = "Create a free account to save your role and interests and get a catalog feed picked for you. Preferences stay synced to your account.",
+}: PreferencesLoginPromptProps) {
   const t = useTokens();
 
   return (
@@ -29,14 +37,13 @@ export function PreferencesLoginPrompt({ onClose }: PreferencesLoginPromptProps)
         </button>
 
         <p className={`text-[11px] font-semibold uppercase tracking-widest mb-2 ${t.textMuted}`}>
-          Personal preferences
+          {label}
         </p>
         <h2 className={`text-xl font-black tracking-tight mb-2 ${t.textPrimary}`}>
-          Sign in to personalize AiVerse
+          {title}
         </h2>
         <p className={`text-sm leading-relaxed mb-6 ${t.textSecondary}`}>
-          Create a free account to save your role and interests and get a catalog feed picked for you.
-          Preferences stay synced to your account.
+          {description}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-2">

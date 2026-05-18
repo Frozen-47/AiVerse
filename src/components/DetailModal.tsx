@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { X, Star, ExternalLink, Copy, Check, Lock, Link2, Bookmark } from "lucide-react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
+import { X, Star, ExternalLink, Copy, Check, Lock, Link2, Bookmark, ChevronDown } from "lucide-react";
 import { shareUrlForEntry } from "../lib/entryUrl";
 import { useUser, SignInButton, SignUpButton } from "@clerk/clerk-react";
 import { useTokens, typeBadge, taskBadge, TYPE_GLYPH, typeIcon } from "../lib/theme";
@@ -26,6 +26,101 @@ const COMPARE_ROWS: { label: string; get: (e: Entry) => string }[] = [
   { label: "Organization", get: (e) => e.org },
   { label: "Benchmarks", get: (e) => e.benchmarks },
 ];
+
+function CompareSelect({
+  value,
+  onChange,
+  candidates,
+  placeholder,
+  className,
+  t,
+}: {
+  value: string;
+  onChange: (name: string) => void;
+  candidates: Entry[];
+  placeholder: string;
+  className: string;
+  t: ReturnType<typeof useTokens>;
+}) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const selected = candidates.find((c) => c.name === value);
+
+  useEffect(() => {
+    if (!open) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, [open]);
+
+  return (
+    <div ref={containerRef} className="relative">
+      <button
+        id="compare-with"
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        className={`${className} flex items-center justify-between gap-2 text-left`}
+        aria-expanded={open}
+        aria-haspopup="listbox"
+      >
+        <span className={selected ? t.textPrimary : "opacity-50"}>
+          {selected?.name ?? placeholder}
+        </span>
+        <ChevronDown
+          size={16}
+          className={`shrink-0 opacity-50 transition-transform ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      {open && (
+        <ul
+          role="listbox"
+          className={`absolute z-30 left-0 right-0 mt-1 max-h-56 overflow-y-auto overscroll-contain rounded-xl border shadow-2xl ${t.modal} ${t.border}`}
+        >
+          <li>
+            <button
+              type="button"
+              role="option"
+              aria-selected={!value}
+              onClick={() => {
+                onChange("");
+                setOpen(false);
+              }}
+              className={`w-full px-3 py-2.5 text-left text-[13px] transition-colors ${
+                !value ? `${t.surface2} ${t.textAccent}` : `${t.textMuted} ${t.surfaceHover}`
+              }`}
+            >
+              {placeholder}
+            </button>
+          </li>
+          {candidates.map((c) => (
+            <li key={c.name}>
+              <button
+                type="button"
+                role="option"
+                aria-selected={c.name === value}
+                onClick={() => {
+                  onChange(c.name);
+                  setOpen(false);
+                }}
+                className={`w-full px-3 py-2.5 text-left text-[13px] transition-colors ${
+                  c.name === value
+                    ? `${t.surface2} ${t.textAccent}`
+                    : `${t.textSecondary} ${t.surfaceHover}`
+                }`}
+              >
+                {c.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
 
 function CompareTable({
   left,
@@ -179,29 +274,51 @@ export const DetailModal: React.FC<DetailModalProps> = ({
         {/* Scroll: entry details first, then ratings & comments at the bottom */}
         <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain">
           {compareCandidates.length > 0 && (
-            <div className={`px-7 pt-5 pb-4 border-b ${t.border}`}>
+            <div className={`px-7 pt-5 pb-4 border-b ${t.border} relative`}>
               <label
                 htmlFor="compare-with"
                 className={`block text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}
               >
                 Compare with
               </label>
-              <select
-                id="compare-with"
+              <div className={!user ? "opacity-25 pointer-events-none select-none" : ""}>
+              <CompareSelect
                 value={compareName}
-                onChange={(e) => setCompareName(e.target.value)}
+                onChange={setCompareName}
+                candidates={compareCandidates}
+                placeholder="Choose an entry…"
                 className={selectCls}
-              >
-                <option value="">Choose an entry…</option>
-                {compareCandidates.map((c) => (
-                  <option key={c.name} value={c.name}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
+                t={t}
+              />
               {compareEntry && (
                 <div className="mt-4">
                   <CompareTable left={entry} right={compareEntry} t={t} />
+                </div>
+              )}
+              </div>
+              {!user && (
+                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-5 text-center bg-black/70">
+                  <div className="w-12 h-12 rounded-2xl bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white mb-3 shadow-lg shadow-blue-500/30">
+                    <Lock size={20} />
+                  </div>
+                  <h3 className="text-base font-bold text-white mb-1.5 tracking-tight">
+                    Sign in to compare
+                  </h3>
+                  <p className="text-[12px] text-gray-300 mb-4 max-w-[240px] leading-relaxed">
+                    Compare specs, benchmarks, and metadata side by side with another entry.
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <SignInButton mode="modal">
+                      <button className="px-4 py-2 rounded-xl font-medium text-[12px] transition-all bg-white/10 text-white hover:bg-white/20 border border-white/10">
+                        Login
+                      </button>
+                    </SignInButton>
+                    <SignUpButton mode="modal">
+                      <button className="px-4 py-2 rounded-xl font-semibold text-[12px] transition-all bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white shadow-md shadow-cyan-500/20">
+                        Create Account
+                      </button>
+                    </SignUpButton>
+                  </div>
                 </div>
               )}
             </div>

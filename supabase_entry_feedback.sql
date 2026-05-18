@@ -1,5 +1,4 @@
--- Run in Supabase SQL Editor (existing projects with `entries` table).
--- Safe to re-run.
+-- Included in supabase_all.sql. Run this only if you add feedback tables on an old project.
 
 CREATE TABLE IF NOT EXISTS entry_ratings (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -26,23 +25,3 @@ CREATE INDEX IF NOT EXISTS entry_comments_entry_name_idx ON entry_comments (entr
 
 ALTER TABLE entry_ratings ENABLE ROW LEVEL SECURITY;
 ALTER TABLE entry_comments ENABLE ROW LEVEL SECURITY;
-
-DROP POLICY IF EXISTS "Allow public read ratings" ON entry_ratings;
-CREATE POLICY "Allow public read ratings"
-  ON entry_ratings FOR SELECT USING (true);
-
-DROP POLICY IF EXISTS "Allow public insert ratings" ON entry_ratings;
-CREATE POLICY "Allow public insert ratings"
-  ON entry_ratings FOR INSERT WITH CHECK (true);
-
-DROP POLICY IF EXISTS "Allow public update ratings" ON entry_ratings;
-CREATE POLICY "Allow public update ratings"
-  ON entry_ratings FOR UPDATE USING (true);
-
-DROP POLICY IF EXISTS "Allow public read comments" ON entry_comments;
-CREATE POLICY "Allow public read comments"
-  ON entry_comments FOR SELECT USING (true);
-
-DROP POLICY IF EXISTS "Allow public insert comments" ON entry_comments;
-CREATE POLICY "Allow public insert comments"
-  ON entry_comments FOR INSERT WITH CHECK (true);

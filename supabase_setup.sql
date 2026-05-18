@@ -1,5 +1,5 @@
--- Fresh Supabase project: run this entire file once.
--- Existing project with `entries` already: run supabase_user_preferences.sql instead.
+-- Prefer running supabase_all.sql once (tables + RLS).
+-- This file is kept for reference; same tables as supabase_all.sql (part 1).
 
 CREATE TABLE IF NOT EXISTS entries (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -24,17 +24,7 @@ CREATE TABLE IF NOT EXISTS entries (
 
 ALTER TABLE entries ENABLE ROW LEVEL SECURITY;
 
-DROP POLICY IF EXISTS "Allow public read access" ON entries;
-CREATE POLICY "Allow public read access"
-  ON entries FOR SELECT
-  USING (true);
-
-DROP POLICY IF EXISTS "Allow public inserts" ON entries;
-CREATE POLICY "Allow public inserts"
-  ON entries FOR INSERT
-  WITH CHECK (true);
-
--- Onboarding preferences (see supabase_user_preferences.sql for migration-only script)
+-- Onboarding preferences (see supabase_user_preferences.sql)
 CREATE TABLE IF NOT EXISTS user_preferences (
   user_key TEXT PRIMARY KEY,
   email TEXT,
@@ -46,22 +36,7 @@ CREATE TABLE IF NOT EXISTS user_preferences (
 
 ALTER TABLE user_preferences ENABLE ROW LEVEL SECURITY;
 
-DROP POLICY IF EXISTS "Allow public read preferences" ON user_preferences;
-CREATE POLICY "Allow public read preferences"
-  ON user_preferences FOR SELECT
-  USING (true);
-
-DROP POLICY IF EXISTS "Allow public upsert preferences" ON user_preferences;
-CREATE POLICY "Allow public upsert preferences"
-  ON user_preferences FOR INSERT
-  WITH CHECK (true);
-
-DROP POLICY IF EXISTS "Allow public update preferences" ON user_preferences;
-CREATE POLICY "Allow public update preferences"
-  ON user_preferences FOR UPDATE
-  USING (true);
-
--- Ratings & comments (see supabase_entry_feedback.sql for migration-only script)
+-- Ratings & comments (see supabase_entry_feedback.sql)
 CREATE TABLE IF NOT EXISTS entry_ratings (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   entry_name TEXT NOT NULL REFERENCES entries(name) ON DELETE CASCADE,
@@ -88,14 +63,4 @@ CREATE INDEX IF NOT EXISTS entry_comments_entry_name_idx ON entry_comments (entr
 ALTER TABLE entry_ratings ENABLE ROW LEVEL SECURITY;
 ALTER TABLE entry_comments ENABLE ROW LEVEL SECURITY;
 
-DROP POLICY IF EXISTS "Allow public read ratings" ON entry_ratings;
-CREATE POLICY "Allow public read ratings" ON entry_ratings FOR SELECT USING (true);
-DROP POLICY IF EXISTS "Allow public insert ratings" ON entry_ratings;
-CREATE POLICY "Allow public insert ratings" ON entry_ratings FOR INSERT WITH CHECK (true);
-DROP POLICY IF EXISTS "Allow public update ratings" ON entry_ratings;
-CREATE POLICY "Allow public update ratings" ON entry_ratings FOR UPDATE USING (true);
-
-DROP POLICY IF EXISTS "Allow public read comments" ON entry_comments;
-CREATE POLICY "Allow public read comments" ON entry_comments FOR SELECT USING (true);
-DROP POLICY IF EXISTS "Allow public insert comments" ON entry_comments;
-CREATE POLICY "Allow public insert comments" ON entry_comments FOR INSERT WITH CHECK (true);
+-- RLS policies: run supabase_rls_policies.sql after this file.

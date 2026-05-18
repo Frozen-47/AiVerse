@@ -1,4 +1,4 @@
-const BOOKMARKS_KEY = "aiverse_bookmarks";
+export const BOOKMARKS_KEY = "aiverse_bookmarks";
 
 export function loadBookmarks(): string[] {
   try {
@@ -13,6 +13,10 @@ export function loadBookmarks(): string[] {
 
 export function saveBookmarks(names: string[]): void {
   localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(names));
+}
+
+export function clearLocalBookmarks(): void {
+  localStorage.removeItem(BOOKMARKS_KEY);
 }
 
 export function toggleBookmark(name: string): string[] {

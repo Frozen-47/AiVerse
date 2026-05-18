@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useCallback, lazy, Suspense } from "react";
+import React, { useState, useMemo, useEffect, useCallback, useRef, lazy, Suspense } from "react";
 import { Filter, X, Check } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
@@ -8,10 +8,17 @@ import { SearchBar } from "./components/SearchBar";
 import { EntryCard } from "./components/EntryCard";
 import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
 import { PreferencesLoginPrompt } from "./components/PreferencesLoginPrompt";
+import { SupabaseAuthBridge } from "./components/SupabaseAuthBridge";
 import { VoxLogo } from "./components/VoxLogo";
 import { useDebouncedValue } from "./lib/useDebouncedValue";
-import { loadBookmarks, toggleBookmark } from "./lib/bookmarks";
-import { findEntryBySlug, entryToSlug } from "./lib/entryUrl";
+import { clearLocalBookmarks, loadBookmarks } from "./lib/bookmarks";
+import {
+  bookmarkUserKey,
+  fetchUserBookmarks,
+  mergeLocalBookmarks,
+  toggleUserBookmark,
+} from "./lib/entryBookmarks";
+import { findEntryBySlug } from "./lib/entryUrl";
 import { getRelatedEntries, getCompareCandidates } from "./lib/relatedEntries";
 
 const DetailModal = lazy(() =>
@@ -53,13 +60,19 @@ const Inner: React.FC = () => {
   
   const [searchInput, setSearchInput] = useState("");
   const debouncedSearch = useDebouncedValue(searchInput, 220);
-  const [bookmarks, setBookmarks] = useState<string[]>(() => loadBookmarks());
+  const [bookmarks, setBookmarks] = useState<string[]>([]);
   const [savedOnly, setSavedOnly] = useState(false);
   const [chatEnabled, setChatEnabled] = useState(false);
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("All");
   const [taskFilter, setTaskFilter] = useState<TaskFilter>("All Tasks");
   const [popularOnly, setPopularOnly] = useState(false);
   const [selected, setSelected] = useState<Entry | null>(null);
+  const initialEntrySlugRef = useRef<string | null>(
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("entry")
+      : null,
+  );
+  const [urlSyncReady, setUrlSyncReady] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
   const [showBackendToast, setShowBackendToast] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -68,6 +81,7 @@ const Inner: React.FC = () => {
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [showPreferencesEditor, setShowPreferencesEditor] = useState(false);
   const [showLoginForPrefs, setShowLoginForPrefs] = useState(false);
+  const [showLoginForBookmarks, setShowLoginForBookmarks] = useState(false);
   const [prefsToast, setPrefsToast] = useState(false);
   const [ratingSummaries, setRatingSummaries] = useState<
     Record<string, EntryRatingSummary>
@@ -117,8 +131,42 @@ const Inner: React.FC = () => {
   }, [user, isLoaded]);
 
   useEffect(() => {
-    if (user) setShowLoginForPrefs(false);
+    if (user) {
+      setShowLoginForPrefs(false);
+      setShowLoginForBookmarks(false);
+    }
   }, [user]);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+
+    if (!user) {
+      setBookmarks([]);
+      setSavedOnly(false);
+      return;
+    }
+
+    let cancelled = false;
+    const userKey = bookmarkUserKey(user.id);
+
+    (async () => {
+      const local = loadBookmarks();
+      try {
+        const names = local.length
+          ? await mergeLocalBookmarks(userKey, local)
+          : await fetchUserBookmarks(userKey);
+        if (local.length) clearLocalBookmarks();
+        if (!cancelled) setBookmarks(names);
+      } catch (err) {
+        console.warn("Failed to sync bookmarks", err);
+        if (!cancelled) setBookmarks(local);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [user, isLoaded]);
 
   const handleProfileComplete = async (
     profile: OnboardingProfile,
@@ -188,9 +236,36 @@ const Inner: React.FC = () => {
     [entriesByName],
   );
 
-  const handleToggleBookmark = useCallback((name: string) => {
-    setBookmarks(toggleBookmark(name));
-  }, []);
+  const handleToggleBookmark = useCallback(
+    async (name: string) => {
+      if (!user) {
+        setShowLoginForBookmarks(true);
+        return;
+      }
+      const userKey = bookmarkUserKey(user.id);
+      const prev = bookmarks;
+      const optimistic = prev.includes(name)
+        ? prev.filter((n) => n !== name)
+        : [...prev, name];
+      setBookmarks(optimistic);
+      try {
+        const next = await toggleUserBookmark(userKey, name, prev);
+        setBookmarks(next);
+      } catch (err) {
+        console.warn("Failed to update bookmark", err);
+        setBookmarks(prev);
+      }
+    },
+    [user, bookmarks],
+  );
+
+  const handleSavedToggle = useCallback(() => {
+    if (!user) {
+      setShowLoginForBookmarks(true);
+      return;
+    }
+    setSavedOnly((p) => !p);
+  }, [user]);
 
   const relatedForSelected = useMemo(() => {
     if (!selected) return [];
@@ -204,18 +279,24 @@ const Inner: React.FC = () => {
 
   useEffect(() => {
     if (!entries.length) return;
-    const slug = new URLSearchParams(window.location.search).get("entry");
-    if (!slug) return;
-    const entry = findEntryBySlug(entries, slug);
-    if (entry) setSelected(entry);
+    const slug =
+      initialEntrySlugRef.current ??
+      new URLSearchParams(window.location.search).get("entry");
+    initialEntrySlugRef.current = null;
+    if (slug) {
+      const entry = findEntryBySlug(entries, slug);
+      if (entry) setSelected(entry);
+    }
+    setUrlSyncReady(true);
   }, [entries]);
 
   useEffect(() => {
+    if (!urlSyncReady) return;
     const url = new URL(window.location.href);
-    if (selected) url.searchParams.set("entry", entryToSlug(selected.name));
+    if (selected) url.searchParams.set("entry", selected.name);
     else url.searchParams.delete("entry");
     window.history.replaceState({}, "", url);
-  }, [selected]);
+  }, [selected, urlSyncReady]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -327,6 +408,8 @@ const Inner: React.FC = () => {
   }
 
   return (
+    <>
+      <SupabaseAuthBridge />
     <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${t.page}`}>
       {/* Ambient glow */}
       <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
@@ -393,7 +476,7 @@ const Inner: React.FC = () => {
               onPopularToggle={() => setPopularOnly((p) => !p)}
               savedOnly={savedOnly}
               savedCount={bookmarks.length}
-              onSavedToggle={() => setSavedOnly((p) => !p)}
+              onSavedToggle={handleSavedToggle}
             />
           </div>
 
@@ -562,6 +645,15 @@ const Inner: React.FC = () => {
         <PreferencesLoginPrompt onClose={() => setShowLoginForPrefs(false)} />
       )}
 
+      {showLoginForBookmarks && (
+        <PreferencesLoginPrompt
+          onClose={() => setShowLoginForBookmarks(false)}
+          label="Saved entries"
+          title="Sign in to save entries"
+          description="Bookmarks sync to your account so you can access them on any device. Use Saved only in the sidebar to filter your list."
+        />
+      )}
+
       {prefsToast && (
         <div className="fixed bottom-24 left-6 z-50">
           <div className={`p-4 rounded-xl border flex items-center gap-3 text-[13px] font-medium shadow-2xl ${t.errorToast}`}>
@@ -631,7 +723,7 @@ const Inner: React.FC = () => {
               onPopularToggle={() => setPopularOnly((p) => !p)}
               savedOnly={savedOnly}
               savedCount={bookmarks.length}
-              onSavedToggle={() => setSavedOnly((p) => !p)}
+              onSavedToggle={handleSavedToggle}
             />
           </div>
         </div>
@@ -648,6 +740,7 @@ const Inner: React.FC = () => {
         }
       `}</style>
     </div>
+    </>
   );
 };
 
