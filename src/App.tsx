@@ -16,14 +16,18 @@ import { useUser, ClerkProvider } from "@clerk/clerk-react";
 import { dark } from "@clerk/themes";
 import { typeFilters as staticTypeFilters, taskFilters as staticTaskFilters } from "./data";
 import {
+  getOrCreateGuestId,
   loadGuestOnboarding,
   parseClerkOnboarding,
   partitionByInterests,
+  persistOnboardingProfile,
+  preferencesUserKey,
   roleHeadline,
   roleLabel,
   sortByInterestMatch,
   type OnboardingProfile,
 } from "./lib/onboarding";
+import { fetchUserPreferences } from "./lib/supabase";
 
 // ─── Inner app (needs theme context) ─────────────────────────────────────────
 const Inner: React.FC = () => {
@@ -46,31 +50,85 @@ const Inner: React.FC = () => {
   const [showMobileSidebar, setShowMobileSidebar] = useState(false);
   const [onboardingProfile, setOnboardingProfile] = useState<OnboardingProfile | null>(null);
   const [showOnboarding, setShowOnboarding] = useState(false);
+  const [showPreferencesEditor, setShowPreferencesEditor] = useState(false);
+  const [prefsToast, setPrefsToast] = useState(false);
 
   useEffect(() => {
     if (!isLoaded) return;
 
-    if (user) {
-      const fromClerk = parseClerkOnboarding(user.unsafeMetadata as Record<string, unknown>);
-      if (fromClerk) {
-        setOnboardingProfile(fromClerk);
+    let cancelled = false;
+
+    (async () => {
+      if (user) {
+        const fromClerk = parseClerkOnboarding(user.unsafeMetadata as Record<string, unknown>);
+        if (fromClerk) {
+          if (!cancelled) {
+            setOnboardingProfile(fromClerk);
+            setShowOnboarding(false);
+          }
+          return;
+        }
+
+        const fromDb = await fetchUserPreferences(
+          preferencesUserKey({ clerkUserId: user.id }),
+        );
+        if (fromDb && !cancelled) {
+          setOnboardingProfile(fromDb);
+          setShowOnboarding(false);
+          return;
+        }
+
+        if (!cancelled) {
+          setOnboardingProfile(null);
+          setShowOnboarding(true);
+        }
+        return;
+      }
+
+      const guestProfile = loadGuestOnboarding();
+      if (guestProfile) {
+        if (!cancelled) {
+          setOnboardingProfile(guestProfile);
+          setShowOnboarding(false);
+        }
+        return;
+      }
+
+      const guestId = getOrCreateGuestId();
+      const fromDb = await fetchUserPreferences(preferencesUserKey({ guestId }));
+      if (fromDb && !cancelled) {
+        setOnboardingProfile(fromDb);
         setShowOnboarding(false);
-      } else {
+        return;
+      }
+
+      if (!cancelled) {
         setOnboardingProfile(null);
         setShowOnboarding(true);
       }
-      return;
-    }
+    })();
 
-    const guestProfile = loadGuestOnboarding();
-    if (guestProfile) {
-      setOnboardingProfile(guestProfile);
-      setShowOnboarding(false);
-    } else {
-      setOnboardingProfile(null);
-      setShowOnboarding(true);
-    }
+    return () => {
+      cancelled = true;
+    };
   }, [user, isLoaded]);
+
+  const handleProfileComplete = async (
+    profile: OnboardingProfile,
+    meta?: { displayName?: string },
+  ) => {
+    await persistOnboardingProfile(profile, {
+      user: user ?? undefined,
+      isGuest: !user,
+      displayName: meta?.displayName,
+    });
+    setOnboardingProfile(profile);
+    setShowOnboarding(false);
+    setShowPreferencesEditor(false);
+    setCurrentPage(1);
+    setPrefsToast(true);
+    setTimeout(() => setPrefsToast(false), 4000);
+  };
 
   useEffect(() => {
     fetchEntries()
@@ -206,7 +264,11 @@ const Inner: React.FC = () => {
         <div className="absolute top-1/3 -right-20 w-75 h-100 rounded-full bg-violet-500/3 blur-[100px]" />
       </div>
 
-      <Navbar onAddEntry={handleAddClick} entryCount={entries.length} />
+      <Navbar
+        onAddEntry={handleAddClick}
+        onEditPreferences={() => setShowPreferencesEditor(true)}
+        entryCount={entries.length}
+      />
 
       <div className="w-full px-4 sm:px-6 xl:px-12 py-8">
         {/* Hero */}
@@ -394,15 +456,30 @@ const Inner: React.FC = () => {
         </div>
       )}
 
-      {/* Welcome Onboarding Modal */}
       {isLoaded && showOnboarding && (
         <WelcomeOnboarding
           isGuest={!user}
-          onComplete={(profile) => {
-            setOnboardingProfile(profile);
-            setShowOnboarding(false);
-          }}
+          onComplete={handleProfileComplete}
         />
+      )}
+
+      {showPreferencesEditor && (
+        <WelcomeOnboarding
+          mode="edit"
+          isGuest={!user}
+          initialProfile={onboardingProfile}
+          onClose={() => setShowPreferencesEditor(false)}
+          onComplete={handleProfileComplete}
+        />
+      )}
+
+      {prefsToast && (
+        <div className="fixed bottom-24 left-6 z-50 animate-[fadeUp_0.15s_ease-out]">
+          <div className={`p-4 rounded-xl border flex items-center gap-3 text-[13px] font-medium shadow-2xl backdrop-blur-xl ${t.errorToast}`}>
+            <Check size={18} className="shrink-0 text-emerald-400" />
+            <span>Preferences saved — your feed is updated.</span>
+          </div>
+        </div>
       )}
 
       {/* Groq AI Agent */}

@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Entry } from '../types';
+import type { OnboardingProfile } from './onboarding';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -36,3 +37,60 @@ export const fetchEntries = async () => {
   if (error) throw error;
   return data as Entry[];
 };
+
+type PreferencesRow = {
+  user_key: string;
+  email: string | null;
+  role: string;
+  interests: string[];
+  referral_source: string;
+  updated_at: string;
+};
+
+function rowToProfile(row: PreferencesRow): OnboardingProfile {
+  return {
+    role: row.role as OnboardingProfile["role"],
+    interests: row.interests as OnboardingProfile["interests"],
+    referralSource: row.referral_source as OnboardingProfile["referralSource"],
+    completedAt: row.updated_at,
+  };
+}
+
+export async function fetchUserPreferences(
+  userKey: string,
+): Promise<OnboardingProfile | null> {
+  const { data, error } = await supabase
+    .from("user_preferences")
+    .select("role, interests, referral_source, updated_at")
+    .eq("user_key", userKey)
+    .maybeSingle();
+
+  if (error) {
+    console.warn("Failed to load preferences from Supabase", error);
+    return null;
+  }
+  if (!data) return null;
+  return rowToProfile(data as PreferencesRow);
+}
+
+export async function upsertUserPreferences(
+  userKey: string,
+  profile: OnboardingProfile,
+  email?: string | null,
+): Promise<void> {
+  const { error } = await supabase.from("user_preferences").upsert(
+    {
+      user_key: userKey,
+      email: email ?? null,
+      role: profile.role,
+      interests: profile.interests,
+      referral_source: profile.referralSource,
+      updated_at: profile.completedAt,
+    },
+    { onConflict: "user_key" },
+  );
+
+  if (error) {
+    console.warn("Failed to sync preferences to Supabase", error);
+  }
+}

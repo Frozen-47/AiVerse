@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton, useUser } from "@clerk/clerk-react";
-import { Plus, Moon, Sun } from "lucide-react";
+import { Plus, Moon, Sun, SlidersHorizontal } from "lucide-react";
 import { useTokens, useTheme } from "../lib/theme";
 
 interface NavbarProps {
   onAddEntry: () => void;
+  onEditPreferences: () => void;
   entryCount: number;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  onAddEntry,
+  onEditPreferences,
+  entryCount,
+}) => {
   const t = useTokens();
   const { theme, setTheme } = useTheme();
   const { user } = useUser();
@@ -77,6 +82,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onAddEntry, entryCount }) => {
             aria-label="Toggle theme"
           >
             {theme === "amoled" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+
+          <button
+            onClick={onEditPreferences}
+            className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
+            title="Edit preferences"
+          >
+            <SlidersHorizontal size={16} />
+            <span className="hidden md:inline">Preferences</span>
           </button>
 
           <SignedIn>

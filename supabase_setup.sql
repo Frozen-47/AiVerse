@@ -1,6 +1,7 @@
--- Execute this script in the Supabase SQL Editor to create the 'entries' table
+-- Fresh Supabase project: run this entire file once.
+-- Existing project with `entries` already: run supabase_user_preferences.sql instead.
 
-CREATE TABLE entries (
+CREATE TABLE IF NOT EXISTS entries (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   created_at TIMESTAMPTZ DEFAULT now(),
   name TEXT NOT NULL UNIQUE,
@@ -21,16 +22,41 @@ CREATE TABLE entries (
   approved BOOLEAN DEFAULT false
 );
 
--- Enable Row Level Security (RLS)
 ALTER TABLE entries ENABLE ROW LEVEL SECURITY;
 
--- Create policy to allow anonymous reads
-CREATE POLICY "Allow public read access" 
-  ON entries FOR SELECT 
+DROP POLICY IF EXISTS "Allow public read access" ON entries;
+CREATE POLICY "Allow public read access"
+  ON entries FOR SELECT
   USING (true);
 
--- Create policy to allow anonymous inserts (since we are taking submissions from users directly)
--- Note: In a production app, you might want to require authentication or add spam protection.
-CREATE POLICY "Allow public inserts" 
-  ON entries FOR INSERT 
+DROP POLICY IF EXISTS "Allow public inserts" ON entries;
+CREATE POLICY "Allow public inserts"
+  ON entries FOR INSERT
   WITH CHECK (true);
+
+-- Onboarding preferences (see supabase_user_preferences.sql for migration-only script)
+CREATE TABLE IF NOT EXISTS user_preferences (
+  user_key TEXT PRIMARY KEY,
+  email TEXT,
+  role TEXT NOT NULL,
+  interests TEXT[] NOT NULL DEFAULT '{}',
+  referral_source TEXT NOT NULL,
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+
+ALTER TABLE user_preferences ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Allow public read preferences" ON user_preferences;
+CREATE POLICY "Allow public read preferences"
+  ON user_preferences FOR SELECT
+  USING (true);
+
+DROP POLICY IF EXISTS "Allow public upsert preferences" ON user_preferences;
+CREATE POLICY "Allow public upsert preferences"
+  ON user_preferences FOR INSERT
+  WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Allow public update preferences" ON user_preferences;
+CREATE POLICY "Allow public update preferences"
+  ON user_preferences FOR UPDATE
+  USING (true);

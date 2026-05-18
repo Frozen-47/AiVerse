@@ -164,8 +164,73 @@ export function parseClerkOnboarding(
   };
 }
 
+export const GUEST_ID_STORAGE_KEY = "aiverse_guest_id";
+
 export function saveGuestOnboarding(profile: OnboardingProfile): void {
   localStorage.setItem(ONBOARDING_STORAGE_KEY, JSON.stringify(profile));
+}
+
+export function getOrCreateGuestId(): string {
+  let id = localStorage.getItem(GUEST_ID_STORAGE_KEY);
+  if (!id) {
+    id = crypto.randomUUID();
+    localStorage.setItem(GUEST_ID_STORAGE_KEY, id);
+  }
+  return id;
+}
+
+export function preferencesUserKey(options: {
+  clerkUserId?: string;
+  guestId?: string;
+}): string {
+  if (options.clerkUserId) return `clerk_${options.clerkUserId}`;
+  if (options.guestId) return `guest_${options.guestId}`;
+  throw new Error("preferencesUserKey requires clerkUserId or guestId");
+}
+
+type ClerkUserLike = {
+  id: string;
+  unsafeMetadata: Record<string, unknown>;
+  primaryEmailAddress?: { emailAddress: string } | null;
+  update: (params: {
+    firstName?: string;
+    unsafeMetadata?: Record<string, unknown>;
+  }) => Promise<unknown>;
+};
+
+export async function persistOnboardingProfile(
+  profile: OnboardingProfile,
+  options: {
+    user: ClerkUserLike | null | undefined;
+    isGuest: boolean;
+    displayName?: string;
+  },
+): Promise<void> {
+  const { upsertUserPreferences } = await import("./supabase");
+
+  if (options.isGuest) {
+    saveGuestOnboarding(profile);
+    const guestId = getOrCreateGuestId();
+    await upsertUserPreferences(preferencesUserKey({ guestId }), profile);
+    return;
+  }
+
+  if (!options.user) return;
+
+  await options.user.update({
+    ...(options.displayName ? { firstName: options.displayName.trim() } : {}),
+    unsafeMetadata: {
+      ...options.user.unsafeMetadata,
+      onboardingComplete: true,
+      onboarding: profile,
+    },
+  });
+
+  await upsertUserPreferences(
+    preferencesUserKey({ clerkUserId: options.user.id }),
+    profile,
+    options.user.primaryEmailAddress?.emailAddress,
+  );
 }
 
 export function roleHeadline(role: UserRole): string {

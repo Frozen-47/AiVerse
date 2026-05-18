@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useTokens } from "../lib/theme";
 import { useUser } from "@clerk/clerk-react";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, X } from "lucide-react";
 import { Logo } from "./Logo";
 import {
   onboardingOptions,
@@ -13,31 +13,60 @@ import {
 } from "../lib/onboarding";
 
 interface WelcomeOnboardingProps {
-  onComplete: (profile: OnboardingProfile) => void;
+  onComplete: (profile: OnboardingProfile, meta?: { displayName?: string }) => void;
   isGuest?: boolean;
+  mode?: "welcome" | "edit";
+  initialProfile?: OnboardingProfile | null;
+  onClose?: () => void;
 }
 
-const STEPS = ["name", "role", "interests", "referral"] as const;
-type Step = (typeof STEPS)[number];
+const ALL_STEPS = ["name", "role", "interests", "referral"] as const;
+type Step = (typeof ALL_STEPS)[number];
 
 export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   onComplete,
   isGuest = false,
+  mode = "welcome",
+  initialProfile = null,
+  onClose,
 }) => {
   const t = useTokens();
   const { user } = useUser();
-  const [step, setStep] = useState<Step>(isGuest ? "role" : "name");
-  const [name, setName] = useState("");
-  const [role, setRole] = useState<UserRole | null>(null);
-  const [interests, setInterests] = useState<OnboardingInterest[]>([]);
-  const [referralSource, setReferralSource] = useState<ReferralSource | null>(null);
+  const isEdit = mode === "edit";
+
+  const steps = useMemo<Step[]>(() => {
+    if (isEdit) return ["role", "interests", "referral"];
+    if (isGuest) return ["role", "interests", "referral"];
+    return [...ALL_STEPS];
+  }, [isEdit, isGuest]);
+
+  const [step, setStep] = useState<Step>(steps[0]);
+  const [name, setName] = useState(user?.firstName ?? "");
+  const [role, setRole] = useState<UserRole | null>(initialProfile?.role ?? null);
+  const [interests, setInterests] = useState<OnboardingInterest[]>(
+    initialProfile?.interests ?? [],
+  );
+  const [referralSource, setReferralSource] = useState<ReferralSource | null>(
+    initialProfile?.referralSource ?? null,
+  );
   const [isUpdating, setIsUpdating] = useState(false);
 
-  const stepIndex = STEPS.indexOf(step);
-  const progress = ((stepIndex + 1) / STEPS.length) * 100;
+  const stepIndex = steps.indexOf(step);
+  const progress = ((stepIndex + 1) / steps.length) * 100;
 
   useEffect(() => {
-    if (!user?.primaryEmailAddress?.emailAddress || name) return;
+    if (!initialProfile) return;
+    setRole(initialProfile.role);
+    setInterests(initialProfile.interests);
+    setReferralSource(initialProfile.referralSource);
+  }, [initialProfile]);
+
+  useEffect(() => {
+    if (user?.firstName) setName(user.firstName);
+  }, [user?.firstName]);
+
+  useEffect(() => {
+    if (!user?.primaryEmailAddress?.emailAddress || name || isEdit) return;
     const email = user.primaryEmailAddress.emailAddress;
     const prefix = email.split("@")[0].replace(/[._]/g, " ");
     const formattedName = prefix
@@ -45,7 +74,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
     setName(formattedName);
-  }, [user, name]);
+  }, [user, name, isEdit]);
 
   const toggleInterest = (id: OnboardingInterest) => {
     setInterests((prev) =>
@@ -60,7 +89,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
       case "role":
         return role !== null;
       case "interests":
-        return interests.length > 0;
+        return isEdit ? true : interests.length > 0;
       case "referral":
         return referralSource !== null;
       default:
@@ -69,18 +98,17 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   };
 
   const goNext = () => {
-    const idx = STEPS.indexOf(step);
-    if (idx < STEPS.length - 1) setStep(STEPS[idx + 1]);
+    if (stepIndex < steps.length - 1) setStep(steps[stepIndex + 1]);
   };
 
   const goBack = () => {
-    const idx = STEPS.indexOf(step);
-    if (idx > 0) setStep(STEPS[idx - 1]);
+    if (stepIndex > 0) setStep(steps[stepIndex - 1]);
   };
 
   const finish = async () => {
-    if (!role || !referralSource || interests.length === 0) return;
-    if (!isGuest && (!name.trim() || !user)) return;
+    if (!role || !referralSource) return;
+    if (!isEdit && interests.length === 0) return;
+    if (!isGuest && !isEdit && (!name.trim() || !user)) return;
 
     const profile: OnboardingProfile = {
       interests,
@@ -91,23 +119,10 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
 
     setIsUpdating(true);
     try {
-      if (isGuest) {
+      if (isGuest && !isEdit) {
         saveGuestOnboarding(profile);
-      } else if (user) {
-        await user.update({
-          firstName: name.trim(),
-          unsafeMetadata: {
-            ...user.unsafeMetadata,
-            onboardingComplete: true,
-            onboarding: profile,
-          },
-        });
       }
-      onComplete(profile);
-    } catch (err) {
-      console.error("Failed to save onboarding:", err);
-      if (isGuest) saveGuestOnboarding(profile);
-      onComplete(profile);
+      onComplete(profile, isGuest || isEdit ? undefined : { displayName: name.trim() });
     } finally {
       setIsUpdating(false);
     }
@@ -123,23 +138,46 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
 
   const stepTitle: Record<Step, string> = {
     name: "Welcome to AiVerse",
-    role: "What best describes you?",
-    interests: "What are you exploring?",
-    referral: "How did you find us?",
+    role: isEdit ? "Update your role" : "What best describes you?",
+    interests: isEdit ? "Update your interests" : "What are you exploring?",
+    referral: isEdit ? "How did you find us?" : "How did you find us?",
   };
 
   const stepSubtitle: Record<Step, string> = {
     name: "Your account is ready. What should we call you?",
-    role: "We'll tailor recommendations to how you work with AI.",
-    interests: "Pick one or more — we'll surface matching tools and models first.",
+    role: isEdit
+      ? "We'll refresh your recommendations based on this."
+      : "We'll tailor recommendations to how you work with AI.",
+    interests: isEdit
+      ? "Select topics to personalize your catalog — leave empty to browse everything."
+      : "Pick one or more — we'll surface matching tools and models first.",
     referral: "Helps us understand where builders discover AiVerse.",
   };
+
+  const primaryLabel = isUpdating
+    ? "Saving..."
+    : step === "referral"
+      ? isEdit
+        ? "Save preferences"
+        : "Start exploring"
+      : "Continue";
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
       <div
         className={`relative w-full max-w-lg flex flex-col rounded-3xl border shadow-2xl overflow-hidden ${t.modal} ${t.border}`}
       >
+        {isEdit && onClose && (
+          <button
+            type="button"
+            onClick={onClose}
+            className={`absolute top-4 right-4 z-20 p-2 rounded-lg border transition-colors ${t.surface} ${t.border} ${t.textMuted} hover:${t.textPrimary}`}
+            aria-label="Close"
+          >
+            <X size={16} />
+          </button>
+        )}
+
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-linear-to-b from-cyan-500/15 to-transparent pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 h-1 bg-white/5 z-10">
           <div
@@ -154,10 +192,10 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
           </div>
 
           <p className={`text-[11px] font-semibold uppercase tracking-widest mb-2 ${t.textMuted}`}>
-            Step {stepIndex + 1} of {STEPS.length}
+            {isEdit ? "Your preferences" : `Step ${stepIndex + 1} of ${steps.length}`}
           </p>
           <h2 className={`text-2xl font-black tracking-tight mb-2 ${t.textPrimary}`}>
-            {stepTitle[step]}
+            {isEdit && step === steps[0] ? "Edit your preferences" : stepTitle[step]}
           </h2>
           <p className={`text-sm mb-6 ${t.textSecondary} leading-relaxed`}>
             {stepSubtitle[step]}
@@ -255,16 +293,12 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
               disabled={isUpdating || !canContinue()}
               className="group flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-[15px] transition-all bg-white text-black hover:bg-gray-100 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] hover:-translate-y-0.5 disabled:opacity-50 disabled:pointer-events-none active:scale-95"
             >
-              {isUpdating
-                ? "Saving..."
-                : step === "referral"
-                  ? "Start exploring"
-                  : "Continue"}
+              {primaryLabel}
               {!isUpdating && <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />}
             </button>
           </div>
 
-          {isGuest && step === "role" && (
+          {!isEdit && isGuest && step === "role" && (
             <button
               type="button"
               onClick={() => {
