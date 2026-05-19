@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { X, SlidersHorizontal, Loader2 } from "lucide-react";
+import { X, Loader2 } from "lucide-react";
 import { fetchProfileByUsername, type PublicBuilderProfile } from "../lib/supabase";
 import { useTokens } from "../lib/theme";
 import { roleLabel } from "../lib/onboarding";
@@ -8,13 +8,11 @@ import { useAuth } from "./AuthContext";
 interface UserProfileModalProps {
   username: string;
   onClose: () => void;
-  onEditOwnProfile?: () => void;
 }
 
 export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   username,
   onClose,
-  onEditOwnProfile,
 }) => {
   const t = useTokens();
   const { user } = useAuth();
