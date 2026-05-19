@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { SignedIn, SignedOut, useAuth } from "./AuthContext";
 import { Plus, Moon, Sun, SlidersHorizontal, LogOut } from "lucide-react";
 import { useTokens, useTheme } from "../lib/theme";
@@ -19,6 +19,21 @@ export const Navbar: React.FC<NavbarProps> = ({
   const { user, openAuthModal, signOut } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [showGreeting, setShowGreeting] = useState(false);
+  
+  const prevUserRef = useRef<any>(null);
+
+  useEffect(() => {
+    // If we transition from no user (guest) to signed-in user
+    if (!prevUserRef.current && user) {
+      setShowGreeting(true);
+      const timer = setTimeout(() => {
+        setShowGreeting(false);
+      }, 20000); // 20 seconds
+      return () => clearTimeout(timer);
+    }
+    prevUserRef.current = user;
+  }, [user]);
 
   const avatarUrl = user?.user_metadata?.avatar_url as string | undefined;
   const firstName = (user?.user_metadata?.firstName as string) || "";
@@ -97,7 +112,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="hidden sm:inline">Add Entry</span>
             </button>
             
-            <div className="relative flex items-center ml-1">
+            <div className="relative flex items-center ml-1 gap-2.5">
+              {showGreeting && (
+                <div className={`text-sm font-semibold whitespace-nowrap ${t.textPrimary} bg-white/5 border border-white/10 px-3 py-1 rounded-full shadow-xs backdrop-blur-xs animate-[fadeUp_0.3s_ease-out]`}>
+                  Hi, {displayName}!
+                </div>
+              )}
               <button 
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className="relative flex items-center justify-center w-9 h-9 rounded-full overflow-hidden border border-white/10 transition-all hover:scale-105 active:scale-95 focus:outline-hidden cursor-pointer"
