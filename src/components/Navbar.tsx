@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton, useUser } from "@clerk/clerk-react";
-import { Plus, Moon, Sun, SlidersHorizontal } from "lucide-react";
+import { SignedIn, SignedOut, useAuth } from "./AuthContext";
+import { Plus, Moon, Sun, SlidersHorizontal, LogOut } from "lucide-react";
 import { useTokens, useTheme } from "../lib/theme";
 
 interface NavbarProps {
@@ -16,7 +16,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const t = useTokens();
   const { theme, setTheme } = useTheme();
-  const { user } = useUser();
+  const { user, openAuthModal, signOut } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -103,33 +103,33 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
             <div className="ml-1 pl-3 border-l border-white/10 flex items-center gap-2.5">
               <span className={`text-sm font-semibold hidden sm:block ${t.textPrimary}`}>
-                Hi, {user?.firstName || "Guest"}
+                Hi, {user?.user_metadata?.firstName || user?.email?.split('@')[0] || "Guest"}
               </span>
-              <UserButton
-                appearance={{
-                  elements: { userButtonAvatarBox: "w-8 h-8 rounded-lg" },
-                }}
-              />
+              <button
+                onClick={() => signOut()}
+                className={`p-2 rounded-lg transition-colors ${t.surface} ${t.border} ${t.textMuted} hover:text-red-400 hover:border-red-500/30`}
+                title="Sign out"
+              >
+                <LogOut size={16} />
+              </button>
             </div>
           </SignedIn>
 
           <SignedOut>
             <div className="flex items-center gap-2">
-              <SignInButton mode="modal">
-                <button
-                  className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
-                >
-                  Login
-                </button>
-              </SignInButton>
-              <SignUpButton mode="modal">
-                <button
-                  className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-semibold text-sm transition-all bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white shadow-md shadow-cyan-500/20`}
-                >
-                  <span className="hidden sm:inline">Create Account</span>
-                  <span className="sm:hidden">Sign Up</span>
-                </button>
-              </SignUpButton>
+              <button
+                onClick={() => openAuthModal("signin")}
+                className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
+              >
+                Login
+              </button>
+              <button
+                onClick={() => openAuthModal("signup")}
+                className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-semibold text-sm transition-all bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white shadow-md shadow-cyan-500/20`}
+              >
+                <span className="hidden sm:inline">Create Account</span>
+                <span className="sm:hidden">Sign Up</span>
+              </button>
             </div>
           </SignedOut>
         </div>

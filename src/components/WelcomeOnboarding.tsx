@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useTokens } from "../lib/theme";
-import { useUser } from "@clerk/clerk-react";
+import { useAuth } from "./AuthContext";
 import { ArrowLeft, ArrowRight, Check, X } from "lucide-react";
 import { Logo } from "./Logo";
 import {
@@ -30,7 +30,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   onClose,
 }) => {
   const t = useTokens();
-  const { user } = useUser();
+  const { user } = useAuth();
   const isEdit = mode === "edit";
 
   const steps = useMemo<Step[]>(() => {
@@ -40,7 +40,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   }, [isEdit, isGuest]);
 
   const [step, setStep] = useState<Step>(steps[0]);
-  const [name, setName] = useState(user?.firstName ?? "");
+  const [name, setName] = useState((user?.user_metadata?.firstName as string) ?? "");
   const [role, setRole] = useState<UserRole | null>(initialProfile?.role ?? null);
   const [interests, setInterests] = useState<OnboardingInterest[]>(
     initialProfile?.interests ?? [],
@@ -61,12 +61,12 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   }, [initialProfile]);
 
   useEffect(() => {
-    if (user?.firstName) setName(user.firstName);
-  }, [user?.firstName]);
+    if (user?.user_metadata?.firstName) setName(user.user_metadata.firstName as string);
+  }, [user?.user_metadata?.firstName]);
 
   useEffect(() => {
-    if (!user?.primaryEmailAddress?.emailAddress || name || isEdit) return;
-    const email = user.primaryEmailAddress.emailAddress;
+    if (!user?.email || name || isEdit) return;
+    const email = user.email;
     const prefix = email.split("@")[0].replace(/[._]/g, " ");
     const formattedName = prefix
       .split(" ")

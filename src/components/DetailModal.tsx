@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { X, Star, ExternalLink, Copy, Check, Lock, Link2, Bookmark, ChevronDown } from "lucide-react";
 import { shareUrlForEntry } from "../lib/entryUrl";
-import { useUser, SignInButton, SignUpButton } from "@clerk/clerk-react";
+import { useAuth } from "./AuthContext";
 import { useTokens, typeBadge, taskBadge, TYPE_GLYPH, typeIcon } from "../lib/theme";
 import type { Entry, EntryRatingSummary } from "../types";
 import { EntryFeedback } from "./EntryFeedback";
@@ -169,7 +169,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
   compareCandidates = [],
 }) => {
   const t = useTokens();
-  const { user } = useUser();
+  const { user, openAuthModal } = useAuth();
   const [copied, setCopied] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
   const [compareName, setCompareName] = useState("");
@@ -314,16 +314,18 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 Sign in to view architecture, benchmarks, code usage, direct resources, and compare with other AI models.
               </p>
               <div className="flex items-center gap-3">
-                <SignInButton mode="modal">
-                  <button className="px-5 py-2.5 rounded-xl font-medium text-sm transition-all bg-white/10 text-white hover:bg-white/20 border border-white/10">
-                    Login
-                  </button>
-                </SignInButton>
-                <SignUpButton mode="modal">
-                  <button className="px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white shadow-md shadow-cyan-500/20">
-                    Create Account
-                  </button>
-                </SignUpButton>
+                <button 
+                  onClick={() => openAuthModal("signin")}
+                  className="px-5 py-2.5 rounded-xl font-medium text-sm transition-all bg-white/10 text-white hover:bg-white/20 border border-white/10"
+                >
+                  Login
+                </button>
+                <button 
+                  onClick={() => openAuthModal("signup")}
+                  className="px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white shadow-md shadow-cyan-500/20"
+                >
+                  Create Account
+                </button>
               </div>
             </div>
           )}

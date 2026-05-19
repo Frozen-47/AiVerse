@@ -152,18 +152,6 @@ export function loadGuestOnboarding(): OnboardingProfile | null {
   }
 }
 
-export function parseClerkOnboarding(
-  metadata: Record<string, unknown> | undefined,
-): OnboardingProfile | null {
-  if (!metadata?.onboardingComplete) return null;
-  const data = metadata.onboarding as OnboardingProfile | undefined;
-  if (!data?.role || !data.referralSource) return null;
-  return {
-    ...data,
-    interests: data.interests ?? [],
-  };
-}
-
 export const GUEST_ID_STORAGE_KEY = "aiverse_guest_id";
 
 export function saveGuestOnboarding(profile: OnboardingProfile): void {
@@ -180,33 +168,29 @@ export function getOrCreateGuestId(): string {
 }
 
 export function preferencesUserKey(options: {
-  clerkUserId?: string;
+  supabaseUserId?: string;
   guestId?: string;
 }): string {
-  if (options.clerkUserId) return `clerk_${options.clerkUserId}`;
+  if (options.supabaseUserId) return `supabase_${options.supabaseUserId}`;
   if (options.guestId) return `guest_${options.guestId}`;
-  throw new Error("preferencesUserKey requires clerkUserId or guestId");
+  throw new Error("preferencesUserKey requires supabaseUserId or guestId");
 }
 
-type ClerkUserLike = {
+type SupabaseUserLike = {
   id: string;
-  unsafeMetadata: Record<string, unknown>;
-  primaryEmailAddress?: { emailAddress: string } | null;
-  update: (params: {
-    firstName?: string;
-    unsafeMetadata?: Record<string, unknown>;
-  }) => Promise<unknown>;
+  user_metadata: Record<string, unknown>;
+  email?: string;
 };
 
 export async function persistOnboardingProfile(
   profile: OnboardingProfile,
   options: {
-    user: ClerkUserLike | null | undefined;
+    user: SupabaseUserLike | null | undefined;
     isGuest: boolean;
     displayName?: string;
   },
 ): Promise<void> {
-  const { upsertUserPreferences } = await import("./supabase");
+  const { upsertUserPreferences, supabase } = await import("./supabase");
 
   if (options.isGuest) {
     saveGuestOnboarding(profile);
@@ -217,19 +201,20 @@ export async function persistOnboardingProfile(
 
   if (!options.user) return;
 
-  await options.user.update({
-    ...(options.displayName ? { firstName: options.displayName.trim() } : {}),
-    unsafeMetadata: {
-      ...options.user.unsafeMetadata,
+  // Update user metadata in Supabase
+  await supabase.auth.updateUser({
+    data: {
+      ...options.user.user_metadata,
+      ...(options.displayName ? { firstName: options.displayName.trim() } : {}),
       onboardingComplete: true,
       onboarding: profile,
-    },
+    }
   });
 
   await upsertUserPreferences(
-    preferencesUserKey({ clerkUserId: options.user.id }),
+    preferencesUserKey({ supabaseUserId: options.user.id }),
     profile,
-    options.user.primaryEmailAddress?.emailAddress,
+    options.user.email,
   );
 }
 

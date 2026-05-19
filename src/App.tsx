@@ -8,7 +8,8 @@ import { SearchBar } from "./components/SearchBar";
 import { EntryCard } from "./components/EntryCard";
 import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
 import { PreferencesLoginPrompt } from "./components/PreferencesLoginPrompt";
-import { SupabaseAuthBridge } from "./components/SupabaseAuthBridge";
+import { AuthProvider, useAuth } from "./components/AuthContext";
+import { AuthModal } from "./components/AuthModal";
 import { VoxLogo } from "./components/VoxLogo";
 import { useDebouncedValue } from "./lib/useDebouncedValue";
 import { clearLocalBookmarks, loadBookmarks } from "./lib/bookmarks";
@@ -20,6 +21,7 @@ import {
 } from "./lib/entryBookmarks";
 import { findEntryBySlug } from "./lib/entryUrl";
 import { getRelatedEntries, getCompareCandidates } from "./lib/relatedEntries";
+import { App as CapApp } from '@capacitor/app';
 
 const DetailModal = lazy(() =>
   import("./components/DetailModal").then((m) => ({ default: m.DetailModal })),
@@ -33,11 +35,8 @@ const ChatWidget = lazy(() =>
 import type { Entry, EntryRatingSummary, Theme, TypeFilter, TaskFilter } from "./types";
 import { fetchRatingSummaries } from "./lib/entryFeedback";
 import { fetchEntries } from "./lib/supabase";
-import { useUser, ClerkProvider } from "@clerk/clerk-react";
-import { dark } from "@clerk/themes";
 import { typeFilters as staticTypeFilters, taskFilters as staticTaskFilters } from "./data";
 import {
-  parseClerkOnboarding,
   partitionByInterests,
   persistOnboardingProfile,
   preferencesUserKey,
@@ -52,7 +51,7 @@ import { fetchUserPreferences } from "./lib/supabase";
 const Inner: React.FC = () => {
   const t = useTokens();
   const { theme } = useTheme();
-  const { user, isLoaded } = useUser();
+  const { user, isLoaded } = useAuth();
   const [entries, setEntries] = useState<Entry[]>([]);
   const [typeFilters, setTypeFilters] = useState<string[]>([]);
   const [taskFilters, setTaskFilters] = useState<string[]>([]);
@@ -101,17 +100,20 @@ const Inner: React.FC = () => {
         return;
       }
 
-      const fromClerk = parseClerkOnboarding(user.unsafeMetadata as Record<string, unknown>);
-      if (fromClerk) {
+      const fromMetadata = user.user_metadata?.onboardingComplete && user.user_metadata?.onboarding 
+        ? (user.user_metadata.onboarding as OnboardingProfile) 
+        : null;
+        
+      if (fromMetadata && fromMetadata.role && fromMetadata.referralSource) {
         if (!cancelled) {
-          setOnboardingProfile(fromClerk);
+          setOnboardingProfile(fromMetadata);
           setShowOnboarding(false);
         }
         return;
       }
 
       const fromDb = await fetchUserPreferences(
-        preferencesUserKey({ clerkUserId: user.id }),
+        preferencesUserKey({ supabaseUserId: user.id }),
       );
       if (fromDb && !cancelled) {
         setOnboardingProfile(fromDb);
@@ -316,8 +318,27 @@ const Inner: React.FC = () => {
       }
     };
     document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
-  }, []);
+
+    // Capacitor Back Button Handling
+    const backListener = CapApp.addListener('backButton', ({ canGoBack }) => {
+      if (selected) {
+        setSelected(null);
+      } else if (isAdding) {
+        setIsAdding(false);
+      } else if (showMobileSidebar) {
+        setShowMobileSidebar(false);
+      } else if (canGoBack) {
+        window.history.back();
+      } else {
+        CapApp.exitApp();
+      }
+    });
+
+    return () => {
+      document.removeEventListener("keydown", handler);
+      backListener.then(l => l.remove());
+    };
+  }, [selected, isAdding, showMobileSidebar]);
 
   // Sync document body and meta tags for an orderly global theme switch
   useEffect(() => {
@@ -409,7 +430,6 @@ const Inner: React.FC = () => {
 
   return (
     <>
-      <SupabaseAuthBridge />
     <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${t.page}`}>
       {/* Ambient glow */}
       <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
@@ -439,7 +459,7 @@ const Inner: React.FC = () => {
           <p className={`text-[15px] leading-relaxed max-w-xl font-light ${t.textSecondary}`}>
             {onboardingProfile?.interests.length ? (
               <>
-                Hi{user?.firstName ? ` ${user.firstName}` : ""} — here are{" "}
+                Hi{user?.user_metadata?.firstName ? ` ${user.user_metadata.firstName}` : (user?.email ? ` ${user.email.split('@')[0]}` : "")} — here are{" "}
                 {roleHeadline(onboardingProfile.role)} as a{" "}
                 <span className={t.textAccent}>{roleLabel(onboardingProfile.role).toLowerCase()}</span>.
               </>
@@ -746,23 +766,23 @@ const Inner: React.FC = () => {
 
 // ─── Root App (provides context) ──────────────────────────────────────────────
 const App: React.FC = () => {
-  const [theme, setTheme] = useState<Theme>("amoled");
-  
-  const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-  if (!PUBLISHABLE_KEY) {
-    throw new Error("Missing Publishable Key");
-  }
+  const [theme, setTheme] = useState<Theme>(() =>
+    window.matchMedia('(prefers-color-scheme: dark)').matches ? "amoled" : "light"
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handler = (e: MediaQueryListEvent) => setTheme(e.matches ? "amoled" : "light");
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <ClerkProvider 
-        publishableKey={PUBLISHABLE_KEY}
-        appearance={{
-          baseTheme: theme === "amoled" ? dark : undefined,
-        }}
-      >
+      <AuthProvider>
+        <AuthModal />
         <Inner />
-      </ClerkProvider>
+      </AuthProvider>
     </ThemeContext.Provider>
   );
 };

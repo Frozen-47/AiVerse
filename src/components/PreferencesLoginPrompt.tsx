@@ -1,5 +1,5 @@
 import { X } from "lucide-react";
-import { SignInButton, SignUpButton } from "@clerk/clerk-react";
+import { useAuth } from "./AuthContext";
 import { useTokens } from "../lib/theme";
 
 interface PreferencesLoginPromptProps {
@@ -16,6 +16,7 @@ export function PreferencesLoginPrompt({
   description = "Create a free account to save your role and interests and get a catalog feed picked for you. Preferences stay synced to your account.",
 }: PreferencesLoginPromptProps) {
   const t = useTokens();
+  const { openAuthModal } = useAuth();
 
   return (
     <div
@@ -47,22 +48,26 @@ export function PreferencesLoginPrompt({
         </p>
 
         <div className="flex flex-col sm:flex-row gap-2">
-          <SignInButton mode="modal">
-            <button
-              type="button"
-              className={`flex-1 px-4 py-3 rounded-xl font-semibold text-sm border ${t.surface} ${t.border} ${t.textPrimary}`}
-            >
-              Log in
-            </button>
-          </SignInButton>
-          <SignUpButton mode="modal">
-            <button
-              type="button"
-              className="flex-1 px-4 py-3 rounded-xl font-semibold text-sm bg-linear-to-r from-cyan-500 to-blue-500 text-white"
-            >
-              Create account
-            </button>
-          </SignUpButton>
+          <button
+            type="button"
+            onClick={() => {
+              onClose();
+              openAuthModal("signin");
+            }}
+            className={`flex-1 px-4 py-3 rounded-xl font-semibold text-sm border ${t.surface} ${t.border} ${t.textPrimary}`}
+          >
+            Log in
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              onClose();
+              openAuthModal("signup");
+            }}
+            className="flex-1 px-4 py-3 rounded-xl font-semibold text-sm bg-linear-to-r from-cyan-500 to-blue-500 text-white"
+          >
+            Create account
+          </button>
         </div>
 
         <button

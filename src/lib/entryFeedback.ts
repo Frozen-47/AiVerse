@@ -34,8 +34,8 @@ function buildSummary(ratings: number[]): EntryRatingSummary {
   };
 }
 
-export function feedbackUserKey(clerkUserId: string): string {
-  return `clerk_${clerkUserId}`;
+export function feedbackUserKey(supabaseUserId: string): string {
+  return `supabase_${supabaseUserId}`;
 }
 
 export async function fetchRatingSummaries(): Promise<

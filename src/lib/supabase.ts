@@ -10,19 +10,9 @@ if (!supabaseUrl || !supabaseAnonKey) {
   console.warn("Supabase credentials missing. Please add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to your .env file.");
 }
 
-let accessTokenProvider: (() => Promise<string | null>) | null = null;
-
-/** Register Clerk (or other) JWT provider for Supabase RLS. */
-export function bindSupabaseAuth(provider: () => Promise<string | null>) {
-  accessTokenProvider = provider;
-}
-
 export const supabase = createClient(
   supabaseUrl || "http://placeholder.com",
   supabaseAnonKey || "placeholder",
-  {
-    accessToken: async () => accessTokenProvider?.() ?? null,
-  },
 );
 
 // Helper function to insert an entry

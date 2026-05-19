@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { X, Send, Minimize2, Maximize2, RefreshCw, Copy, Check, AlertCircle, RotateCcw, ExternalLink } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { useTokens } from '../lib/theme';
-import { useUser } from '@clerk/clerk-react';
+import { useAuth } from './AuthContext';
 import { VoxLogo } from './VoxLogo';
 // Client-side Groq initialization removed for security.
 // We now use the Vercel Serverless Function at /api/chat
@@ -100,9 +100,9 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
   initialOpen = false,
 }) => {
   const t = useTokens();
-  const { user } = useUser();
+  const { user } = useAuth();
   const userId = user?.id || null;
-  const userName = user?.firstName || user?.username || null;
+  const userName = (user?.user_metadata?.firstName as string) || user?.email?.split('@')[0] || null;
 
   const [isOpen, setIsOpen] = useState(initialOpen);
   const mdComponents = useRef(
@@ -242,7 +242,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
         },
         body: JSON.stringify({
           messages: [...requestMessages, userMessage],
-          userName: user?.firstName || user?.username || undefined
+          userName: (user?.user_metadata?.firstName as string) || user?.email?.split('@')[0] || undefined
         }),
       });
 

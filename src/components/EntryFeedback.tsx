@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Star, MessageSquare, Loader2 } from "lucide-react";
-import { useUser, SignInButton } from "@clerk/clerk-react";
+import { useAuth } from "./AuthContext";
 import { useTokens } from "../lib/theme";
 import type { EntryComment, EntryRatingSummary } from "../types";
 import {
@@ -76,7 +76,7 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
   onRatingSummaryChange,
 }) => {
   const t = useTokens();
-  const { user } = useUser();
+  const { user, openAuthModal } = useAuth();
   const onRatingSummaryChangeRef = useRef(onRatingSummaryChange);
   onRatingSummaryChangeRef.current = onRatingSummaryChange;
   const [summary, setSummary] = useState<EntryRatingSummary>({ average: 0, count: 0 });
@@ -91,9 +91,8 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
 
   const userKey = user ? feedbackUserKey(user.id) : undefined;
   const authorName =
-    user?.firstName ||
-    user?.username ||
-    user?.primaryEmailAddress?.emailAddress?.split("@")[0] ||
+    (user?.user_metadata?.firstName as string) ||
+    user?.email?.split("@")[0] ||
     "User";
 
   const load = useCallback(async () => {
@@ -218,11 +217,13 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
           </div>
         ) : (
           <p className={`mt-3 text-[12px] ${t.textMuted}`}>
-            <SignInButton mode="modal">
-              <button type="button" className={`${t.textAccent} font-semibold hover:underline`}>
-                Sign in
-              </button>
-            </SignInButton>{" "}
+            <button 
+              type="button" 
+              onClick={() => openAuthModal("signin")}
+              className={`${t.textAccent} font-semibold hover:underline`}
+            >
+              Sign in
+            </button>{" "}
             to leave a rating.
           </p>
         )}
@@ -263,11 +264,13 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
           </form>
         ) : (
           <p className={`mb-4 text-[12px] ${t.textMuted}`}>
-            <SignInButton mode="modal">
-              <button type="button" className={`${t.textAccent} font-semibold hover:underline`}>
-                Sign in
-              </button>
-            </SignInButton>{" "}
+            <button 
+              type="button" 
+              onClick={() => openAuthModal("signin")}
+              className={`${t.textAccent} font-semibold hover:underline`}
+            >
+              Sign in
+            </button>{" "}
             to join the discussion.
           </p>
         )}
