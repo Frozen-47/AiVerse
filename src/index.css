@@ -106,3 +106,22 @@ input, textarea {
   -webkit-user-select: auto;
   user-select: auto;
 }
+
+/* Android / Capacitor safe-area insets for notch & punch-hole displays */
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}
+
+/* Prevent font inflation on orientation change (Android WebView) */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Native-feel momentum scrolling on scrollable containers */
+[data-scroll], .overflow-y-auto, .overflow-auto {
+  -webkit-overflow-scrolling: touch;
+}
