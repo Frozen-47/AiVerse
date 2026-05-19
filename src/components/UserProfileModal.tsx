@@ -264,18 +264,6 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
             )}
 
             {/* Edit Profile Action (if own profile) */}
-            {isOwnProfile && onEditOwnProfile && (
-              <button
-                onClick={() => {
-                  onClose();
-                  onEditOwnProfile();
-                }}
-                className={`w-full mt-6 flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-bold transition-all border cursor-pointer ${t.btnPrimary}`}
-              >
-                <SlidersHorizontal size={14} />
-                Customize Profile
-              </button>
-            )}
           </div>
         )}
       </div>

@@ -20,7 +20,12 @@ import {
   mergeLocalBookmarks,
   toggleUserBookmark,
 } from "./lib/entryBookmarks";
-import { findEntryBySlug } from "./lib/entryUrl";
+import {
+  findEntryBySlug,
+  migrateLegacyProfileQueryUrl,
+  parseProfileUsernameFromLocation,
+  profilePathSlug,
+} from "./lib/entryUrl";
 import { getRelatedEntries, getCompareCandidates } from "./lib/relatedEntries";
 import { App as CapApp } from '@capacitor/app';
 
@@ -79,25 +84,10 @@ const Inner: React.FC = () => {
   const [showMobileSidebar, setShowMobileSidebar] = useState(false);
   const [onboardingProfile, setOnboardingProfile] = useState<OnboardingProfile | null>(null);
   const [showOnboarding, setShowOnboarding] = useState(false);
-  const [showPreferencesEditor, setShowPreferencesEditor] = useState(false);
   const [profileUsername, setProfileUsername] = useState<string | null>(() => {
-    if (typeof window === "undefined") return null;
-    
-    // 1. Path-based: /user/@username
-    const pathname = window.location.pathname;
-    const pathMatch = pathname.match(/\/user\/(@[a-zA-Z0-9_-]+)/);
-    if (pathMatch) return pathMatch[1];
-
-    // 2. Hash-based: #/user/@username
-    const hash = window.location.hash;
-    const hashMatch = hash.match(/\/user\/(@[a-zA-Z0-9_-]+)/);
-    if (hashMatch) return hashMatch[1];
-
-    // 3. Query-based: ?user=@username
-    const userParam = new URLSearchParams(window.location.search).get("user");
-    if (userParam && userParam.startsWith("@")) return userParam;
-
-    return null;
+    const migrated = migrateLegacyProfileQueryUrl();
+    if (migrated) return migrated;
+    return parseProfileUsernameFromLocation();
   });
   const [showLoginForPrefs, setShowLoginForPrefs] = useState(false);
   const [showLoginForBookmarks, setShowLoginForBookmarks] = useState(false);
@@ -211,7 +201,6 @@ const Inner: React.FC = () => {
     });
     setOnboardingProfile(profile);
     setShowOnboarding(false);
-    setShowPreferencesEditor(false);
     setCurrentPage(1);
     setPrefsToast(true);
     setTimeout(() => setPrefsToast(false), 4000);
@@ -247,9 +236,7 @@ const Inner: React.FC = () => {
   const handleEditPreferences = () => {
     if (!user) {
       setShowLoginForPrefs(true);
-      return;
     }
-    setShowPreferencesEditor(true);
   };
 
   const entriesByName = useMemo(() => {
@@ -334,8 +321,10 @@ const Inner: React.FC = () => {
     if (!urlSyncReady) return;
     const url = new URL(window.location.href);
     if (profileUsername) {
-      url.searchParams.set("user", profileUsername);
-    } else {
+      url.pathname = `/user/${profilePathSlug(profileUsername)}`;
+      url.searchParams.delete("user");
+    } else if (/\/user\//.test(url.pathname)) {
+      url.pathname = "/";
       url.searchParams.delete("user");
     }
     window.history.replaceState({}, "", url);
@@ -481,7 +470,10 @@ const Inner: React.FC = () => {
       <Navbar
         onAddEntry={handleAddClick}
         onEditPreferences={handleEditPreferences}
+        onViewProfile={setProfileUsername}
         entryCount={entries.length}
+        onboardingProfile={onboardingProfile}
+        onSaveProfile={handleProfileComplete}
       />
 
       <div className="w-full px-4 sm:px-6 xl:px-12 py-8">
@@ -696,20 +688,10 @@ const Inner: React.FC = () => {
         <WelcomeOnboarding onComplete={handleProfileComplete} />
       )}
 
-      {showPreferencesEditor && user && (
-        <WelcomeOnboarding
-          mode="edit"
-          initialProfile={onboardingProfile}
-          onClose={() => setShowPreferencesEditor(false)}
-          onComplete={handleProfileComplete}
-        />
-      )}
-
       {profileUsername && (
         <UserProfileModal
           username={profileUsername}
           onClose={() => setProfileUsername(null)}
-          onEditOwnProfile={() => setShowPreferencesEditor(true)}
         />
       )}
 

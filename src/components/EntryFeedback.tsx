@@ -294,11 +294,11 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
                     <button
                       type="button"
                       onClick={() => {
-                        const match = c.authorName.match(/\((@[a-zA-Z0-9_-]+)\)/);
+                        const match = c.authorName.match(/\((@[a-z0-9_-]+)\)/i);
                         if (match && onViewProfile) {
                           onViewProfile(match[1]);
                         } else if (onViewProfile) {
-                          const matchAt = c.authorName.match(/(@[a-zA-Z0-9_-]+)/);
+                          const matchAt = c.authorName.match(/(@[a-z0-9_-]+)/i);
                           if (matchAt) {
                             onViewProfile(matchAt[1]);
                           }

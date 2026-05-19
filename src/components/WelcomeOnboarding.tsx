@@ -10,6 +10,11 @@ import {
   type ReferralSource,
   type UserRole,
 } from "../lib/onboarding";
+import {
+  isValidUsername,
+  normalizeUsernameHandle,
+  normalizeUsernameInput,
+} from "../lib/username";
 
 interface WelcomeOnboardingProps {
   onComplete: (
@@ -29,12 +34,11 @@ interface WelcomeOnboardingProps {
   mode?: "welcome" | "edit";
   initialProfile?: OnboardingProfile | null;
   onClose?: () => void;
+  editSection?: "profile" | "preferences";
 }
 
 const ALL_STEPS = ["name", "profile", "role", "interests", "referral"] as const;
 type Step = (typeof ALL_STEPS)[number];
-
-const usernameRegex = /^@[a-zA-Z0-9_-]+$/;
 
 const GithubLogo = () => (
   <svg className="w-5 h-5 text-gray-400 group-focus-within:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -75,16 +79,21 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   mode = "welcome",
   initialProfile = null,
   onClose,
+  editSection,
 }) => {
   const t = useTokens();
   const { user } = useAuth();
   const isEdit = mode === "edit";
 
   const steps = useMemo<Step[]>(() => {
-    if (isEdit) return ["profile", "role", "interests", "referral"];
+    if (isEdit) {
+      if (editSection === "profile") return ["profile"];
+      if (editSection === "preferences") return ["role", "interests", "referral"];
+      return ["profile", "role", "interests", "referral"];
+    }
     if (isGuest) return ["role", "interests", "referral"];
     return [...ALL_STEPS];
-  }, [isEdit, isGuest]);
+  }, [isEdit, isGuest, editSection]);
 
   const parsedPrefs = useMemo(() => {
     if (!initialProfile?.referralSource) return null;
@@ -97,7 +106,11 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
 
   const [step, setStep] = useState<Step>(steps[0]);
   const [name, setName] = useState((user?.user_metadata?.firstName as string) ?? parsedPrefs?.displayName ?? "");
-  const [username, setUsername] = useState((user?.user_metadata?.username as string) ?? parsedPrefs?.username ?? "");
+  const [username, setUsername] = useState(() =>
+    normalizeUsernameInput(
+      (user?.user_metadata?.username as string) ?? parsedPrefs?.username ?? "",
+    ),
+  );
   const [description, setDescription] = useState((user?.user_metadata?.description as string) ?? parsedPrefs?.description ?? "");
   const [github, setGithub] = useState((user?.user_metadata?.github as string) ?? parsedPrefs?.github ?? "");
   const [linkedin, setLinkedin] = useState((user?.user_metadata?.linkedin as string) ?? parsedPrefs?.linkedin ?? "");
@@ -124,6 +137,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
 
   const stepIndex = steps.indexOf(step);
   const progress = ((stepIndex + 1) / steps.length) * 100;
+  const isProfileOnlyEdit = isEdit && editSection === "profile";
 
   useEffect(() => {
     if (!initialProfile) return;
@@ -146,7 +160,11 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
       setName((user.user_metadata.firstName as string) ?? parsedPrefs?.displayName ?? "");
     }
     if (user.user_metadata?.username || parsedPrefs?.username) {
-      setUsername((user.user_metadata.username as string) ?? parsedPrefs?.username ?? "");
+      setUsername(
+        normalizeUsernameInput(
+          (user.user_metadata.username as string) ?? parsedPrefs?.username ?? "",
+        ),
+      );
     }
     if (user.user_metadata?.description || parsedPrefs?.description) {
       setDescription((user.user_metadata.description as string) ?? parsedPrefs?.description ?? "");
@@ -171,7 +189,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
     const currentUsername = (user.user_metadata?.username as string) ?? parsedPrefs?.username ?? "";
     if (!currentUsername && user.email) {
       const emailPrefix = user.email.split("@")[0].replace(/[^a-zA-Z0-9_-]/g, "");
-      setUsername(`@${emailPrefix}`);
+      setUsername(`@${emailPrefix.toLowerCase()}`);
     }
 
     // Default name auto-population from email if empty
@@ -199,7 +217,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
       case "name":
         return name.trim().length > 0;
       case "profile":
-        return usernameRegex.test(username);
+        return isValidUsername(username);
       case "role":
         return role !== null;
       case "interests":
@@ -219,47 +237,86 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
     if (stepIndex > 0) setStep(steps[stepIndex - 1]);
   };
 
+  const profileMeta = () => ({
+    displayName: name.trim(),
+    username: normalizeUsernameHandle(username),
+    description: description.trim(),
+    github: github.trim(),
+    linkedin: linkedin.trim(),
+    medium: medium.trim(),
+    devto: devto.trim(),
+    portfolio: portfolio.trim(),
+  });
+
+  const buildReferralSourcePayload = (): string | ReferralSource | null => {
+    if (isGuest) return referralSource;
+    let parsed: Record<string, unknown> = {};
+    let source: ReferralSource | null = referralSource;
+    if (initialProfile?.referralSource) {
+      try {
+        parsed = JSON.parse(initialProfile.referralSource) as Record<string, unknown>;
+        source = (parsed.source as ReferralSource) ?? referralSource;
+      } catch {
+        source = referralSource;
+      }
+    }
+    if (!source) return null;
+    return JSON.stringify({ ...parsed, source, ...profileMeta() });
+  };
+
   const finish = async () => {
     if (!role || !referralSource) return;
     if (!isEdit && interests.length === 0) return;
     if (!isGuest && !isEdit && (!name.trim() || !user)) return;
-    if (!isGuest && !usernameRegex.test(username)) return;
+    if (!isGuest && !isValidUsername(username)) return;
+
+    const referralPayload = buildReferralSourcePayload();
+    if (!referralPayload) return;
 
     const profile: OnboardingProfile = {
       interests,
       role,
-      referralSource: isGuest ? referralSource : JSON.stringify({
-        source: referralSource,
-        displayName: name.trim(),
-        username: username.trim(),
-        description: description.trim(),
-        github: github.trim(),
-        linkedin: linkedin.trim(),
-        medium: medium.trim(),
-        devto: devto.trim(),
-        portfolio: portfolio.trim(),
-      }),
+      referralSource: referralPayload,
       completedAt: new Date().toISOString(),
     };
 
     setIsUpdating(true);
     try {
-      onComplete(profile, isGuest ? undefined : {
-        displayName: name.trim(),
-        username: username.trim(),
-        description: description.trim(),
-        github: github.trim(),
-        linkedin: linkedin.trim(),
-        medium: medium.trim(),
-        devto: devto.trim(),
-        portfolio: portfolio.trim(),
-      });
+      onComplete(profile, isGuest ? undefined : profileMeta());
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
+  const saveProfile = async () => {
+    if (!isValidUsername(username)) return;
+
+    const baseRole = role ?? initialProfile?.role;
+    if (!baseRole) return;
+
+    const referralPayload = buildReferralSourcePayload();
+    if (!referralPayload) return;
+
+    const profile: OnboardingProfile = {
+      interests: interests.length > 0 ? interests : (initialProfile?.interests ?? []),
+      role: baseRole,
+      referralSource: referralPayload,
+      completedAt: new Date().toISOString(),
+    };
+
+    setIsUpdating(true);
+    try {
+      onComplete(profile, profileMeta());
     } finally {
       setIsUpdating(false);
     }
   };
 
   const handlePrimary = () => {
+    if (isProfileOnlyEdit && step === "profile") {
+      void saveProfile();
+      return;
+    }
     if (step === "referral") {
       void finish();
     } else {
@@ -289,16 +346,36 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
 
   const primaryLabel = isUpdating
     ? "Saving..."
-    : step === "referral"
-      ? isEdit
-        ? "Save preferences"
-        : "Start exploring"
-      : "Continue";
+    : isProfileOnlyEdit && step === "profile"
+      ? "Save"
+      : step === "referral"
+        ? isEdit
+          ? "Save preferences"
+          : "Start exploring"
+        : "Continue";
+
+  const showPrimaryArrow =
+    !isUpdating && primaryLabel !== "Save" && primaryLabel !== "Save preferences";
+
+  const treeBranch = isEdit ? "border-l-2 border-cyan-500/25 pl-4" : "";
+  const treeNested = isEdit ? "mt-2 space-y-2 border-l border-white/10 pl-3" : "space-y-2";
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80">
+    <div
+      className={
+        isEdit
+          ? "fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm"
+          : "fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80"
+      }
+      onClick={isEdit && onClose ? onClose : undefined}
+    >
       <div
-        className={`relative w-full max-w-lg flex flex-col rounded-3xl border shadow-2xl overflow-hidden ${t.modal} ${t.border}`}
+        className={`relative flex flex-col border shadow-2xl overflow-hidden ${t.modal} ${t.border} ${
+          isEdit
+            ? "fixed top-16 right-0 z-[101] flex flex-col w-full sm:max-w-md max-h-[calc(100dvh-4rem)] border-l-0 sm:border-l rounded-none sm:rounded-l-2xl animate-slide-in-right"
+            : "w-full max-w-lg rounded-3xl"
+        }`}
+        onClick={(e) => e.stopPropagation()}
       >
         {isEdit && onClose && (
           <button
@@ -311,7 +388,11 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
           </button>
         )}
 
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-linear-to-b from-cyan-500/15 to-transparent pointer-events-none" />
+        <div
+          className={`absolute top-0 w-full h-32 bg-linear-to-b from-cyan-500/15 to-transparent pointer-events-none ${
+            isEdit ? "left-0" : "left-1/2 -translate-x-1/2"
+          }`}
+        />
         <div className="absolute top-0 left-0 right-0 h-1 bg-white/5 z-10">
           <div
             className="h-full bg-linear-to-r from-cyan-400 to-sky-400"
@@ -319,20 +400,44 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
           />
         </div>
 
-        <div className="p-8 pt-10">
-          <div className="mb-5 flex items-center justify-center">
-            <Logo className="w-12 h-12 text-white" />
-          </div>
-
-          <p className={`text-[11px] font-semibold uppercase tracking-widest mb-2 ${t.textMuted}`}>
-            {isEdit ? "Your preferences" : `Step ${stepIndex + 1} of ${steps.length}`}
-          </p>
-          <h2 className={`text-2xl font-black tracking-tight mb-2 ${t.textPrimary}`}>
-            {isEdit && step === steps[0] ? "Edit your preferences" : stepTitle[step]}
-          </h2>
-          <p className={`text-sm mb-6 ${t.textSecondary} leading-relaxed`}>
-            {stepSubtitle[step]}
-          </p>
+        <div
+          className={`p-6 sm:p-8 pt-10 flex flex-col min-h-0 ${
+            isEdit ? "overflow-y-auto flex-1 items-stretch text-left" : ""
+          }`}
+        >
+          {isEdit ? (
+            <header className="mb-6 pr-10 text-left">
+              <div className="flex items-center gap-3 mb-3">
+                <Logo className="w-10 h-10 shrink-0 text-white" />
+                <div className="min-w-0">
+                  <p className={`text-[11px] font-semibold uppercase tracking-widest ${t.textMuted}`}>
+                    Your preferences
+                  </p>
+                  <h2 className={`text-xl font-black tracking-tight leading-tight ${t.textPrimary}`}>
+                    {isProfileOnlyEdit
+                      ? "Customize your profile"
+                      : step === steps[0]
+                        ? "Edit your preferences"
+                        : stepTitle[step]}
+                  </h2>
+                </div>
+              </div>
+              <p className={`text-sm ${t.textSecondary} leading-relaxed border-l-2 border-cyan-500/25 pl-4`}>
+                {stepSubtitle[step]}
+              </p>
+            </header>
+          ) : (
+            <>
+              <div className="mb-5 flex items-center justify-center">
+                <Logo className="w-12 h-12 text-white" />
+              </div>
+              <p className={`text-[11px] font-semibold uppercase tracking-widest mb-2 ${t.textMuted}`}>
+                {`Step ${stepIndex + 1} of ${steps.length}`}
+              </p>
+              <h2 className={`text-2xl font-black tracking-tight mb-2 ${t.textPrimary}`}>{stepTitle[step]}</h2>
+              <p className={`text-sm mb-6 ${t.textSecondary} leading-relaxed`}>{stepSubtitle[step]}</p>
+            </>
+          )}
 
           {step === "name" && (
             <div>
@@ -353,7 +458,13 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
           )}
 
           {step === "profile" && (
-            <div className="space-y-4 max-h-[380px] overflow-y-auto no-scrollbar pr-1">
+            <div
+              className={`no-scrollbar pr-1 ${
+                isEdit
+                  ? `flex flex-col gap-5 ${treeBranch}`
+                  : "space-y-4 max-h-[380px] overflow-y-auto"
+              }`}
+            >
               <div>
                 <label className={`block text-xs font-semibold mb-1.5 uppercase tracking-wider ${t.textMuted}`}>
                   Username
@@ -361,23 +472,15 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                 <input
                   type="text"
                   value={username}
-                  onChange={(e) => {
-                    const val = e.target.value;
-                    // Auto-append @ if they delete it
-                    if (!val.startsWith("@")) {
-                      setUsername("@" + val.replace(/@/g, ""));
-                    } else {
-                      setUsername(val);
-                    }
-                  }}
+                  onChange={(e) => setUsername(normalizeUsernameInput(e.target.value))}
                   placeholder="@username"
                   className={`w-full px-4 py-2.5 rounded-xl border font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10`}
                   maxLength={30}
                   onKeyDown={(e) => e.key === "Enter" && canContinue() && handlePrimary()}
                 />
-                {!usernameRegex.test(username) && (
-                  <p className="text-[11px] text-rose-400 mt-1 font-medium">
-                    Must start with @ and only contain letters, numbers, - and _ (no dots)
+                {!isValidUsername(username) && (
+                  <p className={`text-[11px] text-rose-400 mt-1 font-medium ${isEdit ? "pl-1" : ""}`}>
+                    Must start with @ and use lowercase letters, numbers, - and _ only
                   </p>
                 )}
               </div>
@@ -396,11 +499,11 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                 />
               </div>
 
-              <div className="space-y-2">
+              <div>
                 <label className={`block text-xs font-semibold uppercase tracking-wider ${t.textMuted}`}>
                   Social Links
                 </label>
-                
+                <div className={treeNested}>
                 {/* GitHub */}
                 <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-cyan-500/50 focus-within:ring-4 focus-within:ring-cyan-500/10`}>
                   <GithubLogo />
@@ -460,12 +563,17 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                     className="flex-1 bg-transparent border-0 p-0 text-xs font-medium outline-hidden placeholder:text-gray-500 text-white"
                   />
                 </div>
+                </div>
               </div>
             </div>
           )}
 
           {step === "role" && (
-            <div className="flex flex-col gap-2 max-h-[280px] overflow-y-auto no-scrollbar">
+            <div
+              className={`flex flex-col gap-2 max-h-[280px] overflow-y-auto no-scrollbar ${
+                isEdit ? treeBranch : ""
+              }`}
+            >
               {onboardingOptions.roles.map((r) => (
                 <OptionButton
                   key={r.id}
@@ -479,7 +587,11 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
           )}
 
           {step === "interests" && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-[300px] overflow-y-auto no-scrollbar pr-1">
+            <div
+              className={`grid gap-2 max-h-[300px] overflow-y-auto no-scrollbar pr-1 ${
+                isEdit ? `grid-cols-1 ${treeBranch}` : "grid-cols-1 sm:grid-cols-2"
+              }`}
+            >
               {onboardingOptions.interests.map((item) => {
                 const selected = interests.includes(item.id);
                 return (
@@ -507,7 +619,11 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
           )}
 
           {step === "referral" && (
-            <div className="flex flex-col gap-2 max-h-[280px] overflow-y-auto no-scrollbar">
+            <div
+              className={`flex flex-col gap-2 max-h-[280px] overflow-y-auto no-scrollbar ${
+                isEdit ? treeBranch : ""
+              }`}
+            >
               {onboardingOptions.referralSources.map((r) => (
                 <OptionButton
                   key={r.id}
@@ -520,13 +636,21 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
             </div>
           )}
 
-          <div className="flex items-center gap-3 mt-8">
+          <div
+            className={
+              isEdit
+                ? "mt-8 flex flex-col gap-2 w-full border-t border-white/10 pt-6"
+                : "flex items-center gap-3 mt-8"
+            }
+          >
             {stepIndex > 0 && (
               <button
                 type="button"
                 onClick={goBack}
                 disabled={isUpdating}
-                className={`inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl font-semibold text-[14px] border ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary} disabled:opacity-50`}
+                className={`inline-flex items-center gap-1.5 px-4 py-3 rounded-xl font-semibold text-[14px] border ${
+                  isEdit ? "w-full justify-start" : "justify-center"
+                } ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary} disabled:opacity-50`}
               >
                 <ArrowLeft size={16} />
                 Back
@@ -536,10 +660,12 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
               type="button"
               onClick={handlePrimary}
               disabled={isUpdating || !canContinue()}
-              className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-[15px] bg-white text-black hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
+              className={`inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-[15px] bg-white text-black hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none ${
+                isEdit ? "w-full justify-center" : "flex-1 justify-center"
+              }`}
             >
               {primaryLabel}
-              {!isUpdating && <ArrowRight size={18} />}
+              {showPrimaryArrow && <ArrowRight size={18} />}
             </button>
           </div>
 

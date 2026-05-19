@@ -33,6 +33,19 @@
       opacity: 1;
     }
   }
+
+  --animate-slide-in-right: slideInFromRight 0.25s ease-out forwards;
+
+  @keyframes slideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
 
 :root {

@@ -1,4 +1,5 @@
 import type { Entry } from "../types";
+import { normalizeUsernameHandle } from "./username";
 
 export const ONBOARDING_STORAGE_KEY = "aiverse_onboarding";
 
@@ -216,7 +217,9 @@ export async function persistOnboardingProfile(
       ...options.user.user_metadata,
       ...(options.displayName ? { firstName: options.displayName.trim() } : {}),
       ...(options.profileMeta ? {
-        username: options.profileMeta.username?.trim(),
+        username: options.profileMeta.username
+          ? normalizeUsernameHandle(options.profileMeta.username)
+          : undefined,
         description: options.profileMeta.description?.trim(),
         github: options.profileMeta.github?.trim(),
         linkedin: options.profileMeta.linkedin?.trim(),
