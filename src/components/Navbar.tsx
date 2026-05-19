@@ -114,9 +114,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             
             <div className="relative flex items-center ml-1 gap-2.5">
               {showGreeting && (
-                <div className={`text-sm font-semibold whitespace-nowrap ${t.textPrimary} bg-white/5 border border-white/10 px-3 py-1 rounded-full shadow-xs backdrop-blur-xs animate-[fadeUp_0.3s_ease-out]`}>
-                  Hi, {displayName}!
-                </div>
+                <span className={`text-sm font-semibold whitespace-nowrap ${t.textPrimary} animate-[fadeUp_0.3s_ease-out]`}>
+                  Hi, {displayName}
+                </span>
               )}
               <button 
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
