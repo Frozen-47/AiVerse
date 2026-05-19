@@ -7,6 +7,7 @@ import { Sidebar } from "./components/Sidebar";
 import { SearchBar } from "./components/SearchBar";
 import { EntryCard } from "./components/EntryCard";
 import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
+import { UserProfileModal } from "./components/UserProfileModal";
 import { PreferencesLoginPrompt } from "./components/PreferencesLoginPrompt";
 import { AuthProvider, useAuth } from "./components/AuthContext";
 import { AuthModal } from "./components/AuthModal";
@@ -79,6 +80,25 @@ const Inner: React.FC = () => {
   const [onboardingProfile, setOnboardingProfile] = useState<OnboardingProfile | null>(null);
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [showPreferencesEditor, setShowPreferencesEditor] = useState(false);
+  const [profileUsername, setProfileUsername] = useState<string | null>(() => {
+    if (typeof window === "undefined") return null;
+    
+    // 1. Path-based: /user/@username
+    const pathname = window.location.pathname;
+    const pathMatch = pathname.match(/\/user\/(@[a-zA-Z0-9_-]+)/);
+    if (pathMatch) return pathMatch[1];
+
+    // 2. Hash-based: #/user/@username
+    const hash = window.location.hash;
+    const hashMatch = hash.match(/\/user\/(@[a-zA-Z0-9_-]+)/);
+    if (hashMatch) return hashMatch[1];
+
+    // 3. Query-based: ?user=@username
+    const userParam = new URLSearchParams(window.location.search).get("user");
+    if (userParam && userParam.startsWith("@")) return userParam;
+
+    return null;
+  });
   const [showLoginForPrefs, setShowLoginForPrefs] = useState(false);
   const [showLoginForBookmarks, setShowLoginForBookmarks] = useState(false);
   const [prefsToast, setPrefsToast] = useState(false);
@@ -309,6 +329,17 @@ const Inner: React.FC = () => {
     else url.searchParams.delete("entry");
     window.history.replaceState({}, "", url);
   }, [selected, urlSyncReady]);
+
+  useEffect(() => {
+    if (!urlSyncReady) return;
+    const url = new URL(window.location.href);
+    if (profileUsername) {
+      url.searchParams.set("user", profileUsername);
+    } else {
+      url.searchParams.delete("user");
+    }
+    window.history.replaceState({}, "", url);
+  }, [profileUsername, urlSyncReady]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -629,6 +660,9 @@ const Inner: React.FC = () => {
             isBookmarked={bookmarks.includes(selected.name)}
             onToggleBookmark={() => handleToggleBookmark(selected.name)}
             compareCandidates={compareCandidatesForSelected}
+            onViewProfile={(uname) => {
+              setProfileUsername(uname);
+            }}
           />
         </Suspense>
       )}
@@ -668,6 +702,14 @@ const Inner: React.FC = () => {
           initialProfile={onboardingProfile}
           onClose={() => setShowPreferencesEditor(false)}
           onComplete={handleProfileComplete}
+        />
+      )}
+
+      {profileUsername && (
+        <UserProfileModal
+          username={profileUsername}
+          onClose={() => setProfileUsername(null)}
+          onEditOwnProfile={() => setShowPreferencesEditor(true)}
         />
       )}
 

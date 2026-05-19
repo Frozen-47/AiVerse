@@ -94,3 +94,63 @@ export async function upsertUserPreferences(
     console.warn("Failed to sync preferences to Supabase", error);
   }
 }
+
+export interface PublicBuilderProfile {
+  userKey: string;
+  displayName: string;
+  username: string;
+  description: string;
+  github: string;
+  linkedin: string;
+  medium: string;
+  devto: string;
+  portfolio: string;
+  role: string;
+  interests: string[];
+}
+
+export async function fetchProfileByUsername(
+  username: string,
+): Promise<PublicBuilderProfile | null> {
+  const cleanUsername = username.startsWith("@") ? username : `@${username}`;
+
+  // Query user_preferences table
+  const { data, error } = await supabase
+    .from("user_preferences")
+    .select("user_key, role, interests, referral_source");
+
+  if (error) {
+    console.warn("Failed to fetch preferences during profile lookup", error);
+    return null;
+  }
+
+  for (const row of data || []) {
+    if (!row.referral_source) continue;
+    try {
+      const parsed = JSON.parse(row.referral_source);
+      if (
+        parsed &&
+        typeof parsed === "object" &&
+        parsed.username?.toLowerCase() === cleanUsername.toLowerCase()
+      ) {
+        return {
+          userKey: row.user_key,
+          displayName: parsed.displayName || "Builder",
+          username: parsed.username,
+          description: parsed.description || "",
+          github: parsed.github || "",
+          linkedin: parsed.linkedin || "",
+          medium: parsed.medium || "",
+          devto: parsed.devto || "",
+          portfolio: parsed.portfolio || "",
+          role: row.role || "",
+          interests: row.interests || [],
+        };
+      }
+    } catch {
+      // Ignore rows with non-JSON referral_sources
+    }
+  }
+
+  return null;
+}

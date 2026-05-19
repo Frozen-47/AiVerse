@@ -16,6 +16,7 @@ interface EntryFeedbackProps {
     entryName: string,
     summary: EntryRatingSummary,
   ) => void;
+  onViewProfile?: (username: string) => void;
 }
 
 function formatRelativeTime(iso: string): string {
@@ -74,6 +75,7 @@ function StarRow({
 export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
   entryName,
   onRatingSummaryChange,
+  onViewProfile,
 }) => {
   const t = useTokens();
   const { user, openAuthModal } = useAuth();
@@ -288,10 +290,26 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
                 className={`rounded-2xl border px-4 py-3 ${t.surface} ${t.border}`}
               >
                 <div className="flex items-center justify-between gap-2 mb-1.5">
-                  <span className={`text-[12px] font-bold ${t.textPrimary}`}>
-                    {c.authorName}
+                  <span className="text-[12px] flex items-center gap-1.5 flex-wrap">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const match = c.authorName.match(/\((@[a-zA-Z0-9_-]+)\)/);
+                        if (match && onViewProfile) {
+                          onViewProfile(match[1]);
+                        } else if (onViewProfile) {
+                          const matchAt = c.authorName.match(/(@[a-zA-Z0-9_-]+)/);
+                          if (matchAt) {
+                            onViewProfile(matchAt[1]);
+                          }
+                        }
+                      }}
+                      className={`font-bold hover:underline cursor-pointer text-left ${t.textPrimary}`}
+                    >
+                      {c.authorName}
+                    </button>
                     {userKey && c.userKey === userKey && (
-                      <span className={`ml-1.5 text-[10px] font-normal ${t.textAccent}`}>
+                      <span className={`text-[10px] font-normal ${t.textAccent}`}>
                         you
                       </span>
                     )}

@@ -35,7 +35,7 @@ export type ReferralSource =
 export interface OnboardingProfile {
   interests: OnboardingInterest[];
   role: UserRole;
-  referralSource: ReferralSource;
+  referralSource: string;
   completedAt: string;
 }
 

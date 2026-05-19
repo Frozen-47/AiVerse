@@ -15,6 +15,7 @@ interface DetailModalProps {
   isBookmarked?: boolean;
   onToggleBookmark?: () => void;
   compareCandidates?: Entry[];
+  onViewProfile?: (username: string) => void;
 }
 
 const COMPARE_ROWS: { label: string; get: (e: Entry) => string }[] = [
@@ -167,6 +168,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
   isBookmarked,
   onToggleBookmark,
   compareCandidates = [],
+  onViewProfile,
 }) => {
   const t = useTokens();
   const { user, openAuthModal } = useAuth();
@@ -476,6 +478,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             <EntryFeedback
               entryName={entry.name}
               onRatingSummaryChange={onRatingSummaryChange}
+              onViewProfile={onViewProfile}
             />
           </div>
         </div>

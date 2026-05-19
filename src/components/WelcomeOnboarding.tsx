@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useTokens } from "../lib/theme";
 import { useAuth } from "./AuthContext";
 import { ArrowLeft, ArrowRight, Check, X } from "lucide-react";
@@ -86,23 +86,41 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
     return [...ALL_STEPS];
   }, [isEdit, isGuest]);
 
+  const parsedPrefs = useMemo(() => {
+    if (!initialProfile?.referralSource) return null;
+    try {
+      return JSON.parse(initialProfile.referralSource);
+    } catch {
+      return null;
+    }
+  }, [initialProfile?.referralSource]);
+
   const [step, setStep] = useState<Step>(steps[0]);
-  const [name, setName] = useState((user?.user_metadata?.firstName as string) ?? "");
-  const [username, setUsername] = useState((user?.user_metadata?.username as string) ?? "");
-  const [description, setDescription] = useState((user?.user_metadata?.description as string) ?? "");
-  const [github, setGithub] = useState((user?.user_metadata?.github as string) ?? "");
-  const [linkedin, setLinkedin] = useState((user?.user_metadata?.linkedin as string) ?? "");
-  const [medium, setMedium] = useState((user?.user_metadata?.medium as string) ?? "");
-  const [devto, setDevto] = useState((user?.user_metadata?.devto as string) ?? "");
-  const [portfolio, setPortfolio] = useState((user?.user_metadata?.portfolio as string) ?? "");
+  const [name, setName] = useState((user?.user_metadata?.firstName as string) ?? parsedPrefs?.displayName ?? "");
+  const [username, setUsername] = useState((user?.user_metadata?.username as string) ?? parsedPrefs?.username ?? "");
+  const [description, setDescription] = useState((user?.user_metadata?.description as string) ?? parsedPrefs?.description ?? "");
+  const [github, setGithub] = useState((user?.user_metadata?.github as string) ?? parsedPrefs?.github ?? "");
+  const [linkedin, setLinkedin] = useState((user?.user_metadata?.linkedin as string) ?? parsedPrefs?.linkedin ?? "");
+  const [medium, setMedium] = useState((user?.user_metadata?.medium as string) ?? parsedPrefs?.medium ?? "");
+  const [devto, setDevto] = useState((user?.user_metadata?.devto as string) ?? parsedPrefs?.devto ?? "");
+  const [portfolio, setPortfolio] = useState((user?.user_metadata?.portfolio as string) ?? parsedPrefs?.portfolio ?? "");
   const [role, setRole] = useState<UserRole | null>(initialProfile?.role ?? null);
   const [interests, setInterests] = useState<OnboardingInterest[]>(
     initialProfile?.interests ?? [],
   );
-  const [referralSource, setReferralSource] = useState<ReferralSource | null>(
-    initialProfile?.referralSource ?? null,
-  );
+  const [referralSource, setReferralSource] = useState<ReferralSource | null>(() => {
+    if (initialProfile?.referralSource) {
+      try {
+        const parsed = JSON.parse(initialProfile.referralSource);
+        return parsed?.source ?? initialProfile.referralSource as ReferralSource;
+      } catch {
+        return initialProfile.referralSource as ReferralSource;
+      }
+    }
+    return null;
+  });
   const [isUpdating, setIsUpdating] = useState(false);
+  const hasInitializedRef = useRef(false);
 
   const stepIndex = steps.indexOf(step);
   const progress = ((stepIndex + 1) / steps.length) * 100;
@@ -111,37 +129,64 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
     if (!initialProfile) return;
     setRole(initialProfile.role);
     setInterests(initialProfile.interests);
-    setReferralSource(initialProfile.referralSource);
+    if (initialProfile.referralSource) {
+      try {
+        const parsed = JSON.parse(initialProfile.referralSource);
+        setReferralSource((parsed?.source || initialProfile.referralSource) as ReferralSource);
+      } catch {
+        setReferralSource(initialProfile.referralSource as ReferralSource);
+      }
+    }
   }, [initialProfile]);
 
   useEffect(() => {
-    if (user?.user_metadata?.firstName) setName(user.user_metadata.firstName as string);
-    if (user?.user_metadata?.username) setUsername(user.user_metadata.username as string);
-    if (user?.user_metadata?.description) setDescription(user.user_metadata.description as string);
-    if (user?.user_metadata?.github) setGithub(user.user_metadata.github as string);
-    if (user?.user_metadata?.linkedin) setLinkedin(user.user_metadata.linkedin as string);
-    if (user?.user_metadata?.medium) setMedium(user.user_metadata.medium as string);
-    if (user?.user_metadata?.devto) setDevto(user.user_metadata.devto as string);
-    if (user?.user_metadata?.portfolio) setPortfolio(user.user_metadata.portfolio as string);
-  }, [user]);
+    if (!user || hasInitializedRef.current) return;
 
-  useEffect(() => {
-    if (!username && user?.email) {
+    if (user.user_metadata?.firstName || parsedPrefs?.displayName) {
+      setName((user.user_metadata.firstName as string) ?? parsedPrefs?.displayName ?? "");
+    }
+    if (user.user_metadata?.username || parsedPrefs?.username) {
+      setUsername((user.user_metadata.username as string) ?? parsedPrefs?.username ?? "");
+    }
+    if (user.user_metadata?.description || parsedPrefs?.description) {
+      setDescription((user.user_metadata.description as string) ?? parsedPrefs?.description ?? "");
+    }
+    if (user.user_metadata?.github || parsedPrefs?.github) {
+      setGithub((user.user_metadata.github as string) ?? parsedPrefs?.github ?? "");
+    }
+    if (user.user_metadata?.linkedin || parsedPrefs?.linkedin) {
+      setLinkedin((user.user_metadata.linkedin as string) ?? parsedPrefs?.linkedin ?? "");
+    }
+    if (user.user_metadata?.medium || parsedPrefs?.medium) {
+      setMedium((user.user_metadata.medium as string) ?? parsedPrefs?.medium ?? "");
+    }
+    if (user.user_metadata?.devto || parsedPrefs?.devto) {
+      setDevto((user.user_metadata.devto as string) ?? parsedPrefs?.devto ?? "");
+    }
+    if (user.user_metadata?.portfolio || parsedPrefs?.portfolio) {
+      setPortfolio((user.user_metadata.portfolio as string) ?? parsedPrefs?.portfolio ?? "");
+    }
+
+    // Default username auto-population from email if empty
+    const currentUsername = (user.user_metadata?.username as string) ?? parsedPrefs?.username ?? "";
+    if (!currentUsername && user.email) {
       const emailPrefix = user.email.split("@")[0].replace(/[^a-zA-Z0-9_-]/g, "");
       setUsername(`@${emailPrefix}`);
     }
-  }, [user, username]);
 
-  useEffect(() => {
-    if (!user?.email || name || isEdit) return;
-    const email = user.email;
-    const prefix = email.split("@")[0].replace(/[._]/g, " ");
-    const formattedName = prefix
-      .split(" ")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-    setName(formattedName);
-  }, [user, name, isEdit]);
+    // Default name auto-population from email if empty
+    const currentName = (user.user_metadata?.firstName as string) ?? parsedPrefs?.displayName ?? "";
+    if (!currentName && user.email && !isEdit) {
+      const prefix = user.email.split("@")[0].replace(/[._]/g, " ");
+      const formattedName = prefix
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+      setName(formattedName);
+    }
+
+    hasInitializedRef.current = true;
+  }, [user, parsedPrefs, isEdit]);
 
   const toggleInterest = (id: OnboardingInterest) => {
     setInterests((prev) =>
@@ -183,7 +228,17 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
     const profile: OnboardingProfile = {
       interests,
       role,
-      referralSource,
+      referralSource: isGuest ? referralSource : JSON.stringify({
+        source: referralSource,
+        displayName: name.trim(),
+        username: username.trim(),
+        description: description.trim(),
+        github: github.trim(),
+        linkedin: linkedin.trim(),
+        medium: medium.trim(),
+        devto: devto.trim(),
+        portfolio: portfolio.trim(),
+      }),
       completedAt: new Date().toISOString(),
     };
 
