@@ -172,12 +172,22 @@ const Inner: React.FC = () => {
 
   const handleProfileComplete = async (
     profile: OnboardingProfile,
-    meta?: { displayName?: string },
+    meta?: {
+      displayName?: string;
+      username?: string;
+      description?: string;
+      github?: string;
+      linkedin?: string;
+      medium?: string;
+      devto?: string;
+      portfolio?: string;
+    },
   ) => {
     await persistOnboardingProfile(profile, {
       user: user ?? undefined,
       isGuest: !user,
       displayName: meta?.displayName,
+      profileMeta: meta,
     });
     setOnboardingProfile(profile);
     setShowOnboarding(false);

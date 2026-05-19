@@ -188,6 +188,15 @@ export async function persistOnboardingProfile(
     user: SupabaseUserLike | null | undefined;
     isGuest: boolean;
     displayName?: string;
+    profileMeta?: {
+      username?: string;
+      description?: string;
+      github?: string;
+      linkedin?: string;
+      medium?: string;
+      devto?: string;
+      portfolio?: string;
+    };
   },
 ): Promise<void> {
   const { upsertUserPreferences, supabase } = await import("./supabase");
@@ -206,6 +215,15 @@ export async function persistOnboardingProfile(
     data: {
       ...options.user.user_metadata,
       ...(options.displayName ? { firstName: options.displayName.trim() } : {}),
+      ...(options.profileMeta ? {
+        username: options.profileMeta.username?.trim(),
+        description: options.profileMeta.description?.trim(),
+        github: options.profileMeta.github?.trim(),
+        linkedin: options.profileMeta.linkedin?.trim(),
+        medium: options.profileMeta.medium?.trim(),
+        devto: options.profileMeta.devto?.trim(),
+        portfolio: options.profileMeta.portfolio?.trim(),
+      } : {}),
       onboardingComplete: true,
       onboarding: profile,
     }

@@ -12,15 +12,62 @@ import {
 } from "../lib/onboarding";
 
 interface WelcomeOnboardingProps {
-  onComplete: (profile: OnboardingProfile, meta?: { displayName?: string }) => void;
+  onComplete: (
+    profile: OnboardingProfile,
+    meta?: {
+      displayName?: string;
+      username?: string;
+      description?: string;
+      github?: string;
+      linkedin?: string;
+      medium?: string;
+      devto?: string;
+      portfolio?: string;
+    }
+  ) => void;
   isGuest?: boolean;
   mode?: "welcome" | "edit";
   initialProfile?: OnboardingProfile | null;
   onClose?: () => void;
 }
 
-const ALL_STEPS = ["name", "role", "interests", "referral"] as const;
+const ALL_STEPS = ["name", "profile", "role", "interests", "referral"] as const;
 type Step = (typeof ALL_STEPS)[number];
+
+const usernameRegex = /^@[a-zA-Z0-9_-]+$/;
+
+const GithubLogo = () => (
+  <svg className="w-5 h-5 text-gray-400 group-focus-within:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
+
+const LinkedinLogo = () => (
+  <svg className="w-5 h-5 text-gray-400 group-focus-within:text-[#0a66c2] transition-colors" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+  </svg>
+);
+
+const MediumLogo = () => (
+  <svg className="w-5 h-5 text-gray-400 group-focus-within:text-white transition-colors" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zm3.04 0c0 3.24-.32 5.87-.71 5.87s-.72-2.63-.72-5.87.32-5.87.72-5.87.71 2.63.71 5.87z"/>
+  </svg>
+);
+
+const DevToLogo = () => (
+  <svg className="w-5 h-5 text-gray-400 group-focus-within:text-white transition-colors" viewBox="0 0 448 512" fill="currentColor">
+    <path d="M120.12 208.29c-3.88-2.9-7.77-4.35-11.65-4.35H91.03v104.47h17.45c3.88 0 7.77-1.45 11.65-4.35 3.88-2.9 5.82-7.25 5.82-13.06v-69.65c-.01-5.8-1.96-10.16-5.83-13.06zM304.14 0H43.86C19.63 0 0 19.63 0 43.86v424.28C0 492.37 19.63 512 43.86 512h360.28c24.23 0 43.86-19.63 43.86-43.86V43.86C448 19.63 428.37 0 304.14 0zM151.05 311.77c0 12.18-4.85 21.78-14.55 28.8-9.7 7.03-22.66 10.54-38.89 10.54H62.22V175.12h35.39c16.23 0 29.19 3.51 38.89 10.54 9.7 7.03 14.55 16.62 14.55 28.8v97.31zm102.3-120.87h-64.44v45.48h51.38v28.29h-51.38v46.12h64.44v28.31H158.46V162.5h94.89v28.4zm102.3 124.36c0 18.28-5.97 32.5-17.9 42.66-11.93 10.16-28.31 15.24-49.13 15.24-20.82 0-37.2-5.08-49.13-15.24-11.93-10.16-17.9-24.38-17.9-42.66v-96.1h32.93v95.82c0 9.57 2.74 16.8 8.22 21.68 5.48 4.88 13.78 7.32 24.89 7.32s19.41-2.44 24.89-7.32c5.48-4.88 8.22-12.11 8.22-21.68v-95.82h32.93v96.1z"/>
+  </svg>
+);
+
+const PortfolioLogo = () => (
+  <svg className="w-5 h-5 text-gray-400 group-focus-within:text-cyan-400 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <line x1="2" y1="12" x2="22" y2="12" />
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+  </svg>
+);
 
 export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   onComplete,
@@ -34,13 +81,20 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   const isEdit = mode === "edit";
 
   const steps = useMemo<Step[]>(() => {
-    if (isEdit) return ["role", "interests", "referral"];
+    if (isEdit) return ["profile", "role", "interests", "referral"];
     if (isGuest) return ["role", "interests", "referral"];
     return [...ALL_STEPS];
   }, [isEdit, isGuest]);
 
   const [step, setStep] = useState<Step>(steps[0]);
   const [name, setName] = useState((user?.user_metadata?.firstName as string) ?? "");
+  const [username, setUsername] = useState((user?.user_metadata?.username as string) ?? "");
+  const [description, setDescription] = useState((user?.user_metadata?.description as string) ?? "");
+  const [github, setGithub] = useState((user?.user_metadata?.github as string) ?? "");
+  const [linkedin, setLinkedin] = useState((user?.user_metadata?.linkedin as string) ?? "");
+  const [medium, setMedium] = useState((user?.user_metadata?.medium as string) ?? "");
+  const [devto, setDevto] = useState((user?.user_metadata?.devto as string) ?? "");
+  const [portfolio, setPortfolio] = useState((user?.user_metadata?.portfolio as string) ?? "");
   const [role, setRole] = useState<UserRole | null>(initialProfile?.role ?? null);
   const [interests, setInterests] = useState<OnboardingInterest[]>(
     initialProfile?.interests ?? [],
@@ -62,7 +116,21 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
 
   useEffect(() => {
     if (user?.user_metadata?.firstName) setName(user.user_metadata.firstName as string);
-  }, [user?.user_metadata?.firstName]);
+    if (user?.user_metadata?.username) setUsername(user.user_metadata.username as string);
+    if (user?.user_metadata?.description) setDescription(user.user_metadata.description as string);
+    if (user?.user_metadata?.github) setGithub(user.user_metadata.github as string);
+    if (user?.user_metadata?.linkedin) setLinkedin(user.user_metadata.linkedin as string);
+    if (user?.user_metadata?.medium) setMedium(user.user_metadata.medium as string);
+    if (user?.user_metadata?.devto) setDevto(user.user_metadata.devto as string);
+    if (user?.user_metadata?.portfolio) setPortfolio(user.user_metadata.portfolio as string);
+  }, [user]);
+
+  useEffect(() => {
+    if (!username && user?.email) {
+      const emailPrefix = user.email.split("@")[0].replace(/[^a-zA-Z0-9_-]/g, "");
+      setUsername(`@${emailPrefix}`);
+    }
+  }, [user, username]);
 
   useEffect(() => {
     if (!user?.email || name || isEdit) return;
@@ -85,6 +153,8 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
     switch (step) {
       case "name":
         return name.trim().length > 0;
+      case "profile":
+        return usernameRegex.test(username);
       case "role":
         return role !== null;
       case "interests":
@@ -108,6 +178,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
     if (!role || !referralSource) return;
     if (!isEdit && interests.length === 0) return;
     if (!isGuest && !isEdit && (!name.trim() || !user)) return;
+    if (!isGuest && !usernameRegex.test(username)) return;
 
     const profile: OnboardingProfile = {
       interests,
@@ -118,7 +189,16 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
 
     setIsUpdating(true);
     try {
-      onComplete(profile, isEdit ? undefined : { displayName: name.trim() });
+      onComplete(profile, isGuest ? undefined : {
+        displayName: name.trim(),
+        username: username.trim(),
+        description: description.trim(),
+        github: github.trim(),
+        linkedin: linkedin.trim(),
+        medium: medium.trim(),
+        devto: devto.trim(),
+        portfolio: portfolio.trim(),
+      });
     } finally {
       setIsUpdating(false);
     }
@@ -134,6 +214,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
 
   const stepTitle: Record<Step, string> = {
     name: "Welcome to AiVerse",
+    profile: "Build your builder profile",
     role: isEdit ? "Update your role" : "What best describes you?",
     interests: isEdit ? "Update your interests" : "What are you exploring?",
     referral: isEdit ? "How did you find us?" : "How did you find us?",
@@ -141,6 +222,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
 
   const stepSubtitle: Record<Step, string> = {
     name: "Your account is ready. What should we call you?",
+    profile: "Add your developer handles, bio, and social links.",
     role: isEdit
       ? "We'll refresh your recommendations based on this."
       : "We'll tailor recommendations to how you work with AI.",
@@ -212,6 +294,118 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                 maxLength={50}
                 onKeyDown={(e) => e.key === "Enter" && canContinue() && handlePrimary()}
               />
+            </div>
+          )}
+
+          {step === "profile" && (
+            <div className="space-y-4 max-h-[380px] overflow-y-auto no-scrollbar pr-1">
+              <div>
+                <label className={`block text-xs font-semibold mb-1.5 uppercase tracking-wider ${t.textMuted}`}>
+                  Username
+                </label>
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    // Auto-append @ if they delete it
+                    if (!val.startsWith("@")) {
+                      setUsername("@" + val.replace(/@/g, ""));
+                    } else {
+                      setUsername(val);
+                    }
+                  }}
+                  placeholder="@username"
+                  className={`w-full px-4 py-2.5 rounded-xl border font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10`}
+                  maxLength={30}
+                  onKeyDown={(e) => e.key === "Enter" && canContinue() && handlePrimary()}
+                />
+                {!usernameRegex.test(username) && (
+                  <p className="text-[11px] text-rose-400 mt-1 font-medium">
+                    Must start with @ and only contain letters, numbers, - and _ (no dots)
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label className={`block text-xs font-semibold mb-1.5 uppercase tracking-wider ${t.textMuted}`}>
+                  Bio / Description
+                </label>
+                <textarea
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Tell other builders about yourself..."
+                  rows={2}
+                  maxLength={160}
+                  className={`w-full px-4 py-2.5 rounded-xl border text-[13px] font-medium resize-none outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10`}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className={`block text-xs font-semibold uppercase tracking-wider ${t.textMuted}`}>
+                  Social Links
+                </label>
+                
+                {/* GitHub */}
+                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-cyan-500/50 focus-within:ring-4 focus-within:ring-cyan-500/10`}>
+                  <GithubLogo />
+                  <input
+                    type="url"
+                    value={github}
+                    onChange={(e) => setGithub(e.target.value)}
+                    placeholder="GitHub Profile URL"
+                    className="flex-1 bg-transparent border-0 p-0 text-xs font-medium outline-hidden placeholder:text-gray-500 text-white"
+                  />
+                </div>
+
+                {/* LinkedIn */}
+                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-cyan-500/50 focus-within:ring-4 focus-within:ring-cyan-500/10`}>
+                  <LinkedinLogo />
+                  <input
+                    type="url"
+                    value={linkedin}
+                    onChange={(e) => setLinkedin(e.target.value)}
+                    placeholder="LinkedIn Profile URL"
+                    className="flex-1 bg-transparent border-0 p-0 text-xs font-medium outline-hidden placeholder:text-gray-500 text-white"
+                  />
+                </div>
+
+                {/* Medium */}
+                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-cyan-500/50 focus-within:ring-4 focus-within:ring-cyan-500/10`}>
+                  <MediumLogo />
+                  <input
+                    type="url"
+                    value={medium}
+                    onChange={(e) => setMedium(e.target.value)}
+                    placeholder="Medium Profile URL"
+                    className="flex-1 bg-transparent border-0 p-0 text-xs font-medium outline-hidden placeholder:text-gray-500 text-white"
+                  />
+                </div>
+
+                {/* Dev.to */}
+                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-cyan-500/50 focus-within:ring-4 focus-within:ring-cyan-500/10`}>
+                  <DevToLogo />
+                  <input
+                    type="url"
+                    value={devto}
+                    onChange={(e) => setDevto(e.target.value)}
+                    placeholder="Dev.to Profile URL"
+                    className="flex-1 bg-transparent border-0 p-0 text-xs font-medium outline-hidden placeholder:text-gray-500 text-white"
+                  />
+                </div>
+
+                {/* Portfolio */}
+                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-cyan-500/50 focus-within:ring-4 focus-within:ring-cyan-500/10`}>
+                  <PortfolioLogo />
+                  <input
+                    type="url"
+                    value={portfolio}
+                    onChange={(e) => setPortfolio(e.target.value)}
+                    placeholder="Portfolio URL"
+                    className="flex-1 bg-transparent border-0 p-0 text-xs font-medium outline-hidden placeholder:text-gray-500 text-white"
+                  />
+                </div>
+              </div>
             </div>
           )}
 

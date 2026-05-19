@@ -90,10 +90,11 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
   const [unavailable, setUnavailable] = useState(false);
 
   const userKey = user ? feedbackUserKey(user.id) : undefined;
-  const authorName =
-    (user?.user_metadata?.firstName as string) ||
-    user?.email?.split("@")[0] ||
-    "User";
+  const displayName = (user?.user_metadata?.firstName as string) || user?.email?.split("@")[0] || "User";
+  const username = user?.user_metadata?.username as string | undefined;
+  const authorName = username
+    ? `${displayName} (${username})`
+    : `${displayName} (@${user?.email?.split("@")[0].replace(/[^a-zA-Z0-9_-]/g, "") ?? "user"})`;
 
   const load = useCallback(async () => {
     setLoading(true);
