@@ -18,6 +18,18 @@ export const Navbar: React.FC<NavbarProps> = ({
   const { theme, setTheme } = useTheme();
   const { user, openAuthModal, signOut } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const avatarUrl = user?.user_metadata?.avatar_url as string | undefined;
+  const firstName = (user?.user_metadata?.firstName as string) || "";
+  const lastName = (user?.user_metadata?.lastName as string) || "";
+  const email = user?.email || "";
+  
+  const initials = firstName 
+    ? (firstName[0] + (lastName ? lastName[0] : "")).toUpperCase() 
+    : (email ? email[0] : "U").toUpperCase();
+    
+  const displayName = (user?.user_metadata?.firstName as string) || email.split('@')[0] || "User";
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -76,23 +88,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Right: theme toggle + auth */}
         <div className="flex items-center gap-3">
-          <button
-            onClick={() => setTheme(theme === "amoled" ? "light" : "amoled")}
-            className={`p-2 rounded-lg transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
-            aria-label="Toggle theme"
-          >
-            {theme === "amoled" ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
-
-          <button
-            onClick={onEditPreferences}
-            className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
-            title={user ? "Edit your preferences" : "Sign in for personal preferences"}
-          >
-            <SlidersHorizontal size={16} />
-            <span className="hidden md:inline">Preferences</span>
-          </button>
-
           <SignedIn>
             <button
               onClick={onAddEntry}
@@ -101,21 +96,92 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Plus size={16} />
               <span className="hidden sm:inline">Add Entry</span>
             </button>
-            <div className="ml-1 pl-3 border-l border-white/10 flex items-center gap-2.5">
-              <span className={`text-sm font-semibold hidden sm:block ${t.textPrimary}`}>
-                Hi, {user?.user_metadata?.firstName || user?.email?.split('@')[0] || "Guest"}
-              </span>
-              <button
-                onClick={() => signOut()}
-                className={`p-2 rounded-lg transition-colors ${t.surface} ${t.border} ${t.textMuted} hover:text-red-400 hover:border-red-500/30`}
-                title="Sign out"
+            
+            <div className="relative flex items-center ml-1">
+              <button 
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="relative flex items-center justify-center w-9 h-9 rounded-full overflow-hidden border border-white/10 transition-all hover:scale-105 active:scale-95 focus:outline-hidden cursor-pointer"
+                aria-label="User profile menu"
               >
-                <LogOut size={16} />
+                {avatarUrl ? (
+                  <img src={avatarUrl} alt="User avatar" className="w-full h-full object-cover" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-cyan-500 to-blue-500 text-white font-bold text-sm">
+                    {initials}
+                  </div>
+                )}
               </button>
+
+              {isDropdownOpen && (
+                <>
+                  <div 
+                    className="fixed inset-0 z-40 bg-transparent" 
+                    onClick={() => setIsDropdownOpen(false)}
+                  />
+                  <div className={`absolute right-0 top-11 w-56 rounded-2xl border shadow-xl p-2 ${t.modal} ${t.border} animate-[fadeUp_0.15s_ease-out] z-50 backdrop-blur-md`}>
+                    <div className="px-3 py-2 border-b border-white/5 mb-1.5">
+                      <p className={`text-[10px] font-bold uppercase tracking-wider ${t.textMuted}`}>Signed in as</p>
+                      <p className={`text-sm font-bold truncate ${t.textPrimary}`}>{displayName}</p>
+                      <p className={`text-xs truncate ${t.textMuted}`}>{email}</p>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        onEditPreferences();
+                        setIsDropdownOpen(false);
+                      }}
+                      className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium transition-colors hover:${t.surfaceHover} ${t.textSecondary} hover:${t.textPrimary} text-left cursor-pointer`}
+                    >
+                      <SlidersHorizontal size={15} />
+                      Preferences
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setTheme(theme === "amoled" ? "light" : "amoled");
+                      }}
+                      className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium transition-colors hover:${t.surfaceHover} ${t.textSecondary} hover:${t.textPrimary} text-left cursor-pointer`}
+                    >
+                      {theme === "amoled" ? <Sun size={15} /> : <Moon size={15} />}
+                      Theme: {theme === "amoled" ? "AMOLED" : "Light"}
+                    </button>
+
+                    <div className="border-t border-white/5 my-1.5" />
+
+                    <button
+                      onClick={() => {
+                        signOut();
+                        setIsDropdownOpen(false);
+                      }}
+                      className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold transition-colors text-red-400 hover:bg-red-500/10 hover:text-red-300 text-left cursor-pointer"
+                    >
+                      <LogOut size={15} />
+                      Sign Out
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </SignedIn>
 
           <SignedOut>
+            <button
+              onClick={() => setTheme(theme === "amoled" ? "light" : "amoled")}
+              className={`p-2 rounded-lg transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
+              aria-label="Toggle theme"
+            >
+              {theme === "amoled" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+
+            <button
+              onClick={onEditPreferences}
+              className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
+              title="Sign in for personal preferences"
+            >
+              <SlidersHorizontal size={16} />
+              <span className="hidden md:inline">Preferences</span>
+            </button>
+
             <div className="flex items-center gap-2">
               <button
                 onClick={() => openAuthModal("signin")}
