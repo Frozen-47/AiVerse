@@ -234,8 +234,7 @@ export async function persistOnboardingProfile(
 
   await upsertUserPreferences(
     preferencesUserKey({ supabaseUserId: options.user.id }),
-    profile,
-    options.user.email,
+    profile
   );
 }
 

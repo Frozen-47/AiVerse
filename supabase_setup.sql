@@ -27,7 +27,6 @@ ALTER TABLE entries ENABLE ROW LEVEL SECURITY;
 -- Onboarding preferences (see supabase_user_preferences.sql)
 CREATE TABLE IF NOT EXISTS user_preferences (
   user_key TEXT PRIMARY KEY,
-  email TEXT,
   role TEXT NOT NULL,
   interests TEXT[] NOT NULL DEFAULT '{}',
   referral_source TEXT NOT NULL,

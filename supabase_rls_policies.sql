@@ -15,7 +15,7 @@ SET search_path = ''
 AS $$
   SELECT CASE
     WHEN (auth.jwt() ->> 'sub') IS NOT NULL
-      THEN 'clerk_' || (auth.jwt() ->> 'sub')
+      THEN 'supabase_' || (auth.jwt() ->> 'sub')
     ELSE NULL
   END;
 $$;

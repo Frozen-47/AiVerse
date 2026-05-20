@@ -28,7 +28,6 @@ CREATE TABLE IF NOT EXISTS entries (
 
 CREATE TABLE IF NOT EXISTS user_preferences (
   user_key TEXT PRIMARY KEY,
-  email TEXT,
   role TEXT NOT NULL,
   interests TEXT[] NOT NULL DEFAULT '{}',
   referral_source TEXT NOT NULL,
@@ -89,7 +88,7 @@ SET search_path = ''
 AS $$
   SELECT CASE
     WHEN (auth.jwt() ->> 'sub') IS NOT NULL
-      THEN 'clerk_' || (auth.jwt() ->> 'sub')
+      THEN 'supabase_' || (auth.jwt() ->> 'sub')
     ELSE NULL
   END;
 $$;

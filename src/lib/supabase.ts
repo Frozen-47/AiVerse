@@ -76,12 +76,10 @@ export async function fetchUserPreferences(
 export async function upsertUserPreferences(
   userKey: string,
   profile: OnboardingProfile,
-  email?: string | null,
 ): Promise<void> {
   const { error } = await supabase.from("user_preferences").upsert(
     {
       user_key: userKey,
-      email: email ?? null,
       role: profile.role,
       interests: profile.interests,
       referral_source: profile.referralSource,
