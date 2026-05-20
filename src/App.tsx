@@ -4,6 +4,7 @@ import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
 import { PrivacyPolicy } from "./components/PrivacyPolicy";
+import { TermsOfService } from "./components/TermsOfService";
 import { Sidebar } from "./components/Sidebar";
 import { SearchBar } from "./components/SearchBar";
 import { EntryCard } from "./components/EntryCard";
@@ -93,6 +94,10 @@ const Inner: React.FC = () => {
   const [isPrivacy, setIsPrivacy] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
     return window.location.pathname === "/privacy" || window.location.pathname === "/privacy/";
+  });
+  const [isTerms, setIsTerms] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    return window.location.pathname === "/terms" || window.location.pathname === "/terms/";
   });
   const [showLoginForPrefs, setShowLoginForPrefs] = useState(false);
   const [showLoginForBookmarks, setShowLoginForBookmarks] = useState(false);
@@ -321,11 +326,15 @@ const Inner: React.FC = () => {
       url.pathname = "/privacy";
       url.searchParams.delete("entry");
       url.searchParams.delete("user");
+    } else if (isTerms) {
+      url.pathname = "/terms";
+      url.searchParams.delete("entry");
+      url.searchParams.delete("user");
     } else if (profileUsername) {
       url.pathname = `/user/${profilePathSlug(profileUsername)}`;
       url.searchParams.delete("user");
     } else {
-      if (/\/user\//.test(url.pathname) || url.pathname === "/privacy") {
+      if (/\/user\//.test(url.pathname) || url.pathname === "/privacy" || url.pathname === "/terms") {
         url.pathname = "/";
       }
       if (selected) {
@@ -335,11 +344,12 @@ const Inner: React.FC = () => {
       }
     }
     window.history.replaceState({}, "", url);
-  }, [selected, profileUsername, isPrivacy, urlSyncReady]);
+  }, [selected, profileUsername, isPrivacy, isTerms, urlSyncReady]);
 
   useEffect(() => {
     const handlePopState = () => {
       setIsPrivacy(window.location.pathname === "/privacy" || window.location.pathname === "/privacy/");
+      setIsTerms(window.location.pathname === "/terms" || window.location.pathname === "/terms/");
       setProfileUsername(parseProfileUsernameFromLocation());
       const slug = new URLSearchParams(window.location.search).get("entry");
       if (slug) {
@@ -496,6 +506,7 @@ const Inner: React.FC = () => {
         onViewProfile={setProfileUsername}
         onHomeClick={() => {
           setIsPrivacy(false);
+          setIsTerms(false);
           setSelected(null);
           setProfileUsername(null);
         }}
@@ -506,6 +517,8 @@ const Inner: React.FC = () => {
 
       {isPrivacy ? (
         <PrivacyPolicy onBackToHome={() => setIsPrivacy(false)} />
+      ) : isTerms ? (
+        <TermsOfService onBackToHome={() => setIsTerms(false)} />
       ) : (
         <div className="w-full px-4 sm:px-6 xl:px-12 py-8">
           {/* Hero */}
@@ -669,7 +682,7 @@ const Inner: React.FC = () => {
         style={{ animationDelay: '600ms' }}
       >
         <p>
-          Built by Sabareesh. Find me on <a href="https://discord.com/users/1272910357517701147" className={`${t.textMuted} font-semibold hover:underline`}>Discord</a> and <a href="https://github.com/Frozen-47" className={`${t.textMuted} font-semibold hover:underline`}>GitHub</a> · <a href="/privacy" onClick={(e) => { e.preventDefault(); setIsPrivacy(true); window.scrollTo({ top: 0 }); }} className={`${t.textMuted} font-semibold hover:underline`}>Privacy Policy</a>
+          Built by Sabareesh. Find me on <a href="https://discord.com/users/1272910357517701147" className={`${t.textMuted} font-semibold hover:underline`}>Discord</a> and <a href="https://github.com/Frozen-47" className={`${t.textMuted} font-semibold hover:underline`}>GitHub</a> · <a href="/privacy" onClick={(e) => { e.preventDefault(); setIsPrivacy(true); setIsTerms(false); window.scrollTo({ top: 0 }); }} className={`${t.textMuted} font-semibold hover:underline`}>Privacy Policy</a> · <a href="/terms" onClick={(e) => { e.preventDefault(); setIsTerms(true); setIsPrivacy(false); window.scrollTo({ top: 0 }); }} className={`${t.textMuted} font-semibold hover:underline`}>Terms of Service</a>
         </p>
       </footer>
 
