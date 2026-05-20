@@ -1,10 +1,14 @@
 import React, { useState, useMemo, useEffect, useCallback, useRef, lazy, Suspense } from "react";
-import { Filter, X, Check, MessageCircle, BookOpen, Shield, FileText, ExternalLink, Sparkles } from "lucide-react";
+import { Filter, X, Check, BookOpen, Shield, FileText, ExternalLink, Sparkles, Cpu, Layers, ArrowRight, ArrowLeft } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
 import { PrivacyPolicy } from "./components/PrivacyPolicy";
 import { TermsOfService } from "./components/TermsOfService";
+import { FeaturesSuite } from "./components/FeaturesSuite";
+import { WizardFinder } from "./components/features/WizardFinder";
+import { CompareArena } from "./components/features/CompareArena";
+import { ValueProps } from "./components/features/ValueProps";
 import { Sidebar } from "./components/Sidebar";
 import { SearchBar } from "./components/SearchBar";
 import { EntryCard } from "./components/EntryCard";
@@ -13,7 +17,6 @@ import { UserProfileModal } from "./components/UserProfileModal";
 import { PreferencesLoginPrompt } from "./components/PreferencesLoginPrompt";
 import { AuthProvider, useAuth } from "./components/AuthContext";
 import { AuthModal } from "./components/AuthModal";
-import { VoxLogo } from "./components/VoxLogo";
 import { useDebouncedValue } from "./lib/useDebouncedValue";
 import { clearLocalBookmarks, loadBookmarks } from "./lib/bookmarks";
 import {
@@ -58,8 +61,8 @@ import { fetchUserPreferences } from "./lib/supabase";
 // ─── Inner app (needs theme context) ─────────────────────────────────────────
 const Inner: React.FC = () => {
   const t = useTokens();
-  const { theme } = useTheme();
-  const { user, isLoaded } = useAuth();
+  const { theme, resolvedTheme } = useTheme();
+  const { user, isLoaded, openAuthModal } = useAuth();
   const [entries, setEntries] = useState<Entry[]>([]);
   const [typeFilters, setTypeFilters] = useState<string[]>([]);
   const [taskFilters, setTaskFilters] = useState<string[]>([]);
@@ -99,12 +102,109 @@ const Inner: React.FC = () => {
     if (typeof window === "undefined") return false;
     return window.location.pathname === "/terms" || window.location.pathname === "/terms/";
   });
+  const [isWizard, setIsWizard] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    return window.location.pathname === "/wizard" || window.location.pathname === "/wizard/";
+  });
+  const [isArena, setIsArena] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    return window.location.pathname === "/arena" || window.location.pathname === "/arena/";
+  });
+  const [isFeatures, setIsFeatures] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    return window.location.pathname === "/features" || window.location.pathname === "/features/";
+  });
+  const [activeView, setActiveView] = useState<"landing" | "catalog">((() => {
+    if (typeof window === "undefined") return "landing";
+    return (window.location.pathname === "/entries" || window.location.pathname === "/entries/") ? "catalog" : "landing";
+  })());
+  const [browseAll, setBrowseAll] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    return window.location.pathname === "/entries" || window.location.pathname === "/entries/";
+  });
+
+  // FeaturesSuite Quiz Wizard and Compare Arena States
+  const [compareToolA, setCompareToolA] = useState<string>("GPT-4o");
+  const [compareToolB, setCompareToolB] = useState<string>("Claude 3.5 Sonnet");
+  const [wizardStep, setWizardStep] = useState<number>(0);
+  const [wizardGoal, setWizardGoal] = useState<string | null>(null);
+  const [wizardType, setWizardType] = useState<string | null>(null);
+  const [wizardLicense, setWizardLicense] = useState<string | null>(null);
   const [showLoginForPrefs, setShowLoginForPrefs] = useState(false);
   const [showLoginForBookmarks, setShowLoginForBookmarks] = useState(false);
   const [prefsToast, setPrefsToast] = useState(false);
   const [ratingSummaries, setRatingSummaries] = useState<
     Record<string, EntryRatingSummary>
   >({});
+
+  const typeCounts = useMemo(() => {
+    return {
+      AI: entries.filter((e) => e.type === "AI").length,
+      Model: entries.filter((e) => e.type === "Model").length,
+      Dataset: entries.filter((e) => e.type === "Dataset").length,
+      Framework: entries.filter((e) => e.type === "Framework").length,
+      Platform: entries.filter((e) => e.type === "Platform").length,
+      Popular: entries.filter((e) => e.popular).length,
+    };
+  }, [entries]);
+
+  const wizardRecommendations = useMemo(() => {
+    if (!wizardGoal || !wizardType || !wizardLicense) return [];
+
+    const isPermissiveLicense = (lic: string) => {
+      const l = lic.toLowerCase();
+      return l.includes("mit") || l.includes("apache") || l.includes("bsd") || l.includes("public domain") || l.includes("cc0");
+    };
+
+    const goalKeywords: Record<string, string[]> = {
+      web: ["web", "chat", "copilot", "agent", "vector", "search", "database", "ui", "frontend", "client", "assistant", "app"],
+      train: ["train", "tune", "learn", "optimiz", "compil", "benchmark", "dataset", "loss", "weight", "fine-tune"],
+      scale: ["serv", "deploy", "scale", "gpu", "inference", "api", "cloud", "platform", "ops", "hosting", "run"],
+      creative: ["image", "video", "speech", "audio", "synthesis", "vision", "creative", "paint", "art", "music", "draw", "generate"]
+    };
+
+    const keywords = goalKeywords[wizardGoal] || [];
+
+    // Filter by type
+    let pool = entries.filter(e => e.type === wizardType);
+
+    // Filter by license
+    if (wizardLicense === "permissive") {
+      pool = pool.filter(e => isPermissiveLicense(e.license));
+    }
+
+    // Score entries
+    const scored = pool.map(entry => {
+      let score = 0;
+      const text = `${entry.name} ${entry.task} ${entry.summary} ${entry.architecture}`.toLowerCase();
+      keywords.forEach(kw => {
+        if (text.includes(kw)) score += 1;
+      });
+      if (entry.popular) score += 2;
+      return { entry, score };
+    });
+
+    // Sort by score desc
+    scored.sort((a, b) => b.score - a.score);
+
+    const results = scored.slice(0, 3).map(s => s.entry);
+
+    // Fallback if no/few results
+    if (results.length < 3) {
+      const existingNames = new Set(results.map(r => r.name));
+      const fallbacks = entries
+        .filter(e => e.type === wizardType && !existingNames.has(e.name))
+        .filter(e => wizardLicense !== "permissive" || isPermissiveLicense(e.license))
+        .sort((a, b) => (b.popular ? 1 : 0) - (a.popular ? 1 : 0));
+      
+      for (const f of fallbacks) {
+        if (results.length >= 3) break;
+        results.push(f);
+      }
+    }
+
+    return results;
+  }, [entries, wizardGoal, wizardType, wizardLicense]);
 
   useEffect(() => {
     if (!isLoaded) return;
@@ -214,6 +314,35 @@ const Inner: React.FC = () => {
     setCurrentPage(1);
     setPrefsToast(true);
     setTimeout(() => setPrefsToast(false), 4000);
+    // Transition user to catalog view
+    setActiveView("catalog");
+    setBrowseAll(true);
+    setIsFeatures(false);
+    setIsPrivacy(false);
+    setIsTerms(false);
+  };
+
+  const handleSearchChange = (val: string) => {
+    setSearchInput(val);
+    if (val && activeView !== "catalog") {
+      setActiveView("catalog");
+      setBrowseAll(true);
+      setIsPrivacy(false);
+      setIsTerms(false);
+      setIsFeatures(false);
+    }
+  };
+
+  const handleSearchSelect = (e: Entry) => {
+    setSelected(e);
+    setSearchInput("");
+    if (activeView !== "catalog") {
+      setActiveView("catalog");
+      setBrowseAll(true);
+      setIsPrivacy(false);
+      setIsTerms(false);
+      setIsFeatures(false);
+    }
   };
 
   useEffect(() => {
@@ -322,35 +451,68 @@ const Inner: React.FC = () => {
   useEffect(() => {
     if (!urlSyncReady) return;
     const url = new URL(window.location.href);
+    let targetPath = "/";
+
     if (isPrivacy) {
-      url.pathname = "/privacy";
+      targetPath = "/privacy";
       url.searchParams.delete("entry");
       url.searchParams.delete("user");
     } else if (isTerms) {
-      url.pathname = "/terms";
+      targetPath = "/terms";
+      url.searchParams.delete("entry");
+      url.searchParams.delete("user");
+    } else if (isWizard) {
+      targetPath = "/wizard";
+      url.searchParams.delete("entry");
+      url.searchParams.delete("user");
+    } else if (isArena) {
+      targetPath = "/arena";
+      url.searchParams.delete("entry");
+      url.searchParams.delete("user");
+    } else if (isFeatures) {
+      targetPath = "/features";
       url.searchParams.delete("entry");
       url.searchParams.delete("user");
     } else if (profileUsername) {
-      url.pathname = `/user/${profilePathSlug(profileUsername)}`;
+      targetPath = `/user/${profilePathSlug(profileUsername)}`;
       url.searchParams.delete("user");
-    } else {
-      if (/\/user\//.test(url.pathname) || url.pathname === "/privacy" || url.pathname === "/terms") {
-        url.pathname = "/";
-      }
-      if (selected) {
-        url.searchParams.set("entry", selected.name);
-      } else {
-        url.searchParams.delete("entry");
-      }
+    } else if (activeView === "catalog" || browseAll) {
+      targetPath = "/entries";
     }
-    window.history.replaceState({}, "", url);
-  }, [selected, profileUsername, isPrivacy, isTerms, urlSyncReady]);
+
+    url.pathname = targetPath;
+    if (selected) {
+      url.searchParams.set("entry", selected.name);
+    } else {
+      url.searchParams.delete("entry");
+    }
+
+    // Only pushState if pathname actually changes to avoid pushing duplicate views, else replaceState
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({}, "", url);
+    } else {
+      window.history.replaceState({}, "", url);
+    }
+  }, [selected, profileUsername, isPrivacy, isTerms, isWizard, isArena, isFeatures, activeView, browseAll, urlSyncReady]);
 
   useEffect(() => {
     const handlePopState = () => {
       setIsPrivacy(window.location.pathname === "/privacy" || window.location.pathname === "/privacy/");
       setIsTerms(window.location.pathname === "/terms" || window.location.pathname === "/terms/");
+      setIsWizard(window.location.pathname === "/wizard" || window.location.pathname === "/wizard/");
+      setIsArena(window.location.pathname === "/arena" || window.location.pathname === "/arena/");
+      setIsFeatures(window.location.pathname === "/features" || window.location.pathname === "/features/");
       setProfileUsername(parseProfileUsernameFromLocation());
+
+      const isEntriesPath = window.location.pathname === "/entries" || window.location.pathname === "/entries/";
+      if (isEntriesPath) {
+        setActiveView("catalog");
+        setBrowseAll(true);
+      } else if (window.location.pathname === "/" || window.location.pathname === "") {
+        setActiveView("landing");
+        setBrowseAll(false);
+      }
+
       const slug = new URLSearchParams(window.location.search).get("entry");
       if (slug) {
         const entry = findEntryBySlug(entries, slug);
@@ -412,11 +574,11 @@ const Inner: React.FC = () => {
       document.documentElement.classList.add("dark");
       document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#000000");
     } else {
-      document.documentElement.style.backgroundColor = "#f8fafc";
-      document.body.style.backgroundColor = "#f8fafc";
+      document.documentElement.style.backgroundColor = "#ffffff";
+      document.body.style.backgroundColor = "#ffffff";
       document.documentElement.classList.remove("dark");
       document.documentElement.classList.add("light");
-      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#f8fafc");
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#ffffff");
     }
   }, [theme]);
 
@@ -504,11 +666,25 @@ const Inner: React.FC = () => {
         onAddEntry={handleAddClick}
         onEditPreferences={handleEditPreferences}
         onViewProfile={setProfileUsername}
+        onViewSaved={() => {
+          setIsPrivacy(false);
+          setIsTerms(false);
+          setIsFeatures(false);
+          setSelected(null);
+          setProfileUsername(null);
+          setBrowseAll(true);
+          setActiveView("catalog");
+          setSavedOnly(true);
+        }}
         onHomeClick={() => {
           setIsPrivacy(false);
           setIsTerms(false);
+          setIsFeatures(false);
           setSelected(null);
           setProfileUsername(null);
+          setActiveView("landing");
+          setBrowseAll(false);
+          window.location.hash = "";
         }}
         entryCount={entries.length}
         onboardingProfile={onboardingProfile}
@@ -516,9 +692,106 @@ const Inner: React.FC = () => {
       />
 
       {isPrivacy ? (
-        <PrivacyPolicy onBackToHome={() => setIsPrivacy(false)} />
+        <PrivacyPolicy onBackToHome={() => {
+          setIsPrivacy(false);
+          setIsTerms(false);
+          setIsWizard(false);
+          setIsArena(false);
+          setIsFeatures(false);
+          setActiveView("landing");
+          setBrowseAll(false);
+        }} />
       ) : isTerms ? (
-        <TermsOfService onBackToHome={() => setIsTerms(false)} />
+        <TermsOfService onBackToHome={() => {
+          setIsPrivacy(false);
+          setIsTerms(false);
+          setIsWizard(false);
+          setIsArena(false);
+          setIsFeatures(false);
+          setActiveView("landing");
+          setBrowseAll(false);
+        }} />
+      ) : isWizard ? (
+        <div className="w-full px-4 sm:px-6 xl:px-12 py-8 flex flex-col gap-6 animate-[fadeUp_0.4s_ease-out]">
+          <div className="mb-2">
+            <button
+              onClick={() => {
+                setIsWizard(false);
+                setActiveView("landing");
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border shadow-sm transition-all cursor-pointer backdrop-blur-md ${
+                resolvedTheme === 'amoled'
+                  ? 'bg-white/5 border-cyan-500/20 text-cyan-400 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.1)]'
+                  : 'bg-white/80 border-slate-200 text-slate-700 hover:border-cyan-500/30 hover:text-cyan-500'
+              }`}
+            >
+              <ArrowLeft size={14} />
+              Back to Dashboard
+            </button>
+          </div>
+          <WizardFinder
+            resolvedTheme={resolvedTheme}
+            wizardStep={wizardStep}
+            setWizardStep={setWizardStep}
+            setWizardGoal={setWizardGoal}
+            setWizardType={setWizardType}
+            setWizardLicense={setWizardLicense}
+            wizardRecommendations={wizardRecommendations}
+            setSelected={setSelected}
+            setTypeFilter={(filter) => setTypeFilter(filter as TypeFilter)}
+            setSearchInput={setSearchInput}
+            setBrowseAll={setBrowseAll}
+            setActiveView={setActiveView}
+          />
+        </div>
+      ) : isArena ? (
+        <div className="w-full px-4 sm:px-6 xl:px-12 py-8 flex flex-col gap-6 animate-[fadeUp_0.4s_ease-out]">
+          <div className="mb-2">
+            <button
+              onClick={() => {
+                setIsArena(false);
+                setActiveView("landing");
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border shadow-sm transition-all cursor-pointer backdrop-blur-md ${
+                resolvedTheme === 'amoled'
+                  ? 'bg-white/5 border-cyan-500/20 text-cyan-400 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.1)]'
+                  : 'bg-white/80 border-slate-200 text-slate-700 hover:border-cyan-500/30 hover:text-cyan-500'
+              }`}
+            >
+              <ArrowLeft size={14} />
+              Back to Dashboard
+            </button>
+          </div>
+          <CompareArena
+            entries={entries}
+            resolvedTheme={resolvedTheme}
+            compareToolA={compareToolA}
+            setCompareToolA={setCompareToolA}
+            compareToolB={compareToolB}
+            setCompareToolB={setCompareToolB}
+            setSelected={setSelected}
+          />
+        </div>
+      ) : isFeatures ? (
+        <FeaturesSuite
+          entries={entries}
+          typeCounts={typeCounts}
+          resolvedTheme={resolvedTheme}
+          setSelected={setSelected}
+          setTypeFilter={(filter) => setTypeFilter(filter as TypeFilter)}
+          setSearchInput={setSearchInput}
+          setBrowseAll={setBrowseAll}
+          setActiveView={setActiveView}
+          setSavedOnly={setSavedOnly}
+          setPopularOnly={setPopularOnly}
+          onBackToHome={() => {
+            setIsFeatures(false);
+            setActiveView("landing");
+            setBrowseAll(false);
+          }}
+        />
       ) : (
         <div className="w-full px-4 sm:px-6 xl:px-12 py-8">
           {/* Hero */}
@@ -550,130 +823,300 @@ const Inner: React.FC = () => {
           <div className="mb-8 max-w-2xl">
             <SearchBar
               query={searchInput}
-              onChange={setSearchInput}
+              onChange={handleSearchChange}
               entries={entries}
-              onSelect={(e) => { setSelected(e); setSearchInput(""); }}
+              onSelect={handleSearchSelect}
             />
           </div>
 
-          {/* Main layout */}
-          <div className="flex gap-8 w-full">
-            {/* Left pane: Sidebar */}
-            <div className="hidden lg:block w-56 shrink-0 pb-8">
-              <Sidebar
-                entries={entries}
-                currentFilter={typeFilter}
-                currentTask={taskFilter}
-                typeFilters={typeFilters}
-                taskFilters={taskFilters}
-                popularOnly={popularOnly}
-                filteredCount={filtered.length}
-                onTypeFilter={setTypeFilter}
-                onTaskFilter={setTaskFilter}
-                onPopularToggle={() => setPopularOnly((p) => !p)}
-                savedOnly={savedOnly}
-                savedCount={bookmarks.length}
-                onSavedToggle={handleSavedToggle}
-              />
-            </div>
-
-            {/* Right pane: Content */}
-            <div className="flex-1 min-w-0 pb-32">
-              {/* Mobile filters button */}
-              <div className="flex mb-5 lg:hidden">
+          {activeView === "landing" ? (
+            <div className="flex flex-col gap-8 animate-[fadeUp_0.4s_ease-out]">
+              {/* Premium Action Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Card 1: Browse AI Registry */}
                 <button
-                  onClick={() => setShowMobileSidebar(true)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[13px] font-semibold border shadow-sm transition-all ${t.surface} ${t.border} ${t.textPrimary} hover:border-cyan-500/30`}
+                  onClick={() => {
+                    setBrowseAll(true);
+                    setActiveView("catalog");
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className={`group relative overflow-hidden p-8 rounded-3xl border text-left transition-all duration-300 cursor-pointer ${
+                    resolvedTheme === 'amoled'
+                      ? 'bg-black border-white/8 hover:border-cyan-500/40 hover:shadow-[0_0_35px_rgba(6,182,212,0.15)]'
+                      : 'bg-white border-slate-200 shadow-md hover:shadow-xl hover:border-cyan-300'
+                  }`}
                 >
-                  <Filter size={14} />
-                  Filters
-                  {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly || savedOnly) && (
-                    <span className="w-2 h-2 rounded-full bg-cyan-400 ml-1 animate-pulse" />
-                  )}
+                  <div className="absolute inset-0 bg-linear-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="p-3.5 rounded-2xl bg-cyan-500/10 dark:bg-cyan-500/5 text-cyan-500 mb-6 w-fit transition-colors group-hover:bg-cyan-500/20">
+                    <BookOpen size={24} />
+                  </div>
+                  <h3 className={`text-xl font-bold mb-2 group-hover:text-cyan-500 transition-colors ${t.textPrimary}`}>
+                    Browse AI Registry
+                  </h3>
+                  <p className={`text-[13px] leading-relaxed font-light mb-6 ${t.textSecondary}`}>
+                    Explore the complete catalog of models, training weights, open datasets, ML developer frameworks, and cloud hosting platforms.
+                  </p>
+                  <span className={`inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider ${t.textAccent}`}>
+                    Open Catalog <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                  </span>
+                </button>
+
+                {/* Card 2: AI Discovery Wizard */}
+                <button
+                  onClick={() => {
+                    if (!user) {
+                      openAuthModal("signin");
+                    } else {
+                      setIsWizard(true);
+                    }
+                  }}
+                  className={`group relative overflow-hidden p-8 rounded-3xl border text-left transition-all duration-300 cursor-pointer ${
+                    resolvedTheme === 'amoled'
+                      ? 'bg-black border-white/8 hover:border-cyan-500/40 hover:shadow-[0_0_35px_rgba(6,182,212,0.15)]'
+                      : 'bg-white border-slate-200 shadow-md hover:shadow-xl hover:border-cyan-300'
+                  }`}
+                >
+                  <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="p-3.5 rounded-2xl bg-cyan-500/10 dark:bg-cyan-500/5 text-cyan-500 transition-colors group-hover:bg-cyan-500/20">
+                      <Sparkles size={24} />
+                    </div>
+                    {!user && (
+                      <span className={`flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-lg border ${
+                        resolvedTheme === "amoled"
+                          ? "bg-amber-500/10 border-amber-500/20 text-amber-400"
+                          : "bg-amber-50 border-amber-500/15 text-amber-700"
+                      }`}>
+                        <Shield size={11} className="stroke-[3px]" /> Premium Lock
+                      </span>
+                    )}
+                  </div>
+                  <h3 className={`text-xl font-bold mb-2 group-hover:text-cyan-500 transition-colors ${t.textPrimary}`}>
+                    AI Discovery Wizard
+                  </h3>
+                  <p className={`text-[13px] leading-relaxed font-light mb-6 ${t.textSecondary}`}>
+                    Answer a few questions about your technical goals, stack targets, and licensing requirements to find the ideal AI options.
+                  </p>
+                  <span className={`inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider ${t.textAccent}`}>
+                    {!user ? "Unlock Wizard (Login)" : "Launch Quiz"} <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                  </span>
+                </button>
+
+                {/* Card 3: Side-by-Side Arena */}
+                <button
+                  onClick={() => {
+                    if (!user) {
+                      openAuthModal("signin");
+                    } else {
+                      setIsArena(true);
+                    }
+                  }}
+                  className={`group relative overflow-hidden p-8 rounded-3xl border text-left transition-all duration-300 cursor-pointer ${
+                    resolvedTheme === 'amoled'
+                      ? 'bg-black border-white/8 hover:border-cyan-500/40 hover:shadow-[0_0_35px_rgba(6,182,212,0.15)]'
+                      : 'bg-white border-slate-200 shadow-md hover:shadow-xl hover:border-cyan-300'
+                  }`}
+                >
+                  <div className="absolute inset-0 bg-linear-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="p-3.5 rounded-2xl bg-cyan-500/10 dark:bg-cyan-500/5 text-cyan-500 transition-colors group-hover:bg-cyan-500/20">
+                      <Cpu size={24} />
+                    </div>
+                    {!user && (
+                      <span className={`flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-lg border ${
+                        resolvedTheme === "amoled"
+                          ? "bg-amber-500/10 border-amber-500/20 text-amber-400"
+                          : "bg-amber-50 border-amber-500/15 text-amber-700"
+                      }`}>
+                        <Shield size={11} className="stroke-[3px]" /> Premium Lock
+                      </span>
+                    )}
+                  </div>
+                  <h3 className={`text-xl font-bold mb-2 group-hover:text-cyan-500 transition-colors ${t.textPrimary}`}>
+                    Comparison Arena
+                  </h3>
+                  <p className={`text-[13px] leading-relaxed font-light mb-6 ${t.textSecondary}`}>
+                    Perform head-to-head architectural and technical comparisons side-by-side across our database of advanced machine learning assets.
+                  </p>
+                  <span className={`inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider ${t.textAccent}`}>
+                    {!user ? "Unlock Arena (Login)" : "Enter Arena"} <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                  </span>
+                </button>
+
+                {/* Card 4: Complete Ecosystem Features */}
+                <button
+                  onClick={() => {
+                    window.location.hash = "";
+                    setIsFeatures(true);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className={`group relative overflow-hidden p-8 rounded-3xl border text-left transition-all duration-300 cursor-pointer ${
+                    resolvedTheme === 'amoled'
+                      ? 'bg-black border-white/8 hover:border-cyan-500/40 hover:shadow-[0_0_35px_rgba(6,182,212,0.15)]'
+                      : 'bg-white border-slate-200 shadow-md hover:shadow-xl hover:border-cyan-300'
+                  }`}
+                >
+                  <div className="absolute inset-0 bg-linear-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="p-3.5 rounded-2xl bg-cyan-500/10 dark:bg-cyan-500/5 text-cyan-500 mb-6 w-fit transition-colors group-hover:bg-cyan-500/20">
+                    <Layers size={24} />
+                  </div>
+                  <h3 className={`text-xl font-bold mb-2 group-hover:text-cyan-500 transition-colors ${t.textPrimary}`}>
+                    Ecosystem Features Suite
+                  </h3>
+                  <p className={`text-[13px] leading-relaxed font-light mb-6 ${t.textSecondary}`}>
+                    Explore category dashboards, system capacity metrics, spotlight highlights, values prop overlays, and all integrated capabilities.
+                  </p>
+                  <span className={`inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider ${t.textAccent}`}>
+                    Explore Suite <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                  </span>
                 </button>
               </div>
+              
+              {/* Value Propositions */}
+              <div className="mt-4">
+                <ValueProps resolvedTheme={resolvedTheme} />
+              </div>
+            </div>
+          ) : (
+            /* Main layout */
+            <div className="flex gap-8 w-full">
+              {/* Left pane: Sidebar */}
+              <div className="hidden lg:block w-56 shrink-0 pb-8">
+                <Sidebar
+                  entries={entries}
+                  currentFilter={typeFilter}
+                  currentTask={taskFilter}
+                  typeFilters={typeFilters}
+                  taskFilters={taskFilters}
+                  popularOnly={popularOnly}
+                  filteredCount={filtered.length}
+                  onTypeFilter={setTypeFilter}
+                  onTaskFilter={setTaskFilter}
+                  onPopularToggle={() => setPopularOnly((p) => !p)}
+                  savedOnly={savedOnly}
+                  savedCount={bookmarks.length}
+                  onSavedToggle={handleSavedToggle}
+                />
+              </div>
 
-              {filtered.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-32 gap-3">
-                  <div className={`text-5xl opacity-10 ${t.textPrimary}`}>◌</div>
-                  <p className={`text-[14px] ${t.textMuted}`}>No entries match your filters.</p>
+              {/* Right pane: Content */}
+              <div className="flex-1 min-w-0 pb-32">
+                {/* Back to Dashboard bar */}
+                <div className="mb-6">
                   <button
-                    onClick={() => { setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); setSearchInput(""); }}
-                    className={`text-[12px] underline underline-offset-2 ${t.textAccent}`}
+                    onClick={() => {
+                      setBrowseAll(false);
+                      setActiveView("landing");
+                      setIsFeatures(false);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border shadow-sm transition-all cursor-pointer backdrop-blur-md ${
+                      theme === 'amoled'
+                        ? 'bg-white/5 border-cyan-500/20 text-cyan-400 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.1)]'
+                        : 'bg-white/80 border-slate-200 text-slate-700 hover:border-cyan-500/30 hover:text-cyan-500'
+                    }`}
                   >
-                    Clear all filters
+                    <ArrowLeft size={14} />
+                    Back to Dashboard
                   </button>
                 </div>
-              ) : (
-                <div className="flex flex-col">
-                  {pageForYou.length > 0 && (
-                    <section className="mb-8">
-                      <div className="flex items-center gap-3 mb-4">
-                        <h2 className={`text-lg font-bold tracking-tight ${t.textPrimary}`}>
-                          Picked for you
-                        </h2>
-                        <span className={`text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border ${t.surface} ${t.border} ${t.textMuted}`}>
-                          {personalized.forYou.length} matches
-                        </span>
-                      </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                        {pageForYou.map((entry, i) => (
-                          <EntryCard
-                            key={entry.name}
-                            entry={entry}
-                            entryName={entry.name}
-                            onSelect={selectEntryByName}
-                            index={i}
-                            ratingSummary={ratingSummaries[entry.name]}
-                            isBookmarked={bookmarks.includes(entry.name)}
-                            onToggleBookmark={handleToggleBookmark}
-                          />
-                        ))}
-                      </div>
-                    </section>
-                  )}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                    {pageExplore.map((entry, i) => (
-                      <EntryCard
-                        key={entry.name}
-                        entry={entry}
-                        entryName={entry.name}
-                        onSelect={selectEntryByName}
-                        index={i + pageForYou.length}
-                        ratingSummary={ratingSummaries[entry.name]}
-                        isBookmarked={bookmarks.includes(entry.name)}
-                        onToggleBookmark={handleToggleBookmark}
-                      />
-                    ))}
-                  </div>
 
-                  {totalPages > 1 && (
-                    <div className="flex items-center justify-center gap-2 mt-10">
-                      <button
-                        onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                        disabled={currentPage === 1}
-                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${t.surface} ${t.border} ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : `hover:${t.textPrimary}`}`}
-                      >
-                        Prev
-                      </button>
-                      
-                      <span className={`text-[12px] tabular-nums px-3 ${t.textMuted}`}>
-                        Page {currentPage} of {totalPages}
-                      </span>
-
-                      <button
-                        onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                        disabled={currentPage === totalPages}
-                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${t.surface} ${t.border} ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : `hover:${t.textPrimary}`}`}
-                      >
-                        Next
-                      </button>
-                    </div>
-                  )}
+                {/* Mobile filters button */}
+                <div className="flex mb-5 lg:hidden">
+                  <button
+                    onClick={() => setShowMobileSidebar(true)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[13px] font-semibold border shadow-sm transition-all ${t.surface} ${t.border} ${t.textPrimary} hover:border-cyan-500/30`}
+                  >
+                    <Filter size={14} />
+                    Filters
+                    {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly || savedOnly) && (
+                      <span className="w-2 h-2 rounded-full bg-cyan-400 ml-1 animate-pulse" />
+                    )}
+                  </button>
                 </div>
-              )}
+
+                {filtered.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-32 gap-3">
+                    <div className={`text-5xl opacity-10 ${t.textPrimary}`}>◌</div>
+                    <p className={`text-[14px] ${t.textMuted}`}>No entries match your filters.</p>
+                    <button
+                      onClick={() => { setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); setSearchInput(""); }}
+                      className={`text-[12px] underline underline-offset-2 ${t.textAccent}`}
+                    >
+                      Clear all filters
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex flex-col">
+                    {pageForYou.length > 0 && (
+                      <section className="mb-8">
+                        <div className="flex items-center gap-3 mb-4">
+                          <h2 className={`text-lg font-bold tracking-tight ${t.textPrimary}`}>
+                            Picked for you
+                          </h2>
+                          <span className={`text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border ${t.surface} ${t.border} ${t.textMuted}`}>
+                            {personalized.forYou.length} matches
+                          </span>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                          {pageForYou.map((entry, i) => (
+                            <EntryCard
+                              key={entry.name}
+                              entry={entry}
+                              entryName={entry.name}
+                              onSelect={selectEntryByName}
+                              index={i}
+                              ratingSummary={ratingSummaries[entry.name]}
+                              isBookmarked={bookmarks.includes(entry.name)}
+                              onToggleBookmark={handleToggleBookmark}
+                            />
+                          ))}
+                        </div>
+                      </section>
+                    )}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                      {pageExplore.map((entry, i) => (
+                        <EntryCard
+                          key={entry.name}
+                          entry={entry}
+                          entryName={entry.name}
+                          onSelect={selectEntryByName}
+                          index={i + pageForYou.length}
+                          ratingSummary={ratingSummaries[entry.name]}
+                          isBookmarked={bookmarks.includes(entry.name)}
+                          onToggleBookmark={handleToggleBookmark}
+                        />
+                      ))}
+                    </div>
+
+                    {totalPages > 1 && (
+                      <div className="flex items-center justify-center gap-2 mt-10">
+                        <button
+                          onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                          disabled={currentPage === 1}
+                          className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${t.surface} ${t.border} ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : `hover:${t.textPrimary}`}`}
+                        >
+                          Prev
+                        </button>
+                        
+                        <span className={`text-[12px] tabular-nums px-3 ${t.textMuted}`}>
+                          Page {currentPage} of {totalPages}
+                        </span>
+
+                        <button
+                          onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                          disabled={currentPage === totalPages}
+                          className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${t.surface} ${t.border} ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : `hover:${t.textPrimary}`}`}
+                        >
+                          Next
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
 
@@ -682,13 +1125,13 @@ const Inner: React.FC = () => {
         style={{ animationDelay: '600ms' }}
       >
         {/* Main footer content */}
-        <div className="w-full px-4 sm:px-6 xl:px-12 py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="w-full px-4 sm:px-6 xl:px-12 py-8 sm:py-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
 
             {/* Brand column */}
             <div className="lg:col-span-2 flex flex-col gap-4">
               <div className="flex items-center gap-2">
-                <span className="text-xl font-black tracking-tight text-white">
+                <span className={`text-xl font-black tracking-tight ${t.textPrimary}`}>
                   Ai<span className="text-cyan-400">Verse</span>
                 </span>
                 <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-md border ${t.pillActive}`}>BETA</span>
@@ -698,22 +1141,22 @@ const Inner: React.FC = () => {
               </p>
               <div className="flex items-center gap-3 mt-1">
                 <a
-                  href="https://github.com/Frozen-47"
+                  href="https://github.com/Frozen-47/AiVerse"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
-                  className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all duration-200 ${t.surface} ${t.border} ${t.textMuted} hover:text-white hover:border-white/20 hover:scale-105`}
+                  className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all duration-200 ${t.surface} ${t.border} ${t.textMuted} hover:text-white hover:border-white/20`}
                 >
                   <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
                 </a>
                 <a
-                  href="https://discord.com/users/1272910357517701147"
+                  href="https://discord.gg/22YKNrS62h"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Discord"
-                  className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all duration-200 ${t.surface} ${t.border} ${t.textMuted} hover:text-indigo-400 hover:border-indigo-400/30 hover:scale-105`}
+                  className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all duration-200 ${t.surface} ${t.border} ${t.textMuted} hover:text-indigo-400 hover:border-indigo-400/30`}
                 >
-                  <MessageCircle size={15} />
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.094 13.094 0 0 1-1.873-.894.077.077 0 0 1-.008-.128c.126-.093.252-.19.372-.287a.075.075 0 0 1 .077-.011c3.92 1.793 8.18 1.793 12.061 0a.073.073 0 0 1 .078.009c.12.099.246.195.373.289a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.156 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.156 2.418z" /></svg>
                 </a>
               </div>
             </div>
@@ -723,8 +1166,42 @@ const Inner: React.FC = () => {
               <p className={`text-[10px] font-bold uppercase tracking-widest ${t.textMuted}`}>Explore</p>
               <nav className="flex flex-col gap-2.5">
                 {[
-                  { label: "All Entries", icon: <BookOpen size={13} />, action: () => { setIsPrivacy(false); setIsTerms(false); } },
-                  { label: "AI Assistants", icon: <Sparkles size={13} />, action: () => { setIsPrivacy(false); setIsTerms(false); } },
+                  {
+                    label: "All Entries",
+                    icon: <BookOpen size={13} />,
+                    action: () => {
+                      setIsPrivacy(false);
+                      setIsTerms(false);
+                      setIsFeatures(false);
+                      setSelected(null);
+                      setProfileUsername(null);
+                      setBrowseAll(true);
+                      setActiveView("catalog");
+                      setTypeFilter("All");
+                      setTaskFilter("All Tasks");
+                      setPopularOnly(false);
+                      setSavedOnly(false);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  },
+                  {
+                    label: "AI Assistants",
+                    icon: <Sparkles size={13} />,
+                    action: () => {
+                      setIsPrivacy(false);
+                      setIsTerms(false);
+                      setIsFeatures(false);
+                      setSelected(null);
+                      setProfileUsername(null);
+                      setBrowseAll(true);
+                      setActiveView("catalog");
+                      setTypeFilter("AI");
+                      setTaskFilter("All Tasks");
+                      setPopularOnly(false);
+                      setSavedOnly(false);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  },
                 ].map(({ label, icon, action }) => (
                   <button
                     key={label}
@@ -737,7 +1214,7 @@ const Inner: React.FC = () => {
                   </button>
                 ))}
                 <a
-                  href="https://github.com/Frozen-47"
+                  href="https://github.com/Frozen-47/AiVerse"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`flex items-center gap-2 text-[13px] font-medium transition-all duration-150 w-fit group ${t.textSecondary} hover:${t.textPrimary}`}
@@ -754,7 +1231,7 @@ const Inner: React.FC = () => {
               <nav className="flex flex-col gap-2.5">
                 <button
                   type="button"
-                  onClick={(e) => { e.preventDefault(); setIsPrivacy(true); setIsTerms(false); window.scrollTo({ top: 0 }); }}
+                  onClick={(e) => { e.preventDefault(); setIsPrivacy(true); setIsTerms(false); setIsFeatures(false); window.scrollTo({ top: 0 }); }}
                   className={`flex items-center gap-2 text-[13px] font-medium text-left transition-all duration-150 w-fit group ${t.textSecondary} hover:${t.textPrimary}`}
                 >
                   <span className={`opacity-50 group-hover:opacity-100 transition-opacity ${t.textAccent}`}><Shield size={13} /></span>
@@ -762,7 +1239,7 @@ const Inner: React.FC = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={(e) => { e.preventDefault(); setIsTerms(true); setIsPrivacy(false); window.scrollTo({ top: 0 }); }}
+                  onClick={(e) => { e.preventDefault(); setIsTerms(true); setIsPrivacy(false); setIsFeatures(false); window.scrollTo({ top: 0 }); }}
                   className={`flex items-center gap-2 text-[13px] font-medium text-left transition-all duration-150 w-fit group ${t.textSecondary} hover:${t.textPrimary}`}
                 >
                   <span className={`opacity-50 group-hover:opacity-100 transition-opacity ${t.textAccent}`}><FileText size={13} /></span>
@@ -775,12 +1252,12 @@ const Inner: React.FC = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className={`border-t ${t.border} px-4 sm:px-6 xl:px-12 py-4`}>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
-            <p className={`text-[11px] ${t.textMuted}`}>
+        <div className={`border-t ${t.border} px-4 sm:px-6 xl:px-12 pt-6 pb-24 sm:py-4`}>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-2 text-left">
+            <p className={`text-[11px] leading-relaxed ${t.textMuted}`}>
               © {new Date().getFullYear()} AiVerse. Built with passion by{" "}
               <a
-                href="https://github.com/Frozen-47"
+                href="https://github.com/Frozen-47/AiVerse"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-semibold hover:text-cyan-400 transition-colors"
@@ -788,7 +1265,7 @@ const Inner: React.FC = () => {
                 Sabareesh
               </a>
             </p>
-            <p className={`text-[11px] ${t.textMuted}`}>
+            <p className={`text-[11px] leading-relaxed ${t.textMuted}`}>
               Open-source · Community-driven · Always free
             </p>
           </div>
@@ -883,10 +1360,33 @@ const Inner: React.FC = () => {
         <button
           type="button"
           onClick={() => setChatEnabled(true)}
-          className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full shadow-2xl text-[13px] font-semibold ${t.btnPrimary}`}
+          className="group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center p-2 sm:p-2.5 rounded-full shadow-2xl bg-cyan-500 hover:bg-cyan-400 text-black font-bold"
         >
-          <VoxLogo size={20} variant="current" className="shrink-0" />
-          Ask Vox
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-6 h-6 sm:w-9 sm:h-9"
+            aria-hidden="true"
+          >
+            <path
+              d="M6.25 4.75h11.5a2.25 2.25 0 0 1 2.25 2.25v6.25a2.25 2.25 0 0 1-2.25 2.25H11.5l-3.75 3.25V15.5H6.25a2.25 2.25 0 0 1-2.25-2.25V7a2.25 2.25 0 0 1 2.25-2.25Z"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M12 8.25l.85 1.7 1.9.75-1.9.75-.85 1.7-.85-1.7-1.9-.75 1.9-.75.85-1.7Z"
+              fill="currentColor"
+            />
+          </svg>
+          <div className="grid grid-cols-[0fr] group-hover:grid-cols-[1fr] opacity-0 group-hover:opacity-100 transition-all duration-300">
+            <div className="overflow-hidden whitespace-nowrap">
+              <span className="pl-2 pr-1 font-medium text-[13px] sm:text-[15px] block">Ask Vox</span>
+            </div>
+          </div>
         </button>
       )}
 
@@ -953,20 +1453,47 @@ const Inner: React.FC = () => {
 };
 
 // ─── Root App (provides context) ──────────────────────────────────────────────
+const THEME_KEY = "aiverse_theme";
+
+const getOsPreference = () =>
+  window.matchMedia("(prefers-color-scheme: dark)").matches ? "amoled" : "light";
+
+const resolveTheme = (t: Theme): "amoled" | "light" =>
+  t === "system" ? getOsPreference() : t === "amoled" ? "amoled" : "light";
+
 const App: React.FC = () => {
-  const [theme, setTheme] = useState<Theme>(() =>
-    window.matchMedia('(prefers-color-scheme: dark)').matches ? "amoled" : "light"
+  const [theme, setThemeState] = useState<Theme>(() => {
+    try {
+      const saved = localStorage.getItem(THEME_KEY) as Theme | null;
+      if (saved === "amoled" || saved === "light" || saved === "system") return saved;
+    } catch {}
+    return getOsPreference() === "amoled" ? "amoled" : "light";
+  });
+
+  const [resolvedTheme, setResolvedTheme] = useState<"amoled" | "light">(() =>
+    resolveTheme(theme)
   );
 
+  // Re-resolve when OS preference changes (matters when theme === "system")
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handler = (e: MediaQueryListEvent) => setTheme(e.matches ? "amoled" : "light");
-    mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
-  }, []);
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const handler = (e: MediaQueryListEvent) => {
+      if (theme === "system") {
+        setResolvedTheme(e.matches ? "amoled" : "light");
+      }
+    };
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, [theme]);
+
+  const setTheme = (t: Theme) => {
+    setThemeState(t);
+    setResolvedTheme(resolveTheme(t));
+    try { localStorage.setItem(THEME_KEY, t); } catch {}
+  };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, resolvedTheme, setTheme }}>
       <AuthProvider>
         <AuthModal />
         <Inner />

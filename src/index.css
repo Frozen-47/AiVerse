@@ -135,7 +135,7 @@ html {
 
 /* Dark Mode (Amoled) Glow Card */
 .dark .glow-card {
-  background: rgba(10, 10, 10, 0.5) !important;
+  background: #000000 !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
 }
@@ -156,8 +156,7 @@ html {
 }
 
 .dark .glow-card:hover {
-  transform: translateY(-4px) scale(1.01);
-  background: rgba(15, 15, 15, 0.75) !important;
+  background: #000000 !important;
   box-shadow: 
     0 12px 30px -10px rgba(6, 182, 212, 0.2),
     0 0 24px -6px rgba(6, 182, 212, 0.08);
@@ -169,7 +168,7 @@ html {
 
 /* Light Mode Glow Card */
 .light .glow-card {
-  background: rgba(255, 255, 255, 0.6) !important;
+  background: #ffffff !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
 }
@@ -190,8 +189,7 @@ html {
 }
 
 .light .glow-card:hover {
-  transform: translateY(-4px) scale(1.01);
-  background: rgba(255, 255, 255, 0.85) !important;
+  background: #ffffff !important;
   box-shadow: 
     0 12px 30px -10px rgba(14, 116, 144, 0.15),
     0 0 24px -6px rgba(14, 116, 144, 0.06);
@@ -209,7 +207,7 @@ html {
 }
 
 .dark .glass-search {
-  background: rgba(10, 10, 10, 0.4) !important;
+  background: #000000 !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
 }
@@ -230,7 +228,7 @@ html {
 }
 
 .dark .glass-search:focus-within {
-  background: rgba(15, 15, 15, 0.6) !important;
+  background: #000000 !important;
   box-shadow: 0 0 20px -3px rgba(6, 182, 212, 0.15) !important;
 }
 
@@ -239,7 +237,7 @@ html {
 }
 
 .light .glass-search {
-  background: rgba(255, 255, 255, 0.5) !important;
+  background: #ffffff !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
 }
@@ -260,10 +258,63 @@ html {
 }
 
 .light .glass-search:focus-within {
-  background: rgba(255, 255, 255, 0.75) !important;
+  background: #ffffff !important;
   box-shadow: 0 0 20px -3px rgba(14, 116, 144, 0.12) !important;
 }
 
 .light .glass-search:focus-within::before {
   background: linear-gradient(135deg, rgba(14, 116, 144, 0.4), rgba(79, 70, 229, 0.15)) !important;
+}
+
+/* ─── Profile Menu — Premium Animations ─── */
+
+/* Staggered slide-in for each menu row */
+.profile-menu-stagger {
+  opacity: 0;
+  animation: profileMenuSlideIn 0.3s ease-out forwards;
+}
+
+@keyframes profileMenuSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth expand / collapse using the CSS-grid 0fr→1fr trick */
+.profile-section-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.profile-section-body.is-open {
+  grid-template-rows: 1fr;
+}
+.profile-section-body > .profile-section-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Avatar glow pulse (used on hover) */
+@keyframes avatarGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(6, 182, 212, 0);
+  }
+}
+
+/* Success check icon pop */
+@keyframes successCheckPop {
+  0%   { transform: scale(0.4); opacity: 0; }
+  60%  { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.success-check-pop {
+  animation: successCheckPop 0.35s ease-out forwards;
 }

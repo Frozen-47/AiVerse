@@ -3,8 +3,9 @@ import type { Theme } from "../types";
 
 export const ThemeContext = createContext<{
   theme: Theme;
+  resolvedTheme: "amoled" | "light";
   setTheme: (t: Theme) => void;
-}>({ theme: "amoled", setTheme: () => {} });
+}>({ theme: "system", resolvedTheme: "amoled", setTheme: () => {} });
 
 export const useTheme = () => useContext(ThemeContext);
 
@@ -14,32 +15,32 @@ type TokenMap = Record<string, string>;
 const amoled: TokenMap = {
   // Layout
   page: "bg-black text-white",
-  surface: "bg-[#0a0a0a] border-white/[0.07]",
-  surface2: "bg-[#111] border-white/[0.05]",
-  surfaceHover: "hover:bg-white/[0.04]",
+  surface: "bg-black border-white/7",
+  surface2: "bg-black border-white/5",
+  surfaceHover: "hover:bg-white/4",
   // Text
   textPrimary: "text-white",
   textSecondary: "text-white/55",
   textMuted: "text-white/30",
   textAccent: "text-cyan-400",
   // Borders
-  border: "border-white/[0.07]",
+  border: "border-white/7",
   borderHover: "hover:border-white/20",
   // Input
-  input: "bg-white/[0.04] border-white/[0.08] text-white placeholder:text-white/25 focus:border-cyan-400/50 focus:ring-2 focus:ring-cyan-400/10",
+  input: "bg-black border-white/8 text-white placeholder:text-white/25 focus:border-cyan-400/50 focus:ring-2 focus:ring-cyan-400/10",
   // Buttons
   btnPrimary: "bg-cyan-500 hover:bg-cyan-400 text-black font-bold",
-  btnSecondary: "border-white/[0.1] text-white/60 hover:text-white hover:border-white/25 hover:bg-white/[0.04]",
+  btnSecondary: "border-white/10 text-white/60 hover:text-white hover:border-white/25 hover:bg-white/4",
   btnGhost: "text-white/40 hover:text-white/80",
   // Pill active/inactive
   pillActive: "bg-cyan-500/15 border-cyan-500/40 text-cyan-400",
-  pillInactive: "border-white/[0.07] text-white/35 hover:border-white/15 hover:text-white/65",
+  pillInactive: "border-white/7 text-white/35 hover:border-white/15 hover:text-white/65",
   // Card
-  card: "bg-[#0d0d0d] border-white/[0.07] hover:border-white/[0.15] hover:bg-white/[0.025]",
+  card: "bg-black border-white/7 hover:border-white/15 hover:bg-white/3",
   // Modal
-  modal: "bg-[#0a0a0a] border-white/[0.1]",
+  modal: "bg-black border-white/10",
   // Nav
-  nav: "bg-black/80 border-white/[0.07]",
+  nav: "bg-black border-white/7",
   // Code
   code: "bg-black text-emerald-400",
   // Stats
@@ -70,7 +71,7 @@ const amoled: TokenMap = {
   iconDataset: "text-sky-400 bg-sky-500/10",
   iconPlatform: "text-emerald-400 bg-emerald-500/10",
   // Sidebar
-  sidebarItem: "text-white/40 hover:text-white/80 hover:bg-white/[0.04]",
+  sidebarItem: "text-white/40 hover:text-white/80 hover:bg-white/4",
   sidebarActive: "text-cyan-400 bg-cyan-500/10",
   // Tag
   limitTag: "bg-red-500/8 text-red-400 border-red-500/15",
@@ -82,26 +83,26 @@ const amoled: TokenMap = {
 };
 
 const light: TokenMap = {
-  page: "bg-slate-50 text-gray-900",
-  surface: "bg-white border-black/[0.08]",
-  surface2: "bg-slate-50 border-black/[0.06]",
-  surfaceHover: "hover:bg-black/[0.02]",
+  page: "bg-white text-gray-900",
+  surface: "bg-white border-black/8",
+  surface2: "bg-white border-black/6",
+  surfaceHover: "hover:bg-black/2",
   textPrimary: "text-gray-900",
   textSecondary: "text-gray-500",
   textMuted: "text-gray-400",
   textAccent: "text-cyan-600",
-  border: "border-black/[0.08]",
+  border: "border-black/8",
   borderHover: "hover:border-black/20",
-  input: "bg-black/[0.03] border-black/10 text-gray-900 placeholder:text-gray-400 focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/10",
+  input: "bg-white border-black/10 text-gray-900 placeholder:text-gray-400 focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/10",
   btnPrimary: "bg-cyan-600 hover:bg-cyan-500 text-white font-bold",
-  btnSecondary: "border-black/[0.1] text-gray-500 hover:text-gray-900 hover:border-black/20 hover:bg-black/[0.03]",
+  btnSecondary: "border-black/10 text-gray-500 hover:text-gray-900 hover:border-black/20 hover:bg-black/3",
   btnGhost: "text-gray-400 hover:text-gray-700",
   pillActive: "bg-cyan-500/10 border-cyan-500/30 text-cyan-700",
-  pillInactive: "border-black/[0.08] text-gray-400 hover:border-black/15 hover:text-gray-700",
-  card: "bg-white border-black/[0.07] hover:border-black/15 hover:shadow-md",
-  modal: "bg-white border-black/[0.1]",
-  nav: "bg-white/90 border-black/[0.08]",
-  code: "bg-gray-950 text-emerald-400",
+  pillInactive: "border-black/8 text-gray-400 hover:border-black/15 hover:text-gray-700",
+  card: "bg-white border-black/7 hover:border-black/15 hover:shadow-md",
+  modal: "bg-white border-black/10",
+  nav: "bg-white border-black/8",
+  code: "bg-white border border-black/10 text-slate-800",
   statValue: "text-cyan-600",
   badgeModel: "bg-violet-500/8 text-violet-700 border-violet-500/20",
   badgeFramework: "bg-amber-500/8 text-amber-700 border-amber-500/20",
@@ -123,7 +124,7 @@ const light: TokenMap = {
   iconFramework: "text-amber-700 bg-amber-500/8",
   iconDataset: "text-sky-700 bg-sky-500/8",
   iconPlatform: "text-emerald-700 bg-emerald-500/8",
-  sidebarItem: "text-gray-500 hover:text-gray-900 hover:bg-black/[0.04]",
+  sidebarItem: "text-gray-500 hover:text-gray-900 hover:bg-black/4",
   sidebarActive: "text-cyan-700 bg-cyan-500/8",
   limitTag: "bg-red-500/6 text-red-600 border-red-500/15",
   errorToast: "bg-red-500/10 border-red-500/30 text-red-600",
@@ -134,8 +135,8 @@ const light: TokenMap = {
 export const tokens = { amoled, light };
 
 export function useTokens() {
-  const { theme } = useTheme();
-  return tokens[theme];
+  const { resolvedTheme } = useTheme();
+  return tokens[resolvedTheme];
 }
 
 // Badge helpers

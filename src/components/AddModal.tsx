@@ -112,12 +112,12 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
           onSubmit={handleSubmit}
           className="flex-1 overflow-y-auto px-7 py-6 space-y-4"
         >
-          <div className="grid grid-cols-2 gap-4">
-            <div className="col-span-2 sm:col-span-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
               <label className={labelCls}>Tool Name *</label>
               <input required type="text" value={entry.name ?? ""} onChange={(e) => set({ name: e.target.value })} className={inputCls} placeholder="e.g. Gemini 1.5 Pro" />
             </div>
-            <div className="col-span-2 sm:col-span-1">
+            <div>
               <label className={labelCls}>Organization</label>
               <input type="text" value={entry.org ?? ""} onChange={(e) => set({ org: e.target.value })} className={inputCls} placeholder="e.g. Google" />
             </div>

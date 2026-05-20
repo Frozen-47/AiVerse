@@ -15,6 +15,8 @@ import {
   normalizeUsernameHandle,
   normalizeUsernameInput,
 } from "../lib/username";
+import { checkUsernameAvailable } from "../lib/supabase";
+import { preferencesUserKey } from "../lib/onboarding";
 
 interface WelcomeOnboardingProps {
   onComplete: (
@@ -135,6 +137,42 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   const [isUpdating, setIsUpdating] = useState(false);
   const hasInitializedRef = useRef(false);
 
+  // Username availability check
+  const [usernameStatus, setUsernameStatus] = useState<"idle" | "checking" | "available" | "taken">("idle");
+  const usernameCheckTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Debounced username availability check
+  useEffect(() => {
+    if (usernameCheckTimer.current) clearTimeout(usernameCheckTimer.current);
+
+    if (!isValidUsername(username) || username.length < 3) {
+      setUsernameStatus("idle");
+      return;
+    }
+
+    // If user already has this username saved, skip the check
+    const existingUsername = (user?.user_metadata?.username as string) || parsedPrefs?.username || "";
+    if (existingUsername && normalizeUsernameHandle(username) === normalizeUsernameHandle(existingUsername)) {
+      setUsernameStatus("available");
+      return;
+    }
+
+    setUsernameStatus("checking");
+    usernameCheckTimer.current = setTimeout(async () => {
+      try {
+        const currentUserKey = user ? preferencesUserKey({ supabaseUserId: user.id }) : undefined;
+        const available = await checkUsernameAvailable(username, currentUserKey);
+        setUsernameStatus(available ? "available" : "taken");
+      } catch {
+        setUsernameStatus("idle");
+      }
+    }, 500);
+
+    return () => {
+      if (usernameCheckTimer.current) clearTimeout(usernameCheckTimer.current);
+    };
+  }, [username, user, parsedPrefs]);
+
   const stepIndex = steps.indexOf(step);
   const progress = ((stepIndex + 1) / steps.length) * 100;
   const isProfileOnlyEdit = isEdit && editSection === "profile";
@@ -215,15 +253,15 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   const canContinue = (): boolean => {
     switch (step) {
       case "name":
-        return name.trim().length > 0 && isValidUsername(username);
+        return name.trim().length > 0 && isValidUsername(username) && usernameStatus !== "taken" && usernameStatus !== "checking";
       case "profile":
         return true;
       case "role":
-        return role !== null;
+        return true; // skippable
       case "interests":
-        return isEdit ? true : interests.length > 0;
+        return true; // skippable
       case "referral":
-        return referralSource !== null;
+        return true; // skippable
       default:
         return false;
     }
@@ -265,17 +303,25 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   };
 
   const finish = async () => {
-    if (!role || !referralSource) return;
-    if (!isEdit && interests.length === 0) return;
+    // Role defaults to 'other' if skipped
+    const finalRole = role ?? "other";
+    // ReferralSource defaults to 'other' if skipped
+    const finalReferral = referralSource ?? "other";
+
     if (!isGuest && !isEdit && (!name.trim() || !user)) return;
     if (!isGuest && !isValidUsername(username)) return;
 
-    const referralPayload = buildReferralSourcePayload();
-    if (!referralPayload) return;
+    // Temporarily set defaults so buildReferralSourcePayload works
+    const prevRole = role;
+    const prevReferral = referralSource;
+    setRole(finalRole);
+    setReferralSource(finalReferral);
+
+    const referralPayload = buildReferralSourcePayload() ?? JSON.stringify({ source: finalReferral, ...profileMeta() });
 
     const profile: OnboardingProfile = {
       interests,
-      role,
+      role: finalRole,
       referralSource: referralPayload,
       completedAt: new Date().toISOString(),
     };
@@ -285,6 +331,9 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
       onComplete(profile, isGuest ? undefined : profileMeta());
     } finally {
       setIsUpdating(false);
+      // Restore if needed (component likely unmounts)
+      setRole(prevRole);
+      setReferralSource(prevReferral);
     }
   };
 
@@ -337,11 +386,13 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
     profile: "Add your developer handles, bio, and social links.",
     role: isEdit
       ? "We'll refresh your recommendations based on this."
-      : "We'll tailor recommendations to how you work with AI.",
+      : "We'll tailor recommendations to how you work with AI. You can skip this.",
     interests: isEdit
       ? "Select topics to personalize your catalog — leave empty to browse everything."
-      : "Pick one or more — we'll surface matching tools and models first.",
-    referral: "Helps us understand where builders discover AiVerse.",
+      : "Pick one or more — we'll surface matching tools and models first. You can skip this.",
+    referral: isEdit
+      ? "Helps us understand where builders discover AiVerse."
+      : "Helps us understand where builders discover AiVerse. You can skip this.",
   };
 
   const primaryLabel = isUpdating
@@ -460,18 +511,46 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                 <label className={`block text-xs font-semibold mb-2 uppercase tracking-wider ${t.textMuted}`}>
                   Username
                 </label>
+                <div className="relative">
                 <input
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(normalizeUsernameInput(e.target.value))}
                   placeholder="@username"
-                  className={`w-full px-4 py-3 rounded-xl border font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10`}
+                  className={`w-full px-4 py-3 rounded-xl border font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10 pr-10 ${
+                    usernameStatus === "taken" ? "!border-rose-500/50 !ring-rose-500/10" : ""
+                  } ${
+                    usernameStatus === "available" ? "!border-emerald-500/50 !ring-emerald-500/10" : ""
+                  }`}
                   maxLength={30}
                   onKeyDown={(e) => e.key === "Enter" && canContinue() && handlePrimary()}
                 />
-                {!isValidUsername(username) && (
+                {/* Status indicator */}
+                <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                  {usernameStatus === "checking" && (
+                    <div className="w-4 h-4 border-2 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin" />
+                  )}
+                  {usernameStatus === "available" && (
+                    <Check size={16} className="text-emerald-400" />
+                  )}
+                  {usernameStatus === "taken" && (
+                    <X size={16} className="text-rose-400" />
+                  )}
+                </div>
+              </div>
+                {!isValidUsername(username) && username.length > 1 && (
                   <p className="text-[11px] text-rose-400 mt-1 font-medium">
                     Must start with @ and use lowercase letters, numbers, - and _ only
+                  </p>
+                )}
+                {usernameStatus === "taken" && (
+                  <p className="text-[11px] text-rose-400 mt-1 font-medium">
+                    This username is already taken. Try another one.
+                  </p>
+                )}
+                {usernameStatus === "available" && (
+                  <p className="text-[11px] text-emerald-400 mt-1 font-medium">
+                    Username is available!
                   </p>
                 )}
               </div>
@@ -669,6 +748,24 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
               {primaryLabel}
               {showPrimaryArrow && <ArrowRight size={18} />}
             </button>
+            {/* Skip button for skippable steps */}
+            {!isEdit && (step === "role" || step === "interests" || step === "referral") && (
+              <button
+                type="button"
+                onClick={() => {
+                  if (step === "referral") {
+                    void finish();
+                  } else {
+                    goNext();
+                  }
+                }}
+                disabled={isUpdating}
+                className={`inline-flex items-center gap-1 px-4 py-3 rounded-xl font-medium text-[13px] cursor-pointer transition-all ${t.textMuted} hover:${t.textSecondary}`}
+              >
+                Skip
+                <ArrowRight size={14} />
+              </button>
+            )}
           </div>
 
         </div>

@@ -154,3 +154,45 @@ export async function fetchProfileByUsername(
 
   return null;
 }
+
+/**
+ * Check if a username is already taken by another user.
+ * Returns true if available, false if taken.
+ * Optionally pass currentUserKey to exclude the current user's own row.
+ */
+export async function checkUsernameAvailable(
+  username: string,
+  currentUserKey?: string,
+): Promise<boolean> {
+  const cleanUsername = username.startsWith("@") ? username : `@${username}`;
+
+  const { data, error } = await supabase
+    .from("user_preferences")
+    .select("user_key, referral_source");
+
+  if (error) {
+    console.warn("Failed to check username availability", error);
+    // On error, assume available to avoid blocking onboarding
+    return true;
+  }
+
+  for (const row of data || []) {
+    // Skip the current user's own row
+    if (currentUserKey && row.user_key === currentUserKey) continue;
+    if (!row.referral_source) continue;
+    try {
+      const parsed = JSON.parse(row.referral_source);
+      if (
+        parsed &&
+        typeof parsed === "object" &&
+        parsed.username?.toLowerCase() === cleanUsername.toLowerCase()
+      ) {
+        return false; // taken
+      }
+    } catch {
+      // Ignore non-JSON rows
+    }
+  }
+
+  return true; // available
+}

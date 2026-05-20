@@ -55,7 +55,7 @@ function StarRow({
           onClick={() => onRate?.(n)}
           onMouseEnter={() => interactive && setHover(n)}
           onMouseLeave={() => interactive && setHover(0)}
-          className={`transition-transform ${interactive ? "cursor-pointer hover:scale-110 disabled:cursor-default" : "cursor-default"}`}
+          className={`transition-transform ${interactive ? "cursor-pointer disabled:cursor-default" : "cursor-default"}`}
           aria-label={`${n} star${n > 1 ? "s" : ""}`}
         >
           <Star

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import { X, Star, ExternalLink, Copy, Check, Lock, Link2, Bookmark, ChevronDown } from "lucide-react";
 import { shareUrlForEntry } from "../lib/entryUrl";
 import { useAuth } from "./AuthContext";
-import { useTokens, typeBadge, taskBadge, TYPE_GLYPH, typeIcon } from "../lib/theme";
+import { useTokens, useTheme, typeBadge, taskBadge, TYPE_GLYPH, typeIcon } from "../lib/theme";
 import type { Entry, EntryRatingSummary } from "../types";
 import { EntryFeedback } from "./EntryFeedback";
 
@@ -171,6 +171,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
   onViewProfile,
 }) => {
   const t = useTokens();
+  const { resolvedTheme } = useTheme();
   const { user, openAuthModal } = useAuth();
   const [copied, setCopied] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
@@ -275,202 +276,199 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
         {/* Scroll: entry details first, then ratings & comments at the bottom */}
         <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain">
-          {compareCandidates.length > 0 && (
-            <div className={`px-7 pt-5 pb-4 border-b ${t.border} relative`}>
-              <label
-                htmlFor="compare-with"
-                className={`block text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}
-              >
-                Compare with
-              </label>
-              <div
-                className={!user ? "opacity-30 blur-[4px] pointer-events-none select-none" : ""}
-                {...(!user ? { inert: true } : {})}
-              >
-              <CompareSelect
-                value={compareName}
-                onChange={setCompareName}
-                candidates={compareCandidates}
-                placeholder="Choose an entry…"
-                className={selectCls}
-                t={t}
-              />
-              {compareEntry && (
-                <div className="mt-4">
-                  <CompareTable left={entry} right={compareEntry} t={t} />
-                </div>
-              )}
-              </div>
-
-            </div>
-          )}
-
           <div className="relative">
             {!user && (
-              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center bg-black/70 min-h-[280px]">
-              <div className="w-14 h-14 rounded-2xl bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-500/30">
-                <Lock size={24} />
+              <div className={`absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center min-h-[320px] backdrop-blur-xs transition-colors duration-200 ${
+                resolvedTheme === "light" ? "bg-white/80" : "bg-black/80"
+              }`}>
+                <div className="w-14 h-14 rounded-2xl bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-500/30">
+                  <Lock size={24} />
+                </div>
+                <h3 className={`text-xl font-bold mb-2 tracking-tight ${t.textPrimary}`}>Unlock Full Details</h3>
+                <p className={`text-[13px] mb-6 max-w-[320px] leading-relaxed mx-auto ${t.textSecondary}`}>
+                  Sign in to view architecture, benchmarks, code usage, direct resources, and compare with other AI models.
+                </p>
+                <div className="flex items-center gap-3">
+                  <button 
+                    onClick={() => openAuthModal("signin")}
+                    className={`${t.btnSecondary} px-5 py-2.5 rounded-xl font-medium text-sm transition-all border`}
+                  >
+                    Login
+                  </button>
+                  <button 
+                    onClick={() => openAuthModal("signup")}
+                    className={`${t.btnPrimary} px-5 py-2.5 rounded-xl text-sm transition-all shadow-md`}
+                  >
+                    Create Account
+                  </button>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 tracking-tight">Unlock Full Details</h3>
-              <p className="text-[13px] text-gray-300 mb-6 max-w-[320px] leading-relaxed mx-auto">
-                Sign in to view architecture, benchmarks, code usage, direct resources, and compare with other AI models.
-              </p>
-              <div className="flex items-center gap-3">
-                <button 
-                  onClick={() => openAuthModal("signin")}
-                  className="px-5 py-2.5 rounded-xl font-medium text-sm transition-all bg-white/10 text-white hover:bg-white/20 border border-white/10"
-                >
-                  Login
-                </button>
-                <button 
-                  onClick={() => openAuthModal("signup")}
-                  className="px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white shadow-md shadow-cyan-500/20"
-                >
-                  Create Account
-                </button>
-              </div>
-            </div>
-          )}
+            )}
 
             <div
-              className={`px-7 py-6 space-y-6 transition-all ${
-                !user ? "opacity-30 blur-[5px] pointer-events-none select-none max-h-[320px] overflow-hidden" : ""
+              className={`transition-all ${
+                !user ? "opacity-30 blur-[5px] pointer-events-none select-none max-h-[380px] overflow-hidden" : ""
               }`}
               {...(!user ? { inert: true } : {})}
             >
-
-          {/* Meta grid */}
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              { label: "Organization", value: entry.org },
-              { label: "Model Size",   value: entry.size },
-            ].map(({ label, value }) => (
-              <div key={label} className={`rounded-2xl border px-4 py-3 ${t.surface2} ${t.border}`}>
-                <p className={`text-[10px] uppercase tracking-widest mb-1 ${t.textMuted}`}>{label}</p>
-                <p className={`text-[13px] font-semibold word-break break-all ${t.textPrimary}`}>{value}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Architecture */}
-          <div>
-            <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Architecture</p>
-            <p className={`text-[13px] leading-relaxed ${t.textSecondary}`}>{entry.architecture}</p>
-          </div>
-
-          {/* Code */}
-          {entry.usage && (
-            <div>
-              <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Example Usage</p>
-              <div className={`rounded-2xl overflow-hidden border ${t.border}`}>
-                {/* Toolbar */}
-                <div className={`flex items-center justify-between px-4 py-2.5 border-b ${t.border} ${t.surface}`}>
-                  <span className={`text-[10px] uppercase tracking-widest font-semibold ${t.textMuted}`}>Python</span>
-                  <div className="flex items-center gap-3">
-                    <div className="flex gap-1.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
+              {compareCandidates.length > 0 && (
+                <div className={`px-7 pt-5 pb-4 border-b ${t.border}`}>
+                  <label
+                    htmlFor="compare-with"
+                    className={`block text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}
+                  >
+                    Compare with
+                  </label>
+                  <CompareSelect
+                    value={compareName}
+                    onChange={setCompareName}
+                    candidates={compareCandidates}
+                    placeholder="Choose an entry…"
+                    className={selectCls}
+                    t={t}
+                  />
+                  {compareEntry && (
+                    <div className="mt-4">
+                      <CompareTable left={entry} right={compareEntry} t={t} />
                     </div>
-                    <button
-                      onClick={handleCopy}
-                      title="Copy code"
-                      className={`
-                        inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-[11px] font-medium
-                        transition-all duration-150
-                        ${copied
-                          ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
-                          : `${t.surface} ${t.border} ${t.textMuted} hover:${t.textSecondary}`
-                        }
-                      `}
-                    >
-                      {copied ? <Check size={11} /> : <Copy size={11} />}
-                      {copied ? "Copied" : "Copy"}
-                    </button>
+                  )}
+                </div>
+              )}
+
+              <div className="px-7 py-6 space-y-6">
+                {/* Meta grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {[
+                    { label: "Organization", value: entry.org },
+                    { label: "Model Size",   value: entry.size },
+                  ].map(({ label, value }) => (
+                    <div key={label} className={`rounded-2xl border px-4 py-3 ${t.surface2} ${t.border}`}>
+                      <p className={`text-[10px] uppercase tracking-widest mb-1 ${t.textMuted}`}>{label}</p>
+                      <p className={`text-[13px] font-semibold word-break break-all ${t.textPrimary}`}>{value}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Architecture */}
+                <div>
+                  <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Architecture</p>
+                  <p className={`text-[13px] leading-relaxed ${t.textSecondary}`}>{entry.architecture}</p>
+                </div>
+
+                {/* Code */}
+                {entry.usage && (
+                  <div>
+                    <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Example Usage</p>
+                    <div className={`rounded-2xl overflow-hidden border ${t.border}`}>
+                      {/* Toolbar */}
+                      <div className={`flex items-center justify-between px-4 py-2.5 border-b ${t.border} ${t.surface}`}>
+                        <span className={`text-[10px] uppercase tracking-widest font-semibold ${t.textMuted}`}>Python</span>
+                        <div className="flex items-center gap-3">
+                          <div className="flex gap-1.5">
+                            <span className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
+                          </div>
+                          <button
+                            onClick={handleCopy}
+                            title="Copy code"
+                            className={`
+                              inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-[11px] font-medium
+                              transition-all duration-150
+                              ${copied
+                                ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
+                                : `${t.surface} ${t.border} ${t.textMuted} hover:${t.textSecondary}`
+                              }
+                            `}
+                          >
+                            {copied ? <Check size={11} /> : <Copy size={11} />}
+                            {copied ? "Copied" : "Copy"}
+                          </button>
+                        </div>
+                      </div>
+                      {/* Code body — white bg in light theme, dark in amoled (via t.code token) */}
+                      <pre className={`px-5 py-4 text-[12px] font-mono overflow-x-auto leading-relaxed ${t.code}`}>
+                        {entry.usage}
+                      </pre>
+                    </div>
+                  </div>
+                )}
+
+                {/* Benchmarks */}
+                <div>
+                  <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Benchmarks</p>
+                  <p className={`text-[13px] leading-relaxed ${t.textSecondary}`}>{entry.benchmarks}</p>
+                </div>
+
+                {/* Limitations */}
+                <div>
+                  <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Limitations</p>
+                  <div className="flex flex-wrap gap-2">
+                    {entry.limitations.split(",").map((l, i) => (
+                      <span key={i} className={`text-[11px] px-3 py-1 rounded-xl border ${t.limitTag}`}>
+                        ⚠ {l.trim()}
+                      </span>
+                    ))}
                   </div>
                 </div>
-                {/* Code body — white bg in light theme, dark in amoled (via t.code token) */}
-                <pre className={`px-5 py-4 text-[12px] font-mono overflow-x-auto leading-relaxed ${t.code}`}>
-                  {entry.usage}
-                </pre>
+
+                {/* URL */}
+                {entry.url && (
+                  <div>
+                    <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Official Resource</p>
+                    <a
+                      href={entry.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center gap-2 text-[12px] font-medium px-3 py-2 rounded-xl border transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textAccent}`}
+                    >
+                      <ExternalLink size={12} />
+                      {entry.url}
+                    </a>
+                  </div>
+                )}
+
+                {relatedEntries.length > 0 && onSelectRelated && (
+                  <div>
+                    <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Related entries</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {relatedEntries.map((related) => (
+                        <button
+                          key={related.name}
+                          type="button"
+                          onClick={() => onSelectRelated(related)}
+                          className={`text-left rounded-xl border px-4 py-3 transition-all ${t.surface} ${t.border} hover:border-cyan-500/30`}
+                        >
+                          <p className={`text-[13px] font-semibold ${t.textPrimary}`}>{related.name}</p>
+                          <p className={`text-[11px] mt-0.5 ${t.textMuted}`}>{related.type} · {related.task}</p>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Citations */}
+                {entry.citations.length > 0 && (
+                  <div>
+                    <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Citations</p>
+                    <div className="space-y-2">
+                      {entry.citations.map((c, i) => (
+                        <a
+                          key={i}
+                          href={c.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`flex items-center gap-3 px-4 py-3 rounded-xl border transition-all group ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textAccent}`}
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400/50 shrink-0" />
+                          <span className="flex-1 text-[12px]">{c.text}</span>
+                          <ExternalLink size={11} className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
-          )}
-
-          {/* Benchmarks */}
-          <div>
-            <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Benchmarks</p>
-            <p className={`text-[13px] leading-relaxed ${t.textSecondary}`}>{entry.benchmarks}</p>
-          </div>
-
-          {/* Limitations */}
-          <div>
-            <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Limitations</p>
-            <div className="flex flex-wrap gap-2">
-              {entry.limitations.split(",").map((l, i) => (
-                <span key={i} className={`text-[11px] px-3 py-1 rounded-xl border ${t.limitTag}`}>
-                  ⚠ {l.trim()}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* URL */}
-          {entry.url && (
-            <div>
-              <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Official Resource</p>
-              <a
-                href={entry.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 text-[12px] font-medium px-3 py-2 rounded-xl border transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textAccent}`}
-              >
-                <ExternalLink size={12} />
-                {entry.url}
-              </a>
-            </div>
-          )}
-
-          {relatedEntries.length > 0 && onSelectRelated && (
-            <div>
-              <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Related entries</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {relatedEntries.map((related) => (
-                  <button
-                    key={related.name}
-                    type="button"
-                    onClick={() => onSelectRelated(related)}
-                    className={`text-left rounded-xl border px-4 py-3 transition-all ${t.surface} ${t.border} hover:border-cyan-500/30`}
-                  >
-                    <p className={`text-[13px] font-semibold ${t.textPrimary}`}>{related.name}</p>
-                    <p className={`text-[11px] mt-0.5 ${t.textMuted}`}>{related.type} · {related.task}</p>
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Citations */}
-          {entry.citations.length > 0 && (
-            <div>
-              <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Citations</p>
-              <div className="space-y-2">
-                {entry.citations.map((c, i) => (
-                  <a
-                    key={i}
-                    href={c.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center gap-3 px-4 py-3 rounded-xl border transition-all group ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textAccent}`}
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400/50 shrink-0" />
-                    <span className="flex-1 text-[12px]">{c.text}</span>
-                    <ExternalLink size={11} className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
             </div>
           </div>
 

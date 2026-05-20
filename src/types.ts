@@ -1,4 +1,4 @@
-export type Theme = "amoled" | "light";
+export type Theme = "system" | "amoled" | "light";
 
 export interface Citation {
   text: string;

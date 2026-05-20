@@ -9,6 +9,7 @@ interface NavbarProps {
   onAddEntry: () => void;
   onEditPreferences: (section?: "profile" | "preferences") => void;
   onViewProfile?: (username: string) => void;
+  onViewSaved?: () => void;
   onHomeClick?: () => void;
   entryCount: number;
   onboardingProfile?: OnboardingProfile | null;
@@ -31,6 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onAddEntry,
   onEditPreferences,
   onViewProfile,
+  onViewSaved,
   onHomeClick,
   entryCount,
   onboardingProfile = null,
@@ -49,14 +51,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   const firstName = (user?.user_metadata?.firstName as string) || "";
   const lastName = (user?.user_metadata?.lastName as string) || "";
   const email = user?.email || "";
-  const username = user?.user_metadata?.username as string | undefined;
 
   const initials = firstName
     ? (firstName[0] + (lastName ? lastName[0] : "")).toUpperCase()
     : (email ? email[0] : "U").toUpperCase();
 
   const displayName = firstName || email.split("@")[0] || "User";
-  const greetingName = username ? `${displayName} (${username})` : displayName;
+  const greetingName = displayName;
 
   useEffect(() => {
     if (!prevUserRef.current && user) {
@@ -136,7 +137,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="relative flex items-center justify-center w-9 h-9 rounded-full overflow-hidden border border-white/10 transition-all hover:scale-105 active:scale-95 focus:outline-hidden cursor-pointer"
+                className="relative flex items-center justify-center w-9 h-9 rounded-full overflow-hidden border border-white/10 transition-all focus:outline-hidden cursor-pointer"
                 aria-label="User profile menu"
                 aria-expanded={isDropdownOpen}
               >
@@ -156,7 +157,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onClick={() => setIsDropdownOpen(false)}
                   />
                   <div
-                    className={`absolute right-0 top-11 w-72 sm:w-80 rounded-2xl border shadow-xl p-2 ${t.modal} ${t.border} animate-[fadeUp_0.15s_ease-out] z-50 backdrop-blur-md`}
+                    className={`absolute right-0 top-11 w-80 sm:w-[22rem] rounded-2xl shadow-2xl p-2 animate-[fadeUp_0.15s_ease-out] z-50 backdrop-blur-xl ${t.modal} overflow-hidden`}
+                    style={{
+                      boxShadow: `0 20px 50px -12px rgba(6, 182, 212, 0.12), 0 0 0 1px ${
+                        theme === "amoled" ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.08)"
+                      }`,
+                    }}
                   >
                     <UserProfileMenu
                       onboardingProfile={onboardingProfile}
@@ -167,6 +173,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                         onViewProfile?.(uname);
                         setIsDropdownOpen(false);
                       }}
+                      onViewSaved={onViewSaved}
+                      onEditPreferences={onEditPreferences}
+                      onClose={() => setIsDropdownOpen(false)}
                     />
                   </div>
                 </>

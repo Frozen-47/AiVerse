@@ -1,11 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { X, Send, Minimize2, Maximize2, RefreshCw, Copy, Check, AlertCircle, RotateCcw, ExternalLink } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-import { useTokens } from '../lib/theme';
+import { useTheme } from '../lib/theme';
 import { useAuth } from './AuthContext';
 import { VoxLogo } from './VoxLogo';
-// Client-side Groq initialization removed for security.
-// We now use the Vercel Serverless Function at /api/chat
 
 interface Message {
   role: 'user' | 'assistant' | 'system' | 'error';
@@ -46,13 +44,13 @@ const markdownComponents = {
   ul: ({node, ...props}: any) => <ul className="list-disc pl-4 mb-2 space-y-1" {...props} />,
   ol: ({node, ...props}: any) => <ol className="list-decimal pl-4 mb-2 space-y-1" {...props} />,
   li: ({node, ...props}: any) => <li className="" {...props} />,
-  strong: ({node, ...props}: any) => <strong className="font-semibold text-blue-400" {...props} />,
-  code: ({node, ...props}: any) => <code className="bg-black/20 rounded px-1 py-0.5 font-mono text-[11px]" {...props} />,
-  pre: ({node, ...props}: any) => <pre className="bg-black/30 rounded p-2 overflow-x-auto my-2 font-mono text-[11px]" {...props} />,
+  strong: ({node, ...props}: any) => <strong className="font-semibold text-cyan-500" {...props} />,
+  code: ({node, ...props}: any) => <code className="bg-black/10 dark:bg-black/40 rounded px-1.5 py-0.5 font-mono text-[12px]" {...props} />,
+  pre: ({node, ...props}: any) => <pre className="bg-black/5 dark:bg-black/50 rounded-xl p-3 overflow-x-auto my-2 font-mono text-[12px] border border-black/5 dark:border-white/5 shadow-inner" {...props} />,
   a: ({node, children, ...props}: any) => (
-    <a className="inline-flex items-baseline gap-1 text-blue-400 hover:text-blue-300 transition-colors font-medium" target="_blank" rel="noopener noreferrer" {...props}>
-      <span className="underline underline-offset-2">{children}</span>
-      <ExternalLink size={11} className="shrink-0 self-center" />
+    <a className="inline-flex items-baseline gap-1 text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 dark:hover:text-cyan-300 transition-colors font-medium underline underline-offset-2" target="_blank" rel="noopener noreferrer" {...props}>
+      {children}
+      <ExternalLink size={12} className="shrink-0 self-center" />
     </a>
   ),
 };
@@ -73,13 +71,13 @@ function buildMarkdownComponents(
           <button
             type="button"
             onClick={() => onEntrySelect(match)}
-            className="font-semibold text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
+            className="font-bold text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 dark:hover:text-cyan-300 underline underline-offset-2 transition-colors"
           >
             {match}
           </button>
         );
       }
-      return <strong className="font-semibold text-blue-400">{children}</strong>;
+      return <strong className="font-semibold text-cyan-600 dark:text-cyan-400">{children}</strong>;
     },
   };
 }
@@ -99,7 +97,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
   onEntrySelect,
   initialOpen = false,
 }) => {
-  const t = useTokens();
+  const { resolvedTheme } = useTheme();
   const { user } = useAuth();
   const userId = user?.id || null;
   const userName = (user?.user_metadata?.firstName as string) || user?.email?.split('@')[0] || null;
@@ -125,24 +123,21 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
     return getInitialMessages(userName);
   });
   
-  // Clear chat history whenever the authenticated user changes
   const previousUserId = useRef(userId);
   const previousUserName = useRef(userName);
   
   useEffect(() => {
-    // If the user logs into a different account, completely wipe the chat
     if (previousUserId.current !== userId) {
       setMessages(getInitialMessages(userName));
       localStorage.removeItem('vox_chat_history');
       previousUserId.current = userId;
       previousUserName.current = userName;
-    } 
-    // If the user's name updates (e.g. from the Welcome Modal) and they haven't chatted yet, update the greeting
-    else if (previousUserName.current !== userName && messages.length <= 1) {
+    } else if (previousUserName.current !== userName && messages.length <= 1) {
       setMessages(getInitialMessages(userName));
       previousUserName.current = userName;
     }
   }, [userId, userName, messages.length]);
+
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [suggestions, setSuggestions] = useState<string[]>([]);
@@ -156,11 +151,9 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
         setIsOpen(false);
       }
     };
-
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
-    
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -181,7 +174,6 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
       console.error('Error saving chat history', e);
     }
   }, [messages]);
-
 
   const clearChat = () => {
     setMessages(getInitialMessages(userName));
@@ -289,77 +281,108 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
     }
   };
 
+  const isDark = resolvedTheme === 'amoled';
+  const border = isDark ? 'border-white/7' : 'border-black/8';
+  const bg = isDark ? 'bg-[#0a0a0a]' : 'bg-white';
+  const textPrimary = isDark ? 'text-white' : 'text-gray-900';
+  const textMuted = isDark ? 'text-white/30' : 'text-gray-400';
+
   if (!isOpen) {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className={`group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center p-2 sm:p-2.5 rounded-full shadow-2xl ${t.btnPrimary}`}
+        className="group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center p-2 sm:p-2.5 rounded-full shadow-2xl bg-cyan-500 hover:bg-cyan-400 text-black font-bold"
       >
-        <VoxLogo variant="current" className="w-6 h-6 sm:w-9 sm:h-9" />
-        <div className="grid grid-cols-[0fr] group-hover:grid-cols-[1fr] opacity-0 group-hover:opacity-100">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-6 h-6 sm:w-9 sm:h-9"
+          aria-hidden="true"
+        >
+          <path
+            d="M6.25 4.75h11.5a2.25 2.25 0 0 1 2.25 2.25v6.25a2.25 2.25 0 0 1-2.25 2.25H11.5l-3.75 3.25V15.5H6.25a2.25 2.25 0 0 1-2.25-2.25V7a2.25 2.25 0 0 1 2.25-2.25Z"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M12 8.25l.85 1.7 1.9.75-1.9.75-.85 1.7-.85-1.7-1.9-.75 1.9-.75.85-1.7Z"
+            fill="currentColor"
+          />
+        </svg>
+        <div className="grid grid-cols-[0fr] group-hover:grid-cols-[1fr] opacity-0 group-hover:opacity-100 transition-all duration-300">
           <div className="overflow-hidden whitespace-nowrap">
             <span className="pl-2 pr-1 font-medium text-[13px] sm:text-[15px] block">Ask Vox</span>
           </div>
         </div>
       </button>
-     );
+    );
   }
 
   return (
-    <div 
+    <div
       ref={widgetRef}
-      className={`fixed z-50 flex flex-col shadow-2xl border transition-all duration-300 ease-in-out ${t.surface} ${t.border} ${
-        isMaximized 
-          ? 'bottom-4 right-4 left-4 top-4 rounded-2xl md:left-auto md:w-[600px]' 
-          : 'bottom-6 right-6 w-[380px] h-[550px] rounded-2xl sm:w-[420px] sm:h-[600px]'
+      className={`fixed z-50 flex flex-col shadow-2xl border transition-all duration-300 ease-in-out overflow-hidden ${bg} ${border} ${
+        isMaximized
+          ? 'bottom-4 right-4 left-4 top-4 rounded-2xl md:left-auto md:w-175'
+          : 'bottom-6 right-6 w-95 h-137.5 rounded-2xl sm:w-105 sm:h-150'
       }`}
     >
-      {/* Header */}
-      <div className={`flex items-center justify-between px-4 py-3 border-b ${t.border}`}>
+      {/* ── Header ── */}
+      <div className={`flex items-center justify-between px-4 py-3 border-b ${border}`}>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white">
+          <div className="w-8 h-8 rounded-full bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white shrink-0">
             <VoxLogo size={18} variant="current" />
           </div>
           <div>
-            <h3 className={`font-semibold text-sm ${t.textPrimary}`}>Vox</h3>
-            <p className={`text-[10px] ${t.textMuted}`}>Powered by Groq</p>
+            <h3 className={`font-semibold text-sm ${textPrimary}`}>Vox</h3>
+            <p className={`text-[10px] ${textMuted}`}>Powered by Groq</p>
           </div>
         </div>
-        <div className={`flex items-center gap-1 ${t.textSecondary}`}>
-          <button 
+        <div className={`flex items-center gap-1 ${isDark ? 'text-white/55' : 'text-gray-400'}`}>
+          <button
             onClick={clearChat}
-            className={`p-1.5 rounded hover:bg-red-500/10 hover:text-red-400 transition-colors`}
+            className="p-1.5 rounded hover:bg-red-500/10 hover:text-red-400 transition-colors"
             title="Restart chat"
           >
             <RotateCcw size={14} />
           </button>
-          <button 
+          <button
             onClick={() => setIsMaximized(!isMaximized)}
-            className={`p-1.5 rounded hover:${t.surfaceHover} transition-colors`}
+            className={`p-1.5 rounded transition-colors ${isDark ? 'hover:bg-white/4' : 'hover:bg-black/5'}`}
           >
             {isMaximized ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
           </button>
-          <button 
+          <button
             onClick={() => setIsOpen(false)}
-            className={`p-1.5 rounded hover:${t.surfaceHover} transition-colors`}
+            className={`p-1.5 rounded transition-colors ${isDark ? 'hover:bg-white/4' : 'hover:bg-black/5'}`}
           >
             <X size={18} />
           </button>
         </div>
       </div>
 
-      {/* Messages Area */}
-      <div className={`flex-1 overflow-y-auto overscroll-contain no-scrollbar p-4 flex flex-col gap-4 text-sm ${isMaximized ? 'text-base' : ''}`}>
-        {messages.map((msg, idx) => (
+      {/* ── Messages ── */}
+      <div className="flex-1 overflow-y-auto overscroll-contain no-scrollbar p-4 flex flex-col gap-4 text-sm">
+        {messages.map((msg, idx) =>
           msg.role !== 'system' && (
             <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div 
+              <div
                 className={`group relative max-w-[85%] rounded-2xl px-4 py-2 text-[13px] leading-relaxed ${
-                  msg.role === 'user' 
-                    ? `bg-linear-to-r from-cyan-500 via-cyan-600 to-sky-600 text-white font-medium rounded-br-sm shadow-sm` 
+                  msg.role === 'user'
+                    ? isDark
+                      ? 'bg-blue-600/20 border border-blue-500/30 text-white font-medium rounded-br-sm'
+                      : 'bg-blue-600 text-white font-medium rounded-br-sm'
                     : msg.role === 'error'
-                    ? `bg-red-500/10 border-red-500/20 text-red-500 rounded-bl-sm border`
-                    : `${t.surfaceHover} ${t.textPrimary} border ${t.border} rounded-bl-sm`
+                    ? isDark
+                      ? 'border border-rose-500/40 bg-rose-950/20 text-rose-300 rounded-bl-sm'
+                      : 'border border-rose-200 bg-rose-50 text-rose-600 rounded-bl-sm'
+                    : isDark
+                      ? `hover:bg-white/4 ${textPrimary} border ${border} rounded-bl-sm`
+                      : `hover:bg-black/2 ${textPrimary} border ${border} rounded-bl-sm`
                 }`}
               >
                 {msg.role === 'user' ? (
@@ -368,34 +391,37 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                   <div className="flex items-start gap-2">
                     <AlertCircle size={14} className="mt-0.5 shrink-0" />
                     <div>
-                      <p className="font-semibold text-[11px] uppercase tracking-wider mb-0.5 opacity-80">Connection Error</p>
+                      <p className="font-bold text-[11px] uppercase tracking-wide mb-0.5 opacity-80">Error</p>
                       <p className="leading-snug">{msg.content}</p>
                     </div>
                   </div>
                 ) : (
-                  <ReactMarkdown components={mdComponents.current}>
-                    {msg.content}
-                  </ReactMarkdown>
+                  <div className="prose prose-sm dark:prose-invert max-w-none prose-p:leading-relaxed">
+                    <ReactMarkdown components={mdComponents.current}>
+                      {msg.content}
+                    </ReactMarkdown>
+                  </div>
                 )}
-                
+
                 {msg.role === 'assistant' && (
                   <div className="mt-2 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
                     <button
                       onClick={() => handleCopy(msg.content, idx)}
-                      className={`p-1 rounded transition-colors ${t.textMuted} hover:${t.textPrimary}`}
+                      className={`p-1 rounded transition-colors ${textMuted} hover:${textPrimary}`}
                       title="Copy response"
                     >
-                      {copiedIndex === idx ? <Check size={14} className="text-green-400" /> : <Copy size={14} />}
+                      {copiedIndex === idx ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
                     </button>
                   </div>
                 )}
               </div>
             </div>
           )
-        ))}
+        )}
+
         {isLoading && (
           <div className="flex justify-start">
-            <div className={`max-w-[85%] rounded-2xl px-4 py-4 ${t.surfaceHover} border ${t.border} rounded-bl-sm flex items-center gap-1.5 ${t.textAccent}`}>
+            <div className={`px-4 py-3 rounded-2xl rounded-bl-sm border ${border} ${isDark ? 'bg-white/3' : 'bg-black/2'} flex items-center gap-1.5 ${isDark ? 'text-white/40' : 'text-gray-400'}`}>
               <div className="w-1.5 h-1.5 rounded-full bg-current animate-typing-dot [animation-delay:-0.32s]" />
               <div className="w-1.5 h-1.5 rounded-full bg-current animate-typing-dot [animation-delay:-0.16s]" />
               <div className="w-1.5 h-1.5 rounded-full bg-current animate-typing-dot" />
@@ -406,16 +432,14 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
         <div ref={messagesEndRef} className="h-2 shrink-0" />
       </div>
 
-      {/* Suggested Prompts */}
+      {/* ── Suggestions ── */}
       {!isLoading && messages.length > 0 && (
-        <div className={`shrink-0 px-4 pb-3 pt-3 border-t ${t.border} bg-transparent`}>
+        <div className={`shrink-0 px-4 pb-3 pt-3 border-t ${border} bg-transparent`}>
           <div className="flex items-center justify-between mb-2">
-            <p className={`text-xs ${t.textMuted} font-medium`}>
-              Suggested questions:
-            </p>
+            <p className={`text-xs font-medium ${textMuted}`}>Suggested questions:</p>
             <button
               onClick={refreshSuggestions}
-              className={`flex items-center gap-1 text-[10px] uppercase tracking-wider ${t.textMuted} hover:text-blue-400 transition-colors`}
+              className={`flex items-center gap-1 text-[10px] uppercase tracking-wider ${textMuted} hover:text-blue-400 transition-colors`}
               title="Refresh suggestions"
             >
               <RefreshCw size={12} />
@@ -427,7 +451,11 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
               <button
                 key={idx}
                 onClick={() => handleSuggestionClick(prompt, idx)}
-                className={`whitespace-nowrap flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium border ${t.border} ${t.surfaceHover} ${t.textMuted} hover:text-blue-500 hover:border-blue-500/30 transition-colors shadow-sm active:scale-95`}
+                className={`whitespace-nowrap shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium border ${border} transition-colors shadow-sm active:scale-95 ${
+                  isDark
+                    ? 'text-white/30 hover:bg-white/4 hover:text-blue-400 hover:border-blue-500/30'
+                    : 'text-gray-400 hover:bg-blue-50 hover:text-blue-500 hover:border-blue-500/30'
+                }`}
               >
                 {prompt}
               </button>
@@ -436,23 +464,25 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
         </div>
       )}
 
-      {/* Input Area */}
-      <div className={`shrink-0 p-3 border-t ${t.border}`}>
-        <div className={`flex items-center gap-2 rounded-full border px-4 py-2 ${t.surface} ${t.border} focus-within:border-blue-500/50 transition-colors`}>
+      {/* ── Input ── */}
+      <div className={`shrink-0 p-3 border-t ${border}`}>
+        <div className={`flex items-center gap-2 rounded-full border px-4 py-2 ${bg} ${border} focus-within:border-blue-500/50 transition-colors`}>
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Ask about AI models..."
-            className={`flex-1 bg-transparent outline-hidden text-sm ${t.textPrimary} placeholder-${t.textMuted}`}
+            className={`flex-1 bg-transparent outline-none text-sm ${textPrimary} ${isDark ? 'placeholder:text-white/30' : 'placeholder:text-gray-400'}`}
             disabled={isLoading}
           />
-          <button 
+          <button
             onClick={() => handleSend()}
             disabled={!input.trim() || isLoading}
             className={`p-1.5 rounded-full transition-colors ${
-              input.trim() && !isLoading ? `text-blue-500 hover:bg-blue-500/10` : t.textMuted
+              input.trim() && !isLoading
+                ? 'text-blue-500 hover:text-blue-400'
+                : textMuted
             }`}
           >
             <Send size={16} />
@@ -462,3 +492,4 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
     </div>
   );
 };
+

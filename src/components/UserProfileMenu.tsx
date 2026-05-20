@@ -1,14 +1,15 @@
 import React, { useEffect, useMemo, useState } from "react";
 import {
-  ChevronDown,
-  ChevronRight,
+  ChevronLeft,
   Link2,
   Check,
   LogOut,
   Moon,
   Sun,
+  Monitor,
   SlidersHorizontal,
   User,
+  Bookmark,
 } from "lucide-react";
 import { useAuth } from "./AuthContext";
 import { shareUrlForProfile } from "../lib/entryUrl";
@@ -23,7 +24,7 @@ import { useTokens, useTheme } from "../lib/theme";
 
 interface UserProfileMenuProps {
   onboardingProfile: OnboardingProfile | null;
-  onSave: (
+  onSave?: (
     profile: OnboardingProfile,
     meta?: {
       displayName?: string;
@@ -37,9 +38,10 @@ interface UserProfileMenuProps {
     },
   ) => Promise<void>;
   onViewProfile?: (username: string) => void;
+  onViewSaved?: () => void;
+  onEditPreferences?: (section?: "profile" | "preferences") => void;
+  onClose?: () => void;
 }
-
-type TreeSection = "profile" | "preferences";
 
 function parseProfileMeta(referralSource: string | undefined) {
   if (!referralSource) return null;
@@ -50,59 +52,18 @@ function parseProfileMeta(referralSource: string | undefined) {
   }
 }
 
-function TreeRow({
-  depth,
-  children,
-  className = "",
-}: {
-  depth: number;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const pad = depth === 0 ? "pl-0" : depth === 1 ? "pl-3" : "pl-6";
-  return (
-    <div className={`${pad} ${depth > 0 ? "border-l border-white/10 ml-2" : ""} ${className}`}>
-      {children}
-    </div>
-  );
-}
-
-function TreeToggle({
-  label,
-  open,
-  onToggle,
-  icon: Icon,
-  t,
-}: {
-  label: string;
-  open: boolean;
-  onToggle: () => void;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
-  t: ReturnType<typeof useTokens>;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onToggle}
-      className={`w-full flex items-center gap-2 py-2 text-sm font-medium text-left cursor-pointer ${t.textSecondary} hover:${t.textPrimary}`}
-    >
-      {open ? <ChevronDown size={14} className="shrink-0 opacity-60" /> : <ChevronRight size={14} className="shrink-0 opacity-60" />}
-      <Icon size={15} className="shrink-0" />
-      {label}
-    </button>
-  );
-}
-
 export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   onboardingProfile,
   onSave,
   onViewProfile,
+  onViewSaved,
+  onClose,
 }) => {
   const t = useTokens();
-  const { theme, setTheme } = useTheme();
+  const { theme, resolvedTheme, setTheme } = useTheme();
   const { user, signOut } = useAuth();
 
-  const [openSections, setOpenSections] = useState<Set<TreeSection>>(new Set());
+  const [currentView, setCurrentView] = useState<"main" | "profile" | "preferences">("main");
   const [linkCopied, setLinkCopied] = useState(false);
   const [saving, setSaving] = useState<"profile" | "preferences" | null>(null);
 
@@ -143,15 +104,6 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
     setRole(onboardingProfile?.role ?? null);
     setInterests(onboardingProfile?.interests ?? []);
   }, [user, parsedMeta, onboardingProfile]);
-
-  const toggleSection = (section: TreeSection) => {
-    setOpenSections((prev) => {
-      const next = new Set(prev);
-      if (next.has(section)) next.delete(section);
-      else next.add(section);
-      return next;
-    });
-  };
 
   const handleCopyLink = () => {
     if (!username) return;
@@ -204,22 +156,26 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   });
 
   const saveProfile = async () => {
+    if (!onSave) return;
     const profile = buildProfilePayload();
     if (!profile || !name.trim()) return;
     setSaving("profile");
     try {
       await onSave(profile, profileMeta());
+      setCurrentView("main");
     } finally {
       setSaving(null);
     }
   };
 
   const savePreferences = async () => {
+    if (!onSave) return;
     const profile = buildProfilePayload();
     if (!profile || !role) return;
     setSaving("preferences");
     try {
       await onSave({ ...profile, role, interests }, profileMeta());
+      setCurrentView("main");
     } finally {
       setSaving(null);
     }
@@ -231,202 +187,395 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
     );
   };
 
-  const fieldCls = `w-full px-2.5 py-1.5 rounded-lg border text-xs font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50`;
+  /* ── Theme-aware style tokens ── */
+  const isDark = resolvedTheme === "amoled";
+
+  const fieldCls = [
+    "w-full px-3 py-2 rounded-xl border text-xs font-medium outline-none transition-all duration-200",
+    isDark
+      ? "bg-white/3 border-white/6 text-white placeholder:text-white/20 focus:border-cyan-500/40 focus:bg-white/5 focus:ring-2 focus:ring-cyan-400/10"
+      : "bg-black/2 border-black/6 text-gray-900 placeholder:text-gray-400 focus:border-cyan-500/40 focus:bg-white focus:ring-2 focus:ring-cyan-400/10",
+  ].join(" ");
+
   const labelCls = `block text-[10px] font-semibold uppercase tracking-wider mb-1 ${t.textMuted}`;
 
-  return (
-    <div className="text-left max-h-[min(70dvh,520px)] overflow-y-auto no-scrollbar py-1">
-      {/* Profile image + identity */}
-      <TreeRow depth={0} className="px-1 pb-3 mb-2 border-b border-white/10">
-        <button
-          type="button"
-          onClick={() => username && onViewProfile?.(username)}
-          className="flex items-center gap-3 w-full text-left cursor-pointer group"
-        >
-          <div className="w-12 h-12 rounded-full overflow-hidden border border-white/10 shrink-0">
-            {avatarUrl ? (
-              <img src={avatarUrl} alt="" className="w-full h-full object-cover" />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-cyan-500 to-blue-500 text-white font-bold">
-                {initials}
-              </div>
-            )}
-          </div>
-          <div className="min-w-0">
-            <p className={`text-sm font-bold truncate group-hover:text-cyan-400 ${t.textPrimary}`}>{displayName}</p>
-            {username && <p className="text-xs font-bold text-cyan-400 truncate">{username}</p>}
-            <p className={`text-[11px] truncate ${t.textMuted}`}>{email}</p>
-          </div>
-        </button>
-      </TreeRow>
+  const menuItemCls = [
+    "w-full flex items-center gap-3 px-2.5 py-2.5 rounded-xl text-sm font-medium text-left cursor-pointer transition-all duration-200",
+    isDark
+      ? "text-white/55 hover:text-white hover:bg-white/4 active:bg-white/6"
+      : "text-gray-500 hover:text-gray-900 hover:bg-black/3 active:bg-black/5",
+  ].join(" ");
 
-      {/* Copy link */}
-      {username && (
-        <TreeRow depth={0}>
+  const separatorCls = `h-px mx-3 my-1.5 bg-gradient-to-r from-transparent ${isDark ? "via-white/7" : "via-black/6"} to-transparent`;
+
+  const saveBtnCls =
+    "w-full py-2.5 rounded-xl text-xs font-bold cursor-pointer transition-all duration-300 bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:from-cyan-400 hover:to-blue-400 shadow-md shadow-cyan-500/20 hover:shadow-cyan-400/30 hover:shadow-lg disabled:opacity-40 disabled:saturate-50 disabled:cursor-not-allowed";
+
+  // ---------------------------------------------------------------------------
+  // Profile View
+  // ---------------------------------------------------------------------------
+  if (currentView === "profile") {
+    return (
+      <div className="text-left max-h-[min(70dvh,520px)] overflow-y-auto no-scrollbar py-2 px-1 animate-[fadeIn_0.2s_ease-out]">
+        <div className="flex items-center gap-2 mb-3 px-2">
+          <button
+            onClick={() => setCurrentView("main")}
+            className={`p-1.5 rounded-lg transition-colors ${isDark ? "hover:bg-white/10" : "hover:bg-black/5"}`}
+          >
+            <ChevronLeft size={16} />
+          </button>
+          <h3 className={`font-semibold text-sm ${t.textPrimary}`}>Edit Profile</h3>
+        </div>
+
+        <div className="space-y-3 px-2">
+          {/* Name */}
+          <div>
+            <label className={labelCls}>Name</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className={fieldCls}
+              maxLength={50}
+            />
+          </div>
+
+          {/* Username (read-only) */}
+          <div>
+            <label className={labelCls}>Username</label>
+            <input
+              type="text"
+              value={username}
+              readOnly
+              disabled
+              className={`${fieldCls} opacity-50 cursor-not-allowed`}
+              title="Username is set during onboarding and cannot be changed"
+            />
+          </div>
+
+          {/* Bio + character counter */}
+          <div>
+            <div className="flex items-center justify-between mb-1">
+              <label className={`text-[10px] font-semibold uppercase tracking-wider ${t.textMuted}`}>
+                Bio
+              </label>
+              <span className={`text-[10px] tabular-nums ${
+                description.length > 140 ? "text-amber-400" : t.textMuted
+              }`}>
+                {description.length}/160
+              </span>
+            </div>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              rows={2}
+              maxLength={160}
+              className={`${fieldCls} resize-none`}
+              placeholder="Tell other builders about yourself..."
+            />
+          </div>
+
+          {/* Social links */}
+          <div className={`p-2.5 rounded-lg border space-y-2 ${
+            isDark ? "bg-white/1 border-white/4" : "bg-black/1 border-black/4"
+          }`}>
+            <p className={`text-[10px] font-semibold uppercase tracking-wider ${t.textMuted}`}>
+              Social links
+            </p>
+            {[
+              { key: "github",   label: "GitHub URL",    value: github,    set: setGithub },
+              { key: "linkedin", label: "LinkedIn URL",  value: linkedin,  set: setLinkedin },
+              { key: "medium",   label: "Medium URL",    value: medium,    set: setMedium },
+              { key: "devto",    label: "Dev.to URL",    value: devto,     set: setDevto },
+              { key: "portfolio",label: "Portfolio URL",  value: portfolio, set: setPortfolio },
+            ].map(({ key, label, value, set }) => (
+              <input
+                key={key}
+                type="url"
+                value={value}
+                onChange={(e) => set(e.target.value)}
+                placeholder={label}
+                className={fieldCls}
+              />
+            ))}
+          </div>
+
+          {/* Save button */}
           <button
             type="button"
-            onClick={handleCopyLink}
-            className={`w-full flex items-center gap-2 py-2 text-sm font-medium text-left cursor-pointer ${
-              linkCopied ? "text-emerald-400" : `${t.textSecondary} hover:${t.textPrimary}`
-            }`}
+            onClick={() => void saveProfile()}
+            disabled={saving === "profile" || !name.trim()}
+            className={saveBtnCls}
           >
-            <ChevronRight size={14} className="shrink-0 opacity-0" />
-            {linkCopied ? <Check size={15} /> : <Link2 size={15} />}
-            {linkCopied ? "Link copied!" : "Copy profile link"}
+            {saving === "profile" ? "Saving…" : "Save profile"}
           </button>
-        </TreeRow>
-      )}
+        </div>
+      </div>
+    );
+  }
 
-      {/* Edit profile */}
-      <TreeRow depth={0}>
-        <TreeToggle
-          label="Edit profile"
-          open={openSections.has("profile")}
-          onToggle={() => toggleSection("profile")}
-          icon={User}
-          t={t}
-        />
-        {openSections.has("profile") && (
-          <TreeRow depth={1} className="space-y-2.5 pb-2">
-            <div>
-              <label className={labelCls}>Name</label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className={fieldCls}
-                maxLength={50}
-              />
-            </div>
-            <div>
-              <label className={labelCls}>Username</label>
-              <input
-                type="text"
-                value={username}
-                readOnly
-                disabled
-                className={`${fieldCls} opacity-60 cursor-not-allowed`}
-                title="Username is set during onboarding and cannot be changed"
-              />
-            </div>
-            <div>
-              <label className={labelCls}>Bio</label>
-              <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                rows={2}
-                maxLength={160}
-                className={`${fieldCls} resize-none`}
-                placeholder="Tell other builders about yourself..."
-              />
-            </div>
-            <TreeRow depth={2} className="space-y-1.5">
-              <p className={labelCls}>Social links</p>
-              <input type="url" value={github} onChange={(e) => setGithub(e.target.value)} placeholder="GitHub URL" className={fieldCls} />
-              <input type="url" value={linkedin} onChange={(e) => setLinkedin(e.target.value)} placeholder="LinkedIn URL" className={fieldCls} />
-              <input type="url" value={medium} onChange={(e) => setMedium(e.target.value)} placeholder="Medium URL" className={fieldCls} />
-              <input type="url" value={devto} onChange={(e) => setDevto(e.target.value)} placeholder="Dev.to URL" className={fieldCls} />
-              <input type="url" value={portfolio} onChange={(e) => setPortfolio(e.target.value)} placeholder="Portfolio URL" className={fieldCls} />
-            </TreeRow>
-            <button
-              type="button"
-              onClick={() => void saveProfile()}
-              disabled={saving === "profile" || !name.trim()}
-              className="w-full py-2 rounded-lg text-xs font-bold bg-white text-black hover:bg-gray-100 disabled:opacity-50 cursor-pointer"
+  // ---------------------------------------------------------------------------
+  // Preferences View
+  // ---------------------------------------------------------------------------
+  if (currentView === "preferences") {
+    return (
+      <div className="text-left max-h-[min(70dvh,520px)] overflow-y-auto no-scrollbar py-2 px-1 animate-[fadeIn_0.2s_ease-out]">
+        <div className="flex items-center gap-2 mb-3 px-2">
+          <button
+            onClick={() => setCurrentView("main")}
+            className={`p-1.5 rounded-lg transition-colors ${isDark ? "hover:bg-white/10" : "hover:bg-black/5"}`}
+          >
+            <ChevronLeft size={16} />
+          </button>
+          <h3 className={`font-semibold text-sm ${t.textPrimary}`}>Feed Preferences</h3>
+        </div>
+
+        <div className="space-y-4 px-2">
+          {/* Role selector */}
+          <div>
+            <label className={labelCls}>Role</label>
+            <select
+              value={role ?? ""}
+              onChange={(e) => setRole(e.target.value as UserRole)}
+              className={fieldCls}
             >
-              {saving === "profile" ? "Saving…" : "Save profile"}
-            </button>
-          </TreeRow>
-        )}
-      </TreeRow>
-
-      {/* Feed preferences */}
-      <TreeRow depth={0}>
-        <TreeToggle
-          label="Feed preferences"
-          open={openSections.has("preferences")}
-          onToggle={() => toggleSection("preferences")}
-          icon={SlidersHorizontal}
-          t={t}
-        />
-        {openSections.has("preferences") && (
-          <TreeRow depth={1} className="space-y-2.5 pb-2">
-            <div>
-              <label className={labelCls}>Role</label>
-              <select
-                value={role ?? ""}
-                onChange={(e) => setRole(e.target.value as UserRole)}
-                className={fieldCls}
-              >
-                <option value="" disabled>
-                  Select role
+              <option value="" disabled>
+                Select role
+              </option>
+              {onboardingOptions.roles.map((r) => (
+                <option key={r.id} value={r.id}>
+                  {r.label}
                 </option>
-                {onboardingOptions.roles.map((r) => (
-                  <option key={r.id} value={r.id}>
-                    {r.label}
-                  </option>
-                ))}
-              </select>
+              ))}
+            </select>
+          </div>
+
+          {/* Interest pills */}
+          <div>
+            <p className={labelCls}>Interests</p>
+            <div className="flex flex-wrap gap-1.5 mt-1">
+              {onboardingOptions.interests.map((item) => {
+                const selected = interests.includes(item.id);
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => toggleInterest(item.id)}
+                    className={`text-[10px] font-semibold px-2.5 py-1 rounded-lg border cursor-pointer transition-all duration-200 ${
+                      selected
+                        ? `${t.pillActive} shadow-sm shadow-cyan-500/10`
+                        : `${t.surface} ${t.border} ${t.textMuted} hover:${t.textSecondary}`
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
             </div>
-            <TreeRow depth={2}>
-              <p className={labelCls}>Interests</p>
-              <div className="flex flex-wrap gap-1 mt-1">
-                {onboardingOptions.interests.map((item) => {
-                  const selected = interests.includes(item.id);
-                  return (
-                    <button
-                      key={item.id}
-                      type="button"
-                      onClick={() => toggleInterest(item.id)}
-                      className={`text-[10px] font-semibold px-2 py-1 rounded-md border cursor-pointer ${
-                        selected ? t.pillActive : `${t.surface} ${t.border} ${t.textMuted}`
-                      }`}
-                    >
-                      {item.label}
-                    </button>
-                  );
-                })}
-              </div>
-            </TreeRow>
+          </div>
+
+          {/* Save button */}
+          <button
+            type="button"
+            onClick={() => void savePreferences()}
+            disabled={saving === "preferences" || !role}
+            className={saveBtnCls}
+          >
+            {saving === "preferences" ? "Saving…" : "Save preferences"}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // ---------------------------------------------------------------------------
+  // Main View
+  // ---------------------------------------------------------------------------
+  return (
+    <div className="text-left max-h-[min(70dvh,520px)] overflow-y-auto no-scrollbar py-1 animate-[fadeIn_0.2s_ease-out]">
+
+      {/* ══════════ Hero Avatar Section ══════════ */}
+      <div className="relative overflow-hidden rounded-xl mb-0.5 mx-0.5">
+        {/* Gradient background strip */}
+        <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-cyan-500/7 via-blue-500/3 to-transparent" />
+        <button
+          type="button"
+          onClick={() => {
+            if (username && onViewProfile) onViewProfile(username);
+            if (onClose) onClose();
+          }}
+          className="relative flex items-center gap-3.5 w-full p-3 text-left cursor-pointer group rounded-xl transition-colors duration-200"
+        >
+          {/* Avatar with glow ring */}
+          <div className="relative shrink-0">
+            <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-white/10 group-hover:ring-cyan-400/40 transition-all duration-500 shadow-lg group-hover:shadow-cyan-500/20">
+              {avatarUrl ? (
+                <img src={avatarUrl} alt="" className="w-full h-full object-cover" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-500 to-blue-500 text-white font-bold text-lg">
+                  {initials}
+                </div>
+              )}
+            </div>
+            {/* Online status dot */}
+            <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-[2.5px] border-[#0a0a0a] shadow-sm shadow-emerald-500/50" />
+          </div>
+
+          {/* Identity */}
+          <div className="min-w-0">
+            <p className={`text-sm font-bold truncate group-hover:text-cyan-400 transition-colors duration-200 ${t.textPrimary}`}>
+              {displayName}
+            </p>
+            {username && (
+              <p className="text-xs font-bold text-cyan-400 truncate">{username}</p>
+            )}
+            <p className={`text-[11px] truncate mt-0.5 ${t.textMuted}`}>{email}</p>
+          </div>
+        </button>
+      </div>
+
+      {/* ── Gradient separator ── */}
+      <div className={separatorCls} />
+
+      {/* ══════════ Menu Items ══════════ */}
+      <div className="space-y-0.5 px-0.5">
+
+        {/* ── Copy profile link ── */}
+        {username && (
+          <div className="profile-menu-stagger" style={{ animationDelay: "0ms" }}>
             <button
               type="button"
-              onClick={() => void savePreferences()}
-              disabled={saving === "preferences" || !role}
-              className="w-full py-2 rounded-lg text-xs font-bold bg-white text-black hover:bg-gray-100 disabled:opacity-50 cursor-pointer"
+              onClick={handleCopyLink}
+              className={`${menuItemCls} ${linkCopied ? "!text-emerald-400" : ""}`}
             >
-              {saving === "preferences" ? "Saving…" : "Save preferences"}
+              <div
+                className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
+                  linkCopied
+                    ? "bg-emerald-500/15 text-emerald-400"
+                    : "bg-cyan-500/10 text-cyan-400"
+                }`}
+              >
+                {linkCopied ? (
+                  <Check size={14} className="success-check-pop" />
+                ) : (
+                  <Link2 size={14} />
+                )}
+              </div>
+              <span>{linkCopied ? "Link copied!" : "Copy profile link"}</span>
             </button>
-          </TreeRow>
+          </div>
         )}
-      </TreeRow>
 
-      {/* Theme */}
-      <TreeRow depth={0}>
+        {/* ── Edit Profile ── */}
+        <div className="profile-menu-stagger" style={{ animationDelay: "40ms" }}>
+          <button
+            type="button"
+            onClick={() => setCurrentView("profile")}
+            className={menuItemCls}
+          >
+            <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 bg-violet-500/10 text-violet-400">
+              <User size={14} />
+            </div>
+            <span className="flex-1">Edit profile</span>
+          </button>
+        </div>
+
+        {/* ── Saved Entries ── */}
+        <div className="profile-menu-stagger" style={{ animationDelay: "60ms" }}>
+          <button
+            type="button"
+            onClick={() => {
+              if (onViewSaved) onViewSaved();
+              if (onClose) onClose();
+            }}
+            className={menuItemCls}
+          >
+            <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 bg-pink-500/10 text-pink-400">
+              <Bookmark size={14} />
+            </div>
+            <span className="flex-1">Saved entries</span>
+          </button>
+        </div>
+
+        {/* ── Feed Preferences ── */}
+        <div className="profile-menu-stagger" style={{ animationDelay: "80ms" }}>
+          <button
+            type="button"
+            onClick={() => setCurrentView("preferences")}
+            className={menuItemCls}
+          >
+            <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 bg-amber-500/10 text-amber-400">
+              <SlidersHorizontal size={14} />
+            </div>
+            <span className="flex-1">Feed preferences</span>
+          </button>
+        </div>
+
+        {/* ── Theme Selection ── */}
+        <div className="profile-menu-stagger px-1.5 py-2 mt-1" style={{ animationDelay: "120ms" }}>
+          <div className={`text-[10px] font-semibold uppercase tracking-wider mb-2 ml-1 ${t.textMuted}`}>Theme</div>
+          <div className={`flex rounded-xl p-1 gap-1 border ${isDark ? "bg-white/2 border-white/4" : "bg-black/2 border-black/4"}`}>
+            <button
+              onClick={() => setTheme("system")}
+              title="System"
+              className={`flex-1 flex items-center justify-center py-2 rounded-lg transition-all duration-200 ${
+                theme === "system"
+                  ? (isDark ? "bg-[#1a1a1a] shadow-sm text-cyan-400" : "bg-white shadow-sm text-cyan-500")
+                  : `hover:bg-black/5 dark:hover:bg-white/5 ${t.textMuted}`
+              }`}
+            >
+              <Monitor size={14} />
+            </button>
+            <button
+              onClick={() => setTheme("light")}
+              title="Light"
+              className={`flex-1 flex items-center justify-center py-2 rounded-lg transition-all duration-200 ${
+                theme === "light"
+                  ? (isDark ? "bg-[#1a1a1a] shadow-sm text-amber-500" : "bg-white shadow-sm text-amber-500")
+                  : `hover:bg-black/5 dark:hover:bg-white/5 ${t.textMuted}`
+              }`}
+            >
+              <Sun size={14} />
+            </button>
+            <button
+              onClick={() => setTheme("amoled")}
+              title="Dark"
+              className={`flex-1 flex items-center justify-center py-2 rounded-lg transition-all duration-200 ${
+                theme === "amoled"
+                  ? (isDark ? "bg-[#1a1a1a] shadow-sm text-sky-400" : "bg-white shadow-sm text-sky-500")
+                  : `hover:bg-black/5 dark:hover:bg-white/5 ${t.textMuted}`
+              }`}
+            >
+              <Moon size={14} />
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      {/* ── Gradient separator ── */}
+      <div className={separatorCls} />
+
+      {/* ══════════ Sign Out ══════════ */}
+      <div className="px-0.5 profile-menu-stagger" style={{ animationDelay: "160ms" }}>
         <button
           type="button"
-          onClick={() => setTheme(theme === "amoled" ? "light" : "amoled")}
-          className={`w-full flex items-center gap-2 py-2 text-sm font-medium text-left cursor-pointer ${t.textSecondary} hover:${t.textPrimary}`}
+          onClick={() => {
+            signOut();
+            onClose?.();
+          }}
+          className={[
+            "w-full flex items-center gap-3 px-2.5 py-2.5 rounded-xl text-sm font-semibold text-left cursor-pointer transition-all duration-200",
+            "text-red-400 hover:text-red-300",
+            isDark ? "hover:bg-red-500/6" : "hover:bg-red-500/4",
+          ].join(" ")}
         >
-          <ChevronRight size={14} className="shrink-0 opacity-0" />
-          {theme === "amoled" ? <Sun size={15} /> : <Moon size={15} />}
-          Theme: {theme === "amoled" ? "AMOLED" : "Light"}
-        </button>
-      </TreeRow>
-
-      <div className="border-t border-white/10 my-2" />
-
-      {/* Sign out */}
-      <TreeRow depth={0}>
-        <button
-          type="button"
-          onClick={() => signOut()}
-          className="w-full flex items-center gap-2 py-2 text-sm font-semibold text-red-400 hover:text-red-300 text-left cursor-pointer"
-        >
-          <ChevronRight size={14} className="shrink-0 opacity-0" />
-          <LogOut size={15} />
+          <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 bg-red-500/10 text-red-400 transition-colors duration-200 group-hover:bg-red-500/20">
+            <LogOut size={14} />
+          </div>
           Sign out
         </button>
-      </TreeRow>
+      </div>
     </div>
   );
 };
