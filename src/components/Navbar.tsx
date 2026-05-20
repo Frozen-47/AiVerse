@@ -9,6 +9,7 @@ interface NavbarProps {
   onAddEntry: () => void;
   onEditPreferences: (section?: "profile" | "preferences") => void;
   onViewProfile?: (username: string) => void;
+  onHomeClick?: () => void;
   entryCount: number;
   onboardingProfile?: OnboardingProfile | null;
   onSaveProfile?: (
@@ -30,6 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onAddEntry,
   onEditPreferences,
   onViewProfile,
+  onHomeClick,
   entryCount,
   onboardingProfile = null,
   onSaveProfile,
@@ -76,7 +78,13 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="w-full px-4 sm:px-6 xl:px-12 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <a
-            href="https://aiverse.frozenn.in"
+            href="/"
+            onClick={(e) => {
+              if (onHomeClick) {
+                e.preventDefault();
+                onHomeClick();
+              }
+            }}
             className={`flex items-center ${t.textPrimary} hover:opacity-80 transition-opacity`}
             style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "1.5rem", lineHeight: 1, letterSpacing: "-0.02em" }}
           >

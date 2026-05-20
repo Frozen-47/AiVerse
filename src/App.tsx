@@ -3,6 +3,7 @@ import { Filter, X, Check } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
+import { PrivacyPolicy } from "./components/PrivacyPolicy";
 import { Sidebar } from "./components/Sidebar";
 import { SearchBar } from "./components/SearchBar";
 import { EntryCard } from "./components/EntryCard";
@@ -88,6 +89,10 @@ const Inner: React.FC = () => {
     const migrated = migrateLegacyProfileQueryUrl();
     if (migrated) return migrated;
     return parseProfileUsernameFromLocation();
+  });
+  const [isPrivacy, setIsPrivacy] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    return window.location.pathname === "/privacy" || window.location.pathname === "/privacy/";
   });
   const [showLoginForPrefs, setShowLoginForPrefs] = useState(false);
   const [showLoginForBookmarks, setShowLoginForBookmarks] = useState(false);
@@ -312,23 +317,41 @@ const Inner: React.FC = () => {
   useEffect(() => {
     if (!urlSyncReady) return;
     const url = new URL(window.location.href);
-    if (selected) url.searchParams.set("entry", selected.name);
-    else url.searchParams.delete("entry");
-    window.history.replaceState({}, "", url);
-  }, [selected, urlSyncReady]);
-
-  useEffect(() => {
-    if (!urlSyncReady) return;
-    const url = new URL(window.location.href);
-    if (profileUsername) {
+    if (isPrivacy) {
+      url.pathname = "/privacy";
+      url.searchParams.delete("entry");
+      url.searchParams.delete("user");
+    } else if (profileUsername) {
       url.pathname = `/user/${profilePathSlug(profileUsername)}`;
       url.searchParams.delete("user");
-    } else if (/\/user\//.test(url.pathname)) {
-      url.pathname = "/";
-      url.searchParams.delete("user");
+    } else {
+      if (/\/user\//.test(url.pathname) || url.pathname === "/privacy") {
+        url.pathname = "/";
+      }
+      if (selected) {
+        url.searchParams.set("entry", selected.name);
+      } else {
+        url.searchParams.delete("entry");
+      }
     }
     window.history.replaceState({}, "", url);
-  }, [profileUsername, urlSyncReady]);
+  }, [selected, profileUsername, isPrivacy, urlSyncReady]);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setIsPrivacy(window.location.pathname === "/privacy" || window.location.pathname === "/privacy/");
+      setProfileUsername(parseProfileUsernameFromLocation());
+      const slug = new URLSearchParams(window.location.search).get("entry");
+      if (slug) {
+        const entry = findEntryBySlug(entries, slug);
+        if (entry) setSelected(entry);
+      } else {
+        setSelected(null);
+      }
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [entries]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -471,173 +494,182 @@ const Inner: React.FC = () => {
         onAddEntry={handleAddClick}
         onEditPreferences={handleEditPreferences}
         onViewProfile={setProfileUsername}
+        onHomeClick={() => {
+          setIsPrivacy(false);
+          setSelected(null);
+          setProfileUsername(null);
+        }}
         entryCount={entries.length}
         onboardingProfile={onboardingProfile}
         onSaveProfile={handleProfileComplete}
       />
 
-      <div className="w-full px-4 sm:px-6 xl:px-12 py-8">
-        {/* Hero */}
-        <div className="mb-10">
-          <div className={`inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest border rounded-full px-4 py-1.5 mb-5 ${t.surface} ${t.border} ${t.textMuted}`}>
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-            Open-Source AI Knowledge Base · {entries.length} Entities
+      {isPrivacy ? (
+        <PrivacyPolicy onBackToHome={() => setIsPrivacy(false)} />
+      ) : (
+        <div className="w-full px-4 sm:px-6 xl:px-12 py-8">
+          {/* Hero */}
+          <div className="mb-10">
+            <div className={`inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest border rounded-full px-4 py-1.5 mb-5 ${t.surface} ${t.border} ${t.textMuted}`}>
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+              Open-Source AI Knowledge Base · {entries.length} Entities
+            </div>
+            <h1 className={`text-[clamp(32px,5vw,52px)] font-black leading-[1.05] tracking-[-0.03em] mb-3 ${t.textPrimary}`}>
+              Every AI tool,{" "}
+              <span className="bg-linear-to-r from-cyan-300 via-cyan-400 to-sky-400 bg-clip-text text-transparent">
+                one universe.
+              </span>
+            </h1>
+            <p className={`text-[15px] leading-relaxed max-w-xl font-light ${t.textSecondary}`}>
+              {onboardingProfile?.interests.length ? (
+                <>
+                  Hi{user?.user_metadata?.firstName ? ` ${user.user_metadata.firstName}` : (user?.email ? ` ${user.email.split('@')[0]}` : "")} — here are{" "}
+                  {roleHeadline(onboardingProfile.role)} as a{" "}
+                  <span className={t.textAccent}>{roleLabel(onboardingProfile.role).toLowerCase()}</span>.
+                </>
+              ) : (
+                "A citation-backed encyclopedia of models, frameworks, datasets, and platforms — built for builders."
+              )}
+            </p>
           </div>
-          <h1 className={`text-[clamp(32px,5vw,52px)] font-black leading-[1.05] tracking-[-0.03em] mb-3 ${t.textPrimary}`}>
-            Every AI tool,{" "}
-            <span className="bg-linear-to-r from-cyan-300 via-cyan-400 to-sky-400 bg-clip-text text-transparent">
-              one universe.
-            </span>
-          </h1>
-          <p className={`text-[15px] leading-relaxed max-w-xl font-light ${t.textSecondary}`}>
-            {onboardingProfile?.interests.length ? (
-              <>
-                Hi{user?.user_metadata?.firstName ? ` ${user.user_metadata.firstName}` : (user?.email ? ` ${user.email.split('@')[0]}` : "")} — here are{" "}
-                {roleHeadline(onboardingProfile.role)} as a{" "}
-                <span className={t.textAccent}>{roleLabel(onboardingProfile.role).toLowerCase()}</span>.
-              </>
-            ) : (
-              "A citation-backed encyclopedia of models, frameworks, datasets, and platforms — built for builders."
-            )}
-          </p>
-        </div>
 
-        {/* Search */}
-        <div className="mb-8 max-w-2xl">
-          <SearchBar
-            query={searchInput}
-            onChange={setSearchInput}
-            entries={entries}
-            onSelect={(e) => { setSelected(e); setSearchInput(""); }}
-          />
-        </div>
-
-        {/* Main layout */}
-        <div className="flex gap-8 w-full">
-          {/* Left pane: Sidebar */}
-          <div className="hidden lg:block w-56 shrink-0 pb-8">
-            <Sidebar
+          {/* Search */}
+          <div className="mb-8 max-w-2xl">
+            <SearchBar
+              query={searchInput}
+              onChange={setSearchInput}
               entries={entries}
-              currentFilter={typeFilter}
-              currentTask={taskFilter}
-              typeFilters={typeFilters}
-              taskFilters={taskFilters}
-              popularOnly={popularOnly}
-              filteredCount={filtered.length}
-              onTypeFilter={setTypeFilter}
-              onTaskFilter={setTaskFilter}
-              onPopularToggle={() => setPopularOnly((p) => !p)}
-              savedOnly={savedOnly}
-              savedCount={bookmarks.length}
-              onSavedToggle={handleSavedToggle}
+              onSelect={(e) => { setSelected(e); setSearchInput(""); }}
             />
           </div>
 
-          {/* Right pane: Content */}
-          <div className="flex-1 min-w-0 pb-32">
-            {/* Mobile filters button */}
-            <div className="flex mb-5 lg:hidden">
-              <button
-                onClick={() => setShowMobileSidebar(true)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[13px] font-semibold border shadow-sm transition-all ${t.surface} ${t.border} ${t.textPrimary} hover:border-cyan-500/30`}
-              >
-                <Filter size={14} />
-                Filters
-                {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly || savedOnly) && (
-                  <span className="w-2 h-2 rounded-full bg-cyan-400 ml-1 animate-pulse" />
-                )}
-              </button>
+          {/* Main layout */}
+          <div className="flex gap-8 w-full">
+            {/* Left pane: Sidebar */}
+            <div className="hidden lg:block w-56 shrink-0 pb-8">
+              <Sidebar
+                entries={entries}
+                currentFilter={typeFilter}
+                currentTask={taskFilter}
+                typeFilters={typeFilters}
+                taskFilters={taskFilters}
+                popularOnly={popularOnly}
+                filteredCount={filtered.length}
+                onTypeFilter={setTypeFilter}
+                onTaskFilter={setTaskFilter}
+                onPopularToggle={() => setPopularOnly((p) => !p)}
+                savedOnly={savedOnly}
+                savedCount={bookmarks.length}
+                onSavedToggle={handleSavedToggle}
+              />
             </div>
 
-            {filtered.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-32 gap-3">
-                <div className={`text-5xl opacity-10 ${t.textPrimary}`}>◌</div>
-                <p className={`text-[14px] ${t.textMuted}`}>No entries match your filters.</p>
+            {/* Right pane: Content */}
+            <div className="flex-1 min-w-0 pb-32">
+              {/* Mobile filters button */}
+              <div className="flex mb-5 lg:hidden">
                 <button
-                  onClick={() => { setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); setSearchInput(""); }}
-                  className={`text-[12px] underline underline-offset-2 ${t.textAccent}`}
+                  onClick={() => setShowMobileSidebar(true)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[13px] font-semibold border shadow-sm transition-all ${t.surface} ${t.border} ${t.textPrimary} hover:border-cyan-500/30`}
                 >
-                  Clear all filters
+                  <Filter size={14} />
+                  Filters
+                  {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly || savedOnly) && (
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 ml-1 animate-pulse" />
+                  )}
                 </button>
               </div>
-            ) : (
-              <div className="flex flex-col">
-                {pageForYou.length > 0 && (
-                  <section className="mb-8">
-                    <div className="flex items-center gap-3 mb-4">
-                      <h2 className={`text-lg font-bold tracking-tight ${t.textPrimary}`}>
-                        Picked for you
-                      </h2>
-                      <span className={`text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border ${t.surface} ${t.border} ${t.textMuted}`}>
-                        {personalized.forYou.length} matches
-                      </span>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                      {pageForYou.map((entry, i) => (
-                        <EntryCard
-                          key={entry.name}
-                          entry={entry}
-                          entryName={entry.name}
-                          onSelect={selectEntryByName}
-                          index={i}
-                          ratingSummary={ratingSummaries[entry.name]}
-                          isBookmarked={bookmarks.includes(entry.name)}
-                          onToggleBookmark={handleToggleBookmark}
-                        />
-                      ))}
-                    </div>
-                  </section>
-                )}
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                  {pageExplore.map((entry, i) => (
-                    <EntryCard
-                      key={entry.name}
-                      entry={entry}
-                      entryName={entry.name}
-                      onSelect={selectEntryByName}
-                      index={i + pageForYou.length}
-                      ratingSummary={ratingSummaries[entry.name]}
-                      isBookmarked={bookmarks.includes(entry.name)}
-                      onToggleBookmark={handleToggleBookmark}
-                    />
-                  ))}
+
+              {filtered.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-32 gap-3">
+                  <div className={`text-5xl opacity-10 ${t.textPrimary}`}>◌</div>
+                  <p className={`text-[14px] ${t.textMuted}`}>No entries match your filters.</p>
+                  <button
+                    onClick={() => { setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); setSearchInput(""); }}
+                    className={`text-[12px] underline underline-offset-2 ${t.textAccent}`}
+                  >
+                    Clear all filters
+                  </button>
                 </div>
-
-                {totalPages > 1 && (
-                  <div className="flex items-center justify-center gap-2 mt-10">
-                    <button
-                      onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                      disabled={currentPage === 1}
-                      className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${t.surface} ${t.border} ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : `hover:${t.textPrimary}`}`}
-                    >
-                      Prev
-                    </button>
-                    
-                    <span className={`text-[12px] tabular-nums px-3 ${t.textMuted}`}>
-                      Page {currentPage} of {totalPages}
-                    </span>
-
-                    <button
-                      onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                      disabled={currentPage === totalPages}
-                      className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${t.surface} ${t.border} ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : `hover:${t.textPrimary}`}`}
-                    >
-                      Next
-                    </button>
+              ) : (
+                <div className="flex flex-col">
+                  {pageForYou.length > 0 && (
+                    <section className="mb-8">
+                      <div className="flex items-center gap-3 mb-4">
+                        <h2 className={`text-lg font-bold tracking-tight ${t.textPrimary}`}>
+                          Picked for you
+                        </h2>
+                        <span className={`text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border ${t.surface} ${t.border} ${t.textMuted}`}>
+                          {personalized.forYou.length} matches
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                        {pageForYou.map((entry, i) => (
+                          <EntryCard
+                            key={entry.name}
+                            entry={entry}
+                            entryName={entry.name}
+                            onSelect={selectEntryByName}
+                            index={i}
+                            ratingSummary={ratingSummaries[entry.name]}
+                            isBookmarked={bookmarks.includes(entry.name)}
+                            onToggleBookmark={handleToggleBookmark}
+                          />
+                        ))}
+                      </div>
+                    </section>
+                  )}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                    {pageExplore.map((entry, i) => (
+                      <EntryCard
+                        key={entry.name}
+                        entry={entry}
+                        entryName={entry.name}
+                        onSelect={selectEntryByName}
+                        index={i + pageForYou.length}
+                        ratingSummary={ratingSummaries[entry.name]}
+                        isBookmarked={bookmarks.includes(entry.name)}
+                        onToggleBookmark={handleToggleBookmark}
+                      />
+                    ))}
                   </div>
-                )}
-              </div>
-            )}
+
+                  {totalPages > 1 && (
+                    <div className="flex items-center justify-center gap-2 mt-10">
+                      <button
+                        onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                        disabled={currentPage === 1}
+                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${t.surface} ${t.border} ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : `hover:${t.textPrimary}`}`}
+                      >
+                        Prev
+                      </button>
+                      
+                      <span className={`text-[12px] tabular-nums px-3 ${t.textMuted}`}>
+                        Page {currentPage} of {totalPages}
+                      </span>
+
+                      <button
+                        onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                        disabled={currentPage === totalPages}
+                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${t.surface} ${t.border} ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : `hover:${t.textPrimary}`}`}
+                      >
+                        Next
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <footer 
         className={`mt-auto text-center text-[11px] ${t.textSecondary} border-t ${t.border} py-6 animate-fade-in-up opacity-0`}
         style={{ animationDelay: '600ms' }}
       >
         <p>
-          Built by Sabareesh. Find me on <a href="https://discord.com/users/1272910357517701147" className={`${t.textMuted} font-semibold hover:underline`}>Discord</a> and <a href="https://github.com/Frozen-47" className={`${t.textMuted} font-semibold hover:underline`}>GitHub</a>
+          Built by Sabareesh. Find me on <a href="https://discord.com/users/1272910357517701147" className={`${t.textMuted} font-semibold hover:underline`}>Discord</a> and <a href="https://github.com/Frozen-47" className={`${t.textMuted} font-semibold hover:underline`}>GitHub</a> · <a href="/privacy" onClick={(e) => { e.preventDefault(); setIsPrivacy(true); window.scrollTo({ top: 0 }); }} className={`${t.textMuted} font-semibold hover:underline`}>Privacy Policy</a>
         </p>
       </footer>
 
