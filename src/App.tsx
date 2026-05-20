@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useCallback, useRef, lazy, Suspense } from "react";
-import { Filter, X, Check } from "lucide-react";
+import { Filter, X, Check, MessageCircle, BookOpen, Shield, FileText, ExternalLink, Sparkles } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
@@ -677,13 +677,122 @@ const Inner: React.FC = () => {
         </div>
       )}
 
-      <footer 
-        className={`mt-auto text-center text-[11px] ${t.textSecondary} border-t ${t.border} py-6 animate-fade-in-up opacity-0`}
+      <footer
+        className={`mt-auto border-t ${t.border} animate-fade-in-up opacity-0`}
         style={{ animationDelay: '600ms' }}
       >
-        <p>
-          Built by Sabareesh. Find me on <a href="https://discord.com/users/1272910357517701147" className={`${t.textMuted} font-semibold hover:underline`}>Discord</a> and <a href="https://github.com/Frozen-47" className={`${t.textMuted} font-semibold hover:underline`}>GitHub</a> · <a href="/privacy" onClick={(e) => { e.preventDefault(); setIsPrivacy(true); setIsTerms(false); window.scrollTo({ top: 0 }); }} className={`${t.textMuted} font-semibold hover:underline`}>Privacy Policy</a> · <a href="/terms" onClick={(e) => { e.preventDefault(); setIsTerms(true); setIsPrivacy(false); window.scrollTo({ top: 0 }); }} className={`${t.textMuted} font-semibold hover:underline`}>Terms of Service</a>
-        </p>
+        {/* Main footer content */}
+        <div className="w-full px-4 sm:px-6 xl:px-12 py-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+            {/* Brand column */}
+            <div className="lg:col-span-2 flex flex-col gap-4">
+              <div className="flex items-center gap-2">
+                <span className="text-xl font-black tracking-tight text-white">
+                  Ai<span className="text-cyan-400">Verse</span>
+                </span>
+                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-md border ${t.pillActive}`}>BETA</span>
+              </div>
+              <p className={`text-[13px] leading-relaxed max-w-xs ${t.textSecondary}`}>
+                The open-source encyclopedia for AI tools, models, frameworks, and datasets — curated by the community.
+              </p>
+              <div className="flex items-center gap-3 mt-1">
+                <a
+                  href="https://github.com/Frozen-47"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all duration-200 ${t.surface} ${t.border} ${t.textMuted} hover:text-white hover:border-white/20 hover:scale-105`}
+                >
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a
+                  href="https://discord.com/users/1272910357517701147"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Discord"
+                  className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all duration-200 ${t.surface} ${t.border} ${t.textMuted} hover:text-indigo-400 hover:border-indigo-400/30 hover:scale-105`}
+                >
+                  <MessageCircle size={15} />
+                </a>
+              </div>
+            </div>
+
+            {/* Explore column */}
+            <div className="flex flex-col gap-3">
+              <p className={`text-[10px] font-bold uppercase tracking-widest ${t.textMuted}`}>Explore</p>
+              <nav className="flex flex-col gap-2.5">
+                {[
+                  { label: "All Entries", icon: <BookOpen size={13} />, action: () => { setIsPrivacy(false); setIsTerms(false); } },
+                  { label: "AI Assistants", icon: <Sparkles size={13} />, action: () => { setIsPrivacy(false); setIsTerms(false); } },
+                ].map(({ label, icon, action }) => (
+                  <button
+                    key={label}
+                    type="button"
+                    onClick={action}
+                    className={`flex items-center gap-2 text-[13px] font-medium text-left transition-all duration-150 w-fit group ${t.textSecondary} hover:${t.textPrimary}`}
+                  >
+                    <span className={`opacity-50 group-hover:opacity-100 transition-opacity ${t.textAccent}`}>{icon}</span>
+                    {label}
+                  </button>
+                ))}
+                <a
+                  href="https://github.com/Frozen-47"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center gap-2 text-[13px] font-medium transition-all duration-150 w-fit group ${t.textSecondary} hover:${t.textPrimary}`}
+                >
+                  <span className={`opacity-50 group-hover:opacity-100 transition-opacity ${t.textAccent}`}><ExternalLink size={13} /></span>
+                  Contribute on GitHub
+                </a>
+              </nav>
+            </div>
+
+            {/* Legal column */}
+            <div className="flex flex-col gap-3">
+              <p className={`text-[10px] font-bold uppercase tracking-widest ${t.textMuted}`}>Legal</p>
+              <nav className="flex flex-col gap-2.5">
+                <button
+                  type="button"
+                  onClick={(e) => { e.preventDefault(); setIsPrivacy(true); setIsTerms(false); window.scrollTo({ top: 0 }); }}
+                  className={`flex items-center gap-2 text-[13px] font-medium text-left transition-all duration-150 w-fit group ${t.textSecondary} hover:${t.textPrimary}`}
+                >
+                  <span className={`opacity-50 group-hover:opacity-100 transition-opacity ${t.textAccent}`}><Shield size={13} /></span>
+                  Privacy Policy
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => { e.preventDefault(); setIsTerms(true); setIsPrivacy(false); window.scrollTo({ top: 0 }); }}
+                  className={`flex items-center gap-2 text-[13px] font-medium text-left transition-all duration-150 w-fit group ${t.textSecondary} hover:${t.textPrimary}`}
+                >
+                  <span className={`opacity-50 group-hover:opacity-100 transition-opacity ${t.textAccent}`}><FileText size={13} /></span>
+                  Terms of Service
+                </button>
+              </nav>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className={`border-t ${t.border} px-4 sm:px-6 xl:px-12 py-4`}>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
+            <p className={`text-[11px] ${t.textMuted}`}>
+              © {new Date().getFullYear()} AiVerse. Built with passion by{" "}
+              <a
+                href="https://github.com/Frozen-47"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold hover:text-cyan-400 transition-colors"
+              >
+                Sabareesh
+              </a>
+            </p>
+            <p className={`text-[11px] ${t.textMuted}`}>
+              Open-source · Community-driven · Always free
+            </p>
+          </div>
+        </div>
       </footer>
 
       {selected && (
