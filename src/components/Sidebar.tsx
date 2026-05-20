@@ -70,7 +70,7 @@ export const Sidebar = memo(function Sidebar({
   return (
     <aside className="w-full flex flex-col gap-6">
       {/* Stats */}
-      <div className={`rounded-2xl border p-4 ${t.surface} ${t.border}`}>
+      <div className="rounded-2xl p-4 glow-card">
         <p className={`text-[10px] uppercase tracking-widest font-semibold mb-3 ${t.textMuted}`}>
           Overview
         </p>

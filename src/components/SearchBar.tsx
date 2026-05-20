@@ -43,11 +43,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <div className="relative w-full">
       <div
-        className={`
-          flex items-center gap-3 px-4 py-3 rounded-2xl border transition-all duration-200
-          ${t.surface} ${t.border}
-          ${open && query ? "ring-2 ring-cyan-500/20 border-cyan-500/40" : ""}
-        `}
+        className="flex items-center gap-3 px-4 py-3 rounded-2xl glass-search"
       >
         <Search size={15} className={t.textMuted} />
         <input

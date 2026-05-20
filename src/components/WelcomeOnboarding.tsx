@@ -215,9 +215,9 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   const canContinue = (): boolean => {
     switch (step) {
       case "name":
-        return name.trim().length > 0;
+        return name.trim().length > 0 && isValidUsername(username);
       case "profile":
-        return isValidUsername(username);
+        return true;
       case "role":
         return role !== null;
       case "interests":
@@ -440,20 +440,41 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
           )}
 
           {step === "name" && (
-            <div>
-              <label className={`block text-xs font-semibold mb-2 uppercase tracking-wider ${t.textMuted}`}>
-                Display name
-              </label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Jane Doe"
-                className={`w-full px-4 py-3 rounded-xl border font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10`}
-                autoFocus
-                maxLength={50}
-                onKeyDown={(e) => e.key === "Enter" && canContinue() && handlePrimary()}
-              />
+            <div className="space-y-4 text-left">
+              <div>
+                <label className={`block text-xs font-semibold mb-2 uppercase tracking-wider ${t.textMuted}`}>
+                  Display name
+                </label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Jane Doe"
+                  className={`w-full px-4 py-3 rounded-xl border font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10`}
+                  autoFocus
+                  maxLength={50}
+                  onKeyDown={(e) => e.key === "Enter" && canContinue() && handlePrimary()}
+                />
+              </div>
+              <div>
+                <label className={`block text-xs font-semibold mb-2 uppercase tracking-wider ${t.textMuted}`}>
+                  Username
+                </label>
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(normalizeUsernameInput(e.target.value))}
+                  placeholder="@username"
+                  className={`w-full px-4 py-3 rounded-xl border font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10`}
+                  maxLength={30}
+                  onKeyDown={(e) => e.key === "Enter" && canContinue() && handlePrimary()}
+                />
+                {!isValidUsername(username) && (
+                  <p className="text-[11px] text-rose-400 mt-1 font-medium">
+                    Must start with @ and use lowercase letters, numbers, - and _ only
+                  </p>
+                )}
+              </div>
             </div>
           )}
 
@@ -465,25 +486,6 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   : "space-y-4 max-h-[380px] overflow-y-auto"
               }`}
             >
-              <div>
-                <label className={`block text-xs font-semibold mb-1.5 uppercase tracking-wider ${t.textMuted}`}>
-                  Username
-                </label>
-                <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(normalizeUsernameInput(e.target.value))}
-                  placeholder="@username"
-                  className={`w-full px-4 py-2.5 rounded-xl border font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10`}
-                  maxLength={30}
-                  onKeyDown={(e) => e.key === "Enter" && canContinue() && handlePrimary()}
-                />
-                {!isValidUsername(username) && (
-                  <p className={`text-[11px] text-rose-400 mt-1 font-medium ${isEdit ? "pl-1" : ""}`}>
-                    Must start with @ and use lowercase letters, numbers, - and _ only
-                  </p>
-                )}
-              </div>
 
               <div>
                 <label className={`block text-xs font-semibold mb-1.5 uppercase tracking-wider ${t.textMuted}`}>

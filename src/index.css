@@ -124,4 +124,146 @@ html {
 /* Native-feel momentum scrolling on scrollable containers */
 [data-scroll], .overflow-y-auto, .overflow-auto {
   -webkit-overflow-scrolling: touch;
+}
+
+/* Glassmorphism & Neon Glow System */
+.glow-card {
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: none !important;
+}
+
+/* Dark Mode (Amoled) Glow Card */
+.dark .glow-card {
+  background: rgba(10, 10, 10, 0.5) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+.dark .glow-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.015));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.dark .glow-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: rgba(15, 15, 15, 0.75) !important;
+  box-shadow: 
+    0 12px 30px -10px rgba(6, 182, 212, 0.2),
+    0 0 24px -6px rgba(6, 182, 212, 0.08);
+}
+
+.dark .glow-card:hover::before {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.65), rgba(99, 102, 241, 0.3)) !important;
+}
+
+/* Light Mode Glow Card */
+.light .glow-card {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+.light .glow-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.015));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.light .glow-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 
+    0 12px 30px -10px rgba(14, 116, 144, 0.15),
+    0 0 24px -6px rgba(14, 116, 144, 0.06);
+}
+
+.light .glow-card:hover::before {
+  background: linear-gradient(135deg, rgba(14, 116, 144, 0.5), rgba(79, 70, 229, 0.2)) !important;
+}
+
+/* Glass Search Input */
+.glass-search {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: none !important;
+}
+
+.dark .glass-search {
+  background: rgba(10, 10, 10, 0.4) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+.dark .glass-search::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.dark .glass-search:focus-within {
+  background: rgba(15, 15, 15, 0.6) !important;
+  box-shadow: 0 0 20px -3px rgba(6, 182, 212, 0.15) !important;
+}
+
+.dark .glass-search:focus-within::before {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.5), rgba(99, 102, 241, 0.25)) !important;
+}
+
+.light .glass-search {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+.light .glass-search::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.01));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.light .glass-search:focus-within {
+  background: rgba(255, 255, 255, 0.75) !important;
+  box-shadow: 0 0 20px -3px rgba(14, 116, 144, 0.12) !important;
+}
+
+.light .glass-search:focus-within::before {
+  background: linear-gradient(135deg, rgba(14, 116, 144, 0.4), rgba(79, 70, 229, 0.15)) !important;
 }

@@ -30,11 +30,9 @@ export const EntryCard = memo(function EntryCard({
       onClick={() => onSelect(entryName)}
       style={animate ? { animationDelay: `${index * 30}ms` } : undefined}
       className={`
-        group flex flex-col border rounded-2xl p-5 cursor-pointer
-        transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5
+        group flex flex-col rounded-2xl p-5 cursor-pointer glow-card
         [content-visibility:auto]
         ${animate ? "animate-[fadeUp_0.3s_ease_both]" : ""}
-        ${t.card} ${t.border}
       `}
     >
       <div className="flex items-start justify-between mb-4">
