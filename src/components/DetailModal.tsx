@@ -278,7 +278,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
         <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain">
           <div className="relative">
             {!user && (
-              <div className={`absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center min-h-[320px] backdrop-blur-xs transition-colors duration-200 ${
+              <div className={`absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center min-h-80 backdrop-blur-xs transition-colors duration-200 ${
                 resolvedTheme === "light" ? "bg-white/80" : "bg-black/80"
               }`}>
                 <div className="w-14 h-14 rounded-2xl bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-500/30">
@@ -307,7 +307,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
             <div
               className={`transition-all ${
-                !user ? "opacity-30 blur-[5px] pointer-events-none select-none max-h-[380px] overflow-hidden" : ""
+                !user ? "opacity-30 blur-[5px] pointer-events-none select-none max-h-95 overflow-hidden" : ""
               }`}
               {...(!user ? { inert: true } : {})}
             >

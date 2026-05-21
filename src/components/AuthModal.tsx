@@ -55,12 +55,12 @@ export const AuthModal: React.FC = () => {
 
   return (
     <div 
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-[fadeIn_0.2s_ease-out]"
       onClick={(e) => {
         if (e.target === e.currentTarget) closeAuthModal();
       }}
     >
-      <div className={`relative w-full max-w-md rounded-3xl border shadow-2xl p-8 ${t.modal} ${t.border} animate-[fadeUp_0.2s_ease-out]`}>
+      <div className={`relative w-full max-w-md rounded-3xl border shadow-2xl p-8 ${t.modal} ${t.border} `}>
         <button
           onClick={closeAuthModal}
           className={`absolute top-4 right-4 p-2 rounded-lg border transition-colors ${t.surface} ${t.border} ${t.textMuted} hover:${t.textPrimary}`}

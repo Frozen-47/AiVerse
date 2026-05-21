@@ -47,7 +47,7 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
   }, []);
 
   return (
-    <div className="w-full px-4 sm:px-6 xl:px-12 py-8 animate-[fadeUp_0.4s_ease-out] flex flex-col gap-10">
+    <div className="w-full px-4 sm:px-6 xl:px-12 py-8  flex flex-col gap-10">
 
       <FeatureHeader onBackToHome={props.onBackToHome} />
 

@@ -59,7 +59,7 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
             <Lock size={24} className="text-white" />
           </div>
           <h3 className={`text-xl font-bold mb-2 tracking-tight ${t.textPrimary}`}>Unlock AI Arena</h3>
-          <p className={`text-[13px] mb-6 max-w-[380px] leading-relaxed mx-auto ${t.textSecondary}`}>
+          <p className={`text-[13px] mb-6 max-w-95 leading-relaxed mx-auto ${t.textSecondary}`}>
             Sign in to run real-time side-by-side technical comparisons across different AI models, frameworks, datasets, and serving tools.
           </p>
           <div className="flex items-center gap-3">
@@ -81,7 +81,7 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
 
       {/* Main content which is blurred/inert if not logged in */}
       <div 
-        className={!user ? "filter blur-[4px] pointer-events-none select-none" : ""}
+        className={!user ? "filter blur-xs pointer-events-none select-none" : ""}
         {...(!user ? { inert: true } : {})}
       >
       {/* Header */}

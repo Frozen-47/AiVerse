@@ -283,7 +283,7 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
             No comments yet. Be the first to share your thoughts.
           </p>
         ) : (
-          <ul className="space-y-3 max-h-[280px] overflow-y-auto no-scrollbar pr-1">
+          <ul className="space-y-3 max-h-70 overflow-y-auto no-scrollbar pr-1">
             {comments.map((c) => (
               <li
                 key={c.id}

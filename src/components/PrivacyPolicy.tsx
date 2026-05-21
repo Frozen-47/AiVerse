@@ -56,7 +56,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
   }, []);
 
   return (
-    <div className="w-full px-4 sm:px-6 xl:px-12 py-8 animate-[fadeUp_0.4s_ease-out]">
+    <div className="w-full px-4 sm:px-6 xl:px-12 py-8 ">
       {/* Header Banner */}
       <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-dashed border-slate-200 dark:border-white/6">
         <div>

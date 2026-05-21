@@ -48,6 +48,12 @@
   }
 }
 
+.no-transitions,
+.no-transitions * {
+  transition: none !important;
+  animation: none !important;
+}
+
 :root {
   --primary: 255, 255, 255;
 }

@@ -210,7 +210,7 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
 
           {/* Backend Progress Message */}
           {showBackendMsg && (
-            <div className={`p-3.5 rounded-xl border flex items-center gap-3 text-[13px] bg-amber-500/10 border-amber-500/20 text-amber-500 font-medium animate-[fadeUp_0.3s_ease-out]`}>
+            <div className={`p-3.5 rounded-xl border flex items-center gap-3 text-[13px] bg-amber-500/10 border-amber-500/20 text-amber-500 font-medium `}>
               <Server size={16} className="shrink-0" />
               <span>
                 Backend integration is currently in progress. Entry submissions are temporarily disabled.

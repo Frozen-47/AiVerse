@@ -39,7 +39,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSaveProfile,
 }) => {
   const t = useTokens();
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const { user, openAuthModal } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -131,7 +131,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <div className="relative flex items-center ml-1 gap-2.5">
               {showGreeting && (
-                <span className={`text-sm font-semibold whitespace-nowrap ${t.textPrimary} animate-[fadeUp_0.3s_ease-out]`}>
+                <span className={`text-sm font-semibold whitespace-nowrap ${t.textPrimary} `}>
                   Hi, {greetingName}
                 </span>
               )}
@@ -157,10 +157,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onClick={() => setIsDropdownOpen(false)}
                   />
                   <div
-                    className={`absolute right-0 top-11 w-80 sm:w-[22rem] rounded-2xl shadow-2xl p-2 animate-[fadeUp_0.15s_ease-out] z-50 backdrop-blur-xl ${t.modal} overflow-hidden`}
+                    className={`absolute right-0 top-11 w-80 sm:w-88 rounded-2xl shadow-2xl p-2  z-50 backdrop-blur-xl ${t.modal} overflow-hidden`}
                     style={{
                       boxShadow: `0 20px 50px -12px rgba(6, 182, 212, 0.12), 0 0 0 1px ${
-                        theme === "amoled" ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.08)"
+                        resolvedTheme === "amoled" ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.08)"
                       }`,
                     }}
                   >
@@ -185,11 +185,11 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <SignedOut>
             <button
-              onClick={() => setTheme(theme === "amoled" ? "light" : "amoled")}
+              onClick={() => setTheme(resolvedTheme === "amoled" ? "light" : "amoled")}
               className={`p-2 rounded-lg transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
               aria-label="Toggle theme"
             >
-              {theme === "amoled" ? <Sun size={18} /> : <Moon size={18} />}
+              {resolvedTheme === "amoled" ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <button
               onClick={() => onEditPreferences("preferences")}

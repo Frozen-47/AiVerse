@@ -42,6 +42,22 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   const isOwnProfile =
     user?.user_metadata?.username?.toLowerCase() === username.toLowerCase();
 
+  const modalRef = React.useRef<HTMLDivElement>(null);
+
+  // Close modal on Escape keystroke
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
+
+
   useEffect(() => {
     let active = true;
     setLoading(true);
@@ -406,12 +422,15 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-[fadeIn_0.2s_ease-out]"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
+      onPointerDown={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
       }}
     >
       <div
-        className={`relative w-full max-w-xl rounded-[32px] border shadow-2xl overflow-hidden p-0 ${t.modal} ${t.border} animate-[fadeUp_0.25s_ease-out]`}
+        ref={modalRef}
+        className={`relative w-full max-w-xl rounded-4xl border shadow-2xl overflow-hidden p-0 ${t.modal} ${t.border} `}
       >
         {/* Header Close Button */}
         <button
@@ -434,7 +453,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
             </div>
             <div>
               <p className={`text-base font-bold ${t.textPrimary}`}>Identity Sync Failure</p>
-              <p className={`text-xs ${t.textMuted} mt-1 max-w-[280px]`}>
+              <p className={`text-xs ${t.textMuted} mt-1 max-w-70`}>
                 {error || "This builder profile is offline or hasn't initialized their public database index."}
               </p>
             </div>
@@ -448,7 +467,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
         ) : (
           <div className="flex flex-col">
             {/* Header: Dynamic Animated SVG Role Banner */}
-            <div className={`relative h-32 w-full bg-gradient-to-br ${roleConfig.gradient} overflow-hidden flex items-center justify-center border-b ${t.border}`}>
+            <div className={`relative h-32 w-full bg-linear-to-br ${roleConfig.gradient} overflow-hidden flex items-center justify-center border-b ${t.border}`}>
               
               {/* Core SVG orbital animation layer */}
               {roleConfig.renderSVG()}
@@ -496,7 +515,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
 
                   {/* Avatar wrapper */}
                   <div className={`w-20 h-20 rounded-full p-1 bg-[#060606] border border-white/10 ${roleConfig.glow} shadow-xl flex items-center justify-center overflow-hidden z-10`}>
-                    <div className={`w-full h-full rounded-full bg-gradient-to-br ${roleConfig.gradient} text-white font-black text-xl flex items-center justify-center shadow-inner`}>
+                    <div className={`w-full h-full rounded-full bg-linear-to-br ${roleConfig.gradient} text-white font-black text-xl flex items-center justify-center shadow-inner`}>
                       {initials}
                     </div>
                   </div>
@@ -531,7 +550,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
               </div>
 
               {/* Modern Glassmorphic Tab System Selector */}
-              <div className="flex border-b border-white/6 p-1 gap-1 mb-4 bg-white/1 rounded-2xl border border-white/4">
+              <div className="flex p-1 gap-1 mb-4 bg-white/1 rounded-2xl border border-white/6">
                 {[
                   { id: "overview", label: "Overview", icon: "🔮" },
                   { id: "accolades", label: "Accolades", icon: "🛡️" },
@@ -569,7 +588,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                     </div>
                     <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden relative border border-white/5">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-cyan-500 via-emerald-400 to-cyan-400 relative transition-all duration-500"
+                        className="h-full rounded-full bg-linear-to-r from-cyan-500 via-emerald-400 to-cyan-400 relative transition-all duration-500"
                         style={{ width: `${xpPercent}%` }}
                       >
                         {/* Glow effect at the tip of the laser bar */}
@@ -627,7 +646,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
               {/* TAB 2: CREDENTIALS & ACCOLADES */}
               {/* ───────────────────────────────────────────────────────────── */}
               {activeTab === "accolades" && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-left animate-[fadeIn_0.2s_ease-out] max-h-[290px] overflow-y-auto pr-1 scrollbar-thin">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-left animate-[fadeIn_0.2s_ease-out] max-h-72.5 overflow-y-auto pr-1 scrollbar-thin">
                   {accoladesList.map((accolade) => {
                     const Icon = accolade.icon;
                     return (

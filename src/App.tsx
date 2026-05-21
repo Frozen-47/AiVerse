@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useCallback, useRef, lazy, Suspense } from "react";
-import { Filter, X, Check, BookOpen, Shield, FileText, ExternalLink, Sparkles, Cpu, Layers, ArrowRight, ArrowLeft } from "lucide-react";
+import { Filter, X, Check, BookOpen, Shield, Sparkles, Cpu, Layers, ArrowRight, ArrowLeft } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
@@ -61,7 +61,7 @@ import { fetchUserPreferences } from "./lib/supabase";
 // ─── Inner app (needs theme context) ─────────────────────────────────────────
 const Inner: React.FC = () => {
   const t = useTokens();
-  const { theme, resolvedTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const { user, isLoaded, openAuthModal } = useAuth();
   const [entries, setEntries] = useState<Entry[]>([]);
   const [typeFilters, setTypeFilters] = useState<string[]>([]);
@@ -567,7 +567,7 @@ const Inner: React.FC = () => {
 
   // Sync document body and meta tags for an orderly global theme switch
   useEffect(() => {
-    if (theme === "amoled") {
+    if (resolvedTheme === "amoled") {
       document.documentElement.style.backgroundColor = "#000000";
       document.body.style.backgroundColor = "#000000";
       document.documentElement.classList.remove("light");
@@ -580,7 +580,7 @@ const Inner: React.FC = () => {
       document.documentElement.classList.add("light");
       document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#ffffff");
     }
-  }, [theme]);
+  }, [resolvedTheme]);
 
   const filtered = useMemo(() =>
     entries.filter((e) => {
@@ -1011,7 +1011,7 @@ const Inner: React.FC = () => {
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
                     className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border shadow-sm transition-all cursor-pointer backdrop-blur-md ${
-                      theme === 'amoled'
+                      resolvedTheme === 'amoled'
                         ? 'bg-white/5 border-cyan-500/20 text-cyan-400 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.1)]'
                         : 'bg-white/80 border-slate-200 text-slate-700 hover:border-cyan-500/30 hover:text-cyan-500'
                     }`}
@@ -1120,154 +1120,57 @@ const Inner: React.FC = () => {
         </div>
       )}
 
-      <footer
-        className={`mt-auto border-t ${t.border} animate-fade-in-up opacity-0`}
-        style={{ animationDelay: '600ms' }}
-      >
-        {/* Main footer content */}
-        <div className="w-full px-4 sm:px-6 xl:px-12 py-8 sm:py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
-
-            {/* Brand column */}
-            <div className="lg:col-span-2 flex flex-col gap-4">
-              <div className="flex items-center gap-2">
-                <span className={`text-xl font-black tracking-tight ${t.textPrimary}`}>
-                  Ai<span className="text-cyan-400">Verse</span>
-                </span>
-                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-md border ${t.pillActive}`}>BETA</span>
-              </div>
-              <p className={`text-[13px] leading-relaxed max-w-xs ${t.textSecondary}`}>
-                The open-source encyclopedia for AI tools, models, frameworks, and datasets — curated by the community.
-              </p>
-              <div className="flex items-center gap-3 mt-1">
-                <a
-                  href="https://github.com/Frozen-47/AiVerse"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                  className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all duration-200 ${t.surface} ${t.border} ${t.textMuted} hover:text-white hover:border-white/20`}
-                >
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-                <a
-                  href="https://discord.gg/22YKNrS62h"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Discord"
-                  className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all duration-200 ${t.surface} ${t.border} ${t.textMuted} hover:text-indigo-400 hover:border-indigo-400/30`}
-                >
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.094 13.094 0 0 1-1.873-.894.077.077 0 0 1-.008-.128c.126-.093.252-.19.372-.287a.075.075 0 0 1 .077-.011c3.92 1.793 8.18 1.793 12.061 0a.073.073 0 0 1 .078.009c.12.099.246.195.373.289a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.156 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.156 2.418z" /></svg>
-                </a>
-              </div>
-            </div>
-
-            {/* Explore column */}
-            <div className="flex flex-col gap-3">
-              <p className={`text-[10px] font-bold uppercase tracking-widest ${t.textMuted}`}>Explore</p>
-              <nav className="flex flex-col gap-2.5">
-                {[
-                  {
-                    label: "All Entries",
-                    icon: <BookOpen size={13} />,
-                    action: () => {
-                      setIsPrivacy(false);
-                      setIsTerms(false);
-                      setIsFeatures(false);
-                      setSelected(null);
-                      setProfileUsername(null);
-                      setBrowseAll(true);
-                      setActiveView("catalog");
-                      setTypeFilter("All");
-                      setTaskFilter("All Tasks");
-                      setPopularOnly(false);
-                      setSavedOnly(false);
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    }
-                  },
-                  {
-                    label: "AI Assistants",
-                    icon: <Sparkles size={13} />,
-                    action: () => {
-                      setIsPrivacy(false);
-                      setIsTerms(false);
-                      setIsFeatures(false);
-                      setSelected(null);
-                      setProfileUsername(null);
-                      setBrowseAll(true);
-                      setActiveView("catalog");
-                      setTypeFilter("AI");
-                      setTaskFilter("All Tasks");
-                      setPopularOnly(false);
-                      setSavedOnly(false);
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    }
-                  },
-                ].map(({ label, icon, action }) => (
-                  <button
-                    key={label}
-                    type="button"
-                    onClick={action}
-                    className={`flex items-center gap-2 text-[13px] font-medium text-left transition-all duration-150 w-fit group ${t.textSecondary} hover:${t.textPrimary}`}
-                  >
-                    <span className={`opacity-50 group-hover:opacity-100 transition-opacity ${t.textAccent}`}>{icon}</span>
-                    {label}
-                  </button>
-                ))}
-                <a
-                  href="https://github.com/Frozen-47/AiVerse"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`flex items-center gap-2 text-[13px] font-medium transition-all duration-150 w-fit group ${t.textSecondary} hover:${t.textPrimary}`}
-                >
-                  <span className={`opacity-50 group-hover:opacity-100 transition-opacity ${t.textAccent}`}><ExternalLink size={13} /></span>
-                  Contribute on GitHub
-                </a>
-              </nav>
-            </div>
-
-            {/* Legal column */}
-            <div className="flex flex-col gap-3">
-              <p className={`text-[10px] font-bold uppercase tracking-widest ${t.textMuted}`}>Legal</p>
-              <nav className="flex flex-col gap-2.5">
-                <button
-                  type="button"
-                  onClick={(e) => { e.preventDefault(); setIsPrivacy(true); setIsTerms(false); setIsFeatures(false); window.scrollTo({ top: 0 }); }}
-                  className={`flex items-center gap-2 text-[13px] font-medium text-left transition-all duration-150 w-fit group ${t.textSecondary} hover:${t.textPrimary}`}
-                >
-                  <span className={`opacity-50 group-hover:opacity-100 transition-opacity ${t.textAccent}`}><Shield size={13} /></span>
-                  Privacy Policy
-                </button>
-                <button
-                  type="button"
-                  onClick={(e) => { e.preventDefault(); setIsTerms(true); setIsPrivacy(false); setIsFeatures(false); window.scrollTo({ top: 0 }); }}
-                  className={`flex items-center gap-2 text-[13px] font-medium text-left transition-all duration-150 w-fit group ${t.textSecondary} hover:${t.textPrimary}`}
-                >
-                  <span className={`opacity-50 group-hover:opacity-100 transition-opacity ${t.textAccent}`}><FileText size={13} /></span>
-                  Terms of Service
-                </button>
-              </nav>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div className={`border-t ${t.border} px-4 sm:px-6 xl:px-12 pt-6 pb-24 sm:py-4`}>
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-2 text-left">
-            <p className={`text-[11px] leading-relaxed ${t.textMuted}`}>
-              © {new Date().getFullYear()} AiVerse. Built with passion by{" "}
+      <footer className="mt-auto relative z-10 border-t border-white/5">
+        <div className={`py-6 sm:py-8 ${resolvedTheme === 'amoled' ? 'bg-black/40' : 'bg-white/40'} backdrop-blur-xl`}>
+          <div className="w-full px-4 sm:px-6 xl:px-12 flex flex-col lg:flex-row items-center justify-between gap-6">
+            
+            {/* Left: Brand & Status */}
+            <div className="flex flex-col sm:flex-row items-center gap-4">
               <a
-                href="https://github.com/Frozen-47/AiVerse"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold hover:text-cyan-400 transition-colors"
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsPrivacy(false);
+                  setIsTerms(false);
+                  setIsFeatures(false);
+                  setSelected(null);
+                  setProfileUsername(null);
+                  setActiveView("landing");
+                  setBrowseAll(false);
+                  window.location.hash = "";
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className={`flex items-center ${t.textPrimary} hover:opacity-80 transition-opacity`}
+                style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "1.25rem", lineHeight: 1, letterSpacing: "-0.02em" }}
               >
-                Sabareesh
+                <span className="inline-block transform rotate-180 relative" style={{ top: "-0.5px", marginRight: "-0.5px" }}>V</span>
+                <span>iVerse</span>
               </a>
-            </p>
-            <p className={`text-[11px] leading-relaxed ${t.textMuted}`}>
-              Open-source · Community-driven · Always free
-            </p>
+              <div className={`flex items-center gap-1.5 text-[9px] font-black uppercase px-2 py-1 rounded-full border border-emerald-500/10 bg-emerald-500/5 text-emerald-400`}>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Operational
+              </div>
+            </div>
+
+            {/* Center: Core Navigation */}
+            <div className="flex items-center justify-center flex-wrap gap-x-8 gap-y-3">
+              <button onClick={() => { setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setSelected(null); setProfileUsername(null); setBrowseAll(true); setActiveView("catalog"); setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); window.scrollTo({ top: 0, behavior: "smooth" }); }} className={`text-[12px] font-bold ${t.textSecondary} hover:${t.textPrimary} transition-colors cursor-pointer`}>Explore</button>
+              <button onClick={() => { setIsFeatures(true); setIsPrivacy(false); setIsTerms(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); }} className={`text-[12px] font-bold ${t.textSecondary} hover:${t.textPrimary} transition-colors cursor-pointer`}>Features</button>
+              <button onClick={() => { setIsPrivacy(true); setIsTerms(false); setIsFeatures(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); }} className={`text-[12px] font-bold ${t.textSecondary} hover:${t.textPrimary} transition-colors cursor-pointer`}>Privacy</button>
+              <button onClick={() => setIsAdding(true)} className={`text-[12px] font-bold text-cyan-400 hover:text-cyan-300 transition-colors cursor-pointer`}>Submit Tool</button>
+            </div>
+
+            {/* Right: Social & Copyright */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+              <div className="flex items-center gap-5">
+                <a href="https://github.com/Frozen-47/AiVerse" target="_blank" rel="noopener noreferrer" className={`text-[12px] font-bold ${t.textSecondary} hover:${t.textPrimary} transition-colors`}>GitHub</a>
+                <a href="https://discord.gg/22YKNrS62h" target="_blank" rel="noopener noreferrer" className={`text-[12px] font-bold ${t.textSecondary} hover:${t.textPrimary} transition-colors`}>Discord</a>
+              </div>
+              <span className={`text-[11px] font-semibold ${t.textMuted}`}>
+                © {new Date().getFullYear()} AiVerse
+              </span>
+            </div>
+
           </div>
         </div>
       </footer>
@@ -1467,7 +1370,7 @@ const App: React.FC = () => {
       const saved = localStorage.getItem(THEME_KEY) as Theme | null;
       if (saved === "amoled" || saved === "light" || saved === "system") return saved;
     } catch {}
-    return getOsPreference() === "amoled" ? "amoled" : "light";
+    return "system";
   });
 
   const [resolvedTheme, setResolvedTheme] = useState<"amoled" | "light">(() =>
@@ -1479,7 +1382,13 @@ const App: React.FC = () => {
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
     const handler = (e: MediaQueryListEvent) => {
       if (theme === "system") {
+        document.documentElement.classList.add("no-transitions");
         setResolvedTheme(e.matches ? "amoled" : "light");
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            document.documentElement.classList.remove("no-transitions");
+          });
+        });
       }
     };
     mq.addEventListener("change", handler);
@@ -1487,9 +1396,15 @@ const App: React.FC = () => {
   }, [theme]);
 
   const setTheme = (t: Theme) => {
+    document.documentElement.classList.add("no-transitions");
     setThemeState(t);
     setResolvedTheme(resolveTheme(t));
     try { localStorage.setItem(THEME_KEY, t); } catch {}
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.documentElement.classList.remove("no-transitions");
+      });
+    });
   };
 
   return (

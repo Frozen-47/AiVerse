@@ -397,7 +397,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
       {/* ══════════ Hero Avatar Section ══════════ */}
       <div className="relative overflow-hidden rounded-xl mb-0.5 mx-0.5">
         {/* Gradient background strip */}
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-cyan-500/7 via-blue-500/3 to-transparent" />
+        <div className="absolute inset-0 pointer-events-none bg-linear-to-br from-cyan-500/7 via-blue-500/3 to-transparent" />
         <button
           type="button"
           onClick={() => {
@@ -412,7 +412,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
               {avatarUrl ? (
                 <img src={avatarUrl} alt="" className="w-full h-full object-cover" />
               ) : (
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-500 to-blue-500 text-white font-bold text-lg">
+                <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-cyan-500 to-blue-500 text-white font-bold text-lg">
                   {initials}
                 </div>
               )}
@@ -446,7 +446,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
             <button
               type="button"
               onClick={handleCopyLink}
-              className={`${menuItemCls} ${linkCopied ? "!text-emerald-400" : ""}`}
+              className={`${menuItemCls} ${linkCopied ? "text-emerald-400!" : ""}`}
             >
               <div
                 className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
