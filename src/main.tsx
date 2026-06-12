@@ -9,7 +9,7 @@ import { StatusBar, Style } from '@capacitor/status-bar'
 if (Capacitor.isNativePlatform()) {
   StatusBar.setOverlaysWebView({ overlay: false });
   StatusBar.setStyle({ style: Style.Dark });
-  StatusBar.setBackgroundColor({ color: '#000000' });
+  StatusBar.setBackgroundColor({ color: '#171717' });
 }
 
 createRoot(document.getElementById('root')!).render(

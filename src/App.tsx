@@ -648,11 +648,11 @@ const Inner: React.FC = () => {
   // Sync document body and meta tags for an orderly global theme switch
   useEffect(() => {
     if (resolvedTheme === "amoled") {
-      document.documentElement.style.backgroundColor = "#000000";
-      document.body.style.backgroundColor = "#000000";
+      document.documentElement.style.backgroundColor = "#171717";
+      document.body.style.backgroundColor = "#171717";
       document.documentElement.classList.remove("light");
       document.documentElement.classList.add("dark");
-      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#000000");
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#171717");
     } else {
       document.documentElement.style.backgroundColor = "#ffffff";
       document.body.style.backgroundColor = "#ffffff";

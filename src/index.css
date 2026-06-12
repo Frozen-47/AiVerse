@@ -141,7 +141,7 @@ html {
 
 /* Dark Mode (Amoled) Glow Card */
 .dark .glow-card {
-  background: #000000 !important;
+  background: #1e1e1e !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
 }
@@ -162,7 +162,7 @@ html {
 }
 
 .dark .glow-card:hover {
-  background: #000000 !important;
+  background: #262626 !important;
   box-shadow: 
     0 12px 30px -10px rgba(6, 182, 212, 0.2),
     0 0 24px -6px rgba(6, 182, 212, 0.08);
@@ -213,7 +213,7 @@ html {
 }
 
 .dark .glass-search {
-  background: #000000 !important;
+  background: #171717 !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
 }
@@ -234,7 +234,7 @@ html {
 }
 
 .dark .glass-search:focus-within {
-  background: #000000 !important;
+  background: #171717 !important;
   box-shadow: 0 0 20px -3px rgba(6, 182, 212, 0.15) !important;
 }
 

@@ -36,7 +36,7 @@ const darkTokens: TokenMap = {
   pillActive: "bg-white/10 border-white/20 text-white",
   pillInactive: "border-white/7 text-white/35 hover:border-white/15 hover:text-white/65",
   // Card
-  card: "bg-black border border-white/8 hover:border-white/15 hover:bg-white/[0.02]",
+  card: "bg-white/[0.03] border border-white/8 hover:border-white/15 hover:bg-white/[0.05]",
   // Modal
   modal: "bg-neutral-800 border border-white/8",
   modalOverlay: "fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-neutral-950/80 backdrop-blur-md animate-[fadeIn_0.15s_ease-out]",
