@@ -29,9 +29,9 @@ export function shareUrlForEntry(name: string): string {
 
 const PROFILE_PATH_RE = /\/user\/(@?[a-z0-9_-]+)\/?$/;
 
-/** Username segment for `/user/{slug}` (no leading @). */
+/** Username segment for `/user/{slug}` (includes leading @). */
 export function profilePathSlug(username: string): string {
-  return username.startsWith("@") ? username.slice(1) : username;
+  return username.startsWith("@") ? username : `@${username}`;
 }
 
 /** Canonical @handle used in app state and APIs. */

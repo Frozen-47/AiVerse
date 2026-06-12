@@ -105,6 +105,7 @@ export interface PublicBuilderProfile {
   portfolio: string;
   role: string;
   interests: string[];
+  avatarUrl?: string;
 }
 
 export async function fetchProfileByUsername(
@@ -143,6 +144,7 @@ export async function fetchProfileByUsername(
           portfolio: parsed.portfolio || "",
           role: row.role || "",
           interests: row.interests || [],
+          avatarUrl: parsed.avatarUrl || parsed.avatar_url || "",
         };
       }
     } catch {

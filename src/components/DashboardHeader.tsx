@@ -43,7 +43,7 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
           placeholder="Search AI tools, models, datasets…"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
-          className={`w-full p-2 pl-10 rounded-xl border transition-colors ${t.bgPrimary} ${t.textPrimary} focus:outline-none focus:ring-2 focus:ring-cyan-500`}
+          className={`w-full p-2 pl-10 rounded-xl border transition-colors ${t.bgPrimary} ${t.textPrimary} focus:outline-none focus:ring-2 focus:ring-black/20`}
         />
         <Search className="absolute left-3 top-2.5 text-muted-foreground" size={18} />
         {searchInput && (

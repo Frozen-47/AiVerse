@@ -68,7 +68,7 @@ const DevToLogo = () => (
 );
 
 const PortfolioLogo = () => (
-  <svg className="w-5 h-5 text-gray-400 group-focus-within:text-cyan-400 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg className="w-5 h-5 text-gray-400 group-focus-within:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="10" />
     <line x1="2" y1="12" x2="22" y2="12" />
     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -284,6 +284,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
     medium: medium.trim(),
     devto: devto.trim(),
     portfolio: portfolio.trim(),
+    avatarUrl: (user?.user_metadata?.avatar_url as string) || undefined,
   });
 
   const buildReferralSourcePayload = (): string | ReferralSource | null => {
@@ -408,7 +409,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   const showPrimaryArrow =
     !isUpdating && primaryLabel !== "Save" && primaryLabel !== "Save preferences";
 
-  const treeBranch = isEdit ? "border-l-2 border-cyan-500/25 pl-4" : "";
+  const treeBranch = isEdit ? "border-l-2 border-white/20 pl-4" : "";
   const treeNested = isEdit ? "mt-2 space-y-2 border-l border-white/10 pl-3" : "space-y-2";
 
   return (
@@ -421,10 +422,10 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
       onClick={isEdit && onClose ? onClose : undefined}
     >
       <div
-        className={`relative flex flex-col border shadow-2xl overflow-hidden ${t.modal} ${t.border} ${
+        className={`relative flex flex-col shadow-2xl overflow-hidden ${t.modal} ${
           isEdit
             ? "fixed top-16 right-0 z-[101] flex flex-col w-full sm:max-w-md max-h-[calc(100dvh-4rem)] border-l-0 sm:border-l rounded-none sm:rounded-l-2xl animate-slide-in-right"
-            : "w-full max-w-lg rounded-3xl"
+            : "w-full max-w-lg rounded-2xl"
         }`}
         onClick={(e) => e.stopPropagation()}
       >
@@ -440,13 +441,13 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
         )}
 
         <div
-          className={`absolute top-0 w-full h-32 bg-linear-to-b from-cyan-500/15 to-transparent pointer-events-none ${
+          className={`absolute top-0 w-full h-32 bg-linear-to-b from-white/10 to-transparent pointer-events-none ${
             isEdit ? "left-0" : "left-1/2 -translate-x-1/2"
           }`}
         />
         <div className="absolute top-0 left-0 right-0 h-1 bg-white/5 z-10">
           <div
-            className="h-full bg-linear-to-r from-cyan-400 to-sky-400"
+            className="h-full bg-white"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -473,7 +474,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   </h2>
                 </div>
               </div>
-              <p className={`text-sm ${t.textSecondary} leading-relaxed border-l-2 border-cyan-500/25 pl-4`}>
+              <p className={`text-sm ${t.textSecondary} leading-relaxed border-l-2 border-white/20 pl-4`}>
                 {stepSubtitle[step]}
               </p>
             </header>
@@ -482,7 +483,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
               <div className="mb-5 flex items-center justify-center">
                 <Logo className="w-12 h-12 text-white" />
               </div>
-              <p className={`text-[11px] font-semibold uppercase tracking-widest mb-2 ${t.textMuted}`}>
+              <p className={t.sectionLabel}>
                 {`Step ${stepIndex + 1} of ${steps.length}`}
               </p>
               <h2 className={`text-2xl font-black tracking-tight mb-2 ${t.textPrimary}`}>{stepTitle[step]}</h2>
@@ -493,7 +494,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
           {step === "name" && (
             <div className="space-y-4 text-left">
               <div>
-                <label className={`block text-xs font-semibold mb-2 uppercase tracking-wider ${t.textMuted}`}>
+                <label className={t.sectionLabel}>
                   Display name
                 </label>
                 <input
@@ -501,14 +502,14 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Jane Doe"
-                  className={`w-full px-4 py-3 rounded-xl border font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10`}
+                  className={`w-full px-4 py-3 rounded-xl border font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-white/20 focus:ring-4 focus:ring-white/5`}
                   autoFocus
                   maxLength={50}
                   onKeyDown={(e) => e.key === "Enter" && canContinue() && handlePrimary()}
                 />
               </div>
               <div>
-                <label className={`block text-xs font-semibold mb-2 uppercase tracking-wider ${t.textMuted}`}>
+                <label className={t.sectionLabel}>
                   Username
                 </label>
                 <div className="relative">
@@ -517,7 +518,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   value={username}
                   onChange={(e) => setUsername(normalizeUsernameInput(e.target.value))}
                   placeholder="@username"
-                  className={`w-full px-4 py-3 rounded-xl border font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10 pr-10 ${
+                  className={`w-full px-4 py-3 rounded-xl border font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-white/20 focus:ring-4 focus:ring-white/5 pr-10 ${
                     usernameStatus === "taken" ? "!border-rose-500/50 !ring-rose-500/10" : ""
                   } ${
                     usernameStatus === "available" ? "!border-emerald-500/50 !ring-emerald-500/10" : ""
@@ -528,7 +529,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                 {/* Status indicator */}
                 <div className="absolute right-3 top-1/2 -translate-y-1/2">
                   {usernameStatus === "checking" && (
-                    <div className="w-4 h-4 border-2 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin" />
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                   )}
                   {usernameStatus === "available" && (
                     <Check size={16} className="text-emerald-400" />
@@ -567,7 +568,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
             >
 
               <div>
-                <label className={`block text-xs font-semibold mb-1.5 uppercase tracking-wider ${t.textMuted}`}>
+                <label className={t.sectionLabel}>
                   Bio / Description
                 </label>
                 <textarea
@@ -576,17 +577,17 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   placeholder="Tell other builders about yourself..."
                   rows={2}
                   maxLength={160}
-                  className={`w-full px-4 py-2.5 rounded-xl border text-[13px] font-medium resize-none outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10`}
+                  className={`w-full px-4 py-2.5 rounded-xl border text-[13px] font-medium resize-none outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-white/20 focus:ring-4 focus:ring-white/5`}
                 />
               </div>
 
               <div>
-                <label className={`block text-xs font-semibold uppercase tracking-wider ${t.textMuted}`}>
+                <label className={t.sectionLabel}>
                   Social Links
                 </label>
                 <div className={treeNested}>
                 {/* GitHub */}
-                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-cyan-500/50 focus-within:ring-4 focus-within:ring-cyan-500/10`}>
+                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-white/20 focus-within:ring-4 focus-within:ring-white/5`}>
                   <GithubLogo />
                   <input
                     type="url"
@@ -598,7 +599,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                 </div>
 
                 {/* LinkedIn */}
-                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-cyan-500/50 focus-within:ring-4 focus-within:ring-cyan-500/10`}>
+                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-white/20 focus-within:ring-4 focus-within:ring-white/5`}>
                   <LinkedinLogo />
                   <input
                     type="url"
@@ -610,7 +611,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                 </div>
 
                 {/* Medium */}
-                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-cyan-500/50 focus-within:ring-4 focus-within:ring-cyan-500/10`}>
+                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-white/20 focus-within:ring-4 focus-within:ring-white/5`}>
                   <MediumLogo />
                   <input
                     type="url"
@@ -622,7 +623,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                 </div>
 
                 {/* Dev.to */}
-                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-cyan-500/50 focus-within:ring-4 focus-within:ring-cyan-500/10`}>
+                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-white/20 focus-within:ring-4 focus-within:ring-white/5`}>
                   <DevToLogo />
                   <input
                     type="url"
@@ -634,7 +635,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                 </div>
 
                 {/* Portfolio */}
-                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-cyan-500/50 focus-within:ring-4 focus-within:ring-cyan-500/10`}>
+                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-white/20 focus-within:ring-4 focus-within:ring-white/5`}>
                   <PortfolioLogo />
                   <input
                     type="url"
@@ -682,7 +683,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                     onClick={() => toggleInterest(item.id)}
                     className={`text-left p-3 rounded-xl border ${
                       selected
-                        ? `${t.pillActive} ring-1 ring-cyan-500/30`
+                        ? `${t.pillActive} ring-1 ring-white/20`
                         : `${t.surface} ${t.border} ${t.textSecondary} hover:border-white/20`
                     }`}
                   >
@@ -690,7 +691,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                       <span className={`text-[13px] font-semibold ${selected ? t.textAccent : t.textPrimary}`}>
                         {item.label}
                       </span>
-                      {selected && <Check size={14} className="shrink-0 text-cyan-400" />}
+                      {selected && <Check size={14} className="shrink-0 text-white" />}
                     </div>
                     <p className={`text-[11px] mt-0.5 ${t.textMuted}`}>{item.description}</p>
                   </button>
@@ -791,12 +792,12 @@ function OptionButton({
       onClick={onClick}
       className={`flex items-center justify-between w-full px-4 py-3 rounded-xl border text-left text-[14px] font-medium ${
         selected
-          ? `${t.pillActive} ring-1 ring-cyan-500/30`
+          ? `${t.pillActive} ring-1 ring-white/20`
           : `${t.surface} ${t.border} ${t.textSecondary} hover:border-white/20`
       }`}
     >
       {label}
-      {selected && <Check size={16} className="text-cyan-400 shrink-0" />}
+      {selected && <Check size={16} className="text-white shrink-0" />}
     </button>
   );
 }

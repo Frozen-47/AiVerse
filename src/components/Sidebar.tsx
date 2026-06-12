@@ -71,7 +71,7 @@ export const Sidebar = memo(function Sidebar({
     <aside className="w-full flex flex-col gap-6">
       {/* Stats */}
       <div className="rounded-2xl p-4 glow-card">
-        <p className={`text-[10px] uppercase tracking-widest font-semibold mb-3 ${t.textMuted}`}>
+        <p className={t.sectionLabel}>
           Overview
         </p>
         <div className="space-y-2">
@@ -94,7 +94,7 @@ export const Sidebar = memo(function Sidebar({
 
       {/* Type Filter */}
       <div>
-        <p className={`text-[10px] uppercase tracking-widest font-semibold mb-2 px-1 ${t.textMuted}`}>
+        <p className={`${t.sectionLabel.replace('mb-3', 'mb-2')} px-1`}>
           Type
         </p>
         <div className="space-y-0.5">
@@ -120,7 +120,7 @@ export const Sidebar = memo(function Sidebar({
 
       {/* Task Filter */}
       <div>
-        <p className={`text-[10px] uppercase tracking-widest font-semibold mb-2 px-1 ${t.textMuted}`}>
+        <p className={`${t.sectionLabel.replace('mb-3', 'mb-2')} px-1`}>
           Task
         </p>
         <div className="space-y-0.5">

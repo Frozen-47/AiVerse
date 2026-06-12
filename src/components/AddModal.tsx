@@ -33,6 +33,7 @@ const emptyEntry = (): PartialEntry => ({
 
 export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, onClose, onSubmit: _onSubmit }) => {
   const t = useTokens();
+
   const [entry, setEntry] = useState<PartialEntry>(emptyEntry());
   const [showBackendMsg, setShowBackendMsg] = useState(false);
 
@@ -44,7 +45,7 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
   }, []);
 
   const inputCls = `w-full px-3 py-2.5 rounded-xl text-[13px] border focus:outline-none transition-all ${t.input}`;
-  const labelCls = `block text-[10px] font-semibold uppercase tracking-widest mb-1.5 ${t.textMuted}`;
+  const labelCls = t.sectionLabel;
 
   const set = (patch: Partial<PartialEntry>) => setEntry((p) => ({ ...p, ...patch }));
 
@@ -90,10 +91,10 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md"
+      className={t.modalOverlay}
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
-      <div className={`relative w-full max-w-xl max-h-[92vh] flex flex-col rounded-3xl border shadow-2xl ${t.modal} ${t.border}`}>
+      <div className={`relative w-full max-w-xl max-h-[92vh] flex flex-col rounded-2xl overflow-hidden shadow-2xl ${t.modal}`}>
 
         {/* ── Header (fixed) ── */}
         <div className={`shrink-0 px-7 pt-7 pb-5 border-b ${t.border}`}>
@@ -155,7 +156,7 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
           <label className="flex items-center gap-3 cursor-pointer">
             <div className="relative">
               <input type="checkbox" checked={!!entry.popular} onChange={(e) => set({ popular: e.target.checked })} className="sr-only peer" />
-              <div className={`w-9 h-5 rounded-full transition-colors ${entry.popular ? "bg-cyan-500" : "bg-white/10"} peer-focus:ring-2 peer-focus:ring-cyan-500/30`} />
+              <div className={`w-9 h-5 rounded-full transition-colors ${entry.popular ? "bg-black/5" : "bg-white/10"} peer-focus:ring-2 peer-focus:ring-black/20`} />
               <div className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform ${entry.popular ? "translate-x-4" : ""}`} />
             </div>
             <span className={`text-[13px] ${t.textSecondary}`}>Mark as Popular</span>
@@ -185,7 +186,7 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
           {/* Citations */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className={labelCls + " mb-0"}>Citations</label>
+              <label className={labelCls.replace('mb-3', 'mb-0')}>Citations</label>
               <button type="button" onClick={addCitation} className={`inline-flex items-center gap-1 text-[11px] border px-2.5 py-1 rounded-lg transition-colors ${t.btnSecondary} ${t.border}`}>
                 <Plus size={10} /> Add
               </button>

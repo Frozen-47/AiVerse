@@ -30,7 +30,7 @@ export const EntryCard = memo(function EntryCard({
       onClick={() => onSelect(entryName)}
       style={animate ? { animationDelay: `${index * 30}ms` } : undefined}
       className={`
-        group flex flex-col rounded-2xl p-5 cursor-pointer glow-card ${t.card}
+        group flex flex-col rounded-xl p-5 cursor-pointer glow-card ${t.card}
         [content-visibility:auto]
         ${animate ? "" : ""}
       `}
@@ -62,7 +62,7 @@ export const EntryCard = memo(function EntryCard({
               <Star size={7} className="fill-current" /> Popular
             </span>
           )}
-          <span className={`text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-md border ${typeBadge(entry.type, t)}`}>
+          <span className={`text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-lg border ${typeBadge(entry.type, t)}`}>
             {entry.type}
           </span>
         </div>
@@ -71,7 +71,7 @@ export const EntryCard = memo(function EntryCard({
       <h3 className={`text-[15px] font-black tracking-tight leading-tight mb-0.5 ${t.textPrimary}`}>
         {entry.name}
       </h3>
-      <p className={`text-[11px] font-semibold uppercase tracking-wider mb-3 ${t.textMuted}`}>
+      <p className={t.sectionLabel}>
         {entry.org}
       </p>
 
@@ -80,7 +80,7 @@ export const EntryCard = memo(function EntryCard({
       </p>
 
       <div className="mb-3">
-        <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-md border ${taskBadge(entry.task, t)}`}>
+        <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-lg border ${taskBadge(entry.task, t)}`}>
           {entry.task}
         </span>
       </div>

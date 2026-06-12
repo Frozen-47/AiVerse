@@ -60,7 +60,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   onClose,
 }) => {
   const t = useTokens();
-  const { theme, resolvedTheme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const { user, signOut } = useAuth();
 
   const [currentView, setCurrentView] = useState<"main" | "profile" | "preferences">("main");
@@ -153,6 +153,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
     medium: medium.trim(),
     devto: devto.trim(),
     portfolio: portfolio.trim(),
+    avatarUrl,
   });
 
   const saveProfile = async () => {
@@ -193,8 +194,8 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   const fieldCls = [
     "w-full px-3 py-2 rounded-xl border text-xs font-medium outline-none transition-all duration-200",
     isDark
-      ? "bg-white/3 border-white/6 text-white placeholder:text-white/20 focus:border-cyan-500/40 focus:bg-white/5 focus:ring-2 focus:ring-cyan-400/10"
-      : "bg-black/2 border-black/6 text-gray-900 placeholder:text-gray-400 focus:border-cyan-500/40 focus:bg-white focus:ring-2 focus:ring-cyan-400/10",
+      ? "bg-white/3 border-white/6 text-white placeholder:text-white/20 focus:border-black/20 focus:bg-white/5 focus:ring-2 focus:ring-black/20"
+      : "bg-black/2 border-black/6 text-gray-900 placeholder:text-gray-400 focus:border-black/20 focus:bg-white focus:ring-2 focus:ring-black/20",
   ].join(" ");
 
   const labelCls = `block text-[10px] font-semibold uppercase tracking-wider mb-1 ${t.textMuted}`;
@@ -209,7 +210,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   const separatorCls = `h-px mx-3 my-1.5 bg-gradient-to-r from-transparent ${isDark ? "via-white/7" : "via-black/6"} to-transparent`;
 
   const saveBtnCls =
-    "w-full py-2.5 rounded-xl text-xs font-bold cursor-pointer transition-all duration-300 bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:from-cyan-400 hover:to-blue-400 shadow-md shadow-cyan-500/20 hover:shadow-cyan-400/30 hover:shadow-lg disabled:opacity-40 disabled:saturate-50 disabled:cursor-not-allowed";
+    "w-full py-2.5 rounded-xl text-xs font-bold cursor-pointer transition-all duration-300 bg-black text-white hover:bg-black/90 shadow-md hover:shadow-lg disabled:opacity-40 disabled:saturate-50 disabled:cursor-not-allowed";
 
   // ---------------------------------------------------------------------------
   // Profile View
@@ -363,7 +364,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
                     onClick={() => toggleInterest(item.id)}
                     className={`text-[10px] font-semibold px-2.5 py-1 rounded-lg border cursor-pointer transition-all duration-200 ${
                       selected
-                        ? `${t.pillActive} shadow-sm shadow-cyan-500/10`
+                        ? `${t.pillActive} shadow-sm shadow-black/10`
                         : `${t.surface} ${t.border} ${t.textMuted} hover:${t.textSecondary}`
                     }`}
                   >
@@ -397,7 +398,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
       {/* ══════════ Hero Avatar Section ══════════ */}
       <div className="relative overflow-hidden rounded-xl mb-0.5 mx-0.5">
         {/* Gradient background strip */}
-        <div className="absolute inset-0 pointer-events-none bg-linear-to-br from-cyan-500/7 via-blue-500/3 to-transparent" />
+        <div className="absolute inset-0 pointer-events-none bg-linear-to-br from-black/5 to-transparent" />
         <button
           type="button"
           onClick={() => {
@@ -408,11 +409,11 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
         >
           {/* Avatar with glow ring */}
           <div className="relative shrink-0">
-            <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-white/10 group-hover:ring-cyan-400/40 transition-all duration-500 shadow-lg group-hover:shadow-cyan-500/20">
+            <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-white/10 group-hover:ring-black/20 transition-all duration-500 shadow-lg group-hover:shadow-black/10">
               {avatarUrl ? (
                 <img src={avatarUrl} alt="" className="w-full h-full object-cover" />
               ) : (
-                <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-cyan-500 to-blue-500 text-white font-bold text-lg">
+                <div className={`w-full h-full flex items-center justify-center font-bold text-lg ${isDark ? "bg-white text-black" : "bg-black text-white"}`}>
                   {initials}
                 </div>
               )}
@@ -423,11 +424,11 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
 
           {/* Identity */}
           <div className="min-w-0">
-            <p className={`text-sm font-bold truncate group-hover:text-cyan-400 transition-colors duration-200 ${t.textPrimary}`}>
+            <p className={`text-sm font-bold truncate transition-colors duration-200 ${t.textPrimary} ${isDark ? "group-hover:text-white" : "group-hover:text-black"}`}>
               {displayName}
             </p>
             {username && (
-              <p className="text-xs font-bold text-cyan-400 truncate">{username}</p>
+              <p className={`text-xs font-bold truncate ${isDark ? "text-white/60" : "text-black/60"}`}>{username}</p>
             )}
             <p className={`text-[11px] truncate mt-0.5 ${t.textMuted}`}>{email}</p>
           </div>
@@ -451,8 +452,8 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
               <div
                 className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
                   linkCopied
-                    ? "bg-emerald-500/15 text-emerald-400"
-                    : "bg-cyan-500/10 text-cyan-400"
+                    ? "bg-emerald-500/15 text-emerald-600"
+                    : `${isDark ? "bg-white/8 text-white/70" : "bg-black/5 text-black/60"}`
                 }`}
               >
                 {linkCopied ? (
@@ -473,7 +474,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
             onClick={() => setCurrentView("profile")}
             className={menuItemCls}
           >
-            <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 bg-violet-500/10 text-violet-400">
+            <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${isDark ? "bg-white/8 text-white/70" : "bg-black/5 text-black/60"}`}>
               <User size={14} />
             </div>
             <span className="flex-1">Edit profile</span>
@@ -490,7 +491,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
             }}
             className={menuItemCls}
           >
-            <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 bg-pink-500/10 text-pink-400">
+            <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${isDark ? "bg-white/8 text-white/70" : "bg-black/5 text-black/60"}`}>
               <Bookmark size={14} />
             </div>
             <span className="flex-1">Saved entries</span>
@@ -504,7 +505,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
             onClick={() => setCurrentView("preferences")}
             className={menuItemCls}
           >
-            <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 bg-amber-500/10 text-amber-400">
+            <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${isDark ? "bg-white/8 text-white/70" : "bg-black/5 text-black/60"}`}>
               <SlidersHorizontal size={14} />
             </div>
             <span className="flex-1">Feed preferences</span>
@@ -520,7 +521,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
               title="System"
               className={`flex-1 flex items-center justify-center py-2 rounded-lg transition-all duration-200 ${
                 theme === "system"
-                  ? (isDark ? "bg-[#1a1a1a] shadow-sm text-cyan-400" : "bg-white shadow-sm text-cyan-500")
+                  ? (isDark ? "bg-white/10 shadow-sm text-white" : "bg-white shadow-sm text-neutral-900")
                   : `hover:bg-black/5 dark:hover:bg-white/5 ${t.textMuted}`
               }`}
             >
@@ -531,7 +532,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
               title="Light"
               className={`flex-1 flex items-center justify-center py-2 rounded-lg transition-all duration-200 ${
                 theme === "light"
-                  ? (isDark ? "bg-[#1a1a1a] shadow-sm text-amber-500" : "bg-white shadow-sm text-amber-500")
+                  ? (isDark ? "bg-white/10 shadow-sm text-white" : "bg-white shadow-sm text-neutral-900")
                   : `hover:bg-black/5 dark:hover:bg-white/5 ${t.textMuted}`
               }`}
             >
@@ -542,7 +543,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
               title="Dark"
               className={`flex-1 flex items-center justify-center py-2 rounded-lg transition-all duration-200 ${
                 theme === "amoled"
-                  ? (isDark ? "bg-[#1a1a1a] shadow-sm text-sky-400" : "bg-white shadow-sm text-sky-500")
+                  ? (isDark ? "bg-white/10 shadow-sm text-white" : "bg-white shadow-sm text-neutral-900")
                   : `hover:bg-black/5 dark:hover:bg-white/5 ${t.textMuted}`
               }`}
             >
@@ -550,6 +551,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
             </button>
           </div>
         </div>
+
 
       </div>
 

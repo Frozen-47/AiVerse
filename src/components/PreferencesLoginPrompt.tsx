@@ -64,7 +64,7 @@ export function PreferencesLoginPrompt({
               onClose();
               openAuthModal("signup");
             }}
-            className="flex-1 px-4 py-3 rounded-xl font-semibold text-sm bg-linear-to-r from-cyan-500 to-blue-500 text-white"
+            className="flex-1 px-4 py-3 rounded-xl font-semibold text-sm bg-black text-white text-white"
           >
             Create account
           </button>

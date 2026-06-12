@@ -646,7 +646,11 @@ const Inner: React.FC = () => {
     return (
       <div className={`min-h-screen flex items-center justify-center transition-colors duration-300 ${t.page}`}>
         <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 border-4 border-cyan-500/20 border-t-cyan-500 rounded-full animate-spin" />
+          <div className={`w-10 h-10 border-4 rounded-full animate-spin ${
+            resolvedTheme === "light"
+              ? "border-neutral-200 border-t-neutral-850"
+              : "border-white/10 border-t-white"
+          }`} />
           <p className={`text-sm font-medium tracking-widest uppercase ${t.textMuted}`}>Loading Catalog</p>
         </div>
       </div>
@@ -656,11 +660,7 @@ const Inner: React.FC = () => {
   return (
     <>
     <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${t.page}`}>
-      {/* Ambient glow */}
-      <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-150 h-100 rounded-full bg-cyan-400/4 blur-3xl" />
-        <div className="absolute top-1/3 -right-20 w-75 h-100 rounded-full bg-violet-500/3 blur-3xl" />
-      </div>
+
 
       <Navbar
         onAddEntry={handleAddClick}
@@ -722,8 +722,8 @@ const Inner: React.FC = () => {
               }}
               className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border shadow-sm transition-all cursor-pointer backdrop-blur-md ${
                 resolvedTheme === 'amoled'
-                  ? 'bg-white/5 border-cyan-500/20 text-cyan-400 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.1)]'
-                  : 'bg-white/80 border-slate-200 text-slate-700 hover:border-cyan-500/30 hover:text-cyan-500'
+                  ? 'bg-white/5 border-white/10 text-white hover:border-white/20 hover:shadow-sm'
+                  : 'bg-white/80 border-slate-200 text-slate-700 hover:border-black/20 hover:text-black'
               }`}
             >
               <ArrowLeft size={14} />
@@ -731,7 +731,6 @@ const Inner: React.FC = () => {
             </button>
           </div>
           <WizardFinder
-            resolvedTheme={resolvedTheme}
             wizardStep={wizardStep}
             setWizardStep={setWizardStep}
             setWizardGoal={setWizardGoal}
@@ -756,8 +755,8 @@ const Inner: React.FC = () => {
               }}
               className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border shadow-sm transition-all cursor-pointer backdrop-blur-md ${
                 resolvedTheme === 'amoled'
-                  ? 'bg-white/5 border-cyan-500/20 text-cyan-400 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.1)]'
-                  : 'bg-white/80 border-slate-200 text-slate-700 hover:border-cyan-500/30 hover:text-cyan-500'
+                  ? 'bg-white/5 border-white/10 text-white hover:border-white/20 hover:shadow-sm'
+                  : 'bg-white/80 border-slate-200 text-slate-700 hover:border-black/20 hover:text-black'
               }`}
             >
               <ArrowLeft size={14} />
@@ -766,7 +765,6 @@ const Inner: React.FC = () => {
           </div>
           <CompareArena
             entries={entries}
-            resolvedTheme={resolvedTheme}
             compareToolA={compareToolA}
             setCompareToolA={setCompareToolA}
             compareToolB={compareToolB}
@@ -778,7 +776,6 @@ const Inner: React.FC = () => {
         <FeaturesSuite
           entries={entries}
           typeCounts={typeCounts}
-          resolvedTheme={resolvedTheme}
           setSelected={setSelected}
           setTypeFilter={(filter) => setTypeFilter(filter as TypeFilter)}
           setSearchInput={setSearchInput}
@@ -795,42 +792,50 @@ const Inner: React.FC = () => {
       ) : (
         <div className="w-full px-4 sm:px-6 xl:px-12 py-8">
           {/* Hero */}
-          <div className="mb-10">
-            <div className={`inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest border rounded-full px-4 py-1.5 mb-5 ${t.surface} ${t.border} ${t.textMuted}`}>
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-              Open-Source AI Knowledge Base · {entries.length} Entities
+          {activeView === "landing" && (
+            <div className="mb-10">
+              <div className={`inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest border rounded-full px-4 py-1.5 mb-5 ${t.surface} ${t.border} ${t.textMuted}`}>
+                <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${resolvedTheme === 'amoled' ? 'bg-white' : 'bg-black'}`} />
+                Open-Source AI Knowledge Base · {entries.length} Entities
+              </div>
+              <h1 className={`text-[clamp(32px,5vw,52px)] font-black leading-[1.2] tracking-[-0.03em] mb-4`}>
+                <span className={resolvedTheme === "amoled" ? "text-white" : "text-neutral-900"}>
+                  Every AI tool,{" "}
+                </span>
+                <span className={`inline-block px-3.5 py-0.5 rounded-2xl align-middle select-none ${
+                  resolvedTheme === "amoled"
+                    ? "bg-white text-black"
+                    : "bg-neutral-950 text-white"
+                }`}>
+                  one universe.
+                </span>
+              </h1>
+              <p className={`text-[15px] leading-relaxed max-w-xl font-light ${t.textSecondary}`}>
+                {onboardingProfile?.interests.length ? (
+                  <>
+                    Hi{user?.user_metadata?.firstName ? ` ${user.user_metadata.firstName}` : (user?.email ? ` ${user.email.split('@')[0]}` : "")} — here are{" "}
+                    {roleHeadline(onboardingProfile.role)} as a{" "}
+                    <span className={t.textAccent}>{roleLabel(onboardingProfile.role).toLowerCase()}</span>.
+                  </>
+                ) : (
+                  "A citation-backed encyclopedia of models, frameworks, datasets, and platforms — built for builders."
+                )}
+              </p>
             </div>
-            <h1 className={`text-[clamp(32px,5vw,52px)] font-black leading-[1.05] tracking-[-0.03em] mb-3 ${t.textPrimary}`}>
-              Every AI tool,{" "}
-              <span className="bg-linear-to-r from-cyan-300 via-cyan-400 to-sky-400 bg-clip-text text-transparent">
-                one universe.
-              </span>
-            </h1>
-            <p className={`text-[15px] leading-relaxed max-w-xl font-light ${t.textSecondary}`}>
-              {onboardingProfile?.interests.length ? (
-                <>
-                  Hi{user?.user_metadata?.firstName ? ` ${user.user_metadata.firstName}` : (user?.email ? ` ${user.email.split('@')[0]}` : "")} — here are{" "}
-                  {roleHeadline(onboardingProfile.role)} as a{" "}
-                  <span className={t.textAccent}>{roleLabel(onboardingProfile.role).toLowerCase()}</span>.
-                </>
-              ) : (
-                "A citation-backed encyclopedia of models, frameworks, datasets, and platforms — built for builders."
-              )}
-            </p>
-          </div>
-
-          {/* Search */}
-          <div className="mb-8 max-w-2xl">
-            <SearchBar
-              query={searchInput}
-              onChange={handleSearchChange}
-              entries={entries}
-              onSelect={handleSearchSelect}
-            />
-          </div>
+          )}
 
           {activeView === "landing" ? (
             <div className="flex flex-col gap-8 animate-[fadeUp_0.4s_ease-out]">
+              {/* Search */}
+              <div className="mb-4 max-w-2xl">
+                <SearchBar
+                  query={searchInput}
+                  onChange={handleSearchChange}
+                  entries={entries}
+                  onSelect={handleSearchSelect}
+                />
+              </div>
+
               {/* Premium Action Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Card 1: Browse AI Registry */}
@@ -840,17 +845,13 @@ const Inner: React.FC = () => {
                     setActiveView("catalog");
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className={`group relative overflow-hidden p-8 rounded-3xl border text-left transition-all duration-300 cursor-pointer ${
-                    resolvedTheme === 'amoled'
-                      ? 'bg-black border-white/8 hover:border-cyan-500/40 hover:shadow-[0_0_35px_rgba(6,182,212,0.15)]'
-                      : 'bg-white border-slate-200 shadow-md hover:shadow-xl hover:border-cyan-300'
-                  }`}
+                  className={`group relative overflow-hidden p-8 rounded-3xl text-left transition-all duration-300 cursor-pointer ${t.card}`.trim()}
                 >
-                  <div className="absolute inset-0 bg-linear-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="p-3.5 rounded-2xl bg-cyan-500/10 dark:bg-cyan-500/5 text-cyan-500 mb-6 w-fit transition-colors group-hover:bg-cyan-500/20">
+                  <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className={`p-3.5 rounded-2xl mb-6 w-fit transition-colors ${t.iconBg}`}>
                     <BookOpen size={24} />
                   </div>
-                  <h3 className={`text-xl font-bold mb-2 group-hover:text-cyan-500 transition-colors ${t.textPrimary}`}>
+                  <h3 className={`text-xl font-bold mb-2  transition-colors ${t.textPrimary}`}>
                     Browse AI Registry
                   </h3>
                   <p className={`text-[13px] leading-relaxed font-light mb-6 ${t.textSecondary}`}>
@@ -870,15 +871,11 @@ const Inner: React.FC = () => {
                       setIsWizard(true);
                     }
                   }}
-                  className={`group relative overflow-hidden p-8 rounded-3xl border text-left transition-all duration-300 cursor-pointer ${
-                    resolvedTheme === 'amoled'
-                      ? 'bg-black border-white/8 hover:border-cyan-500/40 hover:shadow-[0_0_35px_rgba(6,182,212,0.15)]'
-                      : 'bg-white border-slate-200 shadow-md hover:shadow-xl hover:border-cyan-300'
-                  }`}
+                  className={`group relative overflow-hidden p-8 rounded-3xl text-left transition-all duration-300 cursor-pointer ${t.card}`.trim()}
                 >
-                  <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="flex items-center justify-between mb-6">
-                    <div className="p-3.5 rounded-2xl bg-cyan-500/10 dark:bg-cyan-500/5 text-cyan-500 transition-colors group-hover:bg-cyan-500/20">
+                    <div className={`p-3.5 rounded-2xl transition-colors ${t.iconBg}`}>
                       <Sparkles size={24} />
                     </div>
                     {!user && (
@@ -891,7 +888,7 @@ const Inner: React.FC = () => {
                       </span>
                     )}
                   </div>
-                  <h3 className={`text-xl font-bold mb-2 group-hover:text-cyan-500 transition-colors ${t.textPrimary}`}>
+                  <h3 className={`text-xl font-bold mb-2  transition-colors ${t.textPrimary}`}>
                     AI Discovery Wizard
                   </h3>
                   <p className={`text-[13px] leading-relaxed font-light mb-6 ${t.textSecondary}`}>
@@ -911,15 +908,11 @@ const Inner: React.FC = () => {
                       setIsArena(true);
                     }
                   }}
-                  className={`group relative overflow-hidden p-8 rounded-3xl border text-left transition-all duration-300 cursor-pointer ${
-                    resolvedTheme === 'amoled'
-                      ? 'bg-black border-white/8 hover:border-cyan-500/40 hover:shadow-[0_0_35px_rgba(6,182,212,0.15)]'
-                      : 'bg-white border-slate-200 shadow-md hover:shadow-xl hover:border-cyan-300'
-                  }`}
+                  className={`group relative overflow-hidden p-8 rounded-3xl text-left transition-all duration-300 cursor-pointer ${t.card}`.trim()}
                 >
                   <div className="absolute inset-0 bg-linear-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="flex items-center justify-between mb-6">
-                    <div className="p-3.5 rounded-2xl bg-cyan-500/10 dark:bg-cyan-500/5 text-cyan-500 transition-colors group-hover:bg-cyan-500/20">
+                    <div className={`p-3.5 rounded-2xl transition-colors ${t.iconBg}`}>
                       <Cpu size={24} />
                     </div>
                     {!user && (
@@ -932,7 +925,7 @@ const Inner: React.FC = () => {
                       </span>
                     )}
                   </div>
-                  <h3 className={`text-xl font-bold mb-2 group-hover:text-cyan-500 transition-colors ${t.textPrimary}`}>
+                  <h3 className={`text-xl font-bold mb-2  transition-colors ${t.textPrimary}`}>
                     Comparison Arena
                   </h3>
                   <p className={`text-[13px] leading-relaxed font-light mb-6 ${t.textSecondary}`}>
@@ -950,17 +943,13 @@ const Inner: React.FC = () => {
                     setIsFeatures(true);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className={`group relative overflow-hidden p-8 rounded-3xl border text-left transition-all duration-300 cursor-pointer ${
-                    resolvedTheme === 'amoled'
-                      ? 'bg-black border-white/8 hover:border-cyan-500/40 hover:shadow-[0_0_35px_rgba(6,182,212,0.15)]'
-                      : 'bg-white border-slate-200 shadow-md hover:shadow-xl hover:border-cyan-300'
-                  }`}
+                  className={`group relative overflow-hidden p-8 rounded-3xl text-left transition-all duration-300 cursor-pointer ${t.card}`.trim()}
                 >
                   <div className="absolute inset-0 bg-linear-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="p-3.5 rounded-2xl bg-cyan-500/10 dark:bg-cyan-500/5 text-cyan-500 mb-6 w-fit transition-colors group-hover:bg-cyan-500/20">
+                  <div className={`p-3.5 rounded-2xl mb-6 w-fit transition-colors ${t.iconBg}`}>
                     <Layers size={24} />
                   </div>
-                  <h3 className={`text-xl font-bold mb-2 group-hover:text-cyan-500 transition-colors ${t.textPrimary}`}>
+                  <h3 className={`text-xl font-bold mb-2  transition-colors ${t.textPrimary}`}>
                     Ecosystem Features Suite
                   </h3>
                   <p className={`text-[13px] leading-relaxed font-light mb-6 ${t.textSecondary}`}>
@@ -974,7 +963,7 @@ const Inner: React.FC = () => {
               
               {/* Value Propositions */}
               <div className="mt-4">
-                <ValueProps resolvedTheme={resolvedTheme} />
+                <ValueProps />
               </div>
             </div>
           ) : (
@@ -1002,7 +991,7 @@ const Inner: React.FC = () => {
               {/* Right pane: Content */}
               <div className="flex-1 min-w-0 pb-32">
                 {/* Back to Dashboard bar */}
-                <div className="mb-6">
+                <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <button
                     onClick={() => {
                       setBrowseAll(false);
@@ -1010,27 +999,36 @@ const Inner: React.FC = () => {
                       setIsFeatures(false);
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border shadow-sm transition-all cursor-pointer backdrop-blur-md ${
+                    className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border shadow-sm transition-all cursor-pointer backdrop-blur-md shrink-0 w-fit ${
                       resolvedTheme === 'amoled'
-                        ? 'bg-white/5 border-cyan-500/20 text-cyan-400 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.1)]'
-                        : 'bg-white/80 border-slate-200 text-slate-700 hover:border-cyan-500/30 hover:text-cyan-500'
+                        ? 'bg-white/5 border-white/10 text-white hover:border-white/20 hover:shadow-sm'
+                        : 'bg-white/80 border-slate-200 text-slate-700 hover:border-black/20 hover:text-black'
                     }`}
                   >
                     <ArrowLeft size={14} />
                     Back to Dashboard
                   </button>
+
+                  <div className="w-full sm:w-72 md:w-80">
+                    <SearchBar
+                      query={searchInput}
+                      onChange={handleSearchChange}
+                      entries={entries}
+                      onSelect={handleSearchSelect}
+                    />
+                  </div>
                 </div>
 
                 {/* Mobile filters button */}
                 <div className="flex mb-5 lg:hidden">
                   <button
                     onClick={() => setShowMobileSidebar(true)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[13px] font-semibold border shadow-sm transition-all ${t.surface} ${t.border} ${t.textPrimary} hover:border-cyan-500/30`}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[13px] font-semibold border shadow-sm transition-all ${t.surface} ${t.border} ${t.textPrimary} hover:border-black/20`}
                   >
                     <Filter size={14} />
                     Filters
                     {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly || savedOnly) && (
-                      <span className="w-2 h-2 rounded-full bg-cyan-400 ml-1 animate-pulse" />
+                      <span className="w-2 h-2 rounded-full bg-black/5 ml-1 animate-pulse" />
                     )}
                   </button>
                 </div>
@@ -1157,7 +1155,7 @@ const Inner: React.FC = () => {
               <button onClick={() => { setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setSelected(null); setProfileUsername(null); setBrowseAll(true); setActiveView("catalog"); setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); window.scrollTo({ top: 0, behavior: "smooth" }); }} className={`text-[12px] font-bold ${t.textSecondary} hover:${t.textPrimary} transition-colors cursor-pointer`}>Explore</button>
               <button onClick={() => { setIsFeatures(true); setIsPrivacy(false); setIsTerms(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); }} className={`text-[12px] font-bold ${t.textSecondary} hover:${t.textPrimary} transition-colors cursor-pointer`}>Features</button>
               <button onClick={() => { setIsPrivacy(true); setIsTerms(false); setIsFeatures(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); }} className={`text-[12px] font-bold ${t.textSecondary} hover:${t.textPrimary} transition-colors cursor-pointer`}>Privacy</button>
-              <button onClick={() => setIsAdding(true)} className={`text-[12px] font-bold text-cyan-400 hover:text-cyan-300 transition-colors cursor-pointer`}>Submit Tool</button>
+              <button onClick={() => setIsAdding(true)} className={`text-[12px] font-bold ${t.textSecondary} hover:${t.textPrimary} transition-colors cursor-pointer`}>Submit Tool</button>
             </div>
 
             {/* Right: Social & Copyright */}
@@ -1263,7 +1261,7 @@ const Inner: React.FC = () => {
         <button
           type="button"
           onClick={() => setChatEnabled(true)}
-          className="group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center p-2 sm:p-2.5 rounded-full shadow-2xl bg-cyan-500 hover:bg-cyan-400 text-black font-bold"
+          className={`group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center p-2 sm:p-2.5 rounded-full shadow-2xl ${t.btnPrimary}`}
         >
           <svg
             width="24"

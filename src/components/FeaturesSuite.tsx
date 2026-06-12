@@ -17,7 +17,6 @@ interface FeaturesSuiteProps {
     Platform: number;
     Popular: number;
   };
-  resolvedTheme: string;
   setSelected: (entry: Entry | null) => void;
   setTypeFilter: (filter: string) => void;
   setSearchInput: (input: string) => void;
@@ -54,7 +53,6 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
       <CategoryDashboard
         entries={props.entries}
         typeCounts={props.typeCounts}
-        resolvedTheme={props.resolvedTheme}
         setTypeFilter={props.setTypeFilter}
         setSearchInput={props.setSearchInput}
         setBrowseAll={props.setBrowseAll}
@@ -66,12 +64,10 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
       <MetricsBar
         entries={props.entries}
         typeCounts={props.typeCounts}
-        resolvedTheme={props.resolvedTheme}
       />
 
       <SpotlightGrid
         entries={props.entries}
-        resolvedTheme={props.resolvedTheme}
         setSelected={props.setSelected}
         setBrowseAll={props.setBrowseAll}
         setActiveView={props.setActiveView}

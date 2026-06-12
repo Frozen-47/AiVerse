@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { X, Send, Minimize2, Maximize2, RefreshCw, Copy, Check, AlertCircle, RotateCcw, ExternalLink } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-import { useTheme } from '../lib/theme';
+import { useTokens, useTheme } from '../lib/theme';
 import { useAuth } from './AuthContext';
 import { VoxLogo } from './VoxLogo';
 
@@ -44,11 +44,11 @@ const markdownComponents = {
   ul: ({node, ...props}: any) => <ul className="list-disc pl-4 mb-2 space-y-1" {...props} />,
   ol: ({node, ...props}: any) => <ol className="list-decimal pl-4 mb-2 space-y-1" {...props} />,
   li: ({node, ...props}: any) => <li className="" {...props} />,
-  strong: ({node, ...props}: any) => <strong className="font-semibold text-cyan-500" {...props} />,
+  strong: ({node, ...props}: any) => <strong className="font-semibold text-black" {...props} />,
   code: ({node, ...props}: any) => <code className="bg-black/10 dark:bg-black/40 rounded px-1.5 py-0.5 font-mono text-[12px]" {...props} />,
   pre: ({node, ...props}: any) => <pre className="bg-black/5 dark:bg-black/50 rounded-xl p-3 overflow-x-auto my-2 font-mono text-[12px] border border-black/5 dark:border-white/5 shadow-inner" {...props} />,
   a: ({node, children, ...props}: any) => (
-    <a className="inline-flex items-baseline gap-1 text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 dark:hover:text-cyan-300 transition-colors font-medium underline underline-offset-2" target="_blank" rel="noopener noreferrer" {...props}>
+    <a className="inline-flex items-baseline gap-1 text-black dark:text-black hover:text-black dark:hover:text-black transition-colors font-medium underline underline-offset-2" target="_blank" rel="noopener noreferrer" {...props}>
       {children}
       <ExternalLink size={12} className="shrink-0 self-center" />
     </a>
@@ -71,13 +71,13 @@ function buildMarkdownComponents(
           <button
             type="button"
             onClick={() => onEntrySelect(match)}
-            className="font-bold text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 dark:hover:text-cyan-300 underline underline-offset-2 transition-colors"
+            className="font-bold text-black dark:text-black hover:text-black dark:hover:text-black underline underline-offset-2 transition-colors"
           >
             {match}
           </button>
         );
       }
-      return <strong className="font-semibold text-cyan-600 dark:text-cyan-400">{children}</strong>;
+      return <strong className="font-semibold text-black dark:text-black">{children}</strong>;
     },
   };
 }
@@ -97,7 +97,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
   onEntrySelect,
   initialOpen = false,
 }) => {
-  const { resolvedTheme } = useTheme();
+  const t = useTokens();
   const { user } = useAuth();
   const userId = user?.id || null;
   const userName = (user?.user_metadata?.firstName as string) || user?.email?.split('@')[0] || null;
@@ -281,9 +281,9 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
     }
   };
 
-  const isDark = resolvedTheme === 'amoled';
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "amoled";
   const border = isDark ? 'border-white/7' : 'border-black/8';
-  const bg = isDark ? 'bg-[#0a0a0a]' : 'bg-white';
   const textPrimary = isDark ? 'text-white' : 'text-gray-900';
   const textMuted = isDark ? 'text-white/30' : 'text-gray-400';
 
@@ -291,7 +291,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center p-2 sm:p-2.5 rounded-full shadow-2xl bg-cyan-500 hover:bg-cyan-400 text-black font-bold"
+        className={`group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center p-2 sm:p-2.5 rounded-full shadow-2xl ${t.btnPrimary}`}
       >
         <svg
           width="24"
@@ -325,16 +325,15 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
   return (
     <div
       ref={widgetRef}
-      className={`fixed z-50 flex flex-col shadow-2xl border transition-all duration-300 ease-in-out overflow-hidden ${bg} ${border} ${
+      className={`fixed z-50 flex flex-col shadow-2xl transition-all duration-300 ease-in-out overflow-hidden ${t.modal} ${
         isMaximized
           ? 'bottom-4 right-4 left-4 top-4 rounded-2xl md:left-auto md:w-175'
           : 'bottom-6 right-6 w-95 h-137.5 rounded-2xl sm:w-105 sm:h-150'
       }`}
     >
-      {/* ── Header ── */}
-      <div className={`flex items-center justify-between px-4 py-3 border-b ${border}`}>
+      <div className={`flex items-center justify-between px-4 py-3 border-b ${t.border}`}>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white shrink-0">
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>
             <VoxLogo size={18} variant="current" />
           </div>
           <div>
@@ -374,8 +373,8 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                 className={`group relative max-w-[85%] rounded-2xl px-4 py-2 text-[13px] leading-relaxed ${
                   msg.role === 'user'
                     ? isDark
-                      ? 'bg-blue-600/20 border border-blue-500/30 text-white font-medium rounded-br-sm'
-                      : 'bg-blue-600 text-white font-medium rounded-br-sm'
+                      ? 'bg-white/10 border border-white/20 text-white font-medium rounded-br-sm'
+                      : 'bg-black/5 text-black border border-black/10 font-medium rounded-br-sm'
                     : msg.role === 'error'
                     ? isDark
                       ? 'border border-rose-500/40 bg-rose-950/20 text-rose-300 rounded-bl-sm'
@@ -434,12 +433,12 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
 
       {/* ── Suggestions ── */}
       {!isLoading && messages.length > 0 && (
-        <div className={`shrink-0 px-4 pb-3 pt-3 border-t ${border} bg-transparent`}>
+        <div className={`shrink-0 px-4 pb-3 pt-3 border-t ${t.border} bg-transparent`}>
           <div className="flex items-center justify-between mb-2">
             <p className={`text-xs font-medium ${textMuted}`}>Suggested questions:</p>
             <button
               onClick={refreshSuggestions}
-              className={`flex items-center gap-1 text-[10px] uppercase tracking-wider ${textMuted} hover:text-blue-400 transition-colors`}
+              className={`flex items-center gap-1 text-[10px] uppercase tracking-wider ${textMuted} hover:${textPrimary} transition-colors`}
               title="Refresh suggestions"
             >
               <RefreshCw size={12} />
@@ -453,8 +452,8 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                 onClick={() => handleSuggestionClick(prompt, idx)}
                 className={`whitespace-nowrap shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium border ${border} transition-colors shadow-sm active:scale-95 ${
                   isDark
-                    ? 'text-white/30 hover:bg-white/4 hover:text-blue-400 hover:border-blue-500/30'
-                    : 'text-gray-400 hover:bg-blue-50 hover:text-blue-500 hover:border-blue-500/30'
+                    ? 'text-white/30 hover:bg-white/4 hover:text-white hover:border-white/30'
+                    : 'text-gray-400 hover:bg-black/5 hover:text-black hover:border-black/30'
                 }`}
               >
                 {prompt}
@@ -465,8 +464,8 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
       )}
 
       {/* ── Input ── */}
-      <div className={`shrink-0 p-3 border-t ${border}`}>
-        <div className={`flex items-center gap-2 rounded-full border px-4 py-2 ${bg} ${border} focus-within:border-blue-500/50 transition-colors`}>
+      <div className={`shrink-0 p-3 border-t ${t.border}`}>
+        <div className={`flex items-center gap-2 rounded-full border px-4 py-2 ${t.surface} ${t.border} focus-within:border-white/20 transition-colors`}>
           <input
             type="text"
             value={input}
@@ -481,7 +480,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
             disabled={!input.trim() || isLoading}
             className={`p-1.5 rounded-full transition-colors ${
               input.trim() && !isLoading
-                ? 'text-blue-500 hover:text-blue-400'
+                ? `${textPrimary} hover:opacity-80`
                 : textMuted
             }`}
           >

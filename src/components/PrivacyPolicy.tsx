@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ArrowLeft, Shield, Lock, Eye, Database, Globe, UserCheck, ChevronRight } from "lucide-react";
-import { useTokens } from "../lib/theme";
+import { useTokens, useTheme } from "../lib/theme";
 
 interface PrivacyPolicyProps {
   onBackToHome: () => void;
@@ -8,6 +8,8 @@ interface PrivacyPolicyProps {
 
 export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) => {
   const t = useTokens();
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "amoled";
   const [activeSection, setActiveSection] = useState("intro");
 
   const sections = [
@@ -61,14 +63,11 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
       <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-dashed border-slate-200 dark:border-white/6">
         <div>
           <div className={`inline-flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-widest border rounded-full px-3 py-1 mb-3.5 ${t.surface} ${t.border} ${t.textMuted}`}>
-            <Shield size={10} className="text-cyan-400" />
+            <Shield size={10} className={isDark ? "text-white/50" : "text-black/50"} />
             Trust & Transparency Portal
           </div>
           <h1 className={`text-[clamp(32px,4vw,48px)] font-black leading-[1.05] tracking-[-0.03em] mb-2.5 ${t.textPrimary}`}>
-            Privacy{" "}
-            <span className="bg-linear-to-r from-cyan-300 via-cyan-400 to-sky-400 bg-clip-text text-transparent">
-              Policy
-            </span>
+            Privacy Policy
           </h1>
           <p className={`text-[13px] font-light ${t.textSecondary}`}>
             Last updated: May 20, 2026 · We value your transparency and builder integrity.
@@ -77,7 +76,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
 
         <button
           onClick={onBackToHome}
-          className={`shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border shadow-sm transition-all cursor-pointer ${t.surface} ${t.border} ${t.textPrimary} hover:border-cyan-500/30 hover:text-cyan-400`}
+          className={`shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border shadow-sm transition-all cursor-pointer ${t.surface} ${t.border} ${t.textPrimary} hover:${t.borderHover} hover:${t.textAccent}`}
         >
           <ArrowLeft size={14} />
           Back to Dashboard
@@ -101,15 +100,15 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
                     onClick={() => scrollToSection(sect.id)}
                     className={`w-full flex items-center justify-between p-2.5 rounded-xl text-[12px] font-bold text-left transition-all duration-300 cursor-pointer ${
                       isActive
-                        ? "bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 shadow-sm"
+                        ? `${isDark ? "bg-white/10 border-white/20 text-white shadow-md" : "bg-black/5 border-black/10 text-neutral-900 shadow-sm"}`
                         : `border border-transparent text-slate-400 hover:bg-slate-100 dark:hover:bg-white/3 hover:text-white/80`
                     }`}
                   >
                     <div className="flex items-center gap-2.5">
-                      <Icon size={14} className={isActive ? "text-cyan-400" : "text-slate-400"} />
+                      <Icon size={14} className={isActive ? (isDark ? "text-white" : "text-neutral-900") : "text-slate-400"} />
                       <span>{sect.label}</span>
                     </div>
-                    {isActive && <ChevronRight size={12} className="text-cyan-400 animate-pulse" />}
+                    {isActive && <ChevronRight size={12} className={`${isDark ? "text-white" : "text-neutral-900"} animate-pulse`} />}
                   </button>
                 );
               })}
@@ -117,7 +116,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
           </div>
 
           {/* Quick Help Box */}
-          <div className="hidden lg:block p-5 rounded-2xl border bg-linear-to-br from-cyan-500/5 to-indigo-500/5 border-cyan-500/20 shadow-md">
+          <div className={`hidden lg:block p-5 rounded-2xl border shadow-md ${t.surface} ${t.border}`}>
             <h4 className={`text-[12px] font-bold ${t.textPrimary} mb-1.5`}>Need Legal Support?</h4>
             <p className={`text-[11px] leading-relaxed ${t.textSecondary} mb-3.5`}>
               Find our repository licensing terms or contact our maintenance crew directly on public channels.
@@ -127,7 +126,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
                 href="https://github.com/Frozen-47/AiVerse"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-full py-2 rounded-xl text-[11px] font-bold text-center border transition-all ${t.surface2} ${t.border} ${t.textPrimary} hover:border-cyan-500/20`}
+                className={`w-full py-2 rounded-xl text-[11px] font-bold text-center border transition-all ${t.surface2} ${t.border} ${t.textPrimary} hover:${t.borderHover}`}
               >
                 GitHub Codebase
               </a>
@@ -135,7 +134,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
                 href="https://discord.gg/22YKNrS62h"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-full py-2 rounded-xl text-[11px] font-bold text-center border transition-all ${t.surface2} ${t.border} ${t.textPrimary} hover:border-cyan-500/20`}
+                className={`w-full py-2 rounded-xl text-[11px] font-bold text-center border transition-all ${t.surface2} ${t.border} ${t.textPrimary} hover:${t.borderHover}`}
               >
                 Contact Maintenance
               </a>
@@ -152,7 +151,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
           {/* Intro Section */}
           <section id="intro" className="space-y-4 pt-2 first:pt-0 scroll-mt-24">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
+              <div className={`p-2 rounded-lg ${t.iconBgSolid}`}>
                 <Eye size={18} />
               </div>
               <h2 className={`text-xl font-bold tracking-tight ${t.textPrimary}`}>
@@ -160,7 +159,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
               </h2>
             </div>
             <p className={`text-[13px] leading-relaxed font-light ${t.textSecondary}`}>
-              Welcome to <strong>AiVerse</strong> (available at <a href="https://aiverse.frozenn.in" className="text-cyan-400 hover:underline">https://aiverse.frozenn.in</a>). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use our open-source AI Knowledge Base, personalize your dashboard, or submit catalog entries.
+              Welcome to <strong>AiVerse</strong> (available at <a href="https://aiverse.frozenn.in" className="text-black hover:underline">https://aiverse.frozenn.in</a>). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use our open-source AI Knowledge Base, personalize your dashboard, or submit catalog entries.
             </p>
           </section>
 
@@ -169,7 +168,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
           {/* Collection Section */}
           <section id="collection" className="space-y-4 scroll-mt-24">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
+              <div className={`p-2 rounded-lg ${t.iconBgSolid}`}>
                 <Database size={18} />
               </div>
               <h2 className={`text-xl font-bold tracking-tight ${t.textPrimary}`}>
@@ -212,7 +211,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
           {/* Usage Section */}
           <section id="usage" className="space-y-4 scroll-mt-24">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
+              <div className={`p-2 rounded-lg ${t.iconBgSolid}`}>
                 <UserCheck size={18} />
               </div>
               <h2 className={`text-xl font-bold tracking-tight ${t.textPrimary}`}>
@@ -230,7 +229,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
                 { title: "Abuse & Spam Mitigation", desc: "To safeguard community features (likes, bookmarks, ratings) from autonomous bots and sybil activities." }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-3 items-start">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shrink-0 mt-2 animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-black/5 shrink-0 mt-2 animate-pulse" />
                   <div>
                     <h4 className={`text-[13px] font-bold ${t.textPrimary} mb-0.5`}>{item.title}</h4>
                     <p className={`text-[12px] leading-relaxed ${t.textSecondary}`}>{item.desc}</p>
@@ -245,7 +244,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
           {/* Storage Section */}
           <section id="storage" className="space-y-4 scroll-mt-24">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
+              <div className={`p-2 rounded-lg ${t.iconBgSolid}`}>
                 <Lock size={18} />
               </div>
               <h2 className={`text-xl font-bold tracking-tight ${t.textPrimary}`}>
@@ -257,19 +256,19 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
             </p>
             <div className="space-y-3.5">
               <div className={`p-4 rounded-xl border ${t.surface2} ${t.border} flex flex-col sm:flex-row gap-3 items-start`}>
-                <div className="px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 font-mono text-[10px] font-bold uppercase shrink-0">Supabase DB</div>
+                <div className={`px-2.5 py-1 rounded font-mono text-[10px] font-bold uppercase shrink-0 ${isDark ? "bg-white/10 text-white/80" : "bg-black/5 text-black/80"}`}>Supabase DB</div>
                 <p className={`text-[12px] leading-relaxed font-light ${t.textSecondary}`}>
                   All entry metrics, account bookmarks, ratings, and login hashes are hosted securely on Supabase databases with token-based access controls.
                 </p>
               </div>
               <div className={`p-4 rounded-xl border ${t.surface2} ${t.border} flex flex-col sm:flex-row gap-3 items-start`}>
-                <div className="px-2.5 py-1 rounded bg-indigo-500/10 text-indigo-400 font-mono text-[10px] font-bold uppercase shrink-0">Vercel Edge</div>
+                <div className={`px-2.5 py-1 rounded font-mono text-[10px] font-bold uppercase shrink-0 ${isDark ? "bg-white/10 text-white/80" : "bg-black/5 text-black/80"}`}>Vercel Edge</div>
                 <p className={`text-[12px] leading-relaxed font-light ${t.textSecondary}`}>
                   Our interface and backend edge functions run on Vercel networks to optimize delivery speeds and defend against cyber exploits or DDoS surges.
                 </p>
               </div>
               <div className={`p-4 rounded-xl border ${t.surface2} ${t.border} flex flex-col sm:flex-row gap-3 items-start`}>
-                <div className="px-2.5 py-1 rounded bg-violet-500/10 text-violet-400 font-mono text-[10px] font-bold uppercase shrink-0">Local Storage</div>
+                <div className={`px-2.5 py-1 rounded font-mono text-[10px] font-bold uppercase shrink-0 ${isDark ? "bg-white/10 text-white/80" : "bg-black/5 text-black/80"}`}>Local Storage</div>
                 <p className={`text-[12px] leading-relaxed font-light ${t.textSecondary}`}>
                   We use browser memory to store client theme selections, temporary search caches, and state flags prior to registration.
                 </p>
@@ -282,7 +281,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
           {/* Rights Section */}
           <section id="rights" className="space-y-4 scroll-mt-24">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
+              <div className={`p-2 rounded-lg ${t.iconBgSolid}`}>
                 <Globe size={18} />
               </div>
               <h2 className={`text-xl font-bold tracking-tight ${t.textPrimary}`}>
@@ -299,7 +298,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
           {/* Changes Section */}
           <section id="changes" className="space-y-4 scroll-mt-24">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
+              <div className={`p-2 rounded-lg ${t.iconBgSolid}`}>
                 <Shield size={18} />
               </div>
               <h2 className={`text-xl font-bold tracking-tight ${t.textPrimary}`}>
@@ -314,7 +313,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
                 href="https://github.com/Frozen-47/AiVerse"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border transition-all ${t.surface2} ${t.border} ${t.textPrimary} hover:border-cyan-500/30 hover:text-cyan-400`}
+                className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border transition-all ${t.surface2} ${t.border} ${t.textPrimary} hover:${t.borderHover} hover:${t.textAccent}`}
               >
                 GitHub Repository
               </a>
@@ -322,7 +321,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
                 href="https://discord.gg/22YKNrS62h"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border transition-all ${t.surface2} ${t.border} ${t.textPrimary} hover:border-cyan-500/30 hover:text-cyan-400`}
+                className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border transition-all ${t.surface2} ${t.border} ${t.textPrimary} hover:${t.borderHover} hover:${t.textAccent}`}
               >
                 Join Discord Channel
               </a>

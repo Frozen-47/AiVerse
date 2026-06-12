@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Star, MessageSquare, Loader2 } from "lucide-react";
 import { useAuth } from "./AuthContext";
-import { useTokens } from "../lib/theme";
+import { useTokens, useTheme } from "../lib/theme";
 import type { EntryComment, EntryRatingSummary } from "../types";
 import {
   feedbackUserKey,
@@ -36,11 +36,13 @@ function StarRow({
   onRate,
   interactive,
   size = 18,
+  t,
 }: {
   value: number;
   onRate?: (n: number) => void;
   interactive?: boolean;
   size?: number;
+  t: ReturnType<typeof useTokens>;
 }) {
   const [hover, setHover] = useState(0);
   const display = hover || value;
@@ -63,7 +65,7 @@ function StarRow({
             className={
               n <= display
                 ? "fill-amber-400 text-amber-400"
-                : "fill-transparent text-white/20"
+                : `fill-transparent ${t.textMuted}`
             }
           />
         </button>
@@ -78,6 +80,7 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
   onViewProfile,
 }) => {
   const t = useTokens();
+  const { resolvedTheme } = useTheme();
   const { user, openAuthModal } = useAuth();
   const onRatingSummaryChangeRef = useRef(onRatingSummaryChange);
   onRatingSummaryChangeRef.current = onRatingSummaryChange;
@@ -195,7 +198,7 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
             <span className={`text-3xl font-black tabular-nums ${t.textPrimary}`}>
               {summary.count > 0 ? summary.average.toFixed(1) : "—"}
             </span>
-            <StarRow value={Math.round(summary.average)} interactive={false} size={16} />
+            <StarRow value={Math.round(summary.average)} interactive={false} size={16} t={t} />
           </div>
           <span className={`text-[12px] ${t.textMuted}`}>
             {summary.count === 0
@@ -214,6 +217,7 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
                 value={userRating ?? 0}
                 interactive={!ratingBusy}
                 onRate={handleRate}
+                t={t}
               />
               {ratingBusy && <Loader2 size={14} className={`animate-spin ${t.textMuted}`} />}
             </div>
@@ -249,7 +253,7 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
               placeholder="Share your experience with this tool..."
               rows={3}
               maxLength={2000}
-              className={`w-full px-4 py-3 rounded-xl border text-[13px] resize-none outline-hidden transition-all ${t.surface} ${t.border} ${t.textPrimary} focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10`}
+              className={`w-full px-4 py-3 rounded-xl border text-[13px] resize-none outline-none transition-all ${t.input}`}
             />
             <div className="flex items-center justify-between mt-2">
               <span className={`text-[10px] ${t.textMuted}`}>
@@ -328,7 +332,7 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
       </section>
 
       {error && (
-        <p className={`text-[12px] ${t.textAccent}`}>{error}</p>
+        <p className={`text-[12px] ${resolvedTheme === "light" ? "text-red-600" : "text-red-400"}`}>{error}</p>
       )}
     </div>
   );

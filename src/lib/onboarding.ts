@@ -197,6 +197,7 @@ export async function persistOnboardingProfile(
       medium?: string;
       devto?: string;
       portfolio?: string;
+      avatarUrl?: string;
     };
   },
 ): Promise<void> {

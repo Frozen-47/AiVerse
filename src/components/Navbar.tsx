@@ -144,7 +144,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {avatarUrl ? (
                   <img src={avatarUrl} alt="User avatar" className="w-full h-full object-cover" />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-cyan-500 to-blue-500 text-white font-bold text-sm">
+                  <div className={`w-full h-full flex items-center justify-center font-bold text-sm ${resolvedTheme === 'amoled' ? 'bg-white text-black' : 'bg-black text-white'}`}>
                     {initials}
                   </div>
                 )}
@@ -159,7 +159,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <div
                     className={`absolute right-0 top-11 w-80 sm:w-88 rounded-2xl shadow-2xl p-2  z-50 backdrop-blur-xl ${t.modal} overflow-hidden`}
                     style={{
-                      boxShadow: `0 20px 50px -12px rgba(6, 182, 212, 0.12), 0 0 0 1px ${
+                      boxShadow: `0 20px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px ${
                         resolvedTheme === "amoled" ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.08)"
                       }`,
                     }}
@@ -191,6 +191,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               {resolvedTheme === "amoled" ? <Sun size={18} /> : <Moon size={18} />}
             </button>
+
             <button
               onClick={() => onEditPreferences("preferences")}
               className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
@@ -208,7 +209,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
               <button
                 onClick={() => openAuthModal("signup")}
-                className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-semibold text-sm transition-all bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white shadow-md shadow-cyan-500/20`}
+                className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-semibold text-sm transition-all ${t.btnPrimary}`}
               >
                 <span className="hidden sm:inline">Create Account</span>
                 <span className="sm:hidden">Sign Up</span>

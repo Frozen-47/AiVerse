@@ -1,11 +1,10 @@
 import React from "react";
 import { ArrowLeft, ArrowRight, HelpCircle, RefreshCw, Lock } from "lucide-react";
-import { useTokens } from "../../lib/theme";
+import { useTokens, useTheme } from "../../lib/theme";
 import type { Entry } from "../../types";
 import { useAuth } from "../AuthContext";
 
 interface WizardFinderProps {
-  resolvedTheme: string;
   wizardStep: number;
   setWizardStep: (s: number) => void;
   setWizardGoal: (g: string | null) => void;
@@ -20,7 +19,6 @@ interface WizardFinderProps {
 }
 
 export const WizardFinder: React.FC<WizardFinderProps> = ({
-  resolvedTheme,
   wizardStep,
   setWizardStep,
   setWizardGoal,
@@ -34,36 +32,24 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
   setActiveView,
 }) => {
   const t = useTokens();
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "amoled";
   const { user, openAuthModal } = useAuth();
 
-  const cardBase = `group text-left p-4 rounded-xl border transition-all duration-300 cursor-pointer ${
-    resolvedTheme === "amoled"
-      ? "bg-black border-white/4 hover:border-cyan-500/35 hover:bg-cyan-500/1"
-      : "bg-white border-slate-200 hover:border-cyan-400 hover:bg-cyan-50/10"
-  }`;
-
-  const badgeBase = `text-[10px] font-extrabold tracking-widest uppercase px-2.5 py-1 rounded-full border ${
-    resolvedTheme === "amoled"
-      ? "bg-cyan-500/10 border-cyan-500/30 text-cyan-400"
-      : "bg-cyan-55 border-cyan-200 text-cyan-700"
-  }`;
+  const cardBase = `group text-left p-4 rounded-xl border transition-all duration-300 cursor-pointer ${t.card}`;
 
   return (
     <div
       id="wizard"
-      className={`relative p-6 sm:p-8 rounded-[28px] border backdrop-blur-md transition-all duration-300 scroll-mt-24 overflow-hidden ${
-        resolvedTheme === "amoled"
-          ? "bg-black border-cyan-500/20 shadow-[0_0_30px_rgba(6,182,212,0.05)]"
-          : "bg-white border-slate-200/50 shadow-md shadow-slate-100"
-      }`}
+      className={`relative p-6 sm:p-8 rounded-[28px] border backdrop-blur-md transition-all duration-300 scroll-mt-24 overflow-hidden ${t.surface} shadow-lg`}
     >
       {/* Lock overlay if not logged in */}
       {!user && (
         <div className={`absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center backdrop-blur-[6px] transition-colors duration-200 ${
-          resolvedTheme === "light" ? "bg-white/85" : "bg-black/85"
+          isDark ? "bg-neutral-900/90 text-white" : "bg-white/90 text-neutral-900"
         }`}>
-          <div className="w-14 h-14 rounded-2xl bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-500/35 animate-bounce-slow">
-            <Lock size={24} className="text-white" />
+          <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 shadow-lg ${t.iconBgSolid}`}>
+            <Lock size={24} />
           </div>
           <h3 className={`text-xl font-bold mb-2 tracking-tight ${t.textPrimary}`}>Unlock Personalized AI Finder</h3>
           <p className={`text-[13px] mb-6 max-w-95 leading-relaxed mx-auto ${t.textSecondary}`}>
@@ -78,7 +64,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
             </button>
             <button 
               onClick={() => openAuthModal("signup")}
-              className="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-md bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white cursor-pointer"
+              className={`${t.btnPrimary} px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-md cursor-pointer`}
             >
               Create Account
             </button>
@@ -93,8 +79,8 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
       >
       {/* Badge */}
       <div className="flex items-center gap-2 mb-4">
-        <span className={badgeBase}>Discovery Wizard</span>
-        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+        <span className={`text-[10px] font-extrabold tracking-widest uppercase px-2.5 py-1 rounded-full border ${t.pillInactive}`}>Discovery Wizard</span>
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 animate-pulse" />
       </div>
 
       {/* Step 0 — Intro */}
@@ -110,11 +96,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
           </div>
           <button
             onClick={() => setWizardStep(1)}
-            className={`px-5 py-3 rounded-xl font-bold text-[13px] tracking-wide transition-all duration-300 flex items-center gap-2 cursor-pointer ${
-              resolvedTheme === "amoled"
-                ? "bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 hover:border-cyan-400 hover:bg-cyan-500/25 hover:shadow-[0_0_15px_rgba(6,182,212,0.2)]"
-                : "bg-cyan-600 text-white hover:bg-cyan-700"
-            }`}
+            className={`px-5 py-3 rounded-xl font-bold text-[13px] tracking-wide transition-all duration-300 flex items-center gap-2 cursor-pointer ${t.btnPrimary}`}
           >
             <HelpCircle size={15} />
             Launch AI Finder
@@ -128,7 +110,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
         <div className="flex flex-col gap-5">
           <div className="flex items-center justify-between border-b border-dashed border-slate-200/40 dark:border-white/4 pb-3">
             <div>
-              <span className="text-[10px] font-extrabold uppercase tracking-widest text-cyan-500">Step 1 of 3</span>
+              <span className={`text-[10px] font-extrabold uppercase tracking-widest ${t.textMuted}`}>Step 1 of 3</span>
               <h4 className={`text-base font-bold ${t.textPrimary}`}>What is your primary development objective?</h4>
             </div>
             <button onClick={() => setWizardStep(0)} className={`text-[11px] font-semibold flex items-center gap-1 hover:opacity-80 transition-opacity cursor-pointer ${t.textMuted}`}>
@@ -148,7 +130,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                 className={cardBase}
               >
                 <span className="text-2xl mb-2.5 block">{opt.icon}</span>
-                <h5 className={`font-bold text-[13px] mb-1 group-hover:text-cyan-500 transition-colors ${t.textPrimary}`}>{opt.title}</h5>
+                <h5 className={`font-bold text-[13px] mb-1 transition-colors ${t.textPrimary}`}>{opt.title}</h5>
                 <p className={`text-[11px] leading-normal font-light ${t.textMuted}`}>{opt.desc}</p>
               </button>
             ))}
@@ -161,7 +143,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
         <div className="flex flex-col gap-5">
           <div className="flex items-center justify-between border-b border-dashed border-slate-200/40 dark:border-white/4 pb-3">
             <div>
-              <span className="text-[10px] font-extrabold uppercase tracking-widest text-cyan-500">Step 2 of 3</span>
+              <span className={`text-[10px] font-extrabold uppercase tracking-widest ${t.textMuted}`}>Step 2 of 3</span>
               <h4 className={`text-base font-bold ${t.textPrimary}`}>Which layer of the stack are you targeting?</h4>
             </div>
             <button onClick={() => setWizardStep(1)} className={`text-[11px] font-semibold flex items-center gap-1 hover:opacity-80 transition-opacity cursor-pointer ${t.textMuted}`}>
@@ -181,7 +163,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                 className={cardBase}
               >
                 <span className="text-2xl mb-2.5 block">{opt.icon}</span>
-                <h5 className={`font-bold text-[13px] mb-1 group-hover:text-cyan-500 transition-colors ${t.textPrimary}`}>{opt.title}</h5>
+                <h5 className={`font-bold text-[13px] mb-1 transition-colors ${t.textPrimary}`}>{opt.title}</h5>
                 <p className={`text-[11px] leading-normal font-light ${t.textMuted}`}>{opt.desc}</p>
               </button>
             ))}
@@ -194,7 +176,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
         <div className="flex flex-col gap-5">
           <div className="flex items-center justify-between border-b border-dashed border-slate-200/40 dark:border-white/4 pb-3">
             <div>
-              <span className="text-[10px] font-extrabold uppercase tracking-widest text-cyan-500">Step 3 of 3</span>
+              <span className={`text-[10px] font-extrabold uppercase tracking-widest ${t.textMuted}`}>Step 3 of 3</span>
               <h4 className={`text-base font-bold ${t.textPrimary}`}>What is your licensing policy requirements?</h4>
             </div>
             <button onClick={() => setWizardStep(2)} className={`text-[11px] font-semibold flex items-center gap-1 hover:opacity-80 transition-opacity cursor-pointer ${t.textMuted}`}>
@@ -213,7 +195,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
               >
                 <div className="flex items-center gap-3 mb-2.5">
                   <span className="text-2xl">{opt.icon}</span>
-                  <h5 className={`font-bold text-[14px] group-hover:text-cyan-500 transition-colors ${t.textPrimary}`}>{opt.title}</h5>
+                  <h5 className={`font-bold text-[14px] transition-colors ${t.textPrimary}`}>{opt.title}</h5>
                 </div>
                 <p className={`text-[11px] leading-normal font-light ${t.textMuted}`}>{opt.desc}</p>
               </button>
@@ -227,12 +209,12 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
         <div className="flex flex-col gap-5">
           <div className="flex items-center justify-between border-b border-dashed border-slate-200/40 dark:border-white/4 pb-3">
             <div>
-              <span className="text-[10px] font-extrabold uppercase tracking-widest text-cyan-500">Quiz Completed</span>
+              <span className={`text-[10px] font-extrabold uppercase tracking-widest ${t.textMuted}`}>Quiz Completed</span>
               <h4 className={`text-base font-bold ${t.textPrimary}`}>Your Ideal AI Assets Recommended:</h4>
             </div>
             <button
               onClick={() => { setWizardStep(0); setWizardGoal(null); setWizardType(null); setWizardLicense(null); }}
-              className="text-[11px] font-semibold flex items-center gap-1 hover:opacity-80 transition-opacity text-cyan-500 cursor-pointer"
+              className={`text-[11px] font-semibold flex items-center gap-1 hover:opacity-80 transition-opacity cursor-pointer ${t.textPrimary}`}
             >
               <RefreshCw size={12} className="animate-spin-slow" /> Reset Finder Quiz
             </button>
@@ -242,31 +224,19 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
             {wizardRecommendations.map((entry, idx) => (
               <div
                 key={idx}
-                className={`relative p-5 rounded-xl border flex flex-col transition-all duration-300 ${
-                  resolvedTheme === "amoled"
-                    ? "bg-white/1 border-white/5 shadow-[0_0_15px_rgba(6,182,212,0.03)] hover:border-cyan-500/30"
-                    : "bg-white border-slate-200 shadow-sm hover:border-cyan-400"
-                }`}
+                className={`relative p-5 rounded-xl flex flex-col transition-all duration-300 ${t.card}`}
               >
                 <div className="absolute top-4 right-4">
-                  <span
-                    className={`text-[9px] font-extrabold px-2 py-0.5 rounded-full border ${
-                      resolvedTheme === "amoled"
-                        ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.1)]"
-                        : "bg-emerald-50 border-emerald-200 text-emerald-700"
-                    }`}
-                  >
+                  <span className={`text-[9px] font-extrabold px-2 py-0.5 rounded-full border ${
+                    isDark
+                      ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
+                      : "bg-emerald-50 border-emerald-200 text-emerald-700"
+                  }`}>
                     {99 - idx * 2}% Match
                   </span>
                 </div>
 
-                <span
-                  className={`text-[9px] font-extrabold px-1.5 py-0.5 w-fit rounded-md border mb-2.5 ${
-                    resolvedTheme === "amoled"
-                      ? "bg-cyan-500/10 border-cyan-500/20 text-cyan-400"
-                      : "bg-cyan-50 border-cyan-200 text-cyan-700"
-                  }`}
-                >
+                <span className={`text-[9px] font-extrabold px-1.5 py-0.5 w-fit rounded-md border mb-2.5 ${t.pillSmall}`}>
                   {entry.type}
                 </span>
 
@@ -274,16 +244,12 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                 <span className={`text-[10px] ${t.textMuted} mb-3.5`}>by {entry.org}</span>
                 <p className={`text-[11px] leading-relaxed font-light mb-4 line-clamp-2 ${t.textSecondary}`}>{entry.summary}</p>
 
-                <div className="mt-auto pt-3 border-t border-dashed border-slate-200/40 dark:border-white/4 flex items-center justify-between">
-                  <span className="text-[10px] font-semibold text-cyan-500">{entry.license}</span>
+                <div className={`mt-auto pt-3 border-t border-dashed ${t.border} flex items-center justify-between`}>
+                  <span className={`text-[10px] font-semibold ${t.textSecondary}`}>{entry.license}</span>
                   <div className="flex gap-2">
                     <button
                       onClick={() => setSelected(entry)}
-                      className={`text-[9px] font-extrabold uppercase px-2 py-1 rounded-md border cursor-pointer transition-colors ${
-                        resolvedTheme === "amoled"
-                          ? "bg-cyan-500/10 border-cyan-500/20 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400"
-                          : "bg-cyan-55 border-cyan-200 text-cyan-700 hover:bg-cyan-100 hover:border-cyan-300"
-                      }`}
+                      className={`text-[9px] font-extrabold uppercase px-2 py-1 rounded-md border cursor-pointer transition-colors ${t.btnSecondary}`}
                     >
                       Specs
                     </button>
@@ -295,7 +261,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                         setActiveView("catalog");
                         window.scrollTo({ top: 0, behavior: "smooth" });
                       }}
-                      className="text-[9px] font-extrabold uppercase px-2 py-1 rounded-md bg-cyan-500 hover:bg-cyan-600 text-white cursor-pointer"
+                      className={`text-[9px] font-extrabold uppercase px-2 py-1 rounded-md cursor-pointer ${t.btnPrimary}`}
                     >
                       View Decks
                     </button>

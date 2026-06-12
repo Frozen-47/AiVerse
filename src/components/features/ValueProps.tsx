@@ -2,11 +2,7 @@ import React from "react";
 import { Sparkles, Cpu, Layers } from "lucide-react";
 import { useTokens } from "../../lib/theme";
 
-interface ValuePropsProps {
-  resolvedTheme: string;
-}
-
-export const ValueProps: React.FC<ValuePropsProps> = ({ resolvedTheme }) => {
+export const ValueProps: React.FC = () => {
   const t = useTokens();
 
   const props = [
@@ -34,13 +30,9 @@ export const ValueProps: React.FC<ValuePropsProps> = ({ resolvedTheme }) => {
         return (
           <div
             key={i}
-            className={`p-5 rounded-2xl border transition-all duration-300 ${
-              resolvedTheme === "amoled"
-                ? "bg-black border-white/5 hover:border-white/10 hover:bg-cyan-500/1"
-                : "bg-white border-slate-200/50 shadow-xs hover:border-slate-300 hover:shadow-md hover:shadow-slate-100"
-            }`}
+            className={`p-5 rounded-2xl transition-all duration-300 ${t.card}`}
           >
-            <div className="p-2 w-fit rounded-lg bg-cyan-500/10 text-cyan-500 mb-3">
+            <div className={`p-2 w-fit rounded-lg ${t.iconBg} mb-3`}>
               <Icon size={16} />
             </div>
             <h4 className={`text-[13px] font-bold mb-1.5 ${t.textPrimary}`}>{prop.title}</h4>

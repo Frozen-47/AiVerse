@@ -134,7 +134,7 @@ function CompareTable({
 }) {
   return (
     <div className={`rounded-2xl border overflow-hidden ${t.border}`}>
-      <div className={`grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] gap-px bg-white/5 text-[10px] uppercase tracking-widest font-semibold ${t.surface2}`}>
+      <div className={`grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] gap-px text-[10px] uppercase tracking-widest font-semibold ${t.surface2}`}>
         <div className={`px-3 py-2.5 ${t.textMuted}`} />
         <div className={`px-3 py-2.5 truncate ${t.textPrimary}`}>{left.name}</div>
         <div className={`px-3 py-2.5 truncate ${t.textAccent}`}>{right.name}</div>
@@ -176,6 +176,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
   const [copied, setCopied] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
   const [compareName, setCompareName] = useState("");
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const compareEntry = useMemo(
     () => compareCandidates.find((e) => e.name === compareName),
@@ -190,6 +191,21 @@ export const DetailModal: React.FC<DetailModalProps> = ({
       document.body.style.overflow = "unset";
     };
   }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (document.querySelector(".user-profile-modal")) {
+        return;
+      }
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        onClose();
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
 
   useEffect(() => {
     setCompareName("");
@@ -208,11 +224,11 @@ export const DetailModal: React.FC<DetailModalProps> = ({
   };
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm"
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
-    >
-      <div className={`relative w-full max-w-2xl sm:max-w-3xl lg:max-w-4xl max-h-[92vh] flex flex-col rounded-3xl border shadow-2xl ${t.modal} ${t.border}`}>
+    <div className={t.modalOverlay}>
+      <div
+        ref={modalRef}
+        className={`relative w-full max-w-2xl sm:max-w-3xl lg:max-w-4xl max-h-[92vh] flex flex-col rounded-2xl overflow-hidden shadow-2xl ${t.modal}`}
+      >
 
         <div className="absolute top-5 right-5 z-10 flex items-center gap-2">
           <button
@@ -242,7 +258,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
         {/* Header (fixed) */}
         <div className={`shrink-0 px-7 pt-7 pb-6 border-b ${t.border}`}>
           <div className="flex items-start gap-4 mb-4">
-            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-xl font-bold shrink-0 ${typeIcon(entry.type, t)}`}>
+            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-xl font-bold shrink-0 ${typeIcon(entry.type, t)}`}>
               {TYPE_GLYPH[entry.type] ?? "◆"}
             </div>
             <div className="flex-1 min-w-0">
@@ -279,9 +295,9 @@ export const DetailModal: React.FC<DetailModalProps> = ({
           <div className="relative">
             {!user && (
               <div className={`absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center min-h-80 backdrop-blur-xs transition-colors duration-200 ${
-                resolvedTheme === "light" ? "bg-white/80" : "bg-black/80"
+                resolvedTheme === "light" ? "bg-white/90 text-neutral-900" : "bg-neutral-900/90 text-white"
               }`}>
-                <div className="w-14 h-14 rounded-2xl bg-linear-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-500/30">
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 shadow-lg ${t.iconBgSolid}`}>
                   <Lock size={24} />
                 </div>
                 <h3 className={`text-xl font-bold mb-2 tracking-tight ${t.textPrimary}`}>Unlock Full Details</h3>
@@ -315,7 +331,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 <div className={`px-7 pt-5 pb-4 border-b ${t.border}`}>
                   <label
                     htmlFor="compare-with"
-                    className={`block text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}
+                    className={t.sectionLabel}
                   >
                     Compare with
                   </label>
@@ -342,8 +358,8 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                     { label: "Organization", value: entry.org },
                     { label: "Model Size",   value: entry.size },
                   ].map(({ label, value }) => (
-                    <div key={label} className={`rounded-2xl border px-4 py-3 ${t.surface2} ${t.border}`}>
-                      <p className={`text-[10px] uppercase tracking-widest mb-1 ${t.textMuted}`}>{label}</p>
+                    <div key={label} className={`rounded-2xl px-4 py-3 ${t.surface2} ${t.border}`}>
+                      <p className={`text-[10px] font-semibold uppercase tracking-widest mb-1 ${t.textMuted}`}>{label}</p>
                       <p className={`text-[13px] font-semibold word-break break-all ${t.textPrimary}`}>{value}</p>
                     </div>
                   ))}
@@ -351,15 +367,15 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
                 {/* Architecture */}
                 <div>
-                  <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Architecture</p>
+                  <p className={t.sectionLabel}>Architecture</p>
                   <p className={`text-[13px] leading-relaxed ${t.textSecondary}`}>{entry.architecture}</p>
                 </div>
 
                 {/* Code */}
                 {entry.usage && (
                   <div>
-                    <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Example Usage</p>
-                    <div className={`rounded-2xl overflow-hidden border ${t.border}`}>
+                    <p className={t.sectionLabel}>Example Usage</p>
+                    <div className={`rounded-2xl overflow-hidden ${t.border}`}>
                       {/* Toolbar */}
                       <div className={`flex items-center justify-between px-4 py-2.5 border-b ${t.border} ${t.surface}`}>
                         <span className={`text-[10px] uppercase tracking-widest font-semibold ${t.textMuted}`}>Python</span>
@@ -396,13 +412,13 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
                 {/* Benchmarks */}
                 <div>
-                  <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Benchmarks</p>
+                  <p className={t.sectionLabel}>Benchmarks</p>
                   <p className={`text-[13px] leading-relaxed ${t.textSecondary}`}>{entry.benchmarks}</p>
                 </div>
 
                 {/* Limitations */}
                 <div>
-                  <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Limitations</p>
+                  <p className={t.sectionLabel}>Limitations</p>
                   <div className="flex flex-wrap gap-2">
                     {entry.limitations.split(",").map((l, i) => (
                       <span key={i} className={`text-[11px] px-3 py-1 rounded-xl border ${t.limitTag}`}>
@@ -415,7 +431,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 {/* URL */}
                 {entry.url && (
                   <div>
-                    <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Official Resource</p>
+                    <p className={t.sectionLabel}>Official Resource</p>
                     <a
                       href={entry.url}
                       target="_blank"
@@ -430,14 +446,14 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
                 {relatedEntries.length > 0 && onSelectRelated && (
                   <div>
-                    <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Related entries</p>
+                    <p className={t.sectionLabel}>Related entries</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {relatedEntries.map((related) => (
                         <button
                           key={related.name}
                           type="button"
                           onClick={() => onSelectRelated(related)}
-                          className={`text-left rounded-xl border px-4 py-3 transition-all ${t.surface} ${t.border} hover:border-cyan-500/30`}
+                          className={`text-left rounded-xl border px-4 py-3 transition-all ${t.surface} ${t.border} ${t.borderHover}`}
                         >
                           <p className={`text-[13px] font-semibold ${t.textPrimary}`}>{related.name}</p>
                           <p className={`text-[11px] mt-0.5 ${t.textMuted}`}>{related.type} · {related.task}</p>
@@ -450,7 +466,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 {/* Citations */}
                 {entry.citations.length > 0 && (
                   <div>
-                    <p className={`text-[10px] uppercase tracking-widest mb-2 ${t.textMuted}`}>Citations</p>
+                    <p className={t.sectionLabel}>Citations</p>
                     <div className="space-y-2">
                       {entry.citations.map((c, i) => (
                         <a
@@ -460,7 +476,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                           rel="noopener noreferrer"
                           className={`flex items-center gap-3 px-4 py-3 rounded-xl border transition-all group ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textAccent}`}
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400/50 shrink-0" />
+                          <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${resolvedTheme === "light" ? "bg-neutral-300" : "bg-white/20"}`} />
                           <span className="flex-1 text-[12px]">{c.text}</span>
                           <ExternalLink size={11} className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                         </a>

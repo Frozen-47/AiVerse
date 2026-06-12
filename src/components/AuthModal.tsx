@@ -7,6 +7,7 @@ import { supabase } from '../lib/supabase';
 export const AuthModal: React.FC = () => {
   const { isAuthModalOpen, closeAuthModal, authMode, signInWithOAuth } = useAuth();
   const t = useTokens();
+
   
   const [isLogin, setIsLogin] = useState(authMode === 'signin');
   const [email, setEmail] = useState('');
@@ -55,12 +56,12 @@ export const AuthModal: React.FC = () => {
 
   return (
     <div 
-      className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-[fadeIn_0.2s_ease-out]"
+      className={t.modalOverlay}
       onClick={(e) => {
         if (e.target === e.currentTarget) closeAuthModal();
       }}
     >
-      <div className={`relative w-full max-w-md rounded-3xl border shadow-2xl p-8 ${t.modal} ${t.border} `}>
+      <div className={`relative w-full max-w-md rounded-2xl shadow-2xl overflow-hidden p-8 ${t.modal}`}>
         <button
           onClick={closeAuthModal}
           className={`absolute top-4 right-4 p-2 rounded-lg border transition-colors ${t.surface} ${t.border} ${t.textMuted} hover:${t.textPrimary}`}
@@ -121,14 +122,14 @@ export const AuthModal: React.FC = () => {
           <div className="absolute inset-0 flex items-center">
             <div className={`w-full border-t ${t.border}`} />
           </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className={`px-3 ${t.modal} rounded-md ${t.textMuted}`}>Or continue with email</span>
+          <div className="relative flex justify-center">
+            <span className={`px-3 ${t.modal} rounded-md ${t.sectionLabel} mb-0`}>Or continue with email</span>
           </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className={`block text-xs font-semibold uppercase tracking-wider mb-2 ${t.textMuted}`}>
+            <label className={t.sectionLabel}>
               Email
             </label>
             <div className="relative">
@@ -138,14 +139,14 @@ export const AuthModal: React.FC = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className={`w-full pl-10 pr-4 py-3 rounded-xl border ${t.surface} ${t.border} ${t.textPrimary} focus:outline-hidden focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-all`}
+                className={`w-full pl-10 pr-4 py-3 rounded-xl border ${t.surface} ${t.border} ${t.textPrimary} focus:outline-hidden focus:border-black/20 focus:ring-1 focus:ring-black/20 transition-all`}
                 placeholder="you@example.com"
               />
             </div>
           </div>
 
           <div>
-            <label className={`block text-xs font-semibold uppercase tracking-wider mb-2 ${t.textMuted}`}>
+            <label className={t.sectionLabel}>
               Password
             </label>
             <div className="relative">
@@ -156,7 +157,7 @@ export const AuthModal: React.FC = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
-                className={`w-full pl-10 pr-4 py-3 rounded-xl border ${t.surface} ${t.border} ${t.textPrimary} focus:outline-hidden focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-all`}
+                className={`w-full pl-10 pr-4 py-3 rounded-xl border ${t.surface} ${t.border} ${t.textPrimary} focus:outline-hidden focus:border-black/20 focus:ring-1 focus:ring-black/20 transition-all`}
                 placeholder="••••••••"
               />
             </div>
@@ -171,7 +172,7 @@ export const AuthModal: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-semibold text-sm bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white shadow-md shadow-cyan-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-semibold text-sm bg-black text-white hover:from-black hover:to-transparent text-white shadow-md shadow-black/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed mt-2"
           >
             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (isLogin ? 'Sign In' : 'Sign Up')}
           </button>
