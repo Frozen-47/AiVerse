@@ -1,6 +1,6 @@
 import React, { memo, useMemo } from "react";
 import { Star, Layers, Box, Database, Server, LayoutGrid, Bot } from "lucide-react";
-import { useTokens, taskColor, taskActiveColor, typeActiveColor } from "../lib/theme";
+import { useTokens, taskColor, taskActiveColor, typeActiveColor, typeColorClass } from "../lib/theme";
 import type { Entry, TypeFilter, TaskFilter } from "../types";
 
 interface SidebarProps {
@@ -108,7 +108,7 @@ export const Sidebar = memo(function Sidebar({
                 ${currentFilter === f ? typeActiveColor(f, t) : t.sidebarItem}
               `}
             >
-              <span className="opacity-70">{TYPE_ICONS[f]}</span>
+              <span className={`opacity-80 shrink-0 ${typeColorClass(f)}`}>{TYPE_ICONS[f]}</span>
               <span className="flex-1 text-left">{f}</span>
               <span className={`text-[11px] tabular-nums font-semibold ${currentFilter === f ? "" : t.textMuted}`}>
                 {typeCounts[f]}

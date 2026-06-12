@@ -36,7 +36,7 @@ const darkTokens: TokenMap = {
   pillActive: "bg-white/10 border-white/20 text-white",
   pillInactive: "border-white/7 text-white/35 hover:border-white/15 hover:text-white/65",
   // Card
-  card: "bg-white/[0.03] border border-white/8 hover:border-white/15 hover:bg-white/[0.05]",
+  card: "bg-black border border-white/8 hover:border-white/15 hover:bg-white/[0.02]",
   // Modal
   modal: "bg-neutral-800 border border-white/8",
   modalOverlay: "fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-neutral-950/80 backdrop-blur-md animate-[fadeIn_0.15s_ease-out]",
@@ -51,30 +51,38 @@ const darkTokens: TokenMap = {
   // Stats
   statValue: "text-white",
   // Badge type
-  badgeModel: "bg-white/5 text-white/70 border border-white/10",
-  badgeFramework: "bg-white/5 text-white/70 border border-white/10",
-  badgeDataset: "bg-white/5 text-white/70 border border-white/10",
-  badgePlatform: "bg-white/5 text-white/70 border border-white/10",
+  badgeModel: "bg-sky-500/10 text-sky-400 border border-sky-500/20",
+  badgeFramework: "bg-amber-500/10 text-amber-400 border border-amber-500/20",
+  badgeDataset: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
+  badgePlatform: "bg-indigo-500/10 text-indigo-400 border border-indigo-500/20",
+  badgeAI: "bg-red-500/10 text-red-400 border border-red-500/20",
   // Badge task
-  badgeNLP: "bg-white/5 text-white/70 border border-white/10",
-  badgeCV: "bg-white/5 text-white/70 border border-white/10",
-  badgeMLOps: "bg-white/5 text-white/70 border border-white/10",
-  badgeAudio: "bg-white/5 text-white/70 border border-white/10",
-  badgeMultimodal: "bg-white/5 text-white/70 border border-white/10",
+  badgeNLP: "bg-teal-500/10 text-teal-400 border border-teal-500/20",
+  badgeCV: "bg-rose-500/10 text-rose-400 border border-rose-500/20",
+  badgeMLOps: "bg-fuchsia-500/10 text-fuchsia-400 border border-fuchsia-500/20",
+  badgeAudio: "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20",
+  badgeMultimodal: "bg-violet-500/10 text-violet-400 border border-violet-500/20",
+  badgeAICoding: "bg-cyan-500/10 text-cyan-400 border border-cyan-500/20",
+  badgeImageGen: "bg-pink-500/10 text-pink-400 border border-pink-500/20",
+  badgeVideoGen: "bg-orange-500/10 text-orange-400 border border-orange-500/20",
+  badgeProductivity: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
+  badgeEducation: "bg-amber-500/10 text-amber-400 border border-amber-500/20",
+  badgeResearch: "bg-indigo-500/10 text-indigo-400 border border-indigo-500/20",
   // Popular
   popular: "bg-white/10 text-white border border-white/15",
   // Typography Colors
-  textModel: "text-white/80",
-  textFramework: "text-white/80",
-  textDataset: "text-white/80",
-  textPlatform: "text-white/80",
-  textAI: "text-white/80",
-  textPopular: "text-white",
+  textModel: "text-sky-400 font-bold",
+  textFramework: "text-amber-400 font-bold",
+  textDataset: "text-emerald-400 font-bold",
+  textPlatform: "text-indigo-400 font-bold",
+  textAI: "text-red-400 font-bold",
+  textPopular: "text-yellow-400 font-bold",
   // Icon Colors
-  iconModel: "text-white/80 bg-white/5",
-  iconFramework: "text-white/80 bg-white/5",
-  iconDataset: "text-white/80 bg-white/5",
-  iconPlatform: "text-white/80 bg-white/5",
+  iconModel: "text-sky-400 bg-sky-500/10",
+  iconFramework: "text-amber-400 bg-amber-500/10",
+  iconDataset: "text-emerald-400 bg-emerald-500/10",
+  iconPlatform: "text-indigo-400 bg-indigo-500/10",
+  iconAI: "text-red-400 bg-red-500/10",
   // Sidebar
   sidebarItem: "text-white/40 hover:text-white/80 hover:bg-white/4",
   sidebarActive: "text-white bg-white/10",
@@ -128,30 +136,38 @@ const light: TokenMap = {
   // Stats
   statValue: "text-neutral-900 font-bold",
   // Badge type
-  badgeModel: "bg-neutral-100 text-neutral-700 border border-neutral-200",
-  badgeFramework: "bg-neutral-100 text-neutral-700 border border-neutral-200",
-  badgeDataset: "bg-neutral-100 text-neutral-700 border border-neutral-200",
-  badgePlatform: "bg-neutral-100 text-neutral-700 border border-neutral-200",
+  badgeModel: "bg-sky-50 text-sky-700 border border-sky-200",
+  badgeFramework: "bg-amber-50 text-amber-700 border border-amber-200",
+  badgeDataset: "bg-emerald-50 text-emerald-700 border border-emerald-200",
+  badgePlatform: "bg-indigo-50 text-indigo-700 border border-indigo-200",
+  badgeAI: "bg-red-50 text-red-700 border border-red-200",
   // Badge task
-  badgeNLP: "bg-neutral-100 text-neutral-700 border border-neutral-200",
-  badgeCV: "bg-neutral-100 text-neutral-700 border border-neutral-200",
-  badgeMLOps: "bg-neutral-100 text-neutral-700 border border-neutral-200",
-  badgeAudio: "bg-neutral-100 text-neutral-700 border border-neutral-200",
-  badgeMultimodal: "bg-neutral-100 text-neutral-700 border border-neutral-200",
+  badgeNLP: "bg-teal-50 text-teal-700 border border-teal-200",
+  badgeCV: "bg-rose-50 text-rose-700 border border-rose-200",
+  badgeMLOps: "bg-fuchsia-50 text-fuchsia-700 border border-fuchsia-200",
+  badgeAudio: "bg-yellow-50 text-yellow-700 border border-yellow-200",
+  badgeMultimodal: "bg-violet-50 text-violet-700 border border-violet-200",
+  badgeAICoding: "bg-cyan-50 text-cyan-700 border border-cyan-200",
+  badgeImageGen: "bg-pink-50 text-pink-700 border border-pink-200",
+  badgeVideoGen: "bg-orange-50 text-orange-700 border border-orange-200",
+  badgeProductivity: "bg-emerald-50 text-emerald-700 border border-emerald-200",
+  badgeEducation: "bg-amber-50 text-amber-700 border border-amber-200",
+  badgeResearch: "bg-indigo-50 text-indigo-700 border border-indigo-200",
   // Popular
   popular: "bg-neutral-100 text-neutral-700 border border-neutral-200",
   // Typography Colors
-  textModel: "text-neutral-800",
-  textFramework: "text-neutral-800",
-  textDataset: "text-neutral-800",
-  textPlatform: "text-neutral-800",
-  textAI: "text-neutral-800",
-  textPopular: "text-neutral-800",
+  textModel: "text-sky-600 font-bold",
+  textFramework: "text-amber-600 font-bold",
+  textDataset: "text-emerald-600 font-bold",
+  textPlatform: "text-indigo-600 font-bold",
+  textAI: "text-red-600 font-bold",
+  textPopular: "text-yellow-600 font-bold",
   // Icon Colors
-  iconModel: "text-neutral-700 bg-neutral-100",
-  iconFramework: "text-neutral-700 bg-neutral-100",
-  iconDataset: "text-neutral-700 bg-neutral-100",
-  iconPlatform: "text-neutral-700 bg-neutral-100",
+  iconModel: "text-sky-600 bg-sky-50",
+  iconFramework: "text-amber-600 bg-amber-50",
+  iconDataset: "text-emerald-600 bg-emerald-50",
+  iconPlatform: "text-indigo-600 bg-indigo-50",
+  iconAI: "text-red-600 bg-red-50",
   // Sidebar
   sidebarItem: "text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100",
   sidebarActive: "text-neutral-900 bg-neutral-200/50 font-semibold",
@@ -178,6 +194,7 @@ export function typeBadge(type: string, t: TokenMap) {
     Framework: t.badgeFramework,
     Dataset: t.badgeDataset,
     Platform: t.badgePlatform,
+    AI: t.badgeAI,
   }[type] ?? t.pillInactive);
 }
 
@@ -188,11 +205,17 @@ export function taskBadge(task: string, t: TokenMap) {
     MLOps: t.badgeMLOps,
     Audio: t.badgeAudio,
     Multimodal: t.badgeMultimodal,
+    "AI Coding": t.badgeAICoding,
+    "Image Generation": t.badgeImageGen,
+    "Video Generation": t.badgeVideoGen,
+    Productivity: t.badgeProductivity,
+    Education: t.badgeEducation,
+    Research: t.badgeResearch,
   }[task] ?? t.pillInactive);
 }
 
 export const TYPE_GLYPH: Record<string, string> = {
-  Model: "◈", Framework: "⬡", Dataset: "◎", Platform: "◉",
+  Model: "◈", Framework: "⬡", Dataset: "◎", Platform: "◉", AI: "🤖",
 };
 
 export function typeIcon(type: string, t: TokenMap) {
@@ -201,43 +224,42 @@ export function typeIcon(type: string, t: TokenMap) {
     Framework: t.iconFramework,
     Dataset: t.iconDataset,
     Platform: t.iconPlatform,
+    AI: t.iconAI,
   }[type] ?? t.pillInactive);
+}
+
+export function typeColorClass(type: string) {
+  return ({
+    All: "text-neutral-400 dark:text-neutral-500",
+    AI: "text-red-500 dark:text-red-400",
+    Model: "text-sky-500 dark:text-sky-400",
+    Framework: "text-amber-500 dark:text-amber-400",
+    Dataset: "text-emerald-500 dark:text-emerald-400",
+    Platform: "text-indigo-500 dark:text-indigo-400",
+  }[type] ?? "text-neutral-400");
 }
 
 export function taskColor(task: string) {
   return ({
-    "All Tasks": "bg-gray-400/20 dark:bg-white/10",
-    NLP: "bg-black/20 dark:bg-white/30",
-    "Computer Vision": "bg-black/20 dark:bg-white/30",
-    MLOps: "bg-black/20 dark:bg-white/30",
-    Audio: "bg-black/20 dark:bg-white/30",
-    Multimodal: "bg-black/20 dark:bg-white/30",
-    "AI Coding": "bg-black/20 dark:bg-white/30",
-    "Image Generation": "bg-black/20 dark:bg-white/30",
-    "Video Generation": "bg-black/20 dark:bg-white/30",
-    Productivity: "bg-black/20 dark:bg-white/30",
-    Education: "bg-black/20 dark:bg-white/30",
-    Research: "bg-black/20 dark:bg-white/30",
-  }[task] ?? "bg-gray-500/50 dark:bg-white/20");
+    "All Tasks": "bg-neutral-400 dark:bg-neutral-500",
+    NLP: "bg-teal-500",
+    "Computer Vision": "bg-rose-500",
+    MLOps: "bg-fuchsia-500",
+    Audio: "bg-yellow-500",
+    Multimodal: "bg-violet-500",
+    "AI Coding": "bg-cyan-500",
+    "Image Generation": "bg-pink-500",
+    "Video Generation": "bg-orange-500",
+    Productivity: "bg-emerald-500",
+    Education: "bg-amber-500",
+    Research: "bg-indigo-500",
+  }[task] ?? "bg-neutral-500");
 }
 
-export function taskActiveColor(task: string, t: TokenMap) {
-  return ({
-    "All Tasks": t.sidebarActive,
-    NLP: t.sidebarActive,
-    "Computer Vision": t.sidebarActive,
-    MLOps: t.sidebarActive,
-    Audio: t.sidebarActive,
-    Multimodal: t.sidebarActive,
-  }[task] ?? t.sidebarItem);
+export function taskActiveColor(_task: string, t: TokenMap) {
+  return t.sidebarActive;
 }
 
-export function typeActiveColor(type: string, t: TokenMap) {
-  return ({
-    "All": t.sidebarActive,
-    Model: t.sidebarActive,
-    Framework: t.sidebarActive,
-    Dataset: t.sidebarActive,
-    Platform: t.sidebarActive,
-  }[type] ?? t.sidebarItem);
+export function typeActiveColor(_type: string, t: TokenMap) {
+  return t.sidebarActive;
 }

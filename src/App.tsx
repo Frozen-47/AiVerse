@@ -14,6 +14,7 @@ import { SearchBar } from "./components/SearchBar";
 import { EntryCard } from "./components/EntryCard";
 import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
 import { UserProfileModal } from "./components/UserProfileModal";
+import { OverviewCards } from "./components/OverviewCards";
 import { PreferencesLoginPrompt } from "./components/PreferencesLoginPrompt";
 import { AuthProvider, useAuth } from "./components/AuthContext";
 import { AuthModal } from "./components/AuthModal";
@@ -46,7 +47,7 @@ const ChatWidget = lazy(() =>
 import type { Entry, EntryRatingSummary, Theme, TypeFilter, TaskFilter } from "./types";
 import { fetchRatingSummaries } from "./lib/entryFeedback";
 import { fetchEntries } from "./lib/supabase";
-import { typeFilters as staticTypeFilters, taskFilters as staticTaskFilters } from "./data";
+import { typeFilters as staticTypeFilters, taskFilters as staticTaskFilters, entries as staticEntries } from "./data";
 import {
   partitionByInterests,
   persistOnboardingProfile,
@@ -348,13 +349,21 @@ const Inner: React.FC = () => {
   useEffect(() => {
     fetchEntries()
       .then(data => {
-        setEntries(data || []);
+        if (!data || data.length === 0) {
+          console.warn("No data returned from Supabase, falling back to static entries.");
+          setEntries(staticEntries || []);
+        } else {
+          setEntries(data);
+        }
         setTypeFilters(staticTypeFilters || ["All"]);
         setTaskFilters(staticTaskFilters || ["All Tasks"]);
         setIsLoading(false);
       })
       .catch(err => {
-        console.error("Failed to load catalog from Supabase", err);
+        console.error("Failed to load catalog from Supabase, falling back to static entries", err);
+        setEntries(staticEntries || []);
+        setTypeFilters(staticTypeFilters || ["All"]);
+        setTaskFilters(staticTaskFilters || ["All Tasks"]);
         setIsLoading(false);
       });
 
@@ -494,6 +503,77 @@ const Inner: React.FC = () => {
       window.history.replaceState({}, "", url);
     }
   }, [selected, profileUsername, isPrivacy, isTerms, isWizard, isArena, isFeatures, activeView, browseAll, urlSyncReady]);
+
+  // Dynamic SEO handler
+  useEffect(() => {
+    let title = "AiVerse - The Ultimate AI Tool & Model Directory";
+    let desc = "AiVerse is a comprehensive, open-source guide to AI tools, models, datasets, and frameworks. Search, compare, and discover the best AI technologies.";
+    let path = "/";
+
+    if (isPrivacy) {
+      title = "Privacy Policy | AiVerse";
+      desc = "Read the AiVerse Privacy Policy to understand how we secure your data, personalization preferences, and catalog contributions.";
+      path = "/privacy";
+    } else if (isTerms) {
+      title = "Terms of Service | AiVerse";
+      desc = "Review the AiVerse Terms of Service for contributing tools, utilizing the comparison arena, and interacting with our directory.";
+      path = "/terms";
+    } else if (isWizard) {
+      title = "AI Discovery Wizard | AiVerse";
+      desc = "Use the AiVerse AI Discovery Wizard to identify the best language models, frameworks, and datasets based on your tech stack and requirements.";
+      path = "/wizard";
+    } else if (isArena) {
+      title = "Comparison Arena | AiVerse";
+      desc = "Compare advanced machine learning models and AI platforms side-by-side on technical specs, architecture, benchmarks, and licensing.";
+      path = "/arena";
+    } else if (isFeatures) {
+      title = "Ecosystem Features | AiVerse";
+      desc = "Explore category dashboards, system capacity metrics, spotlight highlights, values prop overlays, and all integrated capabilities.";
+      path = "/features";
+    } else if (profileUsername) {
+      const displayUser = profileUsername.startsWith("@") ? profileUsername : `@${profileUsername}`;
+      title = `${displayUser}'s Builder Profile | AiVerse`;
+      desc = `View developer preferences, role interests, and bookmarked AI collections of ${displayUser} on AiVerse.`;
+      path = `/user/${profilePathSlug(profileUsername)}`;
+    } else if (activeView === "catalog" || browseAll) {
+      title = "Explore AI Directory | AiVerse";
+      desc = "Browse our comprehensive, citation-backed database of language models, computer vision frameworks, and MLOps platforms.";
+      path = "/entries";
+    }
+
+    if (selected) {
+      title = `${selected.name} - Technical Specs & Details | AiVerse`;
+      desc = `${selected.name} is a ${selected.type} by ${selected.org}. ${selected.summary} View specs, benchmarks, code templates, and limitations.`;
+      path = `${path}?entry=${encodeURIComponent(selected.name)}`;
+    }
+
+    document.title = title;
+
+    // Update Meta Description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute("content", desc);
+    }
+    
+    // Update Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute("content", title);
+    
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute("content", desc);
+    
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute("content", `https://aiverse.frozenn.in${path}`);
+
+    // Update Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute("href", `https://aiverse.frozenn.in${path}`);
+  }, [selected, profileUsername, isPrivacy, isTerms, isWizard, isArena, isFeatures, activeView, browseAll]);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -836,6 +916,11 @@ const Inner: React.FC = () => {
                 />
               </div>
 
+              {/* Stats Overview */}
+              <div className="mb-4">
+                <OverviewCards />
+              </div>
+
               {/* Premium Action Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Card 1: Browse AI Registry */}
@@ -910,7 +995,7 @@ const Inner: React.FC = () => {
                   }}
                   className={`group relative overflow-hidden p-8 rounded-3xl text-left transition-all duration-300 cursor-pointer ${t.card}`.trim()}
                 >
-                  <div className="absolute inset-0 bg-linear-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="flex items-center justify-between mb-6">
                     <div className={`p-3.5 rounded-2xl transition-colors ${t.iconBg}`}>
                       <Cpu size={24} />
@@ -945,7 +1030,7 @@ const Inner: React.FC = () => {
                   }}
                   className={`group relative overflow-hidden p-8 rounded-3xl text-left transition-all duration-300 cursor-pointer ${t.card}`.trim()}
                 >
-                  <div className="absolute inset-0 bg-linear-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className={`p-3.5 rounded-2xl mb-6 w-fit transition-colors ${t.iconBg}`}>
                     <Layers size={24} />
                   </div>
@@ -959,6 +1044,61 @@ const Inner: React.FC = () => {
                     Explore Suite <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
                   </span>
                 </button>
+              </div>
+
+              {/* Trending AI Spotlight */}
+              <div className="mt-8 border-t border-slate-200 dark:border-white/5 pt-10">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 className={`text-xl font-bold tracking-tight ${t.textPrimary}`}>
+                      Trending AI Spotlight
+                    </h3>
+                    <p className={`text-[12px] ${t.textSecondary} mt-1`}>
+                      Currently featured models and frameworks dominating research and industry.
+                    </p>
+                  </div>
+                  <button 
+                    onClick={() => { setBrowseAll(true); setActiveView("catalog"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                    className={`text-[12px] font-bold tracking-wide uppercase cursor-pointer hover:underline flex items-center gap-1.5 ${t.textAccent}`}
+                  >
+                    View Full Catalog <ArrowRight size={12} />
+                  </button>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {entries.slice(0, 3).map((item) => (
+                    <button 
+                      key={item.name} 
+                      onClick={() => setSelected(item)}
+                      className={`group p-6 rounded-2xl border text-left transition-all duration-300 cursor-pointer flex flex-col justify-between ${t.card}`}
+                    >
+                      <div className="w-full">
+                        <div className="flex items-center justify-between mb-4">
+                          <span className={`text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider ${
+                            item.type === "Model" 
+                              ? "bg-sky-500/10 text-sky-400 border border-sky-500/20" 
+                              : "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                          }`}>
+                            {item.type}
+                          </span>
+                          <span className={`text-[11px] font-semibold ${t.textMuted}`}>{item.org}</span>
+                        </div>
+                        <h4 className={`text-base font-bold mb-2 group-hover:${t.textAccent} transition-colors ${t.textPrimary}`}>
+                          {item.name}
+                        </h4>
+                        <p className={`text-[12px] leading-relaxed font-light ${t.textSecondary} line-clamp-3 mb-6`}>
+                          {item.summary}
+                        </p>
+                      </div>
+                      <div className={`w-full flex items-center justify-between text-[11px] font-bold ${t.textMuted}`}>
+                        <span>Year: {item.year}</span>
+                        <span className={`group-hover:translate-x-0.5 transition-transform flex items-center gap-1 ${t.textAccent}`}>
+                          View Details <ArrowRight size={11} />
+                        </span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
               </div>
               
               {/* Value Propositions */}
@@ -1118,12 +1258,12 @@ const Inner: React.FC = () => {
         </div>
       )}
 
-      <footer className="mt-auto relative z-10 border-t border-white/5">
-        <div className={`py-6 sm:py-8 ${resolvedTheme === 'amoled' ? 'bg-black/40' : 'bg-white/40'} backdrop-blur-xl`}>
-          <div className="w-full px-4 sm:px-6 xl:px-12 flex flex-col lg:flex-row items-center justify-between gap-6">
+      <footer className={`relative z-10 border-t ${resolvedTheme === 'amoled' ? 'border-white/5 bg-black/40' : 'border-neutral-200 bg-white/40'} backdrop-blur-xl`}>
+        <div className="w-full px-4 sm:px-6 xl:px-12 py-12 lg:py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
             
-            {/* Left: Brand & Status */}
-            <div className="flex flex-col sm:flex-row items-center gap-4">
+            {/* Column 1: Brand & Info */}
+            <div className="lg:col-span-2 flex flex-col items-start gap-4">
               <a
                 href="/"
                 onClick={(e) => {
@@ -1131,6 +1271,8 @@ const Inner: React.FC = () => {
                   setIsPrivacy(false);
                   setIsTerms(false);
                   setIsFeatures(false);
+                  setIsWizard(false);
+                  setIsArena(false);
                   setSelected(null);
                   setProfileUsername(null);
                   setActiveView("landing");
@@ -1139,36 +1281,168 @@ const Inner: React.FC = () => {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 className={`flex items-center ${t.textPrimary} hover:opacity-80 transition-opacity`}
-                style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "1.25rem", lineHeight: 1, letterSpacing: "-0.02em" }}
+                style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "1.5rem", lineHeight: 1, letterSpacing: "-0.02em" }}
               >
                 <span className="inline-block transform rotate-180 relative" style={{ top: "-0.5px", marginRight: "-0.5px" }}>V</span>
                 <span>iVerse</span>
               </a>
-              <div className={`flex items-center gap-1.5 text-[9px] font-black uppercase px-2 py-1 rounded-full border border-emerald-500/10 bg-emerald-500/5 text-emerald-400`}>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                Operational
+              
+              <p className={`text-[13px] leading-relaxed max-w-sm ${t.textSecondary}`}>
+                Your ultimate navigation hub for the artificial intelligence universe. 
+                Explore, compare, and discover state-of-the-art models, frameworks, and tools.
+              </p>
+
+              <div className="flex items-center gap-2 mt-2">
+                <div className={`flex items-center gap-1.5 text-[10px] font-bold uppercase px-2.5 py-1 rounded-full border border-emerald-500/10 bg-emerald-500/5 text-emerald-400`}>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Systems Operational
+                </div>
               </div>
             </div>
 
-            {/* Center: Core Navigation */}
-            <div className="flex items-center justify-center flex-wrap gap-x-8 gap-y-3">
-              <button onClick={() => { setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setSelected(null); setProfileUsername(null); setBrowseAll(true); setActiveView("catalog"); setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); window.scrollTo({ top: 0, behavior: "smooth" }); }} className={`text-[12px] font-bold ${t.textSecondary} hover:${t.textPrimary} transition-colors cursor-pointer`}>Explore</button>
-              <button onClick={() => { setIsFeatures(true); setIsPrivacy(false); setIsTerms(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); }} className={`text-[12px] font-bold ${t.textSecondary} hover:${t.textPrimary} transition-colors cursor-pointer`}>Features</button>
-              <button onClick={() => { setIsPrivacy(true); setIsTerms(false); setIsFeatures(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); }} className={`text-[12px] font-bold ${t.textSecondary} hover:${t.textPrimary} transition-colors cursor-pointer`}>Privacy</button>
-              <button onClick={() => setIsAdding(true)} className={`text-[12px] font-bold ${t.textSecondary} hover:${t.textPrimary} transition-colors cursor-pointer`}>Submit Tool</button>
+            {/* Column 2: Navigation */}
+            <div className="flex flex-col gap-4">
+              <h4 className={`text-[11px] font-bold uppercase tracking-widest ${t.textMuted}`}>Platform</h4>
+              <ul className="flex flex-col gap-2.5">
+                <li>
+                  <button 
+                    onClick={() => { 
+                      setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setSelected(null); setProfileUsername(null); setBrowseAll(true); setActiveView("catalog"); setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                    }} 
+                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                  >
+                    AI Directory
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => { 
+                      setIsFeatures(true); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                    }} 
+                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                  >
+                    Features Suite
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => { 
+                      setIsArena(true); setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                    }} 
+                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                  >
+                    Compare Arena
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => { 
+                      setIsWizard(true); setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsArena(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                    }} 
+                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                  >
+                    Wizard Finder
+                  </button>
+                </li>
+              </ul>
             </div>
 
-            {/* Right: Social & Copyright */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-              <div className="flex items-center gap-5">
-                <a href="https://github.com/Frozen-47/AiVerse" target="_blank" rel="noopener noreferrer" className={`text-[12px] font-bold ${t.textSecondary} hover:${t.textPrimary} transition-colors`}>GitHub</a>
-                <a href="https://discord.gg/22YKNrS62h" target="_blank" rel="noopener noreferrer" className={`text-[12px] font-bold ${t.textSecondary} hover:${t.textPrimary} transition-colors`}>Discord</a>
+            {/* Column 3: Submit & Contribute */}
+            <div className="flex flex-col gap-4">
+              <h4 className={`text-[11px] font-bold uppercase tracking-widest ${t.textMuted}`}>Contribute</h4>
+              <ul className="flex flex-col gap-2.5">
+                <li>
+                  <button 
+                    onClick={() => setIsAdding(true)} 
+                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                  >
+                    Submit a Tool
+                  </button>
+                </li>
+                <li>
+                  <a 
+                    href="https://github.com/Frozen-47/AiVerse/blob/main/Contributing.md" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px]`}
+                  >
+                    Contributing Guide
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://github.com/Frozen-47/AiVerse/issues" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px]`}
+                  >
+                    Report an Issue
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 4: Legal & Resources */}
+            <div className="flex flex-col gap-4">
+              <h4 className={`text-[11px] font-bold uppercase tracking-widest ${t.textMuted}`}>Legal</h4>
+              <ul className="flex flex-col gap-2.5">
+                <li>
+                  <button 
+                    onClick={() => { 
+                      setIsPrivacy(true); setIsTerms(false); setIsFeatures(false); setIsWizard(false); setIsArena(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                    }} 
+                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                  >
+                    Privacy Policy
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => { 
+                      setIsTerms(true); setIsPrivacy(false); setIsFeatures(false); setIsWizard(false); setIsArena(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                    }} 
+                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                  >
+                    Terms of Service
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          {/* Bottom Bar */}
+          <div className={`mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 border-t ${resolvedTheme === 'amoled' ? 'border-white/5' : 'border-neutral-200'} sm:pr-16 md:pr-20`}>
+            <span className={`text-[12px] font-medium ${t.textMuted}`}>
+              © {new Date().getFullYear()} AiVerse. Open source under MIT License.
+            </span>
+            
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-4">
+                <a 
+                  href="https://github.com/Frozen-47/AiVerse" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className={`flex items-center gap-1.5 text-[12px] font-semibold ${t.textSecondary} hover:${t.textPrimary} transition-colors`}
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                  </svg>
+                  GitHub
+                </a>
+                <a 
+                  href="https://discord.gg/22YKNrS62h" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className={`flex items-center gap-1.5 text-[12px] font-semibold ${t.textSecondary} hover:${t.textPrimary} transition-colors`}
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.094 13.094 0 01-1.873-.894.077.077 0 01-.008-.128c.126-.093.252-.19.372-.287a.075.075 0 01.077-.011c3.92 1.793 8.18 1.793 12.061 0a.073.073 0 01.078.009c.12.099.246.195.373.289a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.894.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.156 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.156 2.418z"/>
+                  </svg>
+                  Discord
+                </a>
               </div>
-              <span className={`text-[11px] font-semibold ${t.textMuted}`}>
-                © {new Date().getFullYear()} AiVerse
-              </span>
             </div>
-
           </div>
         </div>
       </footer>

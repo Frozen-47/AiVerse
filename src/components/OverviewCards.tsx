@@ -30,9 +30,7 @@ export const OverviewCards: React.FC = () => {
       {cards.map((c, i) => (
         <div
           key={i}
-          className={`p-5 rounded-2xl border transition-all glow-card ${
-            t.bgPrimary
-          } ${t.textPrimary}`}
+          className={`p-5 rounded-2xl border transition-all glow-card ${t.surface} ${t.border} ${t.textPrimary}`}
         >
           <div className="flex items-center gap-2 text-2xl mb-2">
             <span>{c.icon}</span>

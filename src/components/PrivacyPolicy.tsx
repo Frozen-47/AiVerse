@@ -101,7 +101,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
                     className={`w-full flex items-center justify-between p-2.5 rounded-xl text-[12px] font-bold text-left transition-all duration-300 cursor-pointer ${
                       isActive
                         ? `${isDark ? "bg-white/10 border-white/20 text-white shadow-md" : "bg-black/5 border-black/10 text-neutral-900 shadow-sm"}`
-                        : `border border-transparent text-slate-400 hover:bg-slate-100 dark:hover:bg-white/3 hover:text-white/80`
+                        : `${t.textSecondary} border border-transparent hover:bg-black/5 dark:hover:bg-white/5 ${isDark ? "hover:text-white" : "hover:text-neutral-900"}`
                     }`}
                   >
                     <div className="flex items-center gap-2.5">
@@ -159,7 +159,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
               </h2>
             </div>
             <p className={`text-[13px] leading-relaxed font-light ${t.textSecondary}`}>
-              Welcome to <strong>AiVerse</strong> (available at <a href="https://aiverse.frozenn.in" className="text-black hover:underline">https://aiverse.frozenn.in</a>). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use our open-source AI Knowledge Base, personalize your dashboard, or submit catalog entries.
+              Welcome to <strong>AiVerse</strong> (available at <a href="https://aiverse.frozenn.in" className={`${isDark ? "text-cyan-400 hover:text-cyan-300" : "text-cyan-600 hover:text-cyan-700"} hover:underline font-semibold`}>https://aiverse.frozenn.in</a>). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use our open-source AI Knowledge Base, personalize your dashboard, or submit catalog entries.
             </p>
           </section>
 
@@ -229,7 +229,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
                 { title: "Abuse & Spam Mitigation", desc: "To safeguard community features (likes, bookmarks, ratings) from autonomous bots and sybil activities." }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-3 items-start">
-                  <span className="w-1.5 h-1.5 rounded-full bg-black/5 shrink-0 mt-2 animate-pulse" />
+                  <span className={`w-1.5 h-1.5 rounded-full shrink-0 mt-2 animate-pulse ${isDark ? "bg-white/20" : "bg-black/5"}`} />
                   <div>
                     <h4 className={`text-[13px] font-bold ${t.textPrimary} mb-0.5`}>{item.title}</h4>
                     <p className={`text-[12px] leading-relaxed ${t.textSecondary}`}>{item.desc}</p>

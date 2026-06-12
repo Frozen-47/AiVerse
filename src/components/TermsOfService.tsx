@@ -101,7 +101,7 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onBackToHome }) 
                     className={`w-full flex items-center justify-between p-2.5 rounded-xl text-[12px] font-bold text-left transition-all duration-300 cursor-pointer ${
                       isActive
                         ? `${isDark ? "bg-white/10 border-white/20 text-white shadow-md" : "bg-black/5 border-black/10 text-neutral-900 shadow-sm"}`
-                        : `border border-transparent text-slate-400 hover:bg-slate-100 dark:hover:bg-white/3 hover:text-white/80`
+                        : `${t.textSecondary} border border-transparent hover:bg-black/5 dark:hover:bg-white/5 ${isDark ? "hover:text-white" : "hover:text-neutral-900"}`
                     }`}
                   >
                     <div className="flex items-center gap-2.5">
@@ -159,7 +159,7 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onBackToHome }) 
               </h2>
             </div>
             <p className={`text-[13px] leading-relaxed font-light ${t.textSecondary}`}>
-              By accessing or using <strong>AiVerse</strong> (available at <a href="https://aiverse.frozenn.in" className="text-black hover:underline">https://aiverse.frozenn.in</a>), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not access or use our platform.
+              By accessing or using <strong>AiVerse</strong> (available at <a href="https://aiverse.frozenn.in" className={`${isDark ? "text-cyan-400 hover:text-cyan-300" : "text-cyan-600 hover:text-cyan-700"} hover:underline font-semibold`}>https://aiverse.frozenn.in</a>), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not access or use our platform.
             </p>
           </section>
 
