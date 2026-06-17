@@ -19,8 +19,7 @@ export const supabase = createClient(
 export const insertEntry = async (entry: Partial<Entry>) => {
   const { data, error } = await supabase
     .from("entries")
-    .insert([{ ...entry, approved: false, popular: false }])
-    .select();
+    .insert([{ ...entry, approved: false, popular: false }]);
   
   if (error) throw error;
   return data;

@@ -97,6 +97,7 @@ const Inner: React.FC = () => {
     return parseProfileUsernameFromLocation();
   });
   const [isAdminDashboard, setIsAdminDashboard] = useState(false);
+  const [adminDashboardKey, setAdminDashboardKey] = useState(0);
   const [isPrivacy, setIsPrivacy] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
     return window.location.pathname === "/privacy" || window.location.pathname === "/privacy/";
@@ -722,6 +723,7 @@ const Inner: React.FC = () => {
     setIsAdding(false);
     setShowBackendToast(true);
     setTimeout(() => setShowBackendToast(false), 5000);
+    setAdminDashboardKey(prev => prev + 1);
   };
 
   if (isLoading) {
@@ -884,6 +886,7 @@ const Inner: React.FC = () => {
         />
       ) : isAdminDashboard ? (
         <AdminDashboard
+          key={adminDashboardKey}
           onBackToHome={() => {
             setIsAdminDashboard(false);
             setIsPrivacy(false);
@@ -1507,7 +1510,7 @@ const Inner: React.FC = () => {
       {/* Global Toast Notification */}
       {showBackendToast && (
         <div className="fixed bottom-24 right-6 z-50 animate-[fadeUp_0.15s_ease-out]">
-          <div className={`p-4 rounded-xl border flex flex-col gap-1 text-[13px] font-medium shadow-2xl backdrop-blur-xl ${t.errorToast}`}>
+          <div className={`p-4 rounded-xl border flex flex-col gap-1 text-[13px] font-medium shadow-2xl backdrop-blur-xl ${t.successToast}`}>
             <div className="flex items-center gap-3">
               <Check size={18} className="shrink-0 text-emerald-400" />
               <span>Entry submitted successfully!</span>
@@ -1545,7 +1548,7 @@ const Inner: React.FC = () => {
 
       {prefsToast && (
         <div className="fixed bottom-24 left-6 z-50">
-          <div className={`p-4 rounded-xl border flex items-center gap-3 text-[13px] font-medium shadow-2xl ${t.errorToast}`}>
+          <div className={`p-4 rounded-xl border flex items-center gap-3 text-[13px] font-medium shadow-2xl ${t.successToast}`}>
             <Check size={18} className="shrink-0 text-emerald-400" />
             <span>Preferences saved — your feed is updated.</span>
           </div>

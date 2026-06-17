@@ -89,6 +89,7 @@ const darkTokens: TokenMap = {
   // Tag
   limitTag: "bg-red-500/8 text-red-400 border-red-500/15",
   errorToast: "bg-red-500/10 border-red-500/20 text-red-500",
+  successToast: "bg-emerald-500/10 border border-emerald-500/20 text-emerald-400",
   // Link
   link: "text-white/30 hover:text-white transition-colors font-semibold",
   // Scrollbar
@@ -174,6 +175,7 @@ const light: TokenMap = {
   // Tag
   limitTag: "bg-red-50 text-red-600 border border-red-200",
   errorToast: "bg-red-50 border border-red-200 text-red-600",
+  successToast: "bg-emerald-50 border border-emerald-200 text-emerald-700",
   // Link
   link: "text-neutral-400 hover:text-neutral-900 transition-colors font-semibold",
   // Scrollbar

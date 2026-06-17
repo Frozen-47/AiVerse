@@ -13,6 +13,8 @@ import {
   Layers,
   Compass,
   GitBranch,
+  X,
+  AlertTriangle,
 } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import { useTokens, useTheme, typeBadge, taskBadge, typeIcon, TYPE_GLYPH } from "../lib/theme";
@@ -61,6 +63,21 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   // Actions states
   const [actioningId, setActioningId] = useState<string | null>(null);
   const [directorySearch, setDirectorySearch] = useState("");
+  
+  // Custom alerts/confirms states
+  const [deleteConfirmEntry, setDeleteConfirmEntry] = useState<string | null>(null);
+  const [toast, setToast] = useState<{ type: "success" | "error"; message: string } | null>(null);
+
+  const showToast = (type: "success" | "error", message: string) => {
+    setToast({ type, message });
+  };
+
+  useEffect(() => {
+    if (toast) {
+      const timer = setTimeout(() => setToast(null), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [toast]);
 
   const loadData = async () => {
     setLoading(true);
@@ -153,17 +170,15 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         { ...entry, approved: true },
         ...prev,
       ]);
+      showToast("success", `"${entry.name}" has been approved and published.`);
     } catch (err: any) {
-      alert("Failed to approve entry: " + err.message);
+      showToast("error", `Failed to approve "${entry.name}": ${err.message}`);
     } finally {
       setActioningId(null);
     }
   };
 
-  const handleReject = async (entryName: string) => {
-    if (!window.confirm(`Are you sure you want to reject/delete "${entryName}"?`)) {
-      return;
-    }
+  const executeDelete = async (entryName: string) => {
     setActioningId(entryName);
     try {
       const { error: err } = await supabase
@@ -176,8 +191,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       // Update local states
       setPendingEntries((prev) => prev.filter((e) => e.name !== entryName));
       setApprovedEntries((prev) => prev.filter((e) => e.name !== entryName));
+      showToast("success", `"${entryName}" has been rejected/deleted.`);
     } catch (err: any) {
-      alert("Failed to delete entry: " + err.message);
+      showToast("error", `Failed to delete "${entryName}": ${err.message}`);
     } finally {
       setActioningId(null);
     }
@@ -425,7 +441,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                         </button>
                         <button
                           type="button"
-                          onClick={() => handleReject(entry.name)}
+                          onClick={() => setDeleteConfirmEntry(entry.name)}
                           disabled={actioningId === entry.name}
                           className={`flex items-center justify-center p-2.5 rounded-xl border border-red-500/20 text-red-500 hover:bg-red-500/10 transition-colors cursor-pointer disabled:opacity-50`}
                           title="Reject and discard submission"
@@ -504,7 +520,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                           <td className="px-5 py-3.5 text-right">
                             <button
                               type="button"
-                              onClick={() => handleReject(entry.name)}
+                              onClick={() => setDeleteConfirmEntry(entry.name)}
                               disabled={actioningId === entry.name}
                               className={`p-2 rounded-lg text-red-500 hover:bg-red-500/10 transition-colors cursor-pointer disabled:opacity-50`}
                               title="Delete from active directory"
@@ -648,6 +664,64 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               )}
             </>
           )}
+        </div>
+      )}
+      {/* Delete Confirmation Modal */}
+      {deleteConfirmEntry && (
+        <div className={t.modalOverlay}>
+          <div className={`relative w-full max-w-md p-6 rounded-2xl overflow-hidden shadow-2xl space-y-4 animate-[scaleUp_0.15s_ease-out] ${t.modal}`}>
+            <button
+              onClick={() => setDeleteConfirmEntry(null)}
+              className={`absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full border transition-all ${t.surface} ${t.border} ${t.textMuted}`}
+            >
+              <X size={13} />
+            </button>
+            <div className="flex items-center gap-3 text-red-500 mb-2">
+              <div className="p-2 rounded-xl bg-red-500/10">
+                <AlertTriangle size={24} />
+              </div>
+              <h3 className={`text-base font-black tracking-tight ${t.textPrimary}`}>Delete Tool Entry</h3>
+            </div>
+            <p className={`text-[13px] leading-relaxed ${t.textSecondary}`}>
+              Are you sure you want to permanently delete/reject <strong className={t.textPrimary}>"{deleteConfirmEntry}"</strong>? This action cannot be undone.
+            </p>
+            <div className="flex justify-end gap-2 pt-2">
+              <button
+                type="button"
+                onClick={() => setDeleteConfirmEntry(null)}
+                className={`px-4 py-2 rounded-xl text-[13px] font-semibold transition-colors ${t.btnGhost}`}
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={async () => {
+                  const entryToDelete = deleteConfirmEntry;
+                  setDeleteConfirmEntry(null);
+                  await executeDelete(entryToDelete);
+                }}
+                className="px-5 py-2 rounded-full text-[13px] font-semibold transition-all bg-red-600 hover:bg-red-500 text-white cursor-pointer"
+              >
+                Delete Entry
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Sleek Custom Toast */}
+      {toast && (
+        <div className="fixed bottom-6 right-6 z-50 animate-[fadeUp_0.15s_ease-out]">
+          <div className={`p-4 rounded-xl border flex items-center gap-3 text-[13px] font-medium shadow-2xl backdrop-blur-xl ${
+            toast.type === "success" ? t.successToast : t.errorToast
+          }`}>
+            {toast.type === "success" ? (
+              <Check size={18} className="shrink-0 text-emerald-400" />
+            ) : (
+              <Info size={18} className="shrink-0 text-red-400" />
+            )}
+            <span>{toast.message}</span>
+          </div>
         </div>
       )}
     </div>

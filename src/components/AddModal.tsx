@@ -72,7 +72,7 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
       const toSubmit = { ...entry };
       // Ensure citations is a string or correct JSON if needed. Supabase handles JSONB arrays directly if we pass an array of objects.
       
-      const inserted = await insertEntry(toSubmit);
+      const inserted = (await insertEntry(toSubmit)) as any;
       
       if (inserted && inserted.length > 0) {
         _onSubmit(inserted[0]);
@@ -211,10 +211,10 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
 
           {/* Backend Progress Message */}
           {showBackendMsg && (
-            <div className={`p-3.5 rounded-xl border flex items-center gap-3 text-[13px] bg-amber-500/10 border-amber-500/20 text-amber-500 font-medium `}>
-              <Server size={16} className="shrink-0" />
+            <div className={`p-3.5 rounded-xl border flex items-center gap-3 text-[13px] bg-blue-500/10 border-blue-500/20 text-blue-500 dark:text-blue-400 font-medium `}>
+              <Server size={16} className="shrink-0 animate-pulse" />
               <span>
-                Backend integration is currently in progress. Entry submissions are temporarily disabled.
+                Submitting your entry to the database... Please wait.
               </span>
             </div>
           )}
