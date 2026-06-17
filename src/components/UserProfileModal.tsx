@@ -79,10 +79,12 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
     setError(null);
 
     const loadData = async () => {
+      let resolvedProfile: PublicBuilderProfile | null = null;
+
       if (isOwnProfile) {
         const meta = user?.user_metadata;
         const ownUserKey = user?.id ? (user.id.startsWith("supabase_") ? user.id : `supabase_${user.id}`) : "";
-        const p: PublicBuilderProfile = {
+        resolvedProfile = {
           userKey: ownUserKey,
           displayName: meta?.firstName || "Builder",
           username: meta?.username || username,
@@ -96,33 +98,32 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
           interests: meta?.interests || [],
           avatarUrl: meta?.avatarUrl || meta?.avatar_url || undefined,
         };
-        if (active) {
-          setProfile(p);
-          // Only fetch bookmarks if it's the own profile
-          try {
-            const { fetchUserBookmarks } = await import("../lib/entryBookmarks");
-            const bmarks = await fetchUserBookmarks(ownUserKey);
-            setSavedEntries(bmarks);
-          } catch (err) {
-            console.error(err);
+      } else {
+        try {
+          const data = await fetchProfileByUsername(username);
+          if (data) {
+            resolvedProfile = data;
+          } else {
+            setError(`No profile found for ${username}`);
           }
-          setLoading(false);
+        } catch {
+          setError("Could not load developer profile.");
         }
-        return;
       }
 
-      fetchProfileByUsername(username)
-        .then((data) => {
-          if (!active) return;
-          if (data) setProfile(data);
-          else setError(`No profile found for ${username}`);
-        })
-        .catch(() => {
-          if (active) setError("Could not load developer profile.");
-        })
-        .finally(() => {
-          if (active) setLoading(false);
-        });
+      if (resolvedProfile && active) {
+        setProfile(resolvedProfile);
+        try {
+          const { fetchUserBookmarks } = await import("../lib/entryBookmarks");
+          const bmarks = await fetchUserBookmarks(resolvedProfile.userKey);
+          setSavedEntries(bmarks);
+        } catch (err) {
+          console.error("Failed to load bookmarks:", err);
+        }
+        setLoading(false);
+      } else {
+        setLoading(false);
+      }
     };
 
     loadData();
@@ -323,7 +324,6 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
               {/* Tabs */}
               <div className="flex gap-0 -mb-px">
                 {TABS.map((tab) => {
-                  if (tab.id === "bookmarks" && !isOwnProfile) return null;
                   const isActive = activeTab === tab.id;
                   return (
                     <button
@@ -421,7 +421,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
               )}
 
               {/* ── Bookmarks tab ─────────────────────────────────────────── */}
-              {activeTab === "bookmarks" && isOwnProfile && (
+              {activeTab === "bookmarks" && (
                 <div className="animate-[fadeIn_0.15s_ease-out] space-y-3">
                   <p className={sectionLabel}>Bookmarks</p>
                   <div className="space-y-2">

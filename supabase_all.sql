@@ -275,9 +275,9 @@ CREATE POLICY "Insert own comments"
 -- user_bookmarks
 DROP POLICY IF EXISTS "Allow public read bookmarks" ON user_bookmarks;
 DROP POLICY IF EXISTS "Read own bookmarks" ON user_bookmarks;
-CREATE POLICY "Read own bookmarks"
+CREATE POLICY "Allow public read bookmarks"
   ON user_bookmarks FOR SELECT
-  USING (user_key = private.app_user_key());
+  USING (true);
 
 DROP POLICY IF EXISTS "Allow public insert bookmarks" ON user_bookmarks;
 DROP POLICY IF EXISTS "Insert own bookmarks" ON user_bookmarks;
