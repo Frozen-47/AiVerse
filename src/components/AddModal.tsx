@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { X, Plus, Server } from "lucide-react";
 import { useTokens } from "../lib/theme";
 import type { Entry } from "../types";
+import { useAuth } from "./AuthContext";
 
 type PartialEntry = Partial<Entry>;
 
@@ -33,6 +34,7 @@ const emptyEntry = (): PartialEntry => ({
 
 export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, onClose, onSubmit: _onSubmit }) => {
   const t = useTokens();
+  const { user } = useAuth();
 
   const [entry, setEntry] = useState<PartialEntry>(emptyEntry());
   const [showBackendMsg, setShowBackendMsg] = useState(false);
@@ -70,9 +72,9 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
       const { insertEntry } = await import('../lib/supabase');
       
       const toSubmit = { ...entry };
-      // Ensure citations is a string or correct JSON if needed. Supabase handles JSONB arrays directly if we pass an array of objects.
+      const userKey = user ? (user.id.startsWith("supabase_") ? user.id : `supabase_${user.id}`) : null;
       
-      const inserted = (await insertEntry(toSubmit)) as any;
+      const inserted = (await insertEntry(toSubmit, userKey || undefined)) as any;
       
       if (inserted && inserted.length > 0) {
         _onSubmit(inserted[0]);

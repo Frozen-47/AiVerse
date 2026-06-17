@@ -43,6 +43,15 @@ interface UserProfile {
 
 type TabId = "submissions" | "directory" | "users";
 
+const isNewSubmission = (createdAt?: string): boolean => {
+  if (!createdAt) return false;
+  const created = new Date(createdAt);
+  const now = new Date();
+  const diffMs = now.getTime() - created.getTime();
+  const diffDays = diffMs / (1000 * 60 * 60 * 24);
+  return diffDays <= 2;
+};
+
 export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   onBackToHome,
   onViewEntry,
@@ -345,112 +354,159 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {pendingEntries.map((entry) => (
-                    <div
-                      key={entry.name}
-                      className={`rounded-2xl p-6 flex flex-col justify-between border ${t.card}`}
-                    >
-                      <div className="space-y-4">
-                        {/* Header Row */}
-                        <div className="flex items-start justify-between gap-3">
-                          <div className="flex items-center gap-3">
-                            <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-sm font-bold shrink-0 ${typeIcon(entry.type, t)}`}>
-                              {TYPE_GLYPH[entry.type] ?? "◆"}
+                  {pendingEntries.map((entry) => {
+                    const submitter = users.find((u) => u.userKey === entry.submitted_by);
+                    const isNew = isNewSubmission(entry.created_at);
+
+                    return (
+                      <div
+                        key={entry.name}
+                        className={`rounded-2xl p-6 flex flex-col justify-between border transition-all ${
+                          isNew
+                            ? "border-indigo-500/40 ring-1 ring-indigo-500/20 shadow-md shadow-indigo-500/5 bg-indigo-500/[0.015]"
+                            : t.card
+                        }`}
+                      >
+                        <div className="space-y-4">
+                          {/* Header Row */}
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex items-center gap-3">
+                              <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-sm font-bold shrink-0 ${typeIcon(entry.type, t)}`}>
+                                {TYPE_GLYPH[entry.type] ?? "◆"}
+                              </div>
+                              <div>
+                                <div className="flex items-center gap-2">
+                                  <h3 className={`text-base font-black ${t.textPrimary}`}>
+                                    {entry.name}
+                                  </h3>
+                                  {isNew && (
+                                    <span className="inline-flex items-center text-[9px] font-black uppercase px-1.5 py-0.5 rounded bg-indigo-500/15 text-indigo-400 border border-indigo-500/20 animate-pulse">
+                                      NEW
+                                    </span>
+                                  )}
+                                </div>
+                                <p className={`text-[11px] ${t.textMuted}`}>
+                                  Submitted by {entry.org || "Unknown Organization"} · {entry.year}
+                                </p>
+                              </div>
                             </div>
-                            <div>
-                              <h3 className={`text-base font-black ${t.textPrimary}`}>
-                                {entry.name}
-                              </h3>
-                              <p className={`text-[11px] ${t.textMuted}`}>
-                                Submitted by {entry.org || "Unknown Organization"} · {entry.year}
+                            {entry.url && (
+                              <a
+                                href={entry.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`p-1.5 rounded-lg border transition-colors ${t.surface} ${t.border} ${t.textMuted} hover:${t.textPrimary}`}
+                                title="Visit official resources link"
+                              >
+                                <ExternalLink size={14} />
+                              </a>
+                            )}
+                          </div>
+
+                          {/* Badges */}
+                          <div className="flex flex-wrap gap-1.5">
+                            <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded-md border ${typeBadge(entry.type, t)}`}>
+                              {entry.type}
+                            </span>
+                            <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded-md border ${taskBadge(entry.task, t)}`}>
+                              {entry.task}
+                            </span>
+                            <span className={`text-[9px] px-2 py-0.5 rounded-md border ${t.surface} ${t.border} ${t.textMuted}`}>
+                              {entry.license}
+                            </span>
+                            <span className={`text-[9px] px-2 py-0.5 rounded-md border ${t.surface} ${t.border} ${t.textMuted}`}>
+                              Size: {entry.size}
+                            </span>
+                          </div>
+
+                          {/* Summary & Limitations */}
+                          <div className="space-y-2">
+                            <p className={`text-xs leading-relaxed ${t.textSecondary}`}>
+                              {entry.summary}
+                            </p>
+                            {entry.limitations && (
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                {entry.limitations.split(",").map((l, idx) => (
+                                  <span
+                                    key={idx}
+                                    className={`text-[10px] px-2 py-0.5 rounded-lg border ${t.limitTag}`}
+                                  >
+                                    ⚠ {l.trim()}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+
+                          {/* Usage Block Preview (if exists) */}
+                          {entry.usage && (
+                            <details className={`group rounded-xl overflow-hidden border ${t.border}`}>
+                              <summary className={`flex items-center justify-between px-3 py-2 text-[11px] font-bold cursor-pointer outline-none select-none transition-colors ${t.surface} hover:${t.surfaceHover}`}>
+                                <span>Show example code usage</span>
+                                <span className="text-[10px] opacity-50 group-open:rotate-180 transition-transform">▼</span>
+                              </summary>
+                              <pre className={`p-3 text-[11px] font-mono overflow-x-auto leading-relaxed border-t ${t.border} ${t.code}`}>
+                                {entry.usage}
+                              </pre>
+                            </details>
+                          )}
+
+                          {/* Submitter User Chip */}
+                          <div className={`mt-3 p-2.5 rounded-xl border flex items-center gap-2.5 text-xs ${isDark ? "bg-white/[0.02] border-white/5" : "bg-black/[0.02] border-black/5"}`}>
+                            <div className={`w-6 h-6 rounded-full flex items-center justify-center font-black text-[9px] shrink-0 ${isDark ? "bg-white/8 text-white" : "bg-black/6 text-black"}`}>
+                              {submitter?.avatarUrl ? (
+                                <img
+                                  src={submitter.avatarUrl}
+                                  alt=""
+                                  className="w-full h-full object-cover rounded-full"
+                                />
+                              ) : (
+                                submitter?.displayName
+                                  ? submitter.displayName.slice(0, 2).toUpperCase()
+                                  : "AN"
+                              )}
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <p className={`text-[11px] truncate leading-tight ${t.textSecondary}`}>
+                                <span className="font-bold text-indigo-400">Submitter:</span>{" "}
+                                {submitter ? (
+                                  <>
+                                    <span className={`font-semibold ${t.textPrimary}`}>{submitter.displayName}</span>{" "}
+                                    <span className={`text-[10px] ${t.textMuted}`}>({submitter.username})</span>{" "}
+                                    <span className={`text-[9px] font-medium px-1.5 py-0.5 rounded-full ${isDark ? "bg-white/6 text-white/50" : "bg-black/5 text-black/40"}`}>{submitter.role}</span>
+                                  </>
+                                ) : (
+                                  <span className={t.textMuted}>Anonymous / System Submitter</span>
+                                )}
                               </p>
                             </div>
                           </div>
-                          {entry.url && (
-                            <a
-                              href={entry.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className={`p-1.5 rounded-lg border transition-colors ${t.surface} ${t.border} ${t.textMuted} hover:${t.textPrimary}`}
-                              title="Visit official resources link"
-                            >
-                              <ExternalLink size={14} />
-                            </a>
-                          )}
                         </div>
 
-                        {/* Badges */}
-                        <div className="flex flex-wrap gap-1.5">
-                          <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded-md border ${typeBadge(entry.type, t)}`}>
-                            {entry.type}
-                          </span>
-                          <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded-md border ${taskBadge(entry.task, t)}`}>
-                            {entry.task}
-                          </span>
-                          <span className={`text-[9px] px-2 py-0.5 rounded-md border ${t.surface} ${t.border} ${t.textMuted}`}>
-                            {entry.license}
-                          </span>
-                          <span className={`text-[9px] px-2 py-0.5 rounded-md border ${t.surface} ${t.border} ${t.textMuted}`}>
-                            Size: {entry.size}
-                          </span>
+                        {/* Action buttons */}
+                        <div className="flex gap-2.5 mt-6 pt-4 border-t border-dashed dark:border-white/5 border-neutral-200">
+                          <button
+                            type="button"
+                            onClick={() => handleApprove(entry)}
+                            disabled={actioningId === entry.name}
+                            className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold transition-all bg-emerald-600 hover:bg-emerald-500 text-white cursor-pointer disabled:opacity-50`}
+                          >
+                            <Check size={14} className="stroke-[2.5px]" />
+                            {actioningId === entry.name ? "Approve..." : "Approve Submission"}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setDeleteConfirmEntry(entry.name)}
+                            disabled={actioningId === entry.name}
+                            className={`flex items-center justify-center p-2.5 rounded-xl border border-red-500/20 text-red-500 hover:bg-red-500/10 transition-colors cursor-pointer disabled:opacity-50`}
+                            title="Reject and discard submission"
+                          >
+                            <Trash2 size={15} />
+                          </button>
                         </div>
-
-                        {/* Summary & Limitations */}
-                        <div className="space-y-2">
-                          <p className={`text-xs leading-relaxed ${t.textSecondary}`}>
-                            {entry.summary}
-                          </p>
-                          {entry.limitations && (
-                            <div className="flex flex-wrap gap-1 mt-1">
-                              {entry.limitations.split(",").map((l, idx) => (
-                                <span
-                                  key={idx}
-                                  className={`text-[10px] px-2 py-0.5 rounded-lg border ${t.limitTag}`}
-                                >
-                                  ⚠ {l.trim()}
-                                </span>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-
-                        {/* Usage Block Preview (if exists) */}
-                        {entry.usage && (
-                          <details className={`group rounded-xl overflow-hidden border ${t.border}`}>
-                            <summary className={`flex items-center justify-between px-3 py-2 text-[11px] font-bold cursor-pointer outline-none select-none transition-colors ${t.surface} hover:${t.surfaceHover}`}>
-                              <span>Show example code usage</span>
-                              <span className="text-[10px] opacity-50 group-open:rotate-180 transition-transform">▼</span>
-                            </summary>
-                            <pre className={`p-3 text-[11px] font-mono overflow-x-auto leading-relaxed border-t ${t.border} ${t.code}`}>
-                              {entry.usage}
-                            </pre>
-                          </details>
-                        )}
                       </div>
-
-                      {/* Action buttons */}
-                      <div className="flex gap-2.5 mt-6 pt-4 border-t border-dashed dark:border-white/5 border-neutral-200">
-                        <button
-                          type="button"
-                          onClick={() => handleApprove(entry)}
-                          disabled={actioningId === entry.name}
-                          className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold transition-all bg-emerald-600 hover:bg-emerald-500 text-white cursor-pointer disabled:opacity-50`}
-                        >
-                          <Check size={14} className="stroke-[2.5px]" />
-                          {actioningId === entry.name ? "Approve..." : "Approve Submission"}
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => setDeleteConfirmEntry(entry.name)}
-                          disabled={actioningId === entry.name}
-                          className={`flex items-center justify-center p-2.5 rounded-xl border border-red-500/20 text-red-500 hover:bg-red-500/10 transition-colors cursor-pointer disabled:opacity-50`}
-                          title="Reject and discard submission"
-                        >
-                          <Trash2 size={15} />
-                        </button>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </>
@@ -488,48 +544,89 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                         <th className="px-5 py-3.5">Type</th>
                         <th className="px-5 py-3.5">Task</th>
                         <th className="px-5 py-3.5">Year</th>
+                        <th className="px-5 py-3.5">Submitted By</th>
                         <th className="px-5 py-3.5 text-right">Actions</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100 dark:divide-white/5">
-                      {filteredApproved.map((entry) => (
-                        <tr
-                          key={entry.name}
-                          className={`text-xs transition-colors hover:bg-neutral-50/50 dark:hover:bg-white/[0.015]`}
-                        >
-                          <td className="px-5 py-3.5 font-bold">
-                            <button
-                              onClick={() => onViewEntry?.(entry)}
-                              className={`hover:underline cursor-pointer ${t.textPrimary}`}
-                            >
-                              {entry.name}
-                            </button>
-                          </td>
-                          <td className={`px-5 py-3.5 ${t.textSecondary}`}>{entry.org || "—"}</td>
-                          <td className="px-5 py-3.5">
-                            <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded-md border ${typeBadge(entry.type, t)}`}>
-                              {entry.type}
-                            </span>
-                          </td>
-                          <td className="px-5 py-3.5">
-                            <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded-md border ${taskBadge(entry.task, t)}`}>
-                              {entry.task}
-                            </span>
-                          </td>
-                          <td className={`px-5 py-3.5 ${t.textSecondary}`}>{entry.year}</td>
-                          <td className="px-5 py-3.5 text-right">
-                            <button
-                              type="button"
-                              onClick={() => setDeleteConfirmEntry(entry.name)}
-                              disabled={actioningId === entry.name}
-                              className={`p-2 rounded-lg text-red-500 hover:bg-red-500/10 transition-colors cursor-pointer disabled:opacity-50`}
-                              title="Delete from active directory"
-                            >
-                              <Trash2 size={14} />
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
+                      {filteredApproved.map((entry) => {
+                        const submitter = users.find((u) => u.userKey === entry.submitted_by);
+                        const isNew = isNewSubmission(entry.created_at);
+
+                        return (
+                          <tr
+                            key={entry.name}
+                            className={`text-xs transition-colors hover:bg-neutral-50/50 dark:hover:bg-white/[0.015] ${
+                              isNew
+                                ? isDark
+                                  ? "bg-indigo-500/[0.02] border-l-2 border-l-indigo-500"
+                                  : "bg-indigo-50/30 border-l-2 border-l-indigo-500"
+                                : ""
+                            }`}
+                          >
+                            <td className="px-5 py-3.5 font-bold">
+                              <div className="flex items-center gap-2">
+                                <button
+                                  onClick={() => onViewEntry?.(entry)}
+                                  className={`hover:underline cursor-pointer ${t.textPrimary}`}
+                                >
+                                  {entry.name}
+                                </button>
+                                {isNew && (
+                                  <span className="inline-flex items-center text-[8px] font-black uppercase px-1 py-0.5 rounded bg-indigo-500/15 text-indigo-400 border border-indigo-500/20">
+                                    NEW
+                                  </span>
+                                )}
+                              </div>
+                            </td>
+                            <td className={`px-5 py-3.5 ${t.textSecondary}`}>{entry.org || "—"}</td>
+                            <td className="px-5 py-3.5">
+                              <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded-md border ${typeBadge(entry.type, t)}`}>
+                                {entry.type}
+                              </span>
+                            </td>
+                            <td className="px-5 py-3.5">
+                              <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded-md border ${taskBadge(entry.task, t)}`}>
+                                {entry.task}
+                              </span>
+                            </td>
+                            <td className={`px-5 py-3.5 ${t.textSecondary}`}>{entry.year}</td>
+                            <td className="px-5 py-3.5">
+                              {submitter ? (
+                                <div className="flex items-center gap-1.5">
+                                  <div className={`w-5 h-5 rounded-full overflow-hidden shrink-0 flex items-center justify-center font-bold text-[8px] ${isDark ? "bg-white/8 text-white" : "bg-black/6 text-black"}`}>
+                                    {submitter.avatarUrl ? (
+                                      <img
+                                        src={submitter.avatarUrl}
+                                        alt=""
+                                        className="w-full h-full object-cover"
+                                      />
+                                    ) : (
+                                      submitter.displayName.slice(0, 2).toUpperCase()
+                                    )}
+                                  </div>
+                                  <span className={t.textPrimary} title={`${submitter.displayName} (${submitter.username})`}>
+                                    {submitter.displayName}
+                                  </span>
+                                </div>
+                              ) : (
+                                <span className={t.textMuted}>—</span>
+                              )}
+                            </td>
+                            <td className="px-5 py-3.5 text-right">
+                              <button
+                                type="button"
+                                onClick={() => setDeleteConfirmEntry(entry.name)}
+                                disabled={actioningId === entry.name}
+                                className={`p-2 rounded-lg text-red-500 hover:bg-red-500/10 transition-colors cursor-pointer disabled:opacity-50`}
+                                title="Delete from active directory"
+                              >
+                                <Trash2 size={14} />
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>

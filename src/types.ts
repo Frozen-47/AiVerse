@@ -22,6 +22,8 @@ export interface Entry {
   citations: Citation[];
   popular: boolean;
   approved?: boolean;
+  submitted_by?: string;
+  created_at?: string;
 }
 
 export type TypeFilter = "All" | Entry["type"];

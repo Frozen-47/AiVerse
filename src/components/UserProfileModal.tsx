@@ -2,21 +2,18 @@ import React, { useState, useEffect, useRef } from "react";
 import {
   X,
   Loader2,
-  Cpu,
   Layers,
   GitBranch,
   Sparkles,
-  Terminal,
   Compass,
   Share2,
   Check,
-  Laptop,
   Code2,
   LayoutGrid,
-  Shield,
   Bookmark,
 } from "lucide-react";
-import { fetchProfileByUsername, type PublicBuilderProfile } from "../lib/supabase";
+import { supabase, fetchProfileByUsername, type PublicBuilderProfile } from "../lib/supabase";
+import type { Entry } from "../types";
 import { useTokens, useTheme } from "../lib/theme";
 import { roleLabel } from "../lib/onboarding";
 import { useAuth } from "./AuthContext";
@@ -27,12 +24,11 @@ interface UserProfileModalProps {
   onClose: () => void;
 }
 
-type TabId = "overview" | "accolades" | "gear" | "bookmarks";
+type TabId = "submissions" | "social" | "bookmarks";
 
 const TABS: { id: TabId; label: string; icon: React.ReactNode }[] = [
-  { id: "overview", label: "Overview", icon: <LayoutGrid size={14} /> },
-  { id: "accolades", label: "Accolades", icon: <Shield size={14} /> },
-  { id: "gear", label: "Build gear", icon: <Cpu size={14} /> },
+  { id: "submissions", label: "Submit History", icon: <LayoutGrid size={14} /> },
+  { id: "social", label: "Social Links", icon: <Share2 size={14} /> },
   { id: "bookmarks", label: "Bookmarks", icon: <Bookmark size={14} /> },
 ];
 
@@ -49,9 +45,10 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState<PublicBuilderProfile | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<TabId>("overview");
+  const [activeTab, setActiveTab] = useState<TabId>("submissions");
   const [copied, setCopied] = useState(false);
   const [savedEntries, setSavedEntries] = useState<string[]>([]);
+  const [submitHistory, setSubmitHistory] = useState<Entry[]>([]);
 
   const isOwnProfile =
     user?.user_metadata?.username?.toLowerCase() === username.toLowerCase();
@@ -84,8 +81,9 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
     const loadData = async () => {
       if (isOwnProfile) {
         const meta = user?.user_metadata;
+        const ownUserKey = user?.id ? (user.id.startsWith("supabase_") ? user.id : `supabase_${user.id}`) : "";
         const p: PublicBuilderProfile = {
-          userKey: user?.id || "",
+          userKey: ownUserKey,
           displayName: meta?.firstName || "Builder",
           username: meta?.username || username,
           description: meta?.description || "",
@@ -102,8 +100,8 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
           setProfile(p);
           // Only fetch bookmarks if it's the own profile
           try {
-            const { fetchUserBookmarks, bookmarkUserKey } = await import("../lib/entryBookmarks");
-            const bmarks = await fetchUserBookmarks(bookmarkUserKey(user?.id || ""));
+            const { fetchUserBookmarks } = await import("../lib/entryBookmarks");
+            const bmarks = await fetchUserBookmarks(ownUserKey);
             setSavedEntries(bmarks);
           } catch (err) {
             console.error(err);
@@ -135,6 +133,32 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   }, [username, isOwnProfile, user]);
 
   useEffect(() => {
+    if (!profile) return;
+
+    let active = true;
+    const fetchSubmissions = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("entries")
+          .select("*")
+          .eq("submitted_by", profile.userKey)
+          .order("created_at", { ascending: false });
+
+        if (!error && data && active) {
+          setSubmitHistory(data as Entry[]);
+        }
+      } catch (err) {
+        console.error("Failed to fetch submit history:", err);
+      }
+    };
+
+    fetchSubmissions();
+    return () => {
+      active = false;
+    };
+  }, [profile]);
+
+  useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "unset";
@@ -152,105 +176,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // XP / level derived from interests count
-  const builderLevel = Math.min(10, Math.max(1, (profile?.interests?.length ?? 1)));
-  const baseXP = builderLevel * 150;
-  const maxXP = 1500;
-  const xpPercent = Math.min(100, Math.round((baseXP / maxXP) * 100));
 
-  const accoladesList = [
-    {
-      id: "titan",
-      title: "Open-source Titan",
-      desc: "Contributed shared repositories to GitHub",
-      icon: GitBranch,
-      unlocked: !!profile?.github,
-    },
-    {
-      id: "hunter",
-      title: "Bug Hunter",
-      desc: "Squashed async races and critical memory locks",
-      icon: Terminal,
-      unlocked: true,
-    },
-    {
-      id: "alchemist",
-      title: "Code Alchemist",
-      desc: "Synthesized abstract models from conceptual products",
-      icon: Sparkles,
-      unlocked:
-        (profile?.interests || []).length >= 3 || profile?.role === "developer",
-    },
-    {
-      id: "oracle",
-      title: "API Oracle",
-      desc: "Exposed robust endpoints and web assets to the community",
-      icon: Layers,
-      unlocked: !!(profile?.portfolio || profile?.devto || profile?.medium),
-    },
-    {
-      id: "neural",
-      title: "Neural Pathfinder",
-      desc: "Engineered deep neural network pipeline topologies",
-      icon: Cpu,
-      unlocked:
-        profile?.role === "ml_engineer" ||
-        profile?.role === "researcher" ||
-        (profile?.interests || []).some((i) =>
-          ["nlp", "cv", "computer_vision", "multimodal", "audio"].includes(
-            i.toLowerCase(),
-          ),
-        ),
-    },
-    {
-      id: "explorer",
-      title: "Cosmic Explorer",
-      desc: "Ventured into novel multi-agent architectures",
-      icon: Compass,
-      unlocked:
-        profile?.role === "hobbyist" ||
-        profile?.role === "student" ||
-        (profile?.interests || []).length >= 5,
-    },
-  ];
-
-  const gearConfig = (() => {
-    const r = profile?.role?.toLowerCase() || "";
-    if (r === "ml_engineer")
-      return [
-        { label: "Main IDE", val: "Cursor / Vim", icon: Laptop },
-        { label: "Language", val: "Python 3.11", icon: Code2 },
-        { label: "Framework", val: "PyTorch", icon: Cpu },
-        { label: "Terminal", val: "zsh + Warp", icon: Terminal },
-      ];
-    if (r === "researcher")
-      return [
-        { label: "Main IDE", val: "VS Code", icon: Laptop },
-        { label: "Language", val: "Python / LaTeX", icon: Code2 },
-        { label: "Framework", val: "JAX & Equinox", icon: Cpu },
-        { label: "Terminal", val: "bash + tmux", icon: Terminal },
-      ];
-    if (r === "developer")
-      return [
-        { label: "Main IDE", val: "Cursor AI", icon: Laptop },
-        { label: "Language", val: "TypeScript & Rust", icon: Code2 },
-        { label: "Framework", val: "Next.js", icon: Cpu },
-        { label: "Terminal", val: "zsh + Oh My Zsh", icon: Terminal },
-      ];
-    if (r === "product")
-      return [
-        { label: "Main IDE", val: "Notion + Figma", icon: Laptop },
-        { label: "Language", val: "Markdown & SQL", icon: Code2 },
-        { label: "Framework", val: "React", icon: Cpu },
-        { label: "Terminal", val: "Slack CLI", icon: Terminal },
-      ];
-    return [
-      { label: "Main IDE", val: "VS Code", icon: Laptop },
-      { label: "Language", val: "JavaScript / Python", icon: Code2 },
-      { label: "Framework", val: "React Stack", icon: Cpu },
-      { label: "Terminal", val: "Standard Shell", icon: Terminal },
-    ];
-  })();
 
   const socialLinks = [
     { name: "GitHub", url: profile?.github, icon: GitBranch },
@@ -420,187 +346,101 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
             {/* Body — scrollable */}
             <div className="flex-1 overflow-y-auto no-scrollbar p-5">
 
-              {/* ── Overview tab ─────────────────────────────────────────── */}
-              {activeTab === "overview" && (
-                <div className="animate-[fadeIn_0.15s_ease-out]">
-                  {/* XP bar */}
-                  <div className="mb-4">
-                    <div
-                      className={`flex justify-between items-center mb-1.5 text-[11px] ${t.textMuted}`}
-                    >
-                      <span>Builder XP — Level {builderLevel}</span>
-                      <span>
-                        {baseXP} / {maxXP}
-                      </span>
-                    </div>
-                    <div
-                      className={`h-1 rounded-full overflow-hidden ${isDark ? "bg-white/8" : "bg-black/8"}`}
-                    >
-                      <div
-                        className={`h-full rounded-full transition-all ${isDark ? "bg-white/60" : "bg-black/60"}`}
-                        style={{ width: `${xpPercent}%` }}
-                      />
-                    </div>
-                  </div>
 
-                  {/* Stat cards */}
-                  <div className="grid grid-cols-2 gap-2 mb-4">
-                    <div className={`rounded-xl p-3 ${cardBg} ${cardBorder}`}>
-                      <p className={`text-[10px] uppercase tracking-wider mb-1 ${isDark ? "text-white/30" : "text-black/30"}`}>
-                        Reputation tier
-                      </p>
-                      <p className={`text-sm font-medium ${t.textPrimary}`}>
-                        Tier {builderLevel} Contributor
-                      </p>
-                    </div>
-                    <div className={`rounded-xl p-3 ${cardBg} ${cardBorder}`}>
-                      <p className={`text-[10px] uppercase tracking-wider mb-1 ${isDark ? "text-white/30" : "text-black/30"}`}>
-                        Status
-                      </p>
-                      <p className={`text-sm font-medium flex items-center gap-1.5 ${t.textPrimary}`}>
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
-                        Online
-                      </p>
-                    </div>
-                  </div>
 
-                  {/* Social links */}
-                  {socialLinks.length > 0 && (
-                    <div
-                      className={`pt-4 border-t ${isDark ? "border-white/6" : "border-black/6"}`}
-                    >
-                      <p className={sectionLabel}>Web connections</p>
-                      <div className="flex flex-wrap gap-2">
-                        {socialLinks.map((link) => {
-                          const Icon = link.icon;
-                          return (
-                            <a
-                              key={link.name}
-                              href={link.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full transition-colors ${cardBg} ${cardBorder} ${t.textSecondary} hover:${t.textPrimary}`}
-                            >
-                              <Icon size={12} />
-                              {link.name}
-                            </a>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* ── Accolades tab ─────────────────────────────────────────── */}
-              {activeTab === "accolades" && (
-                <div className="animate-[fadeIn_0.15s_ease-out]">
-                  <p className={sectionLabel}>Achievements</p>
-                  <div className="flex flex-col gap-2">
-                    {accoladesList.map((accolade) => {
-                      const Icon = accolade.icon;
-                      return (
+              {/* ── Submissions tab ──────────────────────────────────────── */}
+              {activeTab === "submissions" && (
+                <div className="animate-[fadeIn_0.15s_ease-out] space-y-3">
+                  <p className={sectionLabel}>Submit History</p>
+                  <div className="space-y-2">
+                    {submitHistory.length > 0 ? (
+                      submitHistory.map((entry) => (
                         <div
-                          key={accolade.id}
-                          className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-opacity ${cardBorder} ${
-                            accolade.unlocked
-                              ? `${cardBg}`
-                              : `${isDark ? "bg-transparent opacity-35" : "bg-transparent opacity-30"}`
-                          }`}
+                          key={entry.name}
+                          className={`p-3.5 rounded-xl flex items-center justify-between transition-colors ${cardBg} ${cardBorder}`}
                         >
-                          <div
-                            className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
-                              accolade.unlocked
-                                ? isDark
-                                  ? "bg-white/8 text-white/70"
-                                  : "bg-black/6 text-black/60"
-                                : isDark
-                                  ? "bg-white/4 text-white/25"
-                                  : "bg-black/4 text-black/25"
-                            }`}
-                          >
-                            <Icon size={15} />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <p
-                              className={`text-[13px] font-medium leading-tight ${t.textPrimary}`}
-                            >
-                              {accolade.title}
-                            </p>
-                            <p
-                              className={`text-[11px] mt-0.5 leading-snug ${t.textMuted}`}
-                            >
-                              {accolade.desc}
+                          <div className="min-w-0 pr-3 flex-1">
+                            <h4 className={`text-[13px] font-bold truncate ${t.textPrimary}`}>
+                              {entry.name}
+                            </h4>
+                            <p className={`text-[11px] truncate mt-0.5 ${t.textMuted}`}>
+                              {entry.summary}
                             </p>
                           </div>
-                          {accolade.unlocked && (
-                            <span
-                              className={`text-[10px] font-medium px-2 py-0.5 rounded-full flex-shrink-0 ${isDark ? "bg-emerald-500/12 text-emerald-400" : "bg-emerald-500/10 text-emerald-600"}`}
-                            >
-                              Earned
-                            </span>
-                          )}
+                          <div className="flex items-center gap-2 shrink-0">
+                            {entry.approved ? (
+                              <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                                Approved
+                              </span>
+                            ) : (
+                              <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-400 animate-pulse">
+                                Pending
+                              </span>
+                            )}
+                          </div>
                         </div>
-                      );
-                    })}
+                      ))
+                    ) : (
+                      <p className={`text-[12px] italic py-4 ${t.textMuted}`}>No tools submitted yet.</p>
+                    )}
                   </div>
                 </div>
               )}
 
-              {/* ── Gear tab ──────────────────────────────────────────────── */}
-              {activeTab === "gear" && (
-                <div className="animate-[fadeIn_0.15s_ease-out]">
-                  <p className={sectionLabel}>Technical environment</p>
-                  <div className="grid grid-cols-2 gap-2">
-                    {gearConfig.map((item, idx) => {
-                      const Icon = item.icon;
-                      return (
-                        <div
-                          key={idx}
-                          className={`flex items-center gap-3 p-3 rounded-xl ${cardBg} ${cardBorder}`}
-                        >
-                          <div
-                            className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${isDark ? "bg-white/6 text-white/50" : "bg-black/5 text-black/40"}`}
+              {/* ── Social Links tab ─────────────────────────────────────── */}
+              {activeTab === "social" && (
+                <div className="animate-[fadeIn_0.15s_ease-out] space-y-3">
+                  <p className={sectionLabel}>Social Media & Connections</p>
+                  <div className="space-y-2">
+                    {socialLinks.length > 0 ? (
+                      socialLinks.map((link) => {
+                        const Icon = link.icon;
+                        return (
+                          <a
+                            key={link.name}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`flex items-center gap-3.5 p-3 rounded-xl transition-all ${cardBg} ${cardBorder} hover:${t.surfaceHover}`}
                           >
-                            <Icon size={15} />
-                          </div>
-                          <div className="min-w-0">
-                            <p
-                              className={`text-[10px] uppercase tracking-wider mb-0.5 ${isDark ? "text-white/30" : "text-black/30"}`}
-                            >
-                              {item.label}
-                            </p>
-                            <p
-                              className={`text-[13px] font-medium truncate ${t.textPrimary}`}
-                            >
-                              {item.val}
-                            </p>
-                          </div>
-                        </div>
-                      );
-                    })}
+                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${isDark ? "bg-white/6 text-white/50" : "bg-black/5 text-black/40"}`}>
+                              <Icon size={15} />
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <p className={`text-[13px] font-bold ${t.textPrimary}`}>{link.name}</p>
+                              <p className={`text-[11px] truncate mt-0.5 ${t.textMuted}`}>{link.url}</p>
+                            </div>
+                          </a>
+                        );
+                      })
+                    ) : (
+                      <p className={`text-[12px] italic py-4 ${t.textMuted}`}>No social media connections added.</p>
+                    )}
                   </div>
                 </div>
               )}
 
               {/* ── Bookmarks tab ─────────────────────────────────────────── */}
               {activeTab === "bookmarks" && isOwnProfile && (
-                <div className="animate-[fadeIn_0.15s_ease-out]">
-                  <p className={sectionLabel}>Saved resources</p>
-                  {savedEntries.length > 0 ? (
-                    <div className="flex flex-col gap-2">
-                      {savedEntries.map((name) => (
-                        <div key={name} className={`flex items-center gap-3 p-3 rounded-xl ${cardBg} ${cardBorder}`}>
+                <div className="animate-[fadeIn_0.15s_ease-out] space-y-3">
+                  <p className={sectionLabel}>Bookmarks</p>
+                  <div className="space-y-2">
+                    {savedEntries.length > 0 ? (
+                      savedEntries.map((name) => (
+                        <div
+                          key={name}
+                          className={`flex items-center gap-3.5 p-3 rounded-xl transition-colors ${cardBg} ${cardBorder}`}
+                        >
                           <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${isDark ? "bg-white/6 text-white/50" : "bg-black/5 text-black/40"}`}>
-                            <Bookmark size={15} />
+                            <Bookmark size={15} className="fill-current" />
                           </div>
-                          <p className={`text-[13px] font-medium ${t.textPrimary}`}>{name}</p>
+                          <p className={`text-[13px] font-bold ${t.textPrimary}`}>{name}</p>
                         </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className={`text-[13px] ${t.textMuted}`}>No saved entries yet.</p>
-                  )}
+                      ))
+                    ) : (
+                      <p className={`text-[12px] italic py-4 ${t.textMuted}`}>No bookmarked tools yet.</p>
+                    )}
+                  </div>
                 </div>
               )}
             </div>

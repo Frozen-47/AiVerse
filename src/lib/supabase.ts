@@ -16,10 +16,10 @@ export const supabase = createClient(
 );
 
 // Helper function to insert an entry
-export const insertEntry = async (entry: Partial<Entry>) => {
+export const insertEntry = async (entry: Partial<Entry>, userKey?: string) => {
   const { data, error } = await supabase
     .from("entries")
-    .insert([{ ...entry, approved: false, popular: false }]);
+    .insert([{ ...entry, approved: false, popular: false, submitted_by: userKey || null }]);
   
   if (error) throw error;
   return data;

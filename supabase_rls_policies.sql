@@ -77,7 +77,7 @@ DROP POLICY IF EXISTS "Allow public read access" ON entries;
 DROP POLICY IF EXISTS "Public read approved entries" ON entries;
 CREATE POLICY "Public read approved entries"
   ON entries FOR SELECT
-  USING (approved = true OR private.is_admin());
+  USING (approved = true OR private.is_admin() OR submitted_by = private.app_user_key());
 
 DROP POLICY IF EXISTS "Admin update entries" ON entries;
 CREATE POLICY "Admin update entries"
