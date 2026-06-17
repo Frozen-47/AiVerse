@@ -24,15 +24,21 @@ export const EntryCard = memo(function EntryCard({
 }: EntryCardProps) {
   const t = useTokens();
   const animate = index < 8;
+  const isNew = entry.created_at
+    ? (new Date().getTime() - new Date(entry.created_at).getTime()) / (1000 * 60 * 60 * 24) <= 2
+    : false;
 
   return (
     <article
       onClick={() => onSelect(entryName)}
       style={animate ? { animationDelay: `${index * 30}ms` } : undefined}
       className={`
-        group flex flex-col rounded-xl p-5 cursor-pointer glow-card ${t.card}
+        group flex flex-col rounded-xl p-5 cursor-pointer glow-card transition-all ${
+          isNew
+            ? "border-indigo-500/30 ring-1 ring-indigo-500/10 shadow-sm shadow-indigo-500/[0.02] bg-indigo-500/[0.005] hover:border-indigo-500/50"
+            : t.card
+        }
         [content-visibility:auto]
-        ${animate ? "" : ""}
       `}
     >
       <div className="flex items-start justify-between mb-4">
@@ -56,6 +62,11 @@ export const EntryCard = memo(function EntryCard({
             >
               <Bookmark size={12} className={isBookmarked ? "fill-current" : ""} />
             </button>
+          )}
+          {isNew && (
+            <span className="inline-flex items-center text-[8px] font-black uppercase px-2 py-0.5 rounded bg-indigo-500/15 text-indigo-400 border border-indigo-500/20 animate-pulse">
+              NEW
+            </span>
           )}
           {entry.popular && (
             <span className={`inline-flex items-center gap-1 text-[9px] font-bold px-2 py-0.5 rounded-full border ${t.popular}`}>

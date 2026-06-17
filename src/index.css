@@ -54,6 +54,22 @@
   animation: none !important;
 }
 
+/* Fix native dropdown background and text colors in dark/light modes */
+.dark select,
+.dark option {
+  color-scheme: dark;
+}
+
+.dark select option {
+  background-color: #171717;
+  color: #ffffff;
+}
+
+.light select,
+.light option {
+  color-scheme: light;
+}
+
 :root {
   --primary: 255, 255, 255;
 }

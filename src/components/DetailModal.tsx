@@ -178,6 +178,10 @@ export const DetailModal: React.FC<DetailModalProps> = ({
   const [compareName, setCompareName] = useState("");
   const modalRef = useRef<HTMLDivElement>(null);
 
+  const isNew = entry.created_at
+    ? (new Date().getTime() - new Date(entry.created_at).getTime()) / (1000 * 60 * 60 * 24) <= 2
+    : false;
+
   const compareEntry = useMemo(
     () => compareCandidates.find((e) => e.name === compareName),
     [compareCandidates, compareName],
@@ -227,7 +231,11 @@ export const DetailModal: React.FC<DetailModalProps> = ({
     <div className={t.modalOverlay}>
       <div
         ref={modalRef}
-        className={`relative w-full max-w-2xl sm:max-w-3xl lg:max-w-4xl max-h-[92vh] flex flex-col rounded-2xl overflow-hidden shadow-2xl ${t.modal}`}
+        className={`relative w-full max-w-2xl sm:max-w-3xl lg:max-w-4xl max-h-[92vh] flex flex-col rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 ${
+          isNew
+            ? "border-2 border-indigo-500/30 ring-2 ring-indigo-500/10 shadow-indigo-500/[0.02]"
+            : ""
+        } ${t.modal}`}
       >
 
         <div className="absolute top-5 right-5 z-10 flex items-center gap-2">
@@ -264,6 +272,11 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap mb-1">
                 <h2 className={`text-xl font-black tracking-tight ${t.textPrimary}`}>{entry.name}</h2>
+                {isNew && (
+                  <span className="inline-flex items-center text-[9px] font-black uppercase px-2 py-0.5 rounded bg-indigo-500/15 text-indigo-400 border border-indigo-500/20 animate-pulse">
+                    NEW
+                  </span>
+                )}
                 {entry.popular && (
                   <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${t.popular}`}>
                     <Star size={8} className="fill-current" /> Popular
@@ -448,17 +461,29 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                   <div>
                     <p className={t.sectionLabel}>Related entries</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {relatedEntries.map((related) => (
-                        <button
-                          key={related.name}
-                          type="button"
-                          onClick={() => onSelectRelated(related)}
-                          className={`text-left rounded-xl border px-4 py-3 transition-all ${t.surface} ${t.border} ${t.borderHover}`}
-                        >
-                          <p className={`text-[13px] font-semibold ${t.textPrimary}`}>{related.name}</p>
-                          <p className={`text-[11px] mt-0.5 ${t.textMuted}`}>{related.type} · {related.task}</p>
-                        </button>
-                      ))}
+                      {relatedEntries.map((related) => {
+                        const isRelatedNew = related.created_at
+                          ? (new Date().getTime() - new Date(related.created_at).getTime()) / (1000 * 60 * 60 * 24) <= 2
+                          : false;
+                        return (
+                          <button
+                            key={related.name}
+                            type="button"
+                            onClick={() => onSelectRelated(related)}
+                            className={`text-left rounded-xl border px-4 py-3 transition-all ${t.surface} ${t.border} ${t.borderHover}`}
+                          >
+                            <div className="flex items-center justify-between gap-2">
+                              <p className={`text-[13px] font-semibold truncate ${t.textPrimary}`}>{related.name}</p>
+                              {isRelatedNew && (
+                                <span className="inline-flex items-center text-[7.5px] font-black uppercase px-1.5 py-0.5 rounded bg-indigo-500/15 text-indigo-400 border border-indigo-500/20 animate-pulse shrink-0">
+                                  NEW
+                                </span>
+                              )}
+                            </div>
+                            <p className={`text-[11px] mt-0.5 ${t.textMuted}`}>{related.type} · {related.task}</p>
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
                 )}

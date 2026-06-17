@@ -354,32 +354,44 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                   <p className={sectionLabel}>Submit History</p>
                   <div className="space-y-2">
                     {submitHistory.length > 0 ? (
-                      submitHistory.map((entry) => (
-                        <div
-                          key={entry.name}
-                          className={`p-3.5 rounded-xl flex items-center justify-between transition-colors ${cardBg} ${cardBorder}`}
-                        >
-                          <div className="min-w-0 pr-3 flex-1">
-                            <h4 className={`text-[13px] font-bold truncate ${t.textPrimary}`}>
-                              {entry.name}
-                            </h4>
-                            <p className={`text-[11px] truncate mt-0.5 ${t.textMuted}`}>
-                              {entry.summary}
-                            </p>
+                      submitHistory.map((entry) => {
+                        const isNew = entry.created_at
+                          ? (new Date().getTime() - new Date(entry.created_at).getTime()) / (1000 * 60 * 60 * 24) <= 2
+                          : false;
+                        return (
+                          <div
+                            key={entry.name}
+                            className={`p-3.5 rounded-xl flex items-center justify-between transition-colors ${cardBg} ${cardBorder}`}
+                          >
+                            <div className="min-w-0 pr-3 flex-1">
+                              <div className="flex items-center gap-2">
+                                <h4 className={`text-[13px] font-bold truncate ${t.textPrimary}`}>
+                                  {entry.name}
+                                </h4>
+                                {isNew && (
+                                  <span className="inline-flex items-center text-[8px] font-black uppercase px-1.5 py-0.5 rounded bg-indigo-500/15 text-indigo-400 border border-indigo-500/20 animate-pulse shrink-0">
+                                    NEW
+                                  </span>
+                                )}
+                              </div>
+                              <p className={`text-[11px] truncate mt-0.5 ${t.textMuted}`}>
+                                {entry.summary}
+                              </p>
+                            </div>
+                            <div className="flex items-center gap-2 shrink-0">
+                              {entry.approved ? (
+                                <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                                  Approved
+                                </span>
+                              ) : (
+                                <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-400 animate-pulse">
+                                  Pending
+                                </span>
+                              )}
+                            </div>
                           </div>
-                          <div className="flex items-center gap-2 shrink-0">
-                            {entry.approved ? (
-                              <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                                Approved
-                              </span>
-                            ) : (
-                              <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-400 animate-pulse">
-                                Pending
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      ))
+                        );
+                      })
                     ) : (
                       <p className={`text-[12px] italic py-4 ${t.textMuted}`}>No tools submitted yet.</p>
                     )}
@@ -443,6 +455,21 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                   </div>
                 </div>
               )}
+            </div>
+
+            {/* Footer with Close Button */}
+            <div className={`px-5 py-3.5 border-t flex justify-end shrink-0 ${isDark ? "border-white/8 bg-white/[0.01]" : "border-black/8 bg-black/[0.01]"}`}>
+              <button
+                type="button"
+                onClick={onClose}
+                className={`px-4.5 py-2.5 rounded-xl text-xs font-bold cursor-pointer transition-all duration-200 ${
+                  isDark
+                    ? "bg-white/5 border border-white/8 text-white hover:bg-white/10"
+                    : "bg-black/5 border border-black/8 text-neutral-700 hover:bg-black/10"
+                }`}
+              >
+                Close Profile
+              </button>
             </div>
           </>
         )}

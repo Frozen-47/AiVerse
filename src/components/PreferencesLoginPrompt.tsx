@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
 import { useAuth } from "./AuthContext";
-import { useTokens } from "../lib/theme";
+import { useTokens, useTheme } from "../lib/theme";
 
 interface PreferencesLoginPromptProps {
   onClose: () => void;
@@ -16,6 +16,7 @@ export function PreferencesLoginPrompt({
   description = "Create a free account to save your role and interests and get a catalog feed picked for you. Preferences stay synced to your account.",
 }: PreferencesLoginPromptProps) {
   const t = useTokens();
+  const { resolvedTheme } = useTheme();
   const { openAuthModal } = useAuth();
 
   return (
@@ -64,7 +65,11 @@ export function PreferencesLoginPrompt({
               onClose();
               openAuthModal("signup");
             }}
-            className="flex-1 px-4 py-3 rounded-xl font-semibold text-sm bg-black text-white text-white"
+            className={`flex-1 px-4 py-3 rounded-xl font-bold text-sm transition-all ${
+              resolvedTheme === "amoled"
+                ? "bg-white hover:bg-white/90 text-black shadow-md"
+                : "bg-neutral-900 hover:bg-neutral-800 text-white"
+            }`}
           >
             Create account
           </button>

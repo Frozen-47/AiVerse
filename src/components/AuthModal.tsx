@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { X, Mail, Lock, Loader2 } from 'lucide-react';
 import { useAuth } from './AuthContext';
-import { useTokens } from '../lib/theme';
+import { useTokens, useTheme } from '../lib/theme';
 import { supabase } from '../lib/supabase';
 
 export const AuthModal: React.FC = () => {
   const { isAuthModalOpen, closeAuthModal, authMode, signInWithOAuth } = useAuth();
   const t = useTokens();
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === 'amoled';
 
   
   const [isLogin, setIsLogin] = useState(authMode === 'signin');
@@ -172,7 +174,11 @@ export const AuthModal: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-semibold text-sm bg-black text-white hover:from-black hover:to-transparent text-white shadow-md shadow-black/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+            className={`w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed mt-2 ${
+              isDark
+                ? "bg-white hover:bg-white/90 text-black shadow-md"
+                : "bg-neutral-900 hover:bg-neutral-800 text-white shadow-md shadow-black/10"
+            }`}
           >
             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (isLogin ? 'Sign In' : 'Sign Up')}
           </button>

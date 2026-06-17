@@ -212,8 +212,12 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
 
   const separatorCls = `h-px mx-3 my-1.5 bg-gradient-to-r from-transparent ${isDark ? "via-white/7" : "via-black/6"} to-transparent`;
 
-  const saveBtnCls =
-    "w-full py-2.5 rounded-xl text-xs font-bold cursor-pointer transition-all duration-300 bg-black text-white hover:bg-black/90 shadow-md hover:shadow-lg disabled:opacity-40 disabled:saturate-50 disabled:cursor-not-allowed";
+  const saveBtnCls = [
+    "w-full py-2.5 rounded-xl text-xs font-bold cursor-pointer transition-all duration-300 shadow-md hover:shadow-lg disabled:opacity-40 disabled:saturate-50 disabled:cursor-not-allowed",
+    isDark
+      ? "bg-white hover:bg-white/90 text-black"
+      : "bg-neutral-900 hover:bg-neutral-800 text-white",
+  ].join(" ");
 
   // ---------------------------------------------------------------------------
   // Profile View
