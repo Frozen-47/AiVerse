@@ -118,17 +118,32 @@ AS $$
     );
 $$;
 
+CREATE OR REPLACE FUNCTION private.is_admin()
+RETURNS boolean
+LANGUAGE sql
+STABLE
+SECURITY INVOKER
+SET search_path = ''
+AS $$
+  SELECT 
+    auth.jwt() ->> 'email' = 'frozennheart47@gmail.com' 
+    OR auth.jwt() -> 'user_metadata' ->> 'role' = 'admin';
+$$;
+
 REVOKE ALL ON FUNCTION private.app_user_key() FROM PUBLIC;
 REVOKE ALL ON FUNCTION private.is_guest_user_key(text) FROM PUBLIC;
 REVOKE ALL ON FUNCTION private.can_access_user_key(text) FROM PUBLIC;
+REVOKE ALL ON FUNCTION private.is_admin() FROM PUBLIC;
 GRANT EXECUTE ON FUNCTION private.app_user_key() TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION private.is_guest_user_key(text) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION private.can_access_user_key(text) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION private.is_admin() TO anon, authenticated;
 
 -- Remove legacy public helpers (callable via PostgREST RPC)
 DROP FUNCTION IF EXISTS public.can_access_user_key(text) CASCADE;
 DROP FUNCTION IF EXISTS public.app_user_key() CASCADE;
 DROP FUNCTION IF EXISTS public.is_guest_user_key(text) CASCADE;
+DROP FUNCTION IF EXISTS public.is_admin() CASCADE;
 
 -- ─── 3. RLS policies ─────────────────────────────────────────────────────────
 
@@ -137,7 +152,18 @@ DROP POLICY IF EXISTS "Allow public read access" ON entries;
 DROP POLICY IF EXISTS "Public read approved entries" ON entries;
 CREATE POLICY "Public read approved entries"
   ON entries FOR SELECT
-  USING (approved = true);
+  USING (approved = true OR private.is_admin());
+
+DROP POLICY IF EXISTS "Admin update entries" ON entries;
+CREATE POLICY "Admin update entries"
+  ON entries FOR UPDATE
+  USING (private.is_admin())
+  WITH CHECK (private.is_admin());
+
+DROP POLICY IF EXISTS "Admin delete entries" ON entries;
+CREATE POLICY "Admin delete entries"
+  ON entries FOR DELETE
+  USING (private.is_admin());
 
 DROP POLICY IF EXISTS "Allow public inserts" ON entries;
 DROP POLICY IF EXISTS "Public submit unapproved entries" ON entries;
@@ -161,7 +187,7 @@ DROP POLICY IF EXISTS "Allow public read preferences" ON user_preferences;
 DROP POLICY IF EXISTS "Read own preferences" ON user_preferences;
 CREATE POLICY "Read own preferences"
   ON user_preferences FOR SELECT
-  USING (private.can_access_user_key(user_key));
+  USING (private.can_access_user_key(user_key) OR private.is_admin());
 
 DROP POLICY IF EXISTS "Allow public upsert preferences" ON user_preferences;
 DROP POLICY IF EXISTS "Insert own preferences" ON user_preferences;

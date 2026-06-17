@@ -10,6 +10,7 @@ import {
   SlidersHorizontal,
   User,
   Bookmark,
+  Shield,
 } from "lucide-react";
 import { useAuth } from "./AuthContext";
 import { shareUrlForProfile } from "../lib/entryUrl";
@@ -41,6 +42,7 @@ interface UserProfileMenuProps {
   onViewSaved?: () => void;
   onEditPreferences?: (section?: "profile" | "preferences") => void;
   onClose?: () => void;
+  onViewAdminDashboard?: () => void;
 }
 
 function parseProfileMeta(referralSource: string | undefined) {
@@ -58,6 +60,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   onViewProfile,
   onViewSaved,
   onClose,
+  onViewAdminDashboard,
 }) => {
   const t = useTokens();
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -511,6 +514,25 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
             <span className="flex-1">Feed preferences</span>
           </button>
         </div>
+
+        {/* ── Admin Dashboard ── */}
+        {user?.email === "frozennheart47@gmail.com" || user?.user_metadata?.role === "admin" ? (
+          <div className="profile-menu-stagger" style={{ animationDelay: "100ms" }}>
+            <button
+              type="button"
+              onClick={() => {
+                onViewAdminDashboard?.();
+                onClose?.();
+              }}
+              className={menuItemCls}
+            >
+              <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${isDark ? "bg-amber-500/10 text-amber-400" : "bg-amber-500/10 text-amber-600"}`}>
+                <Shield size={14} className="stroke-[2px]" />
+              </div>
+              <span className={`flex-1 font-semibold ${isDark ? "text-amber-400" : "text-amber-600"}`}>Admin Dashboard</span>
+            </button>
+          </div>
+        ) : null}
 
         {/* ── Theme Selection ── */}
         <div className="profile-menu-stagger px-1.5 py-2 mt-1" style={{ animationDelay: "120ms" }}>

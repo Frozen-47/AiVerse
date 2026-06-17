@@ -11,6 +11,7 @@ interface NavbarProps {
   onViewProfile?: (username: string) => void;
   onViewSaved?: () => void;
   onHomeClick?: () => void;
+  onViewAdminDashboard?: () => void;
   entryCount: number;
   onboardingProfile?: OnboardingProfile | null;
   onSaveProfile?: (
@@ -34,6 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onViewProfile,
   onViewSaved,
   onHomeClick,
+  onViewAdminDashboard,
   entryCount,
   onboardingProfile = null,
   onSaveProfile,
@@ -176,6 +178,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onViewSaved={onViewSaved}
                       onEditPreferences={onEditPreferences}
                       onClose={() => setIsDropdownOpen(false)}
+                      onViewAdminDashboard={onViewAdminDashboard}
                     />
                   </div>
                 </>

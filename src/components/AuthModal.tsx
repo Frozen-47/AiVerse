@@ -56,7 +56,7 @@ export const AuthModal: React.FC = () => {
 
   return (
     <div 
-      className={t.modalOverlay}
+      className={`${t.modalOverlay} !z-[110]`}
       onClick={(e) => {
         if (e.target === e.currentTarget) closeAuthModal();
       }}

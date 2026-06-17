@@ -18,6 +18,7 @@ import { OverviewCards } from "./components/OverviewCards";
 import { PreferencesLoginPrompt } from "./components/PreferencesLoginPrompt";
 import { AuthProvider, useAuth } from "./components/AuthContext";
 import { AuthModal } from "./components/AuthModal";
+import { AdminDashboard } from "./components/AdminDashboard";
 import { useDebouncedValue } from "./lib/useDebouncedValue";
 import { clearLocalBookmarks, loadBookmarks } from "./lib/bookmarks";
 import {
@@ -95,6 +96,7 @@ const Inner: React.FC = () => {
     if (migrated) return migrated;
     return parseProfileUsernameFromLocation();
   });
+  const [isAdminDashboard, setIsAdminDashboard] = useState(false);
   const [isPrivacy, setIsPrivacy] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
     return window.location.pathname === "/privacy" || window.location.pathname === "/privacy/";
@@ -750,6 +752,7 @@ const Inner: React.FC = () => {
           setIsPrivacy(false);
           setIsTerms(false);
           setIsFeatures(false);
+          setIsAdminDashboard(false);
           setSelected(null);
           setProfileUsername(null);
           setBrowseAll(true);
@@ -760,11 +763,21 @@ const Inner: React.FC = () => {
           setIsPrivacy(false);
           setIsTerms(false);
           setIsFeatures(false);
+          setIsAdminDashboard(false);
           setSelected(null);
           setProfileUsername(null);
           setActiveView("landing");
           setBrowseAll(false);
           window.location.hash = "";
+        }}
+        onViewAdminDashboard={() => {
+          setIsPrivacy(false);
+          setIsTerms(false);
+          setIsFeatures(false);
+          setIsAdminDashboard(true);
+          setSelected(null);
+          setProfileUsername(null);
+          setBrowseAll(false);
         }}
         entryCount={entries.length}
         onboardingProfile={onboardingProfile}
@@ -868,6 +881,21 @@ const Inner: React.FC = () => {
             setActiveView("landing");
             setBrowseAll(false);
           }}
+        />
+      ) : isAdminDashboard ? (
+        <AdminDashboard
+          onBackToHome={() => {
+            setIsAdminDashboard(false);
+            setIsPrivacy(false);
+            setIsTerms(false);
+            setIsWizard(false);
+            setIsArena(false);
+            setIsFeatures(false);
+            setActiveView("landing");
+            setBrowseAll(false);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          onViewEntry={setSelected}
         />
       ) : (
         <div className="w-full px-4 sm:px-6 xl:px-12 py-8">
@@ -1273,6 +1301,7 @@ const Inner: React.FC = () => {
                   setIsFeatures(false);
                   setIsWizard(false);
                   setIsArena(false);
+                  setIsAdminDashboard(false);
                   setSelected(null);
                   setProfileUsername(null);
                   setActiveView("landing");
@@ -1307,7 +1336,7 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setSelected(null); setProfileUsername(null); setBrowseAll(true); setActiveView("catalog"); setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); setProfileUsername(null); setBrowseAll(true); setActiveView("catalog"); setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
                   >
@@ -1317,7 +1346,7 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsFeatures(true); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      setIsFeatures(true); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
                   >
@@ -1327,7 +1356,7 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsArena(true); setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      setIsArena(true); setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
                   >
@@ -1337,7 +1366,7 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsWizard(true); setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsArena(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      setIsWizard(true); setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
                   >
@@ -1389,7 +1418,7 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsPrivacy(true); setIsTerms(false); setIsFeatures(false); setIsWizard(false); setIsArena(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      setIsPrivacy(true); setIsTerms(false); setIsFeatures(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
                   >
@@ -1399,7 +1428,7 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsTerms(true); setIsPrivacy(false); setIsFeatures(false); setIsWizard(false); setIsArena(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      setIsTerms(true); setIsPrivacy(false); setIsFeatures(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
                   >
@@ -1682,8 +1711,8 @@ const App: React.FC = () => {
   return (
     <ThemeContext.Provider value={{ theme, resolvedTheme, setTheme }}>
       <AuthProvider>
-        <AuthModal />
         <Inner />
+        <AuthModal />
       </AuthProvider>
     </ThemeContext.Provider>
   );
