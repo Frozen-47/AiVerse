@@ -100,8 +100,7 @@ Please read [Contributing.md](Contributing.md) for details on our code of conduc
 Interested in joining the team? Have ideas or suggestions?
 
 - **Discord**: [Join our server](#) _(coming soon)_
-- **Email**: your.email@example.com
-- **Twitter**: [@AiVerseProject](#)
+- **Email**: sabareeshgm47@gmail.com
 - **Issues**: Feel free to open an issue for discussion!
 
 ## 📋 Project Roadmap
