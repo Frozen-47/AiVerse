@@ -21,6 +21,7 @@ import {
 import { supabase } from "../lib/supabase";
 import { useTokens, useTheme, typeBadge, taskBadge, typeIcon, TYPE_GLYPH } from "../lib/theme";
 import type { Entry } from "../types";
+import { useAuth } from "./AuthContext";
 
 interface AdminDashboardProps {
   onBackToHome: () => void;
@@ -62,7 +63,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 }) => {
   const t = useTokens();
   const { resolvedTheme } = useTheme();
+  const { user } = useAuth();
   const isDark = resolvedTheme === "amoled";
+  const currentUserKey = user ? (user.id.startsWith("supabase_") ? user.id : `supabase_${user.id}`) : "";
 
   const [activeTab, setActiveTab] = useState<TabId>("submissions");
   const [loading, setLoading] = useState(true);
@@ -266,6 +269,18 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     block: boolean,
     durationMs: number
   ) => {
+    if (block) {
+      if (profile.userKey === currentUserKey) {
+        showToast("error", "Security violation: You cannot suspend your own administrator account.");
+        setBlockingUser(null);
+        return;
+      }
+      if (profile.role === "admin") {
+        showToast("error", "Security violation: Administrator accounts cannot be suspended.");
+        setBlockingUser(null);
+        return;
+      }
+    }
     setActioningId(profile.userKey);
     try {
       const blockedUntil = block
@@ -322,6 +337,16 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   };
 
   const handleExecuteDeleteUser = async (profile: UserProfile) => {
+    if (profile.userKey === currentUserKey) {
+      showToast("error", "Security violation: You cannot delete your own administrator account.");
+      setDeleteConfirmUser(null);
+      return;
+    }
+    if (profile.role === "admin") {
+      showToast("error", "Security violation: Administrator accounts cannot be deleted from the dashboard.");
+      setDeleteConfirmUser(null);
+      return;
+    }
     setActioningId(profile.userKey);
     try {
       // 1. Attempt to delete the user completely from both Auth and Public tables using the secure RPC function
@@ -803,6 +828,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                       ? profile.displayName.slice(0, 2).toUpperCase()
                       : profile.username.replace("@", "").slice(0, 2).toUpperCase();
 
+                    const isMe = profile.userKey === currentUserKey;
+                    const isAdminUser = profile.role === "admin";
+
                     return (
                       <div
                         key={profile.userKey}
@@ -926,21 +954,45 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                             </button>
                             <button
                               type="button"
+                              disabled={isMe || isAdminUser}
                               onClick={() => setBlockingUser(profile)}
-                              className={`p-2 rounded-lg border transition-all cursor-pointer ${
+                              className={`p-2 rounded-lg border transition-all ${
+                                isMe || isAdminUser
+                                  ? "opacity-30 cursor-not-allowed border-dashed"
+                                  : "cursor-pointer"
+                              } ${
                                 profile.isBlocked
                                   ? "bg-red-500/10 border-red-500/20 text-red-500 hover:bg-red-500/20"
-                                  : `${t.surface} ${t.border} ${t.textMuted} hover:text-amber-500 hover:border-amber-500/30 hover:bg-amber-500/5`
+                                  : `${t.surface} ${t.border} ${t.textMuted} ${!(isMe || isAdminUser) ? "hover:text-amber-500 hover:border-amber-500/30 hover:bg-amber-500/5" : ""}`
                               }`}
-                              title={profile.isBlocked ? "Unblock Account" : "Suspend Account"}
+                              title={
+                                isMe
+                                  ? "You cannot suspend your own admin account"
+                                  : isAdminUser
+                                  ? "Administrator accounts cannot be suspended"
+                                  : profile.isBlocked
+                                  ? "Unblock Account"
+                                  : "Suspend Account"
+                              }
                             >
                               <Shield size={13} />
                             </button>
                             <button
                               type="button"
+                              disabled={isMe || isAdminUser}
                               onClick={() => setDeleteConfirmUser(profile)}
-                              className={`p-2 rounded-lg border border-transparent text-red-400 hover:text-red-500 hover:bg-red-500/10 hover:border-red-500/20 transition-all cursor-pointer`}
-                              title="Delete Profile"
+                              className={`p-2 rounded-lg border border-transparent transition-all ${
+                                isMe || isAdminUser
+                                  ? "opacity-30 cursor-not-allowed border-dashed"
+                                  : "text-red-400 hover:text-red-500 hover:bg-red-500/10 hover:border-red-500/20 cursor-pointer"
+                              }`}
+                              title={
+                                isMe
+                                  ? "You cannot delete your own admin account"
+                                  : isAdminUser
+                                  ? "Administrator accounts cannot be deleted"
+                                  : "Delete Profile"
+                              }
                             >
                               <Trash2 size={13} />
                             </button>
