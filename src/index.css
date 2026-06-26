@@ -153,15 +153,13 @@ html {
 /* Glassmorphism & Neon Glow System */
 .glow-card {
   position: relative;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: background 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
   border: none !important;
 }
 
 /* Dark Mode (Amoled) Glow Card */
 .dark .glow-card {
   background: #1e1e1e !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
 }
 
 .dark .glow-card::before {
@@ -176,7 +174,6 @@ html {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  transition: all 0.3s ease;
 }
 
 .dark .glow-card:hover {
@@ -192,8 +189,6 @@ html {
 /* Light Mode Glow Card */
 .light .glow-card {
   background: #ffffff !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
 }
 
 .light .glow-card::before {
@@ -208,7 +203,6 @@ html {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  transition: all 0.3s ease;
 }
 
 .light .glow-card:hover {
@@ -224,14 +218,12 @@ html {
 /* Glass Search Input */
 .glass-search {
   position: relative;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
   border: none !important;
 }
 
 .dark .glass-search {
   background: #171717 !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
 }
 
 .dark .glass-search::before {
@@ -246,7 +238,6 @@ html {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  transition: all 0.3s ease;
 }
 
 .dark .glass-search:focus-within {
@@ -260,8 +251,6 @@ html {
 
 .light .glass-search {
   background: #ffffff !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
 }
 
 .light .glass-search::before {
@@ -276,7 +265,6 @@ html {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  transition: all 0.3s ease;
 }
 
 .light .glass-search:focus-within {

@@ -39,6 +39,7 @@ export const EntryCard = memo(function EntryCard({
             : t.card
         }
         [content-visibility:auto]
+        ${animate ? "animate-fade-in-up" : ""}
       `}
     >
       <div className="flex items-start justify-between mb-4">
