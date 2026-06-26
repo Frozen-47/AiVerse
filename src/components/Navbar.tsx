@@ -48,6 +48,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [showGreeting, setShowGreeting] = useState(false);
 
   const prevUserRef = useRef<typeof user>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const avatarButtonRef = useRef<HTMLButtonElement>(null);
 
   const avatarUrl = user?.user_metadata?.avatar_url as string | undefined;
   const firstName = (user?.user_metadata?.firstName as string) || "";
@@ -75,6 +77,25 @@ export const Navbar: React.FC<NavbarProps> = ({
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        isDropdownOpen &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node) &&
+        avatarButtonRef.current &&
+        !avatarButtonRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDropdownOpen]);
 
   return (
     <nav className={`sticky top-0 z-40 border-b ${t.page} ${t.border} backdrop-blur-sm`}>
@@ -138,6 +159,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </span>
               )}
               <button
+                ref={avatarButtonRef}
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className="relative flex items-center justify-center w-9 h-9 rounded-full overflow-hidden border border-white/10 transition-all focus:outline-hidden cursor-pointer"
                 aria-label="User profile menu"
@@ -153,19 +175,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
 
               {isDropdownOpen && onSaveProfile && (
-                <>
-                  <div
-                    className="fixed inset-0 z-40 bg-transparent"
-                    onClick={() => setIsDropdownOpen(false)}
-                  />
-                  <div
-                    className={`absolute right-0 top-11 w-80 sm:w-88 rounded-2xl shadow-2xl p-2  z-50 backdrop-blur-xl ${t.modal} overflow-hidden`}
-                    style={{
-                      boxShadow: `0 20px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px ${
-                        resolvedTheme === "amoled" ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.08)"
-                      }`,
-                    }}
-                  >
+                <div
+                  ref={dropdownRef}
+                  className={`absolute right-0 top-11 w-80 sm:w-88 rounded-2xl shadow-2xl p-2  z-50 backdrop-blur-xl ${t.modal} overflow-hidden`}
+                  style={{
+                    boxShadow: `0 20px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px ${
+                      resolvedTheme === "amoled" ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.08)"
+                    }`,
+                  }}
+                >
                     <UserProfileMenu
                       onboardingProfile={onboardingProfile}
                       onSave={async (profile, meta) => {
@@ -181,7 +199,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onViewAdminDashboard={onViewAdminDashboard}
                     />
                   </div>
-                </>
               )}
             </div>
           </SignedIn>

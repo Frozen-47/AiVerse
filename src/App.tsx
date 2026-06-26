@@ -95,7 +95,6 @@ const Inner: React.FC = () => {
   const debouncedSearch = useDebouncedValue(searchInput, 220);
   const [bookmarks, setBookmarks] = useState<string[]>([]);
   const [savedOnly, setSavedOnly] = useState(false);
-  const [chatEnabled, setChatEnabled] = useState(false);
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("All");
   const [taskFilter, setTaskFilter] = useState<TaskFilter>("All Tasks");
   const [popularOnly, setPopularOnly] = useState(false);
@@ -242,8 +241,14 @@ const Inner: React.FC = () => {
           setOnboardingProfile(null);
           setShowOnboarding(false);
           setBlockedStatus(null);
+          setIsAdminDashboard(false);
         }
         return;
+      }
+
+      const isAdmin = user.email === "frozennheart47@gmail.com" || user.user_metadata?.role === "admin";
+      if (!isAdmin && !cancelled) {
+        setIsAdminDashboard(false);
       }
 
       // Always fetch from DB to get the latest block status
@@ -960,7 +965,7 @@ const Inner: React.FC = () => {
             setBrowseAll(false);
           }}
         />
-      ) : isAdminDashboard ? (
+      ) : (isAdminDashboard && (user?.email === "frozennheart47@gmail.com" || user?.user_metadata?.role === "admin")) ? (
         <AdminDashboard
           key={adminDashboardKey}
           onBackToHome={() => {
@@ -1606,6 +1611,10 @@ const Inner: React.FC = () => {
         <UserProfileModal
           username={profileUsername}
           onClose={() => setProfileUsername(null)}
+          onViewEntry={(entry) => {
+            setSelected(entry);
+            setProfileUsername(null);
+          }}
         />
       )}
 
@@ -1631,47 +1640,12 @@ const Inner: React.FC = () => {
         </div>
       )}
 
-      {chatEnabled ? (
-        <Suspense fallback={null}>
-          <ChatWidget
-            initialOpen
-            entryNames={entryNames}
-            onEntrySelect={selectEntryByName}
-          />
-        </Suspense>
-      ) : (
-        <button
-          type="button"
-          onClick={() => setChatEnabled(true)}
-          className={`group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center p-2 sm:p-2.5 rounded-full shadow-2xl ${t.btnPrimary}`}
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6 sm:w-9 sm:h-9"
-            aria-hidden="true"
-          >
-            <path
-              d="M6.25 4.75h11.5a2.25 2.25 0 0 1 2.25 2.25v6.25a2.25 2.25 0 0 1-2.25 2.25H11.5l-3.75 3.25V15.5H6.25a2.25 2.25 0 0 1-2.25-2.25V7a2.25 2.25 0 0 1 2.25-2.25Z"
-              stroke="currentColor"
-              strokeWidth="1.75"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M12 8.25l.85 1.7 1.9.75-1.9.75-.85 1.7-.85-1.7-1.9-.75 1.9-.75.85-1.7Z"
-              fill="currentColor"
-            />
-          </svg>
-          <div className="grid grid-cols-[0fr] group-hover:grid-cols-[1fr] opacity-0 group-hover:opacity-100 transition-all duration-300">
-            <div className="overflow-hidden whitespace-nowrap">
-              <span className="pl-2 pr-1 font-medium text-[13px] sm:text-[15px] block">Ask Vox</span>
-            </div>
-          </div>
-        </button>
-      )}
+      <Suspense fallback={null}>
+        <ChatWidget
+          entryNames={entryNames}
+          onEntrySelect={selectEntryByName}
+        />
+      </Suspense>
 
       {/* Mobile Sidebar Overlay */}
       {showMobileSidebar && (

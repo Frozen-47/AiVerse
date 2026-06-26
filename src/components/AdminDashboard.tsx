@@ -324,17 +324,37 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const handleExecuteDeleteUser = async (profile: UserProfile) => {
     setActioningId(profile.userKey);
     try {
-      const { error: err } = await supabase
-        .from("user_preferences")
-        .delete()
-        .eq("user_key", profile.userKey);
+      // 1. Attempt to delete the user completely from both Auth and Public tables using the secure RPC function
+      const { error: rpcErr } = await supabase.rpc("delete_user_by_admin", {
+        target_user_key: profile.userKey,
+      });
 
-      if (err) throw err;
+      if (rpcErr) {
+        console.warn("RPC deletion failed, falling back to public profile table deletion:", rpcErr);
 
+        // 2. Fallback: delete the user from public.user_preferences only if RPC is not deployed
+        const { error: fallbackErr } = await supabase
+          .from("user_preferences")
+          .delete()
+          .eq("user_key", profile.userKey);
+
+        if (fallbackErr) throw fallbackErr;
+
+        showToast(
+          "success",
+          `Local profile for "${profile.displayName}" deleted. Run the SQL script in Supabase to enable Auth deletion.`
+        );
+      } else {
+        showToast(
+          "success",
+          `User "${profile.displayName}" and their auth account have been completely deleted.`
+        );
+      }
+
+      // Update local state
       setUsers((prev) => prev.filter((u) => u.userKey !== profile.userKey));
-      showToast("success", `Profile for "${profile.displayName}" has been deleted.`);
     } catch (err: any) {
-      showToast("error", `Failed to delete profile: ${err.message}`);
+      showToast("error", `Failed to delete user: ${err.message}`);
     } finally {
       setActioningId(null);
     }

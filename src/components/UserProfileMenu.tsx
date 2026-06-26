@@ -11,6 +11,21 @@ import {
   User,
   Bookmark,
   Shield,
+  // Visual Redesign Icons
+  GraduationCap,
+  Brain,
+  Code2,
+  Cpu,
+  Briefcase,
+  Sparkles,
+  HelpCircle,
+  BookOpen,
+  Terminal,
+  Globe,
+  Image as ImageIcon,
+  Lock,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 import { useAuth } from "./AuthContext";
 import { shareUrlForProfile } from "../lib/entryUrl";
@@ -22,6 +37,142 @@ import {
   type UserRole,
 } from "../lib/onboarding";
 import { useTokens, useTheme } from "../lib/theme";
+
+// Custom SVG Logos for platforms not in standard Lucide version
+const GithubLogo = ({ className }: { className?: string }) => (
+  <svg className={className || "w-3.5 h-3.5"} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
+
+const LinkedinLogo = ({ className }: { className?: string }) => (
+  <svg className={className || "w-3.5 h-3.5"} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+  </svg>
+);
+
+// Premium Avatar Presets (Dicebear SVGs)
+const AVATAR_PRESETS = [
+  "https://api.dicebear.com/7.x/shapes/svg?seed=spark&backgroundColor=312e81",
+  "https://api.dicebear.com/7.x/bottts/svg?seed=circuit&colors[]=blue&colors[]=cyan",
+  "https://api.dicebear.com/7.x/pixel-art/svg?seed=neural&backgroundColor=065f46",
+  "https://api.dicebear.com/7.x/lorelei/svg?seed=matrix&backgroundColor=1e1b4b",
+];
+
+// Premium Role Details for Visual Cards Grid
+const ROLE_DETAILS: Record<
+  UserRole,
+  {
+    label: string;
+    description: string;
+    icon: React.ComponentType<any>;
+    color: string;
+  }
+> = {
+  student: {
+    label: "Student / Learner",
+    description: "Tackling courses, looking for tutorials and foundational tools.",
+    icon: GraduationCap,
+    color: "indigo",
+  },
+  researcher: {
+    label: "Researcher / Academic",
+    description: "Analyzing SOTA models, datasets, and writing academic papers.",
+    icon: Brain,
+    color: "purple",
+  },
+  developer: {
+    label: "Software Developer",
+    description: "Building apps, integrating APIs, and shipping code quickly.",
+    icon: Code2,
+    color: "sky",
+  },
+  ml_engineer: {
+    label: "ML Engineer",
+    description: "Training, deploying, and scaling machine learning models in production.",
+    icon: Cpu,
+    color: "teal",
+  },
+  product: {
+    label: "Product / Business",
+    description: "Managing AI products, looking for market trends and integrations.",
+    icon: Briefcase,
+    color: "amber",
+  },
+  hobbyist: {
+    label: "Hobbyist / Explorer",
+    description: "Curious about cool new AI tools, art generation, and side projects.",
+    icon: Sparkles,
+    color: "pink",
+  },
+  other: {
+    label: "Other",
+    description: "Just curious and excited to explore what's happening in AI.",
+    icon: HelpCircle,
+    color: "neutral",
+  },
+};
+
+const SELECTED_ROLE_STYLES: Record<string, string> = {
+  indigo: "border-indigo-500 bg-indigo-500/8 text-indigo-400 dark:border-indigo-500 dark:bg-indigo-500/8 dark:text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.15)] ring-1 ring-indigo-500/30",
+  purple: "border-purple-500 bg-purple-500/8 text-purple-400 dark:border-purple-500 dark:bg-purple-500/8 dark:text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.15)] ring-1 ring-purple-500/30",
+  sky: "border-sky-500 bg-sky-500/8 text-sky-400 dark:border-sky-500 dark:bg-sky-500/8 dark:text-sky-400 shadow-[0_0_15px_rgba(14,165,233,0.15)] ring-1 ring-sky-500/30",
+  teal: "border-teal-500 bg-teal-500/8 text-teal-400 dark:border-teal-500 dark:bg-teal-500/8 dark:text-teal-400 shadow-[0_0_15px_rgba(20,184,166,0.15)] ring-1 ring-teal-500/30",
+  amber: "border-amber-500 bg-amber-500/8 text-amber-400 dark:border-amber-500 dark:bg-amber-500/8 dark:text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.15)] ring-1 ring-amber-500/30",
+  pink: "border-pink-500 bg-pink-500/8 text-pink-400 dark:border-pink-500 dark:bg-pink-500/8 dark:text-pink-400 shadow-[0_0_15px_rgba(236,72,153,0.15)] ring-1 ring-pink-500/30",
+  neutral: "border-neutral-400 bg-neutral-500/8 text-neutral-400 dark:border-neutral-500 dark:bg-neutral-500/8 dark:text-neutral-400 shadow-[0_0_15px_rgba(115,115,115,0.15)] ring-1 ring-neutral-500/30",
+};
+
+// Premium Interest Pill Styles with Glow Effects
+const INTEREST_STYLES: Record<
+  OnboardingInterest,
+  {
+    active: string;
+    glow: string;
+  }
+> = {
+  models: {
+    active: "bg-gradient-to-r from-indigo-500 to-violet-600 border-indigo-400 text-white shadow-[0_0_12px_rgba(99,102,241,0.35)]",
+    glow: "hover:shadow-[0_0_8px_rgba(99,102,241,0.2)] hover:border-indigo-400/50",
+  },
+  frameworks: {
+    active: "bg-gradient-to-r from-blue-500 to-cyan-500 border-blue-400 text-white shadow-[0_0_12px_rgba(59,130,246,0.35)]",
+    glow: "hover:shadow-[0_0_8px_rgba(59,130,246,0.2)] hover:border-blue-400/50",
+  },
+  datasets: {
+    active: "bg-gradient-to-r from-emerald-500 to-teal-600 border-emerald-400 text-white shadow-[0_0_12px_rgba(16,185,129,0.35)]",
+    glow: "hover:shadow-[0_0_8px_rgba(16,185,129,0.2)] hover:border-emerald-400/50",
+  },
+  platforms: {
+    active: "bg-gradient-to-r from-indigo-500 to-purple-600 border-indigo-400 text-white shadow-[0_0_12px_rgba(99,102,241,0.35)]",
+    glow: "hover:shadow-[0_0_8px_rgba(99,102,241,0.2)] hover:border-indigo-400/50",
+  },
+  nlp: {
+    active: "bg-gradient-to-r from-teal-500 to-emerald-600 border-teal-400 text-white shadow-[0_0_12px_rgba(20,184,166,0.35)]",
+    glow: "hover:shadow-[0_0_8px_rgba(20,184,166,0.2)] hover:border-teal-400/50",
+  },
+  vision: {
+    active: "bg-gradient-to-r from-rose-500 to-red-600 border-rose-400 text-white shadow-[0_0_12px_rgba(244,63,94,0.35)]",
+    glow: "hover:shadow-[0_0_8px_rgba(244,63,94,0.2)] hover:border-rose-400/50",
+  },
+  multimodal: {
+    active: "bg-gradient-to-r from-violet-500 to-fuchsia-600 border-violet-400 text-white shadow-[0_0_12px_rgba(139,92,246,0.35)]",
+    glow: "hover:shadow-[0_0_8px_rgba(139,92,246,0.2)] hover:border-violet-400/50",
+  },
+  mlops: {
+    active: "bg-gradient-to-r from-fuchsia-500 to-pink-600 border-fuchsia-400 text-white shadow-[0_0_12px_rgba(217,70,239,0.35)]",
+    glow: "hover:shadow-[0_0_8px_rgba(217,70,239,0.2)] hover:border-fuchsia-400/50",
+  },
+  coding: {
+    active: "bg-gradient-to-r from-sky-500 to-blue-600 border-sky-400 text-white shadow-[0_0_12px_rgba(14,165,233,0.35)]",
+    glow: "hover:shadow-[0_0_8px_rgba(14,165,233,0.2)] hover:border-sky-400/50",
+  },
+  media: {
+    active: "bg-gradient-to-r from-orange-500 to-rose-500 border-orange-400 text-white shadow-[0_0_12px_rgba(249,115,22,0.35)]",
+    glow: "hover:shadow-[0_0_8px_rgba(249,115,22,0.2)] hover:border-orange-400/50",
+  },
+};
 
 interface UserProfileMenuProps {
   onboardingProfile: OnboardingProfile | null;
@@ -66,6 +217,8 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   const { theme, setTheme, resolvedTheme } = useTheme();
   const { user, signOut } = useAuth();
 
+  const isDark = resolvedTheme === "amoled";
+
   const [currentView, setCurrentView] = useState<"main" | "profile" | "preferences">("main");
   const [linkCopied, setLinkCopied] = useState(false);
   const [saving, setSaving] = useState<"profile" | "preferences" | null>(null);
@@ -95,6 +248,64 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
     ? (firstName[0] + (lastName ? lastName[0] : "")).toUpperCase()
     : (email ? email[0] : "U").toUpperCase();
   const displayName = firstName || email.split("@")[0] || "User";
+
+  const [socialsExpanded, setSocialsExpanded] = useState(false);
+  const [avatarError, setAvatarError] = useState(false);
+
+  useEffect(() => {
+    setAvatarError(false);
+  }, [editAvatarUrl]);
+
+  const fallbackAvatarUrl = `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(name.trim() || username || displayName || "User")}&backgroundColor=4f46e5,065f46,3730a3,1e3a8a,581c87`;
+
+  const wrapperCls = (readOnly: boolean) => [
+    "relative flex items-center rounded-xl border transition-all duration-300 w-full",
+    readOnly
+      ? (isDark
+          ? "bg-white/[0.01] border-white/5 opacity-60"
+          : "bg-black/[0.01] border-black/5 opacity-60")
+      : (isDark
+          ? "bg-white/[0.02] border-white/8 hover:border-white/15 focus-within:border-indigo-500/50 focus-within:ring-1 focus-within:ring-indigo-500/20 focus-within:shadow-[0_0_12px_rgba(99,102,241,0.08)]"
+          : "bg-black/[0.01] border-black/8 hover:border-black/15 focus-within:border-indigo-600/50 focus-within:ring-1 focus-within:ring-indigo-600/20 focus-within:shadow-[0_0_12px_rgba(79,70,229,0.08)]")
+  ].join(" ");
+
+  const dividerCls = isDark ? "border-r border-white/5 text-white/35" : "border-r border-black/5 text-black/35";
+
+  const innerInputCls = [
+    "w-full bg-transparent px-3 py-2 text-xs font-medium outline-none border-none focus:ring-0 focus:outline-none",
+    isDark ? "text-white placeholder:text-white/25" : "text-gray-900 placeholder:text-gray-400"
+  ].join(" ");
+
+  const innerTextareaCls = [
+    "w-full bg-transparent px-3 py-2 text-xs font-medium outline-none border-none focus:ring-0 focus:outline-none resize-none",
+    isDark ? "text-white placeholder:text-white/25" : "text-gray-900 placeholder:text-gray-400"
+  ].join(" ");
+
+  const renderInputWrapper = (
+    icon: React.ComponentType<any>,
+    label: string,
+    children: React.ReactNode,
+    readOnly = false,
+    extraHeader?: React.ReactNode
+  ) => {
+    const Icon = icon;
+    return (
+      <div className="flex flex-col gap-1 w-full">
+        <div className="flex items-center justify-between">
+          <label className={`block text-[10px] font-bold uppercase tracking-wider ${t.textMuted}`}>{label}</label>
+          {extraHeader}
+        </div>
+        <div className={wrapperCls(readOnly)}>
+          <div className={`pl-3 pr-2 py-2 flex items-center justify-center ${dividerCls}`}>
+            <Icon size={13} className="shrink-0" />
+          </div>
+          <div className="flex-1 flex items-center">
+            {children}
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   useEffect(() => {
     const meta = user?.user_metadata;
@@ -195,15 +406,6 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   };
 
   /* ── Theme-aware style tokens ── */
-  const isDark = resolvedTheme === "amoled";
-
-  const fieldCls = [
-    "w-full px-3 py-2 rounded-xl border text-xs font-medium outline-none transition-all duration-200",
-    isDark
-      ? "bg-white/3 border-white/6 text-white placeholder:text-white/20 focus:border-black/20 focus:bg-white/5 focus:ring-2 focus:ring-black/20"
-      : "bg-black/2 border-black/6 text-gray-900 placeholder:text-gray-400 focus:border-black/20 focus:bg-white focus:ring-2 focus:ring-black/20",
-  ].join(" ");
-
   const labelCls = `block text-[10px] font-semibold uppercase tracking-wider mb-1 ${t.textMuted}`;
 
   const menuItemCls = [
@@ -226,9 +428,18 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   // Profile View
   // ---------------------------------------------------------------------------
   if (currentView === "profile") {
+    const charCounter = (
+      <span className={`text-[9px] font-semibold tracking-wider tabular-nums ${
+        description.length > 140 ? "text-amber-500" : t.textMuted
+      }`}>
+        {description.length}/160
+      </span>
+    );
+
     return (
-      <div className="text-left max-h-[min(70dvh,520px)] overflow-y-auto no-scrollbar py-2 px-1 animate-[fadeIn_0.2s_ease-out]">
-        <div className="flex items-center gap-2 mb-3 px-2">
+      <div className="text-left max-h-[min(70dvh,520px)] overflow-y-auto no-scrollbar py-2 px-1">
+        {/* Header */}
+        <div className="flex items-center gap-2 mb-3.5 px-2">
           <button
             onClick={() => setCurrentView("main")}
             className={`p-1.5 rounded-lg transition-colors ${isDark ? "hover:bg-white/10" : "hover:bg-black/5"}`}
@@ -238,99 +449,176 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
           <h3 className={`font-semibold text-sm ${t.textPrimary}`}>Edit Profile</h3>
         </div>
 
-        <div className="space-y-3 px-2">
-          {/* Name */}
-          <div>
-            <label className={labelCls}>Name</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className={fieldCls}
-              maxLength={50}
-            />
-          </div>
-
-          {/* Avatar URL */}
-          <div>
-            <label className={labelCls}>Avatar Image URL</label>
-            <input
-              type="url"
-              value={editAvatarUrl}
-              onChange={(e) => setEditAvatarUrl(e.target.value)}
-              className={fieldCls}
-              placeholder="https://example.com/avatar.png"
-            />
-          </div>
-
-          {/* Username (read-only) */}
-          <div>
-            <label className={labelCls}>Username</label>
-            <input
-              type="text"
-              value={username}
-              readOnly
-              disabled
-              className={`${fieldCls} opacity-50 cursor-not-allowed`}
-              title="Username is set during onboarding and cannot be changed"
-            />
-          </div>
-
-          {/* Bio + character counter */}
-          <div>
-            <div className="flex items-center justify-between mb-1">
-              <label className={`text-[10px] font-semibold uppercase tracking-wider ${t.textMuted}`}>
-                Bio
-              </label>
-              <span className={`text-[10px] tabular-nums ${
-                description.length > 140 ? "text-amber-400" : t.textMuted
-              }`}>
-                {description.length}/160
-              </span>
-            </div>
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              rows={2}
-              maxLength={160}
-              className={`${fieldCls} resize-none`}
-              placeholder="Tell other builders about yourself..."
-            />
-          </div>
-
-          {/* Social links */}
-          <div className={`p-2.5 rounded-lg border space-y-2 ${
-            isDark ? "bg-white/1 border-white/4" : "bg-black/1 border-black/4"
+        <div className="space-y-4 px-2">
+          {/* Live Avatar Preview & Presets Sandbox */}
+          <div className={`p-3.5 rounded-xl border flex items-center gap-4 transition-all duration-300 ${
+            isDark ? "bg-white/[0.01] border-white/5" : "bg-black/[0.01] border-black/5"
           }`}>
-            <p className={`text-[10px] font-semibold uppercase tracking-wider ${t.textMuted}`}>
-              Social links
-            </p>
-            {[
-              { key: "github",   label: "GitHub URL",    value: github,    set: setGithub },
-              { key: "linkedin", label: "LinkedIn URL",  value: linkedin,  set: setLinkedin },
-              { key: "medium",   label: "Medium URL",    value: medium,    set: setMedium },
-              { key: "devto",    label: "Dev.to URL",    value: devto,     set: setDevto },
-              { key: "portfolio",label: "Portfolio URL",  value: portfolio, set: setPortfolio },
-            ].map(({ key, label, value, set }) => (
+            {/* Live Preview Avatar */}
+            <div className="relative shrink-0 w-16 h-16 rounded-full overflow-hidden ring-2 ring-indigo-500/20 shadow-[0_0_15px_rgba(99,102,241,0.12)] bg-neutral-800">
+              <img
+                src={avatarError || !editAvatarUrl ? fallbackAvatarUrl : editAvatarUrl}
+                onError={() => setAvatarError(true)}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Presets Grid */}
+            <div className="flex flex-col gap-1.5 min-w-0">
+              <span className="text-[9px] font-extrabold uppercase tracking-wider text-white/40 dark:text-white/40">
+                Quick Presets
+              </span>
+              <div className="flex gap-2">
+                {AVATAR_PRESETS.map((preset, index) => {
+                  const isSelected = editAvatarUrl === preset;
+                  return (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={() => setEditAvatarUrl(preset)}
+                      className={`w-8 h-8 rounded-full overflow-hidden border-2 transition-all duration-300 hover:scale-110 active:scale-90 cursor-pointer ${
+                        isSelected
+                          ? "border-indigo-500 scale-105 shadow-[0_0_10px_rgba(99,102,241,0.4)]"
+                          : "border-white/10 hover:border-white/30"
+                      }`}
+                    >
+                      <img src={preset} alt="" className="w-full h-full object-cover" />
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Form Fields */}
+          <div className="space-y-3">
+            {/* Name */}
+            {renderInputWrapper(User, "Name", (
               <input
-                key={key}
-                type="url"
-                value={value}
-                onChange={(e) => set(e.target.value)}
-                placeholder={label}
-                className={fieldCls}
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className={innerInputCls}
+                maxLength={50}
+                placeholder="Your name"
               />
             ))}
+
+            {/* Avatar URL */}
+            {renderInputWrapper(ImageIcon, "Avatar Image URL", (
+              <input
+                type="url"
+                value={editAvatarUrl}
+                onChange={(e) => setEditAvatarUrl(e.target.value)}
+                className={innerInputCls}
+                placeholder="https://example.com/avatar.png"
+              />
+            ))}
+
+            {/* Username (read-only) */}
+            {renderInputWrapper(Lock, "Username (Read-Only)", (
+              <input
+                type="text"
+                value={username}
+                readOnly
+                disabled
+                className={`${innerInputCls} opacity-50 cursor-not-allowed`}
+              />
+            ), true)}
+
+            {/* Bio */}
+            {renderInputWrapper(Sparkles, "Bio", (
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                rows={2}
+                maxLength={160}
+                className={innerTextareaCls}
+                placeholder="Tell other builders about yourself..."
+              />
+            ), false, charCounter)}
           </div>
 
-          {/* Save button */}
+          {/* Social Expandable Accordion */}
+          <div className={`rounded-xl border transition-all duration-300 overflow-hidden ${
+            isDark ? "bg-white/[0.01] border-white/5" : "bg-black/[0.01] border-black/5"
+          }`}>
+            <button
+              type="button"
+              onClick={() => setSocialsExpanded(!socialsExpanded)}
+              className="w-full flex items-center justify-between px-3.5 py-2.5 text-left font-bold text-xs uppercase tracking-wider text-white/50 dark:text-white/50 hover:bg-white/[0.02] transition-colors"
+            >
+              <div className="flex items-center gap-2">
+                <Link2 size={13} className="text-indigo-400" />
+                <span className={t.textSecondary}>Social Profiles</span>
+              </div>
+              <div className={t.textMuted}>
+                {socialsExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+              </div>
+            </button>
+
+            <div className={`profile-section-body ${socialsExpanded ? "is-open" : ""}`}>
+              <div className="profile-section-inner">
+                <div className="p-3 border-t border-white/5 space-y-3 grid grid-cols-1 gap-3">
+                  {renderInputWrapper(GithubLogo, "GitHub", (
+                    <input
+                      type="url"
+                      value={github}
+                      onChange={(e) => setGithub(e.target.value)}
+                      placeholder="https://github.com/username"
+                      className={innerInputCls}
+                    />
+                  ))}
+                  {renderInputWrapper(LinkedinLogo, "LinkedIn", (
+                    <input
+                      type="url"
+                      value={linkedin}
+                      onChange={(e) => setLinkedin(e.target.value)}
+                      placeholder="https://linkedin.com/in/username"
+                      className={innerInputCls}
+                    />
+                  ))}
+                  {renderInputWrapper(BookOpen, "Medium", (
+                    <input
+                      type="url"
+                      value={medium}
+                      onChange={(e) => setMedium(e.target.value)}
+                      placeholder="https://medium.com/@username"
+                      className={innerInputCls}
+                    />
+                  ))}
+                  {renderInputWrapper(Terminal, "Dev.to", (
+                    <input
+                      type="url"
+                      value={devto}
+                      onChange={(e) => setDevto(e.target.value)}
+                      placeholder="https://dev.to/username"
+                      className={innerInputCls}
+                    />
+                  ))}
+                  {renderInputWrapper(Globe, "Portfolio", (
+                    <input
+                      type="url"
+                      value={portfolio}
+                      onChange={(e) => setPortfolio(e.target.value)}
+                      placeholder="https://yourwebsite.com"
+                      className={innerInputCls}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Button */}
           <button
             type="button"
             onClick={() => void saveProfile()}
             disabled={saving === "profile" || !name.trim()}
             className={saveBtnCls}
           >
-            {saving === "profile" ? "Saving…" : "Save profile"}
+            {saving === "profile" ? "Saving Profile…" : "Save Changes"}
           </button>
         </div>
       </div>
@@ -342,8 +630,9 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   // ---------------------------------------------------------------------------
   if (currentView === "preferences") {
     return (
-      <div className="text-left max-h-[min(70dvh,520px)] overflow-y-auto no-scrollbar py-2 px-1 animate-[fadeIn_0.2s_ease-out]">
-        <div className="flex items-center gap-2 mb-3 px-2">
+      <div className="text-left max-h-[min(70dvh,520px)] overflow-y-auto no-scrollbar py-2 px-1">
+        {/* Header */}
+        <div className="flex items-center gap-2 mb-3.5 px-2">
           <button
             onClick={() => setCurrentView("main")}
             className={`p-1.5 rounded-lg transition-colors ${isDark ? "hover:bg-white/10" : "hover:bg-black/5"}`}
@@ -353,41 +642,72 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
           <h3 className={`font-semibold text-sm ${t.textPrimary}`}>Feed Preferences</h3>
         </div>
 
-        <div className="space-y-4 px-2">
-          {/* Role selector */}
-          <div>
-            <label className={labelCls}>Role</label>
-            <select
-              value={role ?? ""}
-              onChange={(e) => setRole(e.target.value as UserRole)}
-              className={fieldCls}
-            >
-              <option value="" disabled>
-                Select role
-              </option>
-              {onboardingOptions.roles.map((r) => (
-                <option key={r.id} value={r.id}>
-                  {r.label}
-                </option>
-              ))}
-            </select>
+        <div className="space-y-5 px-2">
+          {/* Premium Role Selector Grid */}
+          <div className="space-y-2">
+            <label className={labelCls}>Select Your Primary Role</label>
+            <div className="grid grid-cols-1 gap-2 max-h-[200px] overflow-y-auto pr-1 no-scrollbar">
+              {Object.entries(ROLE_DETAILS).map(([roleId, details]) => {
+                const isSelected = role === roleId;
+                const RoleIcon = details.icon;
+                const selectedClasses = SELECTED_ROLE_STYLES[details.color];
+                const baseClasses = isDark
+                  ? "bg-white/[0.01] border-white/6 hover:bg-white/[0.03] hover:border-white/12 text-white/70"
+                  : "bg-black/[0.01] border-black/6 hover:bg-black/[0.03] hover:border-black/12 text-gray-700";
+
+                return (
+                  <button
+                    key={roleId}
+                    type="button"
+                    onClick={() => setRole(roleId as UserRole)}
+                    className={`flex items-start gap-3 p-2.5 rounded-xl border text-left cursor-pointer ${
+                      isSelected ? selectedClasses : baseClasses
+                    }`}
+                  >
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
+                      isSelected
+                        ? (isDark ? "bg-white/10 text-white" : "bg-black/10 text-black")
+                        : (isDark ? "bg-white/5 text-white/40" : "bg-black/5 text-gray-400")
+                    }`}>
+                      <RoleIcon size={16} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between">
+                        <p className={`text-xs font-bold ${isSelected ? (isDark ? "text-white" : "text-gray-900") : ""}`}>
+                          {details.label}
+                        </p>
+                        {isSelected && (
+                          <div className="w-3.5 h-3.5 rounded-full flex items-center justify-center text-white bg-indigo-500 scale-100">
+                            <Check size={10} className="stroke-[3px]" />
+                          </div>
+                        )}
+                      </div>
+                      <p className={`text-[10px] leading-relaxed mt-0.5 ${t.textMuted}`}>
+                        {details.description}
+                      </p>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Interest pills */}
-          <div>
-            <p className={labelCls}>Interests</p>
+          {/* Premium Interest Pills */}
+          <div className="space-y-2">
+            <p className={labelCls}>Customize Interests</p>
             <div className="flex flex-wrap gap-1.5 mt-1">
               {onboardingOptions.interests.map((item) => {
                 const selected = interests.includes(item.id);
+                const style = INTEREST_STYLES[item.id];
                 return (
                   <button
                     key={item.id}
                     type="button"
                     onClick={() => toggleInterest(item.id)}
-                    className={`text-[10px] font-semibold px-2.5 py-1 rounded-lg border cursor-pointer transition-all duration-200 ${
+                    className={`text-[10px] font-semibold px-2.5 py-1.5 rounded-xl border cursor-pointer ${
                       selected
-                        ? `${t.pillActive} shadow-sm shadow-black/10`
-                        : `${t.surface} ${t.border} ${t.textMuted} hover:${t.textSecondary}`
+                        ? style.active
+                        : `${t.surface} ${t.border} ${t.textMuted} ${style.glow} hover:${t.textSecondary}`
                     }`}
                   >
                     {item.label}
@@ -397,14 +717,14 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
             </div>
           </div>
 
-          {/* Save button */}
+          {/* Save Action Button */}
           <button
             type="button"
             onClick={() => void savePreferences()}
             disabled={saving === "preferences" || !role}
             className={saveBtnCls}
           >
-            {saving === "preferences" ? "Saving…" : "Save preferences"}
+            {saving === "preferences" ? "Saving Preferences…" : "Save Preferences"}
           </button>
         </div>
       </div>
@@ -415,7 +735,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   // Main View
   // ---------------------------------------------------------------------------
   return (
-    <div className="text-left max-h-[min(70dvh,520px)] overflow-y-auto no-scrollbar py-1 animate-[fadeIn_0.2s_ease-out]">
+    <div className="text-left max-h-[min(70dvh,520px)] overflow-y-auto no-scrollbar py-1">
 
       {/* ══════════ Hero Avatar Section ══════════ */}
       <div className="relative overflow-hidden rounded-xl mb-0.5 mx-0.5">
@@ -465,7 +785,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
 
         {/* ── Copy profile link ── */}
         {username && (
-          <div className="profile-menu-stagger" style={{ animationDelay: "0ms" }}>
+          <div>
             <button
               type="button"
               onClick={handleCopyLink}
@@ -490,7 +810,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
         )}
 
         {/* ── Edit Profile ── */}
-        <div className="profile-menu-stagger" style={{ animationDelay: "40ms" }}>
+        <div>
           <button
             type="button"
             onClick={() => setCurrentView("profile")}
@@ -504,7 +824,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
         </div>
 
         {/* ── Saved Entries ── */}
-        <div className="profile-menu-stagger" style={{ animationDelay: "60ms" }}>
+        <div>
           <button
             type="button"
             onClick={() => {
@@ -521,7 +841,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
         </div>
 
         {/* ── Feed Preferences ── */}
-        <div className="profile-menu-stagger" style={{ animationDelay: "80ms" }}>
+        <div>
           <button
             type="button"
             onClick={() => setCurrentView("preferences")}
@@ -536,7 +856,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
 
         {/* ── Admin Dashboard ── */}
         {user?.email === "frozennheart47@gmail.com" || user?.user_metadata?.role === "admin" ? (
-          <div className="profile-menu-stagger" style={{ animationDelay: "100ms" }}>
+          <div>
             <button
               type="button"
               onClick={() => {
@@ -554,7 +874,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
         ) : null}
 
         {/* ── Theme Selection ── */}
-        <div className="profile-menu-stagger px-1.5 py-2 mt-1" style={{ animationDelay: "120ms" }}>
+        <div className="px-1.5 py-2 mt-1">
           <div className={`text-[10px] font-semibold uppercase tracking-wider mb-2 ml-1 ${t.textMuted}`}>Theme</div>
           <div className={`flex rounded-xl p-1 gap-1 border ${isDark ? "bg-white/2 border-white/4" : "bg-black/2 border-black/4"}`}>
             <button
@@ -600,7 +920,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
       <div className={separatorCls} />
 
       {/* ══════════ Sign Out ══════════ */}
-      <div className="px-0.5 profile-menu-stagger" style={{ animationDelay: "160ms" }}>
+      <div className="px-0.5">
         <button
           type="button"
           onClick={() => {

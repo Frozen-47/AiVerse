@@ -306,3 +306,46 @@ DROP POLICY IF EXISTS "Delete own bookmarks" ON user_bookmarks;
 CREATE POLICY "Delete own bookmarks"
   ON user_bookmarks FOR DELETE
   USING (user_key = private.app_user_key());
+
+-- ─── 4. Administrative RPC Functions ──────────────────────────────────────────
+
+CREATE OR REPLACE FUNCTION public.delete_user_by_admin(target_user_key text)
+RETURNS void
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = ''
+AS $$
+DECLARE
+  raw_uuid_text text;
+  target_uuid uuid;
+BEGIN
+  -- Check if the calling user is an admin
+  IF NOT (
+    SELECT auth.jwt() ->> 'email' = 'frozennheart47@gmail.com' 
+    OR auth.jwt() -> 'user_metadata' ->> 'role' = 'admin'
+  ) THEN
+    RAISE EXCEPTION 'Unauthorized. Only administrators can delete users.';
+  END IF;
+
+  -- Delete from public tables
+  DELETE FROM public.user_preferences WHERE user_key = target_user_key;
+  DELETE FROM public.user_bookmarks WHERE user_key = target_user_key;
+  DELETE FROM public.entry_ratings WHERE user_key = target_user_key;
+  DELETE FROM public.entry_comments WHERE user_key = target_user_key;
+
+  -- If it is a Supabase Auth user, extract the UUID and delete from auth.users
+  IF target_user_key LIKE 'supabase_%' THEN
+    raw_uuid_text := substring(target_user_key from 10);
+    
+    BEGIN
+      target_uuid := raw_uuid_text::uuid;
+      DELETE FROM auth.users WHERE id = target_uuid;
+    EXCEPTION WHEN OTHERS THEN
+      -- Do nothing if UUID format is invalid
+    END;
+  END IF;
+END;
+$$;
+
+REVOKE ALL ON FUNCTION public.delete_user_by_admin(text) FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.delete_user_by_admin(text) TO authenticated;
