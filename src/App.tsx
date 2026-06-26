@@ -34,7 +34,7 @@ import {
   profilePathSlug,
 } from "./lib/entryUrl";
 import { getRelatedEntries, getCompareCandidates } from "./lib/relatedEntries";
-import { App as CapApp } from '@capacitor/app';
+
 
 const DetailModal = lazy(() =>
   import("./components/DetailModal").then((m) => ({ default: m.DetailModal })),
@@ -654,26 +654,10 @@ const Inner: React.FC = () => {
     };
     document.addEventListener("keydown", handler);
 
-    // Capacitor Back Button Handling
-    const backListener = CapApp.addListener('backButton', ({ canGoBack }) => {
-      if (selected) {
-        setSelected(null);
-      } else if (isAdding) {
-        setIsAdding(false);
-      } else if (showMobileSidebar) {
-        setShowMobileSidebar(false);
-      } else if (canGoBack) {
-        window.history.back();
-      } else {
-        CapApp.exitApp();
-      }
-    });
-
     return () => {
       document.removeEventListener("keydown", handler);
-      backListener.then(l => l.remove());
     };
-  }, [selected, isAdding, showMobileSidebar]);
+  }, []);
 
   // Sync document body and meta tags for an orderly global theme switch
   useEffect(() => {
