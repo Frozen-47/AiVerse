@@ -213,10 +213,18 @@ export async function persistOnboardingProfile(
   if (!options.user) return;
 
   // Update user metadata in Supabase
+  let firstName = "";
+  let lastName = "";
+  if (options.displayName) {
+    const parts = options.displayName.trim().split(/\s+/);
+    firstName = parts[0] || "";
+    lastName = parts.slice(1).join(" ") || "";
+  }
+
   await supabase.auth.updateUser({
     data: {
       ...options.user.user_metadata,
-      ...(options.displayName ? { firstName: options.displayName.trim() } : {}),
+      ...(options.displayName ? { firstName, lastName } : {}),
       ...(options.profileMeta ? {
         username: options.profileMeta.username
           ? normalizeUsernameHandle(options.profileMeta.username)

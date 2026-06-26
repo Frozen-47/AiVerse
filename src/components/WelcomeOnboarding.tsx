@@ -107,12 +107,23 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   }, [initialProfile?.referralSource]);
 
   const [step, setStep] = useState<Step>(steps[0]);
-  const [name, setName] = useState((user?.user_metadata?.firstName as string) ?? parsedPrefs?.displayName ?? "");
-  const [username, setUsername] = useState(() =>
-    normalizeUsernameInput(
-      (user?.user_metadata?.username as string) ?? parsedPrefs?.username ?? "",
-    ),
-  );
+  const [name, setName] = useState(() => {
+    if (parsedPrefs?.displayName) return parsedPrefs.displayName;
+    const meta = user?.user_metadata;
+    if (meta?.firstName || meta?.lastName) {
+      return `${meta.firstName ?? ""} ${meta.lastName ?? ""}`.trim();
+    }
+    if (meta?.full_name) return meta.full_name;
+    if (meta?.name) return meta.name;
+    if (meta?.given_name) return `${meta.given_name ?? ""} ${meta.family_name ?? ""}`.trim();
+    return "";
+  });
+  const [username, setUsername] = useState(() => {
+    if (parsedPrefs?.username) return normalizeUsernameInput(parsedPrefs.username);
+    const meta = user?.user_metadata;
+    const rawUsername = (meta?.username || meta?.preferred_username || meta?.user_name || "") as string;
+    return normalizeUsernameInput(rawUsername);
+  });
   const [description, setDescription] = useState((user?.user_metadata?.description as string) ?? parsedPrefs?.description ?? "");
   const [github, setGithub] = useState((user?.user_metadata?.github as string) ?? parsedPrefs?.github ?? "");
   const [linkedin, setLinkedin] = useState((user?.user_metadata?.linkedin as string) ?? parsedPrefs?.linkedin ?? "");
@@ -194,16 +205,38 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   useEffect(() => {
     if (!user || hasInitializedRef.current) return;
 
-    if (user.user_metadata?.firstName || parsedPrefs?.displayName) {
-      setName((user.user_metadata.firstName as string) ?? parsedPrefs?.displayName ?? "");
+    // Get display name
+    let resolvedName = "";
+    if (parsedPrefs?.displayName) {
+      resolvedName = parsedPrefs.displayName;
+    } else {
+      const meta = user.user_metadata;
+      if (meta?.firstName || meta?.lastName) {
+        resolvedName = `${meta.firstName ?? ""} ${meta.lastName ?? ""}`.trim();
+      } else if (meta?.full_name) {
+        resolvedName = meta.full_name;
+      } else if (meta?.name) {
+        resolvedName = meta.name;
+      } else if (meta?.given_name) {
+        resolvedName = `${meta.given_name ?? ""} ${meta.family_name ?? ""}`.trim();
+      }
     }
-    if (user.user_metadata?.username || parsedPrefs?.username) {
-      setUsername(
-        normalizeUsernameInput(
-          (user.user_metadata.username as string) ?? parsedPrefs?.username ?? "",
-        ),
-      );
+    if (resolvedName) {
+      setName(resolvedName);
     }
+
+    // Get username
+    let resolvedUsername = "";
+    if (parsedPrefs?.username) {
+      resolvedUsername = parsedPrefs.username;
+    } else {
+      const meta = user.user_metadata;
+      resolvedUsername = (meta?.username || meta?.preferred_username || meta?.user_name || "") as string;
+    }
+    if (resolvedUsername) {
+      setUsername(normalizeUsernameInput(resolvedUsername));
+    }
+
     if (user.user_metadata?.description || parsedPrefs?.description) {
       setDescription((user.user_metadata.description as string) ?? parsedPrefs?.description ?? "");
     }
@@ -224,15 +257,13 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
     }
 
     // Default username auto-population from email if empty
-    const currentUsername = (user.user_metadata?.username as string) ?? parsedPrefs?.username ?? "";
-    if (!currentUsername && user.email) {
+    if (!resolvedUsername && user.email) {
       const emailPrefix = user.email.split("@")[0].replace(/[^a-zA-Z0-9_-]/g, "");
       setUsername(`@${emailPrefix.toLowerCase()}`);
     }
 
     // Default name auto-population from email if empty
-    const currentName = (user.user_metadata?.firstName as string) ?? parsedPrefs?.displayName ?? "";
-    if (!currentName && user.email && !isEdit) {
+    if (!resolvedName && user.email && !isEdit) {
       const prefix = user.email.split("@")[0].replace(/[._]/g, " ");
       const formattedName = prefix
         .split(" ")

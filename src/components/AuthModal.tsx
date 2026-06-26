@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { X, Loader2, Eye, EyeOff } from 'lucide-react';
+import { X, Loader2, Eye, EyeOff, ArrowRight } from 'lucide-react';
 import { useAuth } from './AuthContext';
 import { useTokens, useTheme } from '../lib/theme';
 import { supabase } from '../lib/supabase';
+
+
 
 export const AuthModal: React.FC = () => {
   const { isAuthModalOpen, closeAuthModal, authMode, signInWithOAuth } = useAuth();
@@ -15,28 +17,50 @@ export const AuthModal: React.FC = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
   const [showPassword, setShowPassword] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
-  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Synchronize isLogin state with authMode from context
+  // Reset fields on open/close
   useEffect(() => {
-    setIsLogin(authMode === 'signin');
+    if (isAuthModalOpen) {
+      setIsLogin(authMode === 'signin');
+      setError(null);
+      setEmail('');
+      setPassword('');
+      setFirstName('');
+      setLastName('');
+      setAgreeTerms(false);
+    }
   }, [authMode, isAuthModalOpen]);
 
+  // Block background scroll when modal is open
+  useEffect(() => {
+    if (isAuthModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isAuthModalOpen]);
+
   if (!isAuthModalOpen) return null;
+
+  const switchMode = (login: boolean) => {
+    setIsLogin(login);
+    setError(null);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
-    // Validate checkbox in signup mode
     if (!isLogin && !agreeTerms) {
-      setError('You must agree to the Terms & Conditions to create an account.');
+      setError('Please agree to the Terms & Conditions to continue.');
       setLoading(false);
       return;
     }
@@ -50,18 +74,13 @@ export const AuthModal: React.FC = () => {
         const { error: err } = await supabase.auth.signUp({
           email,
           password,
-          options: {
-            data: {
-              firstName: firstName.trim(),
-              lastName: lastName.trim(),
-            }
-          }
+          options: { data: { firstName: firstName.trim(), lastName: lastName.trim() } },
         });
         if (err) throw err;
         closeAuthModal();
       }
     } catch (err: any) {
-      setError(err.message || 'An error occurred during authentication');
+      setError(err.message || 'Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -73,433 +92,518 @@ export const AuthModal: React.FC = () => {
     try {
       await signInWithOAuth(provider);
     } catch (err: any) {
-      setError(err.message || 'An error occurred during social authentication');
+      setError(err.message || 'OAuth sign-in failed.');
       setLoading(false);
     }
   };
 
-  // Strictly Monochromatic Dynamic Styling Rules (No Purple Accents)
-  const bgCol = isDark ? "bg-[#0d0d0d] text-white" : "bg-white text-[#0d0d0d]";
-  const borderCol = isDark ? "border-white/10" : "border-black/10";
-  const borderFocusCol = isDark 
-    ? "focus:border-white focus:ring-1 focus:ring-white/10" 
-    : "focus:border-black focus:ring-1 focus:ring-black/10";
-  
-  const textPrimary = isDark ? "text-white" : "text-[#0d0d0d]";
-  const textSecondary = isDark ? "text-white/50" : "text-black/50";
-  const textMuted = isDark ? "text-white/30" : "text-black/30";
-  
-  const ctaBtn = isDark 
-    ? "bg-white hover:bg-white/90 text-[#0d0d0d] font-bold" 
-    : "bg-[#0d0d0d] hover:bg-[#1a1a1a] text-white font-bold";
-    
-  const socialBtn = isDark
-    ? "bg-transparent border-white/10 text-white hover:bg-white/5"
-    : "bg-transparent border-black/10 text-[#0d0d0d] hover:bg-black/5";
-    
-  const checkboxBorder = isDark ? "border-white/10 bg-white/[0.02]" : "border-black/10 bg-black/[0.02]";
-  const checkboxChecked = isDark ? "peer-checked:bg-white peer-checked:border-white" : "peer-checked:bg-black peer-checked:border-black";
-  const checkMarkColor = isDark ? "text-[#0d0d0d]" : "text-white";
-  const linkColor = isDark ? "text-white/60 hover:text-white" : "text-black/60 hover:text-black";
+  /* ─── Derived theme values ──────────────────────────────────── */
+  const surface = isDark ? '#0c0c0c' : '#ffffff';
+  const border  = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)';
+  const fg      = isDark ? '#ffffff' : '#0c0c0c';
+  const fgMid   = isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.45)';
+
+  /* ─── CSS helpers (Tailwind) ────────────────────────────────── */
+  const inputCls = [
+    'w-full px-4 py-3 rounded-xl border bg-transparent outline-none',
+    'text-[13px] font-medium transition-all duration-200',
+    'placeholder:font-normal',
+    isDark
+      ? 'border-white/[0.08] text-white placeholder:text-white/30 focus:border-white/25 focus:bg-white/[0.03]'
+      : 'border-black/[0.08] text-black placeholder:text-black/30 focus:border-black/25 focus:bg-black/[0.02]',
+  ].join(' ');
+
+  const primaryBtnCls = [
+    'w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl',
+    'text-[12px] font-bold tracking-wide uppercase transition-all duration-200',
+    'active:scale-[0.98] disabled:opacity-40 disabled:pointer-events-none cursor-pointer',
+    'shadow-lg',
+    isDark
+      ? 'bg-white text-black hover:bg-white/90 shadow-white/10'
+      : 'bg-black text-white hover:bg-black/85 shadow-black/10',
+  ].join(' ');
+
+  const oauthBtnCls = [
+    'flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl border',
+    'text-[12px] font-semibold transition-all duration-200 active:scale-[0.98] cursor-pointer',
+    isDark
+      ? 'border-white/[0.08] text-white/70 hover:bg-white/[0.05] hover:text-white'
+      : 'border-black/[0.08] text-black/60 hover:bg-black/[0.04] hover:text-black',
+  ].join(' ');
 
   return (
-    <div 
-      className={`${t.modalOverlay} !z-[110]`}
-      onClick={(e) => {
-        if (e.target === e.currentTarget) closeAuthModal();
-      }}
+    /* ── Backdrop ─────────────────────────────────────────────── */
+    <div
+      className={`${t.modalOverlay} !z-[110] flex items-center justify-center p-4 backdrop-blur-sm`}
+      style={{ backgroundColor: isDark ? 'rgba(0,0,0,0.7)' : 'rgba(0,0,0,0.4)' }}
+      onClick={(e) => { if (e.target === e.currentTarget) closeAuthModal(); }}
     >
-      {/* Split-Screen Modal Container */}
-      <div 
-        className={`relative w-full max-w-4xl flex rounded-3xl overflow-hidden shadow-2xl transition-colors duration-300 border ${
-          isDark ? "border-white/5 bg-[#0d0d0d]" : "border-black/5 bg-white"
-        } animate-[fadeIn_0.2s_ease-out]`}
-        style={{ minHeight: "580px" }}
+      {/*
+        ── Modal shell ─────────────────────────────────────────
+        Two columns: hero (left) + form (right). On mobile, hero hides.
+        The form area uses a cross-fade + slide technique so switching
+        sign-in ↔ sign-up feels like a page turn rather than a pop.
+      */}
+      <div
+        className={`
+          relative w-full max-w-[840px] flex rounded-3xl overflow-hidden
+          border shadow-2xl
+          animate-[modalIn_0.25s_cubic-bezier(0.22,1,0.36,1)_both]
+        `}
+        style={{
+          background: surface,
+          borderColor: border,
+          minHeight: 580,
+        }}
       >
-        {/* Unified Close Button at the top-right */}
+        {/* ── Close button ─────────────────────────────────────── */}
         <button
           onClick={closeAuthModal}
-          className={`absolute top-5 right-5 z-30 p-2 rounded-xl border transition-all active:scale-95 cursor-pointer backdrop-blur-md ${
-            isDark 
-              ? "border-white/10 text-white hover:bg-white/5 bg-transparent" 
-              : "border-black/10 text-[#0d0d0d] hover:bg-black/5 bg-transparent"
-          } ${
-            !isLogin 
-              ? "md:border-white/10 md:text-white md:hover:bg-white/10 md:bg-white/5" 
-              : ""
-          }`}
-          title="Close modal"
-          aria-label="Close modal"
+          aria-label="Close"
+          className={`
+            absolute top-5 right-5 z-50 w-8 h-8 rounded-xl
+            flex items-center justify-center transition-all duration-150
+            active:scale-90 cursor-pointer border
+          `}
+          style={{
+            background: 'transparent',
+            borderColor: border,
+            color: fgMid,
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = fg)}
+          onMouseLeave={(e) => (e.currentTarget.style.color = fgMid)}
         >
-          <X size={14} />
+          <X size={14} strokeWidth={2.5} />
         </button>
 
-        {/* ══════════ SLIDING HERO PANEL (TECH CONSTELLATION) ══════════ */}
-        <div 
-          className={`hidden md:flex md:w-1/2 absolute top-0 bottom-0 z-20 transition-all duration-700 ease-in-out flex-col justify-between p-8 select-none ${
-            isLogin ? "left-0 translate-x-0" : "left-0 translate-x-full"
-          }`}
+        {/* ════════════════════════════════════════════════════════
+            HERO PANEL — always left, fixed width on desktop
+        ════════════════════════════════════════════════════════ */}
+        <div
+          className="hidden md:flex relative md:w-[42%] flex-shrink-0 flex-col justify-between p-9 select-none overflow-hidden"
+          style={{ background: '#050505' }}
         >
-          {/* Deep Matte Tech Black Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e0e] via-[#080808] to-[#030303] z-0" />
-          
-          {/* Glowing Radial Vignette */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,#000000_90%)] z-0" />
+          {/* Ambient gradient blob */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: `
+                radial-gradient(ellipse 70% 55% at 30% 65%, rgba(255,255,255,0.04) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 80% 20%, rgba(255,255,255,0.025) 0%, transparent 70%)
+              `,
+            }}
+          />
 
-          {/* High-Fidelity SVG Neural Network / Cybernetic Grid Constellation */}
-          <svg 
-            className="absolute inset-0 w-full h-full stroke-white/5 fill-none pointer-events-none z-0" 
-            viewBox="0 0 100 100" 
-            preserveAspectRatio="none"
+          {/* Micro grid */}
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none opacity-30"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
-              <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255, 255, 255, 0.02)" strokeWidth="0.3" />
+              <pattern id="microgrid" width="24" height="24" patternUnits="userSpaceOnUse">
+                <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(255,255,255,0.045)" strokeWidth="0.5" />
               </pattern>
             </defs>
-            <rect width="100" height="100" fill="url(#grid)" />
-            
-            {/* Neural Connections */}
-            <path d="M 20 30 L 50 20 L 80 40 L 50 60 L 20 30 Z" stroke="rgba(255, 255, 255, 0.06)" strokeWidth="0.4" />
-            <path d="M 50 20 L 50 60" stroke="rgba(255, 255, 255, 0.06)" strokeWidth="0.4" />
-            <path d="M 20 30 L 80 40" stroke="rgba(255, 255, 255, 0.06)" strokeWidth="0.4" />
-            <path d="M 30 75 L 50 60 L 70 80" stroke="rgba(255, 255, 255, 0.06)" strokeWidth="0.4" />
-            <path d="M 50 20 L 50 5" stroke="rgba(255, 255, 255, 0.04)" strokeDasharray="1 1" strokeWidth="0.4" />
-            
-            {/* Constellation Nodes */}
-            <circle cx="50" cy="20" r="2" fill="#000" stroke="rgba(255, 255, 255, 0.3)" strokeWidth="0.8" />
-            <circle cx="20" cy="30" r="1.5" fill="#000" stroke="rgba(255, 255, 255, 0.2)" strokeWidth="0.8" />
-            <circle cx="80" cy="40" r="2.5" fill="#000" stroke="rgba(255, 255, 255, 0.35)" strokeWidth="0.8" />
-            <circle cx="50" cy="60" r="3" fill="#000" stroke="rgba(255, 255, 255, 0.45)" strokeWidth="0.8" />
-            <circle cx="30" cy="75" r="1.5" fill="#000" stroke="rgba(255, 255, 255, 0.2)" strokeWidth="0.8" />
-            <circle cx="70" cy="80" r="2" fill="#000" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="0.8" />
-            
-            {/* Cybernetic Fields */}
-            <circle cx="50" cy="60" r="10" stroke="rgba(255, 255, 255, 0.03)" strokeWidth="0.4" strokeDasharray="2 2" />
-            <circle cx="50" cy="60" r="18" stroke="rgba(255, 255, 255, 0.015)" strokeWidth="0.4" />
-            <circle cx="80" cy="40" r="7" stroke="rgba(255, 255, 255, 0.02)" strokeWidth="0.4" strokeDasharray="1 2" />
+            <rect width="100%" height="100%" fill="url(#microgrid)" />
           </svg>
 
-          {/* Top Row: Logo Only (No Back to Site Button) */}
-          <div className="flex items-center justify-between relative z-10 w-full">
-            {/* AIVerse Logo */}
-            <span className="text-white font-black text-[22px] tracking-tight font-sans">
-              AIVerse
-            </span>
+          {/* Constellation SVG */}
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none"
+            viewBox="0 0 200 300"
+            preserveAspectRatio="xMidYMid slice"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Edges */}
+            {[
+              'M60 80 L130 60', 'M130 60 L170 110', 'M170 110 L120 160',
+              'M120 160 L60 80', 'M60 80 L120 160',
+              'M120 160 L80 230', 'M80 230 L160 210', 'M160 210 L120 160',
+              'M130 60 L170 110',
+            ].map((d, i) => (
+              <path key={i} d={d} stroke="rgba(255,255,255,0.07)" strokeWidth="0.8" />
+            ))}
+            {/* Nodes */}
+            {[
+              { cx: 60,  cy: 80,  r: 2.5, o: 0.4  },
+              { cx: 130, cy: 60,  r: 2,   o: 0.35 },
+              { cx: 170, cy: 110, r: 3,   o: 0.5  },
+              { cx: 120, cy: 160, r: 3.5, o: 0.6  },
+              { cx: 80,  cy: 230, r: 2,   o: 0.3  },
+              { cx: 160, cy: 210, r: 2.5, o: 0.35 },
+            ].map((n, i) => (
+              <circle
+                key={i}
+                cx={n.cx} cy={n.cy} r={n.r}
+                fill="#050505"
+                stroke={`rgba(255,255,255,${n.o})`}
+                strokeWidth="1"
+              />
+            ))}
+            {/* Dashed orbit rings */}
+            <circle cx="120" cy="160" r="22" stroke="rgba(255,255,255,0.04)" strokeWidth="0.6" strokeDasharray="3 3" />
+            <circle cx="120" cy="160" r="38" stroke="rgba(255,255,255,0.025)" strokeWidth="0.6" />
+          </svg>
+
+          {/* Logo */}
+          <div className="relative z-10">
+            <span className="text-white font-black text-xl tracking-tight">AIVerse</span>
           </div>
 
-          {/* Bottom Branding Content */}
-          <div className="relative z-10 mt-auto mb-4 text-left">
-            <div className="inline-flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-widest bg-white/10 border border-white/10 rounded-full px-3 py-1 mb-4 text-white/70 backdrop-blur-md">
-              <span className="w-1 h-1 rounded-full bg-white animate-pulse" />
-              AI Knowledge Base
+          {/* Tagline block */}
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-1.5 mb-5 px-3 py-1 rounded-full border border-white/10 bg-white/5">
+              <span className="w-1.5 h-1.5 rounded-full bg-white/60 animate-pulse" />
+              <span className="text-[9px] font-semibold uppercase tracking-widest text-white/50">
+                AI Knowledge Base
+              </span>
             </div>
-            
-            <h3 className="text-2xl font-black text-white leading-tight tracking-tight mb-2.5">
-              Every AI tool, <span className="block text-neutral-400">one universe.</span>
+
+            <h3 className="text-[26px] font-black text-white leading-[1.15] tracking-tight mb-3">
+              Every AI tool,<br />
+              <span className="text-white/40">one universe.</span>
             </h3>
-            
-            <p className="text-[11.5px] font-medium text-neutral-500 leading-relaxed max-w-[260px]">
+
+            <p className="text-[12px] text-white/35 font-medium leading-relaxed max-w-[220px]">
               A citation-backed encyclopedia of models, frameworks, and datasets — built for builders.
             </p>
-          </div>
 
-          {/* Three dot indicators at the bottom */}
-          <div className="flex gap-1.5 relative z-10">
-            <div className="w-1.5 h-1.5 rounded-full bg-white" />
-            <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
-            <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
+            {/* Progress dots */}
+            <div className="flex gap-1.5 mt-8">
+              <span className="w-4 h-1.5 rounded-full bg-white/80" />
+              <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
+              <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
+            </div>
           </div>
         </div>
 
-        {/* ══════════ LEFT COLUMN: SIGN UP FORM ══════════ */}
-        <div 
-          className={`w-full flex flex-col justify-center p-8 sm:p-10 transition-all duration-700 ease-in-out ${bgCol} ${
-            isLogin 
-              ? 'hidden md:absolute md:top-0 md:bottom-0 md:left-0 md:w-1/2 md:flex md:translate-x-full md:opacity-0 md:pointer-events-none' 
-              : 'flex md:absolute md:top-0 md:bottom-0 md:left-0 md:w-1/2 md:translate-x-0 md:opacity-100 md:pointer-events-auto'
-          }`}
-        >
-          {/* Form Header */}
-          <div className="mb-6">
-            <h2 className={`text-2xl font-black tracking-tight mb-1 ${textPrimary}`}>
-              Create an account
-            </h2>
-            <div className={`text-[11.5px] font-semibold ${textSecondary}`}>
-              Already have an account?{' '}
-              <button
-                type="button"
-                onClick={() => { setIsLogin(true); setError(null); }}
-                className={`underline underline-offset-2 font-bold cursor-pointer transition-colors ${textPrimary}`}
-              >
-                Log in
-              </button>
-            </div>
-          </div>
+        {/* ════════════════════════════════════════════════════════
+            FORM AREA — takes remaining width, clips overflow for
+            the slide/fade transition between sign-in and sign-up
+        ════════════════════════════════════════════════════════ */}
+        <div className="relative flex-1 overflow-hidden">
 
-          {/* Signup Form */}
-          <form onSubmit={handleSubmit} className="space-y-3.5">
-            <div className="grid grid-cols-2 gap-3">
-              <div>
+          {/* ── SIGN UP FORM ──────────────────────────────────── */}
+          <FormPanel visible={!isLogin} surface={surface} isDark={isDark}>
+            <FormHeader
+              title="Create account"
+              sub="Already have one?"
+              linkLabel="Sign in"
+              onLink={() => switchMode(true)}
+              isDark={isDark}
+            />
+
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <div className="grid grid-cols-2 gap-3">
                 <input
+                  className={inputCls}
                   type="text"
+                  placeholder="First name"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   required
-                  placeholder="First name"
-                  className={`w-full px-4 py-2.5 rounded-xl border bg-transparent text-xs font-semibold placeholder:text-neutral-500 focus:outline-hidden transition-all ${borderCol} ${textPrimary} ${borderFocusCol}`}
+                  autoComplete="given-name"
                 />
-              </div>
-              <div>
                 <input
+                  className={inputCls}
                   type="text"
+                  placeholder="Last name"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                   required
-                  placeholder="Last name"
-                  className={`w-full px-4 py-2.5 rounded-xl border bg-transparent text-xs font-semibold placeholder:text-neutral-500 focus:outline-hidden transition-all ${borderCol} ${textPrimary} ${borderFocusCol}`}
+                  autoComplete="family-name"
                 />
               </div>
-            </div>
 
-            <div>
               <input
+                className={inputCls}
                 type="email"
+                placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                placeholder="Email"
-                className={`w-full px-4 py-2.5 rounded-xl border bg-transparent text-xs font-semibold placeholder:text-neutral-500 focus:outline-hidden transition-all ${borderCol} ${textPrimary} ${borderFocusCol}`}
+                autoComplete="email"
               />
-            </div>
 
-            <div className="relative">
-              <input
-                type={showPassword ? 'text' : 'password'}
+              <PasswordField
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
+                onChange={setPassword}
+                show={showPassword}
+                toggle={() => setShowPassword((v) => !v)}
+                inputCls={inputCls}
+                isDark={isDark}
                 minLength={6}
-                placeholder="Enter your password"
-                className={`w-full pl-4 pr-10 py-2.5 rounded-xl border bg-transparent text-xs font-semibold placeholder:text-neutral-500 focus:outline-hidden transition-all ${borderCol} ${textPrimary} ${borderFocusCol}`}
               />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className={`absolute right-3.5 top-1/2 -translate-y-1/2 transition-colors cursor-pointer p-0.5 ${textMuted} hover:${textPrimary}`}
-                tabIndex={-1}
-              >
-                {showPassword ? <EyeOff size={13} /> : <Eye size={13} />}
-              </button>
-            </div>
 
-            <div className="flex items-center gap-2 pt-1">
-              <label className="relative flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={agreeTerms}
-                  onChange={(e) => setAgreeTerms(e.target.checked)}
-                  className="sr-only peer"
-                />
-                <div className={`w-4 h-4 rounded-md border flex items-center justify-center transition-all ${checkboxBorder} ${checkboxChecked}`}>
-                  <svg
-                    className={`w-2.5 h-2.5 opacity-0 peer-checked:opacity-100 transition-opacity ${checkMarkColor}`}
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    viewBox="0 0 24 24"
+              {/* Terms checkbox */}
+              <label className="flex items-start gap-3 cursor-pointer pt-1 group">
+                <div className="relative mt-0.5 flex-shrink-0">
+                  <input
+                    type="checkbox"
+                    checked={agreeTerms}
+                    onChange={(e) => setAgreeTerms(e.target.checked)}
+                    className="sr-only peer"
+                  />
+                  <div
+                    className={`
+                      w-4 h-4 rounded-md border transition-all duration-150
+                      flex items-center justify-center
+                      peer-checked:border-transparent
+                      ${isDark
+                        ? 'border-white/15 peer-checked:bg-white'
+                        : 'border-black/15 peer-checked:bg-black'}
+                    `}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                  </svg>
+                    <svg
+                      className={`w-2.5 h-2.5 opacity-0 peer-checked:opacity-100 transition-opacity ${isDark ? 'text-black' : 'text-white'}`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                  </div>
                 </div>
+                <span className="text-[11px] font-medium leading-relaxed" style={{ color: fgMid }}>
+                  I agree to the{' '}
+                  <a
+                    href="/terms"
+                    target="_blank"
+                    className="underline underline-offset-2 transition-colors"
+                    style={{ color: isDark ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.65)' }}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Terms & Conditions
+                  </a>
+                </span>
               </label>
-              <span className={`text-[10px] font-semibold ${textSecondary}`}>
-                I agree to the{' '}
-                <a href="/terms" target="_blank" className={`underline ${linkColor}`}>
-                  Terms & Conditions
-                </a>
-              </span>
-            </div>
 
-            {error && (
-              <div className="p-3 rounded-2xl bg-red-500/10 border border-red-500/25 text-red-500 text-[10.5px] font-semibold leading-normal">
-                {error}
-              </div>
-            )}
+              <ErrorMsg msg={error} />
 
-            <button
-              type="submit"
-              disabled={loading}
-              className={`w-full flex items-center justify-center gap-2 px-4 py-3 rounded-2xl text-xs tracking-wider uppercase transition-all shadow-md active:scale-98 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed mt-4 ${ctaBtn}`}
-            >
-              {loading ? (
-                <Loader2 className="w-4 h-4 animate-spin" />
-              ) : (
-                <span>Create account</span>
-              )}
-            </button>
-          </form>
-
-          {/* Separator */}
-          <div className="relative my-5">
-            <div className="absolute inset-0 flex items-center">
-              <div className={`w-full border-t ${borderCol}`} />
-            </div>
-            <div className={`relative flex justify-center text-[9px] uppercase tracking-widest font-black ${textMuted}`}>
-              <span className={`px-3 transition-colors duration-300 ${isDark ? "bg-[#0d0d0d]" : "bg-white"}`}>
-                Or register with
-              </span>
-            </div>
-          </div>
-
-          {/* Social Buttons */}
-          <div className="flex gap-3">
-            <button
-              type="button"
-              onClick={() => handleOAuth('google')}
-              disabled={loading}
-              className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl border font-bold text-[11px] transition-all shadow-sm active:scale-98 cursor-pointer ${socialBtn}`}
-            >
-              <svg className="w-4 h-4" viewBox="0 0 24 24">
-                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-              </svg>
-              <span>Google</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => handleOAuth('github')}
-              disabled={loading}
-              className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl border font-bold text-[11px] transition-all shadow-sm active:scale-98 cursor-pointer ${socialBtn}`}
-            >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577v-2.234c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.82 1.102.82 2.222v3.293c0 .319.22.694.825.576C20.565 21.795 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
-              <span>GitHub</span>
-            </button>
-          </div>
-        </div>
-
-        {/* ══════════ RIGHT COLUMN: SIGN IN FORM ══════════ */}
-        <div 
-          className={`w-full flex flex-col justify-center p-8 sm:p-10 transition-all duration-700 ease-in-out ${bgCol} ${
-            isLogin 
-              ? 'flex md:absolute md:top-0 md:bottom-0 md:left-1/2 md:w-1/2 md:translate-x-0 md:opacity-100 md:pointer-events-auto' 
-              : 'hidden md:absolute md:top-0 md:bottom-0 md:left-1/2 md:w-1/2 md:-translate-x-full md:opacity-0 md:pointer-events-none'
-          }`}
-        >
-          {/* Form Header */}
-          <div className="mb-6">
-            <h2 className={`text-2xl font-black tracking-tight mb-1 ${textPrimary}`}>
-              Sign in to account
-            </h2>
-            <div className={`text-[11.5px] font-semibold ${textSecondary}`}>
-              Don't have an account?{' '}
-              <button
-                type="button"
-                onClick={() => { setIsLogin(false); setError(null); }}
-                className={`underline underline-offset-2 font-bold cursor-pointer transition-colors ${textPrimary}`}
-              >
-                Sign up
+              <button type="submit" disabled={loading} className={primaryBtnCls}>
+                {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : (
+                  <><span>Create account</span><ArrowRight size={14} strokeWidth={2.5} /></>
+                )}
               </button>
-            </div>
-          </div>
+            </form>
 
-          {/* Sign In Form */}
-          <form onSubmit={handleSubmit} className="space-y-3.5">
-            <div>
+            <Divider label="or register with" isDark={isDark} surface={surface} />
+            <OAuthButtons onGoogle={() => handleOAuth('google')} onGitHub={() => handleOAuth('github')} cls={oauthBtnCls} loading={loading} />
+          </FormPanel>
+
+          {/* ── SIGN IN FORM ──────────────────────────────────── */}
+          <FormPanel visible={isLogin} surface={surface} isDark={isDark}>
+            <FormHeader
+              title="Welcome back"
+              sub="No account yet?"
+              linkLabel="Sign up"
+              onLink={() => switchMode(false)}
+              isDark={isDark}
+            />
+
+            <form onSubmit={handleSubmit} className="space-y-3">
               <input
+                className={inputCls}
                 type="email"
+                placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                placeholder="Email"
-                className={`w-full px-4 py-2.5 rounded-xl border bg-transparent text-xs font-semibold placeholder:text-neutral-500 focus:outline-hidden transition-all ${borderCol} ${textPrimary} ${borderFocusCol}`}
+                autoComplete="email"
               />
-            </div>
 
-            <div className="relative">
-              <input
-                type={showPassword ? 'text' : 'password'}
+              <PasswordField
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                placeholder="Enter your password"
-                className={`w-full pl-4 pr-10 py-2.5 rounded-xl border bg-transparent text-xs font-semibold placeholder:text-neutral-500 focus:outline-hidden transition-all ${borderCol} ${textPrimary} ${borderFocusCol}`}
+                onChange={setPassword}
+                show={showPassword}
+                toggle={() => setShowPassword((v) => !v)}
+                inputCls={inputCls}
+                isDark={isDark}
               />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className={`absolute right-3.5 top-1/2 -translate-y-1/2 transition-colors cursor-pointer p-0.5 ${textMuted} hover:${textPrimary}`}
-                tabIndex={-1}
-              >
-                {showPassword ? <EyeOff size={13} /> : <Eye size={13} />}
+
+              <ErrorMsg msg={error} />
+
+              <button type="submit" disabled={loading} className={primaryBtnCls}>
+                {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : (
+                  <><span>Sign in</span><ArrowRight size={14} strokeWidth={2.5} /></>
+                )}
               </button>
-            </div>
+            </form>
 
-            {error && (
-              <div className="p-3 rounded-2xl bg-red-500/10 border border-red-500/25 text-red-500 text-[10.5px] font-semibold leading-normal">
-                {error}
-              </div>
-            )}
-
-            <button
-              type="submit"
-              disabled={loading}
-              className={`w-full flex items-center justify-center gap-2 px-4 py-3 rounded-2xl text-xs tracking-wider uppercase transition-all shadow-md active:scale-98 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed mt-4 ${ctaBtn}`}
-            >
-              {loading ? (
-                <Loader2 className="w-4 h-4 animate-spin" />
-              ) : (
-                <span>Sign in</span>
-              )}
-            </button>
-          </form>
-
-          {/* Separator */}
-          <div className="relative my-5">
-            <div className="absolute inset-0 flex items-center">
-              <div className={`w-full border-t ${borderCol}`} />
-            </div>
-            <div className={`relative flex justify-center text-[9px] uppercase tracking-widest font-black ${textMuted}`}>
-              <span className={`px-3 transition-colors duration-300 ${isDark ? "bg-[#0d0d0d]" : "bg-white"}`}>
-                Or sign in with
-              </span>
-            </div>
-          </div>
-
-          {/* Social Buttons */}
-          <div className="flex gap-3">
-            <button
-              type="button"
-              onClick={() => handleOAuth('google')}
-              disabled={loading}
-              className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl border font-bold text-[11px] transition-all shadow-sm active:scale-98 cursor-pointer ${socialBtn}`}
-            >
-              <svg className="w-4 h-4" viewBox="0 0 24 24">
-                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-              </svg>
-              <span>Google</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => handleOAuth('github')}
-              disabled={loading}
-              className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl border font-bold text-[11px] transition-all shadow-sm active:scale-98 cursor-pointer ${socialBtn}`}
-            >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577v-2.234c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.82 1.102.82 2.222v3.293c0 .319.22.694.825.576C20.565 21.795 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
-              <span>GitHub</span>
-            </button>
-          </div>
+            <Divider label="or sign in with" isDark={isDark} surface={surface} />
+            <OAuthButtons onGoogle={() => handleOAuth('google')} onGitHub={() => handleOAuth('github')} cls={oauthBtnCls} loading={loading} />
+          </FormPanel>
         </div>
       </div>
+
+      {/* ── Keyframe injection ───────────────────────────────── */}
+      <style>{`
+        @keyframes modalIn {
+          from { opacity: 0; transform: scale(0.97) translateY(8px); }
+          to   { opacity: 1; transform: scale(1)    translateY(0);   }
+        }
+        @keyframes panelIn {
+          from { opacity: 0; transform: translateY(12px); }
+          to   { opacity: 1; transform: translateY(0);    }
+        }
+      `}</style>
     </div>
   );
 };
+
+/* ─── Sub-components ──────────────────────────────────────────── */
+
+/** Animated panel wrapper — handles the cross-fade + slight slide */
+const FormPanel: React.FC<{
+  visible: boolean;
+  surface: string;
+  isDark: boolean;
+  children: React.ReactNode;
+}> = ({ visible, surface, children }) => (
+  <div
+    className={`
+      absolute inset-0 flex flex-col justify-center px-10 py-10
+      transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+      overflow-y-auto
+    `}
+    style={{
+      background: surface,
+      opacity: visible ? 1 : 0,
+      transform: visible ? 'translateX(0)' : 'translateX(18px)',
+      pointerEvents: visible ? 'auto' : 'none',
+    }}
+  >
+    {children}
+  </div>
+);
+
+/** Form title + mode toggle link */
+const FormHeader: React.FC<{
+  title: string;
+  sub: string;
+  linkLabel: string;
+  onLink: () => void;
+  isDark: boolean;
+}> = ({ title, sub, linkLabel, onLink, isDark }) => (
+  <div className="mb-7">
+    <h2
+      className="text-[24px] font-black tracking-tight mb-1.5"
+      style={{ color: isDark ? '#fff' : '#0c0c0c' }}
+    >
+      {title}
+    </h2>
+    <p className="text-[12px] font-medium" style={{ color: isDark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.4)' }}>
+      {sub}{' '}
+      <button
+        type="button"
+        onClick={onLink}
+        className="font-bold underline underline-offset-2 cursor-pointer transition-opacity hover:opacity-70"
+        style={{ color: isDark ? '#fff' : '#0c0c0c' }}
+      >
+        {linkLabel}
+      </button>
+    </p>
+  </div>
+);
+
+/** Password input with toggle */
+const PasswordField: React.FC<{
+  value: string;
+  onChange: (v: string) => void;
+  show: boolean;
+  toggle: () => void;
+  inputCls: string;
+  isDark: boolean;
+  minLength?: number;
+}> = ({ value, onChange, show, toggle, inputCls, isDark, minLength }) => (
+  <div className="relative">
+    <input
+      className={inputCls + ' pr-11'}
+      type={show ? 'text' : 'password'}
+      placeholder="Password"
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      required
+      minLength={minLength}
+      autoComplete={show ? 'off' : 'current-password'}
+    />
+    <button
+      type="button"
+      onClick={toggle}
+      tabIndex={-1}
+      className="absolute right-3.5 top-1/2 -translate-y-1/2 cursor-pointer transition-opacity hover:opacity-70"
+      style={{ color: isDark ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)' }}
+    >
+      {show ? <EyeOff size={15} /> : <Eye size={15} />}
+    </button>
+  </div>
+);
+
+/** Animated error banner */
+const ErrorMsg: React.FC<{ msg: string | null }> = ({ msg }) => {
+  if (!msg) return null;
+  return (
+    <div
+      className="px-4 py-3 rounded-xl border border-red-500/20 bg-red-500/8 text-red-400 text-[11.5px] font-medium leading-normal"
+      style={{ animation: 'panelIn 0.2s ease both' }}
+    >
+      {msg}
+    </div>
+  );
+};
+
+/** Horizontal divider with centred label */
+const Divider: React.FC<{ label: string; isDark: boolean; surface: string }> = ({ label, isDark, surface }) => (
+  <div className="relative my-6">
+    <div className="absolute inset-0 flex items-center">
+      <div
+        className="w-full border-t"
+        style={{ borderColor: isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)' }}
+      />
+    </div>
+    <div className="relative flex justify-center">
+      <span
+        className="px-3 text-[10px] font-bold uppercase tracking-widest"
+        style={{ background: surface, color: isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)' }}
+      >
+        {label}
+      </span>
+    </div>
+  </div>
+);
+
+/** Google + GitHub OAuth row */
+const OAuthButtons: React.FC<{
+  onGoogle: () => void;
+  onGitHub: () => void;
+  cls: string;
+  loading: boolean;
+}> = ({ onGoogle, onGitHub, cls, loading }) => (
+  <div className="flex gap-3">
+    <button type="button" onClick={onGoogle} disabled={loading} className={cls}>
+      <GoogleIcon />
+      <span>Google</span>
+    </button>
+    <button type="button" onClick={onGitHub} disabled={loading} className={cls}>
+      <GitHubIcon />
+      <span>GitHub</span>
+    </button>
+  </div>
+);
+
+const GoogleIcon = () => (
+  <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24">
+    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+  </svg>
+);
+
+const GitHubIcon = () => (
+  <svg className="w-4 h-4 flex-shrink-0 fill-current" viewBox="0 0 24 24">
+    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577v-2.234c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.82 1.102.82 2.222v3.293c0 .319.22.694.825.576C20.565 21.795 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+  </svg>
+);
