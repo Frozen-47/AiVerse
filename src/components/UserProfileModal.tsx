@@ -305,14 +305,68 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
         }`}
         style={{ maxHeight: "85dvh" }}
       >
-        {/* ── Loading ────────────────────────────────────────────────────── */}
+        {/* ── Loading Skeleton ───────────────────────────────────────────── */}
         {loading && (
-          <div className="flex flex-col items-center justify-center py-32 gap-3">
-            <Loader2
-              size={32}
-              className={`animate-spin ${isDark ? "text-indigo-400" : "text-indigo-600"}`}
-            />
-            <p className={`text-xs font-medium tracking-wider uppercase ${t.textMuted}`}>Loading Profile</p>
+          <div className="flex flex-col w-full animate-pulse">
+            {/* Mesh Hero Banner Skeleton */}
+            <div className={`h-32 w-full bg-linear-to-r ${
+              isDark ? "from-neutral-800 to-neutral-850" : "from-neutral-150 to-neutral-200"
+            }`} />
+            
+            <div className="px-6 pb-8 space-y-5 flex flex-col">
+              {/* Squircle Avatar Skeleton */}
+              <div className={`w-20 h-20 rounded-3xl mt-[-40px] border-4 shrink-0 ${
+                isDark ? "bg-neutral-800 border-neutral-900" : "bg-neutral-200 border-white"
+              }`} />
+
+              {/* Name & Title Skeleton */}
+              <div className="space-y-2">
+                <div className={`h-5 w-40 rounded-md ${isDark ? "bg-white/5" : "bg-neutral-200"}`} />
+                <div className={`h-3.5 w-24 rounded-md ${isDark ? "bg-white/5" : "bg-neutral-200"}`} />
+              </div>
+
+              {/* Bio Description Skeleton */}
+              <div className="space-y-2">
+                <div className={`h-3.5 w-full rounded-md ${isDark ? "bg-white/5" : "bg-neutral-200"}`} />
+                <div className={`h-3.5 w-4/5 rounded-md ${isDark ? "bg-white/5" : "bg-neutral-200"}`} />
+              </div>
+
+              {/* Stats Row Skeleton */}
+              <div className={`grid grid-cols-3 py-3 rounded-2xl border ${
+                isDark ? "border-white/5 bg-white/[0.01]" : "border-black/5 bg-black/[0.01]"
+              }`}>
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="flex flex-col items-center gap-1.5">
+                    <div className={`h-5 w-10 rounded-md ${isDark ? "bg-white/5" : "bg-neutral-200"}`} />
+                    <div className={`h-3 w-14 rounded-md ${isDark ? "bg-white/5" : "bg-neutral-200"}`} />
+                  </div>
+                ))}
+              </div>
+
+              {/* Segmented Tab Bar Skeleton */}
+              <div className={`h-10 p-1 flex gap-1 rounded-xl border ${
+                isDark ? "border-white/5 bg-white/[0.01]" : "border-black/5 bg-black/[0.01]"
+              }`}>
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className={`flex-1 h-full rounded-lg ${isDark ? "bg-white/5" : "bg-neutral-200"}`} />
+                ))}
+              </div>
+
+              {/* Content List Placeholder Skeleton */}
+              <div className="space-y-3 pt-2">
+                {[...Array(2)].map((_, i) => (
+                  <div key={i} className={`p-4 rounded-xl border flex items-center gap-3 ${
+                    isDark ? "border-white/5" : "border-neutral-200"
+                  }`}>
+                    <div className={`w-8 h-8 rounded-lg shrink-0 ${isDark ? "bg-white/5" : "bg-neutral-200"}`} />
+                    <div className="flex-1 space-y-1.5">
+                      <div className={`h-3 w-1/3 rounded-md ${isDark ? "bg-white/5" : "bg-neutral-200"}`} />
+                      <div className={`h-2.5 w-1/2 rounded-md ${isDark ? "bg-white/5" : "bg-neutral-200"}`} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         )}
 

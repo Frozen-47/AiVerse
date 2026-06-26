@@ -803,8 +803,6 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                       ? profile.displayName.slice(0, 2).toUpperCase()
                       : profile.username.replace("@", "").slice(0, 2).toUpperCase();
 
-                    const builderLevel = Math.min(10, Math.max(1, profile.interests.length));
-
                     return (
                       <div
                         key={profile.userKey}
@@ -834,17 +832,14 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                 {profile.username}
                               </p>
                             </div>
-                                            {/* Profile meta badges */}
+                          </div>
+
+                          {/* Profile meta badges */}
                           <div className="flex flex-wrap gap-1.5">
                             <span className={`inline-flex items-center gap-1 text-[9px] font-extrabold uppercase px-2.5 py-0.5 rounded-md ${
                               isDark ? "bg-white/5 text-white/50 border border-white/5" : "bg-black/5 text-black/50 border border-black/5"
                             }`}>
                               Role: {profile.role}
-                            </span>
-                            <span className={`inline-flex items-center gap-1 text-[9px] font-extrabold uppercase px-2.5 py-0.5 rounded-md ${
-                              isDark ? "bg-amber-500/10 text-amber-400 border border-amber-500/20" : "bg-amber-50 text-amber-700 border border-amber-200"
-                            }`}>
-                              LVL {builderLevel} Builder
                             </span>
                             {profile.isBlocked && (
                               <span className="inline-flex items-center gap-1 text-[9px] font-black uppercase px-2.5 py-0.5 rounded-md bg-red-500/10 border border-red-500/25 text-red-500 animate-pulse" title={profile.blockedUntil ? `Blocked until ${new Date(profile.blockedUntil).toLocaleString()}` : "Blocked permanently"}>
@@ -950,7 +945,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                               <Trash2 size={13} />
                             </button>
                           </div>
-                        </div>            </div>
+                        </div>
                       </div>
                     );
                   })}

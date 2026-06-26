@@ -754,15 +754,76 @@ const Inner: React.FC = () => {
   };
 
   if (isLoading) {
+    const isDark = resolvedTheme === "amoled";
+    const skeletonBg = isDark ? "bg-white/5" : "bg-neutral-200";
+    const skeletonBorder = isDark ? "border-white/5" : "border-neutral-200";
+
     return (
-      <div className={`min-h-screen flex items-center justify-center transition-colors duration-300 ${t.page}`}>
-        <div className="flex flex-col items-center gap-4">
-          <div className={`w-10 h-10 border-4 rounded-full animate-spin ${
-            resolvedTheme === "light"
-              ? "border-neutral-200 border-t-neutral-850"
-              : "border-white/10 border-t-white"
-          }`} />
-          <p className={`text-sm font-medium tracking-widest uppercase ${t.textMuted}`}>Loading Catalog</p>
+      <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${t.page}`}>
+        {/* Navbar Skeleton */}
+        <div className={`h-16 border-b flex items-center justify-between px-4 sm:px-6 xl:px-12 ${skeletonBorder}`}>
+          <div className={`w-24 h-6 rounded-md animate-pulse ${skeletonBg}`} />
+          <div className="hidden md:flex gap-4">
+            <div className={`w-20 h-5 rounded-md animate-pulse ${skeletonBg}`} />
+            <div className={`w-20 h-5 rounded-md animate-pulse ${skeletonBg}`} />
+            <div className={`w-20 h-5 rounded-md animate-pulse ${skeletonBg}`} />
+          </div>
+          <div className={`w-8 h-8 rounded-full animate-pulse ${skeletonBg}`} />
+        </div>
+
+        {/* Catalog Layout Skeleton */}
+        <div className="w-full px-4 sm:px-6 xl:px-12 py-8 flex gap-8 flex-1">
+          {/* Left pane: Sidebar Skeleton */}
+          <div className="hidden lg:block w-56 shrink-0 space-y-6">
+            <div className={`w-32 h-6 rounded-md animate-pulse ${skeletonBg}`} />
+            <div className="space-y-3">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className={`w-full h-8 rounded-xl animate-pulse ${skeletonBg}`} />
+              ))}
+            </div>
+          </div>
+
+          {/* Right pane: Content Skeleton */}
+          <div className="flex-1 min-w-0 space-y-6">
+            {/* Top Bar */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className={`w-36 h-9 rounded-xl animate-pulse ${skeletonBg}`} />
+              <div className={`w-full sm:w-72 md:w-80 h-10 rounded-xl animate-pulse ${skeletonBg}`} />
+            </div>
+
+            {/* Grid of Pulsing Entry Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+              {[...Array(6)].map((_, i) => (
+                <div 
+                  key={i} 
+                  className={`p-6 rounded-2xl border flex flex-col justify-between space-y-4 ${skeletonBorder}`}
+                  style={{ minHeight: "220px" }}
+                >
+                  <div className="space-y-3 w-full">
+                    {/* Icon & Title Row */}
+                    <div className="flex items-center gap-3">
+                      <div className={`w-11 h-11 rounded-xl shrink-0 animate-pulse ${skeletonBg}`} />
+                      <div className="space-y-1.5 flex-1">
+                        <div className={`w-2/3 h-4 rounded-md animate-pulse ${skeletonBg}`} />
+                        <div className={`w-1/3 h-3 rounded-md animate-pulse ${skeletonBg}`} />
+                      </div>
+                    </div>
+                    {/* Description Paragraph */}
+                    <div className="space-y-2 pt-2">
+                      <div className={`w-full h-3 rounded-md animate-pulse ${skeletonBg}`} />
+                      <div className={`w-5/6 h-3 rounded-md animate-pulse ${skeletonBg}`} />
+                      <div className={`w-4/5 h-3 rounded-md animate-pulse ${skeletonBg}`} />
+                    </div>
+                  </div>
+                  {/* Footer Row */}
+                  <div className="flex justify-between items-center pt-2">
+                    <div className={`w-16 h-3 rounded-md animate-pulse ${skeletonBg}`} />
+                    <div className={`w-24 h-3 rounded-md animate-pulse ${skeletonBg}`} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     );
