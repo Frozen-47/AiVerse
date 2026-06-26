@@ -215,6 +215,17 @@ CREATE POLICY "Update own preferences"
     AND btrim(referral_source) <> ''
   );
 
+DROP POLICY IF EXISTS "Admin update preferences" ON user_preferences;
+CREATE POLICY "Admin update preferences"
+  ON user_preferences FOR UPDATE
+  USING (private.is_admin())
+  WITH CHECK (private.is_admin());
+
+DROP POLICY IF EXISTS "Admin delete preferences" ON user_preferences;
+CREATE POLICY "Admin delete preferences"
+  ON user_preferences FOR DELETE
+  USING (private.is_admin());
+
 -- entry_ratings
 DROP POLICY IF EXISTS "Allow public read ratings" ON entry_ratings;
 DROP POLICY IF EXISTS "Public read ratings" ON entry_ratings;

@@ -501,7 +501,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                           rel="noopener noreferrer"
                           className={`flex items-center gap-3 px-4 py-3 rounded-xl border transition-all group ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textAccent}`}
                         >
-                          <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${resolvedTheme === "light" ? "bg-neutral-300" : "bg-white/20"}`} />
+                          <span className="w-1.5 h-1.5 rounded-full shrink-0 bg-emerald-500 dark:bg-emerald-400" />
                           <span className="flex-1 text-[12px]">{c.text}</span>
                           <ExternalLink size={11} className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                         </a>

@@ -180,12 +180,11 @@ html {
 .dark .glow-card:hover {
   background: #262626 !important;
   box-shadow: 
-    0 12px 30px -10px rgba(6, 182, 212, 0.2),
-    0 0 24px -6px rgba(6, 182, 212, 0.08);
+    0 12px 30px -10px rgba(0, 0, 0, 0.5) !important;
 }
 
 .dark .glow-card:hover::before {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.65), rgba(99, 102, 241, 0.3)) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.03)) !important;
 }
 
 /* Light Mode Glow Card */
@@ -213,12 +212,11 @@ html {
 .light .glow-card:hover {
   background: #ffffff !important;
   box-shadow: 
-    0 12px 30px -10px rgba(14, 116, 144, 0.15),
-    0 0 24px -6px rgba(14, 116, 144, 0.06);
+    0 12px 30px -10px rgba(0, 0, 0, 0.06) !important;
 }
 
 .light .glow-card:hover::before {
-  background: linear-gradient(135deg, rgba(14, 116, 144, 0.5), rgba(79, 70, 229, 0.2)) !important;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.02)) !important;
 }
 
 /* Glass Search Input */
@@ -251,11 +249,11 @@ html {
 
 .dark .glass-search:focus-within {
   background: #171717 !important;
-  box-shadow: 0 0 20px -3px rgba(6, 182, 212, 0.15) !important;
+  box-shadow: 0 0 20px -3px rgba(0, 0, 0, 0.4) !important;
 }
 
 .dark .glass-search:focus-within::before {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.5), rgba(99, 102, 241, 0.25)) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02)) !important;
 }
 
 .light .glass-search {
@@ -281,11 +279,11 @@ html {
 
 .light .glass-search:focus-within {
   background: #ffffff !important;
-  box-shadow: 0 0 20px -3px rgba(14, 116, 144, 0.12) !important;
+  box-shadow: 0 0 20px -3px rgba(0, 0, 0, 0.05) !important;
 }
 
 .light .glass-search:focus-within::before {
-  background: linear-gradient(135deg, rgba(14, 116, 144, 0.4), rgba(79, 70, 229, 0.15)) !important;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.02)) !important;
 }
 
 /* ─── Profile Menu — Premium Animations ─── */

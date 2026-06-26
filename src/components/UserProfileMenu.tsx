@@ -82,6 +82,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   const [medium, setMedium] = useState("");
   const [devto, setDevto] = useState("");
   const [portfolio, setPortfolio] = useState("");
+  const [editAvatarUrl, setEditAvatarUrl] = useState("");
   const [role, setRole] = useState<UserRole | null>(null);
   const [interests, setInterests] = useState<OnboardingInterest[]>([]);
 
@@ -104,6 +105,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
     setMedium((meta?.medium as string) || parsedMeta?.medium || "");
     setDevto((meta?.devto as string) || parsedMeta?.devto || "");
     setPortfolio((meta?.portfolio as string) || parsedMeta?.portfolio || "");
+    setEditAvatarUrl((meta?.avatarUrl as string) || (meta?.avatar_url as string) || parsedMeta?.avatarUrl || "");
     setRole(onboardingProfile?.role ?? null);
     setInterests(onboardingProfile?.interests ?? []);
   }, [user, parsedMeta, onboardingProfile]);
@@ -142,6 +144,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
         medium: medium.trim(),
         devto: devto.trim(),
         portfolio: portfolio.trim(),
+        avatarUrl: editAvatarUrl.trim(),
       }),
       completedAt: new Date().toISOString(),
     };
@@ -156,7 +159,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
     medium: medium.trim(),
     devto: devto.trim(),
     portfolio: portfolio.trim(),
-    avatarUrl,
+    avatarUrl: editAvatarUrl.trim(),
   });
 
   const saveProfile = async () => {
@@ -245,6 +248,18 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
               onChange={(e) => setName(e.target.value)}
               className={fieldCls}
               maxLength={50}
+            />
+          </div>
+
+          {/* Avatar URL */}
+          <div>
+            <label className={labelCls}>Avatar Image URL</label>
+            <input
+              type="url"
+              value={editAvatarUrl}
+              onChange={(e) => setEditAvatarUrl(e.target.value)}
+              className={fieldCls}
+              placeholder="https://example.com/avatar.png"
             />
           </div>
 

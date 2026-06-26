@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useCallback, useRef, lazy, Suspense } from "react";
-import { Filter, X, Check, BookOpen, Shield, Sparkles, Cpu, Layers, ArrowRight, ArrowLeft } from "lucide-react";
+import { Filter, X, Check, BookOpen, Shield, Sparkles, Cpu, Layers, ArrowRight, ArrowLeft, AlertTriangle } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
@@ -58,7 +58,27 @@ import {
   sortByInterestMatch,
   type OnboardingProfile,
 } from "./lib/onboarding";
-import { fetchUserPreferences } from "./lib/supabase";
+import { fetchUserPreferences, supabase } from "./lib/supabase";
+
+function checkBlockStatus(profile: OnboardingProfile | null) {
+  if (!profile?.referralSource) return null;
+  try {
+    const parsed = JSON.parse(profile.referralSource);
+    if (parsed.isBlocked) {
+      if (parsed.blockedUntil) {
+        const expiry = new Date(parsed.blockedUntil).getTime();
+        if (Date.now() < expiry) {
+          return { isBlocked: true, blockedUntil: parsed.blockedUntil };
+        }
+      } else {
+        return { isBlocked: true }; // Permanent block
+      }
+    }
+  } catch (e) {
+    // Ignore
+  }
+  return null;
+}
 
 // ─── Inner app (needs theme context) ─────────────────────────────────────────
 const Inner: React.FC = () => {
@@ -66,6 +86,7 @@ const Inner: React.FC = () => {
   const { resolvedTheme } = useTheme();
   const { user, isLoaded, openAuthModal } = useAuth();
   const [entries, setEntries] = useState<Entry[]>([]);
+  const [blockedStatus, setBlockedStatus] = useState<{ isBlocked: boolean; blockedUntil?: string } | null>(null);
   const [typeFilters, setTypeFilters] = useState<string[]>([]);
   const [taskFilters, setTaskFilters] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -220,8 +241,26 @@ const Inner: React.FC = () => {
         if (!cancelled) {
           setOnboardingProfile(null);
           setShowOnboarding(false);
+          setBlockedStatus(null);
         }
         return;
+      }
+
+      // Always fetch from DB to get the latest block status
+      const fromDb = await fetchUserPreferences(
+        preferencesUserKey({ supabaseUserId: user.id }),
+      );
+
+      const block = checkBlockStatus(fromDb);
+      if (block && !cancelled) {
+        setBlockedStatus(block);
+        setOnboardingProfile(fromDb);
+        setShowOnboarding(false);
+        return;
+      }
+
+      if (!cancelled) {
+        setBlockedStatus(null);
       }
 
       const fromMetadata = user.user_metadata?.onboardingComplete && user.user_metadata?.onboarding 
@@ -236,9 +275,6 @@ const Inner: React.FC = () => {
         return;
       }
 
-      const fromDb = await fetchUserPreferences(
-        preferencesUserKey({ supabaseUserId: user.id }),
-      );
       if (fromDb && !cancelled) {
         setOnboardingProfile(fromDb);
         setShowOnboarding(false);
@@ -328,25 +364,11 @@ const Inner: React.FC = () => {
 
   const handleSearchChange = (val: string) => {
     setSearchInput(val);
-    if (val && activeView !== "catalog") {
-      setActiveView("catalog");
-      setBrowseAll(true);
-      setIsPrivacy(false);
-      setIsTerms(false);
-      setIsFeatures(false);
-    }
   };
 
   const handleSearchSelect = (e: Entry) => {
     setSelected(e);
     setSearchInput("");
-    if (activeView !== "catalog") {
-      setActiveView("catalog");
-      setBrowseAll(true);
-      setIsPrivacy(false);
-      setIsTerms(false);
-      setIsFeatures(false);
-    }
   };
 
   useEffect(() => {
@@ -736,6 +758,60 @@ const Inner: React.FC = () => {
               : "border-white/10 border-t-white"
           }`} />
           <p className={`text-sm font-medium tracking-widest uppercase ${t.textMuted}`}>Loading Catalog</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (blockedStatus) {
+    const isDark = resolvedTheme === "amoled";
+    const formattedDate = blockedStatus.blockedUntil
+      ? new Date(blockedStatus.blockedUntil).toLocaleString()
+      : null;
+
+    return (
+      <div className={`min-h-screen flex items-center justify-center transition-colors duration-300 p-6 ${t.page}`}>
+        <div className={`w-full max-w-md p-8 rounded-2xl border text-center space-y-6 shadow-2xl ${t.modal} ${t.border}`}>
+          <div className="flex justify-center">
+            <div className="p-4 rounded-full bg-red-500/10 text-red-500 animate-bounce">
+              <AlertTriangle size={48} className="stroke-[2px]" />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <h2 className={`text-xl font-black tracking-tight ${t.textPrimary}`}>
+              Account Temporarily Suspended
+            </h2>
+            <p className={`text-xs leading-relaxed font-light ${t.textSecondary}`}>
+              Your AiVerse builder profile has been temporarily blocked by an administrator for violating community guidelines or terms of service.
+            </p>
+          </div>
+
+          <div className={`p-4 rounded-xl border text-xs font-mono space-y-1.5 ${isDark ? "bg-white/[0.02] border-white/5 text-slate-300" : "bg-black/[0.02] border-black/5 text-slate-700"}`}>
+            <div className="flex justify-between">
+              <span className="opacity-60">Status:</span>
+              <span className="font-bold text-red-400">Blocked</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="opacity-60">Duration:</span>
+              <span className="font-bold">
+                {formattedDate ? `Until ${formattedDate}` : "Permanent / Indefinite"}
+              </span>
+            </div>
+          </div>
+
+          <p className={`text-[11px] leading-relaxed ${t.textMuted}`}>
+            If you believe this was an error or would like to appeal, please contact the administrators.
+          </p>
+
+          <button
+            onClick={async () => {
+              await supabase.auth.signOut();
+              window.location.reload();
+            }}
+            className="w-full py-3 rounded-xl font-bold text-xs bg-red-600 hover:bg-red-500 text-white shadow-md cursor-pointer transition-all"
+          >
+            Sign Out of Account
+          </button>
         </div>
       </div>
     );

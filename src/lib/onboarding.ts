@@ -227,6 +227,8 @@ export async function persistOnboardingProfile(
         medium: options.profileMeta.medium?.trim(),
         devto: options.profileMeta.devto?.trim(),
         portfolio: options.profileMeta.portfolio?.trim(),
+        avatar_url: options.profileMeta.avatarUrl?.trim(),
+        avatarUrl: options.profileMeta.avatarUrl?.trim(),
       } : {}),
       onboardingComplete: true,
       onboarding: profile,
