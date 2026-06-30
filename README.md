@@ -43,47 +43,11 @@ npm install
 npm run dev
 ```
 
-## 🤝 Looking for Collaborators!
+## 🤝 Contributing & Collaborating
 
-Hey everyone! 👋 I'm a student working on this project, and I'm looking for collaborators who'd like to join and help build AiVerse together.
+We are actively looking for collaborators! Whether you want to improve UI components, add new AI tools to the database, write documentation, or submit bug fixes, we welcome your support.
 
-**This is completely open source** — no payments, no hiring — just a team project for learning, contributing, and building something useful together.
-
-### We Need Help With:
-
-#### 🎨 Frontend Development
-- React/Next.js development
-- UI/UX design
-- Responsive layouts
-- Accessibility improvements
-
-#### ⚙️ Backend Development
-- Database design and implementation
-- API development
-- Authentication systems
-- Search functionality
-
-#### 📝 Content & Structure
-- AI tool research and documentation
-- Content organization
-- Technical writing
-- Category structuring
-
-#### 🧪 Other Areas
-- Testing and QA
-- DevOps and deployment
-- Documentation
-- Community management
-
-## 💡 How to Contribute
-
-1. **Fork the repository**
-2. **Create your feature branch** (`git checkout -b feature/AmazingFeature`)
-3. **Commit your changes** (`git commit -m 'Add some AmazingFeature'`)
-4. **Push to the branch** (`git push origin feature/AmazingFeature`)
-5. **Open a Pull Request**
-
-Please read [Contributing.md](Contributing.md) for details on our code of conduct and the process for submitting pull requests.
+Please read our [Contributing Guide](Contributing.md) for step-by-step local setup instructions, branching conventions, and coding style requirements.
 
 ## 📬 Get in Touch
 
