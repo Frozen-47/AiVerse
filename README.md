@@ -2,6 +2,8 @@
 
 > Your comprehensive guide to AI tools, models, and technologies — all in one place.
 
+🔗 **Live Demo:** [aiverse.frozenn.in](https://aiverse.frozenn.in)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![Open Source](https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red)](https://opensource.org/)
