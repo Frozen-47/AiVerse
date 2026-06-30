@@ -242,11 +242,11 @@ html {
 
 .dark .glass-search:focus-within {
   background: #171717 !important;
-  box-shadow: 0 0 20px -3px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 4px 24px -3px rgba(0, 0, 0, 0.6) !important;
 }
 
 .dark .glass-search:focus-within::before {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02)) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.03)) !important;
 }
 
 .light .glass-search {
@@ -269,11 +269,11 @@ html {
 
 .light .glass-search:focus-within {
   background: #ffffff !important;
-  box-shadow: 0 0 20px -3px rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 4px 20px -3px rgba(0, 0, 0, 0.08) !important;
 }
 
 .light .glass-search:focus-within::before {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.02)) !important;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.03)) !important;
 }
 
 /* ─── Profile Menu — Premium Animations ─── */

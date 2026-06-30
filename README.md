@@ -11,27 +11,15 @@
 ## 👋 About the Project
 
 **AiVerse** is an open-source platform that organizes and explains different AI tools, models, and technologies in one centralized location. Think of it as a Wikipedia for AI — making artificial intelligence more accessible and understandable for everyone.
+## ✨ Features
 
-### Current Status
-🚧 **Early Development Phase** - Currently a static website, transitioning to a dynamic platform.
-
-### Vision
-We're building AiVerse to become:
-- 📚 A comprehensive database of AI tools and models
-- 🔍 An easily searchable AI knowledge base
-- 👥 A community-driven platform with user contributions
-- 🎓 An educational resource for AI enthusiasts and professionals
-
-## ✨ Planned Features
-
-- [ ] **Dynamic Database** - Store and manage AI tool information
-- [ ] **Search Functionality** - Quick and powerful search across all AI resources
-- [ ] **User Contributions** - Community-driven content additions and updates
-- [ ] **Categories & Tags** - Organized structure for easy navigation
-- [ ] **User Accounts** - Save favorites, contribute content, and track submissions
-- [ ] **Ratings & Reviews** - Community feedback on AI tools
-- [ ] **API Access** - Developer-friendly API for integration
-- [ ] **Responsive Design** - Mobile-first, accessible interface
+- 🗄️ **Dynamic Database** - Comprehensive catalog of models, frameworks, datasets, and platforms synced with Supabase.
+- 🔍 **Real-time Search** - Fast, dynamic catalog filtering and full command-style search shortcuts (`Ctrl+K`/`⌘K`).
+- 👥 **User Contributions** - Secure submission panel and admin review dashboard for ecosystem growth.
+- ⚔️ **Comparison Arena** - Perform side-by-side technical and architectural comparisons of different assets.
+- 🧙‍♂️ **Discovery Wizard** - Interactive recommendation quiz to match users with tools based on goals, stacks, and licenses.
+- 💬 **Interactive Chat Widget** - Powered by Groq SDK to provide instant, contextual knowledge.
+- 📱 **Premium UI & Themes** - High-fidelity responsive glassmorphic interfaces supporting light, dark, and amoled modes.
 
 ## 🚀 Getting Started
 
@@ -107,47 +95,44 @@ Interested in joining the team? Have ideas or suggestions?
 
 ## 📋 Project Roadmap
 
-### Phase 1: Foundation (Current)
-- [x] Initial static website
-- [ ] Project setup and structure
-- [ ] Database schema design
-- [ ] Basic API framework
+### Phase 1: Foundation (Completed)
+- [x] Initial static website & wireframing
+- [x] Project setup and structure (Vite + React + TS)
+- [x] Database schema design (PostgreSQL)
+- [x] Database integration & client helper setup
 
-### Phase 2: Core Features
-- [ ] User authentication
-- [ ] Database integration
-- [ ] Search functionality
-- [ ] Content submission system
+### Phase 2: Core Features (Completed)
+- [x] User authentication (Supabase Auth)
+- [x] Database connection & entry syncing
+- [x] Real-time Search functionality & key shortcuts
+- [x] Content submission panel (Request review)
 
-### Phase 3: Community Features
-- [ ] User profiles
-- [ ] Ratings and reviews
-- [ ] Comments and discussions
-- [ ] Moderation tools
+### Phase 3: Community & Admin Features (Completed)
+- [x] User onboarding & role-based profiles
+- [x] Ratings, feedback, and reviews system
+- [x] Side-by-side comparison arena
+- [x] Admin dashboard (Approve submissions, suspend users)
 
-### Phase 4: Enhancement
-- [ ] Advanced search filters
-- [ ] API for developers
-- [ ] Mobile app
-- [ ] Internationalization
+### Phase 4: Enhancements & Future Plans
+- [x] Advanced category & task sidebar filters
+- [ ] Developer API access
+- [ ] Mobile wrap (Capacitor/Native feel)
+- [ ] Internationalization (Multi-language support)
 
-## 🛠️ Tech Stack (Proposed)
+## 🛠️ Tech Stack
 
 **Frontend:**
-- React / Next.js
-- Tailwind CSS
-- TypeScript
+- React 19 / TypeScript / Vite
+- Tailwind CSS v4 (Modern CSS Engine)
+- Lucide React (Icons)
+- Lenis (Smooth scrolling)
 
-**Backend:**
-- Node.js / Express
-- PostgreSQL / MongoDB
-- Redis (caching)
+**Backend & Database:**
+- Supabase (PostgreSQL, Auth, RLS Policies)
+- Groq SDK (Contextual AI chat client)
 
 **Deployment:**
-- Vercel / Netlify
-- Docker
-
-_Open to suggestions and discussions!_
+- Vercel (Auto CD on main push)
 
 ## 📄 License
 

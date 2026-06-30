@@ -1287,8 +1287,8 @@ const Inner: React.FC = () => {
 
               {/* Right pane: Content */}
               <div className="flex-1 min-w-0 pb-32">
-                {/* Back to Dashboard bar */}
-                <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                {/* Navigation Bar */}
+                <div className="mb-5">
                   <button
                     onClick={() => {
                       setBrowseAll(false);
@@ -1296,22 +1296,34 @@ const Inner: React.FC = () => {
                       setIsFeatures(false);
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border shadow-sm transition-all cursor-pointer backdrop-blur-md shrink-0 w-fit ${
+                    className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] font-bold border shadow-xs transition-all cursor-pointer backdrop-blur-md shrink-0 w-fit ${
                       resolvedTheme === 'amoled'
-                        ? 'bg-white/5 border-white/10 text-white hover:border-white/20 hover:shadow-sm'
-                        : 'bg-white/80 border-slate-200 text-slate-700 hover:border-black/20 hover:text-black'
+                        ? 'bg-white/5 border-white/10 text-white/80 hover:text-white hover:border-white/20'
+                        : 'bg-white/80 border-slate-200 text-slate-600 hover:text-black hover:border-slate-300'
                     }`}
                   >
-                    <ArrowLeft size={14} />
+                    <ArrowLeft size={12} />
                     Back to Dashboard
                   </button>
+                </div>
 
-                  <div className="w-full sm:w-72 md:w-80">
+                {/* Header Row: Title & Search */}
+                <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-5 border-b pb-6 border-slate-200 dark:border-white/5">
+                  <div>
+                    <h1 className={`text-2xl font-black tracking-tight ${t.textPrimary}`}>
+                      Ecosystem Catalog
+                    </h1>
+                    <p className={`text-[12px] font-light ${t.textSecondary} mt-1`}>
+                      Search and discover curated AI models, frameworks, datasets, and platform services.
+                    </p>
+                  </div>
+                  <div className="w-full md:w-96 shrink-0">
                     <SearchBar
                       query={searchInput}
                       onChange={handleSearchChange}
                       entries={entries}
                       onSelect={handleSearchSelect}
+                      showDropdown={false}
                     />
                   </div>
                 </div>
