@@ -6,8 +6,6 @@ import { Navbar } from "./components/Navbar";
 import { PrivacyPolicy } from "./components/PrivacyPolicy";
 import { TermsOfService } from "./components/TermsOfService";
 import { FeaturesSuite } from "./components/FeaturesSuite";
-import { WizardFinder } from "./components/features/WizardFinder";
-import { CompareArena } from "./components/features/CompareArena";
 import { ValueProps } from "./components/features/ValueProps";
 import { Sidebar } from "./components/Sidebar";
 import { SearchBar } from "./components/SearchBar";
@@ -152,8 +150,10 @@ const Inner: React.FC = () => {
   const [compareToolB, setCompareToolB] = useState<string>("Claude 3.5 Sonnet");
   const [wizardStep, setWizardStep] = useState<number>(0);
   const [wizardGoal, setWizardGoal] = useState<string | null>(null);
+  const [wizardCustomGoal, setWizardCustomGoal] = useState<string>("");
   const [wizardType, setWizardType] = useState<string | null>(null);
   const [wizardLicense, setWizardLicense] = useState<string | null>(null);
+  const [wizardCustomLicense, setWizardCustomLicense] = useState<string>("");
   const [showLoginForPrefs, setShowLoginForPrefs] = useState(false);
   const [showLoginForBookmarks, setShowLoginForBookmarks] = useState(false);
   const [prefsToast, setPrefsToast] = useState(false);
@@ -187,14 +187,24 @@ const Inner: React.FC = () => {
       creative: ["image", "video", "speech", "audio", "synthesis", "vision", "creative", "paint", "art", "music", "draw", "generate"]
     };
 
-    const keywords = goalKeywords[wizardGoal] || [];
+    let keywords = goalKeywords[wizardGoal] || [];
+    if (wizardGoal === "other" && wizardCustomGoal) {
+      keywords = wizardCustomGoal
+        .toLowerCase()
+        .replace(/[^\w\s]/g, "")
+        .split(/\s+/)
+        .filter(w => w.length > 2);
+    }
 
-    // Filter by type
-    let pool = entries.filter(e => e.type === wizardType);
+    // Filter by type (if "other", scan all types)
+    let pool = wizardType === "other" ? entries : entries.filter(e => e.type === wizardType);
 
     // Filter by license
     if (wizardLicense === "permissive") {
       pool = pool.filter(e => isPermissiveLicense(e.license));
+    } else if (wizardLicense === "other" && wizardCustomLicense.trim()) {
+      const customLic = wizardCustomLicense.toLowerCase().trim();
+      pool = pool.filter(e => e.license.toLowerCase().includes(customLic));
     }
 
     // Score entries
@@ -211,24 +221,30 @@ const Inner: React.FC = () => {
     // Sort by score desc
     scored.sort((a, b) => b.score - a.score);
 
-    const results = scored.slice(0, 3).map(s => s.entry);
+    const results = scored.slice(0, 10).map(s => s.entry);
 
     // Fallback if no/few results
-    if (results.length < 3) {
+    if (results.length < 10) {
       const existingNames = new Set(results.map(r => r.name));
       const fallbacks = entries
-        .filter(e => e.type === wizardType && !existingNames.has(e.name))
-        .filter(e => wizardLicense !== "permissive" || isPermissiveLicense(e.license))
+        .filter(e => (wizardType === "other" || e.type === wizardType) && !existingNames.has(e.name))
+        .filter(e => {
+          if (wizardLicense === "permissive") return isPermissiveLicense(e.license);
+          if (wizardLicense === "other" && wizardCustomLicense.trim()) {
+            return e.license.toLowerCase().includes(wizardCustomLicense.toLowerCase().trim());
+          }
+          return true;
+        })
         .sort((a, b) => (b.popular ? 1 : 0) - (a.popular ? 1 : 0));
       
       for (const f of fallbacks) {
-        if (results.length >= 3) break;
+        if (results.length >= 10) break;
         results.push(f);
       }
     }
 
     return results;
-  }, [entries, wizardGoal, wizardType, wizardLicense]);
+  }, [entries, wizardGoal, wizardCustomGoal, wizardType, wizardLicense, wizardCustomLicense]);
 
   useEffect(() => {
     if (!isLoaded) return;
@@ -932,69 +948,9 @@ const Inner: React.FC = () => {
           setActiveView("landing");
           setBrowseAll(false);
         }} />
-      ) : isWizard ? (
-        <div className="w-full px-4 sm:px-6 xl:px-12 py-8 flex flex-col gap-6 animate-[fadeUp_0.4s_ease-out]">
-          <div className="mb-2">
-            <button
-              onClick={() => {
-                setIsWizard(false);
-                setActiveView("landing");
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border shadow-sm transition-all cursor-pointer backdrop-blur-md ${
-                resolvedTheme === 'amoled'
-                  ? 'bg-white/5 border-white/10 text-white hover:border-white/20 hover:shadow-sm'
-                  : 'bg-white/80 border-slate-200 text-slate-700 hover:border-black/20 hover:text-black'
-              }`}
-            >
-              <ArrowLeft size={14} />
-              Back to Dashboard
-            </button>
-          </div>
-          <WizardFinder
-            wizardStep={wizardStep}
-            setWizardStep={setWizardStep}
-            setWizardGoal={setWizardGoal}
-            setWizardType={setWizardType}
-            setWizardLicense={setWizardLicense}
-            wizardRecommendations={wizardRecommendations}
-            setSelected={setSelected}
-            setTypeFilter={(filter) => setTypeFilter(filter as TypeFilter)}
-            setSearchInput={setSearchInput}
-            setBrowseAll={setBrowseAll}
-            setActiveView={setActiveView}
-          />
-        </div>
-      ) : isArena ? (
-        <div className="w-full px-4 sm:px-6 xl:px-12 py-8 flex flex-col gap-6 animate-[fadeUp_0.4s_ease-out]">
-          <div className="mb-2">
-            <button
-              onClick={() => {
-                setIsArena(false);
-                setActiveView("landing");
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border shadow-sm transition-all cursor-pointer backdrop-blur-md ${
-                resolvedTheme === 'amoled'
-                  ? 'bg-white/5 border-white/10 text-white hover:border-white/20 hover:shadow-sm'
-                  : 'bg-white/80 border-slate-200 text-slate-700 hover:border-black/20 hover:text-black'
-              }`}
-            >
-              <ArrowLeft size={14} />
-              Back to Dashboard
-            </button>
-          </div>
-          <CompareArena
-            entries={entries}
-            compareToolA={compareToolA}
-            setCompareToolA={setCompareToolA}
-            compareToolB={compareToolB}
-            setCompareToolB={setCompareToolB}
-            setSelected={setSelected}
-          />
-        </div>
-      ) : isFeatures ? (
+      ) : (isWizard || isArena || isFeatures) ? (
         <FeaturesSuite
+          initialTab={isWizard ? "wizard" : isArena ? "arena" : "overview"}
           entries={entries}
           typeCounts={typeCounts}
           setSelected={setSelected}
@@ -1004,11 +960,41 @@ const Inner: React.FC = () => {
           setActiveView={setActiveView}
           setSavedOnly={setSavedOnly}
           setPopularOnly={setPopularOnly}
+          onCloseFeatures={() => {
+            setIsWizard(false);
+            setIsArena(false);
+            setIsFeatures(false);
+          }}
           onBackToHome={() => {
+            setIsWizard(false);
+            setIsArena(false);
             setIsFeatures(false);
             setActiveView("landing");
             setBrowseAll(false);
           }}
+          // Wizard Props
+          wizardStep={wizardStep}
+          setWizardStep={setWizardStep}
+          wizardGoal={wizardGoal}
+          setWizardGoal={setWizardGoal}
+          wizardCustomGoal={wizardCustomGoal}
+          setWizardCustomGoal={setWizardCustomGoal}
+          wizardType={wizardType}
+          setWizardType={setWizardType}
+          wizardLicense={wizardLicense}
+          setWizardLicense={setWizardLicense}
+          wizardCustomLicense={wizardCustomLicense}
+          setWizardCustomLicense={setWizardCustomLicense}
+          wizardRecommendations={wizardRecommendations}
+          // Arena Props
+          compareToolA={compareToolA}
+          setCompareToolA={setCompareToolA}
+          compareToolB={compareToolB}
+          setCompareToolB={setCompareToolB}
+          // User / Feedback props
+          bookmarks={bookmarks}
+          onToggleBookmark={handleToggleBookmark}
+          ratingSummaries={ratingSummaries}
         />
       ) : (isAdminDashboard && (user?.email === "frozennheart47@gmail.com" || user?.user_metadata?.role === "admin")) ? (
         <AdminDashboard
