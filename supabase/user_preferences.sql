@@ -1,4 +1,4 @@
--- Included in supabase_all.sql. Run this only if you add preferences on an old project.
+-- Included in all.sql. Run this only if you add preferences on an old project.
 
 CREATE TABLE IF NOT EXISTS user_preferences (
   user_key TEXT PRIMARY KEY,
