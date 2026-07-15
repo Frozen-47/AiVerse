@@ -119,7 +119,7 @@ export const EntryFeedback: React.FC<EntryFeedbackProps> = ({
       if (code === "42P01" || code === "PGRST205") {
         setUnavailable(true);
         setError(
-          "Ratings and comments are not set up yet. Run supabase_entry_feedback.sql in your Supabase SQL editor.",
+          "Ratings and comments are not set up yet. Run supabase/entry_feedback.sql in your Supabase SQL editor.",
         );
       } else {
         setError("Could not load ratings and comments.");
