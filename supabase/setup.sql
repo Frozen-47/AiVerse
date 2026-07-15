@@ -1,5 +1,5 @@
--- Prefer running supabase_all.sql once (tables + RLS).
--- This file is kept for reference; same tables as supabase_all.sql (part 1).
+-- Prefer running all.sql once (tables + RLS).
+-- This file is kept for reference; same tables as all.sql (part 1).
 
 CREATE TABLE IF NOT EXISTS entries (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS entries (
 
 ALTER TABLE entries ENABLE ROW LEVEL SECURITY;
 
--- Onboarding preferences (see supabase_user_preferences.sql)
+-- Onboarding preferences (see user_preferences.sql)
 CREATE TABLE IF NOT EXISTS user_preferences (
   user_key TEXT PRIMARY KEY,
   role TEXT NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS user_preferences (
 
 ALTER TABLE user_preferences ENABLE ROW LEVEL SECURITY;
 
--- Ratings & comments (see supabase_entry_feedback.sql)
+-- Ratings & comments (see entry_feedback.sql)
 CREATE TABLE IF NOT EXISTS entry_ratings (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   entry_name TEXT NOT NULL REFERENCES entries(name) ON DELETE CASCADE,
@@ -62,7 +62,7 @@ CREATE INDEX IF NOT EXISTS entry_comments_entry_name_idx ON entry_comments (entr
 ALTER TABLE entry_ratings ENABLE ROW LEVEL SECURITY;
 ALTER TABLE entry_comments ENABLE ROW LEVEL SECURITY;
 
--- RLS policies: run supabase_rls_policies.sql after this file.
+-- RLS policies: run rls_policies.sql after this file.
 
 -- ─── Administrative RPC Functions ──────────────────────────────────────────
 
