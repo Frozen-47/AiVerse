@@ -1,4 +1,4 @@
--- Refresh RLS helpers + policies. Safe to re-run. Prefer supabase_all.sql for new projects.
+-- Refresh RLS helpers + policies. Safe to re-run. Prefer all.sql for new projects.
 
 -- ─── Helpers (private schema — not exposed via /rest/v1/rpc) ─────────────────
 
