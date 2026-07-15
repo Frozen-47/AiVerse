@@ -1,4 +1,4 @@
--- Included in supabase_all.sql. Run this only if you add bookmarks on an old project.
+-- Included in all.sql. Run this only if you add bookmarks on an old project.
 
 CREATE TABLE IF NOT EXISTS user_bookmarks (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
