@@ -37,7 +37,7 @@ git clone https://github.com/Frozen-47/AiVerse.git
 cd AiVerse
 
 # Install dependencies
-npm install
+npm install 
 
 # Start development server
 npm run dev
