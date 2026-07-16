@@ -27,7 +27,7 @@ interface ModelResponse {
 const MODELS = [
   { id: "llama-3.1-8b-instant", label: "Llama 3.1 8B", badge: "Fast" },
   { id: "llama-3.3-70b-versatile", label: "Llama 3.3 70B", badge: "Smart" },
-  { id: "mixtral-8x7b-32768", label: "Mixtral 8x7B", badge: "MoE" },
+  { id: "deepseek-r1-distill-qwen-32b", label: "DeepSeek R1 32B", badge: "Reasoning" },
   { id: "deepseek-r1-distill-llama-70b", label: "DeepSeek R1 70B", badge: "Reasoning" },
 ];
 

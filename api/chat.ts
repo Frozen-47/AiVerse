@@ -84,14 +84,32 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const VALID_MODELS = [
       'llama-3.1-8b-instant',
       'llama-3.3-70b-versatile',
-      'mixtral-8x7b-32768',
+      'deepseek-r1-distill-qwen-32b',
       'deepseek-r1-distill-llama-70b'
     ];
 
     const modelToUse = VALID_MODELS.includes(model) ? model : 'llama-3.1-8b-instant';
 
+    let finalMessages = [systemPrompt, ...sanitizedMessages];
+
+    // DeepSeek R1 models on Groq do not support the 'system' role.
+    // If using DeepSeek, we merge the system instructions into the first user message instead.
+    if (modelToUse.toLowerCase().includes('deepseek')) {
+      const firstUserIndex = sanitizedMessages.findIndex(m => m.role === 'user');
+      if (firstUserIndex !== -1) {
+        const mergedMessages = [...sanitizedMessages];
+        mergedMessages[firstUserIndex] = {
+          role: 'user',
+          content: `${systemPromptContent}\n\n[Instructions Above. User Query Below]\n${sanitizedMessages[firstUserIndex].content}`
+        };
+        finalMessages = mergedMessages;
+      } else {
+        finalMessages = sanitizedMessages;
+      }
+    }
+
     const chatCompletion = await groq.chat.completions.create({
-      messages: [systemPrompt, ...sanitizedMessages],
+      messages: finalMessages,
       model: modelToUse,
       temperature: 0.5,
       max_tokens: 1024,
