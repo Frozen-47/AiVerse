@@ -49,7 +49,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { messages, userName } = req.body;
+    const { messages, userName, model, systemInstruction } = req.body;
 
     if (!Array.isArray(messages)) {
       return res.status(400).json({ error: 'Invalid request: messages array is required.' });
@@ -62,15 +62,28 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const nameStr = userName ? `The user's name is ${userName}. Greet them or address them by this name occasionally to be polite and personal.` : '';
 
-    // System prompt is kept securely on the backend
+    const systemPromptContent = systemInstruction && typeof systemInstruction === 'string'
+      ? systemInstruction
+      : `You are Vox, an AI assistant strictly dedicated to the AiVerse encyclopedia. ${nameStr} You MUST REFUSE to answer any questions that are not related to Artificial Intelligence, machine learning, AI models, datasets, or the AiVerse platform itself. If a user asks about coding (like Rust loops, general web dev, etc. unless specifically about AI frameworks like PyTorch), general trivia, or off-topic subjects, politely decline and steer the conversation back to AI models and technologies.\n\nHere is the current catalog of AI items available in the AiVerse database:\n${catalogContext || 'No catalog provided'}\n\nUse this catalog to inform your answers. If someone asks what models are available or asks for recommendations, draw from this list.\n\nCRITICAL INSTRUCTION:\nYou MUST ONLY recommend or mention models and tools that are explicitly listed in the catalog above. Do NOT hallucinate or mention any models outside of this catalog under any circumstances.\n\nIMPORTANT RESPONSE GUIDELINES:\n1. **ORGANIZE CLEARLY**: Provide clean, highly structured, and refined responses. Use bullet points and paragraphs effectively to break up the text.\n2. Use **bold text** for all AI model and tool names so they stand out in blue. Format them exactly like this: **Model Name**.\n3. **INCLUDE LINKS**: If a URL is provided in the catalog for an item, you MUST include it in your response formatted exactly like this: [Official Website](URL). Place the link naturally after the model name or at the end of its summary.`;
+
     const systemPrompt = {
       role: 'system',
-      content: `You are Vox, an AI assistant strictly dedicated to the AiVerse encyclopedia. ${nameStr} You MUST REFUSE to answer any questions that are not related to Artificial Intelligence, machine learning, AI models, datasets, or the AiVerse platform itself. If a user asks about coding (like Rust loops, general web dev, etc. unless specifically about AI frameworks like PyTorch), general trivia, or off-topic subjects, politely decline and steer the conversation back to AI models and technologies.\n\nHere is the current catalog of AI items available in the AiVerse database:\n${catalogContext || 'No catalog provided'}\n\nUse this catalog to inform your answers. If someone asks what models are available or asks for recommendations, draw from this list.\n\nCRITICAL INSTRUCTION:\nYou MUST ONLY recommend or mention models and tools that are explicitly listed in the catalog above. Do NOT hallucinate or mention any models outside of this catalog under any circumstances.\n\nIMPORTANT RESPONSE GUIDELINES:\n1. **ORGANIZE CLEARLY**: Provide clean, highly structured, and refined responses. Use bullet points and paragraphs effectively to break up the text.\n2. Use **bold text** for all AI model and tool names so they stand out in blue. Format them exactly like this: **Model Name**.\n3. **INCLUDE LINKS**: If a URL is provided in the catalog for an item, you MUST include it in your response formatted exactly like this: [Official Website](URL). Place the link naturally after the model name or at the end of its summary.`,
+      content: systemPromptContent,
     };
+
+    // Supported models mapping to ensure we only send valid model strings to Groq
+    const VALID_MODELS = [
+      'llama-3.1-8b-instant',
+      'llama-3.3-70b-versatile',
+      'mixtral-8x7b-32768',
+      'gemma2-9b-it'
+    ];
+
+    const modelToUse = VALID_MODELS.includes(model) ? model : 'llama-3.1-8b-instant';
 
     const chatCompletion = await groq.chat.completions.create({
       messages: [systemPrompt, ...sanitizedMessages],
-      model: 'llama-3.1-8b-instant', // Switched to 8B model to bypass the 70B daily rate limit
+      model: modelToUse,
       temperature: 0.5,
       max_tokens: 1024,
     });

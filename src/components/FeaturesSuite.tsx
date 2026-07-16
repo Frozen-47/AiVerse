@@ -8,9 +8,10 @@ import { MetricsBar }        from "./features/MetricsBar";
 import { SpotlightGrid }     from "./features/SpotlightGrid";
 import { WizardFinder }      from "./features/WizardFinder";
 import { CompareArena }      from "./features/CompareArena";
+import { Playground }        from "./features/Playground";
 
 interface FeaturesSuiteProps {
-  initialTab?: "overview" | "wizard" | "arena";
+  initialTab?: "overview" | "wizard" | "arena" | "playground";
   entries: Entry[];
   typeCounts: {
     AI: number;
@@ -59,7 +60,7 @@ interface FeaturesSuiteProps {
 
 export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
   const t = useTokens();
-  const [activeTab, setActiveTab] = useState<"overview" | "wizard" | "arena">(
+  const [activeTab, setActiveTab] = useState<"overview" | "wizard" | "arena" | "playground">(
     props.initialTab || "overview"
   );
 
@@ -103,6 +104,7 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
     { id: "overview", label: "Ecosystem Overview" },
     { id: "wizard", label: "AI Discovery Wizard" },
     { id: "arena", label: "Comparison Spec Arena" },
+    { id: "playground", label: "AI Model Playground" },
   ];
 
   return (
@@ -110,7 +112,7 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
       <FeatureHeader onBackToHome={props.onBackToHome} />
 
       {/* Dynamic Tab Navigator */}
-      <div className={`p-1 rounded-[20px] border flex gap-1 w-full max-w-lg shrink-0 backdrop-blur-md transition-all ${t.surface} shadow-sm`}>
+      <div className={`p-1 rounded-[20px] border flex gap-1 w-full max-w-2xl shrink-0 backdrop-blur-md transition-all ${t.surface} shadow-sm`}>
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id;
           return (
@@ -205,6 +207,12 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
             ratingSummaries={props.ratingSummaries}
             bookmarks={props.bookmarks}
           />
+        </div>
+      )}
+
+      {activeTab === "playground" && (
+        <div className="animate-[fadeIn_0.3s_ease-out]">
+          <Playground />
         </div>
       )}
 

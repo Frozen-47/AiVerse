@@ -136,6 +136,10 @@ const Inner: React.FC = () => {
     if (typeof window === "undefined") return false;
     return window.location.pathname === "/features" || window.location.pathname === "/features/";
   });
+  const [isPlayground, setIsPlayground] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    return window.location.pathname === "/playground" || window.location.pathname === "/playground/";
+  });
   const [activeView, setActiveView] = useState<"landing" | "catalog">((() => {
     if (typeof window === "undefined") return "landing";
     return (window.location.pathname === "/entries" || window.location.pathname === "/entries/") ? "catalog" : "landing";
@@ -528,6 +532,10 @@ const Inner: React.FC = () => {
       targetPath = "/features";
       url.searchParams.delete("entry");
       url.searchParams.delete("user");
+    } else if (isPlayground) {
+      targetPath = "/playground";
+      url.searchParams.delete("entry");
+      url.searchParams.delete("user");
     } else if (profileUsername) {
       targetPath = `/user/${profilePathSlug(profileUsername)}`;
       url.searchParams.delete("user");
@@ -548,7 +556,7 @@ const Inner: React.FC = () => {
     } else {
       window.history.replaceState({}, "", url);
     }
-  }, [selected, profileUsername, isPrivacy, isTerms, isWizard, isArena, isFeatures, activeView, browseAll, urlSyncReady]);
+  }, [selected, profileUsername, isPrivacy, isTerms, isWizard, isArena, isFeatures, isPlayground, activeView, browseAll, urlSyncReady]);
 
   // Dynamic SEO handler
   useEffect(() => {
@@ -576,6 +584,10 @@ const Inner: React.FC = () => {
       title = "Ecosystem Features | AiVerse";
       desc = "Explore category dashboards, system capacity metrics, spotlight highlights, values prop overlays, and all integrated capabilities.";
       path = "/features";
+    } else if (isPlayground) {
+      title = "Model Playground | AiVerse";
+      desc = "Compare language models side-by-side. Test custom system instructions, prompt templates, and latency metrics.";
+      path = "/playground";
     } else if (profileUsername) {
       const displayUser = profileUsername.startsWith("@") ? profileUsername : `@${profileUsername}`;
       title = `${displayUser}'s Builder Profile | AiVerse`;
@@ -619,7 +631,7 @@ const Inner: React.FC = () => {
       document.head.appendChild(canonical);
     }
     canonical.setAttribute("href", `https://aiverse.frozenn.in${path}`);
-  }, [selected, profileUsername, isPrivacy, isTerms, isWizard, isArena, isFeatures, activeView, browseAll]);
+  }, [selected, profileUsername, isPrivacy, isTerms, isWizard, isArena, isFeatures, isPlayground, activeView, browseAll]);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -628,6 +640,7 @@ const Inner: React.FC = () => {
       setIsWizard(window.location.pathname === "/wizard" || window.location.pathname === "/wizard/");
       setIsArena(window.location.pathname === "/arena" || window.location.pathname === "/arena/");
       setIsFeatures(window.location.pathname === "/features" || window.location.pathname === "/features/");
+      setIsPlayground(window.location.pathname === "/playground" || window.location.pathname === "/playground/");
       setProfileUsername(parseProfileUsernameFromLocation());
 
       const isEntriesPath = window.location.pathname === "/entries" || window.location.pathname === "/entries/";
@@ -907,6 +920,9 @@ const Inner: React.FC = () => {
           setIsPrivacy(false);
           setIsTerms(false);
           setIsFeatures(false);
+          setIsWizard(false);
+          setIsArena(false);
+          setIsPlayground(false);
           setIsAdminDashboard(false);
           setSelected(null);
           setProfileUsername(null);
@@ -918,6 +934,9 @@ const Inner: React.FC = () => {
           setIsPrivacy(false);
           setIsTerms(false);
           setIsFeatures(false);
+          setIsWizard(false);
+          setIsArena(false);
+          setIsPlayground(false);
           setIsAdminDashboard(true);
           setSelected(null);
           setProfileUsername(null);
@@ -948,9 +967,9 @@ const Inner: React.FC = () => {
           setActiveView("landing");
           setBrowseAll(false);
         }} />
-      ) : (isWizard || isArena || isFeatures) ? (
+      ) : (isWizard || isArena || isFeatures || isPlayground) ? (
         <FeaturesSuite
-          initialTab={isWizard ? "wizard" : isArena ? "arena" : "overview"}
+          initialTab={isWizard ? "wizard" : isArena ? "arena" : isPlayground ? "playground" : "overview"}
           entries={entries}
           typeCounts={typeCounts}
           setSelected={setSelected}
@@ -964,11 +983,13 @@ const Inner: React.FC = () => {
             setIsWizard(false);
             setIsArena(false);
             setIsFeatures(false);
+            setIsPlayground(false);
           }}
           onBackToHome={() => {
             setIsWizard(false);
             setIsArena(false);
             setIsFeatures(false);
+            setIsPlayground(false);
             setActiveView("landing");
             setBrowseAll(false);
           }}
@@ -1065,7 +1086,7 @@ const Inner: React.FC = () => {
               </div>
 
               {/* Premium Action Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Card 1: Browse AI Registry */}
                 <button
                   onClick={() => {
@@ -1185,6 +1206,43 @@ const Inner: React.FC = () => {
                   </p>
                   <span className={`inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider ${t.textAccent}`}>
                     Explore Suite <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                  </span>
+                </button>
+
+                {/* Card 5: AI Model Playground */}
+                <button
+                  onClick={() => {
+                    if (!user) {
+                      openAuthModal("signin");
+                    } else {
+                      setIsPlayground(true);
+                    }
+                  }}
+                  className={`group relative overflow-hidden p-8 rounded-3xl text-left transition-all duration-300 cursor-pointer ${t.card}`.trim()}
+                >
+                  <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="flex items-center justify-between mb-6">
+                    <div className={`p-3.5 rounded-2xl transition-colors ${t.iconBg}`}>
+                      <Sparkles size={24} className="text-indigo-400" />
+                    </div>
+                    {!user && (
+                      <span className={`flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-lg border ${
+                        resolvedTheme === "amoled"
+                          ? "bg-amber-500/10 border-amber-500/20 text-amber-400"
+                          : "bg-amber-50 border-amber-500/15 text-amber-700"
+                      }`}>
+                        <Shield size={11} className="stroke-[3px]" /> Premium Lock
+                      </span>
+                    )}
+                  </div>
+                  <h3 className={`text-xl font-bold mb-2  transition-colors ${t.textPrimary}`}>
+                    AI Model Playground
+                  </h3>
+                  <p className={`text-[13px] leading-relaxed font-light mb-6 ${t.textSecondary}`}>
+                    Compare responses from Llama, Mixtral, and Gemma side-by-side in real-time. Test prompts with custom system constraints.
+                  </p>
+                  <span className={`inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider ${t.textAccent}`}>
+                    {!user ? "Unlock Playground (Login)" : "Enter Playground"} <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
                   </span>
                 </button>
               </div>
@@ -1498,6 +1556,16 @@ const Inner: React.FC = () => {
                     className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
                   >
                     Wizard Finder
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => { 
+                      setIsPlayground(true); setIsWizard(false); setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                    }} 
+                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                  >
+                    Model Playground
                   </button>
                 </li>
               </ul>
