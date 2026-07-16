@@ -28,7 +28,7 @@ const MODELS = [
   { id: "llama-3.1-8b-instant", label: "Llama 3.1 8B", badge: "Fast" },
   { id: "llama-3.3-70b-versatile", label: "Llama 3.3 70B", badge: "Smart" },
   { id: "mixtral-8x7b-32768", label: "Mixtral 8x7B", badge: "MoE" },
-  { id: "gemma2-9b-it", label: "Gemma 2 9B", badge: "Google" },
+  { id: "deepseek-r1-distill-llama-70b", label: "DeepSeek R1 70B", badge: "Reasoning" },
 ];
 
 const TEMPLATES = [
@@ -64,7 +64,7 @@ export const Playground: React.FC = () => {
   const [systemInstruction, setSystemInstruction] = useState("");
   const [selectedModels, setSelectedModels] = useState<string[]>([
     "llama-3.1-8b-instant",
-    "gemma2-9b-it",
+    "deepseek-r1-distill-llama-70b",
   ]);
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [openTemplates, setOpenTemplates] = useState(false);

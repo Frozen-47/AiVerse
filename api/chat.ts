@@ -51,6 +51,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const { messages, userName, model, systemInstruction } = req.body;
 
+    if (model === 'list-models-diagnostic') {
+      try {
+        const list = await groq.models.list();
+        return res.status(200).json({ content: JSON.stringify(list.data.map(m => m.id)) });
+      } catch (err: any) {
+        return res.status(500).json({ error: `Diagnostic failed: ${err.message}` });
+      }
+    }
+
     if (!Array.isArray(messages)) {
       return res.status(400).json({ error: 'Invalid request: messages array is required.' });
     }
@@ -76,7 +85,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       'llama-3.1-8b-instant',
       'llama-3.3-70b-versatile',
       'mixtral-8x7b-32768',
-      'gemma2-9b-it'
+      'deepseek-r1-distill-llama-70b'
     ];
 
     const modelToUse = VALID_MODELS.includes(model) ? model : 'llama-3.1-8b-instant';

@@ -49,6 +49,19 @@ export default defineConfig(({ mode }) => {
       {
         name: 'api-dev-middleware',
         configureServer(server) {
+          console.log("=== GROQ ENVIRONMENT CHECK ===");
+          console.log("GROQ_API_KEY exists:", !!process.env.GROQ_API_KEY);
+          if (process.env.GROQ_API_KEY) {
+            import('groq-sdk').then(async ({ default: Groq }) => {
+              const client = new Groq({ apiKey: process.env.GROQ_API_KEY });
+              try {
+                const list = await client.models.list();
+                console.log("DEV SERVER ACTIVE GROQ MODELS:", list.data.map(m => m.id));
+              } catch (e) {
+                console.error("DEV SERVER GROQ ERROR:", e.message);
+              }
+            }).catch(() => {});
+          }
           server.middlewares.use(async (req, res, next) => {
             if (req.url?.startsWith('/api/chat')) {
               try {
