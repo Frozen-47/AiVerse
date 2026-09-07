@@ -1,5 +1,98 @@
 [
   {
+    "date": "2026-09-07",
+    "assets": [
+      {
+        "name": "LTX-2.5",
+        "type": "Model",
+        "summary": "High-performance Video Generation open-weights model by Lightricks, trending with over 2,964 community likes and 1,526,928 downloads on Hugging Face.",
+        "task": "Video Generation",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "Lightricks",
+        "size": "Open Weights",
+        "architecture": "Lightricks image to video architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Lightricks/LTX-2.5\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Lightricks/LTX-2.5\")",
+        "benchmarks": "Trending Score: 342, Likes: 2,964, Downloads: 1,526,928",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": true,
+        "url": "https://huggingface.co/Lightricks/LTX-2.5",
+        "citations": [
+          {
+            "text": "Lightricks/LTX-2.5 on Hugging Face",
+            "url": "https://huggingface.co/Lightricks/LTX-2.5"
+          }
+        ]
+      },
+      {
+        "name": "Krea-2-Turbo_I2I",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by MrdDickDickenson. Trending with 103 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "MrdDickDickenson",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/MrdDickDickenson/Krea-2-Turbo_I2I",
+        "benchmarks": "Trending Score: 87, Community Likes: 103",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": true,
+        "url": "https://huggingface.co/spaces/MrdDickDickenson/Krea-2-Turbo_I2I",
+        "citations": [
+          {
+            "text": "MrdDickDickenson/Krea-2-Turbo_I2I on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/MrdDickDickenson/Krea-2-Turbo_I2I"
+          }
+        ]
+      },
+      {
+        "name": "pybroker",
+        "type": "Framework",
+        "summary": "Algorithmic Trading in Python with Machine Learning",
+        "task": "MLOps",
+        "license": "NOASSERTION",
+        "year": 2026,
+        "org": "edtechre",
+        "size": "8MB Repo",
+        "architecture": "Modular AI codebase with native Python/C++ bindings and distributed workflow support.",
+        "usage": "git clone https://github.com/edtechre/pybroker\ncd pybroker\npip install -e .",
+        "benchmarks": "GitHub Stars: 3,533, Forks: 454",
+        "limitations": "Requires local Python environment and dependency configuration.",
+        "popular": true,
+        "url": "https://github.com/edtechre/pybroker",
+        "citations": [
+          {
+            "text": "edtechre/pybroker on GitHub",
+            "url": "https://github.com/edtechre/pybroker"
+          }
+        ]
+      },
+      {
+        "name": "tiktok-videos-4b",
+        "type": "Dataset",
+        "summary": "TikTok Videos: 4.5 billion posts with engagement metrics \t 4.5 billion TikTok video records with captions, engagement counts, sound identifiers and timing. Collected fr (162 likes, 4,818 downloads).",
+        "task": "NLP",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "kuben-developer",
+        "size": "1B<n<10B",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"kuben-developer/tiktok-videos-4b\")",
+        "benchmarks": "Trending Score: 156, Likes: 162, Downloads: 4,818",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": true,
+        "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
+        "citations": [
+          {
+            "text": "kuben-developer/tiktok-videos-4b on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-06",
     "assets": [
       {

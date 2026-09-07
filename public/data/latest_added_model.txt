@@ -1,1 +1,1 @@
-Qwen3.8-27B-GSQ-RCO-GGUF
+LTX-2.5

@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-06",
+  "date": "2026-09-07",
   "tool": {
-    "name": "Phind",
+    "name": "NotebookLM",
     "type": "AI",
-    "summary": "AI search engine and pair programmer tailored specifically for developers, providing cited code snippets, documentation references, and terminal debugging.",
-    "task": "AI Coding",
+    "summary": "Google's personalized AI research assistant powered by Gemini 1.5 Pro, featuring Audio Overviews that turn uploaded documents into dynamic conversational podcast discussions.",
+    "task": "Productivity",
     "license": "Proprietary",
-    "year": 2023,
-    "org": "Phind",
+    "year": 2024,
+    "org": "Google",
     "size": "N/A",
-    "architecture": "Custom 70B MoE search model paired with live web and documentation scraping index.",
-    "usage": "Visit phind.com and query \"How to configure SSL in NGINX reverse proxy with Certbot in Docker\".",
-    "benchmarks": "High developer satisfaction for complex programming queries and library documentation search.",
-    "limitations": "Focused on technical and developer search queries.",
+    "architecture": "Grounded RAG pipeline powered by Gemini 1.5 Pro long context and conversational TTS.",
+    "usage": "Upload research papers, meeting notes, or PDFs at notebooklm.google.com, then click 'Audio Overview' to generate an engaging AI podcast explanation.",
+    "benchmarks": "Zero hallucination rate on user source documents through strict ground-truth attribution.",
+    "limitations": "Outputs strictly restricted to user uploaded source materials.",
     "popular": true,
-    "url": "https://www.phind.com",
+    "url": "https://notebooklm.google.com",
     "citations": [
       {
-        "text": "Phind",
-        "url": "https://www.phind.com"
+        "text": "NotebookLM",
+        "url": "https://notebooklm.google.com"
       }
     ]
   }

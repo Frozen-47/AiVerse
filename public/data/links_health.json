@@ -1,23 +1,13 @@
 {
-  "timestamp": "2026-09-06T10:17:37.413Z",
+  "timestamp": "2026-09-07T00:44:40.786Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
-      "name": "GPT-4",
-      "url": "https://openai.com/gpt-4",
-      "status": 403
-    },
-    {
-      "name": "Sora",
-      "url": "https://openai.com/sora",
-      "status": 403
-    },
-    {
-      "name": "GPT-3.5 Turbo",
-      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
-      "status": 404
+      "name": "LMSYS Chatbot Arena Conversations",
+      "url": "https://chat.lmsys.org",
+      "status": "Network Error"
     }
   ]
 }

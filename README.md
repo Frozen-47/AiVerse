@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-06)
+### ⚡ Daily AI Pulse (2026-09-07)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Qwen3.8-27B-GSQ-RCO-GGUF** (`Model`), **QWEN_EDIT_IMAGE** (`Platform`), **SerpentAI** (`Framework`), **glue** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Phind** (Phind) — [Explore](https://www.phind.com) |
-| 🗄️ **Catalog Entries** | **242** AI assets tracked (196 featured) |
+| 🆕 **New Assets Added** | **LTX-2.5** (`Model`), **Krea-2-Turbo_I2I** (`Platform`), **pybroker** (`Framework`), **tiktok-videos-4b** (`Dataset`) |
+| 🌟 **Tool of the Day** | **NotebookLM** (Google) — [Explore](https://notebooklm.google.com) |
+| 🗄️ **Catalog Entries** | **246** AI assets tracked (200 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4-Flash-Vision-Exp](https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp) |
 | 📜 **Top Daily Paper** | [RoboTok: An Internet-Scale Data Engine for Human D...](https://huggingface.co/papers/2609.03199) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Daily Run** | `Sun, 06 Sep 2026 10:17:40 GMT` |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Daily Run** | `Mon, 07 Sep 2026 00:44:47 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

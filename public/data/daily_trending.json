@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-09-06T10:17:37.371Z",
+  "timestamp": "2026-09-07T00:44:40.584Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
       "author": "deepseek-ai",
-      "likes": 701,
+      "likes": 746,
       "downloads": 209191,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp"
@@ -12,7 +12,7 @@
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 14067,
+      "likes": 14131,
       "downloads": 6190807,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
@@ -20,31 +20,31 @@
     {
       "id": "XHToken/Spark-X2.5-4B",
       "author": "XHToken",
-      "likes": 570,
+      "likes": 602,
       "downloads": 5477,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.5-4B"
     },
     {
-      "id": "Qwen/Qwen3.8-Flash-Next",
-      "author": "Qwen",
-      "likes": 4929,
-      "downloads": 432966,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"
-    },
-    {
       "id": "google/timesfm-3.0-pytorch",
       "author": "google",
-      "likes": 473,
+      "likes": 503,
       "downloads": 144455,
       "pipeline_tag": "time-series-forecasting",
       "url": "https://huggingface.co/google/timesfm-3.0-pytorch"
     },
     {
+      "id": "Qwen/Qwen3.8-Flash-Next",
+      "author": "Qwen",
+      "likes": 4943,
+      "downloads": 432966,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"
+    },
+    {
       "id": "ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
       "author": "ISTA-DASLab",
-      "likes": 436,
+      "likes": 469,
       "downloads": 348389,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF"
@@ -54,7 +54,7 @@
     {
       "title": "RoboTok: An Internet-Scale Data Engine for Human Demonstration Retrieval and Dexterous Manipulation Learning",
       "summary": "RoboTok retrieves relevant human manipulation videos from the web using a latent motion space derived from 3D hand trajectories to improve robot policy training.",
-      "upvotes": 108,
+      "upvotes": 115,
       "arxiv_id": "2609.03199",
       "url": "https://huggingface.co/papers/2609.03199",
       "githubRepo": "https://github.com/Rice-RobotPI-Lab/RoboTok-Code"
@@ -62,7 +62,7 @@
     {
       "title": "A Common Measure of Communication for Speech Brain-Computer Interfaces",
       "summary": "Open-vocabulary mutual information provides a unified metric to compare speech brain-computer interfaces across different vocabularies and conditions, revealing trade-offs between vocabulary coverage and decoding accuracy.",
-      "upvotes": 9,
+      "upvotes": 10,
       "arxiv_id": "2609.02887",
       "url": "https://huggingface.co/papers/2609.02887",
       "githubRepo": "https://github.com/neural-processing-lab/OVMI"
@@ -78,7 +78,7 @@
     {
       "title": "Locked at the Entrance, Open Inside: Where RLVR Narrows the Solution Space",
       "summary": "Reinforcement learning with verifiable rewards narrows reasoning diversity primarily at the initial solution step rather than during execution, and targeted interventions can restore coverage without sacrificing accuracy.",
-      "upvotes": 9,
+      "upvotes": 10,
       "arxiv_id": "2608.29188",
       "url": "https://huggingface.co/papers/2608.29188",
       "githubRepo": "https://github.com/ershiyidian/early-branch-locking"
@@ -86,7 +86,7 @@
     {
       "title": "DRACO: Fine-Grained Credit Assignment with Dynamic Rubrics for Long-Horizon Agent Training",
       "summary": "DRACO dynamically generates rubrics and redistributes trajectory-level scores into per-step advantages for reinforcement learning without verifiers, improving long-horizon agent performance.",
-      "upvotes": 23,
+      "upvotes": 24,
       "arxiv_id": "2609.04094",
       "url": "https://huggingface.co/papers/2609.04094",
       "githubRepo": "https://github.com/IBM/draco"

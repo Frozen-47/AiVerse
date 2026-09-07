@@ -1,4 +1,4 @@
--- Seed / Upsert all 242 AiVerse entries into Supabase
+-- Seed / Upsert all 246 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -5108,6 +5108,89 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('glue', 'nyu-mll', 'Dataset', 'NLP', 'OTHER', 2026, '1M<n<10M', 'Dataset Card for GLUE 	 	 		 	 	 		Dataset Summary 	 GLUE, the General Language Understanding Evaluation benchmark (https://gluebenchmark.com/) is a collection of resou (730 likes, 784,661 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("nyu-mll/glue")', 'Trending Score: 199, Likes: 730, Downloads: 784,661', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nyu-mll/glue', '[{"text":"nyu-mll/glue on Hugging Face Datasets","url":"https://huggingface.co/datasets/nyu-mll/glue"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('LTX-2.5', 'Lightricks', 'Model', 'Video Generation', 'OTHER', 2026, 'Open Weights', 'High-performance Video Generation open-weights model by Lightricks, trending with over 2,964 community likes and 1,526,928 downloads on Hugging Face.', 'Lightricks image to video architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Lightricks/LTX-2.5", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Lightricks/LTX-2.5")', 'Trending Score: 342, Likes: 2,964, Downloads: 1,526,928', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Lightricks/LTX-2.5', '[{"text":"Lightricks/LTX-2.5 on Hugging Face","url":"https://huggingface.co/Lightricks/LTX-2.5"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Krea-2-Turbo_I2I', 'MrdDickDickenson', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by MrdDickDickenson. Trending with 103 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/MrdDickDickenson/Krea-2-Turbo_I2I', 'Trending Score: 87, Community Likes: 103', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/MrdDickDickenson/Krea-2-Turbo_I2I', '[{"text":"MrdDickDickenson/Krea-2-Turbo_I2I on Hugging Face Spaces","url":"https://huggingface.co/spaces/MrdDickDickenson/Krea-2-Turbo_I2I"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('pybroker', 'edtechre', 'Framework', 'MLOps', 'NOASSERTION', 2026, '8MB Repo', 'Algorithmic Trading in Python with Machine Learning', 'Modular AI codebase with native Python/C++ bindings and distributed workflow support.', 'git clone https://github.com/edtechre/pybroker
+cd pybroker
+pip install -e .', 'GitHub Stars: 3,533, Forks: 454', 'Requires local Python environment and dependency configuration.', 'https://github.com/edtechre/pybroker', '[{"text":"edtechre/pybroker on GitHub","url":"https://github.com/edtechre/pybroker"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('tiktok-videos-4b', 'kuben-developer', 'Dataset', 'NLP', 'OTHER', 2026, '1B<n<10B', 'TikTok Videos: 4.5 billion posts with engagement metrics 	 4.5 billion TikTok video records with captions, engagement counts, sound identifiers and timing. Collected fr (162 likes, 4,818 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("kuben-developer/tiktok-videos-4b")', 'Trending Score: 156, Likes: 162, Downloads: 4,818', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b', '[{"text":"kuben-developer/tiktok-videos-4b on Hugging Face Datasets","url":"https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

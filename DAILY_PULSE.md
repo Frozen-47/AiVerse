@@ -1,51 +1,51 @@
-# ⚡ AiVerse Daily Pulse (2026-09-06)
+# ⚡ AiVerse Daily Pulse (2026-09-07)
 
 > Automatically generated daily intelligence report syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sun, 06 Sep 2026 10:17:40 GMT`*
+*Last Synchronized: `Mon, 07 Sep 2026 00:44:47 GMT`*
 
 ---
 
 ## 🆕 Newly Ingested Assets Today (4)
 
-### **Qwen3.8-27B-GSQ-RCO-GGUF** (`Model` • *ISTA-DASLab*)
-> High-performance Multimodal open-weights model by ISTA-DASLab, trending with over 436 community likes and 348,389 downloads on Hugging Face.
+### **LTX-2.5** (`Model` • *Lightricks*)
+> High-performance Video Generation open-weights model by Lightricks, trending with over 2,964 community likes and 1,526,928 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 363, Likes: 436, Downloads: 348,389`
-- 🔗 **Resource Link**: [https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF)
+- 🏷️ **Domain & License**: `Video Generation` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 342, Likes: 2,964, Downloads: 1,526,928`
+- 🔗 **Resource Link**: [https://huggingface.co/Lightricks/LTX-2.5](https://huggingface.co/Lightricks/LTX-2.5)
 
-### **QWEN_EDIT_IMAGE** (`Platform` • *kulkas2pintu*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by kulkas2pintu. Trending with 174 community stars.
+### **Krea-2-Turbo_I2I** (`Platform` • *MrdDickDickenson*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by MrdDickDickenson. Trending with 103 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 90, Community Likes: 174`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE](https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE)
+- ⚡ **Metrics**: `Trending Score: 87, Community Likes: 103`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/MrdDickDickenson/Krea-2-Turbo_I2I](https://huggingface.co/spaces/MrdDickDickenson/Krea-2-Turbo_I2I)
 
-### **SerpentAI** (`Framework` • *SerpentAI*)
-> Game Agent Framework. Helping you create AIs / Bots that learn to play any game you own!
+### **pybroker** (`Framework` • *edtechre*)
+> Algorithmic Trading in Python with Machine Learning
 
-- 🏷️ **Domain & License**: `Computer Vision` • `MIT` (2026)
-- ⚡ **Metrics**: `GitHub Stars: 6,990, Forks: 798`
-- 🔗 **Resource Link**: [https://github.com/SerpentAI/SerpentAI](https://github.com/SerpentAI/SerpentAI)
+- 🏷️ **Domain & License**: `MLOps` • `NOASSERTION` (2026)
+- ⚡ **Metrics**: `GitHub Stars: 3,533, Forks: 454`
+- 🔗 **Resource Link**: [https://github.com/edtechre/pybroker](https://github.com/edtechre/pybroker)
 
-### **glue** (`Dataset` • *nyu-mll*)
-> Dataset Card for GLUE 	 	 		 	 	 		Dataset Summary 	 GLUE, the General Language Understanding Evaluation benchmark (https://gluebenchmark.com/) is a collection of resou (730 likes, 784,661 downloads).
+### **tiktok-videos-4b** (`Dataset` • *kuben-developer*)
+> TikTok Videos: 4.5 billion posts with engagement metrics 	 4.5 billion TikTok video records with captions, engagement counts, sound identifiers and timing. Collected fr (162 likes, 4,818 downloads).
 
 - 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 199, Likes: 730, Downloads: 784,661`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/nyu-mll/glue](https://huggingface.co/datasets/nyu-mll/glue)
+- ⚡ **Metrics**: `Trending Score: 156, Likes: 162, Downloads: 4,818`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b](https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **Phind** (`AI` • *Phind*)
-> AI search engine and pair programmer tailored specifically for developers, providing cited code snippets, documentation references, and terminal debugging.
+### **NotebookLM** (`AI` • *Google*)
+> Google's personalized AI research assistant powered by Gemini 1.5 Pro, featuring Audio Overviews that turn uploaded documents into dynamic conversational podcast discussions.
 
-- 🏛️ **Architecture**: Custom 70B MoE search model paired with live web and documentation scraping index.
-- ⚡ **Benchmarks**: `High developer satisfaction for complex programming queries and library documentation search.`
-- 🏷️ **Domain & License**: `AI Coding` • `Proprietary` (Released: 2023)
-- 🔗 **Resource Link**: [https://www.phind.com](https://www.phind.com)
+- 🏛️ **Architecture**: Grounded RAG pipeline powered by Gemini 1.5 Pro long context and conversational TTS.
+- ⚡ **Benchmarks**: `Zero hallucination rate on user source documents through strict ground-truth attribution.`
+- 🏷️ **Domain & License**: `Productivity` • `Proprietary` (Released: 2024)
+- 🔗 **Resource Link**: [https://notebooklm.google.com](https://notebooklm.google.com)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -53,12 +53,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4-Flash-Vision-Exp` | image-text-to-text | ❤️ 701 | 📥 209,191 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp) |
-| `Qwen/Qwen3.8-27B` | image-text-to-text | ❤️ 14,067 | 📥 6,190,807 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
-| `XHToken/Spark-X2.5-4B` | text-generation | ❤️ 570 | 📥 5,477 | [View](https://huggingface.co/XHToken/Spark-X2.5-4B) |
-| `Qwen/Qwen3.8-Flash-Next` | image-text-to-text | ❤️ 4,929 | 📥 432,966 | [View](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) |
-| `google/timesfm-3.0-pytorch` | time-series-forecasting | ❤️ 473 | 📥 144,455 | [View](https://huggingface.co/google/timesfm-3.0-pytorch) |
-| `ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF` | image-text-to-text | ❤️ 436 | 📥 348,389 | [View](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) |
+| `deepseek-ai/DeepSeek-V4-Flash-Vision-Exp` | image-text-to-text | ❤️ 746 | 📥 209,191 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp) |
+| `Qwen/Qwen3.8-27B` | image-text-to-text | ❤️ 14,131 | 📥 6,190,807 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
+| `XHToken/Spark-X2.5-4B` | text-generation | ❤️ 602 | 📥 5,477 | [View](https://huggingface.co/XHToken/Spark-X2.5-4B) |
+| `google/timesfm-3.0-pytorch` | time-series-forecasting | ❤️ 503 | 📥 144,455 | [View](https://huggingface.co/google/timesfm-3.0-pytorch) |
+| `Qwen/Qwen3.8-Flash-Next` | image-text-to-text | ❤️ 4,943 | 📥 432,966 | [View](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) |
+| `ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF` | image-text-to-text | ❤️ 469 | 📥 348,389 | [View](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) |
 
 
 ---
@@ -68,24 +68,24 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **RoboTok: An Internet-Scale Data Engine for Human Demonstration Retrieval and Dexterous Manipulation Learning** | 👍 108 | RoboTok retrieves relevant human manipulation videos from the web using a latent motion space derived from 3D hand trajectories to improve robot policy training. | [Read](https://huggingface.co/papers/2609.03199) |
-| **A Common Measure of Communication for Speech Brain-Computer Interfaces** | 👍 9 | Open-vocabulary mutual information provides a unified metric to compare speech brain-computer interfaces across different vocabularies and conditions, revealing trade-offs between vocabulary coverage and decoding accuracy. | [Read](https://huggingface.co/papers/2609.02887) |
+| **RoboTok: An Internet-Scale Data Engine for Human Demonstration Retrieval and Dexterous Manipulation Learning** | 👍 115 | RoboTok retrieves relevant human manipulation videos from the web using a latent motion space derived from 3D hand trajectories to improve robot policy training. | [Read](https://huggingface.co/papers/2609.03199) |
+| **A Common Measure of Communication for Speech Brain-Computer Interfaces** | 👍 10 | Open-vocabulary mutual information provides a unified metric to compare speech brain-computer interfaces across different vocabularies and conditions, revealing trade-offs between vocabulary coverage and decoding accuracy. | [Read](https://huggingface.co/papers/2609.02887) |
 | **VeriPhy: Agentic Physical Reasoning for World Model Evaluation and Refinement** | 👍 12 | VeriPhy verifies generated video by compiling prompts into typed physical obligations, executing frozen expert analyses with provenance tracking, and mapping evidence to auditable three-valued verdicts. | [Read](https://huggingface.co/papers/2609.03153) |
-| **Locked at the Entrance, Open Inside: Where RLVR Narrows the Solution Space** | 👍 9 | Reinforcement learning with verifiable rewards narrows reasoning diversity primarily at the initial solution step rather than during execution, and targeted interventions can restore coverage without sacrificing accuracy. | [Read](https://huggingface.co/papers/2608.29188) |
-| **DRACO: Fine-Grained Credit Assignment with Dynamic Rubrics for Long-Horizon Agent Training** | 👍 23 | DRACO dynamically generates rubrics and redistributes trajectory-level scores into per-step advantages for reinforcement learning without verifiers, improving long-horizon agent performance. | [Read](https://huggingface.co/papers/2609.04094) |
+| **Locked at the Entrance, Open Inside: Where RLVR Narrows the Solution Space** | 👍 10 | Reinforcement learning with verifiable rewards narrows reasoning diversity primarily at the initial solution step rather than during execution, and targeted interventions can restore coverage without sacrificing accuracy. | [Read](https://huggingface.co/papers/2608.29188) |
+| **DRACO: Fine-Grained Credit Assignment with Dynamic Rubrics for Long-Horizon Agent Training** | 👍 24 | DRACO dynamically generates rubrics and redistributes trajectory-level scores into per-step advantages for reinforcement learning without verifiers, improving long-horizon agent performance. | [Read](https://huggingface.co/papers/2609.04094) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `242`
-- **Featured / Starred Tools**: `196`
-- **Asset Breakdown**: **Models**: 91 • **Frameworks**: 25 • **Platforms**: 28 • **Datasets**: 27 • **AIs**: 71
+- **Total Registered Assets**: `246`
+- **Featured / Starred Tools**: `200`
+- **Asset Breakdown**: **Models**: 92 • **Frameworks**: 26 • **Platforms**: 29 • **Datasets**: 28 • **AIs**: 71
 
 ---
 
 ## 🛡️ Daily System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
 - **Dependency Security**: `20` advisories flagged across `539` dependencies (`1` critical, `16` high)
 
 ---
