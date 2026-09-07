@@ -1,12 +1,22 @@
 {
-  "timestamp": "2026-09-07T00:44:40.786Z",
+  "timestamp": "2026-09-07T02:04:24.234Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "LMSYS Chatbot Arena Conversations",
-      "url": "https://chat.lmsys.org",
+      "name": "Perplexity",
+      "url": "https://www.perplexity.ai",
+      "status": 403
+    },
+    {
+      "name": "SAM (Segment Anything Model)",
+      "url": "https://segment-anything.com/",
+      "status": "Network Error"
+    },
+    {
+      "name": "Krea AI",
+      "url": "https://www.krea.ai",
       "status": "Network Error"
     }
   ]

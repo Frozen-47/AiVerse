@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-09-07T00:44:40.584Z",
+  "timestamp": "2026-09-07T02:04:24.174Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
       "author": "deepseek-ai",
-      "likes": 746,
+      "likes": 748,
       "downloads": 209191,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp"
@@ -12,7 +12,7 @@
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 14131,
+      "likes": 14138,
       "downloads": 6190807,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
@@ -20,7 +20,7 @@
     {
       "id": "XHToken/Spark-X2.5-4B",
       "author": "XHToken",
-      "likes": 602,
+      "likes": 617,
       "downloads": 5477,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.5-4B"
@@ -28,7 +28,7 @@
     {
       "id": "google/timesfm-3.0-pytorch",
       "author": "google",
-      "likes": 503,
+      "likes": 508,
       "downloads": 144455,
       "pipeline_tag": "time-series-forecasting",
       "url": "https://huggingface.co/google/timesfm-3.0-pytorch"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "RoboTok: An Internet-Scale Data Engine for Human Demonstration Retrieval and Dexterous Manipulation Learning",
-      "summary": "RoboTok retrieves relevant human manipulation videos from the web using a latent motion space derived from 3D hand trajectories to improve robot policy training.",
-      "upvotes": 115,
-      "arxiv_id": "2609.03199",
-      "url": "https://huggingface.co/papers/2609.03199",
-      "githubRepo": "https://github.com/Rice-RobotPI-Lab/RoboTok-Code"
-    },
-    {
-      "title": "A Common Measure of Communication for Speech Brain-Computer Interfaces",
-      "summary": "Open-vocabulary mutual information provides a unified metric to compare speech brain-computer interfaces across different vocabularies and conditions, revealing trade-offs between vocabulary coverage and decoding accuracy.",
-      "upvotes": 10,
-      "arxiv_id": "2609.02887",
-      "url": "https://huggingface.co/papers/2609.02887",
-      "githubRepo": "https://github.com/neural-processing-lab/OVMI"
-    },
-    {
-      "title": "VeriPhy: Agentic Physical Reasoning for World Model Evaluation and Refinement",
-      "summary": "VeriPhy verifies generated video by compiling prompts into typed physical obligations, executing frozen expert analyses with provenance tracking, and mapping evidence to auditable three-valued verdicts.",
-      "upvotes": 12,
-      "arxiv_id": "2609.03153",
-      "url": "https://huggingface.co/papers/2609.03153",
+      "title": "RISE: Recursive Improvement via Self-Extrapolating Policy Distillation",
+      "summary": "RISE improves language model post-training by recursively generating dense token-level supervision from the model's own reinforcement learning trajectory via self-extrapolation, avoiding external teachers.",
+      "upvotes": 0,
+      "arxiv_id": "2609.05295",
+      "url": "https://huggingface.co/papers/2609.05295",
       "githubRepo": null
     },
     {
-      "title": "Locked at the Entrance, Open Inside: Where RLVR Narrows the Solution Space",
-      "summary": "Reinforcement learning with verifiable rewards narrows reasoning diversity primarily at the initial solution step rather than during execution, and targeted interventions can restore coverage without sacrificing accuracy.",
-      "upvotes": 10,
-      "arxiv_id": "2608.29188",
-      "url": "https://huggingface.co/papers/2608.29188",
-      "githubRepo": "https://github.com/ershiyidian/early-branch-locking"
+      "title": "When Quantization Breaks Memory: Recurrent-State Write-Back in Low-Precision Temporal Inference",
+      "summary": "Quantized recurrent inference suffers from state write-back rules that suppress small updates, but error feedback and residual memory restore accuracy without retraining across GRU and LSTM architectures.",
+      "upvotes": 0,
+      "arxiv_id": "2609.04490",
+      "url": "https://huggingface.co/papers/2609.04490",
+      "githubRepo": null
     },
     {
-      "title": "DRACO: Fine-Grained Credit Assignment with Dynamic Rubrics for Long-Horizon Agent Training",
-      "summary": "DRACO dynamically generates rubrics and redistributes trajectory-level scores into per-step advantages for reinforcement learning without verifiers, improving long-horizon agent performance.",
-      "upvotes": 24,
-      "arxiv_id": "2609.04094",
-      "url": "https://huggingface.co/papers/2609.04094",
-      "githubRepo": "https://github.com/IBM/draco"
+      "title": "Don't Drop Dropout: Optimizing Layer Sparsity for Efficient LLM Training and Inference",
+      "summary": "Layer dropout improves large language model training efficiency and enables faster inference via early exit and speculative decoding without sacrificing accuracy.",
+      "upvotes": 0,
+      "arxiv_id": "2609.05275",
+      "url": "https://huggingface.co/papers/2609.05275",
+      "githubRepo": null
+    },
+    {
+      "title": "WorldSculpt: Generating Compositional Worlds from Grounded Videos",
+      "summary": "Adapting a single-object 3D generative prior to multi-view observations enables scalable compositional mesh reconstruction of densely cluttered scenes with severe occlusion.",
+      "upvotes": 1,
+      "arxiv_id": "2609.05416",
+      "url": "https://huggingface.co/papers/2609.05416",
+      "githubRepo": "https://github.com/AlayaLab/WorldSculpt"
+    },
+    {
+      "title": "Group Adaptive Clipping Policy Optimization",
+      "summary": "GAPO adaptively adjusts importance-sampling clipping thresholds based on rollout advantage to preserve stronger gradient signals from low-success groups in reinforcement learning with verifiable rewards.",
+      "upvotes": 1,
+      "arxiv_id": "2609.00444",
+      "url": "https://huggingface.co/papers/2609.00444",
+      "githubRepo": null
     }
   ]
 }

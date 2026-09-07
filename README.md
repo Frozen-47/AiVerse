@@ -17,13 +17,13 @@
 ### ⚡ Daily AI Pulse (2026-09-07)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **LTX-2.5** (`Model`), **Krea-2-Turbo_I2I** (`Platform`), **pybroker** (`Framework`), **tiktok-videos-4b** (`Dataset`) |
-| 🌟 **Tool of the Day** | **NotebookLM** (Google) — [Explore](https://notebooklm.google.com) |
-| 🗄️ **Catalog Entries** | **246** AI assets tracked (200 featured) |
+| 🆕 **New Assets Added** | **GLM-5.3-Flash** (`Model`), **ProtectBirds** (`Platform`), **godot-steering-ai-framework** (`Framework`), **cad-1000-hours** (`Dataset`) |
+| 🌟 **Tool of the Day** | **LMSYS Chatbot Arena Conversations** (LMSYS) — [Explore](https://chat.lmsys.org) |
+| 🗄️ **Catalog Entries** | **250** AI assets tracked (204 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4-Flash-Vision-Exp](https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp) |
-| 📜 **Top Daily Paper** | [RoboTok: An Internet-Scale Data Engine for Human D...](https://huggingface.co/papers/2609.03199) |
-| 🛡️ **Catalog Links Checked** | **24/25** operational |
-| 🕒 **Last Daily Run** | `Mon, 07 Sep 2026 00:44:47 GMT` |
+| 📜 **Top Daily Paper** | [RISE: Recursive Improvement via Self-Extrapolating...](https://huggingface.co/papers/2609.05295) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Daily Run** | `Mon, 07 Sep 2026 02:04:27 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

@@ -1,4 +1,4 @@
--- Seed / Upsert all 246 AiVerse entries into Supabase
+-- Seed / Upsert all 250 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -5191,6 +5191,89 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('tiktok-videos-4b', 'kuben-developer', 'Dataset', 'NLP', 'OTHER', 2026, '1B<n<10B', 'TikTok Videos: 4.5 billion posts with engagement metrics 	 4.5 billion TikTok video records with captions, engagement counts, sound identifiers and timing. Collected fr (162 likes, 4,818 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("kuben-developer/tiktok-videos-4b")', 'Trending Score: 156, Likes: 162, Downloads: 4,818', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b', '[{"text":"kuben-developer/tiktok-videos-4b on Hugging Face Datasets","url":"https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('GLM-5.3-Flash', 'Zhipu AI', 'Model', 'Multimodal', 'MIT', 2026, 'Open Weights', 'High-performance Multimodal open-weights model by Zhipu AI, trending with over 2,099 community likes and 761,364 downloads on Hugging Face.', 'Zhipu AI image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("zai-org/GLM-5.3-Flash", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("zai-org/GLM-5.3-Flash")', 'Trending Score: 316, Likes: 2,099, Downloads: 761,364', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/zai-org/GLM-5.3-Flash', '[{"text":"zai-org/GLM-5.3-Flash on Hugging Face","url":"https://huggingface.co/zai-org/GLM-5.3-Flash"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('ProtectBirds', 'AimeeBingmouQu', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'DOCKER Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by AimeeBingmouQu. Trending with 1,029 community stars.', 'DOCKER cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/AimeeBingmouQu/ProtectBirds', 'Trending Score: 73, Community Likes: 1,029', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/AimeeBingmouQu/ProtectBirds', '[{"text":"AimeeBingmouQu/ProtectBirds on Hugging Face Spaces","url":"https://huggingface.co/spaces/AimeeBingmouQu/ProtectBirds"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('godot-steering-ai-framework', 'GDQuest', 'Framework', 'NLP', 'MIT', 2026, '1MB Repo', 'A complete framework for Godot to create beautiful and complex AI motion. Works both in 2D and in 3D.', 'Modular AI codebase with native Python/C++ bindings and distributed workflow support.', 'git clone https://github.com/GDQuest/godot-steering-ai-framework
+cd godot-steering-ai-framework
+pip install -e .', 'GitHub Stars: 1,551, Forks: 89', 'Requires local Python environment and dependency configuration.', 'https://github.com/GDQuest/godot-steering-ai-framework', '[{"text":"GDQuest/godot-steering-ai-framework on GitHub","url":"https://github.com/GDQuest/godot-steering-ai-framework"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('cad-1000-hours', 'markov-ai', 'Dataset', 'NLP', 'Open Data', 2026, 'Curated Dataset', 'CAD 1000 Hours 	 CAD 1000 Hours is a computer-use dataset containing 1,021.64 hours of recorded work across 597 workflows and 10 CAD, BIM, structural-analysis, and visu (378 likes, 108,423 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("markov-ai/cad-1000-hours")', 'Trending Score: 121, Likes: 378, Downloads: 108,423', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/markov-ai/cad-1000-hours', '[{"text":"markov-ai/cad-1000-hours on Hugging Face Datasets","url":"https://huggingface.co/datasets/markov-ai/cad-1000-hours"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

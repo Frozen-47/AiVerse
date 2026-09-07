@@ -5448,6 +5448,94 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b"
           }
       ]
+  },
+  {
+      "name": "GLM-5.3-Flash",
+      "type": "Model",
+      "summary": "High-performance Multimodal open-weights model by Zhipu AI, trending with over 2,099 community likes and 761,364 downloads on Hugging Face.",
+      "task": "Multimodal",
+      "license": "MIT",
+      "year": 2026,
+      "org": "Zhipu AI",
+      "size": "Open Weights",
+      "architecture": "Zhipu AI image text to text architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"zai-org/GLM-5.3-Flash\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"zai-org/GLM-5.3-Flash\")",
+      "benchmarks": "Trending Score: 316, Likes: 2,099, Downloads: 761,364",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/zai-org/GLM-5.3-Flash",
+      "citations": [
+          {
+              "text": "zai-org/GLM-5.3-Flash on Hugging Face",
+              "url": "https://huggingface.co/zai-org/GLM-5.3-Flash"
+          }
+      ]
+  },
+  {
+      "name": "ProtectBirds",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by AimeeBingmouQu. Trending with 1,029 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "AimeeBingmouQu",
+      "size": "DOCKER Platform",
+      "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/AimeeBingmouQu/ProtectBirds",
+      "benchmarks": "Trending Score: 73, Community Likes: 1,029",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/AimeeBingmouQu/ProtectBirds",
+      "citations": [
+          {
+              "text": "AimeeBingmouQu/ProtectBirds on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/AimeeBingmouQu/ProtectBirds"
+          }
+      ]
+  },
+  {
+      "name": "godot-steering-ai-framework",
+      "type": "Framework",
+      "summary": "A complete framework for Godot to create beautiful and complex AI motion. Works both in 2D and in 3D.",
+      "task": "NLP",
+      "license": "MIT",
+      "year": 2026,
+      "org": "GDQuest",
+      "size": "1MB Repo",
+      "architecture": "Modular AI codebase with native Python/C++ bindings and distributed workflow support.",
+      "usage": "git clone https://github.com/GDQuest/godot-steering-ai-framework\ncd godot-steering-ai-framework\npip install -e .",
+      "benchmarks": "GitHub Stars: 1,551, Forks: 89",
+      "limitations": "Requires local Python environment and dependency configuration.",
+      "popular": true,
+      "url": "https://github.com/GDQuest/godot-steering-ai-framework",
+      "citations": [
+          {
+              "text": "GDQuest/godot-steering-ai-framework on GitHub",
+              "url": "https://github.com/GDQuest/godot-steering-ai-framework"
+          }
+      ]
+  },
+  {
+      "name": "cad-1000-hours",
+      "type": "Dataset",
+      "summary": "CAD 1000 Hours \t CAD 1000 Hours is a computer-use dataset containing 1,021.64 hours of recorded work across 597 workflows and 10 CAD, BIM, structural-analysis, and visu (378 likes, 108,423 downloads).",
+      "task": "NLP",
+      "license": "Open Data",
+      "year": 2026,
+      "org": "markov-ai",
+      "size": "Curated Dataset",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"markov-ai/cad-1000-hours\")",
+      "benchmarks": "Trending Score: 121, Likes: 378, Downloads: 108,423",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": true,
+      "url": "https://huggingface.co/datasets/markov-ai/cad-1000-hours",
+      "citations": [
+          {
+              "text": "markov-ai/cad-1000-hours on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/markov-ai/cad-1000-hours"
+          }
+      ]
   }
 ];
 
