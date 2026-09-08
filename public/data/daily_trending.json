@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-09-07T02:04:24.174Z",
+  "timestamp": "2026-09-08T02:16:04.860Z",
   "models": [
-    {
-      "id": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
-      "author": "deepseek-ai",
-      "likes": 748,
-      "downloads": 209191,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp"
-    },
-    {
-      "id": "Qwen/Qwen3.8-27B",
-      "author": "Qwen",
-      "likes": 14138,
-      "downloads": 6190807,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
-    },
     {
       "id": "XHToken/Spark-X2.5-4B",
       "author": "XHToken",
-      "likes": 617,
-      "downloads": 5477,
+      "likes": 738,
+      "downloads": 7216,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.5-4B"
     },
     {
+      "id": "Qwen/Qwen3.8-27B",
+      "author": "Qwen",
+      "likes": 14275,
+      "downloads": 6416358,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
+    },
+    {
       "id": "google/timesfm-3.0-pytorch",
       "author": "google",
-      "likes": 508,
-      "downloads": 144455,
+      "likes": 578,
+      "downloads": 271713,
       "pipeline_tag": "time-series-forecasting",
       "url": "https://huggingface.co/google/timesfm-3.0-pytorch"
     },
     {
-      "id": "Qwen/Qwen3.8-Flash-Next",
-      "author": "Qwen",
-      "likes": 4943,
-      "downloads": 432966,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"
-    },
-    {
       "id": "ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
       "author": "ISTA-DASLab",
-      "likes": 469,
-      "downloads": 348389,
+      "likes": 562,
+      "downloads": 403292,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF"
+    },
+    {
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 3083,
+      "downloads": 1584382,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5"
+    },
+    {
+      "id": "Qwen/Qwen3.8-Flash-Next",
+      "author": "Qwen",
+      "likes": 4980,
+      "downloads": 474693,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"
     }
   ],
   "papers": [
     {
-      "title": "RISE: Recursive Improvement via Self-Extrapolating Policy Distillation",
-      "summary": "RISE improves language model post-training by recursively generating dense token-level supervision from the model's own reinforcement learning trajectory via self-extrapolation, avoiding external teachers.",
-      "upvotes": 0,
-      "arxiv_id": "2609.05295",
-      "url": "https://huggingface.co/papers/2609.05295",
-      "githubRepo": null
+      "title": "Real-World Knowledge-Guided Change Data Synthesis for Remote Sensing",
+      "summary": "KnowChange uses vision-language models to guide flexible, diverse change data synthesis for improving change detection training.",
+      "upvotes": 2,
+      "arxiv_id": "2608.24263",
+      "url": "https://huggingface.co/papers/2608.24263",
+      "githubRepo": "https://github.com/LINGQI711/KnowChange"
     },
     {
-      "title": "When Quantization Breaks Memory: Recurrent-State Write-Back in Low-Precision Temporal Inference",
-      "summary": "Quantized recurrent inference suffers from state write-back rules that suppress small updates, but error feedback and residual memory restore accuracy without retraining across GRU and LSTM architectures.",
-      "upvotes": 0,
-      "arxiv_id": "2609.04490",
-      "url": "https://huggingface.co/papers/2609.04490",
-      "githubRepo": null
-    },
-    {
-      "title": "Don't Drop Dropout: Optimizing Layer Sparsity for Efficient LLM Training and Inference",
-      "summary": "Layer dropout improves large language model training efficiency and enables faster inference via early exit and speculative decoding without sacrificing accuracy.",
-      "upvotes": 0,
-      "arxiv_id": "2609.05275",
-      "url": "https://huggingface.co/papers/2609.05275",
-      "githubRepo": null
-    },
-    {
-      "title": "WorldSculpt: Generating Compositional Worlds from Grounded Videos",
-      "summary": "Adapting a single-object 3D generative prior to multi-view observations enables scalable compositional mesh reconstruction of densely cluttered scenes with severe occlusion.",
+      "title": "Unfold The World: Factorize 4D Properties in Reinforcing Spatial Reasoning",
+      "summary": "FactoSR improves vision-language model spatial reasoning by decomposing 3D and temporal recovery into factorized geometric sub-objectives optimized via reinforcement learning.",
       "upvotes": 1,
-      "arxiv_id": "2609.05416",
-      "url": "https://huggingface.co/papers/2609.05416",
-      "githubRepo": "https://github.com/AlayaLab/WorldSculpt"
+      "arxiv_id": "2609.03729",
+      "url": "https://huggingface.co/papers/2609.03729",
+      "githubRepo": "https://github.com/ZimaBlue-WAM/FactoSR"
     },
     {
-      "title": "Group Adaptive Clipping Policy Optimization",
-      "summary": "GAPO adaptively adjusts importance-sampling clipping thresholds based on rollout advantage to preserve stronger gradient signals from low-success groups in reinforcement learning with verifiable rewards.",
-      "upvotes": 1,
-      "arxiv_id": "2609.00444",
-      "url": "https://huggingface.co/papers/2609.00444",
+      "title": "HarvestBench: Measuring Whether LLM Agents Will Pay to Avoid Killing Animals",
+      "summary": "HarvestBench evaluates LLM agents in a farm simulation where they choose between harming animals at no cost or avoiding them for fuel, revealing price-sensitive and briefing-dependent kill rates across models.",
+      "upvotes": 3,
+      "arxiv_id": "2609.04444",
+      "url": "https://huggingface.co/papers/2609.04444",
       "githubRepo": null
+    },
+    {
+      "title": "Dr. Claw: An AI Scientist Workspace for Vibe Research",
+      "summary": "Command-line coding agents (e.g., Claude Code, Gemini CLI) can already read and write files and sustain long sessions, yet end-to-end research still fragments a...",
+      "upvotes": 8,
+      "arxiv_id": "2609.00365",
+      "url": "https://huggingface.co/papers/2609.00365",
+      "githubRepo": "https://github.com/OpenLAIR/dr-claw"
+    },
+    {
+      "title": "Knowing What Not to Answer: Selective Non-Compliance in Vision-Language Models",
+      "summary": "KoNA evaluates vision-language models on selective refusal across mixed queries and improves compliance via targeted fine-tuning.",
+      "upvotes": 2,
+      "arxiv_id": "2609.04720",
+      "url": "https://huggingface.co/papers/2609.04720",
+      "githubRepo": "https://github.com/mz-kim/KoNA"
     }
   ]
 }

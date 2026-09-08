@@ -5536,6 +5536,94 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/markov-ai/cad-1000-hours"
           }
       ]
+  },
+  {
+      "name": "Qwen3.8-27B-GGUF",
+      "type": "Model",
+      "summary": "High-performance NLP open-weights model by unsloth, trending with over 3,643 community likes and 10,479,045 downloads on Hugging Face.",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "unsloth",
+      "size": "27B params",
+      "architecture": "unsloth transformer architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"unsloth/Qwen3.8-27B-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"unsloth/Qwen3.8-27B-GGUF\")",
+      "benchmarks": "Trending Score: 283, Likes: 3,643, Downloads: 10,479,045",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/unsloth/Qwen3.8-27B-GGUF",
+      "citations": [
+          {
+              "text": "unsloth/Qwen3.8-27B-GGUF on Hugging Face",
+              "url": "https://huggingface.co/unsloth/Qwen3.8-27B-GGUF"
+          }
+      ]
+  },
+  {
+      "name": "h3-acceleration-arena",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by multimodalart. Trending with 68 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "multimodalart",
+      "size": "DOCKER Platform",
+      "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/multimodalart/h3-acceleration-arena",
+      "benchmarks": "Trending Score: 68, Community Likes: 68",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/multimodalart/h3-acceleration-arena",
+      "citations": [
+          {
+              "text": "multimodalart/h3-acceleration-arena on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/multimodalart/h3-acceleration-arena"
+          }
+      ]
+  },
+  {
+      "name": "gdx-ai",
+      "type": "Framework",
+      "summary": "Artificial Intelligence framework for games based on libGDX or not. Features: Steering Behaviors, Formation Motion, Pathfinding, Behavior Trees and Finite State Machines",
+      "task": "MLOps",
+      "license": "Apache-2.0",
+      "year": 2026,
+      "org": "libgdx",
+      "size": "1MB Repo",
+      "architecture": "Modular AI codebase with native Python/C++ bindings and distributed workflow support.",
+      "usage": "git clone https://github.com/libgdx/gdx-ai\ncd gdx-ai\npip install -e .",
+      "benchmarks": "GitHub Stars: 1,301, Forks: 252",
+      "limitations": "Requires local Python environment and dependency configuration.",
+      "popular": true,
+      "url": "https://github.com/libgdx/gdx-ai",
+      "citations": [
+          {
+              "text": "libgdx/gdx-ai on GitHub",
+              "url": "https://github.com/libgdx/gdx-ai"
+          }
+      ]
+  },
+  {
+      "name": "last-translation-benchmark",
+      "type": "Dataset",
+      "summary": "Last Translation Benchmark \t  Abstract: For scientific progress, we need benchmarks that test the limits of state-of-the-art models, and evaluation methods that inform (33 likes, 293 downloads).",
+      "task": "NLP",
+      "license": "CC-BY-4.0",
+      "year": 2026,
+      "org": "zouhar",
+      "size": "1K<n<10K",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"zouhar/last-translation-benchmark\")",
+      "benchmarks": "Trending Score: 32, Likes: 33, Downloads: 293",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/zouhar/last-translation-benchmark",
+      "citations": [
+          {
+              "text": "zouhar/last-translation-benchmark on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/zouhar/last-translation-benchmark"
+          }
+      ]
   }
 ];
 

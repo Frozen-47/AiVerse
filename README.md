@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-07)
+### ⚡ Daily AI Pulse (2026-09-08)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **GLM-5.3-Flash** (`Model`), **ProtectBirds** (`Platform`), **godot-steering-ai-framework** (`Framework`), **cad-1000-hours** (`Dataset`) |
-| 🌟 **Tool of the Day** | **LMSYS Chatbot Arena Conversations** (LMSYS) — [Explore](https://chat.lmsys.org) |
-| 🗄️ **Catalog Entries** | **250** AI assets tracked (204 featured) |
-| 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4-Flash-Vision-Exp](https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp) |
-| 📜 **Top Daily Paper** | [RISE: Recursive Improvement via Self-Extrapolating...](https://huggingface.co/papers/2609.05295) |
+| 🆕 **New Assets Added** | **Qwen3.8-27B-GGUF** (`Model`), **h3-acceleration-arena** (`Platform`), **gdx-ai** (`Framework`), **last-translation-benchmark** (`Dataset`) |
+| 🌟 **Tool of the Day** | **SWE-bench Verified** (Princeton / OpenAI) — [Explore](https://www.swebench.com) |
+| 🗄️ **Catalog Entries** | **254** AI assets tracked (207 featured) |
+| 🔥 **Top Trending Model** | [XHToken/Spark-X2.5-4B](https://huggingface.co/XHToken/Spark-X2.5-4B) |
+| 📜 **Top Daily Paper** | [Real-World Knowledge-Guided Change Data Synthesis ...](https://huggingface.co/papers/2608.24263) |
 | 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Daily Run** | `Mon, 07 Sep 2026 02:04:27 GMT` |
+| 🕒 **Last Daily Run** | `Tue, 08 Sep 2026 02:16:08 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

@@ -1,4 +1,4 @@
--- Seed / Upsert all 250 AiVerse entries into Supabase
+-- Seed / Upsert all 254 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -5274,6 +5274,89 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('cad-1000-hours', 'markov-ai', 'Dataset', 'NLP', 'Open Data', 2026, 'Curated Dataset', 'CAD 1000 Hours 	 CAD 1000 Hours is a computer-use dataset containing 1,021.64 hours of recorded work across 597 workflows and 10 CAD, BIM, structural-analysis, and visu (378 likes, 108,423 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("markov-ai/cad-1000-hours")', 'Trending Score: 121, Likes: 378, Downloads: 108,423', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/markov-ai/cad-1000-hours', '[{"text":"markov-ai/cad-1000-hours on Hugging Face Datasets","url":"https://huggingface.co/datasets/markov-ai/cad-1000-hours"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen3.8-27B-GGUF', 'unsloth', 'Model', 'NLP', 'APACHE-2.0', 2026, '27B params', 'High-performance NLP open-weights model by unsloth, trending with over 3,643 community likes and 10,479,045 downloads on Hugging Face.', 'unsloth transformer architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("unsloth/Qwen3.8-27B-GGUF", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("unsloth/Qwen3.8-27B-GGUF")', 'Trending Score: 283, Likes: 3,643, Downloads: 10,479,045', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/unsloth/Qwen3.8-27B-GGUF', '[{"text":"unsloth/Qwen3.8-27B-GGUF on Hugging Face","url":"https://huggingface.co/unsloth/Qwen3.8-27B-GGUF"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('h3-acceleration-arena', 'multimodalart', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'DOCKER Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by multimodalart. Trending with 68 community stars.', 'DOCKER cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/multimodalart/h3-acceleration-arena', 'Trending Score: 68, Community Likes: 68', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/multimodalart/h3-acceleration-arena', '[{"text":"multimodalart/h3-acceleration-arena on Hugging Face Spaces","url":"https://huggingface.co/spaces/multimodalart/h3-acceleration-arena"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('gdx-ai', 'libgdx', 'Framework', 'MLOps', 'Apache-2.0', 2026, '1MB Repo', 'Artificial Intelligence framework for games based on libGDX or not. Features: Steering Behaviors, Formation Motion, Pathfinding, Behavior Trees and Finite State Machines', 'Modular AI codebase with native Python/C++ bindings and distributed workflow support.', 'git clone https://github.com/libgdx/gdx-ai
+cd gdx-ai
+pip install -e .', 'GitHub Stars: 1,301, Forks: 252', 'Requires local Python environment and dependency configuration.', 'https://github.com/libgdx/gdx-ai', '[{"text":"libgdx/gdx-ai on GitHub","url":"https://github.com/libgdx/gdx-ai"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('last-translation-benchmark', 'zouhar', 'Dataset', 'NLP', 'CC-BY-4.0', 2026, '1K<n<10K', 'Last Translation Benchmark 	  Abstract: For scientific progress, we need benchmarks that test the limits of state-of-the-art models, and evaluation methods that inform (33 likes, 293 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("zouhar/last-translation-benchmark")', 'Trending Score: 32, Likes: 33, Downloads: 293', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/zouhar/last-translation-benchmark', '[{"text":"zouhar/last-translation-benchmark on Hugging Face Datasets","url":"https://huggingface.co/datasets/zouhar/last-translation-benchmark"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

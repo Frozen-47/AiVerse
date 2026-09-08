@@ -1,1 +1,1 @@
-GLM-5.3-Flash
+Qwen3.8-27B-GGUF

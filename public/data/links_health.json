@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-09-07T02:04:24.234Z",
+  "timestamp": "2026-09-08T02:16:04.959Z",
   "checked": 25,
   "healthy": 22,
   "broken": 3,
   "issues": [
     {
-      "name": "Perplexity",
-      "url": "https://www.perplexity.ai",
+      "name": "Lovable.dev",
+      "url": "https://lovable.dev",
       "status": 403
     },
     {
-      "name": "SAM (Segment Anything Model)",
-      "url": "https://segment-anything.com/",
-      "status": "Network Error"
+      "name": "GPT-3.5 Turbo",
+      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
+      "status": 404
     },
     {
       "name": "Krea AI",

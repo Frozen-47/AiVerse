@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-07",
+  "date": "2026-09-08",
   "tool": {
-    "name": "LMSYS Chatbot Arena Conversations",
+    "name": "SWE-bench Verified",
     "type": "Dataset",
-    "summary": "Open dataset of over 1 million real-world pairwise prompt conversations and human preference votes collected from the LMSYS Chatbot Arena.",
-    "task": "NLP",
-    "license": "LMSYS Terms / Research",
+    "summary": "Human-verified subset of 500 real-world GitHub issues and unit test pull requests used to evaluate autonomous software engineering AI agents.",
+    "task": "AI Coding",
+    "license": "MIT",
     "year": 2024,
-    "org": "LMSYS",
-    "size": "1,000,000+ battles",
-    "architecture": "Crowdsourced human side-by-side preference votes with model identities revealed post-vote.",
-    "usage": "from datasets import load_dataset\nds = load_dataset(\"lmsys/chatbot_arena_conversations\", split=\"train\")",
-    "benchmarks": "Industry standard for calculating ELO ratings of frontier LLMs.",
-    "limitations": "Subject to prompt distribution biases of Arena visitors.",
+    "org": "Princeton / OpenAI",
+    "size": "500 verified GitHub issues",
+    "architecture": "Dockerized reproducible environment harness across 12 major Python repositories.",
+    "usage": "from datasets import load_dataset\nds = load_dataset(\"princeton-nlp/SWE-bench_Verified\", split=\"test\")",
+    "benchmarks": "The global gold standard benchmark for Devin, Claude 3.7 Sonnet, and autonomous coding agents.",
+    "limitations": "Requires Dockerized test harness execution for each evaluated issue.",
     "popular": true,
-    "url": "https://chat.lmsys.org",
+    "url": "https://www.swebench.com",
     "citations": [
       {
-        "text": "LMSYS Chatbot Arena Paper",
-        "url": "https://arxiv.org/abs/2403.04132"
+        "text": "SWE-bench Verified",
+        "url": "https://openai.com/index/introducing-swe-bench-verified/"
       }
     ]
   }
