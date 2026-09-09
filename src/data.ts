@@ -5624,6 +5624,94 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/zouhar/last-translation-benchmark"
           }
       ]
+  },
+  {
+      "name": "MiniCPM5-2B",
+      "type": "Model",
+      "summary": "High-performance NLP open-weights model by openbmb, trending with over 690 community likes and 2,879 downloads on Hugging Face.",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "openbmb",
+      "size": "2B params",
+      "architecture": "openbmb text generation architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"openbmb/MiniCPM5-2B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"openbmb/MiniCPM5-2B\")",
+      "benchmarks": "Trending Score: 568, Likes: 690, Downloads: 2,879",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/openbmb/MiniCPM5-2B",
+      "citations": [
+          {
+              "text": "openbmb/MiniCPM5-2B on Hugging Face",
+              "url": "https://huggingface.co/openbmb/MiniCPM5-2B"
+          }
+      ]
+  },
+  {
+      "name": "MiniMax-H3-Turbo-Lora",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by MiniMaxAI. Trending with 401 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "MiniMaxAI",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/MiniMaxAI/MiniMax-H3-Turbo-Lora",
+      "benchmarks": "Trending Score: 65, Community Likes: 401",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/MiniMaxAI/MiniMax-H3-Turbo-Lora",
+      "citations": [
+          {
+              "text": "MiniMaxAI/MiniMax-H3-Turbo-Lora on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/MiniMaxAI/MiniMax-H3-Turbo-Lora"
+          }
+      ]
+  },
+  {
+      "name": "Hexabot",
+      "type": "Framework",
+      "summary": "Hexabot v3 is an AI workflow automation platform, combining workflows, actions, agents, and conversational channels in one runtime.",
+      "task": "NLP",
+      "license": "NOASSERTION",
+      "year": 2026,
+      "org": "hexabot-ai",
+      "size": "54MB Repo",
+      "architecture": "Modular AI codebase with native Python/C++ bindings and distributed workflow support.",
+      "usage": "git clone https://github.com/hexabot-ai/Hexabot\ncd Hexabot\npip install -e .",
+      "benchmarks": "GitHub Stars: 1,217, Forks: 242",
+      "limitations": "Requires local Python environment and dependency configuration.",
+      "popular": true,
+      "url": "https://github.com/hexabot-ai/Hexabot",
+      "citations": [
+          {
+              "text": "hexabot-ai/Hexabot on GitHub",
+              "url": "https://github.com/hexabot-ai/Hexabot"
+          }
+      ]
+  },
+  {
+      "name": "UltraData-RL-2609",
+      "type": "Dataset",
+      "summary": "UltraData-RL-2609 \t    📦 UltraData Collection | 🌐 UltraData |  🤗 MiniCPM5 Series English | 中文 \t \t\t \t \t \t\t📚 Introduction \t UltraData-RL-2609 is the L3 refined data f (60 likes, 667 downloads).",
+      "task": "AI Coding",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "openbmb",
+      "size": "10K<n<100K",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"openbmb/UltraData-RL-2609\")",
+      "benchmarks": "Trending Score: 53, Likes: 60, Downloads: 667",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/openbmb/UltraData-RL-2609",
+      "citations": [
+          {
+              "text": "openbmb/UltraData-RL-2609 on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/openbmb/UltraData-RL-2609"
+          }
+      ]
   }
 ];
 

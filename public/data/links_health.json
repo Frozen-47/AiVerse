@@ -1,23 +1,43 @@
 {
-  "timestamp": "2026-09-08T02:16:04.959Z",
+  "timestamp": "2026-09-09T02:19:28.332Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 18,
+  "broken": 7,
   "issues": [
     {
-      "name": "Lovable.dev",
-      "url": "https://lovable.dev",
+      "name": "Ideogram",
+      "url": "https://ideogram.ai",
       "status": 403
     },
     {
-      "name": "GPT-3.5 Turbo",
-      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
-      "status": 404
+      "name": "Claude",
+      "url": "https://claude.ai",
+      "status": 403
     },
     {
-      "name": "Krea AI",
-      "url": "https://www.krea.ai",
-      "status": "Network Error"
+      "name": "NightCafe",
+      "url": "https://creator.nightcafe.studio",
+      "status": 403
+    },
+    {
+      "name": "ChatGPT",
+      "url": "https://chatgpt.com",
+      "status": 403
+    },
+    {
+      "name": "Poe",
+      "url": "https://poe.com",
+      "status": 403
+    },
+    {
+      "name": "Midjourney (Platform)",
+      "url": "https://www.midjourney.com/",
+      "status": 403
+    },
+    {
+      "name": "OpenWebText",
+      "url": "https://huggingface.co/datasets/openwebtext",
+      "status": 404
     }
   ]
 }

@@ -1,51 +1,51 @@
-# ⚡ AiVerse Daily Pulse (2026-09-08)
+# ⚡ AiVerse Daily Pulse (2026-09-09)
 
 > Automatically generated daily intelligence report syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Tue, 08 Sep 2026 02:16:08 GMT`*
+*Last Synchronized: `Wed, 09 Sep 2026 02:19:31 GMT`*
 
 ---
 
 ## 🆕 Newly Ingested Assets Today (4)
 
-### **Qwen3.8-27B-GGUF** (`Model` • *unsloth*)
-> High-performance NLP open-weights model by unsloth, trending with over 3,643 community likes and 10,479,045 downloads on Hugging Face.
+### **MiniCPM5-2B** (`Model` • *openbmb*)
+> High-performance NLP open-weights model by openbmb, trending with over 690 community likes and 2,879 downloads on Hugging Face.
 
 - 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 283, Likes: 3,643, Downloads: 10,479,045`
-- 🔗 **Resource Link**: [https://huggingface.co/unsloth/Qwen3.8-27B-GGUF](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF)
+- ⚡ **Metrics**: `Trending Score: 568, Likes: 690, Downloads: 2,879`
+- 🔗 **Resource Link**: [https://huggingface.co/openbmb/MiniCPM5-2B](https://huggingface.co/openbmb/MiniCPM5-2B)
 
-### **h3-acceleration-arena** (`Platform` • *multimodalart*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by multimodalart. Trending with 68 community stars.
+### **MiniMax-H3-Turbo-Lora** (`Platform` • *MiniMaxAI*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by MiniMaxAI. Trending with 401 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 68, Community Likes: 68`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/multimodalart/h3-acceleration-arena](https://huggingface.co/spaces/multimodalart/h3-acceleration-arena)
+- ⚡ **Metrics**: `Trending Score: 65, Community Likes: 401`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/MiniMaxAI/MiniMax-H3-Turbo-Lora](https://huggingface.co/spaces/MiniMaxAI/MiniMax-H3-Turbo-Lora)
 
-### **gdx-ai** (`Framework` • *libgdx*)
-> Artificial Intelligence framework for games based on libGDX or not. Features: Steering Behaviors, Formation Motion, Pathfinding, Behavior Trees and Finite State Machines
+### **Hexabot** (`Framework` • *hexabot-ai*)
+> Hexabot v3 is an AI workflow automation platform, combining workflows, actions, agents, and conversational channels in one runtime.
 
-- 🏷️ **Domain & License**: `MLOps` • `Apache-2.0` (2026)
-- ⚡ **Metrics**: `GitHub Stars: 1,301, Forks: 252`
-- 🔗 **Resource Link**: [https://github.com/libgdx/gdx-ai](https://github.com/libgdx/gdx-ai)
+- 🏷️ **Domain & License**: `NLP` • `NOASSERTION` (2026)
+- ⚡ **Metrics**: `GitHub Stars: 1,217, Forks: 242`
+- 🔗 **Resource Link**: [https://github.com/hexabot-ai/Hexabot](https://github.com/hexabot-ai/Hexabot)
 
-### **last-translation-benchmark** (`Dataset` • *zouhar*)
-> Last Translation Benchmark 	  Abstract: For scientific progress, we need benchmarks that test the limits of state-of-the-art models, and evaluation methods that inform (33 likes, 293 downloads).
+### **UltraData-RL-2609** (`Dataset` • *openbmb*)
+> UltraData-RL-2609 	    📦 UltraData Collection | 🌐 UltraData |  🤗 MiniCPM5 Series English | 中文 	 		 	 	 		📚 Introduction 	 UltraData-RL-2609 is the L3 refined data f (60 likes, 667 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `CC-BY-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 32, Likes: 33, Downloads: 293`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/zouhar/last-translation-benchmark](https://huggingface.co/datasets/zouhar/last-translation-benchmark)
+- 🏷️ **Domain & License**: `AI Coding` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 53, Likes: 60, Downloads: 667`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/openbmb/UltraData-RL-2609](https://huggingface.co/datasets/openbmb/UltraData-RL-2609)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **SWE-bench Verified** (`Dataset` • *Princeton / OpenAI*)
-> Human-verified subset of 500 real-world GitHub issues and unit test pull requests used to evaluate autonomous software engineering AI agents.
+### **OpenHermes 2.5** (`Dataset` • *Teknium*)
+> Curated dataset of 1 million diverse conversation turns, code snippets, reasoning chains, and roleplay examples used to fine-tune state-of-the-art open models.
 
-- 🏛️ **Architecture**: Dockerized reproducible environment harness across 12 major Python repositories.
-- ⚡ **Benchmarks**: `The global gold standard benchmark for Devin, Claude 3.7 Sonnet, and autonomous coding agents.`
-- 🏷️ **Domain & License**: `AI Coding` • `MIT` (Released: 2024)
-- 🔗 **Resource Link**: [https://www.swebench.com](https://www.swebench.com)
+- 🏛️ **Architecture**: Curated collection of synthetic and human-annotated instruction datasets (ShareGPT, Airoboros, GPTeacher).
+- ⚡ **Benchmarks**: `Trained OpenHermes-2.5-Mistral-7B to outperform standard 70B models in 2023.`
+- 🏷️ **Domain & License**: `NLP` • `MIT` (Released: 2023)
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/teknium/OpenHermes-2.5](https://huggingface.co/datasets/teknium/OpenHermes-2.5)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -53,12 +53,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `XHToken/Spark-X2.5-4B` | text-generation | ❤️ 738 | 📥 7,216 | [View](https://huggingface.co/XHToken/Spark-X2.5-4B) |
-| `Qwen/Qwen3.8-27B` | image-text-to-text | ❤️ 14,275 | 📥 6,416,358 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
-| `google/timesfm-3.0-pytorch` | time-series-forecasting | ❤️ 578 | 📥 271,713 | [View](https://huggingface.co/google/timesfm-3.0-pytorch) |
-| `ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF` | image-text-to-text | ❤️ 562 | 📥 403,292 | [View](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 3,083 | 📥 1,584,382 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `Qwen/Qwen3.8-Flash-Next` | image-text-to-text | ❤️ 4,980 | 📥 474,693 | [View](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) |
+| `XHToken/Spark-X2.5-4B` | text-generation | ❤️ 853 | 📥 10,661 | [View](https://huggingface.co/XHToken/Spark-X2.5-4B) |
+| `openbmb/MiniCPM5-2B` | text-generation | ❤️ 690 | 📥 2,879 | [View](https://huggingface.co/openbmb/MiniCPM5-2B) |
+| `Qwen/Qwen3.8-27B` | image-text-to-text | ❤️ 14,396 | 📥 6,712,160 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
+| `ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF` | image-text-to-text | ❤️ 661 | 📥 479,597 | [View](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) |
+| `google/timesfm-3.0-pytorch` | time-series-forecasting | ❤️ 639 | 📥 444,052 | [View](https://huggingface.co/google/timesfm-3.0-pytorch) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 3,181 | 📥 1,644,796 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
 
 
 ---
@@ -68,25 +68,25 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Real-World Knowledge-Guided Change Data Synthesis for Remote Sensing** | 👍 2 | KnowChange uses vision-language models to guide flexible, diverse change data synthesis for improving change detection training. | [Read](https://huggingface.co/papers/2608.24263) |
-| **Unfold The World: Factorize 4D Properties in Reinforcing Spatial Reasoning** | 👍 1 | FactoSR improves vision-language model spatial reasoning by decomposing 3D and temporal recovery into factorized geometric sub-objectives optimized via reinforcement learning. | [Read](https://huggingface.co/papers/2609.03729) |
-| **HarvestBench: Measuring Whether LLM Agents Will Pay to Avoid Killing Animals** | 👍 3 | HarvestBench evaluates LLM agents in a farm simulation where they choose between harming animals at no cost or avoiding them for fuel, revealing price-sensitive and briefing-dependent kill rates across models. | [Read](https://huggingface.co/papers/2609.04444) |
-| **Dr. Claw: An AI Scientist Workspace for Vibe Research** | 👍 8 | Command-line coding agents (e.g., Claude Code, Gemini CLI) can already read and write files and sustain long sessions, yet end-to-end research still fragments a... | [Read](https://huggingface.co/papers/2609.00365) |
-| **Knowing What Not to Answer: Selective Non-Compliance in Vision-Language Models** | 👍 2 | KoNA evaluates vision-language models on selective refusal across mixed queries and improves compliance via targeted fine-tuning. | [Read](https://huggingface.co/papers/2609.04720) |
+| **DriveZero: End-to-End Driving Beyond Human Demonstrations** | 👍 7 | DriveZero is an end-to-end autonomous driving system that combines a vision foundation model for perception with a closed-loop reinforcement learning action model to learn driving behaviors beyond human demonstrations. | [Read](https://huggingface.co/papers/2609.06055) |
+| **SimpleMemVLA: A Simple but Effective Native-Video Memory for Vision-Language-Action Models** | 👍 1 | SimpleMemVLA achieves long-horizon manipulation by feeding intact timestamped video history directly into a pretrained VLM backbone and using hidden states to inform a flow-matching action head, outperforming dedicated memory modules. | [Read](https://huggingface.co/papers/2609.05533) |
+| **Privacy Failure in Split-LLM Training, The Returned Gradient Nullifies the Decoys** | 👍 4 | A split-LLM training system passed privacy checks but leaked real data rows through zero-gradient patterns, allowing token recovery attacks despite gradient clipping and noise. | [Read](https://huggingface.co/papers/2609.04382) |
+| **Unifying Conformal Language Tasks with In-Context Ensembles** | 👍 5 | The Conformal Relevance framework automates score function design for conformal prediction via in-context learning and ensembling to improve conciseness while preserving coverage across NLP retrieval tasks. | [Read](https://huggingface.co/papers/2609.03005) |
+| **Causal Foundation Models** | 👍 11 | Causal foundation models apply pretrained neural networks to estimate causal effects on new datasets via in-context learning without fine-tuning. | [Read](https://huggingface.co/papers/2609.03003) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `254`
-- **Featured / Starred Tools**: `207`
-- **Asset Breakdown**: **Models**: 94 • **Frameworks**: 28 • **Platforms**: 31 • **Datasets**: 30 • **AIs**: 71
+- **Total Registered Assets**: `258`
+- **Featured / Starred Tools**: `210`
+- **Asset Breakdown**: **Models**: 95 • **Frameworks**: 29 • **Platforms**: 32 • **Datasets**: 31 • **AIs**: 71
 
 ---
 
 ## 🛡️ Daily System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
-- **Dependency Security**: `20` advisories flagged across `539` dependencies (`1` critical, `16` high)
+- **Sample Link Health Check**: `18/25` healthy verified (`7` flagged / timed out)
+- **Dependency Security**: `21` advisories flagged across `539` dependencies (`1` critical, `16` high)
 
 ---
 *Generated automatically by GitHub Actions daily pulse workflow.*

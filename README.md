@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-08)
+### ⚡ Daily AI Pulse (2026-09-09)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Qwen3.8-27B-GGUF** (`Model`), **h3-acceleration-arena** (`Platform`), **gdx-ai** (`Framework`), **last-translation-benchmark** (`Dataset`) |
-| 🌟 **Tool of the Day** | **SWE-bench Verified** (Princeton / OpenAI) — [Explore](https://www.swebench.com) |
-| 🗄️ **Catalog Entries** | **254** AI assets tracked (207 featured) |
+| 🆕 **New Assets Added** | **MiniCPM5-2B** (`Model`), **MiniMax-H3-Turbo-Lora** (`Platform`), **Hexabot** (`Framework`), **UltraData-RL-2609** (`Dataset`) |
+| 🌟 **Tool of the Day** | **OpenHermes 2.5** (Teknium) — [Explore](https://huggingface.co/datasets/teknium/OpenHermes-2.5) |
+| 🗄️ **Catalog Entries** | **258** AI assets tracked (210 featured) |
 | 🔥 **Top Trending Model** | [XHToken/Spark-X2.5-4B](https://huggingface.co/XHToken/Spark-X2.5-4B) |
-| 📜 **Top Daily Paper** | [Real-World Knowledge-Guided Change Data Synthesis ...](https://huggingface.co/papers/2608.24263) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Daily Run** | `Tue, 08 Sep 2026 02:16:08 GMT` |
+| 📜 **Top Daily Paper** | [DriveZero: End-to-End Driving Beyond Human Demonst...](https://huggingface.co/papers/2609.06055) |
+| 🛡️ **Catalog Links Checked** | **18/25** operational |
+| 🕒 **Last Daily Run** | `Wed, 09 Sep 2026 02:19:31 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

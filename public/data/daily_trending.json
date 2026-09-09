@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-09-08T02:16:04.860Z",
+  "timestamp": "2026-09-09T02:19:28.157Z",
   "models": [
     {
       "id": "XHToken/Spark-X2.5-4B",
       "author": "XHToken",
-      "likes": 738,
-      "downloads": 7216,
+      "likes": 853,
+      "downloads": 10661,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.5-4B"
     },
     {
+      "id": "openbmb/MiniCPM5-2B",
+      "author": "openbmb",
+      "likes": 690,
+      "downloads": 2879,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/openbmb/MiniCPM5-2B"
+    },
+    {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 14275,
-      "downloads": 6416358,
+      "likes": 14396,
+      "downloads": 6712160,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
     },
     {
-      "id": "google/timesfm-3.0-pytorch",
-      "author": "google",
-      "likes": 578,
-      "downloads": 271713,
-      "pipeline_tag": "time-series-forecasting",
-      "url": "https://huggingface.co/google/timesfm-3.0-pytorch"
-    },
-    {
       "id": "ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
       "author": "ISTA-DASLab",
-      "likes": 562,
-      "downloads": 403292,
+      "likes": 661,
+      "downloads": 479597,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF"
     },
     {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 3083,
-      "downloads": 1584382,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5"
+      "id": "google/timesfm-3.0-pytorch",
+      "author": "google",
+      "likes": 639,
+      "downloads": 444052,
+      "pipeline_tag": "time-series-forecasting",
+      "url": "https://huggingface.co/google/timesfm-3.0-pytorch"
     },
     {
-      "id": "Qwen/Qwen3.8-Flash-Next",
-      "author": "Qwen",
-      "likes": 4980,
-      "downloads": 474693,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 3181,
+      "downloads": 1644796,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5"
     }
   ],
   "papers": [
     {
-      "title": "Real-World Knowledge-Guided Change Data Synthesis for Remote Sensing",
-      "summary": "KnowChange uses vision-language models to guide flexible, diverse change data synthesis for improving change detection training.",
-      "upvotes": 2,
-      "arxiv_id": "2608.24263",
-      "url": "https://huggingface.co/papers/2608.24263",
-      "githubRepo": "https://github.com/LINGQI711/KnowChange"
+      "title": "DriveZero: End-to-End Driving Beyond Human Demonstrations",
+      "summary": "DriveZero is an end-to-end autonomous driving system that combines a vision foundation model for perception with a closed-loop reinforcement learning action model to learn driving behaviors beyond human demonstrations.",
+      "upvotes": 7,
+      "arxiv_id": "2609.06055",
+      "url": "https://huggingface.co/papers/2609.06055",
+      "githubRepo": "https://github.com/XiaomiAutoL3/DriveZero"
     },
     {
-      "title": "Unfold The World: Factorize 4D Properties in Reinforcing Spatial Reasoning",
-      "summary": "FactoSR improves vision-language model spatial reasoning by decomposing 3D and temporal recovery into factorized geometric sub-objectives optimized via reinforcement learning.",
+      "title": "SimpleMemVLA: A Simple but Effective Native-Video Memory for Vision-Language-Action Models",
+      "summary": "SimpleMemVLA achieves long-horizon manipulation by feeding intact timestamped video history directly into a pretrained VLM backbone and using hidden states to inform a flow-matching action head, outperforming dedicated memory modules.",
       "upvotes": 1,
-      "arxiv_id": "2609.03729",
-      "url": "https://huggingface.co/papers/2609.03729",
-      "githubRepo": "https://github.com/ZimaBlue-WAM/FactoSR"
+      "arxiv_id": "2609.05533",
+      "url": "https://huggingface.co/papers/2609.05533",
+      "githubRepo": "https://github.com/wadeKeith/SimpleMemVLA"
     },
     {
-      "title": "HarvestBench: Measuring Whether LLM Agents Will Pay to Avoid Killing Animals",
-      "summary": "HarvestBench evaluates LLM agents in a farm simulation where they choose between harming animals at no cost or avoiding them for fuel, revealing price-sensitive and briefing-dependent kill rates across models.",
-      "upvotes": 3,
-      "arxiv_id": "2609.04444",
-      "url": "https://huggingface.co/papers/2609.04444",
-      "githubRepo": null
+      "title": "Privacy Failure in Split-LLM Training, The Returned Gradient Nullifies the Decoys",
+      "summary": "A split-LLM training system passed privacy checks but leaked real data rows through zero-gradient patterns, allowing token recovery attacks despite gradient clipping and noise.",
+      "upvotes": 4,
+      "arxiv_id": "2609.04382",
+      "url": "https://huggingface.co/papers/2609.04382",
+      "githubRepo": "https://github.com/setloop-io/Privacy-Failure-in-Split-LLM-Training-The-Returned-Gradient-Nullifies-the-Decoys"
     },
     {
-      "title": "Dr. Claw: An AI Scientist Workspace for Vibe Research",
-      "summary": "Command-line coding agents (e.g., Claude Code, Gemini CLI) can already read and write files and sustain long sessions, yet end-to-end research still fragments a...",
-      "upvotes": 8,
-      "arxiv_id": "2609.00365",
-      "url": "https://huggingface.co/papers/2609.00365",
-      "githubRepo": "https://github.com/OpenLAIR/dr-claw"
+      "title": "Unifying Conformal Language Tasks with In-Context Ensembles",
+      "summary": "The Conformal Relevance framework automates score function design for conformal prediction via in-context learning and ensembling to improve conciseness while preserving coverage across NLP retrieval tasks.",
+      "upvotes": 5,
+      "arxiv_id": "2609.03005",
+      "url": "https://huggingface.co/papers/2609.03005",
+      "githubRepo": "https://github.com/layer6ai-labs/conformal-relevance"
     },
     {
-      "title": "Knowing What Not to Answer: Selective Non-Compliance in Vision-Language Models",
-      "summary": "KoNA evaluates vision-language models on selective refusal across mixed queries and improves compliance via targeted fine-tuning.",
-      "upvotes": 2,
-      "arxiv_id": "2609.04720",
-      "url": "https://huggingface.co/papers/2609.04720",
-      "githubRepo": "https://github.com/mz-kim/KoNA"
+      "title": "Causal Foundation Models",
+      "summary": "Causal foundation models apply pretrained neural networks to estimate causal effects on new datasets via in-context learning without fine-tuning.",
+      "upvotes": 11,
+      "arxiv_id": "2609.03003",
+      "url": "https://huggingface.co/papers/2609.03003",
+      "githubRepo": "https://github.com/layer6ai-labs/cfms"
     }
   ]
 }

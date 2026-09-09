@@ -1,1 +1,1 @@
-Qwen3.8-27B-GGUF
+MiniCPM5-2B

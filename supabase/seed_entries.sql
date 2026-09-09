@@ -1,4 +1,4 @@
--- Seed / Upsert all 254 AiVerse entries into Supabase
+-- Seed / Upsert all 258 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -5357,6 +5357,89 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('last-translation-benchmark', 'zouhar', 'Dataset', 'NLP', 'CC-BY-4.0', 2026, '1K<n<10K', 'Last Translation Benchmark 	  Abstract: For scientific progress, we need benchmarks that test the limits of state-of-the-art models, and evaluation methods that inform (33 likes, 293 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("zouhar/last-translation-benchmark")', 'Trending Score: 32, Likes: 33, Downloads: 293', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/zouhar/last-translation-benchmark', '[{"text":"zouhar/last-translation-benchmark on Hugging Face Datasets","url":"https://huggingface.co/datasets/zouhar/last-translation-benchmark"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MiniCPM5-2B', 'openbmb', 'Model', 'NLP', 'APACHE-2.0', 2026, '2B params', 'High-performance NLP open-weights model by openbmb, trending with over 690 community likes and 2,879 downloads on Hugging Face.', 'openbmb text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("openbmb/MiniCPM5-2B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("openbmb/MiniCPM5-2B")', 'Trending Score: 568, Likes: 690, Downloads: 2,879', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/openbmb/MiniCPM5-2B', '[{"text":"openbmb/MiniCPM5-2B on Hugging Face","url":"https://huggingface.co/openbmb/MiniCPM5-2B"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MiniMax-H3-Turbo-Lora', 'MiniMaxAI', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by MiniMaxAI. Trending with 401 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/MiniMaxAI/MiniMax-H3-Turbo-Lora', 'Trending Score: 65, Community Likes: 401', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/MiniMaxAI/MiniMax-H3-Turbo-Lora', '[{"text":"MiniMaxAI/MiniMax-H3-Turbo-Lora on Hugging Face Spaces","url":"https://huggingface.co/spaces/MiniMaxAI/MiniMax-H3-Turbo-Lora"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Hexabot', 'hexabot-ai', 'Framework', 'NLP', 'NOASSERTION', 2026, '54MB Repo', 'Hexabot v3 is an AI workflow automation platform, combining workflows, actions, agents, and conversational channels in one runtime.', 'Modular AI codebase with native Python/C++ bindings and distributed workflow support.', 'git clone https://github.com/hexabot-ai/Hexabot
+cd Hexabot
+pip install -e .', 'GitHub Stars: 1,217, Forks: 242', 'Requires local Python environment and dependency configuration.', 'https://github.com/hexabot-ai/Hexabot', '[{"text":"hexabot-ai/Hexabot on GitHub","url":"https://github.com/hexabot-ai/Hexabot"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('UltraData-RL-2609', 'openbmb', 'Dataset', 'AI Coding', 'APACHE-2.0', 2026, '10K<n<100K', 'UltraData-RL-2609 	    📦 UltraData Collection | 🌐 UltraData |  🤗 MiniCPM5 Series English | 中文 	 		 	 	 		📚 Introduction 	 UltraData-RL-2609 is the L3 refined data f (60 likes, 667 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("openbmb/UltraData-RL-2609")', 'Trending Score: 53, Likes: 60, Downloads: 667', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/openbmb/UltraData-RL-2609', '[{"text":"openbmb/UltraData-RL-2609 on Hugging Face Datasets","url":"https://huggingface.co/datasets/openbmb/UltraData-RL-2609"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

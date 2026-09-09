@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-08",
+  "date": "2026-09-09",
   "tool": {
-    "name": "SWE-bench Verified",
+    "name": "OpenHermes 2.5",
     "type": "Dataset",
-    "summary": "Human-verified subset of 500 real-world GitHub issues and unit test pull requests used to evaluate autonomous software engineering AI agents.",
-    "task": "AI Coding",
+    "summary": "Curated dataset of 1 million diverse conversation turns, code snippets, reasoning chains, and roleplay examples used to fine-tune state-of-the-art open models.",
+    "task": "NLP",
     "license": "MIT",
-    "year": 2024,
-    "org": "Princeton / OpenAI",
-    "size": "500 verified GitHub issues",
-    "architecture": "Dockerized reproducible environment harness across 12 major Python repositories.",
-    "usage": "from datasets import load_dataset\nds = load_dataset(\"princeton-nlp/SWE-bench_Verified\", split=\"test\")",
-    "benchmarks": "The global gold standard benchmark for Devin, Claude 3.7 Sonnet, and autonomous coding agents.",
-    "limitations": "Requires Dockerized test harness execution for each evaluated issue.",
+    "year": 2023,
+    "org": "Teknium",
+    "size": "1,001,551 examples",
+    "architecture": "Curated collection of synthetic and human-annotated instruction datasets (ShareGPT, Airoboros, GPTeacher).",
+    "usage": "from datasets import load_dataset\nds = load_dataset(\"teknium/OpenHermes-2.5\", split=\"train\")",
+    "benchmarks": "Trained OpenHermes-2.5-Mistral-7B to outperform standard 70B models in 2023.",
+    "limitations": "Varied data sources include diverse subjective annotation quality.",
     "popular": true,
-    "url": "https://www.swebench.com",
+    "url": "https://huggingface.co/datasets/teknium/OpenHermes-2.5",
     "citations": [
       {
-        "text": "SWE-bench Verified",
-        "url": "https://openai.com/index/introducing-swe-bench-verified/"
+        "text": "OpenHermes 2.5 Dataset",
+        "url": "https://huggingface.co/datasets/teknium/OpenHermes-2.5"
       }
     ]
   }
