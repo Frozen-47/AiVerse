@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-09",
+  "date": "2026-09-10",
   "tool": {
-    "name": "OpenHermes 2.5",
+    "name": "FineWeb & FineWeb-Edu",
     "type": "Dataset",
-    "summary": "Curated dataset of 1 million diverse conversation turns, code snippets, reasoning chains, and roleplay examples used to fine-tune state-of-the-art open models.",
+    "summary": "15-trillion token open web pretraining dataset from Hugging Face, including FineWeb-Edu filtered with automated AI educational quality scoring.",
     "task": "NLP",
-    "license": "MIT",
-    "year": 2023,
-    "org": "Teknium",
-    "size": "1,001,551 examples",
-    "architecture": "Curated collection of synthetic and human-annotated instruction datasets (ShareGPT, Airoboros, GPTeacher).",
-    "usage": "from datasets import load_dataset\nds = load_dataset(\"teknium/OpenHermes-2.5\", split=\"train\")",
-    "benchmarks": "Trained OpenHermes-2.5-Mistral-7B to outperform standard 70B models in 2023.",
-    "limitations": "Varied data sources include diverse subjective annotation quality.",
+    "license": "ODC-By 1.0",
+    "year": 2024,
+    "org": "Hugging Face",
+    "size": "15 Trillion tokens (44 TB)",
+    "architecture": "Curated dataset derived from 96 Common Crawl dumps with MinHash deduplication.",
+    "usage": "from datasets import load_dataset\nds = load_dataset(\"HuggingFaceFW/fineweb-edu\", name=\"sample-100BT\", split=\"train\", streaming=True)",
+    "benchmarks": "Pretraining on FineWeb-Edu yields higher MMLU per token than Meta Llama 3 web filtering.",
+    "limitations": "Massive multi-terabyte download requirement for full uncompressed sets.",
     "popular": true,
-    "url": "https://huggingface.co/datasets/teknium/OpenHermes-2.5",
+    "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb",
     "citations": [
       {
-        "text": "OpenHermes 2.5 Dataset",
-        "url": "https://huggingface.co/datasets/teknium/OpenHermes-2.5"
+        "text": "FineWeb Announcement",
+        "url": "https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-details"
       }
     ]
   }

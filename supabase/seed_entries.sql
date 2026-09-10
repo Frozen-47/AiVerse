@@ -1,4 +1,4 @@
--- Seed / Upsert all 258 AiVerse entries into Supabase
+-- Seed / Upsert all 262 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -5440,6 +5440,89 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('UltraData-RL-2609', 'openbmb', 'Dataset', 'AI Coding', 'APACHE-2.0', 2026, '10K<n<100K', 'UltraData-RL-2609 	    📦 UltraData Collection | 🌐 UltraData |  🤗 MiniCPM5 Series English | 中文 	 		 	 	 		📚 Introduction 	 UltraData-RL-2609 is the L3 refined data f (60 likes, 667 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("openbmb/UltraData-RL-2609")', 'Trending Score: 53, Likes: 60, Downloads: 667', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/openbmb/UltraData-RL-2609', '[{"text":"openbmb/UltraData-RL-2609 on Hugging Face Datasets","url":"https://huggingface.co/datasets/openbmb/UltraData-RL-2609"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('all-MiniLM-L6-v2', 'sentence-transformers', 'Model', 'NLP', 'APACHE-2.0', 2026, 'Open Weights', 'High-performance NLP open-weights model by sentence-transformers, trending with over 5,722 community likes and 253,331,994 downloads on Hugging Face.', 'sentence-transformers sentence similarity architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("sentence-transformers/all-MiniLM-L6-v2", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")', 'Trending Score: 305, Likes: 5,722, Downloads: 253,331,994', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2', '[{"text":"sentence-transformers/all-MiniLM-L6-v2 on Hugging Face","url":"https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MiniMax-H3-Turbo-Lora-UNCENSORED', 'Pepe104', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Pepe104. Trending with 128 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED', 'Trending Score: 49, Community Likes: 128', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED', '[{"text":"Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED on Hugging Face Spaces","url":"https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('RAGLight', 'Bessouat40', 'Framework', 'NLP', 'MIT', 2026, '15MB Repo', 'RAGLight is a modular framework for Retrieval-Augmented Generation (RAG). It makes it easy to plug in different LLMs, embeddings, and vector stores, and now includes seamless MCP integration to connec', 'Modular AI codebase with native Python/C++ bindings and distributed workflow support.', 'git clone https://github.com/Bessouat40/RAGLight
+cd RAGLight
+pip install -e .', 'GitHub Stars: 672, Forks: 101', 'Requires local Python environment and dependency configuration.', 'https://github.com/Bessouat40/RAGLight', '[{"text":"Bessouat40/RAGLight on GitHub","url":"https://github.com/Bessouat40/RAGLight"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('UltraData-SFT-Agent-2609', 'openbmb', 'Dataset', 'AI Coding', 'APACHE-2.0', 2026, '100K<n<1M', 'UltraData-SFT-Agent-2609 	    📦 UltraData Collection | 🌐 UltraData |  🤗 MiniCPM5 Series English | 中文 	 		 	 	 		📚 Introduction 	 UltraData-SFT-Agent-2609 is the L3 (67 likes, 642 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("openbmb/UltraData-SFT-Agent-2609")', 'Trending Score: 60, Likes: 67, Downloads: 642', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/openbmb/UltraData-SFT-Agent-2609', '[{"text":"openbmb/UltraData-SFT-Agent-2609 on Hugging Face Datasets","url":"https://huggingface.co/datasets/openbmb/UltraData-SFT-Agent-2609"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

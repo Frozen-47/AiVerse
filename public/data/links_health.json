@@ -1,43 +1,18 @@
 {
-  "timestamp": "2026-09-09T02:19:28.332Z",
+  "timestamp": "2026-09-10T02:18:19.890Z",
   "checked": 25,
-  "healthy": 18,
-  "broken": 7,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "Ideogram",
-      "url": "https://ideogram.ai",
+      "name": "o1 (OpenAI)",
+      "url": "https://openai.com/o1",
       "status": 403
     },
     {
-      "name": "Claude",
-      "url": "https://claude.ai",
+      "name": "GPT-4o mini",
+      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
       "status": 403
-    },
-    {
-      "name": "NightCafe",
-      "url": "https://creator.nightcafe.studio",
-      "status": 403
-    },
-    {
-      "name": "ChatGPT",
-      "url": "https://chatgpt.com",
-      "status": 403
-    },
-    {
-      "name": "Poe",
-      "url": "https://poe.com",
-      "status": 403
-    },
-    {
-      "name": "Midjourney (Platform)",
-      "url": "https://www.midjourney.com/",
-      "status": 403
-    },
-    {
-      "name": "OpenWebText",
-      "url": "https://huggingface.co/datasets/openwebtext",
-      "status": 404
     }
   ]
 }

@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-09)
+### ⚡ Daily AI Pulse (2026-09-10)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **MiniCPM5-2B** (`Model`), **MiniMax-H3-Turbo-Lora** (`Platform`), **Hexabot** (`Framework`), **UltraData-RL-2609** (`Dataset`) |
-| 🌟 **Tool of the Day** | **OpenHermes 2.5** (Teknium) — [Explore](https://huggingface.co/datasets/teknium/OpenHermes-2.5) |
-| 🗄️ **Catalog Entries** | **258** AI assets tracked (210 featured) |
-| 🔥 **Top Trending Model** | [XHToken/Spark-X2.5-4B](https://huggingface.co/XHToken/Spark-X2.5-4B) |
-| 📜 **Top Daily Paper** | [DriveZero: End-to-End Driving Beyond Human Demonst...](https://huggingface.co/papers/2609.06055) |
-| 🛡️ **Catalog Links Checked** | **18/25** operational |
-| 🕒 **Last Daily Run** | `Wed, 09 Sep 2026 02:19:31 GMT` |
+| 🆕 **New Assets Added** | **all-MiniLM-L6-v2** (`Model`), **MiniMax-H3-Turbo-Lora-UNCENSORED** (`Platform`), **RAGLight** (`Framework`), **UltraData-SFT-Agent-2609** (`Dataset`) |
+| 🌟 **Tool of the Day** | **FineWeb & FineWeb-Edu** (Hugging Face) — [Explore](https://huggingface.co/datasets/HuggingFaceFW/fineweb) |
+| 🗄️ **Catalog Entries** | **262** AI assets tracked (213 featured) |
+| 🔥 **Top Trending Model** | [openbmb/MiniCPM5-2B](https://huggingface.co/openbmb/MiniCPM5-2B) |
+| 📜 **Top Daily Paper** | [AgenticGen: Reward-Guided Agentic Video Generation...](https://huggingface.co/papers/2609.09187) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Daily Run** | `Thu, 10 Sep 2026 02:18:23 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-09-09T02:19:24.158Z",
-  "totalEntries": 258,
-  "popularEntries": 210,
+  "timestamp": "2026-09-10T02:18:14.376Z",
+  "totalEntries": 262,
+  "popularEntries": 213,
   "totalUsers": 10,
   "averageRating": 4.38,
   "totalRatings": 8,
-  "newEntriesCount": 31,
+  "newEntriesCount": 35,
   "byType": {
-    "Model": 95,
-    "Framework": 29,
-    "Platform": 32,
-    "Dataset": 31,
+    "Model": 96,
+    "Framework": 30,
+    "Platform": 33,
+    "Dataset": 32,
     "AI": 71
   },
   "byTask": {
-    "NLP": 98,
-    "AI Coding": 19,
-    "Multimodal": 19,
+    "NLP": 100,
+    "AI Coding": 20,
+    "Multimodal": 20,
     "Research": 11,
     "Image Generation": 9,
     "Video Generation": 11,
@@ -27,7 +27,7 @@
     "Education": 4
   },
   "byLicense": {
-    "MIT": 37,
+    "MIT": 38,
     "Llama 3.3 Community License": 1,
     "Llama 3.2 Community License": 3,
     "Apache-2.0": 34,
@@ -66,33 +66,33 @@
     "Proprietary / DeepSeek License": 1,
     "Open Source UI / Various model licenses": 1,
     "Free": 1,
-    "APACHE-2.0": 6,
+    "APACHE-2.0": 8,
     "OTHER": 6,
-    "Community Hosted": 7,
+    "Community Hosted": 8,
     "NOASSERTION": 3,
     "CC-BY-SA-4.0": 1,
     "Open Data": 1,
     "CC-BY-4.0": 1
   },
   "toolOfTheDay": {
-    "name": "OpenHermes 2.5",
+    "name": "FineWeb & FineWeb-Edu",
     "type": "Dataset",
-    "summary": "Curated dataset of 1 million diverse conversation turns, code snippets, reasoning chains, and roleplay examples used to fine-tune state-of-the-art open models.",
+    "summary": "15-trillion token open web pretraining dataset from Hugging Face, including FineWeb-Edu filtered with automated AI educational quality scoring.",
     "task": "NLP",
-    "license": "MIT",
-    "year": 2023,
-    "org": "Teknium",
-    "size": "1,001,551 examples",
-    "architecture": "Curated collection of synthetic and human-annotated instruction datasets (ShareGPT, Airoboros, GPTeacher).",
-    "usage": "from datasets import load_dataset\nds = load_dataset(\"teknium/OpenHermes-2.5\", split=\"train\")",
-    "benchmarks": "Trained OpenHermes-2.5-Mistral-7B to outperform standard 70B models in 2023.",
-    "limitations": "Varied data sources include diverse subjective annotation quality.",
+    "license": "ODC-By 1.0",
+    "year": 2024,
+    "org": "Hugging Face",
+    "size": "15 Trillion tokens (44 TB)",
+    "architecture": "Curated dataset derived from 96 Common Crawl dumps with MinHash deduplication.",
+    "usage": "from datasets import load_dataset\nds = load_dataset(\"HuggingFaceFW/fineweb-edu\", name=\"sample-100BT\", split=\"train\", streaming=True)",
+    "benchmarks": "Pretraining on FineWeb-Edu yields higher MMLU per token than Meta Llama 3 web filtering.",
+    "limitations": "Massive multi-terabyte download requirement for full uncompressed sets.",
     "popular": true,
-    "url": "https://huggingface.co/datasets/teknium/OpenHermes-2.5",
+    "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb",
     "citations": [
       {
-        "text": "OpenHermes 2.5 Dataset",
-        "url": "https://huggingface.co/datasets/teknium/OpenHermes-2.5"
+        "text": "FineWeb Announcement",
+        "url": "https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-details"
       }
     ]
   }

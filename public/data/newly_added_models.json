@@ -1,5 +1,98 @@
 [
   {
+    "date": "2026-09-10",
+    "assets": [
+      {
+        "name": "all-MiniLM-L6-v2",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by sentence-transformers, trending with over 5,722 community likes and 253,331,994 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "sentence-transformers",
+        "size": "Open Weights",
+        "architecture": "sentence-transformers sentence similarity architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"sentence-transformers/all-MiniLM-L6-v2\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"sentence-transformers/all-MiniLM-L6-v2\")",
+        "benchmarks": "Trending Score: 305, Likes: 5,722, Downloads: 253,331,994",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": true,
+        "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+        "citations": [
+          {
+            "text": "sentence-transformers/all-MiniLM-L6-v2 on Hugging Face",
+            "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2"
+          }
+        ]
+      },
+      {
+        "name": "MiniMax-H3-Turbo-Lora-UNCENSORED",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Pepe104. Trending with 128 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "Pepe104",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+        "benchmarks": "Trending Score: 49, Community Likes: 128",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": true,
+        "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
+        "citations": [
+          {
+            "text": "Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED"
+          }
+        ]
+      },
+      {
+        "name": "RAGLight",
+        "type": "Framework",
+        "summary": "RAGLight is a modular framework for Retrieval-Augmented Generation (RAG). It makes it easy to plug in different LLMs, embeddings, and vector stores, and now includes seamless MCP integration to connec",
+        "task": "NLP",
+        "license": "MIT",
+        "year": 2026,
+        "org": "Bessouat40",
+        "size": "15MB Repo",
+        "architecture": "Modular AI codebase with native Python/C++ bindings and distributed workflow support.",
+        "usage": "git clone https://github.com/Bessouat40/RAGLight\ncd RAGLight\npip install -e .",
+        "benchmarks": "GitHub Stars: 672, Forks: 101",
+        "limitations": "Requires local Python environment and dependency configuration.",
+        "popular": true,
+        "url": "https://github.com/Bessouat40/RAGLight",
+        "citations": [
+          {
+            "text": "Bessouat40/RAGLight on GitHub",
+            "url": "https://github.com/Bessouat40/RAGLight"
+          }
+        ]
+      },
+      {
+        "name": "UltraData-SFT-Agent-2609",
+        "type": "Dataset",
+        "summary": "UltraData-SFT-Agent-2609 \t    📦 UltraData Collection | 🌐 UltraData |  🤗 MiniCPM5 Series English | 中文 \t \t\t \t \t \t\t📚 Introduction \t UltraData-SFT-Agent-2609 is the L3 (67 likes, 642 downloads).",
+        "task": "AI Coding",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "openbmb",
+        "size": "100K<n<1M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"openbmb/UltraData-SFT-Agent-2609\")",
+        "benchmarks": "Trending Score: 60, Likes: 67, Downloads: 642",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "url": "https://huggingface.co/datasets/openbmb/UltraData-SFT-Agent-2609",
+        "citations": [
+          {
+            "text": "openbmb/UltraData-SFT-Agent-2609 on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/openbmb/UltraData-SFT-Agent-2609"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-09",
     "assets": [
       {

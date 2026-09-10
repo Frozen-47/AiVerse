@@ -1,1 +1,1 @@
-MiniCPM5-2B
+all-MiniLM-L6-v2
