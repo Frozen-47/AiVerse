@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-10)
+### ⚡ Daily AI Pulse (2026-09-11)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **all-MiniLM-L6-v2** (`Model`), **MiniMax-H3-Turbo-Lora-UNCENSORED** (`Platform`), **RAGLight** (`Framework`), **UltraData-SFT-Agent-2609** (`Dataset`) |
-| 🌟 **Tool of the Day** | **FineWeb & FineWeb-Edu** (Hugging Face) — [Explore](https://huggingface.co/datasets/HuggingFaceFW/fineweb) |
-| 🗄️ **Catalog Entries** | **262** AI assets tracked (213 featured) |
-| 🔥 **Top Trending Model** | [openbmb/MiniCPM5-2B](https://huggingface.co/openbmb/MiniCPM5-2B) |
-| 📜 **Top Daily Paper** | [AgenticGen: Reward-Guided Agentic Video Generation...](https://huggingface.co/papers/2609.09187) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Daily Run** | `Thu, 10 Sep 2026 02:18:23 GMT` |
+| 🆕 **New Assets Added** | **DeepSeek-V4.1-Flash** (`Model`), **Qwen-Image-Edit-Rapid-AIO-Loras-Experimental** (`Platform`), **psi** (`Framework`), **UltraData-Code** (`Dataset`) |
+| 🌟 **Tool of the Day** | **LangSmith** (LangChain) — [Explore](https://smith.langchain.com) |
+| 🗄️ **Catalog Entries** | **266** AI assets tracked (216 featured) |
+| 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) |
+| 📜 **Top Daily Paper** | [T1: Terminal Agent Reinforcement Learning for Long...](https://huggingface.co/papers/2609.11042) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Daily Run** | `Fri, 11 Sep 2026 02:14:00 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

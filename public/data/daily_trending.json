@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-09-10T02:18:19.814Z",
+  "timestamp": "2026-09-11T02:13:56.217Z",
   "models": [
+    {
+      "id": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "author": "deepseek-ai",
+      "likes": 1394,
+      "downloads": 6,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+    },
     {
       "id": "openbmb/MiniCPM5-2B",
       "author": "openbmb",
-      "likes": 938,
-      "downloads": 2879,
+      "likes": 1117,
+      "downloads": 42289,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/openbmb/MiniCPM5-2B"
     },
     {
       "id": "XHToken/Spark-X2.5-4B",
       "author": "XHToken",
-      "likes": 1009,
-      "downloads": 10661,
+      "likes": 1068,
+      "downloads": 15930,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.5-4B"
     },
     {
       "id": "ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
       "author": "ISTA-DASLab",
-      "likes": 736,
-      "downloads": 479597,
+      "likes": 798,
+      "downloads": 614850,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF"
     },
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 14529,
-      "downloads": 6712160,
+      "likes": 14650,
+      "downloads": 7322476,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
     },
     {
-      "id": "google/timesfm-3.0-pytorch",
-      "author": "google",
-      "likes": 692,
-      "downloads": 444052,
-      "pipeline_tag": "time-series-forecasting",
-      "url": "https://huggingface.co/google/timesfm-3.0-pytorch"
-    },
-    {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 3274,
-      "downloads": 1644796,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5"
+      "id": "nex-agi/Nex-N2.5-mini",
+      "author": "nex-agi",
+      "likes": 657,
+      "downloads": 2444,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/nex-agi/Nex-N2.5-mini"
     }
   ],
   "papers": [
     {
-      "title": "AgenticGen: Reward-Guided Agentic Video Generation for Advertising",
-      "summary": "AgenticGen improves advertising video generation by decomposing it into strategy selection and draft generation stages supervised by online business feedback and human quality rewards.",
-      "upvotes": 0,
-      "arxiv_id": "2609.09187",
-      "url": "https://huggingface.co/papers/2609.09187",
+      "title": "T1: Terminal Agent Reinforcement Learning for Long-Horizon Tasks",
+      "summary": "T1 is a 122B Mixture-of-Experts model trained with reinforcement learning to execute long-horizon terminal tasks in a cloud sandbox, achieving state-of-the-art results through stable actor-critic optimization and out-of-distribution training.",
+      "upvotes": 9,
+      "arxiv_id": "2609.11042",
+      "url": "https://huggingface.co/papers/2609.11042",
       "githubRepo": null
     },
     {
-      "title": "Difficulty-Adaptive Tree-Structured Policy Optimization for Expanding Reasoning Coverage in RLVR",
-      "summary": "DATPO improves reasoning coverage in large models by using difficulty-adaptive tree-structured rollouts with sentence-entropy-guided branching and diversity-aware optimization.",
-      "upvotes": 0,
-      "arxiv_id": "2609.08650",
-      "url": "https://huggingface.co/papers/2609.08650",
-      "githubRepo": "https://github.com/colin31472/DATPO"
+      "title": "Scaling Automatic Research Agents via World Models",
+      "summary": "World Model RL replaces costly environment execution with a learned world model and applies debiasing and denoising to accelerate post-training of autonomous research agents.",
+      "upvotes": 412,
+      "arxiv_id": "2608.12564",
+      "url": "https://huggingface.co/papers/2608.12564",
+      "githubRepo": null
     },
     {
-      "title": "Φ-Bench: Can Large Language Models Engineer the Infrastructure That Powers Them?",
-      "summary": "Φ-Bench evaluates large language models on open-ended engineering of the LLM infrastructure stack across tasks from kernel optimization to end-to-end system design.",
-      "upvotes": 0,
-      "arxiv_id": "2609.10226",
-      "url": "https://huggingface.co/papers/2609.10226",
-      "githubRepo": "https://github.com/one2piece2hello/faibench_Frontier_InfraBench"
-    },
-    {
-      "title": "Show-Harness: Just a VLM Agent Can Play Robots",
-      "summary": "Show-Harness links vision-language models to robot control via discrete semantic actions interpreted by embodiment-specific modules, enabling zero-shot and efficient fine-tuned deployment across robots and GUIs.",
+      "title": "PARSER: Read in Parallel, Reason in Depth for Long-Context LLM Agents",
+      "summary": "PARSER decouples parallel chunk reading from iterative reasoning via scatter-gather subagents, improving long-context multi-hop accuracy and reducing latency.",
       "upvotes": 4,
-      "arxiv_id": "2609.10522",
-      "url": "https://huggingface.co/papers/2609.10522",
-      "githubRepo": "https://github.com/showlab/Show-Harness"
+      "arxiv_id": "2609.06702",
+      "url": "https://huggingface.co/papers/2609.06702",
+      "githubRepo": "https://github.com/cuhk-parser/PARSER"
     },
     {
-      "title": "Programmable World Model",
-      "summary": "A programmable world model separates explicit state evolution from video generation using executable rules and 3D bounding boxes to maintain persistent, controllable environments.",
-      "upvotes": 4,
-      "arxiv_id": "2609.10540",
-      "url": "https://huggingface.co/papers/2609.10540",
-      "githubRepo": "https://github.com/AlayaLab/pwm"
+      "title": "A Three-Layer Caching Architecture for Low-Latency LLM Web Search on Commodity CPU Hardware",
+      "summary": "OreoLook uses a three-layer caching system with session windows, semantic similarity matching, and deduplicated embeddings to reduce redundant LLM calls and maintain long-running conversations on modest hardware.",
+      "upvotes": 5,
+      "arxiv_id": "2609.05463",
+      "url": "https://huggingface.co/papers/2609.05463",
+      "githubRepo": "https://github.com/pollinations/search.elixpo"
+    },
+    {
+      "title": "SchemeArena: Factorized Stress Testing of Scheming in LLM Agents",
+      "summary": "Researchers introduce a 400-scenario benchmark and evidence-based monitor to study how instrumental goals, oversight, and strategic hints drive covert misaligned behavior in LLM agents.",
+      "upvotes": 7,
+      "arxiv_id": "2609.08126",
+      "url": "https://huggingface.co/papers/2609.08126",
+      "githubRepo": "https://github.com/launchnlp/SchemeArena"
     }
   ]
 }

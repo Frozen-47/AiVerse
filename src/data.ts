@@ -5800,6 +5800,94 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/openbmb/UltraData-SFT-Agent-2609"
           }
       ]
+  },
+  {
+      "name": "DeepSeek-V4.1-Flash",
+      "type": "Model",
+      "summary": "High-performance Multimodal open-weights model by DeepSeek, trending with over 1,394 community likes and 6 downloads on Hugging Face.",
+      "task": "Multimodal",
+      "license": "MIT",
+      "year": 2026,
+      "org": "DeepSeek",
+      "size": "Open Weights",
+      "architecture": "DeepSeek image text to text architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"deepseek-ai/DeepSeek-V4.1-Flash\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"deepseek-ai/DeepSeek-V4.1-Flash\")",
+      "benchmarks": "Trending Score: 1336, Likes: 1,394, Downloads: 6",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+      "citations": [
+          {
+              "text": "deepseek-ai/DeepSeek-V4.1-Flash on Hugging Face",
+              "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+          }
+      ]
+  },
+  {
+      "name": "Qwen-Image-Edit-Rapid-AIO-Loras-Experimental",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by aet256. Trending with 146 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "aet256",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/aet256/Qwen-Image-Edit-Rapid-AIO-Loras-Experimental",
+      "benchmarks": "Trending Score: 52, Community Likes: 146",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/aet256/Qwen-Image-Edit-Rapid-AIO-Loras-Experimental",
+      "citations": [
+          {
+              "text": "aet256/Qwen-Image-Edit-Rapid-AIO-Loras-Experimental on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/aet256/Qwen-Image-Edit-Rapid-AIO-Loras-Experimental"
+          }
+      ]
+  },
+  {
+      "name": "psi",
+      "type": "Framework",
+      "summary": "Platform for Situated Intelligence",
+      "task": "MLOps",
+      "license": "NOASSERTION",
+      "year": 2026,
+      "org": "microsoft",
+      "size": "38MB Repo",
+      "architecture": "Modular AI codebase with native Python/C++ bindings and distributed workflow support.",
+      "usage": "git clone https://github.com/microsoft/psi\ncd psi\npip install -e .",
+      "benchmarks": "GitHub Stars: 572, Forks: 104",
+      "limitations": "Requires local Python environment and dependency configuration.",
+      "popular": true,
+      "url": "https://github.com/microsoft/psi",
+      "citations": [
+          {
+              "text": "microsoft/psi on GitHub",
+              "url": "https://github.com/microsoft/psi"
+          }
+      ]
+  },
+  {
+      "name": "UltraData-Code",
+      "type": "Dataset",
+      "summary": "UltraData-Code \t    📦 UltraData Collection | 🌐 UltraData | 🤗 MiniCPM5 Series | 📖 Tech Report (Coming Soon) | 🤗 UltraData-Code-L2 Classifier English | 中文 (78 likes, 6,343 downloads).",
+      "task": "AI Coding",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "openbmb",
+      "size": "100M<n<1B",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"openbmb/UltraData-Code\")",
+      "benchmarks": "Trending Score: 65, Likes: 78, Downloads: 6,343",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/openbmb/UltraData-Code",
+      "citations": [
+          {
+              "text": "openbmb/UltraData-Code on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/openbmb/UltraData-Code"
+          }
+      ]
   }
 ];
 

@@ -1,4 +1,4 @@
--- Seed / Upsert all 262 AiVerse entries into Supabase
+-- Seed / Upsert all 266 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -5523,6 +5523,89 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('UltraData-SFT-Agent-2609', 'openbmb', 'Dataset', 'AI Coding', 'APACHE-2.0', 2026, '100K<n<1M', 'UltraData-SFT-Agent-2609 	    📦 UltraData Collection | 🌐 UltraData |  🤗 MiniCPM5 Series English | 中文 	 		 	 	 		📚 Introduction 	 UltraData-SFT-Agent-2609 is the L3 (67 likes, 642 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("openbmb/UltraData-SFT-Agent-2609")', 'Trending Score: 60, Likes: 67, Downloads: 642', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/openbmb/UltraData-SFT-Agent-2609', '[{"text":"openbmb/UltraData-SFT-Agent-2609 on Hugging Face Datasets","url":"https://huggingface.co/datasets/openbmb/UltraData-SFT-Agent-2609"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('DeepSeek-V4.1-Flash', 'DeepSeek', 'Model', 'Multimodal', 'MIT', 2026, 'Open Weights', 'High-performance Multimodal open-weights model by DeepSeek, trending with over 1,394 community likes and 6 downloads on Hugging Face.', 'DeepSeek image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("deepseek-ai/DeepSeek-V4.1-Flash", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/DeepSeek-V4.1-Flash")', 'Trending Score: 1336, Likes: 1,394, Downloads: 6', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash', '[{"text":"deepseek-ai/DeepSeek-V4.1-Flash on Hugging Face","url":"https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen-Image-Edit-Rapid-AIO-Loras-Experimental', 'aet256', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by aet256. Trending with 146 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/aet256/Qwen-Image-Edit-Rapid-AIO-Loras-Experimental', 'Trending Score: 52, Community Likes: 146', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/aet256/Qwen-Image-Edit-Rapid-AIO-Loras-Experimental', '[{"text":"aet256/Qwen-Image-Edit-Rapid-AIO-Loras-Experimental on Hugging Face Spaces","url":"https://huggingface.co/spaces/aet256/Qwen-Image-Edit-Rapid-AIO-Loras-Experimental"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('psi', 'microsoft', 'Framework', 'MLOps', 'NOASSERTION', 2026, '38MB Repo', 'Platform for Situated Intelligence', 'Modular AI codebase with native Python/C++ bindings and distributed workflow support.', 'git clone https://github.com/microsoft/psi
+cd psi
+pip install -e .', 'GitHub Stars: 572, Forks: 104', 'Requires local Python environment and dependency configuration.', 'https://github.com/microsoft/psi', '[{"text":"microsoft/psi on GitHub","url":"https://github.com/microsoft/psi"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('UltraData-Code', 'openbmb', 'Dataset', 'AI Coding', 'APACHE-2.0', 2026, '100M<n<1B', 'UltraData-Code 	    📦 UltraData Collection | 🌐 UltraData | 🤗 MiniCPM5 Series | 📖 Tech Report (Coming Soon) | 🤗 UltraData-Code-L2 Classifier English | 中文 (78 likes, 6,343 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("openbmb/UltraData-Code")', 'Trending Score: 65, Likes: 78, Downloads: 6,343', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/openbmb/UltraData-Code', '[{"text":"openbmb/UltraData-Code on Hugging Face Datasets","url":"https://huggingface.co/datasets/openbmb/UltraData-Code"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

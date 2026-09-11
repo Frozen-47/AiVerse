@@ -1,18 +1,23 @@
 {
-  "timestamp": "2026-09-10T02:18:19.890Z",
+  "timestamp": "2026-09-11T02:13:56.354Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "o1 (OpenAI)",
-      "url": "https://openai.com/o1",
+      "name": "DeepSeek Chat",
+      "url": "https://chat.deepseek.com",
       "status": 403
     },
     {
-      "name": "GPT-4o mini",
-      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+      "name": "Pi",
+      "url": "https://pi.ai",
       "status": 403
+    },
+    {
+      "name": "Windsurf",
+      "url": "https://codeium.com/windsurf",
+      "status": 429
     }
   ]
 }
