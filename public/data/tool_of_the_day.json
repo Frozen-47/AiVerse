@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-11",
+  "date": "2026-09-12",
   "tool": {
-    "name": "LangSmith",
+    "name": "Fireworks AI",
     "type": "Platform",
-    "summary": "Enterprise LLMOps platform from LangChain for debugging, testing, evaluating, and monitoring LLM applications and complex agent workflows.",
+    "summary": "Production-grade generative AI inference platform delivering blazing fast latency and cost efficiency for open-weights vision, audio, and language models.",
     "task": "MLOps",
     "license": "Proprietary",
-    "year": 2023,
-    "org": "LangChain",
-    "size": "Cloud / Self-hosted",
-    "architecture": "Distributed telemetry tracing backend with prompt management and online evaluation.",
-    "usage": "export LANGCHAIN_TRACING_V2=\"true\"\nexport LANGCHAIN_API_KEY=\"your-api-key\"\n# All LangChain & LangGraph calls automatically trace to dashboard",
-    "benchmarks": "Standard tracing tool for production agent developers.",
-    "limitations": "Full tracing storage can be expensive at massive enterprise scale.",
+    "year": 2024,
+    "org": "Fireworks AI",
+    "size": "Cloud API",
+    "architecture": "Custom inference engine with fine-grained speculative decoding and LoRA multiplexing.",
+    "usage": "from openai import OpenAI\nclient = OpenAI(base_url=\"https://api.fireworks.ai/inference/v1\", api_key=\"FW_KEY\")\nresponse = client.chat.completions.create(model=\"accounts/fireworks/models/deepseek-v3\", messages=[...])",
+    "benchmarks": "Sub-100ms time-to-first-token and ultra-high concurrency.",
+    "limitations": "Proprietary cloud platform.",
     "popular": true,
-    "url": "https://smith.langchain.com",
+    "url": "https://fireworks.ai",
     "citations": [
       {
-        "text": "LangSmith Documentation",
-        "url": "https://docs.smith.langchain.com"
+        "text": "Fireworks AI Platform",
+        "url": "https://fireworks.ai"
       }
     ]
   }

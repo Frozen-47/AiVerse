@@ -5888,6 +5888,94 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/openbmb/UltraData-Code"
           }
       ]
+  },
+  {
+      "name": "Nex-N2.5-mini",
+      "type": "Model",
+      "summary": "High-performance NLP open-weights model by nex-agi, trending with over 692 community likes and 3,121 downloads on Hugging Face.",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "nex-agi",
+      "size": "Open Weights",
+      "architecture": "nex-agi text generation architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"nex-agi/Nex-N2.5-mini\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"nex-agi/Nex-N2.5-mini\")",
+      "benchmarks": "Trending Score: 539, Likes: 692, Downloads: 3,121",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/nex-agi/Nex-N2.5-mini",
+      "citations": [
+          {
+              "text": "nex-agi/Nex-N2.5-mini on Hugging Face",
+              "url": "https://huggingface.co/nex-agi/Nex-N2.5-mini"
+          }
+      ]
+  },
+  {
+      "name": "fruit-fly-simulation",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Xenova. Trending with 70 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "Xenova",
+      "size": "STATIC Platform",
+      "architecture": "STATIC cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Xenova/fruit-fly-simulation",
+      "benchmarks": "Trending Score: 62, Community Likes: 70",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/Xenova/fruit-fly-simulation",
+      "citations": [
+          {
+              "text": "Xenova/fruit-fly-simulation on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/Xenova/fruit-fly-simulation"
+          }
+      ]
+  },
+  {
+      "name": "agency",
+      "type": "Framework",
+      "summary": "A fast and minimal framework for building agentic systems",
+      "task": "NLP",
+      "license": "MIT",
+      "year": 2026,
+      "org": "operand",
+      "size": "3MB Repo",
+      "architecture": "Modular AI codebase with native Python/C++ bindings and distributed workflow support.",
+      "usage": "git clone https://github.com/operand/agency\ncd agency\npip install -e .",
+      "benchmarks": "GitHub Stars: 490, Forks: 29",
+      "limitations": "Requires local Python environment and dependency configuration.",
+      "popular": true,
+      "url": "https://github.com/operand/agency",
+      "citations": [
+          {
+              "text": "operand/agency on GitHub",
+              "url": "https://github.com/operand/agency"
+          }
+      ]
+  },
+  {
+      "name": "various",
+      "type": "Dataset",
+      "summary": "malcolmrey's Various AI Model Repository \t This is the repository of malcolmrey where various things related to Stable Diffusion, Flux, WAN, and other upcoming model ar (182 likes, 53,192 downloads).",
+      "task": "Computer Vision",
+      "license": "WTFPL",
+      "year": 2026,
+      "org": "malcolmrey",
+      "size": "n<1K",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"malcolmrey/various\")",
+      "benchmarks": "Trending Score: 46, Likes: 182, Downloads: 53,192",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": true,
+      "url": "https://huggingface.co/datasets/malcolmrey/various",
+      "citations": [
+          {
+              "text": "malcolmrey/various on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/malcolmrey/various"
+          }
+      ]
   }
 ];
 

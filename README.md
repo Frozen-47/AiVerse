@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-11)
+### ⚡ Daily AI Pulse (2026-09-12)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **DeepSeek-V4.1-Flash** (`Model`), **Qwen-Image-Edit-Rapid-AIO-Loras-Experimental** (`Platform`), **psi** (`Framework`), **UltraData-Code** (`Dataset`) |
-| 🌟 **Tool of the Day** | **LangSmith** (LangChain) — [Explore](https://smith.langchain.com) |
-| 🗄️ **Catalog Entries** | **266** AI assets tracked (216 featured) |
+| 🆕 **New Assets Added** | **Nex-N2.5-mini** (`Model`), **fruit-fly-simulation** (`Platform`), **agency** (`Framework`), **various** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Fireworks AI** (Fireworks AI) — [Explore](https://fireworks.ai) |
+| 🗄️ **Catalog Entries** | **270** AI assets tracked (220 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) |
-| 📜 **Top Daily Paper** | [T1: Terminal Agent Reinforcement Learning for Long...](https://huggingface.co/papers/2609.11042) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Daily Run** | `Fri, 11 Sep 2026 02:14:00 GMT` |
+| 📜 **Top Daily Paper** | [Studying Image Tokenizers as Visual Languages in U...](https://huggingface.co/papers/2609.09143) |
+| 🛡️ **Catalog Links Checked** | **20/25** operational |
+| 🕒 **Last Daily Run** | `Sat, 12 Sep 2026 02:20:26 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-09-11T02:13:56.217Z",
+  "timestamp": "2026-09-12T02:20:23.527Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash",
       "author": "deepseek-ai",
-      "likes": 1394,
-      "downloads": 6,
+      "likes": 1803,
+      "downloads": 75774,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
     },
     {
       "id": "openbmb/MiniCPM5-2B",
       "author": "openbmb",
-      "likes": 1117,
-      "downloads": 42289,
+      "likes": 1197,
+      "downloads": 67550,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/openbmb/MiniCPM5-2B"
     },
     {
       "id": "XHToken/Spark-X2.5-4B",
       "author": "XHToken",
-      "likes": 1068,
-      "downloads": 15930,
+      "likes": 1107,
+      "downloads": 17712,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.5-4B"
     },
     {
-      "id": "ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
-      "author": "ISTA-DASLab",
-      "likes": 798,
-      "downloads": 614850,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF"
+      "id": "nex-agi/Nex-N2.5-mini",
+      "author": "nex-agi",
+      "likes": 692,
+      "downloads": 3121,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/nex-agi/Nex-N2.5-mini"
     },
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 14650,
-      "downloads": 7322476,
+      "likes": 14764,
+      "downloads": 7563763,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
     },
     {
-      "id": "nex-agi/Nex-N2.5-mini",
-      "author": "nex-agi",
-      "likes": 657,
-      "downloads": 2444,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/nex-agi/Nex-N2.5-mini"
+      "id": "ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
+      "author": "ISTA-DASLab",
+      "likes": 838,
+      "downloads": 682187,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF"
     }
   ],
   "papers": [
     {
-      "title": "T1: Terminal Agent Reinforcement Learning for Long-Horizon Tasks",
-      "summary": "T1 is a 122B Mixture-of-Experts model trained with reinforcement learning to execute long-horizon terminal tasks in a cloud sandbox, achieving state-of-the-art results through stable actor-critic optimization and out-of-distribution training.",
-      "upvotes": 9,
-      "arxiv_id": "2609.11042",
-      "url": "https://huggingface.co/papers/2609.11042",
-      "githubRepo": null
-    },
-    {
-      "title": "Scaling Automatic Research Agents via World Models",
-      "summary": "World Model RL replaces costly environment execution with a learned world model and applies debiasing and denoising to accelerate post-training of autonomous research agents.",
-      "upvotes": 412,
-      "arxiv_id": "2608.12564",
-      "url": "https://huggingface.co/papers/2608.12564",
-      "githubRepo": null
-    },
-    {
-      "title": "PARSER: Read in Parallel, Reason in Depth for Long-Context LLM Agents",
-      "summary": "PARSER decouples parallel chunk reading from iterative reasoning via scatter-gather subagents, improving long-context multi-hop accuracy and reducing latency.",
+      "title": "Studying Image Tokenizers as Visual Languages in Unified Multimodal Models",
+      "summary": "Using a controlled autoregressive testbed, the study analyzes task-specific validation losses during multimodal pretraining to evaluate how image tokenizer design affects joint text-image modeling and downstream performance.",
       "upvotes": 4,
-      "arxiv_id": "2609.06702",
-      "url": "https://huggingface.co/papers/2609.06702",
-      "githubRepo": "https://github.com/cuhk-parser/PARSER"
+      "arxiv_id": "2609.09143",
+      "url": "https://huggingface.co/papers/2609.09143",
+      "githubRepo": "https://github.com/amazon-far/Tokenizer_UMM"
     },
     {
-      "title": "A Three-Layer Caching Architecture for Low-Latency LLM Web Search on Commodity CPU Hardware",
-      "summary": "OreoLook uses a three-layer caching system with session windows, semantic similarity matching, and deduplicated embeddings to reduce redundant LLM calls and maintain long-running conversations on modest hardware.",
-      "upvotes": 5,
-      "arxiv_id": "2609.05463",
-      "url": "https://huggingface.co/papers/2609.05463",
-      "githubRepo": "https://github.com/pollinations/search.elixpo"
+      "title": "Think Before You Link: Rarity, Reasoning, and Retrieval in Multilingual Entity Linking",
+      "summary": "A reasoning-capable vision-language model that iteratively retrieves and reasons over Wikipedia improves multimodal entity linking for rare entities defined by knowledge-graph structure.",
+      "upvotes": 2,
+      "arxiv_id": "2609.10745",
+      "url": "https://huggingface.co/papers/2609.10745",
+      "githubRepo": "https://github.com/neulab/think-before-you-link"
     },
     {
-      "title": "SchemeArena: Factorized Stress Testing of Scheming in LLM Agents",
-      "summary": "Researchers introduce a 400-scenario benchmark and evidence-based monitor to study how instrumental goals, oversight, and strategic hints drive covert misaligned behavior in LLM agents.",
-      "upvotes": 7,
-      "arxiv_id": "2609.08126",
-      "url": "https://huggingface.co/papers/2609.08126",
-      "githubRepo": "https://github.com/launchnlp/SchemeArena"
+      "title": "Building Multilingual Bridges: Data Mixing as the Pillar of Generalization for In-Language Reasoning",
+      "summary": "Optimized supervised fine-tuning data composition enables reasoning models to consistently process and respond in diverse non-English languages without requiring reasoning supervision in each target language.",
+      "upvotes": 2,
+      "arxiv_id": "2609.10445",
+      "url": "https://huggingface.co/papers/2609.10445",
+      "githubRepo": null
+    },
+    {
+      "title": "Adaptive Bridge: A Proxy-Based Decoupling Layer for Mitigating DDS Backpressure in ROS 2",
+      "summary": "A proxy layer isolates critical ROS 2 subscribers from degraded ones via topic splitting and dynamic rate control to eliminate DDS backpressure.",
+      "upvotes": 1,
+      "arxiv_id": "2608.15380",
+      "url": "https://huggingface.co/papers/2608.15380",
+      "githubRepo": "https://github.com/KaushalrajPuwar/adaptive-bridge"
+    },
+    {
+      "title": "Beyond Solver Verdicts: Generative Reward Models for Autoformalization",
+      "summary": "Neurosymbolic reasoning is vulnerable to incorrect but verdict-matching formal translations, which are addressed by a generative verification method that scores reference equivalence without an oracle and improves downstream accuracy.",
+      "upvotes": 1,
+      "arxiv_id": "2609.11085",
+      "url": "https://huggingface.co/papers/2609.11085",
+      "githubRepo": null
     }
   ]
 }

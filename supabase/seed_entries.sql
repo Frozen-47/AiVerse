@@ -1,4 +1,4 @@
--- Seed / Upsert all 266 AiVerse entries into Supabase
+-- Seed / Upsert all 270 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -5606,6 +5606,89 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('UltraData-Code', 'openbmb', 'Dataset', 'AI Coding', 'APACHE-2.0', 2026, '100M<n<1B', 'UltraData-Code 	    📦 UltraData Collection | 🌐 UltraData | 🤗 MiniCPM5 Series | 📖 Tech Report (Coming Soon) | 🤗 UltraData-Code-L2 Classifier English | 中文 (78 likes, 6,343 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("openbmb/UltraData-Code")', 'Trending Score: 65, Likes: 78, Downloads: 6,343', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/openbmb/UltraData-Code', '[{"text":"openbmb/UltraData-Code on Hugging Face Datasets","url":"https://huggingface.co/datasets/openbmb/UltraData-Code"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Nex-N2.5-mini', 'nex-agi', 'Model', 'NLP', 'APACHE-2.0', 2026, 'Open Weights', 'High-performance NLP open-weights model by nex-agi, trending with over 692 community likes and 3,121 downloads on Hugging Face.', 'nex-agi text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("nex-agi/Nex-N2.5-mini", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("nex-agi/Nex-N2.5-mini")', 'Trending Score: 539, Likes: 692, Downloads: 3,121', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/nex-agi/Nex-N2.5-mini', '[{"text":"nex-agi/Nex-N2.5-mini on Hugging Face","url":"https://huggingface.co/nex-agi/Nex-N2.5-mini"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('fruit-fly-simulation', 'Xenova', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'STATIC Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Xenova. Trending with 70 community stars.', 'STATIC cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Xenova/fruit-fly-simulation', 'Trending Score: 62, Community Likes: 70', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/Xenova/fruit-fly-simulation', '[{"text":"Xenova/fruit-fly-simulation on Hugging Face Spaces","url":"https://huggingface.co/spaces/Xenova/fruit-fly-simulation"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('agency', 'operand', 'Framework', 'NLP', 'MIT', 2026, '3MB Repo', 'A fast and minimal framework for building agentic systems', 'Modular AI codebase with native Python/C++ bindings and distributed workflow support.', 'git clone https://github.com/operand/agency
+cd agency
+pip install -e .', 'GitHub Stars: 490, Forks: 29', 'Requires local Python environment and dependency configuration.', 'https://github.com/operand/agency', '[{"text":"operand/agency on GitHub","url":"https://github.com/operand/agency"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('various', 'malcolmrey', 'Dataset', 'Computer Vision', 'WTFPL', 2026, 'n<1K', 'malcolmrey''s Various AI Model Repository 	 This is the repository of malcolmrey where various things related to Stable Diffusion, Flux, WAN, and other upcoming model ar (182 likes, 53,192 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("malcolmrey/various")', 'Trending Score: 46, Likes: 182, Downloads: 53,192', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/malcolmrey/various', '[{"text":"malcolmrey/various on Hugging Face Datasets","url":"https://huggingface.co/datasets/malcolmrey/various"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

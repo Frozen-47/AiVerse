@@ -1,51 +1,51 @@
-# ⚡ AiVerse Daily Pulse (2026-09-11)
+# ⚡ AiVerse Daily Pulse (2026-09-12)
 
 > Automatically generated daily intelligence report syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 11 Sep 2026 02:14:00 GMT`*
+*Last Synchronized: `Sat, 12 Sep 2026 02:20:26 GMT`*
 
 ---
 
 ## 🆕 Newly Ingested Assets Today (4)
 
-### **DeepSeek-V4.1-Flash** (`Model` • *DeepSeek*)
-> High-performance Multimodal open-weights model by DeepSeek, trending with over 1,394 community likes and 6 downloads on Hugging Face.
+### **Nex-N2.5-mini** (`Model` • *nex-agi*)
+> High-performance NLP open-weights model by nex-agi, trending with over 692 community likes and 3,121 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `MIT` (2026)
-- ⚡ **Metrics**: `Trending Score: 1336, Likes: 1,394, Downloads: 6`
-- 🔗 **Resource Link**: [https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 539, Likes: 692, Downloads: 3,121`
+- 🔗 **Resource Link**: [https://huggingface.co/nex-agi/Nex-N2.5-mini](https://huggingface.co/nex-agi/Nex-N2.5-mini)
 
-### **Qwen-Image-Edit-Rapid-AIO-Loras-Experimental** (`Platform` • *aet256*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by aet256. Trending with 146 community stars.
+### **fruit-fly-simulation** (`Platform` • *Xenova*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Xenova. Trending with 70 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 52, Community Likes: 146`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/aet256/Qwen-Image-Edit-Rapid-AIO-Loras-Experimental](https://huggingface.co/spaces/aet256/Qwen-Image-Edit-Rapid-AIO-Loras-Experimental)
+- ⚡ **Metrics**: `Trending Score: 62, Community Likes: 70`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/Xenova/fruit-fly-simulation](https://huggingface.co/spaces/Xenova/fruit-fly-simulation)
 
-### **psi** (`Framework` • *microsoft*)
-> Platform for Situated Intelligence
+### **agency** (`Framework` • *operand*)
+> A fast and minimal framework for building agentic systems
 
-- 🏷️ **Domain & License**: `MLOps` • `NOASSERTION` (2026)
-- ⚡ **Metrics**: `GitHub Stars: 572, Forks: 104`
-- 🔗 **Resource Link**: [https://github.com/microsoft/psi](https://github.com/microsoft/psi)
+- 🏷️ **Domain & License**: `NLP` • `MIT` (2026)
+- ⚡ **Metrics**: `GitHub Stars: 490, Forks: 29`
+- 🔗 **Resource Link**: [https://github.com/operand/agency](https://github.com/operand/agency)
 
-### **UltraData-Code** (`Dataset` • *openbmb*)
-> UltraData-Code 	    📦 UltraData Collection | 🌐 UltraData | 🤗 MiniCPM5 Series | 📖 Tech Report (Coming Soon) | 🤗 UltraData-Code-L2 Classifier English | 中文 (78 likes, 6,343 downloads).
+### **various** (`Dataset` • *malcolmrey*)
+> malcolmrey's Various AI Model Repository 	 This is the repository of malcolmrey where various things related to Stable Diffusion, Flux, WAN, and other upcoming model ar (182 likes, 53,192 downloads).
 
-- 🏷️ **Domain & License**: `AI Coding` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 65, Likes: 78, Downloads: 6,343`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/openbmb/UltraData-Code](https://huggingface.co/datasets/openbmb/UltraData-Code)
+- 🏷️ **Domain & License**: `Computer Vision` • `WTFPL` (2026)
+- ⚡ **Metrics**: `Trending Score: 46, Likes: 182, Downloads: 53,192`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/malcolmrey/various](https://huggingface.co/datasets/malcolmrey/various)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **LangSmith** (`Platform` • *LangChain*)
-> Enterprise LLMOps platform from LangChain for debugging, testing, evaluating, and monitoring LLM applications and complex agent workflows.
+### **Fireworks AI** (`Platform` • *Fireworks AI*)
+> Production-grade generative AI inference platform delivering blazing fast latency and cost efficiency for open-weights vision, audio, and language models.
 
-- 🏛️ **Architecture**: Distributed telemetry tracing backend with prompt management and online evaluation.
-- ⚡ **Benchmarks**: `Standard tracing tool for production agent developers.`
-- 🏷️ **Domain & License**: `MLOps` • `Proprietary` (Released: 2023)
-- 🔗 **Resource Link**: [https://smith.langchain.com](https://smith.langchain.com)
+- 🏛️ **Architecture**: Custom inference engine with fine-grained speculative decoding and LoRA multiplexing.
+- ⚡ **Benchmarks**: `Sub-100ms time-to-first-token and ultra-high concurrency.`
+- 🏷️ **Domain & License**: `MLOps` • `Proprietary` (Released: 2024)
+- 🔗 **Resource Link**: [https://fireworks.ai](https://fireworks.ai)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -53,12 +53,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash` | image-text-to-text | ❤️ 1,394 | 📥 6 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) |
-| `openbmb/MiniCPM5-2B` | text-generation | ❤️ 1,117 | 📥 42,289 | [View](https://huggingface.co/openbmb/MiniCPM5-2B) |
-| `XHToken/Spark-X2.5-4B` | text-generation | ❤️ 1,068 | 📥 15,930 | [View](https://huggingface.co/XHToken/Spark-X2.5-4B) |
-| `ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF` | image-text-to-text | ❤️ 798 | 📥 614,850 | [View](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) |
-| `Qwen/Qwen3.8-27B` | image-text-to-text | ❤️ 14,650 | 📥 7,322,476 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
-| `nex-agi/Nex-N2.5-mini` | text-generation | ❤️ 657 | 📥 2,444 | [View](https://huggingface.co/nex-agi/Nex-N2.5-mini) |
+| `deepseek-ai/DeepSeek-V4.1-Flash` | image-text-to-text | ❤️ 1,803 | 📥 75,774 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) |
+| `openbmb/MiniCPM5-2B` | text-generation | ❤️ 1,197 | 📥 67,550 | [View](https://huggingface.co/openbmb/MiniCPM5-2B) |
+| `XHToken/Spark-X2.5-4B` | text-generation | ❤️ 1,107 | 📥 17,712 | [View](https://huggingface.co/XHToken/Spark-X2.5-4B) |
+| `nex-agi/Nex-N2.5-mini` | text-generation | ❤️ 692 | 📥 3,121 | [View](https://huggingface.co/nex-agi/Nex-N2.5-mini) |
+| `Qwen/Qwen3.8-27B` | image-text-to-text | ❤️ 14,764 | 📥 7,563,763 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
+| `ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF` | image-text-to-text | ❤️ 838 | 📥 682,187 | [View](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) |
 
 
 ---
@@ -68,24 +68,24 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **T1: Terminal Agent Reinforcement Learning for Long-Horizon Tasks** | 👍 9 | T1 is a 122B Mixture-of-Experts model trained with reinforcement learning to execute long-horizon terminal tasks in a cloud sandbox, achieving state-of-the-art results through stable actor-critic optimization and out-of-distribution training. | [Read](https://huggingface.co/papers/2609.11042) |
-| **Scaling Automatic Research Agents via World Models** | 👍 412 | World Model RL replaces costly environment execution with a learned world model and applies debiasing and denoising to accelerate post-training of autonomous research agents. | [Read](https://huggingface.co/papers/2608.12564) |
-| **PARSER: Read in Parallel, Reason in Depth for Long-Context LLM Agents** | 👍 4 | PARSER decouples parallel chunk reading from iterative reasoning via scatter-gather subagents, improving long-context multi-hop accuracy and reducing latency. | [Read](https://huggingface.co/papers/2609.06702) |
-| **A Three-Layer Caching Architecture for Low-Latency LLM Web Search on Commodity CPU Hardware** | 👍 5 | OreoLook uses a three-layer caching system with session windows, semantic similarity matching, and deduplicated embeddings to reduce redundant LLM calls and maintain long-running conversations on modest hardware. | [Read](https://huggingface.co/papers/2609.05463) |
-| **SchemeArena: Factorized Stress Testing of Scheming in LLM Agents** | 👍 7 | Researchers introduce a 400-scenario benchmark and evidence-based monitor to study how instrumental goals, oversight, and strategic hints drive covert misaligned behavior in LLM agents. | [Read](https://huggingface.co/papers/2609.08126) |
+| **Studying Image Tokenizers as Visual Languages in Unified Multimodal Models** | 👍 4 | Using a controlled autoregressive testbed, the study analyzes task-specific validation losses during multimodal pretraining to evaluate how image tokenizer design affects joint text-image modeling and downstream performance. | [Read](https://huggingface.co/papers/2609.09143) |
+| **Think Before You Link: Rarity, Reasoning, and Retrieval in Multilingual Entity Linking** | 👍 2 | A reasoning-capable vision-language model that iteratively retrieves and reasons over Wikipedia improves multimodal entity linking for rare entities defined by knowledge-graph structure. | [Read](https://huggingface.co/papers/2609.10745) |
+| **Building Multilingual Bridges: Data Mixing as the Pillar of Generalization for In-Language Reasoning** | 👍 2 | Optimized supervised fine-tuning data composition enables reasoning models to consistently process and respond in diverse non-English languages without requiring reasoning supervision in each target language. | [Read](https://huggingface.co/papers/2609.10445) |
+| **Adaptive Bridge: A Proxy-Based Decoupling Layer for Mitigating DDS Backpressure in ROS 2** | 👍 1 | A proxy layer isolates critical ROS 2 subscribers from degraded ones via topic splitting and dynamic rate control to eliminate DDS backpressure. | [Read](https://huggingface.co/papers/2608.15380) |
+| **Beyond Solver Verdicts: Generative Reward Models for Autoformalization** | 👍 1 | Neurosymbolic reasoning is vulnerable to incorrect but verdict-matching formal translations, which are addressed by a generative verification method that scores reference equivalence without an oracle and improves downstream accuracy. | [Read](https://huggingface.co/papers/2609.11085) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `266`
-- **Featured / Starred Tools**: `216`
-- **Asset Breakdown**: **Models**: 97 • **Frameworks**: 31 • **Platforms**: 34 • **Datasets**: 33 • **AIs**: 71
+- **Total Registered Assets**: `270`
+- **Featured / Starred Tools**: `220`
+- **Asset Breakdown**: **Models**: 98 • **Frameworks**: 32 • **Platforms**: 35 • **Datasets**: 34 • **AIs**: 71
 
 ---
 
 ## 🛡️ Daily System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
 - **Dependency Security**: `21` advisories flagged across `539` dependencies (`1` critical, `17` high)
 
 ---
