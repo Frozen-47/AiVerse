@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-12)
+### ⚡ Daily AI Pulse (2026-09-13)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Nex-N2.5-mini** (`Model`), **fruit-fly-simulation** (`Platform`), **agency** (`Framework`), **various** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Fireworks AI** (Fireworks AI) — [Explore](https://fireworks.ai) |
-| 🗄️ **Catalog Entries** | **270** AI assets tracked (220 featured) |
+| 🆕 **New Assets Added** | **Edge0-35B-A3B-preview** (`Model`), **Wan_2.2_I2V_14B_Custom_Lora_Wow** (`Platform`), **horus** (`Framework`), **hh-rlhf** (`Dataset`) |
+| 🌟 **Tool of the Day** | **OpenRouter** (OpenRouter) — [Explore](https://openrouter.ai) |
+| 🗄️ **Catalog Entries** | **274** AI assets tracked (224 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) |
 | 📜 **Top Daily Paper** | [Studying Image Tokenizers as Visual Languages in U...](https://huggingface.co/papers/2609.09143) |
-| 🛡️ **Catalog Links Checked** | **20/25** operational |
-| 🕒 **Last Daily Run** | `Sat, 12 Sep 2026 02:20:26 GMT` |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Daily Run** | `Sun, 13 Sep 2026 02:18:13 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

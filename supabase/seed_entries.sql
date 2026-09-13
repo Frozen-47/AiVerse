@@ -1,4 +1,4 @@
--- Seed / Upsert all 270 AiVerse entries into Supabase
+-- Seed / Upsert all 274 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -5689,6 +5689,89 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('various', 'malcolmrey', 'Dataset', 'Computer Vision', 'WTFPL', 2026, 'n<1K', 'malcolmrey''s Various AI Model Repository 	 This is the repository of malcolmrey where various things related to Stable Diffusion, Flux, WAN, and other upcoming model ar (182 likes, 53,192 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("malcolmrey/various")', 'Trending Score: 46, Likes: 182, Downloads: 53,192', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/malcolmrey/various', '[{"text":"malcolmrey/various on Hugging Face Datasets","url":"https://huggingface.co/datasets/malcolmrey/various"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Edge0-35B-A3B-preview', 'Edge0', 'Model', 'NLP', 'APACHE-2.0', 2026, '35B params', 'High-performance NLP open-weights model by Edge0, trending with over 538 community likes and 1,596 downloads on Hugging Face.', 'Edge0 text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Edge0/Edge0-35B-A3B-preview", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Edge0/Edge0-35B-A3B-preview")', 'Trending Score: 520, Likes: 538, Downloads: 1,596', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Edge0/Edge0-35B-A3B-preview', '[{"text":"Edge0/Edge0-35B-A3B-preview on Hugging Face","url":"https://huggingface.co/Edge0/Edge0-35B-A3B-preview"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Wan_2.2_I2V_14B_Custom_Lora_Wow', 'Cockdaddyfuck', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Cockdaddyfuck. Trending with 113 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Cockdaddyfuck/Wan_2.2_I2V_14B_Custom_Lora_Wow', 'Trending Score: 73, Community Likes: 113', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/Cockdaddyfuck/Wan_2.2_I2V_14B_Custom_Lora_Wow', '[{"text":"Cockdaddyfuck/Wan_2.2_I2V_14B_Custom_Lora_Wow on Hugging Face Spaces","url":"https://huggingface.co/spaces/Cockdaddyfuck/Wan_2.2_I2V_14B_Custom_Lora_Wow"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('horus', 'softmata', 'Framework', 'MLOps', 'Apache-2.0', 2026, '146MB Repo', 'Fastest Robotics Runtime System.  If phones have Android, robots deserve HORUS.', 'Modular AI codebase with native Python/C++ bindings and distributed workflow support.', 'git clone https://github.com/softmata/horus
+cd horus
+pip install -e .', 'GitHub Stars: 435, Forks: 31', 'Requires local Python environment and dependency configuration.', 'https://github.com/softmata/horus', '[{"text":"softmata/horus on GitHub","url":"https://github.com/softmata/horus"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('hh-rlhf', 'Anthropic', 'Dataset', 'NLP', 'MIT', 2026, '100K<n<1M', 'Dataset Card for HH-RLHF 	 	 		 	 	 		Dataset Summary 	 This repository provides access to two different kinds of data: Human preference data about helpfulness and harm (2,043 likes, 39,538 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("Anthropic/hh-rlhf")', 'Trending Score: 33, Likes: 2,043, Downloads: 39,538', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/Anthropic/hh-rlhf', '[{"text":"Anthropic/hh-rlhf on Hugging Face Datasets","url":"https://huggingface.co/datasets/Anthropic/hh-rlhf"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

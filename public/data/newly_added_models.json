@@ -1,5 +1,98 @@
 [
   {
+    "date": "2026-09-13",
+    "assets": [
+      {
+        "name": "Edge0-35B-A3B-preview",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by Edge0, trending with over 538 community likes and 1,596 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Edge0",
+        "size": "35B params",
+        "architecture": "Edge0 text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Edge0/Edge0-35B-A3B-preview\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Edge0/Edge0-35B-A3B-preview\")",
+        "benchmarks": "Trending Score: 520, Likes: 538, Downloads: 1,596",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": true,
+        "url": "https://huggingface.co/Edge0/Edge0-35B-A3B-preview",
+        "citations": [
+          {
+            "text": "Edge0/Edge0-35B-A3B-preview on Hugging Face",
+            "url": "https://huggingface.co/Edge0/Edge0-35B-A3B-preview"
+          }
+        ]
+      },
+      {
+        "name": "Wan_2.2_I2V_14B_Custom_Lora_Wow",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Cockdaddyfuck. Trending with 113 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "Cockdaddyfuck",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Cockdaddyfuck/Wan_2.2_I2V_14B_Custom_Lora_Wow",
+        "benchmarks": "Trending Score: 73, Community Likes: 113",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": true,
+        "url": "https://huggingface.co/spaces/Cockdaddyfuck/Wan_2.2_I2V_14B_Custom_Lora_Wow",
+        "citations": [
+          {
+            "text": "Cockdaddyfuck/Wan_2.2_I2V_14B_Custom_Lora_Wow on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/Cockdaddyfuck/Wan_2.2_I2V_14B_Custom_Lora_Wow"
+          }
+        ]
+      },
+      {
+        "name": "horus",
+        "type": "Framework",
+        "summary": "Fastest Robotics Runtime System.  If phones have Android, robots deserve HORUS.",
+        "task": "MLOps",
+        "license": "Apache-2.0",
+        "year": 2026,
+        "org": "softmata",
+        "size": "146MB Repo",
+        "architecture": "Modular AI codebase with native Python/C++ bindings and distributed workflow support.",
+        "usage": "git clone https://github.com/softmata/horus\ncd horus\npip install -e .",
+        "benchmarks": "GitHub Stars: 435, Forks: 31",
+        "limitations": "Requires local Python environment and dependency configuration.",
+        "popular": true,
+        "url": "https://github.com/softmata/horus",
+        "citations": [
+          {
+            "text": "softmata/horus on GitHub",
+            "url": "https://github.com/softmata/horus"
+          }
+        ]
+      },
+      {
+        "name": "hh-rlhf",
+        "type": "Dataset",
+        "summary": "Dataset Card for HH-RLHF \t \t \t\t \t \t \t\tDataset Summary \t This repository provides access to two different kinds of data: Human preference data about helpfulness and harm (2,043 likes, 39,538 downloads).",
+        "task": "NLP",
+        "license": "MIT",
+        "year": 2026,
+        "org": "Anthropic",
+        "size": "100K<n<1M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Anthropic/hh-rlhf\")",
+        "benchmarks": "Trending Score: 33, Likes: 2,043, Downloads: 39,538",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": true,
+        "url": "https://huggingface.co/datasets/Anthropic/hh-rlhf",
+        "citations": [
+          {
+            "text": "Anthropic/hh-rlhf on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/Anthropic/hh-rlhf"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-12",
     "assets": [
       {

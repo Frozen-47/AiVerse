@@ -1,33 +1,28 @@
 {
-  "timestamp": "2026-09-12T02:20:23.579Z",
+  "timestamp": "2026-09-13T02:18:06.692Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
+  "healthy": 21,
+  "broken": 4,
   "issues": [
     {
-      "name": "Perplexity",
-      "url": "https://www.perplexity.ai",
+      "name": "DALL-E 3",
+      "url": "https://openai.com/dall-e-3",
       "status": 403
     },
     {
-      "name": "Meta AI",
-      "url": "https://www.meta.ai",
+      "name": "DeepSeek Chat",
+      "url": "https://chat.deepseek.com",
       "status": 403
     },
     {
-      "name": "Whisper",
-      "url": "https://openai.com/research/whisper",
-      "status": 403
+      "name": "Play.ht",
+      "url": "https://play.ht",
+      "status": "Network Error"
     },
     {
-      "name": "GPT-3",
-      "url": "https://openai.com/research/language-models-are-few-shot-learners",
-      "status": 403
-    },
-    {
-      "name": "Mistral Le Chat",
-      "url": "https://chat.mistral.ai",
-      "status": 403
+      "name": "ERNIE Bot",
+      "url": "https://yiyan.baidu.com",
+      "status": 404
     }
   ]
 }

@@ -1,60 +1,60 @@
 {
-  "timestamp": "2026-09-12T02:20:23.527Z",
+  "timestamp": "2026-09-13T02:18:06.610Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash",
       "author": "deepseek-ai",
-      "likes": 1803,
-      "downloads": 75774,
+      "likes": 2019,
+      "downloads": 140636,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
     },
     {
       "id": "openbmb/MiniCPM5-2B",
       "author": "openbmb",
-      "likes": 1197,
-      "downloads": 67550,
+      "likes": 1262,
+      "downloads": 102334,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/openbmb/MiniCPM5-2B"
     },
     {
-      "id": "XHToken/Spark-X2.5-4B",
-      "author": "XHToken",
-      "likes": 1107,
-      "downloads": 17712,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/XHToken/Spark-X2.5-4B"
-    },
-    {
       "id": "nex-agi/Nex-N2.5-mini",
       "author": "nex-agi",
-      "likes": 692,
-      "downloads": 3121,
+      "likes": 738,
+      "downloads": 3581,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/nex-agi/Nex-N2.5-mini"
     },
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 14764,
-      "downloads": 7563763,
+      "likes": 14870,
+      "downloads": 7726687,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
     },
     {
-      "id": "ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
-      "author": "ISTA-DASLab",
-      "likes": 838,
-      "downloads": 682187,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF"
+      "id": "Edge0/Edge0-35B-A3B-preview",
+      "author": "Edge0",
+      "likes": 538,
+      "downloads": 1596,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/Edge0/Edge0-35B-A3B-preview"
+    },
+    {
+      "id": "XHToken/Spark-X2.5-4B",
+      "author": "XHToken",
+      "likes": 1135,
+      "downloads": 19733,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/XHToken/Spark-X2.5-4B"
     }
   ],
   "papers": [
     {
       "title": "Studying Image Tokenizers as Visual Languages in Unified Multimodal Models",
       "summary": "Using a controlled autoregressive testbed, the study analyzes task-specific validation losses during multimodal pretraining to evaluate how image tokenizer design affects joint text-image modeling and downstream performance.",
-      "upvotes": 4,
+      "upvotes": 19,
       "arxiv_id": "2609.09143",
       "url": "https://huggingface.co/papers/2609.09143",
       "githubRepo": "https://github.com/amazon-far/Tokenizer_UMM"
@@ -62,7 +62,7 @@
     {
       "title": "Think Before You Link: Rarity, Reasoning, and Retrieval in Multilingual Entity Linking",
       "summary": "A reasoning-capable vision-language model that iteratively retrieves and reasons over Wikipedia improves multimodal entity linking for rare entities defined by knowledge-graph structure.",
-      "upvotes": 2,
+      "upvotes": 12,
       "arxiv_id": "2609.10745",
       "url": "https://huggingface.co/papers/2609.10745",
       "githubRepo": "https://github.com/neulab/think-before-you-link"
@@ -70,7 +70,7 @@
     {
       "title": "Building Multilingual Bridges: Data Mixing as the Pillar of Generalization for In-Language Reasoning",
       "summary": "Optimized supervised fine-tuning data composition enables reasoning models to consistently process and respond in diverse non-English languages without requiring reasoning supervision in each target language.",
-      "upvotes": 2,
+      "upvotes": 16,
       "arxiv_id": "2609.10445",
       "url": "https://huggingface.co/papers/2609.10445",
       "githubRepo": null
@@ -78,7 +78,7 @@
     {
       "title": "Adaptive Bridge: A Proxy-Based Decoupling Layer for Mitigating DDS Backpressure in ROS 2",
       "summary": "A proxy layer isolates critical ROS 2 subscribers from degraded ones via topic splitting and dynamic rate control to eliminate DDS backpressure.",
-      "upvotes": 1,
+      "upvotes": 12,
       "arxiv_id": "2608.15380",
       "url": "https://huggingface.co/papers/2608.15380",
       "githubRepo": "https://github.com/KaushalrajPuwar/adaptive-bridge"
@@ -86,7 +86,7 @@
     {
       "title": "Beyond Solver Verdicts: Generative Reward Models for Autoformalization",
       "summary": "Neurosymbolic reasoning is vulnerable to incorrect but verdict-matching formal translations, which are addressed by a generative verification method that scores reference equivalence without an oracle and improves downstream accuracy.",
-      "upvotes": 1,
+      "upvotes": 15,
       "arxiv_id": "2609.11085",
       "url": "https://huggingface.co/papers/2609.11085",
       "githubRepo": null

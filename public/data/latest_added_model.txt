@@ -1,1 +1,1 @@
-Nex-N2.5-mini
+Edge0-35B-A3B-preview

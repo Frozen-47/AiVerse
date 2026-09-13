@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-12",
+  "date": "2026-09-13",
   "tool": {
-    "name": "Fireworks AI",
+    "name": "OpenRouter",
     "type": "Platform",
-    "summary": "Production-grade generative AI inference platform delivering blazing fast latency and cost efficiency for open-weights vision, audio, and language models.",
+    "summary": "Unified API gateway and marketplace routing to 200+ AI models across dozens of providers with automatic failover, cost optimization, and open community stats.",
     "task": "MLOps",
     "license": "Proprietary",
     "year": 2024,
-    "org": "Fireworks AI",
-    "size": "Cloud API",
-    "architecture": "Custom inference engine with fine-grained speculative decoding and LoRA multiplexing.",
-    "usage": "from openai import OpenAI\nclient = OpenAI(base_url=\"https://api.fireworks.ai/inference/v1\", api_key=\"FW_KEY\")\nresponse = client.chat.completions.create(model=\"accounts/fireworks/models/deepseek-v3\", messages=[...])",
-    "benchmarks": "Sub-100ms time-to-first-token and ultra-high concurrency.",
-    "limitations": "Proprietary cloud platform.",
+    "org": "OpenRouter",
+    "size": "200+ models",
+    "architecture": "Low-latency global edge API router with multi-provider fallback.",
+    "usage": "fetch(\"https://openrouter.ai/api/v1/chat/completions\", {\n  method: \"POST\",\n  headers: {\n    \"Authorization\": \"Bearer YOUR_KEY\",\n    \"Content-Type\": \"application/json\"\n  },\n  body: JSON.stringify({\n    \"model\": \"deepseek/deepseek-r1\",\n    \"messages\": [{\"role\": \"user\", \"content\": \"Hello!\"}]\n  })\n})",
+    "benchmarks": "Industry leader in model choice and real-time LLM token throughput telemetry.",
+    "limitations": "Upstream provider outages can impact specific model routes.",
     "popular": true,
-    "url": "https://fireworks.ai",
+    "url": "https://openrouter.ai",
     "citations": [
       {
-        "text": "Fireworks AI Platform",
-        "url": "https://fireworks.ai"
+        "text": "OpenRouter",
+        "url": "https://openrouter.ai"
       }
     ]
   }
