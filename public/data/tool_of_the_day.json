@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-13",
+  "date": "2026-09-14",
   "tool": {
-    "name": "OpenRouter",
-    "type": "Platform",
-    "summary": "Unified API gateway and marketplace routing to 200+ AI models across dozens of providers with automatic failover, cost optimization, and open community stats.",
+    "name": "Transformers.js",
+    "type": "Framework",
+    "summary": "State-of-the-art ML library from Hugging Face that runs pretrained models directly inside web browsers and Node.js with zero server dependencies via ONNX Runtime and WebGPU.",
     "task": "MLOps",
-    "license": "Proprietary",
+    "license": "Apache-2.0",
     "year": 2024,
-    "org": "OpenRouter",
-    "size": "200+ models",
-    "architecture": "Low-latency global edge API router with multi-provider fallback.",
-    "usage": "fetch(\"https://openrouter.ai/api/v1/chat/completions\", {\n  method: \"POST\",\n  headers: {\n    \"Authorization\": \"Bearer YOUR_KEY\",\n    \"Content-Type\": \"application/json\"\n  },\n  body: JSON.stringify({\n    \"model\": \"deepseek/deepseek-r1\",\n    \"messages\": [{\"role\": \"user\", \"content\": \"Hello!\"}]\n  })\n})",
-    "benchmarks": "Industry leader in model choice and real-time LLM token throughput telemetry.",
-    "limitations": "Upstream provider outages can impact specific model routes.",
+    "org": "Hugging Face",
+    "size": "N/A",
+    "architecture": "WebAssembly + WebGPU execution runtime for ONNX neural network models.",
+    "usage": "import { pipeline } from '@huggingface/transformers';\nconst classifier = await pipeline('sentiment-analysis');\nconst output = await classifier('I love running AI locally in my browser!');",
+    "benchmarks": "Up to 10x speedup utilizing client-side WebGPU acceleration in Chrome/Edge.",
+    "limitations": "Model size bounded by client browser RAM / VRAM allocation.",
     "popular": true,
-    "url": "https://openrouter.ai",
+    "url": "https://github.com/huggingface/transformers.js",
     "citations": [
       {
-        "text": "OpenRouter",
-        "url": "https://openrouter.ai"
+        "text": "Transformers.js Docs",
+        "url": "https://huggingface.co/docs/transformers.js"
       }
     ]
   }

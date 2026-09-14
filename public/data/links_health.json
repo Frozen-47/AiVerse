@@ -1,28 +1,33 @@
 {
-  "timestamp": "2026-09-13T02:18:06.692Z",
+  "timestamp": "2026-09-14T02:35:35.431Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 20,
+  "broken": 5,
   "issues": [
+    {
+      "name": "GPT-4o mini",
+      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+      "status": 403
+    },
     {
       "name": "DALL-E 3",
       "url": "https://openai.com/dall-e-3",
       "status": 403
     },
     {
-      "name": "DeepSeek Chat",
-      "url": "https://chat.deepseek.com",
+      "name": "Phind",
+      "url": "https://www.phind.com",
       "status": 403
     },
     {
-      "name": "Play.ht",
-      "url": "https://play.ht",
-      "status": "Network Error"
+      "name": "GPT-3.5 Turbo",
+      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
+      "status": 404
     },
     {
-      "name": "ERNIE Bot",
-      "url": "https://yiyan.baidu.com",
-      "status": 404
+      "name": "Krea AI",
+      "url": "https://www.krea.ai",
+      "status": "Network Error"
     }
   ]
 }

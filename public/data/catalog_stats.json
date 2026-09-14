@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-09-13T02:18:04.124Z",
-  "totalEntries": 274,
-  "popularEntries": 224,
+  "timestamp": "2026-09-14T02:35:31.933Z",
+  "totalEntries": 277,
+  "popularEntries": 226,
   "totalUsers": 10,
   "averageRating": 4.38,
   "totalRatings": 8,
-  "newEntriesCount": 47,
+  "newEntriesCount": 50,
   "byType": {
-    "Model": 99,
+    "Model": 100,
     "Framework": 33,
-    "Platform": 36,
-    "Dataset": 35,
+    "Platform": 37,
+    "Dataset": 36,
     "AI": 71
   },
   "byTask": {
-    "NLP": 104,
-    "AI Coding": 21,
-    "Multimodal": 24,
+    "NLP": 105,
+    "AI Coding": 22,
+    "Multimodal": 25,
     "Research": 11,
     "Image Generation": 9,
     "Video Generation": 11,
@@ -66,9 +66,9 @@
     "Proprietary / DeepSeek License": 1,
     "Open Source UI / Various model licenses": 1,
     "Free": 1,
-    "APACHE-2.0": 11,
+    "APACHE-2.0": 13,
     "OTHER": 6,
-    "Community Hosted": 11,
+    "Community Hosted": 12,
     "NOASSERTION": 4,
     "CC-BY-SA-4.0": 1,
     "Open Data": 1,
@@ -76,24 +76,24 @@
     "WTFPL": 1
   },
   "toolOfTheDay": {
-    "name": "OpenRouter",
-    "type": "Platform",
-    "summary": "Unified API gateway and marketplace routing to 200+ AI models across dozens of providers with automatic failover, cost optimization, and open community stats.",
+    "name": "Transformers.js",
+    "type": "Framework",
+    "summary": "State-of-the-art ML library from Hugging Face that runs pretrained models directly inside web browsers and Node.js with zero server dependencies via ONNX Runtime and WebGPU.",
     "task": "MLOps",
-    "license": "Proprietary",
+    "license": "Apache-2.0",
     "year": 2024,
-    "org": "OpenRouter",
-    "size": "200+ models",
-    "architecture": "Low-latency global edge API router with multi-provider fallback.",
-    "usage": "fetch(\"https://openrouter.ai/api/v1/chat/completions\", {\n  method: \"POST\",\n  headers: {\n    \"Authorization\": \"Bearer YOUR_KEY\",\n    \"Content-Type\": \"application/json\"\n  },\n  body: JSON.stringify({\n    \"model\": \"deepseek/deepseek-r1\",\n    \"messages\": [{\"role\": \"user\", \"content\": \"Hello!\"}]\n  })\n})",
-    "benchmarks": "Industry leader in model choice and real-time LLM token throughput telemetry.",
-    "limitations": "Upstream provider outages can impact specific model routes.",
+    "org": "Hugging Face",
+    "size": "N/A",
+    "architecture": "WebAssembly + WebGPU execution runtime for ONNX neural network models.",
+    "usage": "import { pipeline } from '@huggingface/transformers';\nconst classifier = await pipeline('sentiment-analysis');\nconst output = await classifier('I love running AI locally in my browser!');",
+    "benchmarks": "Up to 10x speedup utilizing client-side WebGPU acceleration in Chrome/Edge.",
+    "limitations": "Model size bounded by client browser RAM / VRAM allocation.",
     "popular": true,
-    "url": "https://openrouter.ai",
+    "url": "https://github.com/huggingface/transformers.js",
     "citations": [
       {
-        "text": "OpenRouter",
-        "url": "https://openrouter.ai"
+        "text": "Transformers.js Docs",
+        "url": "https://huggingface.co/docs/transformers.js"
       }
     ]
   }

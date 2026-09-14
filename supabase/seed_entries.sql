@@ -1,4 +1,4 @@
--- Seed / Upsert all 274 AiVerse entries into Supabase
+-- Seed / Upsert all 277 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -5772,6 +5772,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('hh-rlhf', 'Anthropic', 'Dataset', 'NLP', 'MIT', 2026, '100K<n<1M', 'Dataset Card for HH-RLHF 	 	 		 	 	 		Dataset Summary 	 This repository provides access to two different kinds of data: Human preference data about helpfulness and harm (2,043 likes, 39,538 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("Anthropic/hh-rlhf")', 'Trending Score: 33, Likes: 2,043, Downloads: 39,538', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/Anthropic/hh-rlhf', '[{"text":"Anthropic/hh-rlhf on Hugging Face Datasets","url":"https://huggingface.co/datasets/Anthropic/hh-rlhf"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Nex-N2.5-Pro', 'nex-agi', 'Model', 'NLP', 'APACHE-2.0', 2026, 'Open Weights', 'High-performance NLP open-weights model by nex-agi, trending with over 624 community likes and 30,289 downloads on Hugging Face.', 'nex-agi text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("nex-agi/Nex-N2.5-Pro", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("nex-agi/Nex-N2.5-Pro")', 'Trending Score: 479, Likes: 624, Downloads: 30,289', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/nex-agi/Nex-N2.5-Pro', '[{"text":"nex-agi/Nex-N2.5-Pro on Hugging Face","url":"https://huggingface.co/nex-agi/Nex-N2.5-Pro"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('wan2-2-fp8da-aoti-preview-2c-finishing', 'STCM', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by STCM. Trending with 96 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/STCM/wan2-2-fp8da-aoti-preview-2c-finishing', 'Trending Score: 68, Community Likes: 96', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/STCM/wan2-2-fp8da-aoti-preview-2c-finishing', '[{"text":"STCM/wan2-2-fp8da-aoti-preview-2c-finishing on Hugging Face Spaces","url":"https://huggingface.co/spaces/STCM/wan2-2-fp8da-aoti-preview-2c-finishing"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Code-Reasoning', 'IFM', 'Dataset', 'AI Coding', 'APACHE-2.0', 2026, '100M<n<1B', 'Code-Reasoning 	 	 		 	 	 		Dataset Description 	 Code problem-solving data with reasoning, direct-answer, and task-synthesis subsets. This repository is part of the K2 (46 likes, 24,363 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("IFM/Code-Reasoning")', 'Trending Score: 33, Likes: 46, Downloads: 24,363', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/IFM/Code-Reasoning', '[{"text":"IFM/Code-Reasoning on Hugging Face Datasets","url":"https://huggingface.co/datasets/IFM/Code-Reasoning"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

@@ -6064,6 +6064,72 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/Anthropic/hh-rlhf"
           }
       ]
+  },
+  {
+      "name": "Nex-N2.5-Pro",
+      "type": "Model",
+      "summary": "High-performance NLP open-weights model by nex-agi, trending with over 624 community likes and 30,289 downloads on Hugging Face.",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "nex-agi",
+      "size": "Open Weights",
+      "architecture": "nex-agi text generation architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"nex-agi/Nex-N2.5-Pro\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"nex-agi/Nex-N2.5-Pro\")",
+      "benchmarks": "Trending Score: 479, Likes: 624, Downloads: 30,289",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/nex-agi/Nex-N2.5-Pro",
+      "citations": [
+          {
+              "text": "nex-agi/Nex-N2.5-Pro on Hugging Face",
+              "url": "https://huggingface.co/nex-agi/Nex-N2.5-Pro"
+          }
+      ]
+  },
+  {
+      "name": "wan2-2-fp8da-aoti-preview-2c-finishing",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by STCM. Trending with 96 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "STCM",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/STCM/wan2-2-fp8da-aoti-preview-2c-finishing",
+      "benchmarks": "Trending Score: 68, Community Likes: 96",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/STCM/wan2-2-fp8da-aoti-preview-2c-finishing",
+      "citations": [
+          {
+              "text": "STCM/wan2-2-fp8da-aoti-preview-2c-finishing on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/STCM/wan2-2-fp8da-aoti-preview-2c-finishing"
+          }
+      ]
+  },
+  {
+      "name": "Code-Reasoning",
+      "type": "Dataset",
+      "summary": "Code-Reasoning \t \t \t\t \t \t \t\tDataset Description \t Code problem-solving data with reasoning, direct-answer, and task-synthesis subsets. This repository is part of the K2 (46 likes, 24,363 downloads).",
+      "task": "AI Coding",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "IFM",
+      "size": "100M<n<1B",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"IFM/Code-Reasoning\")",
+      "benchmarks": "Trending Score: 33, Likes: 46, Downloads: 24,363",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/IFM/Code-Reasoning",
+      "citations": [
+          {
+              "text": "IFM/Code-Reasoning on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/IFM/Code-Reasoning"
+          }
+      ]
   }
 ];
 

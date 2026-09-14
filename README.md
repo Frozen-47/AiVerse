@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-13)
+### ⚡ Daily AI Pulse (2026-09-14)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Edge0-35B-A3B-preview** (`Model`), **Wan_2.2_I2V_14B_Custom_Lora_Wow** (`Platform`), **horus** (`Framework`), **hh-rlhf** (`Dataset`) |
-| 🌟 **Tool of the Day** | **OpenRouter** (OpenRouter) — [Explore](https://openrouter.ai) |
-| 🗄️ **Catalog Entries** | **274** AI assets tracked (224 featured) |
+| 🆕 **New Assets Added** | **Nex-N2.5-Pro** (`Model`), **wan2-2-fp8da-aoti-preview-2c-finishing** (`Platform`), **Code-Reasoning** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Transformers.js** (Hugging Face) — [Explore](https://github.com/huggingface/transformers.js) |
+| 🗄️ **Catalog Entries** | **277** AI assets tracked (226 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) |
-| 📜 **Top Daily Paper** | [Studying Image Tokenizers as Visual Languages in U...](https://huggingface.co/papers/2609.09143) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Daily Run** | `Sun, 13 Sep 2026 02:18:13 GMT` |
+| 📜 **Top Daily Paper** | [Breaking the Vision-Action Shortcut: Latent Interf...](https://huggingface.co/papers/2609.12641) |
+| 🛡️ **Catalog Links Checked** | **20/25** operational |
+| 🕒 **Last Daily Run** | `Mon, 14 Sep 2026 02:35:38 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

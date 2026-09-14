@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-09-13T02:18:06.610Z",
+  "timestamp": "2026-09-14T02:35:35.356Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash",
       "author": "deepseek-ai",
-      "likes": 2019,
-      "downloads": 140636,
+      "likes": 2229,
+      "downloads": 244457,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
     },
     {
       "id": "openbmb/MiniCPM5-2B",
       "author": "openbmb",
-      "likes": 1262,
-      "downloads": 102334,
+      "likes": 1345,
+      "downloads": 150110,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/openbmb/MiniCPM5-2B"
     },
     {
+      "id": "Edge0/Edge0-35B-A3B-preview",
+      "author": "Edge0",
+      "likes": 1083,
+      "downloads": 3552,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/Edge0/Edge0-35B-A3B-preview"
+    },
+    {
       "id": "nex-agi/Nex-N2.5-mini",
       "author": "nex-agi",
-      "likes": 738,
-      "downloads": 3581,
+      "likes": 759,
+      "downloads": 3970,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/nex-agi/Nex-N2.5-mini"
     },
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 14870,
-      "downloads": 7726687,
+      "likes": 14989,
+      "downloads": 7768964,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
     },
     {
-      "id": "Edge0/Edge0-35B-A3B-preview",
-      "author": "Edge0",
-      "likes": 538,
-      "downloads": 1596,
+      "id": "nex-agi/Nex-N2.5-Pro",
+      "author": "nex-agi",
+      "likes": 624,
+      "downloads": 30289,
       "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/Edge0/Edge0-35B-A3B-preview"
-    },
-    {
-      "id": "XHToken/Spark-X2.5-4B",
-      "author": "XHToken",
-      "likes": 1135,
-      "downloads": 19733,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/XHToken/Spark-X2.5-4B"
+      "url": "https://huggingface.co/nex-agi/Nex-N2.5-Pro"
     }
   ],
   "papers": [
     {
-      "title": "Studying Image Tokenizers as Visual Languages in Unified Multimodal Models",
-      "summary": "Using a controlled autoregressive testbed, the study analyzes task-specific validation losses during multimodal pretraining to evaluate how image tokenizer design affects joint text-image modeling and downstream performance.",
-      "upvotes": 19,
-      "arxiv_id": "2609.09143",
-      "url": "https://huggingface.co/papers/2609.09143",
-      "githubRepo": "https://github.com/amazon-far/Tokenizer_UMM"
+      "title": "Breaking the Vision-Action Shortcut: Latent Interface Training for Generalizable Robotics Foundation Models",
+      "summary": "LIT improves robot action generalization by first training pose-conditioned action priors without images, then constraining visual inputs through a pose-supervised latent interface that preserves spatial goal information.",
+      "upvotes": 17,
+      "arxiv_id": "2609.12641",
+      "url": "https://huggingface.co/papers/2609.12641",
+      "githubRepo": "https://github.com/MAGICLAB-NUS/LIT"
     },
     {
-      "title": "Think Before You Link: Rarity, Reasoning, and Retrieval in Multilingual Entity Linking",
-      "summary": "A reasoning-capable vision-language model that iteratively retrieves and reasons over Wikipedia improves multimodal entity linking for rare entities defined by knowledge-graph structure.",
-      "upvotes": 12,
-      "arxiv_id": "2609.10745",
-      "url": "https://huggingface.co/papers/2609.10745",
-      "githubRepo": "https://github.com/neulab/think-before-you-link"
+      "title": "COBRA-Skills: Contextual Bandit-Guided Evolution for Agent Skill Optimization",
+      "summary": "COBRA-Skills improves LLM agent skill optimization by using contextual-bandit prioritization and evidence-based evolution to cut evaluation costs while maintaining high performance.",
+      "upvotes": 2,
+      "arxiv_id": "2609.11682",
+      "url": "https://huggingface.co/papers/2609.11682",
+      "githubRepo": "https://github.com/Jerry-LuP/COBRA-Skills"
     },
     {
-      "title": "Building Multilingual Bridges: Data Mixing as the Pillar of Generalization for In-Language Reasoning",
-      "summary": "Optimized supervised fine-tuning data composition enables reasoning models to consistently process and respond in diverse non-English languages without requiring reasoning supervision in each target language.",
-      "upvotes": 16,
-      "arxiv_id": "2609.10445",
-      "url": "https://huggingface.co/papers/2609.10445",
-      "githubRepo": null
+      "title": "PLC-DPO: Posterior Label Correction in Noisy and Ambiguous Preference Optimization",
+      "summary": "Posterior Label Correction DPO improves preference optimization by routing noisy pairwise labels into clean, flipped, or tied cases using calibrated policy-reference margins.",
+      "upvotes": 13,
+      "arxiv_id": "2608.30597",
+      "url": "https://huggingface.co/papers/2608.30597",
+      "githubRepo": "https://github.com/VennTum99/PLC-DPO"
     },
     {
-      "title": "Adaptive Bridge: A Proxy-Based Decoupling Layer for Mitigating DDS Backpressure in ROS 2",
-      "summary": "A proxy layer isolates critical ROS 2 subscribers from degraded ones via topic splitting and dynamic rate control to eliminate DDS backpressure.",
-      "upvotes": 12,
-      "arxiv_id": "2608.15380",
-      "url": "https://huggingface.co/papers/2608.15380",
-      "githubRepo": "https://github.com/KaushalrajPuwar/adaptive-bridge"
+      "title": "SNAP3D: Physically Grounded 3D Parts for Assembly from a Single Image",
+      "summary": "A physics-guided framework improves part-aware 3D generation by resolving inter-part penetration, recovering contact graphs, and refining parameterized connectors via simulation feedback to ensure stable, physically valid assemblies.",
+      "upvotes": 1,
+      "arxiv_id": "2609.13146",
+      "url": "https://huggingface.co/papers/2609.13146",
+      "githubRepo": "https://github.com/LucyTuan/SNAP3D"
     },
     {
-      "title": "Beyond Solver Verdicts: Generative Reward Models for Autoformalization",
-      "summary": "Neurosymbolic reasoning is vulnerable to incorrect but verdict-matching formal translations, which are addressed by a generative verification method that scores reference equivalence without an oracle and improves downstream accuracy.",
-      "upvotes": 15,
-      "arxiv_id": "2609.11085",
-      "url": "https://huggingface.co/papers/2609.11085",
-      "githubRepo": null
+      "title": "SAS: Simple Attention Sparsification via End-to-End Optimization of Context Ranking",
+      "summary": "SAS improves sparse attention by training a selector end-to-end with language modeling loss via continuous gating inside attention softmax, yielding better context ranking under tight budgets.",
+      "upvotes": 2,
+      "arxiv_id": "2609.13141",
+      "url": "https://huggingface.co/papers/2609.13141",
+      "githubRepo": "https://github.com/Tencent-Hunyuan/Simple-Attention-Sparsification"
     }
   ]
 }
