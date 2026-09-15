@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-14",
+  "date": "2026-09-15",
   "tool": {
-    "name": "Transformers.js",
+    "name": "LiteLLM",
     "type": "Framework",
-    "summary": "State-of-the-art ML library from Hugging Face that runs pretrained models directly inside web browsers and Node.js with zero server dependencies via ONNX Runtime and WebGPU.",
+    "summary": "Universal proxy and Python SDK to call 100+ LLM APIs (OpenAI, Anthropic, Bedrock, Vertex, Ollama, Groq) using the standard OpenAI format with load balancing and fallbacks.",
     "task": "MLOps",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "year": 2024,
-    "org": "Hugging Face",
+    "org": "BerriAI",
     "size": "N/A",
-    "architecture": "WebAssembly + WebGPU execution runtime for ONNX neural network models.",
-    "usage": "import { pipeline } from '@huggingface/transformers';\nconst classifier = await pipeline('sentiment-analysis');\nconst output = await classifier('I love running AI locally in my browser!');",
-    "benchmarks": "Up to 10x speedup utilizing client-side WebGPU acceleration in Chrome/Edge.",
-    "limitations": "Model size bounded by client browser RAM / VRAM allocation.",
+    "architecture": "Unified API gateway proxy and translation layer.",
+    "usage": "from litellm import completion\nresponse = completion(\n    model=\"anthropic/claude-3-5-sonnet-20240620\",\n    messages=[{\"role\": \"user\", \"content\": \"Hello World\"}]\n)",
+    "benchmarks": "99.99% gateway reliability with automatic multi-provider failover routing.",
+    "limitations": "Gateway proxy adds slight network hop (~5ms) in high-throughput setups.",
     "popular": true,
-    "url": "https://github.com/huggingface/transformers.js",
+    "url": "https://github.com/BerriAI/litellm",
     "citations": [
       {
-        "text": "Transformers.js Docs",
-        "url": "https://huggingface.co/docs/transformers.js"
+        "text": "LiteLLM Documentation",
+        "url": "https://docs.litellm.ai"
       }
     ]
   }

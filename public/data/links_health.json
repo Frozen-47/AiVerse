@@ -1,33 +1,13 @@
 {
-  "timestamp": "2026-09-14T02:35:35.431Z",
+  "timestamp": "2026-09-15T02:39:19.753Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
-      "name": "GPT-4o mini",
-      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
-      "status": 403
-    },
-    {
-      "name": "DALL-E 3",
-      "url": "https://openai.com/dall-e-3",
-      "status": 403
-    },
-    {
-      "name": "Phind",
-      "url": "https://www.phind.com",
-      "status": 403
-    },
-    {
-      "name": "GPT-3.5 Turbo",
-      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
-      "status": 404
-    },
-    {
-      "name": "Krea AI",
-      "url": "https://www.krea.ai",
-      "status": "Network Error"
+      "name": "tiktok-videos-4b",
+      "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
+      "status": 401
     }
   ]
 }

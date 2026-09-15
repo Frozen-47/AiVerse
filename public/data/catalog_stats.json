@@ -1,29 +1,29 @@
 {
-  "timestamp": "2026-09-14T02:35:31.933Z",
-  "totalEntries": 277,
-  "popularEntries": 226,
+  "timestamp": "2026-09-15T02:39:17.084Z",
+  "totalEntries": 280,
+  "popularEntries": 228,
   "totalUsers": 10,
   "averageRating": 4.38,
   "totalRatings": 8,
-  "newEntriesCount": 50,
+  "newEntriesCount": 53,
   "byType": {
-    "Model": 100,
+    "Model": 101,
     "Framework": 33,
-    "Platform": 37,
-    "Dataset": 36,
+    "Platform": 38,
+    "Dataset": 37,
     "AI": 71
   },
   "byTask": {
     "NLP": 105,
     "AI Coding": 22,
-    "Multimodal": 25,
+    "Multimodal": 26,
     "Research": 11,
     "Image Generation": 9,
     "Video Generation": 11,
-    "Audio": 13,
+    "Audio": 14,
     "MLOps": 44,
     "Productivity": 14,
-    "Computer Vision": 19,
+    "Computer Vision": 20,
     "Education": 4
   },
   "byLicense": {
@@ -66,34 +66,35 @@
     "Proprietary / DeepSeek License": 1,
     "Open Source UI / Various model licenses": 1,
     "Free": 1,
-    "APACHE-2.0": 13,
+    "APACHE-2.0": 14,
     "OTHER": 6,
-    "Community Hosted": 12,
+    "Community Hosted": 13,
     "NOASSERTION": 4,
     "CC-BY-SA-4.0": 1,
     "Open Data": 1,
     "CC-BY-4.0": 1,
-    "WTFPL": 1
+    "WTFPL": 1,
+    "CC-BY-NC-4.0": 1
   },
   "toolOfTheDay": {
-    "name": "Transformers.js",
+    "name": "LiteLLM",
     "type": "Framework",
-    "summary": "State-of-the-art ML library from Hugging Face that runs pretrained models directly inside web browsers and Node.js with zero server dependencies via ONNX Runtime and WebGPU.",
+    "summary": "Universal proxy and Python SDK to call 100+ LLM APIs (OpenAI, Anthropic, Bedrock, Vertex, Ollama, Groq) using the standard OpenAI format with load balancing and fallbacks.",
     "task": "MLOps",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "year": 2024,
-    "org": "Hugging Face",
+    "org": "BerriAI",
     "size": "N/A",
-    "architecture": "WebAssembly + WebGPU execution runtime for ONNX neural network models.",
-    "usage": "import { pipeline } from '@huggingface/transformers';\nconst classifier = await pipeline('sentiment-analysis');\nconst output = await classifier('I love running AI locally in my browser!');",
-    "benchmarks": "Up to 10x speedup utilizing client-side WebGPU acceleration in Chrome/Edge.",
-    "limitations": "Model size bounded by client browser RAM / VRAM allocation.",
+    "architecture": "Unified API gateway proxy and translation layer.",
+    "usage": "from litellm import completion\nresponse = completion(\n    model=\"anthropic/claude-3-5-sonnet-20240620\",\n    messages=[{\"role\": \"user\", \"content\": \"Hello World\"}]\n)",
+    "benchmarks": "99.99% gateway reliability with automatic multi-provider failover routing.",
+    "limitations": "Gateway proxy adds slight network hop (~5ms) in high-throughput setups.",
     "popular": true,
-    "url": "https://github.com/huggingface/transformers.js",
+    "url": "https://github.com/BerriAI/litellm",
     "citations": [
       {
-        "text": "Transformers.js Docs",
-        "url": "https://huggingface.co/docs/transformers.js"
+        "text": "LiteLLM Documentation",
+        "url": "https://docs.litellm.ai"
       }
     ]
   }

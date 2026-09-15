@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-14)
+### ⚡ Daily AI Pulse (2026-09-15)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Nex-N2.5-Pro** (`Model`), **wan2-2-fp8da-aoti-preview-2c-finishing** (`Platform`), **Code-Reasoning** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Transformers.js** (Hugging Face) — [Explore](https://github.com/huggingface/transformers.js) |
-| 🗄️ **Catalog Entries** | **277** AI assets tracked (226 featured) |
+| 🆕 **New Assets Added** | **YuE2-3B** (`Model`), **AuK** (`Platform`), **Tag_cleaning** (`Dataset`) |
+| 🌟 **Tool of the Day** | **LiteLLM** (BerriAI) — [Explore](https://github.com/BerriAI/litellm) |
+| 🗄️ **Catalog Entries** | **280** AI assets tracked (228 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) |
-| 📜 **Top Daily Paper** | [Breaking the Vision-Action Shortcut: Latent Interf...](https://huggingface.co/papers/2609.12641) |
-| 🛡️ **Catalog Links Checked** | **20/25** operational |
-| 🕒 **Last Daily Run** | `Mon, 14 Sep 2026 02:35:38 GMT` |
+| 📜 **Top Daily Paper** | [Vidu S2: Real-Time Interactive, Editable, and Spat...](https://huggingface.co/papers/2609.11638) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Daily Run** | `Tue, 15 Sep 2026 02:39:23 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

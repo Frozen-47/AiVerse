@@ -6130,6 +6130,72 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/IFM/Code-Reasoning"
           }
       ]
+  },
+  {
+      "name": "YuE2-3B",
+      "type": "Model",
+      "summary": "High-performance Audio open-weights model by m-a-p, trending with over 477 community likes and 5,186 downloads on Hugging Face.",
+      "task": "Audio",
+      "license": "CC-BY-NC-4.0",
+      "year": 2026,
+      "org": "m-a-p",
+      "size": "3B params",
+      "architecture": "m-a-p text to audio architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"m-a-p/YuE2-3B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"m-a-p/YuE2-3B\")",
+      "benchmarks": "Trending Score: 453, Likes: 477, Downloads: 5,186",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/m-a-p/YuE2-3B",
+      "citations": [
+          {
+              "text": "m-a-p/YuE2-3B on Hugging Face",
+              "url": "https://huggingface.co/m-a-p/YuE2-3B"
+          }
+      ]
+  },
+  {
+      "name": "AuK",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by tencent. Trending with 52 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "tencent",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/tencent/AuK",
+      "benchmarks": "Trending Score: 51, Community Likes: 52",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/tencent/AuK",
+      "citations": [
+          {
+              "text": "tencent/AuK on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/tencent/AuK"
+          }
+      ]
+  },
+  {
+      "name": "Tag_cleaning",
+      "type": "Dataset",
+      "summary": "Danbooru 2026 Tag Cleaning Corrections \t This dataset contains image-level tag corrections for an anime-image tagging corpus. It contains correction instructions only; (32 likes, 320 downloads).",
+      "task": "Computer Vision",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "Grio43",
+      "size": "1M<n<10M",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Grio43/Tag_cleaning\")",
+      "benchmarks": "Trending Score: 28, Likes: 32, Downloads: 320",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/Grio43/Tag_cleaning",
+      "citations": [
+          {
+              "text": "Grio43/Tag_cleaning on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/Grio43/Tag_cleaning"
+          }
+      ]
   }
 ];
 

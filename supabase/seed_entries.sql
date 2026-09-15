@@ -1,4 +1,4 @@
--- Seed / Upsert all 277 AiVerse entries into Supabase
+-- Seed / Upsert all 280 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -5834,6 +5834,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('Code-Reasoning', 'IFM', 'Dataset', 'AI Coding', 'APACHE-2.0', 2026, '100M<n<1B', 'Code-Reasoning 	 	 		 	 	 		Dataset Description 	 Code problem-solving data with reasoning, direct-answer, and task-synthesis subsets. This repository is part of the K2 (46 likes, 24,363 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("IFM/Code-Reasoning")', 'Trending Score: 33, Likes: 46, Downloads: 24,363', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/IFM/Code-Reasoning', '[{"text":"IFM/Code-Reasoning on Hugging Face Datasets","url":"https://huggingface.co/datasets/IFM/Code-Reasoning"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('YuE2-3B', 'm-a-p', 'Model', 'Audio', 'CC-BY-NC-4.0', 2026, '3B params', 'High-performance Audio open-weights model by m-a-p, trending with over 477 community likes and 5,186 downloads on Hugging Face.', 'm-a-p text to audio architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("m-a-p/YuE2-3B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("m-a-p/YuE2-3B")', 'Trending Score: 453, Likes: 477, Downloads: 5,186', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/m-a-p/YuE2-3B', '[{"text":"m-a-p/YuE2-3B on Hugging Face","url":"https://huggingface.co/m-a-p/YuE2-3B"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('AuK', 'tencent', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by tencent. Trending with 52 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/tencent/AuK', 'Trending Score: 51, Community Likes: 52', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/tencent/AuK', '[{"text":"tencent/AuK on Hugging Face Spaces","url":"https://huggingface.co/spaces/tencent/AuK"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Tag_cleaning', 'Grio43', 'Dataset', 'Computer Vision', 'APACHE-2.0', 2026, '1M<n<10M', 'Danbooru 2026 Tag Cleaning Corrections 	 This dataset contains image-level tag corrections for an anime-image tagging corpus. It contains correction instructions only; (32 likes, 320 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("Grio43/Tag_cleaning")', 'Trending Score: 28, Likes: 32, Downloads: 320', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/Grio43/Tag_cleaning', '[{"text":"Grio43/Tag_cleaning on Hugging Face Datasets","url":"https://huggingface.co/datasets/Grio43/Tag_cleaning"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
