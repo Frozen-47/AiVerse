@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-15)
+### ⚡ Daily AI Pulse (2026-09-16)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **YuE2-3B** (`Model`), **AuK** (`Platform`), **Tag_cleaning** (`Dataset`) |
-| 🌟 **Tool of the Day** | **LiteLLM** (BerriAI) — [Explore](https://github.com/BerriAI/litellm) |
-| 🗄️ **Catalog Entries** | **280** AI assets tracked (228 featured) |
+| 🆕 **New Assets Added** | **NeoHorse-1-4B** (`Model`), **ai-notes** (`Platform`), **Fable-5.1-Max-Reasoning-Filtered-5000x** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Instructor** (Jason Liu) — [Explore](https://github.com/jxnl/instructor) |
+| 🗄️ **Catalog Entries** | **283** AI assets tracked (230 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) |
-| 📜 **Top Daily Paper** | [Vidu S2: Real-Time Interactive, Editable, and Spat...](https://huggingface.co/papers/2609.11638) |
-| 🛡️ **Catalog Links Checked** | **24/25** operational |
-| 🕒 **Last Daily Run** | `Tue, 15 Sep 2026 02:39:23 GMT` |
+| 📜 **Top Daily Paper** | [AI for Games in the Foundation Model Era...](https://huggingface.co/papers/2609.16679) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Daily Run** | `Wed, 16 Sep 2026 02:33:51 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

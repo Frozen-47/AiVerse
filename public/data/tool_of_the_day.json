@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-15",
+  "date": "2026-09-16",
   "tool": {
-    "name": "LiteLLM",
+    "name": "Instructor",
     "type": "Framework",
-    "summary": "Universal proxy and Python SDK to call 100+ LLM APIs (OpenAI, Anthropic, Bedrock, Vertex, Ollama, Groq) using the standard OpenAI format with load balancing and fallbacks.",
+    "summary": "Python and TypeScript library built on Pydantic to extract guaranteed, strictly validated structured data from any LLM provider.",
     "task": "MLOps",
     "license": "MIT",
     "year": 2024,
-    "org": "BerriAI",
+    "org": "Jason Liu",
     "size": "N/A",
-    "architecture": "Unified API gateway proxy and translation layer.",
-    "usage": "from litellm import completion\nresponse = completion(\n    model=\"anthropic/claude-3-5-sonnet-20240620\",\n    messages=[{\"role\": \"user\", \"content\": \"Hello World\"}]\n)",
-    "benchmarks": "99.99% gateway reliability with automatic multi-provider failover routing.",
-    "limitations": "Gateway proxy adds slight network hop (~5ms) in high-throughput setups.",
+    "architecture": "Pydantic schema injection and automatic validation retry handler.",
+    "usage": "import instructor\nfrom openai import OpenAI\nfrom pydantic import BaseModel\n\nclient = instructor.from_openai(OpenAI())\nclass User(BaseModel):\n    name: str\n    age: int\n\nuser = client.chat.completions.create(\n    model=\"gpt-4o\",\n    response_model=User,\n    messages=[{\"role\": \"user\", \"content\": \"Alice is 28 years old.\"}]\n)",
+    "benchmarks": "Eliminates structured JSON extraction parse failures across 10+ LLM backends.",
+    "limitations": "Relies on underlying LLM function calling or tool use capabilities.",
     "popular": true,
-    "url": "https://github.com/BerriAI/litellm",
+    "url": "https://github.com/jxnl/instructor",
     "citations": [
       {
-        "text": "LiteLLM Documentation",
-        "url": "https://docs.litellm.ai"
+        "text": "Instructor Docs",
+        "url": "https://python.useinstructor.com"
       }
     ]
   }

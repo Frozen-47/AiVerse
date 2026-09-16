@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-09-15T02:39:19.033Z",
+  "timestamp": "2026-09-16T02:33:45.371Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash",
       "author": "deepseek-ai",
-      "likes": 2462,
-      "downloads": 288414,
+      "likes": 2705,
+      "downloads": 325712,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
     },
     {
       "id": "Edge0/Edge0-35B-A3B-preview",
       "author": "Edge0",
-      "likes": 2073,
-      "downloads": 8109,
+      "likes": 2814,
+      "downloads": 17853,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Edge0/Edge0-35B-A3B-preview"
     },
     {
       "id": "openbmb/MiniCPM5-2B",
       "author": "openbmb",
-      "likes": 1396,
-      "downloads": 206774,
+      "likes": 1464,
+      "downloads": 271754,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/openbmb/MiniCPM5-2B"
     },
     {
       "id": "nex-agi/Nex-N2.5-mini",
       "author": "nex-agi",
-      "likes": 781,
-      "downloads": 4543,
+      "likes": 809,
+      "downloads": 5202,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/nex-agi/Nex-N2.5-mini"
     },
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 15152,
-      "downloads": 7703400,
+      "likes": 15281,
+      "downloads": 7702543,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
     },
     {
-      "id": "nex-agi/Nex-N2.5-Pro",
-      "author": "nex-agi",
-      "likes": 633,
-      "downloads": 30489,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/nex-agi/Nex-N2.5-Pro"
+      "id": "m-a-p/YuE2-3B",
+      "author": "m-a-p",
+      "likes": 572,
+      "downloads": 6716,
+      "pipeline_tag": "text-to-audio",
+      "url": "https://huggingface.co/m-a-p/YuE2-3B"
     }
   ],
   "papers": [
     {
-      "title": "Vidu S2: Real-Time Interactive, Editable, and Spatial Video Generation",
-      "summary": "Vidu S2 introduces real-time interactive avatar and video editing models that support high-resolution spatial video generation and dynamic reference updates.",
-      "upvotes": 1,
-      "arxiv_id": "2609.11638",
-      "url": "https://huggingface.co/papers/2609.11638",
-      "githubRepo": "https://github.com/shengshu-ai/Vidu-S"
+      "title": "AI for Games in the Foundation Model Era",
+      "summary": "Foundation models, alongside advances in learned game-world models, are reshaping AI across the game lifecycle. Beyond playing games, recent systems model playe...",
+      "upvotes": 8,
+      "arxiv_id": "2609.16679",
+      "url": "https://huggingface.co/papers/2609.16679",
+      "githubRepo": "https://github.com/Eurekaleo/awesome-ai-for-games"
     },
     {
-      "title": "Discovery Foundation Models: Toward Open-Ended Discovery Intelligence",
-      "summary": "Discovery Foundation Models enable open-ended scientific discovery through iterative problem formulation, hypothesis testing, and evidence-based revision across dry and wet lab settings.",
-      "upvotes": 11,
-      "arxiv_id": "2609.15973",
-      "url": "https://huggingface.co/papers/2609.15973",
-      "githubRepo": "https://github.com/Gen-Verse/DFM-Plans"
-    },
-    {
-      "title": "Attention-DP3: Spatially Object-aware 3D Diffusion Policy via Geometry-aligned Attentional Conditioning",
-      "summary": "Attention-DP3 improves 3D diffusion policies by injecting object-level geometric cues via attention to stabilize performance under heavy clutter.",
-      "upvotes": 1,
-      "arxiv_id": "2609.13318",
-      "url": "https://huggingface.co/papers/2609.13318",
-      "githubRepo": "https://github.com/zhangzhongbo2213/Attention-DP3"
-    },
-    {
-      "title": "BVB: Benchmarking Agentic Video Understanding via Programmatic Reconstruction in Blender",
-      "summary": "A benchmark requiring agents to programmatically reconstruct real-world videos in Blender reveals that current models achieve high perceptual similarity but struggle to retain spatiotemporal facts.",
+      "title": "The Router Within: Eliciting Native Skill Routing from a Frozen LLM",
+      "summary": "Gavel extracts skill-routing signals from frozen LLM hidden states via lightweight linear projections to select tools without external retrieval or context overload.",
       "upvotes": 2,
-      "arxiv_id": "2609.15478",
-      "url": "https://huggingface.co/papers/2609.15478",
-      "githubRepo": "https://github.com/yunlong10/BVB"
+      "arxiv_id": "2609.15982",
+      "url": "https://huggingface.co/papers/2609.15982",
+      "githubRepo": null
     },
     {
-      "title": "LLaDA-UI: Bringing Block-wise Diffusion to Vision-Language GUI Agents",
-      "summary": "A 16.7B-parameter mixture-of-experts diffusion vision-language agent achieves strong multimodal GUI performance while preserving block-parallel decoding efficiency.",
-      "upvotes": 5,
-      "arxiv_id": "2609.13287",
-      "url": "https://huggingface.co/papers/2609.13287",
-      "githubRepo": "https://github.com/inclusionAI/LLaDA-UI"
+      "title": "ScienceBuddy: Recursive-in-Recursive Self-Improvement for Interactive Scientific Agents",
+      "summary": "We introduce and release ScienceBuddy, an interactive scientific research workspace that brings continually improving scientific agents into researchers' everyd...",
+      "upvotes": 14,
+      "arxiv_id": "2609.17523",
+      "url": "https://huggingface.co/papers/2609.17523",
+      "githubRepo": "https://github.com/Gen-Verse/ScienceBuddy"
+    },
+    {
+      "title": "Continual Learning Mechanisms Compose for Long-Horizon Memorization",
+      "summary": "Composing complementary continual learning mechanisms substantially improves long-horizon memorization in language models by combining data, function, and weight anchors with merged low-rank updates.",
+      "upvotes": 268,
+      "arxiv_id": "2609.06986",
+      "url": "https://huggingface.co/papers/2609.06986",
+      "githubRepo": "https://github.com/cozheyuanzhangde/compose-cl"
+    },
+    {
+      "title": "Lightning Weave: Improving the Accuracy-Efficiency Frontier of Reasoning Models through Capability Composition",
+      "summary": "Lightning Weave composes independently trained reasoning capabilities into a single efficient student via on-policy distillation, improving both accuracy and token efficiency across math and code benchmarks.",
+      "upvotes": 0,
+      "arxiv_id": "2609.14708",
+      "url": "https://huggingface.co/papers/2609.14708",
+      "githubRepo": null
     }
   ]
 }

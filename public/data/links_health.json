@@ -1,13 +1,23 @@
 {
-  "timestamp": "2026-09-15T02:39:19.753Z",
+  "timestamp": "2026-09-16T02:33:45.509Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "tiktok-videos-4b",
-      "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
+      "name": "UltraFeedback",
+      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
       "status": 401
+    },
+    {
+      "name": "DALL-E 2",
+      "url": "https://openai.com/dall-e-2",
+      "status": 403
+    },
+    {
+      "name": "ERNIE Bot",
+      "url": "https://yiyan.baidu.com",
+      "status": 404
     }
   ]
 }
