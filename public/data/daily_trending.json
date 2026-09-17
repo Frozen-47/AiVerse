@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-09-16T02:33:45.371Z",
+  "timestamp": "2026-09-17T02:38:02.935Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash",
       "author": "deepseek-ai",
-      "likes": 2705,
-      "downloads": 325712,
+      "likes": 2865,
+      "downloads": 366459,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
     },
     {
       "id": "Edge0/Edge0-35B-A3B-preview",
       "author": "Edge0",
-      "likes": 2814,
-      "downloads": 17853,
+      "likes": 3117,
+      "downloads": 27759,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Edge0/Edge0-35B-A3B-preview"
     },
     {
+      "id": "m-a-p/YuE2-3B",
+      "author": "m-a-p",
+      "likes": 648,
+      "downloads": 9391,
+      "pipeline_tag": "text-to-audio",
+      "url": "https://huggingface.co/m-a-p/YuE2-3B"
+    },
+    {
+      "id": "Qwen/Qwen3.8-27B",
+      "author": "Qwen",
+      "likes": 15410,
+      "downloads": 7667556,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
+    },
+    {
       "id": "openbmb/MiniCPM5-2B",
       "author": "openbmb",
-      "likes": 1464,
-      "downloads": 271754,
+      "likes": 1507,
+      "downloads": 324322,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/openbmb/MiniCPM5-2B"
     },
     {
       "id": "nex-agi/Nex-N2.5-mini",
       "author": "nex-agi",
-      "likes": 809,
-      "downloads": 5202,
+      "likes": 820,
+      "downloads": 6837,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/nex-agi/Nex-N2.5-mini"
-    },
-    {
-      "id": "Qwen/Qwen3.8-27B",
-      "author": "Qwen",
-      "likes": 15281,
-      "downloads": 7702543,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
-    },
-    {
-      "id": "m-a-p/YuE2-3B",
-      "author": "m-a-p",
-      "likes": 572,
-      "downloads": 6716,
-      "pipeline_tag": "text-to-audio",
-      "url": "https://huggingface.co/m-a-p/YuE2-3B"
     }
   ],
   "papers": [
     {
-      "title": "AI for Games in the Foundation Model Era",
-      "summary": "Foundation models, alongside advances in learned game-world models, are reshaping AI across the game lifecycle. Beyond playing games, recent systems model playe...",
-      "upvotes": 8,
-      "arxiv_id": "2609.16679",
-      "url": "https://huggingface.co/papers/2609.16679",
-      "githubRepo": "https://github.com/Eurekaleo/awesome-ai-for-games"
+      "title": "EventEgoHands++: Event-based Egocentric 3D Hand Mesh Reconstruction with Real Dataset",
+      "summary": "3D hand mesh reconstruction is a challenging yet essential task for downstream applications, including human-robot interaction and AR/VR. Although conventional ...",
+      "upvotes": 1,
+      "arxiv_id": "2609.17189",
+      "url": "https://huggingface.co/papers/2609.17189",
+      "githubRepo": "https://github.com/ryhara/EventEgoHandsV2"
     },
     {
-      "title": "The Router Within: Eliciting Native Skill Routing from a Frozen LLM",
-      "summary": "Gavel extracts skill-routing signals from frozen LLM hidden states via lightweight linear projections to select tools without external retrieval or context overload.",
+      "title": "Gaze as Evidence for Common Grounding: A Cross-Corpus Analysis of MapTask and MUNDEX",
+      "summary": "In collaborative tasks with asymmetric information, participants coordinate their understanding through interaction. We ask whether gaze provides evidence about...",
+      "upvotes": 1,
+      "arxiv_id": "2609.18011",
+      "url": "https://huggingface.co/papers/2609.18011",
+      "githubRepo": "https://github.com/chnln/gaze-as-grounding-evidence"
+    },
+    {
+      "title": "ProgramDistill: From Interactive Web Apps to Verifiable Reference-Guided SWE Tasks",
+      "summary": "Coding agents are typically evaluated with desired behavior specified through issues or instructions. In practical web development, however, agents may need to ...",
+      "upvotes": 11,
+      "arxiv_id": "2609.18805",
+      "url": "https://huggingface.co/papers/2609.18805",
+      "githubRepo": null
+    },
+    {
+      "title": "LimiX-2: A Contextual Mechanism Network Towards General Structured-Data Intelligence",
+      "summary": "We introduce LimiX-2, a new model in the LimiX family, developed through model and data scaling guided by our previously established scaling laws. LimiX-2 adopt...",
       "upvotes": 2,
-      "arxiv_id": "2609.15982",
-      "url": "https://huggingface.co/papers/2609.15982",
-      "githubRepo": null
+      "arxiv_id": "2609.17488",
+      "url": "https://huggingface.co/papers/2609.17488",
+      "githubRepo": "https://github.com/limix-ldm-ai/LimiX"
     },
     {
-      "title": "ScienceBuddy: Recursive-in-Recursive Self-Improvement for Interactive Scientific Agents",
-      "summary": "We introduce and release ScienceBuddy, an interactive scientific research workspace that brings continually improving scientific agents into researchers' everyd...",
-      "upvotes": 14,
-      "arxiv_id": "2609.17523",
-      "url": "https://huggingface.co/papers/2609.17523",
-      "githubRepo": "https://github.com/Gen-Verse/ScienceBuddy"
-    },
-    {
-      "title": "Continual Learning Mechanisms Compose for Long-Horizon Memorization",
-      "summary": "Composing complementary continual learning mechanisms substantially improves long-horizon memorization in language models by combining data, function, and weight anchors with merged low-rank updates.",
-      "upvotes": 268,
-      "arxiv_id": "2609.06986",
-      "url": "https://huggingface.co/papers/2609.06986",
-      "githubRepo": "https://github.com/cozheyuanzhangde/compose-cl"
-    },
-    {
-      "title": "Lightning Weave: Improving the Accuracy-Efficiency Frontier of Reasoning Models through Capability Composition",
-      "summary": "Lightning Weave composes independently trained reasoning capabilities into a single efficient student via on-policy distillation, improving both accuracy and token efficiency across math and code benchmarks.",
-      "upvotes": 0,
-      "arxiv_id": "2609.14708",
-      "url": "https://huggingface.co/papers/2609.14708",
-      "githubRepo": null
+      "title": "Register Tokens for Bounded-State Reasoning in Diffusion Language Models",
+      "summary": "Masked diffusion language models (dLLMs) generate text by iteratively denoising masked tokens with bidirectional attention. Extending reasoning across generatio...",
+      "upvotes": 3,
+      "arxiv_id": "2609.16372",
+      "url": "https://huggingface.co/papers/2609.16372",
+      "githubRepo": "https://github.com/SprocketLab/dllm-registers"
     }
   ]
 }

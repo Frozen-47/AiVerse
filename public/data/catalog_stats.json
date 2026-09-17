@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-09-16T02:33:43.195Z",
-  "totalEntries": 283,
-  "popularEntries": 230,
-  "totalUsers": 10,
+  "timestamp": "2026-09-17T02:37:59.533Z",
+  "totalEntries": 286,
+  "popularEntries": 233,
+  "totalUsers": 11,
   "averageRating": 4.38,
   "totalRatings": 8,
-  "newEntriesCount": 56,
+  "newEntriesCount": 59,
   "byType": {
-    "Model": 102,
+    "Model": 103,
     "Framework": 33,
-    "Platform": 39,
-    "Dataset": 38,
+    "Platform": 40,
+    "Dataset": 39,
     "AI": 71
   },
   "byTask": {
-    "NLP": 106,
+    "NLP": 107,
     "AI Coding": 23,
-    "Multimodal": 27,
+    "Multimodal": 29,
     "Research": 11,
     "Image Generation": 9,
     "Video Generation": 11,
@@ -66,35 +66,36 @@
     "Proprietary / DeepSeek License": 1,
     "Open Source UI / Various model licenses": 1,
     "Free": 1,
-    "APACHE-2.0": 16,
+    "APACHE-2.0": 17,
     "OTHER": 6,
-    "Community Hosted": 14,
+    "Community Hosted": 15,
     "NOASSERTION": 4,
     "CC-BY-SA-4.0": 1,
     "Open Data": 1,
     "CC-BY-4.0": 1,
     "WTFPL": 1,
-    "CC-BY-NC-4.0": 1
+    "CC-BY-NC-4.0": 1,
+    "CC-BY-SA-3.0": 1
   },
   "toolOfTheDay": {
-    "name": "Instructor",
+    "name": "DSPy",
     "type": "Framework",
-    "summary": "Python and TypeScript library built on Pydantic to extract guaranteed, strictly validated structured data from any LLM provider.",
-    "task": "MLOps",
+    "summary": "Stanford NLP's framework for algorithmically optimizing language model prompts, weights, and retrieval parameters via declarative modules and automatic teleprompters.",
+    "task": "Research",
     "license": "MIT",
     "year": 2024,
-    "org": "Jason Liu",
+    "org": "Stanford NLP",
     "size": "N/A",
-    "architecture": "Pydantic schema injection and automatic validation retry handler.",
-    "usage": "import instructor\nfrom openai import OpenAI\nfrom pydantic import BaseModel\n\nclient = instructor.from_openai(OpenAI())\nclass User(BaseModel):\n    name: str\n    age: int\n\nuser = client.chat.completions.create(\n    model=\"gpt-4o\",\n    response_model=User,\n    messages=[{\"role\": \"user\", \"content\": \"Alice is 28 years old.\"}]\n)",
-    "benchmarks": "Eliminates structured JSON extraction parse failures across 10+ LLM backends.",
-    "limitations": "Relies on underlying LLM function calling or tool use capabilities.",
+    "architecture": "Declarative LM programming framework with compiler/optimizer loop.",
+    "usage": "import dspy\ndspy.settings.configure(lm=dspy.OpenAI(model='gpt-4o'))\nclass MultiHopQA(dspy.Module):\n    def __init__(self):\n        self.generate_query = dspy.ChainOfThought(\"claim -> query\")\n        self.retrieve = dspy.Retrieve(k=3)",
+    "benchmarks": "Improves pipeline accuracy by 25%-40% compared to static prompt chains.",
+    "limitations": "Requires learning module abstractions rather than writing raw prompt strings.",
     "popular": true,
-    "url": "https://github.com/jxnl/instructor",
+    "url": "https://github.com/stanfordnlp/dspy",
     "citations": [
       {
-        "text": "Instructor Docs",
-        "url": "https://python.useinstructor.com"
+        "text": "DSPy Paper",
+        "url": "https://arxiv.org/abs/2310.03714"
       }
     ]
   }

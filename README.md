@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-16)
+### ⚡ Daily AI Pulse (2026-09-17)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **NeoHorse-1-4B** (`Model`), **ai-notes** (`Platform`), **Fable-5.1-Max-Reasoning-Filtered-5000x** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Instructor** (Jason Liu) — [Explore](https://github.com/jxnl/instructor) |
-| 🗄️ **Catalog Entries** | **283** AI assets tracked (230 featured) |
+| 🆕 **New Assets Added** | **Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF** (`Model`), **hfviewer** (`Platform`), **wikipedia** (`Dataset`) |
+| 🌟 **Tool of the Day** | **DSPy** (Stanford NLP) — [Explore](https://github.com/stanfordnlp/dspy) |
+| 🗄️ **Catalog Entries** | **286** AI assets tracked (233 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) |
-| 📜 **Top Daily Paper** | [AI for Games in the Foundation Model Era...](https://huggingface.co/papers/2609.16679) |
+| 📜 **Top Daily Paper** | [EventEgoHands++: Event-based Egocentric 3D Hand Me...](https://huggingface.co/papers/2609.17189) |
 | 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Daily Run** | `Wed, 16 Sep 2026 02:33:51 GMT` |
+| 🕒 **Last Daily Run** | `Thu, 17 Sep 2026 02:38:06 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-16",
+  "date": "2026-09-17",
   "tool": {
-    "name": "Instructor",
+    "name": "DSPy",
     "type": "Framework",
-    "summary": "Python and TypeScript library built on Pydantic to extract guaranteed, strictly validated structured data from any LLM provider.",
-    "task": "MLOps",
+    "summary": "Stanford NLP's framework for algorithmically optimizing language model prompts, weights, and retrieval parameters via declarative modules and automatic teleprompters.",
+    "task": "Research",
     "license": "MIT",
     "year": 2024,
-    "org": "Jason Liu",
+    "org": "Stanford NLP",
     "size": "N/A",
-    "architecture": "Pydantic schema injection and automatic validation retry handler.",
-    "usage": "import instructor\nfrom openai import OpenAI\nfrom pydantic import BaseModel\n\nclient = instructor.from_openai(OpenAI())\nclass User(BaseModel):\n    name: str\n    age: int\n\nuser = client.chat.completions.create(\n    model=\"gpt-4o\",\n    response_model=User,\n    messages=[{\"role\": \"user\", \"content\": \"Alice is 28 years old.\"}]\n)",
-    "benchmarks": "Eliminates structured JSON extraction parse failures across 10+ LLM backends.",
-    "limitations": "Relies on underlying LLM function calling or tool use capabilities.",
+    "architecture": "Declarative LM programming framework with compiler/optimizer loop.",
+    "usage": "import dspy\ndspy.settings.configure(lm=dspy.OpenAI(model='gpt-4o'))\nclass MultiHopQA(dspy.Module):\n    def __init__(self):\n        self.generate_query = dspy.ChainOfThought(\"claim -> query\")\n        self.retrieve = dspy.Retrieve(k=3)",
+    "benchmarks": "Improves pipeline accuracy by 25%-40% compared to static prompt chains.",
+    "limitations": "Requires learning module abstractions rather than writing raw prompt strings.",
     "popular": true,
-    "url": "https://github.com/jxnl/instructor",
+    "url": "https://github.com/stanfordnlp/dspy",
     "citations": [
       {
-        "text": "Instructor Docs",
-        "url": "https://python.useinstructor.com"
+        "text": "DSPy Paper",
+        "url": "https://arxiv.org/abs/2310.03714"
       }
     ]
   }

@@ -1,23 +1,23 @@
 {
-  "timestamp": "2026-09-16T02:33:45.509Z",
+  "timestamp": "2026-09-17T02:38:02.983Z",
   "checked": 25,
   "healthy": 22,
   "broken": 3,
   "issues": [
     {
-      "name": "UltraFeedback",
-      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
-      "status": 401
-    },
-    {
-      "name": "DALL-E 2",
-      "url": "https://openai.com/dall-e-2",
+      "name": "DALL-E 3",
+      "url": "https://openai.com/dall-e-3",
       "status": 403
     },
     {
-      "name": "ERNIE Bot",
-      "url": "https://yiyan.baidu.com",
-      "status": 404
+      "name": "Mistral Le Chat",
+      "url": "https://chat.mistral.ai",
+      "status": 403
+    },
+    {
+      "name": "Leonardo.ai",
+      "url": "https://leonardo.ai",
+      "status": 403
     }
   ]
 }

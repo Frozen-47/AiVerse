@@ -1,5 +1,76 @@
 [
   {
+    "date": "2026-09-17",
+    "assets": [
+      {
+        "name": "Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by DavidAU, trending with over 798 community likes and 1,049,586 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "DavidAU",
+        "size": "27B params",
+        "architecture": "DavidAU image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF\")",
+        "benchmarks": "Trending Score: 340, Likes: 798, Downloads: 1,049,586",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": true,
+        "url": "https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF",
+        "citations": [
+          {
+            "text": "DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF on Hugging Face",
+            "url": "https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF"
+          }
+        ]
+      },
+      {
+        "name": "hfviewer",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by embedl. Trending with 70 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "embedl",
+        "size": "STATIC Platform",
+        "architecture": "STATIC cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/embedl/hfviewer",
+        "benchmarks": "Trending Score: 67, Community Likes: 70",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": true,
+        "url": "https://huggingface.co/spaces/embedl/hfviewer",
+        "citations": [
+          {
+            "text": "embedl/hfviewer on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/embedl/hfviewer"
+          }
+        ]
+      },
+      {
+        "name": "wikipedia",
+        "type": "Dataset",
+        "summary": "Dataset Card for Wikimedia Wikipedia \t \t \t\t \t \t \t\tDataset Summary \t Wikipedia dataset containing cleaned articles of all languages. The dataset is built from the Wikipe (1,467 likes, 264,787 downloads).",
+        "task": "NLP",
+        "license": "CC-BY-SA-3.0",
+        "year": 2026,
+        "org": "wikimedia",
+        "size": "10M<n<100M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"wikimedia/wikipedia\")",
+        "benchmarks": "Trending Score: 27, Likes: 1,467, Downloads: 264,787",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": true,
+        "url": "https://huggingface.co/datasets/wikimedia/wikipedia",
+        "citations": [
+          {
+            "text": "wikimedia/wikipedia on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/wikimedia/wikipedia"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-16",
     "assets": [
       {
