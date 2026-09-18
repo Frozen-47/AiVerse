@@ -1,5 +1,76 @@
 [
   {
+    "date": "2026-09-18",
+    "assets": [
+      {
+        "name": "Swift-Qwen3.8-27b",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by ukisai, trending with over 396 community likes and 3,221 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "ukisai",
+        "size": "27B params",
+        "architecture": "ukisai image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ukisai/Swift-Qwen3.8-27b\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ukisai/Swift-Qwen3.8-27b\")",
+        "benchmarks": "Trending Score: 380, Likes: 396, Downloads: 3,221",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": true,
+        "url": "https://huggingface.co/ukisai/Swift-Qwen3.8-27b",
+        "citations": [
+          {
+            "text": "ukisai/Swift-Qwen3.8-27b on Hugging Face",
+            "url": "https://huggingface.co/ukisai/Swift-Qwen3.8-27b"
+          }
+        ]
+      },
+      {
+        "name": "wan2-2-i2v-v3",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by observantdistressed. Trending with 78 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "observantdistressed",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3",
+        "benchmarks": "Trending Score: 68, Community Likes: 78",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": true,
+        "url": "https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3",
+        "citations": [
+          {
+            "text": "observantdistressed/wan2-2-i2v-v3 on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3"
+          }
+        ]
+      },
+      {
+        "name": "World-SimReady-Home",
+        "type": "Dataset",
+        "summary": "WorldSimReady-Home \t \t \t\t \t \t \t\tDataset description \t CAD-based SimReady assets Optimized CAD assets with configured collision and physical properties. Manually reviewe (34 likes, 424 downloads).",
+        "task": "Computer Vision",
+        "license": "CC-BY-NC-SA-4.0",
+        "year": 2026,
+        "org": "Yootta",
+        "size": "Curated Dataset",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Yootta/World-SimReady-Home\")",
+        "benchmarks": "Trending Score: 31, Likes: 34, Downloads: 424",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "url": "https://huggingface.co/datasets/Yootta/World-SimReady-Home",
+        "citations": [
+          {
+            "text": "Yootta/World-SimReady-Home on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/Yootta/World-SimReady-Home"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-17",
     "assets": [
       {

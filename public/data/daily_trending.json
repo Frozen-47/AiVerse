@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-09-17T02:38:02.935Z",
+  "timestamp": "2026-09-18T02:25:24.267Z",
   "models": [
-    {
-      "id": "deepseek-ai/DeepSeek-V4.1-Flash",
-      "author": "deepseek-ai",
-      "likes": 2865,
-      "downloads": 366459,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
-    },
     {
       "id": "Edge0/Edge0-35B-A3B-preview",
       "author": "Edge0",
-      "likes": 3117,
-      "downloads": 27759,
+      "likes": 3311,
+      "downloads": 37131,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Edge0/Edge0-35B-A3B-preview"
     },
     {
-      "id": "m-a-p/YuE2-3B",
-      "author": "m-a-p",
-      "likes": 648,
-      "downloads": 9391,
-      "pipeline_tag": "text-to-audio",
-      "url": "https://huggingface.co/m-a-p/YuE2-3B"
+      "id": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "author": "deepseek-ai",
+      "likes": 3016,
+      "downloads": 390657,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
     },
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 15410,
-      "downloads": 7667556,
+      "likes": 15541,
+      "downloads": 7456257,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
     },
     {
-      "id": "openbmb/MiniCPM5-2B",
-      "author": "openbmb",
-      "likes": 1507,
-      "downloads": 324322,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/openbmb/MiniCPM5-2B"
+      "id": "m-a-p/YuE2-3B",
+      "author": "m-a-p",
+      "likes": 727,
+      "downloads": 11626,
+      "pipeline_tag": "text-to-audio",
+      "url": "https://huggingface.co/m-a-p/YuE2-3B"
     },
     {
-      "id": "nex-agi/Nex-N2.5-mini",
-      "author": "nex-agi",
-      "likes": 820,
-      "downloads": 6837,
+      "id": "TokenRhythm/NeoHorse-1-4B",
+      "author": "TokenRhythm",
+      "likes": 2331,
+      "downloads": 19789,
       "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/nex-agi/Nex-N2.5-mini"
+      "url": "https://huggingface.co/TokenRhythm/NeoHorse-1-4B"
+    },
+    {
+      "id": "ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
+      "author": "ISTA-DASLab",
+      "likes": 1262,
+      "downloads": 1027602,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF"
     }
   ],
   "papers": [
     {
-      "title": "EventEgoHands++: Event-based Egocentric 3D Hand Mesh Reconstruction with Real Dataset",
-      "summary": "3D hand mesh reconstruction is a challenging yet essential task for downstream applications, including human-robot interaction and AR/VR. Although conventional ...",
+      "title": "DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression",
+      "summary": "The widespread adoption of long-horizon agents has made model workloads increasingly input-heavy. Although prior work has substantially reduced the cost of long...",
       "upvotes": 1,
-      "arxiv_id": "2609.17189",
-      "url": "https://huggingface.co/papers/2609.17189",
-      "githubRepo": "https://github.com/ryhara/EventEgoHandsV2"
-    },
-    {
-      "title": "Gaze as Evidence for Common Grounding: A Cross-Corpus Analysis of MapTask and MUNDEX",
-      "summary": "In collaborative tasks with asymmetric information, participants coordinate their understanding through interaction. We ask whether gaze provides evidence about...",
-      "upvotes": 1,
-      "arxiv_id": "2609.18011",
-      "url": "https://huggingface.co/papers/2609.18011",
-      "githubRepo": "https://github.com/chnln/gaze-as-grounding-evidence"
-    },
-    {
-      "title": "ProgramDistill: From Interactive Web Apps to Verifiable Reference-Guided SWE Tasks",
-      "summary": "Coding agents are typically evaluated with desired behavior specified through issues or instructions. In practical web development, however, agents may need to ...",
-      "upvotes": 11,
-      "arxiv_id": "2609.18805",
-      "url": "https://huggingface.co/papers/2609.18805",
+      "arxiv_id": "2609.19969",
+      "url": "https://huggingface.co/papers/2609.19969",
       "githubRepo": null
     },
     {
-      "title": "LimiX-2: A Contextual Mechanism Network Towards General Structured-Data Intelligence",
-      "summary": "We introduce LimiX-2, a new model in the LimiX family, developed through model and data scaling guided by our previously established scaling laws. LimiX-2 adopt...",
-      "upvotes": 2,
-      "arxiv_id": "2609.17488",
-      "url": "https://huggingface.co/papers/2609.17488",
-      "githubRepo": "https://github.com/limix-ldm-ai/LimiX"
+      "title": "UFO: Chain-of-Evaluation for Omni-Condition Alignment in Multi-Modal Image Generation",
+      "summary": "Multi-modal image generation, particularly subject-driven customization, has garnered growing attention in recent years. Despite the rapid advancement of genera...",
+      "upvotes": 1,
+      "arxiv_id": "2609.12397",
+      "url": "https://huggingface.co/papers/2609.12397",
+      "githubRepo": null
     },
     {
-      "title": "Register Tokens for Bounded-State Reasoning in Diffusion Language Models",
-      "summary": "Masked diffusion language models (dLLMs) generate text by iteratively denoising masked tokens with bidirectional attention. Extending reasoning across generatio...",
-      "upvotes": 3,
-      "arxiv_id": "2609.16372",
-      "url": "https://huggingface.co/papers/2609.16372",
-      "githubRepo": "https://github.com/SprocketLab/dllm-registers"
+      "title": "Video DeltaNet: A Video-Native Hybrid Attention for Livestream Video Generation",
+      "summary": "Video diffusion models repeatedly process long spatiotemporal token sequences during denoising, making attention a major computational bottleneck. Linear attent...",
+      "upvotes": 1,
+      "arxiv_id": "2609.20744",
+      "url": "https://huggingface.co/papers/2609.20744",
+      "githubRepo": null
+    },
+    {
+      "title": "JEPA-Anything: Learning Predictive Models across Different Worlds",
+      "summary": "World modeling enables intelligence to anticipate consequences, guide interventions, and learn from interaction. Yet predictive models remain domain-specific: c...",
+      "upvotes": 0,
+      "arxiv_id": "2609.20800",
+      "url": "https://huggingface.co/papers/2609.20800",
+      "githubRepo": "https://github.com/Gen-Verse/JEPA-Anything"
+    },
+    {
+      "title": "RiskChainBench: A Benchmark for Obfuscated Platform Message Restoration and Evidence-Grounded Web Investigation",
+      "summary": "Platform abuse campaigns conceal redirection instructions with emojis, homophones, character decomposition, and redundant symbols, then route users through disg...",
+      "upvotes": 2,
+      "arxiv_id": "2609.16900",
+      "url": "https://huggingface.co/papers/2609.16900",
+      "githubRepo": "https://github.com/mattheliu/riskchainbench-task1"
     }
   ]
 }

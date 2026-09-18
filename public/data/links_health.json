@@ -1,23 +1,23 @@
 {
-  "timestamp": "2026-09-17T02:38:02.983Z",
+  "timestamp": "2026-09-18T02:25:24.412Z",
   "checked": 25,
   "healthy": 22,
   "broken": 3,
   "issues": [
     {
-      "name": "DALL-E 3",
-      "url": "https://openai.com/dall-e-3",
+      "name": "o3-mini",
+      "url": "https://openai.com",
       "status": 403
     },
     {
-      "name": "Mistral Le Chat",
-      "url": "https://chat.mistral.ai",
+      "name": "Ideogram",
+      "url": "https://ideogram.ai",
       "status": 403
     },
     {
-      "name": "Leonardo.ai",
-      "url": "https://leonardo.ai",
-      "status": 403
+      "name": "LMSYS Chatbot Arena Conversations",
+      "url": "https://chat.lmsys.org",
+      "status": "Network Error"
     }
   ]
 }

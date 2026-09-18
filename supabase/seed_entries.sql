@@ -1,4 +1,4 @@
--- Seed / Upsert all 286 AiVerse entries into Supabase
+-- Seed / Upsert all 289 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -6020,6 +6020,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('wikipedia', 'wikimedia', 'Dataset', 'NLP', 'CC-BY-SA-3.0', 2026, '10M<n<100M', 'Dataset Card for Wikimedia Wikipedia 	 	 		 	 	 		Dataset Summary 	 Wikipedia dataset containing cleaned articles of all languages. The dataset is built from the Wikipe (1,467 likes, 264,787 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("wikimedia/wikipedia")', 'Trending Score: 27, Likes: 1,467, Downloads: 264,787', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/wikimedia/wikipedia', '[{"text":"wikimedia/wikipedia on Hugging Face Datasets","url":"https://huggingface.co/datasets/wikimedia/wikipedia"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Swift-Qwen3.8-27b', 'ukisai', 'Model', 'Multimodal', 'OTHER', 2026, '27B params', 'High-performance Multimodal open-weights model by ukisai, trending with over 396 community likes and 3,221 downloads on Hugging Face.', 'ukisai image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("ukisai/Swift-Qwen3.8-27b", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("ukisai/Swift-Qwen3.8-27b")', 'Trending Score: 380, Likes: 396, Downloads: 3,221', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/ukisai/Swift-Qwen3.8-27b', '[{"text":"ukisai/Swift-Qwen3.8-27b on Hugging Face","url":"https://huggingface.co/ukisai/Swift-Qwen3.8-27b"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('wan2-2-i2v-v3', 'observantdistressed', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by observantdistressed. Trending with 78 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3', 'Trending Score: 68, Community Likes: 78', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3', '[{"text":"observantdistressed/wan2-2-i2v-v3 on Hugging Face Spaces","url":"https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('World-SimReady-Home', 'Yootta', 'Dataset', 'Computer Vision', 'CC-BY-NC-SA-4.0', 2026, 'Curated Dataset', 'WorldSimReady-Home 	 	 		 	 	 		Dataset description 	 CAD-based SimReady assets Optimized CAD assets with configured collision and physical properties. Manually reviewe (34 likes, 424 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("Yootta/World-SimReady-Home")', 'Trending Score: 31, Likes: 34, Downloads: 424', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/Yootta/World-SimReady-Home', '[{"text":"Yootta/World-SimReady-Home on Hugging Face Datasets","url":"https://huggingface.co/datasets/Yootta/World-SimReady-Home"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

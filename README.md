@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-17)
+### ⚡ Daily AI Pulse (2026-09-18)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF** (`Model`), **hfviewer** (`Platform`), **wikipedia** (`Dataset`) |
-| 🌟 **Tool of the Day** | **DSPy** (Stanford NLP) — [Explore](https://github.com/stanfordnlp/dspy) |
-| 🗄️ **Catalog Entries** | **286** AI assets tracked (233 featured) |
-| 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) |
-| 📜 **Top Daily Paper** | [EventEgoHands++: Event-based Egocentric 3D Hand Me...](https://huggingface.co/papers/2609.17189) |
+| 🆕 **New Assets Added** | **Swift-Qwen3.8-27b** (`Model`), **wan2-2-i2v-v3** (`Platform`), **World-SimReady-Home** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Unsloth** (Unsloth AI) — [Explore](https://github.com/unslothai/unsloth) |
+| 🗄️ **Catalog Entries** | **289** AI assets tracked (235 featured) |
+| 🔥 **Top Trending Model** | [Edge0/Edge0-35B-A3B-preview](https://huggingface.co/Edge0/Edge0-35B-A3B-preview) |
+| 📜 **Top Daily Paper** | [DeepSeek-V4.1-Flash: Pushing the Limits of KV Cach...](https://huggingface.co/papers/2609.19969) |
 | 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Daily Run** | `Thu, 17 Sep 2026 02:38:06 GMT` |
+| 🕒 **Last Daily Run** | `Fri, 18 Sep 2026 02:25:28 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

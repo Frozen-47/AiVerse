@@ -1,29 +1,29 @@
 {
-  "timestamp": "2026-09-17T02:37:59.533Z",
-  "totalEntries": 286,
-  "popularEntries": 233,
+  "timestamp": "2026-09-18T02:25:21.831Z",
+  "totalEntries": 289,
+  "popularEntries": 235,
   "totalUsers": 11,
   "averageRating": 4.38,
   "totalRatings": 8,
-  "newEntriesCount": 59,
+  "newEntriesCount": 62,
   "byType": {
-    "Model": 103,
+    "Model": 104,
     "Framework": 33,
-    "Platform": 40,
-    "Dataset": 39,
+    "Platform": 41,
+    "Dataset": 40,
     "AI": 71
   },
   "byTask": {
     "NLP": 107,
     "AI Coding": 23,
-    "Multimodal": 29,
+    "Multimodal": 31,
     "Research": 11,
     "Image Generation": 9,
     "Video Generation": 11,
     "Audio": 14,
     "MLOps": 44,
     "Productivity": 14,
-    "Computer Vision": 20,
+    "Computer Vision": 21,
     "Education": 4
   },
   "byLicense": {
@@ -67,35 +67,36 @@
     "Open Source UI / Various model licenses": 1,
     "Free": 1,
     "APACHE-2.0": 17,
-    "OTHER": 6,
-    "Community Hosted": 15,
+    "OTHER": 7,
+    "Community Hosted": 16,
     "NOASSERTION": 4,
     "CC-BY-SA-4.0": 1,
     "Open Data": 1,
     "CC-BY-4.0": 1,
     "WTFPL": 1,
     "CC-BY-NC-4.0": 1,
-    "CC-BY-SA-3.0": 1
+    "CC-BY-SA-3.0": 1,
+    "CC-BY-NC-SA-4.0": 1
   },
   "toolOfTheDay": {
-    "name": "DSPy",
+    "name": "Unsloth",
     "type": "Framework",
-    "summary": "Stanford NLP's framework for algorithmically optimizing language model prompts, weights, and retrieval parameters via declarative modules and automatic teleprompters.",
-    "task": "Research",
-    "license": "MIT",
+    "summary": "Ultra-fast open-source fine-tuning framework providing 2x-5x faster training speeds and up to 80% lower VRAM memory usage for Llama, Mistral, Qwen, and DeepSeek.",
+    "task": "MLOps",
+    "license": "Apache-2.0",
     "year": 2024,
-    "org": "Stanford NLP",
+    "org": "Unsloth AI",
     "size": "N/A",
-    "architecture": "Declarative LM programming framework with compiler/optimizer loop.",
-    "usage": "import dspy\ndspy.settings.configure(lm=dspy.OpenAI(model='gpt-4o'))\nclass MultiHopQA(dspy.Module):\n    def __init__(self):\n        self.generate_query = dspy.ChainOfThought(\"claim -> query\")\n        self.retrieve = dspy.Retrieve(k=3)",
-    "benchmarks": "Improves pipeline accuracy by 25%-40% compared to static prompt chains.",
-    "limitations": "Requires learning module abstractions rather than writing raw prompt strings.",
+    "architecture": "Custom OpenAI Triton manual backpropagation GPU kernels.",
+    "usage": "from unsloth import FastLanguageModel\nmodel, tokenizer = FastLanguageModel.from_pretrained(\n    model_name=\"unsloth/Llama-3.3-70B-Instruct-bnb-4bit\",\n    max_seq_length=2048,\n    load_in_4bit=True\n)",
+    "benchmarks": "5x faster training, 0% accuracy loss compared to standard Hugging Face Trainer.",
+    "limitations": "Exclusively tailored for NVIDIA GPUs (Compute Capability 7.0+).",
     "popular": true,
-    "url": "https://github.com/stanfordnlp/dspy",
+    "url": "https://github.com/unslothai/unsloth",
     "citations": [
       {
-        "text": "DSPy Paper",
-        "url": "https://arxiv.org/abs/2310.03714"
+        "text": "Unsloth Documentation",
+        "url": "https://docs.unsloth.ai"
       }
     ]
   }
