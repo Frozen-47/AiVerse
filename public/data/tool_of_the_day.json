@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-18",
+  "date": "2026-09-19",
   "tool": {
-    "name": "Unsloth",
+    "name": "SGLang",
     "type": "Framework",
-    "summary": "Ultra-fast open-source fine-tuning framework providing 2x-5x faster training speeds and up to 80% lower VRAM memory usage for Llama, Mistral, Qwen, and DeepSeek.",
+    "summary": "Fast LLM serving and programming engine featuring RadixAttention (KV cache sharing across multi-turn chats) for ultra-low latency inference and structured output.",
     "task": "MLOps",
     "license": "Apache-2.0",
     "year": 2024,
-    "org": "Unsloth AI",
+    "org": "LMSYS",
     "size": "N/A",
-    "architecture": "Custom OpenAI Triton manual backpropagation GPU kernels.",
-    "usage": "from unsloth import FastLanguageModel\nmodel, tokenizer = FastLanguageModel.from_pretrained(\n    model_name=\"unsloth/Llama-3.3-70B-Instruct-bnb-4bit\",\n    max_seq_length=2048,\n    load_in_4bit=True\n)",
-    "benchmarks": "5x faster training, 0% accuracy loss compared to standard Hugging Face Trainer.",
-    "limitations": "Exclusively tailored for NVIDIA GPUs (Compute Capability 7.0+).",
+    "architecture": "RadixAttention tree cache + interpreter-runtime co-design engine.",
+    "usage": "import sglang as sgl\n@sgl.function\ndef qa(s, question):\n    s += sgl.user(question)\n    s += sgl.assistant(sgl.gen(\"answer\", max_tokens=100))",
+    "benchmarks": "Up to 5x higher throughput on complex multi-turn chats compared to baseline vLLM.",
+    "limitations": "Focuses on Linux x86 and NVIDIA CUDA environments.",
     "popular": true,
-    "url": "https://github.com/unslothai/unsloth",
+    "url": "https://github.com/sgl-project/sglang",
     "citations": [
       {
-        "text": "Unsloth Documentation",
-        "url": "https://docs.unsloth.ai"
+        "text": "SGLang Paper",
+        "url": "https://arxiv.org/abs/2312.07104"
       }
     ]
   }

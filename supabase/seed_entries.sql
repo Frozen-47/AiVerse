@@ -1,4 +1,4 @@
--- Seed / Upsert all 289 AiVerse entries into Supabase
+-- Seed / Upsert all 292 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -6082,6 +6082,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('World-SimReady-Home', 'Yootta', 'Dataset', 'Computer Vision', 'CC-BY-NC-SA-4.0', 2026, 'Curated Dataset', 'WorldSimReady-Home 	 	 		 	 	 		Dataset description 	 CAD-based SimReady assets Optimized CAD assets with configured collision and physical properties. Manually reviewe (34 likes, 424 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("Yootta/World-SimReady-Home")', 'Trending Score: 31, Likes: 34, Downloads: 424', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/Yootta/World-SimReady-Home', '[{"text":"Yootta/World-SimReady-Home on Hugging Face Datasets","url":"https://huggingface.co/datasets/Yootta/World-SimReady-Home"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Ternary-Bonsai-2-27B-gguf', 'prism-ml', 'Model', 'NLP', 'APACHE-2.0', 2026, '27B params', 'High-performance NLP open-weights model by prism-ml, trending with over 945 community likes and 405,609 downloads on Hugging Face.', 'prism-ml text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("prism-ml/Ternary-Bonsai-2-27B-gguf", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("prism-ml/Ternary-Bonsai-2-27B-gguf")', 'Trending Score: 898, Likes: 945, Downloads: 405,609', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf', '[{"text":"prism-ml/Ternary-Bonsai-2-27B-gguf on Hugging Face","url":"https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MiniCPM5-2B-WebGPU-Pi', 'victor', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'STATIC Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by victor. Trending with 69 community stars.', 'STATIC cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/victor/MiniCPM5-2B-WebGPU-Pi', 'Trending Score: 67, Community Likes: 69', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/victor/MiniCPM5-2B-WebGPU-Pi', '[{"text":"victor/MiniCPM5-2B-WebGPU-Pi on Hugging Face Spaces","url":"https://huggingface.co/spaces/victor/MiniCPM5-2B-WebGPU-Pi"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Minimax-H3', 'stablediffusiontutorials', 'Dataset', 'NLP', 'MIT', 2026, 'Curated Dataset', 'Install Minimax H3 in ComfyUI (NVFP4/BF16/FP8/GGUF): 	 https://www.stablediffusiontutorials.com/2026/08/minimax-h3.html (29 likes, 479 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("stablediffusiontutorials/Minimax-H3")', 'Trending Score: 29, Likes: 29, Downloads: 479', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/stablediffusiontutorials/Minimax-H3', '[{"text":"stablediffusiontutorials/Minimax-H3 on Hugging Face Datasets","url":"https://huggingface.co/datasets/stablediffusiontutorials/Minimax-H3"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

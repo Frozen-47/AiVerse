@@ -1,23 +1,33 @@
 {
-  "timestamp": "2026-09-18T02:25:24.412Z",
+  "timestamp": "2026-09-19T02:25:15.556Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 20,
+  "broken": 5,
   "issues": [
+    {
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
+    },
+    {
+      "name": "Sora",
+      "url": "https://openai.com/sora",
+      "status": 403
+    },
+    {
+      "name": "Claude",
+      "url": "https://claude.ai",
+      "status": 403
+    },
     {
       "name": "o3-mini",
       "url": "https://openai.com",
       "status": 403
     },
     {
-      "name": "Ideogram",
-      "url": "https://ideogram.ai",
-      "status": 403
-    },
-    {
-      "name": "LMSYS Chatbot Arena Conversations",
-      "url": "https://chat.lmsys.org",
-      "status": "Network Error"
+      "name": "Tome",
+      "url": "https://tome.app",
+      "status": 404
     }
   ]
 }

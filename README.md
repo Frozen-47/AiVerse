@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-18)
+### ⚡ Daily AI Pulse (2026-09-19)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Swift-Qwen3.8-27b** (`Model`), **wan2-2-i2v-v3** (`Platform`), **World-SimReady-Home** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Unsloth** (Unsloth AI) — [Explore](https://github.com/unslothai/unsloth) |
-| 🗄️ **Catalog Entries** | **289** AI assets tracked (235 featured) |
-| 🔥 **Top Trending Model** | [Edge0/Edge0-35B-A3B-preview](https://huggingface.co/Edge0/Edge0-35B-A3B-preview) |
-| 📜 **Top Daily Paper** | [DeepSeek-V4.1-Flash: Pushing the Limits of KV Cach...](https://huggingface.co/papers/2609.19969) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Daily Run** | `Fri, 18 Sep 2026 02:25:28 GMT` |
+| 🆕 **New Assets Added** | **Ternary-Bonsai-2-27B-gguf** (`Model`), **MiniCPM5-2B-WebGPU-Pi** (`Platform`), **Minimax-H3** (`Dataset`) |
+| 🌟 **Tool of the Day** | **SGLang** (LMSYS) — [Explore](https://github.com/sgl-project/sglang) |
+| 🗄️ **Catalog Entries** | **292** AI assets tracked (237 featured) |
+| 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) |
+| 📜 **Top Daily Paper** | [Verifiable Social Reasoning for LLM Assistants...](https://huggingface.co/papers/2609.17496) |
+| 🛡️ **Catalog Links Checked** | **20/25** operational |
+| 🕒 **Last Daily Run** | `Sat, 19 Sep 2026 02:25:19 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

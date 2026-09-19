@@ -1,44 +1,44 @@
-# ⚡ AiVerse Daily Pulse (2026-09-18)
+# ⚡ AiVerse Daily Pulse (2026-09-19)
 
 > Automatically generated daily intelligence report syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 18 Sep 2026 02:25:28 GMT`*
+*Last Synchronized: `Sat, 19 Sep 2026 02:25:19 GMT`*
 
 ---
 
 ## 🆕 Newly Ingested Assets Today (3)
 
-### **Swift-Qwen3.8-27b** (`Model` • *ukisai*)
-> High-performance Multimodal open-weights model by ukisai, trending with over 396 community likes and 3,221 downloads on Hugging Face.
+### **Ternary-Bonsai-2-27B-gguf** (`Model` • *prism-ml*)
+> High-performance NLP open-weights model by prism-ml, trending with over 945 community likes and 405,609 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 380, Likes: 396, Downloads: 3,221`
-- 🔗 **Resource Link**: [https://huggingface.co/ukisai/Swift-Qwen3.8-27b](https://huggingface.co/ukisai/Swift-Qwen3.8-27b)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 898, Likes: 945, Downloads: 405,609`
+- 🔗 **Resource Link**: [https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf](https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf)
 
-### **wan2-2-i2v-v3** (`Platform` • *observantdistressed*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by observantdistressed. Trending with 78 community stars.
+### **MiniCPM5-2B-WebGPU-Pi** (`Platform` • *victor*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by victor. Trending with 69 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 68, Community Likes: 78`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3](https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3)
+- ⚡ **Metrics**: `Trending Score: 67, Community Likes: 69`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/victor/MiniCPM5-2B-WebGPU-Pi](https://huggingface.co/spaces/victor/MiniCPM5-2B-WebGPU-Pi)
 
-### **World-SimReady-Home** (`Dataset` • *Yootta*)
-> WorldSimReady-Home 	 	 		 	 	 		Dataset description 	 CAD-based SimReady assets Optimized CAD assets with configured collision and physical properties. Manually reviewe (34 likes, 424 downloads).
+### **Minimax-H3** (`Dataset` • *stablediffusiontutorials*)
+> Install Minimax H3 in ComfyUI (NVFP4/BF16/FP8/GGUF): 	 https://www.stablediffusiontutorials.com/2026/08/minimax-h3.html (29 likes, 479 downloads).
 
-- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-NC-SA-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 31, Likes: 34, Downloads: 424`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/Yootta/World-SimReady-Home](https://huggingface.co/datasets/Yootta/World-SimReady-Home)
+- 🏷️ **Domain & License**: `NLP` • `MIT` (2026)
+- ⚡ **Metrics**: `Trending Score: 29, Likes: 29, Downloads: 479`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/stablediffusiontutorials/Minimax-H3](https://huggingface.co/datasets/stablediffusiontutorials/Minimax-H3)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **Unsloth** (`Framework` • *Unsloth AI*)
-> Ultra-fast open-source fine-tuning framework providing 2x-5x faster training speeds and up to 80% lower VRAM memory usage for Llama, Mistral, Qwen, and DeepSeek.
+### **SGLang** (`Framework` • *LMSYS*)
+> Fast LLM serving and programming engine featuring RadixAttention (KV cache sharing across multi-turn chats) for ultra-low latency inference and structured output.
 
-- 🏛️ **Architecture**: Custom OpenAI Triton manual backpropagation GPU kernels.
-- ⚡ **Benchmarks**: `5x faster training, 0% accuracy loss compared to standard Hugging Face Trainer.`
+- 🏛️ **Architecture**: RadixAttention tree cache + interpreter-runtime co-design engine.
+- ⚡ **Benchmarks**: `Up to 5x higher throughput on complex multi-turn chats compared to baseline vLLM.`
 - 🏷️ **Domain & License**: `MLOps` • `Apache-2.0` (Released: 2024)
-- 🔗 **Resource Link**: [https://github.com/unslothai/unsloth](https://github.com/unslothai/unsloth)
+- 🔗 **Resource Link**: [https://github.com/sgl-project/sglang](https://github.com/sgl-project/sglang)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -46,12 +46,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `Edge0/Edge0-35B-A3B-preview` | text-generation | ❤️ 3,311 | 📥 37,131 | [View](https://huggingface.co/Edge0/Edge0-35B-A3B-preview) |
-| `deepseek-ai/DeepSeek-V4.1-Flash` | image-text-to-text | ❤️ 3,016 | 📥 390,657 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) |
-| `Qwen/Qwen3.8-27B` | image-text-to-text | ❤️ 15,541 | 📥 7,456,257 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
-| `m-a-p/YuE2-3B` | text-to-audio | ❤️ 727 | 📥 11,626 | [View](https://huggingface.co/m-a-p/YuE2-3B) |
-| `TokenRhythm/NeoHorse-1-4B` | text-generation | ❤️ 2,331 | 📥 19,789 | [View](https://huggingface.co/TokenRhythm/NeoHorse-1-4B) |
-| `ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF` | image-text-to-text | ❤️ 1,262 | 📥 1,027,602 | [View](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) |
+| `deepseek-ai/DeepSeek-V4.1-Flash` | image-text-to-text | ❤️ 3,182 | 📥 429,865 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) |
+| `prism-ml/Ternary-Bonsai-2-27B-gguf` | text-generation | ❤️ 945 | 📥 405,609 | [View](https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf) |
+| `Qwen/Qwen3.8-27B` | image-text-to-text | ❤️ 15,655 | 📥 7,358,662 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
+| `m-a-p/YuE2-3B` | text-to-audio | ❤️ 808 | 📥 13,668 | [View](https://huggingface.co/m-a-p/YuE2-3B) |
+| `ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF` | image-text-to-text | ❤️ 1,342 | 📥 1,078,301 | [View](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 4,339 | 📥 1,590,087 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
 
 
 ---
@@ -61,24 +61,24 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression** | 👍 1 | The widespread adoption of long-horizon agents has made model workloads increasingly input-heavy. Although prior work has substantially reduced the cost of long... | [Read](https://huggingface.co/papers/2609.19969) |
-| **UFO: Chain-of-Evaluation for Omni-Condition Alignment in Multi-Modal Image Generation** | 👍 1 | Multi-modal image generation, particularly subject-driven customization, has garnered growing attention in recent years. Despite the rapid advancement of genera... | [Read](https://huggingface.co/papers/2609.12397) |
-| **Video DeltaNet: A Video-Native Hybrid Attention for Livestream Video Generation** | 👍 1 | Video diffusion models repeatedly process long spatiotemporal token sequences during denoising, making attention a major computational bottleneck. Linear attent... | [Read](https://huggingface.co/papers/2609.20744) |
-| **JEPA-Anything: Learning Predictive Models across Different Worlds** | 👍 0 | World modeling enables intelligence to anticipate consequences, guide interventions, and learn from interaction. Yet predictive models remain domain-specific: c... | [Read](https://huggingface.co/papers/2609.20800) |
-| **RiskChainBench: A Benchmark for Obfuscated Platform Message Restoration and Evidence-Grounded Web Investigation** | 👍 2 | Platform abuse campaigns conceal redirection instructions with emojis, homophones, character decomposition, and redundant symbols, then route users through disg... | [Read](https://huggingface.co/papers/2609.16900) |
+| **Verifiable Social Reasoning for LLM Assistants** | 👍 13 | LLM assistants are widely used for daily social advice, yet evaluating their social reasoning in such consultation settings remains challenging since (i) it req... | [Read](https://huggingface.co/papers/2609.17496) |
+| **Self-Evolving Search Index** | 👍 7 | Information retrieval is increasingly important as LLM agents tackle complex tasks involving diverse information needs. Because retrieval relies on an index tha... | [Read](https://huggingface.co/papers/2609.19656) |
+| **Sample Count Is Not Enough: Candidate-Generation Strategy Shapes the Energy and Performance of LLM Test-Time Scaling** | 👍 2 | Test-time scaling can improve large language model reasoning by generating and combining multiple candidate responses. In sampling-based methods, the inference ... | [Read](https://huggingface.co/papers/2609.19499) |
+| **VākQA: A Benchmark and Evaluation Study for Telugu Spoken Factoid Question Answering** | 👍 1 | Question answering has advanced rapidly with large language models, but predominantly for high-resource languages, in both text and spoken settings. Spoken ques... | [Read](https://huggingface.co/papers/2609.19879) |
+| **Don't Mask the Environment: Observation Supervision Changes How Agents Explore Under RL** | 👍 3 | Agent trajectories record what an agent does and what happens next. Yet standard supervised fine-tuning (SFT) applies loss only to agent-authored action tokens,... | [Read](https://huggingface.co/papers/2609.20715) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `289`
-- **Featured / Starred Tools**: `235`
-- **Asset Breakdown**: **Models**: 104 • **Frameworks**: 33 • **Platforms**: 41 • **Datasets**: 40 • **AIs**: 71
+- **Total Registered Assets**: `292`
+- **Featured / Starred Tools**: `237`
+- **Asset Breakdown**: **Models**: 105 • **Frameworks**: 33 • **Platforms**: 42 • **Datasets**: 41 • **AIs**: 71
 
 ---
 
 ## 🛡️ Daily System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
 - **Dependency Security**: `21` advisories flagged across `539` dependencies (`1` critical, `17` high)
 
 ---

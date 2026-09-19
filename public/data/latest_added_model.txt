@@ -1,1 +1,1 @@
-Swift-Qwen3.8-27b
+Ternary-Bonsai-2-27B-gguf

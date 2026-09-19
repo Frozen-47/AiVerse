@@ -1,5 +1,76 @@
 [
   {
+    "date": "2026-09-19",
+    "assets": [
+      {
+        "name": "Ternary-Bonsai-2-27B-gguf",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by prism-ml, trending with over 945 community likes and 405,609 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "prism-ml",
+        "size": "27B params",
+        "architecture": "prism-ml text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"prism-ml/Ternary-Bonsai-2-27B-gguf\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"prism-ml/Ternary-Bonsai-2-27B-gguf\")",
+        "benchmarks": "Trending Score: 898, Likes: 945, Downloads: 405,609",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": true,
+        "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf",
+        "citations": [
+          {
+            "text": "prism-ml/Ternary-Bonsai-2-27B-gguf on Hugging Face",
+            "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf"
+          }
+        ]
+      },
+      {
+        "name": "MiniCPM5-2B-WebGPU-Pi",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by victor. Trending with 69 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "victor",
+        "size": "STATIC Platform",
+        "architecture": "STATIC cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/victor/MiniCPM5-2B-WebGPU-Pi",
+        "benchmarks": "Trending Score: 67, Community Likes: 69",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": true,
+        "url": "https://huggingface.co/spaces/victor/MiniCPM5-2B-WebGPU-Pi",
+        "citations": [
+          {
+            "text": "victor/MiniCPM5-2B-WebGPU-Pi on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/victor/MiniCPM5-2B-WebGPU-Pi"
+          }
+        ]
+      },
+      {
+        "name": "Minimax-H3",
+        "type": "Dataset",
+        "summary": "Install Minimax H3 in ComfyUI (NVFP4/BF16/FP8/GGUF): \t https://www.stablediffusiontutorials.com/2026/08/minimax-h3.html (29 likes, 479 downloads).",
+        "task": "NLP",
+        "license": "MIT",
+        "year": 2026,
+        "org": "stablediffusiontutorials",
+        "size": "Curated Dataset",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"stablediffusiontutorials/Minimax-H3\")",
+        "benchmarks": "Trending Score: 29, Likes: 29, Downloads: 479",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "url": "https://huggingface.co/datasets/stablediffusiontutorials/Minimax-H3",
+        "citations": [
+          {
+            "text": "stablediffusiontutorials/Minimax-H3 on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/stablediffusiontutorials/Minimax-H3"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-18",
     "assets": [
       {
