@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-19)
+### ⚡ Daily AI Pulse (2026-09-20)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Ternary-Bonsai-2-27B-gguf** (`Model`), **MiniCPM5-2B-WebGPU-Pi** (`Platform`), **Minimax-H3** (`Dataset`) |
-| 🌟 **Tool of the Day** | **SGLang** (LMSYS) — [Explore](https://github.com/sgl-project/sglang) |
-| 🗄️ **Catalog Entries** | **292** AI assets tracked (237 featured) |
-| 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) |
+| 🆕 **New Assets Added** | **Xing4.0-29B-A4B** (`Model`), **wan777** (`Platform`), **arxiv-complete** (`Dataset`) |
+| 🌟 **Tool of the Day** | **AutoGen v0.4** (Microsoft) — [Explore](https://github.com/microsoft/autogen) |
+| 🗄️ **Catalog Entries** | **295** AI assets tracked (239 featured) |
+| 🔥 **Top Trending Model** | [prism-ml/Ternary-Bonsai-2-27B-gguf](https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf) |
 | 📜 **Top Daily Paper** | [Verifiable Social Reasoning for LLM Assistants...](https://huggingface.co/papers/2609.17496) |
-| 🛡️ **Catalog Links Checked** | **20/25** operational |
-| 🕒 **Last Daily Run** | `Sat, 19 Sep 2026 02:25:19 GMT` |
+| 🛡️ **Catalog Links Checked** | **19/25** operational |
+| 🕒 **Last Daily Run** | `Sun, 20 Sep 2026 02:35:21 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

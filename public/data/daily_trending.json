@@ -1,60 +1,60 @@
 {
-  "timestamp": "2026-09-19T02:25:15.458Z",
+  "timestamp": "2026-09-20T02:35:18.224Z",
   "models": [
-    {
-      "id": "deepseek-ai/DeepSeek-V4.1-Flash",
-      "author": "deepseek-ai",
-      "likes": 3182,
-      "downloads": 429865,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
-    },
     {
       "id": "prism-ml/Ternary-Bonsai-2-27B-gguf",
       "author": "prism-ml",
-      "likes": 945,
-      "downloads": 405609,
+      "likes": 1236,
+      "downloads": 1516960,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf"
     },
     {
+      "id": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "author": "deepseek-ai",
+      "likes": 3311,
+      "downloads": 482270,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+    },
+    {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 15655,
-      "downloads": 7358662,
+      "likes": 15765,
+      "downloads": 7365368,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
     },
     {
+      "id": "XingChen-AGI/Xing4.0-29B-A4B",
+      "author": "XingChen-AGI",
+      "likes": 653,
+      "downloads": 7278,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B"
+    },
+    {
+      "id": "convaiinnovations/laya",
+      "author": "convaiinnovations",
+      "likes": 572,
+      "downloads": 0,
+      "pipeline_tag": "text-classification",
+      "url": "https://huggingface.co/convaiinnovations/laya"
+    },
+    {
       "id": "m-a-p/YuE2-3B",
       "author": "m-a-p",
-      "likes": 808,
-      "downloads": 13668,
+      "likes": 875,
+      "downloads": 15446,
       "pipeline_tag": "text-to-audio",
       "url": "https://huggingface.co/m-a-p/YuE2-3B"
-    },
-    {
-      "id": "ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
-      "author": "ISTA-DASLab",
-      "likes": 1342,
-      "downloads": 1078301,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF"
-    },
-    {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 4339,
-      "downloads": 1590087,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5"
     }
   ],
   "papers": [
     {
       "title": "Verifiable Social Reasoning for LLM Assistants",
       "summary": "LLM assistants are widely used for daily social advice, yet evaluating their social reasoning in such consultation settings remains challenging since (i) it req...",
-      "upvotes": 13,
+      "upvotes": 33,
       "arxiv_id": "2609.17496",
       "url": "https://huggingface.co/papers/2609.17496",
       "githubRepo": null
@@ -62,7 +62,7 @@
     {
       "title": "Self-Evolving Search Index",
       "summary": "Information retrieval is increasingly important as LLM agents tackle complex tasks involving diverse information needs. Because retrieval relies on an index tha...",
-      "upvotes": 7,
+      "upvotes": 28,
       "arxiv_id": "2609.19656",
       "url": "https://huggingface.co/papers/2609.19656",
       "githubRepo": null
@@ -70,7 +70,7 @@
     {
       "title": "Sample Count Is Not Enough: Candidate-Generation Strategy Shapes the Energy and Performance of LLM Test-Time Scaling",
       "summary": "Test-time scaling can improve large language model reasoning by generating and combining multiple candidate responses. In sampling-based methods, the inference ...",
-      "upvotes": 2,
+      "upvotes": 16,
       "arxiv_id": "2609.19499",
       "url": "https://huggingface.co/papers/2609.19499",
       "githubRepo": null
@@ -78,7 +78,7 @@
     {
       "title": "VākQA: A Benchmark and Evaluation Study for Telugu Spoken Factoid Question Answering",
       "summary": "Question answering has advanced rapidly with large language models, but predominantly for high-resource languages, in both text and spoken settings. Spoken ques...",
-      "upvotes": 1,
+      "upvotes": 12,
       "arxiv_id": "2609.19879",
       "url": "https://huggingface.co/papers/2609.19879",
       "githubRepo": null
@@ -86,7 +86,7 @@
     {
       "title": "Don't Mask the Environment: Observation Supervision Changes How Agents Explore Under RL",
       "summary": "Agent trajectories record what an agent does and what happens next. Yet standard supervised fine-tuning (SFT) applies loss only to agent-authored action tokens,...",
-      "upvotes": 3,
+      "upvotes": 16,
       "arxiv_id": "2609.20715",
       "url": "https://huggingface.co/papers/2609.20715",
       "githubRepo": null

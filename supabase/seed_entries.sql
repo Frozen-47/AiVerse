@@ -1,4 +1,4 @@
--- Seed / Upsert all 292 AiVerse entries into Supabase
+-- Seed / Upsert all 295 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -6144,6 +6144,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('Minimax-H3', 'stablediffusiontutorials', 'Dataset', 'NLP', 'MIT', 2026, 'Curated Dataset', 'Install Minimax H3 in ComfyUI (NVFP4/BF16/FP8/GGUF): 	 https://www.stablediffusiontutorials.com/2026/08/minimax-h3.html (29 likes, 479 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("stablediffusiontutorials/Minimax-H3")', 'Trending Score: 29, Likes: 29, Downloads: 479', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/stablediffusiontutorials/Minimax-H3', '[{"text":"stablediffusiontutorials/Minimax-H3 on Hugging Face Datasets","url":"https://huggingface.co/datasets/stablediffusiontutorials/Minimax-H3"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Xing4.0-29B-A4B', 'XingChen-AGI', 'Model', 'NLP', 'APACHE-2.0', 2026, '29B params', 'High-performance NLP open-weights model by XingChen-AGI, trending with over 653 community likes and 7,278 downloads on Hugging Face.', 'XingChen-AGI text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("XingChen-AGI/Xing4.0-29B-A4B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("XingChen-AGI/Xing4.0-29B-A4B")', 'Trending Score: 578, Likes: 653, Downloads: 7,278', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B', '[{"text":"XingChen-AGI/Xing4.0-29B-A4B on Hugging Face","url":"https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('wan777', 'kulkas2pintu', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by kulkas2pintu. Trending with 96 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/kulkas2pintu/wan777', 'Trending Score: 76, Community Likes: 96', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/kulkas2pintu/wan777', '[{"text":"kulkas2pintu/wan777 on Hugging Face Spaces","url":"https://huggingface.co/spaces/kulkas2pintu/wan777"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('arxiv-complete', 'secemp9', 'Dataset', 'NLP', 'OTHER', 2026, '100M<n<1B', 'arXiv Complete Corpus 	 A snapshot of arXiv''s metadata, version history, submission files and rendered documents. It covers 3,148,796 papers and includes file contents, (70 likes, 101 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("secemp9/arxiv-complete")', 'Trending Score: 70, Likes: 70, Downloads: 101', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/secemp9/arxiv-complete', '[{"text":"secemp9/arxiv-complete on Hugging Face Datasets","url":"https://huggingface.co/datasets/secemp9/arxiv-complete"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

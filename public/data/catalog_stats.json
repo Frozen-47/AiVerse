@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-09-19T02:25:13.179Z",
-  "totalEntries": 292,
-  "popularEntries": 237,
+  "timestamp": "2026-09-20T02:35:16.060Z",
+  "totalEntries": 295,
+  "popularEntries": 239,
   "totalUsers": 11,
   "averageRating": 4.38,
   "totalRatings": 8,
-  "newEntriesCount": 65,
+  "newEntriesCount": 68,
   "byType": {
-    "Model": 105,
+    "Model": 106,
     "Framework": 33,
-    "Platform": 42,
-    "Dataset": 41,
+    "Platform": 43,
+    "Dataset": 42,
     "AI": 71
   },
   "byTask": {
-    "NLP": 109,
+    "NLP": 111,
     "AI Coding": 23,
-    "Multimodal": 32,
+    "Multimodal": 33,
     "Research": 11,
     "Image Generation": 9,
     "Video Generation": 11,
@@ -66,9 +66,9 @@
     "Proprietary / DeepSeek License": 1,
     "Open Source UI / Various model licenses": 1,
     "Free": 1,
-    "APACHE-2.0": 18,
-    "OTHER": 7,
-    "Community Hosted": 17,
+    "APACHE-2.0": 19,
+    "OTHER": 8,
+    "Community Hosted": 18,
     "NOASSERTION": 4,
     "CC-BY-SA-4.0": 1,
     "Open Data": 1,
@@ -79,24 +79,24 @@
     "CC-BY-NC-SA-4.0": 1
   },
   "toolOfTheDay": {
-    "name": "SGLang",
+    "name": "AutoGen v0.4",
     "type": "Framework",
-    "summary": "Fast LLM serving and programming engine featuring RadixAttention (KV cache sharing across multi-turn chats) for ultra-low latency inference and structured output.",
+    "summary": "Microsoft's redesigned asynchronous event-driven multi-agent framework supporting distributed actor patterns, human intervention, and scalable conversations.",
     "task": "MLOps",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "year": 2024,
-    "org": "LMSYS",
+    "org": "Microsoft",
     "size": "N/A",
-    "architecture": "RadixAttention tree cache + interpreter-runtime co-design engine.",
-    "usage": "import sglang as sgl\n@sgl.function\ndef qa(s, question):\n    s += sgl.user(question)\n    s += sgl.assistant(sgl.gen(\"answer\", max_tokens=100))",
-    "benchmarks": "Up to 5x higher throughput on complex multi-turn chats compared to baseline vLLM.",
-    "limitations": "Focuses on Linux x86 and NVIDIA CUDA environments.",
+    "architecture": "Asynchronous actor-based event messaging architecture for agents.",
+    "usage": "from autogen_agentchat.agents import AssistantAgent\nfrom autogen_ext.models.openai import OpenAIChatCompletionClient\nagent = AssistantAgent(\"assistant\", OpenAIChatCompletionClient(model=\"gpt-4o\"))",
+    "benchmarks": "Benchmark leader for multi-agent benchmark problem solving (GAIA & SWE-bench).",
+    "limitations": "Major API breaking rewrite in v0.4 from legacy v0.2.",
     "popular": true,
-    "url": "https://github.com/sgl-project/sglang",
+    "url": "https://github.com/microsoft/autogen",
     "citations": [
       {
-        "text": "SGLang Paper",
-        "url": "https://arxiv.org/abs/2312.07104"
+        "text": "AutoGen v0.4 Architecture",
+        "url": "https://microsoft.github.io/autogen/"
       }
     ]
   }

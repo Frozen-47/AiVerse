@@ -1,33 +1,38 @@
 {
-  "timestamp": "2026-09-19T02:25:15.556Z",
+  "timestamp": "2026-09-20T02:35:18.371Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
+  "healthy": 19,
+  "broken": 6,
   "issues": [
     {
-      "name": "Grammarly",
-      "url": "https://www.grammarly.com",
-      "status": 405
-    },
-    {
-      "name": "Sora",
-      "url": "https://openai.com/sora",
+      "name": "Canva AI",
+      "url": "https://www.canva.com/ai-image-generator",
       "status": 403
     },
     {
-      "name": "Claude",
-      "url": "https://claude.ai",
+      "name": "Ideogram",
+      "url": "https://ideogram.ai",
       "status": 403
     },
     {
-      "name": "o3-mini",
-      "url": "https://openai.com",
+      "name": "Character.ai",
+      "url": "https://character.ai",
       "status": 403
     },
     {
-      "name": "Tome",
-      "url": "https://tome.app",
-      "status": 404
+      "name": "Perplexity",
+      "url": "https://www.perplexity.ai",
+      "status": 403
+    },
+    {
+      "name": "Google Gemini",
+      "url": "https://gemini.google.com",
+      "status": "Network Error"
+    },
+    {
+      "name": "Mistral Le Chat",
+      "url": "https://chat.mistral.ai",
+      "status": 403
     }
   ]
 }

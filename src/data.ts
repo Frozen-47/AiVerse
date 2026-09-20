@@ -6460,6 +6460,72 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/stablediffusiontutorials/Minimax-H3"
           }
       ]
+  },
+  {
+      "name": "Xing4.0-29B-A4B",
+      "type": "Model",
+      "summary": "High-performance NLP open-weights model by XingChen-AGI, trending with over 653 community likes and 7,278 downloads on Hugging Face.",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "XingChen-AGI",
+      "size": "29B params",
+      "architecture": "XingChen-AGI text generation architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"XingChen-AGI/Xing4.0-29B-A4B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"XingChen-AGI/Xing4.0-29B-A4B\")",
+      "benchmarks": "Trending Score: 578, Likes: 653, Downloads: 7,278",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B",
+      "citations": [
+          {
+              "text": "XingChen-AGI/Xing4.0-29B-A4B on Hugging Face",
+              "url": "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B"
+          }
+      ]
+  },
+  {
+      "name": "wan777",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by kulkas2pintu. Trending with 96 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "kulkas2pintu",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/kulkas2pintu/wan777",
+      "benchmarks": "Trending Score: 76, Community Likes: 96",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/kulkas2pintu/wan777",
+      "citations": [
+          {
+              "text": "kulkas2pintu/wan777 on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/kulkas2pintu/wan777"
+          }
+      ]
+  },
+  {
+      "name": "arxiv-complete",
+      "type": "Dataset",
+      "summary": "arXiv Complete Corpus \t A snapshot of arXiv's metadata, version history, submission files and rendered documents. It covers 3,148,796 papers and includes file contents, (70 likes, 101 downloads).",
+      "task": "NLP",
+      "license": "OTHER",
+      "year": 2026,
+      "org": "secemp9",
+      "size": "100M<n<1B",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"secemp9/arxiv-complete\")",
+      "benchmarks": "Trending Score: 70, Likes: 70, Downloads: 101",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/secemp9/arxiv-complete",
+      "citations": [
+          {
+              "text": "secemp9/arxiv-complete on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/secemp9/arxiv-complete"
+          }
+      ]
   }
 ];
 
