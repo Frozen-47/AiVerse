@@ -1,94 +1,94 @@
 {
-  "timestamp": "2026-09-20T02:35:18.224Z",
+  "timestamp": "2026-09-21T02:32:53.175Z",
   "models": [
     {
       "id": "prism-ml/Ternary-Bonsai-2-27B-gguf",
       "author": "prism-ml",
-      "likes": 1236,
-      "downloads": 1516960,
+      "likes": 1514,
+      "downloads": 1908396,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf"
     },
     {
-      "id": "deepseek-ai/DeepSeek-V4.1-Flash",
-      "author": "deepseek-ai",
-      "likes": 3311,
-      "downloads": 482270,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
-    },
-    {
-      "id": "Qwen/Qwen3.8-27B",
-      "author": "Qwen",
-      "likes": 15765,
-      "downloads": 7365368,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
-    },
-    {
-      "id": "XingChen-AGI/Xing4.0-29B-A4B",
-      "author": "XingChen-AGI",
-      "likes": 653,
-      "downloads": 7278,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B"
-    },
-    {
       "id": "convaiinnovations/laya",
       "author": "convaiinnovations",
-      "likes": 572,
+      "likes": 1146,
       "downloads": 0,
       "pipeline_tag": "text-classification",
       "url": "https://huggingface.co/convaiinnovations/laya"
     },
     {
-      "id": "m-a-p/YuE2-3B",
-      "author": "m-a-p",
-      "likes": 875,
-      "downloads": 15446,
-      "pipeline_tag": "text-to-audio",
-      "url": "https://huggingface.co/m-a-p/YuE2-3B"
+      "id": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "author": "deepseek-ai",
+      "likes": 3439,
+      "downloads": 496684,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+    },
+    {
+      "id": "Qwen/Qwen-Image-2.1",
+      "author": "Qwen",
+      "likes": 820,
+      "downloads": 183,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
+    },
+    {
+      "id": "XingChen-AGI/Xing4.0-29B-A4B",
+      "author": "XingChen-AGI",
+      "likes": 904,
+      "downloads": 12617,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B"
+    },
+    {
+      "id": "Qwen/Qwen3.8-27B",
+      "author": "Qwen",
+      "likes": 15865,
+      "downloads": 7331932,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
     }
   ],
   "papers": [
     {
-      "title": "Verifiable Social Reasoning for LLM Assistants",
-      "summary": "LLM assistants are widely used for daily social advice, yet evaluating their social reasoning in such consultation settings remains challenging since (i) it req...",
-      "upvotes": 33,
-      "arxiv_id": "2609.17496",
-      "url": "https://huggingface.co/papers/2609.17496",
+      "title": "GraphSkillEvo: Evolutionary Optimization of Graph-Structured Agent Skills",
+      "summary": "Skills can improve the performance of Large Language Model (LLM) agents by providing task-specific procedural guidance, while skill optimization further improve...",
+      "upvotes": 1,
+      "arxiv_id": "2609.21749",
+      "url": "https://huggingface.co/papers/2609.21749",
       "githubRepo": null
     },
     {
-      "title": "Self-Evolving Search Index",
-      "summary": "Information retrieval is increasingly important as LLM agents tackle complex tasks involving diverse information needs. Because retrieval relies on an index tha...",
-      "upvotes": 28,
-      "arxiv_id": "2609.19656",
-      "url": "https://huggingface.co/papers/2609.19656",
+      "title": "Grounded Skill Synthesis from Code at Scale for Agentic Intelligence",
+      "summary": "Code2Skill automatically extracts verifiable procedural skills from source code to improve agent performance before interaction experience accumulates.",
+      "upvotes": 14,
+      "arxiv_id": "2609.05571",
+      "url": "https://huggingface.co/papers/2609.05571",
+      "githubRepo": "https://github.com/ant-intl/Code2Skill"
+    },
+    {
+      "title": "RecreationWorld: Scalable and Verifiable Environments for Hybrid Computer-Use Agents",
+      "summary": "Computer-use agents (CUAs) have advanced along two separate lines: graphical interaction and software development through code and the command line. Real digita...",
+      "upvotes": 1,
+      "arxiv_id": "2609.22000",
+      "url": "https://huggingface.co/papers/2609.22000",
+      "githubRepo": "https://github.com/QwenLM/RecreationWorld"
+    },
+    {
+      "title": "OmniVBench: A Benchmark and Large-Scale Dataset for Omni Reference-to-Video Generation",
+      "summary": "Reference-to-video (R2V) generation is evolving toward increasingly general and versatile reference control, giving rise to the emerging paradigm of omni R2V ge...",
+      "upvotes": 1,
+      "arxiv_id": "2609.22069",
+      "url": "https://huggingface.co/papers/2609.22069",
       "githubRepo": null
     },
     {
-      "title": "Sample Count Is Not Enough: Candidate-Generation Strategy Shapes the Energy and Performance of LLM Test-Time Scaling",
-      "summary": "Test-time scaling can improve large language model reasoning by generating and combining multiple candidate responses. In sampling-based methods, the inference ...",
-      "upvotes": 16,
-      "arxiv_id": "2609.19499",
-      "url": "https://huggingface.co/papers/2609.19499",
-      "githubRepo": null
-    },
-    {
-      "title": "VākQA: A Benchmark and Evaluation Study for Telugu Spoken Factoid Question Answering",
-      "summary": "Question answering has advanced rapidly with large language models, but predominantly for high-resource languages, in both text and spoken settings. Spoken ques...",
-      "upvotes": 12,
-      "arxiv_id": "2609.19879",
-      "url": "https://huggingface.co/papers/2609.19879",
-      "githubRepo": null
-    },
-    {
-      "title": "Don't Mask the Environment: Observation Supervision Changes How Agents Explore Under RL",
-      "summary": "Agent trajectories record what an agent does and what happens next. Yet standard supervised fine-tuning (SFT) applies loss only to agent-authored action tokens,...",
-      "upvotes": 16,
-      "arxiv_id": "2609.20715",
-      "url": "https://huggingface.co/papers/2609.20715",
+      "title": "MintAct: A Unified Visual Agent for Digital Environments",
+      "summary": "We present MintAct, a family of vision-language models that unifies UI grounding, multi-step navigation across mobile, desktop, and web, and visual tool use, tr...",
+      "upvotes": 1,
+      "arxiv_id": "2609.22083",
+      "url": "https://huggingface.co/papers/2609.22083",
       "githubRepo": null
     }
   ]

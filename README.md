@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-20)
+### ⚡ Daily AI Pulse (2026-09-21)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Xing4.0-29B-A4B** (`Model`), **wan777** (`Platform`), **arxiv-complete** (`Dataset`) |
-| 🌟 **Tool of the Day** | **AutoGen v0.4** (Microsoft) — [Explore](https://github.com/microsoft/autogen) |
-| 🗄️ **Catalog Entries** | **295** AI assets tracked (239 featured) |
+| 🆕 **New Assets Added** | **laya** (`Model`), **ternary-bonsai-2-webgpu-kernels** (`Platform`), **ZGCM-1-Data** (`Dataset`) |
+| 🌟 **Tool of the Day** | **CrewAI** (CrewAI Inc.) — [Explore](https://github.com/crewAIInc/crewAI) |
+| 🗄️ **Catalog Entries** | **298** AI assets tracked (241 featured) |
 | 🔥 **Top Trending Model** | [prism-ml/Ternary-Bonsai-2-27B-gguf](https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf) |
-| 📜 **Top Daily Paper** | [Verifiable Social Reasoning for LLM Assistants...](https://huggingface.co/papers/2609.17496) |
-| 🛡️ **Catalog Links Checked** | **19/25** operational |
-| 🕒 **Last Daily Run** | `Sun, 20 Sep 2026 02:35:21 GMT` |
+| 📜 **Top Daily Paper** | [GraphSkillEvo: Evolutionary Optimization of Graph-...](https://huggingface.co/papers/2609.21749) |
+| 🛡️ **Catalog Links Checked** | **17/25** operational |
+| 🕒 **Last Daily Run** | `Mon, 21 Sep 2026 02:32:58 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

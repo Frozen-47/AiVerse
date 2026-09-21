@@ -6526,6 +6526,72 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/secemp9/arxiv-complete"
           }
       ]
+  },
+  {
+      "name": "laya",
+      "type": "Model",
+      "summary": "High-performance NLP open-weights model by convaiinnovations, trending with over 1,146 community likes and 0 downloads on Hugging Face.",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "convaiinnovations",
+      "size": "Open Weights",
+      "architecture": "convaiinnovations text classification architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"convaiinnovations/laya\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"convaiinnovations/laya\")",
+      "benchmarks": "Trending Score: 1125, Likes: 1,146, Downloads: 0",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/convaiinnovations/laya",
+      "citations": [
+          {
+              "text": "convaiinnovations/laya on Hugging Face",
+              "url": "https://huggingface.co/convaiinnovations/laya"
+          }
+      ]
+  },
+  {
+      "name": "ternary-bonsai-2-webgpu-kernels",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by webml-community. Trending with 90 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "webml-community",
+      "size": "STATIC Platform",
+      "architecture": "STATIC cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/webml-community/ternary-bonsai-2-webgpu-kernels",
+      "benchmarks": "Trending Score: 84, Community Likes: 90",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/webml-community/ternary-bonsai-2-webgpu-kernels",
+      "citations": [
+          {
+              "text": "webml-community/ternary-bonsai-2-webgpu-kernels on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/webml-community/ternary-bonsai-2-webgpu-kernels"
+          }
+      ]
+  },
+  {
+      "name": "ZGCM-1-Data",
+      "type": "Dataset",
+      "summary": "A Fully Open and Extremely Efficient Foundation Model for Math and Agentic Search Zhongguancun Academy · Zhongguancun Institute of Artificial Intelligence 📄 Tech Report · 🤗 Mode (36 likes, 16,585 downloads).",
+      "task": "AI Coding",
+      "license": "OTHER",
+      "year": 2026,
+      "org": "zgcagi",
+      "size": "1B<n<10B",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"zgcagi/ZGCM-1-Data\")",
+      "benchmarks": "Trending Score: 33, Likes: 36, Downloads: 16,585",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/zgcagi/ZGCM-1-Data",
+      "citations": [
+          {
+              "text": "zgcagi/ZGCM-1-Data on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/zgcagi/ZGCM-1-Data"
+          }
+      ]
   }
 ];
 

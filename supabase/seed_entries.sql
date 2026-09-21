@@ -1,4 +1,4 @@
--- Seed / Upsert all 295 AiVerse entries into Supabase
+-- Seed / Upsert all 298 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -6206,6 +6206,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('arxiv-complete', 'secemp9', 'Dataset', 'NLP', 'OTHER', 2026, '100M<n<1B', 'arXiv Complete Corpus 	 A snapshot of arXiv''s metadata, version history, submission files and rendered documents. It covers 3,148,796 papers and includes file contents, (70 likes, 101 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("secemp9/arxiv-complete")', 'Trending Score: 70, Likes: 70, Downloads: 101', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/secemp9/arxiv-complete', '[{"text":"secemp9/arxiv-complete on Hugging Face Datasets","url":"https://huggingface.co/datasets/secemp9/arxiv-complete"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('laya', 'convaiinnovations', 'Model', 'NLP', 'APACHE-2.0', 2026, 'Open Weights', 'High-performance NLP open-weights model by convaiinnovations, trending with over 1,146 community likes and 0 downloads on Hugging Face.', 'convaiinnovations text classification architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("convaiinnovations/laya", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("convaiinnovations/laya")', 'Trending Score: 1125, Likes: 1,146, Downloads: 0', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/convaiinnovations/laya', '[{"text":"convaiinnovations/laya on Hugging Face","url":"https://huggingface.co/convaiinnovations/laya"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('ternary-bonsai-2-webgpu-kernels', 'webml-community', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'STATIC Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by webml-community. Trending with 90 community stars.', 'STATIC cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/webml-community/ternary-bonsai-2-webgpu-kernels', 'Trending Score: 84, Community Likes: 90', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/webml-community/ternary-bonsai-2-webgpu-kernels', '[{"text":"webml-community/ternary-bonsai-2-webgpu-kernels on Hugging Face Spaces","url":"https://huggingface.co/spaces/webml-community/ternary-bonsai-2-webgpu-kernels"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('ZGCM-1-Data', 'zgcagi', 'Dataset', 'AI Coding', 'OTHER', 2026, '1B<n<10B', 'A Fully Open and Extremely Efficient Foundation Model for Math and Agentic Search Zhongguancun Academy · Zhongguancun Institute of Artificial Intelligence 📄 Tech Report · 🤗 Mode (36 likes, 16,585 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("zgcagi/ZGCM-1-Data")', 'Trending Score: 33, Likes: 36, Downloads: 16,585', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/zgcagi/ZGCM-1-Data', '[{"text":"zgcagi/ZGCM-1-Data on Hugging Face Datasets","url":"https://huggingface.co/datasets/zgcagi/ZGCM-1-Data"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-20",
+  "date": "2026-09-21",
   "tool": {
-    "name": "AutoGen v0.4",
+    "name": "CrewAI",
     "type": "Framework",
-    "summary": "Microsoft's redesigned asynchronous event-driven multi-agent framework supporting distributed actor patterns, human intervention, and scalable conversations.",
-    "task": "MLOps",
+    "summary": "Production-ready framework for orchestrating role-playing autonomous AI agents that collaborate seamlessly to solve complex tasks.",
+    "task": "Productivity",
     "license": "MIT",
     "year": 2024,
-    "org": "Microsoft",
+    "org": "CrewAI Inc.",
     "size": "N/A",
-    "architecture": "Asynchronous actor-based event messaging architecture for agents.",
-    "usage": "from autogen_agentchat.agents import AssistantAgent\nfrom autogen_ext.models.openai import OpenAIChatCompletionClient\nagent = AssistantAgent(\"assistant\", OpenAIChatCompletionClient(model=\"gpt-4o\"))",
-    "benchmarks": "Benchmark leader for multi-agent benchmark problem solving (GAIA & SWE-bench).",
-    "limitations": "Major API breaking rewrite in v0.4 from legacy v0.2.",
+    "architecture": "Role-based agent abstraction with task delegation and hierarchical memory.",
+    "usage": "from crewai import Agent, Task, Crew\nresearcher = Agent(role='Researcher', goal='Investigate tech trends', memory=True)\ntask = Task(description='Summarize 2025 AI models', expected_output='Bullet summary', agent=researcher)\ncrew = Crew(agents=[researcher], tasks=[task])\ncrew.kickoff()",
+    "benchmarks": "Over 25,000 GitHub stars; widely used in enterprise workflow automation.",
+    "limitations": "Iterative agent loops can quickly trigger API rate limits without rate limiting.",
     "popular": true,
-    "url": "https://github.com/microsoft/autogen",
+    "url": "https://github.com/crewAIInc/crewAI",
     "citations": [
       {
-        "text": "AutoGen v0.4 Architecture",
-        "url": "https://microsoft.github.io/autogen/"
+        "text": "CrewAI Documentation",
+        "url": "https://docs.crewai.com"
       }
     ]
   }

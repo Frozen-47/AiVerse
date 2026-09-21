@@ -1,38 +1,48 @@
 {
-  "timestamp": "2026-09-20T02:35:18.371Z",
+  "timestamp": "2026-09-21T02:32:53.317Z",
   "checked": 25,
-  "healthy": 19,
-  "broken": 6,
+  "healthy": 17,
+  "broken": 8,
   "issues": [
     {
-      "name": "Canva AI",
-      "url": "https://www.canva.com/ai-image-generator",
+      "name": "ChatGPT",
+      "url": "https://chatgpt.com",
       "status": 403
     },
     {
-      "name": "Ideogram",
-      "url": "https://ideogram.ai",
+      "name": "Midjourney (Platform)",
+      "url": "https://www.midjourney.com/",
       "status": 403
     },
     {
-      "name": "Character.ai",
-      "url": "https://character.ai",
+      "name": "NightCafe",
+      "url": "https://creator.nightcafe.studio",
       "status": 403
     },
     {
-      "name": "Perplexity",
-      "url": "https://www.perplexity.ai",
+      "name": "Midjourney",
+      "url": "https://www.midjourney.com",
       "status": 403
     },
     {
-      "name": "Google Gemini",
-      "url": "https://gemini.google.com",
-      "status": "Network Error"
+      "name": "Whisper",
+      "url": "https://openai.com/research/whisper",
+      "status": 403
+    },
+    {
+      "name": "GPT-4o mini",
+      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+      "status": 403
     },
     {
       "name": "Mistral Le Chat",
       "url": "https://chat.mistral.ai",
       "status": 403
+    },
+    {
+      "name": "ERNIE Bot",
+      "url": "https://yiyan.baidu.com",
+      "status": 404
     }
   ]
 }
