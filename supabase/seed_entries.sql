@@ -1,4 +1,4 @@
--- Seed / Upsert all 298 AiVerse entries into Supabase
+-- Seed / Upsert all 301 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -6268,6 +6268,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('ZGCM-1-Data', 'zgcagi', 'Dataset', 'AI Coding', 'OTHER', 2026, '1B<n<10B', 'A Fully Open and Extremely Efficient Foundation Model for Math and Agentic Search Zhongguancun Academy · Zhongguancun Institute of Artificial Intelligence 📄 Tech Report · 🤗 Mode (36 likes, 16,585 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("zgcagi/ZGCM-1-Data")', 'Trending Score: 33, Likes: 36, Downloads: 16,585', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/zgcagi/ZGCM-1-Data', '[{"text":"zgcagi/ZGCM-1-Data on Hugging Face Datasets","url":"https://huggingface.co/datasets/zgcagi/ZGCM-1-Data"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen-Image-2.1', 'Alibaba (Qwen)', 'Model', 'Image Generation', 'OTHER', 2026, 'Open Weights', 'High-performance Image Generation open-weights model by Alibaba (Qwen), trending with over 1,472 community likes and 6,523 downloads on Hugging Face.', 'Alibaba (Qwen) text to image architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-Image-2.1", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-Image-2.1")', 'Trending Score: 1421, Likes: 1,472, Downloads: 6,523', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Qwen/Qwen-Image-2.1', '[{"text":"Qwen/Qwen-Image-2.1 on Hugging Face","url":"https://huggingface.co/Qwen/Qwen-Image-2.1"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('laya-demo', 'convaiinnovations', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by convaiinnovations. Trending with 108 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/convaiinnovations/laya-demo', 'Trending Score: 107, Community Likes: 108', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/convaiinnovations/laya-demo', '[{"text":"convaiinnovations/laya-demo on Hugging Face Spaces","url":"https://huggingface.co/spaces/convaiinnovations/laya-demo"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('tmmluplus', 'ikala', 'Dataset', 'NLP', 'MIT', 2026, '10K<n<100K', 'TMMLU+ : Large scale traditional chinese massive multitask language understanding 	 iKala presents TMMLU+, a large-scale benchmark for evaluating LLM capabilities in Tr (188 likes, 9,827 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("ikala/tmmluplus")', 'Trending Score: 30, Likes: 188, Downloads: 9,827', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/ikala/tmmluplus', '[{"text":"ikala/tmmluplus on Hugging Face Datasets","url":"https://huggingface.co/datasets/ikala/tmmluplus"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

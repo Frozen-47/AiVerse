@@ -1,1 +1,1 @@
-laya
+Qwen-Image-2.1

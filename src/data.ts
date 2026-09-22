@@ -6592,6 +6592,72 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/zgcagi/ZGCM-1-Data"
           }
       ]
+  },
+  {
+      "name": "Qwen-Image-2.1",
+      "type": "Model",
+      "summary": "High-performance Image Generation open-weights model by Alibaba (Qwen), trending with over 1,472 community likes and 6,523 downloads on Hugging Face.",
+      "task": "Image Generation",
+      "license": "OTHER",
+      "year": 2026,
+      "org": "Alibaba (Qwen)",
+      "size": "Open Weights",
+      "architecture": "Alibaba (Qwen) text to image architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Qwen/Qwen-Image-2.1\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Qwen/Qwen-Image-2.1\")",
+      "benchmarks": "Trending Score: 1421, Likes: 1,472, Downloads: 6,523",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1",
+      "citations": [
+          {
+              "text": "Qwen/Qwen-Image-2.1 on Hugging Face",
+              "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
+          }
+      ]
+  },
+  {
+      "name": "laya-demo",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by convaiinnovations. Trending with 108 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "convaiinnovations",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/convaiinnovations/laya-demo",
+      "benchmarks": "Trending Score: 107, Community Likes: 108",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/convaiinnovations/laya-demo",
+      "citations": [
+          {
+              "text": "convaiinnovations/laya-demo on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/convaiinnovations/laya-demo"
+          }
+      ]
+  },
+  {
+      "name": "tmmluplus",
+      "type": "Dataset",
+      "summary": "TMMLU+ : Large scale traditional chinese massive multitask language understanding \t iKala presents TMMLU+, a large-scale benchmark for evaluating LLM capabilities in Tr (188 likes, 9,827 downloads).",
+      "task": "NLP",
+      "license": "MIT",
+      "year": 2026,
+      "org": "ikala",
+      "size": "10K<n<100K",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"ikala/tmmluplus\")",
+      "benchmarks": "Trending Score: 30, Likes: 188, Downloads: 9,827",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": true,
+      "url": "https://huggingface.co/datasets/ikala/tmmluplus",
+      "citations": [
+          {
+              "text": "ikala/tmmluplus on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/ikala/tmmluplus"
+          }
+      ]
   }
 ];
 

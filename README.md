@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-21)
+### ⚡ Daily AI Pulse (2026-09-22)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **laya** (`Model`), **ternary-bonsai-2-webgpu-kernels** (`Platform`), **ZGCM-1-Data** (`Dataset`) |
-| 🌟 **Tool of the Day** | **CrewAI** (CrewAI Inc.) — [Explore](https://github.com/crewAIInc/crewAI) |
-| 🗄️ **Catalog Entries** | **298** AI assets tracked (241 featured) |
-| 🔥 **Top Trending Model** | [prism-ml/Ternary-Bonsai-2-27B-gguf](https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf) |
-| 📜 **Top Daily Paper** | [GraphSkillEvo: Evolutionary Optimization of Graph-...](https://huggingface.co/papers/2609.21749) |
-| 🛡️ **Catalog Links Checked** | **17/25** operational |
-| 🕒 **Last Daily Run** | `Mon, 21 Sep 2026 02:32:58 GMT` |
+| 🆕 **New Assets Added** | **Qwen-Image-2.1** (`Model`), **laya-demo** (`Platform`), **tmmluplus** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Kokoro-82M** (Hexgrad) — [Explore](https://huggingface.co/hexgrad/Kokoro-82M) |
+| 🗄️ **Catalog Entries** | **301** AI assets tracked (244 featured) |
+| 🔥 **Top Trending Model** | [convaiinnovations/laya](https://huggingface.co/convaiinnovations/laya) |
+| 📜 **Top Daily Paper** | [One to More, More to One: Category-Aware Iterative...](https://huggingface.co/papers/2609.23377) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Daily Run** | `Tue, 22 Sep 2026 02:35:22 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

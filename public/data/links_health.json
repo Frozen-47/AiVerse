@@ -1,48 +1,13 @@
 {
-  "timestamp": "2026-09-21T02:32:53.317Z",
+  "timestamp": "2026-09-22T02:35:18.731Z",
   "checked": 25,
-  "healthy": 17,
-  "broken": 8,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
-      "name": "ChatGPT",
-      "url": "https://chatgpt.com",
+      "name": "Ideogram",
+      "url": "https://ideogram.ai",
       "status": 403
-    },
-    {
-      "name": "Midjourney (Platform)",
-      "url": "https://www.midjourney.com/",
-      "status": 403
-    },
-    {
-      "name": "NightCafe",
-      "url": "https://creator.nightcafe.studio",
-      "status": 403
-    },
-    {
-      "name": "Midjourney",
-      "url": "https://www.midjourney.com",
-      "status": 403
-    },
-    {
-      "name": "Whisper",
-      "url": "https://openai.com/research/whisper",
-      "status": 403
-    },
-    {
-      "name": "GPT-4o mini",
-      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
-      "status": 403
-    },
-    {
-      "name": "Mistral Le Chat",
-      "url": "https://chat.mistral.ai",
-      "status": 403
-    },
-    {
-      "name": "ERNIE Bot",
-      "url": "https://yiyan.baidu.com",
-      "status": 404
     }
   ]
 }

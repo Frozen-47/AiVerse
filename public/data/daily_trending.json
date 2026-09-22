@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-09-21T02:32:53.175Z",
+  "timestamp": "2026-09-22T02:35:18.507Z",
   "models": [
-    {
-      "id": "prism-ml/Ternary-Bonsai-2-27B-gguf",
-      "author": "prism-ml",
-      "likes": 1514,
-      "downloads": 1908396,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf"
-    },
     {
       "id": "convaiinnovations/laya",
       "author": "convaiinnovations",
-      "likes": 1146,
+      "likes": 1837,
       "downloads": 0,
       "pipeline_tag": "text-classification",
       "url": "https://huggingface.co/convaiinnovations/laya"
     },
     {
-      "id": "deepseek-ai/DeepSeek-V4.1-Flash",
-      "author": "deepseek-ai",
-      "likes": 3439,
-      "downloads": 496684,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+      "id": "prism-ml/Ternary-Bonsai-2-27B-gguf",
+      "author": "prism-ml",
+      "likes": 1742,
+      "downloads": 2227879,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf"
     },
     {
       "id": "Qwen/Qwen-Image-2.1",
       "author": "Qwen",
-      "likes": 820,
-      "downloads": 183,
+      "likes": 1472,
+      "downloads": 6523,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
     },
     {
       "id": "XingChen-AGI/Xing4.0-29B-A4B",
       "author": "XingChen-AGI",
-      "likes": 904,
-      "downloads": 12617,
+      "likes": 1135,
+      "downloads": 18394,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B"
     },
     {
-      "id": "Qwen/Qwen3.8-27B",
-      "author": "Qwen",
-      "likes": 15865,
-      "downloads": 7331932,
+      "id": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "author": "deepseek-ai",
+      "likes": 3536,
+      "downloads": 512120,
       "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+    },
+    {
+      "id": "abenzerps/Qwen-Image-2.1-GGUF",
+      "author": "abenzerps",
+      "likes": 657,
+      "downloads": 33232,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-GGUF"
     }
   ],
   "papers": [
     {
-      "title": "GraphSkillEvo: Evolutionary Optimization of Graph-Structured Agent Skills",
-      "summary": "Skills can improve the performance of Large Language Model (LLM) agents by providing task-specific procedural guidance, while skill optimization further improve...",
-      "upvotes": 1,
-      "arxiv_id": "2609.21749",
-      "url": "https://huggingface.co/papers/2609.21749",
+      "title": "One to More, More to One: Category-Aware Iterative Expert Training for Software Engineering Agents",
+      "summary": "Repository-level software engineering (SWE) comprises heterogeneous task categories, whose progress under pooled agentic reinforcement learning can be uneven: g...",
+      "upvotes": 5,
+      "arxiv_id": "2609.23377",
+      "url": "https://huggingface.co/papers/2609.23377",
       "githubRepo": null
     },
     {
-      "title": "Grounded Skill Synthesis from Code at Scale for Agentic Intelligence",
-      "summary": "Code2Skill automatically extracts verifiable procedural skills from source code to improve agent performance before interaction experience accumulates.",
+      "title": "SteerDuplex: Steerable Duplex Speech Dialogue Models",
+      "summary": "Full-duplex spoken dialogue models support low-latency turn taking, interruption handling, and backchanneling, yet a key capability remains underexplored: steer...",
+      "upvotes": 2,
+      "arxiv_id": "2609.12623",
+      "url": "https://huggingface.co/papers/2609.12623",
+      "githubRepo": null
+    },
+    {
+      "title": "From Pretraining to Proficiency: Real-World Subtask RL for Long-Horizon Manipulation with Minimal Human Intervention",
+      "summary": "A pretrained robot foundation policy may execute most of a long-horizon task yet repeatedly fail at a few critical subtasks. Collecting additional full-task dem...",
+      "upvotes": 5,
+      "arxiv_id": "2609.21788",
+      "url": "https://huggingface.co/papers/2609.21788",
+      "githubRepo": null
+    },
+    {
+      "title": "SiliconBench: Speed, Memory, and Fidelity for LLM Serving on Unified-Memory Desktops",
+      "summary": "Concurrent local LLM serving on unified-memory desktops must preserve memory headroom and output fidelity, which speed-only rankings overlook. We introduce Sili...",
+      "upvotes": 3,
+      "arxiv_id": "2609.19169",
+      "url": "https://huggingface.co/papers/2609.19169",
+      "githubRepo": "https://github.com/WindChimeRan/SiliconBench"
+    },
+    {
+      "title": "BI-Agent and BI-Bench: Towards Automating End-to-End Business Intelligence",
+      "summary": "Business intelligence (BI) is a cornerstone of enterprise decision-making and is widely used by enterprise users in software such as Power BI and Tableau. In tr...",
       "upvotes": 14,
-      "arxiv_id": "2609.05571",
-      "url": "https://huggingface.co/papers/2609.05571",
-      "githubRepo": "https://github.com/ant-intl/Code2Skill"
-    },
-    {
-      "title": "RecreationWorld: Scalable and Verifiable Environments for Hybrid Computer-Use Agents",
-      "summary": "Computer-use agents (CUAs) have advanced along two separate lines: graphical interaction and software development through code and the command line. Real digita...",
-      "upvotes": 1,
-      "arxiv_id": "2609.22000",
-      "url": "https://huggingface.co/papers/2609.22000",
-      "githubRepo": "https://github.com/QwenLM/RecreationWorld"
-    },
-    {
-      "title": "OmniVBench: A Benchmark and Large-Scale Dataset for Omni Reference-to-Video Generation",
-      "summary": "Reference-to-video (R2V) generation is evolving toward increasingly general and versatile reference control, giving rise to the emerging paradigm of omni R2V ge...",
-      "upvotes": 1,
-      "arxiv_id": "2609.22069",
-      "url": "https://huggingface.co/papers/2609.22069",
-      "githubRepo": null
-    },
-    {
-      "title": "MintAct: A Unified Visual Agent for Digital Environments",
-      "summary": "We present MintAct, a family of vision-language models that unifies UI grounding, multi-step navigation across mobile, desktop, and web, and visual tool use, tr...",
-      "upvotes": 1,
-      "arxiv_id": "2609.22083",
-      "url": "https://huggingface.co/papers/2609.22083",
-      "githubRepo": null
+      "arxiv_id": "2609.20886",
+      "url": "https://huggingface.co/papers/2609.20886",
+      "githubRepo": "https://github.com/Hu-Chuxuan/bi-agent"
     }
   ]
 }

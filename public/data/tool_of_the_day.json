@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-21",
+  "date": "2026-09-22",
   "tool": {
-    "name": "CrewAI",
-    "type": "Framework",
-    "summary": "Production-ready framework for orchestrating role-playing autonomous AI agents that collaborate seamlessly to solve complex tasks.",
-    "task": "Productivity",
-    "license": "MIT",
-    "year": 2024,
-    "org": "CrewAI Inc.",
-    "size": "N/A",
-    "architecture": "Role-based agent abstraction with task delegation and hierarchical memory.",
-    "usage": "from crewai import Agent, Task, Crew\nresearcher = Agent(role='Researcher', goal='Investigate tech trends', memory=True)\ntask = Task(description='Summarize 2025 AI models', expected_output='Bullet summary', agent=researcher)\ncrew = Crew(agents=[researcher], tasks=[task])\ncrew.kickoff()",
-    "benchmarks": "Over 25,000 GitHub stars; widely used in enterprise workflow automation.",
-    "limitations": "Iterative agent loops can quickly trigger API rate limits without rate limiting.",
+    "name": "Kokoro-82M",
+    "type": "Model",
+    "summary": "Hexgrad's open-weights 82M parameter text-to-speech model producing studio-quality English and multilingual voice audio in real time on CPUs.",
+    "task": "Audio",
+    "license": "Apache-2.0",
+    "year": 2025,
+    "org": "Hexgrad",
+    "size": "82M params",
+    "architecture": "StyleTTS 2 architecture with ISTFT vocoder.",
+    "usage": "from kokoro import KPipeline\npipeline = KPipeline(lang_code='a')\ngenerator = pipeline(\"Hello, welcome to AiVerse!\", voice='af_heart', speed=1.0)",
+    "benchmarks": "Real-time factor < 0.1 on modern consumer CPUs; highly ranked on TTS Arena.",
+    "limitations": "Trained primarily on English and select Romance languages.",
     "popular": true,
-    "url": "https://github.com/crewAIInc/crewAI",
+    "url": "https://huggingface.co/hexgrad/Kokoro-82M",
     "citations": [
       {
-        "text": "CrewAI Documentation",
-        "url": "https://docs.crewai.com"
+        "text": "Kokoro Model Card",
+        "url": "https://huggingface.co/hexgrad/Kokoro-82M"
       }
     ]
   }

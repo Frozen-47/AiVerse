@@ -1,24 +1,24 @@
 {
-  "timestamp": "2026-09-21T02:32:51.474Z",
-  "totalEntries": 298,
-  "popularEntries": 241,
+  "timestamp": "2026-09-22T02:35:16.159Z",
+  "totalEntries": 301,
+  "popularEntries": 244,
   "totalUsers": 11,
   "averageRating": 4.38,
   "totalRatings": 8,
-  "newEntriesCount": 71,
+  "newEntriesCount": 74,
   "byType": {
-    "Model": 107,
+    "Model": 108,
     "Framework": 33,
-    "Platform": 44,
-    "Dataset": 43,
+    "Platform": 45,
+    "Dataset": 44,
     "AI": 71
   },
   "byTask": {
-    "NLP": 112,
+    "NLP": 113,
     "AI Coding": 24,
-    "Multimodal": 34,
+    "Multimodal": 35,
     "Research": 11,
-    "Image Generation": 9,
+    "Image Generation": 10,
     "Video Generation": 11,
     "Audio": 14,
     "MLOps": 44,
@@ -27,7 +27,7 @@
     "Education": 4
   },
   "byLicense": {
-    "MIT": 42,
+    "MIT": 43,
     "Llama 3.3 Community License": 1,
     "Llama 3.2 Community License": 3,
     "Apache-2.0": 35,
@@ -67,8 +67,8 @@
     "Open Source UI / Various model licenses": 1,
     "Free": 1,
     "APACHE-2.0": 20,
-    "OTHER": 9,
-    "Community Hosted": 19,
+    "OTHER": 10,
+    "Community Hosted": 20,
     "NOASSERTION": 4,
     "CC-BY-SA-4.0": 1,
     "Open Data": 1,
@@ -79,24 +79,24 @@
     "CC-BY-NC-SA-4.0": 1
   },
   "toolOfTheDay": {
-    "name": "CrewAI",
-    "type": "Framework",
-    "summary": "Production-ready framework for orchestrating role-playing autonomous AI agents that collaborate seamlessly to solve complex tasks.",
-    "task": "Productivity",
-    "license": "MIT",
-    "year": 2024,
-    "org": "CrewAI Inc.",
-    "size": "N/A",
-    "architecture": "Role-based agent abstraction with task delegation and hierarchical memory.",
-    "usage": "from crewai import Agent, Task, Crew\nresearcher = Agent(role='Researcher', goal='Investigate tech trends', memory=True)\ntask = Task(description='Summarize 2025 AI models', expected_output='Bullet summary', agent=researcher)\ncrew = Crew(agents=[researcher], tasks=[task])\ncrew.kickoff()",
-    "benchmarks": "Over 25,000 GitHub stars; widely used in enterprise workflow automation.",
-    "limitations": "Iterative agent loops can quickly trigger API rate limits without rate limiting.",
+    "name": "Kokoro-82M",
+    "type": "Model",
+    "summary": "Hexgrad's open-weights 82M parameter text-to-speech model producing studio-quality English and multilingual voice audio in real time on CPUs.",
+    "task": "Audio",
+    "license": "Apache-2.0",
+    "year": 2025,
+    "org": "Hexgrad",
+    "size": "82M params",
+    "architecture": "StyleTTS 2 architecture with ISTFT vocoder.",
+    "usage": "from kokoro import KPipeline\npipeline = KPipeline(lang_code='a')\ngenerator = pipeline(\"Hello, welcome to AiVerse!\", voice='af_heart', speed=1.0)",
+    "benchmarks": "Real-time factor < 0.1 on modern consumer CPUs; highly ranked on TTS Arena.",
+    "limitations": "Trained primarily on English and select Romance languages.",
     "popular": true,
-    "url": "https://github.com/crewAIInc/crewAI",
+    "url": "https://huggingface.co/hexgrad/Kokoro-82M",
     "citations": [
       {
-        "text": "CrewAI Documentation",
-        "url": "https://docs.crewai.com"
+        "text": "Kokoro Model Card",
+        "url": "https://huggingface.co/hexgrad/Kokoro-82M"
       }
     ]
   }
