@@ -1,12 +1,17 @@
 {
-  "timestamp": "2026-09-22T02:35:18.731Z",
+  "timestamp": "2026-09-23T02:35:33.565Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "Ideogram",
-      "url": "https://ideogram.ai",
+      "name": "GPT-4",
+      "url": "https://openai.com/gpt-4",
+      "status": 403
+    },
+    {
+      "name": "DeepSeek Chat",
+      "url": "https://chat.deepseek.com",
       "status": 403
     }
   ]

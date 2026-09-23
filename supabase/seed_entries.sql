@@ -1,4 +1,4 @@
--- Seed / Upsert all 301 AiVerse entries into Supabase
+-- Seed / Upsert all 304 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -6330,6 +6330,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('tmmluplus', 'ikala', 'Dataset', 'NLP', 'MIT', 2026, '10K<n<100K', 'TMMLU+ : Large scale traditional chinese massive multitask language understanding 	 iKala presents TMMLU+, a large-scale benchmark for evaluating LLM capabilities in Tr (188 likes, 9,827 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("ikala/tmmluplus")', 'Trending Score: 30, Likes: 188, Downloads: 9,827', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/ikala/tmmluplus', '[{"text":"ikala/tmmluplus on Hugging Face Datasets","url":"https://huggingface.co/datasets/ikala/tmmluplus"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen-Image-2.1-Uncensored-GGUF', 'abenzerps', 'Model', 'Image Generation', 'OTHER', 2026, 'Open Weights', 'High-performance Image Generation open-weights model by abenzerps, trending with over 1,144 community likes and 182,313 downloads on Hugging Face.', 'abenzerps text to image architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("abenzerps/Qwen-Image-2.1-Uncensored-GGUF", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("abenzerps/Qwen-Image-2.1-Uncensored-GGUF")', 'Trending Score: 1027, Likes: 1,144, Downloads: 182,313', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF', '[{"text":"abenzerps/Qwen-Image-2.1-Uncensored-GGUF on Hugging Face","url":"https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('jev-decision-index', 'multimodalart', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'STATIC Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by multimodalart. Trending with 137 community stars.', 'STATIC cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/multimodalart/jev-decision-index', 'Trending Score: 134, Community Likes: 137', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/multimodalart/jev-decision-index', '[{"text":"multimodalart/jev-decision-index on Hugging Face Spaces","url":"https://huggingface.co/spaces/multimodalart/jev-decision-index"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('saas-sales-conversations', 'DeepMostInnovations', 'Dataset', 'NLP', 'APACHE-2.0', 2026, '100K<n<1M', 'saas-sales-conversations 	 	 		 		Dataset Description 	 This is a synthetic dataset of sales conversations for SaaS (Software as a Service) companies, designed for training (46 likes, 728 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("DeepMostInnovations/saas-sales-conversations")', 'Trending Score: 35, Likes: 46, Downloads: 728', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/DeepMostInnovations/saas-sales-conversations', '[{"text":"DeepMostInnovations/saas-sales-conversations on Hugging Face Datasets","url":"https://huggingface.co/datasets/DeepMostInnovations/saas-sales-conversations"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

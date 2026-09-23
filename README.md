@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-22)
+### ⚡ Daily AI Pulse (2026-09-23)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Qwen-Image-2.1** (`Model`), **laya-demo** (`Platform`), **tmmluplus** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Kokoro-82M** (Hexgrad) — [Explore](https://huggingface.co/hexgrad/Kokoro-82M) |
-| 🗄️ **Catalog Entries** | **301** AI assets tracked (244 featured) |
+| 🆕 **New Assets Added** | **Qwen-Image-2.1-Uncensored-GGUF** (`Model`), **jev-decision-index** (`Platform`), **saas-sales-conversations** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Whisper v3 Turbo** (OpenAI) — [Explore](https://github.com/openai/whisper) |
+| 🗄️ **Catalog Entries** | **304** AI assets tracked (246 featured) |
 | 🔥 **Top Trending Model** | [convaiinnovations/laya](https://huggingface.co/convaiinnovations/laya) |
-| 📜 **Top Daily Paper** | [One to More, More to One: Category-Aware Iterative...](https://huggingface.co/papers/2609.23377) |
-| 🛡️ **Catalog Links Checked** | **24/25** operational |
-| 🕒 **Last Daily Run** | `Tue, 22 Sep 2026 02:35:22 GMT` |
+| 📜 **Top Daily Paper** | [Ovis-Embedding: Pushing the Frontiers of Universal...](https://huggingface.co/papers/2609.25165) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Daily Run** | `Wed, 23 Sep 2026 02:35:36 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

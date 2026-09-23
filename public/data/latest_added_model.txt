@@ -1,1 +1,1 @@
-Qwen-Image-2.1
+Qwen-Image-2.1-Uncensored-GGUF

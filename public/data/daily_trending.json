@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-09-22T02:35:18.507Z",
+  "timestamp": "2026-09-23T02:35:33.457Z",
   "models": [
     {
       "id": "convaiinnovations/laya",
       "author": "convaiinnovations",
-      "likes": 1837,
+      "likes": 2589,
       "downloads": 0,
       "pipeline_tag": "text-classification",
       "url": "https://huggingface.co/convaiinnovations/laya"
@@ -12,84 +12,84 @@
     {
       "id": "prism-ml/Ternary-Bonsai-2-27B-gguf",
       "author": "prism-ml",
-      "likes": 1742,
-      "downloads": 2227879,
+      "likes": 1887,
+      "downloads": 2569604,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf"
     },
     {
       "id": "Qwen/Qwen-Image-2.1",
       "author": "Qwen",
-      "likes": 1472,
-      "downloads": 6523,
+      "likes": 1809,
+      "downloads": 16242,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
     },
     {
       "id": "XingChen-AGI/Xing4.0-29B-A4B",
       "author": "XingChen-AGI",
-      "likes": 1135,
-      "downloads": 18394,
+      "likes": 1384,
+      "downloads": 30627,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B"
     },
     {
-      "id": "deepseek-ai/DeepSeek-V4.1-Flash",
-      "author": "deepseek-ai",
-      "likes": 3536,
-      "downloads": 512120,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+      "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
+      "author": "abenzerps",
+      "likes": 1144,
+      "downloads": 182313,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
     },
     {
-      "id": "abenzerps/Qwen-Image-2.1-GGUF",
-      "author": "abenzerps",
-      "likes": 657,
-      "downloads": 33232,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-GGUF"
+      "id": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "author": "deepseek-ai",
+      "likes": 3615,
+      "downloads": 542014,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
     }
   ],
   "papers": [
     {
-      "title": "One to More, More to One: Category-Aware Iterative Expert Training for Software Engineering Agents",
-      "summary": "Repository-level software engineering (SWE) comprises heterogeneous task categories, whose progress under pooled agentic reinforcement learning can be uneven: g...",
-      "upvotes": 5,
-      "arxiv_id": "2609.23377",
-      "url": "https://huggingface.co/papers/2609.23377",
+      "title": "Ovis-Embedding: Pushing the Frontiers of Universal Omni-Modal Embeddings",
+      "summary": "In this report, we introduce Ovis-Embedding, a state-of-the-art omni-modal embedding family built on native integration of text, image, video, and audio. Instea...",
+      "upvotes": 0,
+      "arxiv_id": "2609.25165",
+      "url": "https://huggingface.co/papers/2609.25165",
+      "githubRepo": "https://github.com/ATH-MaaS/Ovis-Omni-Embedding"
+    },
+    {
+      "title": "Recursive self-improvement of AI research agents",
+      "summary": "AI agents are beginning to automate research and development across the AI stack, from improving training efficiency to optimizing inference. A natural next ste...",
+      "upvotes": 1,
+      "arxiv_id": "2609.26457",
+      "url": "https://huggingface.co/papers/2609.26457",
       "githubRepo": null
     },
     {
-      "title": "SteerDuplex: Steerable Duplex Speech Dialogue Models",
-      "summary": "Full-duplex spoken dialogue models support low-latency turn taking, interruption handling, and backchanneling, yet a key capability remains underexplored: steer...",
-      "upvotes": 2,
-      "arxiv_id": "2609.12623",
-      "url": "https://huggingface.co/papers/2609.12623",
-      "githubRepo": null
-    },
-    {
-      "title": "From Pretraining to Proficiency: Real-World Subtask RL for Long-Horizon Manipulation with Minimal Human Intervention",
-      "summary": "A pretrained robot foundation policy may execute most of a long-horizon task yet repeatedly fail at a few critical subtasks. Collecting additional full-task dem...",
-      "upvotes": 5,
-      "arxiv_id": "2609.21788",
-      "url": "https://huggingface.co/papers/2609.21788",
-      "githubRepo": null
-    },
-    {
-      "title": "SiliconBench: Speed, Memory, and Fidelity for LLM Serving on Unified-Memory Desktops",
-      "summary": "Concurrent local LLM serving on unified-memory desktops must preserve memory headroom and output fidelity, which speed-only rankings overlook. We introduce Sili...",
+      "title": "Flash-dLLM: IO-Aware KV Caching and Parallel Decoding for Fast, Memory-Efficient Diffusion LLMs",
+      "summary": "Diffusion Large Language Models (dLLMs) have recently emerged as a promising alternative to autoregressive LLMs by enabling non-autoregressive text generation. ...",
       "upvotes": 3,
-      "arxiv_id": "2609.19169",
-      "url": "https://huggingface.co/papers/2609.19169",
-      "githubRepo": "https://github.com/WindChimeRan/SiliconBench"
+      "arxiv_id": "2609.26796",
+      "url": "https://huggingface.co/papers/2609.26796",
+      "githubRepo": "https://github.com/VILA-Lab/Flash-dLLM"
     },
     {
-      "title": "BI-Agent and BI-Bench: Towards Automating End-to-End Business Intelligence",
-      "summary": "Business intelligence (BI) is a cornerstone of enterprise decision-making and is widely used by enterprise users in software such as Power BI and Tableau. In tr...",
-      "upvotes": 14,
-      "arxiv_id": "2609.20886",
-      "url": "https://huggingface.co/papers/2609.20886",
-      "githubRepo": "https://github.com/Hu-Chuxuan/bi-agent"
+      "title": "RULER: Instance-aware Rubric Rewards for SVG Generation",
+      "summary": "Generating Scalable Vector Graphics (SVG) code from natural-language instructions is an open-ended task without absolute visual ground truth, leaving both evalu...",
+      "upvotes": 4,
+      "arxiv_id": "2609.25270",
+      "url": "https://huggingface.co/papers/2609.25270",
+      "githubRepo": null
+    },
+    {
+      "title": "The information geometry of large language models is shared, learned, and controllable",
+      "summary": "Shared Fisher-Rao geometry of next-token probabilities across architectures links model behavior, enables low-disturbance interventions, and predicts learning dynamics and control transfer.",
+      "upvotes": 3,
+      "arxiv_id": "2609.11063",
+      "url": "https://huggingface.co/papers/2609.11063",
+      "githubRepo": "https://github.com/dariopicozzi/llm-geometry"
     }
   ]
 }
