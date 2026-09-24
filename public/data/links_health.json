@@ -1,18 +1,38 @@
 {
-  "timestamp": "2026-09-23T02:35:33.565Z",
+  "timestamp": "2026-09-24T02:24:47.522Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 19,
+  "broken": 6,
   "issues": [
     {
-      "name": "GPT-4",
-      "url": "https://openai.com/gpt-4",
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
+    },
+    {
+      "name": "Quizlet AI",
+      "url": "https://quizlet.com/features/quizlet-ai",
       "status": 403
     },
     {
-      "name": "DeepSeek Chat",
-      "url": "https://chat.deepseek.com",
+      "name": "wan555",
+      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
+      "status": 401
+    },
+    {
+      "name": "o3-mini",
+      "url": "https://openai.com",
       "status": 403
+    },
+    {
+      "name": "Meta AI",
+      "url": "https://www.meta.ai",
+      "status": 403
+    },
+    {
+      "name": "OpenWebText",
+      "url": "https://huggingface.co/datasets/openwebtext",
+      "status": 404
     }
   ]
 }

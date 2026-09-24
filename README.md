@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-23)
+### ⚡ Daily AI Pulse (2026-09-24)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Qwen-Image-2.1-Uncensored-GGUF** (`Model`), **jev-decision-index** (`Platform`), **saas-sales-conversations** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Whisper v3 Turbo** (OpenAI) — [Explore](https://github.com/openai/whisper) |
-| 🗄️ **Catalog Entries** | **304** AI assets tracked (246 featured) |
+| 🆕 **New Assets Added** | **Hemmingway-1** (`Model`), **qwen-image-2-1** (`Platform`), **tracker-pov** (`Dataset`) |
+| 🌟 **Tool of the Day** | **HunyuanVideo** (Tencent) — [Explore](https://github.com/Tencent/HunyuanVideo) |
+| 🗄️ **Catalog Entries** | **307** AI assets tracked (248 featured) |
 | 🔥 **Top Trending Model** | [convaiinnovations/laya](https://huggingface.co/convaiinnovations/laya) |
-| 📜 **Top Daily Paper** | [Ovis-Embedding: Pushing the Frontiers of Universal...](https://huggingface.co/papers/2609.25165) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Daily Run** | `Wed, 23 Sep 2026 02:35:36 GMT` |
+| 📜 **Top Daily Paper** | [PACT: From Credit Assignment to Critic Alignment...](https://huggingface.co/papers/2609.26355) |
+| 🛡️ **Catalog Links Checked** | **19/25** operational |
+| 🕒 **Last Daily Run** | `Thu, 24 Sep 2026 02:24:50 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

@@ -1,4 +1,4 @@
--- Seed / Upsert all 304 AiVerse entries into Supabase
+-- Seed / Upsert all 307 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -6392,6 +6392,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('saas-sales-conversations', 'DeepMostInnovations', 'Dataset', 'NLP', 'APACHE-2.0', 2026, '100K<n<1M', 'saas-sales-conversations 	 	 		 		Dataset Description 	 This is a synthetic dataset of sales conversations for SaaS (Software as a Service) companies, designed for training (46 likes, 728 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("DeepMostInnovations/saas-sales-conversations")', 'Trending Score: 35, Likes: 46, Downloads: 728', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/DeepMostInnovations/saas-sales-conversations', '[{"text":"DeepMostInnovations/saas-sales-conversations on Hugging Face Datasets","url":"https://huggingface.co/datasets/DeepMostInnovations/saas-sales-conversations"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Hemmingway-1', 'Altworld', 'Model', 'NLP', 'CC-BY-NC-4.0', 2026, 'Open Weights', 'High-performance NLP open-weights model by Altworld, trending with over 579 community likes and 3,787 downloads on Hugging Face.', 'Altworld text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Altworld/Hemmingway-1", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Altworld/Hemmingway-1")', 'Trending Score: 565, Likes: 579, Downloads: 3,787', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Altworld/Hemmingway-1', '[{"text":"Altworld/Hemmingway-1 on Hugging Face","url":"https://huggingface.co/Altworld/Hemmingway-1"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('qwen-image-2-1', 'hugging-apps', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 92 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/qwen-image-2-1', 'Trending Score: 80, Community Likes: 92', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/hugging-apps/qwen-image-2-1', '[{"text":"hugging-apps/qwen-image-2-1 on Hugging Face Spaces","url":"https://huggingface.co/spaces/hugging-apps/qwen-image-2-1"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('tracker-pov', 'eidon-ai', 'Dataset', 'NLP', 'CC-BY-4.0', 2026, '10K<n<100K', 'Eidon Tracker POV 	 1,274 hours of egocentric video paired with 7-point IMU arm tracking, recorded during ordinary household work. Contributors wore a head-mounted came (38 likes, 10,594 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("eidon-ai/tracker-pov")', 'Trending Score: 38, Likes: 38, Downloads: 10,594', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/eidon-ai/tracker-pov', '[{"text":"eidon-ai/tracker-pov on Hugging Face Datasets","url":"https://huggingface.co/datasets/eidon-ai/tracker-pov"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
