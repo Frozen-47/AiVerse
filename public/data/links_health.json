@@ -1,38 +1,48 @@
 {
-  "timestamp": "2026-09-24T02:24:47.522Z",
+  "timestamp": "2026-09-25T02:41:28.412Z",
   "checked": 25,
-  "healthy": 19,
-  "broken": 6,
+  "healthy": 17,
+  "broken": 8,
   "issues": [
-    {
-      "name": "Grammarly",
-      "url": "https://www.grammarly.com",
-      "status": 405
-    },
-    {
-      "name": "Quizlet AI",
-      "url": "https://quizlet.com/features/quizlet-ai",
-      "status": 403
-    },
-    {
-      "name": "wan555",
-      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
-      "status": 401
-    },
     {
       "name": "o3-mini",
       "url": "https://openai.com",
       "status": 403
     },
     {
-      "name": "Meta AI",
-      "url": "https://www.meta.ai",
+      "name": "o1 (OpenAI)",
+      "url": "https://openai.com/o1",
       "status": 403
     },
     {
-      "name": "OpenWebText",
-      "url": "https://huggingface.co/datasets/openwebtext",
-      "status": 404
+      "name": "Whisper",
+      "url": "https://openai.com/research/whisper",
+      "status": 403
+    },
+    {
+      "name": "Pi",
+      "url": "https://pi.ai",
+      "status": 403
+    },
+    {
+      "name": "GPT-4",
+      "url": "https://openai.com/gpt-4",
+      "status": 403
+    },
+    {
+      "name": "Perplexity",
+      "url": "https://www.perplexity.ai",
+      "status": 403
+    },
+    {
+      "name": "Canva AI",
+      "url": "https://www.canva.com/ai-image-generator",
+      "status": 403
+    },
+    {
+      "name": "Mistral Le Chat",
+      "url": "https://chat.mistral.ai",
+      "status": 403
     }
   ]
 }

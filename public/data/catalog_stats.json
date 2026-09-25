@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-09-24T02:24:43.370Z",
-  "totalEntries": 307,
-  "popularEntries": 248,
+  "timestamp": "2026-09-25T02:41:25.947Z",
+  "totalEntries": 310,
+  "popularEntries": 251,
   "totalUsers": 11,
   "averageRating": 4.38,
   "totalRatings": 8,
-  "newEntriesCount": 80,
+  "newEntriesCount": 83,
   "byType": {
-    "Model": 110,
+    "Model": 111,
     "Framework": 33,
-    "Platform": 47,
-    "Dataset": 46,
+    "Platform": 48,
+    "Dataset": 47,
     "AI": 71
   },
   "byTask": {
     "NLP": 116,
-    "AI Coding": 24,
-    "Multimodal": 37,
+    "AI Coding": 25,
+    "Multimodal": 39,
     "Research": 11,
     "Image Generation": 11,
     "Video Generation": 11,
@@ -66,9 +66,9 @@
     "Proprietary / DeepSeek License": 1,
     "Open Source UI / Various model licenses": 1,
     "Free": 1,
-    "APACHE-2.0": 21,
+    "APACHE-2.0": 22,
     "OTHER": 11,
-    "Community Hosted": 22,
+    "Community Hosted": 23,
     "NOASSERTION": 4,
     "CC-BY-SA-4.0": 1,
     "Open Data": 1,
@@ -76,27 +76,28 @@
     "WTFPL": 1,
     "CC-BY-NC-4.0": 2,
     "CC-BY-SA-3.0": 1,
-    "CC-BY-NC-SA-4.0": 1
+    "CC-BY-NC-SA-4.0": 1,
+    "Open Weights": 1
   },
   "toolOfTheDay": {
-    "name": "HunyuanVideo",
+    "name": "Codestral 22B",
     "type": "Model",
-    "summary": "Tencent's open-weights 13B dual-stream text-to-video foundation model delivering cinema-quality 720p 24fps video clips with exceptional physics consistency.",
-    "task": "Video Generation",
-    "license": "Apache-2.0",
+    "summary": "Mistral AI's code generation model tailored for fill-in-the-middle (FIM), code completion, unit test drafting, and repository navigation across 80+ languages.",
+    "task": "AI Coding",
+    "license": "Mistral Non-Production License",
     "year": 2024,
-    "org": "Tencent",
-    "size": "13B params",
-    "architecture": "Dual-stream Diffusion Transformer (DiT) integrating 3D VAE with text-video cross-attention.",
-    "usage": "from diffusers import HunyuanVideoPipeline\npipe = HunyuanVideoPipeline.from_pretrained(\"Tencent-Hunyuan/HunyuanVideo\", torch_dtype=torch.bfloat16)\nvideo = pipe(\"Astronaut riding a horse on the moon, cinematic 4k\").frames[0]",
-    "benchmarks": "VBench Total: 85.2% (Top ranked open-source text-to-video model)",
-    "limitations": "High VRAM requirements (recommended 44GB+ for unquantized inference).",
+    "org": "Mistral AI",
+    "size": "22B params",
+    "architecture": "Dense autoregressive model with 32k context and bidirectional FIM tokens.",
+    "usage": "from mistralai import Mistral\nclient = Mistral(api_key=\"API_KEY\")\nresponse = client.fim.complete(\n  model=\"codestral-latest\",\n  prompt=\"def calculate_fibonacci(n):\",\n  suffix=\"return result\"\n)",
+    "benchmarks": "HumanEval: 81.1%, MBPP: 78.2%, Spider: 67.5%",
+    "limitations": "Non-commercial license for direct weights use unless licensed via Mistral API.",
     "popular": true,
-    "url": "https://github.com/Tencent/HunyuanVideo",
+    "url": "https://mistral.ai/news/codestral/",
     "citations": [
       {
-        "text": "HunyuanVideo Technical Report",
-        "url": "https://arxiv.org/abs/2412.03603"
+        "text": "Codestral Announcement",
+        "url": "https://mistral.ai/news/codestral/"
       }
     ]
   }
