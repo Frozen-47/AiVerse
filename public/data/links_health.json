@@ -1,48 +1,43 @@
 {
-  "timestamp": "2026-09-25T02:41:28.412Z",
+  "timestamp": "2026-09-26T02:44:14.833Z",
   "checked": 25,
-  "healthy": 17,
-  "broken": 8,
+  "healthy": 18,
+  "broken": 7,
   "issues": [
     {
-      "name": "o3-mini",
-      "url": "https://openai.com",
+      "name": "tiktok-videos-4b",
+      "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
+      "status": 401
+    },
+    {
+      "name": "Codex",
+      "url": "https://openai.com/blog/openai-codex",
       "status": 403
     },
     {
-      "name": "o1 (OpenAI)",
-      "url": "https://openai.com/o1",
+      "name": "DeepSeek Chat",
+      "url": "https://chat.deepseek.com",
       "status": 403
     },
     {
-      "name": "Whisper",
-      "url": "https://openai.com/research/whisper",
+      "name": "Character.ai",
+      "url": "https://character.ai",
       "status": 403
     },
     {
-      "name": "Pi",
-      "url": "https://pi.ai",
+      "name": "Google Gemini",
+      "url": "https://gemini.google.com",
+      "status": "Network Error"
+    },
+    {
+      "name": "Poe",
+      "url": "https://poe.com",
       "status": 403
     },
     {
-      "name": "GPT-4",
-      "url": "https://openai.com/gpt-4",
-      "status": 403
-    },
-    {
-      "name": "Perplexity",
-      "url": "https://www.perplexity.ai",
-      "status": 403
-    },
-    {
-      "name": "Canva AI",
-      "url": "https://www.canva.com/ai-image-generator",
-      "status": 403
-    },
-    {
-      "name": "Mistral Le Chat",
-      "url": "https://chat.mistral.ai",
-      "status": 403
+      "name": "Arena-Hard-Auto",
+      "url": "https://github.com/sunshanghai/arena-hard-auto",
+      "status": 404
     }
   ]
 }

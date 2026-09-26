@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-09-25T02:41:25.947Z",
-  "totalEntries": 310,
-  "popularEntries": 251,
+  "timestamp": "2026-09-26T02:44:11.901Z",
+  "totalEntries": 313,
+  "popularEntries": 253,
   "totalUsers": 11,
   "averageRating": 4.38,
   "totalRatings": 8,
-  "newEntriesCount": 83,
+  "newEntriesCount": 86,
   "byType": {
-    "Model": 111,
+    "Model": 112,
     "Framework": 33,
-    "Platform": 48,
-    "Dataset": 47,
+    "Platform": 49,
+    "Dataset": 48,
     "AI": 71
   },
   "byTask": {
@@ -18,9 +18,9 @@
     "AI Coding": 25,
     "Multimodal": 39,
     "Research": 11,
-    "Image Generation": 11,
+    "Image Generation": 12,
     "Video Generation": 11,
-    "Audio": 14,
+    "Audio": 16,
     "MLOps": 44,
     "Productivity": 14,
     "Computer Vision": 21,
@@ -66,9 +66,9 @@
     "Proprietary / DeepSeek License": 1,
     "Open Source UI / Various model licenses": 1,
     "Free": 1,
-    "APACHE-2.0": 22,
+    "APACHE-2.0": 23,
     "OTHER": 11,
-    "Community Hosted": 23,
+    "Community Hosted": 24,
     "NOASSERTION": 4,
     "CC-BY-SA-4.0": 1,
     "Open Data": 1,
@@ -77,27 +77,28 @@
     "CC-BY-NC-4.0": 2,
     "CC-BY-SA-3.0": 1,
     "CC-BY-NC-SA-4.0": 1,
-    "Open Weights": 1
+    "Open Weights": 1,
+    "CC-BY-NC-ND-4.0": 1
   },
   "toolOfTheDay": {
-    "name": "Codestral 22B",
+    "name": "Mistral Large 2 (123B)",
     "type": "Model",
-    "summary": "Mistral AI's code generation model tailored for fill-in-the-middle (FIM), code completion, unit test drafting, and repository navigation across 80+ languages.",
-    "task": "AI Coding",
-    "license": "Mistral Non-Production License",
+    "summary": "Mistral AI's 123-billion parameter flagship model with 128k context window, advanced multilingual fluency in 80+ languages, and top code generation.",
+    "task": "NLP",
+    "license": "Mistral Research License / Commercial",
     "year": 2024,
     "org": "Mistral AI",
-    "size": "22B params",
-    "architecture": "Dense autoregressive model with 32k context and bidirectional FIM tokens.",
-    "usage": "from mistralai import Mistral\nclient = Mistral(api_key=\"API_KEY\")\nresponse = client.fim.complete(\n  model=\"codestral-latest\",\n  prompt=\"def calculate_fibonacci(n):\",\n  suffix=\"return result\"\n)",
-    "benchmarks": "HumanEval: 81.1%, MBPP: 78.2%, Spider: 67.5%",
-    "limitations": "Non-commercial license for direct weights use unless licensed via Mistral API.",
+    "size": "123B params",
+    "architecture": "Dense Transformer with 128k context window and enhanced function calling.",
+    "usage": "from mistralai import Mistral\nclient = Mistral(api_key=\"API_KEY\")\nresponse = client.chat.complete(\n  model=\"mistral-large-latest\",\n  messages=[{\"role\": \"user\", \"content\": \"Analyze economic trends.\"}]\n)",
+    "benchmarks": "MMLU: 84.0%, HumanEval: 92.0%, GSM8K: 91.2%",
+    "limitations": "Commercial weights require paid enterprise license.",
     "popular": true,
-    "url": "https://mistral.ai/news/codestral/",
+    "url": "https://mistral.ai/news/mistral-large-2407/",
     "citations": [
       {
-        "text": "Codestral Announcement",
-        "url": "https://mistral.ai/news/codestral/"
+        "text": "Mistral Large 2 Announcement",
+        "url": "https://mistral.ai/news/mistral-large-2407/"
       }
     ]
   }

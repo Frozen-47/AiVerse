@@ -1,5 +1,76 @@
 [
   {
+    "date": "2026-09-26",
+    "assets": [
+      {
+        "name": "Audio8-ASR-Infinite",
+        "type": "Model",
+        "summary": "High-performance Audio open-weights model by Edge0, trending with over 605 community likes and 2,853 downloads on Hugging Face.",
+        "task": "Audio",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Edge0",
+        "size": "Open Weights",
+        "architecture": "Edge0 automatic speech recognition architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Edge0/Audio8-ASR-Infinite\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Edge0/Audio8-ASR-Infinite\")",
+        "benchmarks": "Trending Score: 541, Likes: 605, Downloads: 2,853",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": true,
+        "url": "https://huggingface.co/Edge0/Audio8-ASR-Infinite",
+        "citations": [
+          {
+            "text": "Edge0/Audio8-ASR-Infinite on Hugging Face",
+            "url": "https://huggingface.co/Edge0/Audio8-ASR-Infinite"
+          }
+        ]
+      },
+      {
+        "name": "Qwen-Image-2.1-viggle-turbo",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Viggle. Trending with 61 community stars.",
+        "task": "Image Generation",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "Viggle",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
+        "benchmarks": "Trending Score: 59, Community Likes: 61",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": true,
+        "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
+        "citations": [
+          {
+            "text": "Viggle/Qwen-Image-2.1-viggle-turbo on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo"
+          }
+        ]
+      },
+      {
+        "name": "OmniVChat",
+        "type": "Dataset",
+        "summary": "OmniVChat: Synthesizing, Benchmarking, and Training for Native Audio-Visual Dialogue \t &nbsp;&nbsp;&nbsp;&nbsp; 1 The Chinese University of Hong Kong 2 Alibaba Token Hu (39 likes, 1,473 downloads).",
+        "task": "Audio",
+        "license": "CC-BY-NC-ND-4.0",
+        "year": 2026,
+        "org": "Harland",
+        "size": "1K<n<10K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Harland/OmniVChat\")",
+        "benchmarks": "Trending Score: 39, Likes: 39, Downloads: 1,473",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "url": "https://huggingface.co/datasets/Harland/OmniVChat",
+        "citations": [
+          {
+            "text": "Harland/OmniVChat on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/Harland/OmniVChat"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-25",
     "assets": [
       {

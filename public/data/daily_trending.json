@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-09-25T02:41:28.244Z",
+  "timestamp": "2026-09-26T02:44:14.658Z",
   "models": [
     {
       "id": "convaiinnovations/laya",
       "author": "convaiinnovations",
-      "likes": 3421,
+      "likes": 3701,
       "downloads": 0,
       "pipeline_tag": "text-classification",
       "url": "https://huggingface.co/convaiinnovations/laya"
@@ -12,84 +12,84 @@
     {
       "id": "Qwen/Qwen-Image-2.1",
       "author": "Qwen",
-      "likes": 2211,
-      "downloads": 37618,
+      "likes": 2324,
+      "downloads": 42469,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
     },
     {
-      "id": "prism-ml/Ternary-Bonsai-2-27B-gguf",
-      "author": "prism-ml",
-      "likes": 2043,
-      "downloads": 2991233,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf"
-    },
-    {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
       "author": "abenzerps",
-      "likes": 1642,
-      "downloads": 575697,
+      "likes": 1803,
+      "downloads": 715906,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
     },
     {
       "id": "XingChen-AGI/Xing4.0-29B-A4B",
       "author": "XingChen-AGI",
-      "likes": 1647,
-      "downloads": 41923,
+      "likes": 1686,
+      "downloads": 42950,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B"
     },
     {
+      "id": "prism-ml/Ternary-Bonsai-2-27B-gguf",
+      "author": "prism-ml",
+      "likes": 2092,
+      "downloads": 3109078,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf"
+    },
+    {
       "id": "Comfy-Org/Qwen-Image-2.1",
       "author": "Comfy-Org",
-      "likes": 686,
-      "downloads": 2858923,
+      "likes": 736,
+      "downloads": 3266380,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1"
     }
   ],
   "papers": [
     {
-      "title": "AgentKernel: The Trust-Native Agentic Operating System",
-      "summary": "Modern AI agents routinely cross trust boundaries: they ingest untrusted content, combine it with privileged instructions, persist intermediate beliefs in long-...",
-      "upvotes": 1,
-      "arxiv_id": "2609.29647",
-      "url": "https://huggingface.co/papers/2609.29647",
+      "title": "Learning to Discover Interesting Mathematics",
+      "summary": "Recently, Large Language Models (LLMs) have been increasingly able to solve advanced mathematical problems, including many that have been open for decades. This...",
+      "upvotes": 4,
+      "arxiv_id": "2609.28603",
+      "url": "https://huggingface.co/papers/2609.28603",
       "githubRepo": null
     },
     {
-      "title": "PUBG Ally: A Conversational Embodied Agent as an AI Teammate",
-      "summary": "We introduce PUBG Ally, an embodied agent for PUBG: BATTLEGROUNDS that can reason, act autonomously, and play alongside players as a voice-enabled teammate. Bui...",
-      "upvotes": 1,
-      "arxiv_id": "2609.29837",
-      "url": "https://huggingface.co/papers/2609.29837",
+      "title": "RGBD20K: A Large-Scale Benchmark for RGB-D Semantic Segmentation",
+      "summary": "In this paper, we propose RGBD20K, a novel dataset for facilitating the development of more robust and general RGB-D semantic segmentation by encompassing abund...",
+      "upvotes": 7,
+      "arxiv_id": "2609.29028",
+      "url": "https://huggingface.co/papers/2609.29028",
+      "githubRepo": "https://github.com/ShaohuaDong2021/RGBD20K"
+    },
+    {
+      "title": "AV-GRPO: Modality-Anchored Decoupling Diffusion Reinforcement Learning for Joint Audio-Video Generation",
+      "summary": "Recent years have witnessed major progress in joint audio-video generation. Existing models still suffer from limited per-modality fidelity, insufficient text-m...",
+      "upvotes": 2,
+      "arxiv_id": "2609.29816",
+      "url": "https://huggingface.co/papers/2609.29816",
+      "githubRepo": "https://github.com/zhiyuxu03/AV-GRPO"
+    },
+    {
+      "title": "Your Transformer Can Hold Two Thoughts at Once: Evidence of Linear Superposition in LLMs",
+      "summary": "While Large Language Models (LLMs) rely on highly non-linear components, in this work we demonstrate that they exhibit fundamental linearity: when inputs from d...",
+      "upvotes": 55,
+      "arxiv_id": "2609.29845",
+      "url": "https://huggingface.co/papers/2609.29845",
       "githubRepo": null
     },
     {
-      "title": "OmniEcho: Spatial Audio Understanding for Embodied Agents",
-      "summary": "Humans can effortlessly localize the direction of a sound source and integrate it with visual cues for reasoning, yet this remains challenging for embodied agen...",
-      "upvotes": 1,
-      "arxiv_id": "2609.23407",
-      "url": "https://huggingface.co/papers/2609.23407",
-      "githubRepo": "https://github.com/PKU-VaLuE-Lab/OmniEcho"
-    },
-    {
-      "title": "World Action Agent: Harnessing VLMs for Robot Manipulation via World Action Rehearsal",
-      "summary": "General-purpose vision-language models (VLMs) bring broad knowledge and spatial reasoning to robot manipulation, yet existing systems either use them indirectly...",
-      "upvotes": 0,
-      "arxiv_id": "2609.29964",
-      "url": "https://huggingface.co/papers/2609.29964",
-      "githubRepo": null
-    },
-    {
-      "title": "WanPE: Towards Cinematic Prompt Enhancement for Modern Text-to-Video Generation",
-      "summary": "Video generation begins in text space by authoring a cinematic screenplay, then materializes into pixels. As contemporary video generators scale to 30 seconds a...",
-      "upvotes": 1,
-      "arxiv_id": "2609.30221",
-      "url": "https://huggingface.co/papers/2609.30221",
-      "githubRepo": null
+      "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
+      "summary": "Detectors of alignment failures screen deployed language models and score alignment benchmarks. Most are generative judges that spend a decoding pass on every c...",
+      "upvotes": 2,
+      "arxiv_id": "2609.29429",
+      "url": "https://huggingface.co/papers/2609.29429",
+      "githubRepo": "https://github.com/sumleo/RLCDAlignBench"
     }
   ]
 }
