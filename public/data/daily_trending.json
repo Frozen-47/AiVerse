@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-09-26T02:44:14.658Z",
+  "timestamp": "2026-09-27T02:44:45.826Z",
   "models": [
     {
       "id": "convaiinnovations/laya",
       "author": "convaiinnovations",
-      "likes": 3701,
+      "likes": 3908,
       "downloads": 0,
       "pipeline_tag": "text-classification",
       "url": "https://huggingface.co/convaiinnovations/laya"
@@ -12,49 +12,49 @@
     {
       "id": "Qwen/Qwen-Image-2.1",
       "author": "Qwen",
-      "likes": 2324,
-      "downloads": 42469,
+      "likes": 2403,
+      "downloads": 48361,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
     },
     {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
       "author": "abenzerps",
-      "likes": 1803,
-      "downloads": 715906,
+      "likes": 1944,
+      "downloads": 876673,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
     },
     {
       "id": "XingChen-AGI/Xing4.0-29B-A4B",
       "author": "XingChen-AGI",
-      "likes": 1686,
-      "downloads": 42950,
+      "likes": 1727,
+      "downloads": 43947,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B"
     },
     {
       "id": "prism-ml/Ternary-Bonsai-2-27B-gguf",
       "author": "prism-ml",
-      "likes": 2092,
-      "downloads": 3109078,
+      "likes": 2143,
+      "downloads": 3247527,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf"
     },
     {
-      "id": "Comfy-Org/Qwen-Image-2.1",
-      "author": "Comfy-Org",
-      "likes": 736,
-      "downloads": 3266380,
-      "pipeline_tag": "general",
-      "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1"
+      "id": "Edge0/Audio8-ASR-Infinite",
+      "author": "Edge0",
+      "likes": 834,
+      "downloads": 7859,
+      "pipeline_tag": "automatic-speech-recognition",
+      "url": "https://huggingface.co/Edge0/Audio8-ASR-Infinite"
     }
   ],
   "papers": [
     {
       "title": "Learning to Discover Interesting Mathematics",
       "summary": "Recently, Large Language Models (LLMs) have been increasingly able to solve advanced mathematical problems, including many that have been open for decades. This...",
-      "upvotes": 4,
+      "upvotes": 8,
       "arxiv_id": "2609.28603",
       "url": "https://huggingface.co/papers/2609.28603",
       "githubRepo": null
@@ -70,7 +70,7 @@
     {
       "title": "AV-GRPO: Modality-Anchored Decoupling Diffusion Reinforcement Learning for Joint Audio-Video Generation",
       "summary": "Recent years have witnessed major progress in joint audio-video generation. Existing models still suffer from limited per-modality fidelity, insufficient text-m...",
-      "upvotes": 2,
+      "upvotes": 4,
       "arxiv_id": "2609.29816",
       "url": "https://huggingface.co/papers/2609.29816",
       "githubRepo": "https://github.com/zhiyuxu03/AV-GRPO"
@@ -78,7 +78,7 @@
     {
       "title": "Your Transformer Can Hold Two Thoughts at Once: Evidence of Linear Superposition in LLMs",
       "summary": "While Large Language Models (LLMs) rely on highly non-linear components, in this work we demonstrate that they exhibit fundamental linearity: when inputs from d...",
-      "upvotes": 55,
+      "upvotes": 64,
       "arxiv_id": "2609.29845",
       "url": "https://huggingface.co/papers/2609.29845",
       "githubRepo": null
@@ -86,7 +86,7 @@
     {
       "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
       "summary": "Detectors of alignment failures screen deployed language models and score alignment benchmarks. Most are generative judges that spend a decoding pass on every c...",
-      "upvotes": 2,
+      "upvotes": 5,
       "arxiv_id": "2609.29429",
       "url": "https://huggingface.co/papers/2609.29429",
       "githubRepo": "https://github.com/sumleo/RLCDAlignBench"

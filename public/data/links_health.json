@@ -1,43 +1,23 @@
 {
-  "timestamp": "2026-09-26T02:44:14.833Z",
+  "timestamp": "2026-09-27T02:44:45.870Z",
   "checked": 25,
-  "healthy": 18,
-  "broken": 7,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "tiktok-videos-4b",
-      "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
-      "status": 401
+      "name": "Whisper",
+      "url": "https://openai.com/research/whisper",
+      "status": 403
+    },
+    {
+      "name": "Midjourney v6",
+      "url": "https://www.midjourney.com/",
+      "status": 403
     },
     {
       "name": "Codex",
       "url": "https://openai.com/blog/openai-codex",
       "status": 403
-    },
-    {
-      "name": "DeepSeek Chat",
-      "url": "https://chat.deepseek.com",
-      "status": 403
-    },
-    {
-      "name": "Character.ai",
-      "url": "https://character.ai",
-      "status": 403
-    },
-    {
-      "name": "Google Gemini",
-      "url": "https://gemini.google.com",
-      "status": "Network Error"
-    },
-    {
-      "name": "Poe",
-      "url": "https://poe.com",
-      "status": 403
-    },
-    {
-      "name": "Arena-Hard-Auto",
-      "url": "https://github.com/sunshanghai/arena-hard-auto",
-      "status": 404
     }
   ]
 }

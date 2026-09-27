@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-26",
+  "date": "2026-09-27",
   "tool": {
-    "name": "Mistral Large 2 (123B)",
+    "name": "Gemini 2.0 Flash Thinking",
     "type": "Model",
-    "summary": "Mistral AI's 123-billion parameter flagship model with 128k context window, advanced multilingual fluency in 80+ languages, and top code generation.",
-    "task": "NLP",
-    "license": "Mistral Research License / Commercial",
+    "summary": "Experimental reasoning edition of Gemini 2.0 Flash that outputs chain-of-thought steps for visual and logical problem-solving.",
+    "task": "Research",
+    "license": "Proprietary",
     "year": 2024,
-    "org": "Mistral AI",
-    "size": "123B params",
-    "architecture": "Dense Transformer with 128k context window and enhanced function calling.",
-    "usage": "from mistralai import Mistral\nclient = Mistral(api_key=\"API_KEY\")\nresponse = client.chat.complete(\n  model=\"mistral-large-latest\",\n  messages=[{\"role\": \"user\", \"content\": \"Analyze economic trends.\"}]\n)",
-    "benchmarks": "MMLU: 84.0%, HumanEval: 92.0%, GSM8K: 91.2%",
-    "limitations": "Commercial weights require paid enterprise license.",
+    "org": "Google DeepMind",
+    "size": "Unknown",
+    "architecture": "Multimodal MoE with explicit reasoning tokens and reflection loops.",
+    "usage": "from google import genai\nclient = genai.Client()\nresponse = client.models.generate_content(\n  model=\"gemini-2.0-flash-thinking-exp\",\n  contents=\"Solve this physics circuit diagram problem.\"\n)",
+    "benchmarks": "MATH-500: 92.4%, AIME 2024: 74.3%",
+    "limitations": "Experimental model with dynamic rate limits.",
     "popular": true,
-    "url": "https://mistral.ai/news/mistral-large-2407/",
+    "url": "https://deepmind.google/technologies/gemini/",
     "citations": [
       {
-        "text": "Mistral Large 2 Announcement",
-        "url": "https://mistral.ai/news/mistral-large-2407/"
+        "text": "Gemini Thinking Model",
+        "url": "https://deepmind.google/technologies/gemini/"
       }
     ]
   }

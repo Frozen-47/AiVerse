@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-26)
+### ⚡ Daily AI Pulse (2026-09-27)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Audio8-ASR-Infinite** (`Model`), **Qwen-Image-2.1-viggle-turbo** (`Platform`), **OmniVChat** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Mistral Large 2 (123B)** (Mistral AI) — [Explore](https://mistral.ai/news/mistral-large-2407/) |
-| 🗄️ **Catalog Entries** | **313** AI assets tracked (253 featured) |
+| 🆕 **New Assets Added** | **MiMo-V2.6-Pro-RL** (`Model`), **nemotron-diarization** (`Platform`), **MiMo-V2.6-RL-oss** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Gemini 2.0 Flash Thinking** (Google DeepMind) — [Explore](https://deepmind.google/technologies/gemini/) |
+| 🗄️ **Catalog Entries** | **316** AI assets tracked (256 featured) |
 | 🔥 **Top Trending Model** | [convaiinnovations/laya](https://huggingface.co/convaiinnovations/laya) |
 | 📜 **Top Daily Paper** | [Learning to Discover Interesting Mathematics...](https://huggingface.co/papers/2609.28603) |
-| 🛡️ **Catalog Links Checked** | **18/25** operational |
-| 🕒 **Last Daily Run** | `Sat, 26 Sep 2026 02:44:18 GMT` |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Daily Run** | `Sun, 27 Sep 2026 02:44:48 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

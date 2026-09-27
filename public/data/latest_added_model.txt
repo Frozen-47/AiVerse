@@ -1,1 +1,1 @@
-Audio8-ASR-Infinite
+MiMo-V2.6-Pro-RL

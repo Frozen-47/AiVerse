@@ -1,4 +1,4 @@
--- Seed / Upsert all 313 AiVerse entries into Supabase
+-- Seed / Upsert all 316 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -6578,6 +6578,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('OmniVChat', 'Harland', 'Dataset', 'Audio', 'CC-BY-NC-ND-4.0', 2026, '1K<n<10K', 'OmniVChat: Synthesizing, Benchmarking, and Training for Native Audio-Visual Dialogue 	 &nbsp;&nbsp;&nbsp;&nbsp; 1 The Chinese University of Hong Kong 2 Alibaba Token Hu (39 likes, 1,473 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("Harland/OmniVChat")', 'Trending Score: 39, Likes: 39, Downloads: 1,473', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/Harland/OmniVChat', '[{"text":"Harland/OmniVChat on Hugging Face Datasets","url":"https://huggingface.co/datasets/Harland/OmniVChat"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MiMo-V2.6-Pro-RL', 'XiaomiMiMo', 'Model', 'NLP', 'MIT', 2026, 'Open Weights', 'High-performance NLP open-weights model by XiaomiMiMo, trending with over 530 community likes and 74,497 downloads on Hugging Face.', 'XiaomiMiMo text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("XiaomiMiMo/MiMo-V2.6-Pro-RL", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("XiaomiMiMo/MiMo-V2.6-Pro-RL")', 'Trending Score: 519, Likes: 530, Downloads: 74,497', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL', '[{"text":"XiaomiMiMo/MiMo-V2.6-Pro-RL on Hugging Face","url":"https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('nemotron-diarization', 'nvidia', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'DOCKER Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by nvidia. Trending with 67 community stars.', 'DOCKER cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/nvidia/nemotron-diarization', 'Trending Score: 66, Community Likes: 67', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/nvidia/nemotron-diarization', '[{"text":"nvidia/nemotron-diarization on Hugging Face Spaces","url":"https://huggingface.co/spaces/nvidia/nemotron-diarization"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MiMo-V2.6-RL-oss', 'XiaomiMiMo', 'Dataset', 'Computer Vision', 'APACHE-2.0', 2026, '1K<n<10K', 'Agentic RL Environments 	 RL training environments for LLM agents. 	 		 Domain Task Family Verifier 		 Code Software engineering Executable tests Cyber Vulnerability re (324 likes, 973 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("XiaomiMiMo/MiMo-V2.6-RL-oss")', 'Trending Score: 320, Likes: 324, Downloads: 973', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/XiaomiMiMo/MiMo-V2.6-RL-oss', '[{"text":"XiaomiMiMo/MiMo-V2.6-RL-oss on Hugging Face Datasets","url":"https://huggingface.co/datasets/XiaomiMiMo/MiMo-V2.6-RL-oss"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
