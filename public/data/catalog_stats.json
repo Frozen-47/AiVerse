@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-09-27T02:44:41.978Z",
-  "totalEntries": 316,
-  "popularEntries": 256,
+  "timestamp": "2026-09-28T02:46:17.083Z",
+  "totalEntries": 319,
+  "popularEntries": 258,
   "totalUsers": 11,
   "averageRating": 4.38,
   "totalRatings": 8,
-  "newEntriesCount": 89,
+  "newEntriesCount": 92,
   "byType": {
-    "Model": 113,
+    "Model": 114,
     "Framework": 33,
-    "Platform": 50,
-    "Dataset": 49,
+    "Platform": 51,
+    "Dataset": 50,
     "AI": 71
   },
   "byTask": {
-    "NLP": 117,
+    "NLP": 118,
     "AI Coding": 25,
-    "Multimodal": 40,
+    "Multimodal": 42,
     "Research": 11,
     "Image Generation": 12,
     "Video Generation": 11,
@@ -27,7 +27,7 @@
     "Education": 4
   },
   "byLicense": {
-    "MIT": 44,
+    "MIT": 45,
     "Llama 3.3 Community License": 1,
     "Llama 3.2 Community License": 3,
     "Apache-2.0": 35,
@@ -66,9 +66,9 @@
     "Proprietary / DeepSeek License": 1,
     "Open Source UI / Various model licenses": 1,
     "Free": 1,
-    "APACHE-2.0": 24,
+    "APACHE-2.0": 25,
     "OTHER": 11,
-    "Community Hosted": 25,
+    "Community Hosted": 26,
     "NOASSERTION": 4,
     "CC-BY-SA-4.0": 1,
     "Open Data": 1,
@@ -81,24 +81,24 @@
     "CC-BY-NC-ND-4.0": 1
   },
   "toolOfTheDay": {
-    "name": "Gemini 2.0 Flash Thinking",
+    "name": "Gemini 2.0 Flash",
     "type": "Model",
-    "summary": "Experimental reasoning edition of Gemini 2.0 Flash that outputs chain-of-thought steps for visual and logical problem-solving.",
-    "task": "Research",
+    "summary": "Google DeepMind's agentic multimodal model delivering real-time streaming audio/video generation, sub-second latency, and native tool execution.",
+    "task": "Multimodal",
     "license": "Proprietary",
     "year": 2024,
     "org": "Google DeepMind",
     "size": "Unknown",
-    "architecture": "Multimodal MoE with explicit reasoning tokens and reflection loops.",
-    "usage": "from google import genai\nclient = genai.Client()\nresponse = client.models.generate_content(\n  model=\"gemini-2.0-flash-thinking-exp\",\n  contents=\"Solve this physics circuit diagram problem.\"\n)",
-    "benchmarks": "MATH-500: 92.4%, AIME 2024: 74.3%",
-    "limitations": "Experimental model with dynamic rate limits.",
+    "architecture": "Natively multimodal Mixture-of-Experts architecture supporting 1M context.",
+    "usage": "from google import genai\nclient = genai.Client()\nresponse = client.models.generate_content(\n  model=\"gemini-2.0-flash\",\n  contents=\"Explain quantum computing simply.\"\n)",
+    "benchmarks": "MMLU-Pro: 78.5%, MathVista: 68.3%, TTFT 2x faster than 1.5 Flash",
+    "limitations": "API quota boundaries and regional service availability.",
     "popular": true,
     "url": "https://deepmind.google/technologies/gemini/",
     "citations": [
       {
-        "text": "Gemini Thinking Model",
-        "url": "https://deepmind.google/technologies/gemini/"
+        "text": "Gemini 2.0 Flash Release",
+        "url": "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/"
       }
     ]
   }

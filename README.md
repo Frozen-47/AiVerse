@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-27)
+### ⚡ Daily AI Pulse (2026-09-28)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **MiMo-V2.6-Pro-RL** (`Model`), **nemotron-diarization** (`Platform`), **MiMo-V2.6-RL-oss** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Gemini 2.0 Flash Thinking** (Google DeepMind) — [Explore](https://deepmind.google/technologies/gemini/) |
-| 🗄️ **Catalog Entries** | **316** AI assets tracked (256 featured) |
+| 🆕 **New Assets Added** | **MiMo-V2.6-Distill-Qwen-9B** (`Model`), **qwen-image-2-1-studio** (`Platform`), **opus5-5-doctor-patient-conversations-all-human-diseases** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Gemini 2.0 Flash** (Google DeepMind) — [Explore](https://deepmind.google/technologies/gemini/) |
+| 🗄️ **Catalog Entries** | **319** AI assets tracked (258 featured) |
 | 🔥 **Top Trending Model** | [convaiinnovations/laya](https://huggingface.co/convaiinnovations/laya) |
-| 📜 **Top Daily Paper** | [Learning to Discover Interesting Mathematics...](https://huggingface.co/papers/2609.28603) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Daily Run** | `Sun, 27 Sep 2026 02:44:48 GMT` |
+| 📜 **Top Daily Paper** | [SLCA-GRPO: Resolving Cross-Segment Credit Misattri...](https://huggingface.co/papers/2609.29050) |
+| 🛡️ **Catalog Links Checked** | **20/25** operational |
+| 🕒 **Last Daily Run** | `Mon, 28 Sep 2026 02:46:24 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

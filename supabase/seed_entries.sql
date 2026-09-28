@@ -1,4 +1,4 @@
--- Seed / Upsert all 316 AiVerse entries into Supabase
+-- Seed / Upsert all 319 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -6640,6 +6640,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('MiMo-V2.6-RL-oss', 'XiaomiMiMo', 'Dataset', 'Computer Vision', 'APACHE-2.0', 2026, '1K<n<10K', 'Agentic RL Environments 	 RL training environments for LLM agents. 	 		 Domain Task Family Verifier 		 Code Software engineering Executable tests Cyber Vulnerability re (324 likes, 973 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("XiaomiMiMo/MiMo-V2.6-RL-oss")', 'Trending Score: 320, Likes: 324, Downloads: 973', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/XiaomiMiMo/MiMo-V2.6-RL-oss', '[{"text":"XiaomiMiMo/MiMo-V2.6-RL-oss on Hugging Face Datasets","url":"https://huggingface.co/datasets/XiaomiMiMo/MiMo-V2.6-RL-oss"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MiMo-V2.6-Distill-Qwen-9B', 'XiaomiMiMo', 'Model', 'Multimodal', 'MIT', 2026, '9B params', 'High-performance Multimodal open-weights model by XiaomiMiMo, trending with over 524 community likes and 8,839 downloads on Hugging Face.', 'XiaomiMiMo image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B")', 'Trending Score: 513, Likes: 524, Downloads: 8,839', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B', '[{"text":"XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B on Hugging Face","url":"https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('qwen-image-2-1-studio', 'assembledchaos', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by assembledchaos. Trending with 79 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/assembledchaos/qwen-image-2-1-studio', 'Trending Score: 71, Community Likes: 79', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/assembledchaos/qwen-image-2-1-studio', '[{"text":"assembledchaos/qwen-image-2-1-studio on Hugging Face Spaces","url":"https://huggingface.co/spaces/assembledchaos/qwen-image-2-1-studio"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('opus5-5-doctor-patient-conversations-all-human-diseases', 'nisten', 'Dataset', 'NLP', 'APACHE-2.0', 2026, '1K<n<10K', 'Opus-5.5 generated Doctor-Patient Conversations for All Human Diseases 	 The sequel to nisten/opus-doctor-patient-conversations-all-human-diseases (Opus 4.8). Same dise (60 likes, 47 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("nisten/opus5-5-doctor-patient-conversations-all-human-diseases")', 'Trending Score: 60, Likes: 60, Downloads: 47', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nisten/opus5-5-doctor-patient-conversations-all-human-diseases', '[{"text":"nisten/opus5-5-doctor-patient-conversations-all-human-diseases on Hugging Face Datasets","url":"https://huggingface.co/datasets/nisten/opus5-5-doctor-patient-conversations-all-human-diseases"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

@@ -1,43 +1,43 @@
-# ⚡ AiVerse Daily Pulse (2026-09-27)
+# ⚡ AiVerse Daily Pulse (2026-09-28)
 
 > Automatically generated daily intelligence report syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sun, 27 Sep 2026 02:44:48 GMT`*
+*Last Synchronized: `Mon, 28 Sep 2026 02:46:24 GMT`*
 
 ---
 
 ## 🆕 Newly Ingested Assets Today (3)
 
-### **MiMo-V2.6-Pro-RL** (`Model` • *XiaomiMiMo*)
-> High-performance NLP open-weights model by XiaomiMiMo, trending with over 530 community likes and 74,497 downloads on Hugging Face.
+### **MiMo-V2.6-Distill-Qwen-9B** (`Model` • *XiaomiMiMo*)
+> High-performance Multimodal open-weights model by XiaomiMiMo, trending with over 524 community likes and 8,839 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `MIT` (2026)
-- ⚡ **Metrics**: `Trending Score: 519, Likes: 530, Downloads: 74,497`
-- 🔗 **Resource Link**: [https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL](https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL)
+- 🏷️ **Domain & License**: `Multimodal` • `MIT` (2026)
+- ⚡ **Metrics**: `Trending Score: 513, Likes: 524, Downloads: 8,839`
+- 🔗 **Resource Link**: [https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B](https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B)
 
-### **nemotron-diarization** (`Platform` • *nvidia*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by nvidia. Trending with 67 community stars.
+### **qwen-image-2-1-studio** (`Platform` • *assembledchaos*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by assembledchaos. Trending with 79 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 66, Community Likes: 67`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/nvidia/nemotron-diarization](https://huggingface.co/spaces/nvidia/nemotron-diarization)
+- ⚡ **Metrics**: `Trending Score: 71, Community Likes: 79`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/assembledchaos/qwen-image-2-1-studio](https://huggingface.co/spaces/assembledchaos/qwen-image-2-1-studio)
 
-### **MiMo-V2.6-RL-oss** (`Dataset` • *XiaomiMiMo*)
-> Agentic RL Environments 	 RL training environments for LLM agents. 	 		 Domain Task Family Verifier 		 Code Software engineering Executable tests Cyber Vulnerability re (324 likes, 973 downloads).
+### **opus5-5-doctor-patient-conversations-all-human-diseases** (`Dataset` • *nisten*)
+> Opus-5.5 generated Doctor-Patient Conversations for All Human Diseases 	 The sequel to nisten/opus-doctor-patient-conversations-all-human-diseases (Opus 4.8). Same dise (60 likes, 47 downloads).
 
-- 🏷️ **Domain & License**: `Computer Vision` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 320, Likes: 324, Downloads: 973`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/XiaomiMiMo/MiMo-V2.6-RL-oss](https://huggingface.co/datasets/XiaomiMiMo/MiMo-V2.6-RL-oss)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 60, Likes: 60, Downloads: 47`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/nisten/opus5-5-doctor-patient-conversations-all-human-diseases](https://huggingface.co/datasets/nisten/opus5-5-doctor-patient-conversations-all-human-diseases)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **Gemini 2.0 Flash Thinking** (`Model` • *Google DeepMind*)
-> Experimental reasoning edition of Gemini 2.0 Flash that outputs chain-of-thought steps for visual and logical problem-solving.
+### **Gemini 2.0 Flash** (`Model` • *Google DeepMind*)
+> Google DeepMind's agentic multimodal model delivering real-time streaming audio/video generation, sub-second latency, and native tool execution.
 
-- 🏛️ **Architecture**: Multimodal MoE with explicit reasoning tokens and reflection loops.
-- ⚡ **Benchmarks**: `MATH-500: 92.4%, AIME 2024: 74.3%`
-- 🏷️ **Domain & License**: `Research` • `Proprietary` (Released: 2024)
+- 🏛️ **Architecture**: Natively multimodal Mixture-of-Experts architecture supporting 1M context.
+- ⚡ **Benchmarks**: `MMLU-Pro: 78.5%, MathVista: 68.3%, TTFT 2x faster than 1.5 Flash`
+- 🏷️ **Domain & License**: `Multimodal` • `Proprietary` (Released: 2024)
 - 🔗 **Resource Link**: [https://deepmind.google/technologies/gemini/](https://deepmind.google/technologies/gemini/)
 
 ---
@@ -46,12 +46,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `convaiinnovations/laya` | text-classification | ❤️ 3,908 | 📥 0 | [View](https://huggingface.co/convaiinnovations/laya) |
-| `Qwen/Qwen-Image-2.1` | text-to-image | ❤️ 2,403 | 📥 48,361 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1) |
-| `abenzerps/Qwen-Image-2.1-Uncensored-GGUF` | text-to-image | ❤️ 1,944 | 📥 876,673 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF) |
-| `XingChen-AGI/Xing4.0-29B-A4B` | text-generation | ❤️ 1,727 | 📥 43,947 | [View](https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B) |
-| `prism-ml/Ternary-Bonsai-2-27B-gguf` | text-generation | ❤️ 2,143 | 📥 3,247,527 | [View](https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf) |
-| `Edge0/Audio8-ASR-Infinite` | automatic-speech-recognition | ❤️ 834 | 📥 7,859 | [View](https://huggingface.co/Edge0/Audio8-ASR-Infinite) |
+| `convaiinnovations/laya` | text-classification | ❤️ 4,108 | 📥 0 | [View](https://huggingface.co/convaiinnovations/laya) |
+| `abenzerps/Qwen-Image-2.1-Uncensored-GGUF` | text-to-image | ❤️ 2,098 | 📥 964,220 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF) |
+| `Qwen/Qwen-Image-2.1` | text-to-image | ❤️ 2,502 | 📥 52,804 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1) |
+| `Edge0/Audio8-ASR-Infinite` | automatic-speech-recognition | ❤️ 1,134 | 📥 19,434 | [View](https://huggingface.co/Edge0/Audio8-ASR-Infinite) |
+| `XingChen-AGI/Xing4.0-29B-A4B` | text-generation | ❤️ 1,784 | 📥 45,028 | [View](https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B) |
+| `prism-ml/Ternary-Bonsai-2-27B-gguf` | text-generation | ❤️ 2,195 | 📥 3,343,748 | [View](https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf) |
 
 
 ---
@@ -61,24 +61,24 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Learning to Discover Interesting Mathematics** | 👍 8 | Recently, Large Language Models (LLMs) have been increasingly able to solve advanced mathematical problems, including many that have been open for decades. This... | [Read](https://huggingface.co/papers/2609.28603) |
-| **RGBD20K: A Large-Scale Benchmark for RGB-D Semantic Segmentation** | 👍 7 | In this paper, we propose RGBD20K, a novel dataset for facilitating the development of more robust and general RGB-D semantic segmentation by encompassing abund... | [Read](https://huggingface.co/papers/2609.29028) |
-| **AV-GRPO: Modality-Anchored Decoupling Diffusion Reinforcement Learning for Joint Audio-Video Generation** | 👍 4 | Recent years have witnessed major progress in joint audio-video generation. Existing models still suffer from limited per-modality fidelity, insufficient text-m... | [Read](https://huggingface.co/papers/2609.29816) |
-| **Your Transformer Can Hold Two Thoughts at Once: Evidence of Linear Superposition in LLMs** | 👍 64 | While Large Language Models (LLMs) rely on highly non-linear components, in this work we demonstrate that they exhibit fundamental linearity: when inputs from d... | [Read](https://huggingface.co/papers/2609.29845) |
-| **Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures** | 👍 5 | Detectors of alignment failures screen deployed language models and score alignment benchmarks. Most are generative judges that spend a decoding pass on every c... | [Read](https://huggingface.co/papers/2609.29429) |
+| **SLCA-GRPO: Resolving Cross-Segment Credit Misattribution in Tool-Calling RL** | 👍 2 | Tool-calling agents produce heterogeneous outputs, interleaving structured tool invocations with user-facing natural language summaries. This output heterogenei... | [Read](https://huggingface.co/papers/2609.29050) |
+| **InternW0-Δ: A World Action Model Bridging Predictive Dynamics and Actions with 20K+ Hours of Open Data** | 👍 3 | World Action Models (WAMs) jointly model visual dynamics and action generation for generalist robot manipulation. A central challenge is to integrate priors fro... | [Read](https://huggingface.co/papers/2609.31394) |
+| **Game Arena: Strategic LLM Evaluation in Competitive Environments** | 👍 2 | We introduce Kaggle Game Arena, an open and ever-expanding platform to evaluate large language models (LLMs) through competitive games. Different from static be... | [Read](https://huggingface.co/papers/2609.31473) |
+| **FuseReg: Regularizing Layer Fusion Mitigates the Reconstruction-Generation Gap in Representation Autoencoders** | 👍 15 | Representation autoencoders (RAEs) reuse features from a pretrained visual encoder as reconstruction and diffusion latents, integrating strong visual representa... | [Read](https://huggingface.co/papers/2609.31620) |
+| **Morphometric Imitation: From Morphology and Contact Aware Hand Retargeting to Sim-to-Real Visuomotor Policy** | 👍 1 | Human hand-object interactions (HOIs) provide a rich source of demonstrations for dexterous manipulation, but learning directly from them presents challenges in... | [Read](https://huggingface.co/papers/2609.28660) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `316`
-- **Featured / Starred Tools**: `256`
-- **Asset Breakdown**: **Models**: 113 • **Frameworks**: 33 • **Platforms**: 50 • **Datasets**: 49 • **AIs**: 71
+- **Total Registered Assets**: `319`
+- **Featured / Starred Tools**: `258`
+- **Asset Breakdown**: **Models**: 114 • **Frameworks**: 33 • **Platforms**: 51 • **Datasets**: 50 • **AIs**: 71
 
 ---
 
 ## 🛡️ Daily System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
 - **Dependency Security**: `21` advisories flagged across `539` dependencies (`1` critical, `17` high)
 
 ---

@@ -6988,6 +6988,72 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/XiaomiMiMo/MiMo-V2.6-RL-oss"
           }
       ]
+  },
+  {
+      "name": "MiMo-V2.6-Distill-Qwen-9B",
+      "type": "Model",
+      "summary": "High-performance Multimodal open-weights model by XiaomiMiMo, trending with over 524 community likes and 8,839 downloads on Hugging Face.",
+      "task": "Multimodal",
+      "license": "MIT",
+      "year": 2026,
+      "org": "XiaomiMiMo",
+      "size": "9B params",
+      "architecture": "XiaomiMiMo image text to text architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B\")",
+      "benchmarks": "Trending Score: 513, Likes: 524, Downloads: 8,839",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B",
+      "citations": [
+          {
+              "text": "XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B on Hugging Face",
+              "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B"
+          }
+      ]
+  },
+  {
+      "name": "qwen-image-2-1-studio",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by assembledchaos. Trending with 79 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "assembledchaos",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/assembledchaos/qwen-image-2-1-studio",
+      "benchmarks": "Trending Score: 71, Community Likes: 79",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/assembledchaos/qwen-image-2-1-studio",
+      "citations": [
+          {
+              "text": "assembledchaos/qwen-image-2-1-studio on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/assembledchaos/qwen-image-2-1-studio"
+          }
+      ]
+  },
+  {
+      "name": "opus5-5-doctor-patient-conversations-all-human-diseases",
+      "type": "Dataset",
+      "summary": "Opus-5.5 generated Doctor-Patient Conversations for All Human Diseases \t The sequel to nisten/opus-doctor-patient-conversations-all-human-diseases (Opus 4.8). Same dise (60 likes, 47 downloads).",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "nisten",
+      "size": "1K<n<10K",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nisten/opus5-5-doctor-patient-conversations-all-human-diseases\")",
+      "benchmarks": "Trending Score: 60, Likes: 60, Downloads: 47",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/nisten/opus5-5-doctor-patient-conversations-all-human-diseases",
+      "citations": [
+          {
+              "text": "nisten/opus5-5-doctor-patient-conversations-all-human-diseases on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/nisten/opus5-5-doctor-patient-conversations-all-human-diseases"
+          }
+      ]
   }
 ];
 

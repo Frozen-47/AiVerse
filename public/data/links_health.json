@@ -1,23 +1,33 @@
 {
-  "timestamp": "2026-09-27T02:44:45.870Z",
+  "timestamp": "2026-09-28T02:46:20.014Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 20,
+  "broken": 5,
   "issues": [
+    {
+      "name": "Midjourney",
+      "url": "https://www.midjourney.com",
+      "status": 403
+    },
+    {
+      "name": "Midjourney (Platform)",
+      "url": "https://www.midjourney.com/",
+      "status": 403
+    },
     {
       "name": "Whisper",
       "url": "https://openai.com/research/whisper",
       "status": 403
     },
     {
-      "name": "Midjourney v6",
-      "url": "https://www.midjourney.com/",
+      "name": "Character.ai",
+      "url": "https://character.ai",
       "status": 403
     },
     {
-      "name": "Codex",
-      "url": "https://openai.com/blog/openai-codex",
-      "status": 403
+      "name": "Play.ht",
+      "url": "https://play.ht",
+      "status": "Network Error"
     }
   ]
 }

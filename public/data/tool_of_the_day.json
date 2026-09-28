@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-27",
+  "date": "2026-09-28",
   "tool": {
-    "name": "Gemini 2.0 Flash Thinking",
+    "name": "Gemini 2.0 Flash",
     "type": "Model",
-    "summary": "Experimental reasoning edition of Gemini 2.0 Flash that outputs chain-of-thought steps for visual and logical problem-solving.",
-    "task": "Research",
+    "summary": "Google DeepMind's agentic multimodal model delivering real-time streaming audio/video generation, sub-second latency, and native tool execution.",
+    "task": "Multimodal",
     "license": "Proprietary",
     "year": 2024,
     "org": "Google DeepMind",
     "size": "Unknown",
-    "architecture": "Multimodal MoE with explicit reasoning tokens and reflection loops.",
-    "usage": "from google import genai\nclient = genai.Client()\nresponse = client.models.generate_content(\n  model=\"gemini-2.0-flash-thinking-exp\",\n  contents=\"Solve this physics circuit diagram problem.\"\n)",
-    "benchmarks": "MATH-500: 92.4%, AIME 2024: 74.3%",
-    "limitations": "Experimental model with dynamic rate limits.",
+    "architecture": "Natively multimodal Mixture-of-Experts architecture supporting 1M context.",
+    "usage": "from google import genai\nclient = genai.Client()\nresponse = client.models.generate_content(\n  model=\"gemini-2.0-flash\",\n  contents=\"Explain quantum computing simply.\"\n)",
+    "benchmarks": "MMLU-Pro: 78.5%, MathVista: 68.3%, TTFT 2x faster than 1.5 Flash",
+    "limitations": "API quota boundaries and regional service availability.",
     "popular": true,
     "url": "https://deepmind.google/technologies/gemini/",
     "citations": [
       {
-        "text": "Gemini Thinking Model",
-        "url": "https://deepmind.google/technologies/gemini/"
+        "text": "Gemini 2.0 Flash Release",
+        "url": "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/"
       }
     ]
   }
