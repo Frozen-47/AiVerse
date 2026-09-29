@@ -1,44 +1,44 @@
-# ⚡ AiVerse Daily Pulse (2026-09-28)
+# ⚡ AiVerse Daily Pulse (2026-09-29)
 
 > Automatically generated daily intelligence report syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Mon, 28 Sep 2026 02:46:24 GMT`*
+*Last Synchronized: `Tue, 29 Sep 2026 03:28:02 GMT`*
 
 ---
 
 ## 🆕 Newly Ingested Assets Today (3)
 
-### **MiMo-V2.6-Distill-Qwen-9B** (`Model` • *XiaomiMiMo*)
-> High-performance Multimodal open-weights model by XiaomiMiMo, trending with over 524 community likes and 8,839 downloads on Hugging Face.
+### **TeleOCR** (`Model` • *XingChen-AGI*)
+> High-performance Multimodal open-weights model by XingChen-AGI, trending with over 809 community likes and 27,904 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `MIT` (2026)
-- ⚡ **Metrics**: `Trending Score: 513, Likes: 524, Downloads: 8,839`
-- 🔗 **Resource Link**: [https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B](https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B)
+- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 697, Likes: 809, Downloads: 27,904`
+- 🔗 **Resource Link**: [https://huggingface.co/XingChen-AGI/TeleOCR](https://huggingface.co/XingChen-AGI/TeleOCR)
 
-### **qwen-image-2-1-studio** (`Platform` • *assembledchaos*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by assembledchaos. Trending with 79 community stars.
+### **yue2-hum-to-song** (`Platform` • *Mothersuperior*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Mothersuperior. Trending with 102 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 71, Community Likes: 79`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/assembledchaos/qwen-image-2-1-studio](https://huggingface.co/spaces/assembledchaos/qwen-image-2-1-studio)
+- ⚡ **Metrics**: `Trending Score: 66, Community Likes: 102`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/Mothersuperior/yue2-hum-to-song](https://huggingface.co/spaces/Mothersuperior/yue2-hum-to-song)
 
-### **opus5-5-doctor-patient-conversations-all-human-diseases** (`Dataset` • *nisten*)
-> Opus-5.5 generated Doctor-Patient Conversations for All Human Diseases 	 The sequel to nisten/opus-doctor-patient-conversations-all-human-diseases (Opus 4.8). Same dise (60 likes, 47 downloads).
+### **SmolDataEnvs** (`Dataset` • *FineEnvs*)
+> 📈 SmolDataEnvs 	 5.5K+ RL tasks for hill-climbing small models in code and data science. A 2B model on these tasks. Left: what it optimises. Right: 144 held-out tasks (55 likes, 2,460 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 60, Likes: 60, Downloads: 47`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/nisten/opus5-5-doctor-patient-conversations-all-human-diseases](https://huggingface.co/datasets/nisten/opus5-5-doctor-patient-conversations-all-human-diseases)
+- 🏷️ **Domain & License**: `AI Coding` • `MIT` (2026)
+- ⚡ **Metrics**: `Trending Score: 55, Likes: 55, Downloads: 2,460`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/FineEnvs/SmolDataEnvs](https://huggingface.co/datasets/FineEnvs/SmolDataEnvs)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **Gemini 2.0 Flash** (`Model` • *Google DeepMind*)
-> Google DeepMind's agentic multimodal model delivering real-time streaming audio/video generation, sub-second latency, and native tool execution.
+### **o3-mini** (`Model` • *OpenAI*)
+> OpenAI's cost-efficient STEM, math, and coding reasoning model with selectable reasoning effort levels (low, medium, high) and function calling.
 
-- 🏛️ **Architecture**: Natively multimodal Mixture-of-Experts architecture supporting 1M context.
-- ⚡ **Benchmarks**: `MMLU-Pro: 78.5%, MathVista: 68.3%, TTFT 2x faster than 1.5 Flash`
-- 🏷️ **Domain & License**: `Multimodal` • `Proprietary` (Released: 2024)
-- 🔗 **Resource Link**: [https://deepmind.google/technologies/gemini/](https://deepmind.google/technologies/gemini/)
+- 🏛️ **Architecture**: Reinforcement learning-trained reasoning model optimized for coding and STEM.
+- ⚡ **Benchmarks**: `AIME 2024: 87.3%, Codeforces Rating: 2088, GPQA: 79.7%`
+- 🏷️ **Domain & License**: `AI Coding` • `Proprietary` (Released: 2025)
+- 🔗 **Resource Link**: [https://openai.com](https://openai.com)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -46,12 +46,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `convaiinnovations/laya` | text-classification | ❤️ 4,108 | 📥 0 | [View](https://huggingface.co/convaiinnovations/laya) |
-| `abenzerps/Qwen-Image-2.1-Uncensored-GGUF` | text-to-image | ❤️ 2,098 | 📥 964,220 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF) |
-| `Qwen/Qwen-Image-2.1` | text-to-image | ❤️ 2,502 | 📥 52,804 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1) |
-| `Edge0/Audio8-ASR-Infinite` | automatic-speech-recognition | ❤️ 1,134 | 📥 19,434 | [View](https://huggingface.co/Edge0/Audio8-ASR-Infinite) |
-| `XingChen-AGI/Xing4.0-29B-A4B` | text-generation | ❤️ 1,784 | 📥 45,028 | [View](https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B) |
-| `prism-ml/Ternary-Bonsai-2-27B-gguf` | text-generation | ❤️ 2,195 | 📥 3,343,748 | [View](https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf) |
+| `convaiinnovations/laya` | text-classification | ❤️ 4,329 | 📥 0 | [View](https://huggingface.co/convaiinnovations/laya) |
+| `abenzerps/Qwen-Image-2.1-Uncensored-GGUF` | text-to-image | ❤️ 2,292 | 📥 1,062,921 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF) |
+| `Edge0/Audio8-ASR-Infinite` | automatic-speech-recognition | ❤️ 1,414 | 📥 19,963 | [View](https://huggingface.co/Edge0/Audio8-ASR-Infinite) |
+| `Qwen/Qwen-Image-2.1` | text-to-image | ❤️ 2,595 | 📥 58,693 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1) |
+| `XingChen-AGI/TeleOCR` | image-text-to-text | ❤️ 809 | 📥 27,904 | [View](https://huggingface.co/XingChen-AGI/TeleOCR) |
+| `XingChen-AGI/Xing4.0-29B-A4B` | text-generation | ❤️ 1,801 | 📥 45,834 | [View](https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B) |
 
 
 ---
@@ -61,24 +61,24 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **SLCA-GRPO: Resolving Cross-Segment Credit Misattribution in Tool-Calling RL** | 👍 2 | Tool-calling agents produce heterogeneous outputs, interleaving structured tool invocations with user-facing natural language summaries. This output heterogenei... | [Read](https://huggingface.co/papers/2609.29050) |
-| **InternW0-Δ: A World Action Model Bridging Predictive Dynamics and Actions with 20K+ Hours of Open Data** | 👍 3 | World Action Models (WAMs) jointly model visual dynamics and action generation for generalist robot manipulation. A central challenge is to integrate priors fro... | [Read](https://huggingface.co/papers/2609.31394) |
-| **Game Arena: Strategic LLM Evaluation in Competitive Environments** | 👍 2 | We introduce Kaggle Game Arena, an open and ever-expanding platform to evaluate large language models (LLMs) through competitive games. Different from static be... | [Read](https://huggingface.co/papers/2609.31473) |
-| **FuseReg: Regularizing Layer Fusion Mitigates the Reconstruction-Generation Gap in Representation Autoencoders** | 👍 15 | Representation autoencoders (RAEs) reuse features from a pretrained visual encoder as reconstruction and diffusion latents, integrating strong visual representa... | [Read](https://huggingface.co/papers/2609.31620) |
-| **Morphometric Imitation: From Morphology and Contact Aware Hand Retargeting to Sim-to-Real Visuomotor Policy** | 👍 1 | Human hand-object interactions (HOIs) provide a rich source of demonstrations for dexterous manipulation, but learning directly from them presents challenges in... | [Read](https://huggingface.co/papers/2609.28660) |
+| **Self-Evolving Coding Agents: From Digital Programs to Physical-World Intelligence** | 👍 1 | Vision-language-action (VLA) and world-action (WAM) models map observations and instructions directly to robot actions. This directness ties a policy to trainin... | [Read](https://huggingface.co/papers/2609.35432) |
+| **RoboFoundry: System-as-Policy Evolution for Self-Learning Embodied Agents** | 👍 6 | A foundation model should not act in isolation as an embodied agent. Yet, existing methods often optimize individual components of the agent stack, such as memo... | [Read](https://huggingface.co/papers/2609.32862) |
+| **Rolling-WAM: World Action Models with Rolling Imagination** | 👍 2 | World Action Models (WAMs) couple action generation with future visual prediction for robotic manipulation. However, completing the joint video-action denoising... | [Read](https://huggingface.co/papers/2609.30247) |
+| **Just MLPs: Efficient Visual State Reconstruction for Multimodal Language Models** | 👍 7 | Long visual token sequences often account for a substantial fraction of the computational overhead in multimodal large language models~(MLLMs). Existing approac... | [Read](https://huggingface.co/papers/2609.34972) |
+| **CoWindow Attention: Full Causal Coverage Is a Collective Property** | 👍 3 | FullAttn repeatedly exposes the complete causal history to every attention head, creating substantial redundant computation and memory traffic even with IO-effi... | [Read](https://huggingface.co/papers/2609.32704) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `319`
-- **Featured / Starred Tools**: `258`
-- **Asset Breakdown**: **Models**: 114 • **Frameworks**: 33 • **Platforms**: 51 • **Datasets**: 50 • **AIs**: 71
+- **Total Registered Assets**: `322`
+- **Featured / Starred Tools**: `260`
+- **Asset Breakdown**: **Models**: 115 • **Frameworks**: 33 • **Platforms**: 52 • **Datasets**: 51 • **AIs**: 71
 
 ---
 
 ## 🛡️ Daily System & Ecosystem Health
-- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
+- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
 - **Dependency Security**: `21` advisories flagged across `539` dependencies (`1` critical, `17` high)
 
 ---

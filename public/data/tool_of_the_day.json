@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-28",
+  "date": "2026-09-29",
   "tool": {
-    "name": "Gemini 2.0 Flash",
+    "name": "o3-mini",
     "type": "Model",
-    "summary": "Google DeepMind's agentic multimodal model delivering real-time streaming audio/video generation, sub-second latency, and native tool execution.",
-    "task": "Multimodal",
+    "summary": "OpenAI's cost-efficient STEM, math, and coding reasoning model with selectable reasoning effort levels (low, medium, high) and function calling.",
+    "task": "AI Coding",
     "license": "Proprietary",
-    "year": 2024,
-    "org": "Google DeepMind",
+    "year": 2025,
+    "org": "OpenAI",
     "size": "Unknown",
-    "architecture": "Natively multimodal Mixture-of-Experts architecture supporting 1M context.",
-    "usage": "from google import genai\nclient = genai.Client()\nresponse = client.models.generate_content(\n  model=\"gemini-2.0-flash\",\n  contents=\"Explain quantum computing simply.\"\n)",
-    "benchmarks": "MMLU-Pro: 78.5%, MathVista: 68.3%, TTFT 2x faster than 1.5 Flash",
-    "limitations": "API quota boundaries and regional service availability.",
+    "architecture": "Reinforcement learning-trained reasoning model optimized for coding and STEM.",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"o3-mini\",\n  reasoning_effort=\"medium\",\n  messages=[{\"role\": \"user\", \"content\": \"Design an optimal LRU cache in Rust.\"}]\n)",
+    "benchmarks": "AIME 2024: 87.3%, Codeforces Rating: 2088, GPQA: 79.7%",
+    "limitations": "Text only (no image modality input); reasoning adds latency.",
     "popular": true,
-    "url": "https://deepmind.google/technologies/gemini/",
+    "url": "https://openai.com",
     "citations": [
       {
-        "text": "Gemini 2.0 Flash Release",
-        "url": "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/"
+        "text": "OpenAI o3-mini Announcement",
+        "url": "https://openai.com/index/openai-o3-mini/"
       }
     ]
   }

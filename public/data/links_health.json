@@ -1,32 +1,27 @@
 {
-  "timestamp": "2026-09-28T02:46:20.014Z",
+  "timestamp": "2026-09-29T03:27:59.597Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
+  "healthy": 21,
+  "broken": 4,
   "issues": [
     {
-      "name": "Midjourney",
-      "url": "https://www.midjourney.com",
+      "name": "DALL-E 3",
+      "url": "https://openai.com/dall-e-3",
       "status": 403
     },
     {
-      "name": "Midjourney (Platform)",
-      "url": "https://www.midjourney.com/",
+      "name": "Codex",
+      "url": "https://openai.com/blog/openai-codex",
       "status": 403
     },
     {
-      "name": "Whisper",
-      "url": "https://openai.com/research/whisper",
+      "name": "Perplexity AI",
+      "url": "https://www.perplexity.ai/",
       "status": 403
     },
     {
-      "name": "Character.ai",
-      "url": "https://character.ai",
-      "status": 403
-    },
-    {
-      "name": "Play.ht",
-      "url": "https://play.ht",
+      "name": "Krea AI",
+      "url": "https://www.krea.ai",
       "status": "Network Error"
     }
   ]

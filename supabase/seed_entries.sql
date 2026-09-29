@@ -1,4 +1,4 @@
--- Seed / Upsert all 319 AiVerse entries into Supabase
+-- Seed / Upsert all 322 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -6702,6 +6702,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('opus5-5-doctor-patient-conversations-all-human-diseases', 'nisten', 'Dataset', 'NLP', 'APACHE-2.0', 2026, '1K<n<10K', 'Opus-5.5 generated Doctor-Patient Conversations for All Human Diseases 	 The sequel to nisten/opus-doctor-patient-conversations-all-human-diseases (Opus 4.8). Same dise (60 likes, 47 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("nisten/opus5-5-doctor-patient-conversations-all-human-diseases")', 'Trending Score: 60, Likes: 60, Downloads: 47', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nisten/opus5-5-doctor-patient-conversations-all-human-diseases', '[{"text":"nisten/opus5-5-doctor-patient-conversations-all-human-diseases on Hugging Face Datasets","url":"https://huggingface.co/datasets/nisten/opus5-5-doctor-patient-conversations-all-human-diseases"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('TeleOCR', 'XingChen-AGI', 'Model', 'Multimodal', 'APACHE-2.0', 2026, 'Open Weights', 'High-performance Multimodal open-weights model by XingChen-AGI, trending with over 809 community likes and 27,904 downloads on Hugging Face.', 'XingChen-AGI image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("XingChen-AGI/TeleOCR", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("XingChen-AGI/TeleOCR")', 'Trending Score: 697, Likes: 809, Downloads: 27,904', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/XingChen-AGI/TeleOCR', '[{"text":"XingChen-AGI/TeleOCR on Hugging Face","url":"https://huggingface.co/XingChen-AGI/TeleOCR"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('yue2-hum-to-song', 'Mothersuperior', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Mothersuperior. Trending with 102 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Mothersuperior/yue2-hum-to-song', 'Trending Score: 66, Community Likes: 102', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/Mothersuperior/yue2-hum-to-song', '[{"text":"Mothersuperior/yue2-hum-to-song on Hugging Face Spaces","url":"https://huggingface.co/spaces/Mothersuperior/yue2-hum-to-song"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('SmolDataEnvs', 'FineEnvs', 'Dataset', 'AI Coding', 'MIT', 2026, '1K<n<10K', '📈 SmolDataEnvs 	 5.5K+ RL tasks for hill-climbing small models in code and data science. A 2B model on these tasks. Left: what it optimises. Right: 144 held-out tasks (55 likes, 2,460 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("FineEnvs/SmolDataEnvs")', 'Trending Score: 55, Likes: 55, Downloads: 2,460', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/FineEnvs/SmolDataEnvs', '[{"text":"FineEnvs/SmolDataEnvs on Hugging Face Datasets","url":"https://huggingface.co/datasets/FineEnvs/SmolDataEnvs"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

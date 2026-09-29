@@ -7054,6 +7054,72 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/nisten/opus5-5-doctor-patient-conversations-all-human-diseases"
           }
       ]
+  },
+  {
+      "name": "TeleOCR",
+      "type": "Model",
+      "summary": "High-performance Multimodal open-weights model by XingChen-AGI, trending with over 809 community likes and 27,904 downloads on Hugging Face.",
+      "task": "Multimodal",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "XingChen-AGI",
+      "size": "Open Weights",
+      "architecture": "XingChen-AGI image text to text architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"XingChen-AGI/TeleOCR\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"XingChen-AGI/TeleOCR\")",
+      "benchmarks": "Trending Score: 697, Likes: 809, Downloads: 27,904",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/XingChen-AGI/TeleOCR",
+      "citations": [
+          {
+              "text": "XingChen-AGI/TeleOCR on Hugging Face",
+              "url": "https://huggingface.co/XingChen-AGI/TeleOCR"
+          }
+      ]
+  },
+  {
+      "name": "yue2-hum-to-song",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Mothersuperior. Trending with 102 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "Mothersuperior",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Mothersuperior/yue2-hum-to-song",
+      "benchmarks": "Trending Score: 66, Community Likes: 102",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/Mothersuperior/yue2-hum-to-song",
+      "citations": [
+          {
+              "text": "Mothersuperior/yue2-hum-to-song on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/Mothersuperior/yue2-hum-to-song"
+          }
+      ]
+  },
+  {
+      "name": "SmolDataEnvs",
+      "type": "Dataset",
+      "summary": "📈 SmolDataEnvs \t 5.5K+ RL tasks for hill-climbing small models in code and data science. A 2B model on these tasks. Left: what it optimises. Right: 144 held-out tasks (55 likes, 2,460 downloads).",
+      "task": "AI Coding",
+      "license": "MIT",
+      "year": 2026,
+      "org": "FineEnvs",
+      "size": "1K<n<10K",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"FineEnvs/SmolDataEnvs\")",
+      "benchmarks": "Trending Score: 55, Likes: 55, Downloads: 2,460",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/FineEnvs/SmolDataEnvs",
+      "citations": [
+          {
+              "text": "FineEnvs/SmolDataEnvs on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/FineEnvs/SmolDataEnvs"
+          }
+      ]
   }
 ];
 

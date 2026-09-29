@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-09-28T02:46:19.846Z",
+  "timestamp": "2026-09-29T03:27:59.520Z",
   "models": [
     {
       "id": "convaiinnovations/laya",
       "author": "convaiinnovations",
-      "likes": 4108,
+      "likes": 4329,
       "downloads": 0,
       "pipeline_tag": "text-classification",
       "url": "https://huggingface.co/convaiinnovations/laya"
@@ -12,84 +12,84 @@
     {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
       "author": "abenzerps",
-      "likes": 2098,
-      "downloads": 964220,
+      "likes": 2292,
+      "downloads": 1062921,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
     },
     {
-      "id": "Qwen/Qwen-Image-2.1",
-      "author": "Qwen",
-      "likes": 2502,
-      "downloads": 52804,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
-    },
-    {
       "id": "Edge0/Audio8-ASR-Infinite",
       "author": "Edge0",
-      "likes": 1134,
-      "downloads": 19434,
+      "likes": 1414,
+      "downloads": 19963,
       "pipeline_tag": "automatic-speech-recognition",
       "url": "https://huggingface.co/Edge0/Audio8-ASR-Infinite"
     },
     {
-      "id": "XingChen-AGI/Xing4.0-29B-A4B",
-      "author": "XingChen-AGI",
-      "likes": 1784,
-      "downloads": 45028,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B"
+      "id": "Qwen/Qwen-Image-2.1",
+      "author": "Qwen",
+      "likes": 2595,
+      "downloads": 58693,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
     },
     {
-      "id": "prism-ml/Ternary-Bonsai-2-27B-gguf",
-      "author": "prism-ml",
-      "likes": 2195,
-      "downloads": 3343748,
+      "id": "XingChen-AGI/TeleOCR",
+      "author": "XingChen-AGI",
+      "likes": 809,
+      "downloads": 27904,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/XingChen-AGI/TeleOCR"
+    },
+    {
+      "id": "XingChen-AGI/Xing4.0-29B-A4B",
+      "author": "XingChen-AGI",
+      "likes": 1801,
+      "downloads": 45834,
       "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf"
+      "url": "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B"
     }
   ],
   "papers": [
     {
-      "title": "SLCA-GRPO: Resolving Cross-Segment Credit Misattribution in Tool-Calling RL",
-      "summary": "Tool-calling agents produce heterogeneous outputs, interleaving structured tool invocations with user-facing natural language summaries. This output heterogenei...",
-      "upvotes": 2,
-      "arxiv_id": "2609.29050",
-      "url": "https://huggingface.co/papers/2609.29050",
-      "githubRepo": "https://github.com/SLCA-GRPO/SLCA-GRPO"
-    },
-    {
-      "title": "InternW0-Δ: A World Action Model Bridging Predictive Dynamics and Actions with 20K+ Hours of Open Data",
-      "summary": "World Action Models (WAMs) jointly model visual dynamics and action generation for generalist robot manipulation. A central challenge is to integrate priors fro...",
-      "upvotes": 3,
-      "arxiv_id": "2609.31394",
-      "url": "https://huggingface.co/papers/2609.31394",
-      "githubRepo": null
-    },
-    {
-      "title": "Game Arena: Strategic LLM Evaluation in Competitive Environments",
-      "summary": "We introduce Kaggle Game Arena, an open and ever-expanding platform to evaluate large language models (LLMs) through competitive games. Different from static be...",
-      "upvotes": 2,
-      "arxiv_id": "2609.31473",
-      "url": "https://huggingface.co/papers/2609.31473",
-      "githubRepo": null
-    },
-    {
-      "title": "FuseReg: Regularizing Layer Fusion Mitigates the Reconstruction-Generation Gap in Representation Autoencoders",
-      "summary": "Representation autoencoders (RAEs) reuse features from a pretrained visual encoder as reconstruction and diffusion latents, integrating strong visual representa...",
-      "upvotes": 15,
-      "arxiv_id": "2609.31620",
-      "url": "https://huggingface.co/papers/2609.31620",
-      "githubRepo": "https://github.com/Hongyang-Du/FuseReg"
-    },
-    {
-      "title": "Morphometric Imitation: From Morphology and Contact Aware Hand Retargeting to Sim-to-Real Visuomotor Policy",
-      "summary": "Human hand-object interactions (HOIs) provide a rich source of demonstrations for dexterous manipulation, but learning directly from them presents challenges in...",
+      "title": "Self-Evolving Coding Agents: From Digital Programs to Physical-World Intelligence",
+      "summary": "Vision-language-action (VLA) and world-action (WAM) models map observations and instructions directly to robot actions. This directness ties a policy to trainin...",
       "upvotes": 1,
-      "arxiv_id": "2609.28660",
-      "url": "https://huggingface.co/papers/2609.28660",
-      "githubRepo": "https://github.com/tsadja/morphometric"
+      "arxiv_id": "2609.35432",
+      "url": "https://huggingface.co/papers/2609.35432",
+      "githubRepo": "https://github.com/HexaFuture/PhysicalCoding"
+    },
+    {
+      "title": "RoboFoundry: System-as-Policy Evolution for Self-Learning Embodied Agents",
+      "summary": "A foundation model should not act in isolation as an embodied agent. Yet, existing methods often optimize individual components of the agent stack, such as memo...",
+      "upvotes": 6,
+      "arxiv_id": "2609.32862",
+      "url": "https://huggingface.co/papers/2609.32862",
+      "githubRepo": null
+    },
+    {
+      "title": "Rolling-WAM: World Action Models with Rolling Imagination",
+      "summary": "World Action Models (WAMs) couple action generation with future visual prediction for robotic manipulation. However, completing the joint video-action denoising...",
+      "upvotes": 2,
+      "arxiv_id": "2609.30247",
+      "url": "https://huggingface.co/papers/2609.30247",
+      "githubRepo": "https://github.com/zyinghua/Rolling-WAM"
+    },
+    {
+      "title": "Just MLPs: Efficient Visual State Reconstruction for Multimodal Language Models",
+      "summary": "Long visual token sequences often account for a substantial fraction of the computational overhead in multimodal large language models~(MLLMs). Existing approac...",
+      "upvotes": 7,
+      "arxiv_id": "2609.34972",
+      "url": "https://huggingface.co/papers/2609.34972",
+      "githubRepo": "https://github.com/declare-lab/delta-Vision"
+    },
+    {
+      "title": "CoWindow Attention: Full Causal Coverage Is a Collective Property",
+      "summary": "FullAttn repeatedly exposes the complete causal history to every attention head, creating substantial redundant computation and memory traffic even with IO-effi...",
+      "upvotes": 3,
+      "arxiv_id": "2609.32704",
+      "url": "https://huggingface.co/papers/2609.32704",
+      "githubRepo": null
     }
   ]
 }

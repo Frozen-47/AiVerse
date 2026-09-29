@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-28)
+### ⚡ Daily AI Pulse (2026-09-29)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **MiMo-V2.6-Distill-Qwen-9B** (`Model`), **qwen-image-2-1-studio** (`Platform`), **opus5-5-doctor-patient-conversations-all-human-diseases** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Gemini 2.0 Flash** (Google DeepMind) — [Explore](https://deepmind.google/technologies/gemini/) |
-| 🗄️ **Catalog Entries** | **319** AI assets tracked (258 featured) |
+| 🆕 **New Assets Added** | **TeleOCR** (`Model`), **yue2-hum-to-song** (`Platform`), **SmolDataEnvs** (`Dataset`) |
+| 🌟 **Tool of the Day** | **o3-mini** (OpenAI) — [Explore](https://openai.com) |
+| 🗄️ **Catalog Entries** | **322** AI assets tracked (260 featured) |
 | 🔥 **Top Trending Model** | [convaiinnovations/laya](https://huggingface.co/convaiinnovations/laya) |
-| 📜 **Top Daily Paper** | [SLCA-GRPO: Resolving Cross-Segment Credit Misattri...](https://huggingface.co/papers/2609.29050) |
-| 🛡️ **Catalog Links Checked** | **20/25** operational |
-| 🕒 **Last Daily Run** | `Mon, 28 Sep 2026 02:46:24 GMT` |
+| 📜 **Top Daily Paper** | [Self-Evolving Coding Agents: From Digital Programs...](https://huggingface.co/papers/2609.35432) |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Daily Run** | `Tue, 29 Sep 2026 03:28:02 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->
