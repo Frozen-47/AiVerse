@@ -7120,6 +7120,72 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/FineEnvs/SmolDataEnvs"
           }
       ]
+  },
+  {
+      "name": "CLM-v0.1-8B",
+      "type": "Model",
+      "summary": "High-performance NLP open-weights model by Contrastive-LM, trending with over 531 community likes and 1,910 downloads on Hugging Face.",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "Contrastive-LM",
+      "size": "8B params",
+      "architecture": "Contrastive-LM text ranking architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Contrastive-LM/CLM-v0.1-8B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Contrastive-LM/CLM-v0.1-8B\")",
+      "benchmarks": "Trending Score: 522, Likes: 531, Downloads: 1,910",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/Contrastive-LM/CLM-v0.1-8B",
+      "citations": [
+          {
+              "text": "Contrastive-LM/CLM-v0.1-8B on Hugging Face",
+              "url": "https://huggingface.co/Contrastive-LM/CLM-v0.1-8B"
+          }
+      ]
+  },
+  {
+      "name": "Omni-videos-custom-auto_prompt_high-quality",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vamo455. Trending with 98 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "vamo455",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/vamo455/Omni-videos-custom-auto_prompt_high-quality",
+      "benchmarks": "Trending Score: 46, Community Likes: 98",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/vamo455/Omni-videos-custom-auto_prompt_high-quality",
+      "citations": [
+          {
+              "text": "vamo455/Omni-videos-custom-auto_prompt_high-quality on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/vamo455/Omni-videos-custom-auto_prompt_high-quality"
+          }
+      ]
+  },
+  {
+      "name": "yodas3",
+      "type": "Dataset",
+      "summary": "YODAS v3 \t Paper YODAS v3 is a large web-crawled dataset containing over 1.1 million hours of audio that were originally released under a CC-BY-3.0 license. The dataset (70 likes, 17,831 downloads).",
+      "task": "Audio",
+      "license": "CC-BY-3.0",
+      "year": 2026,
+      "org": "espnet",
+      "size": "1M<n<10M",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"espnet/yodas3\")",
+      "benchmarks": "Trending Score: 67, Likes: 70, Downloads: 17,831",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/espnet/yodas3",
+      "citations": [
+          {
+              "text": "espnet/yodas3 on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/espnet/yodas3"
+          }
+      ]
   }
 ];
 

@@ -1,4 +1,4 @@
--- Seed / Upsert all 322 AiVerse entries into Supabase
+-- Seed / Upsert all 325 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -6764,6 +6764,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('SmolDataEnvs', 'FineEnvs', 'Dataset', 'AI Coding', 'MIT', 2026, '1K<n<10K', '📈 SmolDataEnvs 	 5.5K+ RL tasks for hill-climbing small models in code and data science. A 2B model on these tasks. Left: what it optimises. Right: 144 held-out tasks (55 likes, 2,460 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("FineEnvs/SmolDataEnvs")', 'Trending Score: 55, Likes: 55, Downloads: 2,460', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/FineEnvs/SmolDataEnvs', '[{"text":"FineEnvs/SmolDataEnvs on Hugging Face Datasets","url":"https://huggingface.co/datasets/FineEnvs/SmolDataEnvs"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('CLM-v0.1-8B', 'Contrastive-LM', 'Model', 'NLP', 'APACHE-2.0', 2026, '8B params', 'High-performance NLP open-weights model by Contrastive-LM, trending with over 531 community likes and 1,910 downloads on Hugging Face.', 'Contrastive-LM text ranking architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Contrastive-LM/CLM-v0.1-8B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Contrastive-LM/CLM-v0.1-8B")', 'Trending Score: 522, Likes: 531, Downloads: 1,910', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Contrastive-LM/CLM-v0.1-8B', '[{"text":"Contrastive-LM/CLM-v0.1-8B on Hugging Face","url":"https://huggingface.co/Contrastive-LM/CLM-v0.1-8B"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Omni-videos-custom-auto_prompt_high-quality', 'vamo455', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vamo455. Trending with 98 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/vamo455/Omni-videos-custom-auto_prompt_high-quality', 'Trending Score: 46, Community Likes: 98', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/vamo455/Omni-videos-custom-auto_prompt_high-quality', '[{"text":"vamo455/Omni-videos-custom-auto_prompt_high-quality on Hugging Face Spaces","url":"https://huggingface.co/spaces/vamo455/Omni-videos-custom-auto_prompt_high-quality"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('yodas3', 'espnet', 'Dataset', 'Audio', 'CC-BY-3.0', 2026, '1M<n<10M', 'YODAS v3 	 Paper YODAS v3 is a large web-crawled dataset containing over 1.1 million hours of audio that were originally released under a CC-BY-3.0 license. The dataset (70 likes, 17,831 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("espnet/yodas3")', 'Trending Score: 67, Likes: 70, Downloads: 17,831', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/espnet/yodas3', '[{"text":"espnet/yodas3 on Hugging Face Datasets","url":"https://huggingface.co/datasets/espnet/yodas3"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

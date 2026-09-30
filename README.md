@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-29)
+### ⚡ Daily AI Pulse (2026-09-30)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **TeleOCR** (`Model`), **yue2-hum-to-song** (`Platform`), **SmolDataEnvs** (`Dataset`) |
-| 🌟 **Tool of the Day** | **o3-mini** (OpenAI) — [Explore](https://openai.com) |
-| 🗄️ **Catalog Entries** | **322** AI assets tracked (260 featured) |
+| 🆕 **New Assets Added** | **CLM-v0.1-8B** (`Model`), **Omni-videos-custom-auto_prompt_high-quality** (`Platform`), **yodas3** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Claude 3.5 Haiku** (Anthropic) — [Explore](https://www.anthropic.com/claude) |
+| 🗄️ **Catalog Entries** | **325** AI assets tracked (262 featured) |
 | 🔥 **Top Trending Model** | [convaiinnovations/laya](https://huggingface.co/convaiinnovations/laya) |
-| 📜 **Top Daily Paper** | [Self-Evolving Coding Agents: From Digital Programs...](https://huggingface.co/papers/2609.35432) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Daily Run** | `Tue, 29 Sep 2026 03:28:02 GMT` |
+| 📜 **Top Daily Paper** | [Adversarial Training for Pixel Diffusion...](https://huggingface.co/papers/2609.38170) |
+| 🛡️ **Catalog Links Checked** | **20/25** operational |
+| 🕒 **Last Daily Run** | `Wed, 30 Sep 2026 03:11:41 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

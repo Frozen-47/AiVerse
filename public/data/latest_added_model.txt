@@ -1,1 +1,1 @@
-TeleOCR
+CLM-v0.1-8B

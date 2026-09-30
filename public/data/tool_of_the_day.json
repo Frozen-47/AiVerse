@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-29",
+  "date": "2026-09-30",
   "tool": {
-    "name": "o3-mini",
+    "name": "Claude 3.5 Haiku",
     "type": "Model",
-    "summary": "OpenAI's cost-efficient STEM, math, and coding reasoning model with selectable reasoning effort levels (low, medium, high) and function calling.",
-    "task": "AI Coding",
+    "summary": "Anthropic's fastest language model, matching original Claude 3 Opus capabilities at blazing speed and lower operational cost.",
+    "task": "NLP",
     "license": "Proprietary",
-    "year": 2025,
-    "org": "OpenAI",
+    "year": 2024,
+    "org": "Anthropic",
     "size": "Unknown",
-    "architecture": "Reinforcement learning-trained reasoning model optimized for coding and STEM.",
-    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"o3-mini\",\n  reasoning_effort=\"medium\",\n  messages=[{\"role\": \"user\", \"content\": \"Design an optimal LRU cache in Rust.\"}]\n)",
-    "benchmarks": "AIME 2024: 87.3%, Codeforces Rating: 2088, GPQA: 79.7%",
-    "limitations": "Text only (no image modality input); reasoning adds latency.",
+    "architecture": "Compact distilled Transformer with Constitutional AI alignment.",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nresponse = client.messages.create(\n  model=\"claude-3-5-haiku-20241022\",\n  max_tokens=1024,\n  messages=[{\"role\": \"user\", \"content\": \"Extract entities from this invoice.\"}]\n)",
+    "benchmarks": "MMLU: 80.9%, HumanEval: 75.9%, GPQA: 41.6%",
+    "limitations": "Less suited for open-ended multi-page deep thesis analysis.",
     "popular": true,
-    "url": "https://openai.com",
+    "url": "https://www.anthropic.com/claude",
     "citations": [
       {
-        "text": "OpenAI o3-mini Announcement",
-        "url": "https://openai.com/index/openai-o3-mini/"
+        "text": "Claude 3.5 Haiku Release",
+        "url": "https://www.anthropic.com/news/claude-3-5-haiku"
       }
     ]
   }
