@@ -1,24 +1,24 @@
 {
-  "date": "2026-09-30",
+  "date": "2026-10-01",
   "tool": {
-    "name": "Claude 3.5 Haiku",
+    "name": "Claude 3.7 Sonnet",
     "type": "Model",
-    "summary": "Anthropic's fastest language model, matching original Claude 3 Opus capabilities at blazing speed and lower operational cost.",
+    "summary": "Anthropic's hybrid reasoning frontier model that dynamically switches between near-instant conversational responses and deep extended step-by-step thinking.",
     "task": "NLP",
     "license": "Proprietary",
-    "year": 2024,
+    "year": 2025,
     "org": "Anthropic",
     "size": "Unknown",
-    "architecture": "Compact distilled Transformer with Constitutional AI alignment.",
-    "usage": "import anthropic\nclient = anthropic.Anthropic()\nresponse = client.messages.create(\n  model=\"claude-3-5-haiku-20241022\",\n  max_tokens=1024,\n  messages=[{\"role\": \"user\", \"content\": \"Extract entities from this invoice.\"}]\n)",
-    "benchmarks": "MMLU: 80.9%, HumanEval: 75.9%, GPQA: 41.6%",
-    "limitations": "Less suited for open-ended multi-page deep thesis analysis.",
+    "architecture": "Transformer-based multimodal foundation model with controllable thinking budget tokens.",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nresponse = client.messages.create(\n  model=\"claude-3-7-sonnet-20250219\",\n  max_tokens=4096,\n  thinking={\"type\": \"enabled\", \"budget_tokens\": 2048},\n  messages=[{\"role\": \"user\", \"content\": \"Analyze complex architecture vulnerabilities.\"}]\n)",
+    "benchmarks": "SWE-bench Verified: 70.3%, GPQA Diamond: 65.2%, TAU-bench: 81.2%",
+    "limitations": "Extended reasoning uses token budget; proprietary API pricing.",
     "popular": true,
     "url": "https://www.anthropic.com/claude",
     "citations": [
       {
-        "text": "Claude 3.5 Haiku Release",
-        "url": "https://www.anthropic.com/news/claude-3-5-haiku"
+        "text": "Claude 3.7 Sonnet Announcement",
+        "url": "https://www.anthropic.com/news/claude-3-7-sonnet"
       }
     ]
   }

@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-09-30T03:11:35.257Z",
-  "totalEntries": 325,
-  "popularEntries": 262,
+  "timestamp": "2026-10-01T03:18:36.854Z",
+  "totalEntries": 328,
+  "popularEntries": 264,
   "totalUsers": 11,
   "averageRating": 4.38,
   "totalRatings": 8,
-  "newEntriesCount": 98,
+  "newEntriesCount": 101,
   "byType": {
-    "Model": 116,
+    "Model": 117,
     "Framework": 33,
-    "Platform": 53,
-    "Dataset": 52,
+    "Platform": 54,
+    "Dataset": 53,
     "AI": 71
   },
   "byTask": {
-    "NLP": 119,
+    "NLP": 120,
     "AI Coding": 26,
-    "Multimodal": 45,
+    "Multimodal": 46,
     "Research": 11,
     "Image Generation": 12,
     "Video Generation": 11,
-    "Audio": 17,
+    "Audio": 18,
     "MLOps": 44,
     "Productivity": 14,
     "Computer Vision": 22,
@@ -66,9 +66,9 @@
     "Proprietary / DeepSeek License": 1,
     "Open Source UI / Various model licenses": 1,
     "Free": 1,
-    "APACHE-2.0": 27,
+    "APACHE-2.0": 28,
     "OTHER": 11,
-    "Community Hosted": 28,
+    "Community Hosted": 29,
     "NOASSERTION": 4,
     "CC-BY-SA-4.0": 1,
     "Open Data": 1,
@@ -79,27 +79,28 @@
     "CC-BY-NC-SA-4.0": 1,
     "Open Weights": 1,
     "CC-BY-NC-ND-4.0": 1,
-    "CC-BY-3.0": 1
+    "CC-BY-3.0": 1,
+    "OPENMDW-1.1": 1
   },
   "toolOfTheDay": {
-    "name": "Claude 3.5 Haiku",
+    "name": "Claude 3.7 Sonnet",
     "type": "Model",
-    "summary": "Anthropic's fastest language model, matching original Claude 3 Opus capabilities at blazing speed and lower operational cost.",
+    "summary": "Anthropic's hybrid reasoning frontier model that dynamically switches between near-instant conversational responses and deep extended step-by-step thinking.",
     "task": "NLP",
     "license": "Proprietary",
-    "year": 2024,
+    "year": 2025,
     "org": "Anthropic",
     "size": "Unknown",
-    "architecture": "Compact distilled Transformer with Constitutional AI alignment.",
-    "usage": "import anthropic\nclient = anthropic.Anthropic()\nresponse = client.messages.create(\n  model=\"claude-3-5-haiku-20241022\",\n  max_tokens=1024,\n  messages=[{\"role\": \"user\", \"content\": \"Extract entities from this invoice.\"}]\n)",
-    "benchmarks": "MMLU: 80.9%, HumanEval: 75.9%, GPQA: 41.6%",
-    "limitations": "Less suited for open-ended multi-page deep thesis analysis.",
+    "architecture": "Transformer-based multimodal foundation model with controllable thinking budget tokens.",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nresponse = client.messages.create(\n  model=\"claude-3-7-sonnet-20250219\",\n  max_tokens=4096,\n  thinking={\"type\": \"enabled\", \"budget_tokens\": 2048},\n  messages=[{\"role\": \"user\", \"content\": \"Analyze complex architecture vulnerabilities.\"}]\n)",
+    "benchmarks": "SWE-bench Verified: 70.3%, GPQA Diamond: 65.2%, TAU-bench: 81.2%",
+    "limitations": "Extended reasoning uses token budget; proprietary API pricing.",
     "popular": true,
     "url": "https://www.anthropic.com/claude",
     "citations": [
       {
-        "text": "Claude 3.5 Haiku Release",
-        "url": "https://www.anthropic.com/news/claude-3-5-haiku"
+        "text": "Claude 3.7 Sonnet Announcement",
+        "url": "https://www.anthropic.com/news/claude-3-7-sonnet"
       }
     ]
   }

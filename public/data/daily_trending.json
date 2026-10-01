@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-09-30T03:11:38.664Z",
+  "timestamp": "2026-10-01T03:18:41.386Z",
   "models": [
+    {
+      "id": "Edge0/Audio8-ASR-Infinite",
+      "author": "Edge0",
+      "likes": 1926,
+      "downloads": 26749,
+      "pipeline_tag": "automatic-speech-recognition",
+      "url": "https://huggingface.co/Edge0/Audio8-ASR-Infinite"
+    },
     {
       "id": "convaiinnovations/laya",
       "author": "convaiinnovations",
-      "likes": 4525,
+      "likes": 4693,
       "downloads": 0,
       "pipeline_tag": "text-classification",
       "url": "https://huggingface.co/convaiinnovations/laya"
     },
     {
-      "id": "Edge0/Audio8-ASR-Infinite",
-      "author": "Edge0",
-      "likes": 1543,
-      "downloads": 23674,
-      "pipeline_tag": "automatic-speech-recognition",
-      "url": "https://huggingface.co/Edge0/Audio8-ASR-Infinite"
-    },
-    {
-      "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
-      "author": "abenzerps",
-      "likes": 2449,
-      "downloads": 1152523,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
-    },
-    {
       "id": "XingChen-AGI/TeleOCR",
       "author": "XingChen-AGI",
-      "likes": 877,
-      "downloads": 30354,
+      "likes": 1102,
+      "downloads": 30383,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/XingChen-AGI/TeleOCR"
     },
     {
-      "id": "Qwen/Qwen-Image-2.1",
-      "author": "Qwen",
-      "likes": 2659,
-      "downloads": 64362,
+      "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
+      "author": "abenzerps",
+      "likes": 2587,
+      "downloads": 1232685,
       "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
+      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
     },
     {
       "id": "Contrastive-LM/CLM-v0.1-8B",
       "author": "Contrastive-LM",
-      "likes": 531,
-      "downloads": 1910,
+      "likes": 574,
+      "downloads": 2392,
       "pipeline_tag": "text-ranking",
       "url": "https://huggingface.co/Contrastive-LM/CLM-v0.1-8B"
+    },
+    {
+      "id": "Qwen/Qwen-Image-2.1",
+      "author": "Qwen",
+      "likes": 2725,
+      "downloads": 70687,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
     }
   ],
   "papers": [
     {
-      "title": "Adversarial Training for Pixel Diffusion",
-      "summary": "Pixel diffusion models generate RGB images directly, avoiding the bottleneck of an autoencoder, yet their outputs still systematically underrepresent fine-scale...",
+      "title": "RSIGame: Autonomous Agentic Game Development with Recursive Self-improvement",
+      "summary": "Recent advances in large language models have made automatic game generation increasingly feasible, yet reliably improving generated games beyond a playable ver...",
       "upvotes": 1,
-      "arxiv_id": "2609.38170",
-      "url": "https://huggingface.co/papers/2609.38170",
-      "githubRepo": null
+      "arxiv_id": "2609.39045",
+      "url": "https://huggingface.co/papers/2609.39045",
+      "githubRepo": "https://github.com/WenyiWU0111/RSIGame"
     },
     {
-      "title": "LIFT: Layout-In-Future Video Generation under Large Viewpoint Change via On-Policy Self-Distillation",
-      "summary": "We introduce LIFT, a unified image-to-video generation framework that complements camera control with Layout-In-FuTure control, enabling users to specify what s...",
+      "title": "CoEvoWhen: Policy-Tool Coevolution for Ultra-Long Video Temporal Grounding",
+      "summary": "Ultra-long video temporal grounding requires balancing long-range evidence search with fine-grained event understanding under a limited visual budget, yet exist...",
       "upvotes": 0,
-      "arxiv_id": "2609.38146",
-      "url": "https://huggingface.co/papers/2609.38146",
-      "githubRepo": "https://github.com/jsxzs/LIFT"
+      "arxiv_id": "2609.40048",
+      "url": "https://huggingface.co/papers/2609.40048",
+      "githubRepo": "https://github.com/aim-uofa/CoEvoWhen"
     },
     {
-      "title": "EasyPPO: Stabilizing the Critic Is Key",
-      "summary": "A key strength of Proximal Policy Optimization (PPO) is its learned critic, which uses historical trajectories collected during reinforcement learning to estima...",
-      "upvotes": 6,
-      "arxiv_id": "2609.36802",
-      "url": "https://huggingface.co/papers/2609.36802",
+      "title": "RoboCoach: World Models as Active Coaches for Compositional Robot Skills",
+      "summary": "Long-horizon robot manipulation reuses skills across many task compositions, but improving these compositions with additional end-to-end demonstrations is costl...",
+      "upvotes": 2,
+      "arxiv_id": "2609.39685",
+      "url": "https://huggingface.co/papers/2609.39685",
+      "githubRepo": "https://github.com/RoboCoach-AI/CoachWorld"
+    },
+    {
+      "title": "More Choices, Fewer Decisions: Ordinal-Scale Bias in JEV-like Direct-Decision Models",
+      "summary": "Direct-decision models turn text into low-latency structured labels and scores, making them attractive for classification and automatic evaluation. Yet reliabil...",
+      "upvotes": 3,
+      "arxiv_id": "2609.38827",
+      "url": "https://huggingface.co/papers/2609.38827",
       "githubRepo": null
     },
     {
-      "title": "Real2Gym: Building Gyms from Videos, Bringing Skills to Robots",
-      "summary": "Real-world videos provide rich demonstrations of manipulation, but turning them into reusable robot skills requires visually aligned environments, executable ph...",
-      "upvotes": 2,
-      "arxiv_id": "2609.37089",
-      "url": "https://huggingface.co/papers/2609.37089",
-      "githubRepo": "https://github.com/real2gym/Real2Gym"
-    },
-    {
-      "title": "LongLive-Plug: Once-for-All Distillation for Video Generation",
-      "summary": "Video diffusion models are increasingly developed into specialized models for diverse downstream tasks, and this development often includes a distillation stage...",
+      "title": "EvoDuet: Bilevel Co-Evolution of Web Searching and Task Solving for Scientific Discovery",
+      "summary": "Evolutionary search with large language models (LLMs) can stall when progress requires external knowledge the model lacks. Supplying relevant documents helps, b...",
       "upvotes": 4,
-      "arxiv_id": "2609.38154",
-      "url": "https://huggingface.co/papers/2609.38154",
-      "githubRepo": "https://github.com/NVlabs/LongLive"
+      "arxiv_id": "2609.40340",
+      "url": "https://huggingface.co/papers/2609.40340",
+      "githubRepo": "https://github.com/Open-Galapagos/EvoDuet"
     }
   ]
 }

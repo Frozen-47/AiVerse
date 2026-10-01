@@ -1,43 +1,43 @@
-# ⚡ AiVerse Daily Pulse (2026-09-30)
+# ⚡ AiVerse Daily Pulse (2026-10-01)
 
 > Automatically generated daily intelligence report syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Wed, 30 Sep 2026 03:11:41 GMT`*
+*Last Synchronized: `Thu, 01 Oct 2026 03:18:44 GMT`*
 
 ---
 
 ## 🆕 Newly Ingested Assets Today (3)
 
-### **CLM-v0.1-8B** (`Model` • *Contrastive-LM*)
-> High-performance NLP open-weights model by Contrastive-LM, trending with over 531 community likes and 1,910 downloads on Hugging Face.
+### **Nemotron-3-Diarization** (`Model` • *nvidia*)
+> High-performance Audio open-weights model by nvidia, trending with over 565 community likes and 36,386 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 522, Likes: 531, Downloads: 1,910`
-- 🔗 **Resource Link**: [https://huggingface.co/Contrastive-LM/CLM-v0.1-8B](https://huggingface.co/Contrastive-LM/CLM-v0.1-8B)
+- 🏷️ **Domain & License**: `Audio` • `OPENMDW-1.1` (2026)
+- ⚡ **Metrics**: `Trending Score: 398, Likes: 565, Downloads: 36,386`
+- 🔗 **Resource Link**: [https://huggingface.co/nvidia/Nemotron-3-Diarization](https://huggingface.co/nvidia/Nemotron-3-Diarization)
 
-### **Omni-videos-custom-auto_prompt_high-quality** (`Platform` • *vamo455*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vamo455. Trending with 98 community stars.
+### **MiMo-RL-Envs-Explorer** (`Platform` • *FineEnvs*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by FineEnvs. Trending with 64 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 46, Community Likes: 98`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/vamo455/Omni-videos-custom-auto_prompt_high-quality](https://huggingface.co/spaces/vamo455/Omni-videos-custom-auto_prompt_high-quality)
+- ⚡ **Metrics**: `Trending Score: 63, Community Likes: 64`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/FineEnvs/MiMo-RL-Envs-Explorer](https://huggingface.co/spaces/FineEnvs/MiMo-RL-Envs-Explorer)
 
-### **yodas3** (`Dataset` • *espnet*)
-> YODAS v3 	 Paper YODAS v3 is a large web-crawled dataset containing over 1.1 million hours of audio that were originally released under a CC-BY-3.0 license. The dataset (70 likes, 17,831 downloads).
+### **typed-decisions** (`Dataset` • *LocalLLaMA*)
+> Typed Decisions 	 A benchmark for typed probabilistic decisions. A model gets one piece of unstructured state and answers five typed questions about it at once, and eve (85 likes, 19,901 downloads).
 
-- 🏷️ **Domain & License**: `Audio` • `CC-BY-3.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 67, Likes: 70, Downloads: 17,831`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/espnet/yodas3](https://huggingface.co/datasets/espnet/yodas3)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 56, Likes: 85, Downloads: 19,901`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/LocalLLaMA/typed-decisions](https://huggingface.co/datasets/LocalLLaMA/typed-decisions)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **Claude 3.5 Haiku** (`Model` • *Anthropic*)
-> Anthropic's fastest language model, matching original Claude 3 Opus capabilities at blazing speed and lower operational cost.
+### **Claude 3.7 Sonnet** (`Model` • *Anthropic*)
+> Anthropic's hybrid reasoning frontier model that dynamically switches between near-instant conversational responses and deep extended step-by-step thinking.
 
-- 🏛️ **Architecture**: Compact distilled Transformer with Constitutional AI alignment.
-- ⚡ **Benchmarks**: `MMLU: 80.9%, HumanEval: 75.9%, GPQA: 41.6%`
-- 🏷️ **Domain & License**: `NLP` • `Proprietary` (Released: 2024)
+- 🏛️ **Architecture**: Transformer-based multimodal foundation model with controllable thinking budget tokens.
+- ⚡ **Benchmarks**: `SWE-bench Verified: 70.3%, GPQA Diamond: 65.2%, TAU-bench: 81.2%`
+- 🏷️ **Domain & License**: `NLP` • `Proprietary` (Released: 2025)
 - 🔗 **Resource Link**: [https://www.anthropic.com/claude](https://www.anthropic.com/claude)
 
 ---
@@ -46,12 +46,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `convaiinnovations/laya` | text-classification | ❤️ 4,525 | 📥 0 | [View](https://huggingface.co/convaiinnovations/laya) |
-| `Edge0/Audio8-ASR-Infinite` | automatic-speech-recognition | ❤️ 1,543 | 📥 23,674 | [View](https://huggingface.co/Edge0/Audio8-ASR-Infinite) |
-| `abenzerps/Qwen-Image-2.1-Uncensored-GGUF` | text-to-image | ❤️ 2,449 | 📥 1,152,523 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF) |
-| `XingChen-AGI/TeleOCR` | image-text-to-text | ❤️ 877 | 📥 30,354 | [View](https://huggingface.co/XingChen-AGI/TeleOCR) |
-| `Qwen/Qwen-Image-2.1` | text-to-image | ❤️ 2,659 | 📥 64,362 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1) |
-| `Contrastive-LM/CLM-v0.1-8B` | text-ranking | ❤️ 531 | 📥 1,910 | [View](https://huggingface.co/Contrastive-LM/CLM-v0.1-8B) |
+| `Edge0/Audio8-ASR-Infinite` | automatic-speech-recognition | ❤️ 1,926 | 📥 26,749 | [View](https://huggingface.co/Edge0/Audio8-ASR-Infinite) |
+| `convaiinnovations/laya` | text-classification | ❤️ 4,693 | 📥 0 | [View](https://huggingface.co/convaiinnovations/laya) |
+| `XingChen-AGI/TeleOCR` | image-text-to-text | ❤️ 1,102 | 📥 30,383 | [View](https://huggingface.co/XingChen-AGI/TeleOCR) |
+| `abenzerps/Qwen-Image-2.1-Uncensored-GGUF` | text-to-image | ❤️ 2,587 | 📥 1,232,685 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF) |
+| `Contrastive-LM/CLM-v0.1-8B` | text-ranking | ❤️ 574 | 📥 2,392 | [View](https://huggingface.co/Contrastive-LM/CLM-v0.1-8B) |
+| `Qwen/Qwen-Image-2.1` | text-to-image | ❤️ 2,725 | 📥 70,687 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1) |
 
 
 ---
@@ -61,24 +61,24 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Adversarial Training for Pixel Diffusion** | 👍 1 | Pixel diffusion models generate RGB images directly, avoiding the bottleneck of an autoencoder, yet their outputs still systematically underrepresent fine-scale... | [Read](https://huggingface.co/papers/2609.38170) |
-| **LIFT: Layout-In-Future Video Generation under Large Viewpoint Change via On-Policy Self-Distillation** | 👍 0 | We introduce LIFT, a unified image-to-video generation framework that complements camera control with Layout-In-FuTure control, enabling users to specify what s... | [Read](https://huggingface.co/papers/2609.38146) |
-| **EasyPPO: Stabilizing the Critic Is Key** | 👍 6 | A key strength of Proximal Policy Optimization (PPO) is its learned critic, which uses historical trajectories collected during reinforcement learning to estima... | [Read](https://huggingface.co/papers/2609.36802) |
-| **Real2Gym: Building Gyms from Videos, Bringing Skills to Robots** | 👍 2 | Real-world videos provide rich demonstrations of manipulation, but turning them into reusable robot skills requires visually aligned environments, executable ph... | [Read](https://huggingface.co/papers/2609.37089) |
-| **LongLive-Plug: Once-for-All Distillation for Video Generation** | 👍 4 | Video diffusion models are increasingly developed into specialized models for diverse downstream tasks, and this development often includes a distillation stage... | [Read](https://huggingface.co/papers/2609.38154) |
+| **RSIGame: Autonomous Agentic Game Development with Recursive Self-improvement** | 👍 1 | Recent advances in large language models have made automatic game generation increasingly feasible, yet reliably improving generated games beyond a playable ver... | [Read](https://huggingface.co/papers/2609.39045) |
+| **CoEvoWhen: Policy-Tool Coevolution for Ultra-Long Video Temporal Grounding** | 👍 0 | Ultra-long video temporal grounding requires balancing long-range evidence search with fine-grained event understanding under a limited visual budget, yet exist... | [Read](https://huggingface.co/papers/2609.40048) |
+| **RoboCoach: World Models as Active Coaches for Compositional Robot Skills** | 👍 2 | Long-horizon robot manipulation reuses skills across many task compositions, but improving these compositions with additional end-to-end demonstrations is costl... | [Read](https://huggingface.co/papers/2609.39685) |
+| **More Choices, Fewer Decisions: Ordinal-Scale Bias in JEV-like Direct-Decision Models** | 👍 3 | Direct-decision models turn text into low-latency structured labels and scores, making them attractive for classification and automatic evaluation. Yet reliabil... | [Read](https://huggingface.co/papers/2609.38827) |
+| **EvoDuet: Bilevel Co-Evolution of Web Searching and Task Solving for Scientific Discovery** | 👍 4 | Evolutionary search with large language models (LLMs) can stall when progress requires external knowledge the model lacks. Supplying relevant documents helps, b... | [Read](https://huggingface.co/papers/2609.40340) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `325`
-- **Featured / Starred Tools**: `262`
-- **Asset Breakdown**: **Models**: 116 • **Frameworks**: 33 • **Platforms**: 53 • **Datasets**: 52 • **AIs**: 71
+- **Total Registered Assets**: `328`
+- **Featured / Starred Tools**: `264`
+- **Asset Breakdown**: **Models**: 117 • **Frameworks**: 33 • **Platforms**: 54 • **Datasets**: 53 • **AIs**: 71
 
 ---
 
 ## 🛡️ Daily System & Ecosystem Health
-- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
+- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
 - **Dependency Security**: `21` advisories flagged across `539` dependencies (`1` critical, `17` high)
 
 ---

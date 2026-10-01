@@ -1,1 +1,1 @@
-CLM-v0.1-8B
+Nemotron-3-Diarization

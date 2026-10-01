@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-09-30)
+### ⚡ Daily AI Pulse (2026-10-01)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **CLM-v0.1-8B** (`Model`), **Omni-videos-custom-auto_prompt_high-quality** (`Platform`), **yodas3** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Claude 3.5 Haiku** (Anthropic) — [Explore](https://www.anthropic.com/claude) |
-| 🗄️ **Catalog Entries** | **325** AI assets tracked (262 featured) |
-| 🔥 **Top Trending Model** | [convaiinnovations/laya](https://huggingface.co/convaiinnovations/laya) |
-| 📜 **Top Daily Paper** | [Adversarial Training for Pixel Diffusion...](https://huggingface.co/papers/2609.38170) |
-| 🛡️ **Catalog Links Checked** | **20/25** operational |
-| 🕒 **Last Daily Run** | `Wed, 30 Sep 2026 03:11:41 GMT` |
+| 🆕 **New Assets Added** | **Nemotron-3-Diarization** (`Model`), **MiMo-RL-Envs-Explorer** (`Platform`), **typed-decisions** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Claude 3.7 Sonnet** (Anthropic) — [Explore](https://www.anthropic.com/claude) |
+| 🗄️ **Catalog Entries** | **328** AI assets tracked (264 featured) |
+| 🔥 **Top Trending Model** | [Edge0/Audio8-ASR-Infinite](https://huggingface.co/Edge0/Audio8-ASR-Infinite) |
+| 📜 **Top Daily Paper** | [RSIGame: Autonomous Agentic Game Development with ...](https://huggingface.co/papers/2609.39045) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Daily Run** | `Thu, 01 Oct 2026 03:18:44 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

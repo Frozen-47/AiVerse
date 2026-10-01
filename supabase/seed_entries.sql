@@ -1,4 +1,4 @@
--- Seed / Upsert all 325 AiVerse entries into Supabase
+-- Seed / Upsert all 328 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -6826,6 +6826,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('yodas3', 'espnet', 'Dataset', 'Audio', 'CC-BY-3.0', 2026, '1M<n<10M', 'YODAS v3 	 Paper YODAS v3 is a large web-crawled dataset containing over 1.1 million hours of audio that were originally released under a CC-BY-3.0 license. The dataset (70 likes, 17,831 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("espnet/yodas3")', 'Trending Score: 67, Likes: 70, Downloads: 17,831', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/espnet/yodas3', '[{"text":"espnet/yodas3 on Hugging Face Datasets","url":"https://huggingface.co/datasets/espnet/yodas3"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Nemotron-3-Diarization', 'nvidia', 'Model', 'Audio', 'OPENMDW-1.1', 2026, 'Open Weights', 'High-performance Audio open-weights model by nvidia, trending with over 565 community likes and 36,386 downloads on Hugging Face.', 'nvidia voice activity detection architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("nvidia/Nemotron-3-Diarization", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("nvidia/Nemotron-3-Diarization")', 'Trending Score: 398, Likes: 565, Downloads: 36,386', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/nvidia/Nemotron-3-Diarization', '[{"text":"nvidia/Nemotron-3-Diarization on Hugging Face","url":"https://huggingface.co/nvidia/Nemotron-3-Diarization"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MiMo-RL-Envs-Explorer', 'FineEnvs', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'DOCKER Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by FineEnvs. Trending with 64 community stars.', 'DOCKER cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/FineEnvs/MiMo-RL-Envs-Explorer', 'Trending Score: 63, Community Likes: 64', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/FineEnvs/MiMo-RL-Envs-Explorer', '[{"text":"FineEnvs/MiMo-RL-Envs-Explorer on Hugging Face Spaces","url":"https://huggingface.co/spaces/FineEnvs/MiMo-RL-Envs-Explorer"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('typed-decisions', 'LocalLLaMA', 'Dataset', 'NLP', 'APACHE-2.0', 2026, '1K<n<10K', 'Typed Decisions 	 A benchmark for typed probabilistic decisions. A model gets one piece of unstructured state and answers five typed questions about it at once, and eve (85 likes, 19,901 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("LocalLLaMA/typed-decisions")', 'Trending Score: 56, Likes: 85, Downloads: 19,901', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/LocalLLaMA/typed-decisions', '[{"text":"LocalLLaMA/typed-decisions on Hugging Face Datasets","url":"https://huggingface.co/datasets/LocalLLaMA/typed-decisions"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

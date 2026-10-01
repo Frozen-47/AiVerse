@@ -1,5 +1,76 @@
 [
   {
+    "date": "2026-10-01",
+    "assets": [
+      {
+        "name": "Nemotron-3-Diarization",
+        "type": "Model",
+        "summary": "High-performance Audio open-weights model by nvidia, trending with over 565 community likes and 36,386 downloads on Hugging Face.",
+        "task": "Audio",
+        "license": "OPENMDW-1.1",
+        "year": 2026,
+        "org": "nvidia",
+        "size": "Open Weights",
+        "architecture": "nvidia voice activity detection architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"nvidia/Nemotron-3-Diarization\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"nvidia/Nemotron-3-Diarization\")",
+        "benchmarks": "Trending Score: 398, Likes: 565, Downloads: 36,386",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": true,
+        "url": "https://huggingface.co/nvidia/Nemotron-3-Diarization",
+        "citations": [
+          {
+            "text": "nvidia/Nemotron-3-Diarization on Hugging Face",
+            "url": "https://huggingface.co/nvidia/Nemotron-3-Diarization"
+          }
+        ]
+      },
+      {
+        "name": "MiMo-RL-Envs-Explorer",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by FineEnvs. Trending with 64 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "FineEnvs",
+        "size": "DOCKER Platform",
+        "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/FineEnvs/MiMo-RL-Envs-Explorer",
+        "benchmarks": "Trending Score: 63, Community Likes: 64",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": true,
+        "url": "https://huggingface.co/spaces/FineEnvs/MiMo-RL-Envs-Explorer",
+        "citations": [
+          {
+            "text": "FineEnvs/MiMo-RL-Envs-Explorer on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/FineEnvs/MiMo-RL-Envs-Explorer"
+          }
+        ]
+      },
+      {
+        "name": "typed-decisions",
+        "type": "Dataset",
+        "summary": "Typed Decisions \t A benchmark for typed probabilistic decisions. A model gets one piece of unstructured state and answers five typed questions about it at once, and eve (85 likes, 19,901 downloads).",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "LocalLLaMA",
+        "size": "1K<n<10K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"LocalLLaMA/typed-decisions\")",
+        "benchmarks": "Trending Score: 56, Likes: 85, Downloads: 19,901",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "url": "https://huggingface.co/datasets/LocalLLaMA/typed-decisions",
+        "citations": [
+          {
+            "text": "LocalLLaMA/typed-decisions on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/LocalLLaMA/typed-decisions"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-30",
     "assets": [
       {
