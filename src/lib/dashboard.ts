@@ -11,7 +11,7 @@ export interface DashboardStats {
 }
 
 export async function fetchDashboardStats(): Promise<DashboardStats> {
-  let totalEntries = 242;
+  let totalEntries = 331;
   let totalUsers = 10;
   let averageRating = 4.38;
   let totalRatings = 8;

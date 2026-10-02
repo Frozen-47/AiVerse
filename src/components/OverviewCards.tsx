@@ -16,7 +16,7 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
   ratingSummaries,
 }) => {
   const [stats, setStats] = useState<DashboardStats>({
-    totalEntries: 242,
+    totalEntries: 331,
     totalUsers: 10,
     averageRating: 4.38,
     totalRatings: 8,
@@ -42,7 +42,7 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
 
   // 1. Registered Entries: Real catalog count
   const catalogCount = entries ? entries.length : (totalEntriesCount || 0);
-  const displayEntries = Math.max(catalogCount, stats.totalEntries, 242);
+  const displayEntries = Math.max(catalogCount, stats.totalEntries, 331);
 
   const currentYear = new Date().getFullYear();
   const displayNewEntries = useMemo(() => {

@@ -121,7 +121,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
       <div className="flex items-center gap-2 flex-wrap">
         {[
           { id: "All", label: "All Labs" },
-          { id: "Frontier", label: "Frontier Giants (OpenAI, Google, Anthropic)" },
+          { id: "Frontier", label: "Frontier Giants (OpenAI, Underrated One, Anthropic)" },
           { id: "Open", label: "Open-Weights Champions (Meta, DeepSeek, Mistral)" },
           { id: "Multi", label: "Extensive Suites (5+ Assets)" },
         ].map((pill) => {

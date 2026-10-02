@@ -25,7 +25,6 @@ import {
   Lock,
   ChevronDown,
   ChevronUp,
-  Trash2,
   AlertTriangle,
 } from "lucide-react";
 import { useAuth } from "./AuthContext";
@@ -108,66 +107,6 @@ const ROLE_DETAILS: Record<
     description: "Just curious and excited to explore what's happening in AI.",
     icon: HelpCircle,
     color: "neutral",
-  },
-};
-
-const SELECTED_ROLE_STYLES: Record<string, string> = {
-  indigo: "border-indigo-500 bg-indigo-500/8 text-indigo-400 dark:border-indigo-500 dark:bg-indigo-500/8 dark:text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.15)] ring-1 ring-indigo-500/30",
-  purple: "border-purple-500 bg-purple-500/8 text-purple-400 dark:border-purple-500 dark:bg-purple-500/8 dark:text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.15)] ring-1 ring-purple-500/30",
-  sky: "border-sky-500 bg-sky-500/8 text-sky-400 dark:border-sky-500 dark:bg-sky-500/8 dark:text-sky-400 shadow-[0_0_15px_rgba(14,165,233,0.15)] ring-1 ring-sky-500/30",
-  teal: "border-teal-500 bg-teal-500/8 text-teal-400 dark:border-teal-500 dark:bg-teal-500/8 dark:text-teal-400 shadow-[0_0_15px_rgba(20,184,166,0.15)] ring-1 ring-teal-500/30",
-  amber: "border-amber-500 bg-amber-500/8 text-amber-400 dark:border-amber-500 dark:bg-amber-500/8 dark:text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.15)] ring-1 ring-amber-500/30",
-  pink: "border-pink-500 bg-pink-500/8 text-pink-400 dark:border-pink-500 dark:bg-pink-500/8 dark:text-pink-400 shadow-[0_0_15px_rgba(236,72,153,0.15)] ring-1 ring-pink-500/30",
-  neutral: "border-neutral-400 bg-neutral-500/8 text-neutral-400 dark:border-neutral-500 dark:bg-neutral-500/8 dark:text-neutral-400 shadow-[0_0_15px_rgba(115,115,115,0.15)] ring-1 ring-neutral-500/30",
-};
-
-// Premium Interest Pill Styles with Glow Effects
-const INTEREST_STYLES: Record<
-  OnboardingInterest,
-  {
-    active: string;
-    glow: string;
-  }
-> = {
-  models: {
-    active: "bg-gradient-to-r from-indigo-500 to-violet-600 border-indigo-400 text-white shadow-[0_0_12px_rgba(99,102,241,0.35)]",
-    glow: "hover:shadow-[0_0_8px_rgba(99,102,241,0.2)] hover:border-indigo-400/50",
-  },
-  frameworks: {
-    active: "bg-gradient-to-r from-blue-500 to-cyan-500 border-blue-400 text-white shadow-[0_0_12px_rgba(59,130,246,0.35)]",
-    glow: "hover:shadow-[0_0_8px_rgba(59,130,246,0.2)] hover:border-blue-400/50",
-  },
-  datasets: {
-    active: "bg-gradient-to-r from-emerald-500 to-teal-600 border-emerald-400 text-white shadow-[0_0_12px_rgba(16,185,129,0.35)]",
-    glow: "hover:shadow-[0_0_8px_rgba(16,185,129,0.2)] hover:border-emerald-400/50",
-  },
-  platforms: {
-    active: "bg-gradient-to-r from-indigo-500 to-purple-600 border-indigo-400 text-white shadow-[0_0_12px_rgba(99,102,241,0.35)]",
-    glow: "hover:shadow-[0_0_8px_rgba(99,102,241,0.2)] hover:border-indigo-400/50",
-  },
-  nlp: {
-    active: "bg-gradient-to-r from-teal-500 to-emerald-600 border-teal-400 text-white shadow-[0_0_12px_rgba(20,184,166,0.35)]",
-    glow: "hover:shadow-[0_0_8px_rgba(20,184,166,0.2)] hover:border-teal-400/50",
-  },
-  vision: {
-    active: "bg-gradient-to-r from-rose-500 to-red-600 border-rose-400 text-white shadow-[0_0_12px_rgba(244,63,94,0.35)]",
-    glow: "hover:shadow-[0_0_8px_rgba(244,63,94,0.2)] hover:border-rose-400/50",
-  },
-  multimodal: {
-    active: "bg-gradient-to-r from-violet-500 to-fuchsia-600 border-violet-400 text-white shadow-[0_0_12px_rgba(139,92,246,0.35)]",
-    glow: "hover:shadow-[0_0_8px_rgba(139,92,246,0.2)] hover:border-violet-400/50",
-  },
-  mlops: {
-    active: "bg-gradient-to-r from-fuchsia-500 to-pink-600 border-fuchsia-400 text-white shadow-[0_0_12px_rgba(217,70,239,0.35)]",
-    glow: "hover:shadow-[0_0_8px_rgba(217,70,239,0.2)] hover:border-fuchsia-400/50",
-  },
-  coding: {
-    active: "bg-gradient-to-r from-sky-500 to-blue-600 border-sky-400 text-white shadow-[0_0_12px_rgba(14,165,233,0.35)]",
-    glow: "hover:shadow-[0_0_8px_rgba(14,165,233,0.2)] hover:border-sky-400/50",
-  },
-  media: {
-    active: "bg-gradient-to-r from-orange-500 to-rose-500 border-orange-400 text-white shadow-[0_0_12px_rgba(249,115,22,0.35)]",
-    glow: "hover:shadow-[0_0_8px_rgba(249,115,22,0.2)] hover:border-orange-400/50",
   },
 };
 
@@ -421,19 +360,16 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   const labelCls = `block text-[10px] font-semibold uppercase tracking-wider mb-1 ${t.textMuted}`;
 
   const menuItemCls = [
-    "w-full flex items-center gap-3 px-2.5 py-2.5 rounded-xl text-sm font-medium text-left cursor-pointer transition-all duration-200",
+    "w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-left cursor-pointer transition-colors duration-150",
     isDark
-      ? "text-white/55 hover:text-white hover:bg-white/4 active:bg-white/6"
-      : "text-gray-500 hover:text-gray-900 hover:bg-black/3 active:bg-black/5",
+      ? "text-neutral-300 hover:text-white hover:bg-white/[0.06]"
+      : "text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100",
   ].join(" ");
 
-  const separatorCls = `h-px mx-3 my-1.5 bg-gradient-to-r from-transparent ${isDark ? "via-white/7" : "via-black/6"} to-transparent`;
+  const separatorCls = `h-px my-2 mx-1 border-t ${isDark ? "border-white/10" : "border-neutral-200"}`;
 
   const saveBtnCls = [
-    "w-full py-2.5 rounded-xl text-xs font-bold cursor-pointer transition-all duration-300 shadow-md hover:shadow-lg disabled:opacity-40 disabled:saturate-50 disabled:cursor-not-allowed",
-    isDark
-      ? "bg-white hover:bg-white/90 text-black"
-      : "bg-neutral-900 hover:bg-neutral-800 text-white",
+    "w-full py-2.5 rounded-full text-xs font-semibold cursor-pointer transition-all duration-200 shadow-xs hover:shadow-md disabled:opacity-40 disabled:cursor-not-allowed bg-[#1a73e8] hover:bg-[#1557b0] text-white",
   ].join(" ");
 
   // ---------------------------------------------------------------------------
@@ -462,7 +398,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
         </div>
 
         <div className="space-y-4 px-2">
-          {/* Profile Photo (Read-Only - Strictly synced with Google / GitHub) */}
+          {/* Profile Photo (Read-Only - Strictly synced with OAuth provider) */}
           <div className={`p-3 rounded-xl border flex items-center gap-3.5 transition-all duration-300 ${
             isDark ? "bg-white/[0.02] border-white/8" : "bg-black/[0.02] border-black/8"
           }`}>
@@ -493,8 +429,8 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
               </div>
               <p className={`text-[11px] leading-relaxed mt-0.5 ${t.textMuted}`}>
                 {avatarUrl
-                  ? "Profile photo is automatically synced from your Google or GitHub account."
-                  : "Profile photo is available when signed in with Google or GitHub."}
+                  ? "Profile photo is automatically synced from your linked identity account."
+                  : "Profile photo is available when signed in with a linked account."}
               </p>
             </div>
           </div>
@@ -640,46 +576,46 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
         </div>
 
         <div className="space-y-5 px-2">
-          {/* Premium Role Selector Grid */}
+          {/* Role Selector */}
           <div className="space-y-2">
             <label className={labelCls}>Select Your Primary Role</label>
-            <div className="grid grid-cols-1 gap-2 max-h-[200px] overflow-y-auto pr-1 no-scrollbar">
+            <div className="grid grid-cols-1 gap-1.5 max-h-[200px] overflow-y-auto pr-1 no-scrollbar">
               {Object.entries(ROLE_DETAILS).map(([roleId, details]) => {
                 const isSelected = role === roleId;
                 const RoleIcon = details.icon;
-                const selectedClasses = SELECTED_ROLE_STYLES[details.color];
-                const baseClasses = isDark
-                  ? "bg-white/[0.01] border-white/6 hover:bg-white/[0.03] hover:border-white/12 text-white/70"
-                  : "bg-black/[0.01] border-black/6 hover:bg-black/[0.03] hover:border-black/12 text-gray-700";
 
                 return (
                   <button
                     key={roleId}
                     type="button"
                     onClick={() => setRole(roleId as UserRole)}
-                    className={`flex items-start gap-3 p-2.5 rounded-xl border text-left cursor-pointer ${
-                      isSelected ? selectedClasses : baseClasses
+                    className={`flex items-start gap-3 p-2.5 rounded-2xl border text-left cursor-pointer transition-all ${
+                      isSelected
+                        ? "border-[#1a73e8] bg-blue-50/70 dark:bg-blue-950/25 ring-1 ring-[#1a73e8]"
+                        : isDark
+                        ? "border-white/10 bg-white/[0.02] hover:bg-white/[0.04]"
+                        : "border-neutral-200 bg-white hover:bg-neutral-50"
                     }`}
                   >
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
+                    <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${
                       isSelected
-                        ? (isDark ? "bg-white/10 text-white" : "bg-black/10 text-black")
-                        : (isDark ? "bg-white/5 text-white/40" : "bg-black/5 text-gray-400")
+                        ? "bg-[#1a73e8] text-white"
+                        : isDark ? "bg-white/10 text-neutral-400" : "bg-neutral-100 text-neutral-600"
                     }`}>
-                      <RoleIcon size={16} />
+                      <RoleIcon size={14} />
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center justify-between">
-                        <p className={`text-xs font-bold ${isSelected ? (isDark ? "text-white" : "text-gray-900") : ""}`}>
+                        <p className={`text-xs font-semibold ${isSelected ? "text-[#1a73e8] dark:text-[#8ab4f8]" : "text-neutral-900 dark:text-white"}`}>
                           {details.label}
                         </p>
-                        {isSelected && (
-                          <div className="w-3.5 h-3.5 rounded-full flex items-center justify-center text-white bg-indigo-500 scale-100">
-                            <Check size={10} className="stroke-[3px]" />
-                          </div>
-                        )}
+                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                          isSelected ? "border-[#1a73e8] bg-white dark:bg-[#1e1f20]" : "border-neutral-300 dark:border-white/20"
+                        }`}>
+                          {isSelected && <div className="w-2 h-2 rounded-full bg-[#1a73e8]" />}
+                        </div>
                       </div>
-                      <p className={`text-[10px] leading-relaxed mt-0.5 ${t.textMuted}`}>
+                      <p className="text-[11px] leading-relaxed text-neutral-500 dark:text-neutral-400 mt-0.5">
                         {details.description}
                       </p>
                     </div>
@@ -689,22 +625,21 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
             </div>
           </div>
 
-          {/* Premium Interest Pills */}
+          {/* Filter Chips for Interests */}
           <div className="space-y-2">
             <p className={labelCls}>Customize Interests</p>
             <div className="flex flex-wrap gap-1.5 mt-1">
               {onboardingOptions.interests.map((item) => {
                 const selected = interests.includes(item.id);
-                const style = INTEREST_STYLES[item.id];
                 return (
                   <button
                     key={item.id}
                     type="button"
                     onClick={() => toggleInterest(item.id)}
-                    className={`text-[10px] font-semibold px-2.5 py-1.5 rounded-xl border cursor-pointer ${
+                    className={`text-[11px] font-medium px-3 py-1 rounded-full border transition-all cursor-pointer ${
                       selected
-                        ? style.active
-                        : `${t.surface} ${t.border} ${t.textMuted} ${style.glow} hover:${t.textSecondary}`
+                        ? "bg-[#e8f0fe] text-[#1a73e8] dark:bg-blue-900/30 dark:text-[#8ab4f8] border-blue-200 dark:border-blue-700/30"
+                        : "bg-white dark:bg-white/[0.04] text-neutral-600 dark:text-neutral-400 border-neutral-300 dark:border-white/10 hover:border-neutral-400"
                     }`}
                   >
                     {item.label}
@@ -734,222 +669,191 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   return (
     <div className="text-left max-h-[min(70dvh,520px)] overflow-y-auto no-scrollbar py-1">
 
-      {/* ══════════ Hero Avatar Section ══════════ */}
-      <div className="relative overflow-hidden rounded-xl mb-0.5 mx-0.5">
-        {/* Gradient background strip */}
-        <div className="absolute inset-0 pointer-events-none bg-linear-to-br from-black/5 to-transparent" />
+      {/* ══════════ Account Hero Section ══════════ */}
+      <div className="flex flex-col items-center text-center p-3">
+        {/* Avatar with subtle ring */}
+        <div className="relative mb-2">
+          <div className="w-16 h-16 rounded-full overflow-hidden ring-4 ring-neutral-100 dark:ring-white/10 shadow-md">
+            {avatarUrl ? (
+              <img src={avatarUrl} alt="" className="w-full h-full object-cover" />
+            ) : (
+              <div className={`w-full h-full flex items-center justify-center font-bold text-xl ${isDark ? "bg-[#8ab4f8] text-[#1f1f1f]" : "bg-[#1a73e8] text-white"}`}>
+                {initials}
+              </div>
+            )}
+          </div>
+          <div className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white dark:border-[#1e1f20]" title="Active" />
+        </div>
+
+        <p className="text-sm font-semibold text-neutral-900 dark:text-white truncate max-w-[240px]">
+          {displayName}
+        </p>
+        {username && (
+          <p className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400">
+            {username}
+          </p>
+        )}
+        <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate max-w-[240px] mt-0.5 mb-3">
+          {email}
+        </p>
+
+        {/* "Manage your Profile" Pill */}
         <button
           type="button"
           onClick={() => {
             if (username && onViewProfile) onViewProfile(username);
             if (onClose) onClose();
           }}
-          className="relative flex items-center gap-3.5 w-full p-3 text-left cursor-pointer group rounded-xl transition-colors duration-200"
+          className="w-full py-1.5 px-4 rounded-full border border-neutral-300 dark:border-white/20 text-xs font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/5 transition-all text-center cursor-pointer shadow-2xs"
         >
-          {/* Avatar with glow ring */}
-          <div className="relative shrink-0">
-            <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-white/10 group-hover:ring-black/20 transition-all duration-500 shadow-lg group-hover:shadow-black/10">
-              {avatarUrl ? (
-                <img src={avatarUrl} alt="" className="w-full h-full object-cover" />
-              ) : (
-                <div className={`w-full h-full flex items-center justify-center font-bold text-lg ${isDark ? "bg-white text-black" : "bg-black text-white"}`}>
-                  {initials}
-                </div>
-              )}
-            </div>
-            {/* Online status dot */}
-            <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-[2.5px] border-[#0a0a0a] shadow-sm shadow-emerald-500/50" />
-          </div>
-
-          {/* Identity */}
-          <div className="min-w-0">
-            <p className={`text-sm font-bold truncate transition-colors duration-200 ${t.textPrimary} ${isDark ? "group-hover:text-white" : "group-hover:text-black"}`}>
-              {displayName}
-            </p>
-            {username && (
-              <p className={`text-xs font-bold truncate ${isDark ? "text-white/60" : "text-black/60"}`}>{username}</p>
-            )}
-            <p className={`text-[11px] truncate mt-0.5 ${t.textMuted}`}>{email}</p>
-          </div>
+          Manage your AiVerse Profile
         </button>
       </div>
 
-      {/* ── Gradient separator ── */}
+      {/* ── Hairline separator ── */}
       <div className={separatorCls} />
 
       {/* ══════════ Menu Items ══════════ */}
-      <div className="space-y-0.5 px-0.5">
+      <div className="space-y-0.5 px-1">
+
+        {/* ── Edit Profile ── */}
+        <button
+          type="button"
+          onClick={() => setCurrentView("profile")}
+          className={menuItemCls}
+        >
+          <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${isDark ? "bg-white/10 text-neutral-300" : "bg-neutral-100 text-neutral-700"}`}>
+            <User size={13} />
+          </div>
+          <span className="flex-1">Edit profile details</span>
+        </button>
+
+        {/* ── Saved Entries ── */}
+        <button
+          type="button"
+          onClick={() => {
+            if (onViewSaved) onViewSaved();
+            if (onClose) onClose();
+          }}
+          className={menuItemCls}
+        >
+          <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${isDark ? "bg-white/10 text-neutral-300" : "bg-neutral-100 text-neutral-700"}`}>
+            <Bookmark size={13} />
+          </div>
+          <span className="flex-1">Saved AI entries</span>
+        </button>
+
+        {/* ── Feed Preferences ── */}
+        <button
+          type="button"
+          onClick={() => setCurrentView("preferences")}
+          className={menuItemCls}
+        >
+          <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${isDark ? "bg-white/10 text-neutral-300" : "bg-neutral-100 text-neutral-700"}`}>
+            <SlidersHorizontal size={13} />
+          </div>
+          <span className="flex-1">Feed preferences</span>
+        </button>
 
         {/* ── Copy profile link ── */}
         {username && (
-          <div>
-            <button
-              type="button"
-              onClick={handleCopyLink}
-              className={`${menuItemCls} ${linkCopied ? "text-emerald-400!" : ""}`}
-            >
-              <div
-                className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
-                  linkCopied
-                    ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30"
-                    : `${isDark ? "bg-fuchsia-500/10 text-fuchsia-400 border border-fuchsia-500/20" : "bg-fuchsia-50 text-fuchsia-600 border border-fuchsia-200"}`
-                }`}
-              >
-                {linkCopied ? (
-                  <Check size={14} className="success-check-pop" />
-                ) : (
-                  <Link2 size={14} />
-                )}
-              </div>
-              <span>{linkCopied ? "Link copied!" : "Copy profile link"}</span>
-            </button>
-          </div>
-        )}
-
-        {/* ── Edit Profile ── */}
-        <div>
           <button
             type="button"
-            onClick={() => setCurrentView("profile")}
-            className={menuItemCls}
+            onClick={handleCopyLink}
+            className={`${menuItemCls} ${linkCopied ? "text-emerald-500!" : ""}`}
           >
-            <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${isDark ? "bg-violet-500/10 text-violet-400 border border-violet-500/20" : "bg-violet-50 text-violet-600 border border-violet-200"}`}>
-              <User size={14} />
+            <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${linkCopied ? "bg-emerald-500/15 text-emerald-400" : isDark ? "bg-white/10 text-neutral-300" : "bg-neutral-100 text-neutral-700"}`}>
+              {linkCopied ? <Check size={13} /> : <Link2 size={13} />}
             </div>
-            <span className="flex-1">Edit profile</span>
+            <span>{linkCopied ? "Profile link copied!" : "Share profile link"}</span>
           </button>
-        </div>
+        )}
 
-        {/* ── Saved Entries ── */}
-        <div>
+        {/* ── Admin Dashboard ── */}
+        {(user?.email === "frozennheart47@gmail.com" || user?.user_metadata?.role === "admin") && (
           <button
             type="button"
             onClick={() => {
-              if (onViewSaved) onViewSaved();
-              if (onClose) onClose();
+              onViewAdminDashboard?.();
+              onClose?.();
             }}
             className={menuItemCls}
           >
-            <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${isDark ? "bg-amber-500/10 text-amber-400 border border-amber-500/20" : "bg-amber-50 text-amber-600 border border-amber-200"}`}>
-              <Bookmark size={14} />
+            <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 bg-blue-500/10 text-blue-500">
+              <Shield size={13} />
             </div>
-            <span className="flex-1">Saved entries</span>
+            <span className="flex-1 font-medium text-blue-600 dark:text-blue-400">Admin Console</span>
           </button>
-        </div>
+        )}
 
-        {/* ── Feed Preferences ── */}
-        <div>
-          <button
-            type="button"
-            onClick={() => setCurrentView("preferences")}
-            className={menuItemCls}
-          >
-            <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${isDark ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : "bg-emerald-50 text-emerald-600 border border-emerald-200"}`}>
-              <SlidersHorizontal size={14} />
-            </div>
-            <span className="flex-1">Feed preferences</span>
-          </button>
-        </div>
-
-        {/* ── Admin Dashboard ── */}
-        {user?.email === "frozennheart47@gmail.com" || user?.user_metadata?.role === "admin" ? (
-          <div>
-            <button
-              type="button"
-              onClick={() => {
-                onViewAdminDashboard?.();
-                onClose?.();
-              }}
-              className={menuItemCls}
-            >
-              <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${isDark ? "bg-rose-500/10 text-rose-400 border border-rose-500/20" : "bg-rose-50 text-rose-600 border border-rose-200"}`}>
-                <Shield size={14} className="stroke-[2px]" />
-              </div>
-              <span className={`flex-1 font-semibold ${isDark ? "text-rose-400" : "text-rose-600"}`}>Admin Dashboard</span>
-            </button>
+        {/* ── Theme Switcher ── */}
+        <div className="px-2 py-2 mt-1">
+          <div className="flex items-center justify-between text-[11px] font-medium text-neutral-500 dark:text-neutral-400 mb-1.5 px-1">
+            <span>Appearance</span>
+            <span className="capitalize text-neutral-800 dark:text-neutral-200">{theme}</span>
           </div>
-        ) : null}
-
-        {/* ── Theme Selection ── */}
-        <div className="px-1.5 py-2 mt-1">
-          <div className={`text-[10px] font-semibold uppercase tracking-wider mb-2 ml-1 ${t.textMuted}`}>Theme</div>
-          <div className={`flex rounded-xl p-1 gap-1 border ${isDark ? "bg-white/2 border-white/4" : "bg-black/2 border-black/4"}`}>
+          <div className={`flex rounded-full p-1 gap-1 border ${isDark ? "bg-white/5 border-white/10" : "bg-neutral-100 border-neutral-200"}`}>
             <button
               onClick={() => setTheme("system")}
               title="System"
-              className={`flex-1 flex items-center justify-center py-2 rounded-lg transition-all duration-200 ${
+              className={`flex-1 flex items-center justify-center py-1.5 rounded-full text-xs transition-all ${
                 theme === "system"
-                  ? (isDark ? "bg-white/10 shadow-sm text-white" : "bg-white shadow-sm text-neutral-900")
-                  : `hover:bg-black/5 dark:hover:bg-white/5 ${t.textMuted}`
+                  ? (isDark ? "bg-white/15 text-white font-semibold shadow-xs" : "bg-white text-neutral-900 font-semibold shadow-xs")
+                  : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
               }`}
             >
-              <Monitor size={14} />
+              <Monitor size={13} />
             </button>
             <button
               onClick={() => setTheme("light")}
               title="Light"
-              className={`flex-1 flex items-center justify-center py-2 rounded-lg transition-all duration-200 ${
+              className={`flex-1 flex items-center justify-center py-1.5 rounded-full text-xs transition-all ${
                 theme === "light"
-                  ? (isDark ? "bg-white/10 shadow-sm text-white" : "bg-white shadow-sm text-neutral-900")
-                  : `hover:bg-black/5 dark:hover:bg-white/5 ${t.textMuted}`
+                  ? (isDark ? "bg-white/15 text-white font-semibold shadow-xs" : "bg-white text-neutral-900 font-semibold shadow-xs")
+                  : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
               }`}
             >
-              <Sun size={14} />
+              <Sun size={13} />
             </button>
             <button
               onClick={() => setTheme("amoled")}
               title="Dark"
-              className={`flex-1 flex items-center justify-center py-2 rounded-lg transition-all duration-200 ${
+              className={`flex-1 flex items-center justify-center py-1.5 rounded-full text-xs transition-all ${
                 theme === "amoled"
-                  ? (isDark ? "bg-white/10 shadow-sm text-white" : "bg-white shadow-sm text-neutral-900")
-                  : `hover:bg-black/5 dark:hover:bg-white/5 ${t.textMuted}`
+                  ? (isDark ? "bg-white/15 text-white font-semibold shadow-xs" : "bg-white text-neutral-900 font-semibold shadow-xs")
+                  : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
               }`}
             >
-              <Moon size={14} />
+              <Moon size={13} />
             </button>
           </div>
         </div>
-
-
       </div>
 
-      {/* ── Gradient separator ── */}
+      {/* ── Hairline separator ── */}
       <div className={separatorCls} />
 
       {/* ══════════ Sign Out & Danger Zone ══════════ */}
-      <div className="px-0.5 space-y-1">
+      <div className="px-2 pt-1 pb-1 space-y-2">
         <button
           type="button"
           onClick={() => {
             signOut();
             onClose?.();
           }}
-          className={[
-            "w-full flex items-center gap-3 px-2.5 py-2.5 rounded-xl text-sm font-semibold text-left cursor-pointer transition-all duration-200",
-            "text-red-400 hover:text-red-300",
-            isDark ? "hover:bg-red-500/6" : "hover:bg-red-500/4",
-          ].join(" ")}
+          className="w-full flex items-center justify-center gap-2 py-2 rounded-full border border-neutral-300 dark:border-white/20 text-xs font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/5 transition-all cursor-pointer"
         >
-          <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 bg-red-500/10 text-red-400 border border-red-500/20 transition-colors duration-200 group-hover:bg-red-500/20">
-            <LogOut size={14} />
-          </div>
-          Sign out
+          <LogOut size={13} />
+          Sign out of AiVerse
         </button>
 
-        <button
-          type="button"
-          onClick={() => setShowDeleteConfirm(true)}
-          className={[
-            "w-full flex items-center gap-3 px-2.5 py-2 rounded-xl text-xs font-semibold text-left cursor-pointer transition-all duration-200",
-            "text-neutral-500 hover:text-red-400",
-            isDark ? "hover:bg-red-500/5" : "hover:bg-red-500/5",
-          ].join(" ")}
-        >
-          <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 bg-neutral-500/10 text-neutral-400 border border-neutral-500/20 transition-colors duration-200 group-hover:bg-red-500/20 group-hover:text-red-400">
-            <Trash2 size={13} />
-          </div>
-          Delete account
-        </button>
+        <div className="flex items-center justify-center gap-3 pt-1 text-[11px] text-neutral-400">
+          <a href="/privacy" onClick={(e) => { e.preventDefault(); onClose?.(); window.location.pathname = "/privacy"; }} className="hover:underline">Privacy</a>
+          <span>•</span>
+          <a href="/terms" onClick={(e) => { e.preventDefault(); onClose?.(); window.location.pathname = "/terms"; }} className="hover:underline">Terms</a>
+          <span>•</span>
+          <button onClick={() => setShowDeleteConfirm(true)} className="hover:text-red-500 hover:underline cursor-pointer">Delete account</button>
+        </div>
       </div>
 
       {/* ══════════ Self-Account Deletion Modal ══════════ */}

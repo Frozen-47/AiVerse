@@ -448,15 +448,15 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
       className={
         isEdit
           ? "fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm"
-          : "fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80"
+          : "fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-xs"
       }
       onClick={isEdit && onClose ? onClose : undefined}
     >
       <div
-        className={`relative flex flex-col shadow-2xl overflow-hidden ${t.modal} ${
+        className={`relative flex flex-col shadow-2xl overflow-hidden ${
           isEdit
-            ? "fixed top-16 right-0 z-[101] flex flex-col w-full sm:max-w-md max-h-[calc(100dvh-4rem)] border-l-0 sm:border-l rounded-none sm:rounded-l-2xl animate-slide-in-right"
-            : "w-full max-w-lg rounded-2xl"
+            ? `fixed top-16 right-0 z-[101] flex flex-col w-full sm:max-w-md max-h-[calc(100dvh-4rem)] border-l-0 sm:border-l rounded-none sm:rounded-l-3xl animate-slide-in-right ${t.modal}`
+            : "w-full max-w-lg rounded-3xl bg-white dark:bg-[#1e1f20] border border-neutral-200 dark:border-white/10"
         }`}
         onClick={(e) => e.stopPropagation()}
       >
@@ -464,39 +464,35 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className={`absolute top-4 right-4 z-20 p-2 rounded-lg border ${t.surface} ${t.border} ${t.textMuted} hover:${t.textPrimary}`}
+            className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-colors cursor-pointer"
             aria-label="Close"
           >
             <X size={16} />
           </button>
         )}
 
-        <div
-          className={`absolute top-0 w-full h-32 bg-linear-to-b from-white/10 to-transparent pointer-events-none ${
-            isEdit ? "left-0" : "left-1/2 -translate-x-1/2"
-          }`}
-        />
-        <div className="absolute top-0 left-0 right-0 h-1 bg-white/5 z-10">
+        {/* Stepper Progress Bar */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-neutral-100 dark:bg-white/10 z-10">
           <div
-            className="h-full bg-white"
+            className="h-full bg-[#1a73e8] dark:bg-[#8ab4f8] transition-all duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
 
         <div
-          className={`p-6 sm:p-8 pt-10 flex flex-col min-h-0 ${
+          className={`p-6 sm:p-8 pt-8 flex flex-col min-h-0 ${
             isEdit ? "overflow-y-auto flex-1 items-stretch text-left" : ""
           }`}
         >
           {isEdit ? (
-            <header className="mb-6 pr-10 text-left">
-              <div className="flex items-center gap-3 mb-3">
-                <Logo className="w-10 h-10 shrink-0 text-white" />
+            <header className="mb-5 pr-10 text-left">
+              <div className="flex items-center gap-3 mb-2">
+                <Logo className="w-9 h-9 shrink-0 text-[#1a73e8] dark:text-[#8ab4f8]" />
                 <div className="min-w-0">
-                  <p className={`text-[11px] font-semibold uppercase tracking-widest ${t.textMuted}`}>
-                    Your preferences
+                  <p className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400">
+                    Preferences & Profile
                   </p>
-                  <h2 className={`text-xl font-black tracking-tight leading-tight ${t.textPrimary}`}>
+                  <h2 className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-white">
                     {isProfileOnlyEdit
                       ? "Customize your profile"
                       : step === steps[0]
@@ -505,29 +501,35 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   </h2>
                 </div>
               </div>
-              <p className={`text-sm ${t.textSecondary} leading-relaxed border-l-2 border-white/20 pl-4`}>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
                 {stepSubtitle[step]}
               </p>
             </header>
           ) : (
-            <>
-              <div className="mb-5 flex items-center justify-center">
-                <Logo className="w-12 h-12 text-white" />
+            <div className="text-center mb-6">
+              <div className="mb-3 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center border border-blue-200/60 dark:border-blue-700/30">
+                  <Logo className="w-7 h-7 text-[#1a73e8] dark:text-[#8ab4f8]" />
+                </div>
               </div>
               <div>
-                <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/15 border border-indigo-500/30 text-indigo-400 inline-block mb-2 shadow-xs">
+                <span className="text-[11px] font-medium px-3 py-0.5 rounded-full bg-[#e8f0fe] text-[#1a73e8] dark:bg-blue-900/30 dark:text-[#8ab4f8] border border-blue-200/60 dark:border-blue-700/30 inline-block mb-2">
                   {`Step ${stepIndex + 1} of ${steps.length}`}
                 </span>
               </div>
-              <h2 className={`text-2xl font-black tracking-tight mb-2 ${t.textPrimary}`}>{stepTitle[step]}</h2>
-              <p className={`text-sm mb-6 ${t.textSecondary} leading-relaxed font-light`}>{stepSubtitle[step]}</p>
-            </>
+              <h2 className="text-2xl font-normal tracking-tight text-neutral-900 dark:text-white mb-1.5">
+                {stepTitle[step]}
+              </h2>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm mx-auto">
+                {stepSubtitle[step]}
+              </p>
+            </div>
           )}
 
           {step === "name" && (
             <div className="space-y-4 text-left">
               <div>
-                <label className={t.sectionLabel}>
+                <label className="text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-1.5 block">
                   Display name
                 </label>
                 <input
@@ -535,55 +537,57 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Jane Doe"
-                  className={`w-full px-4 py-3 rounded-xl border font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10`}
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-300 dark:border-white/15 text-sm font-normal text-neutral-900 dark:text-white bg-white dark:bg-white/[0.03] outline-hidden focus:border-[#1a73e8] focus:ring-2 focus:ring-[#1a73e8]/20 transition-all placeholder:text-neutral-400"
                   autoFocus
                   maxLength={50}
                   onKeyDown={(e) => e.key === "Enter" && canContinue() && handlePrimary()}
                 />
               </div>
               <div>
-                <label className={t.sectionLabel}>
-                  Username
+                <label className="text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-1.5 block">
+                  Username handle
                 </label>
                 <div className="relative">
-                <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(normalizeUsernameInput(e.target.value))}
-                  placeholder="@username"
-                  className={`w-full px-4 py-3 rounded-xl border font-medium outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 pr-10 ${
-                    usernameStatus === "taken" ? "!border-rose-500/50 !ring-rose-500/10" : ""
-                  } ${
-                    usernameStatus === "available" ? "!border-emerald-500/50 !ring-emerald-500/10" : ""
-                  }`}
-                  maxLength={30}
-                  onKeyDown={(e) => e.key === "Enter" && canContinue() && handlePrimary()}
-                />
-                {/* Status indicator */}
-                <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                  {usernameStatus === "checking" && (
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  )}
-                  {usernameStatus === "available" && (
-                    <Check size={16} className="text-emerald-400" />
-                  )}
-                  {usernameStatus === "taken" && (
-                    <X size={16} className="text-rose-400" />
-                  )}
+                  <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(normalizeUsernameInput(e.target.value))}
+                    placeholder="@username"
+                    className={`w-full px-3.5 py-2.5 rounded-lg border text-sm font-normal outline-hidden transition-all pr-10 ${
+                      usernameStatus === "taken" 
+                        ? "border-red-400 focus:ring-2 focus:ring-red-400/20 text-red-600 dark:text-red-400 bg-red-50/30" 
+                        : usernameStatus === "available"
+                        ? "border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-neutral-900 dark:text-white bg-emerald-50/20"
+                        : "border-neutral-300 dark:border-white/15 text-neutral-900 dark:text-white bg-white dark:bg-white/[0.03] focus:border-[#1a73e8] focus:ring-2 focus:ring-[#1a73e8]/20"
+                    }`}
+                    maxLength={30}
+                    onKeyDown={(e) => e.key === "Enter" && canContinue() && handlePrimary()}
+                  />
+                  {/* Status indicator */}
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                    {usernameStatus === "checking" && (
+                      <div className="w-4 h-4 border-2 border-neutral-300 border-t-[#1a73e8] rounded-full animate-spin" />
+                    )}
+                    {usernameStatus === "available" && (
+                      <Check size={16} className="text-[#34a853]" />
+                    )}
+                    {usernameStatus === "taken" && (
+                      <X size={16} className="text-red-500" />
+                    )}
+                  </div>
                 </div>
-              </div>
                 {!isValidUsername(username) && username.length > 1 && (
-                  <p className="text-[11px] text-rose-400 mt-1 font-medium">
+                  <p className="text-[11px] text-red-500 mt-1 font-medium">
                     Must start with @ and use lowercase letters, numbers, - and _ only
                   </p>
                 )}
                 {usernameStatus === "taken" && (
-                  <p className="text-[11px] text-rose-400 mt-1 font-medium">
+                  <p className="text-[11px] text-red-500 mt-1 font-medium">
                     This username is already taken. Try another one.
                   </p>
                 )}
                 {usernameStatus === "available" && (
-                  <p className="text-[11px] text-emerald-400 mt-1 font-medium">
+                  <p className="text-[11px] text-emerald-600 dark:text-emerald-400 mt-1 font-medium">
                     Username is available!
                   </p>
                 )}
@@ -595,14 +599,13 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
             <div
               className={`no-scrollbar pr-1 ${
                 isEdit
-                  ? `flex flex-col gap-5 ${treeBranch}`
+                  ? `flex flex-col gap-4 ${treeBranch}`
                   : "space-y-4 max-h-[380px] overflow-y-auto"
               }`}
             >
-
               <div>
-                <label className={t.sectionLabel}>
-                  Bio / Description
+                <label className="text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-1.5 block">
+                  Bio / Overview
                 </label>
                 <textarea
                   value={description}
@@ -610,74 +613,74 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   placeholder="Tell other builders about yourself..."
                   rows={2}
                   maxLength={160}
-                  className={`w-full px-4 py-2.5 rounded-xl border text-[13px] font-medium resize-none outline-hidden ${t.surface} ${t.border} ${t.textPrimary} focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10`}
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-300 dark:border-white/15 text-xs font-normal text-neutral-900 dark:text-white bg-white dark:bg-white/[0.03] outline-hidden focus:border-[#1a73e8] focus:ring-2 focus:ring-[#1a73e8]/20 transition-all resize-none placeholder:text-neutral-400"
                 />
               </div>
 
               <div>
-                <label className={t.sectionLabel}>
-                  Social Links
+                <label className="text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-1.5 block">
+                  Connected Links
                 </label>
                 <div className={treeNested}>
-                {/* GitHub */}
-                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-white/40 focus-within:ring-4 focus-within:ring-white/10`}>
-                  <GithubLogo />
-                  <input
-                    type="url"
-                    value={github}
-                    onChange={(e) => setGithub(e.target.value)}
-                    placeholder="GitHub Profile URL"
-                    className="flex-1 bg-transparent border-0 p-0 text-xs font-medium outline-hidden placeholder:text-gray-500 text-white"
-                  />
-                </div>
+                  {/* GitHub */}
+                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-white/[0.03] focus-within:border-[#1a73e8] focus-within:ring-2 focus-within:ring-[#1a73e8]/20 transition-all">
+                    <GithubLogo />
+                    <input
+                      type="url"
+                      value={github}
+                      onChange={(e) => setGithub(e.target.value)}
+                      placeholder="GitHub Profile URL"
+                      className="flex-1 bg-transparent border-0 p-0 text-xs font-normal outline-hidden placeholder:text-neutral-400 text-neutral-900 dark:text-white"
+                    />
+                  </div>
 
-                {/* LinkedIn */}
-                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-[#0a66c2]/60 focus-within:ring-4 focus-within:ring-[#0a66c2]/20`}>
-                  <LinkedinLogo />
-                  <input
-                    type="url"
-                    value={linkedin}
-                    onChange={(e) => setLinkedin(e.target.value)}
-                    placeholder="LinkedIn Profile URL"
-                    className="flex-1 bg-transparent border-0 p-0 text-xs font-medium outline-hidden placeholder:text-gray-500 text-white"
-                  />
-                </div>
+                  {/* LinkedIn */}
+                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-white/[0.03] focus-within:border-[#0a66c2] focus-within:ring-2 focus-within:ring-[#0a66c2]/20 transition-all">
+                    <LinkedinLogo />
+                    <input
+                      type="url"
+                      value={linkedin}
+                      onChange={(e) => setLinkedin(e.target.value)}
+                      placeholder="LinkedIn Profile URL"
+                      className="flex-1 bg-transparent border-0 p-0 text-xs font-normal outline-hidden placeholder:text-neutral-400 text-neutral-900 dark:text-white"
+                    />
+                  </div>
 
-                {/* Medium */}
-                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-emerald-500/50 focus-within:ring-4 focus-within:ring-emerald-500/15`}>
-                  <MediumLogo />
-                  <input
-                    type="url"
-                    value={medium}
-                    onChange={(e) => setMedium(e.target.value)}
-                    placeholder="Medium Profile URL"
-                    className="flex-1 bg-transparent border-0 p-0 text-xs font-medium outline-hidden placeholder:text-gray-500 text-white"
-                  />
-                </div>
+                  {/* Medium */}
+                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-white/[0.03] focus-within:border-[#1a73e8] focus-within:ring-2 focus-within:ring-[#1a73e8]/20 transition-all">
+                    <MediumLogo />
+                    <input
+                      type="url"
+                      value={medium}
+                      onChange={(e) => setMedium(e.target.value)}
+                      placeholder="Medium Profile URL"
+                      className="flex-1 bg-transparent border-0 p-0 text-xs font-normal outline-hidden placeholder:text-neutral-400 text-neutral-900 dark:text-white"
+                    />
+                  </div>
 
-                {/* Dev.to */}
-                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-amber-500/50 focus-within:ring-4 focus-within:ring-amber-500/15`}>
-                  <DevToLogo />
-                  <input
-                    type="url"
-                    value={devto}
-                    onChange={(e) => setDevto(e.target.value)}
-                    placeholder="Dev.to Profile URL"
-                    className="flex-1 bg-transparent border-0 p-0 text-xs font-medium outline-hidden placeholder:text-gray-500 text-white"
-                  />
-                </div>
+                  {/* Dev.to */}
+                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-white/[0.03] focus-within:border-[#1a73e8] focus-within:ring-2 focus-within:ring-[#1a73e8]/20 transition-all">
+                    <DevToLogo />
+                    <input
+                      type="url"
+                      value={devto}
+                      onChange={(e) => setDevto(e.target.value)}
+                      placeholder="Dev.to Profile URL"
+                      className="flex-1 bg-transparent border-0 p-0 text-xs font-normal outline-hidden placeholder:text-neutral-400 text-neutral-900 dark:text-white"
+                    />
+                  </div>
 
-                {/* Portfolio */}
-                <div className={`group flex items-center gap-2.5 px-3 py-2 rounded-xl border ${t.surface} ${t.border} focus-within:border-sky-500/50 focus-within:ring-4 focus-within:ring-sky-500/15`}>
-                  <PortfolioLogo />
-                  <input
-                    type="url"
-                    value={portfolio}
-                    onChange={(e) => setPortfolio(e.target.value)}
-                    placeholder="Portfolio URL"
-                    className="flex-1 bg-transparent border-0 p-0 text-xs font-medium outline-hidden placeholder:text-gray-500 text-white"
-                  />
-                </div>
+                  {/* Portfolio */}
+                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-white/[0.03] focus-within:border-[#1a73e8] focus-within:ring-2 focus-within:ring-[#1a73e8]/20 transition-all">
+                    <PortfolioLogo />
+                    <input
+                      type="url"
+                      value={portfolio}
+                      onChange={(e) => setPortfolio(e.target.value)}
+                      placeholder="Portfolio Website URL"
+                      className="flex-1 bg-transparent border-0 p-0 text-xs font-normal outline-hidden placeholder:text-neutral-400 text-neutral-900 dark:text-white"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -685,7 +688,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
 
           {step === "role" && (
             <div
-              className={`flex flex-col gap-2 max-h-[280px] overflow-y-auto no-scrollbar ${
+              className={`flex flex-col gap-2 max-h-[300px] overflow-y-auto no-scrollbar ${
                 isEdit ? treeBranch : ""
               }`}
             >
@@ -695,7 +698,6 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   selected={role === r.id}
                   label={r.label}
                   onClick={() => setRole(r.id)}
-                  t={t}
                 />
               ))}
             </div>
@@ -714,23 +716,23 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                     key={item.id}
                     type="button"
                     onClick={() => toggleInterest(item.id)}
-                    className={`text-left p-3 rounded-xl border transition-all duration-200 cursor-pointer ${
+                    className={`text-left p-3 rounded-2xl border transition-all cursor-pointer ${
                       selected
-                        ? "border-indigo-500/50 bg-gradient-to-r from-indigo-500/20 to-purple-500/15 text-white ring-1 ring-indigo-500/30 shadow-md shadow-indigo-500/10"
-                        : `${t.surface} ${t.border} ${t.textSecondary} hover:border-white/20 hover:text-white`
+                        ? "border-[#1a73e8] bg-blue-50/70 dark:bg-blue-950/25 ring-1 ring-[#1a73e8] text-neutral-900 dark:text-white"
+                        : "border-neutral-200 dark:border-white/10 bg-white dark:bg-white/[0.02] hover:bg-neutral-50 dark:hover:bg-white/[0.04] text-neutral-700 dark:text-neutral-300"
                     }`}
                   >
                     <div className="flex items-start justify-between gap-2">
-                      <span className={`text-[13px] font-bold ${selected ? "text-indigo-300" : t.textPrimary}`}>
+                      <span className={`text-[13px] font-medium ${selected ? "text-[#1a73e8] dark:text-[#8ab4f8]" : "text-neutral-900 dark:text-white"}`}>
                         {item.label}
                       </span>
                       {selected && (
-                        <span className="w-4 h-4 rounded-full bg-indigo-500 flex items-center justify-center shrink-0">
-                          <Check size={10} className="text-white stroke-[3px]" />
+                        <span className="w-4.5 h-4.5 rounded-full bg-[#1a73e8] flex items-center justify-center shrink-0">
+                          <Check size={11} className="text-white stroke-[2.5px]" />
                         </span>
                       )}
                     </div>
-                    <p className={`text-[11px] mt-0.5 ${selected ? "text-indigo-200/80" : t.textMuted}`}>{item.description}</p>
+                    <p className="text-[11px] mt-0.5 text-neutral-500 dark:text-neutral-400">{item.description}</p>
                   </button>
                 );
               })}
@@ -739,7 +741,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
 
           {step === "referral" && (
             <div
-              className={`flex flex-col gap-2 max-h-[280px] overflow-y-auto no-scrollbar ${
+              className={`flex flex-col gap-2 max-h-[300px] overflow-y-auto no-scrollbar ${
                 isEdit ? treeBranch : ""
               }`}
             >
@@ -749,61 +751,62 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   selected={referralSource === r.id}
                   label={r.label}
                   onClick={() => setReferralSource(r.id)}
-                  t={t}
                 />
               ))}
             </div>
           )}
 
+          {/* ── Action Row ── */}
           <div
             className={
               isEdit
-                ? "mt-8 flex flex-col gap-2 w-full border-t border-white/10 pt-6"
-                : "flex items-center gap-3 mt-8"
+                ? "mt-6 flex flex-col gap-2 w-full border-t border-neutral-200 dark:border-white/10 pt-4"
+                : "flex items-center justify-between gap-3 mt-6 pt-4 border-t border-neutral-200 dark:border-white/10"
             }
           >
-            {stepIndex > 0 && (
+            <div>
+              {stepIndex > 0 && (
+                <button
+                  type="button"
+                  onClick={goBack}
+                  disabled={isUpdating}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-medium text-xs border border-neutral-300 dark:border-white/15 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/10 transition-all cursor-pointer disabled:opacity-50"
+                >
+                  <ArrowLeft size={14} />
+                  Back
+                </button>
+              )}
+            </div>
+
+            <div className="flex items-center gap-2">
+              {/* Skip button for skippable steps */}
+              {!isEdit && (step === "role" || step === "interests" || step === "referral") && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (step === "referral") {
+                      void finish();
+                    } else {
+                      goNext();
+                    }
+                  }}
+                  disabled={isUpdating}
+                  className="px-4 py-2 rounded-full font-medium text-xs text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-all cursor-pointer"
+                >
+                  Skip
+                </button>
+              )}
+
               <button
                 type="button"
-                onClick={goBack}
-                disabled={isUpdating}
-                className={`inline-flex items-center gap-1.5 px-4 py-3 rounded-xl font-semibold text-[14px] border transition-all cursor-pointer ${
-                  isEdit ? "w-full justify-start" : "justify-center"
-                } ${t.surface} ${t.border} ${t.textSecondary} hover:text-white hover:border-white/20 disabled:opacity-50`}
+                onClick={handlePrimary}
+                disabled={isUpdating || !canContinue()}
+                className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full font-medium text-xs bg-[#1a73e8] hover:bg-[#1557b0] text-white shadow-xs active:scale-[0.98] transition-all cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
               >
-                <ArrowLeft size={16} />
-                Back
+                {primaryLabel}
+                {showPrimaryArrow && <ArrowRight size={14} />}
               </button>
-            )}
-            <button
-              type="button"
-              onClick={handlePrimary}
-              disabled={isUpdating || !canContinue()}
-              className={`inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-[15px] bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:via-purple-500 hover:to-indigo-500 text-white shadow-lg shadow-indigo-600/25 active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50 disabled:pointer-events-none ${
-                isEdit ? "w-full justify-center" : "flex-1 justify-center"
-              }`}
-            >
-              {primaryLabel}
-              {showPrimaryArrow && <ArrowRight size={18} />}
-            </button>
-            {/* Skip button for skippable steps */}
-            {!isEdit && (step === "role" || step === "interests" || step === "referral") && (
-              <button
-                type="button"
-                onClick={() => {
-                  if (step === "referral") {
-                    void finish();
-                  } else {
-                    goNext();
-                  }
-                }}
-                disabled={isUpdating}
-                className={`inline-flex items-center gap-1 px-4 py-3 rounded-xl font-medium text-[13px] cursor-pointer transition-all ${t.textMuted} hover:text-white`}
-              >
-                Skip
-                <ArrowRight size={14} />
-              </button>
-            )}
+            </div>
           </div>
 
         </div>
@@ -816,29 +819,31 @@ function OptionButton({
   selected,
   label,
   onClick,
-  t,
 }: {
   selected: boolean;
   label: string;
   onClick: () => void;
-  t: ReturnType<typeof useTokens>;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className={`flex items-center justify-between w-full px-4 py-3 rounded-xl border text-left text-[14px] font-medium transition-all duration-200 cursor-pointer ${
+      className={`flex items-center justify-between w-full px-4 py-3 rounded-2xl border text-left text-xs font-medium transition-all cursor-pointer ${
         selected
-          ? "border-indigo-500/50 bg-gradient-to-r from-indigo-500/20 via-purple-500/15 to-indigo-500/10 text-white ring-1 ring-indigo-500/30 shadow-md shadow-indigo-500/10 font-bold"
-          : `${t.surface} ${t.border} ${t.textSecondary} hover:border-white/20 hover:text-white`
+          ? "border-[#1a73e8] bg-blue-50/70 dark:bg-blue-950/25 text-[#1a73e8] dark:text-[#8ab4f8] ring-1 ring-[#1a73e8]"
+          : "border-neutral-200 dark:border-white/10 bg-white dark:bg-white/[0.02] text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-white/[0.04]"
       }`}
     >
       <span>{label}</span>
-      {selected && (
-        <span className="w-5 h-5 rounded-full bg-indigo-500 flex items-center justify-center shadow-xs">
-          <Check size={12} className="text-white stroke-[3px]" />
-        </span>
-      )}
+      <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
+        selected
+          ? "border-[#1a73e8] bg-white dark:bg-[#1e1f20]"
+          : "border-neutral-300 dark:border-white/20"
+      }`}>
+        {selected && (
+          <div className="w-2.5 h-2.5 rounded-full bg-[#1a73e8]" />
+        )}
+      </div>
     </button>
   );
 }

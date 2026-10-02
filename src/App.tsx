@@ -84,7 +84,7 @@ function checkBlockStatus(profile: OnboardingProfile | null) {
 // ─── Inner app (needs theme context) ─────────────────────────────────────────
 const Inner: React.FC = () => {
   const t = useTokens();
-  const { resolvedTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const { user, isLoaded, openAuthModal } = useAuth();
   const [entries, setEntries] = useState<Entry[]>([]);
   const [blockedStatus, setBlockedStatus] = useState<{ isBlocked: boolean; blockedUntil?: string } | null>(null);
@@ -1156,7 +1156,7 @@ const Inner: React.FC = () => {
               <DashboardHero
                 searchQuery={searchInput}
                 onSearchChange={handleSearchChange}
-                totalEntries={entries.length}
+                totalEntries={entries.length > 0 ? entries.length : staticEntries.length}
                 activeType={typeFilter}
                 onSelectType={(val) => setTypeFilter(val as TypeFilter)}
                 activeTask={taskFilter}
@@ -1689,11 +1689,38 @@ const Inner: React.FC = () => {
         </div>
       )}
 
-      <footer className={`relative z-10 border-t ${resolvedTheme === 'amoled' ? 'border-white/5 bg-black/40' : 'border-neutral-200 bg-white/40'} backdrop-blur-xl`}>
-        <div className="w-full px-4 sm:px-6 xl:px-12 py-12 lg:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+      {/* ─── Global Footer ─── */}
+      <footer className={`relative z-10 border-t ${
+        resolvedTheme === 'amoled' 
+          ? 'border-white/10 bg-[#171717] text-neutral-300' 
+          : 'border-neutral-300/80 bg-[#f8f9fa] text-neutral-700'
+      }`}>
+        {/* Tier 1: Status & Directory Strip */}
+        <div className={`px-4 sm:px-8 xl:px-12 py-3 border-b ${
+          resolvedTheme === 'amoled' 
+            ? 'border-white/10 bg-[#141517] text-neutral-400' 
+            : 'border-neutral-200/90 bg-[#f1f3f4] text-neutral-600'
+        } text-xs flex flex-wrap items-center justify-between gap-3`}>
+          <div className="flex items-center gap-2">
+            <span className="font-semibold text-neutral-800 dark:text-neutral-200">Global AI Directory</span>
+            <span className="opacity-30">•</span>
+            <span>Worldwide index of AI foundation models, frameworks & tooling</span>
+          </div>
+          <div className="flex items-center gap-4 text-[11px]">
+            <div className="flex items-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Systems Operational ({entries.length > 0 ? entries.length : staticEntries.length} Assets Verified)
+            </div>
+            <span className="opacity-30 hidden sm:inline">•</span>
+            <span className="hidden sm:inline font-mono opacity-80">v2.4.0 Live</span>
+          </div>
+        </div>
+
+        {/* Tier 2: Multi-Column Navigation */}
+        <div className="w-full px-4 sm:px-8 xl:px-12 py-10 lg:py-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
             
-            {/* Column 1: Brand & Info */}
+            {/* Column 1: Brand & Overview (Col span 2) */}
             <div className="lg:col-span-2 flex flex-col items-start gap-4">
               <a
                 href="/"
@@ -1712,36 +1739,54 @@ const Inner: React.FC = () => {
                   window.location.hash = "";
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className={`flex items-center ${t.textPrimary} hover:opacity-80 transition-opacity`}
-                style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "1.5rem", lineHeight: 1, letterSpacing: "-0.02em" }}
+                className="flex items-center gap-3 text-neutral-900 dark:text-white hover:opacity-85 transition-opacity"
               >
-                <span className="inline-block transform rotate-180 relative" style={{ top: "-0.5px", marginRight: "-0.5px" }}>V</span>
-                <span>iVerse</span>
+                <span 
+                  className="inline-flex items-center text-neutral-900 dark:text-white tracking-tight"
+                  style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "1.45rem", lineHeight: 1, letterSpacing: "-0.02em" }}
+                >
+                  <span className="inline-block transform rotate-180 relative leading-none" style={{ top: "-0.75px" }}>V</span>
+                  <span className="leading-none">iVerse</span>
+                </span>
+                <span className="text-[10px] tracking-wide uppercase font-semibold px-2 py-0.5 rounded-md bg-neutral-200/80 dark:bg-white/10 text-neutral-700 dark:text-neutral-300">
+                  Open Directory
+                </span>
               </a>
-              
-              <p className={`text-[13px] leading-relaxed max-w-sm ${t.textSecondary}`}>
-                Your ultimate navigation hub for the artificial intelligence universe. 
-                Explore, compare, and discover state-of-the-art models, frameworks, and tools.
+
+              <p className="text-[13px] leading-relaxed max-w-sm text-neutral-600 dark:text-neutral-400 font-normal">
+                Your authoritative, citation-backed compendium for the artificial intelligence universe. Explore verified architectures, benchmark evaluations, licenses, and ecosystem telemetry.
               </p>
 
-              <div className="flex items-center gap-2 mt-2">
-                <div className={`flex items-center gap-1.5 text-[10px] font-bold uppercase px-2.5 py-1 rounded-full border border-emerald-500/10 bg-emerald-500/5 text-emerald-400`}>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  Systems Operational
-                </div>
+              <div className="flex flex-wrap items-center gap-2.5 pt-1">
+                <button
+                  onClick={() => setIsAdding(true)}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 transition-all shadow-xs cursor-pointer"
+                >
+                  + Submit AI Tool
+                </button>
+                <a
+                  href="https://github.com/Frozen-47/AiVerse"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium border border-neutral-300 dark:border-white/15 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200/50 dark:hover:bg-white/[0.06] transition-all"
+                >
+                  GitHub Repository
+                </a>
               </div>
             </div>
 
-            {/* Column 2: Navigation */}
-            <div className="flex flex-col gap-4">
-              <h4 className={`text-[11px] font-bold uppercase tracking-widest ${t.textMuted}`}>Platform</h4>
-              <ul className="flex flex-col gap-2.5">
+            {/* Column 2: Platform Products */}
+            <div className="flex flex-col gap-3.5">
+              <h4 className="text-xs font-semibold text-neutral-900 dark:text-neutral-200 tracking-wide uppercase">
+                Platform
+              </h4>
+              <ul className="flex flex-col gap-2.5 text-[13px] text-neutral-600 dark:text-neutral-400">
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); setProfileUsername(null); setBrowseAll(true); setActiveView("catalog"); setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); setProfileUsername(null); setBrowseAll(true); setActiveView("catalog"); setCatalogDisplayMode("assets"); setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
-                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                    className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
                     AI Directory
                   </button>
@@ -1749,11 +1794,11 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsFeatures(true); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); setProfileUsername(null); setBrowseAll(true); setActiveView("catalog"); setCatalogDisplayMode("ecosystems"); window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
-                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                    className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
-                    Features Suite
+                    AI Labs & Ecosystems
                   </button>
                 </li>
                 <li>
@@ -1761,7 +1806,7 @@ const Inner: React.FC = () => {
                     onClick={() => { 
                       setIsArena(true); setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
-                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                    className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
                     Compare Arena
                   </button>
@@ -1771,7 +1816,7 @@ const Inner: React.FC = () => {
                     onClick={() => { 
                       setIsWizard(true); setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
-                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                    className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
                     Wizard Finder
                   </button>
@@ -1781,22 +1826,34 @@ const Inner: React.FC = () => {
                     onClick={() => { 
                       setIsPlayground(true); setIsWizard(false); setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
-                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                    className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
                     Model Playground
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => { 
+                      setIsFeatures(true); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                    }} 
+                    className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
+                  >
+                    Features Suite
                   </button>
                 </li>
               </ul>
             </div>
 
-            {/* Column 3: Submit & Contribute */}
-            <div className="flex flex-col gap-4">
-              <h4 className={`text-[11px] font-bold uppercase tracking-widest ${t.textMuted}`}>Contribute</h4>
-              <ul className="flex flex-col gap-2.5">
+            {/* Column 3: Resources & Community */}
+            <div className="flex flex-col gap-3.5">
+              <h4 className="text-xs font-semibold text-neutral-900 dark:text-neutral-200 tracking-wide uppercase">
+                Resources
+              </h4>
+              <ul className="flex flex-col gap-2.5 text-[13px] text-neutral-600 dark:text-neutral-400">
                 <li>
                   <button 
                     onClick={() => setIsAdding(true)} 
-                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                    className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
                     Submit a Tool
                   </button>
@@ -1806,7 +1863,7 @@ const Inner: React.FC = () => {
                     href="https://github.com/Frozen-47/AiVerse/blob/main/Contributing.md" 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px]`}
+                    className="hover:underline hover:text-neutral-900 dark:hover:text-white transition-colors"
                   >
                     Contributing Guide
                   </a>
@@ -1816,24 +1873,36 @@ const Inner: React.FC = () => {
                     href="https://github.com/Frozen-47/AiVerse/issues" 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px]`}
+                    className="hover:underline hover:text-neutral-900 dark:hover:text-white transition-colors"
                   >
                     Report an Issue
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://github.com/Frozen-47/AiVerse" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="hover:underline hover:text-neutral-900 dark:hover:text-white transition-colors"
+                  >
+                    Open Source Code
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Column 4: Legal & Resources */}
-            <div className="flex flex-col gap-4">
-              <h4 className={`text-[11px] font-bold uppercase tracking-widest ${t.textMuted}`}>Legal</h4>
-              <ul className="flex flex-col gap-2.5">
+            {/* Column 4: Legal & Policy */}
+            <div className="flex flex-col gap-3.5">
+              <h4 className="text-xs font-semibold text-neutral-900 dark:text-neutral-200 tracking-wide uppercase">
+                Legal
+              </h4>
+              <ul className="flex flex-col gap-2.5 text-[13px] text-neutral-600 dark:text-neutral-400">
                 <li>
                   <button 
                     onClick={() => { 
                       setIsPrivacy(true); setIsTerms(false); setIsFeatures(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
-                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                    className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
                     Privacy Policy
                   </button>
@@ -1843,46 +1912,104 @@ const Inner: React.FC = () => {
                     onClick={() => { 
                       setIsTerms(true); setIsPrivacy(false); setIsFeatures(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
-                    className={`text-[13px] font-semibold text-left w-fit ${t.textSecondary} hover:${t.textPrimary} transition-all duration-200 hover:translate-x-[2px] cursor-pointer`}
+                    className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
                     Terms of Service
                   </button>
+                </li>
+                <li>
+                  <a 
+                    href="https://github.com/Frozen-47/AiVerse/blob/main/LICENSE" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="hover:underline hover:text-neutral-900 dark:hover:text-white transition-colors"
+                  >
+                    MIT License
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="mailto:frozennheart47@gmail.com" 
+                    className="hover:underline hover:text-neutral-900 dark:hover:text-white transition-colors"
+                  >
+                    Contact Maintainer
+                  </a>
                 </li>
               </ul>
             </div>
 
           </div>
+        </div>
 
-          {/* Bottom Bar */}
-          <div className={`mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 border-t ${resolvedTheme === 'amoled' ? 'border-white/5' : 'border-neutral-200'} sm:pr-16 md:pr-20`}>
-            <span className={`text-[12px] font-medium ${t.textMuted}`}>
-              © {new Date().getFullYear()} AiVerse. Open source under MIT License.
-            </span>
-            
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-4">
-                <a 
-                  href="https://github.com/Frozen-47/AiVerse" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className={`flex items-center gap-1.5 text-[12px] font-semibold ${t.textSecondary} hover:${t.textPrimary} transition-colors`}
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                    <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-                  </svg>
-                  GitHub
-                </a>
-                <a 
-                  href="mailto:frozennheart47@gmail.com" 
-                  className={`flex items-center gap-1.5 text-[12px] font-semibold ${t.textSecondary} hover:${t.textPrimary} transition-colors`}
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/>
-                    <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/>
-                  </svg>
-                  Contact
-                </a>
-              </div>
+        {/* Tier 3: Iconic Google Bottom Bar */}
+        <div className={`px-4 sm:px-8 xl:px-12 py-3.5 border-t ${
+          resolvedTheme === 'amoled' 
+            ? 'border-white/10 bg-[#121212]' 
+            : 'border-neutral-200 bg-[#f2f2f2]'
+        }`}>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-neutral-500 dark:text-neutral-400">
+            {/* Left: Google-style Copyright & Core Links */}
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-6 gap-y-2">
+              <span className="text-neutral-700 dark:text-neutral-300 font-medium">
+                © {new Date().getFullYear()} AiVerse
+              </span>
+              <button
+                onClick={() => {
+                  setIsFeatures(true); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors"
+              >
+                About
+              </button>
+              <button
+                onClick={() => setIsAdding(true)}
+                className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors"
+              >
+                Submit Tool
+              </button>
+              <a
+                href="https://github.com/Frozen-47/AiVerse"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline hover:text-neutral-900 dark:hover:text-white transition-colors"
+              >
+                GitHub
+              </a>
+              <a
+                href="mailto:frozennheart47@gmail.com"
+                className="hover:underline hover:text-neutral-900 dark:hover:text-white transition-colors"
+              >
+                Contact
+              </a>
+            </div>
+
+            {/* Right: Google-style Privacy / Terms / Theme Toggle */}
+            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-6 gap-y-2">
+              <button
+                onClick={() => {
+                  setIsPrivacy(true); setIsTerms(false); setIsFeatures(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors"
+              >
+                Privacy
+              </button>
+              <button
+                onClick={() => {
+                  setIsTerms(true); setIsPrivacy(false); setIsFeatures(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors"
+              >
+                Terms
+              </button>
+              <button
+                onClick={() => {
+                  setTheme(resolvedTheme === "amoled" ? "light" : "amoled");
+                }}
+                className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors flex items-center gap-1.5"
+                title="Toggle Light/Dark Theme"
+              >
+                <span>Theme: {resolvedTheme === "amoled" ? "Dark" : "Light"}</span>
+              </button>
             </div>
           </div>
         </div>

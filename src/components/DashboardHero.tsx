@@ -82,7 +82,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
       </div>
 
       <div className="flex flex-col items-center text-center max-w-4xl mx-auto px-4">
-        {/* Apple/Google minimalist pill badge */}
+        {/* Minimalist pill badge */}
         <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border mb-5 text-[11px] font-medium transition-all backdrop-blur-md ${
           isAmoled
             ? "bg-white/[0.04] border-white/10 text-neutral-300"
@@ -92,7 +92,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
           <span className="font-semibold text-neutral-400 dark:text-neutral-400">Command Center</span>
           <span className="opacity-30">•</span>
           <span className="font-medium text-neutral-900 dark:text-white">
-            {totalEntries > 0 ? `${totalEntries} AI Assets Verified` : "242+ Assets Indexed"}
+            {totalEntries > 0 ? `${totalEntries} AI Assets Verified` : "330+ Assets Indexed"}
           </span>
         </div>
 
@@ -131,7 +131,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
                   onScrollToCatalog();
                 }
               }}
-              placeholder={`Search ${totalEntries > 0 ? totalEntries : 242}+ models, frameworks, datasets, or tasks...`}
+              placeholder={`Search ${totalEntries > 0 ? totalEntries : 330}+ models, frameworks, datasets, or tasks...`}
               className={`w-full bg-transparent border-none outline-none text-sm md:text-base font-normal pr-3 text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500`}
             />
             {searchQuery && (
@@ -154,9 +154,9 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
           </div>
         </div>
 
-        {/* Google Tabs (Clean single-line tabs + trending inline chips) */}
+        {/* Clean single-line tabs + trending inline chips */}
         <div className="w-full flex flex-col items-center gap-3.5">
-          {/* Single line Google-style tabs with smooth horizontal scroll and zero wrapping */}
+          {/* Single line tabs with smooth horizontal scroll and zero wrapping */}
           <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-neutral-100/80 dark:bg-white/[0.04] border border-neutral-200/70 dark:border-white/[0.08] overflow-x-auto no-scrollbar max-w-full">
             {CATEGORY_CHIPS.map((chip) => {
               const isActive =
@@ -191,7 +191,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
             })}
           </div>
 
-          {/* Clean Google-style inline tasks line */}
+          {/* Clean inline tasks line */}
           <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-neutral-400">
             <span className="font-medium text-neutral-500 dark:text-neutral-400 flex items-center gap-1">
               <SlidersHorizontal size={11} /> Tasks:

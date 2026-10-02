@@ -300,8 +300,8 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
     <div className={`${t.modalOverlay} user-profile-modal`}>
       <div
         ref={modalRef}
-        className={`relative w-full max-w-md flex flex-col rounded-3xl overflow-hidden shadow-2xl backdrop-blur-xl border ${
-          isDark ? "bg-neutral-900/90 border-white/10" : "bg-white/95 border-black/10"
+        className={`relative w-full max-w-md flex flex-col rounded-3xl overflow-hidden shadow-2xl border ${
+          isDark ? "bg-[#1e1f20] border-white/10 text-white" : "bg-white border-neutral-200 text-neutral-900"
         }`}
         style={{ maxHeight: "85dvh" }}
       >
@@ -402,363 +402,281 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
         {/* ── Profile ────────────────────────────────────────────────────── */}
         {!loading && profile && (
           <>
-            {/* Ambient Hero Banner */}
-            <div className="h-28 w-full relative overflow-hidden shrink-0">
-              {/* Radial Mesh Gradient based on user's role */}
-              <div className={`absolute inset-0 bg-gradient-to-r ${roleStyle.themeColor} filter blur-sm scale-110`} />
-              <div className="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:10px_10px] opacity-30" />
-              
-              {/* Fade bottom to seamlessly transition into modal background */}
-              <div className={`absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t ${
-                isDark ? "from-neutral-900" : "from-white"
-              } to-transparent`} />
-
-              {/* Floating Action Buttons */}
-              <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
+            {/* Account Top Header Bar */}
+            <div className="shrink-0 px-6 py-4 border-b border-neutral-200/90 dark:border-white/10 bg-[#f8f9fa] dark:bg-[#18191a] flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-blue-50 dark:bg-blue-900/30 text-[#1a73e8] dark:text-[#8ab4f8] flex items-center justify-center border border-blue-200/60 dark:border-blue-700/30">
+                  <Globe size={16} />
+                </div>
+                <div>
+                  <h2 className="text-sm font-semibold text-neutral-900 dark:text-white leading-tight">
+                    AiVerse Account
+                  </h2>
+                  <p className="text-[11px] text-neutral-500 dark:text-neutral-400">
+                    Public Developer Profile & Credentials
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-1.5">
                 <button
                   onClick={handleShare}
-                  title="Copy profile link"
-                  className={`w-8 h-8 rounded-xl flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-95 ${
-                    isDark
-                      ? "bg-white/10 hover:bg-white/20 border border-white/10 text-white backdrop-blur-md"
-                      : "bg-white/70 hover:bg-white/90 border border-black/5 text-neutral-800 backdrop-blur-md"
-                  }`}
+                  title="Share profile link"
+                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-200/70 dark:hover:bg-white/10 text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-colors cursor-pointer"
                 >
-                  {copied ? <Check size={13} className="text-emerald-400" /> : <Share2 size={13} />}
+                  {copied ? <Check size={14} className="text-[#34a853]" /> : <Share2 size={14} />}
                 </button>
                 <button
                   onClick={onClose}
                   title="Close"
-                  className={`w-8 h-8 rounded-xl flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-95 ${
-                    isDark
-                      ? "bg-white/10 hover:bg-white/20 border border-white/10 text-white backdrop-blur-md"
-                      : "bg-white/70 hover:bg-white/90 border border-black/5 text-neutral-800 backdrop-blur-md"
-                  }`}
+                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-200/70 dark:hover:bg-white/10 text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-colors cursor-pointer"
                 >
-                  <X size={13} />
+                  <X size={16} />
                 </button>
               </div>
             </div>
 
-            {/* Header Content Container */}
-            <div className="px-6 pb-0 pt-1 shrink-0">
-              {/* Identity Row */}
-              <div className="flex items-start gap-4 -mt-14 relative z-20">
-                {/* Avatar with Squircle Border & Glowing Shadow */}
-                <div
-                  className={`w-20 h-20 rounded-3xl flex items-center justify-center text-xl font-black shrink-0 overflow-hidden border-4 ${
-                    isDark
-                      ? "border-neutral-900 bg-neutral-850 text-white shadow-[0_8px_24px_rgba(0,0,0,0.4)] ring-1 ring-white/5"
-                      : "border-white bg-neutral-100 text-neutral-900 shadow-[0_8px_24px_rgba(0,0,0,0.08)] ring-1 ring-black/5"
-                  }`}
-                >
-                  {profile.avatarUrl ? (
-                    <img
-                      src={profile.avatarUrl}
-                      alt=""
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className={`w-full h-full flex items-center justify-center bg-gradient-to-tr from-violet-600 to-indigo-600 text-white font-black`}>
-                      {initials}
-                    </div>
-                  )}
-                </div>
-
-                {/* Name, Username and Role Badge */}
-                <div className="flex-1 min-w-0 pt-8">
-                  <h2
-                    className={`text-xl font-black tracking-tight leading-tight truncate ${t.textPrimary}`}
+            {/* Account Body */}
+            <div className="flex-1 overflow-y-auto no-scrollbar p-6 space-y-5 bg-white dark:bg-[#1e1f20]">
+              {/* Profile Hero Card */}
+              <div className="p-5 rounded-2xl border border-neutral-200 dark:border-white/10 bg-[#fafafa] dark:bg-white/[0.02]">
+                <div className="flex items-start gap-4">
+                  {/* Circular Avatar */}
+                  <div
+                    className={`w-16 h-16 rounded-full flex items-center justify-center text-lg font-bold shrink-0 overflow-hidden ring-2 ${
+                      isDark
+                        ? "bg-neutral-800 text-white ring-white/15"
+                        : "bg-[#1a73e8] text-white ring-neutral-200"
+                    }`}
                   >
-                    {profile.displayName}
-                  </h2>
-                  <div className="flex items-center gap-2 mt-1 flex-wrap">
-                    <span className={`text-[11px] font-semibold text-indigo-400 dark:text-indigo-400/90 truncate`}>
+                    {profile.avatarUrl ? (
+                      <img
+                        src={profile.avatarUrl}
+                        alt=""
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span>{initials}</span>
+                    )}
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-lg font-semibold text-neutral-900 dark:text-white truncate">
+                        {profile.displayName}
+                      </h3>
+                      <span className="inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-blue-50 text-[#1a73e8] border border-blue-200 dark:bg-blue-900/30 dark:text-[#8ab4f8] dark:border-blue-700/30">
+                        {roleStyle.icon}
+                        {roleStyle.label}
+                      </span>
+                    </div>
+                    <p className="text-xs font-normal text-neutral-500 dark:text-neutral-400 mt-0.5">
                       {profile.username}
-                    </span>
-                    <span
-                      className={`inline-flex items-center gap-1 text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full border ${roleStyle.cls}`}
-                    >
-                      {roleStyle.icon}
-                      {roleStyle.label}
-                    </span>
+                    </p>
+
+                    {profile.description ? (
+                      <p className="text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed mt-2.5">
+                        {profile.description}
+                      </p>
+                    ) : (
+                      <p className="text-xs text-neutral-400 italic mt-2">
+                        AiVerse community builder and contributor.
+                      </p>
+                    )}
+
+                    {/* Interest Chips */}
+                    {profile.interests && profile.interests.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 mt-3">
+                        {profile.interests.map((interest) => (
+                          <span
+                            key={interest}
+                            className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-white dark:bg-white/[0.05] text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-white/10"
+                          >
+                            {interest}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
 
-              {/* Bio Description */}
-              {profile.description ? (
-                <p className={`text-[12.5px] leading-relaxed mt-4 font-normal ${t.textSecondary}`}>
-                  {profile.description}
-                </p>
-              ) : (
-                <p className={`text-[12.5px] leading-relaxed mt-4 font-light italic ${t.textMuted}`}>
-                  This builder is busy creating in the AiVerse.
-                </p>
-              )}
-
-              {/* Interests (Specialties) Tags */}
-              {profile.interests && profile.interests.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 mt-3.5">
-                  {profile.interests.map((interest) => (
-                    <span
-                      key={interest}
-                      className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-lg border transition-all hover:bg-white/[0.04] ${
-                        isDark 
-                          ? "bg-white/[0.02] text-white/50 border-white/5" 
-                          : "bg-black/[0.02] text-black/50 border-black/5"
-                      }`}
-                    >
-                      #{interest}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              {/* Stats Dashboard Grid */}
-              <div className="grid grid-cols-3 gap-2.5 mt-5">
-                <div className={`p-3 rounded-2xl border text-center transition-all ${
-                  isDark ? "bg-white/[0.01] border-white/5 hover:border-white/10" : "bg-black/[0.01] border-black/5 hover:border-black/10"
-                }`}>
-                  <p className={`text-[9px] font-black uppercase tracking-wider ${t.textMuted}`}>Submissions</p>
-                  <p className={`text-lg font-black mt-0.5 ${isDark ? "text-sky-400" : "text-sky-600"}`}>
-                    {submitHistory.length}
-                  </p>
-                </div>
-                <div className={`p-3 rounded-2xl border text-center transition-all ${
-                  isDark ? "bg-white/[0.01] border-white/5 hover:border-white/10" : "bg-black/[0.01] border-black/5 hover:border-black/10"
-                }`}>
-                  <p className={`text-[9px] font-black uppercase tracking-wider ${t.textMuted}`}>Bookmarks</p>
-                  <p className={`text-lg font-black mt-0.5 ${isDark ? "text-violet-400" : "text-violet-600"}`}>
-                    {savedEntries.length}
-                  </p>
-                </div>
-                <div className={`p-3 rounded-2xl border text-center transition-all ${
-                  isDark ? "bg-white/[0.01] border-white/5 hover:border-white/10" : "bg-black/[0.01] border-black/5 hover:border-black/10"
-                }`}>
-                  <p className={`text-[9px] font-black uppercase tracking-wider ${t.textMuted}`}>Specialties</p>
-                  <p className={`text-lg font-black mt-0.5 ${isDark ? "text-emerald-400" : "text-emerald-600"}`}>
-                    {profile.interests?.length || 0}
-                  </p>
-                </div>
-              </div>
-
-              {/* Capsule Segmented Tabs Control */}
-              <div className={`p-1 rounded-2xl flex gap-1 mt-5 border ${
-                isDark ? "bg-white/[0.02] border-white/5" : "bg-black/[0.02] border-black/5"
-              }`}>
+              {/* Segmented Pill Navigation */}
+              <div className="p-1 rounded-full flex gap-1 border border-neutral-200 dark:border-white/10 bg-[#f1f3f4] dark:bg-white/[0.04]">
                 {TABS.map((tab) => {
                   const isActive = activeTab === tab.id;
+                  const count =
+                    tab.id === "submissions"
+                      ? submitHistory.length
+                      : tab.id === "bookmarks"
+                      ? savedEntries.length
+                      : socialLinks.length;
                   return (
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl text-[11px] font-bold transition-all duration-250 cursor-pointer ${
+                      className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-full text-xs font-medium transition-all cursor-pointer ${
                         isActive
-                          ? isDark
-                            ? "bg-white text-neutral-900 shadow-md scale-[1.01]"
-                            : "bg-neutral-950 text-white shadow-sm scale-[1.01]"
-                          : isDark
-                            ? "text-white/40 hover:text-white/70 hover:bg-white/4"
-                            : "text-neutral-500 hover:text-neutral-800 hover:bg-black/4"
+                          ? "bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white shadow-xs font-semibold"
+                          : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                       }`}
                     >
                       {tab.icon}
-                      {tab.label}
+                      <span>{tab.label}</span>
+                      <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                        isActive
+                          ? "bg-neutral-100 dark:bg-white/10 text-neutral-800 dark:text-neutral-200"
+                          : "bg-black/5 dark:bg-white/5 text-neutral-500"
+                      }`}>
+                        {count}
+                      </span>
                     </button>
                   );
                 })}
               </div>
-            </div>
 
-            {/* Scrollable Tab Content Body */}
-            <div className="flex-1 overflow-y-auto no-scrollbar px-6 py-4">
-              {/* ── Submissions Tab ──────────────────────────────────────── */}
-              {activeTab === "submissions" && (
-                <div className="animate-[fadeIn_0.2s_ease-out] space-y-2">
-                  {submitHistory.length > 0 ? (
-                    submitHistory.map((entry) => {
-                      const isNew = entry.created_at
-                        ? (new Date().getTime() - new Date(entry.created_at).getTime()) / (1000 * 60 * 60 * 24) <= 2
-                        : false;
-                      const isLoading = loadingEntryId === entry.name;
-                      return (
-                        <div
-                          key={entry.name}
-                          onClick={() => !isLoading && handleViewEntry(entry.name)}
-                          className={`p-3 rounded-2xl flex items-center justify-between border transition-all duration-300 ${
-                            onViewEntry ? "cursor-pointer hover:translate-x-1" : ""
-                          } ${
-                            isDark
-                              ? "bg-white/[0.01] border-white/5 hover:bg-white/[0.03] hover:border-white/15"
-                              : "bg-black/[0.01] border-black/5 hover:bg-neutral-50 hover:border-neutral-300"
-                          }`}
-                        >
-                          <div className="min-w-0 pr-3 flex-1">
-                            <div className="flex items-center gap-1.5 flex-wrap">
-                              <h4 className={`text-[12.5px] font-extrabold truncate ${t.textPrimary}`}>
-                                {entry.name}
-                              </h4>
-                              {isNew && (
-                                <span className="inline-flex items-center text-[8px] font-black uppercase px-1.5 py-0.2 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/15 animate-pulse">
-                                  NEW
-                                </span>
+              {/* Tab Content Panels */}
+              <div className="space-y-2">
+                {/* ── Submissions Tab ── */}
+                {activeTab === "submissions" && (
+                  <div className="space-y-2.5">
+                    {submitHistory.length > 0 ? (
+                      submitHistory.map((entry) => {
+                        const isLoading = loadingEntryId === entry.name;
+                        return (
+                          <div
+                            key={entry.name}
+                            onClick={() => !isLoading && handleViewEntry(entry.name)}
+                            className="p-4 rounded-2xl border border-neutral-200 dark:border-white/10 bg-[#fafafa] dark:bg-white/[0.02] hover:bg-neutral-50 dark:hover:bg-white/[0.04] transition-all flex items-center justify-between cursor-pointer group"
+                          >
+                            <div className="min-w-0 pr-3 flex-1">
+                              <div className="flex items-center gap-2">
+                                <h4 className="text-sm font-medium text-[#1a0dab] dark:text-[#8ab4f8] group-hover:underline truncate">
+                                  {entry.name}
+                                </h4>
+                                {entry.approved ? (
+                                  <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40">
+                                    Approved
+                                  </span>
+                                ) : (
+                                  <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/40">
+                                    In Review
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-xs text-neutral-600 dark:text-neutral-400 truncate mt-1">
+                                {entry.summary}
+                              </p>
+                              <div className="flex items-center gap-2 mt-2 text-[11px] text-neutral-500">
+                                <span>{entry.type}</span>
+                                <span>•</span>
+                                <span>{entry.task}</span>
+                                <span>•</span>
+                                <span>{entry.year}</span>
+                              </div>
+                            </div>
+                            <div className="shrink-0 text-[#1a73e8] dark:text-[#8ab4f8] opacity-0 group-hover:opacity-100 transition-opacity">
+                              {isLoading ? (
+                                <Loader2 size={14} className="animate-spin" />
+                              ) : (
+                                <ChevronRight size={16} />
                               )}
                             </div>
-                            <p className={`text-[11px] truncate mt-0.5 ${t.textMuted}`}>
-                              {entry.summary}
-                            </p>
                           </div>
-                          <div className="flex items-center gap-2 shrink-0">
+                        );
+                      })
+                    ) : (
+                      <div className="py-10 text-center rounded-2xl border border-neutral-200 dark:border-white/10 bg-[#fafafa] dark:bg-white/[0.02]">
+                        <p className="text-sm font-medium text-neutral-800 dark:text-neutral-200">No public submissions yet</p>
+                        <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">Resources submitted by this builder will appear here.</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* ── Connections Tab ── */}
+                {activeTab === "social" && (
+                  <div>
+                    {socialLinks.length > 0 ? (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        {socialLinks.map((link) => {
+                          const Icon = link.icon;
+                          const brandCls = getBrandStyle(link.name, isDark);
+                          return (
+                            <a
+                              key={link.name}
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-3.5 rounded-2xl border border-neutral-200 dark:border-white/10 bg-[#fafafa] dark:bg-white/[0.02] hover:bg-neutral-50 dark:hover:bg-white/[0.04] transition-all flex items-center justify-between group cursor-pointer"
+                            >
+                              <div className="flex items-center gap-3">
+                                <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${brandCls}`}>
+                                  <Icon size={14} />
+                                </div>
+                                <span className="text-xs font-medium text-neutral-800 dark:text-neutral-200">{link.name}</span>
+                              </div>
+                              <ArrowUpRight size={14} className="text-neutral-400 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors" />
+                            </a>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <div className="py-10 text-center rounded-2xl border border-neutral-200 dark:border-white/10 bg-[#fafafa] dark:bg-white/[0.02]">
+                        <p className="text-sm font-medium text-neutral-800 dark:text-neutral-200">No external accounts connected</p>
+                        <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">No GitHub, LinkedIn, or portfolio links shared.</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* ── Bookmarks Tab ── */}
+                {activeTab === "bookmarks" && (
+                  <div className="space-y-2">
+                    {savedEntries.length > 0 ? (
+                      savedEntries.map((name) => {
+                        const isLoading = loadingEntryId === name;
+                        return (
+                          <div
+                            key={name}
+                            onClick={() => !isLoading && handleViewEntry(name)}
+                            className="p-3.5 rounded-2xl border border-neutral-200 dark:border-white/10 bg-[#fafafa] dark:bg-white/[0.02] hover:bg-neutral-50 dark:hover:bg-white/[0.04] transition-all flex items-center justify-between group cursor-pointer"
+                          >
+                            <div className="flex items-center gap-2.5 min-w-0">
+                              <Bookmark size={14} className="text-[#1a73e8] dark:text-[#8ab4f8] fill-current shrink-0" />
+                              <span className="text-xs font-medium text-neutral-800 dark:text-neutral-200 truncate group-hover:text-[#1a0dab] dark:group-hover:text-[#8ab4f8]">
+                                {name}
+                              </span>
+                            </div>
                             {isLoading ? (
-                              <Loader2 size={12} className="animate-spin text-indigo-400" />
-                            ) : entry.approved ? (
-                              <span className="text-[8px] font-black uppercase px-2 py-0.5 rounded-lg bg-emerald-500/10 border border-emerald-500/15 text-emerald-400">
-                                Approved
-                              </span>
+                              <Loader2 size={13} className="animate-spin text-[#1a73e8]" />
                             ) : (
-                              <span className="text-[8px] font-black uppercase px-2 py-0.5 rounded-lg bg-amber-500/10 border border-amber-500/15 text-amber-400 animate-pulse">
-                                Pending
-                              </span>
+                              <ChevronRight size={14} className="text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-white" />
                             )}
                           </div>
-                        </div>
-                      );
-                    })
-                  ) : (
-                    <div className="flex flex-col items-center justify-center py-8 text-center">
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-3 ${
-                        isDark ? "bg-white/[0.02] text-white/30 border border-white/5" : "bg-neutral-50 text-neutral-400 border border-neutral-100"
-                      }`}>
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <h4 className={`text-[12px] font-bold ${t.textPrimary}`}>No Submissions Yet</h4>
-                      <p className={`text-[10.5px] max-w-[220px] mt-1 leading-normal ${t.textMuted}`}>
-                        Tools and entities submitted by this builder will appear here.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* ── Connections Tab ─────────────────────────────────────── */}
-              {activeTab === "social" && (
-                <div className="animate-[fadeIn_0.2s_ease-out]">
-                  {socialLinks.length > 0 ? (
-                    <div className="grid grid-cols-2 gap-2.5">
-                      {socialLinks.map((link) => {
-                        const Icon = link.icon;
-                        const brandCls = getBrandStyle(link.name, isDark);
-                        return (
-                          <a
-                            key={link.name}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`flex flex-col items-start p-3.5 rounded-2xl border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md ${
-                              isDark
-                                ? "bg-white/[0.01] border-white/5 hover:bg-white/[0.03] hover:border-white/12"
-                                : "bg-black/[0.01] border-black/5 hover:bg-white hover:border-black/12"
-                            }`}
-                          >
-                            <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-colors ${brandCls}`}>
-                              <Icon size={14} />
-                            </div>
-                            <div className="mt-3 min-w-0 w-full flex items-center justify-between">
-                              <p className={`text-[12px] font-extrabold ${t.textPrimary}`}>{link.name}</p>
-                              <ArrowUpRight size={12} className={t.textMuted} />
-                            </div>
-                          </a>
                         );
-                      })}
-                    </div>
-                  ) : (
-                    <div className="flex flex-col items-center justify-center py-8 text-center">
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-3 ${
-                        isDark ? "bg-white/[0.02] text-white/30 border border-white/5" : "bg-neutral-50 text-neutral-400 border border-neutral-100"
-                      }`}>
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-                        </svg>
+                      })
+                    ) : (
+                      <div className="py-10 text-center rounded-2xl border border-neutral-200 dark:border-white/10 bg-[#fafafa] dark:bg-white/[0.02]">
+                        <p className="text-sm font-medium text-neutral-800 dark:text-neutral-200">No saved bookmarks</p>
+                        <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">Bookmarked tools and models will appear here.</p>
                       </div>
-                      <h4 className={`text-[12px] font-bold ${t.textPrimary}`}>No Connections Linked</h4>
-                      <p className={`text-[10.5px] max-w-[220px] mt-1 leading-normal ${t.textMuted}`}>
-                        Social profiles and portfolio links have not been connected yet.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* ── Bookmarks Tab ─────────────────────────────────────────── */}
-              {activeTab === "bookmarks" && (
-                <div className="animate-[fadeIn_0.2s_ease-out] space-y-2">
-                  {savedEntries.length > 0 ? (
-                    savedEntries.map((name) => {
-                      const isLoading = loadingEntryId === name;
-                      return (
-                        <div
-                          key={name}
-                          onClick={() => !isLoading && handleViewEntry(name)}
-                          className={`p-3 rounded-2xl flex items-center justify-between border transition-all duration-300 ${
-                            onViewEntry ? "cursor-pointer hover:translate-x-1" : ""
-                          } ${
-                            isDark
-                              ? "bg-white/[0.01] border-white/5 hover:bg-white/[0.03] hover:border-white/15"
-                              : "bg-black/[0.01] border-black/5 hover:bg-neutral-50 hover:border-neutral-300"
-                          }`}
-                        >
-                          <div className="flex items-center gap-3 min-w-0 flex-1">
-                            <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
-                              isDark ? "bg-white/[0.03] text-indigo-400" : "bg-neutral-100 text-indigo-600"
-                            }`}>
-                              <Bookmark size={12} className="fill-current" />
-                            </div>
-                            <p className={`text-[12.5px] font-extrabold truncate ${t.textPrimary}`}>{name}</p>
-                          </div>
-                          {isLoading ? (
-                            <Loader2 size={12} className="animate-spin text-indigo-400 shrink-0" />
-                          ) : (
-                            onViewEntry && <ChevronRight size={13} className={`${t.textMuted} shrink-0`} />
-                          )}
-                        </div>
-                      );
-                    })
-                  ) : (
-                    <div className="flex flex-col items-center justify-center py-8 text-center">
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-3 ${
-                        isDark ? "bg-white/[0.02] text-white/30 border border-white/5" : "bg-neutral-50 text-neutral-400 border border-neutral-100"
-                      }`}>
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
-                        </svg>
-                      </div>
-                      <h4 className={`text-[12px] font-bold ${t.textPrimary}`}>No Bookmarks Saved</h4>
-                      <p className={`text-[10.5px] max-w-[220px] mt-1 leading-normal ${t.textMuted}`}>
-                        Bookmarked tools and entities will be saved here for quick references.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              )}
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
 
-            {/* Footer with Actions */}
-            <div className={`px-6 py-4 border-t flex justify-end shrink-0 gap-2 ${
-              isDark ? "border-white/8 bg-white/[0.01]" : "border-black/8 bg-black/[0.01]"
-            }`}>
+            {/* Account Dialog Bottom Action Bar */}
+            <div className="shrink-0 px-6 py-3.5 border-t border-neutral-200/90 dark:border-white/10 bg-[#f8f9fa] dark:bg-[#18191a] flex items-center justify-between">
+              <span className="text-[11px] text-neutral-500 dark:text-neutral-400">
+                AiVerse Public Directory • Underrated Design System
+              </span>
               <button
                 type="button"
                 onClick={onClose}
-                className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer active:scale-98 ${
-                  isDark
-                    ? "bg-white/5 hover:bg-white/10 border border-white/8 text-white"
-                    : "bg-neutral-100 hover:bg-neutral-200 border border-neutral-250 text-neutral-700"
-                }`}
+                className="px-5 py-2 rounded-full text-xs font-medium bg-[#1a73e8] hover:bg-[#1557b0] text-white transition-all cursor-pointer shadow-xs"
               >
-                Close Profile
+                Close
               </button>
             </div>
           </>

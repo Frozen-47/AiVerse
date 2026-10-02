@@ -181,7 +181,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               {isDropdownOpen && onSaveProfile && (
                 <div
                   ref={dropdownRef}
-                  className={`absolute right-0 top-11 w-80 sm:w-88 rounded-2xl shadow-2xl p-2 z-50 backdrop-blur-xl ${t.modal} overflow-hidden`}
+                  className={`absolute right-0 top-11 w-80 sm:w-88 rounded-3xl shadow-2xl p-2 z-50 border border-neutral-200 dark:border-white/10 ${t.modal} overflow-hidden`}
                   style={{
                     boxShadow: `0 20px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px ${
                       resolvedTheme === "amoled" ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.08)"
