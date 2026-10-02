@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useCallback, useRef, lazy, Suspense } from "react";
-import { Filter, X, Check, Sparkles, ArrowLeft, AlertTriangle } from "lucide-react";
+import { Filter, X, Check, Sparkles, ArrowLeft, AlertTriangle, Building2, Box } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
@@ -10,6 +10,7 @@ import { ValueProps } from "./components/features/ValueProps";
 import { Sidebar } from "./components/Sidebar";
 import { SearchBar } from "./components/SearchBar";
 import { EntryCard } from "./components/EntryCard";
+import { EcosystemsSection } from "./components/EcosystemsSection";
 import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
 import { UserProfileModal } from "./components/UserProfileModal";
 import { OverviewCards } from "./components/OverviewCards";
@@ -98,6 +99,7 @@ const Inner: React.FC = () => {
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("All");
   const [taskFilter, setTaskFilter] = useState<TaskFilter>("All Tasks");
   const [popularOnly, setPopularOnly] = useState(false);
+  const [catalogDisplayMode, setCatalogDisplayMode] = useState<"assets" | "ecosystems">("assets");
   const [selected, setSelected] = useState<Entry | null>(null);
   const initialEntrySlugRef = useRef<string | null>(
     typeof window !== "undefined"
@@ -1160,6 +1162,8 @@ const Inner: React.FC = () => {
                 activeTask={taskFilter}
                 onSelectTask={(val) => setTaskFilter(val as TaskFilter)}
                 onScrollToCatalog={scrollToCatalog}
+                catalogDisplayMode={catalogDisplayMode}
+                onSelectDisplayMode={setCatalogDisplayMode}
               />
 
               {/* 2. Asymmetric Command Center Grid (8 cols main feed + 4 cols command sidebar) */}
@@ -1177,173 +1181,219 @@ const Inner: React.FC = () => {
                         <div className="flex items-center gap-2 mb-1">
                           <span className="w-2 h-2 rounded-full bg-emerald-500" />
                           <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400">
-                            {filtered.length} of {entries.length} assets
+                            {catalogDisplayMode === "ecosystems" ? "AI Organizations & Research Labs" : `${filtered.length} of ${entries.length} assets`}
                           </span>
                         </div>
                         <h2 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
-                          Explore AI Technologies
+                          {catalogDisplayMode === "ecosystems" ? "AI Labs & Ecosystems" : "Explore AI Technologies"}
                         </h2>
                       </div>
 
-                      {/* Filter controls */}
-                      <div className="flex flex-wrap items-center gap-2">
-                        {/* Starred toggle */}
-                        <button
-                          onClick={() => {
-                            setPopularOnly((p) => !p);
-                            setCurrentPage(1);
-                          }}
-                          className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all cursor-pointer flex items-center gap-1.5 ${
-                            popularOnly
-                              ? resolvedTheme === "amoled"
-                                ? "bg-white/10 text-white border-white/30 font-semibold"
-                                : "bg-neutral-200 text-neutral-900 border-neutral-300 font-semibold"
-                              : "border-neutral-200 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
-                          }`}
-                        >
-                          <Sparkles size={12} className={popularOnly ? "fill-current" : ""} />
-                          <span>Featured</span>
-                        </button>
-
-                        {/* Saved toggle */}
-                        <button
-                          onClick={handleSavedToggle}
-                          className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all cursor-pointer flex items-center gap-1.5 ${
-                            savedOnly
-                              ? resolvedTheme === "amoled"
-                                ? "bg-white/10 text-white border-white/30 font-semibold"
-                                : "bg-neutral-200 text-neutral-900 border-neutral-300 font-semibold"
-                              : "border-neutral-200 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
-                          }`}
-                        >
-                          <span>Bookmarks ({bookmarks.length})</span>
-                        </button>
-
-                        {/* Sidebar mode button */}
-                        <button
-                          onClick={() => {
-                            setBrowseAll(true);
-                            setActiveView("catalog");
-                            window.scrollTo({ top: 0, behavior: "smooth" });
-                          }}
-                          className="px-3.5 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/[0.08] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer flex items-center gap-1.5"
-                        >
-                          <Filter size={11} /> Filters
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Category pills - Apple segmented control */}
-                    <div className="inline-flex p-1 rounded-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08] mb-6 overflow-x-auto max-w-full">
-                      {(["All", "Model", "Framework", "Dataset", "Platform", "AI"] as const).map((type) => {
-                        const isSelected = typeFilter === type;
-                        const labelMap: Record<string, string> = {
-                          All: "All Types",
-                          Model: "Models",
-                          Framework: "Frameworks",
-                          Dataset: "Datasets",
-                          Platform: "Platforms",
-                          AI: "Apps",
-                        };
-                        return (
+                      {/* View Switcher and Quick Controls */}
+                      <div className="flex flex-wrap items-center gap-2.5">
+                        {/* Switcher: Individual vs By Lab */}
+                        <div className="flex items-center p-1 rounded-xl bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08]">
                           <button
-                            key={type}
-                            onClick={() => {
-                              setTypeFilter(type);
-                              setCurrentPage(1);
-                            }}
-                            className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
-                              isSelected
+                            onClick={() => setCatalogDisplayMode("assets")}
+                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                              catalogDisplayMode === "assets"
                                 ? resolvedTheme === "amoled"
-                                  ? "bg-white text-black font-semibold shadow-xs"
-                                  : "bg-neutral-900 text-white font-semibold shadow-xs"
+                                  ? "bg-white text-black shadow-xs"
+                                  : "bg-neutral-900 text-white shadow-xs"
                                 : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                             }`}
                           >
-                            <span>{labelMap[type]}</span>
+                            <Box size={13} />
+                            <span>Individual Assets</span>
                           </button>
-                        );
-                      })}
+                          <button
+                            onClick={() => setCatalogDisplayMode("ecosystems")}
+                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                              catalogDisplayMode === "ecosystems"
+                                ? resolvedTheme === "amoled"
+                                  ? "bg-white text-black shadow-xs"
+                                  : "bg-neutral-900 text-white shadow-xs"
+                                : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                            }`}
+                          >
+                            <Building2 size={13} />
+                            <span>By AI Lab</span>
+                          </button>
+                        </div>
+
+                        {catalogDisplayMode === "assets" && (
+                          <div className="flex flex-wrap items-center gap-2">
+                            {/* Starred toggle */}
+                            <button
+                              onClick={() => {
+                                setPopularOnly((p) => !p);
+                                setCurrentPage(1);
+                              }}
+                              className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all cursor-pointer flex items-center gap-1.5 ${
+                                popularOnly
+                                  ? resolvedTheme === "amoled"
+                                    ? "bg-white/10 text-white border-white/30 font-semibold"
+                                    : "bg-neutral-200 text-neutral-900 border-neutral-300 font-semibold"
+                                  : "border-neutral-200 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
+                              }`}
+                            >
+                              <Sparkles size={12} className={popularOnly ? "fill-current" : ""} />
+                              <span>Featured</span>
+                            </button>
+
+                            {/* Saved toggle */}
+                            <button
+                              onClick={handleSavedToggle}
+                              className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all cursor-pointer flex items-center gap-1.5 ${
+                                savedOnly
+                                  ? resolvedTheme === "amoled"
+                                    ? "bg-white/10 text-white border-white/30 font-semibold"
+                                    : "bg-neutral-200 text-neutral-900 border-neutral-300 font-semibold"
+                                  : "border-neutral-200 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
+                              }`}
+                            >
+                              <span>Bookmarks ({bookmarks.length})</span>
+                            </button>
+
+                            {/* Sidebar mode button */}
+                            <button
+                              onClick={() => {
+                                setBrowseAll(true);
+                                setActiveView("catalog");
+                                window.scrollTo({ top: 0, behavior: "smooth" });
+                              }}
+                              className="px-3.5 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/[0.08] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer flex items-center gap-1.5"
+                            >
+                              <Filter size={11} /> Filters
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </div>
 
-                    {/* Cards Grid or Empty State */}
-                    {paginatedEntries.length === 0 ? (
-                      <div className={`p-12 text-center rounded-2xl border ${
-                        resolvedTheme === "amoled" ? "bg-neutral-900/40 border-white/[0.08]" : "bg-neutral-50/70 border-neutral-200/80"
-                      } flex flex-col items-center justify-center`}>
-                        <p className="text-base font-semibold text-neutral-900 dark:text-white mb-2">
-                          No tools found matching your filters
-                        </p>
-                        <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-4">
-                          Try clearing search terms or selecting a different category.
-                        </p>
-                        <button
-                          onClick={() => {
-                            setSearchInput("");
-                            setTypeFilter("All");
-                            setTaskFilter("All Tasks");
-                            setPopularOnly(false);
-                            setSavedOnly(false);
-                          }}
-                          className="px-4 py-2 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black shadow-xs cursor-pointer hover:opacity-90 transition-all"
-                        >
-                          Reset All Filters
-                        </button>
-                      </div>
+                    {catalogDisplayMode === "ecosystems" ? (
+                      <EcosystemsSection
+                        entries={entries}
+                        onSelectEntry={(entry) => setSelected(entry)}
+                        bookmarks={bookmarks}
+                        onToggleBookmark={handleToggleBookmark}
+                        ratingSummaries={ratingSummaries}
+                      />
                     ) : (
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {paginatedEntries.map((entry, i) => (
-                          <EntryCard
-                            key={entry.name}
-                            entry={entry}
-                            entryName={entry.name}
-                            onSelect={selectEntryByName}
-                            index={i}
-                            ratingSummary={ratingSummaries[entry.name]}
-                            isBookmarked={bookmarks.includes(entry.name)}
-                            onToggleBookmark={handleToggleBookmark}
-                          />
-                        ))}
-                      </div>
-                    )}
+                      <>
+                        {/* Category pills - Apple segmented control */}
+                        <div className="inline-flex p-1 rounded-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08] mb-6 overflow-x-auto max-w-full">
+                          {(["All", "Model", "Framework", "Dataset", "Platform", "AI"] as const).map((type) => {
+                            const isSelected = typeFilter === type;
+                            const labelMap: Record<string, string> = {
+                              All: "All Types",
+                              Model: "Models",
+                              Framework: "Frameworks",
+                              Dataset: "Datasets",
+                              Platform: "Platforms",
+                              AI: "Apps",
+                            };
+                            return (
+                              <button
+                                key={type}
+                                onClick={() => {
+                                  setTypeFilter(type);
+                                  setCurrentPage(1);
+                                }}
+                                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
+                                  isSelected
+                                    ? resolvedTheme === "amoled"
+                                      ? "bg-white text-black font-semibold shadow-xs"
+                                      : "bg-neutral-900 text-white font-semibold shadow-xs"
+                                    : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                                }`}
+                              >
+                                <span>{labelMap[type]}</span>
+                              </button>
+                            );
+                          })}
+                        </div>
 
-                    {/* Pagination Controls */}
-                    {totalPages > 1 && (
-                      <div className="flex items-center justify-center gap-3 mt-10">
-                        <button
-                          onClick={() => {
-                            setCurrentPage((p) => Math.max(1, p - 1));
-                            scrollToCatalog();
-                          }}
-                          disabled={currentPage === 1}
-                          className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all border cursor-pointer ${
-                            currentPage === 1
-                              ? "opacity-40 cursor-not-allowed border-transparent text-neutral-400"
-                              : "border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:border-neutral-300 dark:hover:border-white/20"
-                          }`}
-                        >
-                          ← Previous
-                        </button>
+                        {/* Cards Grid or Empty State */}
+                        {paginatedEntries.length === 0 ? (
+                          <div className={`p-12 text-center rounded-2xl border ${
+                            resolvedTheme === "amoled" ? "bg-neutral-900/40 border-white/[0.08]" : "bg-neutral-50/70 border-neutral-200/80"
+                          } flex flex-col items-center justify-center`}>
+                            <p className="text-base font-semibold text-neutral-900 dark:text-white mb-2">
+                              No tools found matching your filters
+                            </p>
+                            <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-4">
+                              Try clearing search terms or selecting a different category.
+                            </p>
+                            <button
+                              onClick={() => {
+                                setSearchInput("");
+                                setTypeFilter("All");
+                                setTaskFilter("All Tasks");
+                                setPopularOnly(false);
+                                setSavedOnly(false);
+                              }}
+                              className="px-4 py-2 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black shadow-xs cursor-pointer hover:opacity-90 transition-all"
+                            >
+                              Reset All Filters
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {paginatedEntries.map((entry, i) => (
+                              <EntryCard
+                                key={entry.name}
+                                entry={entry}
+                                entryName={entry.name}
+                                onSelect={selectEntryByName}
+                                index={i}
+                                ratingSummary={ratingSummaries[entry.name]}
+                                isBookmarked={bookmarks.includes(entry.name)}
+                                onToggleBookmark={handleToggleBookmark}
+                              />
+                            ))}
+                          </div>
+                        )}
 
-                        <span className="text-xs font-medium px-3 text-neutral-500 dark:text-neutral-400">
-                          Page {currentPage} of {totalPages}
-                        </span>
+                        {/* Pagination Controls */}
+                        {totalPages > 1 && (
+                          <div className="flex items-center justify-center gap-3 mt-10">
+                            <button
+                              onClick={() => {
+                                setCurrentPage((p) => Math.max(1, p - 1));
+                                scrollToCatalog();
+                              }}
+                              disabled={currentPage === 1}
+                              className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all border cursor-pointer ${
+                                currentPage === 1
+                                  ? "opacity-40 cursor-not-allowed border-transparent text-neutral-400"
+                                  : "border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:border-neutral-300 dark:hover:border-white/20"
+                              }`}
+                            >
+                              ← Previous
+                            </button>
 
-                        <button
-                          onClick={() => {
-                            setCurrentPage((p) => Math.min(totalPages, p + 1));
-                            scrollToCatalog();
-                          }}
-                          disabled={currentPage === totalPages}
-                          className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all border cursor-pointer ${
-                            currentPage === totalPages
-                              ? "opacity-40 cursor-not-allowed border-transparent text-neutral-400"
-                              : "border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:border-neutral-300 dark:hover:border-white/20"
-                          }`}
-                        >
-                          Next →
-                        </button>
-                      </div>
+                            <span className="text-xs font-medium px-3 text-neutral-500 dark:text-neutral-400">
+                              Page {currentPage} of {totalPages}
+                            </span>
+
+                            <button
+                              onClick={() => {
+                                setCurrentPage((p) => Math.min(totalPages, p + 1));
+                                scrollToCatalog();
+                              }}
+                              disabled={currentPage === totalPages}
+                              className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all border cursor-pointer ${
+                                currentPage === totalPages
+                                  ? "opacity-40 cursor-not-allowed border-transparent text-neutral-400"
+                                  : "border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:border-neutral-300 dark:hover:border-white/20"
+                              }`}
+                            >
+                              Next →
+                            </button>
+                          </div>
+                        )}
+                      </>
                     )}
                   </div>
                 </div>
@@ -1400,30 +1450,76 @@ const Inner: React.FC = () => {
                     <span className="opacity-40">/</span>
                     <span className="font-semibold text-neutral-900 dark:text-white">Explorer</span>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <h1 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
-                      AI Resource Directory
-                    </h1>
-                    <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-white/[0.06] text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-white/[0.08] tabular-nums">
-                      {filtered.length} of {entries.length} items
-                    </span>
-                  </div>
-                </div>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 w-full">
+                    <div className="flex items-center gap-3">
+                      <h1 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
+                        {catalogDisplayMode === "ecosystems" ? "AI Labs & Ecosystems" : "AI Resource Directory"}
+                      </h1>
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-white/[0.06] text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-white/[0.08] tabular-nums">
+                        {catalogDisplayMode === "ecosystems" ? "Ecosystem Portfolios" : `${filtered.length} of ${entries.length} items`}
+                      </span>
+                    </div>
 
-                {/* Centralized Google Search input */}
-                <div className="w-full md:w-80 shrink-0">
-                  <SearchBar
-                    query={searchInput}
-                    onChange={handleSearchChange}
-                    entries={entries}
-                    onSelect={handleSearchSelect}
-                    showDropdown={false}
-                  />
+                    <div className="flex flex-wrap items-center gap-3">
+                      {/* View Switcher: Individual vs By Lab */}
+                      <div className="flex items-center p-1 rounded-xl bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08]">
+                        <button
+                          onClick={() => setCatalogDisplayMode("assets")}
+                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                            catalogDisplayMode === "assets"
+                              ? resolvedTheme === "amoled"
+                                ? "bg-white text-black shadow-xs"
+                                : "bg-neutral-900 text-white shadow-xs"
+                              : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                          }`}
+                        >
+                          <Box size={13} />
+                          <span>All Assets</span>
+                        </button>
+                        <button
+                          onClick={() => setCatalogDisplayMode("ecosystems")}
+                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                            catalogDisplayMode === "ecosystems"
+                              ? resolvedTheme === "amoled"
+                                ? "bg-white text-black shadow-xs"
+                                : "bg-neutral-900 text-white shadow-xs"
+                              : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                          }`}
+                        >
+                          <Building2 size={13} />
+                          <span>By AI Lab</span>
+                        </button>
+                      </div>
+
+                      {catalogDisplayMode === "assets" && (
+                        <div className="w-full sm:w-72 shrink-0">
+                          <SearchBar
+                            query={searchInput}
+                            onChange={handleSearchChange}
+                            entries={entries}
+                            onSelect={handleSearchSelect}
+                            showDropdown={false}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* Main Content: Left Filter Sidebar + Right Asset Grid */}
-              <div className="flex flex-col lg:flex-row gap-8 w-full items-start">
+              {catalogDisplayMode === "ecosystems" ? (
+                <div className="w-full pb-16">
+                  <EcosystemsSection
+                    entries={entries}
+                    onSelectEntry={(entry) => setSelected(entry)}
+                    bookmarks={bookmarks}
+                    onToggleBookmark={handleToggleBookmark}
+                    ratingSummaries={ratingSummaries}
+                  />
+                </div>
+              ) : (
+                /* Main Content: Left Filter Sidebar + Right Asset Grid */
+                <div className="flex flex-col lg:flex-row gap-8 w-full items-start">
                 {/* Left Pane: Google Cloud Style Resource Filter */}
                 <div className="hidden lg:block w-64 shrink-0 sticky top-20">
                   <Sidebar
@@ -1596,7 +1692,8 @@ const Inner: React.FC = () => {
                   )}
                 </div>
               </div>
-            </div>
+            )}
+          </div>
           )}
         </div>
       )}

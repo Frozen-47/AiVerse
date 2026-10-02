@@ -8,6 +8,7 @@ import {
   Database, 
   Cloud, 
   Sparkles,
+  Building2,
   X,
   SlidersHorizontal
 } from "lucide-react";
@@ -22,10 +23,13 @@ interface DashboardHeroProps {
   activeTask: string;
   onSelectTask: (task: string) => void;
   onScrollToCatalog: () => void;
+  catalogDisplayMode?: "assets" | "ecosystems";
+  onSelectDisplayMode?: (mode: "assets" | "ecosystems") => void;
 }
 
 const CATEGORY_CHIPS = [
   { id: "All", label: "All Assets", icon: Globe },
+  { id: "Ecosystems", label: "AI Labs & Ecosystems", icon: Building2 },
   { id: "Model", label: "Models & LLMs", icon: Cpu },
   { id: "Framework", label: "Frameworks", icon: Zap },
   { id: "Dataset", label: "Datasets", icon: Database },
@@ -51,6 +55,8 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
   activeTask,
   onSelectTask,
   onScrollToCatalog,
+  catalogDisplayMode = "assets",
+  onSelectDisplayMode,
 }) => {
   const { resolvedTheme } = useTheme();
   const isAmoled = resolvedTheme === "amoled";
@@ -152,13 +158,21 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
         <div className="w-full flex flex-col items-center gap-3">
           <div className="flex flex-wrap items-center justify-center gap-1.5 p-1 rounded-2xl bg-neutral-100/70 dark:bg-white/[0.04] border border-neutral-200/60 dark:border-white/[0.08] backdrop-blur-md">
             {CATEGORY_CHIPS.map((chip) => {
-              const isActive = activeType === chip.id;
+              const isActive =
+                chip.id === "Ecosystems"
+                  ? catalogDisplayMode === "ecosystems"
+                  : catalogDisplayMode === "assets" && activeType === chip.id;
               const Icon = chip.icon;
               return (
                 <button
                   key={chip.id}
                   onClick={() => {
-                    onSelectType(chip.id);
+                    if (chip.id === "Ecosystems") {
+                      onSelectDisplayMode?.("ecosystems");
+                    } else {
+                      onSelectDisplayMode?.("assets");
+                      onSelectType(chip.id);
+                    }
                     onScrollToCatalog();
                   }}
                   className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all duration-150 flex items-center gap-2 cursor-pointer ${
