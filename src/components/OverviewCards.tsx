@@ -121,56 +121,57 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
   ];
 
   return (
-    <div className={`p-5 rounded-2xl border transition-all duration-200 ${
+    <div className={`p-6 sm:p-7 rounded-3xl border transition-all duration-200 ${
       isAmoled
         ? "bg-neutral-900/40 border-white/[0.08]"
         : "bg-neutral-50/70 border-neutral-200/80 shadow-2xs"
     }`}>
-      <div className="flex items-center justify-between mb-4 pb-3 border-b border-neutral-200/60 dark:border-white/[0.06]">
-        <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between mb-5 pb-3 border-b border-neutral-200/60 dark:border-white/[0.06]">
+        <div className="flex items-center gap-2.5">
           <span className="w-2 h-2 rounded-full bg-emerald-500" />
           <h3 className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
-            Platform Telemetry
+            Platform Telemetry & Verified Intelligence
           </h3>
         </div>
-        <span className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
-          Live Sync
+        <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          Live Network Sync
         </span>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-2.5">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {cards.map((c, i) => {
           const Icon = c.icon;
           return (
             <div
               key={i}
               title={c.title}
-              className={`p-3 rounded-xl border flex items-center justify-between gap-3 ${
+              className={`p-4.5 rounded-2xl border flex items-center justify-between gap-4 transition-all duration-150 ${
                 isAmoled
-                  ? "bg-white/[0.02] border-white/[0.06]"
-                  : "bg-white border-neutral-200/70 shadow-2xs"
+                  ? "bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04]"
+                  : "bg-white border-neutral-200/70 shadow-2xs hover:shadow-xs"
               }`}
             >
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-3.5">
                 <div
-                  className={`w-8 h-8 rounded-lg flex items-center justify-center border shrink-0 ${
+                  className={`w-10 h-10 rounded-xl flex items-center justify-center border shrink-0 ${
                     isAmoled
                       ? "bg-white/[0.05] border-white/10 text-neutral-300"
                       : "bg-neutral-100 border-neutral-200 text-neutral-700"
                   }`}
                 >
-                  <Icon size={14} />
+                  <Icon size={16} />
                 </div>
                 <div>
-                  <div className="text-base font-semibold tracking-tight text-neutral-900 dark:text-white leading-none">
+                  <div className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white leading-none">
                     {c.value}
                   </div>
-                  <span className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400 mt-1 block">
+                  <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400 mt-1 block">
                     {c.label}
                   </span>
                 </div>
               </div>
-              <span className={`inline-flex items-center text-[10px] font-medium px-2 py-0.5 rounded-md border shrink-0 ${
+              <span className={`inline-flex items-center text-[10px] font-medium px-2.5 py-1 rounded-full border shrink-0 ${
                 isAmoled
                   ? "bg-white/[0.04] text-neutral-300 border-white/10"
                   : "bg-neutral-100 text-neutral-700 border-neutral-200"

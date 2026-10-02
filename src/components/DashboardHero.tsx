@@ -62,7 +62,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
   const isAmoled = resolvedTheme === "amoled";
 
   return (
-    <div className="relative pt-2 pb-6 sm:pt-4 sm:pb-8 overflow-hidden">
+    <div className="relative pt-4 pb-8 sm:pt-8 sm:pb-12 overflow-hidden">
       {/* Subtle atmospheric lighting */}
       <div 
         aria-hidden="true" 
@@ -83,12 +83,12 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
 
       <div className="flex flex-col items-center text-center max-w-4xl mx-auto px-4">
         {/* Apple/Google minimalist pill badge */}
-        <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border mb-4 text-[11px] font-medium transition-all backdrop-blur-md ${
+        <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border mb-5 text-[11px] font-medium transition-all backdrop-blur-md ${
           isAmoled
             ? "bg-white/[0.04] border-white/10 text-neutral-300"
             : "bg-neutral-100/80 border-neutral-200 text-neutral-700 shadow-2xs"
         }`}>
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           <span className="font-semibold text-neutral-400 dark:text-neutral-400">Command Center</span>
           <span className="opacity-30">•</span>
           <span className="font-medium text-neutral-900 dark:text-white">
@@ -97,7 +97,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
         </div>
 
         {/* Clean, authoritative headline */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] mb-3 text-neutral-900 dark:text-white">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.12] mb-4 text-neutral-900 dark:text-white">
           Every AI Tool, Model & Tech.{" "}
           <span className={
             isAmoled 
@@ -109,18 +109,18 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
         </h1>
 
         {/* Hero Subtitle */}
-        <p className="text-sm sm:text-base leading-relaxed max-w-xl font-normal mb-6 text-neutral-500 dark:text-neutral-400">
+        <p className="text-sm sm:text-base leading-relaxed max-w-2xl font-normal mb-8 text-neutral-500 dark:text-neutral-400">
           The citation-backed open compendium. Search architectural blueprints, benchmark scores, licenses, and verified resources.
         </p>
 
         {/* Spotlight-inspired Search Bar */}
-        <div className="w-full max-w-2xl relative mb-5">
-          <div className={`relative flex items-center rounded-2xl border px-4 py-3 transition-all duration-200 ${
+        <div className="w-full max-w-2xl relative mb-6">
+          <div className={`relative flex items-center rounded-2xl border px-5 py-3.5 transition-all duration-200 ${
             isAmoled
               ? "bg-neutral-900/70 border-white/10 shadow-xl backdrop-blur-xl focus-within:border-white/30 focus-within:ring-2 focus-within:ring-white/10"
               : "bg-white border-neutral-200/90 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] focus-within:border-neutral-400 focus-within:ring-2 focus-within:ring-neutral-200/80"
           }`}>
-            <Search size={18} className="text-neutral-400 dark:text-neutral-400 mr-3 shrink-0" />
+            <Search size={19} className="text-neutral-400 dark:text-neutral-400 mr-3.5 shrink-0" />
             <input
               type="text"
               data-search="true"
@@ -138,7 +138,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
               <button 
                 type="button"
                 onClick={() => onSearchChange("")}
-                className="p-1 rounded-full text-neutral-400 hover:text-neutral-600 dark:hover:text-white mr-2 cursor-pointer transition-colors"
+                className="p-1.5 rounded-full text-neutral-400 hover:text-neutral-600 dark:hover:text-white mr-2 cursor-pointer transition-colors"
                 aria-label="Clear search"
               >
                 <X size={15} />
@@ -155,8 +155,8 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
         </div>
 
         {/* Clean Segmented Category Bar (Apple style) */}
-        <div className="w-full flex flex-col items-center gap-3">
-          <div className="flex flex-wrap items-center justify-center gap-1.5 p-1 rounded-2xl bg-neutral-100/70 dark:bg-white/[0.04] border border-neutral-200/60 dark:border-white/[0.08] backdrop-blur-md">
+        <div className="w-full flex flex-col items-center gap-3.5">
+          <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-neutral-100/70 dark:bg-white/[0.04] border border-neutral-200/60 dark:border-white/[0.08] backdrop-blur-md">
             {CATEGORY_CHIPS.map((chip) => {
               const isActive =
                 chip.id === "Ecosystems"
@@ -175,7 +175,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
                     }
                     onScrollToCatalog();
                   }}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all duration-150 flex items-center gap-2 cursor-pointer ${
+                  className={`px-4 py-2 rounded-xl text-xs font-medium transition-all duration-150 flex items-center gap-2 cursor-pointer ${
                     isActive
                       ? isAmoled
                         ? "bg-white text-black font-semibold shadow-sm"
@@ -183,7 +183,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
                       : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/50 dark:hover:bg-white/[0.06]"
                   }`}
                 >
-                  <Icon size={13} className="shrink-0" />
+                  <Icon size={14} className="shrink-0" />
                   <span>{chip.label}</span>
                 </button>
               );
@@ -191,9 +191,9 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
           </div>
 
           {/* Quick Task Tags (Clean Minimalist Google style) */}
-          <div className="flex flex-wrap items-center justify-center gap-1.5 mt-1">
-            <span className="text-[11px] font-medium text-neutral-400 dark:text-neutral-400 flex items-center gap-1 mr-1">
-              <SlidersHorizontal size={11} /> Tasks:
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-1">
+            <span className="text-xs font-medium text-neutral-400 dark:text-neutral-400 flex items-center gap-1 mr-1">
+              <SlidersHorizontal size={12} /> Filter Task:
             </span>
             {TASK_CHIPS.map((task) => {
               const isActive = activeTask === task.id;
@@ -204,7 +204,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
                     onSelectTask(task.id);
                     onScrollToCatalog();
                   }}
-                  className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all cursor-pointer border ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer border ${
                     isActive
                       ? isAmoled
                         ? "bg-white/15 text-white border-white/30 font-semibold"
