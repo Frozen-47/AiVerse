@@ -1,35 +1,42 @@
 import React from "react";
 import { ArrowLeft, Sparkles } from "lucide-react";
-import { useTokens, useTheme } from "../../lib/theme";
 
 interface FeatureHeaderProps {
   onBackToHome: () => void;
 }
 
 export const FeatureHeader: React.FC<FeatureHeaderProps> = ({ onBackToHome }) => {
-  const t = useTokens();
-  const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "amoled";
   return (
-    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-dashed border-slate-200 dark:border-white/6">
-      <div>
-        <div className={`inline-flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-widest border rounded-full px-3 py-1 mb-3.5 ${t.surface} ${t.border} ${t.textMuted}`}>
-          <Sparkles size={10} className={isDark ? "text-white/50" : "text-black/50"} />
-          Ecosystem Features Hub
+    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-neutral-200/80 dark:border-white/[0.08]">
+      <div className="flex flex-col gap-1.5">
+        <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+          <button
+            onClick={onBackToHome}
+            className="hover:text-blue-500 hover:underline cursor-pointer flex items-center gap-1 transition-colors"
+          >
+            <ArrowLeft size={12} />
+            Dashboard
+          </button>
+          <span className="opacity-40">/</span>
+          <span>Interactive Tools</span>
+          <span className="opacity-40">/</span>
+          <span className="font-semibold text-neutral-900 dark:text-white">Suite Console</span>
         </div>
-        <h1 className={`text-[clamp(32px,4vw,48px)] font-black leading-[1.05] tracking-[-0.03em] mb-2.5 ${t.textPrimary}`}>
-          Interactive Suite
-        </h1>
-        <p className={`text-[13px] font-light ${t.textSecondary}`}>
-          Explore dynamic discovery engines, spec Head-to-Heads, and visual categories.
-        </p>
+        <div className="flex items-center gap-3">
+          <h1 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
+            Interactive AI Suite
+          </h1>
+          <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 flex items-center gap-1">
+            <Sparkles size={11} /> Live Workspaces
+          </span>
+        </div>
       </div>
 
       <button
         onClick={onBackToHome}
-        className={`shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border shadow-sm transition-all cursor-pointer ${t.surface} ${t.border} ${t.textPrimary} hover:${t.borderHover} hover:${t.textAccent}`}
+        className="shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer shadow-xs w-fit"
       >
-        <ArrowLeft size={14} />
+        <ArrowLeft size={13} />
         Back to Dashboard
       </button>
     </div>

@@ -85,30 +85,30 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
   return (
     <div
       id="arena"
-      className={`relative p-6 sm:p-8 rounded-[28px] border backdrop-blur-md transition-all duration-300 scroll-mt-24 overflow-hidden ${t.surface} shadow-xl`}
+      className="relative p-6 sm:p-8 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl transition-all duration-300 scroll-mt-24 overflow-hidden shadow-xs"
     >
       {/* Lock overlay if not logged in */}
       {!user && (
         <div className={`absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center backdrop-blur-[6px] transition-colors duration-200 ${
           isDark ? "bg-neutral-900/90 text-white" : "bg-white/90 text-neutral-900"
         }`}>
-          <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 shadow-lg ${t.iconBgSolid}`}>
-            <Lock size={24} />
+          <div className={`w-13 h-13 rounded-2xl flex items-center justify-center mb-4 shadow-sm ${t.iconBgSolid}`}>
+            <Lock size={22} />
           </div>
-          <h3 className={`text-xl font-bold mb-2 tracking-tight ${t.textPrimary}`}>Unlock AI Arena</h3>
-          <p className={`text-[13px] mb-6 max-w-95 leading-relaxed mx-auto ${t.textSecondary}`}>
+          <h3 className={`text-xl font-bold mb-2 tracking-tight ${t.textPrimary}`}>Unlock Comparison Arena</h3>
+          <p className={`text-xs mb-6 max-w-sm leading-relaxed mx-auto ${t.textSecondary}`}>
             Sign in to run real-time side-by-side technical comparisons across different AI models, frameworks, datasets, and serving tools.
           </p>
           <div className="flex items-center gap-3">
             <button 
               onClick={() => openAuthModal("signin")}
-              className={`${t.btnSecondary} px-5 py-2.5 rounded-xl font-medium text-sm transition-all border cursor-pointer`}
+              className="px-4 py-2 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/10 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all cursor-pointer shadow-xs"
             >
-              Login
+              Sign In
             </button>
             <button 
               onClick={() => openAuthModal("signup")}
-              className={`${t.btnPrimary} px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-md cursor-pointer`}
+              className="px-4 py-2 rounded-xl text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition-all shadow-xs cursor-pointer"
             >
               Create Account
             </button>
@@ -130,28 +130,30 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
         {...(!user ? { inert: true } : {})}
       >
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 mb-6 pb-5 border-b border-neutral-100 dark:border-white/[0.04]">
           <div className="text-left">
-            <div className="flex items-center gap-2 mb-3">
-              <span className={`text-[10px] font-extrabold tracking-widest uppercase px-2.5 py-1 rounded-full border ${t.pillInactive}`}>AI Arena</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 animate-pulse" />
+            <div className="flex items-center gap-2 mb-2">
+              <span className="w-2 h-2 rounded-full bg-blue-500" />
+              <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                Technical Comparison
+              </span>
             </div>
-            <h3 className={`text-xl font-bold tracking-tight mb-1.5 ${t.textPrimary}`}>
-              Side-by-Side Spec Comparison
+            <h3 className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
+              Side-by-Side Model Arena
             </h3>
-            <p className={`text-[13px] leading-relaxed max-w-xl font-light ${t.textSecondary}`}>
+            <p className="text-xs leading-relaxed max-w-xl text-neutral-500 dark:text-neutral-400 mt-1">
               Compare detailed specifications, licensing, limitations, and user rating metrics across different assets in our registry.
             </p>
           </div>
 
           {/* Preset matchups */}
           <div className="flex flex-wrap items-center gap-2 md:self-end">
-            <span className={`text-[10px] font-bold uppercase tracking-wider ${t.textMuted}`}>Matchups:</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">Presets:</span>
             {presets.map((match, idx) => (
               <button
                 key={idx}
                 onClick={() => { setCompareToolA(match.a); setCompareToolB(match.b); }}
-                className={`px-2.5 py-1.5 rounded-xl text-[10px] font-bold border transition-colors cursor-pointer ${t.pillInactive}`}
+                className="px-2.5 py-1 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04] transition-all cursor-pointer"
               >
                 {match.label}
               </button>

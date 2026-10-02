@@ -1,6 +1,5 @@
 import React, { memo, useMemo } from "react";
-import { Star, Layers, Box, Database, Server, LayoutGrid, Bot, Bookmark } from "lucide-react";
-import { useTokens, taskColor, taskActiveColor, typeActiveColor, typeColorClass } from "../lib/theme";
+import { Star, Layers, Box, Database, Server, LayoutGrid, Bot, Bookmark, RotateCcw } from "lucide-react";
 import type { Entry, TypeFilter, TaskFilter } from "../types";
 
 interface SidebarProps {
@@ -17,18 +16,17 @@ interface SidebarProps {
   savedOnly?: boolean;
   savedCount?: number;
   onSavedToggle?: () => void;
+  onResetFilters?: () => void;
 }
 
 const TYPE_ICONS: Record<string, React.ReactNode> = {
-  All: <LayoutGrid size={14} />,
-  AI: <Bot size={14} />,
-  Framework: <Layers size={14} />,
-  Dataset: <Database size={14} />,
-  Platform: <Server size={14} />,
-  Model: <Box size={14} />,
+  All: <LayoutGrid size={13} />,
+  AI: <Bot size={13} />,
+  Framework: <Layers size={13} />,
+  Dataset: <Database size={13} />,
+  Platform: <Server size={13} />,
+  Model: <Box size={13} />,
 };
-
-
 
 export const Sidebar = memo(function Sidebar({
   entries,
@@ -44,9 +42,8 @@ export const Sidebar = memo(function Sidebar({
   savedOnly,
   savedCount = 0,
   onSavedToggle,
+  onResetFilters,
 }: SidebarProps) {
-  const t = useTokens();
-
   const { typeCounts, taskCounts, popularCount } = useMemo(() => {
     const byType: Record<string, number> = {};
     const byTask: Record<string, number> = {};
@@ -67,125 +64,171 @@ export const Sidebar = memo(function Sidebar({
     return { typeCounts, taskCounts, popularCount: popular };
   }, [entries, typeFilters, taskFilters]);
 
+  const hasActiveFilters =
+    currentFilter !== "All" ||
+    currentTask !== "All Tasks" ||
+    popularOnly ||
+    !!savedOnly;
+
+  const handleReset = () => {
+    if (onResetFilters) {
+      onResetFilters();
+    } else {
+      onTypeFilter("All");
+      onTaskFilter("All Tasks");
+      if (popularOnly) onPopularToggle();
+      if (savedOnly && onSavedToggle) onSavedToggle();
+    }
+  };
+
   return (
-    <aside className="w-full flex flex-col gap-6">
-      {/* Stats */}
-      <div className="rounded-2xl p-4 glow-card">
-        <p className={t.sectionLabel}>
-          Overview
-        </p>
-        <div className="space-y-2">
-          {[
-            { label: "Total Entries", value: entries.length, color: t.textAccent },
-            { label: "AI Assistants", value: typeCounts["AI"], color: t.textAI },
-            { label: "Models", value: typeCounts["Model"], color: t.textModel },
-            { label: "Frameworks", value: typeCounts["Framework"], color: t.textFramework },
-            { label: "Datasets", value: typeCounts["Dataset"], color: t.textDataset },
-            { label: "Platforms", value: typeCounts["Platform"], color: t.textPlatform },
-            { label: "Popular", value: popularCount, color: t.textPopular },
-          ].map(({ label, value, color }) => (
-            <div key={label} className="flex items-center justify-between">
-              <span className={`text-[12px] ${t.textSecondary}`}>{label}</span>
-              <span className={`text-[13px] font-black tabular-nums ${color}`}>{value}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Type Filter */}
-      <div>
-        <p className={`${t.sectionLabel.replace('mb-3', 'mb-2')} px-1`}>
-          Type
-        </p>
-        <div className="space-y-0.5">
-          {typeFilters.map((f) => (
-            <button
-              key={f}
-              onClick={() => onTypeFilter(f as TypeFilter)}
-              className={`
-                w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-[13px] font-medium
-                transition-all duration-150
-                ${currentFilter === f ? typeActiveColor(f, t) : t.sidebarItem}
-              `}
-            >
-              <span className={`opacity-80 shrink-0 ${typeColorClass(f)}`}>{TYPE_ICONS[f]}</span>
-              <span className="flex-1 text-left">{f}</span>
-              <span className={`text-[11px] tabular-nums font-semibold ${currentFilter === f ? "" : t.textMuted}`}>
-                {typeCounts[f]}
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Task Filter */}
-      <div>
-        <p className={`${t.sectionLabel.replace('mb-3', 'mb-2')} px-1`}>
-          Task
-        </p>
-        <div className="space-y-0.5">
-          {taskFilters.map((f) => (
-            <button
-              key={f}
-              onClick={() => onTaskFilter(f as TaskFilter)}
-              className={`
-                w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-[13px] font-medium
-                transition-all duration-150
-                ${currentTask === f ? taskActiveColor(f, t) : t.sidebarItem}
-              `}
-            >
-              <span
-                className={`w-2 h-2 rounded-full shrink-0 ${taskColor(f)} ${f === "All Tasks" ? "opacity-30" : "opacity-80"}`}
-              />
-              <span className="flex-1 text-left truncate">{f}</span>
-              <span className={`text-[11px] tabular-nums font-semibold ${currentTask === f ? "" : t.textMuted}`}>
-                {taskCounts[f]}
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {onSavedToggle && (
-        <div>
-          <button
-            onClick={onSavedToggle}
-            className={`
-              w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-[13px] font-medium
-              transition-all duration-150
-              ${savedOnly ? t.sidebarActive : t.sidebarItem}
-            `}
-          >
-            <Bookmark size={14} className="shrink-0" />
-            <span className="flex-1 text-left">Saved only</span>
-            <span className={`text-[11px] tabular-nums font-semibold ${savedOnly ? "" : t.textMuted}`}>
-              {savedCount}
+    <aside className="w-full flex flex-col gap-4">
+      {/* Google Cloud Resource Filter Panel */}
+      <div className="rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl p-4 space-y-5 shadow-xs">
+        {/* Panel Header */}
+        <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-white/[0.06]">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-blue-500" />
+            <span className="text-xs font-bold tracking-tight text-neutral-900 dark:text-white uppercase">
+              Filter Resources
             </span>
-          </button>
+          </div>
+          {hasActiveFilters && (
+            <button
+              onClick={handleReset}
+              className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 cursor-pointer transition-all"
+            >
+              <RotateCcw size={10} />
+              Reset
+            </button>
+          )}
         </div>
-      )}
 
-      {/* Popular toggle */}
-      <div>
-        <button
-          onClick={onPopularToggle}
-          className={`
-            w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-[13px] font-medium
-            transition-all duration-150
-            ${popularOnly ? t.sidebarActive : t.sidebarItem}
-          `}
-        >
-          <Star size={14} className={popularOnly ? "fill-current" : ""} />
-          <span className="flex-1 text-left">Popular only</span>
-          <span className={`text-[11px] tabular-nums font-semibold ${popularOnly ? "" : t.textMuted}`}>
-            {popularCount}
+        {/* Collections Section */}
+        <div>
+          <p className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-2 px-1">
+            Collections
+          </p>
+          <div className="space-y-1">
+            {onSavedToggle && (
+              <button
+                onClick={onSavedToggle}
+                className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                  savedOnly
+                    ? "bg-neutral-900 text-white dark:bg-white dark:text-black font-semibold shadow-xs"
+                    : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <Bookmark size={13} className={savedOnly ? "fill-current" : "opacity-70"} />
+                  <span>Bookmarks</span>
+                </div>
+                <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
+                  savedOnly ? "bg-white/20 dark:bg-black/20" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400"
+                }`}>
+                  {savedCount}
+                </span>
+              </button>
+            )}
+
+            <button
+              onClick={onPopularToggle}
+              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                popularOnly
+                  ? "bg-neutral-900 text-white dark:bg-white dark:text-black font-semibold shadow-xs"
+                  : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <Star size={13} className={popularOnly ? "fill-current text-amber-400" : "opacity-70"} />
+                <span>Featured</span>
+              </div>
+              <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
+                popularOnly ? "bg-white/20 dark:bg-black/20" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400"
+              }`}>
+                {popularCount}
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {/* Category Type Filter */}
+        <div>
+          <p className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-2 px-1">
+            Category
+          </p>
+          <div className="space-y-1">
+            {typeFilters.map((f) => {
+              const isSelected = currentFilter === f;
+              return (
+                <button
+                  key={f}
+                  onClick={() => onTypeFilter(f as TypeFilter)}
+                  className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                    isSelected
+                      ? "bg-neutral-900 text-white dark:bg-white dark:text-black font-semibold shadow-xs"
+                      : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className={isSelected ? "text-white dark:text-black" : "opacity-70"}>
+                      {TYPE_ICONS[f] ?? <Box size={13} />}
+                    </span>
+                    <span>{f === "All" ? "All Categories" : f}</span>
+                  </div>
+                  <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
+                    isSelected ? "bg-white/20 dark:bg-black/20" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400"
+                  }`}>
+                    {typeCounts[f]}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Task Domain Filter */}
+        <div>
+          <p className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-2 px-1">
+            Domain / Task
+          </p>
+          <div className="space-y-1 max-h-60 overflow-y-auto pr-1">
+            {taskFilters.map((f) => {
+              const isSelected = currentTask === f;
+              return (
+                <button
+                  key={f}
+                  onClick={() => onTaskFilter(f as TaskFilter)}
+                  className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                    isSelected
+                      ? "bg-neutral-900 text-white dark:bg-white dark:text-black font-semibold shadow-xs"
+                      : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
+                  }`}
+                >
+                  <div className="flex items-center gap-2 truncate">
+                    <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${
+                      isSelected ? "bg-blue-400" : "bg-neutral-400 dark:bg-neutral-600"
+                    }`} />
+                    <span className="truncate">{f}</span>
+                  </div>
+                  <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full shrink-0 ${
+                    isSelected ? "bg-white/20 dark:bg-black/20" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400"
+                  }`}>
+                    {taskCounts[f]}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Status Footer */}
+        <div className="pt-3 border-t border-neutral-100 dark:border-white/[0.06] text-[11px] text-neutral-400 dark:text-neutral-500 flex items-center justify-between px-1">
+          <span>Matching Assets</span>
+          <span className="font-bold text-neutral-900 dark:text-white tabular-nums">
+            {filteredCount} / {entries.length}
           </span>
-        </button>
-      </div>
-
-      {/* Result count */}
-      <div className={`text-[11px] px-1 ${t.textMuted}`}>
-        Showing <span className={`font-bold ${t.textSecondary}`}>{filteredCount}</span> of {entries.length} entries
+        </div>
       </div>
     </aside>
   );

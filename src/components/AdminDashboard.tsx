@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from "react";
 import {
   ArrowLeft,
   Check,
-  Shield,
   Users,
   Server,
   Trash2,
@@ -889,38 +888,31 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const featuredCount = useMemo(() => approvedEntries.filter((e) => e.popular).length, [approvedEntries]);
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-[fadeUp_0.4s_ease-out] text-left">
-      {/* ── Header ─────────────────────────────────────────────────────────── */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 p-6 rounded-2xl border backdrop-blur-md transition-all duration-300 shadow-xs bg-linear-to-br from-white/[0.01] to-transparent dark:from-white/[0.005] border-neutral-200/40 dark:border-white/5">
-        <div className="space-y-4">
-          <button
-            onClick={onBackToHome}
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border shadow-xs transition-all cursor-pointer backdrop-blur-md ${
-              isDark
-                ? "bg-white/5 border-white/10 text-white/80 hover:text-white hover:border-white/20 hover:bg-white/10"
-                : "bg-white border-slate-200 text-slate-600 hover:text-black hover:border-neutral-300 hover:bg-neutral-50"
-            }`}
-          >
-            <ArrowLeft size={12} className="stroke-[2.5px]" />
-            Back to Dashboard
-          </button>
-          <div className="flex items-start gap-4">
-            <div className={`p-3 rounded-xl shrink-0 ${isDark ? "bg-amber-500/10 text-amber-400 border border-amber-500/15" : "bg-amber-50 border border-amber-200 text-amber-600 shadow-inner"}`}>
-              <Shield size={22} className="stroke-[2.5px]" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h1 className={`text-2xl font-black tracking-tight ${t.textPrimary}`}>
-                  Administrator Command Center
-                </h1>
-                <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-400 border border-emerald-500/25">
-                  Live
-                </span>
-              </div>
-              <p className={`text-[12px] mt-1 font-light leading-relaxed max-w-xl ${t.textSecondary}`}>
-                Audit submissions, curate the public AI catalog, manage user accounts, inspect system telemetry, and broadcast announcements.
-              </p>
-            </div>
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 animate-[fadeUp_0.3s_ease-out] text-left">
+      {/* ── Top Google Command Bar & Breadcrumbs ─────────────────────────────────────────── */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-neutral-200/80 dark:border-white/[0.08] mb-6">
+        <div className="flex flex-col gap-1.5">
+          <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+            <button
+              onClick={onBackToHome}
+              className="hover:text-blue-500 hover:underline cursor-pointer flex items-center gap-1 transition-colors"
+            >
+              <ArrowLeft size={12} />
+              Dashboard
+            </button>
+            <span className="opacity-40">/</span>
+            <span>Administration</span>
+            <span className="opacity-40">/</span>
+            <span className="font-semibold text-neutral-900 dark:text-white">Cloud Console</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <h1 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
+              Administrator Console
+            </h1>
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Production Live
+            </span>
           </div>
         </div>
 
@@ -945,16 +937,16 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 popular: false,
               });
             }}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-900/20 cursor-pointer transition-all active:scale-95"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 shadow-xs cursor-pointer transition-all"
           >
-            <Plus size={14} className="stroke-[3px]" />
+            <Plus size={13} className="stroke-[3px]" />
             Add New Asset
           </button>
           {!loading && (
             <button
               onClick={loadData}
               title="Refresh database records"
-              className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border shadow-xs cursor-pointer transition-all active:scale-95 ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary} hover:border-neutral-300 dark:hover:border-white/20`}
+              className="flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer shadow-xs"
             >
               <RefreshCw size={12} className={`stroke-[2.5px] ${loading ? "animate-spin" : ""}`} />
               Sync
@@ -965,26 +957,26 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
       {/* ── RLS Policy Warning Banner ───────────────────────────────────────── */}
       {error && (
-        <div className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-sm flex gap-3 animate-pulse">
-          <Info size={18} className="shrink-0 mt-0.5" />
+        <div className="mb-6 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs flex gap-3">
+          <Info size={16} className="shrink-0 mt-0.5" />
           <div className="space-y-1">
-            <p className="font-semibold">RLS Authorization Note</p>
-            <p className="text-xs leading-relaxed opacity-90 font-light">
-              The database query returned an advisory notice: {error}. Catalog fallback is active so all management tools remain operational.
+            <p className="font-semibold">Authorization & Policy Notice</p>
+            <p className="leading-relaxed opacity-90">
+              The database query returned: {error}. Catalog fallback is active so all management tools remain operational.
             </p>
           </div>
         </div>
       )}
 
-      {/* ── Segmented Tab Controller ────────────────────────────────────────── */}
-      <div className={`p-1.5 flex gap-1.5 mb-8 overflow-x-auto no-scrollbar max-w-full rounded-2xl border ${t.surface} ${t.border}`}>
+      {/* ── Segmented Tab Controller (Google Cloud Console Style) ────────────── */}
+      <div className="p-1.5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl flex flex-wrap gap-1.5 mb-8 shadow-xs">
         {[
-          { id: "submissions", label: "Pending Submissions", icon: Server, count: pendingEntries.length, countColor: "bg-amber-500/15 text-amber-400 border-amber-500/20" },
-          { id: "directory", label: "Approved Directory", icon: Star, count: approvedEntries.length, countColor: "bg-sky-500/15 text-sky-400 border-sky-500/20" },
-          { id: "users", label: "Registered Users", icon: Users, count: users.length, countColor: "bg-indigo-500/15 text-indigo-400 border-indigo-500/20" },
+          { id: "submissions", label: "Pending Submissions", icon: Server, count: pendingEntries.length, countColor: "bg-amber-500/15 text-amber-500 border-amber-500/20" },
+          { id: "directory", label: "Approved Directory", icon: Star, count: approvedEntries.length, countColor: "bg-blue-500/15 text-blue-500 border-blue-500/20" },
+          { id: "users", label: "Registered Users", icon: Users, count: users.length, countColor: "bg-indigo-500/15 text-indigo-500 border-indigo-500/20" },
           { id: "analytics", label: "Analytics & Telemetry", icon: BarChart3 },
-          { id: "announcements", label: "Site Broadcast", icon: Megaphone, count: announcement.enabled ? 1 : 0, countColor: "bg-emerald-500/15 text-emerald-400 border-emerald-500/20" },
-          { id: "audit", label: "Audit & Logs", icon: History, count: auditLogs.length, countColor: "bg-purple-500/15 text-purple-400 border-purple-500/20" },
+          { id: "announcements", label: "Site Broadcast", icon: Megaphone, count: announcement.enabled ? 1 : 0, countColor: "bg-emerald-500/15 text-emerald-500 border-emerald-500/20" },
+          { id: "audit", label: "Audit & Logs", icon: History, count: auditLogs.length, countColor: "bg-purple-500/15 text-purple-500 border-purple-500/20" },
         ].map((tab) => {
           const TabIcon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -992,18 +984,16 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as TabId)}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium transition-all whitespace-nowrap cursor-pointer ${
                 isActive
-                  ? isDark
-                    ? "bg-white/10 text-white shadow-md border border-white/10"
-                    : "bg-white text-black shadow-sm border border-neutral-200"
-                  : `text-neutral-400 hover:text-neutral-600 dark:text-white/45 dark:hover:text-white/70`
+                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold shadow-xs"
+                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
               }`}
             >
-              <TabIcon size={14} className="stroke-[2.5px]" />
+              <TabIcon size={13} className="stroke-[2.5px]" />
               <span>{tab.label}</span>
               {tab.count !== undefined && tab.count > 0 && (
-                <span className={`ml-1 px-1.5 py-0.5 text-[9px] font-extrabold rounded-full border ${tab.countColor}`}>
+                <span className={`ml-1 px-1.5 py-0.2 text-[9px] font-bold rounded-full border ${tab.countColor}`}>
                   {tab.count}
                 </span>
               )}

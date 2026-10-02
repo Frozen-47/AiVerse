@@ -1147,10 +1147,10 @@ const Inner: React.FC = () => {
           onViewEntry={setSelected}
         />
       ) : (
-        <div className="w-full px-4 sm:px-6 xl:px-12 py-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 py-6">
           {activeView === "landing" ? (
-            <div className="flex flex-col gap-10 animate-[fadeUp_0.4s_ease-out]">
-              {/* Modern Ambient Hero */}
+            <div className="flex flex-col gap-8 animate-[fadeUp_0.4s_ease-out]">
+              {/* 1. Header & Central Search */}
               <DashboardHero
                 searchQuery={searchInput}
                 onSearchChange={handleSearchChange}
@@ -1162,73 +1162,89 @@ const Inner: React.FC = () => {
                 onScrollToCatalog={scrollToCatalog}
               />
 
-              {/* Action Ribbon: Quick Feature Launchers */}
-              <FeatureRibbon
-                user={user}
-                onOpenAuth={openAuthModal}
-                onOpenWizard={() => setIsWizard(true)}
-                onOpenArena={() => setIsArena(true)}
-                onOpenPlayground={() => setIsPlayground(true)}
-                onOpenSuite={() => {
-                  window.location.hash = "";
-                  setIsFeatures(true);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-              />
+              {/* 2. Asymmetric Command Center Grid (8 cols main feed + 4 cols command sidebar) */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                {/* Main Column (8 cols): Daily Pulse Spotlight & Ecosystem Catalog */}
+                <div className="lg:col-span-8 flex flex-col gap-10">
+                  {/* Live Daily AI Pulse & Spotlight */}
+                  <DailyPulseSection entries={entries} onSelectEntry={setSelected} />
 
-              {/* Live Intelligence Stats */}
-              <div>
-                <OverviewCards
-                  totalEntriesCount={entries.length}
-                  entries={entries}
-                  ratingSummaries={ratingSummaries}
-                />
-              </div>
+                  {/* Direct Ecosystem Catalog Explorer */}
+                  <div ref={catalogSectionRef} className="pt-8 border-t border-neutral-200/80 dark:border-white/[0.08] scroll-mt-20">
+                    {/* Catalog Controls Header */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                          <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400">
+                            {filtered.length} of {entries.length} assets
+                          </span>
+                        </div>
+                        <h2 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
+                          Explore AI Technologies
+                        </h2>
+                      </div>
 
-              {/* Live Daily AI Pulse & Tool of the Day */}
-              <DailyPulseSection entries={entries} onSelectEntry={setSelected} />
+                      {/* Filter controls */}
+                      <div className="flex flex-wrap items-center gap-2">
+                        {/* Starred toggle */}
+                        <button
+                          onClick={() => {
+                            setPopularOnly((p) => !p);
+                            setCurrentPage(1);
+                          }}
+                          className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all cursor-pointer flex items-center gap-1.5 ${
+                            popularOnly
+                              ? resolvedTheme === "amoled"
+                                ? "bg-white/10 text-white border-white/30 font-semibold"
+                                : "bg-neutral-200 text-neutral-900 border-neutral-300 font-semibold"
+                              : "border-neutral-200 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
+                          }`}
+                        >
+                          <Sparkles size={12} className={popularOnly ? "fill-current" : ""} />
+                          <span>Featured</span>
+                        </button>
 
-              {/* ──────────────────────────────────────────────────────────── */}
-              {/* ALL-IN-ONE DIRECT CATALOG EXPLORER */}
-              {/* ──────────────────────────────────────────────────────────── */}
-              <div ref={catalogSectionRef} className="mt-6 pt-10 border-t border-slate-200 dark:border-white/5 scroll-mt-20">
-                {/* Catalog Controls Header */}
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 mb-8">
-                  <div>
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/10 text-white border border-white/20">
-                        Ecosystem Catalog
-                      </span>
-                      <span className={`text-[12px] font-semibold ${t.textMuted}`}>
-                        Showing {filtered.length} of {entries.length} assets
-                      </span>
+                        {/* Saved toggle */}
+                        <button
+                          onClick={handleSavedToggle}
+                          className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all cursor-pointer flex items-center gap-1.5 ${
+                            savedOnly
+                              ? resolvedTheme === "amoled"
+                                ? "bg-white/10 text-white border-white/30 font-semibold"
+                                : "bg-neutral-200 text-neutral-900 border-neutral-300 font-semibold"
+                              : "border-neutral-200 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
+                          }`}
+                        >
+                          <span>Bookmarks ({bookmarks.length})</span>
+                        </button>
+
+                        {/* Sidebar mode button */}
+                        <button
+                          onClick={() => {
+                            setBrowseAll(true);
+                            setActiveView("catalog");
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }}
+                          className="px-3.5 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/[0.08] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer flex items-center gap-1.5"
+                        >
+                          <Filter size={11} /> Filters
+                        </button>
+                      </div>
                     </div>
-                    <h2 className={`text-2xl md:text-3xl font-black tracking-tight ${t.textPrimary}`}>
-                      Explore All AI Technologies
-                    </h2>
-                  </div>
 
-                  {/* Filter controls & view full catalog */}
-                  <div className="flex flex-wrap items-center gap-2.5">
-                    {/* Category pills */}
-                    <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10">
+                    {/* Category pills - Apple segmented control */}
+                    <div className="inline-flex p-1 rounded-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08] mb-6 overflow-x-auto max-w-full">
                       {(["All", "Model", "Framework", "Dataset", "Platform", "AI"] as const).map((type) => {
-                        const activeStyles: Record<string, string> = {
-                          All: "bg-white text-black font-extrabold shadow-sm",
-                          Model: "bg-purple-500 text-white font-extrabold shadow-sm",
-                          Framework: "bg-amber-500 text-black font-extrabold shadow-sm",
-                          Dataset: "bg-emerald-500 text-black font-extrabold shadow-sm",
-                          Platform: "bg-sky-500 text-black font-extrabold shadow-sm",
-                          AI: "bg-rose-500 text-white font-extrabold shadow-sm",
-                        };
-                        const dots: Record<string, string> = {
-                          Model: "bg-purple-400",
-                          Framework: "bg-amber-400",
-                          Dataset: "bg-emerald-400",
-                          Platform: "bg-sky-400",
-                          AI: "bg-rose-400",
-                        };
                         const isSelected = typeFilter === type;
+                        const labelMap: Record<string, string> = {
+                          All: "All Types",
+                          Model: "Models",
+                          Framework: "Frameworks",
+                          Dataset: "Datasets",
+                          Platform: "Platforms",
+                          AI: "Apps",
+                        };
                         return (
                           <button
                             key={type}
@@ -1236,257 +1252,294 @@ const Inner: React.FC = () => {
                               setTypeFilter(type);
                               setCurrentPage(1);
                             }}
-                            className={`px-3 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                            className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
                               isSelected
-                                ? activeStyles[type]
-                                : `${t.textSecondary} hover:${t.textPrimary}`
+                                ? resolvedTheme === "amoled"
+                                  ? "bg-white text-black font-semibold shadow-xs"
+                                  : "bg-neutral-900 text-white font-semibold shadow-xs"
+                                : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                             }`}
                           >
-                            {dots[type] && !isSelected && (
-                              <span className={`w-1.5 h-1.5 rounded-full ${dots[type]}`} />
-                            )}
-                            <span>{type === "All" ? "All Types" : type}</span>
+                            <span>{labelMap[type]}</span>
                           </button>
                         );
                       })}
                     </div>
 
-                    {/* Starred toggle */}
-                    <button
-                      onClick={() => {
-                        setPopularOnly((p) => !p);
-                        setCurrentPage(1);
-                      }}
-                      className={`px-3 py-1.5 rounded-xl text-[11px] font-bold border transition-all cursor-pointer flex items-center gap-1.5 ${
-                        popularOnly
-                          ? "bg-amber-400 text-black border-amber-300 font-black shadow-[0_0_12px_rgba(251,191,36,0.35)]"
-                          : `${t.card} ${t.textSecondary} hover:${t.textPrimary}`
-                      }`}
-                    >
-                      <Sparkles size={12} className={popularOnly ? "text-black fill-black" : "text-amber-400"} />
-                      Featured Only
-                    </button>
+                    {/* Cards Grid or Empty State */}
+                    {paginatedEntries.length === 0 ? (
+                      <div className={`p-12 text-center rounded-2xl border ${
+                        resolvedTheme === "amoled" ? "bg-neutral-900/40 border-white/[0.08]" : "bg-neutral-50/70 border-neutral-200/80"
+                      } flex flex-col items-center justify-center`}>
+                        <p className="text-base font-semibold text-neutral-900 dark:text-white mb-2">
+                          No tools found matching your filters
+                        </p>
+                        <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-4">
+                          Try clearing search terms or selecting a different category.
+                        </p>
+                        <button
+                          onClick={() => {
+                            setSearchInput("");
+                            setTypeFilter("All");
+                            setTaskFilter("All Tasks");
+                            setPopularOnly(false);
+                            setSavedOnly(false);
+                          }}
+                          className="px-4 py-2 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black shadow-xs cursor-pointer hover:opacity-90 transition-all"
+                        >
+                          Reset All Filters
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {paginatedEntries.map((entry, i) => (
+                          <EntryCard
+                            key={entry.name}
+                            entry={entry}
+                            entryName={entry.name}
+                            onSelect={selectEntryByName}
+                            index={i}
+                            ratingSummary={ratingSummaries[entry.name]}
+                            isBookmarked={bookmarks.includes(entry.name)}
+                            onToggleBookmark={handleToggleBookmark}
+                          />
+                        ))}
+                      </div>
+                    )}
 
-                    {/* Saved toggle */}
-                    <button
-                      onClick={handleSavedToggle}
-                      className={`px-3 py-1.5 rounded-xl text-[11px] font-bold border transition-all cursor-pointer flex items-center gap-1.5 ${
-                        savedOnly
-                          ? "bg-violet-500 text-white border-violet-400 font-black shadow-[0_0_12px_rgba(139,92,246,0.35)]"
-                          : `${t.card} ${t.textSecondary} hover:${t.textPrimary}`
-                      }`}
-                    >
-                      <span>Bookmarks ({bookmarks.length})</span>
-                    </button>
+                    {/* Pagination Controls */}
+                    {totalPages > 1 && (
+                      <div className="flex items-center justify-center gap-3 mt-10">
+                        <button
+                          onClick={() => {
+                            setCurrentPage((p) => Math.max(1, p - 1));
+                            scrollToCatalog();
+                          }}
+                          disabled={currentPage === 1}
+                          className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all border cursor-pointer ${
+                            currentPage === 1
+                              ? "opacity-40 cursor-not-allowed border-transparent text-neutral-400"
+                              : "border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:border-neutral-300 dark:hover:border-white/20"
+                          }`}
+                        >
+                          ← Previous
+                        </button>
 
-                    {/* Sidebar mode button */}
-                    <button
-                      onClick={() => {
-                        setBrowseAll(true);
-                        setActiveView("catalog");
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      }}
-                      className="px-3.5 py-1.5 rounded-xl text-[11px] font-bold bg-slate-200/80 dark:bg-white/10 text-slate-700 dark:text-white/90 hover:bg-slate-300 dark:hover:bg-white/20 transition-all cursor-pointer flex items-center gap-1.5"
-                    >
-                      <Filter size={11} /> Advanced Filters
-                    </button>
+                        <span className="text-xs font-medium px-3 text-neutral-500 dark:text-neutral-400">
+                          Page {currentPage} of {totalPages}
+                        </span>
+
+                        <button
+                          onClick={() => {
+                            setCurrentPage((p) => Math.min(totalPages, p + 1));
+                            scrollToCatalog();
+                          }}
+                          disabled={currentPage === totalPages}
+                          className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all border cursor-pointer ${
+                            currentPage === totalPages
+                              ? "opacity-40 cursor-not-allowed border-transparent text-neutral-400"
+                              : "border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:border-neutral-300 dark:hover:border-white/20"
+                          }`}
+                        >
+                          Next →
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                {/* Cards Grid or Empty State */}
-                {paginatedEntries.length === 0 ? (
-                  <div className={`p-12 text-center rounded-2xl border ${t.card} flex flex-col items-center justify-center`}>
-                    <p className={`text-base font-semibold mb-2 ${t.textPrimary}`}>
-                      No tools found matching your filters
-                    </p>
-                    <p className={`text-xs ${t.textSecondary} mb-4`}>
-                      Try clearing search terms or selecting a different category.
-                    </p>
-                    <button
-                      onClick={() => {
-                        setSearchInput("");
-                        setTypeFilter("All");
-                        setTaskFilter("All Tasks");
-                        setPopularOnly(false);
-                        setSavedOnly(false);
-                      }}
-                      className="px-4 py-2 rounded-xl text-xs font-bold bg-white text-black shadow-sm cursor-pointer hover:bg-neutral-200 transition-all"
-                    >
-                      Reset All Filters
-                    </button>
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-                    {paginatedEntries.map((entry, i) => (
-                      <EntryCard
-                        key={entry.name}
-                        entry={entry}
-                        entryName={entry.name}
-                        onSelect={selectEntryByName}
-                        index={i}
-                        ratingSummary={ratingSummaries[entry.name]}
-                        isBookmarked={bookmarks.includes(entry.name)}
-                        onToggleBookmark={handleToggleBookmark}
-                      />
-                    ))}
-                  </div>
-                )}
+                {/* Right / Sidebar Column (4 cols - sticky on desktop) */}
+                <div className="lg:col-span-4 flex flex-col gap-6 lg:sticky lg:top-20">
+                  {/* Platform Telemetry */}
+                  <OverviewCards
+                    totalEntriesCount={entries.length}
+                    entries={entries}
+                    ratingSummaries={ratingSummaries}
+                  />
 
-                {/* Pagination Controls */}
-                {totalPages > 1 && (
-                  <div className="flex items-center justify-center gap-3 mt-10">
-                    <button
-                      onClick={() => {
-                        setCurrentPage((p) => Math.max(1, p - 1));
-                        scrollToCatalog();
-                      }}
-                      disabled={currentPage === 1}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
-                        currentPage === 1
-                          ? "opacity-40 cursor-not-allowed bg-slate-100 dark:bg-white/5 border-transparent text-slate-400"
-                          : `${t.card} ${t.textPrimary} hover:border-white/40`
-                      }`}
-                    >
-                      ← Previous
-                    </button>
+                  {/* Command Workflows / Tools */}
+                  <FeatureRibbon
+                    user={user}
+                    onOpenAuth={openAuthModal}
+                    onOpenWizard={() => setIsWizard(true)}
+                    onOpenArena={() => setIsArena(true)}
+                    onOpenPlayground={() => setIsPlayground(true)}
+                    onOpenSuite={() => {
+                      window.location.hash = "";
+                      setIsFeatures(true);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                  />
 
-                    <span className={`text-xs font-bold px-3 ${t.textMuted}`}>
-                      Page {currentPage} of {totalPages}
-                    </span>
-
-                    <button
-                      onClick={() => {
-                        setCurrentPage((p) => Math.min(totalPages, p + 1));
-                        scrollToCatalog();
-                      }}
-                      disabled={currentPage === totalPages}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
-                        currentPage === totalPages
-                          ? "opacity-40 cursor-not-allowed bg-slate-100 dark:bg-white/5 border-transparent text-slate-400"
-                          : `${t.card} ${t.textPrimary} hover:border-white/40`
-                      }`}
-                    >
-                      Next →
-                    </button>
-                  </div>
-                )}
-              </div>
-
-              {/* Value Propositions */}
-              <div className="mt-8">
-                <ValueProps />
+                  {/* Platform Standards / Value Props */}
+                  <ValueProps />
+                </div>
               </div>
             </div>
           ) : (
-            /* Main layout */
-            <div className="flex gap-8 w-full">
-              {/* Left pane: Sidebar */}
-              <div className="hidden lg:block w-56 shrink-0 pb-8">
-                <Sidebar
-                  entries={entries}
-                  currentFilter={typeFilter}
-                  currentTask={taskFilter}
-                  typeFilters={typeFilters}
-                  taskFilters={taskFilters}
-                  popularOnly={popularOnly}
-                  filteredCount={filtered.length}
-                  onTypeFilter={setTypeFilter}
-                  onTaskFilter={setTaskFilter}
-                  onPopularToggle={() => setPopularOnly((p) => !p)}
-                  savedOnly={savedOnly}
-                  savedCount={bookmarks.length}
-                  onSavedToggle={handleSavedToggle}
-                />
+            /* Google Cloud Console Style Catalog Directory */
+            <div className="flex flex-col gap-6 w-full animate-[fadeUp_0.3s_ease-out]">
+              {/* Top Google Command Bar & Breadcrumbs */}
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-neutral-200/80 dark:border-white/[0.08]">
+                <div className="flex flex-col gap-1.5">
+                  <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+                    <button
+                      onClick={() => {
+                        setBrowseAll(false);
+                        setActiveView("landing");
+                        setIsFeatures(false);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className="hover:text-blue-500 hover:underline cursor-pointer flex items-center gap-1 transition-colors"
+                    >
+                      <ArrowLeft size={12} />
+                      Dashboard
+                    </button>
+                    <span className="opacity-40">/</span>
+                    <span>Resource Directory</span>
+                    <span className="opacity-40">/</span>
+                    <span className="font-semibold text-neutral-900 dark:text-white">Explorer</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <h1 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
+                      AI Resource Directory
+                    </h1>
+                    <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-white/[0.06] text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-white/[0.08] tabular-nums">
+                      {filtered.length} of {entries.length} items
+                    </span>
+                  </div>
+                </div>
+
+                {/* Centralized Google Search input */}
+                <div className="w-full md:w-80 shrink-0">
+                  <SearchBar
+                    query={searchInput}
+                    onChange={handleSearchChange}
+                    entries={entries}
+                    onSelect={handleSearchSelect}
+                    showDropdown={false}
+                  />
+                </div>
               </div>
 
-              {/* Right pane: Content */}
-              <div className="flex-1 min-w-0 pb-32">
-                {/* Navigation Bar */}
-                <div className="mb-5">
-                  <button
-                    onClick={() => {
-                      setBrowseAll(false);
-                      setActiveView("landing");
-                      setIsFeatures(false);
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
+              {/* Main Content: Left Filter Sidebar + Right Asset Grid */}
+              <div className="flex flex-col lg:flex-row gap-8 w-full items-start">
+                {/* Left Pane: Google Cloud Style Resource Filter */}
+                <div className="hidden lg:block w-64 shrink-0 sticky top-20">
+                  <Sidebar
+                    entries={entries}
+                    currentFilter={typeFilter}
+                    currentTask={taskFilter}
+                    typeFilters={typeFilters}
+                    taskFilters={taskFilters}
+                    popularOnly={popularOnly}
+                    filteredCount={filtered.length}
+                    onTypeFilter={setTypeFilter}
+                    onTaskFilter={setTaskFilter}
+                    onPopularToggle={() => setPopularOnly((p) => !p)}
+                    savedOnly={savedOnly}
+                    savedCount={bookmarks.length}
+                    onSavedToggle={handleSavedToggle}
+                    onResetFilters={() => {
+                      setTypeFilter("All");
+                      setTaskFilter("All Tasks");
+                      setPopularOnly(false);
+                      setSavedOnly(false);
+                      setSearchInput("");
+                      setCurrentPage(1);
                     }}
-                    className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] font-bold border shadow-xs transition-all cursor-pointer backdrop-blur-md shrink-0 w-fit ${
-                      resolvedTheme === 'amoled'
-                        ? 'bg-white/5 border-white/10 text-white/80 hover:text-white hover:border-white/20'
-                        : 'bg-white/80 border-slate-200 text-slate-600 hover:text-black hover:border-slate-300'
-                    }`}
-                  >
-                    <ArrowLeft size={12} />
-                    Back to Dashboard
-                  </button>
+                  />
                 </div>
 
-                {/* Header Row: Title & Search */}
-                <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-5 border-b pb-6 border-slate-200 dark:border-white/5">
-                  <div>
-                    <h1 className={`text-2xl font-black tracking-tight ${t.textPrimary}`}>
-                      Ecosystem Catalog
-                    </h1>
-                    <p className={`text-[12px] font-light ${t.textSecondary} mt-1`}>
-                      Search and discover curated AI models, frameworks, datasets, and platform services.
-                    </p>
-                  </div>
-                  <div className="w-full md:w-96 shrink-0">
-                    <SearchBar
-                      query={searchInput}
-                      onChange={handleSearchChange}
-                      entries={entries}
-                      onSelect={handleSearchSelect}
-                      showDropdown={false}
-                    />
-                  </div>
-                </div>
-
-                {/* Mobile filters button */}
-                <div className="flex mb-5 lg:hidden">
-                  <button
-                    onClick={() => setShowMobileSidebar(true)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[13px] font-semibold border shadow-sm transition-all ${t.surface} ${t.border} ${t.textPrimary} hover:border-black/20`}
-                  >
-                    <Filter size={14} />
-                    Filters
-                    {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly || savedOnly) && (
-                      <span className="w-2 h-2 rounded-full bg-black/5 ml-1 animate-pulse" />
-                    )}
-                  </button>
-                </div>
-
-                {filtered.length === 0 ? (
-                  <div className="flex flex-col items-center justify-center py-32 gap-3">
-                    <div className={`text-5xl opacity-10 ${t.textPrimary}`}>◌</div>
-                    <p className={`text-[14px] ${t.textMuted}`}>No entries match your filters.</p>
+                {/* Right Pane: Results Grid & Controls */}
+                <div className="flex-1 min-w-0 pb-16">
+                  {/* Mobile filter toggle button */}
+                  <div className="flex mb-4 lg:hidden">
                     <button
-                      onClick={() => { setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); setSearchInput(""); }}
-                      className={`text-[12px] underline underline-offset-2 ${t.textAccent}`}
+                      onClick={() => setShowMobileSidebar(true)}
+                      className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white shadow-xs cursor-pointer"
                     >
-                      Clear all filters
+                      <Filter size={13} />
+                      Filter Resources
+                      {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly || savedOnly) && (
+                        <span className="w-2 h-2 rounded-full bg-blue-500 ml-1" />
+                      )}
                     </button>
                   </div>
-                ) : (
-                  <div className="flex flex-col">
-                    {pageForYou.length > 0 && (
-                      <section className="mb-8">
-                        <div className="flex items-center gap-3 mb-4">
-                          <h2 className={`text-lg font-bold tracking-tight ${t.textPrimary}`}>
-                            Picked for you
-                          </h2>
-                          <span className={`text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border ${t.surface} ${t.border} ${t.textMuted}`}>
-                            {personalized.forYou.length} matches
-                          </span>
-                        </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                          {pageForYou.map((entry, i) => (
+
+                  {filtered.length === 0 ? (
+                    <div className="p-12 text-center rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/50 dark:bg-white/[0.01] flex flex-col items-center justify-center my-6">
+                      <p className="text-base font-semibold text-neutral-900 dark:text-white mb-2">
+                        No resources matched your criteria
+                      </p>
+                      <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-4 max-w-sm">
+                        No assets found for the selected category or keywords. Try expanding your search or resetting filters.
+                      </p>
+                      <button
+                        onClick={() => {
+                          setTypeFilter("All");
+                          setTaskFilter("All Tasks");
+                          setPopularOnly(false);
+                          setSavedOnly(false);
+                          setSearchInput("");
+                          setCurrentPage(1);
+                        }}
+                        className="px-4 py-2 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black shadow-xs cursor-pointer hover:opacity-90 transition-all"
+                      >
+                        Reset All Filters
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col gap-8">
+                      {/* Picked For You Section (if applicable) */}
+                      {pageForYou.length > 0 && (
+                        <section>
+                          <div className="flex items-center justify-between gap-3 mb-4 pb-2 border-b border-neutral-100 dark:border-white/[0.04]">
+                            <div className="flex items-center gap-2">
+                              <span className="w-2 h-2 rounded-full bg-amber-500" />
+                              <h2 className="text-sm font-bold tracking-tight text-neutral-900 dark:text-white">
+                                Picked For You
+                              </h2>
+                            </div>
+                            <span className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400">
+                              {personalized.forYou.length} matched profile
+                            </span>
+                          </div>
+                          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                            {pageForYou.map((entry, i) => (
+                              <EntryCard
+                                key={entry.name}
+                                entry={entry}
+                                entryName={entry.name}
+                                onSelect={selectEntryByName}
+                                index={i}
+                                ratingSummary={ratingSummaries[entry.name]}
+                                isBookmarked={bookmarks.includes(entry.name)}
+                                onToggleBookmark={handleToggleBookmark}
+                              />
+                            ))}
+                          </div>
+                        </section>
+                      )}
+
+                      {/* Main Explore Section */}
+                      <section>
+                        {pageForYou.length > 0 && (
+                          <div className="flex items-center gap-2 mb-4 pb-2 border-b border-neutral-100 dark:border-white/[0.04]">
+                            <span className="w-2 h-2 rounded-full bg-blue-500" />
+                            <h2 className="text-sm font-bold tracking-tight text-neutral-900 dark:text-white">
+                              All Resources
+                            </h2>
+                          </div>
+                        )}
+                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                          {pageExplore.map((entry, i) => (
                             <EntryCard
                               key={entry.name}
                               entry={entry}
                               entryName={entry.name}
                               onSelect={selectEntryByName}
-                              index={i}
+                              index={i + pageForYou.length}
                               ratingSummary={ratingSummaries[entry.name]}
                               isBookmarked={bookmarks.includes(entry.name)}
                               onToggleBookmark={handleToggleBookmark}
@@ -1494,47 +1547,54 @@ const Inner: React.FC = () => {
                           ))}
                         </div>
                       </section>
-                    )}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                      {pageExplore.map((entry, i) => (
-                        <EntryCard
-                          key={entry.name}
-                          entry={entry}
-                          entryName={entry.name}
-                          onSelect={selectEntryByName}
-                          index={i + pageForYou.length}
-                          ratingSummary={ratingSummaries[entry.name]}
-                          isBookmarked={bookmarks.includes(entry.name)}
-                          onToggleBookmark={handleToggleBookmark}
-                        />
-                      ))}
-                    </div>
 
-                    {totalPages > 1 && (
-                      <div className="flex items-center justify-center gap-2 mt-10">
-                        <button
-                          onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                          disabled={currentPage === 1}
-                          className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${t.surface} ${t.border} ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : `hover:${t.textPrimary}`}`}
-                        >
-                          Prev
-                        </button>
-                        
-                        <span className={`text-[12px] tabular-nums px-3 ${t.textMuted}`}>
-                          Page {currentPage} of {totalPages}
+                      {/* Google Cloud Style Pagination Footer */}
+                      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-neutral-200/80 dark:border-white/[0.08] mt-4">
+                        <span className="text-xs text-neutral-500 dark:text-neutral-400">
+                          Showing <span className="font-semibold text-neutral-900 dark:text-white">{Math.min(filtered.length, (currentPage - 1) * 24 + 1)}-{Math.min(filtered.length, currentPage * 24)}</span> of <span className="font-semibold text-neutral-900 dark:text-white">{filtered.length}</span> resources
                         </span>
 
-                        <button
-                          onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                          disabled={currentPage === totalPages}
-                          className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${t.surface} ${t.border} ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : `hover:${t.textPrimary}`}`}
-                        >
-                          Next
-                        </button>
+                        {totalPages > 1 && (
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => {
+                                setCurrentPage((p) => Math.max(1, p - 1));
+                                window.scrollTo({ top: 0, behavior: "smooth" });
+                              }}
+                              disabled={currentPage === 1}
+                              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all border cursor-pointer ${
+                                currentPage === 1
+                                  ? "opacity-40 cursor-not-allowed border-transparent text-neutral-400"
+                                  : "border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:border-neutral-300 dark:hover:border-white/20 hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
+                              }`}
+                            >
+                              ← Previous
+                            </button>
+
+                            <span className="text-xs font-medium px-3 text-neutral-500 dark:text-neutral-400">
+                              {currentPage} / {totalPages}
+                            </span>
+
+                            <button
+                              onClick={() => {
+                                setCurrentPage((p) => Math.min(totalPages, p + 1));
+                                window.scrollTo({ top: 0, behavior: "smooth" });
+                              }}
+                              disabled={currentPage === totalPages}
+                              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all border cursor-pointer ${
+                                currentPage === totalPages
+                                  ? "opacity-40 cursor-not-allowed border-transparent text-neutral-400"
+                                  : "border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:border-neutral-300 dark:hover:border-white/20 hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
+                              }`}
+                            >
+                              Next →
+                            </button>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
-                )}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           )}

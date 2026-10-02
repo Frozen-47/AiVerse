@@ -107,116 +107,110 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onBackToHome }) 
     };
   }, []);
 
-  const activeColorMap: Record<string, { bg: string; text: string; icon: string }> = {
-    acceptance: { bg: "bg-emerald-500/10 border-emerald-500/30", text: "text-emerald-400", icon: "text-emerald-400" },
-    purpose: { bg: "bg-sky-500/10 border-sky-500/30", text: "text-sky-400", icon: "text-sky-400" },
-    accounts: { bg: "bg-violet-500/10 border-violet-500/30", text: "text-violet-400", icon: "text-violet-400" },
-    contributions: { bg: "bg-amber-500/10 border-amber-500/30", text: "text-amber-400", icon: "text-amber-400" },
-    licensing: { bg: "bg-cyan-500/10 border-cyan-500/30", text: "text-cyan-400", icon: "text-cyan-400" },
-    dmca: { bg: "bg-fuchsia-500/10 border-fuchsia-500/30", text: "text-fuchsia-400", icon: "text-fuchsia-400" },
-    "acceptable-use": { bg: "bg-orange-500/10 border-orange-500/30", text: "text-orange-400", icon: "text-orange-400" },
-    "third-party": { bg: "bg-teal-500/10 border-teal-500/30", text: "text-teal-400", icon: "text-teal-400" },
-    disclaimer: { bg: "bg-rose-500/10 border-rose-500/30", text: "text-rose-400", icon: "text-rose-400" },
-    contact: { bg: "bg-indigo-500/10 border-indigo-500/30", text: "text-indigo-400", icon: "text-indigo-400" },
-  };
 
   return (
-    <div className="w-full px-4 sm:px-6 xl:px-12 py-8">
-      {/* Header Banner */}
-      <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-dashed border-slate-200 dark:border-white/6">
-        <div>
-          <div className="inline-flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-widest border rounded-full px-3.5 py-1 mb-3.5 bg-emerald-500/10 border-emerald-500/30 text-emerald-400 shadow-xs">
-            <Scale size={11} className="text-emerald-400" />
-            Legal Framework Agreement
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 py-6 animate-[fadeUp_0.3s_ease-out]">
+      {/* Top Google Command Bar & Breadcrumbs */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-neutral-200/80 dark:border-white/[0.08] mb-8">
+        <div className="flex flex-col gap-1.5">
+          <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+            <button
+              onClick={onBackToHome}
+              className="hover:text-blue-500 hover:underline cursor-pointer flex items-center gap-1 transition-colors"
+            >
+              <ArrowLeft size={12} />
+              Dashboard
+            </button>
+            <span className="opacity-40">/</span>
+            <span>Legal & Governance</span>
+            <span className="opacity-40">/</span>
+            <span className="font-semibold text-neutral-900 dark:text-white">Terms of Service</span>
           </div>
-          <h1 className={`text-[clamp(32px,4vw,48px)] font-black leading-[1.05] tracking-[-0.03em] mb-2.5 ${t.textPrimary}`}>
-            Terms of Service
-          </h1>
-          <p className={`text-[13px] font-light ${t.textSecondary}`}>
-            Effective: May 20, 2026 · Comprehensive legal, architectural, and community terms governing the AiVerse platform.
-          </p>
+          <div className="flex items-center gap-3">
+            <h1 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
+              Terms of Service
+            </h1>
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+              Effective May 20, 2026
+            </span>
+          </div>
         </div>
 
         <button
           onClick={onBackToHome}
-          className={`shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border shadow-sm transition-all cursor-pointer ${t.surface} ${t.border} ${t.textPrimary} hover:border-emerald-500/40 hover:text-emerald-400 active:scale-95`}
+          className="shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer shadow-xs w-fit"
         >
-          <ArrowLeft size={14} />
+          <ArrowLeft size={13} />
           Back to Dashboard
         </button>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8 w-full items-start">
-        {/* Left Column: Floating Navigation Directory */}
+        {/* Left Column: Google Docs Table of Contents */}
         <div className="w-full lg:w-72 shrink-0 lg:sticky lg:top-20 space-y-4">
-          <div className={`p-5 rounded-2xl border backdrop-blur-md ${t.surface} ${t.border} shadow-lg`}>
-            <p className={`text-[10px] font-extrabold uppercase tracking-widest ${t.textMuted} mb-4`}>
-              Agreement Sections ({sections.length})
+          <div className="p-4 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xs">
+            <p className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-3 px-1">
+              Table of Contents
             </p>
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-0.5">
               {sections.map((sect) => {
                 const Icon = sect.icon;
                 const isActive = activeSection === sect.id;
-                const activeTheme = activeColorMap[sect.id] || {
-                  bg: "bg-white/10 border-white/20",
-                  text: "text-white",
-                  icon: "text-white",
-                };
 
                 return (
                   <button
                     key={sect.id}
                     onClick={() => scrollToSection(sect.id)}
-                    className={`w-full flex items-center justify-between p-2.5 rounded-xl text-[12px] font-bold text-left transition-all duration-300 cursor-pointer border ${
+                    className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-left transition-all cursor-pointer ${
                       isActive
-                        ? `${activeTheme.bg} ${activeTheme.text} shadow-xs font-black`
-                        : `${t.textSecondary} border-transparent hover:bg-white/5 hover:text-white`
+                        ? "bg-blue-500/10 text-blue-600 dark:text-blue-400 font-semibold"
+                        : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
                     }`}
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
-                      <Icon size={14} className={`shrink-0 ${isActive ? activeTheme.icon : "text-neutral-500"}`} />
+                      <Icon size={14} className={isActive ? "text-blue-500" : "opacity-60"} />
                       <span className="truncate">{sect.label}</span>
                     </div>
-                    {isActive && <ChevronRight size={12} className={`${activeTheme.icon} shrink-0 animate-pulse`} />}
+                    {isActive && <ChevronRight size={12} className="text-blue-500 shrink-0" />}
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* Quick Help Box */}
-          <div className={`hidden lg:block p-5 rounded-2xl border shadow-md ${t.surface} ${t.border} bg-gradient-to-br from-indigo-950/20 to-transparent`}>
-            <h4 className={`text-[12px] font-bold ${t.textPrimary} mb-1.5 flex items-center gap-1.5`}>
-              <Sparkles size={13} className="text-indigo-400" /> Have Inquiries?
+          {/* Help Box */}
+          <div className="hidden lg:block p-4 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/60 dark:bg-white/[0.02]">
+            <h4 className="text-xs font-bold text-neutral-900 dark:text-white mb-1 flex items-center gap-1.5">
+              <Sparkles size={12} className="text-blue-500" /> Have Questions?
             </h4>
-            <p className={`text-[11px] leading-relaxed ${t.textSecondary} mb-3.5`}>
-              Inspect our open-source codebase, review system architectures, or submit issues on GitHub.
+            <p className="text-[11px] leading-relaxed text-neutral-500 dark:text-neutral-400 mb-3">
+              Inspect our open-source codebase, review platform specifications, or submit questions.
             </p>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1.5">
               <a
                 href="https://github.com/Frozen-47/AiVerse"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-full py-2 rounded-xl text-[11px] font-bold text-center border transition-all ${t.surface2} ${t.border} text-indigo-400 hover:border-indigo-500/40 hover:bg-indigo-500/10`}
+                className="w-full py-1.5 rounded-lg text-[11px] font-semibold text-center border border-neutral-200 dark:border-white/[0.08] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all"
               >
-                GitHub Core
+                GitHub Repository
               </a>
               <a
                 href="mailto:frozennheart47@gmail.com"
-                className={`w-full py-2 rounded-xl text-[11px] font-bold text-center border transition-all ${t.surface2} ${t.border} text-sky-400 hover:border-sky-500/40 hover:bg-sky-500/10`}
+                className="w-full py-1.5 rounded-lg text-[11px] font-semibold text-center border border-blue-500/20 bg-blue-500/5 text-blue-600 dark:text-blue-400 hover:bg-blue-500/10 transition-all"
               >
-                Email Legal Support
+                Email Legal Team
               </a>
             </div>
           </div>
         </div>
 
         {/* Right Column: Complete Immersive content */}
-        <div className={`flex-1 min-w-0 border rounded-3xl p-6 sm:p-10 backdrop-blur-xl ${t.surface} ${t.border} shadow-2xl space-y-12`}>
+        <div className="flex-1 min-w-0 border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl rounded-2xl p-6 sm:p-10 shadow-xs space-y-12">
           {/* Top Notice */}
-          <div className="p-4.5 rounded-2xl border leading-normal text-[12px] font-medium flex items-center gap-3 border-emerald-500/30 bg-emerald-500/5 text-emerald-300">
-            <Scale size={20} className="shrink-0 text-emerald-400" />
-            <span>
+          <div className="p-4 rounded-xl border border-emerald-500/20 bg-emerald-500/5 text-xs text-neutral-700 dark:text-neutral-300 flex items-start gap-3">
+            <Scale size={18} className="shrink-0 text-emerald-500 mt-0.5" />
+            <span className="leading-relaxed">
               By accessing, browsing, or contributing to the AiVerse platform, you confirm your legal agreement to these Terms. All users are expected to contribute truthfully, respect open-weights licenses, and support safe AI practices.
             </span>
           </div>

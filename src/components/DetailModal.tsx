@@ -231,7 +231,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
     <div className={t.modalOverlay}>
       <div
         ref={modalRef}
-        className={`relative w-full max-w-2xl sm:max-w-3xl lg:max-w-4xl max-h-[92vh] flex flex-col rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 ${
+        className={`relative w-full max-w-2xl sm:max-w-3xl lg:max-w-4xl max-h-[92vh] flex flex-col rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 border border-neutral-200/80 dark:border-white/[0.08] ${
           isNew
             ? "border-2 border-white/25 ring-2 ring-white/10 shadow-sm"
             : ""
@@ -242,7 +242,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
           <button
             onClick={handleShareLink}
             title="Copy share link"
-            className={`w-8 h-8 flex items-center justify-center rounded-full border transition-all ${t.surface} ${t.border} ${linkCopied ? "text-emerald-400" : t.textMuted}`}
+            className={`w-8 h-8 flex items-center justify-center rounded-full border transition-all cursor-pointer ${t.surface} ${t.border} ${linkCopied ? "text-emerald-400" : t.textMuted}`}
           >
             {linkCopied ? <Check size={13} /> : <Link2 size={13} />}
           </button>
@@ -250,28 +250,37 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             <button
               onClick={onToggleBookmark}
               title={isBookmarked ? "Remove bookmark" : "Bookmark"}
-              className={`w-8 h-8 flex items-center justify-center rounded-full border transition-all ${t.surface} ${t.border} ${isBookmarked ? "text-amber-400 border-amber-500/30 bg-amber-500/10" : t.textMuted}`}
+              className={`w-8 h-8 flex items-center justify-center rounded-full border transition-all cursor-pointer ${t.surface} ${t.border} ${isBookmarked ? "text-amber-400 border-amber-500/30 bg-amber-500/10" : t.textMuted}`}
             >
               <Bookmark size={13} className={isBookmarked ? "fill-current" : ""} />
             </button>
           )}
           <button
             onClick={onClose}
-            className={`w-8 h-8 flex items-center justify-center rounded-full border transition-all ${t.surface} ${t.border} ${t.textMuted} hover:${t.textSecondary}`}
+            className={`w-8 h-8 flex items-center justify-center rounded-full border transition-all cursor-pointer ${t.surface} ${t.border} ${t.textMuted} hover:${t.textSecondary}`}
           >
             <X size={13} />
           </button>
         </div>
 
         {/* Header (fixed) */}
-        <div className={`shrink-0 px-7 pt-7 pb-6 border-b ${t.border}`}>
+        <div className={`shrink-0 px-7 pt-6 pb-5 border-b ${t.border}`}>
+          {/* Google Cloud Inspector Breadcrumb */}
+          <div className="flex items-center gap-1.5 text-[11px] text-neutral-500 dark:text-neutral-400 mb-3">
+            <span>Resource Specs</span>
+            <span className="opacity-40">/</span>
+            <span>{entry.type}</span>
+            <span className="opacity-40">/</span>
+            <span className="font-semibold text-neutral-900 dark:text-white truncate">{entry.name}</span>
+          </div>
+
           <div className="flex items-start gap-4 mb-4">
-            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-xl font-bold shrink-0 ${typeIcon(entry.type, t)}`}>
+            <div className={`w-13 h-13 rounded-2xl flex items-center justify-center text-xl font-bold shrink-0 ${typeIcon(entry.type, t)}`}>
               {TYPE_GLYPH[entry.type] ?? "◆"}
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap mb-1">
-                <h2 className={`text-xl font-black tracking-tight ${t.textPrimary}`}>{entry.name}</h2>
+                <h2 className={`text-xl font-bold tracking-tight ${t.textPrimary}`}>{entry.name}</h2>
                 {isNew && (
                   <span className="inline-flex items-center text-[9px] font-black uppercase px-2 py-0.5 rounded bg-purple-500/15 text-purple-400 border border-purple-500/25 animate-pulse">
                     NEW
@@ -279,7 +288,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 )}
                 {entry.popular && (
                   <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${t.popular}`}>
-                    <Star size={8} className="fill-current" /> Popular
+                    <Star size={8} className="fill-current text-amber-400" /> Popular
                   </span>
                 )}
               </div>

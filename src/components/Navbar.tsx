@@ -102,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, [isDropdownOpen]);
 
   return (
-    <nav className={`sticky top-0 z-40 border-b ${t.page} ${t.border} backdrop-blur-sm`}>
+    <nav className="sticky top-0 z-40 border-b backdrop-blur-xl bg-white/80 dark:bg-neutral-950/80 border-neutral-200/80 dark:border-white/[0.08]">
       <div className="w-full px-4 sm:px-6 xl:px-12 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <a
@@ -141,38 +141,38 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="overflow-hidden transition-all duration-75" style={{ maxWidth: isScrolled ? "0px" : "20px", opacity: isScrolled ? 0 : 1, transitionDelay: isScrolled ? "0ms" : "300ms" }}>e</span>
             </span>
           </a>
-          <span className={`hidden sm:inline-block text-xs font-semibold whitespace-nowrap ${t.textMuted}`}>
-            {entryCount} entries
+          <span className="hidden sm:inline-block text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] text-neutral-500 dark:text-neutral-400 border border-neutral-200 dark:border-white/[0.06] whitespace-nowrap">
+            {entryCount} assets
           </span>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           <SignedIn>
             <button
               onClick={onAddEntry}
-              className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer"
             >
-              <Plus size={16} />
+              <Plus size={14} />
               <span className="hidden sm:inline">Add Entry</span>
             </button>
 
             <div className="relative flex items-center ml-1 gap-2.5">
               {showGreeting && (
-                <span className={`text-sm font-semibold whitespace-nowrap ${t.textPrimary} `}>
+                <span className="text-xs font-medium text-neutral-600 dark:text-neutral-300 whitespace-nowrap">
                   Hi, {greetingName}
                 </span>
               )}
               <button
                 ref={avatarButtonRef}
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="relative flex items-center justify-center w-9 h-9 rounded-full overflow-hidden border border-white/10 transition-all focus:outline-hidden cursor-pointer"
+                className="relative flex items-center justify-center w-8 h-8 rounded-full overflow-hidden border border-neutral-200 dark:border-white/10 transition-all focus:outline-hidden cursor-pointer"
                 aria-label="User profile menu"
                 aria-expanded={isDropdownOpen}
               >
                 {effectiveAvatar ? (
                   <img src={effectiveAvatar} alt="User avatar" className="w-full h-full object-cover" />
                 ) : (
-                  <div className={`w-full h-full flex items-center justify-center font-bold text-sm ${resolvedTheme === 'amoled' ? 'bg-white text-black' : 'bg-black text-white'}`}>
+                  <div className={`w-full h-full flex items-center justify-center font-bold text-xs ${resolvedTheme === 'amoled' ? 'bg-white text-black' : 'bg-black text-white'}`}>
                     {initials}
                   </div>
                 )}
@@ -181,7 +181,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               {isDropdownOpen && onSaveProfile && (
                 <div
                   ref={dropdownRef}
-                  className={`absolute right-0 top-11 w-80 sm:w-88 rounded-2xl shadow-2xl p-2  z-50 backdrop-blur-xl ${t.modal} overflow-hidden`}
+                  className={`absolute right-0 top-11 w-80 sm:w-88 rounded-2xl shadow-2xl p-2 z-50 backdrop-blur-xl ${t.modal} overflow-hidden`}
                   style={{
                     boxShadow: `0 20px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px ${
                       resolvedTheme === "amoled" ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.08)"
@@ -210,33 +210,32 @@ export const Navbar: React.FC<NavbarProps> = ({
           <SignedOut>
             <button
               onClick={() => setTheme(resolvedTheme === "amoled" ? "light" : "amoled")}
-              className={`p-2 rounded-lg transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
+              className="p-2 rounded-full border border-neutral-200 dark:border-white/10 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer"
               aria-label="Toggle theme"
             >
-              {resolvedTheme === "amoled" ? <Sun size={18} /> : <Moon size={18} />}
+              {resolvedTheme === "amoled" ? <Sun size={15} /> : <Moon size={15} />}
             </button>
 
             <button
               onClick={() => onEditPreferences("preferences")}
-              className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
+              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-white/10 text-xs font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer"
               title="Sign in for personal preferences"
             >
-              <SlidersHorizontal size={16} />
-              <span className="hidden md:inline">Preferences</span>
+              <SlidersHorizontal size={13} />
+              <span>Preferences</span>
             </button>
             <div className="flex items-center gap-2">
               <button
                 onClick={() => openAuthModal("signin")}
-                className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium text-sm transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer"
               >
-                Login
+                Sign In
               </button>
               <button
                 onClick={() => openAuthModal("signup")}
-                className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-semibold text-sm transition-all ${t.btnPrimary}`}
+                className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition-all shadow-xs cursor-pointer"
               >
-                <span className="hidden sm:inline">Create Account</span>
-                <span className="sm:hidden">Sign Up</span>
+                <span>Get Started</span>
               </button>
             </div>
           </SignedOut>
@@ -244,4 +243,5 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
     </nav>
   );
+
 };

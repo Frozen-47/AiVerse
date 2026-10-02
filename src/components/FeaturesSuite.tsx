@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useTokens } from "../lib/theme";
+import { LayoutGrid, Sparkles, ArrowLeftRight, Terminal } from "lucide-react";
 import type { Entry, EntryRatingSummary } from "../types";
 
 import { FeatureHeader }     from "./features/FeatureHeader";
@@ -59,7 +59,6 @@ interface FeaturesSuiteProps {
 }
 
 export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
-  const t = useTokens();
   const [activeTab, setActiveTab] = useState<"overview" | "wizard" | "arena" | "playground">(
     props.initialTab || "overview"
   );
@@ -101,31 +100,33 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
   }, []);
 
   const tabs = [
-    { id: "overview", label: "Ecosystem Overview" },
-    { id: "wizard", label: "AI Discovery Wizard" },
-    { id: "arena", label: "Comparison Spec Arena" },
-    { id: "playground", label: "AI Model Playground" },
-  ];
+    { id: "overview", label: "Ecosystem Overview", icon: LayoutGrid },
+    { id: "wizard", label: "Discovery Wizard", icon: Sparkles },
+    { id: "arena", label: "Comparison Arena", icon: ArrowLeftRight },
+    { id: "playground", label: "Model Playground", icon: Terminal },
+  ] as const;
 
   return (
-    <div className="w-full px-4 sm:px-6 xl:px-12 py-8 flex flex-col gap-8 text-left">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 py-6 flex flex-col gap-6 text-left animate-[fadeUp_0.3s_ease-out]">
       <FeatureHeader onBackToHome={props.onBackToHome} />
 
-      {/* Dynamic Tab Navigator */}
-      <div className={`p-1 rounded-[20px] border flex gap-1 w-full max-w-2xl shrink-0 backdrop-blur-md transition-all ${t.surface} shadow-sm`}>
+      {/* Google Cloud Style Segmented Tab Controller */}
+      <div className="p-1.5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl flex flex-wrap gap-1.5 w-fit shadow-xs">
         {tabs.map((tab) => {
+          const Icon = tab.icon;
           const isActive = activeTab === tab.id;
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
-              className={`flex-1 text-center py-2.5 px-3 rounded-[15px] text-[11px] font-bold tracking-wide transition-all cursor-pointer select-none ${
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center gap-2 py-2 px-3.5 rounded-xl text-xs font-medium transition-all cursor-pointer select-none ${
                 isActive
-                  ? t.pillActive + " shadow-xs font-extrabold"
-                  : t.pillInactive
+                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold shadow-xs"
+                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
               }`}
             >
-              {tab.label}
+              <Icon size={14} className={isActive ? "text-blue-400 dark:text-blue-600" : "opacity-70"} />
+              <span>{tab.label}</span>
             </button>
           );
         })}
@@ -185,12 +186,9 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
             setCompareToolA={props.setCompareToolA}
             setCompareToolB={props.setCompareToolB}
             setIsArena={() => {
-              // Wait, since we are doing routing through state, changing activeTab to arena is cleaner!
               setActiveTab("arena");
             }}
-            setIsWizard={() => {
-              // Fallback
-            }}
+            setIsWizard={() => {}}
           />
         </div>
       )}
@@ -220,7 +218,7 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
       <div className="mt-4 text-center pb-8 shrink-0">
         <button
           onClick={props.onBackToHome}
-          className={`text-xs underline underline-offset-4 font-semibold transition-colors cursor-pointer ${t.textSecondary} hover:${t.textPrimary}`}
+          className="text-xs underline underline-offset-4 font-semibold text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors cursor-pointer"
         >
           Return to Dashboard Homepage
         </button>

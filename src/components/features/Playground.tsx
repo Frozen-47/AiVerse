@@ -164,7 +164,7 @@ export const Playground: React.FC = () => {
   return (
     <div
       id="playground"
-      className={`relative p-6 sm:p-8 rounded-[28px] border backdrop-blur-md transition-all duration-300 scroll-mt-24 overflow-hidden ${t.surface} shadow-xl`}
+      className="relative p-6 sm:p-8 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl transition-all duration-300 scroll-mt-24 overflow-hidden shadow-xs"
     >
       {/* Lock overlay if not logged in */}
       {!user && (
@@ -174,26 +174,26 @@ export const Playground: React.FC = () => {
           }`}
         >
           <div
-            className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 shadow-lg ${t.iconBgSolid}`}
+            className={`w-13 h-13 rounded-2xl flex items-center justify-center mb-4 shadow-sm ${t.iconBgSolid}`}
           >
-            <Lock size={24} />
+            <Lock size={22} />
           </div>
           <h3 className={`text-xl font-bold mb-2 tracking-tight ${t.textPrimary}`}>
-            Unlock AI Playground
+            Unlock AI Model Sandbox
           </h3>
-          <p className={`text-[13px] mb-6 max-w-95 leading-relaxed mx-auto ${t.textSecondary}`}>
+          <p className={`text-xs mb-6 max-w-sm leading-relaxed mx-auto ${t.textSecondary}`}>
             Sign in to compare outputs across different Llama, Mixtral, and Gemma models side-by-side in real-time.
           </p>
           <div className="flex items-center gap-3">
             <button
               onClick={() => openAuthModal("signin")}
-              className={`${t.btnSecondary} px-5 py-2.5 rounded-xl font-medium text-sm transition-all border cursor-pointer`}
+              className="px-4 py-2 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/10 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all cursor-pointer shadow-xs"
             >
-              Login
+              Sign In
             </button>
             <button
               onClick={() => openAuthModal("signup")}
-              className={`${t.btnPrimary} px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-md cursor-pointer`}
+              className="px-4 py-2 rounded-xl text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition-all shadow-xs cursor-pointer"
             >
               Create Account
             </button>
@@ -207,20 +207,18 @@ export const Playground: React.FC = () => {
         {...(!user ? { inert: true } : {})}
       >
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 border-b pb-6 border-white/5 text-left">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 mb-6 pb-5 border-b border-neutral-100 dark:border-white/[0.04] text-left">
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span
-                className={`text-[10px] font-extrabold tracking-widest uppercase px-2.5 py-1 rounded-full border ${t.pillInactive}`}
-              >
-                AI Model Playground
+            <div className="flex items-center gap-2 mb-2">
+              <span className="w-2 h-2 rounded-full bg-blue-500" />
+              <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                Inference Sandbox
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
             </div>
-            <h3 className={`text-xl font-bold tracking-tight mb-1.5 ${t.textPrimary}`}>
+            <h3 className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
               Multi-Model Prompt Sandbox
             </h3>
-            <p className={`text-[13px] leading-relaxed max-w-xl font-light ${t.textSecondary}`}>
+            <p className="text-xs leading-relaxed max-w-xl text-neutral-500 dark:text-neutral-400 mt-1">
               Test prompts simultaneously across different LLMs. Customize system prompts to enforce styles, JSON structures, or translations.
             </p>
           </div>
@@ -229,11 +227,11 @@ export const Playground: React.FC = () => {
           <div className="relative self-start md:self-end">
             <button
               onClick={() => setOpenTemplates((prev) => !prev)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-bold border transition-colors cursor-pointer ${t.pillInactive}`}
+              className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer shadow-xs"
             >
-              <Sparkles size={13} className="text-indigo-400" />
+              <Sparkles size={12} className="text-blue-500" />
               Quick Templates
-              <ChevronDown size={14} />
+              <ChevronDown size={13} />
             </button>
             {openTemplates && (
               <>
