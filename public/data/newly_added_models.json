@@ -1,5 +1,76 @@
 [
   {
+    "date": "2026-10-02",
+    "assets": [
+      {
+        "name": "clef",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by Cloudflare, trending with over 368 community likes and 18 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Cloudflare",
+        "size": "Open Weights",
+        "architecture": "Cloudflare image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Cloudflare/clef\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Cloudflare/clef\")",
+        "benchmarks": "Trending Score: 365, Likes: 368, Downloads: 18",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": true,
+        "url": "https://huggingface.co/Cloudflare/clef",
+        "citations": [
+          {
+            "text": "Cloudflare/clef on Hugging Face",
+            "url": "https://huggingface.co/Cloudflare/clef"
+          }
+        ]
+      },
+      {
+        "name": "OpenVuln",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by zai-org. Trending with 196 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "zai-org",
+        "size": "DOCKER Platform",
+        "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/zai-org/OpenVuln",
+        "benchmarks": "Trending Score: 66, Community Likes: 196",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": true,
+        "url": "https://huggingface.co/spaces/zai-org/OpenVuln",
+        "citations": [
+          {
+            "text": "zai-org/OpenVuln on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/zai-org/OpenVuln"
+          }
+        ]
+      },
+      {
+        "name": "audit-findings-dataset",
+        "type": "Dataset",
+        "summary": "Smart Contract Audit Findings \t This is raw, semi-structured data — not a ready-to-train dataset. It still requires further cleaning and preparation (deduplication, sev (79 likes, 1,014 downloads).",
+        "task": "AI Coding",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "Zaevlad",
+        "size": "10K<n<100K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Zaevlad/audit-findings-dataset\")",
+        "benchmarks": "Trending Score: 46, Likes: 79, Downloads: 1,014",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "url": "https://huggingface.co/datasets/Zaevlad/audit-findings-dataset",
+        "citations": [
+          {
+            "text": "Zaevlad/audit-findings-dataset on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/Zaevlad/audit-findings-dataset"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-01",
     "assets": [
       {

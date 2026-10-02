@@ -1,44 +1,44 @@
-# ⚡ AiVerse Daily Pulse (2026-10-01)
+# ⚡ AiVerse Daily Pulse (2026-10-02)
 
 > Automatically generated daily intelligence report syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Thu, 01 Oct 2026 03:18:44 GMT`*
+*Last Synchronized: `Fri, 02 Oct 2026 03:19:17 GMT`*
 
 ---
 
 ## 🆕 Newly Ingested Assets Today (3)
 
-### **Nemotron-3-Diarization** (`Model` • *nvidia*)
-> High-performance Audio open-weights model by nvidia, trending with over 565 community likes and 36,386 downloads on Hugging Face.
+### **clef** (`Model` • *Cloudflare*)
+> High-performance Multimodal open-weights model by Cloudflare, trending with over 368 community likes and 18 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Audio` • `OPENMDW-1.1` (2026)
-- ⚡ **Metrics**: `Trending Score: 398, Likes: 565, Downloads: 36,386`
-- 🔗 **Resource Link**: [https://huggingface.co/nvidia/Nemotron-3-Diarization](https://huggingface.co/nvidia/Nemotron-3-Diarization)
+- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 365, Likes: 368, Downloads: 18`
+- 🔗 **Resource Link**: [https://huggingface.co/Cloudflare/clef](https://huggingface.co/Cloudflare/clef)
 
-### **MiMo-RL-Envs-Explorer** (`Platform` • *FineEnvs*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by FineEnvs. Trending with 64 community stars.
+### **OpenVuln** (`Platform` • *zai-org*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by zai-org. Trending with 196 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 63, Community Likes: 64`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/FineEnvs/MiMo-RL-Envs-Explorer](https://huggingface.co/spaces/FineEnvs/MiMo-RL-Envs-Explorer)
+- ⚡ **Metrics**: `Trending Score: 66, Community Likes: 196`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/zai-org/OpenVuln](https://huggingface.co/spaces/zai-org/OpenVuln)
 
-### **typed-decisions** (`Dataset` • *LocalLLaMA*)
-> Typed Decisions 	 A benchmark for typed probabilistic decisions. A model gets one piece of unstructured state and answers five typed questions about it at once, and eve (85 likes, 19,901 downloads).
+### **audit-findings-dataset** (`Dataset` • *Zaevlad*)
+> Smart Contract Audit Findings 	 This is raw, semi-structured data — not a ready-to-train dataset. It still requires further cleaning and preparation (deduplication, sev (79 likes, 1,014 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 56, Likes: 85, Downloads: 19,901`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/LocalLLaMA/typed-decisions](https://huggingface.co/datasets/LocalLLaMA/typed-decisions)
+- 🏷️ **Domain & License**: `AI Coding` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 46, Likes: 79, Downloads: 1,014`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/Zaevlad/audit-findings-dataset](https://huggingface.co/datasets/Zaevlad/audit-findings-dataset)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **Claude 3.7 Sonnet** (`Model` • *Anthropic*)
-> Anthropic's hybrid reasoning frontier model that dynamically switches between near-instant conversational responses and deep extended step-by-step thinking.
+### **Qwen 2.5-VL (72B)** (`Model` • *Alibaba Cloud*)
+> Vision-language foundation model capable of reading hour-long videos, parsing fine-grained document charts, and operating computer UIs via agent grounding.
 
-- 🏛️ **Architecture**: Transformer-based multimodal foundation model with controllable thinking budget tokens.
-- ⚡ **Benchmarks**: `SWE-bench Verified: 70.3%, GPQA Diamond: 65.2%, TAU-bench: 81.2%`
-- 🏷️ **Domain & License**: `NLP` • `Proprietary` (Released: 2025)
-- 🔗 **Resource Link**: [https://www.anthropic.com/claude](https://www.anthropic.com/claude)
+- 🏛️ **Architecture**: Dynamic resolution Vision Transformer (ViT) paired with Qwen 2.5 language backbone.
+- ⚡ **Benchmarks**: `DocVQA: 95.8%, Video-MME: 82.5%, MathVista: 71.9%`
+- 🏷️ **Domain & License**: `Multimodal` • `Apache-2.0` (Released: 2025)
+- 🔗 **Resource Link**: [https://github.com/QwenLM/Qwen2.5-VL](https://github.com/QwenLM/Qwen2.5-VL)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -46,12 +46,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `Edge0/Audio8-ASR-Infinite` | automatic-speech-recognition | ❤️ 1,926 | 📥 26,749 | [View](https://huggingface.co/Edge0/Audio8-ASR-Infinite) |
-| `convaiinnovations/laya` | text-classification | ❤️ 4,693 | 📥 0 | [View](https://huggingface.co/convaiinnovations/laya) |
-| `XingChen-AGI/TeleOCR` | image-text-to-text | ❤️ 1,102 | 📥 30,383 | [View](https://huggingface.co/XingChen-AGI/TeleOCR) |
-| `abenzerps/Qwen-Image-2.1-Uncensored-GGUF` | text-to-image | ❤️ 2,587 | 📥 1,232,685 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF) |
-| `Contrastive-LM/CLM-v0.1-8B` | text-ranking | ❤️ 574 | 📥 2,392 | [View](https://huggingface.co/Contrastive-LM/CLM-v0.1-8B) |
-| `Qwen/Qwen-Image-2.1` | text-to-image | ❤️ 2,725 | 📥 70,687 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1) |
+| `convaiinnovations/laya` | text-classification | ❤️ 4,867 | 📥 0 | [View](https://huggingface.co/convaiinnovations/laya) |
+| `XingChen-AGI/TeleOCR` | image-text-to-text | ❤️ 1,233 | 📥 31,584 | [View](https://huggingface.co/XingChen-AGI/TeleOCR) |
+| `abenzerps/Qwen-Image-2.1-Uncensored-GGUF` | text-to-image | ❤️ 2,715 | 📥 1,303,476 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF) |
+| `Contrastive-LM/CLM-v0.1-8B` | text-ranking | ❤️ 626 | 📥 2,720 | [View](https://huggingface.co/Contrastive-LM/CLM-v0.1-8B) |
+| `Qwen/Qwen-Image-2.1` | text-to-image | ❤️ 2,795 | 📥 76,938 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 5,866 | 📥 1,588,619 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
 
 
 ---
@@ -61,25 +61,25 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **RSIGame: Autonomous Agentic Game Development with Recursive Self-improvement** | 👍 1 | Recent advances in large language models have made automatic game generation increasingly feasible, yet reliably improving generated games beyond a playable ver... | [Read](https://huggingface.co/papers/2609.39045) |
-| **CoEvoWhen: Policy-Tool Coevolution for Ultra-Long Video Temporal Grounding** | 👍 0 | Ultra-long video temporal grounding requires balancing long-range evidence search with fine-grained event understanding under a limited visual budget, yet exist... | [Read](https://huggingface.co/papers/2609.40048) |
-| **RoboCoach: World Models as Active Coaches for Compositional Robot Skills** | 👍 2 | Long-horizon robot manipulation reuses skills across many task compositions, but improving these compositions with additional end-to-end demonstrations is costl... | [Read](https://huggingface.co/papers/2609.39685) |
-| **More Choices, Fewer Decisions: Ordinal-Scale Bias in JEV-like Direct-Decision Models** | 👍 3 | Direct-decision models turn text into low-latency structured labels and scores, making them attractive for classification and automatic evaluation. Yet reliabil... | [Read](https://huggingface.co/papers/2609.38827) |
-| **EvoDuet: Bilevel Co-Evolution of Web Searching and Task Solving for Scientific Discovery** | 👍 4 | Evolutionary search with large language models (LLMs) can stall when progress requires external knowledge the model lacks. Supplying relevant documents helps, b... | [Read](https://huggingface.co/papers/2609.40340) |
+| **DexPolicy: Scheduled Exploration for Trajectory-Guided Dexterous Manipulation** | 👍 0 | Reinforcement learning (RL) for dexterous manipulation must discover finger-object contacts and then control the object precisely; the action noise that serves ... | [Read](https://huggingface.co/papers/2610.00360) |
+| **When Users Change Their Minds: Measuring and Repairing Intent Drift in LLM Agents** | 👍 1 | LLM agents often operate over multi-turn interactions in which user intent changes before execution. We study intent drift: the failure mode in which superseded... | [Read](https://huggingface.co/papers/2609.32520) |
+| **Do Audio LLMs Listen Before They Act? Diagnosing Acoustic-Context Gating in Voice Agents** | 👍 2 | Audio language models can recognize spoken commands and invoke tools, but an agent must first decide whether the acoustic and conversational context warrants ac... | [Read](https://huggingface.co/papers/2609.32536) |
+| **4Director: Controlling Video World Models with Rigid 3D Geometry** | 👍 3 | Precise control over camera and object motion is essential for professional video production. Existing methods control objects only coarsely, through image-plan... | [Read](https://huggingface.co/papers/2610.02160) |
+| **PixelDense: Dense Prediction as Representation Alignment for Pixel Diffusion** | 👍 2 | Representation alignment (REPA) accelerates diffusion transformer training, but its alignment targets are almost exclusively semantic encoders such as DINOv2 an... | [Read](https://huggingface.co/papers/2610.00483) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `328`
-- **Featured / Starred Tools**: `264`
-- **Asset Breakdown**: **Models**: 117 • **Frameworks**: 33 • **Platforms**: 54 • **Datasets**: 53 • **AIs**: 71
+- **Total Registered Assets**: `331`
+- **Featured / Starred Tools**: `266`
+- **Asset Breakdown**: **Models**: 118 • **Frameworks**: 33 • **Platforms**: 55 • **Datasets**: 54 • **AIs**: 71
 
 ---
 
 ## 🛡️ Daily System & Ecosystem Health
-- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
-- **Dependency Security**: `21` advisories flagged across `539` dependencies (`1` critical, `17` high)
+- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Dependency Security**: `25` advisories flagged across `539` dependencies (`1` critical, `21` high)
 
 ---
 *Generated automatically by GitHub Actions daily pulse workflow.*

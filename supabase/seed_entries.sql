@@ -1,4 +1,4 @@
--- Seed / Upsert all 328 AiVerse entries into Supabase
+-- Seed / Upsert all 331 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -6888,6 +6888,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('typed-decisions', 'LocalLLaMA', 'Dataset', 'NLP', 'APACHE-2.0', 2026, '1K<n<10K', 'Typed Decisions 	 A benchmark for typed probabilistic decisions. A model gets one piece of unstructured state and answers five typed questions about it at once, and eve (85 likes, 19,901 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("LocalLLaMA/typed-decisions")', 'Trending Score: 56, Likes: 85, Downloads: 19,901', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/LocalLLaMA/typed-decisions', '[{"text":"LocalLLaMA/typed-decisions on Hugging Face Datasets","url":"https://huggingface.co/datasets/LocalLLaMA/typed-decisions"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('clef', 'Cloudflare', 'Model', 'Multimodal', 'APACHE-2.0', 2026, 'Open Weights', 'High-performance Multimodal open-weights model by Cloudflare, trending with over 368 community likes and 18 downloads on Hugging Face.', 'Cloudflare image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Cloudflare/clef", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Cloudflare/clef")', 'Trending Score: 365, Likes: 368, Downloads: 18', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Cloudflare/clef', '[{"text":"Cloudflare/clef on Hugging Face","url":"https://huggingface.co/Cloudflare/clef"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('OpenVuln', 'zai-org', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'DOCKER Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by zai-org. Trending with 196 community stars.', 'DOCKER cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/zai-org/OpenVuln', 'Trending Score: 66, Community Likes: 196', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/zai-org/OpenVuln', '[{"text":"zai-org/OpenVuln on Hugging Face Spaces","url":"https://huggingface.co/spaces/zai-org/OpenVuln"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('audit-findings-dataset', 'Zaevlad', 'Dataset', 'AI Coding', 'OTHER', 2026, '10K<n<100K', 'Smart Contract Audit Findings 	 This is raw, semi-structured data — not a ready-to-train dataset. It still requires further cleaning and preparation (deduplication, sev (79 likes, 1,014 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("Zaevlad/audit-findings-dataset")', 'Trending Score: 46, Likes: 79, Downloads: 1,014', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/Zaevlad/audit-findings-dataset', '[{"text":"Zaevlad/audit-findings-dataset on Hugging Face Datasets","url":"https://huggingface.co/datasets/Zaevlad/audit-findings-dataset"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

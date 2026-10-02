@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-10-01T03:18:36.854Z",
-  "totalEntries": 328,
-  "popularEntries": 264,
+  "timestamp": "2026-10-02T03:19:10.997Z",
+  "totalEntries": 331,
+  "popularEntries": 266,
   "totalUsers": 11,
   "averageRating": 4.38,
   "totalRatings": 8,
-  "newEntriesCount": 101,
+  "newEntriesCount": 104,
   "byType": {
-    "Model": 117,
+    "Model": 118,
     "Framework": 33,
-    "Platform": 54,
-    "Dataset": 53,
+    "Platform": 55,
+    "Dataset": 54,
     "AI": 71
   },
   "byTask": {
     "NLP": 120,
-    "AI Coding": 26,
-    "Multimodal": 46,
+    "AI Coding": 27,
+    "Multimodal": 48,
     "Research": 11,
     "Image Generation": 12,
     "Video Generation": 11,
@@ -66,9 +66,9 @@
     "Proprietary / DeepSeek License": 1,
     "Open Source UI / Various model licenses": 1,
     "Free": 1,
-    "APACHE-2.0": 28,
-    "OTHER": 11,
-    "Community Hosted": 29,
+    "APACHE-2.0": 29,
+    "OTHER": 12,
+    "Community Hosted": 30,
     "NOASSERTION": 4,
     "CC-BY-SA-4.0": 1,
     "Open Data": 1,
@@ -83,24 +83,24 @@
     "OPENMDW-1.1": 1
   },
   "toolOfTheDay": {
-    "name": "Claude 3.7 Sonnet",
+    "name": "Qwen 2.5-VL (72B)",
     "type": "Model",
-    "summary": "Anthropic's hybrid reasoning frontier model that dynamically switches between near-instant conversational responses and deep extended step-by-step thinking.",
-    "task": "NLP",
-    "license": "Proprietary",
+    "summary": "Vision-language foundation model capable of reading hour-long videos, parsing fine-grained document charts, and operating computer UIs via agent grounding.",
+    "task": "Multimodal",
+    "license": "Apache-2.0",
     "year": 2025,
-    "org": "Anthropic",
-    "size": "Unknown",
-    "architecture": "Transformer-based multimodal foundation model with controllable thinking budget tokens.",
-    "usage": "import anthropic\nclient = anthropic.Anthropic()\nresponse = client.messages.create(\n  model=\"claude-3-7-sonnet-20250219\",\n  max_tokens=4096,\n  thinking={\"type\": \"enabled\", \"budget_tokens\": 2048},\n  messages=[{\"role\": \"user\", \"content\": \"Analyze complex architecture vulnerabilities.\"}]\n)",
-    "benchmarks": "SWE-bench Verified: 70.3%, GPQA Diamond: 65.2%, TAU-bench: 81.2%",
-    "limitations": "Extended reasoning uses token budget; proprietary API pricing.",
+    "org": "Alibaba Cloud",
+    "size": "72B params",
+    "architecture": "Dynamic resolution Vision Transformer (ViT) paired with Qwen 2.5 language backbone.",
+    "usage": "from transformers import Qwen2_5_VLForConditionalGeneration, AutoProcessor\nmodel = Qwen2_5_VLForConditionalGeneration.from_pretrained(\"Qwen/Qwen2.5-VL-72B-Instruct\", device_map=\"auto\")",
+    "benchmarks": "DocVQA: 95.8%, Video-MME: 82.5%, MathVista: 71.9%",
+    "limitations": "High token consumption on long video streams.",
     "popular": true,
-    "url": "https://www.anthropic.com/claude",
+    "url": "https://github.com/QwenLM/Qwen2.5-VL",
     "citations": [
       {
-        "text": "Claude 3.7 Sonnet Announcement",
-        "url": "https://www.anthropic.com/news/claude-3-7-sonnet"
+        "text": "Qwen2.5-VL Release",
+        "url": "https://qwenlm.github.io/blog/qwen2.5-vl/"
       }
     ]
   }

@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-01)
+### ⚡ Daily AI Pulse (2026-10-02)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Nemotron-3-Diarization** (`Model`), **MiMo-RL-Envs-Explorer** (`Platform`), **typed-decisions** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Claude 3.7 Sonnet** (Anthropic) — [Explore](https://www.anthropic.com/claude) |
-| 🗄️ **Catalog Entries** | **328** AI assets tracked (264 featured) |
-| 🔥 **Top Trending Model** | [Edge0/Audio8-ASR-Infinite](https://huggingface.co/Edge0/Audio8-ASR-Infinite) |
-| 📜 **Top Daily Paper** | [RSIGame: Autonomous Agentic Game Development with ...](https://huggingface.co/papers/2609.39045) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Daily Run** | `Thu, 01 Oct 2026 03:18:44 GMT` |
+| 🆕 **New Assets Added** | **clef** (`Model`), **OpenVuln** (`Platform`), **audit-findings-dataset** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Qwen 2.5-VL (72B)** (Alibaba Cloud) — [Explore](https://github.com/QwenLM/Qwen2.5-VL) |
+| 🗄️ **Catalog Entries** | **331** AI assets tracked (266 featured) |
+| 🔥 **Top Trending Model** | [convaiinnovations/laya](https://huggingface.co/convaiinnovations/laya) |
+| 📜 **Top Daily Paper** | [DexPolicy: Scheduled Exploration for Trajectory-Gu...](https://huggingface.co/papers/2610.00360) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Daily Run** | `Fri, 02 Oct 2026 03:19:17 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

@@ -1,18 +1,10 @@
 {
-  "timestamp": "2026-10-01T03:18:41.386Z",
+  "timestamp": "2026-10-02T03:19:14.296Z",
   "models": [
-    {
-      "id": "Edge0/Audio8-ASR-Infinite",
-      "author": "Edge0",
-      "likes": 1926,
-      "downloads": 26749,
-      "pipeline_tag": "automatic-speech-recognition",
-      "url": "https://huggingface.co/Edge0/Audio8-ASR-Infinite"
-    },
     {
       "id": "convaiinnovations/laya",
       "author": "convaiinnovations",
-      "likes": 4693,
+      "likes": 4867,
       "downloads": 0,
       "pipeline_tag": "text-classification",
       "url": "https://huggingface.co/convaiinnovations/laya"
@@ -20,76 +12,84 @@
     {
       "id": "XingChen-AGI/TeleOCR",
       "author": "XingChen-AGI",
-      "likes": 1102,
-      "downloads": 30383,
+      "likes": 1233,
+      "downloads": 31584,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/XingChen-AGI/TeleOCR"
     },
     {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
       "author": "abenzerps",
-      "likes": 2587,
-      "downloads": 1232685,
+      "likes": 2715,
+      "downloads": 1303476,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
     },
     {
       "id": "Contrastive-LM/CLM-v0.1-8B",
       "author": "Contrastive-LM",
-      "likes": 574,
-      "downloads": 2392,
+      "likes": 626,
+      "downloads": 2720,
       "pipeline_tag": "text-ranking",
       "url": "https://huggingface.co/Contrastive-LM/CLM-v0.1-8B"
     },
     {
       "id": "Qwen/Qwen-Image-2.1",
       "author": "Qwen",
-      "likes": 2725,
-      "downloads": 70687,
+      "likes": 2795,
+      "downloads": 76938,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
+    },
+    {
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 5866,
+      "downloads": 1588619,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5"
     }
   ],
   "papers": [
     {
-      "title": "RSIGame: Autonomous Agentic Game Development with Recursive Self-improvement",
-      "summary": "Recent advances in large language models have made automatic game generation increasingly feasible, yet reliably improving generated games beyond a playable ver...",
-      "upvotes": 1,
-      "arxiv_id": "2609.39045",
-      "url": "https://huggingface.co/papers/2609.39045",
-      "githubRepo": "https://github.com/WenyiWU0111/RSIGame"
-    },
-    {
-      "title": "CoEvoWhen: Policy-Tool Coevolution for Ultra-Long Video Temporal Grounding",
-      "summary": "Ultra-long video temporal grounding requires balancing long-range evidence search with fine-grained event understanding under a limited visual budget, yet exist...",
+      "title": "DexPolicy: Scheduled Exploration for Trajectory-Guided Dexterous Manipulation",
+      "summary": "Reinforcement learning (RL) for dexterous manipulation must discover finger-object contacts and then control the object precisely; the action noise that serves ...",
       "upvotes": 0,
-      "arxiv_id": "2609.40048",
-      "url": "https://huggingface.co/papers/2609.40048",
-      "githubRepo": "https://github.com/aim-uofa/CoEvoWhen"
+      "arxiv_id": "2610.00360",
+      "url": "https://huggingface.co/papers/2610.00360",
+      "githubRepo": "https://github.com/AIGeeksGroup/DexPolicy"
     },
     {
-      "title": "RoboCoach: World Models as Active Coaches for Compositional Robot Skills",
-      "summary": "Long-horizon robot manipulation reuses skills across many task compositions, but improving these compositions with additional end-to-end demonstrations is costl...",
-      "upvotes": 2,
-      "arxiv_id": "2609.39685",
-      "url": "https://huggingface.co/papers/2609.39685",
-      "githubRepo": "https://github.com/RoboCoach-AI/CoachWorld"
-    },
-    {
-      "title": "More Choices, Fewer Decisions: Ordinal-Scale Bias in JEV-like Direct-Decision Models",
-      "summary": "Direct-decision models turn text into low-latency structured labels and scores, making them attractive for classification and automatic evaluation. Yet reliabil...",
-      "upvotes": 3,
-      "arxiv_id": "2609.38827",
-      "url": "https://huggingface.co/papers/2609.38827",
+      "title": "When Users Change Their Minds: Measuring and Repairing Intent Drift in LLM Agents",
+      "summary": "LLM agents often operate over multi-turn interactions in which user intent changes before execution. We study intent drift: the failure mode in which superseded...",
+      "upvotes": 1,
+      "arxiv_id": "2609.32520",
+      "url": "https://huggingface.co/papers/2609.32520",
       "githubRepo": null
     },
     {
-      "title": "EvoDuet: Bilevel Co-Evolution of Web Searching and Task Solving for Scientific Discovery",
-      "summary": "Evolutionary search with large language models (LLMs) can stall when progress requires external knowledge the model lacks. Supplying relevant documents helps, b...",
-      "upvotes": 4,
-      "arxiv_id": "2609.40340",
-      "url": "https://huggingface.co/papers/2609.40340",
-      "githubRepo": "https://github.com/Open-Galapagos/EvoDuet"
+      "title": "Do Audio LLMs Listen Before They Act? Diagnosing Acoustic-Context Gating in Voice Agents",
+      "summary": "Audio language models can recognize spoken commands and invoke tools, but an agent must first decide whether the acoustic and conversational context warrants ac...",
+      "upvotes": 2,
+      "arxiv_id": "2609.32536",
+      "url": "https://huggingface.co/papers/2609.32536",
+      "githubRepo": null
+    },
+    {
+      "title": "4Director: Controlling Video World Models with Rigid 3D Geometry",
+      "summary": "Precise control over camera and object motion is essential for professional video production. Existing methods control objects only coarsely, through image-plan...",
+      "upvotes": 3,
+      "arxiv_id": "2610.02160",
+      "url": "https://huggingface.co/papers/2610.02160",
+      "githubRepo": "https://github.com/VVeiCao/4Director"
+    },
+    {
+      "title": "PixelDense: Dense Prediction as Representation Alignment for Pixel Diffusion",
+      "summary": "Representation alignment (REPA) accelerates diffusion transformer training, but its alignment targets are almost exclusively semantic encoders such as DINOv2 an...",
+      "upvotes": 2,
+      "arxiv_id": "2610.00483",
+      "url": "https://huggingface.co/papers/2610.00483",
+      "githubRepo": "https://github.com/Hansxsourse/PixelDense"
     }
   ]
 }

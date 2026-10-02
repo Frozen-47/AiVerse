@@ -1,18 +1,23 @@
 {
-  "timestamp": "2026-10-01T03:18:41.446Z",
+  "timestamp": "2026-10-02T03:19:14.411Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "Phind",
-      "url": "https://www.phind.com",
+      "name": "Character.ai",
+      "url": "https://character.ai",
       "status": 403
     },
     {
-      "name": "tiktok-videos-4b",
-      "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
-      "status": 401
+      "name": "Ideogram",
+      "url": "https://ideogram.ai",
+      "status": 403
+    },
+    {
+      "name": "Google Gemini",
+      "url": "https://gemini.google.com",
+      "status": "Network Error"
     }
   ]
 }
