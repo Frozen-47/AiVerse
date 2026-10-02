@@ -29,7 +29,7 @@ interface DashboardHeroProps {
 
 const CATEGORY_CHIPS = [
   { id: "All", label: "All Assets", icon: Globe },
-  { id: "Ecosystems", label: "AI Labs & Ecosystems", icon: Building2 },
+  { id: "Ecosystems", label: "AI Labs", icon: Building2 },
   { id: "Model", label: "Models & LLMs", icon: Cpu },
   { id: "Framework", label: "Frameworks", icon: Zap },
   { id: "Dataset", label: "Datasets", icon: Database },
@@ -114,7 +114,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
         </p>
 
         {/* Spotlight-inspired Search Bar */}
-        <div className="w-full max-w-2xl relative mb-6">
+        <div className="w-full max-w-2xl relative mb-5">
           <div className={`relative flex items-center rounded-2xl border px-5 py-3.5 transition-all duration-200 ${
             isAmoled
               ? "bg-neutral-900/70 border-white/10 shadow-xl backdrop-blur-xl focus-within:border-white/30 focus-within:ring-2 focus-within:ring-white/10"
@@ -154,9 +154,10 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
           </div>
         </div>
 
-        {/* Clean Segmented Category Bar (Apple style) */}
+        {/* Google Tabs (Clean single-line tabs + trending inline chips) */}
         <div className="w-full flex flex-col items-center gap-3.5">
-          <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-neutral-100/70 dark:bg-white/[0.04] border border-neutral-200/60 dark:border-white/[0.08] backdrop-blur-md">
+          {/* Single line Google-style tabs with smooth horizontal scroll and zero wrapping */}
+          <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-neutral-100/80 dark:bg-white/[0.04] border border-neutral-200/70 dark:border-white/[0.08] overflow-x-auto no-scrollbar max-w-full">
             {CATEGORY_CHIPS.map((chip) => {
               const isActive =
                 chip.id === "Ecosystems"
@@ -175,47 +176,42 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
                     }
                     onScrollToCatalog();
                   }}
-                  className={`px-4 py-2 rounded-xl text-xs font-medium transition-all duration-150 flex items-center gap-2 cursor-pointer ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all duration-150 flex items-center gap-2 cursor-pointer whitespace-nowrap ${
                     isActive
                       ? isAmoled
-                        ? "bg-white text-black font-semibold shadow-sm"
-                        : "bg-neutral-900 text-white font-semibold shadow-sm"
-                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/50 dark:hover:bg-white/[0.06]"
+                        ? "bg-white text-black font-semibold shadow-xs"
+                        : "bg-neutral-900 text-white font-semibold shadow-xs"
+                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/50 dark:hover:bg-white/[0.05]"
                   }`}
                 >
-                  <Icon size={14} className="shrink-0" />
+                  <Icon size={13} className="shrink-0" />
                   <span>{chip.label}</span>
                 </button>
               );
             })}
           </div>
 
-          {/* Quick Task Tags (Clean Minimalist Google style) */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-1">
-            <span className="text-xs font-medium text-neutral-400 dark:text-neutral-400 flex items-center gap-1 mr-1">
-              <SlidersHorizontal size={12} /> Filter Task:
+          {/* Clean Google-style inline tasks line */}
+          <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-neutral-400">
+            <span className="font-medium text-neutral-500 dark:text-neutral-400 flex items-center gap-1">
+              <SlidersHorizontal size={11} /> Tasks:
             </span>
-            {TASK_CHIPS.map((task) => {
-              const isActive = activeTask === task.id;
-              return (
+            {TASK_CHIPS.map((task, i) => (
+              <React.Fragment key={task.id}>
+                {i > 0 && <span className="opacity-25">•</span>}
                 <button
-                  key={task.id}
                   onClick={() => {
                     onSelectTask(task.id);
                     onScrollToCatalog();
                   }}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer border ${
-                    isActive
-                      ? isAmoled
-                        ? "bg-white/15 text-white border-white/30 font-semibold"
-                        : "bg-neutral-200 text-neutral-900 border-neutral-300 font-semibold"
-                      : "border-transparent text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
+                  className={`hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors ${
+                    activeTask === task.id ? "text-blue-600 dark:text-blue-400 font-semibold" : ""
                   }`}
                 >
                   {task.label}
                 </button>
-              );
-            })}
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </div>
