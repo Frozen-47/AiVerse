@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-02)
+### ⚡ Daily AI Pulse (2026-10-03)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **clef** (`Model`), **OpenVuln** (`Platform`), **audit-findings-dataset** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Qwen 2.5-VL (72B)** (Alibaba Cloud) — [Explore](https://github.com/QwenLM/Qwen2.5-VL) |
-| 🗄️ **Catalog Entries** | **331** AI assets tracked (266 featured) |
+| 🆕 **New Assets Added** | **Julia-1** (`Model`), **qwen-image-2.1-uncensored-aio-loras** (`Platform`), **EgoPro** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Qwen 2.5 (72B)** (Alibaba Cloud) — [Explore](https://github.com/QwenLM/Qwen2.5) |
+| 🗄️ **Catalog Entries** | **334** AI assets tracked (269 featured) |
 | 🔥 **Top Trending Model** | [convaiinnovations/laya](https://huggingface.co/convaiinnovations/laya) |
-| 📜 **Top Daily Paper** | [DexPolicy: Scheduled Exploration for Trajectory-Gu...](https://huggingface.co/papers/2610.00360) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Daily Run** | `Fri, 02 Oct 2026 03:19:17 GMT` |
+| 📜 **Top Daily Paper** | [Replacing Large Language Models with Jev Decision ...](https://huggingface.co/papers/2609.22753) |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Daily Run** | `Sat, 03 Oct 2026 03:05:17 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

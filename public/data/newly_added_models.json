@@ -1,5 +1,76 @@
 [
   {
+    "date": "2026-10-03",
+    "assets": [
+      {
+        "name": "Julia-1",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by SupersonicLabs, trending with over 370 community likes and 2,909 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "SupersonicLabs",
+        "size": "Open Weights",
+        "architecture": "SupersonicLabs text classification architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"SupersonicLabs/Julia-1\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"SupersonicLabs/Julia-1\")",
+        "benchmarks": "Trending Score: 354, Likes: 370, Downloads: 2,909",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": true,
+        "url": "https://huggingface.co/SupersonicLabs/Julia-1",
+        "citations": [
+          {
+            "text": "SupersonicLabs/Julia-1 on Hugging Face",
+            "url": "https://huggingface.co/SupersonicLabs/Julia-1"
+          }
+        ]
+      },
+      {
+        "name": "qwen-image-2.1-uncensored-aio-loras",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by arudradey. Trending with 106 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "arudradey",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-aio-loras",
+        "benchmarks": "Trending Score: 80, Community Likes: 106",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": true,
+        "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-aio-loras",
+        "citations": [
+          {
+            "text": "arudradey/qwen-image-2.1-uncensored-aio-loras on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-aio-loras"
+          }
+        ]
+      },
+      {
+        "name": "EgoPro",
+        "type": "Dataset",
+        "summary": "EgoPro The 10,000-hour head-and-wrist line of EgoSuite-Open100K.   Data Bucket ·   Collection ·   EgoDemo ·   EgoStandard ·   Project page Explore EgoSuite-Open100K ↗ Data locatio (111 likes, 35,382 downloads).",
+        "task": "Multimodal",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "LightwheelAI",
+        "size": "10K<n<100K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"LightwheelAI/EgoPro\")",
+        "benchmarks": "Trending Score: 40, Likes: 111, Downloads: 35,382",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": true,
+        "url": "https://huggingface.co/datasets/LightwheelAI/EgoPro",
+        "citations": [
+          {
+            "text": "LightwheelAI/EgoPro on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/LightwheelAI/EgoPro"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-02",
     "assets": [
       {

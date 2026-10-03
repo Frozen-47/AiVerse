@@ -1,4 +1,4 @@
--- Seed / Upsert all 331 AiVerse entries into Supabase
+-- Seed / Upsert all 334 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -6950,6 +6950,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('audit-findings-dataset', 'Zaevlad', 'Dataset', 'AI Coding', 'OTHER', 2026, '10K<n<100K', 'Smart Contract Audit Findings 	 This is raw, semi-structured data — not a ready-to-train dataset. It still requires further cleaning and preparation (deduplication, sev (79 likes, 1,014 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("Zaevlad/audit-findings-dataset")', 'Trending Score: 46, Likes: 79, Downloads: 1,014', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/Zaevlad/audit-findings-dataset', '[{"text":"Zaevlad/audit-findings-dataset on Hugging Face Datasets","url":"https://huggingface.co/datasets/Zaevlad/audit-findings-dataset"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Julia-1', 'SupersonicLabs', 'Model', 'NLP', 'APACHE-2.0', 2026, 'Open Weights', 'High-performance NLP open-weights model by SupersonicLabs, trending with over 370 community likes and 2,909 downloads on Hugging Face.', 'SupersonicLabs text classification architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("SupersonicLabs/Julia-1", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("SupersonicLabs/Julia-1")', 'Trending Score: 354, Likes: 370, Downloads: 2,909', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/SupersonicLabs/Julia-1', '[{"text":"SupersonicLabs/Julia-1 on Hugging Face","url":"https://huggingface.co/SupersonicLabs/Julia-1"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('qwen-image-2.1-uncensored-aio-loras', 'arudradey', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by arudradey. Trending with 106 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-aio-loras', 'Trending Score: 80, Community Likes: 106', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-aio-loras', '[{"text":"arudradey/qwen-image-2.1-uncensored-aio-loras on Hugging Face Spaces","url":"https://huggingface.co/spaces/arudradey/qwen-image-2.1-uncensored-aio-loras"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('EgoPro', 'LightwheelAI', 'Dataset', 'Multimodal', 'OTHER', 2026, '10K<n<100K', 'EgoPro The 10,000-hour head-and-wrist line of EgoSuite-Open100K.   Data Bucket ·   Collection ·   EgoDemo ·   EgoStandard ·   Project page Explore EgoSuite-Open100K ↗ Data locatio (111 likes, 35,382 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("LightwheelAI/EgoPro")', 'Trending Score: 40, Likes: 111, Downloads: 35,382', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/LightwheelAI/EgoPro', '[{"text":"LightwheelAI/EgoPro on Hugging Face Datasets","url":"https://huggingface.co/datasets/LightwheelAI/EgoPro"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
