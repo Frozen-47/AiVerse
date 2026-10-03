@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { SignedIn, SignedOut, useAuth } from "./AuthContext";
-import { Plus, Moon, Sun, SlidersHorizontal, LayoutGrid, Building2, Sparkles, Zap } from "lucide-react";
+import { Plus, Moon, Sun, SlidersHorizontal, LayoutGrid, Building2, Zap } from "lucide-react";
 import { useTokens, useTheme } from "../lib/theme";
 import { UserProfileMenu } from "./UserProfileMenu";
 import { parseProfileMeta, type OnboardingProfile } from "../lib/onboarding";
