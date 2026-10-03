@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { SignedIn, SignedOut, useAuth } from "./AuthContext";
-import { Plus, Moon, Sun, SlidersHorizontal } from "lucide-react";
+import { Plus, Moon, Sun, SlidersHorizontal, LayoutGrid, Building2, Sparkles, Zap } from "lucide-react";
 import { useTokens, useTheme } from "../lib/theme";
 import { UserProfileMenu } from "./UserProfileMenu";
 import { parseProfileMeta, type OnboardingProfile } from "../lib/onboarding";
@@ -13,6 +13,10 @@ interface NavbarProps {
   onViewSaved?: () => void;
   onHomeClick?: () => void;
   onViewAdminDashboard?: () => void;
+  onBrowseAll?: () => void;
+  onViewEcosystems?: () => void;
+  onViewChat?: () => void;
+  ecosystemsCount?: number;
   entryCount: number;
   onboardingProfile?: OnboardingProfile | null;
   onSaveProfile?: (
@@ -37,6 +41,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   onViewSaved,
   onHomeClick,
   onViewAdminDashboard,
+  onBrowseAll,
+  onViewEcosystems,
+  onViewChat,
+  ecosystemsCount,
   entryCount,
   onboardingProfile = null,
   onSaveProfile,
@@ -144,6 +152,51 @@ export const Navbar: React.FC<NavbarProps> = ({
           <span className="hidden sm:inline-block text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] text-neutral-500 dark:text-neutral-400 border border-neutral-200 dark:border-white/[0.06] whitespace-nowrap">
             {entryCount} assets
           </span>
+
+          {(onBrowseAll || onViewEcosystems) && (
+            <div className="hidden md:flex items-center gap-1.5 ml-2 pl-3 border-l border-neutral-200/80 dark:border-white/[0.08]">
+              {onBrowseAll && (
+                <button
+                  onClick={onBrowseAll}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer"
+                  title="View all verified entries in catalog"
+                >
+                  <LayoutGrid size={13} />
+                  <span>All Entries</span>
+                </button>
+              )}
+              {onViewEcosystems && (
+                <button
+                  onClick={onViewEcosystems}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer"
+                  title="Explore AI Labs & Ecosystems"
+                >
+                  <Building2 size={13} className="text-blue-500" />
+                  <span>AI Ecosystems</span>
+                  {ecosystemsCount && (
+                    <span className="text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                      {ecosystemsCount}
+                    </span>
+                  )}
+                </button>
+              )}
+
+              <button
+                onClick={() => {
+                  if (onViewChat) onViewChat();
+                  else window.dispatchEvent(new CustomEvent('open-aiverse-chat'));
+                }}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-neutral-800 dark:text-neutral-200 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 transition-all cursor-pointer border border-neutral-200 dark:border-white/10"
+                title="Groq LPU Accelerated AI Research (/chat)"
+              >
+                <Zap size={13} className="text-amber-500 fill-amber-500" />
+                <span>Groq Chat</span>
+                <span className="text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                  500 tok/s
+                </span>
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="flex items-center gap-2.5">

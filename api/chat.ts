@@ -265,71 +265,125 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const allEntries = await getCatalogEntries();
     const catalogContext = getRelevantCatalogContext(latestUserQuery, allEntries);
 
-    const nameStr = userName ? `The user's name is ${userName}. Greet them or address them by this name occasionally to be polite and personal.` : '';
+    const nameStr = userName ? `The user's name is ${userName}. Greet them or address them warmly.` : '';
 
     const systemPromptContent = systemInstruction && typeof systemInstruction === 'string'
       ? systemInstruction
-      : `You are Vox, an AI assistant and expert encyclopedia curator strictly dedicated to the AiVerse platform. ${nameStr} You MUST REFUSE to answer any questions that are not related to Artificial Intelligence, machine learning, AI models, frameworks, platforms, datasets, or the AiVerse platform itself. If a user asks about off-topic subjects, politely decline and steer the conversation back to AI technologies.\n\nHere are relevant AI items from the AiVerse encyclopedia (${allEntries.length}+ total indexed entries):\n${catalogContext || 'No catalog items found'}\n\nUse these technical facts, architectures, and benchmarks to accurately answer questions and offer comparisons.\n\nCRITICAL INSTRUCTIONS:\n1. **ACCURACY & CATALOG GROUNDING**: Rely on facts, benchmarks, and architectures provided in the catalog.\n2. **ORGANIZE CLEARLY**: Provide clean, highly structured responses with bullet points and bold headers.\n3. **HIGHLIGHT ENTITY NAMES**: Use **bold text** for AI entity names (e.g. **DeepSeek-R1**, **Llama 3.3 (70B)**, **LangGraph**, **FLUX.1 Schnell**, **Cursor**).\n4. **INCLUDE LINKS**: If a URL is available in the catalog, format as [Official Website](URL) or [Documentation](URL).`;
+      : `You are Vox, the premier AI research copilot and technical intelligence engine of AiVerse (aiverse.frozenn.in).
+${nameStr}
+
+You specialize in cutting-edge AI: Foundation LLMs, Reasoning Models (DeepSeek-R1, QwQ, o1, Claude 3.7), Multimodal Vision & Audio, Open-Source Frameworks (LangGraph, Unsloth, vLLM, PyTorch), Inference Platforms (Groq LPUs, RunPod, Hugging Face), and Benchmarks (MMLU-Pro, SWE-bench, MATH-500).
+
+Verified AiVerse Catalog Intelligence (${allEntries.length}+ indexed items):
+${catalogContext || 'Full AiVerse catalog active'}
+
+CORE ANSWERING RULES:
+1. **DIRECT & FOCUSED**: Answer the user's specific question immediately. Do NOT generate unnecessary filler or generic introductions.
+2. **NO UNSOLICITED CODE**: Never write Python/shell/code blocks unless the user explicitly asks for code, scripts, or implementation examples. If asked for models or concepts, provide conceptual explanations, specs, comparisons, or architectural breakdowns.
+3. **STRUCTURED PRESENTATION**: Use concise bullet points, bold key terms, clean markdown headings (###), and comparison tables when comparing 2 or more entities.
+4. **EXACT ENTITY NAMES**: Always bold exact entity names (e.g. **DeepSeek-R1**, **Qwen 2.5**, **Llama 3.3**, **Claude 3.7 Sonnet**, **LangGraph**, **Unsloth**, **GroqCloud**) so the interface can link them directly to AiVerse specification sheets.
+5. **ACCURACY & RECENCY**: Ground your answers in modern AI engineering (2024-2025+). Highlight real-world trade-offs (inference latency, VRAM footprint, licensing).`;
 
     const systemPrompt = {
       role: 'system',
       content: systemPromptContent,
     };
 
-    // Priority list of models to try
-    const FALLBACK_MODELS = [
+    // Priority list of verified models (qwen/qwen3.8-27b is the top performer)
+    const VERIFIED_MODELS = [
       'qwen/qwen3.8-27b',
-      'qwen/qwen3.6-27b',
-      'groq/compound-mini',
-      'groq/compound',
-      'llama-3.3-70b-versatile',
-      'llama-3.1-8b-instant',
       'openai/gpt-oss-120b',
       'openai/gpt-oss-20b',
       'allam-2-7b'
     ];
 
-    const candidates = model && FALLBACK_MODELS.includes(model)
-      ? [model, ...FALLBACK_MODELS.filter(m => m !== model)]
-      : FALLBACK_MODELS;
+    const candidates = model && VERIFIED_MODELS.includes(model)
+      ? [model, ...VERIFIED_MODELS.filter(m => m !== model)]
+      : VERIFIED_MODELS;
+
+    const shouldStream = req.body?.stream !== false;
+
+    if (shouldStream) {
+      res.setHeader('Content-Type', 'text/event-stream; charset=utf-8');
+      res.setHeader('Cache-Control', 'no-cache, no-transform');
+      res.setHeader('Connection', 'keep-alive');
+      res.setHeader('X-Accel-Buffering', 'no');
+
+      let streamSucceeded = false;
+
+      for (const currentModel of candidates) {
+        try {
+          const finalMessages = [systemPrompt, ...sanitizedMessages];
+
+          const stream = await groq.chat.completions.create({
+            messages: finalMessages,
+            model: currentModel,
+            temperature: 0.6,
+            max_tokens: 2048,
+            stream: true,
+          });
+
+          res.write(`data: ${JSON.stringify({ meta: { model: currentModel } })}\n\n`);
+
+          for await (const chunk of stream) {
+            const delta = chunk.choices[0]?.delta;
+            if (!delta) continue;
+            const content = delta.content || '';
+            const reasoning = (delta as any).reasoning || '';
+            if (content || reasoning) {
+              res.write(`data: ${JSON.stringify({ text: content, reasoning })}\n\n`);
+            }
+          }
+
+          res.write(`data: [DONE]\n\n`);
+          res.end();
+          streamSucceeded = true;
+          break;
+        } catch (err: any) {
+          console.warn(`Groq streaming model ${currentModel} error:`, err.message);
+        }
+      }
+
+      if (!streamSucceeded) {
+        res.write(`data: ${JSON.stringify({ error: "All AI models are currently busy. Please try again in a moment." })}\n\n`);
+        res.write(`data: [DONE]\n\n`);
+        res.end();
+      }
+      return;
+    }
 
     let responseContent: string | null = null;
+    let reasoningContent: string | null = null;
+    let successfulModel: string = 'openai/gpt-oss-120b';
     let lastError: any = null;
 
     for (const currentModel of candidates) {
       try {
         let finalMessages: any[] = [systemPrompt, ...sanitizedMessages];
 
-        if (currentModel.toLowerCase().includes('deepseek')) {
-          const firstUserIndex = sanitizedMessages.findIndex(m => m.role === 'user');
-          if (firstUserIndex !== -1) {
-            const mergedMessages = [...sanitizedMessages];
-            mergedMessages[firstUserIndex] = {
-              role: 'user',
-              content: `${systemPromptContent}\n\n[Instructions Above. User Query Below]\n${sanitizedMessages[firstUserIndex].content}`
-            };
-            finalMessages = mergedMessages;
-          } else {
-            finalMessages = sanitizedMessages;
-          }
-        }
-
         const chatCompletion = await groq.chat.completions.create({
           messages: finalMessages,
           model: currentModel,
-          temperature: 0.5,
-          max_tokens: 1024,
+          temperature: 0.6,
+          max_tokens: 2048,
         });
 
         let rawContent = chatCompletion.choices[0]?.message?.content || "";
-        rawContent = rawContent.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
+        
+        // Extract reasoning trace if present
+        const thinkMatch = rawContent.match(/<think>([\s\S]*?)<\/think>/);
+        if (thinkMatch) {
+          reasoningContent = thinkMatch[1].trim();
+          rawContent = rawContent.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
+        }
 
         if (rawContent) {
           responseContent = rawContent;
+          successfulModel = currentModel;
           break;
         }
       } catch (err: any) {
-        console.warn(`Groq model ${currentModel} failed:`, err.message);
+        console.warn(`Groq model ${currentModel} error:`, err.message);
         lastError = err;
       }
     }
@@ -340,7 +394,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
     }
 
-    return res.status(200).json({ content: responseContent });
+    return res.status(200).json({ 
+      content: responseContent,
+      reasoning: reasoningContent,
+      modelUsed: successfulModel
+    });
   } catch (error: any) {
     console.error("Groq API Error:", error);
     return res.status(200).json({ content: `⚠️ **AI Service Error**: ${error.message}` });

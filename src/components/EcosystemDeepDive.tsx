@@ -3,6 +3,7 @@ import { ArrowLeft, ExternalLink, Sparkles, Box, Layers, Database, Server, Bot }
 import type { EntryRatingSummary } from "../types";
 import type { EcosystemGroup } from "../lib/ecosystems";
 import { EntryCard } from "./EntryCard";
+import { EcosystemLogo } from "./EcosystemLogo";
 
 interface EcosystemDeepDiveProps {
   ecosystem: EcosystemGroup;
@@ -27,13 +28,6 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
     if (selectedType === "All") return ecosystem.entries;
     return ecosystem.entries.filter((e) => e.type === selectedType);
   }, [ecosystem.entries, selectedType]);
-
-  const initials = ecosystem.name
-    .split(/\s+/)
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
 
   const typeFilterOptions = [
     { id: "All", label: "All Assets", count: ecosystem.totalCount, icon: Sparkles },
@@ -75,9 +69,12 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
       <div className="p-6 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xs">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="flex items-start gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-black text-lg flex items-center justify-center shrink-0 shadow-sm">
-              {initials}
-            </div>
+            <EcosystemLogo
+              name={ecosystem.name}
+              website={ecosystem.website}
+              size={56}
+              className="rounded-2xl shadow-sm"
+            />
             <div>
               <div className="flex items-center gap-3 flex-wrap">
                 <h2 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">

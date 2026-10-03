@@ -1,5 +1,5 @@
 import React, { memo, useMemo } from "react";
-import { Star, Layers, Box, Database, Server, LayoutGrid, Bot, Bookmark, RotateCcw } from "lucide-react";
+import { Star, Layers, Box, Database, Server, LayoutGrid, Bot, Bookmark, RotateCcw, Building2 } from "lucide-react";
 import type { Entry, TypeFilter, TaskFilter } from "../types";
 
 interface SidebarProps {
@@ -17,6 +17,9 @@ interface SidebarProps {
   savedCount?: number;
   onSavedToggle?: () => void;
   onResetFilters?: () => void;
+  catalogDisplayMode?: "assets" | "ecosystems";
+  onSelectDisplayMode?: (mode: "assets" | "ecosystems") => void;
+  ecosystemsCount?: number;
 }
 
 const TYPE_ICONS: Record<string, React.ReactNode> = {
@@ -43,6 +46,9 @@ export const Sidebar = memo(function Sidebar({
   savedCount = 0,
   onSavedToggle,
   onResetFilters,
+  catalogDisplayMode = "assets",
+  onSelectDisplayMode,
+  ecosystemsCount = 217,
 }: SidebarProps) {
   const { typeCounts, taskCounts, popularCount } = useMemo(() => {
     const byType: Record<string, number> = {};
@@ -103,6 +109,52 @@ export const Sidebar = memo(function Sidebar({
             </button>
           )}
         </div>
+
+        {/* Directory Explorer Mode Switcher: All Assets vs AI Labs & Ecosystems */}
+        {onSelectDisplayMode && (
+          <div className="space-y-1 pb-3 border-b border-neutral-100 dark:border-white/[0.06]">
+            <p className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-1.5 px-1">
+              Explorer View
+            </p>
+            <button
+              onClick={() => onSelectDisplayMode("assets")}
+              className={`w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                catalogDisplayMode === "assets"
+                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold shadow-xs"
+                  : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <Box size={13} className={catalogDisplayMode === "assets" ? "text-white dark:text-neutral-950" : "opacity-70"} />
+                <span>All Assets & Models</span>
+              </div>
+              <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
+                catalogDisplayMode === "assets" ? "bg-white/20 dark:bg-black/20" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400"
+              }`}>
+                {entries.length}
+              </span>
+            </button>
+
+            <button
+              onClick={() => onSelectDisplayMode("ecosystems")}
+              className={`w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                catalogDisplayMode === "ecosystems"
+                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold shadow-xs"
+                  : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <Building2 size={13} className={catalogDisplayMode === "ecosystems" ? "text-blue-400 dark:text-blue-600" : "text-blue-500"} />
+                <span>AI Labs & Ecosystems</span>
+              </div>
+              <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
+                catalogDisplayMode === "ecosystems" ? "bg-white/20 dark:bg-black/20" : "bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20"
+              }`}>
+                {ecosystemsCount ?? 217}
+              </span>
+            </button>
+          </div>
+        )}
 
         {/* Collections Section */}
         <div>

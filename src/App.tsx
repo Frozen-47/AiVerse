@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useCallback, useRef, lazy, Suspense } from "react";
-import { Filter, X, Check, Sparkles, ArrowLeft, AlertTriangle, Building2, Box } from "lucide-react";
+import { Filter, X, Check, Sparkles, ArrowLeft, AlertTriangle, Building2, Box, ChevronLeft, ChevronRight, LayoutGrid, ArrowRight } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
@@ -11,6 +11,7 @@ import { Sidebar } from "./components/Sidebar";
 import { SearchBar } from "./components/SearchBar";
 import { EntryCard } from "./components/EntryCard";
 import { EcosystemsSection } from "./components/EcosystemsSection";
+import { groupEntriesByEcosystem } from "./lib/ecosystems";
 import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
 import { UserProfileModal } from "./components/UserProfileModal";
 import { OverviewCards } from "./components/OverviewCards";
@@ -114,6 +115,7 @@ const Inner: React.FC = () => {
   const [isAdding, setIsAdding] = useState(false);
   const [showBackendToast, setShowBackendToast] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(12);
   const [showMobileSidebar, setShowMobileSidebar] = useState(false);
   const [onboardingProfile, setOnboardingProfile] = useState<OnboardingProfile | null>(null);
   const [showOnboarding, setShowOnboarding] = useState(false);
@@ -124,6 +126,10 @@ const Inner: React.FC = () => {
   });
   const [isAdminDashboard, setIsAdminDashboard] = useState(false);
   const [adminDashboardKey, setAdminDashboardKey] = useState(0);
+  const [isChat, setIsChat] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    return window.location.pathname === "/chat" || window.location.pathname === "/chat/";
+  });
   const [isPrivacy, setIsPrivacy] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
     return window.location.pathname === "/privacy" || window.location.pathname === "/privacy/";
@@ -235,6 +241,10 @@ const Inner: React.FC = () => {
       Platform: entries.filter((e) => e.type === "Platform").length,
       Popular: entries.filter((e) => e.popular).length,
     };
+  }, [entries]);
+
+  const ecosystemsCount = useMemo(() => {
+    return groupEntriesByEcosystem(entries).length;
   }, [entries]);
 
   const wizardRecommendations = useMemo(() => {
@@ -587,7 +597,11 @@ const Inner: React.FC = () => {
     const url = new URL(window.location.href);
     let targetPath = "/";
 
-    if (isPrivacy) {
+    if (isChat) {
+      targetPath = "/chat";
+      url.searchParams.delete("entry");
+      url.searchParams.delete("user");
+    } else if (isPrivacy) {
       targetPath = "/privacy";
       url.searchParams.delete("entry");
       url.searchParams.delete("user");
@@ -631,7 +645,7 @@ const Inner: React.FC = () => {
     } else {
       window.history.replaceState({}, "", url);
     }
-  }, [selected, profileUsername, isPrivacy, isTerms, isWizard, isArena, isFeatures, isPlayground, activeView, browseAll, urlSyncReady]);
+  }, [selected, profileUsername, isChat, isPrivacy, isTerms, isWizard, isArena, isFeatures, isPlayground, activeView, browseAll, urlSyncReady]);
 
   // Dynamic SEO handler
   useEffect(() => {
@@ -639,7 +653,11 @@ const Inner: React.FC = () => {
     let desc = "AiVerse is a comprehensive, open-source guide to AI tools, models, datasets, and frameworks. Search, compare, and discover the best AI technologies.";
     let path = "/";
 
-    if (isPrivacy) {
+    if (isChat) {
+      title = "Vox AI Technical Copilot | ChatGPT Studio | AiVerse";
+      desc = "Chat with Vox, the flagship AI research copilot on AiVerse covering 330+ models, benchmarks, and architectures.";
+      path = "/chat";
+    } else if (isPrivacy) {
       title = "Privacy Policy | AiVerse";
       desc = "Read the AiVerse Privacy Policy to understand how we secure your data, personalization preferences, and catalog contributions.";
       path = "/privacy";
@@ -706,10 +724,11 @@ const Inner: React.FC = () => {
       document.head.appendChild(canonical);
     }
     canonical.setAttribute("href", `https://aiverse.frozenn.in${path}`);
-  }, [selected, profileUsername, isPrivacy, isTerms, isWizard, isArena, isFeatures, isPlayground, activeView, browseAll]);
+  }, [selected, profileUsername, isChat, isPrivacy, isTerms, isWizard, isArena, isFeatures, isPlayground, activeView, browseAll]);
 
   useEffect(() => {
     const handlePopState = () => {
+      setIsChat(window.location.pathname === "/chat" || window.location.pathname === "/chat/");
       setIsPrivacy(window.location.pathname === "/privacy" || window.location.pathname === "/privacy/");
       setIsTerms(window.location.pathname === "/terms" || window.location.pathname === "/terms/");
       setIsWizard(window.location.pathname === "/wizard" || window.location.pathname === "/wizard/");
@@ -809,12 +828,11 @@ const Inner: React.FC = () => {
     return { forYou, explore, displayList };
   }, [filtered, onboardingProfile]);
 
-  const ITEMS_PER_PAGE = 12;
   const listForPagination = personalized.displayList;
-  const totalPages = Math.ceil(listForPagination.length / ITEMS_PER_PAGE);
+  const totalPages = Math.max(1, Math.ceil(listForPagination.length / itemsPerPage));
   const paginatedEntries = listForPagination.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE,
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
   );
   const forYouNames = new Set(personalized.forYou.map((e) => e.name));
   const showPersonalizedSections =
@@ -838,6 +856,19 @@ const Inner: React.FC = () => {
     setShowBackendToast(true);
     setTimeout(() => setShowBackendToast(false), 5000);
     setAdminDashboardKey(prev => prev + 1);
+  };
+
+  const getVisiblePages = (current: number, total: number) => {
+    if (total <= 7) {
+      return Array.from({ length: total }, (_, i) => i + 1);
+    }
+    if (current <= 4) {
+      return [1, 2, 3, 4, 5, "...", total];
+    }
+    if (current >= total - 3) {
+      return [1, "...", total - 4, total - 3, total - 2, total - 1, total];
+    }
+    return [1, "...", current - 1, current, current + 1, "...", total];
   };
 
   if (isLoading) {
@@ -1020,6 +1051,52 @@ const Inner: React.FC = () => {
           setBrowseAll(false);
         }}
         entryCount={entries.length}
+        ecosystemsCount={ecosystemsCount}
+        onBrowseAll={() => {
+          setIsPrivacy(false);
+          setIsTerms(false);
+          setIsFeatures(false);
+          setIsWizard(false);
+          setIsArena(false);
+          setIsPlayground(false);
+          setIsAdminDashboard(false);
+          setSelected(null);
+          setProfileUsername(null);
+          setBrowseAll(true);
+          setActiveView("catalog");
+          setCatalogDisplayMode("assets");
+          setCurrentPage(1);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+        onViewEcosystems={() => {
+          setIsPrivacy(false);
+          setIsTerms(false);
+          setIsFeatures(false);
+          setIsWizard(false);
+          setIsArena(false);
+          setIsPlayground(false);
+          setIsAdminDashboard(false);
+          setSelected(null);
+          setProfileUsername(null);
+          setBrowseAll(true);
+          setActiveView("catalog");
+          setCatalogDisplayMode("ecosystems");
+          setCurrentPage(1);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+        onViewChat={() => {
+          setIsChat(true);
+          setIsPrivacy(false);
+          setIsTerms(false);
+          setIsFeatures(false);
+          setIsWizard(false);
+          setIsArena(false);
+          setIsPlayground(false);
+          setIsAdminDashboard(false);
+          setSelected(null);
+          setProfileUsername(null);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
         onboardingProfile={onboardingProfile}
         onSaveProfile={handleProfileComplete}
       />
@@ -1191,7 +1268,7 @@ const Inner: React.FC = () => {
                     <div className="flex items-center gap-2 mb-1">
                       <span className="w-2 h-2 rounded-full bg-emerald-500" />
                       <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400">
-                        {catalogDisplayMode === "ecosystems" ? "AI Organizations & Research Labs" : `${filtered.length} of ${entries.length} assets`}
+                        {catalogDisplayMode === "ecosystems" ? `${ecosystemsCount} AI Organizations & Research Labs` : `${filtered.length} of ${entries.length} assets`}
                       </span>
                     </div>
                     <h2 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
@@ -1251,7 +1328,7 @@ const Inner: React.FC = () => {
                           <span>Featured</span>
                         </button>
 
-                        {/* Saved toggle */}
+                        {/* Bookmarks toggle */}
                         <button
                           onClick={handleSavedToggle}
                           className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all cursor-pointer flex items-center gap-1.5 ${
@@ -1265,16 +1342,20 @@ const Inner: React.FC = () => {
                           <span>Bookmarks ({bookmarks.length})</span>
                         </button>
 
-                        {/* Sidebar mode button */}
+                        {/* View All Entries button */}
                         <button
                           onClick={() => {
                             setBrowseAll(true);
                             setActiveView("catalog");
+                            setCatalogDisplayMode("assets");
                             window.scrollTo({ top: 0, behavior: "smooth" });
                           }}
-                          className="px-3.5 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/[0.08] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer flex items-center gap-1.5"
+                          className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 hover:opacity-90 transition-all cursor-pointer flex items-center gap-1.5 shadow-xs"
+                          title="Open full catalog directory with sidebar filters"
                         >
-                          <Filter size={11} /> Filters
+                          <LayoutGrid size={12} />
+                          <span>View All Entries ({entries.length})</span>
+                          <ArrowRight size={11} />
                         </button>
                       </div>
                     )}
@@ -1365,44 +1446,111 @@ const Inner: React.FC = () => {
                       </div>
                     )}
 
-                    {/* Pagination Controls */}
-                    {totalPages > 1 && (
-                      <div className="flex items-center justify-center gap-3 mt-10">
-                        <button
-                          onClick={() => {
-                            setCurrentPage((p) => Math.max(1, p - 1));
-                            scrollToCatalog();
-                          }}
-                          disabled={currentPage === 1}
-                          className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all border cursor-pointer ${
-                            currentPage === 1
-                              ? "opacity-40 cursor-not-allowed border-transparent text-neutral-400"
-                              : "border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:border-neutral-300 dark:hover:border-white/20"
-                          }`}
-                        >
-                          ← Previous
-                        </button>
-
-                        <span className="text-xs font-medium px-3 text-neutral-500 dark:text-neutral-400">
-                          Page {currentPage} of {totalPages}
+                    {/* Rich Pagination & View All Controls on Landing Page */}
+                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 mt-8 border-t border-neutral-200/80 dark:border-white/[0.08]">
+                      {/* Left: Summary and Per Page Selector */}
+                      <div className="flex flex-wrap items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400">
+                        <span>
+                          Showing <strong className="text-neutral-900 dark:text-white font-semibold">{(currentPage - 1) * itemsPerPage + 1}–{Math.min(currentPage * itemsPerPage, listForPagination.length)}</strong> of <strong className="text-neutral-900 dark:text-white font-semibold">{listForPagination.length}</strong> assets <span className="opacity-75 font-normal">(Page {currentPage} of {totalPages})</span>
                         </span>
+                        <span className="opacity-40">·</span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[11px]">Per page:</span>
+                          {[12, 24, 48].map((size) => (
+                            <button
+                              key={size}
+                              onClick={() => {
+                                setItemsPerPage(size);
+                                setCurrentPage(1);
+                              }}
+                              className={`px-2 py-0.5 rounded text-[11px] font-semibold transition-colors cursor-pointer ${
+                                itemsPerPage === size
+                                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
+                                  : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
+                              }`}
+                            >
+                              {size}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
 
+                      {/* Right: Page navigation and View All Entries button */}
+                      <div className="flex flex-wrap items-center gap-2.5">
                         <button
                           onClick={() => {
-                            setCurrentPage((p) => Math.min(totalPages, p + 1));
-                            scrollToCatalog();
+                            setBrowseAll(true);
+                            setActiveView("catalog");
+                            setCatalogDisplayMode("assets");
+                            window.scrollTo({ top: 0, behavior: "smooth" });
                           }}
-                          disabled={currentPage === totalPages}
-                          className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all border cursor-pointer ${
-                            currentPage === totalPages
-                              ? "opacity-40 cursor-not-allowed border-transparent text-neutral-400"
-                              : "border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:border-neutral-300 dark:hover:border-white/20"
-                          }`}
+                          className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-all cursor-pointer flex items-center gap-1.5 shadow-xs"
+                          title="Open full catalog directory with sidebar filters"
                         >
-                          Next →
+                          <LayoutGrid size={12} />
+                          <span>View All Entries ({entries.length})</span>
+                          <ArrowRight size={11} />
                         </button>
+
+                        {totalPages > 1 && (
+                          <div className="flex items-center gap-1.5">
+                            <button
+                              onClick={() => {
+                                setCurrentPage((p) => Math.max(1, p - 1));
+                                scrollToCatalog();
+                              }}
+                              disabled={currentPage === 1}
+                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-xs"
+                            >
+                              <ChevronLeft size={13} />
+                              <span>Prev</span>
+                            </button>
+
+                            <div className="flex items-center gap-1">
+                              {getVisiblePages(currentPage, totalPages).map((page, idx) => {
+                                if (page === "...") {
+                                  return (
+                                    <span key={`dots-${idx}`} className="px-1.5 text-xs text-neutral-400 select-none">
+                                      …
+                                    </span>
+                                  );
+                                }
+                                const pageNum = page as number;
+                                const isCurrent = pageNum === currentPage;
+                                return (
+                                  <button
+                                    key={pageNum}
+                                    onClick={() => {
+                                      setCurrentPage(pageNum);
+                                      scrollToCatalog();
+                                    }}
+                                    className={`min-w-8 h-8 flex items-center justify-center rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                                      isCurrent
+                                        ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
+                                        : "border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05]"
+                                    }`}
+                                  >
+                                    {pageNum}
+                                  </button>
+                                );
+                              })}
+                            </div>
+
+                            <button
+                              onClick={() => {
+                                setCurrentPage((p) => Math.min(totalPages, p + 1));
+                                scrollToCatalog();
+                              }}
+                              disabled={currentPage === totalPages}
+                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-xs"
+                            >
+                              <span>Next</span>
+                              <ChevronRight size={13} />
+                            </button>
+                          </div>
+                        )}
                       </div>
-                    )}
+                    </div>
                   </>
                 )}
               </div>
@@ -1413,6 +1561,13 @@ const Inner: React.FC = () => {
                   totalEntriesCount={entries.length}
                   entries={entries}
                   ratingSummaries={ratingSummaries}
+                  onViewAllEntries={() => {
+                    setBrowseAll(true);
+                    setActiveView("catalog");
+                    setCatalogDisplayMode("assets");
+                    setCurrentPage(1);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
                 />
                 <ValueProps />
               </div>
@@ -1447,7 +1602,7 @@ const Inner: React.FC = () => {
                         {catalogDisplayMode === "ecosystems" ? "AI Labs & Ecosystems" : "AI Resource Directory"}
                       </h1>
                       <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-white/[0.06] text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-white/[0.08] tabular-nums">
-                        {catalogDisplayMode === "ecosystems" ? "Ecosystem Portfolios" : `${filtered.length} of ${entries.length} items`}
+                        {catalogDisplayMode === "ecosystems" ? `${ecosystemsCount} Ecosystem Portfolios` : `${filtered.length} of ${entries.length} items`}
                       </span>
                     </div>
 
@@ -1455,7 +1610,10 @@ const Inner: React.FC = () => {
                       {/* View Switcher: Individual vs By Lab */}
                       <div className="flex items-center p-1 rounded-xl bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08]">
                         <button
-                          onClick={() => setCatalogDisplayMode("assets")}
+                          onClick={() => {
+                            setCatalogDisplayMode("assets");
+                            setCurrentPage(1);
+                          }}
                           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                             catalogDisplayMode === "assets"
                               ? resolvedTheme === "amoled"
@@ -1465,10 +1623,18 @@ const Inner: React.FC = () => {
                           }`}
                         >
                           <Box size={13} />
-                          <span>All Assets</span>
+                          <span>All Assets & Models</span>
+                          <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
+                            catalogDisplayMode === "assets" ? "bg-white/20 dark:bg-black/20" : "bg-neutral-200/60 dark:bg-white/[0.08]"
+                          }`}>
+                            {entries.length}
+                          </span>
                         </button>
                         <button
-                          onClick={() => setCatalogDisplayMode("ecosystems")}
+                          onClick={() => {
+                            setCatalogDisplayMode("ecosystems");
+                            setCurrentPage(1);
+                          }}
                           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                             catalogDisplayMode === "ecosystems"
                               ? resolvedTheme === "amoled"
@@ -1477,8 +1643,13 @@ const Inner: React.FC = () => {
                               : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                           }`}
                         >
-                          <Building2 size={13} />
-                          <span>By AI Lab</span>
+                          <Building2 size={13} className={catalogDisplayMode === "ecosystems" ? "text-blue-400 dark:text-blue-600" : "text-blue-500"} />
+                          <span>AI Ecosystems</span>
+                          <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
+                            catalogDisplayMode === "ecosystems" ? "bg-white/20 dark:bg-black/20" : "bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20"
+                          }`}>
+                            {ecosystemsCount}
+                          </span>
                         </button>
                       </div>
 
@@ -1527,6 +1698,12 @@ const Inner: React.FC = () => {
                     savedOnly={savedOnly}
                     savedCount={bookmarks.length}
                     onSavedToggle={handleSavedToggle}
+                    catalogDisplayMode={catalogDisplayMode}
+                    onSelectDisplayMode={(m) => {
+                      setCatalogDisplayMode(m);
+                      setCurrentPage(1);
+                    }}
+                    ecosystemsCount={ecosystemsCount}
                     onResetFilters={() => {
                       setTypeFilter("All");
                       setTaskFilter("All Tasks");
@@ -1551,6 +1728,40 @@ const Inner: React.FC = () => {
                       {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly || savedOnly) && (
                         <span className="w-2 h-2 rounded-full bg-blue-500 ml-1" />
                       )}
+                    </button>
+                  </div>
+
+                  {/* AI Ecosystems Callout in All Entries Section */}
+                  <div className="mb-6 p-4 rounded-2xl border border-blue-500/20 bg-blue-500/[0.04] dark:bg-blue-500/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                        <Building2 size={19} />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <h3 className="text-xs font-bold text-neutral-900 dark:text-white uppercase tracking-wider">
+                            Explore AI Labs & Ecosystems
+                          </h3>
+                          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                            {ecosystemsCount} AI Organizations
+                          </span>
+                        </div>
+                        <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-0.5">
+                          Discover foundation models and tools grouped by OpenAI, Google DeepMind, Anthropic, Meta, DeepSeek, Mistral &amp; 200+ more.
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setCatalogDisplayMode("ecosystems");
+                        setCurrentPage(1);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
+                      className="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 hover:opacity-90 transition-all cursor-pointer shadow-xs"
+                    >
+                      <Building2 size={13} />
+                      <span>View AI Ecosystems</span>
+                      <ArrowRight size={12} />
                     </button>
                   </div>
 
@@ -1635,32 +1846,77 @@ const Inner: React.FC = () => {
                         </div>
                       </section>
 
-                      {/* Google Cloud Style Pagination Footer */}
+                      {/* Rich Pagination Footer in Catalog View */}
                       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-neutral-200/80 dark:border-white/[0.08] mt-4">
-                        <span className="text-xs text-neutral-500 dark:text-neutral-400">
-                          Showing <span className="font-semibold text-neutral-900 dark:text-white">{Math.min(filtered.length, (currentPage - 1) * 24 + 1)}-{Math.min(filtered.length, currentPage * 24)}</span> of <span className="font-semibold text-neutral-900 dark:text-white">{filtered.length}</span> resources
-                        </span>
+                        <div className="flex flex-wrap items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400">
+                          <span>
+                            Showing <strong className="font-semibold text-neutral-900 dark:text-white">{(currentPage - 1) * itemsPerPage + 1}–{Math.min(currentPage * itemsPerPage, filtered.length)}</strong> of <strong className="font-semibold text-neutral-900 dark:text-white">{filtered.length}</strong> resources <span className="opacity-75 font-normal">(Page {currentPage} of {totalPages})</span>
+                          </span>
+                          <span className="opacity-40">·</span>
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-[11px]">Per page:</span>
+                            {[12, 24, 48].map((size) => (
+                              <button
+                                key={size}
+                                onClick={() => {
+                                  setItemsPerPage(size);
+                                  setCurrentPage(1);
+                                }}
+                                className={`px-2 py-0.5 rounded text-[11px] font-semibold transition-colors cursor-pointer ${
+                                  itemsPerPage === size
+                                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
+                                    : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
+                                }`}
+                              >
+                                {size}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
 
                         {totalPages > 1 && (
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-1.5">
                             <button
                               onClick={() => {
                                 setCurrentPage((p) => Math.max(1, p - 1));
                                 window.scrollTo({ top: 0, behavior: "smooth" });
                               }}
                               disabled={currentPage === 1}
-                              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all border cursor-pointer ${
-                                currentPage === 1
-                                  ? "opacity-40 cursor-not-allowed border-transparent text-neutral-400"
-                                  : "border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:border-neutral-300 dark:hover:border-white/20 hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
-                              }`}
+                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-xs"
                             >
-                              ← Previous
+                              <ChevronLeft size={13} />
+                              <span>Previous</span>
                             </button>
 
-                            <span className="text-xs font-medium px-3 text-neutral-500 dark:text-neutral-400">
-                              {currentPage} / {totalPages}
-                            </span>
+                            <div className="flex items-center gap-1">
+                              {getVisiblePages(currentPage, totalPages).map((page, idx) => {
+                                if (page === "...") {
+                                  return (
+                                    <span key={`dots-${idx}`} className="px-1.5 text-xs text-neutral-400 select-none">
+                                      …
+                                    </span>
+                                  );
+                                }
+                                const pageNum = page as number;
+                                const isCurrent = pageNum === currentPage;
+                                return (
+                                  <button
+                                    key={pageNum}
+                                    onClick={() => {
+                                      setCurrentPage(pageNum);
+                                      window.scrollTo({ top: 0, behavior: "smooth" });
+                                    }}
+                                    className={`min-w-8 h-8 flex items-center justify-center rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                                      isCurrent
+                                        ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
+                                        : "border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05]"
+                                    }`}
+                                  >
+                                    {pageNum}
+                                  </button>
+                                );
+                              })}
+                            </div>
 
                             <button
                               onClick={() => {
@@ -1668,13 +1924,10 @@ const Inner: React.FC = () => {
                                 window.scrollTo({ top: 0, behavior: "smooth" });
                               }}
                               disabled={currentPage === totalPages}
-                              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all border cursor-pointer ${
-                                currentPage === totalPages
-                                  ? "opacity-40 cursor-not-allowed border-transparent text-neutral-400"
-                                  : "border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:border-neutral-300 dark:hover:border-white/20 hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
-                              }`}
+                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-xs"
                             >
-                              Next →
+                              <span>Next</span>
+                              <ChevronRight size={13} />
                             </button>
                           </div>
                         )}
@@ -2099,6 +2352,21 @@ const Inner: React.FC = () => {
         <ChatWidget
           entryNames={entryNames}
           onEntrySelect={selectEntryByName}
+          entries={entries}
+          isChatRoute={isChat}
+          onNavigateToChat={() => {
+            setIsChat(true);
+            setIsPrivacy(false);
+            setIsTerms(false);
+            setIsFeatures(false);
+            setIsWizard(false);
+            setIsArena(false);
+            setIsPlayground(false);
+            setIsAdminDashboard(false);
+          }}
+          onExitChatRoute={() => {
+            setIsChat(false);
+          }}
         />
       </Suspense>
 
@@ -2144,6 +2412,13 @@ const Inner: React.FC = () => {
               savedOnly={savedOnly}
               savedCount={bookmarks.length}
               onSavedToggle={handleSavedToggle}
+              catalogDisplayMode={catalogDisplayMode}
+              onSelectDisplayMode={(m) => {
+                setCatalogDisplayMode(m);
+                setShowMobileSidebar(false);
+                setCurrentPage(1);
+              }}
+              ecosystemsCount={ecosystemsCount}
             />
           </div>
         </div>

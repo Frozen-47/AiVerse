@@ -8,12 +8,14 @@ interface OverviewCardsProps {
   totalEntriesCount?: number;
   entries?: Entry[];
   ratingSummaries?: Record<string, EntryRatingSummary>;
+  onViewAllEntries?: () => void;
 }
 
 export const OverviewCards: React.FC<OverviewCardsProps> = ({
   totalEntriesCount,
   entries,
   ratingSummaries,
+  onViewAllEntries,
 }) => {
   const [stats, setStats] = useState<DashboardStats>({
     totalEntries: 331,
@@ -142,19 +144,25 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {cards.map((c, i) => {
           const Icon = c.icon;
+          const isRegisteredCard = i === 0 && Boolean(onViewAllEntries);
           return (
             <div
               key={i}
-              title={c.title}
+              onClick={isRegisteredCard ? onViewAllEntries : undefined}
+              title={isRegisteredCard ? `${c.title} — Click to view all entries in catalog` : c.title}
               className={`p-4.5 rounded-2xl border flex items-center justify-between gap-4 transition-all duration-150 ${
+                isRegisteredCard ? "cursor-pointer group hover:scale-[1.01]" : ""
+              } ${
                 isAmoled
-                  ? "bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04]"
-                  : "bg-white border-neutral-200/70 shadow-2xs hover:shadow-xs"
+                  ? `bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04] ${isRegisteredCard ? "hover:border-white/20" : ""}`
+                  : `bg-white border-neutral-200/70 shadow-2xs hover:shadow-xs ${isRegisteredCard ? "hover:border-neutral-400" : ""}`
               }`}
             >
               <div className="flex items-center gap-3.5">
                 <div
-                  className={`w-10 h-10 rounded-xl flex items-center justify-center border shrink-0 ${
+                  className={`w-10 h-10 rounded-xl flex items-center justify-center border shrink-0 transition-transform ${
+                    isRegisteredCard ? "group-hover:scale-105" : ""
+                  } ${
                     isAmoled
                       ? "bg-white/[0.05] border-white/10 text-neutral-300"
                       : "bg-neutral-100 border-neutral-200 text-neutral-700"
@@ -163,8 +171,13 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
                   <Icon size={16} />
                 </div>
                 <div>
-                  <div className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white leading-none">
-                    {c.value}
+                  <div className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white leading-none flex items-center gap-1.5">
+                    <span>{c.value}</span>
+                    {isRegisteredCard && (
+                      <span className="text-[10px] font-semibold text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                        View All →
+                      </span>
+                    )}
                   </div>
                   <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400 mt-1 block">
                     {c.label}

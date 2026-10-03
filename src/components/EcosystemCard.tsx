@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowRight, ExternalLink, Sparkles, Box, Layers, Database, Server, Bot } from "lucide-react";
 import type { Entry } from "../types";
 import type { EcosystemGroup } from "../lib/ecosystems";
+import { EcosystemLogo } from "./EcosystemLogo";
 
 interface EcosystemCardProps {
   ecosystem: EcosystemGroup;
@@ -14,22 +15,17 @@ export const EcosystemCard: React.FC<EcosystemCardProps> = ({
   onExplore,
   onSelectEntry,
 }) => {
-  const initials = ecosystem.name
-    .split(/\s+/)
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-
   return (
     <div className="group relative flex flex-col justify-between p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl hover:border-neutral-300 dark:hover:border-white/20 transition-all duration-200 shadow-xs hover:shadow-md text-left">
       <div>
-        {/* Top bar: Avatar/Initials + Name + Count Badge */}
+        {/* Top bar: Real Logo + Name + Count Badge */}
         <div className="flex items-start justify-between gap-3 mb-3">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-black text-xs flex items-center justify-center shrink-0 shadow-xs">
-              {initials}
-            </div>
+            <EcosystemLogo
+              name={ecosystem.name}
+              website={ecosystem.website}
+              size={42}
+            />
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="font-bold text-base text-neutral-900 dark:text-white tracking-tight">
