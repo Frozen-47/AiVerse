@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-02T03:19:14.296Z",
+  "timestamp": "2026-10-03T03:05:10.069Z",
   "models": [
     {
       "id": "convaiinnovations/laya",
       "author": "convaiinnovations",
-      "likes": 4867,
+      "likes": 5007,
       "downloads": 0,
       "pipeline_tag": "text-classification",
       "url": "https://huggingface.co/convaiinnovations/laya"
     },
     {
-      "id": "XingChen-AGI/TeleOCR",
-      "author": "XingChen-AGI",
-      "likes": 1233,
-      "downloads": 31584,
+      "id": "Cloudflare/clef",
+      "author": "Cloudflare",
+      "likes": 800,
+      "downloads": 824,
       "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/XingChen-AGI/TeleOCR"
+      "url": "https://huggingface.co/Cloudflare/clef"
     },
     {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
       "author": "abenzerps",
-      "likes": 2715,
-      "downloads": 1303476,
+      "likes": 2849,
+      "downloads": 1376248,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
     },
     {
       "id": "Contrastive-LM/CLM-v0.1-8B",
       "author": "Contrastive-LM",
-      "likes": 626,
-      "downloads": 2720,
+      "likes": 671,
+      "downloads": 2951,
       "pipeline_tag": "text-ranking",
       "url": "https://huggingface.co/Contrastive-LM/CLM-v0.1-8B"
     },
     {
-      "id": "Qwen/Qwen-Image-2.1",
-      "author": "Qwen",
-      "likes": 2795,
-      "downloads": 76938,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
-    },
-    {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 5866,
-      "downloads": 1588619,
+      "likes": 6001,
+      "downloads": 1584129,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
+    },
+    {
+      "id": "Qwen/Qwen-Image-2.1",
+      "author": "Qwen",
+      "likes": 2843,
+      "downloads": 81738,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
     }
   ],
   "papers": [
     {
-      "title": "DexPolicy: Scheduled Exploration for Trajectory-Guided Dexterous Manipulation",
-      "summary": "Reinforcement learning (RL) for dexterous manipulation must discover finger-object contacts and then control the object precisely; the action noise that serves ...",
-      "upvotes": 0,
-      "arxiv_id": "2610.00360",
-      "url": "https://huggingface.co/papers/2610.00360",
-      "githubRepo": "https://github.com/AIGeeksGroup/DexPolicy"
-    },
-    {
-      "title": "When Users Change Their Minds: Measuring and Repairing Intent Drift in LLM Agents",
-      "summary": "LLM agents often operate over multi-turn interactions in which user intent changes before execution. We study intent drift: the failure mode in which superseded...",
+      "title": "Replacing Large Language Models with Jev Decision Models for Low-Latency Edge Service Orchestration",
+      "summary": "Natural-language service requests can require a language-model decision before execution starts, consuming part of the request's latency budget. We integrate Je...",
       "upvotes": 1,
-      "arxiv_id": "2609.32520",
-      "url": "https://huggingface.co/papers/2609.32520",
-      "githubRepo": null
+      "arxiv_id": "2609.22753",
+      "url": "https://huggingface.co/papers/2609.22753",
+      "githubRepo": "https://github.com/OniReimu/Edge-Computing-JEV"
     },
     {
-      "title": "Do Audio LLMs Listen Before They Act? Diagnosing Acoustic-Context Gating in Voice Agents",
-      "summary": "Audio language models can recognize spoken commands and invoke tools, but an agent must first decide whether the acoustic and conversational context warrants ac...",
+      "title": "Ego2Act: Evaluating Goal-Directed Manipulation in Egocentric Video Generation",
+      "summary": "Video generation models are increasingly being explored as world simulators for embodied planning and learning. To do so effectively, these models must not only...",
+      "upvotes": 4,
+      "arxiv_id": "2610.01092",
+      "url": "https://huggingface.co/papers/2610.01092",
+      "githubRepo": "https://github.com/ego2act/ego2act"
+    },
+    {
+      "title": "MemFold: Learning Compact Soft Memory for Long-Context Personalization via On-Policy Optimization",
+      "summary": "An assistant that serves the same user over a long horizon has to answer from what that user has revealed: which preferences still hold, which were revised, and...",
       "upvotes": 2,
-      "arxiv_id": "2609.32536",
-      "url": "https://huggingface.co/papers/2609.32536",
-      "githubRepo": null
+      "arxiv_id": "2609.36435",
+      "url": "https://huggingface.co/papers/2609.36435",
+      "githubRepo": "https://github.com/Johnny221B/memfold"
     },
     {
-      "title": "4Director: Controlling Video World Models with Rigid 3D Geometry",
-      "summary": "Precise control over camera and object motion is essential for professional video production. Existing methods control objects only coarsely, through image-plan...",
-      "upvotes": 3,
-      "arxiv_id": "2610.02160",
-      "url": "https://huggingface.co/papers/2610.02160",
-      "githubRepo": "https://github.com/VVeiCao/4Director"
+      "title": "Video Generation Models: A Survey of Post-Training and Alignment",
+      "summary": "Video generation has rapidly progressed from short, low-quality clips to high-resolution, long-duration sequences with complex spatiotemporal dynamics. Despite ...",
+      "upvotes": 13,
+      "arxiv_id": "2610.00812",
+      "url": "https://huggingface.co/papers/2610.00812",
+      "githubRepo": "https://github.com/people-robots/Awesome-Video-Generation-Post-Training"
     },
     {
-      "title": "PixelDense: Dense Prediction as Representation Alignment for Pixel Diffusion",
-      "summary": "Representation alignment (REPA) accelerates diffusion transformer training, but its alignment targets are almost exclusively semantic encoders such as DINOv2 an...",
+      "title": "Persona Dosing: Calibrated Activation Steering for Graded Trait Control",
+      "summary": "An activation-steering coefficient sets intervention strength, but requesting a particular degree of persona expression requires a behavioral scale. We study pe...",
       "upvotes": 2,
-      "arxiv_id": "2610.00483",
-      "url": "https://huggingface.co/papers/2610.00483",
-      "githubRepo": "https://github.com/Hansxsourse/PixelDense"
+      "arxiv_id": "2609.36388",
+      "url": "https://huggingface.co/papers/2609.36388",
+      "githubRepo": null
     }
   ]
 }

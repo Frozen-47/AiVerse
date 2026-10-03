@@ -1,23 +1,28 @@
 {
-  "timestamp": "2026-10-02T03:19:14.411Z",
+  "timestamp": "2026-10-03T03:05:10.352Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 21,
+  "broken": 4,
   "issues": [
     {
-      "name": "Character.ai",
-      "url": "https://character.ai",
+      "name": "GPT-4o mini",
+      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
       "status": 403
     },
     {
-      "name": "Ideogram",
-      "url": "https://ideogram.ai",
+      "name": "Codex",
+      "url": "https://openai.com/blog/openai-codex",
       "status": 403
     },
     {
-      "name": "Google Gemini",
-      "url": "https://gemini.google.com",
+      "name": "Play.ht",
+      "url": "https://play.ht",
       "status": "Network Error"
+    },
+    {
+      "name": "ERNIE Bot",
+      "url": "https://yiyan.baidu.com",
+      "status": "Timeout"
     }
   ]
 }
