@@ -33,6 +33,7 @@ import {
   Zap,
 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { useAuth } from './AuthContext';
 import type { Entry } from '../types';
 import { EcosystemLogo } from './EcosystemLogo';
@@ -98,6 +99,50 @@ interface ChatSession {
   createdAt: number;
   mode: ChatMode;
 }
+
+const getChildrenText = (node: any): string => {
+  if (node == null) return '';
+  if (typeof node === 'string') return node;
+  if (typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(getChildrenText).join('');
+  if (typeof node === 'object' && node.props?.children) {
+    return getChildrenText(node.props.children);
+  }
+  return '';
+};
+
+export const parseContentAndReasoning = (content?: string, reasoning?: string) => {
+  let finalContent = content || '';
+  let finalReasoning = reasoning || '';
+
+  // 1. Fully closed think tags: <think>...</think>
+  const closedMatches = finalContent.matchAll(/<think>([\s\S]*?)<\/think>/gi);
+  for (const match of closedMatches) {
+    const extracted = match[1].trim();
+    if (extracted) {
+      finalReasoning = finalReasoning ? `${finalReasoning}\n${extracted}` : extracted;
+    }
+  }
+  finalContent = finalContent.replace(/<think>[\s\S]*?<\/think>/gi, '').trim();
+
+  // 2. In-progress think tag (streaming): <think>...
+  const openMatch = finalContent.match(/<think>([\s\S]*)$/i);
+  if (openMatch) {
+    const inProgress = openMatch[1].trim();
+    if (inProgress) {
+      finalReasoning = finalReasoning ? `${finalReasoning}\n${inProgress}` : inProgress;
+    }
+    finalContent = finalContent.slice(0, openMatch.index).trim();
+  }
+
+  // 3. Clean any stray unclosed or leftover think tags
+  finalContent = finalContent.replace(/<\/?think>/gi, '').trim();
+
+  return {
+    content: finalContent,
+    reasoning: finalReasoning || undefined,
+  };
+};
 
 const PREBUILT_PROMPTS = [
   {
@@ -443,30 +488,55 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
     [entries]
   );
 
-  // Markdown renderer with syntax-highlighted code blocks
+  // Markdown renderer with syntax-highlighted code blocks and full GFM support
   const customMarkdownComponents = useMemo(() => {
     return {
-      h1: ({ node, ...props }: any) => (
-        <h1 className="font-bold text-lg sm:text-xl mt-4 mb-2 text-neutral-900 dark:text-neutral-100 tracking-tight" {...props} />
+      h1: (props: any) => (
+        <h1 className="font-bold text-lg sm:text-xl mt-5 mb-2.5 text-neutral-900 dark:text-neutral-100 tracking-tight" {...props} />
       ),
-      h2: ({ node, ...props }: any) => (
-        <h2 className="font-bold text-sm sm:text-base mt-3 mb-1.5 text-neutral-900 dark:text-neutral-100 tracking-tight" {...props} />
+      h2: (props: any) => (
+        <h2 className="font-bold text-base sm:text-lg mt-4 mb-2 text-neutral-900 dark:text-neutral-100 tracking-tight" {...props} />
       ),
-      h3: ({ node, ...props }: any) => (
-        <h3 className="font-semibold text-xs sm:text-sm mt-2.5 mb-1 text-neutral-900 dark:text-neutral-200" {...props} />
+      h3: (props: any) => (
+        <h3 className="font-semibold text-sm sm:text-base mt-3.5 mb-1.5 text-neutral-900 dark:text-neutral-200 tracking-tight" {...props} />
       ),
-      p: ({ node, ...props }: any) => (
-        <p className="mb-3 last:mb-0 leading-relaxed text-neutral-800 dark:text-[#d1d5db] text-xs sm:text-[14.5px]" {...props} />
+      h4: (props: any) => (
+        <h4 className="font-semibold text-xs sm:text-sm mt-3 mb-1 text-neutral-900 dark:text-neutral-200" {...props} />
       ),
-      ul: ({ node, ...props }: any) => (
-        <ul className="list-disc pl-5 mb-3 space-y-1.5 marker:text-neutral-400 dark:marker:text-neutral-500 text-xs sm:text-[14.5px] text-neutral-800 dark:text-[#d1d5db]" {...props} />
+      h5: (props: any) => (
+        <h5 className="font-semibold text-xs sm:text-[13px] mt-2 mb-1 text-neutral-900 dark:text-neutral-200" {...props} />
       ),
-      ol: ({ node, ...props }: any) => (
-        <ol className="list-decimal pl-5 mb-3 space-y-1.5 marker:text-neutral-400 dark:marker:text-neutral-500 font-medium text-xs sm:text-[14.5px] text-neutral-800 dark:text-[#d1d5db]" {...props} />
+      h6: (props: any) => (
+        <h6 className="font-medium text-xs mt-2 mb-1 text-neutral-800 dark:text-neutral-300" {...props} />
       ),
-      li: ({ node, ...props }: any) => <li className="leading-relaxed" {...props} />,
+      p: (props: any) => (
+        <p className="mb-3.5 last:mb-0 leading-relaxed text-neutral-800 dark:text-[#d1d5db] text-xs sm:text-[14.5px]" {...props} />
+      ),
+      ul: (props: any) => (
+        <ul className="list-disc pl-5 mb-3.5 space-y-1.5 marker:text-emerald-500/70 dark:marker:text-emerald-400/70 text-xs sm:text-[14.5px] text-neutral-800 dark:text-[#d1d5db]" {...props} />
+      ),
+      ol: (props: any) => (
+        <ol className="list-decimal pl-5 mb-3.5 space-y-1.5 marker:text-neutral-500 font-normal text-xs sm:text-[14.5px] text-neutral-800 dark:text-[#d1d5db]" {...props} />
+      ),
+      li: (props: any) => (
+        <li className="leading-relaxed [&>p]:mb-1.5 [&>p:last-child]:mb-0" {...props} />
+      ),
+      blockquote: ({ children }: any) => (
+        <blockquote className="my-3.5 border-l-3 border-emerald-500 dark:border-emerald-400 pl-3.5 py-1.5 italic text-neutral-600 dark:text-neutral-400 bg-neutral-100/50 dark:bg-white/[0.02] rounded-r-lg text-xs sm:text-[14px]">
+          {children}
+        </blockquote>
+      ),
+      hr: () => (
+        <hr className="my-4 border-t border-neutral-200 dark:border-neutral-800" />
+      ),
+      del: ({ children }: any) => (
+        <del className="line-through text-neutral-400 dark:text-neutral-500">{children}</del>
+      ),
+      em: ({ children }: any) => (
+        <em className="italic text-neutral-800 dark:text-neutral-200">{children}</em>
+      ),
       strong: ({ children }: any) => {
-        const text = String(children ?? '').trim();
+        const text = getChildrenText(children).trim();
         const match = entries.find(
           (e) => e.name.toLowerCase() === text.toLowerCase()
         );
@@ -478,32 +548,27 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
               className="inline-flex items-center gap-0.5 font-semibold text-emerald-600 dark:text-emerald-400 hover:underline underline-offset-2 decoration-emerald-500/50 cursor-pointer"
               title={`Inspect ${match.name} in AiVerse`}
             >
-              <span>{text}</span>
+              <span>{children}</span>
               <span className="text-[10px] opacity-60">↗</span>
             </button>
           );
         }
         return <strong className="font-semibold text-neutral-950 dark:text-white">{children}</strong>;
       },
-      pre: ({ children }: any) => children,
-      code: ({ className, children }: any) => {
-        const codeString = String(children).replace(/\n$/, '');
-        const isBlock = Boolean(className) || codeString.includes('\n');
-
-        if (!isBlock) {
-          return (
-            <code className="bg-neutral-100 dark:bg-white/[0.08] text-neutral-900 dark:text-neutral-100 px-1 py-0.5 rounded font-mono text-[11.5px] border border-neutral-200/60 dark:border-white/10">
-              {children}
-            </code>
-          );
-        }
-
-        const lang = (className || '').replace('language-', '') || 'code';
+      pre: ({ children }: any) => {
+        const codeElement = React.isValidElement(children) ? (children as React.ReactElement<any>) : null;
+        const className = codeElement?.props?.className || '';
+        const rawCode = codeElement?.props?.children ?? children;
+        const codeString = getChildrenText(rawCode).replace(/\n$/, '');
+        const lang = (className || '').replace(/^language-/, '') || 'code';
 
         return (
-          <div className="my-3 rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-[#0d0d0d] text-neutral-100 shadow-sm">
-            <div className="flex items-center justify-between px-3.5 py-1.5 border-b border-white/10 bg-white/[0.03] text-[11px] font-mono text-neutral-400">
-              <span className="uppercase font-semibold tracking-wider text-neutral-300">{lang}</span>
+          <div className="my-3.5 rounded-xl overflow-hidden border border-neutral-200/80 dark:border-neutral-800 bg-[#0d0e10] text-neutral-100 shadow-sm not-prose">
+            <div className="flex items-center justify-between px-3.5 py-2 border-b border-white/[0.08] bg-white/[0.03] text-[11px] font-mono text-neutral-400">
+              <span className="uppercase font-semibold tracking-wider text-neutral-300 flex items-center gap-1.5">
+                <Code size={12} className="text-emerald-400" />
+                <span>{lang}</span>
+              </span>
               <button
                 type="button"
                 onClick={() => {
@@ -511,44 +576,134 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                   setCopiedCodeText(codeString);
                   setTimeout(() => setCopiedCodeText(null), 2000);
                 }}
-                className="flex items-center gap-1 px-2 py-0.5 rounded hover:bg-white/10 text-neutral-300 hover:text-white transition-all cursor-pointer"
+                className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/[0.05] hover:bg-white/[0.1] text-neutral-300 hover:text-white transition-all cursor-pointer text-xs"
               >
-                {copiedCodeText === codeString ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
-                <span>{copiedCodeText === codeString ? 'Copied' : 'Copy'}</span>
+                {copiedCodeText === codeString ? (
+                  <>
+                    <Check size={12} className="text-emerald-400" />
+                    <span className="text-emerald-400">Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy size={12} />
+                    <span>Copy</span>
+                  </>
+                )}
               </button>
             </div>
-            <pre className="p-3.5 overflow-x-auto font-mono text-[11.5px] sm:text-[12.5px] leading-relaxed text-neutral-200 no-scrollbar">
-              {codeString}
+            <pre className="p-4 overflow-x-auto font-mono text-xs sm:text-[13px] leading-relaxed text-neutral-200 no-scrollbar selection:bg-emerald-500/30">
+              <code>{codeString}</code>
             </pre>
           </div>
         );
       },
+      code: ({ className, children, ...props }: any) => {
+        if (className && className.startsWith('language-')) {
+          const codeString = getChildrenText(children).replace(/\n$/, '');
+          const lang = className.replace(/^language-/, '');
+          return (
+            <div className="my-3.5 rounded-xl overflow-hidden border border-neutral-200/80 dark:border-neutral-800 bg-[#0d0e10] text-neutral-100 shadow-sm not-prose">
+              <div className="flex items-center justify-between px-3.5 py-2 border-b border-white/[0.08] bg-white/[0.03] text-[11px] font-mono text-neutral-400">
+                <span className="uppercase font-semibold tracking-wider text-neutral-300 flex items-center gap-1.5">
+                  <Code size={12} className="text-emerald-400" />
+                  <span>{lang}</span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigator.clipboard.writeText(codeString);
+                    setCopiedCodeText(codeString);
+                    setTimeout(() => setCopiedCodeText(null), 2000);
+                  }}
+                  className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/[0.05] hover:bg-white/[0.1] text-neutral-300 hover:text-white transition-all cursor-pointer text-xs"
+                >
+                  {copiedCodeText === codeString ? (
+                    <>
+                      <Check size={12} className="text-emerald-400" />
+                      <span className="text-emerald-400">Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={12} />
+                      <span>Copy</span>
+                    </>
+                  )}
+                </button>
+              </div>
+              <pre className="p-4 overflow-x-auto font-mono text-xs sm:text-[13px] leading-relaxed text-neutral-200 no-scrollbar">
+                <code>{codeString}</code>
+              </pre>
+            </div>
+          );
+        }
+
+        return (
+          <code
+            className="bg-neutral-100 dark:bg-white/[0.08] text-emerald-700 dark:text-emerald-400 px-1.5 py-0.5 rounded-md font-mono text-[12px] sm:text-[12.5px] border border-neutral-200/60 dark:border-white/10 font-medium"
+            {...props}
+          >
+            {children}
+          </code>
+        );
+      },
       table: ({ children }: any) => (
-        <div className="my-3 overflow-x-auto rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xs no-scrollbar">
-          <table className="w-full text-xs sm:text-sm text-left border-collapse">{children}</table>
+        <div className="my-4 overflow-x-auto rounded-xl border border-neutral-200/80 dark:border-neutral-800 bg-white/40 dark:bg-[#141414] shadow-xs no-scrollbar not-prose">
+          <table className="w-full text-xs sm:text-[13.5px] text-left border-collapse min-w-full">
+            {children}
+          </table>
         </div>
       ),
+      thead: ({ children }: any) => (
+        <thead className="border-b border-neutral-200 dark:border-neutral-800 bg-neutral-100/90 dark:bg-white/[0.04]">
+          {children}
+        </thead>
+      ),
+      tbody: ({ children }: any) => (
+        <tbody className="divide-y divide-neutral-200/60 dark:divide-neutral-800/60">
+          {children}
+        </tbody>
+      ),
+      tr: ({ children }: any) => (
+        <tr className="hover:bg-neutral-500/[0.04] transition-colors">
+          {children}
+        </tr>
+      ),
       th: ({ children }: any) => (
-        <th className="p-2.5 font-semibold bg-neutral-100/90 dark:bg-white/[0.06] border-b border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white">
+        <th className="px-3.5 py-2.5 font-semibold text-neutral-900 dark:text-neutral-100 text-xs sm:text-[13px] tracking-wide whitespace-nowrap">
           {children}
         </th>
       ),
       td: ({ children }: any) => (
-        <td className="p-2.5 border-t border-neutral-100 dark:border-white/[0.04] text-neutral-700 dark:text-neutral-300 text-xs">
+        <td className="px-3.5 py-2.5 text-neutral-700 dark:text-[#d1d5db] text-xs sm:text-[13px] leading-relaxed align-top">
           {children}
         </td>
       ),
-      a: ({ node, children, ...props }: any) => (
+      a: ({ children, href, ...props }: any) => (
         <a
+          href={href}
           className="inline-flex items-center gap-0.5 text-emerald-600 dark:text-emerald-400 underline underline-offset-2 hover:opacity-80 font-medium"
           target="_blank"
           rel="noopener noreferrer"
           {...props}
         >
-          {children}
-          <ExternalLink size={11} className="shrink-0 opacity-70" />
+          <span>{children}</span>
+          <ExternalLink size={11} className="shrink-0 opacity-70 ml-0.5" />
         </a>
       ),
+      input: ({ type, checked, ...props }: any) => {
+        if (type === 'checkbox') {
+          return (
+            <input
+              type="checkbox"
+              checked={Boolean(checked)}
+              readOnly
+              className="mr-2 rounded border-neutral-300 dark:border-neutral-700 text-emerald-500 focus:ring-0 cursor-default align-middle"
+              {...props}
+            />
+          );
+        }
+        return <input type={type} {...props} />;
+      },
     };
   }, [entries, onEntrySelect, copiedCodeText]);
 
@@ -607,10 +762,12 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
       const contentType = response.headers.get('content-type') || '';
 
       // SSE Stream reader
+      // SSE Stream reader
       if (contentType.includes('text/event-stream') && response.body) {
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
-        let accumulatedContent = '';
+        let buffer = '';
+        let accumulatedRawContent = '';
         let accumulatedReasoning = '';
         let modelUsed = modeConfig.model;
 
@@ -618,45 +775,54 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
           const { done, value } = await reader.read();
           if (done) break;
 
-          const chunk = decoder.decode(value, { stream: true });
-          const lines = chunk.split('\n');
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split('\n');
+          buffer = lines.pop() || '';
 
           for (const line of lines) {
-            if (line.startsWith('data: ')) {
-              const payload = line.slice(6).trim();
-              if (payload === '[DONE]') continue;
+            const trimmed = line.trim();
+            if (!trimmed.startsWith('data: ')) continue;
+            const payload = trimmed.slice(6).trim();
+            if (!payload || payload === '[DONE]') continue;
 
-              try {
-                const parsed = JSON.parse(payload);
-                if (parsed.meta?.model) {
-                  modelUsed = parsed.meta.model;
-                }
-                if (parsed.reasoning) {
-                  accumulatedReasoning += parsed.reasoning;
-                }
-                if (parsed.text) {
-                  accumulatedContent += parsed.text;
-                }
+            try {
+              const parsed = JSON.parse(payload);
+              if (parsed.error) {
+                accumulatedRawContent = parsed.error;
+              }
+              if (parsed.meta?.model) {
+                modelUsed = parsed.meta.model;
+              }
+              if (parsed.reasoning) {
+                accumulatedReasoning += parsed.reasoning;
+              }
+              if (parsed.text) {
+                accumulatedRawContent += parsed.text;
+              }
 
-                setSessions((prev) =>
-                  prev.map((s) => {
-                    if (s.id !== currentSessionId) return s;
-                    const next = [...s.messages];
-                    const lastIdx = next.length - 1;
-                    if (lastIdx >= 0 && next[lastIdx].role === 'assistant') {
-                      next[lastIdx] = {
-                        role: 'assistant',
-                        content: accumulatedContent,
-                        reasoning: accumulatedReasoning || undefined,
-                        modelUsed,
-                        isStreaming: true,
-                      };
-                    }
-                    return { ...s, messages: next };
-                  })
-                );
-              } catch {}
-            }
+              const { content: cleanContent, reasoning: cleanReasoning } = parseContentAndReasoning(
+                accumulatedRawContent,
+                accumulatedReasoning
+              );
+
+              setSessions((prev) =>
+                prev.map((s) => {
+                  if (s.id !== currentSessionId) return s;
+                  const next = [...s.messages];
+                  const lastIdx = next.length - 1;
+                  if (lastIdx >= 0 && next[lastIdx].role === 'assistant') {
+                    next[lastIdx] = {
+                      role: 'assistant',
+                      content: cleanContent,
+                      reasoning: cleanReasoning || undefined,
+                      modelUsed,
+                      isStreaming: true,
+                    };
+                  }
+                  return { ...s, messages: next };
+                })
+              );
+            } catch {}
           }
         }
 
@@ -667,8 +833,14 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
             const next = [...s.messages];
             const lastIdx = next.length - 1;
             if (lastIdx >= 0 && next[lastIdx].role === 'assistant') {
+              const { content: finalCleanContent, reasoning: finalCleanReasoning } = parseContentAndReasoning(
+                next[lastIdx].content,
+                next[lastIdx].reasoning
+              );
               next[lastIdx] = {
                 ...next[lastIdx],
+                content: finalCleanContent,
+                reasoning: finalCleanReasoning,
                 isStreaming: false,
               };
             }
@@ -678,6 +850,10 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
       } else {
         // Fallback for standard JSON
         const data = await response.json();
+        const { content: cleanContent, reasoning: cleanReasoning } = parseContentAndReasoning(
+          data.content || '',
+          data.reasoning
+        );
         setSessions((prev) =>
           prev.map((s) => {
             if (s.id !== currentSessionId) return s;
@@ -686,8 +862,8 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
             if (lastIdx >= 0 && next[lastIdx].role === 'assistant') {
               next[lastIdx] = {
                 role: 'assistant',
-                content: data.content || '',
-                reasoning: data.reasoning,
+                content: cleanContent,
+                reasoning: cleanReasoning,
                 modelUsed: data.modelUsed,
                 isStreaming: false,
               };
@@ -991,8 +1167,10 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
 
                   const isUser = msg.role === 'user';
                   const isError = msg.role === 'error';
-                  const referenced = !isUser && !isError ? getReferencedEntries(msg.content) : [];
-                  const isReasoningExpanded = Boolean(expandedReasoning[idx]);
+                  const { content: displayContent, reasoning: displayReasoning } = parseContentAndReasoning(msg.content, msg.reasoning);
+                  const referenced = !isUser && !isError ? getReferencedEntries(displayContent) : [];
+                  const isReasoningThinking = msg.isStreaming && !displayContent && Boolean(displayReasoning);
+                  const isReasoningExpanded = expandedReasoning[idx] !== undefined ? expandedReasoning[idx] : isReasoningThinking;
 
                   return (
                     <div
@@ -1024,22 +1202,22 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                         ) : (
                           <div>
                             {/* Collapsible Chain-of-Thought Reasoning Trace */}
-                            {msg.reasoning && (
+                            {displayReasoning && (
                               <div className="mb-3 rounded-xl border border-neutral-200 dark:border-neutral-800 overflow-hidden bg-neutral-50 dark:bg-neutral-900/50">
                                 <button
                                   type="button"
-                                  onClick={() => setExpandedReasoning((p) => ({ ...p, [idx]: !p[idx] }))}
-                                  className="w-full flex items-center justify-between px-3 py-2 text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white cursor-pointer"
+                                  onClick={() => setExpandedReasoning((p) => ({ ...p, [idx]: !isReasoningExpanded }))}
+                                  className="w-full flex items-center justify-between px-3.5 py-2 text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white cursor-pointer"
                                 >
                                   <span className="flex items-center gap-1.5">
-                                    <Brain size={13} className="text-purple-500" />
-                                    <span>Thought for a few seconds</span>
+                                    <Brain size={13} className={`text-purple-500 ${isReasoningThinking ? 'animate-pulse' : ''}`} />
+                                    <span>{isReasoningThinking ? 'Thinking in progress...' : 'Thought for a few seconds'}</span>
                                   </span>
                                   {isReasoningExpanded ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
                                 </button>
                                 {isReasoningExpanded && (
                                   <div className="px-4 py-3 text-xs font-mono leading-relaxed text-neutral-600 dark:text-neutral-400 border-t border-neutral-200 dark:border-neutral-800 bg-white/40 dark:bg-black/30 max-h-56 overflow-y-auto whitespace-pre-wrap no-scrollbar">
-                                    {msg.reasoning}
+                                    {displayReasoning}
                                   </div>
                                 )}
                               </div>
@@ -1047,10 +1225,10 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
 
                             {/* Markdown Response Body */}
                             <div className="prose prose-neutral dark:prose-invert max-w-none text-[15px]">
-                              <ReactMarkdown components={customMarkdownComponents}>
-                                {msg.content || (msg.isStreaming ? 'Thinking...' : '')}
+                              <ReactMarkdown remarkPlugins={[remarkGfm]} components={customMarkdownComponents}>
+                                {displayContent || (msg.isStreaming ? (displayReasoning ? '' : 'Thinking...') : '')}
                               </ReactMarkdown>
-                              {msg.isStreaming && (
+                              {msg.isStreaming && (!displayReasoning || displayContent) && (
                                 <span className="inline-block w-2 h-4 bg-emerald-500 ml-1 animate-pulse align-middle" />
                               )}
                             </div>
@@ -1076,11 +1254,11 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                             )}
 
                             {/* Bottom Action Row */}
-                            {!msg.isStreaming && msg.content && (
+                            {!msg.isStreaming && (displayContent || msg.content) && (
                               <div className="mt-3 flex items-center gap-2 text-neutral-400">
                                 <button
                                   onClick={() => {
-                                    navigator.clipboard.writeText(msg.content);
+                                    navigator.clipboard.writeText(displayContent || msg.content);
                                     setCopiedIndex(idx);
                                     setTimeout(() => setCopiedIndex(null), 2000);
                                   }}
@@ -1091,7 +1269,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                                 </button>
 
                                 <button
-                                  onClick={() => speakMessage(msg.content, idx)}
+                                  onClick={() => speakMessage(displayContent || msg.content, idx)}
                                   className={`p-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/[0.08] transition-colors cursor-pointer ${
                                     currentlySpeakingIdx === idx ? 'text-emerald-500' : 'hover:text-neutral-900 dark:hover:text-white'
                                   }`}
@@ -1335,8 +1513,10 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
 
               const isUser = msg.role === 'user';
               const isError = msg.role === 'error';
-              const referenced = !isUser && !isError ? getReferencedEntries(msg.content) : [];
-              const isReasoningExpanded = Boolean(expandedReasoning[idx]);
+              const { content: displayContent, reasoning: displayReasoning } = parseContentAndReasoning(msg.content, msg.reasoning);
+              const referenced = !isUser && !isError ? getReferencedEntries(displayContent) : [];
+              const isReasoningThinking = msg.isStreaming && !displayContent && Boolean(displayReasoning);
+              const isReasoningExpanded = expandedReasoning[idx] !== undefined ? expandedReasoning[idx] : isReasoningThinking;
 
               return (
                 <div
@@ -1367,29 +1547,32 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                       </div>
                     ) : (
                       <div>
-                        {msg.reasoning && (
+                        {displayReasoning && (
                           <div className="mb-2 rounded-lg border border-neutral-200 dark:border-neutral-800 overflow-hidden bg-neutral-50 dark:bg-black/20">
                             <button
                               type="button"
-                              onClick={() => setExpandedReasoning((p) => ({ ...p, [idx]: !p[idx] }))}
-                              className="w-full flex items-center justify-between px-2 py-1 text-[10.5px] font-semibold text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                              onClick={() => setExpandedReasoning((p) => ({ ...p, [idx]: !isReasoningExpanded }))}
+                              className="w-full flex items-center justify-between px-2.5 py-1.5 text-[10.5px] font-semibold text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white cursor-pointer"
                             >
-                              <span>Reasoning thought trace</span>
+                              <span className="flex items-center gap-1.5">
+                                <Brain size={11} className={`text-purple-500 ${isReasoningThinking ? 'animate-pulse' : ''}`} />
+                                <span>{isReasoningThinking ? 'Thinking...' : 'Reasoning thought trace'}</span>
+                              </span>
                               {isReasoningExpanded ? <ChevronUp size={11} /> : <ChevronDown size={11} />}
                             </button>
                             {isReasoningExpanded && (
                               <div className="p-2 text-[10px] font-mono leading-relaxed text-neutral-500 border-t border-neutral-200 dark:border-neutral-800 max-h-32 overflow-y-auto whitespace-pre-wrap no-scrollbar">
-                                {msg.reasoning}
+                                {displayReasoning}
                               </div>
                             )}
                           </div>
                         )}
 
                         <div className="prose prose-sm dark:prose-invert max-w-none text-[12.5px]">
-                          <ReactMarkdown components={customMarkdownComponents}>
-                            {msg.content || (msg.isStreaming ? 'Thinking...' : '')}
+                          <ReactMarkdown remarkPlugins={[remarkGfm]} components={customMarkdownComponents}>
+                            {displayContent || (msg.isStreaming ? (displayReasoning ? '' : 'Thinking...') : '')}
                           </ReactMarkdown>
-                          {msg.isStreaming && (
+                          {msg.isStreaming && (!displayReasoning || displayContent) && (
                             <span className="inline-block w-1.5 h-3.5 bg-emerald-500 ml-0.5 animate-pulse align-middle" />
                           )}
                         </div>
@@ -1415,12 +1598,12 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                         )}
 
                         {/* Copy / Speak actions */}
-                        {!msg.isStreaming && msg.content && (
+                        {!msg.isStreaming && (displayContent || msg.content) && (
                           <div className="mt-2 flex items-center justify-between text-[10px] text-neutral-400">
                             <div className="flex items-center gap-1">
                               <button
                                 onClick={() => {
-                                  navigator.clipboard.writeText(msg.content);
+                                  navigator.clipboard.writeText(displayContent || msg.content);
                                   setCopiedIndex(idx);
                                   setTimeout(() => setCopiedIndex(null), 2000);
                                 }}
@@ -1432,7 +1615,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                               </button>
 
                               <button
-                                onClick={() => speakMessage(msg.content, idx)}
+                                onClick={() => speakMessage(displayContent || msg.content, idx)}
                                 className={`p-1 rounded transition-colors cursor-pointer flex items-center gap-0.5 ${
                                   currentlySpeakingIdx === idx ? 'text-emerald-500' : 'hover:bg-neutral-100 dark:hover:bg-white/10'
                                 }`}

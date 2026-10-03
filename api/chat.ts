@@ -329,7 +329,7 @@ CORE ANSWERING RULES:
             const delta = chunk.choices[0]?.delta;
             if (!delta) continue;
             const content = delta.content || '';
-            const reasoning = (delta as any).reasoning || '';
+            const reasoning = (delta as any).reasoning || (delta as any).reasoning_content || '';
             if (content || reasoning) {
               res.write(`data: ${JSON.stringify({ text: content, reasoning })}\n\n`);
             }
@@ -369,11 +369,15 @@ CORE ANSWERING RULES:
         });
 
         let rawContent = chatCompletion.choices[0]?.message?.content || "";
-        
+        const rawReasoning = (chatCompletion.choices[0]?.message as any)?.reasoning || (chatCompletion.choices[0]?.message as any)?.reasoning_content || "";
+        if (rawReasoning) {
+          reasoningContent = rawReasoning;
+        }
+
         // Extract reasoning trace if present
         const thinkMatch = rawContent.match(/<think>([\s\S]*?)<\/think>/);
         if (thinkMatch) {
-          reasoningContent = thinkMatch[1].trim();
+          reasoningContent = (reasoningContent ? `${reasoningContent}\n` : '') + thinkMatch[1].trim();
           rawContent = rawContent.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
         }
 

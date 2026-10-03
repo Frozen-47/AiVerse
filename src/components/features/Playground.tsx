@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useTokens, useTheme } from "../../lib/theme";
 import { useAuth } from "../AuthContext";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import {
   Lock,
   Play,
@@ -471,31 +472,55 @@ export const Playground: React.FC = () => {
                         ) : (
                           <article className={`text-[13px] leading-relaxed font-normal prose prose-invert max-w-none break-words ${t.textSecondary}`}>
                             <ReactMarkdown
+                              remarkPlugins={[remarkGfm]}
                               components={{
-                                h1: ({ node, ...props }) => (
+                                h1: (props) => (
                                   <h1 className="font-extrabold text-base mt-3 mb-1.5 text-white" {...props} />
                                 ),
-                                h2: ({ node, ...props }) => (
+                                h2: (props) => (
                                   <h2 className="font-bold text-sm mt-3 mb-1.5 text-white" {...props} />
                                 ),
-                                h3: ({ node, ...props }) => (
+                                h3: (props) => (
                                   <h3 className="font-bold text-[13px] mt-3 mb-1.5 text-white" {...props} />
                                 ),
-                                p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
-                                code: ({ node, ...props }) => (
+                                p: (props) => <p className="mb-2 last:mb-0 leading-relaxed" {...props} />,
+                                ul: (props) => <ul className="list-disc pl-4 mb-2 space-y-1 marker:text-emerald-400" {...props} />,
+                                ol: (props) => <ol className="list-decimal pl-4 mb-2 space-y-1" {...props} />,
+                                li: (props) => <li className="leading-relaxed" {...props} />,
+                                code: (props) => (
                                   <code
-                                    className="bg-white/5 rounded-md px-1.5 py-0.5 font-mono text-[11px] text-white"
+                                    className="bg-white/5 rounded-md px-1.5 py-0.5 font-mono text-[11px] text-emerald-400"
                                     {...props}
                                   />
                                 ),
-                                pre: ({ node, ...props }) => (
+                                pre: (props) => (
                                   <pre
-                                    className="bg-black/40 rounded-xl p-3 overflow-x-auto my-2 font-mono text-[11px] border border-white/5 shadow-inner w-full shrink-0"
+                                    className="bg-black/40 rounded-xl p-3 overflow-x-auto my-2 font-mono text-[11px] border border-white/5 shadow-inner w-full shrink-0 not-prose"
                                     {...props}
                                   />
                                 ),
-                                strong: ({ node, ...props }) => (
+                                strong: (props) => (
                                   <strong className="font-bold text-white" {...props} />
+                                ),
+                                table: ({ children }: any) => (
+                                  <div className="my-2.5 overflow-x-auto rounded-xl border border-white/10 bg-black/30 shadow-xs no-scrollbar not-prose">
+                                    <table className="w-full text-xs text-left border-collapse min-w-full">{children}</table>
+                                  </div>
+                                ),
+                                thead: ({ children }: any) => (
+                                  <thead className="border-b border-white/10 bg-white/[0.04]">{children}</thead>
+                                ),
+                                tbody: ({ children }: any) => (
+                                  <tbody className="divide-y divide-white/[0.04]">{children}</tbody>
+                                ),
+                                tr: ({ children }: any) => (
+                                  <tr className="hover:bg-white/[0.02] transition-colors">{children}</tr>
+                                ),
+                                th: ({ children }: any) => (
+                                  <th className="px-3 py-2 font-semibold text-white text-xs tracking-wide whitespace-nowrap">{children}</th>
+                                ),
+                                td: ({ children }: any) => (
+                                  <td className="px-3 py-2 text-neutral-300 text-xs leading-relaxed align-top">{children}</td>
                                 ),
                               }}
                             >
