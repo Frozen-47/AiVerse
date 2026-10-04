@@ -927,9 +927,6 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                 <Zap size={13} className="fill-white" />
               </div>
               <span className="font-bold text-sm tracking-tight">Groq AI</span>
-              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] font-semibold border border-[#1a73e8]/20">
-                500 tok/s
-              </span>
             </div>
 
             <button
@@ -1416,9 +1413,6 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
             <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#1a73e8] dark:bg-[#a8c7fa] ring-2 ring-neutral-900 dark:ring-white" />
           </div>
           <span className="font-semibold text-xs tracking-tight">Groq AI</span>
-          <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-neutral-800 dark:bg-neutral-200 text-neutral-300 dark:text-neutral-700">
-            500 tok/s
-          </span>
         </button>
       )}
 
