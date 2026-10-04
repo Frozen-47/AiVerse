@@ -2282,6 +2282,17 @@ const Inner: React.FC = () => {
             onViewProfile={(uname) => {
               setProfileUsername(uname);
             }}
+            onOpenPlayground={() => {
+              setSelected(null);
+              setIsPlayground(true);
+              setIsWizard(false);
+              setIsFeatures(false);
+              setIsPrivacy(false);
+              setIsTerms(false);
+              setIsArena(false);
+              setIsAdminDashboard(false);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
           />
         </Suspense>
       )}

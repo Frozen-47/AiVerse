@@ -107,11 +107,11 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
   ] as const;
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 py-6 flex flex-col gap-6 text-left animate-[fadeUp_0.3s_ease-out]">
+    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 flex flex-col gap-6 text-left animate-[fadeUp_0.2s_ease-out]">
       <FeatureHeader onBackToHome={props.onBackToHome} />
 
-      {/* Google Cloud Style Segmented Tab Controller */}
-      <div className="p-1.5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl flex flex-wrap gap-1.5 w-fit shadow-xs">
+      {/* Google Material 3 Segmented Tab Controller */}
+      <div className="p-1 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] shadow-xs flex flex-wrap gap-1 w-fit">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -119,13 +119,13 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 py-2 px-3.5 rounded-xl text-xs font-medium transition-all cursor-pointer select-none ${
+              className={`flex items-center gap-2 py-2 px-3.5 rounded-xl text-xs font-semibold transition-all cursor-pointer select-none ${
                 isActive
-                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold shadow-xs"
-                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
+                  ? "bg-[#1a73e8] dark:bg-[#a8c7fa] text-white dark:text-[#041e49] shadow-xs"
+                  : "text-[#5f6368] dark:text-[#8e918f] hover:text-[#202124] dark:hover:text-white hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c]"
               }`}
             >
-              <Icon size={14} className={isActive ? "text-blue-400 dark:text-blue-600" : "opacity-70"} />
+              <Icon size={14} className={isActive ? "text-white dark:text-[#041e49]" : "opacity-70"} />
               <span>{tab.label}</span>
             </button>
           );
@@ -134,7 +134,7 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
 
       {/* Tab Contents */}
       {activeTab === "overview" && (
-        <div className="flex flex-col gap-8 animate-[fadeIn_0.3s_ease-out]">
+        <div className="flex flex-col gap-6 animate-[fadeIn_0.2s_ease-out]">
           <CategoryDashboard
             entries={props.entries}
             typeCounts={props.typeCounts}
@@ -161,7 +161,7 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
       )}
 
       {activeTab === "wizard" && (
-        <div className="animate-[fadeIn_0.3s_ease-out]">
+        <div className="animate-[fadeIn_0.2s_ease-out]">
           <WizardFinder
             wizardStep={props.wizardStep}
             setWizardStep={props.setWizardStep}
@@ -194,7 +194,7 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
       )}
 
       {activeTab === "arena" && (
-        <div className="animate-[fadeIn_0.3s_ease-out]">
+        <div className="animate-[fadeIn_0.2s_ease-out]">
           <CompareArena
             entries={props.entries}
             compareToolA={props.compareToolA}
@@ -209,7 +209,7 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
       )}
 
       {activeTab === "playground" && (
-        <div className="animate-[fadeIn_0.3s_ease-out]">
+        <div className="animate-[fadeIn_0.2s_ease-out]">
           <Playground />
         </div>
       )}
@@ -218,7 +218,7 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
       <div className="mt-4 text-center pb-8 shrink-0">
         <button
           onClick={props.onBackToHome}
-          className="text-xs underline underline-offset-4 font-semibold text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors cursor-pointer"
+          className="text-xs font-semibold text-[#5f6368] dark:text-[#8e918f] hover:text-[#1a73e8] dark:hover:text-[#a8c7fa] hover:underline transition-colors cursor-pointer"
         >
           Return to Dashboard Homepage
         </button>

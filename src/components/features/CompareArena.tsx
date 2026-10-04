@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useTokens, useTheme } from "../../lib/theme";
+import { useTokens } from "../../lib/theme";
 import type { Entry, EntryRatingSummary } from "../../types";
 import { useAuth } from "../AuthContext";
 import { Lock, ArrowLeftRight, ChevronDown, Star, Bookmark, Shield, AlertTriangle, Check, Bot, Cpu, Zap, Database, Cloud } from "lucide-react";
@@ -26,8 +26,6 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
   bookmarks,
 }) => {
   const t = useTokens();
-  const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "amoled";
   const { user, openAuthModal } = useAuth();
 
   // Search and dropdown state for Competitor A
@@ -85,30 +83,30 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
   return (
     <div
       id="arena"
-      className="relative p-6 sm:p-8 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl transition-all duration-300 scroll-mt-24 overflow-hidden shadow-xs"
+      className="relative p-5 sm:p-6 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] transition-all scroll-mt-24 overflow-hidden shadow-xs"
     >
       {/* Lock overlay if not logged in */}
       {!user && (
-        <div className={`absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center backdrop-blur-[6px] transition-colors duration-200 ${
-          isDark ? "bg-neutral-900/90 text-white" : "bg-white/90 text-neutral-900"
-        }`}>
-          <div className={`w-13 h-13 rounded-2xl flex items-center justify-center mb-4 shadow-sm ${t.iconBgSolid}`}>
-            <Lock size={22} />
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm bg-white/92 dark:bg-[#131314]/92 text-[#202124] dark:text-[#e3e3e3] border border-[#dadce0] dark:border-[#3c4043]/60 rounded-2xl transition-colors">
+          <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3 shadow-md bg-[#1a73e8] dark:bg-[#a8c7fa] text-white dark:text-[#041e49]">
+            <Lock size={20} />
           </div>
-          <h3 className={`text-xl font-bold mb-2 tracking-tight ${t.textPrimary}`}>Unlock Comparison Arena</h3>
-          <p className={`text-xs mb-6 max-w-sm leading-relaxed mx-auto ${t.textSecondary}`}>
+          <h3 className="text-lg font-bold mb-1.5 tracking-tight text-[#202124] dark:text-[#e3e3e3]">
+            Unlock Comparison Arena
+          </h3>
+          <p className="text-xs mb-5 max-w-sm leading-relaxed mx-auto text-[#5f6368] dark:text-[#c4c7c5]">
             Sign in to run real-time side-by-side technical comparisons across different AI models, frameworks, datasets, and serving tools.
           </p>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <button 
               onClick={() => openAuthModal("signin")}
-              className="px-4 py-2 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/10 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all cursor-pointer shadow-xs"
+              className="px-4 py-2 rounded-full text-xs font-semibold border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-all cursor-pointer"
             >
               Sign In
             </button>
             <button 
               onClick={() => openAuthModal("signup")}
-              className="px-4 py-2 rounded-xl text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition-all shadow-xs cursor-pointer"
+              className="px-4 py-2 rounded-full text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] transition-all shadow-xs cursor-pointer"
             >
               Create Account
             </button>
@@ -275,59 +273,59 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
         {entryA && entryB && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 text-left">
             {/* Card A */}
-            <div className={`p-5 rounded-2xl border flex items-center justify-between gap-4 transition-all hover:shadow-md ${t.card}`}>
+            <div className="p-4 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-[#f8f9fa] dark:bg-[#131314] flex items-center justify-between gap-4 transition-all">
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 shrink-0 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
+                <div className="w-10 h-10 shrink-0 rounded-xl bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] border border-[#1a73e8]/20 flex items-center justify-center">
                   {renderTypeIcon(entryA.type)}
                 </div>
                 <div>
-                  <h4 className={`text-base font-bold flex items-center gap-1.5 ${t.textPrimary}`}>
+                  <h4 className="text-sm font-bold flex items-center gap-1.5 text-[#202124] dark:text-[#e3e3e3]">
                     {entryA.name}
-                    {bookmarks.includes(entryA.name) && <Bookmark size={11} className="text-emerald-400 fill-current shrink-0" />}
+                    {bookmarks.includes(entryA.name) && <Bookmark size={11} className="text-amber-500 fill-current shrink-0" />}
                   </h4>
-                  <p className={`text-[11px] ${t.textSecondary}`}>by {entryA.org}</p>
+                  <p className="text-[11px] text-[#5f6368] dark:text-[#8e918f]">by {entryA.org}</p>
                 </div>
               </div>
               <div className="text-right shrink-0">
-                <span className={`text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md border block mb-1 w-fit ml-auto ${t.pillSmall}`}>
+                <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#5f6368] dark:text-[#c4c7c5] block mb-1 w-fit ml-auto">
                   {entryA.type}
                 </span>
                 {ratingA > 0 ? (
                   <div className="flex flex-col items-end gap-0.5">
                     {renderStars(ratingA)}
-                    <span className={`text-[9px] ${t.textMuted}`}>{ratingA.toFixed(1)} ★ ({countA} revs)</span>
+                    <span className="text-[9px] text-[#70757a] dark:text-[#8e918f]">{ratingA.toFixed(1)} ★ ({countA} revs)</span>
                   </div>
                 ) : (
-                  <span className={`text-[9px] ${t.textMuted}`}>No reviews</span>
+                  <span className="text-[9px] text-[#70757a] dark:text-[#8e918f]">No reviews</span>
                 )}
               </div>
             </div>
 
             {/* Card B */}
-            <div className={`p-5 rounded-2xl border flex items-center justify-between gap-4 transition-all hover:shadow-md ${t.card}`}>
+            <div className="p-4 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-[#f8f9fa] dark:bg-[#131314] flex items-center justify-between gap-4 transition-all">
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 shrink-0 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
+                <div className="w-10 h-10 shrink-0 rounded-xl bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] border border-[#1a73e8]/20 flex items-center justify-center">
                   {renderTypeIcon(entryB.type)}
                 </div>
                 <div>
-                  <h4 className={`text-base font-bold flex items-center gap-1.5 ${t.textPrimary}`}>
+                  <h4 className="text-sm font-bold flex items-center gap-1.5 text-[#202124] dark:text-[#e3e3e3]">
                     {entryB.name}
-                    {bookmarks.includes(entryB.name) && <Bookmark size={11} className="text-emerald-400 fill-current shrink-0" />}
+                    {bookmarks.includes(entryB.name) && <Bookmark size={11} className="text-amber-500 fill-current shrink-0" />}
                   </h4>
-                  <p className={`text-[11px] ${t.textSecondary}`}>by {entryB.org}</p>
+                  <p className="text-[11px] text-[#5f6368] dark:text-[#8e918f]">by {entryB.org}</p>
                 </div>
               </div>
               <div className="text-right shrink-0">
-                <span className={`text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md border block mb-1 w-fit ml-auto ${t.pillSmall}`}>
+                <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#5f6368] dark:text-[#c4c7c5] block mb-1 w-fit ml-auto">
                   {entryB.type}
                 </span>
                 {ratingB > 0 ? (
                   <div className="flex flex-col items-end gap-0.5">
                     {renderStars(ratingB)}
-                    <span className={`text-[9px] ${t.textMuted}`}>{ratingB.toFixed(1)} ★ ({countB} revs)</span>
+                    <span className="text-[9px] text-[#70757a] dark:text-[#8e918f]">{ratingB.toFixed(1)} ★ ({countB} revs)</span>
                   </div>
                 ) : (
-                  <span className={`text-[9px] ${t.textMuted}`}>No reviews</span>
+                  <span className="text-[9px] text-[#70757a] dark:text-[#8e918f]">No reviews</span>
                 )}
               </div>
             </div>
@@ -336,7 +334,7 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
 
         {/* Spec table */}
         {entryA && entryB && (
-          <div className={`border rounded-2xl overflow-hidden shadow-sm ${t.border}`}>
+          <div className="border border-[#dadce0] dark:border-[#3c4043]/60 rounded-2xl overflow-hidden shadow-xs bg-white dark:bg-[#1e1f20]">
             {[
               { label: "Developer",            a: entryA.org,          b: entryB.org },
               { label: "Category",             a: entryA.type,         b: entryB.type,         badge: true },
@@ -364,15 +362,16 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
               return (
                 <div
                   key={i}
-                  className={`grid grid-cols-1 md:grid-cols-5 border-b last:border-b-0 text-[12px] leading-relaxed transition-colors ${
-                    t.border} ${t.surfaceHover} ${differs && !row.full ? (isDark ? "bg-white/[0.005]" : "bg-neutral-50/30") : ""}`}
+                  className={`grid grid-cols-1 md:grid-cols-5 border-b border-[#dadce0] dark:border-[#3c4043]/40 last:border-b-0 text-xs leading-relaxed transition-colors ${
+                    differs && !row.full ? "bg-[#f8f9fa]/60 dark:bg-[#282a2c]/20" : ""
+                  }`}
                 >
                   <div
-                    className={`p-3 md:pl-5 md:col-span-1 font-bold border-b md:border-b-0 md:border-r flex items-center text-left uppercase tracking-wider text-[10px] ${t.surface2} ${t.border} ${t.textSecondary}`}
+                    className="p-3 md:pl-4 md:col-span-1 font-bold border-b md:border-b-0 md:border-r border-[#dadce0] dark:border-[#3c4043]/40 flex items-center text-left uppercase tracking-wider text-[10px] bg-[#f1f3f4] dark:bg-[#282a2c] text-[#5f6368] dark:text-[#8e918f]"
                   >
                     <span className="flex items-center gap-1.5">
-                      {row.warning && <AlertTriangle size={10} className="text-amber-500 shrink-0" />}
-                      {row.shield && <Shield size={10} className="text-emerald-400 shrink-0" />}
+                      {row.warning && <AlertTriangle size={11} className="text-amber-500 shrink-0" />}
+                      {row.shield && <Shield size={11} className="text-emerald-500 shrink-0" />}
                       {row.label}
                     </span>
                   </div>
@@ -396,23 +395,21 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
                     return (
                       <div
                         key={vi}
-                        className={`p-3.5 md:col-span-2 ${vi === 0 ? `border-b md:border-b-0 md:border-r ${t.border}` : ""} ${t.textSecondary} flex items-center justify-between`}
+                        className={`p-3 md:col-span-2 ${vi === 0 ? "border-b md:border-b-0 md:border-r border-[#dadce0] dark:border-[#3c4043]/40" : ""} text-[#3c4043] dark:text-[#c4c7c5] flex items-center justify-between`}
                       >
                         <div className="flex items-center gap-2 text-left">
                           {row.badge ? (
-                            <span className={`text-[9px] font-extrabold px-2 py-0.5 rounded-md border ${t.pillSmall}`}>
+                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-md border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3]">
                               {val}
                             </span>
                           ) : (
-                            <span className={row.full ? "font-light" : "font-semibold"}>{val}</span>
+                            <span className={row.full ? "font-normal" : "font-semibold text-[#202124] dark:text-[#e3e3e3]"}>{val}</span>
                           )}
                         </div>
 
                         {/* Show check/advantage badge if highlighted */}
                         {hasAdvantage && (
-                          <span className={`text-[9px] font-extrabold px-1.5 py-0.5 rounded-md flex items-center gap-1 shrink-0 ${
-                            isDark ? "bg-emerald-500/10 border border-emerald-500/25 text-emerald-400" : "bg-emerald-50 border border-emerald-200 text-emerald-700"
-                          }`}>
+                          <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md flex items-center gap-1 shrink-0 bg-emerald-500/10 border border-emerald-500/25 text-emerald-600 dark:text-emerald-400">
                             <Check size={9} /> Adv
                           </span>
                         )}
@@ -425,20 +422,20 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
 
             {/* Action row */}
             <div
-              className={`grid grid-cols-1 md:grid-cols-5 border-t text-[11px] leading-relaxed uppercase tracking-wider text-center ${t.border} ${t.surface2}`}
+              className="grid grid-cols-1 md:grid-cols-5 border-t border-[#dadce0] dark:border-[#3c4043]/40 text-xs font-semibold text-center bg-[#f1f3f4] dark:bg-[#282a2c]"
             >
-              <div className={`hidden md:block md:col-span-1 border-r ${t.border}`} />
+              <div className="hidden md:block md:col-span-1 border-r border-[#dadce0] dark:border-[#3c4043]/40" />
               <button
                 onClick={() => setSelected(entryA)}
-                className={`p-4 md:col-span-2 border-b md:border-b-0 md:border-r hover:bg-white/5 transition-colors cursor-pointer font-bold ${t.border} ${t.textPrimary}`}
+                className="p-3 md:col-span-2 border-b md:border-b-0 md:border-r border-[#dadce0] dark:border-[#3c4043]/40 text-[#1a73e8] dark:text-[#a8c7fa] hover:bg-[#1a73e8]/10 transition-colors cursor-pointer"
               >
-                Launch {entryA.name} Spec Details
+                Inspect {entryA.name} in Model Garden →
               </button>
               <button
                 onClick={() => setSelected(entryB)}
-                className={`p-4 md:col-span-2 hover:bg-white/5 transition-colors cursor-pointer font-bold ${t.textPrimary}`}
+                className="p-3 md:col-span-2 text-[#1a73e8] dark:text-[#a8c7fa] hover:bg-[#1a73e8]/10 transition-colors cursor-pointer"
               >
-                Launch {entryB.name} Spec Details
+                Inspect {entryB.name} in Model Garden →
               </button>
             </div>
           </div>

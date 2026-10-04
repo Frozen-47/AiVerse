@@ -85,12 +85,8 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
   const isDark = resolvedTheme === "amoled";
   const { user, openAuthModal } = useAuth();
 
-  const cardBase = `group text-left p-5 rounded-2xl border transition-all duration-300 cursor-pointer ${t.card}`;
-  const cardSelected = `group text-left p-5 rounded-2xl border transition-all duration-300 cursor-pointer ${
-    isDark 
-      ? "bg-emerald-500/10 border-emerald-500/50 text-white shadow-lg shadow-emerald-500/5" 
-      : "bg-emerald-50 border-emerald-300 text-emerald-950 shadow-md"
-  }`;
+  const cardBase = "group text-left p-4 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-[#f8f9fa] dark:bg-[#282a2c]/30 hover:border-[#1a73e8]/40 dark:hover:border-[#a8c7fa]/40 text-[#202124] dark:text-[#e3e3e3] transition-all cursor-pointer";
+  const cardSelected = "group text-left p-4 rounded-xl border-2 border-[#1a73e8] dark:border-[#a8c7fa] bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] transition-all cursor-pointer font-bold shadow-xs";
 
   const steps = [
     { label: "Goal", step: 1 },
@@ -145,30 +141,30 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
   return (
     <div
       id="wizard"
-      className="relative p-6 sm:p-8 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl transition-all duration-300 scroll-mt-24 overflow-hidden shadow-xs"
+      className="relative p-5 sm:p-6 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] transition-all scroll-mt-24 overflow-hidden shadow-xs"
     >
       {/* Lock overlay if not logged in */}
       {!user && (
-        <div className={`absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center backdrop-blur-[6px] transition-colors duration-200 ${
-          isDark ? "bg-neutral-900/90 text-white" : "bg-white/90 text-neutral-900"
-        }`}>
-          <div className={`w-13 h-13 rounded-2xl flex items-center justify-center mb-4 shadow-sm ${t.iconBgSolid}`}>
-            <Lock size={22} />
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm bg-white/92 dark:bg-[#131314]/92 text-[#202124] dark:text-[#e3e3e3] border border-[#dadce0] dark:border-[#3c4043]/60 rounded-2xl transition-colors">
+          <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3 shadow-md bg-[#1a73e8] dark:bg-[#a8c7fa] text-white dark:text-[#041e49]">
+            <Lock size={20} />
           </div>
-          <h3 className={`text-xl font-bold mb-2 tracking-tight ${t.textPrimary}`}>Unlock Discovery Engine</h3>
-          <p className={`text-xs mb-6 max-w-sm leading-relaxed mx-auto ${t.textSecondary}`}>
+          <h3 className="text-lg font-bold mb-1.5 tracking-tight text-[#202124] dark:text-[#e3e3e3]">
+            Unlock Discovery Engine
+          </h3>
+          <p className="text-xs mb-5 max-w-sm leading-relaxed mx-auto text-[#5f6368] dark:text-[#c4c7c5]">
             Sign in to answer our interactive discovery quiz and get custom asset recommendations matched specifically to your development stack and licensing policies.
           </p>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <button 
               onClick={() => openAuthModal("signin")}
-              className="px-4 py-2 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/10 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all cursor-pointer shadow-xs"
+              className="px-4 py-2 rounded-full text-xs font-semibold border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-all cursor-pointer"
             >
               Sign In
             </button>
             <button 
               onClick={() => openAuthModal("signup")}
-              className="px-4 py-2 rounded-xl text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition-all shadow-xs cursor-pointer"
+              className="px-4 py-2 rounded-full text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] transition-all shadow-xs cursor-pointer"
             >
               Create Account
             </button>

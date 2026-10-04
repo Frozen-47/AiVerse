@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useTokens, useTheme } from "../../lib/theme";
+import { useTokens } from "../../lib/theme";
 import { useAuth } from "../AuthContext";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -57,8 +57,6 @@ const TEMPLATES = [
 
 export const Playground: React.FC = () => {
   const t = useTokens();
-  const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "amoled";
   const { user, openAuthModal } = useAuth();
 
   const [prompt, setPrompt] = useState("");
@@ -165,36 +163,30 @@ export const Playground: React.FC = () => {
   return (
     <div
       id="playground"
-      className="relative p-6 sm:p-8 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl transition-all duration-300 scroll-mt-24 overflow-hidden shadow-xs"
+      className="relative p-5 sm:p-6 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] transition-all scroll-mt-24 overflow-hidden shadow-xs"
     >
       {/* Lock overlay if not logged in */}
       {!user && (
-        <div
-          className={`absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center backdrop-blur-[6px] transition-colors duration-200 ${
-            isDark ? "bg-neutral-900/90 text-white" : "bg-white/90 text-neutral-900"
-          }`}
-        >
-          <div
-            className={`w-13 h-13 rounded-2xl flex items-center justify-center mb-4 shadow-sm ${t.iconBgSolid}`}
-          >
-            <Lock size={22} />
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm bg-white/92 dark:bg-[#131314]/92 text-[#202124] dark:text-[#e3e3e3] border border-[#dadce0] dark:border-[#3c4043]/60 rounded-2xl transition-colors">
+          <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3 shadow-md bg-[#1a73e8] dark:bg-[#a8c7fa] text-white dark:text-[#041e49]">
+            <Lock size={20} />
           </div>
-          <h3 className={`text-xl font-bold mb-2 tracking-tight ${t.textPrimary}`}>
-            Unlock AI Model Sandbox
+          <h3 className="text-lg font-bold mb-1.5 tracking-tight text-[#202124] dark:text-[#e3e3e3]">
+            Unlock Google AI Studio Sandbox
           </h3>
-          <p className={`text-xs mb-6 max-w-sm leading-relaxed mx-auto ${t.textSecondary}`}>
-            Sign in to compare outputs across different Llama, Mixtral, and Gemma models side-by-side in real-time.
+          <p className="text-xs mb-5 max-w-sm leading-relaxed mx-auto text-[#5f6368] dark:text-[#c4c7c5]">
+            Sign in to compare inference outputs across multiple open-weight models side-by-side in real-time.
           </p>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <button
               onClick={() => openAuthModal("signin")}
-              className="px-4 py-2 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/10 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all cursor-pointer shadow-xs"
+              className="px-4 py-2 rounded-full text-xs font-semibold border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-all cursor-pointer"
             >
               Sign In
             </button>
             <button
               onClick={() => openAuthModal("signup")}
-              className="px-4 py-2 rounded-xl text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition-all shadow-xs cursor-pointer"
+              className="px-4 py-2 rounded-full text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] transition-all shadow-xs cursor-pointer"
             >
               Create Account
             </button>
@@ -270,7 +262,7 @@ export const Playground: React.FC = () => {
           <div className="lg:col-span-1 space-y-5 text-left border-r pr-0 lg:pr-6 border-white/5">
             {/* Prompt Input */}
             <div className="flex flex-col">
-              <label className={`text-[11px] font-semibold mb-2 uppercase tracking-wider ${t.textSecondary}`}>
+              <label className="text-[11px] font-bold mb-2 uppercase tracking-wider text-[#5f6368] dark:text-[#8e918f]">
                 User Prompt
               </label>
               <textarea
@@ -278,16 +270,16 @@ export const Playground: React.FC = () => {
                 onChange={(e) => setPrompt(e.target.value)}
                 placeholder="Write your prompt here..."
                 rows={5}
-                className={`w-full px-4 py-3 rounded-xl border text-[13px] leading-relaxed resize-none outline-none font-medium transition-all ${t.input}`}
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#131314] text-[#202124] dark:text-[#e3e3e3] text-xs sm:text-[13px] leading-relaxed resize-none outline-none font-medium focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8] transition-all"
               />
             </div>
 
             {/* Model Selection */}
             <div>
-              <label className={`text-[11px] font-semibold mb-3.5 uppercase tracking-wider block ${t.textSecondary}`}>
+              <label className="text-[11px] font-bold mb-2.5 uppercase tracking-wider block text-[#5f6368] dark:text-[#8e918f]">
                 Select Models (1-3)
               </label>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1.5">
                 {MODELS.map((model) => {
                   const isSelected = selectedModels.includes(model.id);
                   return (
@@ -295,19 +287,19 @@ export const Playground: React.FC = () => {
                       key={model.id}
                       type="button"
                       onClick={() => toggleModel(model.id)}
-                      className={`flex items-center justify-between w-full px-4 py-3 rounded-xl border text-[13px] font-bold text-left cursor-pointer transition-all ${
+                      className={`flex items-center justify-between w-full px-3.5 py-2.5 rounded-xl border text-xs font-bold text-left cursor-pointer transition-all ${
                         isSelected
-                          ? `${t.pillActive} ring-1 ring-white/10`
-                          : `${t.surface} ${t.border} ${t.textSecondary} hover:border-white/10`
+                          ? "border-[#1a73e8] dark:border-[#a8c7fa] bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa]"
+                          : "border-[#dadce0] dark:border-[#3c4043]/60 bg-[#f8f9fa] dark:bg-[#282a2c]/30 text-[#5f6368] dark:text-[#c4c7c5] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c]"
                       }`}
                     >
                       <div className="flex items-center gap-2">
-                        <span className={`w-2 h-2 rounded-full ${isSelected ? "bg-indigo-400" : "bg-neutral-600"}`} />
+                        <span className={`w-2 h-2 rounded-full ${isSelected ? "bg-[#1a73e8] dark:bg-[#a8c7fa]" : "bg-neutral-400 dark:bg-neutral-600"}`} />
                         <span>{model.label}</span>
                       </div>
                       <span
                         className={`text-[9px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded-md ${
-                          isSelected ? "bg-white/10 text-white" : `${t.pillInactive} ${t.textMuted}`
+                          isSelected ? "bg-[#1a73e8]/20 text-[#1a73e8] dark:text-[#a8c7fa]" : "bg-neutral-200/60 dark:bg-white/5 text-[#5f6368] dark:text-[#8e918f]"
                         }`}
                       >
                         {model.badge}
@@ -319,22 +311,22 @@ export const Playground: React.FC = () => {
             </div>
 
             {/* Advanced Settings (System Prompt) */}
-            <div className={`border rounded-xl ${t.border} p-1.5 transition-all ${t.surface}`}>
+            <div className="border border-[#dadce0] dark:border-[#3c4043]/60 rounded-xl p-1 bg-[#f8f9fa] dark:bg-[#282a2c]/30 transition-all">
               <button
                 type="button"
                 onClick={() => setShowAdvanced((prev) => !prev)}
-                className={`flex items-center justify-between w-full px-3 py-2 text-[12px] font-bold cursor-pointer ${t.textPrimary}`}
+                className="flex items-center justify-between w-full px-3 py-2 text-xs font-bold text-[#202124] dark:text-[#e3e3e3] cursor-pointer"
               >
                 <div className="flex items-center gap-2">
-                  <Settings size={13} className={t.textSecondary} />
-                  <span>Advanced Settings</span>
+                  <Settings size={13} className="text-[#5f6368] dark:text-[#8e918f]" />
+                  <span>Advanced System Instructions</span>
                 </div>
-                {showAdvanced ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                {showAdvanced ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
               </button>
 
               {showAdvanced && (
-                <div className="p-3 border-t border-white/5 space-y-2 mt-1 animate-[fadeIn_0.15s_ease-out]">
-                  <label className={`text-[9px] font-black uppercase tracking-wider block ${t.textMuted}`}>
+                <div className="p-3 border-t border-[#dadce0] dark:border-[#3c4043]/40 space-y-2 mt-1 animate-[fadeIn_0.15s_ease-out]">
+                  <label className="text-[9px] font-black uppercase tracking-wider block text-[#5f6368] dark:text-[#8e918f]">
                     System instructions
                   </label>
                   <textarea
@@ -342,11 +334,11 @@ export const Playground: React.FC = () => {
                     onChange={(e) => setSystemInstruction(e.target.value)}
                     placeholder="E.g., You are a strict JSON bot that never writes explanations..."
                     rows={4}
-                    className={`w-full px-3 py-2 rounded-lg border text-[12px] leading-relaxed resize-none outline-none font-medium transition-all ${t.input}`}
+                    className="w-full px-3 py-2 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#131314] text-[#202124] dark:text-[#e3e3e3] text-xs leading-relaxed resize-none outline-none font-medium focus:border-[#1a73e8] transition-all"
                   />
                   <div className="flex items-start gap-1.5 mt-2">
-                    <Info size={11} className={`mt-0.5 shrink-0 ${t.textMuted}`} />
-                    <p className={`text-[10px] leading-relaxed ${t.textMuted}`}>
+                    <Info size={11} className="mt-0.5 shrink-0 text-[#5f6368] dark:text-[#8e918f]" />
+                    <p className="text-[10px] leading-relaxed text-[#5f6368] dark:text-[#8e918f]">
                       System prompts instruct the LLM on its behavior, tone, or formatting constraints before processing user inputs.
                     </p>
                   </div>
@@ -359,10 +351,10 @@ export const Playground: React.FC = () => {
               type="button"
               onClick={handleRun}
               disabled={!prompt.trim() || selectedModels.length === 0}
-              className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl text-sm font-bold text-black bg-white hover:bg-neutral-100 disabled:opacity-50 disabled:pointer-events-none cursor-pointer transition-all active:scale-[0.98] shadow-md`}
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-full text-xs sm:text-sm font-bold bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] disabled:opacity-50 disabled:pointer-events-none cursor-pointer transition-all active:scale-[0.98] shadow-xs"
             >
-              <Play size={15} fill="currentColor" />
-              Run Prompt Sandbox
+              <Play size={14} fill="currentColor" />
+              <span>Run Inference Sandbox</span>
             </button>
           </div>
 
@@ -382,17 +374,17 @@ export const Playground: React.FC = () => {
                   return (
                     <div
                       key={modelId}
-                      className={`flex flex-col rounded-2xl border p-5 text-left h-fit min-h-48 justify-between ${t.surface} ${t.border}`}
+                      className="flex flex-col rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 p-4 sm:p-5 text-left h-fit min-h-44 justify-between bg-[#f8f9fa] dark:bg-[#131314]"
                     >
                       <div>
-                        <h4 className={`text-[13px] font-black ${t.textPrimary}`}>
+                        <h4 className="text-xs sm:text-[13px] font-bold text-[#202124] dark:text-[#e3e3e3]">
                           {mInfo?.label || modelId}
                         </h4>
-                        <p className={`text-[10px] mt-1 ${t.textMuted}`}>
-                          Awaiting prompt sandbox run...
+                        <p className="text-[11px] mt-1 text-[#5f6368] dark:text-[#8e918f]">
+                          Ready for prompt execution...
                         </p>
                       </div>
-                      <div className="h-2 w-16 bg-neutral-800 rounded animate-pulse" />
+                      <div className="h-1.5 w-16 bg-[#dadce0] dark:bg-[#3c4043] rounded-full animate-pulse" />
                     </div>
                   );
                 })}
@@ -400,7 +392,7 @@ export const Playground: React.FC = () => {
             ) : (
               /* Execution output grid */
               <div
-                className={`grid gap-4 h-full`}
+                className="grid gap-4 h-full"
                 style={{
                   gridTemplateColumns: `repeat(auto-fit, minmax(280px, 1fr))`,
                 }}
@@ -412,22 +404,22 @@ export const Playground: React.FC = () => {
                   return (
                     <div
                       key={modelId}
-                      className={`flex flex-col rounded-2xl border overflow-hidden text-left h-full ${t.surface} ${t.border}`}
+                      className="flex flex-col rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 overflow-hidden text-left h-full bg-white dark:bg-[#131314]"
                     >
                       {/* Column Header */}
-                      <header className="px-4 py-3.5 border-b border-white/5 flex items-center justify-between shrink-0">
+                      <header className="px-4 py-3 border-b border-[#dadce0] dark:border-[#3c4043]/40 bg-[#f8f9fa] dark:bg-[#282a2c]/40 flex items-center justify-between shrink-0">
                         <div>
-                          <h4 className={`text-[13px] font-black tracking-tight ${t.textPrimary}`}>
+                          <h4 className="text-xs sm:text-[13px] font-bold tracking-tight text-[#202124] dark:text-[#e3e3e3]">
                             {resp.modelLabel}
                           </h4>
                           {resp.latencyMs !== null && (
-                            <div className="flex items-center gap-1.5 mt-1">
-                              <span className="flex items-center gap-0.5 text-[10px] text-emerald-400 font-semibold">
+                            <div className="flex items-center gap-1.5 mt-0.5">
+                              <span className="flex items-center gap-0.5 text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">
                                 <Clock size={10} />
                                 {(resp.latencyMs / 1000).toFixed(2)}s
                               </span>
-                              <span className={`text-[10px] ${t.textMuted}`}>•</span>
-                              <span className={`text-[10px] ${t.textMuted}`}>
+                              <span className="text-[10px] text-[#70757a] dark:text-[#8e918f]">•</span>
+                              <span className="text-[10px] text-[#70757a] dark:text-[#8e918f]">
                                 {resp.output.length} chars
                               </span>
                             </div>
@@ -438,13 +430,13 @@ export const Playground: React.FC = () => {
                           <button
                             type="button"
                             onClick={() => handleCopy(resp.output, modelId)}
-                            className={`p-2 rounded-lg border transition-all cursor-pointer ${t.surface} ${t.border} ${t.textMuted} hover:${t.textPrimary}`}
+                            className="p-1.5 rounded-lg border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#5f6368] dark:text-[#c4c7c5] hover:text-[#202124] dark:hover:text-white transition-all cursor-pointer"
                             title="Copy response"
                           >
                             {copiedIndex === modelId ? (
-                              <Check size={13} className="text-emerald-400" />
+                              <Check size={12} className="text-emerald-500" />
                             ) : (
-                              <Copy size={13} />
+                              <Copy size={12} />
                             )}
                           </button>
                         )}
