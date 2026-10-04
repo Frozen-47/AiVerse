@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { useTokens } from "../../lib/theme";
 import { useAuth } from "../AuthContext";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {
   Lock,
   Play,
-  Settings,
   ChevronDown,
   ChevronUp,
   Check,
@@ -14,6 +12,9 @@ import {
   Clock,
   Sparkles,
   Info,
+  Trash2,
+  Terminal,
+  Sliders,
 } from "lucide-react";
 
 interface ModelResponse {
@@ -26,16 +27,16 @@ interface ModelResponse {
 }
 
 const MODELS = [
-  { id: "openai/gpt-oss-20b", label: "GPT OSS 20B", badge: "Fast" },
-  { id: "openai/gpt-oss-120b", label: "GPT OSS 120B", badge: "Smart" },
-  { id: "qwen/qwen3.6-27b", label: "Qwen 3.6 27B", badge: "Reasoning" },
-  { id: "groq/compound", label: "Groq Compound", badge: "Compound AI" },
+  { id: "openai/gpt-oss-20b", label: "GPT OSS 20B", badge: "Fast Inference", org: "OpenAI OSS" },
+  { id: "openai/gpt-oss-120b", label: "GPT OSS 120B", badge: "High Accuracy", org: "OpenAI OSS" },
+  { id: "qwen/qwen3.6-27b", label: "Qwen 3.6 27B", badge: "Reasoning", org: "Alibaba" },
+  { id: "groq/compound", label: "Groq Compound", badge: "LPU Engine", org: "Groq" },
 ];
 
 const TEMPLATES = [
   {
     title: "Refactor & Explain Code",
-    system: "You are an expert software engineer. Refactor the provided code to be more concise and performant, then explain the changes.",
+    system: "You are an expert software engineer. Refactor the provided code to be concise and performant, then explain the changes.",
     prompt: "function bubbleSort(arr) {\n  let len = arr.length;\n  for (let i = 0; i < len; i++) {\n    for (let j = 0; j < len - 1 - i; j++) {\n      if (arr[j] > arr[j + 1]) {\n        let temp = arr[j];\n        arr[j] = arr[j + 1];\n        arr[j + 1] = temp;\n      }\n    }\n  }\n  return arr;\n}",
   },
   {
@@ -45,7 +46,7 @@ const TEMPLATES = [
   },
   {
     title: "Generate Structured JSON",
-    system: "You are a structured data generator. Return ONLY a valid JSON array of objects. Do not include any explanation, markdown blocks, or extra text. Each object must have fields: 'name', 'developer', and 'primaryUse'.",
+    system: "You are a structured data generator. Return ONLY a valid JSON array of objects. Do not include any explanation or extra text. Each object must have fields: 'name', 'developer', and 'primaryUse'.",
     prompt: "Create JSON data for the 3 most popular machine learning frameworks.",
   },
   {
@@ -56,7 +57,6 @@ const TEMPLATES = [
 ];
 
 export const Playground: React.FC = () => {
-  const t = useTokens();
   const { user, openAuthModal } = useAuth();
 
   const [prompt, setPrompt] = useState("");
@@ -74,11 +74,9 @@ export const Playground: React.FC = () => {
   const toggleModel = (id: string) => {
     setSelectedModels((prev) => {
       if (prev.includes(id)) {
-        // Keep at least one model selected
         if (prev.length === 1) return prev;
         return prev.filter((m) => m !== id);
       } else {
-        // Limit to max 3 models for clean side-by-side design
         if (prev.length === 3) return prev;
         return [...prev, id];
       }
@@ -160,90 +158,92 @@ export const Playground: React.FC = () => {
     });
   };
 
+  const isAnyLoading = Object.values(responses).some((r) => r.loading);
+
   return (
     <div
       id="playground"
-      className="relative p-5 sm:p-6 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] transition-all scroll-mt-24 overflow-hidden shadow-xs"
+      className="relative rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] transition-all scroll-mt-24 overflow-hidden shadow-xs"
     >
-      {/* Lock overlay if not logged in */}
+      {/* ── Lock overlay if not logged in ── */}
       {!user && (
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm bg-white/92 dark:bg-[#131314]/92 text-[#202124] dark:text-[#e3e3e3] border border-[#dadce0] dark:border-[#3c4043]/60 rounded-2xl transition-colors">
-          <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3 shadow-md bg-[#1a73e8] dark:bg-[#a8c7fa] text-white dark:text-[#041e49]">
-            <Lock size={20} />
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center backdrop-blur-md bg-white/95 dark:bg-[#131314]/95 text-[#202124] dark:text-[#e3e3e3] rounded-2xl transition-colors">
+          <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3.5 shadow-sm bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] border border-[#1a73e8]/20">
+            <Lock size={22} />
           </div>
-          <h3 className="text-lg font-bold mb-1.5 tracking-tight text-[#202124] dark:text-[#e3e3e3]">
-            Unlock Google AI Studio Sandbox
+          <h3 className="text-lg sm:text-xl font-bold mb-1.5 tracking-tight text-[#202124] dark:text-[#e3e3e3]">
+            Google AI Studio Playground
           </h3>
-          <p className="text-xs mb-5 max-w-sm leading-relaxed mx-auto text-[#5f6368] dark:text-[#c4c7c5]">
-            Sign in to compare inference outputs across multiple open-weight models side-by-side in real-time.
+          <p className="text-xs sm:text-sm mb-6 max-w-md leading-relaxed mx-auto text-[#5f6368] dark:text-[#c4c7c5]">
+            Sign in to run real-time prompt inference across multiple open-weight models side-by-side with latency benchmarking.
           </p>
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-3">
             <button
               onClick={() => openAuthModal("signin")}
-              className="px-4 py-2 rounded-full text-xs font-semibold border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-all cursor-pointer"
+              className="px-5 py-2.5 rounded-full text-xs font-semibold border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-colors cursor-pointer"
             >
               Sign In
             </button>
             <button
               onClick={() => openAuthModal("signup")}
-              className="px-4 py-2 rounded-full text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] transition-all shadow-xs cursor-pointer"
+              className="px-5 py-2.5 rounded-full text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] transition-colors shadow-xs cursor-pointer"
             >
-              Create Account
+              Create Free Account
             </button>
           </div>
         </div>
       )}
 
-      {/* Main content grid */}
+      {/* Main content */}
       <div
-        className={!user ? "filter blur-xs pointer-events-none select-none" : ""}
+        className={`p-5 sm:p-7 ${!user ? "filter blur-xs pointer-events-none select-none" : ""}`}
         {...(!user ? { inert: true } : {})}
       >
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 mb-6 pb-5 border-b border-neutral-100 dark:border-white/[0.04] text-left">
+        {/* Top Header */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-5 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40 text-left">
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-blue-500" />
-              <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
-                Inference Sandbox
+            <div className="flex items-center gap-2 mb-1.5">
+              <div className="w-8 h-8 rounded-lg bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] flex items-center justify-center shrink-0">
+                <Terminal size={17} />
+              </div>
+              <span className="text-xs font-bold text-[#1a73e8] dark:text-[#a8c7fa] uppercase tracking-wider">
+                Google AI Studio Engine
               </span>
             </div>
-            <h3 className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
-              Multi-Model Prompt Sandbox
+            <h3 className="text-lg sm:text-xl font-bold tracking-tight text-[#202124] dark:text-[#e3e3e3]">
+              Prompt Inference Sandbox
             </h3>
-            <p className="text-xs leading-relaxed max-w-xl text-neutral-500 dark:text-neutral-400 mt-1">
-              Test prompts simultaneously across different LLMs. Customize system prompts to enforce styles, JSON structures, or translations.
+            <p className="text-xs text-[#5f6368] dark:text-[#8e918f] mt-0.5">
+              Execute test prompts across multiple models simultaneously to compare output reasoning and latency
             </p>
           </div>
 
-          {/* Quick-start Templates */}
+          {/* Quick Templates Dropdown */}
           <div className="relative self-start md:self-end">
             <button
               onClick={() => setOpenTemplates((prev) => !prev)}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer shadow-xs"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-medium border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-colors cursor-pointer shadow-xs"
             >
-              <Sparkles size={12} className="text-blue-500" />
-              Quick Templates
-              <ChevronDown size={13} />
+              <Sparkles size={13} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
+              <span>Prompt Templates</span>
+              <ChevronDown size={13} className={`text-[#70757a] transition-transform ${openTemplates ? "rotate-180" : ""}`} />
             </button>
             {openTemplates && (
               <>
                 <div
-                  className="fixed inset-0 z-25"
+                  className="fixed inset-0 z-20"
                   onClick={() => setOpenTemplates(false)}
                 />
-                <div
-                  className={`absolute right-0 mt-2 w-64 rounded-2xl border p-2 z-30 shadow-xl backdrop-blur-xl ${t.modal} ${t.border}`}
-                >
-                  <p className={`text-[9px] font-black uppercase tracking-wider px-3 py-1.5 ${t.textMuted}`}>
-                    Choose a template
+                <div className="absolute right-0 mt-1.5 w-64 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] p-1.5 z-30 shadow-xl">
+                  <p className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 text-[#70757a] dark:text-[#8e918f]">
+                    Select a Template
                   </p>
-                  <ul className="space-y-1">
+                  <ul className="space-y-0.5 list-none p-0 m-0">
                     {TEMPLATES.map((tpl, i) => (
                       <li key={i}>
                         <button
                           onClick={() => applyTemplate(tpl)}
-                          className={`w-full text-left px-3 py-2 text-[12px] font-semibold rounded-xl transition-all ${t.pillInactive} hover:text-white`}
+                          className="w-full text-left px-2.5 py-2 text-xs font-medium rounded-lg text-[#202124] dark:text-[#e3e3e3] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-colors cursor-pointer"
                         >
                           {tpl.title}
                         </button>
@@ -256,30 +256,21 @@ export const Playground: React.FC = () => {
           </div>
         </div>
 
-        {/* Input Configuration & Side-by-side view */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Controls Column */}
-          <div className="lg:col-span-1 space-y-5 text-left border-r pr-0 lg:pr-6 border-white/5">
-            {/* Prompt Input */}
-            <div className="flex flex-col">
-              <label className="text-[11px] font-bold mb-2 uppercase tracking-wider text-[#5f6368] dark:text-[#8e918f]">
-                User Prompt
-              </label>
-              <textarea
-                value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
-                placeholder="Write your prompt here..."
-                rows={5}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#131314] text-[#202124] dark:text-[#e3e3e3] text-xs sm:text-[13px] leading-relaxed resize-none outline-none font-medium focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8] transition-all"
-              />
-            </div>
-
-            {/* Model Selection */}
+        {/* Input Configuration & Execution Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Controls Column (Left) */}
+          <div className="lg:col-span-4 space-y-4 text-left">
+            {/* Model Selection Selector */}
             <div>
-              <label className="text-[11px] font-bold mb-2.5 uppercase tracking-wider block text-[#5f6368] dark:text-[#8e918f]">
-                Select Models (1-3)
-              </label>
-              <div className="flex flex-col gap-1.5">
+              <div className="flex items-center justify-between mb-2">
+                <label className="text-[11px] font-semibold uppercase tracking-wider text-[#5f6368] dark:text-[#8e918f]">
+                  Active Models (Select 1–3)
+                </label>
+                <span className="text-[10px] font-mono text-[#70757a] dark:text-[#8e918f]">
+                  {selectedModels.length}/3 Selected
+                </span>
+              </div>
+              <div className="grid grid-cols-1 gap-1.5">
                 {MODELS.map((model) => {
                   const isSelected = selectedModels.includes(model.id);
                   return (
@@ -287,19 +278,21 @@ export const Playground: React.FC = () => {
                       key={model.id}
                       type="button"
                       onClick={() => toggleModel(model.id)}
-                      className={`flex items-center justify-between w-full px-3.5 py-2.5 rounded-xl border text-xs font-bold text-left cursor-pointer transition-all ${
+                      className={`flex items-center justify-between w-full px-3 py-2.5 rounded-xl border text-xs font-semibold text-left cursor-pointer transition-colors ${
                         isSelected
-                          ? "border-[#1a73e8] dark:border-[#a8c7fa] bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa]"
-                          : "border-[#dadce0] dark:border-[#3c4043]/60 bg-[#f8f9fa] dark:bg-[#282a2c]/30 text-[#5f6368] dark:text-[#c4c7c5] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c]"
+                          ? "border-[#1a73e8] dark:border-[#a8c7fa] bg-[#1a73e8]/[0.08] dark:bg-[#a8c7fa]/[0.08] text-[#1a73e8] dark:text-[#a8c7fa]"
+                          : "border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#5f6368] dark:text-[#c4c7c5] hover:bg-[#f8f9fa] dark:hover:bg-[#282a2c]"
                       }`}
                     >
-                      <div className="flex items-center gap-2">
-                        <span className={`w-2 h-2 rounded-full ${isSelected ? "bg-[#1a73e8] dark:bg-[#a8c7fa]" : "bg-neutral-400 dark:bg-neutral-600"}`} />
-                        <span>{model.label}</span>
+                      <div className="flex items-center gap-2 truncate">
+                        <span className={`w-2 h-2 rounded-full shrink-0 ${isSelected ? "bg-[#1a73e8] dark:bg-[#a8c7fa]" : "bg-[#dadce0] dark:bg-[#3c4043]"}`} />
+                        <span className="truncate">{model.label}</span>
                       </div>
                       <span
-                        className={`text-[9px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded-md ${
-                          isSelected ? "bg-[#1a73e8]/20 text-[#1a73e8] dark:text-[#a8c7fa]" : "bg-neutral-200/60 dark:bg-white/5 text-[#5f6368] dark:text-[#8e918f]"
+                        className={`text-[9.5px] uppercase font-mono px-1.5 py-0.2 rounded shrink-0 ${
+                          isSelected
+                            ? "bg-[#1a73e8]/20 text-[#1a73e8] dark:text-[#a8c7fa]"
+                            : "bg-[#f1f3f4] dark:bg-[#282a2c] text-[#70757a] dark:text-[#8e918f]"
                         }`}
                       >
                         {model.badge}
@@ -310,78 +303,102 @@ export const Playground: React.FC = () => {
               </div>
             </div>
 
-            {/* Advanced Settings (System Prompt) */}
-            <div className="border border-[#dadce0] dark:border-[#3c4043]/60 rounded-xl p-1 bg-[#f8f9fa] dark:bg-[#282a2c]/30 transition-all">
+            {/* Prompt Input Box */}
+            <div className="flex flex-col">
+              <div className="flex items-center justify-between mb-2">
+                <label className="text-[11px] font-semibold uppercase tracking-wider text-[#5f6368] dark:text-[#8e918f]">
+                  User Prompt
+                </label>
+                {prompt && (
+                  <button
+                    type="button"
+                    onClick={() => setPrompt("")}
+                    className="text-[11px] text-[#70757a] hover:text-red-500 transition-colors flex items-center gap-0.5 cursor-pointer"
+                  >
+                    <Trash2 size={11} /> Clear
+                  </button>
+                )}
+              </div>
+              <textarea
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+                placeholder="Enter a prompt to test across selected models..."
+                rows={5}
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#131314] text-[#202124] dark:text-[#e3e3e3] text-xs leading-relaxed resize-none outline-none focus:border-[#1a73e8] dark:focus:border-[#a8c7fa] transition-colors"
+              />
+            </div>
+
+            {/* Advanced System Instructions (Collapsible) */}
+            <div className="border border-[#dadce0] dark:border-[#3c4043]/60 rounded-xl overflow-hidden bg-[#f8f9fa] dark:bg-[#282a2c]/30">
               <button
                 type="button"
                 onClick={() => setShowAdvanced((prev) => !prev)}
-                className="flex items-center justify-between w-full px-3 py-2 text-xs font-bold text-[#202124] dark:text-[#e3e3e3] cursor-pointer"
+                className="flex items-center justify-between w-full px-3.5 py-2.5 text-xs font-semibold text-[#202124] dark:text-[#e3e3e3] cursor-pointer"
               >
                 <div className="flex items-center gap-2">
-                  <Settings size={13} className="text-[#5f6368] dark:text-[#8e918f]" />
-                  <span>Advanced System Instructions</span>
+                  <Sliders size={13} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
+                  <span>System Instructions</span>
+                  {systemInstruction.trim() && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#1a73e8] dark:bg-[#a8c7fa]" />
+                  )}
                 </div>
                 {showAdvanced ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
               </button>
 
               {showAdvanced && (
-                <div className="p-3 border-t border-[#dadce0] dark:border-[#3c4043]/40 space-y-2 mt-1 animate-[fadeIn_0.15s_ease-out]">
-                  <label className="text-[9px] font-black uppercase tracking-wider block text-[#5f6368] dark:text-[#8e918f]">
-                    System instructions
-                  </label>
+                <div className="p-3 border-t border-[#dadce0]/70 dark:border-[#3c4043]/40 space-y-2 animate-[fadeIn_0.15s_ease-out]">
                   <textarea
                     value={systemInstruction}
                     onChange={(e) => setSystemInstruction(e.target.value)}
-                    placeholder="E.g., You are a strict JSON bot that never writes explanations..."
-                    rows={4}
-                    className="w-full px-3 py-2 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#131314] text-[#202124] dark:text-[#e3e3e3] text-xs leading-relaxed resize-none outline-none font-medium focus:border-[#1a73e8] transition-all"
+                    placeholder="Instructions to enforce output style, persona, or JSON output rules..."
+                    rows={3}
+                    className="w-full px-3 py-2 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] text-xs leading-relaxed resize-none outline-none focus:border-[#1a73e8] dark:focus:border-[#a8c7fa]"
                   />
-                  <div className="flex items-start gap-1.5 mt-2">
-                    <Info size={11} className="mt-0.5 shrink-0 text-[#5f6368] dark:text-[#8e918f]" />
-                    <p className="text-[10px] leading-relaxed text-[#5f6368] dark:text-[#8e918f]">
-                      System prompts instruct the LLM on its behavior, tone, or formatting constraints before processing user inputs.
+                  <div className="flex items-start gap-1.5">
+                    <Info size={11} className="mt-0.5 shrink-0 text-[#70757a]" />
+                    <p className="text-[10.5px] leading-relaxed text-[#70757a] dark:text-[#8e918f]">
+                      System prompts guide model tone and constraints before processing the user query.
                     </p>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Action Trigger */}
+            {/* Run Inference Button */}
             <button
               type="button"
               onClick={handleRun}
-              disabled={!prompt.trim() || selectedModels.length === 0}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-full text-xs sm:text-sm font-bold bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] disabled:opacity-50 disabled:pointer-events-none cursor-pointer transition-all active:scale-[0.98] shadow-xs"
+              disabled={!prompt.trim() || selectedModels.length === 0 || isAnyLoading}
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-full text-xs font-bold bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-colors shadow-xs"
             >
-              <Play size={14} fill="currentColor" />
-              <span>Run Inference Sandbox</span>
+              <Play size={13} fill="currentColor" />
+              <span>{isAnyLoading ? "Running Inference..." : "Run Multi-Model Inference"}</span>
             </button>
           </div>
 
-          {/* Results Comparison Grid (2 Columns or max 3 depending on selection) */}
-          <div className="lg:col-span-2">
-            {selectedModels.length === 0 ? (
-              <div
-                className={`flex flex-col items-center justify-center py-20 px-6 rounded-2xl border text-center ${t.surface} ${t.border}`}
-              >
-                <p className={`text-sm ${t.textMuted}`}>Select at least one model on the left to start.</p>
-              </div>
-            ) : Object.keys(responses).length === 0 ? (
+          {/* Results Comparison Grid (Right) */}
+          <div className="lg:col-span-8">
+            {Object.keys(responses).length === 0 ? (
               /* Idle state (pre-run) */
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full min-h-64">
                 {selectedModels.map((modelId) => {
                   const mInfo = MODELS.find((m) => m.id === modelId);
                   return (
                     <div
                       key={modelId}
-                      className="flex flex-col rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 p-4 sm:p-5 text-left h-fit min-h-44 justify-between bg-[#f8f9fa] dark:bg-[#131314]"
+                      className="flex flex-col justify-between rounded-xl border border-[#dadce0] dark:border-[#3c4043]/60 p-5 text-left bg-[#f8f9fa] dark:bg-[#131314]"
                     >
                       <div>
-                        <h4 className="text-xs sm:text-[13px] font-bold text-[#202124] dark:text-[#e3e3e3]">
-                          {mInfo?.label || modelId}
-                        </h4>
-                        <p className="text-[11px] mt-1 text-[#5f6368] dark:text-[#8e918f]">
-                          Ready for prompt execution...
+                        <div className="flex items-center justify-between mb-1">
+                          <h4 className="text-xs sm:text-sm font-bold text-[#202124] dark:text-[#e3e3e3]">
+                            {mInfo?.label || modelId}
+                          </h4>
+                          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] text-[#5f6368] dark:text-[#8e918f]">
+                            {mInfo?.badge}
+                          </span>
+                        </div>
+                        <p className="text-xs text-[#5f6368] dark:text-[#8e918f]">
+                          Ready for prompt execution
                         </p>
                       </div>
                       <div className="h-1.5 w-16 bg-[#dadce0] dark:bg-[#3c4043] rounded-full animate-pulse" />
@@ -404,21 +421,20 @@ export const Playground: React.FC = () => {
                   return (
                     <div
                       key={modelId}
-                      className="flex flex-col rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 overflow-hidden text-left h-full bg-white dark:bg-[#131314]"
+                      className="flex flex-col rounded-xl border border-[#dadce0] dark:border-[#3c4043]/60 overflow-hidden text-left bg-white dark:bg-[#131314] shadow-xs"
                     >
                       {/* Column Header */}
-                      <header className="px-4 py-3 border-b border-[#dadce0] dark:border-[#3c4043]/40 bg-[#f8f9fa] dark:bg-[#282a2c]/40 flex items-center justify-between shrink-0">
-                        <div>
-                          <h4 className="text-xs sm:text-[13px] font-bold tracking-tight text-[#202124] dark:text-[#e3e3e3]">
+                      <header className="px-4 py-3 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40 bg-[#f8f9fa] dark:bg-[#282a2c]/40 flex items-center justify-between shrink-0">
+                        <div className="min-w-0 pr-2">
+                          <h4 className="text-xs sm:text-sm font-bold tracking-tight text-[#202124] dark:text-[#e3e3e3] truncate">
                             {resp.modelLabel}
                           </h4>
                           {resp.latencyMs !== null && (
                             <div className="flex items-center gap-1.5 mt-0.5">
-                              <span className="flex items-center gap-0.5 text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">
+                              <span className="inline-flex items-center gap-1 text-[10px] text-[#1a73e8] dark:text-[#a8c7fa] font-semibold bg-[#1a73e8]/10 px-1.5 py-0.2 rounded border border-[#1a73e8]/20">
                                 <Clock size={10} />
                                 {(resp.latencyMs / 1000).toFixed(2)}s
                               </span>
-                              <span className="text-[10px] text-[#70757a] dark:text-[#8e918f]">•</span>
                               <span className="text-[10px] text-[#70757a] dark:text-[#8e918f]">
                                 {resp.output.length} chars
                               </span>
@@ -430,13 +446,13 @@ export const Playground: React.FC = () => {
                           <button
                             type="button"
                             onClick={() => handleCopy(resp.output, modelId)}
-                            className="p-1.5 rounded-lg border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#5f6368] dark:text-[#c4c7c5] hover:text-[#202124] dark:hover:text-white transition-all cursor-pointer"
+                            className="p-1.5 rounded-lg border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#5f6368] dark:text-[#c4c7c5] hover:text-[#202124] dark:hover:text-white transition-colors cursor-pointer shrink-0"
                             title="Copy response"
                           >
                             {copiedIndex === modelId ? (
-                              <Check size={12} className="text-emerald-500" />
+                              <Check size={13} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
                             ) : (
-                              <Copy size={12} />
+                              <Copy size={13} />
                             )}
                           </button>
                         )}
@@ -446,79 +462,20 @@ export const Playground: React.FC = () => {
                       <div className="p-4 flex-1 overflow-y-auto max-h-125 min-h-64 no-scrollbar">
                         {resp.loading ? (
                           <div className="space-y-3 animate-pulse">
-                            <div className="h-3.5 bg-white/5 rounded-md w-full" />
-                            <div className="h-3.5 bg-white/5 rounded-md w-[90%]" />
-                            <div className="h-3.5 bg-white/5 rounded-md w-[95%]" />
-                            <div className="h-3.5 bg-white/5 rounded-md w-[80%]" />
-                            <div className="h-3.5 bg-white/5 rounded-md w-[60%]" />
+                            <div className="h-3.5 bg-[#f1f3f4] dark:bg-[#282a2c] rounded-md w-full" />
+                            <div className="h-3.5 bg-[#f1f3f4] dark:bg-[#282a2c] rounded-md w-[85%]" />
+                            <div className="h-3.5 bg-[#f1f3f4] dark:bg-[#282a2c] rounded-md w-[70%]" />
                           </div>
                         ) : resp.error ? (
-                          <div className="text-red-400 text-xs py-4 flex flex-col gap-2 items-start">
-                            <p className="font-bold flex items-center gap-1.5">
-                              <span>Generation failed</span>
-                            </p>
-                            <p className={`p-3 rounded-xl border border-red-500/10 bg-red-500/5 ${t.textMuted} leading-relaxed`}>
-                              {resp.error}
-                            </p>
+                          <div className="p-3 rounded-lg border border-red-200 dark:border-red-900/40 bg-red-50 dark:bg-red-950/20 text-red-700 dark:text-red-300 text-xs">
+                            {resp.error}
                           </div>
                         ) : (
-                          <article className={`text-[13px] leading-relaxed font-normal prose prose-invert max-w-none break-words ${t.textSecondary}`}>
-                            <ReactMarkdown
-                              remarkPlugins={[remarkGfm]}
-                              components={{
-                                h1: (props) => (
-                                  <h1 className="font-extrabold text-base mt-3 mb-1.5 text-white" {...props} />
-                                ),
-                                h2: (props) => (
-                                  <h2 className="font-bold text-sm mt-3 mb-1.5 text-white" {...props} />
-                                ),
-                                h3: (props) => (
-                                  <h3 className="font-bold text-[13px] mt-3 mb-1.5 text-white" {...props} />
-                                ),
-                                p: (props) => <p className="mb-2 last:mb-0 leading-relaxed" {...props} />,
-                                ul: (props) => <ul className="list-disc pl-4 mb-2 space-y-1 marker:text-emerald-400" {...props} />,
-                                ol: (props) => <ol className="list-decimal pl-4 mb-2 space-y-1" {...props} />,
-                                li: (props) => <li className="leading-relaxed" {...props} />,
-                                code: (props) => (
-                                  <code
-                                    className="bg-white/5 rounded-md px-1.5 py-0.5 font-mono text-[11px] text-emerald-400"
-                                    {...props}
-                                  />
-                                ),
-                                pre: (props) => (
-                                  <pre
-                                    className="bg-black/40 rounded-xl p-3 overflow-x-auto my-2 font-mono text-[11px] border border-white/5 shadow-inner w-full shrink-0 not-prose"
-                                    {...props}
-                                  />
-                                ),
-                                strong: (props) => (
-                                  <strong className="font-bold text-white" {...props} />
-                                ),
-                                table: ({ children }: any) => (
-                                  <div className="my-2.5 overflow-x-auto rounded-xl border border-white/10 bg-black/30 shadow-xs no-scrollbar not-prose">
-                                    <table className="w-full text-xs text-left border-collapse min-w-full">{children}</table>
-                                  </div>
-                                ),
-                                thead: ({ children }: any) => (
-                                  <thead className="border-b border-white/10 bg-white/[0.04]">{children}</thead>
-                                ),
-                                tbody: ({ children }: any) => (
-                                  <tbody className="divide-y divide-white/[0.04]">{children}</tbody>
-                                ),
-                                tr: ({ children }: any) => (
-                                  <tr className="hover:bg-white/[0.02] transition-colors">{children}</tr>
-                                ),
-                                th: ({ children }: any) => (
-                                  <th className="px-3 py-2 font-semibold text-white text-xs tracking-wide whitespace-nowrap">{children}</th>
-                                ),
-                                td: ({ children }: any) => (
-                                  <td className="px-3 py-2 text-neutral-300 text-xs leading-relaxed align-top">{children}</td>
-                                ),
-                              }}
-                            >
+                          <div className="prose prose-sm dark:prose-invert max-w-none text-xs leading-relaxed text-[#202124] dark:text-[#e3e3e3]">
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
                               {resp.output}
                             </ReactMarkdown>
-                          </article>
+                          </div>
                         )}
                       </div>
                     </div>

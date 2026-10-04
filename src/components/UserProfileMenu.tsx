@@ -23,9 +23,10 @@ import {
   Lock,
   ChevronDown,
   ChevronUp,
-  AlertTriangle,
   ArrowUpRight,
   X,
+  Clock,
+  ShieldAlert,
 } from "lucide-react";
 import { useAuth } from "./AuthContext";
 import { shareUrlForProfile } from "../lib/entryUrl";
@@ -187,38 +188,190 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
     : (email ? email[0] : "U").toUpperCase();
 
   const [socialsExpanded, setSocialsExpanded] = useState(false);
-  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-  const [isDeletingAccount, setIsDeletingAccount] = useState(false);
+  const [showDeletionModal, setShowDeletionModal] = useState(false);
+  const [deletionRequested, setDeletionRequested] = useState(() =>
+    Boolean(
+      (parsedMeta as any)?.deletionRequested ||
+      (parsedMeta as any)?.deletion_requested ||
+      (user?.user_metadata as any)?.deletionRequested
+    )
+  );
+  const [deletionReason, setDeletionReason] = useState(() =>
+    (parsedMeta as any)?.deletionReason ||
+    (parsedMeta as any)?.deletion_reason ||
+    (user?.user_metadata as any)?.deletionReason ||
+    ""
+  );
+  const [isSubmittingDeletion, setIsSubmittingDeletion] = useState(false);
+  const [deletionFeedback, setDeletionFeedback] = useState<{
+    type: "success" | "error" | "info";
+    message: string;
+  } | null>(null);
 
-  const handleExecuteDeleteOwnAccount = async () => {
-    setIsDeletingAccount(true);
+  useEffect(() => {
+    if (parsedMeta) {
+      const isReq = Boolean(
+        (parsedMeta as any)?.deletionRequested ||
+        (parsedMeta as any)?.deletion_requested ||
+        (user?.user_metadata as any)?.deletionRequested
+      );
+      setDeletionRequested(isReq);
+      if ((parsedMeta as any)?.deletionReason) {
+        setDeletionReason((parsedMeta as any).deletionReason);
+      }
+    }
+  }, [parsedMeta, user]);
+
+  const handleRequestDeletion = async () => {
+    if (!user) return;
+    setIsSubmittingDeletion(true);
+    setDeletionFeedback(null);
     try {
-      const { error: rpcErr } = await supabase.rpc("delete_own_account");
+      const reasonTrimmed = deletionReason.trim();
 
-      if (user?.id) {
-        const userKey = `supabase_${user.id}`;
-        await Promise.allSettled([
-          supabase.from("user_preferences").delete().in("user_key", [userKey, user.id]),
-          supabase.from("user_bookmarks").delete().in("user_key", [userKey, user.id]),
-          supabase.from("entry_ratings").delete().in("user_key", [userKey, user.id]),
-          supabase.from("entry_comments").delete().in("user_key", [userKey, user.id]),
-        ]);
+      // 1. Try calling the dedicated RPC
+      try {
+        await supabase.rpc("request_account_deletion", {
+          reason: reasonTrimmed,
+        });
+      } catch (e) {
+        console.warn("request_account_deletion RPC fallback:", e);
       }
 
-      if (rpcErr) {
-        console.warn("delete_own_account RPC response:", rpcErr);
+      // 2. Persist to user_preferences
+      const userKey = user.id.startsWith("supabase_") ? user.id : `supabase_${user.id}`;
+      const { data: prefData } = await supabase
+        .from("user_preferences")
+        .select("referral_source")
+        .or(`user_key.eq.${userKey},user_key.eq.${user.id}`)
+        .maybeSingle();
+
+      let meta: any = {};
+      if (prefData?.referral_source) {
+        try {
+          meta = JSON.parse(prefData.referral_source);
+        } catch {
+          meta = { source: prefData.referral_source };
+        }
+      } else if (onboardingProfile?.referralSource) {
+        try {
+          meta = JSON.parse(onboardingProfile.referralSource);
+        } catch {}
       }
 
-      localStorage.removeItem("aiverse_bookmarks");
-      localStorage.removeItem("aiverse_onboarding");
+      meta.deletionRequested = true;
+      meta.deletionReason = reasonTrimmed;
+      meta.deletionRequestedAt = new Date().toISOString();
 
-      await signOut();
-      setShowDeleteConfirm(false);
-      onClose?.();
+      await supabase
+        .from("user_preferences")
+        .upsert(
+          {
+            user_key: userKey,
+            role: (onboardingProfile?.role as string) || "developer",
+            interests: onboardingProfile?.interests || [],
+            referral_source: JSON.stringify(meta),
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "user_key" }
+        );
+
+      // 3. Persist to auth user_metadata
+      try {
+        await supabase.auth.updateUser({
+          data: {
+            ...user.user_metadata,
+            deletionRequested: true,
+            deletionReason: reasonTrimmed,
+            deletionRequestedAt: meta.deletionRequestedAt,
+          },
+        });
+      } catch {}
+
+      setDeletionRequested(true);
+      setShowDeletionModal(false);
+      setDeletionFeedback({
+        type: "success",
+        message: "Deletion request submitted. An administrator will review your request.",
+      });
+      setTimeout(() => setDeletionFeedback(null), 6000);
     } catch (err: any) {
-      console.error("Account self-deletion error:", err);
+      console.error("Account deletion request error:", err);
+      setDeletionFeedback({
+        type: "error",
+        message: err.message || "Failed to submit deletion request.",
+      });
     } finally {
-      setIsDeletingAccount(false);
+      setIsSubmittingDeletion(false);
+    }
+  };
+
+  const handleCancelDeletionRequest = async () => {
+    if (!user) return;
+    setIsSubmittingDeletion(true);
+    setDeletionFeedback(null);
+    try {
+      try {
+        await supabase.rpc("cancel_account_deletion_request");
+      } catch (e) {
+        console.warn("cancel_account_deletion_request RPC fallback:", e);
+      }
+
+      const userKey = user.id.startsWith("supabase_") ? user.id : `supabase_${user.id}`;
+      const { data: prefData } = await supabase
+        .from("user_preferences")
+        .select("referral_source")
+        .or(`user_key.eq.${userKey},user_key.eq.${user.id}`)
+        .maybeSingle();
+
+      let meta: any = {};
+      if (prefData?.referral_source) {
+        try {
+          meta = JSON.parse(prefData.referral_source);
+        } catch {}
+      }
+
+      delete meta.deletionRequested;
+      delete meta.deletion_requested;
+      delete meta.deletionReason;
+      delete meta.deletion_reason;
+      delete meta.deletionRequestedAt;
+      delete meta.deletion_requested_at;
+
+      await supabase
+        .from("user_preferences")
+        .update({
+          referral_source: JSON.stringify(meta),
+          updated_at: new Date().toISOString(),
+        })
+        .or(`user_key.eq.${userKey},user_key.eq.${user.id}`);
+
+      try {
+        await supabase.auth.updateUser({
+          data: {
+            ...user.user_metadata,
+            deletionRequested: false,
+            deletionReason: "",
+            deletionRequestedAt: null,
+          },
+        });
+      } catch {}
+
+      setDeletionRequested(false);
+      setShowDeletionModal(false);
+      setDeletionFeedback({
+        type: "info",
+        message: "Account deletion request has been cancelled.",
+      });
+      setTimeout(() => setDeletionFeedback(null), 5000);
+    } catch (err: any) {
+      console.error("Cancel deletion request error:", err);
+      setDeletionFeedback({
+        type: "error",
+        message: err.message || "Failed to cancel request.",
+      });
+    } finally {
+      setIsSubmittingDeletion(false);
     }
   };
 
@@ -784,6 +937,29 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   // ---------------------------------------------------------------------------
   return (
     <div className="text-left max-h-[min(70dvh,520px)] overflow-y-auto no-scrollbar py-1">
+      {/* ── Status Feedback Banner ── */}
+      {deletionFeedback && (
+        <div
+          className={`mx-3 mt-1 mb-2 p-2.5 rounded-xl border text-xs flex items-center justify-between gap-2 animate-[fadeIn_0.15s_ease-out] ${
+            deletionFeedback.type === "success"
+              ? "bg-[#e8f0fe] dark:bg-[#1a2733] border-[#1a73e8]/30 text-[#1a73e8] dark:text-[#a8c7fa]"
+              : deletionFeedback.type === "error"
+              ? "bg-red-500/10 border-red-500/20 text-red-500"
+              : "bg-neutral-100 dark:bg-white/5 border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300"
+          }`}
+        >
+          <div className="flex items-center gap-2 min-w-0">
+            <ShieldAlert size={14} className="shrink-0" />
+            <span className="truncate">{deletionFeedback.message}</span>
+          </div>
+          <button
+            onClick={() => setDeletionFeedback(null)}
+            className="p-0.5 hover:opacity-70 cursor-pointer"
+          >
+            <X size={12} />
+          </button>
+        </div>
+      )}
 
       {/* ══════════ Account Hero Section ══════════ */}
       <div className="flex flex-col items-center text-center p-3">
@@ -809,9 +985,20 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
             {username}
           </p>
         )}
-        <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate max-w-[240px] mt-0.5 mb-3">
+        <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate max-w-[240px] mt-0.5 mb-2">
           {email}
         </p>
+
+        {deletionRequested && (
+          <div
+            onClick={() => setShowDeletionModal(true)}
+            className="mb-3 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-[11px] font-medium flex items-center gap-1.5 cursor-pointer hover:bg-amber-500/15 transition-colors"
+            title="Click to view or cancel deletion request"
+          >
+            <Clock size={12} />
+            <span>Deletion pending admin approval</span>
+          </div>
+        )}
 
         {/* "Manage your Profile" Pill */}
         <button
@@ -968,45 +1155,153 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
           <span>•</span>
           <a href="/terms" onClick={(e) => { e.preventDefault(); onClose?.(); window.location.pathname = "/terms"; }} className="hover:underline">Terms</a>
           <span>•</span>
-          <button onClick={() => setShowDeleteConfirm(true)} className="hover:text-red-500 hover:underline cursor-pointer">Delete account</button>
+          {deletionRequested ? (
+            <button
+              type="button"
+              onClick={() => setShowDeletionModal(true)}
+              className="text-amber-500 hover:text-amber-400 hover:underline cursor-pointer flex items-center gap-1 font-medium"
+            >
+              <Clock size={11} />
+              <span>Deletion requested</span>
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setShowDeletionModal(true)}
+              className="hover:text-neutral-700 dark:hover:text-neutral-300 hover:underline cursor-pointer"
+            >
+              Request account deletion
+            </button>
+          )}
         </div>
       </div>
 
-      {/* ══════════ Self-Account Deletion Modal ══════════ */}
-      {showDeleteConfirm && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-[fadeIn_0.15s_ease-out]">
-          <div className={`relative w-full max-w-sm p-6 rounded-2xl overflow-hidden shadow-2xl space-y-4 border ${
-            isDark ? "bg-[#111116] border-white/10 text-white" : "bg-white border-neutral-200 text-neutral-900"
+      {/* ══════════ Account Deletion Request Modal (Admin Approval Required) ══════════ */}
+      {showDeletionModal && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 animate-[fadeIn_0.15s_ease-out]">
+          <div className={`relative w-full max-w-md p-6 rounded-2xl overflow-hidden shadow-2xl space-y-4 border ${
+            isDark ? "bg-[#1e1f20] border-[#3c4043] text-white" : "bg-white border-[#dadce0] text-neutral-900"
           }`}>
-            <div className="flex items-center gap-3 text-red-500">
-              <div className="p-2 rounded-xl bg-red-500/10 border border-red-500/20">
-                <AlertTriangle size={20} className="stroke-[2.5px]" />
+            <button
+              type="button"
+              onClick={() => setShowDeletionModal(false)}
+              className="absolute top-4 right-4 w-7 h-7 rounded-full flex items-center justify-center text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/10 transition-colors cursor-pointer"
+            >
+              <X size={15} />
+            </button>
+
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] flex items-center justify-center shrink-0 border border-[#1a73e8]/20">
+                <ShieldAlert size={20} className="stroke-[2.2px]" />
               </div>
-              <h3 className="text-base font-black tracking-tight">Delete Account Permanently</h3>
+              <div>
+                <h3 className="text-base font-bold tracking-tight">
+                  {deletionRequested ? "Account Deletion Request" : "Request Account Deletion"}
+                </h3>
+                <p className="text-[11px] text-neutral-500 dark:text-neutral-400">
+                  Platform Administrator Approval Required
+                </p>
+              </div>
             </div>
-            <p className="text-xs leading-relaxed font-light opacity-80">
-              Are you sure you want to delete your account?
-              <br /><br />
-              This will permanently remove your login credentials from <strong className="text-red-400">auth.users</strong> and erase all bookmarks, profile details, and preferences from everywhere. This action cannot be undone.
-            </p>
-            <div className="flex justify-end gap-2 pt-2">
-              <button
-                type="button"
-                disabled={isDeletingAccount}
-                onClick={() => setShowDeleteConfirm(false)}
-                className="px-4 py-2 rounded-xl text-xs font-semibold hover:bg-neutral-500/10 transition-colors cursor-pointer"
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                disabled={isDeletingAccount}
-                onClick={handleExecuteDeleteOwnAccount}
-                className="px-4 py-2 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white cursor-pointer disabled:opacity-50 transition-colors"
-              >
-                {isDeletingAccount ? "Deleting..." : "Permanently Delete"}
-              </button>
+
+            <div className={`p-3.5 rounded-xl border text-xs space-y-1.5 ${
+              isDark ? "bg-[#131314] border-[#3c4043] text-neutral-300" : "bg-[#f8fafd] border-[#c2e7ff] text-[#001d35]"
+            }`}>
+              <div className="flex items-center gap-2 font-semibold">
+                <Shield size={14} className={isDark ? "text-[#a8c7fa]" : "text-[#1a73e8]"} />
+                <span>Security & Governance Policy</span>
+              </div>
+              <p className="text-[11.5px] leading-relaxed opacity-90 font-light">
+                Under platform security policy, regular users do not have permission to delete accounts directly. An account deletion request must be submitted for review and approval by a platform administrator.
+              </p>
             </div>
+
+            {deletionRequested ? (
+              <div className="space-y-3 pt-1">
+                <div className="p-3 rounded-xl border border-amber-500/20 bg-amber-500/10 space-y-1.5">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-amber-600 dark:text-amber-400">
+                    <Clock size={13} />
+                    <span>Your deletion request is currently pending review</span>
+                  </div>
+                  {deletionReason && (
+                    <p className="text-[11.5px] text-neutral-600 dark:text-neutral-300 font-light italic">
+                      "{deletionReason}"
+                    </p>
+                  )}
+                  <p className="text-[10.5px] text-neutral-500 dark:text-neutral-400">
+                    Once approved by an administrator, your credentials, bookmarks, and preferences will be permanently expunged. You may withdraw this request at any time before it is approved.
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-end gap-2 pt-2">
+                  <button
+                    type="button"
+                    disabled={isSubmittingDeletion}
+                    onClick={() => setShowDeletionModal(false)}
+                    className="px-4 py-2 rounded-xl text-xs font-medium border border-neutral-300 dark:border-[#3c4043] hover:bg-neutral-100 dark:hover:bg-white/5 transition-colors cursor-pointer"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    disabled={isSubmittingDeletion}
+                    onClick={handleCancelDeletionRequest}
+                    className="px-4 py-2 rounded-xl text-xs font-semibold text-neutral-700 dark:text-neutral-200 border border-neutral-300 dark:border-[#3c4043] hover:bg-neutral-100 dark:hover:bg-white/10 transition-colors cursor-pointer disabled:opacity-50"
+                  >
+                    {isSubmittingDeletion ? "Cancelling..." : "Cancel Deletion Request"}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-3 pt-1">
+                <div className="space-y-1.5">
+                  <p className="text-xs text-neutral-600 dark:text-neutral-300 font-light">
+                    Upon administrator approval:
+                  </p>
+                  <ul className="text-[11.5px] text-neutral-500 dark:text-neutral-400 space-y-1 list-disc list-inside">
+                    <li>Your login credentials in <strong className="text-neutral-700 dark:text-neutral-200 font-medium">auth.users</strong> will be permanently purged.</li>
+                    <li>Saved bookmarks, ratings, and profile links will be wiped.</li>
+                    <li>This action cannot be undone once approved.</li>
+                  </ul>
+                </div>
+
+                <div className="space-y-1.5 pt-1">
+                  <label className="text-[11px] font-semibold text-neutral-700 dark:text-neutral-300">
+                    Reason for deletion (optional)
+                  </label>
+                  <textarea
+                    rows={3}
+                    value={deletionReason}
+                    onChange={(e) => setDeletionReason(e.target.value)}
+                    placeholder="Tell the administrator why you are requesting account deletion..."
+                    className={`w-full p-2.5 rounded-xl border text-xs resize-none outline-none transition-all ${
+                      isDark
+                        ? "bg-[#131314] border-[#3c4043] text-white placeholder:text-neutral-500 focus:border-[#a8c7fa]"
+                        : "bg-white border-[#dadce0] text-neutral-900 placeholder:text-neutral-400 focus:border-[#1a73e8]"
+                    }`}
+                  />
+                </div>
+
+                <div className="flex items-center justify-end gap-2 pt-2">
+                  <button
+                    type="button"
+                    disabled={isSubmittingDeletion}
+                    onClick={() => setShowDeletionModal(false)}
+                    className="px-4 py-2 rounded-xl text-xs font-medium border border-neutral-300 dark:border-[#3c4043] hover:bg-neutral-100 dark:hover:bg-white/5 transition-colors cursor-pointer"
+                  >
+                    Keep Account
+                  </button>
+                  <button
+                    type="button"
+                    disabled={isSubmittingDeletion}
+                    onClick={handleRequestDeletion}
+                    className="px-4 py-2 rounded-xl text-xs font-bold bg-[#1a73e8] hover:bg-[#1557b0] text-white transition-colors cursor-pointer disabled:opacity-50 shadow-xs"
+                  >
+                    {isSubmittingDeletion ? "Submitting..." : "Submit Deletion Request"}
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}

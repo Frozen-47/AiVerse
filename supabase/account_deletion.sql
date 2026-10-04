@@ -91,9 +91,24 @@ REVOKE ALL ON FUNCTION public.delete_user_by_admin(text) FROM PUBLIC, anon;
 GRANT EXECUTE ON FUNCTION public.delete_user_by_admin(text) TO authenticated;
 
 
--- ─── 2. User Function: Self-account deletion ─────────────────────────────────
+-- ─── 2. User Policy: Self-deletion disabled, Deletion Requests Enabled ────────
 CREATE OR REPLACE FUNCTION public.delete_own_account()
 RETURNS void
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public, auth, pg_catalog
+AS $$
+BEGIN
+  RAISE EXCEPTION 'Permission Denied: User accounts cannot be deleted directly. Account deletions require administrator review and approval. Please submit a deletion request from your profile settings.';
+END;
+$$;
+
+REVOKE ALL ON FUNCTION public.delete_own_account() FROM PUBLIC, anon, authenticated;
+
+
+-- User Function: Request Account Deletion
+CREATE OR REPLACE FUNCTION public.request_account_deletion(reason text DEFAULT '')
+RETURNS jsonb
 LANGUAGE plpgsql
 SECURITY DEFINER
 SET search_path = public, auth, pg_catalog
@@ -101,43 +116,104 @@ AS $$
 DECLARE
   calling_user_id uuid;
   calling_user_key text;
+  current_pref record;
+  meta jsonb;
 BEGIN
   calling_user_id := auth.uid();
   IF calling_user_id IS NULL THEN
     RAISE EXCEPTION 'Not authenticated.';
   END IF;
 
-  -- Prevent primary admin from deleting their own account via self-deletion
-  IF calling_user_id = '20f48b0a-737d-4b78-9098-847a8ba450e8'::uuid THEN
-    RAISE EXCEPTION 'Security error: The primary administrator account cannot be deleted.';
+  calling_user_key := 'supabase_' || calling_user_id::text;
+
+  SELECT * INTO current_pref FROM public.user_preferences 
+  WHERE user_key = calling_user_key OR user_key = calling_user_id::text
+  LIMIT 1;
+
+  IF current_pref IS NULL THEN
+    INSERT INTO public.user_preferences (user_key, role, interests, referral_source, updated_at)
+    VALUES (
+      calling_user_key,
+      'developer',
+      '{}'::text[],
+      jsonb_build_object(
+        'source', 'direct',
+        'deletionRequested', true,
+        'deletionReason', COALESCE(reason, ''),
+        'deletionRequestedAt', now()::text
+      )::text,
+      now()
+    );
+  ELSE
+    BEGIN
+      meta := current_pref.referral_source::jsonb;
+    EXCEPTION WHEN OTHERS THEN
+      meta := jsonb_build_object('source', COALESCE(current_pref.referral_source, 'direct'));
+    END;
+
+    meta := meta || jsonb_build_object(
+      'deletionRequested', true,
+      'deletionReason', COALESCE(reason, ''),
+      'deletionRequestedAt', now()::text
+    );
+
+    UPDATE public.user_preferences
+    SET referral_source = meta::text,
+        updated_at = now()
+    WHERE user_key = current_pref.user_key;
+  END IF;
+
+  RETURN jsonb_build_object('success', true, 'message', 'Account deletion request submitted for administrator review.');
+END;
+$$;
+
+REVOKE ALL ON FUNCTION public.request_account_deletion(text) FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.request_account_deletion(text) TO authenticated;
+
+
+-- User Function: Cancel Account Deletion Request
+CREATE OR REPLACE FUNCTION public.cancel_account_deletion_request()
+RETURNS jsonb
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public, auth, pg_catalog
+AS $$
+DECLARE
+  calling_user_id uuid;
+  calling_user_key text;
+  current_pref record;
+  meta jsonb;
+BEGIN
+  calling_user_id := auth.uid();
+  IF calling_user_id IS NULL THEN
+    RAISE EXCEPTION 'Not authenticated.';
   END IF;
 
   calling_user_key := 'supabase_' || calling_user_id::text;
 
-  -- 1. Delete application records
-  DELETE FROM public.user_preferences 
-    WHERE user_key = calling_user_key OR user_key = calling_user_id::text;
+  SELECT * INTO current_pref FROM public.user_preferences 
+  WHERE user_key = calling_user_key OR user_key = calling_user_id::text
+  LIMIT 1;
 
-  DELETE FROM public.user_bookmarks 
-    WHERE user_key = calling_user_key OR user_key = calling_user_id::text;
+  IF current_pref IS NOT NULL THEN
+    BEGIN
+      meta := current_pref.referral_source::jsonb;
+      meta := meta - 'deletionRequested' - 'deletion_requested' - 'deletionReason' - 'deletion_reason' - 'deletionRequestedAt' - 'deletion_requested_at';
+      UPDATE public.user_preferences
+      SET referral_source = meta::text,
+          updated_at = now()
+      WHERE user_key = current_pref.user_key;
+    EXCEPTION WHEN OTHERS THEN
+      -- Ignore non-json
+    END;
+  END IF;
 
-  DELETE FROM public.entry_ratings 
-    WHERE user_key = calling_user_key OR user_key = calling_user_id::text;
-
-  DELETE FROM public.entry_comments 
-    WHERE user_key = calling_user_key OR user_key = calling_user_id::text;
-
-  UPDATE public.entries 
-    SET submitted_by = NULL 
-    WHERE submitted_by = calling_user_key OR submitted_by = calling_user_id::text;
-
-  -- 2. Delete from auth.users (cascades all authentication sessions and OAuth identities)
-  DELETE FROM auth.users WHERE id = calling_user_id;
+  RETURN jsonb_build_object('success', true, 'message', 'Account deletion request cancelled.');
 END;
 $$;
 
-REVOKE ALL ON FUNCTION public.delete_own_account() FROM PUBLIC, anon;
-GRANT EXECUTE ON FUNCTION public.delete_own_account() TO authenticated;
+REVOKE ALL ON FUNCTION public.cancel_account_deletion_request() FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.cancel_account_deletion_request() TO authenticated;
 
 
 -- ─── 3. Admin Function: Query all auth.users merged with preferences ─────────

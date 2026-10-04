@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useCallback, useRef, lazy, Suspense } from "react";
-import { Filter, X, Check, Sparkles, ArrowLeft, AlertTriangle, Building2, Box, ChevronLeft, ChevronRight, LayoutGrid, ArrowRight } from "lucide-react";
+import { Filter, X, Check, Sparkles, ArrowLeft, AlertTriangle, Building2, Box, ChevronLeft, ChevronRight, LayoutGrid, ArrowRight, ShieldAlert } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
@@ -124,7 +124,10 @@ const Inner: React.FC = () => {
     if (migrated) return migrated;
     return parseProfileUsernameFromLocation();
   });
-  const [isAdminDashboard, setIsAdminDashboard] = useState(false);
+  const [isAdminDashboard, setIsAdminDashboard] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    return window.location.pathname === "/admin" || window.location.pathname === "/admin/";
+  });
   const [adminDashboardKey, setAdminDashboardKey] = useState(0);
   const [isChat, setIsChat] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
@@ -621,6 +624,10 @@ const Inner: React.FC = () => {
       targetPath = "/features";
       url.searchParams.delete("entry");
       url.searchParams.delete("user");
+    } else if (isAdminDashboard) {
+      targetPath = "/admin";
+      url.searchParams.delete("entry");
+      url.searchParams.delete("user");
     } else if (isPlayground) {
       targetPath = "/playground";
       url.searchParams.delete("entry");
@@ -677,6 +684,10 @@ const Inner: React.FC = () => {
       title = "Ecosystem Features | AiVerse";
       desc = "Explore category dashboards, system capacity metrics, spotlight highlights, values prop overlays, and all integrated capabilities.";
       path = "/features";
+    } else if (isAdminDashboard) {
+      title = "Administrator Console | AiVerse Cloud";
+      desc = "AiVerse platform administration console for managing database catalog, review queues, and user security governance.";
+      path = "/admin";
     } else if (isPlayground) {
       title = "Model Playground | AiVerse";
       desc = "Compare language models side-by-side. Test custom system instructions, prompt templates, and latency metrics.";
@@ -735,6 +746,7 @@ const Inner: React.FC = () => {
       setIsArena(window.location.pathname === "/arena" || window.location.pathname === "/arena/");
       setIsFeatures(window.location.pathname === "/features" || window.location.pathname === "/features/");
       setIsPlayground(window.location.pathname === "/playground" || window.location.pathname === "/playground/");
+      setIsAdminDashboard(window.location.pathname === "/admin" || window.location.pathname === "/admin/");
       setProfileUsername(parseProfileUsernameFromLocation());
 
       const isEntriesPath = window.location.pathname === "/entries" || window.location.pathname === "/entries/";
@@ -1209,22 +1221,52 @@ const Inner: React.FC = () => {
           onToggleBookmark={handleToggleBookmark}
           ratingSummaries={ratingSummaries}
         />
-      ) : (isAdminDashboard && (user?.email === "frozennheart47@gmail.com" || user?.user_metadata?.role === "admin")) ? (
-        <AdminDashboard
-          key={adminDashboardKey}
-          onBackToHome={() => {
-            setIsAdminDashboard(false);
-            setIsPrivacy(false);
-            setIsTerms(false);
-            setIsWizard(false);
-            setIsArena(false);
-            setIsFeatures(false);
-            setActiveView("landing");
-            setBrowseAll(false);
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-          onViewEntry={setSelected}
-        />
+      ) : isAdminDashboard ? (
+        (user?.email === "frozennheart47@gmail.com" || user?.user_metadata?.role === "admin") ? (
+          <AdminDashboard
+            key={adminDashboardKey}
+            onBackToHome={() => {
+              setIsAdminDashboard(false);
+              setIsPrivacy(false);
+              setIsTerms(false);
+              setIsWizard(false);
+              setIsArena(false);
+              setIsFeatures(false);
+              setActiveView("landing");
+              setBrowseAll(false);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            onViewEntry={setSelected}
+          />
+        ) : (
+          <div className="min-h-[70vh] flex items-center justify-center p-6">
+            <div className="max-w-md w-full p-8 rounded-2xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-center space-y-4 shadow-xl">
+              <div className="w-14 h-14 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center mx-auto border border-red-500/20">
+                <ShieldAlert size={28} />
+              </div>
+              <h2 className="text-lg font-bold text-neutral-900 dark:text-neutral-100">
+                Administrator Access Required
+              </h2>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed font-light">
+                {user
+                  ? `The signed in account (${user.email}) does not have platform administrator credentials to access the Administrator Console.`
+                  : "You must sign in with a verified platform administrator account to access this console."}
+              </p>
+              <div className="flex flex-col gap-2 pt-2">
+                <button
+                  onClick={() => {
+                    setIsAdminDashboard(false);
+                    setActiveView("landing");
+                    window.history.pushState({}, "", "/");
+                  }}
+                  className="w-full py-2.5 rounded-xl text-xs font-medium border border-[#dadce0] dark:border-[#3c4043] hover:bg-neutral-100 dark:hover:bg-white/5 text-neutral-700 dark:text-neutral-300 transition-colors cursor-pointer"
+                >
+                  Return to AiVerse
+                </button>
+              </div>
+            </div>
+          </div>
+        )
       ) : (
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 py-8 sm:py-12">
           {activeView === "landing" ? (

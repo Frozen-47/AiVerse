@@ -22,19 +22,33 @@ import {
   CheckCheck,
   FileJson,
   Database,
+  Table,
+  LayoutGrid,
+  ShieldAlert,
+  ShieldCheck,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { supabase, getOAuthAvatarUrl } from "../lib/supabase";
-import { useTokens, useTheme, typeBadge, taskBadge, typeIcon, TYPE_GLYPH } from "../lib/theme";
+import { useTokens, typeBadge, taskBadge, typeIcon, TYPE_GLYPH } from "../lib/theme";
 import type { Entry } from "../types";
 import { entries as defaultEntries } from "../data";
 import { useAuth } from "./AuthContext";
+import {
+  type SiteAnnouncement,
+  DEFAULT_ANNOUNCEMENT,
+  fetchSiteAnnouncement,
+  saveSiteAnnouncement,
+} from "../lib/announcements";
+
+export type { SiteAnnouncement };
 
 interface AdminDashboardProps {
   onBackToHome: () => void;
   onViewEntry?: (entry: Entry) => void;
 }
 
-interface UserProfile {
+export interface UserProfile {
   userKey: string;
   displayName: string;
   username: string;
@@ -50,15 +64,10 @@ interface UserProfile {
   updatedAt: string;
   isBlocked?: boolean;
   blockedUntil?: string;
+  deletionRequested?: boolean;
+  deletionReason?: string;
+  deletionRequestedAt?: string;
 }
-
-import {
-  type SiteAnnouncement,
-  DEFAULT_ANNOUNCEMENT,
-  fetchSiteAnnouncement,
-  saveSiteAnnouncement,
-} from "../lib/announcements";
-export type { SiteAnnouncement };
 
 export interface AuditLogItem {
   id: string;
@@ -102,9 +111,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   onViewEntry,
 }) => {
   const t = useTokens();
-  const { resolvedTheme } = useTheme();
   const { user } = useAuth();
-  const isDark = resolvedTheme === "amoled";
   const currentUserKey = user ? (user.id.startsWith("supabase_") ? user.id : `supabase_${user.id}`) : "";
 
   const [activeTab, setActiveTab] = useState<TabId>("submissions");
@@ -116,6 +123,14 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [approvedEntries, setApprovedEntries] = useState<Entry[]>([]);
   const [users, setUsers] = useState<UserProfile[]>([]);
 
+  // View modes (Google Cloud Console allows toggling between Data Table and Detail Cards)
+  const [submissionsViewMode, setSubmissionsViewMode] = useState<"table" | "cards">("table");
+  const [usersViewMode, setUsersViewMode] = useState<"table" | "cards">("table");
+
+  // Pagination for Directory table
+  const [directoryPage, setDirectoryPage] = useState(1);
+  const [directoryPageSize, setDirectoryPageSize] = useState(20);
+
   // Filtering states
   const [directorySearch, setDirectorySearch] = useState("");
   const [directoryTypeFilter, setDirectoryTypeFilter] = useState<string>("All");
@@ -126,7 +141,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [submissionsTypeFilter, setSubmissionsTypeFilter] = useState<string>("All");
 
   const [usersSearch, setUsersSearch] = useState("");
-  const [usersStatusFilter, setUsersStatusFilter] = useState<"all" | "active" | "blocked">("all");
+  const [usersStatusFilter, setUsersStatusFilter] = useState<"all" | "deletion_requests" | "active" | "blocked">("all");
 
   // Actions & Dialog states
   const [actioningId, setActioningId] = useState<string | null>(null);
@@ -134,7 +149,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [batchConfirm, setBatchConfirm] = useState<"approve" | "reject" | null>(null);
   const [toast, setToast] = useState<{ type: "success" | "error"; message: string } | null>(null);
 
-  // Modals for CRUD
+  // Modals for CRUD and Detailed Review
+  const [reviewingEntry, setReviewingEntry] = useState<Entry | null>(null);
   const [editingEntry, setEditingEntry] = useState<EditingEntryState | null>(null);
   const [editingUser, setEditingUser] = useState<UserProfile | null>(null);
   const [blockingUser, setBlockingUser] = useState<UserProfile | null>(null);
@@ -231,7 +247,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         .order("created_at", { ascending: false });
 
       if (approvedErr) throw approvedErr;
-      
+
       const loadedApproved = (approvedData as Entry[]) || [];
       const mergedMap = new Map<string, Entry>();
       defaultEntries.forEach((e) => {
@@ -293,6 +309,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         }
 
         const fallbackName = row.email ? row.email.split("@")[0] : `User_${String(row.user_key).slice(-6)}`;
+        const isDeletionReq = Boolean(meta.deletionRequested || meta.deletion_requested || row.deletion_requested);
+        const reqReason = meta.deletionReason || meta.deletion_reason || row.deletion_reason || "";
+        const reqAt = meta.deletionRequestedAt || meta.deletion_requested_at || row.deletion_requested_at || undefined;
 
         return {
           userKey: row.user_key || (row.user_id ? `supabase_${row.user_id}` : `user_${Math.random()}`),
@@ -310,12 +329,15 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           updatedAt: row.updated_at || row.created_at || new Date().toISOString(),
           isBlocked: isUserBlocked,
           blockedUntil: blockedUntilDate,
+          deletionRequested: isDeletionReq,
+          deletionReason: reqReason,
+          deletionRequestedAt: reqAt,
         };
       });
 
       setUsers(parsedUsers);
 
-      // 4. Fetch live broadcast announcement from Supabase
+      // 4. Fetch live broadcast announcement
       try {
         const liveAnn = await fetchSiteAnnouncement();
         if (liveAnn) setAnnouncement(liveAnn);
@@ -323,7 +345,6 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     } catch (err: any) {
       console.error("Admin dashboard load failed:", err);
       setError(err.message || "Failed to query admin records.");
-      // Ensure catalog has fallback data
       setApprovedEntries(defaultEntries.map((e) => ({ ...e, approved: true })));
     } finally {
       setLoading(false);
@@ -348,6 +369,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
       setPendingEntries((prev) => prev.filter((e) => e.name !== entry.name));
       setApprovedEntries((prev) => [{ ...entry, approved: true }, ...prev]);
+      if (reviewingEntry?.name === entry.name) setReviewingEntry(null);
       showToast("success", `"${entry.name}" has been approved and published.`);
       logAudit("Approve Asset", `Approved and published "${entry.name}" to directory`);
     } catch (err: any) {
@@ -426,6 +448,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
       setPendingEntries((prev) => prev.filter((e) => e.name !== entryName));
       setApprovedEntries((prev) => prev.filter((e) => e.name !== entryName));
+      if (reviewingEntry?.name === entryName) setReviewingEntry(null);
       showToast("success", `"${entryName}" has been deleted from catalog.`);
       logAudit("Delete Asset", `Deleted "${entryName}" from catalog`);
     } catch (err: any) {
@@ -527,7 +550,6 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     if (!editingUser) return;
     setActioningId(editingUser.userKey);
     try {
-      // Preserve existing flags like isBlocked / blockedUntil
       const { data: currentPref } = await supabase
         .from("user_preferences")
         .select("referral_source")
@@ -614,7 +636,6 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         }
       }
 
-      // Fetch current referral_source JSON to store suspension state safely without schema changes
       const { data: currentPref } = await supabase
         .from("user_preferences")
         .select("referral_source")
@@ -680,12 +701,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         ? profile.userKey
         : `supabase_${profile.userKey}`;
 
-      // 1. Call database RPC delete_user_by_admin to delete from auth.users AND all database tables
       const { error: rpcErr } = await supabase.rpc("delete_user_by_admin", {
         target_user_key: formattedKey,
       });
 
-      // 2. Also perform cleanup across all application tables for both key variants
       await Promise.allSettled([
         supabase.from("user_preferences").delete().in("user_key", [profile.userKey, formattedKey, rawUuid]),
         supabase.from("user_bookmarks").delete().in("user_key", [profile.userKey, formattedKey, rawUuid]),
@@ -706,10 +725,64 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             u.userKey !== rawUuid
         )
       );
-      showToast("success", `Account "${profile.displayName}" permanently deleted everywhere (Auth & Database).`);
-      logAudit("Delete User", `Permanently deleted account and auth credentials for "${profile.displayName}" (${profile.username})`);
+      showToast("success", `Account "${profile.displayName}" permanently deleted everywhere.`);
+      logAudit("Delete User", `Permanently deleted credentials and data for "${profile.displayName}" (${profile.username})`);
     } catch (err: any) {
       showToast("error", `Failed to delete user: ${err.message}`);
+    } finally {
+      setActioningId(null);
+    }
+  };
+
+  const handleRejectDeletionRequest = async (profile: UserProfile) => {
+    setActioningId(profile.userKey);
+    try {
+      const rawUuid = profile.userKey.startsWith("supabase_")
+        ? profile.userKey.slice(9)
+        : profile.userKey;
+      const formattedKey = profile.userKey.startsWith("supabase_")
+        ? profile.userKey
+        : `supabase_${profile.userKey}`;
+
+      const { data: prefData } = await supabase
+        .from("user_preferences")
+        .select("referral_source")
+        .or(`user_key.eq.${profile.userKey},user_key.eq.${formattedKey},user_key.eq.${rawUuid}`)
+        .maybeSingle();
+
+      let meta: any = {};
+      if (prefData?.referral_source) {
+        try {
+          meta = JSON.parse(prefData.referral_source);
+        } catch {}
+      }
+
+      delete meta.deletionRequested;
+      delete meta.deletion_requested;
+      delete meta.deletionReason;
+      delete meta.deletion_reason;
+      delete meta.deletionRequestedAt;
+      delete meta.deletion_requested_at;
+
+      await supabase
+        .from("user_preferences")
+        .update({
+          referral_source: JSON.stringify(meta),
+          updated_at: new Date().toISOString(),
+        })
+        .or(`user_key.eq.${profile.userKey},user_key.eq.${formattedKey},user_key.eq.${rawUuid}`);
+
+      setUsers((prev) =>
+        prev.map((u) =>
+          u.userKey === profile.userKey || u.userKey === formattedKey || u.userKey === rawUuid
+            ? { ...u, deletionRequested: false, deletionReason: undefined, deletionRequestedAt: undefined }
+            : u
+        )
+      );
+      showToast("success", `Deletion request for "${profile.displayName}" dismissed.`);
+      logAudit("Dismiss Deletion Request", `Dismissed account deletion request for "${profile.displayName}" (${profile.username})`);
+    } catch (err: any) {
+      showToast("error", `Failed to dismiss deletion request: ${err.message}`);
     } finally {
       setActioningId(null);
     }
@@ -758,7 +831,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             u.userKey !== rawUuid
         )
       );
-      showToast("success", `Account ${rawUuid} permanently deleted from auth.users and all tables.`);
+      showToast("success", `Account ${rawUuid} permanently deleted everywhere.`);
       logAudit("Purge User UID", `Deleted account with UID ${rawUuid} directly from auth.users`);
       setDirectDeleteModalOpen(false);
       setDirectDeleteUidInput("");
@@ -768,7 +841,6 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       setActioningId(null);
     }
   };
-
 
   // ── Actions: Data Exports ─────────────────────────────────────────────────
 
@@ -834,6 +906,13 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     });
   }, [approvedEntries, directorySearch, directoryTypeFilter, directoryTaskFilter, directoryFeaturedOnly]);
 
+  const paginatedApproved = useMemo(() => {
+    const start = (directoryPage - 1) * directoryPageSize;
+    return filteredApproved.slice(start, start + directoryPageSize);
+  }, [filteredApproved, directoryPage, directoryPageSize]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredApproved.length / directoryPageSize));
+
   const filteredSubmissions = useMemo(() => {
     return pendingEntries.filter((entry) => {
       const q = submissionsSearch.toLowerCase();
@@ -848,6 +927,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     });
   }, [pendingEntries, submissionsSearch, submissionsTypeFilter]);
 
+  const pendingDeletionUsers = useMemo(() => {
+    return users.filter((u) => Boolean(u.deletionRequested));
+  }, [users]);
+
   const filteredUsers = useMemo(() => {
     return users.filter((u) => {
       const q = usersSearch.toLowerCase();
@@ -855,11 +938,14 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         !q ||
         u.displayName.toLowerCase().includes(q) ||
         u.username.toLowerCase().includes(q) ||
-        u.role.toLowerCase().includes(q);
+        u.role.toLowerCase().includes(q) ||
+        Boolean(u.deletionReason && u.deletionReason.toLowerCase().includes(q));
 
       const matchesStatus =
         usersStatusFilter === "all"
           ? true
+          : usersStatusFilter === "deletion_requests"
+          ? Boolean(u.deletionRequested)
           : usersStatusFilter === "blocked"
           ? u.isBlocked
           : !u.isBlocked;
@@ -888,34 +974,42 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const featuredCount = useMemo(() => approvedEntries.filter((e) => e.popular).length, [approvedEntries]);
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 animate-[fadeUp_0.3s_ease-out] text-left">
-      {/* ── Top Google Command Bar & Breadcrumbs ─────────────────────────────────────────── */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-neutral-200/80 dark:border-white/[0.08] mb-6">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-left">
+      {/* ── Top Google Cloud Console Breadcrumbs & Header Bar ────────────────── */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#dadce0] dark:border-[#3c4043] mb-5">
         <div className="flex flex-col gap-1.5">
-          <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+          <div className="flex items-center gap-2 text-xs text-[#5f6368] dark:text-[#9aa0a6]">
             <button
               onClick={onBackToHome}
-              className="hover:text-blue-500 hover:underline cursor-pointer flex items-center gap-1 transition-colors"
+              className="p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#1a73e8] dark:hover:text-[#8ab4f8] transition-colors cursor-pointer flex items-center gap-1"
+              title="Return to main application"
             >
-              <ArrowLeft size={12} />
-              Dashboard
+              <ArrowLeft size={14} />
             </button>
+            <span className="font-medium text-[#202124] dark:text-[#e8eaed]">AiVerse Console</span>
             <span className="opacity-40">/</span>
-            <span>Administration</span>
+            <span>Governance & Administration</span>
             <span className="opacity-40">/</span>
-            <span className="font-semibold text-neutral-900 dark:text-white">Cloud Console</span>
+            <span className="font-semibold text-[#1a73e8] dark:text-[#8ab4f8]">Cloud Control</span>
           </div>
+
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
-              Administrator Console
-            </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Production Live
+            <div className="w-8 h-8 rounded-lg bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#8ab4f8] flex items-center justify-center font-bold">
+              <ShieldCheck size={18} />
+            </div>
+            <div>
+              <h1 className="text-xl sm:text-2xl font-medium tracking-tight text-[#202124] dark:text-[#e8eaed]">
+                Administrator Console
+              </h1>
+            </div>
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#e6f4ea] text-[#137333] border border-[#ceead6] dark:bg-[#0d3419] dark:text-[#81c995] dark:border-[#1e5c30]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1e8e3e]" />
+              Production Active
             </span>
           </div>
         </div>
 
+        {/* Action Buttons Toolbar */}
         <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={() => {
@@ -937,46 +1031,91 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 popular: false,
               });
             }}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 shadow-xs cursor-pointer transition-all"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-md text-xs font-medium text-white bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#8ab4f8] dark:text-[#202124] dark:hover:bg-[#aecbfa] cursor-pointer shadow-xs transition-colors"
           >
-            <Plus size={13} className="stroke-[3px]" />
+            <Plus size={14} className="stroke-[2.5px]" />
             Add New Asset
           </button>
+
           {!loading && (
             <button
               onClick={loadData}
-              title="Refresh database records"
-              className="flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer shadow-xs"
+              title="Synchronize records with live database"
+              className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-md text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-[#3c4043] dark:text-[#e8eaed] hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
             >
               <RefreshCw size={12} className={`stroke-[2.5px] ${loading ? "animate-spin" : ""}`} />
-              Sync
+              Sync Database
             </button>
           )}
+
+          <button
+            onClick={() => setDirectDeleteModalOpen(true)}
+            title="Purge account directly by Supabase Auth UID"
+            className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-md text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] hover:border-[#d93025] hover:text-[#d93025] dark:hover:border-[#f28b82] dark:hover:text-[#f28b82] bg-white dark:bg-[#202124] text-[#5f6368] dark:text-[#9aa0a6] transition-colors cursor-pointer"
+          >
+            <Trash2 size={12} />
+            Purge by UID
+          </button>
         </div>
       </div>
 
-      {/* ── RLS Policy Warning Banner ───────────────────────────────────────── */}
+      {/* ── Authorization / Policy Notice Banner (Google Cloud Warning) ─────── */}
       {error && (
-        <div className="mb-6 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs flex gap-3">
+        <div className="mb-6 p-4 rounded-lg bg-[#fef7e0] border border-[#f9ab00] dark:bg-[#332a00] dark:border-[#f9ab00]/50 text-[#7c4a03] dark:text-[#fdd663] text-xs flex gap-3">
           <Info size={16} className="shrink-0 mt-0.5" />
           <div className="space-y-1">
-            <p className="font-semibold">Authorization & Policy Notice</p>
+            <p className="font-semibold">Security & Policy Notice</p>
             <p className="leading-relaxed opacity-90">
-              The database query returned: {error}. Catalog fallback is active so all management tools remain operational.
+              Database returned: {error}. Catalog fallback active. All management tools remain operational.
             </p>
           </div>
         </div>
       )}
 
-      {/* ── Segmented Tab Controller (Google Cloud Console Style) ────────────── */}
-      <div className="p-1.5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl flex flex-wrap gap-1.5 mb-8 shadow-xs">
+      {/* ── Material 3 Horizontal Tab Strip (Google Cloud Console Standard) ── */}
+      <div className="border-b border-[#dadce0] dark:border-[#3c4043] flex items-center gap-2 overflow-x-auto mb-6 scrollbar-none">
         {[
-          { id: "submissions", label: "Pending Submissions", icon: Server, count: pendingEntries.length, countColor: "bg-amber-500/15 text-amber-500 border-amber-500/20" },
-          { id: "directory", label: "Approved Directory", icon: Star, count: approvedEntries.length, countColor: "bg-blue-500/15 text-blue-500 border-blue-500/20" },
-          { id: "users", label: "Registered Users", icon: Users, count: users.length, countColor: "bg-indigo-500/15 text-indigo-500 border-indigo-500/20" },
-          { id: "analytics", label: "Analytics & Telemetry", icon: BarChart3 },
-          { id: "announcements", label: "Site Broadcast", icon: Megaphone, count: announcement.enabled ? 1 : 0, countColor: "bg-emerald-500/15 text-emerald-500 border-emerald-500/20" },
-          { id: "audit", label: "Audit & Logs", icon: History, count: auditLogs.length, countColor: "bg-purple-500/15 text-purple-500 border-purple-500/20" },
+          {
+            id: "submissions",
+            label: "Review Queue",
+            icon: Server,
+            count: pendingEntries.length,
+            isAlert: false,
+          },
+          {
+            id: "directory",
+            label: "Catalog Directory",
+            icon: Database,
+            count: approvedEntries.length,
+            isAlert: false,
+          },
+          {
+            id: "users",
+            label: "Registered Users",
+            icon: Users,
+            count: pendingDeletionUsers.length > 0 ? pendingDeletionUsers.length : users.length,
+            isAlert: pendingDeletionUsers.length > 0,
+            alertLabel: pendingDeletionUsers.length > 0 ? `${pendingDeletionUsers.length} Deletion Requests` : undefined,
+          },
+          {
+            id: "analytics",
+            label: "Cloud Telemetry",
+            icon: BarChart3,
+          },
+          {
+            id: "announcements",
+            label: "Site Broadcast",
+            icon: Megaphone,
+            count: announcement.enabled ? 1 : 0,
+            isAlert: false,
+          },
+          {
+            id: "audit",
+            label: "Audit Logs",
+            icon: History,
+            count: auditLogs.length,
+            isAlert: false,
+          },
         ].map((tab) => {
           const TabIcon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -984,95 +1123,236 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as TabId)}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium transition-all whitespace-nowrap cursor-pointer ${
+              className={`relative py-3 px-4 text-xs font-medium border-b-2 -mb-[1px] flex items-center gap-2 whitespace-nowrap cursor-pointer transition-colors ${
                 isActive
-                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold shadow-xs"
-                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
+                  ? "border-[#1a73e8] dark:border-[#8ab4f8] text-[#1a73e8] dark:text-[#8ab4f8] font-semibold"
+                  : "border-transparent text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#202124] dark:hover:text-[#e8eaed] hover:border-[#dadce0] dark:hover:border-[#5f6368]"
               }`}
             >
-              <TabIcon size={13} className="stroke-[2.5px]" />
+              <TabIcon size={14} className="stroke-[2px]" />
               <span>{tab.label}</span>
-              {tab.count !== undefined && tab.count > 0 && (
-                <span className={`ml-1 px-1.5 py-0.2 text-[9px] font-bold rounded-full border ${tab.countColor}`}>
+              {tab.isAlert ? (
+                <span className="ml-1 px-2 py-0.2 rounded-full text-[10px] font-semibold bg-[#fce8e6] text-[#c5221f] dark:bg-[#3c1716] dark:text-[#f28b82] border border-[#f5b4af] dark:border-[#5c2423] animate-pulse">
+                  {tab.alertLabel || tab.count}
+                </span>
+              ) : tab.count !== undefined && tab.count > 0 ? (
+                <span
+                  className={`ml-1 px-2 py-0.2 rounded-full text-[10px] font-semibold ${
+                    isActive
+                      ? "bg-[#e8f0fe] text-[#1967d2] dark:bg-[#1a2e4c] dark:text-[#a8c7fa]"
+                      : "bg-neutral-100 dark:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]"
+                  }`}
+                >
                   {tab.count}
                 </span>
-              )}
+              ) : null}
             </button>
           );
         })}
       </div>
 
-      {/* ── Main Content ────────────────────────────────────────────────────── */}
+      {/* ── Main Content Area ────────────────────────────────────────────────── */}
       {loading ? (
-        <div className="flex flex-col items-center justify-center py-24 gap-4">
-          <div className="w-8 h-8 border-3 border-neutral-300 border-t-neutral-800 dark:border-white/10 dark:border-t-white rounded-full animate-spin" />
-          <p className={`text-[10px] font-extrabold uppercase tracking-widest ${t.textMuted}`}>Syncing Admin Records...</p>
+        <div className="flex flex-col items-center justify-center py-24 gap-3">
+          <div className="w-8 h-8 border-3 border-neutral-300 border-t-[#1a73e8] rounded-full animate-spin" />
+          <p className="text-xs font-medium text-[#5f6368] dark:text-[#9aa0a6]">Synchronizing console records...</p>
         </div>
       ) : (
         <div className="space-y-6">
-          {/* ══════════ TAB 1: PENDING SUBMISSIONS ══════════ */}
+          {/* ══════════════════════════════════════════════════════════════════════
+              TAB 1: PENDING SUBMISSIONS (REVIEW QUEUE)
+          ══════════════════════════════════════════════════════════════════════ */}
           {activeTab === "submissions" && (
-            <div className="space-y-6">
-              {/* Controls bar */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl border border-white/5 bg-white/[0.01]">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <div className="relative w-64">
+            <div className="space-y-4">
+              {/* Controls and filter bar */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20]">
+                <div className="flex items-center gap-2 flex-wrap flex-1">
+                  <div className="relative flex-1 max-w-sm">
                     <input
                       type="text"
                       value={submissionsSearch}
                       onChange={(e) => setSubmissionsSearch(e.target.value)}
-                      placeholder="Search queue..."
-                      className={`w-full pl-9 pr-3 py-1.5 rounded-lg border text-xs outline-none ${t.input}`}
+                      placeholder="Search queue by asset name or org..."
+                      className="w-full pl-8 pr-3 py-1.5 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-[#f1f3f4] dark:bg-[#202124] focus:bg-white dark:focus:bg-[#1e1f20] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8] transition-colors"
                     />
-                    <Search className="absolute left-3 top-2 text-neutral-400" size={13} />
+                    <Search className="absolute left-2.5 top-2 text-[#5f6368] dark:text-[#9aa0a6]" size={13} />
                   </div>
 
                   <select
                     value={submissionsTypeFilter}
                     onChange={(e) => setSubmissionsTypeFilter(e.target.value)}
-                    className={`px-3 py-1.5 rounded-lg border text-xs outline-none cursor-pointer ${t.input}`}
+                    className="px-3 py-1.5 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none cursor-pointer"
                   >
                     <option value="All">All Categories</option>
                     <option value="Model">Models</option>
                     <option value="Framework">Frameworks</option>
                     <option value="Dataset">Datasets</option>
                     <option value="Platform">Platforms</option>
-                    <option value="AI">AI Apps</option>
+                    <option value="AI">AI Applications</option>
                   </select>
                 </div>
 
-                {pendingEntries.length > 0 && (
-                  <div className="flex items-center gap-2 shrink-0">
+                <div className="flex items-center gap-2 shrink-0">
+                  {/* View Mode Toggle */}
+                  <div className="flex items-center border border-[#dadce0] dark:border-[#5f6368] rounded-md overflow-hidden">
                     <button
-                      onClick={() => setBatchConfirm("approve")}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 cursor-pointer shadow-xs"
+                      onClick={() => setSubmissionsViewMode("table")}
+                      className={`p-1.5 transition-colors cursor-pointer ${
+                        submissionsViewMode === "table"
+                          ? "bg-[#e8f0fe] text-[#1967d2] dark:bg-[#1a2e4c] dark:text-[#a8c7fa]"
+                          : "hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]"
+                      }`}
+                      title="Table View (Google Cloud Queue)"
                     >
-                      <CheckCheck size={13} />
-                      Approve All ({pendingEntries.length})
+                      <Table size={14} />
                     </button>
                     <button
-                      onClick={() => setBatchConfirm("reject")}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-red-400 border border-red-500/20 hover:bg-red-500/10 cursor-pointer"
+                      onClick={() => setSubmissionsViewMode("cards")}
+                      className={`p-1.5 transition-colors cursor-pointer ${
+                        submissionsViewMode === "cards"
+                          ? "bg-[#e8f0fe] text-[#1967d2] dark:bg-[#1a2e4c] dark:text-[#a8c7fa]"
+                          : "hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]"
+                      }`}
+                      title="Cards View"
                     >
-                      <Trash2 size={13} />
-                      Clear All
+                      <LayoutGrid size={14} />
                     </button>
                   </div>
-                )}
+
+                  {pendingEntries.length > 0 && (
+                    <>
+                      <button
+                        onClick={() => setBatchConfirm("approve")}
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#8ab4f8] dark:text-[#202124] dark:hover:bg-[#aecbfa] cursor-pointer shadow-xs transition-colors"
+                      >
+                        <CheckCheck size={13} />
+                        Approve All ({pendingEntries.length})
+                      </button>
+                      <button
+                        onClick={() => setBatchConfirm("reject")}
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-[#d93025] dark:text-[#f28b82] border border-[#d93025]/30 dark:border-[#f28b82]/30 hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] cursor-pointer transition-colors"
+                      >
+                        <Trash2 size={13} />
+                        Clear All
+                      </button>
+                    </>
+                  )}
+                </div>
               </div>
 
               {filteredSubmissions.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-20 gap-3 text-center border border-dashed rounded-2xl border-neutral-200 dark:border-white/10 bg-neutral-50/50 dark:bg-white/[0.005]">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2">
-                    <Check size={22} className="stroke-[3px]" />
+                <div className="flex flex-col items-center justify-center py-20 gap-3 text-center border border-dashed rounded-lg border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20]">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#e6f4ea] text-[#137333] dark:bg-[#0d3419] dark:text-[#81c995] mb-1">
+                    <Check size={22} className="stroke-[2.5px]" />
                   </div>
-                  <p className={`text-sm font-semibold ${t.textPrimary}`}>Submissions queue is clean</p>
-                  <p className={`text-xs max-w-[320px] leading-relaxed font-light ${t.textMuted}`}>
-                    All user-submitted frameworks, datasets, and models have been audited and approved.
+                  <p className="text-sm font-medium text-[#202124] dark:text-[#e8eaed]">Review queue is clean</p>
+                  <p className="text-xs max-w-sm text-[#5f6368] dark:text-[#9aa0a6] leading-relaxed">
+                    All submitted models, frameworks, and datasets have been audited and published to the live directory.
                   </p>
                 </div>
+              ) : submissionsViewMode === "table" ? (
+                /* ── Review Queue: Google Cloud Console Data Table ── */
+                <div className="overflow-x-auto rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20]">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="border-b border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] text-[11px] font-semibold uppercase tracking-wider text-[#5f6368] dark:text-[#9aa0a6]">
+                        <th className="px-4 py-3">Asset</th>
+                        <th className="px-3 py-3">Organization</th>
+                        <th className="px-3 py-3">Category</th>
+                        <th className="px-3 py-3">Task Domain</th>
+                        <th className="px-3 py-3">Submitter</th>
+                        <th className="px-3 py-3">License & Size</th>
+                        <th className="px-4 py-3 text-right">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-[#dadce0]/60 dark:divide-[#3c4043]/60 text-xs">
+                      {filteredSubmissions.map((entry) => {
+                        const submitter = users.find((u) => u.userKey === entry.submitted_by);
+                        const isNew = isNewSubmission(entry.created_at);
+
+                        return (
+                          <tr
+                            key={entry.name}
+                            className="hover:bg-[#f8f9fa] dark:hover:bg-[#282a2d] transition-colors"
+                          >
+                            <td className="px-4 py-3">
+                              <div className="flex items-center gap-2">
+                                <button
+                                  onClick={() => setReviewingEntry(entry)}
+                                  className="font-medium text-[#1a73e8] dark:text-[#8ab4f8] hover:underline cursor-pointer text-left"
+                                >
+                                  {entry.name}
+                                </button>
+                                {isNew && (
+                                  <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-[#e8f0fe] text-[#1967d2] dark:bg-[#1a2e4c] dark:text-[#a8c7fa]">
+                                    NEW
+                                  </span>
+                                )}
+                              </div>
+                            </td>
+                            <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.org || "Independent"}</td>
+                            <td className="px-3 py-3">
+                              <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${typeBadge(entry.type, t)}`}>
+                                {entry.type}
+                              </span>
+                            </td>
+                            <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.task}</td>
+                            <td className="px-3 py-3">
+                              <div className="flex items-center gap-1.5">
+                                <div className="w-5 h-5 rounded-full overflow-hidden bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center text-[9px] font-bold">
+                                  {submitter?.avatarUrl ? (
+                                    <img src={submitter.avatarUrl} alt="" className="w-full h-full object-cover" />
+                                  ) : (
+                                    submitter?.displayName ? submitter.displayName[0].toUpperCase() : "U"
+                                  )}
+                                </div>
+                                <span className="truncate max-w-[110px] text-[#202124] dark:text-[#e8eaed]">
+                                  {submitter ? submitter.displayName : "Anonymous"}
+                                </span>
+                              </div>
+                            </td>
+                            <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">
+                              {entry.license} · {entry.size}
+                            </td>
+                            <td className="px-4 py-3 text-right">
+                              <div className="flex items-center justify-end gap-1.5">
+                                <button
+                                  type="button"
+                                  onClick={() => setReviewingEntry(entry)}
+                                  className="px-2.5 py-1 rounded text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#1a73e8] dark:text-[#8ab4f8] hover:bg-[#e8f0fe] dark:hover:bg-[#1a2e4c] transition-colors cursor-pointer"
+                                  title="Inspect technical specifications"
+                                >
+                                  Inspect
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => handleApprove(entry)}
+                                  disabled={actioningId === entry.name}
+                                  className="px-2.5 py-1 rounded text-xs font-medium bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#8ab4f8] dark:text-[#202124] text-white transition-colors cursor-pointer disabled:opacity-50"
+                                  title="Approve and publish"
+                                >
+                                  {actioningId === entry.name ? "..." : "Approve"}
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => setDeleteConfirmEntry(entry.name)}
+                                  disabled={actioningId === entry.name}
+                                  className="p-1 rounded text-[#d93025] dark:text-[#f28b82] hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] transition-colors cursor-pointer disabled:opacity-50"
+                                  title="Reject submission"
+                                >
+                                  <Trash2 size={13} />
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                /* ── Review Queue: Cards View ── */
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {filteredSubmissions.map((entry) => {
                     const submitter = users.find((u) => u.userKey === entry.submitted_by);
                     const isNew = isNewSubmission(entry.created_at);
@@ -1080,30 +1360,26 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     return (
                       <div
                         key={entry.name}
-                        className={`relative group overflow-hidden rounded-2xl p-6 flex flex-col justify-between border transition-all duration-300 ${
-                          isNew
-                            ? "border-indigo-500/30 ring-1 ring-indigo-500/10 shadow-lg shadow-indigo-500/5 bg-indigo-500/[0.015]"
-                            : t.card
-                        }`}
+                        className="rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] p-4 flex flex-col justify-between"
                       >
-                        <div className="space-y-4">
-                          <div className="flex items-start justify-between gap-4">
-                            <div className="flex items-center gap-3">
-                              <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-lg font-bold shrink-0 border shadow-inner ${typeIcon(entry.type, t)}`}>
+                        <div className="space-y-3">
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex items-center gap-2.5">
+                              <div className={`w-9 h-9 rounded-lg flex items-center justify-center font-bold text-sm border ${typeIcon(entry.type, t)}`}>
                                 {TYPE_GLYPH[entry.type] ?? "◆"}
                               </div>
                               <div>
-                                <div className="flex items-center gap-2">
-                                  <h3 className={`text-base font-black tracking-tight ${t.textPrimary}`}>
+                                <div className="flex items-center gap-1.5">
+                                  <h3 className="text-sm font-semibold text-[#202124] dark:text-[#e8eaed]">
                                     {entry.name}
                                   </h3>
                                   {isNew && (
-                                    <span className="inline-flex items-center text-[8px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-indigo-500/15 text-indigo-400 border border-indigo-500/20 animate-pulse">
+                                    <span className="px-1.5 py-0.2 rounded text-[8px] font-bold bg-[#e8f0fe] text-[#1967d2] dark:bg-[#1a2e4c] dark:text-[#a8c7fa]">
                                       NEW
                                     </span>
                                   )}
                                 </div>
-                                <p className={`text-[11px] font-medium ${t.textMuted}`}>
+                                <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6]">
                                   {entry.org || "Independent"} · {entry.year}
                                 </p>
                               </div>
@@ -1113,90 +1389,72 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                 href={entry.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`p-2 rounded-xl border transition-all ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
-                                title="Visit official resources"
+                                className="p-1 rounded text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#1a73e8] dark:hover:text-[#8ab4f8]"
                               >
-                                <ExternalLink size={13} className="stroke-[2.5px]" />
+                                <ExternalLink size={13} />
                               </a>
                             )}
                           </div>
 
                           <div className="flex flex-wrap gap-1.5">
-                            <span className={`text-[9px] font-bold uppercase px-2.5 py-0.5 rounded-lg border ${typeBadge(entry.type, t)}`}>
+                            <span className={`text-[9px] font-medium px-2 py-0.5 rounded-full border ${typeBadge(entry.type, t)}`}>
                               {entry.type}
                             </span>
-                            <span className={`text-[9px] font-bold uppercase px-2.5 py-0.5 rounded-lg border ${taskBadge(entry.task, t)}`}>
+                            <span className={`text-[9px] font-medium px-2 py-0.5 rounded-full border ${taskBadge(entry.task, t)}`}>
                               {entry.task}
                             </span>
-                            <span className={`text-[9px] font-semibold px-2.5 py-0.5 rounded-lg border ${t.surface} ${t.border} ${t.textSecondary}`}>
+                            <span className="text-[9px] px-2 py-0.5 rounded-full border border-[#dadce0] dark:border-[#5f6368] text-[#5f6368] dark:text-[#9aa0a6]">
                               {entry.license}
                             </span>
-                            <span className={`text-[9px] font-semibold px-2.5 py-0.5 rounded-lg border ${t.surface} ${t.border} ${t.textSecondary}`}>
+                            <span className="text-[9px] px-2 py-0.5 rounded-full border border-[#dadce0] dark:border-[#5f6368] text-[#5f6368] dark:text-[#9aa0a6]">
                               Size: {entry.size}
                             </span>
                           </div>
 
-                          <p className={`text-xs leading-relaxed font-light ${t.textSecondary}`}>
+                          <p className="text-xs leading-relaxed text-[#3c4043] dark:text-[#bdc1c6] line-clamp-3">
                             {entry.summary}
                           </p>
 
-                          {entry.limitations && (
-                            <div className="flex flex-wrap gap-1.5 mt-2">
-                              {entry.limitations.split(",").map((l, idx) => (
-                                <span
-                                  key={idx}
-                                  className={`text-[9px] font-medium px-2 py-0.5 rounded-lg border flex items-center gap-1 ${t.limitTag}`}
-                                >
-                                  <AlertTriangle size={9} className="shrink-0 text-red-400" />
-                                  <span>{l.trim()}</span>
-                                </span>
-                              ))}
-                            </div>
-                          )}
-
-                          {/* Submitter User Chip */}
-                          <div className={`mt-3 p-2.5 rounded-xl border flex items-center gap-2.5 text-xs ${isDark ? "bg-white/[0.015] border-white/5" : "bg-black/[0.015] border-black/5"}`}>
-                            <div className={`w-7 h-7 rounded-full overflow-hidden shrink-0 flex items-center justify-center font-bold text-[9px] border ${isDark ? "bg-white/8 border-white/10 text-white" : "bg-black/6 border-black/10 text-black"}`}>
+                          {/* Submitter info */}
+                          <div className="p-2 rounded bg-[#f8f9fa] dark:bg-[#202124] border border-[#dadce0]/60 dark:border-[#3c4043]/60 flex items-center gap-2 text-xs">
+                            <div className="w-5 h-5 rounded-full overflow-hidden bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center text-[9px] font-bold">
                               {submitter?.avatarUrl ? (
                                 <img src={submitter.avatarUrl} alt="" className="w-full h-full object-cover" />
                               ) : (
-                                submitter?.displayName ? submitter.displayName.slice(0, 2).toUpperCase() : "AN"
+                                submitter?.displayName ? submitter.displayName[0].toUpperCase() : "U"
                               )}
                             </div>
-                            <div className="min-w-0 flex-1">
-                              <p className={`text-[11px] truncate font-medium ${t.textPrimary}`}>
-                                {submitter ? (
-                                  <>
-                                    <span className="font-bold">{submitter.displayName}</span>{" "}
-                                    <span className={`text-[10px] ${t.textMuted}`}>({submitter.username})</span>
-                                  </>
-                                ) : (
-                                  <span className={t.textMuted}>Anonymous Contributor</span>
-                                )}
-                              </p>
-                            </div>
+                            <span className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6]">
+                              Submitted by <strong className="text-[#202124] dark:text-[#e8eaed]">{submitter?.displayName || "Anonymous"}</strong>
+                            </span>
                           </div>
                         </div>
 
                         {/* Action buttons */}
-                        <div className="flex gap-2 mt-5 pt-4 border-t border-dashed dark:border-white/5 border-neutral-200">
+                        <div className="flex gap-2 pt-3 mt-3 border-t border-[#dadce0]/60 dark:border-[#3c4043]/60">
+                          <button
+                            type="button"
+                            onClick={() => setReviewingEntry(entry)}
+                            className="px-3 py-1.5 rounded text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#1a73e8] dark:text-[#8ab4f8] hover:bg-[#e8f0fe] dark:hover:bg-[#1a2e4c] transition-colors cursor-pointer"
+                          >
+                            Inspect Specs
+                          </button>
                           <button
                             type="button"
                             onClick={() => handleApprove(entry)}
                             disabled={actioningId === entry.name}
-                            className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs disabled:opacity-50"
+                            className="flex-1 py-1.5 rounded text-xs font-medium bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#8ab4f8] dark:text-[#202124] text-white transition-colors cursor-pointer disabled:opacity-50"
                           >
-                            <Check size={14} className="stroke-[3px]" />
                             {actioningId === entry.name ? "Approving..." : "Approve & Publish"}
                           </button>
                           <button
                             type="button"
                             onClick={() => setDeleteConfirmEntry(entry.name)}
                             disabled={actioningId === entry.name}
-                            className="flex items-center justify-center p-2 rounded-xl border border-red-500/20 text-red-500 hover:bg-red-500/10 cursor-pointer disabled:opacity-50"
-                            title="Reject and discard submission"
+                            className="p-1.5 rounded border border-[#dadce0] dark:border-[#5f6368] text-[#d93025] dark:text-[#f28b82] hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] transition-colors cursor-pointer disabled:opacity-50"
+                            title="Reject"
                           >
-                            <Trash2 size={14} />
+                            <Trash2 size={13} />
                           </button>
                         </div>
                       </div>
@@ -1207,28 +1465,36 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             </div>
           )}
 
-          {/* ══════════ TAB 2: APPROVED DIRECTORY ══════════ */}
+          {/* ══════════════════════════════════════════════════════════════════════
+              TAB 2: CATALOG DIRECTORY (APPROVED ASSETS)
+          ══════════════════════════════════════════════════════════════════════ */}
           {activeTab === "directory" && (
-            <div className="space-y-5">
-              {/* Search and Filters Bar */}
-              <div className="flex flex-col gap-3 p-4 rounded-xl border border-white/5 bg-white/[0.01]">
+            <div className="space-y-4">
+              {/* Search, Filter Chips, and Actions Bar */}
+              <div className="p-4 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] space-y-3">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="relative flex-1 max-w-md">
                     <input
                       type="text"
                       value={directorySearch}
-                      onChange={(e) => setDirectorySearch(e.target.value)}
-                      placeholder="Search active catalog by name, org, or task..."
-                      className={`w-full pl-9 pr-4 py-2 rounded-xl border text-xs outline-none transition-all ${t.input}`}
+                      onChange={(e) => {
+                        setDirectorySearch(e.target.value);
+                        setDirectoryPage(1);
+                      }}
+                      placeholder="Search live catalog by name, org, or task..."
+                      className="w-full pl-8 pr-3 py-1.5 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-[#f1f3f4] dark:bg-[#202124] focus:bg-white dark:focus:bg-[#1e1f20] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8] transition-colors"
                     />
-                    <Search className="absolute left-3 top-2.5 text-neutral-400" size={14} />
+                    <Search className="absolute left-2.5 top-2 text-[#5f6368] dark:text-[#9aa0a6]" size={13} />
                   </div>
 
                   <div className="flex items-center gap-2 flex-wrap">
                     <select
                       value={directoryTaskFilter}
-                      onChange={(e) => setDirectoryTaskFilter(e.target.value)}
-                      className={`px-3 py-2 rounded-xl border text-xs outline-none cursor-pointer ${t.input}`}
+                      onChange={(e) => {
+                        setDirectoryTaskFilter(e.target.value);
+                        setDirectoryPage(1);
+                      }}
+                      className="px-3 py-1.5 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none cursor-pointer"
                     >
                       <option value="All Tasks">All Tasks</option>
                       {taskCounts.map(([taskName]) => (
@@ -1237,127 +1503,124 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     </select>
 
                     <button
-                      onClick={() => setDirectoryFeaturedOnly((f) => !f)}
-                      className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+                      onClick={() => {
+                        setDirectoryFeaturedOnly((f) => !f);
+                        setDirectoryPage(1);
+                      }}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium border transition-colors cursor-pointer ${
                         directoryFeaturedOnly
-                          ? "bg-amber-400 text-black border-amber-300 font-extrabold shadow-xs"
-                          : `${t.surface} ${t.border} ${t.textSecondary}`
+                          ? "bg-[#fef7e0] border-[#f9ab00] text-[#7c4a03] dark:bg-[#332a00] dark:text-[#fdd663]"
+                          : "border-[#dadce0] dark:border-[#5f6368] text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-50 dark:hover:bg-neutral-800"
                       }`}
                     >
-                      <Star size={13} className={directoryFeaturedOnly ? "fill-black text-black" : "text-amber-400"} />
+                      <Star size={12} className={directoryFeaturedOnly ? "fill-[#f9ab00] text-[#f9ab00]" : ""} />
                       Featured ({featuredCount})
                     </button>
 
                     <button
                       onClick={() => exportDataAsJson(approvedEntries, "aiverse_catalog")}
-                      className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold border cursor-pointer ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
-                      title="Download catalog JSON"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#202124] dark:hover:text-[#e8eaed] hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+                      title="Download catalog JSON snapshot"
                     >
-                      <Download size={13} />
+                      <Download size={12} />
                       Export
                     </button>
                   </div>
                 </div>
 
-                {/* Category Pills */}
-                <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                  {(["All", "Model", "Framework", "Dataset", "Platform", "AI"] as const).map((type) => (
-                    <button
-                      key={type}
-                      onClick={() => setDirectoryTypeFilter(type)}
-                      className={`px-3 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer border ${
-                        directoryTypeFilter === type
-                          ? "bg-white text-black border-white font-extrabold shadow-xs"
-                          : `border-transparent ${t.textMuted} hover:${t.textPrimary}`
-                      }`}
-                    >
-                      {type === "All" ? "All Types" : type} {type !== "All" && `(${typeCounts[type] || 0})`}
-                    </button>
-                  ))}
-                  <div className="ml-auto text-[11px] font-medium text-neutral-400">
-                    Showing <strong className={t.textPrimary}>{filteredApproved.length}</strong> of {approvedEntries.length} assets
+                {/* Google Material 3 Category Filter Chips */}
+                <div className="flex flex-wrap items-center gap-1.5 pt-1 border-t border-[#dadce0]/60 dark:border-[#3c4043]/60">
+                  <span className="text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] mr-1">Filter by type:</span>
+                  {(["All", "Model", "Framework", "Dataset", "Platform", "AI"] as const).map((type) => {
+                    const isSelected = directoryTypeFilter === type;
+                    return (
+                      <button
+                        key={type}
+                        onClick={() => {
+                          setDirectoryTypeFilter(type);
+                          setDirectoryPage(1);
+                        }}
+                        className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer border ${
+                          isSelected
+                            ? "bg-[#c2e7ff] text-[#001d35] dark:bg-[#004a77] dark:text-[#c2e7ff] border-transparent font-semibold"
+                            : "bg-transparent text-[#444746] dark:text-[#c4c7c5] border-[#747775]/40 dark:border-[#8e918f]/40 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                        }`}
+                      >
+                        <span>{type === "All" ? "All Types" : type}</span>
+                        {type !== "All" && (
+                          <span className="text-[10px] opacity-75">({typeCounts[type] || 0})</span>
+                        )}
+                      </button>
+                    );
+                  })}
+                  <div className="ml-auto text-xs text-[#5f6368] dark:text-[#9aa0a6]">
+                    Showing <strong className="text-[#202124] dark:text-[#e8eaed]">{filteredApproved.length}</strong> of {approvedEntries.length} assets
                   </div>
                 </div>
               </div>
 
               {filteredApproved.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-20 gap-3 text-center border border-dashed rounded-2xl border-neutral-200 dark:border-white/10">
-                  <div className="text-3xl opacity-30 text-neutral-400">◌</div>
-                  <p className={`text-sm font-semibold ${t.textPrimary}`}>No approved assets match your filters</p>
-                  <p className={`text-xs max-w-[280px] leading-relaxed ${t.textMuted}`}>
-                    Try clearing search query or category filters.
+                <div className="flex flex-col items-center justify-center py-20 gap-3 text-center border border-dashed rounded-lg border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20]">
+                  <p className="text-sm font-medium text-[#202124] dark:text-[#e8eaed]">No assets match your search criteria</p>
+                  <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
+                    Try clearing your search query or selected category filter chips.
                   </p>
                 </div>
               ) : (
-                <div className={`overflow-x-auto rounded-2xl border shadow-sm ${t.border} ${t.scrollbar}`}>
-                  <table className="w-full text-left border-collapse">
-                    <thead>
-                      <tr className={`border-b text-[10px] font-bold uppercase tracking-wider ${t.surface2} ${t.textMuted}`}>
-                        <th className="px-5 py-3.5">Asset</th>
-                        <th className="px-4 py-3.5">Organization</th>
-                        <th className="px-4 py-3.5">Category</th>
-                        <th className="px-4 py-3.5">Task</th>
-                        <th className="px-4 py-3.5">License</th>
-                        <th className="px-4 py-3.5">Year</th>
-                        <th className="px-4 py-3.5 text-center">Featured</th>
-                        <th className="px-5 py-3.5 text-right">Manage</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 dark:divide-white/5">
-                      {filteredApproved.map((entry) => {
-                        const isNew = isNewSubmission(entry.created_at);
-
-                        return (
+                /* Google Cloud Console Table */
+                <div className="rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] overflow-hidden">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
+                        <tr className="border-b border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] text-[11px] font-semibold uppercase tracking-wider text-[#5f6368] dark:text-[#9aa0a6]">
+                          <th className="px-4 py-3">Asset</th>
+                          <th className="px-3 py-3">Organization</th>
+                          <th className="px-3 py-3">Category</th>
+                          <th className="px-3 py-3">Task Domain</th>
+                          <th className="px-3 py-3">License</th>
+                          <th className="px-3 py-3">Year</th>
+                          <th className="px-3 py-3 text-center">Featured</th>
+                          <th className="px-4 py-3 text-right">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-[#dadce0]/60 dark:divide-[#3c4043]/60 text-xs">
+                        {paginatedApproved.map((entry) => (
                           <tr
                             key={entry.name}
-                            className={`text-xs transition-colors hover:bg-neutral-50/50 dark:hover:bg-white/[0.015] ${
-                              isNew ? "bg-indigo-500/[0.015] border-l-2 border-l-indigo-500" : ""
-                            }`}
+                            className="hover:bg-[#f8f9fa] dark:hover:bg-[#282a2d] transition-colors"
                           >
-                            <td className="px-5 py-3.5 font-bold">
-                              <div className="flex items-center gap-2">
-                                <button
-                                  onClick={() => onViewEntry?.(entry)}
-                                  className={`hover:underline font-extrabold cursor-pointer transition-colors hover:text-indigo-400 ${t.textPrimary}`}
-                                >
-                                  {entry.name}
-                                </button>
-                                {isNew && (
-                                  <span className="text-[7px] font-extrabold uppercase px-1 py-0.5 rounded bg-indigo-500/15 text-indigo-400 border border-indigo-500/20">
-                                    NEW
-                                  </span>
-                                )}
-                              </div>
+                            <td className="px-4 py-3 font-medium">
+                              <button
+                                onClick={() => onViewEntry?.(entry)}
+                                className="text-[#1a73e8] dark:text-[#8ab4f8] hover:underline cursor-pointer text-left"
+                              >
+                                {entry.name}
+                              </button>
                             </td>
-                            <td className={`px-4 py-3.5 font-medium ${t.textSecondary}`}>{entry.org || "—"}</td>
-                            <td className="px-4 py-3.5">
-                              <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded-md border ${typeBadge(entry.type, t)}`}>
+                            <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.org || "—"}</td>
+                            <td className="px-3 py-3">
+                              <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${typeBadge(entry.type, t)}`}>
                                 {entry.type}
                               </span>
                             </td>
-                            <td className="px-4 py-3.5">
-                              <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded-md border ${taskBadge(entry.task, t)}`}>
-                                {entry.task}
-                              </span>
-                            </td>
-                            <td className={`px-4 py-3.5 font-medium ${t.textSecondary}`}>{entry.license || "—"}</td>
-                            <td className={`px-4 py-3.5 font-medium ${t.textSecondary}`}>{entry.year}</td>
-                            <td className="px-4 py-3.5 text-center">
+                            <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.task}</td>
+                            <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.license || "—"}</td>
+                            <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.year}</td>
+                            <td className="px-3 py-3 text-center">
                               <button
                                 onClick={() => handleTogglePopular(entry)}
                                 disabled={actioningId === entry.name}
-                                className={`p-1.5 rounded-lg border transition-all cursor-pointer ${
-                                  entry.popular
-                                    ? "bg-amber-400/15 border-amber-400/30 text-amber-400"
-                                    : "border-transparent text-neutral-500 hover:text-neutral-300"
-                                }`}
-                                title={entry.popular ? "Starred as Featured (click to toggle)" : "Click to Feature"}
+                                className="p-1 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+                                title={entry.popular ? "Featured (click to unfeature)" : "Click to feature"}
                               >
-                                <Star size={14} className={entry.popular ? "fill-amber-400 text-amber-400" : ""} />
+                                <Star
+                                  size={14}
+                                  className={entry.popular ? "fill-[#f9ab00] text-[#f9ab00]" : "text-[#5f6368] dark:text-[#9aa0a6]"}
+                                />
                               </button>
                             </td>
-                            <td className="px-5 py-3.5 text-right">
-                              <div className="flex items-center justify-end gap-1.5">
+                            <td className="px-4 py-3 text-right">
+                              <div className="flex items-center justify-end gap-1">
                                 <button
                                   onClick={() => {
                                     setEditingEntry({
@@ -1378,7 +1641,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                       popular: !!entry.popular,
                                     });
                                   }}
-                                  className={`p-1.5 rounded-lg border transition-all cursor-pointer ${t.surface} ${t.border} text-sky-400 hover:bg-sky-500/10`}
+                                  className="p-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#1a73e8] dark:text-[#8ab4f8] transition-colors cursor-pointer"
                                   title="Edit asset specifications"
                                 >
                                   <Edit size={13} />
@@ -1387,163 +1650,473 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                   type="button"
                                   onClick={() => setDeleteConfirmEntry(entry.name)}
                                   disabled={actioningId === entry.name}
-                                  className="p-1.5 rounded-lg border border-red-500/20 text-red-500 hover:bg-red-500/10 transition-all cursor-pointer disabled:opacity-50"
-                                  title="Delete asset from directory"
+                                  className="p-1.5 rounded hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] text-[#d93025] dark:text-[#f28b82] transition-colors cursor-pointer disabled:opacity-50"
+                                  title="Delete asset from catalog"
                                 >
                                   <Trash2 size={13} />
                                 </button>
                               </div>
                             </td>
                           </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {/* Pagination Footer (Google Cloud Console Style) */}
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-4 py-3 border-t border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] text-xs text-[#5f6368] dark:text-[#9aa0a6]">
+                    <div className="flex items-center gap-2">
+                      <span>Rows per page:</span>
+                      <select
+                        value={directoryPageSize}
+                        onChange={(e) => {
+                          setDirectoryPageSize(Number(e.target.value));
+                          setDirectoryPage(1);
+                        }}
+                        className="px-2 py-1 rounded border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#1e1f20] text-xs text-[#202124] dark:text-[#e8eaed] outline-none"
+                      >
+                        <option value={15}>15</option>
+                        <option value={20}>20</option>
+                        <option value={50}>50</option>
+                        <option value={100}>100</option>
+                      </select>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <span>
+                        {Math.min((directoryPage - 1) * directoryPageSize + 1, filteredApproved.length)}–
+                        {Math.min(directoryPage * directoryPageSize, filteredApproved.length)} of {filteredApproved.length}
+                      </span>
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={() => setDirectoryPage((p) => Math.max(1, p - 1))}
+                          disabled={directoryPage === 1}
+                          className="p-1 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                        >
+                          <ChevronLeft size={16} />
+                        </button>
+                        <button
+                          onClick={() => setDirectoryPage((p) => Math.min(totalPages, p + 1))}
+                          disabled={directoryPage >= totalPages}
+                          className="p-1 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                        >
+                          <ChevronRight size={16} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
           )}
 
-          {/* ══════════ TAB 3: REGISTERED USERS ══════════ */}
+          {/* ══════════════════════════════════════════════════════════════════════
+              TAB 3: REGISTERED USERS & ACCOUNT DELETION APPROVALS
+          ══════════════════════════════════════════════════════════════════════ */}
           {activeTab === "users" && (
-            <div className="space-y-5">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-xl border border-white/5 bg-white/[0.01]">
-                <div className="relative flex-1 max-w-md">
-                  <input
-                    type="text"
-                    value={usersSearch}
-                    onChange={(e) => setUsersSearch(e.target.value)}
-                    placeholder="Search users by name, handle, or role..."
-                    className={`w-full pl-9 pr-4 py-2 rounded-xl border text-xs outline-none ${t.input}`}
-                  />
-                  <Search className="absolute left-3 top-2.5 text-neutral-400" size={14} />
+            <div className="space-y-4">
+              {/* ── Google Security Alert Callout for Pending Deletion Requests ── */}
+              {pendingDeletionUsers.length > 0 && (
+                <div className="p-4 rounded-lg border border-[#f9ab00] bg-[#fef7e0] dark:bg-[#332a00] dark:border-[#f9ab00]/50 text-[#7c4a03] dark:text-[#fdd663] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="flex items-start gap-3">
+                    <div className="p-1.5 rounded-full bg-[#f9ab00]/20 text-[#b06000] dark:text-[#fdd663] shrink-0 mt-0.5">
+                      <ShieldAlert size={18} />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-[#7c4a03] dark:text-[#fdd663]">
+                        Security Policy: {pendingDeletionUsers.length} Account Deletion Request{pendingDeletionUsers.length > 1 ? "s" : ""} Pending Review
+                      </h4>
+                      <p className="text-[11px] text-[#7c4a03]/90 dark:text-[#fdd663]/90 leading-relaxed">
+                        Regular users cannot self-delete their accounts. Review submitted reasons below and either approve the permanent purge or dismiss the request.
+                      </p>
+                    </div>
+                  </div>
+                  {usersStatusFilter !== "deletion_requests" && (
+                    <button
+                      type="button"
+                      onClick={() => setUsersStatusFilter("deletion_requests")}
+                      className="px-3 py-1.5 rounded text-xs font-semibold bg-[#d93025] hover:bg-[#b31412] text-white cursor-pointer shadow-xs whitespace-nowrap self-start sm:self-auto"
+                    >
+                      Filter Requests ({pendingDeletionUsers.length})
+                    </button>
+                  )}
+                </div>
+              )}
+
+              {/* Filter, Search, and View Controls */}
+              <div className="p-4 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] space-y-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="relative flex-1 max-w-md">
+                    <input
+                      type="text"
+                      value={usersSearch}
+                      onChange={(e) => setUsersSearch(e.target.value)}
+                      placeholder="Search accounts by name, username, or reason..."
+                      className="w-full pl-8 pr-3 py-1.5 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-[#f1f3f4] dark:bg-[#202124] focus:bg-white dark:focus:bg-[#1e1f20] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8] transition-colors"
+                    />
+                    <Search className="absolute left-2.5 top-2 text-[#5f6368] dark:text-[#9aa0a6]" size={13} />
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    {/* View Mode Toggle */}
+                    <div className="flex items-center border border-[#dadce0] dark:border-[#5f6368] rounded-md overflow-hidden">
+                      <button
+                        onClick={() => setUsersViewMode("table")}
+                        className={`p-1.5 transition-colors cursor-pointer ${
+                          usersViewMode === "table"
+                            ? "bg-[#e8f0fe] text-[#1967d2] dark:bg-[#1a2e4c] dark:text-[#a8c7fa]"
+                            : "hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]"
+                        }`}
+                        title="Table View (Google Admin Directory)"
+                      >
+                        <Table size={14} />
+                      </button>
+                      <button
+                        onClick={() => setUsersViewMode("cards")}
+                        className={`p-1.5 transition-colors cursor-pointer ${
+                          usersViewMode === "cards"
+                            ? "bg-[#e8f0fe] text-[#1967d2] dark:bg-[#1a2e4c] dark:text-[#a8c7fa]"
+                            : "hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]"
+                        }`}
+                        title="Cards View"
+                      >
+                        <LayoutGrid size={14} />
+                      </button>
+                    </div>
+
+                    <button
+                      onClick={() => exportDataAsJson(users, "aiverse_users")}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#202124] dark:hover:text-[#e8eaed] hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+                    >
+                      <Download size={12} />
+                      Export
+                    </button>
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-2">
-                  <select
-                    value={usersStatusFilter}
-                    onChange={(e) => setUsersStatusFilter(e.target.value as any)}
-                    className={`px-3 py-2 rounded-xl border text-xs outline-none cursor-pointer ${t.input}`}
-                  >
-                    <option value="all">All Accounts</option>
-                    <option value="active">Active Only</option>
-                    <option value="blocked">Suspended Only</option>
-                  </select>
-
-                  <button
-                    onClick={() => exportDataAsJson(users, "aiverse_users")}
-                    className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold border cursor-pointer ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
-                  >
-                    <Download size={13} />
-                    Export Users
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setDirectDeleteModalOpen(true)}
-                    className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold border border-red-500/30 text-red-400 hover:bg-red-500/10 cursor-pointer transition-all"
-                    title="Delete any user directly by Auth UID from auth.users"
-                  >
-                    <Trash2 size={13} />
-                    Delete by UID
-                  </button>
+                {/* Status Filter Chips */}
+                <div className="flex flex-wrap items-center gap-1.5 pt-1 border-t border-[#dadce0]/60 dark:border-[#3c4043]/60">
+                  <span className="text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] mr-1">Status:</span>
+                  {[
+                    { id: "all", label: "All Accounts", count: users.length },
+                    {
+                      id: "deletion_requests",
+                      label: "Deletion Requests",
+                      count: pendingDeletionUsers.length,
+                      isAlert: pendingDeletionUsers.length > 0,
+                    },
+                    {
+                      id: "active",
+                      label: "Active Users",
+                      count: users.filter((u) => !u.isBlocked && !u.deletionRequested).length,
+                    },
+                    {
+                      id: "blocked",
+                      label: "Suspended",
+                      count: users.filter((u) => u.isBlocked).length,
+                    },
+                  ].map((chip) => {
+                    const isSelected = usersStatusFilter === chip.id;
+                    return (
+                      <button
+                        key={chip.id}
+                        onClick={() => setUsersStatusFilter(chip.id as any)}
+                        className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer border ${
+                          isSelected
+                            ? chip.isAlert
+                              ? "bg-[#fce8e6] text-[#c5221f] dark:bg-[#3c1716] dark:text-[#f28b82] border-transparent font-semibold"
+                              : "bg-[#c2e7ff] text-[#001d35] dark:bg-[#004a77] dark:text-[#c2e7ff] border-transparent font-semibold"
+                            : chip.isAlert
+                            ? "bg-[#fce8e6]/50 text-[#c5221f] border-[#f5b4af] dark:bg-[#3c1716]/50 dark:text-[#f28b82] dark:border-[#5c2423]"
+                            : "bg-transparent text-[#444746] dark:text-[#c4c7c5] border-[#747775]/40 dark:border-[#8e918f]/40 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                        }`}
+                      >
+                        <span>{chip.label}</span>
+                        <span className="text-[10px] opacity-75">({chip.count})</span>
+                      </button>
+                    );
+                  })}
+                  <div className="ml-auto text-xs text-[#5f6368] dark:text-[#9aa0a6]">
+                    Showing <strong className="text-[#202124] dark:text-[#e8eaed]">{filteredUsers.length}</strong> accounts
+                  </div>
                 </div>
               </div>
 
               {filteredUsers.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-20 gap-3 text-center border border-dashed rounded-2xl border-neutral-200 dark:border-white/10">
-                  <div className="text-3xl opacity-30 text-neutral-400">◌</div>
-                  <p className={`text-sm font-semibold ${t.textPrimary}`}>No users found</p>
-                  <p className={`text-xs max-w-[280px] leading-relaxed ${t.textMuted}`}>
-                    Try modifying your search or filter parameters.
+                <div className="flex flex-col items-center justify-center py-20 gap-3 text-center border border-dashed rounded-lg border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20]">
+                  <p className="text-sm font-medium text-[#202124] dark:text-[#e8eaed]">No accounts found</p>
+                  <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
+                    No user accounts match the current filter or search criteria.
                   </p>
                 </div>
+              ) : usersViewMode === "table" ? (
+                /* Google Admin Directory Table */
+                <div className="overflow-x-auto rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20]">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="border-b border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] text-[11px] font-semibold uppercase tracking-wider text-[#5f6368] dark:text-[#9aa0a6]">
+                        <th className="px-4 py-3">User</th>
+                        <th className="px-3 py-3">Role</th>
+                        <th className="px-3 py-3">Status</th>
+                        <th className="px-3 py-3">Deletion Request Info</th>
+                        <th className="px-3 py-3">Last Updated</th>
+                        <th className="px-4 py-3 text-right">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-[#dadce0]/60 dark:divide-[#3c4043]/60 text-xs">
+                      {filteredUsers.map((profile) => (
+                        <tr
+                          key={profile.userKey}
+                          className={`hover:bg-[#f8f9fa] dark:hover:bg-[#282a2d] transition-colors ${
+                            profile.deletionRequested ? "bg-[#fce8e6]/10 dark:bg-[#3c1716]/10" : ""
+                          }`}
+                        >
+                          <td className="px-4 py-3">
+                            <div className="flex items-center gap-2.5">
+                              <div className="w-7 h-7 rounded-full overflow-hidden bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center font-bold text-xs text-[#202124] dark:text-[#e8eaed] shrink-0">
+                                {profile.avatarUrl ? (
+                                  <img src={profile.avatarUrl} alt="" className="w-full h-full object-cover" />
+                                ) : (
+                                  profile.displayName[0].toUpperCase()
+                                )}
+                              </div>
+                              <div className="min-w-0">
+                                <div className="font-medium text-[#202124] dark:text-[#e8eaed] truncate max-w-[150px]">
+                                  {profile.displayName}
+                                </div>
+                                <div className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] font-mono truncate max-w-[150px]">
+                                  {profile.username}
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-3 py-3">
+                            <span className="capitalize px-2 py-0.5 rounded text-[11px] font-medium bg-neutral-100 dark:bg-neutral-800 text-[#3c4043] dark:text-[#e8eaed]">
+                              {profile.role}
+                            </span>
+                          </td>
+                          <td className="px-3 py-3">
+                            {profile.deletionRequested ? (
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#fce8e6] text-[#c5221f] dark:bg-[#3c1716] dark:text-[#f28b82] border border-[#f5b4af] dark:border-[#5c2423]">
+                                <AlertTriangle size={10} />
+                                Deletion Pending
+                              </span>
+                            ) : profile.isBlocked ? (
+                              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#fce8e6] text-[#c5221f] dark:bg-[#3c1716] dark:text-[#f28b82]">
+                                Suspended
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#e6f4ea] text-[#137333] dark:bg-[#0d3419] dark:text-[#81c995]">
+                                Active
+                              </span>
+                            )}
+                          </td>
+                          <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">
+                            {profile.deletionRequested ? (
+                              <div className="max-w-xs space-y-0.5">
+                                <p className="text-[11px] text-[#d93025] dark:text-[#f28b82] italic line-clamp-1">
+                                  "{profile.deletionReason || "No specific reason provided."}"
+                                </p>
+                                {profile.deletionRequestedAt && (
+                                  <p className="text-[10px] font-mono text-[#5f6368] dark:text-[#9aa0a6]">
+                                    Requested: {new Date(profile.deletionRequestedAt).toLocaleDateString()}
+                                  </p>
+                                )}
+                              </div>
+                            ) : (
+                              <span className="text-[#9aa0a6] dark:text-[#5f6368]">—</span>
+                            )}
+                          </td>
+                          <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6] font-mono text-[11px]">
+                            {new Date(profile.updatedAt).toLocaleDateString()}
+                          </td>
+                          <td className="px-4 py-3 text-right">
+                            {profile.deletionRequested ? (
+                              <div className="flex items-center justify-end gap-1.5">
+                                <button
+                                  type="button"
+                                  onClick={() => handleRejectDeletionRequest(profile)}
+                                  disabled={actioningId === profile.userKey}
+                                  className="px-2.5 py-1 rounded text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer disabled:opacity-50"
+                                  title="Reject deletion request"
+                                >
+                                  Dismiss
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => setDeleteConfirmUser(profile)}
+                                  disabled={actioningId === profile.userKey}
+                                  className="px-2.5 py-1 rounded text-xs font-medium bg-[#d93025] hover:bg-[#b31412] text-white transition-colors cursor-pointer disabled:opacity-50 shadow-xs"
+                                  title="Approve and permanently delete user"
+                                >
+                                  Approve & Purge
+                                </button>
+                              </div>
+                            ) : (
+                              <div className="flex items-center justify-end gap-1">
+                                <button
+                                  onClick={() => setEditingUser(profile)}
+                                  className="px-2 py-1 rounded text-xs font-medium text-[#1a73e8] dark:text-[#8ab4f8] hover:bg-[#e8f0fe] dark:hover:bg-[#1a2e4c] transition-colors cursor-pointer"
+                                >
+                                  Edit
+                                </button>
+                                <button
+                                  onClick={() => setBlockingUser(profile)}
+                                  className={`px-2 py-1 rounded text-xs font-medium transition-colors cursor-pointer ${
+                                    profile.isBlocked
+                                      ? "text-[#137333] dark:text-[#81c995] hover:bg-[#e6f4ea] dark:hover:bg-[#0d3419]"
+                                      : "text-[#b06000] dark:text-[#fdd663] hover:bg-[#fef7e0] dark:hover:bg-[#332a00]"
+                                  }`}
+                                >
+                                  {profile.isBlocked ? "Unsuspend" : "Suspend"}
+                                </button>
+                                <button
+                                  onClick={() => setDeleteConfirmUser(profile)}
+                                  className="p-1 rounded text-[#d93025] dark:text-[#f28b82] hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] transition-colors cursor-pointer"
+                                  title="Delete user"
+                                >
+                                  <Trash2 size={13} />
+                                </button>
+                              </div>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               ) : (
+                /* Google Admin Cards View */
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {filteredUsers.map((profile) => (
                     <div
                       key={profile.userKey}
-                      className={`p-5 rounded-2xl border flex flex-col justify-between transition-all ${
-                        profile.isBlocked
-                          ? "border-red-500/30 bg-red-500/[0.02]"
-                          : t.card
+                      className={`p-4 rounded-lg border flex flex-col justify-between transition-colors bg-white dark:bg-[#1e1f20] ${
+                        profile.deletionRequested
+                          ? "border-[#d93025]/50 bg-[#fce8e6]/5"
+                          : "border-[#dadce0] dark:border-[#3c4043]"
                       }`}
                     >
                       <div className="space-y-3">
                         <div className="flex items-start justify-between gap-3">
-                          <div className="flex items-center gap-3 min-w-0">
-                            <div className={`w-11 h-11 rounded-full overflow-hidden shrink-0 flex items-center justify-center font-black text-sm border ${
-                              isDark ? "bg-neutral-800 text-white border-white/10" : "bg-neutral-100 text-black border-black/10"
-                            }`}>
+                          <div className="flex items-center gap-2.5 min-w-0">
+                            <div className="w-10 h-10 rounded-full overflow-hidden bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center font-bold text-sm text-[#202124] dark:text-[#e8eaed] shrink-0">
                               {profile.avatarUrl ? (
                                 <img src={profile.avatarUrl} alt="" className="w-full h-full object-cover" />
                               ) : (
-                                profile.displayName.slice(0, 2).toUpperCase()
+                                profile.displayName[0].toUpperCase()
                               )}
                             </div>
                             <div className="min-w-0">
-                              <h4 className={`text-sm font-bold truncate ${t.textPrimary}`}>
+                              <h4 className="text-sm font-semibold text-[#202124] dark:text-[#e8eaed] truncate">
                                 {profile.displayName}
                               </h4>
-                              <p className={`text-[11px] font-mono truncate text-neutral-400`}>
+                              <p className="text-[11px] font-mono text-[#5f6368] dark:text-[#9aa0a6] truncate">
                                 {profile.username}
                               </p>
                             </div>
                           </div>
 
-                          <span className={`text-[8px] font-extrabold uppercase px-2 py-0.5 rounded-full shrink-0 border ${
-                            profile.isBlocked
-                              ? "bg-red-500/15 text-red-400 border-red-500/30"
-                              : "bg-emerald-500/15 text-emerald-400 border-emerald-500/30"
-                          }`}>
-                            {profile.isBlocked ? "Suspended" : "Active"}
+                          <span
+                            className={`text-[9px] font-semibold uppercase px-2 py-0.5 rounded-full shrink-0 border ${
+                              profile.deletionRequested
+                                ? "bg-[#fce8e6] text-[#c5221f] dark:bg-[#3c1716] dark:text-[#f28b82] border-[#f5b4af] dark:border-[#5c2423]"
+                                : profile.isBlocked
+                                ? "bg-[#fce8e6] text-[#c5221f] dark:bg-[#3c1716] dark:text-[#f28b82] border-transparent"
+                                : "bg-[#e6f4ea] text-[#137333] dark:bg-[#0d3419] dark:text-[#81c995] border-transparent"
+                            }`}
+                          >
+                            {profile.deletionRequested ? "Deletion Requested" : profile.isBlocked ? "Suspended" : "Active"}
                           </span>
                         </div>
 
-                        <div className="flex items-center gap-2">
-                          <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded-md border ${
-                            isDark ? "bg-white/5 border-white/10 text-white/70" : "bg-black/5 border-black/10 text-black/70"
-                          }`}>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[10px] font-medium capitalize px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-[#3c4043] dark:text-[#e8eaed]">
                             {profile.role}
                           </span>
                           {profile.interests.slice(0, 2).map((item) => (
-                            <span key={item} className="text-[9px] text-neutral-400">
+                            <span key={item} className="text-[10px] text-[#5f6368] dark:text-[#9aa0a6]">
                               #{item}
                             </span>
                           ))}
                         </div>
 
                         {profile.description && (
-                          <p className={`text-[11px] font-light leading-relaxed line-clamp-2 ${t.textSecondary}`}>
+                          <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] line-clamp-2 leading-relaxed">
                             {profile.description}
                           </p>
                         )}
+
+                        {/* Deletion Request Notice Box inside Card */}
+                        {profile.deletionRequested && (
+                          <div className="p-2.5 rounded border border-[#f9ab00]/50 bg-[#fef7e0]/50 dark:bg-[#332a00]/50 space-y-1">
+                            <div className="flex items-center justify-between text-[11px] font-semibold text-[#b06000] dark:text-[#fdd663]">
+                              <span className="flex items-center gap-1">
+                                <AlertTriangle size={11} />
+                                Deletion Reason:
+                              </span>
+                              {profile.deletionRequestedAt && (
+                                <span className="text-[10px] font-mono opacity-80">
+                                  {new Date(profile.deletionRequestedAt).toLocaleDateString()}
+                                </span>
+                              )}
+                            </div>
+                            <p className="text-[11px] text-[#7c4a03] dark:text-[#fdd663] italic">
+                              "{profile.deletionReason || "No specific reason provided."}"
+                            </p>
+                          </div>
+                        )}
                       </div>
 
-                      <div className="flex items-center gap-2 pt-4 mt-4 border-t border-dashed dark:border-white/5 border-neutral-200">
-                        <button
-                          onClick={() => setEditingUser(profile)}
-                          className={`flex-1 py-1.5 rounded-lg text-xs font-semibold border text-center transition-all cursor-pointer ${t.surface} ${t.border} ${t.textSecondary} hover:${t.textPrimary}`}
-                        >
-                          Edit
-                        </button>
-                        <button
-                          onClick={() => setBlockingUser(profile)}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
-                            profile.isBlocked
-                              ? "border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10"
-                              : "border-amber-500/30 text-amber-400 hover:bg-amber-500/10"
-                          }`}
-                        >
-                          {profile.isBlocked ? "Unsuspend" : "Suspend"}
-                        </button>
-                        <button
-                          onClick={() => setDeleteConfirmUser(profile)}
-                          className="p-1.5 rounded-lg border border-red-500/20 text-red-500 hover:bg-red-500/10 cursor-pointer"
-                          title="Delete user"
-                        >
-                          <Trash2 size={13} />
-                        </button>
+                      {/* Card Action Buttons */}
+                      <div className="flex items-center gap-2 pt-3 mt-3 border-t border-[#dadce0]/60 dark:border-[#3c4043]/60">
+                        {profile.deletionRequested ? (
+                          <>
+                            <button
+                              type="button"
+                              onClick={() => handleRejectDeletionRequest(profile)}
+                              disabled={actioningId === profile.userKey}
+                              className="flex-1 py-1.5 rounded text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer disabled:opacity-50"
+                            >
+                              Dismiss
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setDeleteConfirmUser(profile)}
+                              disabled={actioningId === profile.userKey}
+                              className="flex-1 py-1.5 rounded text-xs font-medium bg-[#d93025] hover:bg-[#b31412] text-white transition-colors cursor-pointer disabled:opacity-50 shadow-xs flex items-center justify-center gap-1"
+                            >
+                              <Trash2 size={12} />
+                              Approve & Purge
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              onClick={() => setEditingUser(profile)}
+                              className="flex-1 py-1.5 rounded text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#1a73e8] dark:text-[#8ab4f8] hover:bg-[#e8f0fe] dark:hover:bg-[#1a2e4c] transition-colors cursor-pointer"
+                            >
+                              Edit
+                            </button>
+                            <button
+                              onClick={() => setBlockingUser(profile)}
+                              className={`px-3 py-1.5 rounded text-xs font-medium transition-colors cursor-pointer ${
+                                profile.isBlocked
+                                  ? "text-[#137333] dark:text-[#81c995] border border-[#137333]/30 hover:bg-[#e6f4ea] dark:hover:bg-[#0d3419]"
+                                  : "text-[#b06000] dark:text-[#fdd663] border border-[#b06000]/30 hover:bg-[#fef7e0] dark:hover:bg-[#332a00]"
+                              }`}
+                            >
+                              {profile.isBlocked ? "Unsuspend" : "Suspend"}
+                            </button>
+                            <button
+                              onClick={() => setDeleteConfirmUser(profile)}
+                              className="p-1.5 rounded text-[#d93025] dark:text-[#f28b82] hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] transition-colors cursor-pointer"
+                              title="Delete user"
+                            >
+                              <Trash2 size={13} />
+                            </button>
+                          </>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -1552,57 +2125,62 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             </div>
           )}
 
-          {/* ══════════ TAB 4: ANALYTICS & TELEMETRY ══════════ */}
+          {/* ══════════════════════════════════════════════════════════════════════
+              TAB 4: CLOUD TELEMETRY & ANALYTICS
+          ══════════════════════════════════════════════════════════════════════ */}
           {activeTab === "analytics" && (
-            <div className="space-y-8">
-              {/* Telemetry Cards Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="space-y-6">
+              {/* Google Cloud Monitoring KPI Metric Tiles */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
                 {[
-                  { label: "Active Catalog", value: approvedEntries.length, sub: "Verified & public", color: "text-sky-400 bg-sky-500/10 border-sky-500/20" },
-                  { label: "Pending Queue", value: pendingEntries.length, sub: "Submissions awaiting audit", color: "text-amber-400 bg-amber-500/10 border-amber-500/20" },
-                  { label: "Registered Builders", value: users.length, sub: "Synced developer accounts", color: "text-indigo-400 bg-indigo-500/10 border-indigo-500/20" },
-                  { label: "Featured Assets", value: featuredCount, sub: "Highlighted on dashboard", color: "text-amber-400 bg-amber-500/10 border-amber-500/20" },
-                  { label: "Suspended Accounts", value: users.filter((u) => u.isBlocked).length, sub: "Access restricted", color: "text-red-400 bg-red-500/10 border-red-500/20" },
+                  { label: "Active Catalog", value: approvedEntries.length, sub: "Live assets verified", color: "text-[#1a73e8]" },
+                  { label: "Review Queue", value: pendingEntries.length, sub: "Pending audit", color: "text-[#b06000]" },
+                  { label: "Registered Builders", value: users.length, sub: "Active developer accounts", color: "text-[#1e8e3e]" },
+                  { label: "Featured Assets", value: featuredCount, sub: "Highlighted in showcases", color: "text-[#f9ab00]" },
+                  { label: "Suspended / Flagged", value: users.filter((u) => u.isBlocked).length, sub: "Restricted access", color: "text-[#d93025]" },
                 ].map((item, idx) => (
-                  <div key={idx} className={`p-4 rounded-2xl border ${t.card} flex flex-col justify-between`}>
-                    <p className={`text-[10px] font-bold uppercase tracking-wider ${t.textMuted}`}>{item.label}</p>
+                  <div
+                    key={idx}
+                    className="p-4 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] flex flex-col justify-between"
+                  >
+                    <p className="text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider">{item.label}</p>
                     <div className="my-2">
-                      <span className="text-3xl font-black">{item.value}</span>
+                      <span className={`text-2xl sm:text-3xl font-bold ${item.color}`}>{item.value}</span>
                     </div>
-                    <p className={`text-[10px] font-light ${t.textSecondary}`}>{item.sub}</p>
+                    <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6]">{item.sub}</p>
                   </div>
                 ))}
               </div>
 
-              {/* Category Breakdown Progress Bars */}
-              <div className={`p-6 rounded-2xl border ${t.card} space-y-4`}>
+              {/* Resource Distribution (Google Cloud Resource Quotas Style) */}
+              <div className="p-5 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className={`text-sm font-bold ${t.textPrimary}`}>Catalog Category Distribution</h3>
-                    <p className={`text-[11px] ${t.textMuted}`}>Live asset counts and proportional percentage breakdown</p>
+                    <h3 className="text-sm font-semibold text-[#202124] dark:text-[#e8eaed]">Catalog Resource Distribution</h3>
+                    <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">Proportional breakdown across verified technical categories</p>
                   </div>
-                  <span className="text-xs font-mono font-bold">{approvedEntries.length} Total</span>
+                  <span className="text-xs font-mono font-medium text-[#5f6368] dark:text-[#9aa0a6]">{approvedEntries.length} Total</span>
                 </div>
 
                 <div className="space-y-3 pt-2">
                   {[
-                    { type: "Model", label: "Models & LLMs", color: "bg-purple-500", text: "text-purple-400" },
-                    { type: "Framework", label: "Frameworks & Libraries", color: "bg-amber-500", text: "text-amber-400" },
-                    { type: "Dataset", label: "Datasets & Corpora", color: "bg-emerald-500", text: "text-emerald-400" },
-                    { type: "Platform", label: "Platforms & Compute", color: "bg-sky-500", text: "text-sky-400" },
-                    { type: "AI", label: "AI Applications", color: "bg-rose-500", text: "text-rose-400" },
+                    { type: "Model", label: "Models & LLMs", color: "bg-[#1a73e8]" },
+                    { type: "Framework", label: "Frameworks & Libraries", color: "bg-[#1e8e3e]" },
+                    { type: "Dataset", label: "Datasets & Corpora", color: "bg-[#f9ab00]" },
+                    { type: "Platform", label: "Platforms & Compute", color: "bg-[#007bb6]" },
+                    { type: "AI", label: "AI Applications", color: "bg-[#9334e6]" },
                   ].map((cat) => {
                     const count = typeCounts[cat.type] || 0;
                     const pct = approvedEntries.length > 0 ? Math.round((count / approvedEntries.length) * 100) : 0;
                     return (
                       <div key={cat.type} className="space-y-1">
                         <div className="flex justify-between text-xs">
-                          <span className={`font-semibold ${cat.text}`}>{cat.label}</span>
-                          <span className="font-mono text-neutral-400">{count} ({pct}%)</span>
+                          <span className="font-medium text-[#202124] dark:text-[#e8eaed]">{cat.label}</span>
+                          <span className="font-mono text-[#5f6368] dark:text-[#9aa0a6]">{count} ({pct}%)</span>
                         </div>
-                        <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
+                        <div className="w-full h-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800 overflow-hidden">
                           <div
-                            className={`h-full rounded-full ${cat.color} transition-all duration-500`}
+                            className={`h-full rounded-full ${cat.color}`}
                             style={{ width: `${pct}%` }}
                           />
                         </div>
@@ -1613,38 +2191,38 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               </div>
 
               {/* Data Export & Backup Center */}
-              <div className={`p-6 rounded-2xl border ${t.card} space-y-4`}>
+              <div className="p-5 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] space-y-4">
                 <div>
-                  <h3 className={`text-sm font-bold ${t.textPrimary}`}>Database Backup & Snapshots</h3>
-                  <p className={`text-[11px] ${t.textMuted}`}>Export clean JSON records for cold storage, backups, and external migrations</p>
+                  <h3 className="text-sm font-semibold text-[#202124] dark:text-[#e8eaed]">Cloud Storage & Snapshot Center</h3>
+                  <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">Download verified snapshots for cold storage, backups, and off-site migrations</p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-1">
                   <button
                     onClick={() => exportDataAsJson(approvedEntries, "aiverse_catalog_approved")}
-                    className={`p-4 rounded-xl border text-left cursor-pointer transition-all hover:border-white/20 ${t.surface}`}
+                    className="p-3.5 rounded-lg border border-[#dadce0] dark:border-[#3c4043] hover:border-[#1a73e8] dark:hover:border-[#8ab4f8] text-left cursor-pointer transition-colors"
                   >
-                    <FileJson size={18} className="text-sky-400 mb-2" />
-                    <p className="text-xs font-bold">Catalog Assets</p>
-                    <p className="text-[10px] text-neutral-400 mt-0.5">Export all {approvedEntries.length > 0 ? approvedEntries.length : 238}+ approved AI tools</p>
+                    <FileJson size={18} className="text-[#1a73e8] mb-1.5" />
+                    <p className="text-xs font-semibold text-[#202124] dark:text-[#e8eaed]">Catalog Assets</p>
+                    <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] mt-0.5">Export all {approvedEntries.length} approved tools</p>
                   </button>
 
                   <button
                     onClick={() => exportDataAsJson(users, "aiverse_builders_directory")}
-                    className={`p-4 rounded-xl border text-left cursor-pointer transition-all hover:border-white/20 ${t.surface}`}
+                    className="p-3.5 rounded-lg border border-[#dadce0] dark:border-[#3c4043] hover:border-[#1a73e8] dark:hover:border-[#8ab4f8] text-left cursor-pointer transition-colors"
                   >
-                    <Users size={18} className="text-indigo-400 mb-2" />
-                    <p className="text-xs font-bold">User Registries</p>
-                    <p className="text-[10px] text-neutral-400 mt-0.5">Export registered builder profiles</p>
+                    <Users size={18} className="text-[#1e8e3e] mb-1.5" />
+                    <p className="text-xs font-semibold text-[#202124] dark:text-[#e8eaed]">Builder Registry</p>
+                    <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] mt-0.5">Export user profiles & roles</p>
                   </button>
 
                   <button
                     onClick={() => exportDataAsJson(pendingEntries, "aiverse_pending_queue")}
-                    className={`p-4 rounded-xl border text-left cursor-pointer transition-all hover:border-white/20 ${t.surface}`}
+                    className="p-3.5 rounded-lg border border-[#dadce0] dark:border-[#3c4043] hover:border-[#1a73e8] dark:hover:border-[#8ab4f8] text-left cursor-pointer transition-colors"
                   >
-                    <Server size={18} className="text-amber-400 mb-2" />
-                    <p className="text-xs font-bold">Pending Submissions</p>
-                    <p className="text-[10px] text-neutral-400 mt-0.5">Export unapproved audit queue</p>
+                    <Server size={18} className="text-[#b06000] mb-1.5" />
+                    <p className="text-xs font-semibold text-[#202124] dark:text-[#e8eaed]">Review Queue</p>
+                    <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] mt-0.5">Export unapproved queue</p>
                   </button>
 
                   <button
@@ -1660,93 +2238,97 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                         "aiverse_complete_system_backup"
                       )
                     }
-                    className={`p-4 rounded-xl border text-left cursor-pointer transition-all hover:border-emerald-500/40 bg-emerald-500/[0.03] border-emerald-500/20`}
+                    className="p-3.5 rounded-lg border border-[#1a73e8]/30 bg-[#e8f0fe]/30 dark:bg-[#1a2e4c]/30 text-left cursor-pointer transition-colors hover:border-[#1a73e8]"
                   >
-                    <Database size={18} className="text-emerald-400 mb-2" />
-                    <p className="text-xs font-bold text-emerald-400">Full System Snapshot</p>
-                    <p className="text-[10px] text-neutral-400 mt-0.5">Unified multi-table bundle</p>
+                    <Database size={18} className="text-[#1a73e8] dark:text-[#8ab4f8] mb-1.5" />
+                    <p className="text-xs font-semibold text-[#1a73e8] dark:text-[#8ab4f8]">Full Cloud Snapshot</p>
+                    <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] mt-0.5">Complete database bundle</p>
                   </button>
                 </div>
               </div>
             </div>
           )}
 
-          {/* ══════════ TAB 5: SITE ANNOUNCEMENTS ══════════ */}
+          {/* ══════════════════════════════════════════════════════════════════════
+              TAB 5: SITE ANNOUNCEMENT BROADCAST
+          ══════════════════════════════════════════════════════════════════════ */}
           {activeTab === "announcements" && (
-            <div className="space-y-6 max-w-3xl">
-              <div className={`p-6 rounded-2xl border space-y-6 ${t.card}`}>
+            <div className="space-y-4 max-w-3xl">
+              <div className="p-5 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] space-y-5">
                 <div>
-                  <h3 className={`text-base font-black tracking-tight ${t.textPrimary}`}>
-                    Site-wide Announcement Broadcast
+                  <h3 className="text-base font-semibold text-[#202124] dark:text-[#e8eaed]">
+                    Site-wide Announcement Banner
                   </h3>
-                  <p className={`text-xs ${t.textMuted} mt-1 leading-relaxed`}>
-                    Broadcast banner messages across the top of AiVerse to alert all users of new models, releases, or system updates.
+                  <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6] mt-0.5 leading-relaxed">
+                    Broadcast priority messages and service notices across the top banner of AiVerse.
                   </p>
                 </div>
 
-                {/* Live Preview Box */}
-                <div className="space-y-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-400">Live Banner Preview</span>
-                  <div className={`p-3 rounded-xl border text-xs font-semibold flex items-center justify-between gap-3 ${
-                    announcement.type === "warning"
-                      ? "bg-amber-500/15 border-amber-500/30 text-amber-300"
-                      : announcement.type === "success"
-                      ? "bg-emerald-500/15 border-emerald-500/30 text-emerald-300"
-                      : announcement.type === "special"
-                      ? "bg-gradient-to-r from-violet-600/20 via-fuchsia-600/20 to-amber-500/20 border-violet-500/30 text-white"
-                      : "bg-sky-500/15 border-sky-500/30 text-sky-300"
-                  }`}>
+                {/* Live Preview Box (Google Material 3 Alert Banner) */}
+                <div className="space-y-1.5">
+                  <span className="text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider">Live Banner Preview</span>
+                  <div
+                    className={`p-3 rounded-lg border text-xs font-medium flex items-center justify-between gap-3 ${
+                      announcement.type === "warning"
+                        ? "bg-[#fef7e0] border-[#fdd663] text-[#b06000] dark:bg-[#3b2d07] dark:border-[#5c4710] dark:text-[#fdd663]"
+                        : announcement.type === "success"
+                        ? "bg-[#e6f4ea] border-[#a8dab5] text-[#137333] dark:bg-[#0d3419] dark:border-[#1e5c30] dark:text-[#81c995]"
+                        : announcement.type === "special"
+                        ? "bg-[#f3e8fd] border-[#d7aefb] text-[#8430ce] dark:bg-[#2c1a4d] dark:border-[#512b91] dark:text-[#d7aefb]"
+                        : "bg-[#e8f0fe] border-[#aecbfa] text-[#1967d2] dark:bg-[#1a2e4c] dark:border-[#28456c] dark:text-[#a8c7fa]"
+                    }`}
+                  >
                     <div className="flex items-center gap-2">
                       <Sparkles size={14} className="shrink-0" />
                       <span>{announcement.message || "Enter announcement message below..."}</span>
                       {announcement.linkUrl && (
-                        <span className="underline ml-2 font-bold opacity-80 cursor-pointer">
+                        <span className="underline ml-1 font-semibold cursor-pointer">
                           {announcement.linkText || "Learn more"} →
                         </span>
                       )}
                     </div>
-                    <span className="text-[10px] opacity-60">Dismiss ✕</span>
+                    <span className="text-[11px] opacity-60">Dismiss ✕</span>
                   </div>
                 </div>
 
                 {/* Form Controls */}
-                <div className="space-y-4 pt-2">
-                  <div className="flex items-center justify-between p-3 rounded-xl border border-white/5 bg-white/[0.01]">
+                <div className="space-y-4 pt-1">
+                  <div className="flex items-center justify-between p-3 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124]">
                     <div>
-                      <p className="text-xs font-bold">Banner Active Status</p>
-                      <p className="text-[11px] text-neutral-400">Display this announcement to visitors</p>
+                      <p className="text-xs font-medium text-[#202124] dark:text-[#e8eaed]">Broadcast State</p>
+                      <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6]">Enable or disable the global banner</p>
                     </div>
                     <button
                       type="button"
                       onClick={() => setAnnouncement((prev) => ({ ...prev, enabled: !prev.enabled }))}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-bold cursor-pointer transition-all ${
+                      className={`px-3 py-1 rounded-md text-xs font-medium cursor-pointer transition-colors ${
                         announcement.enabled
-                          ? "bg-emerald-500 text-black font-extrabold"
-                          : "bg-neutral-800 text-neutral-400"
+                          ? "bg-[#1e8e3e] text-white"
+                          : "bg-neutral-200 dark:bg-neutral-700 text-[#5f6368] dark:text-[#9aa0a6]"
                       }`}
                     >
                       {announcement.enabled ? "Enabled" : "Disabled"}
                     </button>
                   </div>
 
-                  {/* Banner Type */}
+                  {/* Banner Type Chips */}
                   <div className="space-y-1">
-                    <label className="block text-[10px] font-bold uppercase tracking-wider opacity-70">Banner Accent</label>
+                    <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider">Notice Accent</label>
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                       {[
-                        { id: "special", label: "Special Highlight", color: "border-purple-500/40 text-purple-400" },
-                        { id: "info", label: "Informational", color: "border-sky-500/40 text-sky-400" },
-                        { id: "success", label: "Success / Release", color: "border-emerald-500/40 text-emerald-400" },
-                        { id: "warning", label: "Warning / Notice", color: "border-amber-500/40 text-amber-400" },
+                        { id: "info", label: "Informational (Blue)" },
+                        { id: "success", label: "Release (Green)" },
+                        { id: "warning", label: "Notice (Amber)" },
+                        { id: "special", label: "Special (Purple)" },
                       ].map((sev) => (
                         <button
                           key={sev.id}
                           type="button"
                           onClick={() => setAnnouncement((prev) => ({ ...prev, type: sev.id as any }))}
-                          className={`p-2.5 rounded-xl border text-xs font-bold text-center cursor-pointer transition-all ${
+                          className={`p-2 rounded-md border text-xs font-medium text-center cursor-pointer transition-colors ${
                             announcement.type === sev.id
-                              ? `${sev.color} bg-white/5 shadow-xs`
-                              : "border-white/5 text-neutral-400 hover:text-neutral-200"
+                              ? "border-[#1a73e8] bg-[#e8f0fe] text-[#1a73e8] dark:border-[#8ab4f8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8] font-semibold"
+                              : "border-[#dadce0] dark:border-[#5f6368] text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-50 dark:hover:bg-neutral-800"
                           }`}
                         >
                           {sev.label}
@@ -1757,46 +2339,45 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
                   {/* Message Textarea */}
                   <div className="space-y-1">
-                    <label className="block text-[10px] font-bold uppercase tracking-wider opacity-70">Announcement Message</label>
+                    <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider">Announcement Text</label>
                     <textarea
                       value={announcement.message}
                       onChange={(e) => setAnnouncement((prev) => ({ ...prev, message: e.target.value }))}
                       rows={2}
                       maxLength={180}
-                      className={`w-full p-3 rounded-xl border text-xs outline-none ${t.input}`}
-                      placeholder="e.g. 🚀 15 new vision models and benchmarks have been added to the catalog!"
+                      className="w-full p-2.5 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
+                      placeholder="e.g. 15 new vision models and benchmarks have been added to the catalog!"
                     />
                   </div>
 
-                  {/* Optional Action Link */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div className="space-y-1">
-                      <label className="block text-[10px] font-bold uppercase tracking-wider opacity-70">Button Label (Optional)</label>
+                      <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider">Button Label (Optional)</label>
                       <input
                         type="text"
                         value={announcement.linkText || ""}
                         onChange={(e) => setAnnouncement((prev) => ({ ...prev, linkText: e.target.value }))}
                         placeholder="e.g. Explore Now"
-                        className={`w-full p-2.5 rounded-xl border text-xs outline-none ${t.input}`}
+                        className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="block text-[10px] font-bold uppercase tracking-wider opacity-70">Button URL (Optional)</label>
+                      <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider">Button URL (Optional)</label>
                       <input
                         type="text"
                         value={announcement.linkUrl || ""}
                         onChange={(e) => setAnnouncement((prev) => ({ ...prev, linkUrl: e.target.value }))}
                         placeholder="e.g. #catalog or https://..."
-                        className={`w-full p-2.5 rounded-xl border text-xs outline-none ${t.input}`}
+                        className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
                       />
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 pt-3">
+                  <div className="flex items-center gap-2 pt-2">
                     <button
                       type="button"
                       onClick={() => handleSaveAnnouncement(announcement)}
-                      className="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-500 cursor-pointer shadow-md shadow-indigo-900/20"
+                      className="px-4 py-2 rounded-md text-xs font-medium text-white bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#8ab4f8] dark:text-[#202124] cursor-pointer shadow-xs transition-colors"
                     >
                       Save & Broadcast Live
                     </button>
@@ -1804,9 +2385,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                       <button
                         type="button"
                         onClick={() => handleSaveAnnouncement({ ...announcement, enabled: false })}
-                        className="px-4 py-2.5 rounded-xl text-xs font-semibold text-neutral-400 hover:text-white cursor-pointer"
+                        className="px-3 py-2 rounded-md text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer transition-colors"
                       >
-                        Deactivate Banner
+                        Deactivate
                       </button>
                     )}
                   </div>
@@ -1815,26 +2396,28 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             </div>
           )}
 
-          {/* ══════════ TAB 6: AUDIT & ACTIVITY LOG ══════════ */}
+          {/* ══════════════════════════════════════════════════════════════════════
+              TAB 6: CLOUD AUDIT & LOGGING
+          ══════════════════════════════════════════════════════════════════════ */}
           {activeTab === "audit" && (
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 rounded-xl border border-white/5 bg-white/[0.01]">
+              <div className="flex items-center justify-between p-3.5 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20]">
                 <div>
-                  <h3 className={`text-sm font-bold ${t.textPrimary}`}>Security & Administrative Action Log</h3>
-                  <p className={`text-[11px] ${t.textMuted}`}>Chronological audit trail of catalog approvals, edits, suspensions, and exports</p>
+                  <h3 className="text-sm font-semibold text-[#202124] dark:text-[#e8eaed]">Cloud Security & Activity Audit Log</h3>
+                  <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">Chronological log of administrative actions, user suspensions, and catalog updates</p>
                 </div>
                 {auditLogs.length > 0 && (
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => exportDataAsJson(auditLogs, "aiverse_audit_log")}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border cursor-pointer ${t.surface} ${t.border} ${t.textSecondary}`}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#202124] dark:hover:text-[#e8eaed] hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
                     >
-                      <Download size={13} />
-                      Export Log
+                      <Download size={12} />
+                      Export
                     </button>
                     <button
                       onClick={clearAuditLogs}
-                      className="px-3 py-1.5 rounded-lg text-xs font-semibold text-red-400 border border-red-500/20 hover:bg-red-500/10 cursor-pointer"
+                      className="px-3 py-1.5 rounded-md text-xs font-medium text-[#d93025] dark:text-[#f28b82] border border-[#d93025]/30 hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] transition-colors cursor-pointer"
                     >
                       Clear Log
                     </button>
@@ -1843,35 +2426,34 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               </div>
 
               {auditLogs.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-20 gap-3 text-center border border-dashed rounded-2xl border-neutral-200 dark:border-white/10">
-                  <div className="text-3xl opacity-30 text-neutral-400">◌</div>
-                  <p className={`text-sm font-semibold ${t.textPrimary}`}>Audit log is clean</p>
-                  <p className={`text-xs max-w-[280px] leading-relaxed ${t.textMuted}`}>
-                    Actions performed in this admin console will automatically be cataloged here.
+                <div className="flex flex-col items-center justify-center py-20 gap-3 text-center border border-dashed rounded-lg border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20]">
+                  <p className="text-sm font-medium text-[#202124] dark:text-[#e8eaed]">Audit trail is empty</p>
+                  <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
+                    Actions performed in this console will be logged chronologically here.
                   </p>
                 </div>
               ) : (
-                <div className={`overflow-x-auto rounded-2xl border ${t.border}`}>
+                <div className="overflow-x-auto rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20]">
                   <table className="w-full text-left border-collapse">
                     <thead>
-                      <tr className={`border-b text-[10px] font-bold uppercase tracking-wider ${t.surface2} ${t.textMuted}`}>
-                        <th className="px-5 py-3.5">Action</th>
-                        <th className="px-5 py-3.5">Details</th>
-                        <th className="px-5 py-3.5">Admin</th>
-                        <th className="px-5 py-3.5 text-right">Timestamp</th>
+                      <tr className="border-b border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] text-[11px] font-semibold uppercase tracking-wider text-[#5f6368] dark:text-[#9aa0a6]">
+                        <th className="px-4 py-3">Action</th>
+                        <th className="px-4 py-3">Details</th>
+                        <th className="px-4 py-3">Actor</th>
+                        <th className="px-4 py-3 text-right">Timestamp</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                    <tbody className="divide-y divide-[#dadce0]/60 dark:divide-[#3c4043]/60 text-xs">
                       {auditLogs.map((log) => (
-                        <tr key={log.id} className="text-xs hover:bg-white/[0.01]">
-                          <td className="px-5 py-3 font-bold">
-                            <span className="inline-flex items-center text-[9px] font-extrabold px-2 py-0.5 rounded-md bg-indigo-500/15 text-indigo-400 border border-indigo-500/20">
+                        <tr key={log.id} className="hover:bg-[#f8f9fa] dark:hover:bg-[#282a2d] transition-colors">
+                          <td className="px-4 py-3">
+                            <span className="inline-flex items-center text-[10px] font-medium px-2 py-0.5 rounded bg-[#e8f0fe] text-[#1967d2] dark:bg-[#1a2e4c] dark:text-[#a8c7fa]">
                               {log.action}
                             </span>
                           </td>
-                          <td className={`px-5 py-3 font-medium ${t.textSecondary}`}>{log.details}</td>
-                          <td className={`px-5 py-3 font-mono text-[11px] text-neutral-400`}>{log.adminEmail}</td>
-                          <td className={`px-5 py-3 text-right font-mono text-[11px] text-neutral-500`}>
+                          <td className="px-4 py-3 text-[#3c4043] dark:text-[#bdc1c6] font-medium">{log.details}</td>
+                          <td className="px-4 py-3 text-[#5f6368] dark:text-[#9aa0a6] font-mono text-[11px]">{log.adminEmail}</td>
+                          <td className="px-4 py-3 text-right font-mono text-[11px] text-[#5f6368] dark:text-[#9aa0a6]">
                             {new Date(log.timestamp).toLocaleString()}
                           </td>
                         </tr>
@@ -1885,42 +2467,182 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         </div>
       )}
 
-      {/* ══════════ MODALS ══════════ */}
+      {/* ══════════════════════════════════════════════════════════════════════
+          MATERIAL 3 DIALOGS AND MODALS
+      ══════════════════════════════════════════════════════════════════════ */}
 
-      {/* Batch Confirm Modal */}
+      {/* ── Modal: Inspect Pending Submission ───────────────────────────────── */}
+      {reviewingEntry && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
+          <div className="relative w-full max-w-2xl p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto">
+            <button
+              onClick={() => setReviewingEntry(null)}
+              className="absolute top-4 right-4 p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]"
+            >
+              <X size={16} />
+            </button>
+
+            <div className="flex items-center gap-3">
+              <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-bold text-base border ${typeIcon(reviewingEntry.type, t)}`}>
+                {TYPE_GLYPH[reviewingEntry.type] ?? "◆"}
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-[#202124] dark:text-[#e8eaed]">{reviewingEntry.name}</h3>
+                <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
+                  {reviewingEntry.org || "Independent Organization"} · Released {reviewingEntry.year}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${typeBadge(reviewingEntry.type, t)}`}>
+                {reviewingEntry.type}
+              </span>
+              <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${taskBadge(reviewingEntry.task, t)}`}>
+                {reviewingEntry.task}
+              </span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full border border-[#dadce0] dark:border-[#5f6368] text-[#5f6368] dark:text-[#9aa0a6]">
+                License: {reviewingEntry.license}
+              </span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full border border-[#dadce0] dark:border-[#5f6368] text-[#5f6368] dark:text-[#9aa0a6]">
+                Size: {reviewingEntry.size}
+              </span>
+            </div>
+
+            <div className="space-y-3 text-xs text-[#3c4043] dark:text-[#bdc1c6]">
+              <div>
+                <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">
+                  Summary
+                </label>
+                <p className="p-3 rounded-lg bg-[#f8f9fa] dark:bg-[#202124] border border-[#dadce0]/60 dark:border-[#3c4043]/60 leading-relaxed">
+                  {reviewingEntry.summary}
+                </p>
+              </div>
+
+              {reviewingEntry.architecture && (
+                <div>
+                  <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">
+                    Architecture Specifications
+                  </label>
+                  <p className="p-2.5 rounded-lg bg-[#f8f9fa] dark:bg-[#202124] border border-[#dadce0]/60 dark:border-[#3c4043]/60">
+                    {reviewingEntry.architecture}
+                  </p>
+                </div>
+              )}
+
+              {reviewingEntry.benchmarks && (
+                <div>
+                  <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">
+                    Benchmarks & Scores
+                  </label>
+                  <p className="p-2.5 rounded-lg bg-[#f8f9fa] dark:bg-[#202124] border border-[#dadce0]/60 dark:border-[#3c4043]/60 font-mono text-[11px]">
+                    {reviewingEntry.benchmarks}
+                  </p>
+                </div>
+              )}
+
+              {reviewingEntry.limitations && (
+                <div>
+                  <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">
+                    Known Limitations & Constraints
+                  </label>
+                  <p className="p-2.5 rounded-lg bg-[#fef7e0]/50 border border-[#f9ab00]/40 text-[#7c4a03] dark:text-[#fdd663]">
+                    {reviewingEntry.limitations}
+                  </p>
+                </div>
+              )}
+
+              {reviewingEntry.usage && (
+                <div>
+                  <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">
+                    Code Usage
+                  </label>
+                  <pre className="p-3 rounded-lg bg-[#f8f9fa] dark:bg-[#202124] border border-[#dadce0]/60 dark:border-[#3c4043]/60 font-mono text-[11px] overflow-x-auto">
+                    {reviewingEntry.usage}
+                  </pre>
+                </div>
+              )}
+
+              {reviewingEntry.url && (
+                <div>
+                  <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">
+                    Official URL
+                  </label>
+                  <a
+                    href={reviewingEntry.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#1a73e8] dark:text-[#8ab4f8] hover:underline flex items-center gap-1"
+                  >
+                    <span>{reviewingEntry.url}</span>
+                    <ExternalLink size={12} />
+                  </a>
+                </div>
+              )}
+            </div>
+
+            <div className="flex justify-end gap-2 pt-3 border-t border-[#dadce0] dark:border-[#3c4043]">
+              <button
+                type="button"
+                onClick={() => setReviewingEntry(null)}
+                className="px-4 py-2 rounded-md text-xs font-medium text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                onClick={() => setDeleteConfirmEntry(reviewingEntry.name)}
+                className="px-3 py-2 rounded-md text-xs font-medium text-[#d93025] border border-[#d93025]/30 hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] transition-colors cursor-pointer"
+              >
+                Reject
+              </button>
+              <button
+                type="button"
+                onClick={() => handleApprove(reviewingEntry)}
+                disabled={actioningId === reviewingEntry.name}
+                className="px-4 py-2 rounded-md text-xs font-medium text-white bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#8ab4f8] dark:text-[#202124] transition-colors cursor-pointer disabled:opacity-50"
+              >
+                {actioningId === reviewingEntry.name ? "Approving..." : "Approve & Publish"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Modal: Batch Confirm ────────────────────────────────────────────── */}
       {batchConfirm && (
-        <div className={t.modalOverlay}>
-          <div className={`relative w-full max-w-md p-6 rounded-2xl overflow-hidden shadow-2xl space-y-4 animate-[scaleUp_0.15s_ease-out] ${t.modal}`}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
+          <div className="relative w-full max-w-md p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] shadow-2xl space-y-4">
             <button
               onClick={() => setBatchConfirm(null)}
-              className={`absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full border transition-all ${t.surface} ${t.border} ${t.textMuted}`}
+              className="absolute top-4 right-4 p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]"
             >
-              <X size={13} />
+              <X size={16} />
             </button>
-            <div className={`p-2 rounded-xl w-fit ${batchConfirm === "approve" ? "bg-emerald-500/10 text-emerald-400" : "bg-red-500/10 text-red-400"}`}>
-              {batchConfirm === "approve" ? <CheckCheck size={24} /> : <AlertTriangle size={24} />}
+            <div className={`p-2 rounded-lg w-fit ${batchConfirm === "approve" ? "bg-[#e6f4ea] text-[#137333] dark:bg-[#0d3419] dark:text-[#81c995]" : "bg-[#fce8e6] text-[#c5221f] dark:bg-[#3c1716] dark:text-[#f28b82]"}`}>
+              {batchConfirm === "approve" ? <CheckCheck size={22} /> : <AlertTriangle size={22} />}
             </div>
-            <h3 className={`text-base font-black tracking-tight ${t.textPrimary}`}>
-              {batchConfirm === "approve" ? `Approve All ${pendingEntries.length} Submissions?` : `Purge All ${pendingEntries.length} Submissions?`}
+            <h3 className="text-base font-semibold text-[#202124] dark:text-[#e8eaed]">
+              {batchConfirm === "approve" ? `Batch Approve All ${pendingEntries.length} Assets?` : `Purge All ${pendingEntries.length} Submissions?`}
             </h3>
-            <p className={`text-xs leading-relaxed font-light ${t.textSecondary}`}>
+            <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6] leading-relaxed">
               {batchConfirm === "approve"
-                ? "This will batch-publish all currently pending tools and models to the live public catalog immediately."
-                : "This will permanently discard and reject all submissions currently awaiting review in the inbox."}
+                ? "This will batch-publish all currently pending submissions to the live catalog immediately."
+                : "This will permanently discard all submissions currently awaiting review in the queue."}
             </p>
             <div className="flex justify-end gap-2 pt-2">
               <button
                 type="button"
                 onClick={() => setBatchConfirm(null)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold ${t.btnGhost}`}
+                className="px-4 py-2 rounded-md text-xs font-medium text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={batchConfirm === "approve" ? handleBatchApproveAll : handleBatchRejectAll}
-                className={`px-5 py-2 rounded-xl text-xs font-bold text-white cursor-pointer ${
-                  batchConfirm === "approve" ? "bg-emerald-600 hover:bg-emerald-500" : "bg-red-600 hover:bg-red-500"
+                className={`px-4 py-2 rounded-md text-xs font-medium text-white cursor-pointer ${
+                  batchConfirm === "approve" ? "bg-[#1a73e8] hover:bg-[#1557b0]" : "bg-[#d93025] hover:bg-[#b31412]"
                 }`}
               >
                 {batchConfirm === "approve" ? `Approve All (${pendingEntries.length})` : "Purge Submissions"}
@@ -1930,30 +2652,27 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         </div>
       )}
 
-      {/* Create / Edit Asset Modal */}
+      {/* ── Modal: Create / Edit Catalog Asset ──────────────────────────────── */}
       {editingEntry && (
-        <div className={t.modalOverlay}>
-          <div
-            className={`relative w-full max-w-2xl p-6 rounded-2xl overflow-hidden shadow-2xl space-y-4 animate-[scaleUp_0.15s_ease-out] ${t.modal}`}
-            style={{ maxHeight: "90dvh", overflowY: "auto" }}
-          >
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
+          <div className="relative w-full max-w-2xl p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setEditingEntry(null)}
-              className={`absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full border transition-all ${t.surface} ${t.border} ${t.textMuted}`}
+              className="absolute top-4 right-4 p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]"
             >
-              <X size={13} />
+              <X size={16} />
             </button>
 
-            <div className="flex items-center gap-3 text-indigo-400 mb-2">
-              <div className="p-2 rounded-xl bg-indigo-500/10">
-                <Edit size={20} />
+            <div className="flex items-center gap-3 mb-1">
+              <div className="p-2 rounded-lg bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#8ab4f8]">
+                <Edit size={18} />
               </div>
               <div>
-                <h3 className={`text-base font-black tracking-tight ${t.textPrimary}`}>
+                <h3 className="text-base font-semibold text-[#202124] dark:text-[#e8eaed]">
                   {editingEntry.isNew ? "Create New AI Asset" : `Edit Specifications: ${editingEntry.name}`}
                 </h3>
-                <p className={`text-[11px] ${t.textMuted}`}>
-                  {editingEntry.isNew ? "Directly publish a verified model or tool to the catalog" : "Update technical specs, links, and benchmarks"}
+                <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
+                  {editingEntry.isNew ? "Directly publish a verified tool to the live catalog" : "Update technical specifications and benchmark scores"}
                 </p>
               </div>
             </div>
@@ -1961,7 +2680,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             <form onSubmit={handleSaveEntry} className="space-y-4 text-left">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Asset Name</label>
+                  <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">Asset Name</label>
                   <input
                     type="text"
                     required
@@ -1969,29 +2688,29 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     value={editingEntry.name}
                     onChange={(e) => setEditingEntry({ ...editingEntry, name: e.target.value })}
                     placeholder="e.g. DeepSeek-V3"
-                    className={`w-full p-2.5 rounded-xl border text-xs outline-none ${t.input} ${!editingEntry.isNew ? "opacity-60 cursor-not-allowed" : ""}`}
+                    className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8] disabled:opacity-60 disabled:cursor-not-allowed"
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Organization</label>
+                  <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">Organization</label>
                   <input
                     type="text"
                     required
                     value={editingEntry.org}
                     onChange={(e) => setEditingEntry({ ...editingEntry, org: e.target.value })}
-                    placeholder="e.g. DeepSeek / Meta / Anthropic"
-                    className={`w-full p-2.5 rounded-xl border text-xs outline-none ${t.input}`}
+                    placeholder="e.g. DeepSeek / Meta / Google"
+                    className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Category</label>
+                  <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">Category</label>
                   <select
                     value={editingEntry.type}
                     onChange={(e) => setEditingEntry({ ...editingEntry, type: e.target.value as any })}
-                    className={`w-full p-2.5 rounded-xl border text-xs outline-none cursor-pointer ${t.input}`}
+                    className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none cursor-pointer"
                   >
                     <option value="Model">Model</option>
                     <option value="Framework">Framework</option>
@@ -2001,147 +2720,125 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                   </select>
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Task Domain</label>
+                  <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">Task Domain</label>
                   <input
                     type="text"
                     required
                     value={editingEntry.task}
                     onChange={(e) => setEditingEntry({ ...editingEntry, task: e.target.value })}
-                    placeholder="e.g. NLP / Multimodal / Vision"
-                    className={`w-full p-2.5 rounded-xl border text-xs outline-none ${t.input}`}
+                    placeholder="e.g. NLP / Multimodal"
+                    className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">License</label>
+                  <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">License</label>
                   <input
                     type="text"
                     required
                     value={editingEntry.license}
                     onChange={(e) => setEditingEntry({ ...editingEntry, license: e.target.value })}
                     placeholder="e.g. MIT / Apache 2.0"
-                    className={`w-full p-2.5 rounded-xl border text-xs outline-none ${t.input}`}
+                    className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Release Year</label>
+                  <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">Release Year</label>
                   <input
                     type="number"
                     required
                     value={editingEntry.year}
                     onChange={(e) => setEditingEntry({ ...editingEntry, year: Number(e.target.value) })}
-                    className={`w-full p-2.5 rounded-xl border text-xs outline-none ${t.input}`}
+                    className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Parameter / Dataset Size</label>
+                  <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">Parameter / Dataset Size</label>
                   <input
                     type="text"
                     required
                     value={editingEntry.size}
                     onChange={(e) => setEditingEntry({ ...editingEntry, size: e.target.value })}
-                    placeholder="e.g. 671B (37B active) / 10M Samples"
-                    className={`w-full p-2.5 rounded-xl border text-xs outline-none ${t.input}`}
+                    placeholder="e.g. 671B / 10M Samples"
+                    className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Technical Summary</label>
+                <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">Technical Summary</label>
                 <textarea
                   required
                   value={editingEntry.summary}
                   onChange={(e) => setEditingEntry({ ...editingEntry, summary: e.target.value })}
                   rows={2}
-                  className={`w-full p-2.5 rounded-xl border text-xs outline-none resize-none ${t.input}`}
+                  className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8] resize-none"
                   placeholder="Concise overview of architectural advantages and primary use case..."
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Architecture Specs</label>
+                  <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">Architecture Specs</label>
                   <input
                     type="text"
                     value={editingEntry.architecture}
                     onChange={(e) => setEditingEntry({ ...editingEntry, architecture: e.target.value })}
-                    placeholder="e.g. Transformer Decoder, Multi-head Latent Attention"
-                    className={`w-full p-2.5 rounded-xl border text-xs outline-none ${t.input}`}
+                    placeholder="e.g. Transformer Decoder, MLA"
+                    className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Benchmark Scores</label>
+                  <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">Benchmarks</label>
                   <input
                     type="text"
                     value={editingEntry.benchmarks}
                     onChange={(e) => setEditingEntry({ ...editingEntry, benchmarks: e.target.value })}
                     placeholder="e.g. MMLU: 88.5%, HumanEval: 82.6%"
-                    className={`w-full p-2.5 rounded-xl border text-xs outline-none ${t.input}`}
+                    className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Known Limitations (Comma-separated)</label>
-                <input
-                  type="text"
-                  value={editingEntry.limitations}
-                  onChange={(e) => setEditingEntry({ ...editingEntry, limitations: e.target.value })}
-                  placeholder="e.g. High VRAM requirement, English-centric, Rate limited"
-                  className={`w-full p-2.5 rounded-xl border text-xs outline-none ${t.input}`}
-                />
-              </div>
-
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Official Repo / Documentation URL</label>
+                <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">Official Repository / Link URL</label>
                 <input
                   type="url"
                   value={editingEntry.url}
                   onChange={(e) => setEditingEntry({ ...editingEntry, url: e.target.value })}
                   placeholder="https://github.com/... or https://huggingface.co/..."
-                  className={`w-full p-2.5 rounded-xl border text-xs outline-none ${t.input}`}
-                />
-              </div>
-
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Example Code Usage</label>
-                <textarea
-                  value={editingEntry.usage}
-                  onChange={(e) => setEditingEntry({ ...editingEntry, usage: e.target.value })}
-                  rows={2}
-                  className={`w-full p-2.5 rounded-xl border text-xs font-mono outline-none resize-none ${t.input}`}
-                  placeholder="import torch... / pip install..."
+                  className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
                 />
               </div>
 
               <div className="flex items-center gap-2 pt-1">
                 <input
                   type="checkbox"
-                  id="entry-featured-toggle"
+                  id="entry-featured-checkbox"
                   checked={editingEntry.popular}
                   onChange={(e) => setEditingEntry({ ...editingEntry, popular: e.target.checked })}
-                  className="rounded border-white/20 w-4 h-4 text-indigo-600 focus:ring-0 cursor-pointer"
+                  className="rounded border-[#dadce0] text-[#1a73e8] focus:ring-0 cursor-pointer"
                 />
-                <label htmlFor="entry-featured-toggle" className="text-xs font-bold text-amber-400 flex items-center gap-1 cursor-pointer">
-                  <Star size={13} className="fill-amber-400" />
-                  Feature this asset on dashboard
+                <label htmlFor="entry-featured-checkbox" className="text-xs font-medium text-[#7c4a03] dark:text-[#fdd663] flex items-center gap-1 cursor-pointer">
+                  <Star size={12} className="fill-[#f9ab00] text-[#f9ab00]" />
+                  Highlight as featured asset on home dashboard
                 </label>
               </div>
 
-              <div className="flex justify-end gap-2 pt-4 border-t border-dashed dark:border-white/5 border-neutral-200">
+              <div className="flex justify-end gap-2 pt-3 border-t border-[#dadce0] dark:border-[#3c4043]">
                 <button
                   type="button"
                   onClick={() => setEditingEntry(null)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold ${t.btnGhost}`}
+                  className="px-4 py-2 rounded-md text-xs font-medium text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={actioningId === editingEntry.name}
-                  className="px-5 py-2 rounded-xl text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-500 cursor-pointer shadow-md disabled:opacity-50"
+                  className="px-4 py-2 rounded-md text-xs font-medium text-white bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#8ab4f8] dark:text-[#202124] cursor-pointer shadow-xs disabled:opacity-50 transition-colors"
                 >
                   {actioningId === editingEntry.name ? "Saving..." : editingEntry.isNew ? "Publish Asset" : "Save Changes"}
                 </button>
@@ -2151,63 +2848,60 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         </div>
       )}
 
-      {/* Delete Entry Confirmation Modal */}
+      {/* ── Modal: Delete Entry Confirmation ─────────────────────────────────── */}
       {deleteConfirmEntry && (
-        <div className={t.modalOverlay}>
-          <div className={`relative w-full max-w-md p-6 rounded-2xl overflow-hidden shadow-2xl space-y-4 animate-[scaleUp_0.15s_ease-out] ${t.modal}`}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
+          <div className="relative w-full max-w-md p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] shadow-2xl space-y-4">
             <button
               onClick={() => setDeleteConfirmEntry(null)}
-              className={`absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full border transition-all ${t.surface} ${t.border} ${t.textMuted}`}
+              className="absolute top-4 right-4 p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]"
             >
-              <X size={13} />
+              <X size={16} />
             </button>
-            <div className="flex items-center gap-3 text-red-500 mb-2">
-              <div className="p-2 rounded-xl bg-red-500/10">
-                <Trash2 size={22} className="stroke-[2.5px]" />
+            <div className="flex items-center gap-3 text-[#d93025]">
+              <div className="p-2 rounded-lg bg-[#fce8e6] dark:bg-[#3c1716]">
+                <Trash2 size={20} />
               </div>
-              <h3 className={`text-base font-black tracking-tight ${t.textPrimary}`}>Delete Catalog Entry</h3>
+              <h3 className="text-base font-semibold text-[#202124] dark:text-[#e8eaed]">Delete Catalog Asset</h3>
             </div>
-            <p className={`text-xs leading-relaxed font-light ${t.textSecondary}`}>
-              Are you sure you want to delete <strong className={t.textPrimary}>"{deleteConfirmEntry}"</strong>? This will permanently remove the tool from the directory.
+            <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6] leading-relaxed">
+              Are you sure you want to delete <strong className="text-[#202124] dark:text-[#e8eaed]">"{deleteConfirmEntry}"</strong>? This will remove the item from the active catalog and all comparison views.
             </p>
             <div className="flex justify-end gap-2 pt-2">
               <button
                 type="button"
                 onClick={() => setDeleteConfirmEntry(null)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold ${t.btnGhost}`}
+                className="px-4 py-2 rounded-md text-xs font-medium text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={() => executeDelete(deleteConfirmEntry)}
-                className="px-5 py-2 rounded-xl text-xs font-semibold bg-red-600 hover:bg-red-500 text-white cursor-pointer"
+                className="px-4 py-2 rounded-md text-xs font-medium bg-[#d93025] hover:bg-[#b31412] text-white cursor-pointer transition-colors"
               >
-                Delete Entry
+                Delete Asset
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Edit User Modal */}
+      {/* ── Modal: Edit User Profile ─────────────────────────────────────────── */}
       {editingUser && (
-        <div className={t.modalOverlay}>
-          <div
-            className={`relative w-full max-w-lg p-6 rounded-2xl overflow-hidden shadow-2xl space-y-4 animate-[scaleUp_0.15s_ease-out] ${t.modal}`}
-            style={{ maxHeight: "85dvh", overflowY: "auto" }}
-          >
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
+          <div className="relative w-full max-w-lg p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto">
             <button
               onClick={() => setEditingUser(null)}
-              className={`absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full border transition-all ${t.surface} ${t.border} ${t.textMuted}`}
+              className="absolute top-4 right-4 p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]"
             >
-              <X size={13} />
+              <X size={16} />
             </button>
-            <div className="flex items-center gap-3 text-indigo-500 mb-2">
-              <div className="p-2 rounded-xl bg-indigo-500/10">
-                <Users size={22} className="stroke-[2.5px]" />
+            <div className="flex items-center gap-3 mb-1">
+              <div className="p-2 rounded-lg bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#8ab4f8]">
+                <Users size={18} />
               </div>
-              <h3 className={`text-base font-black tracking-tight ${t.textPrimary}`}>Edit Builder Profile</h3>
+              <h3 className="text-base font-semibold text-[#202124] dark:text-[#e8eaed]">Edit User Account</h3>
             </div>
 
             <form
@@ -2217,35 +2911,23 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               }}
               className="space-y-4 text-left"
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Display Name</label>
-                  <input
-                    type="text"
-                    required
-                    value={editingUser.displayName}
-                    onChange={(e) => setEditingUser({ ...editingUser, displayName: e.target.value })}
-                    className={`w-full p-2.5 rounded-xl border text-[13px] outline-none ${t.input}`}
-                  />
-                </div>
-                <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Avatar (Synced via OAuth)</label>
-                  <input
-                    type="text"
-                    readOnly
-                    disabled
-                    value={editingUser.avatarUrl || "None (Initials only)"}
-                    className={`w-full p-2.5 rounded-xl border text-[13px] outline-none opacity-60 cursor-not-allowed ${t.input}`}
-                  />
-                </div>
+              <div>
+                <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">Display Name</label>
+                <input
+                  type="text"
+                  required
+                  value={editingUser.displayName}
+                  onChange={(e) => setEditingUser({ ...editingUser, displayName: e.target.value })}
+                  className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
+                />
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Role</label>
+                <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">Role</label>
                 <select
                   value={editingUser.role}
                   onChange={(e) => setEditingUser({ ...editingUser, role: e.target.value })}
-                  className={`w-full p-2.5 rounded-xl border text-[13px] outline-none ${t.input}`}
+                  className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none cursor-pointer"
                 >
                   <option value="developer">Developer / Engineer</option>
                   <option value="designer">UI/UX Designer</option>
@@ -2258,13 +2940,13 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider mb-1 opacity-70">Bio / Description</label>
+                <label className="block text-[11px] font-medium text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">Bio / Description</label>
                 <textarea
                   value={editingUser.description}
                   onChange={(e) => setEditingUser({ ...editingUser, description: e.target.value })}
                   rows={2}
                   maxLength={160}
-                  className={`w-full p-2.5 rounded-xl border text-[13px] outline-none resize-none ${t.input}`}
+                  className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8] resize-none"
                 />
               </div>
 
@@ -2274,29 +2956,29 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                   value={editingUser.github}
                   onChange={(e) => setEditingUser({ ...editingUser, github: e.target.value })}
                   placeholder="GitHub URL"
-                  className={`w-full p-2 rounded-xl border text-[12px] outline-none ${t.input}`}
+                  className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none"
                 />
                 <input
                   type="url"
                   value={editingUser.linkedin}
                   onChange={(e) => setEditingUser({ ...editingUser, linkedin: e.target.value })}
                   placeholder="LinkedIn URL"
-                  className={`w-full p-2 rounded-xl border text-[12px] outline-none ${t.input}`}
+                  className="w-full p-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs text-[#202124] dark:text-[#e8eaed] outline-none"
                 />
               </div>
 
-              <div className="flex justify-end gap-2 pt-4 border-t border-dashed dark:border-white/5 border-neutral-200">
+              <div className="flex justify-end gap-2 pt-3 border-t border-[#dadce0] dark:border-[#3c4043]">
                 <button
                   type="button"
                   onClick={() => setEditingUser(null)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold ${t.btnGhost}`}
+                  className="px-4 py-2 rounded-md text-xs font-medium text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={actioningId === editingUser.userKey}
-                  className="px-5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer"
+                  className="px-4 py-2 rounded-md text-xs font-medium text-white bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#8ab4f8] dark:text-[#202124] cursor-pointer transition-colors"
                 >
                   {actioningId === editingUser.userKey ? "Saving..." : "Save Changes"}
                 </button>
@@ -2306,36 +2988,36 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         </div>
       )}
 
-      {/* Suspend / Block Dialog */}
+      {/* ── Modal: Suspend User ─────────────────────────────────────────────── */}
       {blockingUser && (
-        <div className={t.modalOverlay}>
-          <div className={`relative w-full max-w-md p-6 rounded-2xl overflow-hidden shadow-2xl space-y-4 animate-[scaleUp_0.15s_ease-out] ${t.modal}`}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
+          <div className="relative w-full max-w-md p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] shadow-2xl space-y-4">
             <button
               onClick={() => setBlockingUser(null)}
-              className={`absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full border transition-all ${t.surface} ${t.border} ${t.textMuted}`}
+              className="absolute top-4 right-4 p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]"
             >
-              <X size={13} />
+              <X size={16} />
             </button>
-            <div className="flex items-center gap-3 text-amber-500 mb-2">
-              <div className="p-2 rounded-xl bg-amber-500/10">
-                <AlertTriangle size={22} className="stroke-[2.5px]" />
+            <div className="flex items-center gap-3 text-[#b06000]">
+              <div className="p-2 rounded-lg bg-[#fef7e0] dark:bg-[#332a00]">
+                <AlertTriangle size={20} />
               </div>
-              <h3 className={`text-base font-black tracking-tight ${t.textPrimary}`}>
-                {blockingUser.isBlocked ? "Lift Account Suspension" : "Temporarily Suspend Account"}
+              <h3 className="text-base font-semibold text-[#202124] dark:text-[#e8eaed]">
+                {blockingUser.isBlocked ? "Lift Account Suspension" : "Suspend User Account"}
               </h3>
             </div>
-            <p className={`text-xs leading-relaxed font-light ${t.textSecondary}`}>
+            <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6] leading-relaxed">
               {blockingUser.isBlocked ? (
-                <>Lift suspension for <strong className={t.textPrimary}>{blockingUser.displayName}</strong>? They will regain full access immediately.</>
+                <>Lift suspension for <strong className="text-[#202124] dark:text-[#e8eaed]">{blockingUser.displayName}</strong>? They will regain access immediately.</>
               ) : (
-                <>Select duration to suspend <strong className={t.textPrimary}>{blockingUser.displayName}</strong> from logging in.</>
+                <>Select duration to temporarily suspend <strong className="text-[#202124] dark:text-[#e8eaed]">{blockingUser.displayName}</strong> from logging into AiVerse.</>
               )}
             </p>
-            <div className="flex flex-col gap-2 pt-2">
+            <div className="flex flex-col gap-2 pt-1">
               {blockingUser.isBlocked ? (
                 <button
                   onClick={() => handleExecuteBlock(blockingUser, false, 0)}
-                  className="w-full py-2.5 rounded-xl font-bold text-xs bg-emerald-600 hover:bg-emerald-500 text-white cursor-pointer"
+                  className="w-full py-2 rounded-md font-medium text-xs bg-[#1e8e3e] hover:bg-[#137333] text-white cursor-pointer transition-colors"
                 >
                   Lift Suspension (Reactivate)
                 </button>
@@ -2343,27 +3025,27 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 <>
                   <button
                     onClick={() => handleExecuteBlock(blockingUser, true, 24 * 60 * 60 * 1000)}
-                    className="w-full py-2.5 rounded-xl font-bold text-xs bg-amber-500 hover:bg-amber-400 text-black cursor-pointer"
+                    className="w-full py-2 rounded-md font-medium text-xs border border-[#dadce0] dark:border-[#5f6368] hover:bg-neutral-50 dark:hover:bg-neutral-800 text-[#202124] dark:text-[#e8eaed] cursor-pointer transition-colors"
                   >
                     Suspend for 24 Hours
                   </button>
                   <button
                     onClick={() => handleExecuteBlock(blockingUser, true, 7 * 24 * 60 * 60 * 1000)}
-                    className="w-full py-2.5 rounded-xl font-bold text-xs bg-orange-500 hover:bg-orange-400 text-white cursor-pointer"
+                    className="w-full py-2 rounded-md font-medium text-xs border border-[#dadce0] dark:border-[#5f6368] hover:bg-neutral-50 dark:hover:bg-neutral-800 text-[#202124] dark:text-[#e8eaed] cursor-pointer transition-colors"
                   >
                     Suspend for 7 Days
                   </button>
                   <button
                     onClick={() => handleExecuteBlock(blockingUser, true, -1)}
-                    className="w-full py-2.5 rounded-xl font-bold text-xs bg-red-600 hover:bg-red-500 text-white cursor-pointer"
+                    className="w-full py-2 rounded-md font-medium text-xs bg-[#d93025] hover:bg-[#b31412] text-white cursor-pointer transition-colors"
                   >
-                    Suspend Indefinitely (Permanent)
+                    Suspend Indefinitely
                   </button>
                 </>
               )}
               <button
                 onClick={() => setBlockingUser(null)}
-                className={`w-full py-2 rounded-xl text-xs font-semibold border ${t.border} ${t.surface} ${t.textSecondary}`}
+                className="w-full py-2 rounded-md text-xs font-medium text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer transition-colors"
               >
                 Cancel
               </button>
@@ -2372,32 +3054,54 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         </div>
       )}
 
-      {/* Delete User Confirmation Modal */}
+      {/* ── Modal: Approve Deletion / Delete User ────────────────────────────── */}
       {deleteConfirmUser && (
-        <div className={t.modalOverlay}>
-          <div className={`relative w-full max-w-md p-6 rounded-2xl overflow-hidden shadow-2xl space-y-4 animate-[scaleUp_0.15s_ease-out] ${t.modal}`}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
+          <div className="relative w-full max-w-md p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] shadow-2xl space-y-4">
             <button
               onClick={() => setDeleteConfirmUser(null)}
-              className={`absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full border transition-all ${t.surface} ${t.border} ${t.textMuted}`}
+              className="absolute top-4 right-4 p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]"
             >
-              <X size={13} />
+              <X size={16} />
             </button>
-            <div className="flex items-center gap-3 text-red-500 mb-2">
-              <div className="p-2 rounded-xl bg-red-500/10">
-                <Trash2 size={22} className="stroke-[2.5px]" />
+            <div className="flex items-center gap-3 text-[#d93025]">
+              <div className="p-2 rounded-lg bg-[#fce8e6] dark:bg-[#3c1716]">
+                <Trash2 size={20} />
               </div>
-              <h3 className={`text-base font-black tracking-tight ${t.textPrimary}`}>Permanently Delete Account</h3>
+              <h3 className="text-base font-semibold text-[#202124] dark:text-[#e8eaed]">
+                {deleteConfirmUser.deletionRequested ? "Approve User Deletion Request" : "Permanently Delete Account"}
+              </h3>
             </div>
-            <p className={`text-xs leading-relaxed font-light ${t.textSecondary}`}>
-              Permanently delete user <strong className={t.textPrimary}>{deleteConfirmUser.displayName} ({deleteConfirmUser.username})</strong>?
+
+            {deleteConfirmUser.deletionRequested && (
+              <div className="p-3 rounded-lg border border-[#f9ab00] bg-[#fef7e0] dark:bg-[#332a00] dark:border-[#f9ab00]/50 space-y-1">
+                <div className="flex items-center justify-between text-xs font-semibold text-[#b06000] dark:text-[#fdd663]">
+                  <span className="flex items-center gap-1">
+                    <AlertTriangle size={12} />
+                    User Deletion Request Reason:
+                  </span>
+                  {deleteConfirmUser.deletionRequestedAt && (
+                    <span className="text-[10px] font-mono opacity-80">
+                      {new Date(deleteConfirmUser.deletionRequestedAt).toLocaleDateString()}
+                    </span>
+                  )}
+                </div>
+                <p className="text-[11px] text-[#7c4a03] dark:text-[#fdd663] italic">
+                  "{deleteConfirmUser.deletionReason || "No specific reason provided."}"
+                </p>
+              </div>
+            )}
+
+            <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6] leading-relaxed">
+              Permanently purge account <strong className="text-[#202124] dark:text-[#e8eaed]">{deleteConfirmUser.displayName} ({deleteConfirmUser.username})</strong>?
               <br />
-              This will completely remove their account from <strong className="text-red-400">auth.users</strong> (Supabase Auth credentials, sessions, OAuth) and erase all bookmarks, comments, and profile data everywhere.
+              This will invoke the security administrator RPC to permanently remove credentials from <strong className="text-[#d93025] dark:text-[#f28b82]">auth.users</strong> and purge all associated bookmarks, ratings, and comments.
             </p>
             <div className="flex justify-end gap-2 pt-2">
               <button
                 type="button"
                 onClick={() => setDeleteConfirmUser(null)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold ${t.btnGhost}`}
+                className="px-4 py-2 rounded-md text-xs font-medium text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
               >
                 Cancel
               </button>
@@ -2408,36 +3112,36 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                   setDeleteConfirmUser(null);
                   await handleExecuteDeleteUser(target);
                 }}
-                className="px-5 py-2 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white cursor-pointer"
+                className="px-4 py-2 rounded-md text-xs font-medium bg-[#d93025] hover:bg-[#b31412] text-white cursor-pointer shadow-xs transition-colors"
               >
-                Delete Account Everywhere
+                {deleteConfirmUser.deletionRequested ? "Approve & Purge Everywhere" : "Delete Account Everywhere"}
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Direct Delete by UID Modal */}
+      {/* ── Modal: Direct Delete by Auth UID ─────────────────────────────────── */}
       {directDeleteModalOpen && (
-        <div className={t.modalOverlay}>
-          <div className={`relative w-full max-w-md p-6 rounded-2xl overflow-hidden shadow-2xl space-y-4 animate-[scaleUp_0.15s_ease-out] ${t.modal}`}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
+          <div className="relative w-full max-w-md p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] shadow-2xl space-y-4">
             <button
               onClick={() => {
                 setDirectDeleteModalOpen(false);
                 setDirectDeleteUidInput("");
               }}
-              className={`absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full border transition-all ${t.surface} ${t.border} ${t.textMuted}`}
+              className="absolute top-4 right-4 p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]"
             >
-              <X size={13} />
+              <X size={16} />
             </button>
-            <div className="flex items-center gap-3 text-red-500 mb-2">
-              <div className="p-2 rounded-xl bg-red-500/10">
-                <Trash2 size={22} className="stroke-[2.5px]" />
+            <div className="flex items-center gap-3 text-[#d93025]">
+              <div className="p-2 rounded-lg bg-[#fce8e6] dark:bg-[#3c1716]">
+                <Trash2 size={20} />
               </div>
-              <h3 className={`text-base font-black tracking-tight ${t.textPrimary}`}>Delete User by Auth UID</h3>
+              <h3 className="text-base font-semibold text-[#202124] dark:text-[#e8eaed]">Purge User by Auth UID</h3>
             </div>
-            <p className={`text-xs leading-relaxed font-light ${t.textSecondary}`}>
-              Enter any Supabase User UID (or user_key) to completely purge their account from <strong className="text-red-400">auth.users</strong> and all application database tables:
+            <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6] leading-relaxed">
+              Enter any Supabase User UID (or formatted key) to purge their credentials from <strong className="text-[#d93025] dark:text-[#f28b82]">auth.users</strong> and all application database tables:
             </p>
             <div>
               <input
@@ -2445,7 +3149,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 placeholder="e.g. afa9a070-6961-4419-a7b1-291628f94a48"
                 value={directDeleteUidInput}
                 onChange={(e) => setDirectDeleteUidInput(e.target.value)}
-                className={`w-full px-3.5 py-2.5 rounded-xl border text-xs font-mono outline-none ${t.input}`}
+                className="w-full px-3 py-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs font-mono text-[#202124] dark:text-[#e8eaed] outline-none focus:border-[#d93025]"
               />
             </div>
             <div className="flex justify-end gap-2 pt-2">
@@ -2455,7 +3159,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                   setDirectDeleteModalOpen(false);
                   setDirectDeleteUidInput("");
                 }}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold ${t.btnGhost}`}
+                className="px-4 py-2 rounded-md text-xs font-medium text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
               >
                 Cancel
               </button>
@@ -2465,7 +3169,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 onClick={async () => {
                   await handleExecuteDirectDeleteUid(directDeleteUidInput);
                 }}
-                className="px-5 py-2 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white cursor-pointer disabled:opacity-50"
+                className="px-4 py-2 rounded-md text-xs font-medium bg-[#d93025] hover:bg-[#b31412] text-white cursor-pointer disabled:opacity-50 transition-colors"
               >
                 Purge Account Everywhere
               </button>
@@ -2474,16 +3178,20 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         </div>
       )}
 
-      {/* Toast Notification (Anchored at Bottom-Left) */}
+      {/* ── Google Toast Notification (Anchored at Bottom-Left) ──────────────── */}
       {toast && (
-        <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 animate-[fadeUp_0.2s_ease-out]">
-          <div className={`p-4 rounded-xl border flex items-center gap-3 text-[13px] font-medium shadow-2xl backdrop-blur-xl ${
-            toast.type === "success" ? t.successToast : t.errorToast
-          }`}>
+        <div className="fixed bottom-5 left-5 z-50 animate-[fadeUp_0.2s_ease-out]">
+          <div
+            className={`px-4 py-3 rounded-lg border flex items-center gap-2.5 text-xs font-medium shadow-lg ${
+              toast.type === "success"
+                ? "bg-[#202124] text-white border-neutral-700 dark:bg-white dark:text-[#202124] dark:border-neutral-200"
+                : "bg-[#d93025] text-white border-[#b31412]"
+            }`}
+          >
             {toast.type === "success" ? (
-              <Check size={18} className="shrink-0 text-emerald-400" />
+              <Check size={16} className="shrink-0 text-[#81c995]" />
             ) : (
-              <Info size={18} className="shrink-0 text-red-400" />
+              <Info size={16} className="shrink-0 text-white" />
             )}
             <span>{toast.message}</span>
           </div>
