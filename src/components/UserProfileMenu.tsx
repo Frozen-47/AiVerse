@@ -19,13 +19,13 @@ import {
   Briefcase,
   Sparkles,
   HelpCircle,
-  BookOpen,
-  Terminal,
   Globe,
   Lock,
   ChevronDown,
   ChevronUp,
   AlertTriangle,
+  ArrowUpRight,
+  X,
 } from "lucide-react";
 import { useAuth } from "./AuthContext";
 import { shareUrlForProfile } from "../lib/entryUrl";
@@ -51,6 +51,18 @@ const GithubLogo = ({ className }: { className?: string }) => (
 const LinkedinLogo = ({ className }: { className?: string }) => (
   <svg className={className || "w-3.5 h-3.5"} viewBox="0 0 24 24" fill="currentColor">
     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+  </svg>
+);
+
+const MediumLogo = ({ className }: { className?: string }) => (
+  <svg className={className || "w-3.5 h-3.5"} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zm3.04 0c0 3.24-.32 5.87-.71 5.87s-.72-2.63-.72-5.87.32-5.87.72-5.87.71 2.63.71 5.87z"/>
+  </svg>
+);
+
+const DevToLogo = ({ className }: { className?: string }) => (
+  <svg className={className || "w-3.5 h-3.5"} viewBox="0 0 448 512" fill="currentColor">
+    <path d="M120.12 208.29c-3.88-2.9-7.77-4.35-11.65-4.35H91.03v104.47h17.45c3.88 0 7.77-1.45 11.65-4.35 3.88-2.9 5.82-7.25 5.82-13.06v-69.65c-.01-5.8-1.96-10.16-5.83-13.06zM304.14 0H43.86C19.63 0 0 19.63 0 43.86v424.28C0 492.37 19.63 512 43.86 512h360.28c24.23 0 43.86-19.63 43.86-43.86V43.86C448 19.63 428.37 0 304.14 0zM151.05 311.77c0 12.18-4.85 21.78-14.55 28.8-9.7 7.03-22.66 10.54-38.89 10.54H62.22V175.12h35.39c16.23 0 29.19 3.51 38.89 10.54 9.7 7.03 14.55 16.62 14.55 28.8v97.31zm102.3-120.87h-64.44v45.48h51.38v28.29h-51.38v46.12h64.44v28.31H158.46V162.5h94.89v28.4zm102.3 124.36c0 18.28-5.97 32.5-17.9 42.66-11.93 10.16-28.31 15.24-49.13 15.24-20.82 0-37.2-5.08-49.13-15.24-11.93-10.16-17.9-24.38-17.9-42.66v-96.1h32.93v95.82c0 9.57 2.74 16.8 8.22 21.68 5.48 4.88 13.78 7.32 24.89 7.32s19.41-2.44 24.89-7.32c5.48-4.88 8.22-12.11 8.22-21.68v-95.82h32.93v96.1z"/>
   </svg>
 );
 
@@ -211,26 +223,26 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   };
 
   const wrapperCls = (readOnly: boolean) => [
-    "relative flex items-center rounded-xl border transition-all duration-300 w-full",
+    "relative flex items-center rounded-xl border transition-all duration-200 w-full",
     readOnly
       ? (isDark
-          ? "bg-white/[0.01] border-white/5 opacity-60"
-          : "bg-black/[0.01] border-black/5 opacity-60")
+          ? "bg-white/[0.03] border-[#3c4043]/50 opacity-60"
+          : "bg-neutral-100 border-neutral-200 opacity-60")
       : (isDark
-          ? "bg-white/[0.02] border-white/8 hover:border-white/15 focus-within:border-indigo-500/50 focus-within:ring-1 focus-within:ring-indigo-500/20 focus-within:shadow-[0_0_12px_rgba(99,102,241,0.08)]"
-          : "bg-black/[0.01] border-black/8 hover:border-black/15 focus-within:border-indigo-600/50 focus-within:ring-1 focus-within:ring-indigo-600/20 focus-within:shadow-[0_0_12px_rgba(79,70,229,0.08)]")
+          ? "bg-[#18191a] border-[#3c4043] hover:border-[#5f6368] focus-within:border-[#a8c7fa] focus-within:ring-1 focus-within:ring-[#a8c7fa]/25"
+          : "bg-white border-[#dadce0] hover:border-[#bdc1c6] focus-within:border-[#1a73e8] focus-within:ring-1 focus-within:ring-[#1a73e8]/25")
   ].join(" ");
 
-  const dividerCls = isDark ? "border-r border-white/5 text-white/35" : "border-r border-black/5 text-black/35";
+  const dividerCls = isDark ? "border-r border-[#3c4043] text-neutral-400" : "border-r border-[#dadce0] text-neutral-500";
 
   const innerInputCls = [
-    "w-full bg-transparent px-3 py-2 text-xs font-medium outline-none border-none focus:ring-0 focus:outline-none",
-    isDark ? "text-white placeholder:text-white/25" : "text-gray-900 placeholder:text-gray-400"
+    "w-full bg-transparent px-3 py-2 text-xs font-normal outline-none border-none focus:ring-0 focus:outline-none",
+    isDark ? "text-neutral-100 placeholder:text-neutral-500" : "text-neutral-900 placeholder:text-neutral-400"
   ].join(" ");
 
   const innerTextareaCls = [
-    "w-full bg-transparent px-3 py-2 text-xs font-medium outline-none border-none focus:ring-0 focus:outline-none resize-none",
-    isDark ? "text-white placeholder:text-white/25" : "text-gray-900 placeholder:text-gray-400"
+    "w-full bg-transparent px-3 py-2 text-xs font-normal outline-none border-none focus:ring-0 focus:outline-none resize-none",
+    isDark ? "text-neutral-100 placeholder:text-neutral-500" : "text-neutral-900 placeholder:text-neutral-400"
   ].join(" ");
 
   const renderInputWrapper = (
@@ -357,8 +369,6 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   };
 
   /* ── Theme-aware style tokens ── */
-  const labelCls = `block text-[10px] font-semibold uppercase tracking-wider mb-1 ${t.textMuted}`;
-
   const menuItemCls = [
     "w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-left cursor-pointer transition-colors duration-150",
     isDark
@@ -369,7 +379,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   const separatorCls = `h-px my-2 mx-1 border-t ${isDark ? "border-white/10" : "border-neutral-200"}`;
 
   const saveBtnCls = [
-    "w-full py-2.5 rounded-full text-xs font-semibold cursor-pointer transition-all duration-200 shadow-xs hover:shadow-md disabled:opacity-40 disabled:cursor-not-allowed bg-[#1a73e8] hover:bg-[#1557b0] text-white",
+    "w-full py-2.5 rounded-full text-xs font-semibold cursor-pointer transition-all duration-200 shadow-xs hover:shadow-md disabled:opacity-40 disabled:cursor-not-allowed bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49]",
   ].join(" ");
 
   // ---------------------------------------------------------------------------
@@ -473,76 +483,149 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
             ), false, charCounter)}
           </div>
 
-          {/* Social Expandable Accordion */}
-          <div className={`rounded-xl border transition-all duration-300 overflow-hidden ${
-            isDark ? "bg-white/[0.01] border-white/5" : "bg-black/[0.01] border-black/5"
-          }`}>
-            <button
-              type="button"
-              onClick={() => setSocialsExpanded(!socialsExpanded)}
-              className="w-full flex items-center justify-between px-3.5 py-2.5 text-left font-bold text-xs uppercase tracking-wider text-white/50 dark:text-white/50 hover:bg-white/[0.02] transition-colors"
-            >
-              <div className="flex items-center gap-2">
-                <Link2 size={13} className="text-indigo-400" />
-                <span className={t.textSecondary}>Social Profiles</span>
-              </div>
-              <div className={t.textMuted}>
-                {socialsExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-              </div>
-            </button>
+          {/* Social Profiles / Profiles on the Web Accordion */}
+          {(() => {
+            const socialConfigs = [
+              {
+                id: "github",
+                name: "GitHub",
+                placeholder: "https://github.com/username",
+                value: github,
+                onChange: setGithub,
+                icon: GithubLogo,
+                badgeBg: "bg-neutral-900 text-white dark:bg-white/10 dark:text-white",
+              },
+              {
+                id: "linkedin",
+                name: "LinkedIn",
+                placeholder: "https://linkedin.com/in/username",
+                value: linkedin,
+                onChange: setLinkedin,
+                icon: LinkedinLogo,
+                badgeBg: "bg-[#0a66c2]/10 text-[#0a66c2] border border-[#0a66c2]/25 dark:bg-[#0a66c2]/20 dark:text-[#70b5f9]",
+              },
+              {
+                id: "medium",
+                name: "Medium",
+                placeholder: "https://medium.com/@username",
+                value: medium,
+                onChange: setMedium,
+                icon: MediumLogo,
+                badgeBg: "bg-neutral-800 text-white dark:bg-neutral-700 dark:text-neutral-200",
+              },
+              {
+                id: "devto",
+                name: "Dev.to",
+                placeholder: "https://dev.to/username",
+                value: devto,
+                onChange: setDevto,
+                icon: DevToLogo,
+                badgeBg: "bg-neutral-900 text-white dark:bg-white/10 dark:text-white",
+              },
+              {
+                id: "portfolio",
+                name: "Portfolio",
+                placeholder: "https://yourwebsite.com",
+                value: portfolio,
+                onChange: setPortfolio,
+                icon: Globe,
+                badgeBg: "bg-[#1a73e8]/10 text-[#1a73e8] border border-[#1a73e8]/25 dark:bg-[#a8c7fa]/15 dark:text-[#a8c7fa]",
+              },
+            ];
 
-            <div className={`profile-section-body ${socialsExpanded ? "is-open" : ""}`}>
-              <div className="profile-section-inner">
-                <div className="p-3 border-t border-white/5 space-y-3 grid grid-cols-1 gap-3">
-                  {renderInputWrapper(GithubLogo, "GitHub", (
-                    <input
-                      type="url"
-                      value={github}
-                      onChange={(e) => setGithub(e.target.value)}
-                      placeholder="https://github.com/username"
-                      className={innerInputCls}
-                    />
-                  ))}
-                  {renderInputWrapper(LinkedinLogo, "LinkedIn", (
-                    <input
-                      type="url"
-                      value={linkedin}
-                      onChange={(e) => setLinkedin(e.target.value)}
-                      placeholder="https://linkedin.com/in/username"
-                      className={innerInputCls}
-                    />
-                  ))}
-                  {renderInputWrapper(BookOpen, "Medium", (
-                    <input
-                      type="url"
-                      value={medium}
-                      onChange={(e) => setMedium(e.target.value)}
-                      placeholder="https://medium.com/@username"
-                      className={innerInputCls}
-                    />
-                  ))}
-                  {renderInputWrapper(Terminal, "Dev.to", (
-                    <input
-                      type="url"
-                      value={devto}
-                      onChange={(e) => setDevto(e.target.value)}
-                      placeholder="https://dev.to/username"
-                      className={innerInputCls}
-                    />
-                  ))}
-                  {renderInputWrapper(Globe, "Portfolio", (
-                    <input
-                      type="url"
-                      value={portfolio}
-                      onChange={(e) => setPortfolio(e.target.value)}
-                      placeholder="https://yourwebsite.com"
-                      className={innerInputCls}
-                    />
-                  ))}
-                </div>
+            const connectedSocialsCount = [github, linkedin, medium, devto, portfolio].filter((v) => Boolean(v?.trim())).length;
+
+            return (
+              <div className="rounded-2xl border border-[#dadce0] dark:border-[#3c4043] bg-[#fafafa] dark:bg-[#202124] overflow-hidden transition-all shadow-2xs">
+                <button
+                  type="button"
+                  onClick={() => setSocialsExpanded(!socialsExpanded)}
+                  className="w-full flex items-center justify-between p-3 text-left cursor-pointer hover:bg-neutral-100/70 dark:hover:bg-[#282a2c] transition-colors"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-7 h-7 rounded-full bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] flex items-center justify-center shrink-0 border border-[#1a73e8]/20">
+                      <Link2 size={13} />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-semibold text-neutral-900 dark:text-neutral-100">
+                          Profiles on the Web
+                        </span>
+                        {connectedSocialsCount > 0 ? (
+                          <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40 flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                            {connectedSocialsCount} linked
+                          </span>
+                        ) : (
+                          <span className="text-[10px] font-normal px-1.5 py-0.2 rounded-full bg-neutral-200/60 dark:bg-white/10 text-neutral-600 dark:text-neutral-400">
+                            Optional
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-[10.5px] text-neutral-500 dark:text-neutral-400 truncate mt-0.5">
+                        Public GitHub, LinkedIn, Medium & site links
+                      </p>
+                    </div>
+                  </div>
+                  <div className="w-6 h-6 rounded-full flex items-center justify-center text-neutral-500 dark:text-neutral-400 shrink-0">
+                    {socialsExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                  </div>
+                </button>
+
+                {socialsExpanded && (
+                  <div className="p-3 border-t border-[#dadce0] dark:border-[#3c4043] space-y-2.5 bg-white dark:bg-[#1e1f20]">
+                    {socialConfigs.map((soc) => {
+                      const Icon = soc.icon;
+                      const hasVal = Boolean(soc.value?.trim());
+                      return (
+                        <div key={soc.id} className="space-y-1">
+                          <div className="flex items-center justify-between text-[10.5px] px-0.5">
+                            <span className="font-medium text-neutral-700 dark:text-neutral-300">
+                              {soc.name}
+                            </span>
+                            {hasVal && (
+                              <a
+                                href={soc.value.startsWith("http") ? soc.value : `https://${soc.value}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-0.5 text-[#1a73e8] dark:text-[#a8c7fa] hover:underline"
+                                title={`Open ${soc.name} profile in new tab`}
+                              >
+                                <span>Test link</span>
+                                <ArrowUpRight size={11} />
+                              </a>
+                            )}
+                          </div>
+                          <div className="flex items-center gap-2 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#131314] px-2.5 py-1.5 focus-within:border-[#1a73e8] dark:focus-within:border-[#a8c7fa] focus-within:ring-1 focus-within:ring-[#1a73e8]/20 transition-all">
+                            <div className={`w-5.5 h-5.5 rounded-lg flex items-center justify-center shrink-0 ${soc.badgeBg}`}>
+                              <Icon className="w-3.5 h-3.5" />
+                            </div>
+                            <input
+                              type="url"
+                              value={soc.value}
+                              onChange={(e) => soc.onChange(e.target.value)}
+                              placeholder={soc.placeholder}
+                              className="flex-1 bg-transparent border-none outline-none text-xs font-normal text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 focus:ring-0 p-0"
+                            />
+                            {hasVal && (
+                              <button
+                                type="button"
+                                onClick={() => soc.onChange("")}
+                                className="p-1 rounded-md text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 cursor-pointer"
+                                title="Clear input"
+                              >
+                                <X size={12} />
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
-            </div>
-          </div>
+            );
+          })()}
 
           {/* Action Button */}
           <button
@@ -563,23 +646,36 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   // ---------------------------------------------------------------------------
   if (currentView === "preferences") {
     return (
-      <div className="text-left max-h-[min(70dvh,520px)] overflow-y-auto no-scrollbar py-2 px-1">
+      <div className="text-left max-h-[min(72dvh,540px)] overflow-y-auto no-scrollbar py-2 px-1">
         {/* Header */}
-        <div className="flex items-center gap-2 mb-3.5 px-2">
+        <div className="flex items-center gap-2.5 mb-3.5 px-2">
           <button
             onClick={() => setCurrentView("main")}
-            className={`p-1.5 rounded-lg transition-colors ${isDark ? "hover:bg-white/10" : "hover:bg-black/5"}`}
+            className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-neutral-100 dark:hover:bg-[#282a2c] text-neutral-600 dark:text-neutral-300 transition-colors cursor-pointer"
+            aria-label="Back"
           >
             <ChevronLeft size={16} />
           </button>
-          <h3 className={`font-semibold text-sm ${t.textPrimary}`}>Feed Preferences</h3>
+          <div>
+            <h3 className="font-semibold text-sm text-neutral-900 dark:text-neutral-100 leading-tight">
+              Feed Preferences
+            </h3>
+            <p className="text-[11px] text-neutral-500 dark:text-neutral-400">
+              Personalize model suggestions & focus topics
+            </p>
+          </div>
         </div>
 
-        <div className="space-y-5 px-2">
+        <div className="space-y-4 px-2">
           {/* Role Selector */}
-          <div className="space-y-2">
-            <label className={labelCls}>Select Your Primary Role</label>
-            <div className="grid grid-cols-1 gap-1.5 max-h-[200px] overflow-y-auto pr-1 no-scrollbar">
+          <div className="space-y-1.5">
+            <div className="flex items-center justify-between">
+              <label className="text-[10.5px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                Primary Persona
+              </label>
+              <span className="text-[10px] text-neutral-400">Single select</span>
+            </div>
+            <div className="grid grid-cols-1 gap-1.5 max-h-[210px] overflow-y-auto pr-1 no-scrollbar">
               {Object.entries(ROLE_DETAILS).map(([roleId, details]) => {
                 const isSelected = role === roleId;
                 const RoleIcon = details.icon;
@@ -591,28 +687,40 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
                     onClick={() => setRole(roleId as UserRole)}
                     className={`flex items-start gap-3 p-2.5 rounded-2xl border text-left cursor-pointer transition-all ${
                       isSelected
-                        ? "border-[#1a73e8] bg-blue-50/70 dark:bg-blue-950/25 ring-1 ring-[#1a73e8]"
-                        : isDark
-                        ? "border-white/10 bg-white/[0.02] hover:bg-white/[0.04]"
-                        : "border-neutral-200 bg-white hover:bg-neutral-50"
+                        ? "border-[#1a73e8] dark:border-[#a8c7fa] bg-[#1a73e8]/8 dark:bg-[#a8c7fa]/12 ring-1 ring-[#1a73e8] dark:ring-[#a8c7fa]"
+                        : "border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] hover:bg-[#f8f9fa] dark:hover:bg-[#282a2c]"
                     }`}
                   >
-                    <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${
-                      isSelected
-                        ? "bg-[#1a73e8] text-white"
-                        : isDark ? "bg-white/10 text-neutral-400" : "bg-neutral-100 text-neutral-600"
-                    }`}>
+                    <div
+                      className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${
+                        isSelected
+                          ? "bg-[#1a73e8] dark:bg-[#a8c7fa] text-white dark:text-[#041e49]"
+                          : "bg-neutral-100 dark:bg-white/10 text-neutral-600 dark:text-neutral-400"
+                      }`}
+                    >
                       <RoleIcon size={14} />
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center justify-between">
-                        <p className={`text-xs font-semibold ${isSelected ? "text-[#1a73e8] dark:text-[#8ab4f8]" : "text-neutral-900 dark:text-white"}`}>
+                        <p
+                          className={`text-xs font-semibold ${
+                            isSelected
+                              ? "text-[#1a73e8] dark:text-[#a8c7fa]"
+                              : "text-neutral-900 dark:text-neutral-100"
+                          }`}
+                        >
                           {details.label}
                         </p>
-                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
-                          isSelected ? "border-[#1a73e8] bg-white dark:bg-[#1e1f20]" : "border-neutral-300 dark:border-white/20"
-                        }`}>
-                          {isSelected && <div className="w-2 h-2 rounded-full bg-[#1a73e8]" />}
+                        <div
+                          className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                            isSelected
+                              ? "border-[#1a73e8] dark:border-[#a8c7fa] bg-white dark:bg-[#1e1f20]"
+                              : "border-[#dadce0] dark:border-[#5f6368]"
+                          }`}
+                        >
+                          {isSelected && (
+                            <div className="w-2 h-2 rounded-full bg-[#1a73e8] dark:bg-[#a8c7fa]" />
+                          )}
                         </div>
                       </div>
                       <p className="text-[11px] leading-relaxed text-neutral-500 dark:text-neutral-400 mt-0.5">
@@ -626,8 +734,15 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
           </div>
 
           {/* Filter Chips for Interests */}
-          <div className="space-y-2">
-            <p className={labelCls}>Customize Interests</p>
+          <div className="space-y-1.5">
+            <div className="flex items-center justify-between">
+              <p className="text-[10.5px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                Focus Areas & Topics
+              </p>
+              <span className="text-[10px] text-neutral-400">
+                {interests.length} selected
+              </span>
+            </div>
             <div className="flex flex-wrap gap-1.5 mt-1">
               {onboardingOptions.interests.map((item) => {
                 const selected = interests.includes(item.id);
@@ -636,13 +751,14 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
                     key={item.id}
                     type="button"
                     onClick={() => toggleInterest(item.id)}
-                    className={`text-[11px] font-medium px-3 py-1 rounded-full border transition-all cursor-pointer ${
+                    className={`text-[11px] font-medium px-3 py-1 rounded-full border transition-all cursor-pointer flex items-center gap-1.5 ${
                       selected
-                        ? "bg-[#e8f0fe] text-[#1a73e8] dark:bg-blue-900/30 dark:text-[#8ab4f8] border-blue-200 dark:border-blue-700/30"
-                        : "bg-white dark:bg-white/[0.04] text-neutral-600 dark:text-neutral-400 border-neutral-300 dark:border-white/10 hover:border-neutral-400"
+                        ? "bg-[#c2e7ff] text-[#001d35] dark:bg-[#004a77] dark:text-[#c2e7ff] border-transparent shadow-2xs font-semibold"
+                        : "bg-white dark:bg-[#202124] text-neutral-700 dark:text-neutral-300 border-[#dadce0] dark:border-[#3c4043] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c]"
                     }`}
                   >
-                    {item.label}
+                    {selected && <Check size={11} className="stroke-[2.5]" />}
+                    <span>{item.label}</span>
                   </button>
                 );
               })}

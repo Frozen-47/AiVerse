@@ -342,7 +342,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
       role="dialog"
       aria-modal="true"
       aria-label={`${entry.name} - Model Details`}
-      className="fixed inset-0 z-50 flex flex-col overflow-y-auto overscroll-contain animate-[fadeIn_0.15s_ease-out] bg-[#f8f9fa] dark:bg-[#131314] text-[#202124] dark:text-[#e3e3e3]"
+      className="fixed inset-0 z-[70] flex flex-col overflow-y-auto overscroll-contain animate-[fadeIn_0.15s_ease-out] bg-[#f8f9fa] dark:bg-[#131314] text-[#202124] dark:text-[#e3e3e3]"
     >
       {/* 1. Google Cloud / Model Garden Header (Clean & Compact) */}
       <header className="sticky top-0 z-40 px-4 sm:px-6 h-13 sm:h-14 border-b border-[#dadce0] dark:border-[#3c4043]/50 bg-white/95 dark:bg-[#131314]/95 backdrop-blur-md flex items-center justify-between gap-4 transition-colors">
@@ -364,9 +364,14 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             aria-label="Breadcrumb"
             className="flex items-center gap-1.5 text-xs text-[#5f6368] dark:text-[#8e918f] font-medium truncate"
           >
-            <span className="flex items-center gap-1 text-[#1a73e8] dark:text-[#a8c7fa] font-semibold shrink-0">
+            <button
+              type="button"
+              onClick={onClose}
+              className="flex items-center gap-1 text-[#1a73e8] dark:text-[#a8c7fa] font-semibold shrink-0 hover:underline cursor-pointer"
+              title="Return to Catalog"
+            >
               <Sparkles size={12} /> Model Garden
-            </span>
+            </button>
             <span className="opacity-40">/</span>
             <span className="truncate">{entry.type}</span>
             <span className="opacity-40">/</span>
@@ -394,7 +399,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             title="Share model link"
             className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-medium border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] transition-all cursor-pointer ${
               linkCopied
-                ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30"
+                ? "bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] border-[#1a73e8]/30"
                 : "text-[#5f6368] dark:text-[#c4c7c5] hover:text-[#202124] dark:hover:text-white"
             }`}
           >
@@ -618,7 +623,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                     </div>
 
                     <div className="p-3.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-500 mb-1">
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-[#1a73e8] dark:text-[#a8c7fa] mb-1">
                         <Sparkles size={12} />
                         <span>Primary Task</span>
                       </div>
@@ -679,7 +684,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                   {entry.url && (
                     <section className="p-5 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
                       <div className="flex items-center gap-2 mb-2.5">
-                        <ExternalLink size={16} className="text-emerald-500" />
+                        <ExternalLink size={16} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
                         <h2 className="text-sm font-bold text-[#202124] dark:text-[#e3e3e3]">
                           Official Documentation & Registry
                         </h2>
@@ -761,7 +766,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                   {/* Benchmarks & Performance Metrics */}
                   <section className="p-5 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
                     <div className="flex items-center gap-2 mb-2.5">
-                      <BarChart3 size={16} className="text-emerald-500" />
+                      <BarChart3 size={16} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
                       <h2 className="text-sm font-bold text-[#202124] dark:text-[#e3e3e3]">
                         Evaluation Benchmarks & Performance
                       </h2>
@@ -858,7 +863,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                           onClick={handleCopyCode}
                           className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border border-[#3c4043] bg-[#1e1f20] text-xs font-medium text-[#c4c7c5] hover:text-white transition-all cursor-pointer"
                         >
-                          {copied ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
+                          {copied ? <Check size={12} className="text-[#1a73e8] dark:text-[#a8c7fa]" /> : <Copy size={12} />}
                           <span>{copied ? "Copied" : "Copy Code"}</span>
                         </button>
                       </div>

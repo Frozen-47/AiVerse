@@ -191,7 +191,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               >
                 <Zap size={13} className="text-amber-500 fill-amber-500" />
                 <span>Groq Chat</span>
-                <span className="text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                <span className="text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] border border-[#1a73e8]/20">
                   500 tok/s
                 </span>
               </button>

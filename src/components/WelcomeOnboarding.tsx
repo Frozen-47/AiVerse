@@ -623,7 +623,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                 </label>
                 <div className={treeNested}>
                   {/* GitHub */}
-                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-white/[0.03] focus-within:border-[#1a73e8] focus-within:ring-2 focus-within:ring-[#1a73e8]/20 transition-all">
+                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] focus-within:border-[#1a73e8] dark:focus-within:border-[#a8c7fa] focus-within:ring-1 focus-within:ring-[#1a73e8]/25 transition-all">
                     <GithubLogo />
                     <input
                       type="url"
@@ -635,7 +635,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   </div>
 
                   {/* LinkedIn */}
-                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-white/[0.03] focus-within:border-[#0a66c2] focus-within:ring-2 focus-within:ring-[#0a66c2]/20 transition-all">
+                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] focus-within:border-[#0a66c2] focus-within:ring-1 focus-within:ring-[#0a66c2]/25 transition-all">
                     <LinkedinLogo />
                     <input
                       type="url"
@@ -647,7 +647,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   </div>
 
                   {/* Medium */}
-                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-white/[0.03] focus-within:border-[#1a73e8] focus-within:ring-2 focus-within:ring-[#1a73e8]/20 transition-all">
+                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] focus-within:border-[#1a73e8] dark:focus-within:border-[#a8c7fa] focus-within:ring-1 focus-within:ring-[#1a73e8]/25 transition-all">
                     <MediumLogo />
                     <input
                       type="url"
@@ -659,7 +659,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   </div>
 
                   {/* Dev.to */}
-                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-white/[0.03] focus-within:border-[#1a73e8] focus-within:ring-2 focus-within:ring-[#1a73e8]/20 transition-all">
+                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] focus-within:border-[#1a73e8] dark:focus-within:border-[#a8c7fa] focus-within:ring-1 focus-within:ring-[#1a73e8]/25 transition-all">
                     <DevToLogo />
                     <input
                       type="url"
@@ -671,7 +671,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   </div>
 
                   {/* Portfolio */}
-                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-white/[0.03] focus-within:border-[#1a73e8] focus-within:ring-2 focus-within:ring-[#1a73e8]/20 transition-all">
+                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] focus-within:border-[#1a73e8] dark:focus-within:border-[#a8c7fa] focus-within:ring-1 focus-within:ring-[#1a73e8]/25 transition-all">
                     <PortfolioLogo />
                     <input
                       type="url"
@@ -718,21 +718,23 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                     onClick={() => toggleInterest(item.id)}
                     className={`text-left p-3 rounded-2xl border transition-all cursor-pointer ${
                       selected
-                        ? "border-[#1a73e8] bg-blue-50/70 dark:bg-blue-950/25 ring-1 ring-[#1a73e8] text-neutral-900 dark:text-white"
-                        : "border-neutral-200 dark:border-white/10 bg-white dark:bg-white/[0.02] hover:bg-neutral-50 dark:hover:bg-white/[0.04] text-neutral-700 dark:text-neutral-300"
+                        ? "border-transparent bg-[#c2e7ff] text-[#001d35] dark:bg-[#004a77] dark:text-[#c2e7ff] shadow-2xs"
+                        : "border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] hover:bg-[#f8f9fa] dark:hover:bg-[#282a2c] text-neutral-700 dark:text-neutral-300"
                     }`}
                   >
                     <div className="flex items-start justify-between gap-2">
-                      <span className={`text-[13px] font-medium ${selected ? "text-[#1a73e8] dark:text-[#8ab4f8]" : "text-neutral-900 dark:text-white"}`}>
+                      <span className={`text-[13px] font-medium ${selected ? "text-[#001d35] dark:text-[#c2e7ff]" : "text-neutral-900 dark:text-white"}`}>
                         {item.label}
                       </span>
                       {selected && (
-                        <span className="w-4.5 h-4.5 rounded-full bg-[#1a73e8] flex items-center justify-center shrink-0">
-                          <Check size={11} className="text-white stroke-[2.5px]" />
+                        <span className="w-4.5 h-4.5 rounded-full bg-[#001d35] dark:bg-[#c2e7ff] flex items-center justify-center shrink-0">
+                          <Check size={11} className="text-[#c2e7ff] dark:text-[#001d35] stroke-[2.5px]" />
                         </span>
                       )}
                     </div>
-                    <p className="text-[11px] mt-0.5 text-neutral-500 dark:text-neutral-400">{item.description}</p>
+                    <p className={`text-[11px] mt-0.5 ${selected ? "text-[#001d35]/80 dark:text-[#c2e7ff]/80" : "text-neutral-500 dark:text-neutral-400"}`}>
+                      {item.description}
+                    </p>
                   </button>
                 );
               })}
@@ -801,7 +803,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                 type="button"
                 onClick={handlePrimary}
                 disabled={isUpdating || !canContinue()}
-                className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full font-medium text-xs bg-[#1a73e8] hover:bg-[#1557b0] text-white shadow-xs active:scale-[0.98] transition-all cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
+                className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full font-medium text-xs bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] shadow-xs active:scale-[0.98] transition-all cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
               >
                 {primaryLabel}
                 {showPrimaryArrow && <ArrowRight size={14} />}
@@ -830,18 +832,18 @@ function OptionButton({
       onClick={onClick}
       className={`flex items-center justify-between w-full px-4 py-3 rounded-2xl border text-left text-xs font-medium transition-all cursor-pointer ${
         selected
-          ? "border-[#1a73e8] bg-blue-50/70 dark:bg-blue-950/25 text-[#1a73e8] dark:text-[#8ab4f8] ring-1 ring-[#1a73e8]"
-          : "border-neutral-200 dark:border-white/10 bg-white dark:bg-white/[0.02] text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-white/[0.04]"
+          ? "border-[#1a73e8] dark:border-[#a8c7fa] bg-[#1a73e8]/8 dark:bg-[#a8c7fa]/12 text-[#1a73e8] dark:text-[#a8c7fa] ring-1 ring-[#1a73e8] dark:ring-[#a8c7fa]"
+          : "border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] text-neutral-800 dark:text-neutral-200 hover:bg-[#f8f9fa] dark:hover:bg-[#282a2c]"
       }`}
     >
       <span>{label}</span>
       <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
         selected
-          ? "border-[#1a73e8] bg-white dark:bg-[#1e1f20]"
-          : "border-neutral-300 dark:border-white/20"
+          ? "border-[#1a73e8] dark:border-[#a8c7fa] bg-white dark:bg-[#1e1f20]"
+          : "border-[#dadce0] dark:border-[#5f6368]"
       }`}>
         {selected && (
-          <div className="w-2.5 h-2.5 rounded-full bg-[#1a73e8]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#1a73e8] dark:bg-[#a8c7fa]" />
         )}
       </div>
     </button>

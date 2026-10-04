@@ -2,10 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import {
   X,
   Loader2,
-  Layers,
-  GitBranch,
   Sparkles,
-  Compass,
   Share2,
   Check,
   Code2,
@@ -93,29 +90,55 @@ const getRoleConfig = (role: string, isDark: boolean) => {
   };
 };
 
+// Custom SVG Logos for authentic brand styling
+const GithubLogo = ({ className }: { className?: string }) => (
+  <svg className={className || "w-4 h-4"} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
+
+const LinkedinLogo = ({ className }: { className?: string }) => (
+  <svg className={className || "w-4 h-4"} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+  </svg>
+);
+
+const MediumLogo = ({ className }: { className?: string }) => (
+  <svg className={className || "w-4 h-4"} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zm3.04 0c0 3.24-.32 5.87-.71 5.87s-.72-2.63-.72-5.87.32-5.87.72-5.87.71 2.63.71 5.87z"/>
+  </svg>
+);
+
+const DevToLogo = ({ className }: { className?: string }) => (
+  <svg className={className || "w-4 h-4"} viewBox="0 0 448 512" fill="currentColor">
+    <path d="M120.12 208.29c-3.88-2.9-7.77-4.35-11.65-4.35H91.03v104.47h17.45c3.88 0 7.77-1.45 11.65-4.35 3.88-2.9 5.82-7.25 5.82-13.06v-69.65c-.01-5.8-1.96-10.16-5.83-13.06zM304.14 0H43.86C19.63 0 0 19.63 0 43.86v424.28C0 492.37 19.63 512 43.86 512h360.28c24.23 0 43.86-19.63 43.86-43.86V43.86C448 19.63 428.37 0 304.14 0zM151.05 311.77c0 12.18-4.85 21.78-14.55 28.8-9.7 7.03-22.66 10.54-38.89 10.54H62.22V175.12h35.39c16.23 0 29.19 3.51 38.89 10.54 9.7 7.03 14.55 16.62 14.55 28.8v97.31zm102.3-120.87h-64.44v45.48h51.38v28.29h-51.38v46.12h64.44v28.31H158.46V162.5h94.89v28.4zm102.3 124.36c0 18.28-5.97 32.5-17.9 42.66-11.93 10.16-28.31 15.24-49.13 15.24-20.82 0-37.2-5.08-49.13-15.24-11.93-10.16-17.9-24.38-17.9-42.66v-96.1h32.93v95.82c0 9.57 2.74 16.8 8.22 21.68 5.48 4.88 13.78 7.32 24.89 7.32s19.41-2.44 24.89-7.32c5.48-4.88 8.22-12.11 8.22-21.68v-95.82h32.93v96.1z"/>
+  </svg>
+);
+
 // Helper for brand-colored social icon tags
 const getBrandStyle = (name: string, isDark: boolean) => {
   switch (name.toLowerCase()) {
     case "github":
       return isDark 
-        ? "bg-white/10 text-white border border-white/10 hover:bg-white/15" 
-        : "bg-neutral-900/5 text-neutral-900 border border-neutral-900/10 hover:bg-neutral-900/10";
+        ? "bg-white/10 text-white border border-white/15" 
+        : "bg-neutral-900 text-white border border-neutral-800";
     case "linkedin":
       return isDark 
-        ? "bg-blue-500/10 text-blue-400 border border-blue-500/20 hover:bg-blue-500/20" 
-        : "bg-blue-50 text-blue-600 border border-blue-100 hover:bg-blue-100/60";
+        ? "bg-[#0a66c2]/20 text-[#70b5f9] border border-[#0a66c2]/30" 
+        : "bg-[#0a66c2]/10 text-[#0a66c2] border border-[#0a66c2]/25";
     case "medium":
       return isDark 
-        ? "bg-neutral-100/10 text-neutral-250 border border-white/10 hover:bg-white/15" 
-        : "bg-neutral-100 text-neutral-800 border border-neutral-200 hover:bg-neutral-200/60";
+        ? "bg-neutral-800 text-neutral-200 border border-neutral-700" 
+        : "bg-neutral-900 text-white border border-neutral-800";
     case "dev.to":
       return isDark 
-        ? "bg-neutral-400/10 text-neutral-250 border border-white/10 hover:bg-white/15" 
-        : "bg-neutral-900 text-white border border-neutral-800 hover:bg-neutral-800";
+        ? "bg-neutral-800 text-white border border-neutral-700" 
+        : "bg-neutral-900 text-white border border-neutral-800";
     default: // portfolio
       return isDark 
-        ? "bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 hover:bg-indigo-500/20" 
-        : "bg-indigo-50 text-indigo-600 border border-indigo-100 hover:bg-indigo-100/60";
+        ? "bg-[#1a73e8]/20 text-[#a8c7fa] border border-[#1a73e8]/30" 
+        : "bg-[#1a73e8]/10 text-[#1a73e8] border border-[#1a73e8]/25";
   }
 };
 
@@ -285,13 +308,13 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
     }
   };
 
-  const socialLinks = [
-    { name: "GitHub", url: profile?.github, icon: GitBranch },
-    { name: "LinkedIn", url: profile?.linkedin, icon: Layers },
-    { name: "Medium", url: profile?.medium, icon: Sparkles },
-    { name: "Dev.to", url: profile?.devto, icon: Code2 },
-    { name: "Portfolio", url: profile?.portfolio, icon: Compass },
-  ].filter((l) => l.url);
+  const socialLinks: { name: string; url: string; icon: React.ComponentType<{ className?: string }> }[] = [
+    ...(profile?.github ? [{ name: "GitHub", url: profile.github, icon: GithubLogo }] : []),
+    ...(profile?.linkedin ? [{ name: "LinkedIn", url: profile.linkedin, icon: LinkedinLogo }] : []),
+    ...(profile?.medium ? [{ name: "Medium", url: profile.medium, icon: MediumLogo }] : []),
+    ...(profile?.devto ? [{ name: "Dev.to", url: profile.devto, icon: DevToLogo }] : []),
+    ...(profile?.portfolio ? [{ name: "Portfolio", url: profile.portfolio, icon: Globe }] : []),
+  ];
 
   // Dynamic Styles
   const roleStyle = profile ? getRoleConfig(profile.role, isDark) : getRoleConfig("developer", isDark);
@@ -595,35 +618,55 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
 
                 {/* ── Connections Tab ── */}
                 {activeTab === "social" && (
-                  <div>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between px-1">
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                        Profiles on the Web
+                      </span>
+                      <span className="text-[10px] text-neutral-400">
+                        {socialLinks.length} verified {socialLinks.length === 1 ? "link" : "links"}
+                      </span>
+                    </div>
+
                     {socialLinks.length > 0 ? (
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                         {socialLinks.map((link) => {
                           const Icon = link.icon;
                           const brandCls = getBrandStyle(link.name, isDark);
+                          const cleanUrl = link.url.replace(/^https?:\/\/(www\.)?/, "");
                           return (
                             <a
                               key={link.name}
-                              href={link.url}
+                              href={link.url.startsWith("http") ? link.url : `https://${link.url}`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="p-3.5 rounded-2xl border border-neutral-200 dark:border-white/10 bg-[#fafafa] dark:bg-white/[0.02] hover:bg-neutral-50 dark:hover:bg-white/[0.04] transition-all flex items-center justify-between group cursor-pointer"
+                              className="p-3.5 rounded-2xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] hover:border-[#1a73e8] dark:hover:border-[#a8c7fa] hover:bg-[#f8f9fa] dark:hover:bg-[#282a2c] transition-all flex items-center justify-between group cursor-pointer shadow-2xs"
                             >
-                              <div className="flex items-center gap-3">
+                              <div className="flex items-center gap-3 min-w-0 pr-2">
                                 <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${brandCls}`}>
-                                  <Icon size={14} />
+                                  <Icon className="w-4 h-4" />
                                 </div>
-                                <span className="text-xs font-medium text-neutral-800 dark:text-neutral-200">{link.name}</span>
+                                <div className="min-w-0">
+                                  <span className="text-xs font-semibold text-neutral-900 dark:text-neutral-100 block group-hover:text-[#1a73e8] dark:group-hover:text-[#a8c7fa] transition-colors truncate">
+                                    {link.name}
+                                  </span>
+                                  <span className="text-[11px] text-neutral-500 dark:text-neutral-400 block truncate">
+                                    {cleanUrl}
+                                  </span>
+                                </div>
                               </div>
-                              <ArrowUpRight size={14} className="text-neutral-400 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors" />
+                              <ArrowUpRight size={14} className="text-neutral-400 group-hover:text-[#1a73e8] dark:group-hover:text-[#a8c7fa] shrink-0 transition-colors" />
                             </a>
                           );
                         })}
                       </div>
                     ) : (
-                      <div className="py-10 text-center rounded-2xl border border-neutral-200 dark:border-white/10 bg-[#fafafa] dark:bg-white/[0.02]">
-                        <p className="text-sm font-medium text-neutral-800 dark:text-neutral-200">No external accounts connected</p>
-                        <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">No GitHub, LinkedIn, or portfolio links shared.</p>
+                      <div className="py-12 text-center rounded-2xl border border-[#dadce0] dark:border-[#3c4043] bg-[#fafafa] dark:bg-[#202124]/50">
+                        <div className="w-10 h-10 rounded-full bg-neutral-100 dark:bg-white/10 flex items-center justify-center mx-auto mb-2 text-neutral-400">
+                          <Globe size={18} />
+                        </div>
+                        <p className="text-xs font-semibold text-neutral-800 dark:text-neutral-200">No external accounts connected</p>
+                        <p className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-1 max-w-xs mx-auto">This builder hasn't shared any public GitHub, LinkedIn, or portfolio links yet.</p>
                       </div>
                     )}
                   </div>

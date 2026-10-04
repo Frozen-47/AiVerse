@@ -513,7 +513,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
         <p className="mb-3.5 last:mb-0 leading-relaxed text-neutral-800 dark:text-[#d1d5db] text-xs sm:text-[14.5px]" {...props} />
       ),
       ul: (props: any) => (
-        <ul className="list-disc pl-5 mb-3.5 space-y-1.5 marker:text-emerald-500/70 dark:marker:text-emerald-400/70 text-xs sm:text-[14.5px] text-neutral-800 dark:text-[#d1d5db]" {...props} />
+        <ul className="list-disc pl-5 mb-3.5 space-y-1.5 marker:text-[#1a73e8]/70 dark:marker:text-[#a8c7fa]/70 text-xs sm:text-[14.5px] text-neutral-800 dark:text-[#d1d5db]" {...props} />
       ),
       ol: (props: any) => (
         <ol className="list-decimal pl-5 mb-3.5 space-y-1.5 marker:text-neutral-500 font-normal text-xs sm:text-[14.5px] text-neutral-800 dark:text-[#d1d5db]" {...props} />
@@ -522,7 +522,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
         <li className="leading-relaxed [&>p]:mb-1.5 [&>p:last-child]:mb-0" {...props} />
       ),
       blockquote: ({ children }: any) => (
-        <blockquote className="my-3.5 border-l-3 border-emerald-500 dark:border-emerald-400 pl-3.5 py-1.5 italic text-neutral-600 dark:text-neutral-400 bg-neutral-100/50 dark:bg-white/[0.02] rounded-r-lg text-xs sm:text-[14px]">
+        <blockquote className="my-3.5 border-l-3 border-[#1a73e8] dark:border-[#a8c7fa] pl-3.5 py-1.5 italic text-neutral-600 dark:text-neutral-400 bg-neutral-100/50 dark:bg-white/[0.02] rounded-r-lg text-xs sm:text-[14px]">
           {children}
         </blockquote>
       ),
@@ -545,7 +545,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
             <button
               type="button"
               onClick={() => onEntrySelect(match.name)}
-              className="inline-flex items-center gap-0.5 font-semibold text-emerald-600 dark:text-emerald-400 hover:underline underline-offset-2 decoration-emerald-500/50 cursor-pointer"
+              className="inline-flex items-center gap-0.5 font-semibold text-[#1a73e8] dark:text-[#a8c7fa] hover:underline underline-offset-2 decoration-[#1a73e8]/50 cursor-pointer"
               title={`Inspect ${match.name} in AiVerse`}
             >
               <span>{children}</span>
@@ -566,7 +566,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
           <div className="my-3.5 rounded-xl overflow-hidden border border-neutral-200/80 dark:border-neutral-800 bg-[#0d0e10] text-neutral-100 shadow-sm not-prose">
             <div className="flex items-center justify-between px-3.5 py-2 border-b border-white/[0.08] bg-white/[0.03] text-[11px] font-mono text-neutral-400">
               <span className="uppercase font-semibold tracking-wider text-neutral-300 flex items-center gap-1.5">
-                <Code size={12} className="text-emerald-400" />
+                <Code size={12} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
                 <span>{lang}</span>
               </span>
               <button
@@ -580,8 +580,8 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
               >
                 {copiedCodeText === codeString ? (
                   <>
-                    <Check size={12} className="text-emerald-400" />
-                    <span className="text-emerald-400">Copied!</span>
+                    <Check size={12} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
+                    <span className="text-[#1a73e8] dark:text-[#a8c7fa]">Copied!</span>
                   </>
                 ) : (
                   <>
@@ -591,7 +591,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                 )}
               </button>
             </div>
-            <pre className="p-4 overflow-x-auto font-mono text-xs sm:text-[13px] leading-relaxed text-neutral-200 no-scrollbar selection:bg-emerald-500/30">
+            <pre className="p-4 overflow-x-auto font-mono text-xs sm:text-[13px] leading-relaxed text-neutral-200 no-scrollbar selection:bg-[#1a73e8]/30">
               <code>{codeString}</code>
             </pre>
           </div>
@@ -605,7 +605,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
             <div className="my-3.5 rounded-xl overflow-hidden border border-neutral-200/80 dark:border-neutral-800 bg-[#0d0e10] text-neutral-100 shadow-sm not-prose">
               <div className="flex items-center justify-between px-3.5 py-2 border-b border-white/[0.08] bg-white/[0.03] text-[11px] font-mono text-neutral-400">
                 <span className="uppercase font-semibold tracking-wider text-neutral-300 flex items-center gap-1.5">
-                  <Code size={12} className="text-emerald-400" />
+                  <Code size={12} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
                   <span>{lang}</span>
                 </span>
                 <button
@@ -619,8 +619,8 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                 >
                   {copiedCodeText === codeString ? (
                     <>
-                      <Check size={12} className="text-emerald-400" />
-                      <span className="text-emerald-400">Copied!</span>
+                      <Check size={12} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
+                      <span className="text-[#1a73e8] dark:text-[#a8c7fa]">Copied!</span>
                     </>
                   ) : (
                     <>
@@ -639,7 +639,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
 
         return (
           <code
-            className="bg-neutral-100 dark:bg-white/[0.08] text-emerald-700 dark:text-emerald-400 px-1.5 py-0.5 rounded-md font-mono text-[12px] sm:text-[12.5px] border border-neutral-200/60 dark:border-white/10 font-medium"
+            className="bg-neutral-100 dark:bg-white/[0.08] text-[#1a73e8] dark:text-[#a8c7fa] px-1.5 py-0.5 rounded-md font-mono text-[12px] sm:text-[12.5px] border border-neutral-200/60 dark:border-white/10 font-medium"
             {...props}
           >
             {children}
@@ -681,7 +681,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
       a: ({ children, href, ...props }: any) => (
         <a
           href={href}
-          className="inline-flex items-center gap-0.5 text-emerald-600 dark:text-emerald-400 underline underline-offset-2 hover:opacity-80 font-medium"
+          className="inline-flex items-center gap-0.5 text-[#1a73e8] dark:text-[#a8c7fa] underline underline-offset-2 hover:opacity-80 font-medium"
           target="_blank"
           rel="noopener noreferrer"
           {...props}
@@ -697,7 +697,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
               type="checkbox"
               checked={Boolean(checked)}
               readOnly
-              className="mr-2 rounded border-neutral-300 dark:border-neutral-700 text-emerald-500 focus:ring-0 cursor-default align-middle"
+              className="mr-2 rounded border-neutral-300 dark:border-neutral-700 text-[#1a73e8] focus:ring-0 cursor-default align-middle"
               {...props}
             />
           );
@@ -927,7 +927,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                 <Zap size={13} className="fill-white" />
               </div>
               <span className="font-bold text-sm tracking-tight">Groq AI</span>
-              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold border border-emerald-500/20">
+              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] font-semibold border border-[#1a73e8]/20">
                 500 tok/s
               </span>
             </div>
@@ -947,7 +947,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
               onClick={createNewSession}
               className="w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border border-neutral-300/80 dark:border-white/10 hover:bg-white dark:hover:bg-white/[0.06] text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-xs transition-all cursor-pointer"
             >
-              <Plus size={15} className="text-emerald-500" />
+              <Plus size={15} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
               <span>New chat</span>
             </button>
           </div>
@@ -1008,7 +1008,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
 
             <div className="flex items-center justify-between px-3 py-2 text-xs text-neutral-500 dark:text-neutral-400">
               <span className="font-mono text-[11px]">{userName || 'AiVerse User'}</span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold">
+              <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] font-semibold">
                 PRO
               </span>
             </div>
@@ -1038,7 +1038,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                 >
                   <Zap size={15} className="text-amber-500 fill-amber-500" />
                   <span>{currentModeConfig.name}</span>
-                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold border border-emerald-500/20">
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] font-semibold border border-[#1a73e8]/20">
                     Groq LPU
                   </span>
                   <ChevronDown size={14} className="text-neutral-400 mt-0.5" />
@@ -1066,13 +1066,13 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                           }`}
                         >
                           <div className="w-7 h-7 rounded-lg bg-neutral-200/70 dark:bg-white/10 flex items-center justify-center shrink-0">
-                            <Icon size={14} className={isSelected ? 'text-emerald-500' : 'opacity-70'} />
+                            <Icon size={14} className={isSelected ? 'text-[#1a73e8] dark:text-[#a8c7fa]' : 'opacity-70'} />
                           </div>
                           <div className="min-w-0 flex-1">
                             <p className="text-xs font-semibold leading-tight">{mode.name}</p>
                             <p className="text-[10px] text-neutral-400 line-clamp-1 mt-0.5">{mode.tagline}</p>
                           </div>
-                          {isSelected && <Check size={14} className="text-emerald-500 shrink-0" />}
+                          {isSelected && <Check size={14} className="text-[#1a73e8] dark:text-[#a8c7fa] shrink-0" />}
                         </button>
                       );
                     })}
@@ -1127,7 +1127,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
             {/* Empty / Welcome State ("What can I help with?") */}
             {isInitialEmpty ? (
               <div className="max-w-2xl mx-auto w-full my-auto flex flex-col items-center text-center animate-[fadeUp_0.25s_ease-out]">
-                <div className="w-14 h-14 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-5 ring-8 ring-emerald-500/5">
+                <div className="w-14 h-14 rounded-full bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] flex items-center justify-center mb-5 ring-8 ring-[#1a73e8]/5">
                   <Sparkles size={28} />
                 </div>
 
@@ -1149,7 +1149,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                       }}
                       className="p-4 rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-neutral-50/60 dark:bg-white/[0.02] hover:bg-neutral-100/80 dark:hover:bg-white/[0.06] hover:border-neutral-400 dark:hover:border-neutral-700 transition-all group cursor-pointer"
                     >
-                      <h4 className="text-xs font-semibold text-neutral-900 dark:text-neutral-200 group-hover:text-emerald-500 transition-colors">
+                      <h4 className="text-xs font-semibold text-neutral-900 dark:text-neutral-200 group-hover:text-[#1a73e8] dark:group-hover:text-[#a8c7fa] transition-colors">
                         {item.title}
                       </h4>
                       <p className="text-[11px] text-neutral-500 dark:text-neutral-400 line-clamp-1 mt-1">
@@ -1178,7 +1178,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                       className={`flex w-full ${isUser ? 'justify-end' : 'justify-start items-start gap-4'}`}
                     >
                       {!isUser && (
-                        <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-xs mt-1">
+                        <div className="w-8 h-8 rounded-full bg-[#1a73e8] text-white flex items-center justify-center shrink-0 shadow-xs mt-1">
                           <Sparkles size={15} />
                         </div>
                       )}
@@ -1229,7 +1229,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                                 {displayContent || (msg.isStreaming ? (displayReasoning ? '' : 'Thinking...') : '')}
                               </ReactMarkdown>
                               {msg.isStreaming && (!displayReasoning || displayContent) && (
-                                <span className="inline-block w-2 h-4 bg-emerald-500 ml-1 animate-pulse align-middle" />
+                                <span className="inline-block w-2 h-4 bg-[#1a73e8] dark:bg-[#a8c7fa] ml-1 animate-pulse align-middle" />
                               )}
                             </div>
 
@@ -1243,7 +1243,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                                   <button
                                     key={item.name}
                                     onClick={() => onEntrySelect?.(item.name)}
-                                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-[#2a2a2a] text-xs font-semibold text-neutral-800 dark:text-neutral-200 hover:border-emerald-500 hover:text-emerald-500 transition-all cursor-pointer shadow-xs"
+                                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-[#2a2a2a] text-xs font-semibold text-neutral-800 dark:text-neutral-200 hover:border-[#1a73e8] dark:hover:border-[#a8c7fa] hover:text-[#1a73e8] dark:hover:text-[#a8c7fa] transition-all cursor-pointer shadow-xs"
                                   >
                                     <EcosystemLogo name={item.org || item.name} website={item.url} size={15} />
                                     <span>{item.name}</span>
@@ -1265,13 +1265,13 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                                   className="p-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/[0.08] hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
                                   title="Copy response"
                                 >
-                                  {copiedIndex === idx ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
+                                  {copiedIndex === idx ? <Check size={14} className="text-[#1a73e8] dark:text-[#a8c7fa]" /> : <Copy size={14} />}
                                 </button>
 
                                 <button
                                   onClick={() => speakMessage(displayContent || msg.content, idx)}
                                   className={`p-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/[0.08] transition-colors cursor-pointer ${
-                                    currentlySpeakingIdx === idx ? 'text-emerald-500' : 'hover:text-neutral-900 dark:hover:text-white'
+                                    currentlySpeakingIdx === idx ? 'text-[#1a73e8] dark:text-[#a8c7fa]' : 'hover:text-neutral-900 dark:hover:text-white'
                                   }`}
                                   title={currentlySpeakingIdx === idx ? 'Stop reading' : 'Read aloud'}
                                 >
@@ -1281,7 +1281,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                                 <button
                                   onClick={() => setFeedbackState((p) => ({ ...p, [idx]: 'up' }))}
                                   className={`p-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/[0.08] transition-colors cursor-pointer ${
-                                    feedbackState[idx] === 'up' ? 'text-emerald-500' : 'hover:text-neutral-900 dark:hover:text-white'
+                                    feedbackState[idx] === 'up' ? 'text-[#1a73e8] dark:text-[#a8c7fa]' : 'hover:text-neutral-900 dark:hover:text-white'
                                   }`}
                                   title="Good response"
                                 >
@@ -1408,12 +1408,12 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
       {!isMiniOpen && (
         <button
           onClick={() => setIsMiniOpen(true)}
-          className="group fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 px-3.5 py-2.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.18)] dark:shadow-[0_8px_30px_rgba(255,255,255,0.12)] bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 border border-neutral-800 dark:border-white/20 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+          className="group fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 px-3.5 py-2.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.18)] dark:shadow-[0_8px_30px_rgba(255,255,255,0.12)] bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 border border-neutral-800 dark:border-white/20 hover:border-neutral-700 dark:hover:border-white/40 transition-colors duration-150 cursor-pointer"
           aria-label="Open Groq AI Assistant"
         >
           <div className="relative flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-tr from-amber-500 to-orange-500 text-white shadow-xs">
             <Zap size={13} className="fill-white" />
-            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-neutral-900 dark:ring-white" />
+            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#1a73e8] dark:bg-[#a8c7fa] ring-2 ring-neutral-900 dark:ring-white" />
           </div>
           <span className="font-semibold text-xs tracking-tight">Groq AI</span>
           <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-neutral-800 dark:bg-neutral-200 text-neutral-300 dark:text-neutral-700">
@@ -1432,7 +1432,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                 <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xs">
                   <Zap size={13} className="fill-white" />
                 </div>
-                <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 ring-1 ring-white dark:ring-[#18191c]" />
+                <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#1a73e8] dark:bg-[#a8c7fa] ring-1 ring-white dark:ring-[#18191c]" />
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="font-bold text-xs text-neutral-900 dark:text-white">Vox</span>
@@ -1451,7 +1451,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                   setIsMiniOpen(false);
                   onNavigateToChat?.();
                 }}
-                className="flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 transition-colors cursor-pointer mr-1 border border-emerald-500/20"
+                className="flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-semibold text-[#1a73e8] dark:text-[#a8c7fa] hover:bg-[#1a73e8]/10 transition-colors cursor-pointer mr-1 border border-[#1a73e8]/20"
                 title="Expand to Fullscreen Groq Studio (/chat)"
               >
                 <span>/chat</span>
@@ -1494,7 +1494,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                     <button
                       key={idx}
                       onClick={() => handleSend(item.prompt)}
-                      className="p-2 rounded-xl border border-neutral-200/80 dark:border-white/10 bg-neutral-50/70 dark:bg-white/[0.03] hover:border-emerald-500 text-left transition-all cursor-pointer"
+                      className="p-2 rounded-xl border border-neutral-200/80 dark:border-white/10 bg-neutral-50/70 dark:bg-white/[0.03] hover:border-[#1a73e8] dark:hover:border-[#a8c7fa] text-left transition-all cursor-pointer"
                     >
                       <p className="text-[11.5px] font-semibold text-neutral-800 dark:text-neutral-200 line-clamp-1">
                         {item.title}
@@ -1524,7 +1524,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                   className={`flex ${isUser ? 'justify-end' : 'justify-start items-start gap-2'}`}
                 >
                   {!isUser && (
-                    <div className="w-5 h-5 rounded-md bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5">
+                    <div className="w-5 h-5 rounded-md bg-[#1a73e8] text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5">
                       <Sparkles size={11} />
                     </div>
                   )}
@@ -1573,7 +1573,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                             {displayContent || (msg.isStreaming ? (displayReasoning ? '' : 'Thinking...') : '')}
                           </ReactMarkdown>
                           {msg.isStreaming && (!displayReasoning || displayContent) && (
-                            <span className="inline-block w-1.5 h-3.5 bg-emerald-500 ml-0.5 animate-pulse align-middle" />
+                            <span className="inline-block w-1.5 h-3.5 bg-[#1a73e8] dark:bg-[#a8c7fa] ml-0.5 animate-pulse align-middle" />
                           )}
                         </div>
 
@@ -1587,7 +1587,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                               <button
                                 key={item.name}
                                 onClick={() => onEntrySelect?.(item.name)}
-                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md border border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-white/[0.04] text-[10.5px] font-medium text-neutral-700 dark:text-neutral-300 hover:border-emerald-500 hover:text-emerald-500 transition-colors cursor-pointer"
+                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md border border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-white/[0.04] text-[10.5px] font-medium text-neutral-700 dark:text-neutral-300 hover:border-[#1a73e8] dark:hover:border-[#a8c7fa] hover:text-[#1a73e8] dark:hover:text-[#a8c7fa] transition-colors cursor-pointer"
                               >
                                 <EcosystemLogo name={item.org || item.name} website={item.url} size={13} />
                                 <span>{item.name}</span>
@@ -1610,14 +1610,14 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                                 className="p-1 rounded hover:bg-neutral-100 dark:hover:bg-white/10 transition-colors cursor-pointer flex items-center gap-0.5"
                                 title="Copy"
                               >
-                                {copiedIndex === idx ? <Check size={10} className="text-emerald-500" /> : <Copy size={10} />}
+                                {copiedIndex === idx ? <Check size={10} className="text-[#1a73e8] dark:text-[#a8c7fa]" /> : <Copy size={10} />}
                                 <span>{copiedIndex === idx ? 'Copied' : 'Copy'}</span>
                               </button>
 
                               <button
                                 onClick={() => speakMessage(displayContent || msg.content, idx)}
                                 className={`p-1 rounded transition-colors cursor-pointer flex items-center gap-0.5 ${
-                                  currentlySpeakingIdx === idx ? 'text-emerald-500' : 'hover:bg-neutral-100 dark:hover:bg-white/10'
+                                  currentlySpeakingIdx === idx ? 'text-[#1a73e8] dark:text-[#a8c7fa]' : 'hover:bg-neutral-100 dark:hover:bg-white/10'
                                 }`}
                               >
                                 {currentlySpeakingIdx === idx ? <VolumeX size={10} /> : <Volume2 size={10} />}
@@ -1643,7 +1643,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
 
           {/* Mini Input Box */}
           <div className="p-2.5 border-t border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/70 dark:bg-[#121315]/80 backdrop-blur-xl shrink-0">
-            <div className="relative flex items-end gap-1.5 rounded-xl border border-neutral-300/80 dark:border-white/15 px-2.5 py-1.5 bg-white dark:bg-[#1f2024] focus-within:border-emerald-500 transition-all">
+            <div className="relative flex items-end gap-1.5 rounded-xl border border-neutral-300/80 dark:border-white/15 px-2.5 py-1.5 bg-white dark:bg-[#1f2024] focus-within:border-[#1a73e8] dark:focus-within:border-[#a8c7fa] transition-all">
               <textarea
                 ref={miniTextareaRef}
                 rows={1}
@@ -1694,7 +1694,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                   disabled={!input.trim()}
                   className={`p-1.5 rounded-lg flex items-center justify-center shrink-0 transition-all cursor-pointer ${
                     input.trim()
-                      ? 'bg-emerald-500 text-white hover:bg-emerald-600 shadow-xs'
+                      ? 'bg-[#1a73e8] text-white hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] dark:text-[#041e49] shadow-xs'
                       : 'text-neutral-400 bg-neutral-100 dark:bg-white/5 opacity-40 cursor-not-allowed'
                   }`}
                   title="Send"

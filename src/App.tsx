@@ -654,8 +654,8 @@ const Inner: React.FC = () => {
     let path = "/";
 
     if (isChat) {
-      title = "Vox AI Technical Copilot | ChatGPT Studio | AiVerse";
-      desc = "Chat with Vox, the flagship AI research copilot on AiVerse covering 330+ models, benchmarks, and architectures.";
+      title = "Vox AI Technical Assistant | AI Studio | AiVerse";
+      desc = "Chat with Vox, the flagship AI research assistant on AiVerse covering 330+ models, benchmarks, and architectures.";
       path = "/chat";
     } else if (isPrivacy) {
       title = "Privacy Policy | AiVerse";
@@ -2268,34 +2268,6 @@ const Inner: React.FC = () => {
         </div>
       </footer>
 
-      {selected && (
-        <Suspense fallback={null}>
-          <DetailModal
-            entry={selected}
-            onClose={() => setSelected(null)}
-            onRatingSummaryChange={handleRatingSummaryChange}
-            relatedEntries={relatedForSelected}
-            onSelectRelated={setSelected}
-            isBookmarked={bookmarks.includes(selected.name)}
-            onToggleBookmark={() => handleToggleBookmark(selected.name)}
-            compareCandidates={compareCandidatesForSelected}
-            onViewProfile={(uname) => {
-              setProfileUsername(uname);
-            }}
-            onOpenPlayground={() => {
-              setSelected(null);
-              setIsPlayground(true);
-              setIsWizard(false);
-              setIsFeatures(false);
-              setIsPrivacy(false);
-              setIsTerms(false);
-              setIsArena(false);
-              setIsAdminDashboard(false);
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-          />
-        </Suspense>
-      )}
       {isAdding && (
         <Suspense fallback={null}>
           <AddModal
@@ -2380,6 +2352,36 @@ const Inner: React.FC = () => {
           }}
         />
       </Suspense>
+
+      {selected && (
+        <Suspense fallback={null}>
+          <DetailModal
+            entry={selected}
+            onClose={() => setSelected(null)}
+            onRatingSummaryChange={handleRatingSummaryChange}
+            relatedEntries={relatedForSelected}
+            onSelectRelated={setSelected}
+            isBookmarked={bookmarks.includes(selected.name)}
+            onToggleBookmark={() => handleToggleBookmark(selected.name)}
+            compareCandidates={compareCandidatesForSelected}
+            onViewProfile={(uname) => {
+              setProfileUsername(uname);
+            }}
+            onOpenPlayground={() => {
+              setSelected(null);
+              setIsChat(false);
+              setIsPlayground(true);
+              setIsWizard(false);
+              setIsFeatures(false);
+              setIsPrivacy(false);
+              setIsTerms(false);
+              setIsArena(false);
+              setIsAdminDashboard(false);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          />
+        </Suspense>
+      )}
 
       {/* Mobile Sidebar Overlay */}
       {showMobileSidebar && (

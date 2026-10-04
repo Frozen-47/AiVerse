@@ -269,7 +269,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const systemPromptContent = systemInstruction && typeof systemInstruction === 'string'
       ? systemInstruction
-      : `You are Vox, the premier AI research copilot and technical intelligence engine of AiVerse (aiverse.frozenn.in).
+      : `You are Vox, the premier AI research assistant and technical intelligence engine of AiVerse (aiverse.frozenn.in).
 ${nameStr}
 
 You specialize in cutting-edge AI: Foundation LLMs, Reasoning Models (DeepSeek-R1, QwQ, o1, Claude 3.7), Multimodal Vision & Audio, Open-Source Frameworks (LangGraph, Unsloth, vLLM, PyTorch), Inference Platforms (Groq LPUs, RunPod, Hugging Face), and Benchmarks (MMLU-Pro, SWE-bench, MATH-500).
