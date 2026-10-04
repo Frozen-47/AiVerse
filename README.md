@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-03)
+### ⚡ Daily AI Pulse (2026-10-04)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Julia-1** (`Model`), **qwen-image-2.1-uncensored-aio-loras** (`Platform`), **EgoPro** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Qwen 2.5 (72B)** (Alibaba Cloud) — [Explore](https://github.com/QwenLM/Qwen2.5) |
-| 🗄️ **Catalog Entries** | **334** AI assets tracked (269 featured) |
-| 🔥 **Top Trending Model** | [convaiinnovations/laya](https://huggingface.co/convaiinnovations/laya) |
+| 🆕 **New Assets Added** | **clef-flash** (`Model`), **multi-harness-rl** (`Platform`), **wm_imagined** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Llama 3.2 Vision (11B)** (Meta AI) — [Explore](https://ai.meta.com/llama/) |
+| 🗄️ **Catalog Entries** | **337** AI assets tracked (271 featured) |
+| 🔥 **Top Trending Model** | [Cloudflare/clef](https://huggingface.co/Cloudflare/clef) |
 | 📜 **Top Daily Paper** | [Replacing Large Language Models with Jev Decision ...](https://huggingface.co/papers/2609.22753) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Daily Run** | `Sat, 03 Oct 2026 03:05:17 GMT` |
+| 🛡️ **Catalog Links Checked** | **18/25** operational |
+| 🕒 **Last Daily Run** | `Sun, 04 Oct 2026 03:33:23 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

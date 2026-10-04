@@ -1,28 +1,43 @@
 {
-  "timestamp": "2026-10-03T03:05:10.352Z",
+  "timestamp": "2026-10-04T03:33:20.362Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 18,
+  "broken": 7,
   "issues": [
     {
-      "name": "GPT-4o mini",
-      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+      "name": "Perplexity AI",
+      "url": "https://www.perplexity.ai/",
       "status": 403
     },
     {
-      "name": "Codex",
-      "url": "https://openai.com/blog/openai-codex",
+      "name": "o1 (OpenAI)",
+      "url": "https://openai.com/o1",
       "status": 403
     },
     {
-      "name": "Play.ht",
-      "url": "https://play.ht",
-      "status": "Network Error"
+      "name": "Claude",
+      "url": "https://claude.ai",
+      "status": 403
     },
     {
-      "name": "ERNIE Bot",
-      "url": "https://yiyan.baidu.com",
-      "status": "Timeout"
+      "name": "GPT-4",
+      "url": "https://openai.com/gpt-4",
+      "status": 403
+    },
+    {
+      "name": "Arena-Hard-Auto",
+      "url": "https://github.com/sunshanghai/arena-hard-auto",
+      "status": 404
+    },
+    {
+      "name": "Leonardo.ai",
+      "url": "https://leonardo.ai",
+      "status": 403
+    },
+    {
+      "name": "GPT-3.5 Turbo",
+      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
+      "status": 404
     }
   ]
 }

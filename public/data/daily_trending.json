@@ -1,60 +1,60 @@
 {
-  "timestamp": "2026-10-03T03:05:10.069Z",
+  "timestamp": "2026-10-04T03:33:20.290Z",
   "models": [
+    {
+      "id": "Cloudflare/clef",
+      "author": "Cloudflare",
+      "likes": 1003,
+      "downloads": 2620,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/Cloudflare/clef"
+    },
     {
       "id": "convaiinnovations/laya",
       "author": "convaiinnovations",
-      "likes": 5007,
+      "likes": 5080,
       "downloads": 0,
       "pipeline_tag": "text-classification",
       "url": "https://huggingface.co/convaiinnovations/laya"
     },
     {
-      "id": "Cloudflare/clef",
-      "author": "Cloudflare",
-      "likes": 800,
-      "downloads": 824,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Cloudflare/clef"
-    },
-    {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
       "author": "abenzerps",
-      "likes": 2849,
-      "downloads": 1376248,
+      "likes": 2941,
+      "downloads": 1455921,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
     },
     {
-      "id": "Contrastive-LM/CLM-v0.1-8B",
-      "author": "Contrastive-LM",
-      "likes": 671,
-      "downloads": 2951,
-      "pipeline_tag": "text-ranking",
-      "url": "https://huggingface.co/Contrastive-LM/CLM-v0.1-8B"
-    },
-    {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 6001,
-      "downloads": 1584129,
+      "likes": 6144,
+      "downloads": 1629984,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     },
     {
       "id": "Qwen/Qwen-Image-2.1",
       "author": "Qwen",
-      "likes": 2843,
-      "downloads": 81738,
+      "likes": 2905,
+      "downloads": 85895,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
+    },
+    {
+      "id": "Cloudflare/clef-flash",
+      "author": "Cloudflare",
+      "likes": 365,
+      "downloads": 4310,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/Cloudflare/clef-flash"
     }
   ],
   "papers": [
     {
       "title": "Replacing Large Language Models with Jev Decision Models for Low-Latency Edge Service Orchestration",
       "summary": "Natural-language service requests can require a language-model decision before execution starts, consuming part of the request's latency budget. We integrate Je...",
-      "upvotes": 1,
+      "upvotes": 5,
       "arxiv_id": "2609.22753",
       "url": "https://huggingface.co/papers/2609.22753",
       "githubRepo": "https://github.com/OniReimu/Edge-Computing-JEV"
@@ -62,7 +62,7 @@
     {
       "title": "Ego2Act: Evaluating Goal-Directed Manipulation in Egocentric Video Generation",
       "summary": "Video generation models are increasingly being explored as world simulators for embodied planning and learning. To do so effectively, these models must not only...",
-      "upvotes": 4,
+      "upvotes": 21,
       "arxiv_id": "2610.01092",
       "url": "https://huggingface.co/papers/2610.01092",
       "githubRepo": "https://github.com/ego2act/ego2act"
@@ -70,7 +70,7 @@
     {
       "title": "MemFold: Learning Compact Soft Memory for Long-Context Personalization via On-Policy Optimization",
       "summary": "An assistant that serves the same user over a long horizon has to answer from what that user has revealed: which preferences still hold, which were revised, and...",
-      "upvotes": 2,
+      "upvotes": 6,
       "arxiv_id": "2609.36435",
       "url": "https://huggingface.co/papers/2609.36435",
       "githubRepo": "https://github.com/Johnny221B/memfold"
@@ -78,7 +78,7 @@
     {
       "title": "Video Generation Models: A Survey of Post-Training and Alignment",
       "summary": "Video generation has rapidly progressed from short, low-quality clips to high-resolution, long-duration sequences with complex spatiotemporal dynamics. Despite ...",
-      "upvotes": 13,
+      "upvotes": 44,
       "arxiv_id": "2610.00812",
       "url": "https://huggingface.co/papers/2610.00812",
       "githubRepo": "https://github.com/people-robots/Awesome-Video-Generation-Post-Training"
@@ -86,7 +86,7 @@
     {
       "title": "Persona Dosing: Calibrated Activation Steering for Graded Trait Control",
       "summary": "An activation-steering coefficient sets intervention strength, but requesting a particular degree of persona expression requires a behavioral scale. We study pe...",
-      "upvotes": 2,
+      "upvotes": 40,
       "arxiv_id": "2609.36388",
       "url": "https://huggingface.co/papers/2609.36388",
       "githubRepo": null
