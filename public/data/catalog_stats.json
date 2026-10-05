@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-10-04T03:33:16.360Z",
-  "totalEntries": 337,
-  "popularEntries": 271,
-  "totalUsers": 10,
+  "timestamp": "2026-10-05T03:14:08.930Z",
+  "totalEntries": 340,
+  "popularEntries": 273,
+  "totalUsers": 11,
   "averageRating": 4.38,
   "totalRatings": 8,
-  "newEntriesCount": 110,
+  "newEntriesCount": 113,
   "byType": {
-    "Model": 120,
+    "Model": 121,
     "Framework": 33,
-    "Platform": 57,
-    "Dataset": 56,
+    "Platform": 58,
+    "Dataset": 57,
     "AI": 71
   },
   "byTask": {
-    "NLP": 123,
+    "NLP": 125,
     "AI Coding": 27,
-    "Multimodal": 51,
+    "Multimodal": 52,
     "Research": 11,
     "Image Generation": 12,
     "Video Generation": 11,
@@ -66,9 +66,9 @@
     "Proprietary / DeepSeek License": 1,
     "Open Source UI / Various model licenses": 1,
     "Free": 1,
-    "APACHE-2.0": 31,
-    "OTHER": 13,
-    "Community Hosted": 32,
+    "APACHE-2.0": 32,
+    "OTHER": 14,
+    "Community Hosted": 33,
     "NOASSERTION": 4,
     "CC-BY-SA-4.0": 1,
     "Open Data": 2,
@@ -83,24 +83,24 @@
     "OPENMDW-1.1": 1
   },
   "toolOfTheDay": {
-    "name": "Llama 3.2 Vision (11B)",
+    "name": "Llama 3.3 (70B)",
     "type": "Model",
-    "summary": "Open-weights multimodal vision-language model capable of image understanding, visual reasoning, chart analysis, and document parsing.",
-    "task": "Multimodal",
-    "license": "Llama 3.2 Community License",
+    "summary": "Meta's flagship open-weights instruction model delivering capabilities comparable to previous 405B models with 70B parameter efficiency.",
+    "task": "NLP",
+    "license": "Llama 3.3 Community License",
     "year": 2024,
     "org": "Meta AI",
-    "size": "11B params",
-    "architecture": "Vision encoder adapter integrated into Llama 3.2 text decoder.",
-    "usage": "from transformers import MllamaForConditionalGeneration, AutoProcessor\nmodel = MllamaForConditionalGeneration.from_pretrained(\"meta-llama/Llama-3.2-11B-Vision-Instruct\", device_map=\"auto\")",
-    "benchmarks": "DocVQA: 88.4%, ChartQA: 83.4%, MathVista: 57.2%",
-    "limitations": "Vision encoder increases VRAM requirements during high-resolution multi-image processing.",
+    "size": "70B params",
+    "architecture": "Autoregressive Transformer with Grouped-Query Attention (GQA) and 128k context length.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\nmodel = AutoModelForCausalLM.from_pretrained(\"meta-llama/Llama-3.3-70B-Instruct\", device_map=\"auto\")",
+    "benchmarks": "MMLU: 88.6%, HumanEval: 88.4%, GPQA: 50.5%",
+    "limitations": "Commercial restriction for products exceeding 700M monthly active users.",
     "popular": true,
     "url": "https://ai.meta.com/llama/",
     "citations": [
       {
-        "text": "Llama 3.2 Vision Model Card",
-        "url": "https://ai.meta.com/blog/llama-3-2-connect-2024/"
+        "text": "Llama 3.3 Release",
+        "url": "https://ai.meta.com/blog/llama-3-3/"
       }
     ]
   }

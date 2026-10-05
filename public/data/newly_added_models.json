@@ -1,5 +1,76 @@
 [
   {
+    "date": "2026-10-05",
+    "assets": [
+      {
+        "name": "Kolibri-1",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by Aleph-Alpha, trending with over 407 community likes and 1,135 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Aleph-Alpha",
+        "size": "Open Weights",
+        "architecture": "Aleph-Alpha text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Aleph-Alpha/Kolibri-1\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Aleph-Alpha/Kolibri-1\")",
+        "benchmarks": "Trending Score: 398, Likes: 407, Downloads: 1,135",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": true,
+        "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1",
+        "citations": [
+          {
+            "text": "Aleph-Alpha/Kolibri-1 on Hugging Face",
+            "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1"
+          }
+        ]
+      },
+      {
+        "name": "chessfly",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by mlabonne. Trending with 119 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "mlabonne",
+        "size": "STATIC Platform",
+        "architecture": "STATIC cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/mlabonne/chessfly",
+        "benchmarks": "Trending Score: 75, Community Likes: 119",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": true,
+        "url": "https://huggingface.co/spaces/mlabonne/chessfly",
+        "citations": [
+          {
+            "text": "mlabonne/chessfly on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/mlabonne/chessfly"
+          }
+        ]
+      },
+      {
+        "name": "bharat-government-documents",
+        "type": "Dataset",
+        "summary": "Bharat Guide: screened Indian public information documents \t This snapshot contains 64,964 distinct normalized text bodies and 77,526 source records. Generated 2026-10- (43 likes, 364 downloads).",
+        "task": "NLP",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "ankitjh4",
+        "size": "10K<n<100K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"ankitjh4/bharat-government-documents\")",
+        "benchmarks": "Trending Score: 41, Likes: 43, Downloads: 364",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "url": "https://huggingface.co/datasets/ankitjh4/bharat-government-documents",
+        "citations": [
+          {
+            "text": "ankitjh4/bharat-government-documents on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/ankitjh4/bharat-government-documents"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-04",
     "assets": [
       {

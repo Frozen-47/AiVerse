@@ -1,43 +1,23 @@
 {
-  "timestamp": "2026-10-04T03:33:20.362Z",
+  "timestamp": "2026-10-05T03:14:13.394Z",
   "checked": 25,
-  "healthy": 18,
-  "broken": 7,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "Perplexity AI",
-      "url": "https://www.perplexity.ai/",
+      "name": "Gamma",
+      "url": "https://gamma.app",
       "status": 403
     },
     {
-      "name": "o1 (OpenAI)",
-      "url": "https://openai.com/o1",
-      "status": 403
+      "name": "wan555",
+      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
+      "status": 401
     },
     {
-      "name": "Claude",
-      "url": "https://claude.ai",
-      "status": 403
-    },
-    {
-      "name": "GPT-4",
-      "url": "https://openai.com/gpt-4",
-      "status": 403
-    },
-    {
-      "name": "Arena-Hard-Auto",
-      "url": "https://github.com/sunshanghai/arena-hard-auto",
-      "status": 404
-    },
-    {
-      "name": "Leonardo.ai",
-      "url": "https://leonardo.ai",
-      "status": 403
-    },
-    {
-      "name": "GPT-3.5 Turbo",
-      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
-      "status": 404
+      "name": "Google Gemini",
+      "url": "https://gemini.google.com",
+      "status": "Network Error"
     }
   ]
 }

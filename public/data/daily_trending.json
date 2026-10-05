@@ -1,94 +1,94 @@
 {
-  "timestamp": "2026-10-04T03:33:20.290Z",
+  "timestamp": "2026-10-05T03:14:13.339Z",
   "models": [
     {
       "id": "Cloudflare/clef",
       "author": "Cloudflare",
-      "likes": 1003,
-      "downloads": 2620,
+      "likes": 1227,
+      "downloads": 4214,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Cloudflare/clef"
     },
     {
       "id": "convaiinnovations/laya",
       "author": "convaiinnovations",
-      "likes": 5080,
-      "downloads": 0,
+      "likes": 5166,
+      "downloads": 3752,
       "pipeline_tag": "text-classification",
       "url": "https://huggingface.co/convaiinnovations/laya"
     },
     {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
       "author": "abenzerps",
-      "likes": 2941,
-      "downloads": 1455921,
+      "likes": 3151,
+      "downloads": 1553744,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
     },
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 6144,
-      "downloads": 1629984,
+      "likes": 6322,
+      "downloads": 1626951,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     },
     {
-      "id": "Qwen/Qwen-Image-2.1",
-      "author": "Qwen",
-      "likes": 2905,
-      "downloads": 85895,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
-    },
-    {
       "id": "Cloudflare/clef-flash",
       "author": "Cloudflare",
-      "likes": 365,
-      "downloads": 4310,
+      "likes": 435,
+      "downloads": 6372,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Cloudflare/clef-flash"
+    },
+    {
+      "id": "Aleph-Alpha/Kolibri-1",
+      "author": "Aleph-Alpha",
+      "likes": 407,
+      "downloads": 1135,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1"
     }
   ],
   "papers": [
     {
-      "title": "Replacing Large Language Models with Jev Decision Models for Low-Latency Edge Service Orchestration",
-      "summary": "Natural-language service requests can require a language-model decision before execution starts, consuming part of the request's latency budget. We integrate Je...",
-      "upvotes": 5,
-      "arxiv_id": "2609.22753",
-      "url": "https://huggingface.co/papers/2609.22753",
-      "githubRepo": "https://github.com/OniReimu/Edge-Computing-JEV"
+      "title": "Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Papers",
+      "summary": "AI-generated content, often called AI slop, is increasingly common everywhere, particularly in academia. Slop in AI-generated scientific papers, however, has mo...",
+      "upvotes": 2,
+      "arxiv_id": "2610.00531",
+      "url": "https://huggingface.co/papers/2610.00531",
+      "githubRepo": "https://github.com/yerimoh/ScientificSlop"
     },
     {
-      "title": "Ego2Act: Evaluating Goal-Directed Manipulation in Egocentric Video Generation",
-      "summary": "Video generation models are increasingly being explored as world simulators for embodied planning and learning. To do so effectively, these models must not only...",
-      "upvotes": 21,
-      "arxiv_id": "2610.01092",
-      "url": "https://huggingface.co/papers/2610.01092",
-      "githubRepo": "https://github.com/ego2act/ego2act"
+      "title": "PDE-JEPA: Predictive Representation Learning of Latent Dynamics Modeling for Parametric PDEs",
+      "summary": "Physical trajectories contain more than snapshots of a system: they also reveal how its states evolve under governing conditions. However, representation learni...",
+      "upvotes": 4,
+      "arxiv_id": "2609.34715",
+      "url": "https://huggingface.co/papers/2609.34715",
+      "githubRepo": "https://github.com/Tanpig-X/PDE-JEPA"
     },
     {
-      "title": "MemFold: Learning Compact Soft Memory for Long-Context Personalization via On-Policy Optimization",
-      "summary": "An assistant that serves the same user over a long horizon has to answer from what that user has revealed: which preferences still hold, which were revised, and...",
-      "upvotes": 6,
-      "arxiv_id": "2609.36435",
-      "url": "https://huggingface.co/papers/2609.36435",
-      "githubRepo": "https://github.com/Johnny221B/memfold"
+      "title": "MetaRubric: Learning to Reward for Rubric-Based Reinforcement Learning",
+      "summary": "Rubric-based reinforcement learning extends reward-driven optimization to open-ended tasks by assigning partial credit to individual response requirements. Howe...",
+      "upvotes": 1,
+      "arxiv_id": "2610.02824",
+      "url": "https://huggingface.co/papers/2610.02824",
+      "githubRepo": "https://github.com/metarubric/metarubric"
     },
     {
-      "title": "Video Generation Models: A Survey of Post-Training and Alignment",
-      "summary": "Video generation has rapidly progressed from short, low-quality clips to high-resolution, long-duration sequences with complex spatiotemporal dynamics. Despite ...",
-      "upvotes": 44,
-      "arxiv_id": "2610.00812",
-      "url": "https://huggingface.co/papers/2610.00812",
-      "githubRepo": "https://github.com/people-robots/Awesome-Video-Generation-Post-Training"
+      "title": "FrameMorrow: Future-guided Frame Selection with Prospective Tokens for Long-Horizon Video Generation",
+      "summary": "Long-horizon video generation requires models to effectively leverage an increasingly long generation history. As the generated history grows, retaining all pre...",
+      "upvotes": 2,
+      "arxiv_id": "2609.38839",
+      "url": "https://huggingface.co/papers/2609.38839",
+      "githubRepo": "https://github.com/YinBo0927/FrameMorrow"
     },
     {
-      "title": "Persona Dosing: Calibrated Activation Steering for Graded Trait Control",
-      "summary": "An activation-steering coefficient sets intervention strength, but requesting a particular degree of persona expression requires a behavioral scale. We study pe...",
-      "upvotes": 40,
-      "arxiv_id": "2609.36388",
-      "url": "https://huggingface.co/papers/2609.36388",
+      "title": "Covert Assistance: Helpful LLM Agents Evade Oversight in Multi-Agent Systems",
+      "summary": "As multi-agent systems enter high-stakes domains, the possibility that agents may circumvent safety boundaries is a growing concern. Prior work has examined thi...",
+      "upvotes": 1,
+      "arxiv_id": "2609.39050",
+      "url": "https://huggingface.co/papers/2609.39050",
       "githubRepo": null
     }
   ]
