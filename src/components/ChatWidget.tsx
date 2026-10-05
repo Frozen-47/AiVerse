@@ -31,14 +31,28 @@ import {
   Minimize2,
   Send,
   Zap,
+  Cloud,
+  Database,
 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useAuth } from './AuthContext';
 import type { Entry } from '../types';
 import { EcosystemLogo } from './EcosystemLogo';
+import {
+  type ChatMode,
+  type Message,
+  type ChatSession,
+  loadUserChats,
+  saveUserChat,
+  deleteUserChat,
+  clearAllUserChats,
+  getLocalSessions,
+  saveLocalSessions,
+  clearLocalSessions,
+} from '../lib/chats';
 
-export type ChatMode = 'flagship' | 'reasoning' | 'compare' | 'code';
+export type { ChatMode, Message, ChatSession };
 
 interface ChatModeConfig {
   id: ChatMode;
@@ -83,22 +97,6 @@ const CHAT_MODES: ChatModeConfig[] = [
     model: 'allam-2-7b',
   },
 ];
-
-interface Message {
-  role: 'user' | 'assistant' | 'system' | 'error';
-  content: string;
-  reasoning?: string;
-  modelUsed?: string;
-  isStreaming?: boolean;
-}
-
-interface ChatSession {
-  id: string;
-  title: string;
-  messages: Message[];
-  createdAt: number;
-  mode: ChatMode;
-}
 
 const getChildrenText = (node: any): string => {
   if (node == null) return '';
@@ -192,6 +190,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
 }) => {
   const { user } = useAuth();
   const userName = (user?.user_metadata?.firstName as string) || user?.email?.split('@')[0] || null;
+  const currentUserKey = user ? (user.id.startsWith('supabase_') ? user.id : `supabase_${user.id}`) : null;
 
   // Mini floating popup open state (when not in full /chat route)
   const [isMiniOpen, setIsMiniOpen] = useState(initialOpen);
@@ -206,16 +205,15 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
   const [expandedReasoning, setExpandedReasoning] = useState<Record<number, boolean>>({});
   const [feedbackState, setFeedbackState] = useState<Record<number, 'up' | 'down'>>({});
   const [searchHistoryQuery, setSearchHistoryQuery] = useState('');
+  const [confirmClearAllOpen, setConfirmClearAllOpen] = useState(false);
+  const [isLoadingAccountChats, setIsLoadingAccountChats] = useState(false);
 
   // Multi-session chat history
   const [sessions, setSessions] = useState<ChatSession[]>(() => {
     try {
-      const saved = localStorage.getItem('vox_chatgpt_sessions');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
-        }
+      const saved = getLocalSessions();
+      if (saved && saved.length > 0) {
+        return saved;
       }
     } catch {}
 
@@ -299,10 +297,71 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
     };
   }, [isMiniOpen, isChatRoute, onNavigateToChat, onExitChatRoute]);
 
-  // Persist sessions
+  // Load account chats from Supabase when user logs in or switches accounts
+  useEffect(() => {
+    let isMounted = true;
+    const fetchAccountChats = async () => {
+      if (!currentUserKey) return;
+      setIsLoadingAccountChats(true);
+      try {
+        const remote = await loadUserChats(currentUserKey);
+        if (!isMounted) return;
+        if (remote && remote.length > 0) {
+          setSessions(remote);
+          setCurrentSessionId((prev) => (remote.some((s) => s.id === prev) ? prev : remote[0].id));
+        } else {
+          // If the user has local sessions with user messages, sync them to account
+          const local = getLocalSessions();
+          const hasUserMsgs = local.some((s) => s.messages.some((m) => m.role === 'user'));
+          if (hasUserMsgs) {
+            for (const s of local) {
+              await saveUserChat(currentUserKey, s);
+            }
+            if (isMounted) {
+              setSessions(local);
+              setCurrentSessionId(local[0].id);
+            }
+          } else {
+            // Seed a fresh account conversation
+            const newId = 'session_' + Date.now();
+            const welcomeSession: ChatSession = {
+              id: newId,
+              title: 'New conversation',
+              createdAt: Date.now(),
+              mode: 'flagship',
+              messages: [
+                {
+                  role: 'assistant',
+                  content: userName
+                    ? `Hello **${userName}**! Your conversations are now securely saved to your account in the cloud. Ask me to compare models, analyze architectures, or test benchmark performance.`
+                    : `Hello! Your conversations are securely saved to your account. Ask me to compare models, analyze architectures, or test benchmarks.`,
+                },
+              ],
+            };
+            await saveUserChat(currentUserKey, welcomeSession);
+            if (isMounted) {
+              setSessions([welcomeSession]);
+              setCurrentSessionId(newId);
+            }
+          }
+        }
+      } catch (err) {
+        console.warn('Failed to load user chats from account:', err);
+      } finally {
+        if (isMounted) setIsLoadingAccountChats(false);
+      }
+    };
+
+    fetchAccountChats();
+    return () => {
+      isMounted = false;
+    };
+  }, [currentUserKey, userName]);
+
+  // Persist sessions locally
   useEffect(() => {
     try {
-      localStorage.setItem('vox_chatgpt_sessions', JSON.stringify(sessions));
+      saveLocalSessions(sessions);
     } catch {}
   }, [sessions]);
 
@@ -345,11 +404,17 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
     setInput('');
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     setCurrentlySpeakingIdx(null);
+    if (currentUserKey) {
+      saveUserChat(currentUserKey, newSession);
+    }
   };
 
   // Delete session
   const deleteSession = (sessionId: string, e: React.MouseEvent) => {
     e.stopPropagation();
+    if (currentUserKey) {
+      deleteUserChat(currentUserKey, sessionId);
+    }
     setSessions((prev) => {
       const filtered = prev.filter((s) => s.id !== sessionId);
       if (filtered.length === 0) {
@@ -366,6 +431,9 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
             },
           ],
         };
+        if (currentUserKey) {
+          saveUserChat(currentUserKey, fallback);
+        }
         setCurrentSessionId(fallbackId);
         return [fallback];
       }
@@ -374,6 +442,33 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
       }
       return filtered;
     });
+  };
+
+  // Clear all chats from account and locally
+  const handleClearAllUserChats = async () => {
+    setConfirmClearAllOpen(false);
+    if (currentUserKey) {
+      await clearAllUserChats(currentUserKey);
+    }
+    clearLocalSessions();
+    const fallbackId = 'session_' + Date.now();
+    const fallback: ChatSession = {
+      id: fallbackId,
+      title: 'New conversation',
+      createdAt: Date.now(),
+      mode: currentMode,
+      messages: [
+        {
+          role: 'assistant',
+          content: `Chat history cleared. How can I help you with AI research today?`,
+        },
+      ],
+    };
+    setSessions([fallback]);
+    setCurrentSessionId(fallbackId);
+    if (currentUserKey) {
+      await saveUserChat(currentUserKey, fallback);
+    }
   };
 
   // Abort active streaming
@@ -723,9 +818,23 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
         ? text.trim().slice(0, 36) + (text.trim().length > 36 ? '...' : '')
         : activeSession.title;
 
+    const initialSession: ChatSession = {
+      ...activeSession,
+      title: sessionTitle,
+      messages: newMessages,
+      updatedAt: Date.now(),
+    };
+
     setSessions((prev) =>
-      prev.map((s) => (s.id === currentSessionId ? { ...s, title: sessionTitle, messages: newMessages } : s))
+      prev.map((s) => (s.id === currentSessionId ? initialSession : s))
     );
+
+    if (currentUserKey) {
+      saveUserChat(currentUserKey, {
+        ...initialSession,
+        messages: [...messages, userMessage],
+      });
+    }
 
     setInput('');
     if (textareaRef.current) {
@@ -761,7 +870,6 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
 
       const contentType = response.headers.get('content-type') || '';
 
-      // SSE Stream reader
       // SSE Stream reader
       if (contentType.includes('text/event-stream') && response.body) {
         const reader = response.body.getReader();
@@ -826,7 +934,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
           }
         }
 
-        // Finalize assistant message
+        // Finalize assistant message and save to account database
         setSessions((prev) =>
           prev.map((s) => {
             if (s.id !== currentSessionId) return s;
@@ -844,7 +952,11 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                 isStreaming: false,
               };
             }
-            return { ...s, messages: next };
+            const finalized: ChatSession = { ...s, messages: next, updatedAt: Date.now() };
+            if (currentUserKey) {
+              saveUserChat(currentUserKey, finalized);
+            }
+            return finalized;
           })
         );
       } else {
@@ -868,7 +980,11 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                 isStreaming: false,
               };
             }
-            return { ...s, messages: next };
+            const finalized: ChatSession = { ...s, messages: next, updatedAt: Date.now() };
+            if (currentUserKey) {
+              saveUserChat(currentUserKey, finalized);
+            }
+            return finalized;
           })
         );
       }
@@ -965,9 +1081,20 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
 
           {/* Chat Sessions History List */}
           <div className="flex-1 overflow-y-auto px-3 py-1 flex flex-col gap-1 no-scrollbar">
-            <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider px-2 py-1">
-              Recent Conversations
-            </span>
+            <div className="flex items-center justify-between px-2 py-1">
+              <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">
+                Recent Conversations
+              </span>
+              {sessions.length > 0 && (
+                <button
+                  onClick={() => setConfirmClearAllOpen(true)}
+                  className="text-[10px] font-medium text-neutral-400 hover:text-red-500 transition-colors cursor-pointer"
+                  title="Clear all conversations"
+                >
+                  Clear all
+                </button>
+              )}
+            </div>
             {filteredSessions.map((session) => {
               const isActive = session.id === currentSessionId;
               return (
@@ -1004,7 +1131,16 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
             </button>
 
             <div className="flex items-center justify-between px-3 py-2 text-xs text-neutral-500 dark:text-neutral-400">
-              <span className="font-mono text-[11px]">{userName || 'AiVerse User'}</span>
+              <div className="flex items-center gap-1.5 truncate">
+                {currentUserKey ? (
+                  <span className="inline-flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400 font-medium">
+                    <Cloud size={12} className={isLoadingAccountChats ? "animate-pulse" : ""} />
+                    <span>{isLoadingAccountChats ? "Syncing..." : "Account Synced"}</span>
+                  </span>
+                ) : (
+                  <span className="text-[11px] text-neutral-400">Device storage</span>
+                )}
+              </div>
               <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] font-semibold">
                 PRO
               </span>
@@ -1080,6 +1216,25 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
 
             {/* Top Right Controls */}
             <div className="flex items-center gap-1.5 text-neutral-400">
+              {/* Cloud Account Sync Indicator */}
+              {currentUserKey ? (
+                <div
+                  className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-medium mr-1"
+                  title="Conversations are securely saved to your account in the cloud database"
+                >
+                  <Cloud size={13} className={`shrink-0 ${isLoadingAccountChats ? "animate-pulse" : ""}`} />
+                  <span>{isLoadingAccountChats ? "Syncing..." : "Account Synced"}</span>
+                </div>
+              ) : (
+                <div
+                  className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-neutral-200/50 dark:bg-white/[0.05] text-neutral-500 dark:text-neutral-400 text-xs font-medium mr-1"
+                  title="Guest mode: Chats stored on this device. Sign in to save to your account."
+                >
+                  <Database size={12} className="shrink-0" />
+                  <span>Device Only</span>
+                </div>
+              )}
+
               <button
                 onClick={handleExport}
                 className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/[0.08] hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
@@ -1434,6 +1589,12 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                   <Zap size={9} className="fill-amber-500" />
                   Groq LPU
                 </span>
+                {currentUserKey ? (
+                  <span className="inline-flex items-center gap-0.5 text-[9.5px] px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-medium" title="Conversations saved to account">
+                    <Cloud size={9} />
+                    Account
+                  </span>
+                ) : null}
               </div>
             </div>
 
@@ -1696,6 +1857,46 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
                   <Send size={13} />
                 </button>
               )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Dialog: Confirm Clear All Conversations ─────────────────────── */}
+      {confirmClearAllOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
+          <div className="relative w-full max-w-sm p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-neutral-200 dark:border-neutral-800 shadow-2xl space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 rounded-xl bg-red-500/10 text-red-500 dark:text-red-400 shrink-0">
+                <Trash2 size={20} />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-neutral-900 dark:text-white">
+                  Clear All Conversations?
+                </h3>
+                <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                  {currentUserKey
+                    ? 'This will permanently delete all your stored chat history from your account database.'
+                    : 'This will permanently remove all chat sessions stored on this device.'}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-2 pt-2 border-t border-neutral-200 dark:border-neutral-800">
+              <button
+                type="button"
+                onClick={() => setConfirmClearAllOpen(false)}
+                className="px-3.5 py-2 rounded-lg text-xs font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.06] cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleClearAllUserChats}
+                className="px-3.5 py-2 rounded-lg text-xs font-medium bg-red-600 hover:bg-red-700 text-white cursor-pointer shadow-xs"
+              >
+                Clear all chats
+              </button>
             </div>
           </div>
         </div>

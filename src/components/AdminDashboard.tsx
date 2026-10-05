@@ -28,6 +28,9 @@ import {
   ChevronLeft,
   ChevronRight,
   UserCog,
+  MessageSquare,
+  MessageSquareX,
+  Activity,
 } from "lucide-react";
 import { supabase, getOAuthAvatarUrl } from "../lib/supabase";
 import { useTokens, typeBadge, taskBadge, typeIcon, TYPE_GLYPH } from "../lib/theme";
@@ -40,6 +43,12 @@ import {
   fetchSiteAnnouncement,
   saveSiteAnnouncement,
 } from "../lib/announcements";
+import {
+  type ChatSession,
+  adminClearUserChats,
+  adminFetchUserChats,
+} from "../lib/chats";
+import { SupabaseConsole } from "./SupabaseConsole";
 
 export type { SiteAnnouncement };
 
@@ -82,6 +91,7 @@ type NavSectionId =
   | "deletion_requests"
   | "submissions"
   | "directory"
+  | "infrastructure"
   | "analytics"
   | "announcements"
   | "audit";
@@ -166,6 +176,12 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [deleteConfirmUser, setDeleteConfirmUser] = useState<UserProfile | null>(null);
   const [directDeleteModalOpen, setDirectDeleteModalOpen] = useState(false);
   const [directDeleteUidInput, setDirectDeleteUidInput] = useState("");
+
+  // User Chats Management state (Admin ability to clear user chat from database)
+  const [chatManagingUser, setChatManagingUser] = useState<UserProfile | null>(null);
+  const [userChatsList, setUserChatsList] = useState<ChatSession[]>([]);
+  const [loadingUserChats, setLoadingUserChats] = useState(false);
+  const [clearChatsConfirmUser, setClearChatsConfirmUser] = useState<UserProfile | null>(null);
 
   // Site Announcements state
   const [announcement, setAnnouncement] = useState<SiteAnnouncement>(() => {
@@ -676,6 +692,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         supabase.from("user_bookmarks").delete().in("user_key", [profile.userKey, formattedKey, rawUuid]),
         supabase.from("entry_ratings").delete().in("user_key", [profile.userKey, formattedKey, rawUuid]),
         supabase.from("entry_comments").delete().in("user_key", [profile.userKey, formattedKey, rawUuid]),
+        supabase.from("user_chats").delete().in("user_key", [profile.userKey, formattedKey, rawUuid]),
       ]);
 
       if (rpcErr) {
@@ -696,6 +713,54 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       logAudit("Purge Account", `Permanently purged credentials and data for "${profile.displayName}" (${profile.username})`);
     } catch (err: any) {
       showToast("error", `Failed to delete user: ${err.message}`);
+    } finally {
+      setActioningId(null);
+    }
+  };
+
+  const handleViewUserChats = async (profile: UserProfile) => {
+    setChatManagingUser(profile);
+    setLoadingUserChats(true);
+    try {
+      const chats = await adminFetchUserChats(profile.userKey);
+      setUserChatsList(chats);
+    } catch (err: any) {
+      console.warn("Failed to fetch user chats:", err);
+      showToast("error", `Could not query user chats: ${err.message}`);
+      setUserChatsList([]);
+    } finally {
+      setLoadingUserChats(false);
+    }
+  };
+
+  const handleClearAllUserChats = async (profile: UserProfile) => {
+    setActioningId(profile.userKey);
+    try {
+      const result = await adminClearUserChats(profile.userKey);
+      if (!result.success) throw new Error(result.message);
+
+      setUserChatsList([]);
+      setClearChatsConfirmUser(null);
+      showToast("success", `Cleared all chat history for "${profile.displayName}" from database.`);
+      logAudit("Clear User Chats", `Permanently cleared chat history from database for "${profile.displayName}" (${profile.userKey})`);
+    } catch (err: any) {
+      showToast("error", `Failed to clear user chats: ${err.message}`);
+    } finally {
+      setActioningId(null);
+    }
+  };
+
+  const handleDeleteSingleChat = async (profile: UserProfile, sessionId: string) => {
+    setActioningId(sessionId);
+    try {
+      const result = await adminClearUserChats(profile.userKey, sessionId);
+      if (!result.success) throw new Error(result.message);
+
+      setUserChatsList((prev) => prev.filter((c) => c.id !== sessionId));
+      showToast("success", "Chat session removed from database.");
+      logAudit("Delete User Chat Session", `Deleted chat session "${sessionId}" for user "${profile.displayName}"`);
+    } catch (err: any) {
+      showToast("error", `Failed to delete session: ${err.message}`);
     } finally {
       setActioningId(null);
     }
@@ -784,6 +849,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         supabase.from("user_bookmarks").delete().in("user_key", [trimmed, formattedKey, rawUuid]),
         supabase.from("entry_ratings").delete().in("user_key", [trimmed, formattedKey, rawUuid]),
         supabase.from("entry_comments").delete().in("user_key", [trimmed, formattedKey, rawUuid]),
+        supabase.from("user_chats").delete().in("user_key", [trimmed, formattedKey, rawUuid]),
       ]);
 
       if (rpcErr) {
@@ -1115,12 +1181,27 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               </nav>
             </div>
 
-            {/* Group 3: Operations & Monitoring */}
+            {/* Group 3: Operations & Cloud */}
             <div>
               <p className="px-3 text-[10px] font-semibold text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider mb-1">
-                Operations & Logging
+                Cloud & Operations
               </p>
               <nav className="space-y-0.5">
+                <button
+                  onClick={() => setActiveNav("infrastructure")}
+                  className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-xs font-medium transition-colors cursor-pointer ${
+                    activeNav === "infrastructure"
+                      ? "bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8] font-semibold"
+                      : "text-[#3c4043] dark:text-[#e8eaed] hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <Database size={15} />
+                    <span>Supabase & Storage</span>
+                  </div>
+                  <span className="w-2 h-2 rounded-full bg-[#1e8e3e]" />
+                </button>
+
                 <button
                   onClick={() => setActiveNav("analytics")}
                   className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-md text-xs font-medium transition-colors cursor-pointer ${
@@ -1344,6 +1425,14 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                 title="Inspect user account details"
                               >
                                 View
+                              </button>
+                              <button
+                                onClick={() => handleViewUserChats(profile)}
+                                className="px-2 py-1 rounded text-xs font-medium text-[#1a73e8] dark:text-[#8ab4f8] hover:bg-[#e8f0fe] dark:hover:bg-[#1a2e4c] transition-colors cursor-pointer inline-flex items-center gap-1"
+                                title="Inspect and clear user chat conversations from database"
+                              >
+                                <MessageSquare size={12} />
+                                <span>Chats</span>
                               </button>
                               <button
                                 onClick={() => {
@@ -1968,7 +2057,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               {/* Snapshot Backup Center */}
               <div className="p-5 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] space-y-4">
                 <h3 className="text-sm font-semibold text-[#202124] dark:text-[#e8eaed]">Database Snapshots & Cold Storage</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
                   <button
                     onClick={() => exportDataAsJson(approvedEntries, "aiverse_catalog_approved")}
                     className="p-3.5 rounded-lg border border-[#dadce0] dark:border-[#3c4043] hover:border-[#1a73e8] text-left cursor-pointer transition-colors"
@@ -2009,11 +2098,20 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                         "aiverse_complete_system_backup"
                       )
                     }
-                    className="p-3.5 rounded-lg border border-[#1a73e8]/30 bg-[#e8f0fe]/30 dark:bg-[#1a2e4c]/30 text-left cursor-pointer transition-colors hover:border-[#1a73e8]"
+                    className="p-3.5 rounded-lg border border-[#dadce0] dark:border-[#3c4043] hover:border-[#1a73e8] text-left cursor-pointer transition-colors"
                   >
                     <Database size={18} className="text-[#1a73e8] dark:text-[#8ab4f8] mb-1.5" />
                     <p className="text-xs font-semibold text-[#1a73e8] dark:text-[#8ab4f8]">Full Cloud Snapshot</p>
                     <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] mt-0.5">Complete database bundle</p>
+                  </button>
+
+                  <button
+                    onClick={() => setActiveNav("infrastructure")}
+                    className="p-3.5 rounded-lg border border-[#1a73e8]/40 bg-[#e8f0fe]/40 dark:bg-[#1a2e4c]/40 text-left cursor-pointer transition-colors hover:border-[#1a73e8]"
+                  >
+                    <Activity size={18} className="text-[#1a73e8] dark:text-[#8ab4f8] mb-1.5" />
+                    <p className="text-xs font-semibold text-[#1a73e8] dark:text-[#8ab4f8]">Supabase Console</p>
+                    <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] mt-0.5">Live DB & Storage explorer</p>
                   </button>
                 </div>
               </div>
@@ -2183,6 +2281,13 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               )}
             </div>
           )}
+
+          {/* ════════════════════════════════════════════════════════════════════
+              SECTION 8: SUPABASE & STORAGE INFRASTRUCTURE
+          ════════════════════════════════════════════════════════════════════ */}
+          {activeNav === "infrastructure" && (
+            <SupabaseConsole showToast={showToast} logAudit={logAudit} />
+          )}
         </main>
       </div>
 
@@ -2266,18 +2371,33 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             )}
 
             <div className="flex items-center justify-between pt-3 border-t border-[#dadce0] dark:border-[#3c4043]">
-              <button
-                type="button"
-                onClick={() => {
-                  const target = inspectingUser;
-                  setInspectingUser(null);
-                  setRoleManagingUser(target);
-                  setSelectedNewRole(target.role);
-                }}
-                className="px-3 py-1.5 rounded text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#1a73e8] dark:text-[#8ab4f8] hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
-              >
-                Change Role
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const target = inspectingUser;
+                    setInspectingUser(null);
+                    setRoleManagingUser(target);
+                    setSelectedNewRole(target.role);
+                  }}
+                  className="px-3 py-1.5 rounded text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#1a73e8] dark:text-[#8ab4f8] hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
+                >
+                  Change Role
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const target = inspectingUser;
+                    setInspectingUser(null);
+                    handleViewUserChats(target);
+                  }}
+                  className="px-3 py-1.5 rounded text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#1a73e8] dark:text-[#8ab4f8] hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer flex items-center gap-1.5"
+                  title="View and clear user chats from database"
+                >
+                  <MessageSquare size={13} />
+                  <span>User Chats</span>
+                </button>
+              </div>
               <div className="flex items-center gap-2">
                 <button
                   type="button"
@@ -2973,6 +3093,178 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 }`}
               >
                 {batchConfirm === "approve" ? `Approve All (${pendingEntries.length})` : "Purge Submissions"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Dialog: Manage & Clear User Chats ────────────────────────────────── */}
+      {chatManagingUser && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
+          <div className="relative w-full max-w-2xl p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] shadow-2xl space-y-4 max-h-[85vh] flex flex-col overflow-hidden">
+            <button
+              onClick={() => setChatManagingUser(null)}
+              className="absolute top-4 right-4 p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6] cursor-pointer"
+            >
+              <X size={16} />
+            </button>
+
+            {/* Header */}
+            <div className="flex items-center justify-between pr-8 shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-xl bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#8ab4f8]">
+                  <MessageSquare size={20} />
+                </div>
+                <div>
+                  <h3 className="text-base font-semibold text-[#202124] dark:text-[#e8eaed]">
+                    User Conversations · {chatManagingUser.displayName}
+                  </h3>
+                  <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6] font-mono">
+                    {chatManagingUser.username} · {chatManagingUser.userKey}
+                  </p>
+                </div>
+              </div>
+
+              {userChatsList.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setClearChatsConfirmUser(chatManagingUser)}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-[#d93025] hover:bg-[#b31412] text-white transition-colors cursor-pointer shadow-xs"
+                  title="Clear all user chats from database"
+                >
+                  <Trash2 size={13} />
+                  <span>Clear All Chats</span>
+                </button>
+              )}
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 overflow-y-auto space-y-3 pr-1 py-1 text-xs">
+              {loadingUserChats ? (
+                <div className="flex items-center justify-center py-12 gap-2 text-[#5f6368] dark:text-[#9aa0a6]">
+                  <RefreshCw size={16} className="animate-spin text-[#1a73e8]" />
+                  <span>Querying database for user chat sessions...</span>
+                </div>
+              ) : userChatsList.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-12 gap-2 text-center border border-dashed rounded-xl border-[#dadce0] dark:border-[#3c4043] bg-neutral-50/50 dark:bg-white/[0.02]">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center bg-neutral-100 dark:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]">
+                    <MessageSquare size={18} />
+                  </div>
+                  <p className="font-medium text-sm text-[#202124] dark:text-[#e8eaed]">
+                    No chat records found
+                  </p>
+                  <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6] max-w-xs">
+                    This user currently has zero active chat sessions stored in the database.
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-2.5">
+                  <div className="flex items-center justify-between text-[11px] text-[#5f6368] dark:text-[#9aa0a6] px-1">
+                    <span>{userChatsList.length} conversation session{userChatsList.length > 1 ? "s" : ""}</span>
+                    <span>Most recent activity first</span>
+                  </div>
+                  {userChatsList.map((chat) => (
+                    <div
+                      key={chat.id}
+                      className="p-3.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] space-y-2 transition-colors hover:border-[#1a73e8]/40"
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="min-w-0">
+                          <h4 className="font-semibold text-xs text-[#202124] dark:text-[#e8eaed] truncate">
+                            {chat.title}
+                          </h4>
+                          <div className="flex items-center gap-2 mt-0.5 text-[11px] text-[#5f6368] dark:text-[#9aa0a6] font-mono">
+                            <span className="capitalize">Mode: {chat.mode}</span>
+                            <span>·</span>
+                            <span>{chat.messages.length} messages</span>
+                            <span>·</span>
+                            <span>{new Date(chat.updatedAt || chat.createdAt).toLocaleString()}</span>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          disabled={actioningId === chat.id}
+                          onClick={() => handleDeleteSingleChat(chatManagingUser, chat.id)}
+                          className="p-1.5 rounded-lg text-[#d93025] hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] transition-colors cursor-pointer shrink-0 disabled:opacity-50"
+                          title="Delete this chat session from database"
+                        >
+                          <Trash2 size={13} />
+                        </button>
+                      </div>
+
+                      {/* Snippet preview */}
+                      {chat.messages.length > 0 && (
+                        <div className="p-2 rounded bg-white dark:bg-[#18191c] border border-[#dadce0]/60 dark:border-[#3c4043]/60 text-[11px] text-[#5f6368] dark:text-[#9aa0a6] line-clamp-2">
+                          <strong className="text-[#202124] dark:text-[#e8eaed]">
+                            {chat.messages[chat.messages.length - 1].role}:
+                          </strong>{" "}
+                          {chat.messages[chat.messages.length - 1].content.slice(0, 140)}...
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Footer */}
+            <div className="flex items-center justify-between pt-3 border-t border-[#dadce0] dark:border-[#3c4043] shrink-0">
+              <span className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6]">
+                Administrative Governance · Permanent Database Clears
+              </span>
+              <button
+                type="button"
+                onClick={() => setChatManagingUser(null)}
+                className="px-4 py-2 rounded text-xs font-medium text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Dialog: Confirm Clear User Chats ──────────────────────────────────── */}
+      {clearChatsConfirmUser && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
+          <div className="relative w-full max-w-md p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] shadow-2xl space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 rounded-xl bg-[#d93025]/10 text-[#d93025] shrink-0">
+                <MessageSquareX size={22} />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-[#202124] dark:text-[#e8eaed]">
+                  Clear User Chat History?
+                </h3>
+                <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6] mt-0.5">
+                  Permanent removal from database
+                </p>
+              </div>
+            </div>
+
+            <p className="text-xs text-[#3c4043] dark:text-[#bdc1c6] leading-relaxed">
+              Are you sure you want to permanently clear all chat history and conversation records for{" "}
+              <strong className="text-[#202124] dark:text-[#e8eaed] font-semibold">{clearChatsConfirmUser.displayName}</strong>{" "}
+              (<code className="font-mono text-[11px] text-[#1a73e8] dark:text-[#8ab4f8]">{clearChatsConfirmUser.username}</code>) from the database? This action cannot be undone.
+            </p>
+
+            <div className="flex justify-end gap-2 pt-3 border-t border-[#dadce0] dark:border-[#3c4043]">
+              <button
+                type="button"
+                disabled={actioningId === clearChatsConfirmUser.userKey}
+                onClick={() => setClearChatsConfirmUser(null)}
+                className="px-4 py-2 rounded text-xs font-medium text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                disabled={actioningId === clearChatsConfirmUser.userKey}
+                onClick={() => handleClearAllUserChats(clearChatsConfirmUser)}
+                className="px-4 py-2 rounded text-xs font-medium bg-[#d93025] hover:bg-[#b31412] text-white cursor-pointer shadow-xs disabled:opacity-50"
+              >
+                {actioningId === clearChatsConfirmUser.userKey ? "Clearing..." : "Clear Chats from Database"}
               </button>
             </div>
           </div>

@@ -109,6 +109,8 @@ BEGIN
     WHERE user_key = target_user_key OR user_key = 'supabase_' || raw_uuid_text OR user_key = raw_uuid_text;
   DELETE FROM public.entry_comments 
     WHERE user_key = target_user_key OR user_key = 'supabase_' || raw_uuid_text OR user_key = raw_uuid_text;
+  DELETE FROM public.user_chats 
+    WHERE user_key = target_user_key OR user_key = 'supabase_' || raw_uuid_text OR user_key = raw_uuid_text;
 
   UPDATE public.entries 
     SET submitted_by = NULL 
@@ -124,6 +126,68 @@ $$;
 
 REVOKE ALL ON FUNCTION public.delete_user_by_admin(text) FROM PUBLIC, anon;
 GRANT EXECUTE ON FUNCTION public.delete_user_by_admin(text) TO authenticated;
+
+CREATE OR REPLACE FUNCTION public.clear_user_chats_by_admin(
+  target_user_key text,
+  target_session_id text DEFAULT NULL
+)
+RETURNS jsonb
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = ''
+AS $$
+DECLARE
+  caller_email text;
+  caller_sub text;
+  caller_role text;
+  raw_uuid_text text;
+  deleted_count integer := 0;
+BEGIN
+  caller_email := auth.jwt() ->> 'email';
+  caller_sub := auth.jwt() ->> 'sub';
+  caller_role := auth.jwt() -> 'user_metadata' ->> 'role';
+
+  IF NOT (
+    caller_email = 'frozennheart47@gmail.com'
+    OR caller_sub = '20f48b0a-737d-4b78-9098-847a8ba450e8'
+    OR caller_role = 'admin'
+  ) THEN
+    RAISE EXCEPTION 'Unauthorized: Only platform administrators can clear user chats.';
+  END IF;
+
+  IF target_user_key LIKE 'supabase_%' THEN
+    raw_uuid_text := pg_catalog.substr(target_user_key, 10);
+  ELSE
+    raw_uuid_text := target_user_key;
+  END IF;
+
+  IF target_session_id IS NOT NULL AND target_session_id <> '' THEN
+    DELETE FROM public.user_chats
+    WHERE id = target_session_id
+      AND (
+        user_key = target_user_key
+        OR user_key = 'supabase_' || raw_uuid_text
+        OR user_key = raw_uuid_text
+      );
+    GET DIAGNOSTICS deleted_count = ROW_COUNT;
+  ELSE
+    DELETE FROM public.user_chats
+    WHERE user_key = target_user_key
+       OR user_key = 'supabase_' || raw_uuid_text
+       OR user_key = raw_uuid_text;
+    GET DIAGNOSTICS deleted_count = ROW_COUNT;
+  END IF;
+
+  RETURN pg_catalog.jsonb_build_object(
+    'success', true,
+    'deleted_count', deleted_count,
+    'message', 'User chats successfully cleared from database.'
+  );
+END;
+$$;
+
+REVOKE ALL ON FUNCTION public.clear_user_chats_by_admin(text, text) FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.clear_user_chats_by_admin(text, text) TO authenticated;
 
 CREATE OR REPLACE FUNCTION public.delete_own_account()
 RETURNS void
