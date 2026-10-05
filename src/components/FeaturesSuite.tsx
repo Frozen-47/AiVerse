@@ -30,6 +30,7 @@ interface FeaturesSuiteProps {
   setPopularOnly: (popular: boolean) => void;
   onBackToHome: () => void;
   onCloseFeatures: () => void;
+  onTabChange?: (tab: "overview" | "wizard" | "arena" | "playground") => void;
 
   // Wizard Props
   wizardStep: number;
@@ -118,7 +119,10 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => {
+                setActiveTab(tab.id);
+                props.onTabChange?.(tab.id);
+              }}
               className={`flex items-center gap-2 py-2 px-3.5 rounded-xl text-xs font-semibold transition-all cursor-pointer select-none ${
                 isActive
                   ? "bg-[#1a73e8] dark:bg-[#a8c7fa] text-white dark:text-[#041e49] shadow-xs"

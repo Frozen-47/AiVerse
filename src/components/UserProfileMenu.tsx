@@ -40,6 +40,7 @@ import {
 } from "../lib/onboarding";
 import { useTokens, useTheme } from "../lib/theme";
 import { getOAuthAvatarUrl, supabase } from "../lib/supabase";
+import { navigateTo } from "../lib/router";
 
 // Custom SVG Logos for platforms not in standard Lucide version
 const GithubLogo = ({ className }: { className?: string }) => (
@@ -1151,9 +1152,9 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
         </button>
 
         <div className="flex items-center justify-center gap-3 pt-1 text-[11px] text-neutral-400">
-          <a href="/privacy" onClick={(e) => { e.preventDefault(); onClose?.(); window.location.pathname = "/privacy"; }} className="hover:underline">Privacy</a>
+          <a href="/privacy" onClick={(e) => { e.preventDefault(); onClose?.(); navigateTo("/privacy"); }} className="hover:underline">Privacy</a>
           <span>•</span>
-          <a href="/terms" onClick={(e) => { e.preventDefault(); onClose?.(); window.location.pathname = "/terms"; }} className="hover:underline">Terms</a>
+          <a href="/terms" onClick={(e) => { e.preventDefault(); onClose?.(); navigateTo("/terms"); }} className="hover:underline">Terms</a>
           <span>•</span>
           {deletionRequested ? (
             <button

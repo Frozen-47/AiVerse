@@ -52,9 +52,21 @@ import { SupabaseConsole } from "./SupabaseConsole";
 
 export type { SiteAnnouncement };
 
+export type NavSectionId =
+  | "users"
+  | "deletion_requests"
+  | "submissions"
+  | "directory"
+  | "infrastructure"
+  | "analytics"
+  | "announcements"
+  | "audit";
+
 interface AdminDashboardProps {
   onBackToHome: () => void;
   onViewEntry?: (entry: Entry) => void;
+  initialSection?: NavSectionId;
+  onSectionChange?: (section: NavSectionId) => void;
 }
 
 export interface UserProfile {
@@ -86,16 +98,6 @@ export interface AuditLogItem {
   timestamp: string;
 }
 
-type NavSectionId =
-  | "users"
-  | "deletion_requests"
-  | "submissions"
-  | "directory"
-  | "infrastructure"
-  | "analytics"
-  | "announcements"
-  | "audit";
-
 interface EditingEntryState {
   isNew: boolean;
   name: string;
@@ -126,14 +128,27 @@ const isNewSubmission = (createdAt?: string): boolean => {
 export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   onBackToHome,
   onViewEntry,
+  initialSection,
+  onSectionChange,
 }) => {
   const t = useTokens();
   const { user } = useAuth();
   const currentUserKey = user ? (user.id.startsWith("supabase_") ? user.id : `supabase_${user.id}`) : "";
 
   // Google Cloud Console Navigation State
-  const [activeNav, setActiveNav] = useState<NavSectionId>("users");
+  const [activeNav, setActiveNav] = useState<NavSectionId>(initialSection || "users");
   const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  useEffect(() => {
+    if (initialSection && initialSection !== activeNav) {
+      setActiveNav(initialSection);
+    }
+  }, [initialSection]);
+
+  const handleNavSelect = (sec: NavSectionId) => {
+    setActiveNav(sec);
+    onSectionChange?.(sec);
+  };
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -1100,7 +1115,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               </p>
               <nav className="space-y-0.5">
                 <button
-                  onClick={() => setActiveNav("users")}
+                  onClick={() => handleNavSelect("users")}
                   className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-xs font-medium transition-colors cursor-pointer ${
                     activeNav === "users"
                       ? "bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8] font-semibold"
@@ -1117,7 +1132,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 </button>
 
                 <button
-                  onClick={() => setActiveNav("deletion_requests")}
+                  onClick={() => handleNavSelect("deletion_requests")}
                   className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-xs font-medium transition-colors cursor-pointer ${
                     activeNav === "deletion_requests"
                       ? "bg-[#fce8e6] text-[#c5221f] dark:bg-[#3c1716] dark:text-[#f28b82] font-semibold"
@@ -1144,7 +1159,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               </p>
               <nav className="space-y-0.5">
                 <button
-                  onClick={() => setActiveNav("submissions")}
+                  onClick={() => handleNavSelect("submissions")}
                   className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-xs font-medium transition-colors cursor-pointer ${
                     activeNav === "submissions"
                       ? "bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8] font-semibold"
@@ -1163,7 +1178,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 </button>
 
                 <button
-                  onClick={() => setActiveNav("directory")}
+                  onClick={() => handleNavSelect("directory")}
                   className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-xs font-medium transition-colors cursor-pointer ${
                     activeNav === "directory"
                       ? "bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8] font-semibold"
@@ -1188,7 +1203,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               </p>
               <nav className="space-y-0.5">
                 <button
-                  onClick={() => setActiveNav("infrastructure")}
+                  onClick={() => handleNavSelect("infrastructure")}
                   className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-xs font-medium transition-colors cursor-pointer ${
                     activeNav === "infrastructure"
                       ? "bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8] font-semibold"
@@ -1203,7 +1218,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 </button>
 
                 <button
-                  onClick={() => setActiveNav("analytics")}
+                  onClick={() => handleNavSelect("analytics")}
                   className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-md text-xs font-medium transition-colors cursor-pointer ${
                     activeNav === "analytics"
                       ? "bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8] font-semibold"
@@ -1215,7 +1230,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 </button>
 
                 <button
-                  onClick={() => setActiveNav("announcements")}
+                  onClick={() => handleNavSelect("announcements")}
                   className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-xs font-medium transition-colors cursor-pointer ${
                     activeNav === "announcements"
                       ? "bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8] font-semibold"
@@ -1232,7 +1247,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 </button>
 
                 <button
-                  onClick={() => setActiveNav("audit")}
+                  onClick={() => handleNavSelect("audit")}
                   className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-xs font-medium transition-colors cursor-pointer ${
                     activeNav === "audit"
                       ? "bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8] font-semibold"
@@ -1311,7 +1326,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     </p>
                   </div>
                   <button
-                    onClick={() => setActiveNav("deletion_requests")}
+                    onClick={() => handleNavSelect("deletion_requests")}
                     className="px-2.5 py-1 rounded text-xs font-semibold bg-[#d93025] hover:bg-[#b31412] text-white cursor-pointer shadow-xs whitespace-nowrap self-start sm:self-auto"
                   >
                     Review Requests
@@ -2106,7 +2121,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                   </button>
 
                   <button
-                    onClick={() => setActiveNav("infrastructure")}
+                    onClick={() => handleNavSelect("infrastructure")}
                     className="p-3.5 rounded-lg border border-[#1a73e8]/40 bg-[#e8f0fe]/40 dark:bg-[#1a2e4c]/40 text-left cursor-pointer transition-colors hover:border-[#1a73e8]"
                   >
                     <Activity size={18} className="text-[#1a73e8] dark:text-[#8ab4f8] mb-1.5" />

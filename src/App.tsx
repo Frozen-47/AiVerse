@@ -32,10 +32,9 @@ import {
 } from "./lib/entryBookmarks";
 import {
   findEntryBySlug,
-  migrateLegacyProfileQueryUrl,
-  parseProfileUsernameFromLocation,
   profilePathSlug,
 } from "./lib/entryUrl";
+import { useAppRouter, getRouteSeo } from "./lib/router";
 import { getRelatedEntries, getCompareCandidates } from "./lib/relatedEntries";
 
 
@@ -101,13 +100,62 @@ const Inner: React.FC = () => {
   const [taskFilter, setTaskFilter] = useState<TaskFilter>("All Tasks");
   const [popularOnly, setPopularOnly] = useState(false);
   const [catalogDisplayMode, setCatalogDisplayMode] = useState<"assets" | "ecosystems">("assets");
+  const { route, entrySlug, navigate } = useAppRouter();
   const [selected, setSelected] = useState<Entry | null>(null);
-  const initialEntrySlugRef = useRef<string | null>(
-    typeof window !== "undefined"
-      ? new URLSearchParams(window.location.search).get("entry")
-      : null,
+
+  const isChat = route.type === "chat";
+  const isPrivacy = route.type === "privacy";
+  const isTerms = route.type === "terms";
+  const isAdminDashboard = route.type === "admin";
+  const isFeatures = route.type === "features";
+  const isWizard = route.type === "features" && route.subpage === "wizard";
+  const isArena = route.type === "features" && route.subpage === "compare";
+  const isPlayground = route.type === "features" && route.subpage === "playground";
+  const profileUsername = route.type === "profile" ? route.username : null;
+  const isDashboard = route.type === "dashboard";
+  const activeView: "landing" | "catalog" = isDashboard ? "catalog" : "landing";
+  const [adminDashboardKey, setAdminDashboardKey] = useState(0);
+
+  // Synchronize dashboard tab with catalog display mode & saved filter
+  useEffect(() => {
+    if (route.type === "dashboard") {
+      if (route.tab === "ecosystems") {
+        setCatalogDisplayMode("ecosystems");
+        setSavedOnly(false);
+      } else if (route.tab === "saved") {
+        setSavedOnly(true);
+        setCatalogDisplayMode("assets");
+      } else {
+        setCatalogDisplayMode("assets");
+        setSavedOnly(false);
+      }
+    }
+  }, [route]);
+
+  const handleSelectEntry = useCallback(
+    (entry: Entry | null) => {
+      setSelected(entry);
+      if (entry) {
+        navigate(route, { entry: entry.name });
+      } else {
+        navigate(route, { entry: null });
+      }
+    },
+    [route, navigate]
   );
-  const [urlSyncReady, setUrlSyncReady] = useState(false);
+
+  // Synchronize selected entry with URL entrySlug
+  useEffect(() => {
+    if (entrySlug && entries.length) {
+      const entry = findEntryBySlug(entries, entrySlug);
+      if (entry) {
+        setSelected(entry);
+      }
+    } else if (!entrySlug) {
+      setSelected(null);
+    }
+  }, [entrySlug, entries]);
+
   const catalogSectionRef = useRef<HTMLDivElement | null>(null);
   const scrollToCatalog = useCallback(() => {
     catalogSectionRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -119,52 +167,6 @@ const Inner: React.FC = () => {
   const [showMobileSidebar, setShowMobileSidebar] = useState(false);
   const [onboardingProfile, setOnboardingProfile] = useState<OnboardingProfile | null>(null);
   const [showOnboarding, setShowOnboarding] = useState(false);
-  const [profileUsername, setProfileUsername] = useState<string | null>(() => {
-    const migrated = migrateLegacyProfileQueryUrl();
-    if (migrated) return migrated;
-    return parseProfileUsernameFromLocation();
-  });
-  const [isAdminDashboard, setIsAdminDashboard] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    return window.location.pathname === "/admin" || window.location.pathname === "/admin/";
-  });
-  const [adminDashboardKey, setAdminDashboardKey] = useState(0);
-  const [isChat, setIsChat] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    return window.location.pathname === "/chat" || window.location.pathname === "/chat/";
-  });
-  const [isPrivacy, setIsPrivacy] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    return window.location.pathname === "/privacy" || window.location.pathname === "/privacy/";
-  });
-  const [isTerms, setIsTerms] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    return window.location.pathname === "/terms" || window.location.pathname === "/terms/";
-  });
-  const [isWizard, setIsWizard] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    return window.location.pathname === "/wizard" || window.location.pathname === "/wizard/";
-  });
-  const [isArena, setIsArena] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    return window.location.pathname === "/arena" || window.location.pathname === "/arena/";
-  });
-  const [isFeatures, setIsFeatures] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    return window.location.pathname === "/features" || window.location.pathname === "/features/";
-  });
-  const [isPlayground, setIsPlayground] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    return window.location.pathname === "/playground" || window.location.pathname === "/playground/";
-  });
-  const [activeView, setActiveView] = useState<"landing" | "catalog">((() => {
-    if (typeof window === "undefined") return "landing";
-    return (window.location.pathname === "/entries" || window.location.pathname === "/entries/") ? "catalog" : "landing";
-  })());
-  const [browseAll, setBrowseAll] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    return window.location.pathname === "/entries" || window.location.pathname === "/entries/";
-  });
 
   // FeaturesSuite Quiz Wizard and Compare Arena States
   const [compareToolA, setCompareToolA] = useState<string>("GPT-4o");
@@ -335,14 +337,8 @@ const Inner: React.FC = () => {
           setOnboardingProfile(null);
           setShowOnboarding(false);
           setBlockedStatus(null);
-          setIsAdminDashboard(false);
         }
         return;
-      }
-
-      const isAdmin = user.email === "frozennheart47@gmail.com" || user.user_metadata?.role === "admin";
-      if (!isAdmin && !cancelled) {
-        setIsAdminDashboard(false);
       }
 
       // Always fetch from DB to get the latest block status
@@ -456,11 +452,7 @@ const Inner: React.FC = () => {
     setPrefsToast(true);
     setTimeout(() => setPrefsToast(false), 4000);
     // Transition user to catalog view
-    setActiveView("catalog");
-    setBrowseAll(true);
-    setIsFeatures(false);
-    setIsPrivacy(false);
-    setIsTerms(false);
+    navigate("/dashboard");
   };
 
   const handleSearchChange = (val: string) => {
@@ -468,7 +460,7 @@ const Inner: React.FC = () => {
   };
 
   const handleSearchSelect = (e: Entry) => {
-    setSelected(e);
+    handleSelectEntry(e);
     setSearchInput("");
   };
 
@@ -536,9 +528,9 @@ const Inner: React.FC = () => {
   const selectEntryByName = useCallback(
     (name: string) => {
       const entry = entriesByName.get(name);
-      if (entry) setSelected(entry);
+      if (entry) handleSelectEntry(entry);
     },
-    [entriesByName],
+    [entriesByName, handleSelectEntry],
   );
 
   const handleToggleBookmark = useCallback(
@@ -582,150 +574,26 @@ const Inner: React.FC = () => {
     return getCompareCandidates(selected, entries, onboardingProfile?.interests ?? []);
   }, [selected, entries, onboardingProfile]);
 
+  // Dynamic SEO handler using centralized router SEO generator
   useEffect(() => {
-    if (!entries.length) return;
-    const slug =
-      initialEntrySlugRef.current ??
-      new URLSearchParams(window.location.search).get("entry");
-    initialEntrySlugRef.current = null;
-    if (slug) {
-      const entry = findEntryBySlug(entries, slug);
-      if (entry) setSelected(entry);
-    }
-    setUrlSyncReady(true);
-  }, [entries]);
-
-  useEffect(() => {
-    if (!urlSyncReady) return;
-    const url = new URL(window.location.href);
-    let targetPath = "/";
-
-    if (isChat) {
-      targetPath = "/chat";
-      url.searchParams.delete("entry");
-      url.searchParams.delete("user");
-    } else if (isPrivacy) {
-      targetPath = "/privacy";
-      url.searchParams.delete("entry");
-      url.searchParams.delete("user");
-    } else if (isTerms) {
-      targetPath = "/terms";
-      url.searchParams.delete("entry");
-      url.searchParams.delete("user");
-    } else if (isWizard) {
-      targetPath = "/wizard";
-      url.searchParams.delete("entry");
-      url.searchParams.delete("user");
-    } else if (isArena) {
-      targetPath = "/arena";
-      url.searchParams.delete("entry");
-      url.searchParams.delete("user");
-    } else if (isFeatures) {
-      targetPath = "/features";
-      url.searchParams.delete("entry");
-      url.searchParams.delete("user");
-    } else if (isAdminDashboard) {
-      targetPath = "/admin";
-      url.searchParams.delete("entry");
-      url.searchParams.delete("user");
-    } else if (isPlayground) {
-      targetPath = "/playground";
-      url.searchParams.delete("entry");
-      url.searchParams.delete("user");
-    } else if (profileUsername) {
-      targetPath = `/user/${profilePathSlug(profileUsername)}`;
-      url.searchParams.delete("user");
-    } else if (activeView === "catalog" || browseAll) {
-      targetPath = "/entries";
-    }
-
-    url.pathname = targetPath;
-    if (selected) {
-      url.searchParams.set("entry", selected.name);
-    } else {
-      url.searchParams.delete("entry");
-    }
-
-    // Only pushState if pathname actually changes to avoid pushing duplicate views, else replaceState
-    if (window.location.pathname !== targetPath) {
-      window.history.pushState({}, "", url);
-    } else {
-      window.history.replaceState({}, "", url);
-    }
-  }, [selected, profileUsername, isChat, isPrivacy, isTerms, isWizard, isArena, isFeatures, isPlayground, activeView, browseAll, urlSyncReady]);
-
-  // Dynamic SEO handler
-  useEffect(() => {
-    let title = "AiVerse - The Ultimate AI Tool & Model Directory";
-    let desc = "AiVerse is a comprehensive, open-source guide to AI tools, models, datasets, and frameworks. Search, compare, and discover the best AI technologies.";
-    let path = "/";
-
-    if (isChat) {
-      title = "Vox AI Technical Assistant | AI Studio | AiVerse";
-      desc = "Chat with Vox, the flagship AI research assistant on AiVerse covering 330+ models, benchmarks, and architectures.";
-      path = "/chat";
-    } else if (isPrivacy) {
-      title = "Privacy Policy | AiVerse";
-      desc = "Read the AiVerse Privacy Policy to understand how we secure your data, personalization preferences, and catalog contributions.";
-      path = "/privacy";
-    } else if (isTerms) {
-      title = "Terms of Service | AiVerse";
-      desc = "Review the AiVerse Terms of Service for contributing tools, utilizing the comparison arena, and interacting with our directory.";
-      path = "/terms";
-    } else if (isWizard) {
-      title = "AI Discovery Wizard | AiVerse";
-      desc = "Use the AiVerse AI Discovery Wizard to identify the best language models, frameworks, and datasets based on your tech stack and requirements.";
-      path = "/wizard";
-    } else if (isArena) {
-      title = "Comparison Arena | AiVerse";
-      desc = "Compare advanced machine learning models and AI platforms side-by-side on technical specs, architecture, benchmarks, and licensing.";
-      path = "/arena";
-    } else if (isFeatures) {
-      title = "Ecosystem Features | AiVerse";
-      desc = "Explore category dashboards, system capacity metrics, spotlight highlights, values prop overlays, and all integrated capabilities.";
-      path = "/features";
-    } else if (isAdminDashboard) {
-      title = "Administrator Console | AiVerse Cloud";
-      desc = "AiVerse platform administration console for managing database catalog, review queues, and user security governance.";
-      path = "/admin";
-    } else if (isPlayground) {
-      title = "Model Playground | AiVerse";
-      desc = "Compare language models side-by-side. Test custom system instructions, prompt templates, and latency metrics.";
-      path = "/playground";
-    } else if (profileUsername) {
-      const displayUser = profileUsername.startsWith("@") ? profileUsername : `@${profileUsername}`;
-      title = `${displayUser}'s Builder Profile | AiVerse`;
-      desc = `View developer preferences, role interests, and bookmarked AI collections of ${displayUser} on AiVerse.`;
-      path = `/user/${profilePathSlug(profileUsername)}`;
-    } else if (activeView === "catalog" || browseAll) {
-      title = "Explore AI Directory | AiVerse";
-      desc = "Browse our comprehensive, citation-backed database of language models, computer vision frameworks, and MLOps platforms.";
-      path = "/entries";
-    }
-
-    if (selected) {
-      title = `${selected.name} - Technical Specs & Details | AiVerse`;
-      desc = `${selected.name} is a ${selected.type} by ${selected.org}. ${selected.summary} View specs, benchmarks, code templates, and limitations.`;
-      path = `${path}?entry=${encodeURIComponent(selected.name)}`;
-    }
-
-    document.title = title;
+    const seo = getRouteSeo(route, selected?.name);
+    document.title = seo.title;
 
     // Update Meta Description
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute("content", desc);
+      metaDesc.setAttribute("content", seo.desc);
     }
-    
+
     // Update Open Graph tags
     const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute("content", title);
-    
+    if (ogTitle) ogTitle.setAttribute("content", seo.title);
+
     const ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute("content", desc);
-    
+    if (ogDesc) ogDesc.setAttribute("content", seo.desc);
+
     const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) ogUrl.setAttribute("content", `https://aiverse.frozenn.in${path}`);
+    if (ogUrl) ogUrl.setAttribute("content", `https://aiverse.frozenn.in${seo.path}`);
 
     // Update Canonical URL
     let canonical = document.querySelector('link[rel="canonical"]');
@@ -734,41 +602,8 @@ const Inner: React.FC = () => {
       canonical.setAttribute("rel", "canonical");
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute("href", `https://aiverse.frozenn.in${path}`);
-  }, [selected, profileUsername, isChat, isPrivacy, isTerms, isWizard, isArena, isFeatures, isPlayground, activeView, browseAll]);
-
-  useEffect(() => {
-    const handlePopState = () => {
-      setIsChat(window.location.pathname === "/chat" || window.location.pathname === "/chat/");
-      setIsPrivacy(window.location.pathname === "/privacy" || window.location.pathname === "/privacy/");
-      setIsTerms(window.location.pathname === "/terms" || window.location.pathname === "/terms/");
-      setIsWizard(window.location.pathname === "/wizard" || window.location.pathname === "/wizard/");
-      setIsArena(window.location.pathname === "/arena" || window.location.pathname === "/arena/");
-      setIsFeatures(window.location.pathname === "/features" || window.location.pathname === "/features/");
-      setIsPlayground(window.location.pathname === "/playground" || window.location.pathname === "/playground/");
-      setIsAdminDashboard(window.location.pathname === "/admin" || window.location.pathname === "/admin/");
-      setProfileUsername(parseProfileUsernameFromLocation());
-
-      const isEntriesPath = window.location.pathname === "/entries" || window.location.pathname === "/entries/";
-      if (isEntriesPath) {
-        setActiveView("catalog");
-        setBrowseAll(true);
-      } else if (window.location.pathname === "/" || window.location.pathname === "") {
-        setActiveView("landing");
-        setBrowseAll(false);
-      }
-
-      const slug = new URLSearchParams(window.location.search).get("entry");
-      if (slug) {
-        const entry = findEntryBySlug(entries, slug);
-        if (entry) setSelected(entry);
-      } else {
-        setSelected(null);
-      }
-    };
-    window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
-  }, [entries]);
+    canonical.setAttribute("href", `https://aiverse.frozenn.in${seo.path}`);
+  }, [route, selected?.name]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -782,7 +617,7 @@ const Inner: React.FC = () => {
         (document.querySelector<HTMLInputElement>("[data-search]"))?.focus();
       }
       if (e.key === "Escape") {
-        setSelected(null);
+        handleSelectEntry(null);
         setIsAdding(false);
       }
     };
@@ -1024,89 +859,36 @@ const Inner: React.FC = () => {
       <Navbar
         onAddEntry={handleAddClick}
         onEditPreferences={handleEditPreferences}
-        onViewProfile={setProfileUsername}
+        onViewProfile={(uname) => {
+          navigate(`/user/${encodeURIComponent(profilePathSlug(uname))}`);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
         onViewSaved={() => {
-          setIsPrivacy(false);
-          setIsTerms(false);
-          setIsFeatures(false);
-          setIsAdminDashboard(false);
-          setSelected(null);
-          setProfileUsername(null);
-          setBrowseAll(true);
-          setActiveView("catalog");
-          setSavedOnly(true);
+          navigate("/dashboard?tab=saved");
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }}
         onHomeClick={() => {
-          setIsPrivacy(false);
-          setIsTerms(false);
-          setIsFeatures(false);
-          setIsWizard(false);
-          setIsArena(false);
-          setIsPlayground(false);
-          setIsAdminDashboard(false);
-          setSelected(null);
-          setProfileUsername(null);
-          setActiveView("landing");
-          setBrowseAll(false);
-          window.location.hash = "";
+          navigate("/");
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }}
         onViewAdminDashboard={() => {
-          setIsPrivacy(false);
-          setIsTerms(false);
-          setIsFeatures(false);
-          setIsWizard(false);
-          setIsArena(false);
-          setIsPlayground(false);
-          setIsAdminDashboard(true);
-          setSelected(null);
-          setProfileUsername(null);
-          setBrowseAll(false);
+          navigate("/admin");
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }}
         entryCount={entries.length}
         ecosystemsCount={ecosystemsCount}
         onBrowseAll={() => {
-          setIsPrivacy(false);
-          setIsTerms(false);
-          setIsFeatures(false);
-          setIsWizard(false);
-          setIsArena(false);
-          setIsPlayground(false);
-          setIsAdminDashboard(false);
-          setSelected(null);
-          setProfileUsername(null);
-          setBrowseAll(true);
-          setActiveView("catalog");
-          setCatalogDisplayMode("assets");
+          navigate("/dashboard");
           setCurrentPage(1);
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
         onViewEcosystems={() => {
-          setIsPrivacy(false);
-          setIsTerms(false);
-          setIsFeatures(false);
-          setIsWizard(false);
-          setIsArena(false);
-          setIsPlayground(false);
-          setIsAdminDashboard(false);
-          setSelected(null);
-          setProfileUsername(null);
-          setBrowseAll(true);
-          setActiveView("catalog");
-          setCatalogDisplayMode("ecosystems");
+          navigate("/dashboard?view=ecosystems");
           setCurrentPage(1);
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
         onViewChat={() => {
-          setIsChat(true);
-          setIsPrivacy(false);
-          setIsTerms(false);
-          setIsFeatures(false);
-          setIsWizard(false);
-          setIsArena(false);
-          setIsPlayground(false);
-          setIsAdminDashboard(false);
-          setSelected(null);
-          setProfileUsername(null);
+          navigate("/chat");
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
         onboardingProfile={onboardingProfile}
@@ -1153,49 +935,44 @@ const Inner: React.FC = () => {
 
       {isPrivacy ? (
         <PrivacyPolicy onBackToHome={() => {
-          setIsPrivacy(false);
-          setIsTerms(false);
-          setIsWizard(false);
-          setIsArena(false);
-          setIsFeatures(false);
-          setActiveView("landing");
-          setBrowseAll(false);
+          navigate("/");
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }} />
       ) : isTerms ? (
         <TermsOfService onBackToHome={() => {
-          setIsPrivacy(false);
-          setIsTerms(false);
-          setIsWizard(false);
-          setIsArena(false);
-          setIsFeatures(false);
-          setActiveView("landing");
-          setBrowseAll(false);
+          navigate("/");
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }} />
       ) : (isWizard || isArena || isFeatures || isPlayground) ? (
         <FeaturesSuite
           initialTab={isWizard ? "wizard" : isArena ? "arena" : isPlayground ? "playground" : "overview"}
           entries={entries}
           typeCounts={typeCounts}
-          setSelected={setSelected}
+          setSelected={handleSelectEntry}
           setTypeFilter={(filter) => setTypeFilter(filter as TypeFilter)}
           setSearchInput={setSearchInput}
-          setBrowseAll={setBrowseAll}
-          setActiveView={setActiveView}
+          setBrowseAll={(browse) => {
+            if (browse) navigate("/dashboard");
+            else navigate("/");
+          }}
+          setActiveView={(view) => {
+            if (view === "catalog") navigate("/dashboard");
+            else navigate("/");
+          }}
           setSavedOnly={setSavedOnly}
           setPopularOnly={setPopularOnly}
+          onTabChange={(tab) => {
+            if (tab === "arena") navigate("/features/compare");
+            else if (tab === "wizard") navigate("/features/wizard");
+            else if (tab === "playground") navigate("/features/playground");
+            else navigate("/features");
+          }}
           onCloseFeatures={() => {
-            setIsWizard(false);
-            setIsArena(false);
-            setIsFeatures(false);
-            setIsPlayground(false);
+            navigate("/dashboard");
           }}
           onBackToHome={() => {
-            setIsWizard(false);
-            setIsArena(false);
-            setIsFeatures(false);
-            setIsPlayground(false);
-            setActiveView("landing");
-            setBrowseAll(false);
+            navigate("/");
+            window.scrollTo({ top: 0, behavior: "smooth" });
           }}
           // Wizard Props
           wizardStep={wizardStep}
@@ -1225,18 +1002,13 @@ const Inner: React.FC = () => {
         (user?.email === "frozennheart47@gmail.com" || user?.user_metadata?.role === "admin") ? (
           <AdminDashboard
             key={adminDashboardKey}
+            initialSection={route.type === "admin" ? route.section : undefined}
+            onSectionChange={(sec) => navigate(`/admin?section=${sec}`, { replace: true })}
             onBackToHome={() => {
-              setIsAdminDashboard(false);
-              setIsPrivacy(false);
-              setIsTerms(false);
-              setIsWizard(false);
-              setIsArena(false);
-              setIsFeatures(false);
-              setActiveView("landing");
-              setBrowseAll(false);
+              navigate("/");
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            onViewEntry={setSelected}
+            onViewEntry={handleSelectEntry}
           />
         ) : (
           <div className="min-h-[70vh] flex items-center justify-center p-6">
@@ -1255,9 +1027,7 @@ const Inner: React.FC = () => {
               <div className="flex flex-col gap-2 pt-2">
                 <button
                   onClick={() => {
-                    setIsAdminDashboard(false);
-                    setActiveView("landing");
-                    window.history.pushState({}, "", "/");
+                    navigate("/");
                   }}
                   className="w-full py-2.5 rounded-xl text-xs font-medium border border-[#dadce0] dark:border-[#3c4043] hover:bg-neutral-100 dark:hover:bg-white/5 text-neutral-700 dark:text-neutral-300 transition-colors cursor-pointer"
                 >
@@ -1289,12 +1059,20 @@ const Inner: React.FC = () => {
               <FeatureRibbon
                 user={user}
                 onOpenAuth={openAuthModal}
-                onOpenWizard={() => setIsWizard(true)}
-                onOpenArena={() => setIsArena(true)}
-                onOpenPlayground={() => setIsPlayground(true)}
+                onOpenWizard={() => {
+                  navigate("/features/wizard");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                onOpenArena={() => {
+                  navigate("/features/compare");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                onOpenPlayground={() => {
+                  navigate("/features/playground");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
                 onOpenSuite={() => {
-                  window.location.hash = "";
-                  setIsFeatures(true);
+                  navigate("/features");
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
               />
@@ -1387,9 +1165,7 @@ const Inner: React.FC = () => {
                         {/* View All Entries button */}
                         <button
                           onClick={() => {
-                            setBrowseAll(true);
-                            setActiveView("catalog");
-                            setCatalogDisplayMode("assets");
+                            navigate("/dashboard");
                             window.scrollTo({ top: 0, behavior: "smooth" });
                           }}
                           className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 hover:opacity-90 transition-all cursor-pointer flex items-center gap-1.5 shadow-xs"
@@ -1521,9 +1297,7 @@ const Inner: React.FC = () => {
                       <div className="flex flex-wrap items-center gap-2.5">
                         <button
                           onClick={() => {
-                            setBrowseAll(true);
-                            setActiveView("catalog");
-                            setCatalogDisplayMode("assets");
+                            navigate("/dashboard");
                             window.scrollTo({ top: 0, behavior: "smooth" });
                           }}
                           className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-all cursor-pointer flex items-center gap-1.5 shadow-xs"
@@ -1604,9 +1378,7 @@ const Inner: React.FC = () => {
                   entries={entries}
                   ratingSummaries={ratingSummaries}
                   onViewAllEntries={() => {
-                    setBrowseAll(true);
-                    setActiveView("catalog");
-                    setCatalogDisplayMode("assets");
+                    navigate("/dashboard");
                     setCurrentPage(1);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
@@ -1623,9 +1395,7 @@ const Inner: React.FC = () => {
                   <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
                     <button
                       onClick={() => {
-                        setBrowseAll(false);
-                        setActiveView("landing");
-                        setIsFeatures(false);
+                        navigate("/");
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
                       className="hover:text-blue-500 hover:underline cursor-pointer flex items-center gap-1 transition-colors"
@@ -2021,17 +1791,7 @@ const Inner: React.FC = () => {
                 href="/"
                 onClick={(e) => {
                   e.preventDefault();
-                  setIsPrivacy(false);
-                  setIsTerms(false);
-                  setIsFeatures(false);
-                  setIsWizard(false);
-                  setIsArena(false);
-                  setIsAdminDashboard(false);
-                  setSelected(null);
-                  setProfileUsername(null);
-                  setActiveView("landing");
-                  setBrowseAll(false);
-                  window.location.hash = "";
+                  navigate("/");
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 className="flex items-center gap-3 text-neutral-900 dark:text-white hover:opacity-85 transition-opacity"
@@ -2079,7 +1839,8 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); setProfileUsername(null); setBrowseAll(true); setActiveView("catalog"); setCatalogDisplayMode("assets"); setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      navigate("/dashboard");
+                      window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
@@ -2089,7 +1850,8 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); setProfileUsername(null); setBrowseAll(true); setActiveView("catalog"); setCatalogDisplayMode("ecosystems"); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      navigate("/dashboard?view=ecosystems");
+                      window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
@@ -2099,7 +1861,8 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsArena(true); setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      navigate("/features/compare");
+                      window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
@@ -2109,7 +1872,8 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsWizard(true); setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      navigate("/features/wizard");
+                      window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
@@ -2119,7 +1883,8 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsPlayground(true); setIsWizard(false); setIsFeatures(false); setIsPrivacy(false); setIsTerms(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      navigate("/features/playground");
+                      window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
@@ -2129,7 +1894,8 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsFeatures(true); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      navigate("/features");
+                      window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
@@ -2195,7 +1961,8 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsPrivacy(true); setIsTerms(false); setIsFeatures(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      navigate("/privacy");
+                      window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
@@ -2205,7 +1972,8 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      setIsTerms(true); setIsPrivacy(false); setIsFeatures(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" }); 
+                      navigate("/terms");
+                      window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
                   >
@@ -2250,7 +2018,8 @@ const Inner: React.FC = () => {
               </span>
               <button
                 onClick={() => {
-                  setIsFeatures(true); setIsPrivacy(false); setIsTerms(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" });
+                  navigate("/features");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors"
               >
@@ -2282,7 +2051,8 @@ const Inner: React.FC = () => {
             <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-6 gap-y-2">
               <button
                 onClick={() => {
-                  setIsPrivacy(true); setIsTerms(false); setIsFeatures(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" });
+                  navigate("/privacy");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors"
               >
@@ -2290,7 +2060,8 @@ const Inner: React.FC = () => {
               </button>
               <button
                 onClick={() => {
-                  setIsTerms(true); setIsPrivacy(false); setIsFeatures(false); setIsWizard(false); setIsArena(false); setIsAdminDashboard(false); setSelected(null); window.scrollTo({ top: 0, behavior: "smooth" });
+                  navigate("/terms");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors"
               >
@@ -2343,10 +2114,15 @@ const Inner: React.FC = () => {
       {profileUsername && (
         <UserProfileModal
           username={profileUsername}
-          onClose={() => setProfileUsername(null)}
+          onClose={() => {
+            if (window.history.length > 1) {
+              window.history.back();
+            } else {
+              navigate("/");
+            }
+          }}
           onViewEntry={(entry) => {
-            setSelected(entry);
-            setProfileUsername(null);
+            handleSelectEntry(entry);
           }}
         />
       )}
@@ -2380,17 +2156,10 @@ const Inner: React.FC = () => {
           entries={entries}
           isChatRoute={isChat}
           onNavigateToChat={() => {
-            setIsChat(true);
-            setIsPrivacy(false);
-            setIsTerms(false);
-            setIsFeatures(false);
-            setIsWizard(false);
-            setIsArena(false);
-            setIsPlayground(false);
-            setIsAdminDashboard(false);
+            navigate("/chat");
           }}
           onExitChatRoute={() => {
-            setIsChat(false);
+            navigate("/");
           }}
         />
       </Suspense>
@@ -2399,26 +2168,18 @@ const Inner: React.FC = () => {
         <Suspense fallback={null}>
           <DetailModal
             entry={selected}
-            onClose={() => setSelected(null)}
+            onClose={() => handleSelectEntry(null)}
             onRatingSummaryChange={handleRatingSummaryChange}
             relatedEntries={relatedForSelected}
-            onSelectRelated={setSelected}
+            onSelectRelated={handleSelectEntry}
             isBookmarked={bookmarks.includes(selected.name)}
             onToggleBookmark={() => handleToggleBookmark(selected.name)}
             compareCandidates={compareCandidatesForSelected}
             onViewProfile={(uname) => {
-              setProfileUsername(uname);
+              navigate(`/user/${encodeURIComponent(profilePathSlug(uname))}`);
             }}
             onOpenPlayground={() => {
-              setSelected(null);
-              setIsChat(false);
-              setIsPlayground(true);
-              setIsWizard(false);
-              setIsFeatures(false);
-              setIsPrivacy(false);
-              setIsTerms(false);
-              setIsArena(false);
-              setIsAdminDashboard(false);
+              navigate("/features/playground");
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           />
