@@ -1,94 +1,94 @@
 {
-  "timestamp": "2026-10-05T03:14:13.339Z",
+  "timestamp": "2026-10-06T04:02:00.008Z",
   "models": [
     {
       "id": "Cloudflare/clef",
       "author": "Cloudflare",
-      "likes": 1227,
-      "downloads": 4214,
+      "likes": 1525,
+      "downloads": 5416,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Cloudflare/clef"
     },
     {
-      "id": "convaiinnovations/laya",
-      "author": "convaiinnovations",
-      "likes": 5166,
-      "downloads": 3752,
-      "pipeline_tag": "text-classification",
-      "url": "https://huggingface.co/convaiinnovations/laya"
-    },
-    {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
       "author": "abenzerps",
-      "likes": 3151,
-      "downloads": 1553744,
+      "likes": 3278,
+      "downloads": 1638838,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
     },
     {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 6322,
-      "downloads": 1626951,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5"
-    },
-    {
-      "id": "Cloudflare/clef-flash",
-      "author": "Cloudflare",
-      "likes": 435,
-      "downloads": 6372,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Cloudflare/clef-flash"
+      "id": "convaiinnovations/laya",
+      "author": "convaiinnovations",
+      "likes": 5246,
+      "downloads": 11733,
+      "pipeline_tag": "text-classification",
+      "url": "https://huggingface.co/convaiinnovations/laya"
     },
     {
       "id": "Aleph-Alpha/Kolibri-1",
       "author": "Aleph-Alpha",
-      "likes": 407,
-      "downloads": 1135,
+      "likes": 639,
+      "downloads": 2453,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1"
+    },
+    {
+      "id": "autotrust/JEV-27B-VL",
+      "author": "autotrust",
+      "likes": 685,
+      "downloads": 1278569,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/autotrust/JEV-27B-VL"
+    },
+    {
+      "id": "Cloudflare/clef-flash",
+      "author": "Cloudflare",
+      "likes": 538,
+      "downloads": 8075,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/Cloudflare/clef-flash"
     }
   ],
   "papers": [
     {
-      "title": "Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Papers",
-      "summary": "AI-generated content, often called AI slop, is increasingly common everywhere, particularly in academia. Slop in AI-generated scientific papers, however, has mo...",
+      "title": "ALoDLM: Adaptively Looped Diffusion Language Models",
+      "summary": "Diffusion language models (DLMs) enable fast generation by predicting multiple tokens in parallel, but their practical adoption remains limited by a persistent ...",
+      "upvotes": 12,
+      "arxiv_id": "2610.04198",
+      "url": "https://huggingface.co/papers/2610.04198",
+      "githubRepo": "https://github.com/amazon-science/ALoDLM"
+    },
+    {
+      "title": "Towards Looped Models Done Right, Part II: Rethinking at Fixed Points",
+      "summary": "Every recurrence of a looped language model adds cost in training, decoding, prefill, and reinforcement learning (RL). The closer recurrent states get to fixed ...",
       "upvotes": 2,
-      "arxiv_id": "2610.00531",
-      "url": "https://huggingface.co/papers/2610.00531",
-      "githubRepo": "https://github.com/yerimoh/ScientificSlop"
+      "arxiv_id": "2610.06833",
+      "url": "https://huggingface.co/papers/2610.06833",
+      "githubRepo": "https://github.com/ifm-ai/xllm-loop"
     },
     {
-      "title": "PDE-JEPA: Predictive Representation Learning of Latent Dynamics Modeling for Parametric PDEs",
-      "summary": "Physical trajectories contain more than snapshots of a system: they also reveal how its states evolve under governing conditions. However, representation learni...",
-      "upvotes": 4,
-      "arxiv_id": "2609.34715",
-      "url": "https://huggingface.co/papers/2609.34715",
-      "githubRepo": "https://github.com/Tanpig-X/PDE-JEPA"
+      "title": "Kandinsky 6.0 Video: Foundation Models for Synchronized Video and Audio Generation",
+      "summary": "We present Kandinsky 6.0 Video, a family of foundation diffusion models for synchronized text-to-audio-video generation, comprising Kandinsky 6.0 Video Lite (3B...",
+      "upvotes": 3,
+      "arxiv_id": "2610.05608",
+      "url": "https://huggingface.co/papers/2610.05608",
+      "githubRepo": null
     },
     {
-      "title": "MetaRubric: Learning to Reward for Rubric-Based Reinforcement Learning",
-      "summary": "Rubric-based reinforcement learning extends reward-driven optimization to open-ended tasks by assigning partial credit to individual response requirements. Howe...",
-      "upvotes": 1,
-      "arxiv_id": "2610.02824",
-      "url": "https://huggingface.co/papers/2610.02824",
-      "githubRepo": "https://github.com/metarubric/metarubric"
+      "title": "InterMimicGen: Scaling Humanoid Loco-Manipulation through Self-Evolving Motion Imitation",
+      "summary": "Captured human-object interactions provide rich supervision for humanoid loco-manipulation, but they are sparse, heterogeneous, and not directly executable by r...",
+      "upvotes": 0,
+      "arxiv_id": "2610.06850",
+      "url": "https://huggingface.co/papers/2610.06850",
+      "githubRepo": null
     },
     {
-      "title": "FrameMorrow: Future-guided Frame Selection with Prospective Tokens for Long-Horizon Video Generation",
-      "summary": "Long-horizon video generation requires models to effectively leverage an increasingly long generation history. As the generated history grows, retaining all pre...",
-      "upvotes": 2,
-      "arxiv_id": "2609.38839",
-      "url": "https://huggingface.co/papers/2609.38839",
-      "githubRepo": "https://github.com/YinBo0927/FrameMorrow"
-    },
-    {
-      "title": "Covert Assistance: Helpful LLM Agents Evade Oversight in Multi-Agent Systems",
-      "summary": "As multi-agent systems enter high-stakes domains, the possibility that agents may circumvent safety boundaries is a growing concern. Prior work has examined thi...",
-      "upvotes": 1,
-      "arxiv_id": "2609.39050",
-      "url": "https://huggingface.co/papers/2609.39050",
+      "title": "CANOPY: Adaptive-Granularity Evidence Compression for Multimodal RAG",
+      "summary": "Multimodal RAG retrieves text, tables, images, and videos, but choosing a retrieval granularity does not determine how much context to retain within each item. ...",
+      "upvotes": 9,
+      "arxiv_id": "2610.00923",
+      "url": "https://huggingface.co/papers/2610.00923",
       "githubRepo": null
     }
   ]

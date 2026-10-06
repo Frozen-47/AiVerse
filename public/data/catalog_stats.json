@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-10-05T03:14:08.930Z",
-  "totalEntries": 340,
-  "popularEntries": 273,
+  "timestamp": "2026-10-06T04:01:57.269Z",
+  "totalEntries": 343,
+  "popularEntries": 276,
   "totalUsers": 11,
   "averageRating": 4.38,
   "totalRatings": 8,
-  "newEntriesCount": 113,
+  "newEntriesCount": 116,
   "byType": {
-    "Model": 121,
+    "Model": 122,
     "Framework": 33,
-    "Platform": 58,
-    "Dataset": 57,
+    "Platform": 59,
+    "Dataset": 58,
     "AI": 71
   },
   "byTask": {
-    "NLP": 125,
+    "NLP": 126,
     "AI Coding": 27,
-    "Multimodal": 52,
+    "Multimodal": 54,
     "Research": 11,
     "Image Generation": 12,
     "Video Generation": 11,
@@ -66,9 +66,9 @@
     "Proprietary / DeepSeek License": 1,
     "Open Source UI / Various model licenses": 1,
     "Free": 1,
-    "APACHE-2.0": 32,
-    "OTHER": 14,
-    "Community Hosted": 33,
+    "APACHE-2.0": 33,
+    "OTHER": 15,
+    "Community Hosted": 34,
     "NOASSERTION": 4,
     "CC-BY-SA-4.0": 1,
     "Open Data": 2,
@@ -83,24 +83,24 @@
     "OPENMDW-1.1": 1
   },
   "toolOfTheDay": {
-    "name": "Llama 3.3 (70B)",
+    "name": "DeepSeek-R1-Distill-Qwen-32B",
     "type": "Model",
-    "summary": "Meta's flagship open-weights instruction model delivering capabilities comparable to previous 405B models with 70B parameter efficiency.",
+    "summary": "Dense 32B reasoning model distilled from DeepSeek-R1 onto Qwen2.5-32B, delivering top-tier mathematical and coding logic on consumer hardware.",
     "task": "NLP",
-    "license": "Llama 3.3 Community License",
-    "year": 2024,
-    "org": "Meta AI",
-    "size": "70B params",
-    "architecture": "Autoregressive Transformer with Grouped-Query Attention (GQA) and 128k context length.",
-    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\nmodel = AutoModelForCausalLM.from_pretrained(\"meta-llama/Llama-3.3-70B-Instruct\", device_map=\"auto\")",
-    "benchmarks": "MMLU: 88.6%, HumanEval: 88.4%, GPQA: 50.5%",
-    "limitations": "Commercial restriction for products exceeding 700M monthly active users.",
+    "license": "MIT",
+    "year": 2025,
+    "org": "DeepSeek",
+    "size": "32B params",
+    "architecture": "Qwen2.5-32B backbone fine-tuned on 800k DeepSeek-R1 reasoning trajectories.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\nmodel = AutoModelForCausalLM.from_pretrained(\"deepseek-ai/DeepSeek-R1-Distill-Qwen-32B\", device_map=\"auto\")",
+    "benchmarks": "AIME 2024: 72.6%, MATH-500: 94.3%, LiveCodeBench: 57.2%",
+    "limitations": "Higher resource consumption than 8B models; requires ~20GB VRAM with 4-bit quantization.",
     "popular": true,
-    "url": "https://ai.meta.com/llama/",
+    "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
     "citations": [
       {
-        "text": "Llama 3.3 Release",
-        "url": "https://ai.meta.com/blog/llama-3-3/"
+        "text": "DeepSeek-R1 Distillation",
+        "url": "https://github.com/deepseek-ai/DeepSeek-R1"
       }
     ]
   }

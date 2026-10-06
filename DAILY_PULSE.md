@@ -1,44 +1,44 @@
-# ⚡ AiVerse Daily Pulse (2026-10-05)
+# ⚡ AiVerse Daily Pulse (2026-10-06)
 
 > Automatically generated daily intelligence report syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Mon, 05 Oct 2026 03:14:16 GMT`*
+*Last Synchronized: `Tue, 06 Oct 2026 04:02:04 GMT`*
 
 ---
 
 ## 🆕 Newly Ingested Assets Today (3)
 
-### **Kolibri-1** (`Model` • *Aleph-Alpha*)
-> High-performance NLP open-weights model by Aleph-Alpha, trending with over 407 community likes and 1,135 downloads on Hugging Face.
+### **JEV-27B-VL** (`Model` • *autotrust*)
+> High-performance Multimodal open-weights model by autotrust, trending with over 685 community likes and 1,278,569 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 398, Likes: 407, Downloads: 1,135`
-- 🔗 **Resource Link**: [https://huggingface.co/Aleph-Alpha/Kolibri-1](https://huggingface.co/Aleph-Alpha/Kolibri-1)
+- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 551, Likes: 685, Downloads: 1,278,569`
+- 🔗 **Resource Link**: [https://huggingface.co/autotrust/JEV-27B-VL](https://huggingface.co/autotrust/JEV-27B-VL)
 
-### **chessfly** (`Platform` • *mlabonne*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by mlabonne. Trending with 119 community stars.
+### **JEV-27B-Demo** (`Platform` • *autotrust*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 93 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 75, Community Likes: 119`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/mlabonne/chessfly](https://huggingface.co/spaces/mlabonne/chessfly)
+- ⚡ **Metrics**: `Trending Score: 69, Community Likes: 93`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/autotrust/JEV-27B-Demo](https://huggingface.co/spaces/autotrust/JEV-27B-Demo)
 
-### **bharat-government-documents** (`Dataset` • *ankitjh4*)
-> Bharat Guide: screened Indian public information documents 	 This snapshot contains 64,964 distinct normalized text bodies and 77,526 source records. Generated 2026-10- (43 likes, 364 downloads).
+### **ai-village** (`Dataset` • *aidigestorg*)
+> AI Village dataset 	 AI Village is an ongoing experiment by AI Digest in which a group of AI agents — built on frontier models from Anthropic, OpenAI, and Google — live (105 likes, 1,715 downloads).
 
 - 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 41, Likes: 43, Downloads: 364`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/ankitjh4/bharat-government-documents](https://huggingface.co/datasets/ankitjh4/bharat-government-documents)
+- ⚡ **Metrics**: `Trending Score: 40, Likes: 105, Downloads: 1,715`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/aidigestorg/ai-village](https://huggingface.co/datasets/aidigestorg/ai-village)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **Llama 3.3 (70B)** (`Model` • *Meta AI*)
-> Meta's flagship open-weights instruction model delivering capabilities comparable to previous 405B models with 70B parameter efficiency.
+### **DeepSeek-R1-Distill-Qwen-32B** (`Model` • *DeepSeek*)
+> Dense 32B reasoning model distilled from DeepSeek-R1 onto Qwen2.5-32B, delivering top-tier mathematical and coding logic on consumer hardware.
 
-- 🏛️ **Architecture**: Autoregressive Transformer with Grouped-Query Attention (GQA) and 128k context length.
-- ⚡ **Benchmarks**: `MMLU: 88.6%, HumanEval: 88.4%, GPQA: 50.5%`
-- 🏷️ **Domain & License**: `NLP` • `Llama 3.3 Community License` (Released: 2024)
-- 🔗 **Resource Link**: [https://ai.meta.com/llama/](https://ai.meta.com/llama/)
+- 🏛️ **Architecture**: Qwen2.5-32B backbone fine-tuned on 800k DeepSeek-R1 reasoning trajectories.
+- ⚡ **Benchmarks**: `AIME 2024: 72.6%, MATH-500: 94.3%, LiveCodeBench: 57.2%`
+- 🏷️ **Domain & License**: `NLP` • `MIT` (Released: 2025)
+- 🔗 **Resource Link**: [https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -46,12 +46,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `Cloudflare/clef` | image-text-to-text | ❤️ 1,227 | 📥 4,214 | [View](https://huggingface.co/Cloudflare/clef) |
-| `convaiinnovations/laya` | text-classification | ❤️ 5,166 | 📥 3,752 | [View](https://huggingface.co/convaiinnovations/laya) |
-| `abenzerps/Qwen-Image-2.1-Uncensored-GGUF` | text-to-image | ❤️ 3,151 | 📥 1,553,744 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 6,322 | 📥 1,626,951 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `Cloudflare/clef-flash` | image-text-to-text | ❤️ 435 | 📥 6,372 | [View](https://huggingface.co/Cloudflare/clef-flash) |
-| `Aleph-Alpha/Kolibri-1` | text-generation | ❤️ 407 | 📥 1,135 | [View](https://huggingface.co/Aleph-Alpha/Kolibri-1) |
+| `Cloudflare/clef` | image-text-to-text | ❤️ 1,525 | 📥 5,416 | [View](https://huggingface.co/Cloudflare/clef) |
+| `abenzerps/Qwen-Image-2.1-Uncensored-GGUF` | text-to-image | ❤️ 3,278 | 📥 1,638,838 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF) |
+| `convaiinnovations/laya` | text-classification | ❤️ 5,246 | 📥 11,733 | [View](https://huggingface.co/convaiinnovations/laya) |
+| `Aleph-Alpha/Kolibri-1` | text-generation | ❤️ 639 | 📥 2,453 | [View](https://huggingface.co/Aleph-Alpha/Kolibri-1) |
+| `autotrust/JEV-27B-VL` | image-text-to-text | ❤️ 685 | 📥 1,278,569 | [View](https://huggingface.co/autotrust/JEV-27B-VL) |
+| `Cloudflare/clef-flash` | image-text-to-text | ❤️ 538 | 📥 8,075 | [View](https://huggingface.co/Cloudflare/clef-flash) |
 
 
 ---
@@ -61,25 +61,25 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Papers** | 👍 2 | AI-generated content, often called AI slop, is increasingly common everywhere, particularly in academia. Slop in AI-generated scientific papers, however, has mo... | [Read](https://huggingface.co/papers/2610.00531) |
-| **PDE-JEPA: Predictive Representation Learning of Latent Dynamics Modeling for Parametric PDEs** | 👍 4 | Physical trajectories contain more than snapshots of a system: they also reveal how its states evolve under governing conditions. However, representation learni... | [Read](https://huggingface.co/papers/2609.34715) |
-| **MetaRubric: Learning to Reward for Rubric-Based Reinforcement Learning** | 👍 1 | Rubric-based reinforcement learning extends reward-driven optimization to open-ended tasks by assigning partial credit to individual response requirements. Howe... | [Read](https://huggingface.co/papers/2610.02824) |
-| **FrameMorrow: Future-guided Frame Selection with Prospective Tokens for Long-Horizon Video Generation** | 👍 2 | Long-horizon video generation requires models to effectively leverage an increasingly long generation history. As the generated history grows, retaining all pre... | [Read](https://huggingface.co/papers/2609.38839) |
-| **Covert Assistance: Helpful LLM Agents Evade Oversight in Multi-Agent Systems** | 👍 1 | As multi-agent systems enter high-stakes domains, the possibility that agents may circumvent safety boundaries is a growing concern. Prior work has examined thi... | [Read](https://huggingface.co/papers/2609.39050) |
+| **ALoDLM: Adaptively Looped Diffusion Language Models** | 👍 12 | Diffusion language models (DLMs) enable fast generation by predicting multiple tokens in parallel, but their practical adoption remains limited by a persistent ... | [Read](https://huggingface.co/papers/2610.04198) |
+| **Towards Looped Models Done Right, Part II: Rethinking at Fixed Points** | 👍 2 | Every recurrence of a looped language model adds cost in training, decoding, prefill, and reinforcement learning (RL). The closer recurrent states get to fixed ... | [Read](https://huggingface.co/papers/2610.06833) |
+| **Kandinsky 6.0 Video: Foundation Models for Synchronized Video and Audio Generation** | 👍 3 | We present Kandinsky 6.0 Video, a family of foundation diffusion models for synchronized text-to-audio-video generation, comprising Kandinsky 6.0 Video Lite (3B... | [Read](https://huggingface.co/papers/2610.05608) |
+| **InterMimicGen: Scaling Humanoid Loco-Manipulation through Self-Evolving Motion Imitation** | 👍 0 | Captured human-object interactions provide rich supervision for humanoid loco-manipulation, but they are sparse, heterogeneous, and not directly executable by r... | [Read](https://huggingface.co/papers/2610.06850) |
+| **CANOPY: Adaptive-Granularity Evidence Compression for Multimodal RAG** | 👍 9 | Multimodal RAG retrieves text, tables, images, and videos, but choosing a retrieval granularity does not determine how much context to retain within each item. ... | [Read](https://huggingface.co/papers/2610.00923) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `340`
-- **Featured / Starred Tools**: `273`
-- **Asset Breakdown**: **Models**: 121 • **Frameworks**: 33 • **Platforms**: 58 • **Datasets**: 57 • **AIs**: 71
+- **Total Registered Assets**: `343`
+- **Featured / Starred Tools**: `276`
+- **Asset Breakdown**: **Models**: 122 • **Frameworks**: 33 • **Platforms**: 59 • **Datasets**: 58 • **AIs**: 71
 
 ---
 
 ## 🛡️ Daily System & Ecosystem Health
 - **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
-- **Dependency Security**: `31` advisories flagged across `561` dependencies (`1` critical, `28` high)
+- **Dependency Security**: `34` advisories flagged across `561` dependencies (`1` critical, `29` high)
 
 ---
 *Generated automatically by GitHub Actions daily pulse workflow.*

@@ -1,4 +1,4 @@
--- Seed / Upsert all 340 AiVerse entries into Supabase
+-- Seed / Upsert all 343 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -7136,6 +7136,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('bharat-government-documents', 'ankitjh4', 'Dataset', 'NLP', 'OTHER', 2026, '10K<n<100K', 'Bharat Guide: screened Indian public information documents 	 This snapshot contains 64,964 distinct normalized text bodies and 77,526 source records. Generated 2026-10- (43 likes, 364 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("ankitjh4/bharat-government-documents")', 'Trending Score: 41, Likes: 43, Downloads: 364', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/ankitjh4/bharat-government-documents', '[{"text":"ankitjh4/bharat-government-documents on Hugging Face Datasets","url":"https://huggingface.co/datasets/ankitjh4/bharat-government-documents"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('JEV-27B-VL', 'autotrust', 'Model', 'Multimodal', 'APACHE-2.0', 2026, '27B params', 'High-performance Multimodal open-weights model by autotrust, trending with over 685 community likes and 1,278,569 downloads on Hugging Face.', 'autotrust image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("autotrust/JEV-27B-VL", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("autotrust/JEV-27B-VL")', 'Trending Score: 551, Likes: 685, Downloads: 1,278,569', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/autotrust/JEV-27B-VL', '[{"text":"autotrust/JEV-27B-VL on Hugging Face","url":"https://huggingface.co/autotrust/JEV-27B-VL"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('JEV-27B-Demo', 'autotrust', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'DOCKER Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 93 community stars.', 'DOCKER cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/autotrust/JEV-27B-Demo', 'Trending Score: 69, Community Likes: 93', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/autotrust/JEV-27B-Demo', '[{"text":"autotrust/JEV-27B-Demo on Hugging Face Spaces","url":"https://huggingface.co/spaces/autotrust/JEV-27B-Demo"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('ai-village', 'aidigestorg', 'Dataset', 'NLP', 'OTHER', 2026, '1M<n<10M', 'AI Village dataset 	 AI Village is an ongoing experiment by AI Digest in which a group of AI agents — built on frontier models from Anthropic, OpenAI, and Google — live (105 likes, 1,715 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("aidigestorg/ai-village")', 'Trending Score: 40, Likes: 105, Downloads: 1,715', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/aidigestorg/ai-village', '[{"text":"aidigestorg/ai-village on Hugging Face Datasets","url":"https://huggingface.co/datasets/aidigestorg/ai-village"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

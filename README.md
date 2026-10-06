@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-05)
+### ⚡ Daily AI Pulse (2026-10-06)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Kolibri-1** (`Model`), **chessfly** (`Platform`), **bharat-government-documents** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Llama 3.3 (70B)** (Meta AI) — [Explore](https://ai.meta.com/llama/) |
-| 🗄️ **Catalog Entries** | **340** AI assets tracked (273 featured) |
+| 🆕 **New Assets Added** | **JEV-27B-VL** (`Model`), **JEV-27B-Demo** (`Platform`), **ai-village** (`Dataset`) |
+| 🌟 **Tool of the Day** | **DeepSeek-R1-Distill-Qwen-32B** (DeepSeek) — [Explore](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) |
+| 🗄️ **Catalog Entries** | **343** AI assets tracked (276 featured) |
 | 🔥 **Top Trending Model** | [Cloudflare/clef](https://huggingface.co/Cloudflare/clef) |
-| 📜 **Top Daily Paper** | [Science or Slop?: Benchmarking and Mitigating Scie...](https://huggingface.co/papers/2610.00531) |
+| 📜 **Top Daily Paper** | [ALoDLM: Adaptively Looped Diffusion Language Model...](https://huggingface.co/papers/2610.04198) |
 | 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Daily Run** | `Mon, 05 Oct 2026 03:14:16 GMT` |
+| 🕒 **Last Daily Run** | `Tue, 06 Oct 2026 04:02:04 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

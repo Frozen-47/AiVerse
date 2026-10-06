@@ -1,5 +1,76 @@
 [
   {
+    "date": "2026-10-06",
+    "assets": [
+      {
+        "name": "JEV-27B-VL",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by autotrust, trending with over 685 community likes and 1,278,569 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "autotrust",
+        "size": "27B params",
+        "architecture": "autotrust image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"autotrust/JEV-27B-VL\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"autotrust/JEV-27B-VL\")",
+        "benchmarks": "Trending Score: 551, Likes: 685, Downloads: 1,278,569",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": true,
+        "url": "https://huggingface.co/autotrust/JEV-27B-VL",
+        "citations": [
+          {
+            "text": "autotrust/JEV-27B-VL on Hugging Face",
+            "url": "https://huggingface.co/autotrust/JEV-27B-VL"
+          }
+        ]
+      },
+      {
+        "name": "JEV-27B-Demo",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 93 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "autotrust",
+        "size": "DOCKER Platform",
+        "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/autotrust/JEV-27B-Demo",
+        "benchmarks": "Trending Score: 69, Community Likes: 93",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": true,
+        "url": "https://huggingface.co/spaces/autotrust/JEV-27B-Demo",
+        "citations": [
+          {
+            "text": "autotrust/JEV-27B-Demo on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/autotrust/JEV-27B-Demo"
+          }
+        ]
+      },
+      {
+        "name": "ai-village",
+        "type": "Dataset",
+        "summary": "AI Village dataset \t AI Village is an ongoing experiment by AI Digest in which a group of AI agents — built on frontier models from Anthropic, OpenAI, and Google — live (105 likes, 1,715 downloads).",
+        "task": "NLP",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "aidigestorg",
+        "size": "1M<n<10M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"aidigestorg/ai-village\")",
+        "benchmarks": "Trending Score: 40, Likes: 105, Downloads: 1,715",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": true,
+        "url": "https://huggingface.co/datasets/aidigestorg/ai-village",
+        "citations": [
+          {
+            "text": "aidigestorg/ai-village on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/aidigestorg/ai-village"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-05",
     "assets": [
       {
