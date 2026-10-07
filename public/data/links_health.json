@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-10-06T04:02:00.154Z",
+  "timestamp": "2026-10-07T03:29:54.780Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 21,
+  "broken": 4,
   "issues": [
     {
       "name": "o1 (OpenAI)",
@@ -10,14 +10,19 @@
       "status": 403
     },
     {
-      "name": "SAM (Segment Anything Model)",
-      "url": "https://segment-anything.com/",
-      "status": "Network Error"
+      "name": "Perplexity",
+      "url": "https://www.perplexity.ai",
+      "status": 403
     },
     {
-      "name": "Tabnine",
-      "url": "https://www.tabnine.com",
-      "status": "Network Error"
+      "name": "OpenAI Platform",
+      "url": "https://platform.openai.com",
+      "status": 403
+    },
+    {
+      "name": "OpenWebText",
+      "url": "https://huggingface.co/datasets/openwebtext",
+      "status": 404
     }
   ]
 }

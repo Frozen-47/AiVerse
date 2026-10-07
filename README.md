@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-06)
+### ⚡ Daily AI Pulse (2026-10-07)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **JEV-27B-VL** (`Model`), **JEV-27B-Demo** (`Platform`), **ai-village** (`Dataset`) |
-| 🌟 **Tool of the Day** | **DeepSeek-R1-Distill-Qwen-32B** (DeepSeek) — [Explore](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) |
-| 🗄️ **Catalog Entries** | **343** AI assets tracked (276 featured) |
+| 🆕 **New Assets Added** | **GEV-26B-Decide** (`Model`), **model-pulse** (`Platform`), **tiktok-5.6B-videos** (`Dataset`) |
+| 🌟 **Tool of the Day** | **DeepSeek-R1** (DeepSeek) — [Explore](https://www.deepseek.com) |
+| 🗄️ **Catalog Entries** | **346** AI assets tracked (278 featured) |
 | 🔥 **Top Trending Model** | [Cloudflare/clef](https://huggingface.co/Cloudflare/clef) |
-| 📜 **Top Daily Paper** | [ALoDLM: Adaptively Looped Diffusion Language Model...](https://huggingface.co/papers/2610.04198) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Daily Run** | `Tue, 06 Oct 2026 04:02:04 GMT` |
+| 📜 **Top Daily Paper** | [Attacca: Goal-Directed Control under State Continu...](https://huggingface.co/papers/2610.07785) |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Daily Run** | `Wed, 07 Oct 2026 03:29:59 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

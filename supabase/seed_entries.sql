@@ -1,4 +1,4 @@
--- Seed / Upsert all 343 AiVerse entries into Supabase
+-- Seed / Upsert all 346 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -7198,6 +7198,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('ai-village', 'aidigestorg', 'Dataset', 'NLP', 'OTHER', 2026, '1M<n<10M', 'AI Village dataset 	 AI Village is an ongoing experiment by AI Digest in which a group of AI agents — built on frontier models from Anthropic, OpenAI, and Google — live (105 likes, 1,715 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("aidigestorg/ai-village")', 'Trending Score: 40, Likes: 105, Downloads: 1,715', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/aidigestorg/ai-village', '[{"text":"aidigestorg/ai-village on Hugging Face Datasets","url":"https://huggingface.co/datasets/aidigestorg/ai-village"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('GEV-26B-Decide', 'autotrust', 'Model', 'NLP', 'APACHE-2.0', 2026, '26B params', 'High-performance NLP open-weights model by autotrust, trending with over 743 community likes and 854,574 downloads on Hugging Face.', 'autotrust text classification architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("autotrust/GEV-26B-Decide", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("autotrust/GEV-26B-Decide")', 'Trending Score: 604, Likes: 743, Downloads: 854,574', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/autotrust/GEV-26B-Decide', '[{"text":"autotrust/GEV-26B-Decide on Hugging Face","url":"https://huggingface.co/autotrust/GEV-26B-Decide"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('model-pulse', 'tardellirs', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'STATIC Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by tardellirs. Trending with 101 community stars.', 'STATIC cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/tardellirs/model-pulse', 'Trending Score: 89, Community Likes: 101', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/tardellirs/model-pulse', '[{"text":"tardellirs/model-pulse on Hugging Face Spaces","url":"https://huggingface.co/spaces/tardellirs/model-pulse"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('tiktok-5.6B-videos', 'datasocial', 'Dataset', 'NLP', 'CC-BY-NC-4.0', 2026, '1B<n<10B', 'Contact 	 Telegram: @hashfunction_dev X: @hashfunction Email: hashfunction.dev@gmail.com TikTok scraper source code The code that collected these 5.6 billion videos. Ti (71 likes, 1,181 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("datasocial/tiktok-5.6B-videos")', 'Trending Score: 67, Likes: 71, Downloads: 1,181', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/datasocial/tiktok-5.6B-videos', '[{"text":"datasocial/tiktok-5.6B-videos on Hugging Face Datasets","url":"https://huggingface.co/datasets/datasocial/tiktok-5.6B-videos"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

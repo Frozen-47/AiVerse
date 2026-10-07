@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-06T04:02:00.008Z",
+  "timestamp": "2026-10-07T03:29:54.668Z",
   "models": [
     {
       "id": "Cloudflare/clef",
       "author": "Cloudflare",
-      "likes": 1525,
-      "downloads": 5416,
+      "likes": 1703,
+      "downloads": 7255,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Cloudflare/clef"
     },
     {
-      "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
-      "author": "abenzerps",
-      "likes": 3278,
-      "downloads": 1638838,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
-    },
-    {
-      "id": "convaiinnovations/laya",
-      "author": "convaiinnovations",
-      "likes": 5246,
-      "downloads": 11733,
-      "pipeline_tag": "text-classification",
-      "url": "https://huggingface.co/convaiinnovations/laya"
-    },
-    {
-      "id": "Aleph-Alpha/Kolibri-1",
-      "author": "Aleph-Alpha",
-      "likes": 639,
-      "downloads": 2453,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1"
-    },
-    {
       "id": "autotrust/JEV-27B-VL",
       "author": "autotrust",
-      "likes": 685,
-      "downloads": 1278569,
+      "likes": 995,
+      "downloads": 1525286,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/autotrust/JEV-27B-VL"
     },
     {
+      "id": "Aleph-Alpha/Kolibri-1",
+      "author": "Aleph-Alpha",
+      "likes": 723,
+      "downloads": 4138,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1"
+    },
+    {
+      "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
+      "author": "abenzerps",
+      "likes": 3449,
+      "downloads": 1721760,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
+    },
+    {
+      "id": "autotrust/GEV-26B-Decide",
+      "author": "autotrust",
+      "likes": 743,
+      "downloads": 854574,
+      "pipeline_tag": "text-classification",
+      "url": "https://huggingface.co/autotrust/GEV-26B-Decide"
+    },
+    {
       "id": "Cloudflare/clef-flash",
       "author": "Cloudflare",
-      "likes": 538,
-      "downloads": 8075,
+      "likes": 609,
+      "downloads": 10638,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Cloudflare/clef-flash"
     }
   ],
   "papers": [
     {
-      "title": "ALoDLM: Adaptively Looped Diffusion Language Models",
-      "summary": "Diffusion language models (DLMs) enable fast generation by predicting multiple tokens in parallel, but their practical adoption remains limited by a persistent ...",
-      "upvotes": 12,
-      "arxiv_id": "2610.04198",
-      "url": "https://huggingface.co/papers/2610.04198",
-      "githubRepo": "https://github.com/amazon-science/ALoDLM"
+      "title": "Attacca: Goal-Directed Control under State Continuity for Long-Horizon Embodied Agents",
+      "summary": "A central capability of embodied agents is to accomplish complex objectives through sequences of interdependent tasks. Yet existing visual goal-conditioned poli...",
+      "upvotes": 1,
+      "arxiv_id": "2610.07785",
+      "url": "https://huggingface.co/papers/2610.07785",
+      "githubRepo": "https://github.com/attacca-project/attacca"
     },
     {
-      "title": "Towards Looped Models Done Right, Part II: Rethinking at Fixed Points",
-      "summary": "Every recurrence of a looped language model adds cost in training, decoding, prefill, and reinforcement learning (RL). The closer recurrent states get to fixed ...",
+      "title": "HuatuoGPT-3: RL-Only Domain Adaptation from Base Models",
+      "summary": "Domain adaptation aims to turn a general-purpose large language model (LLM) into an expert for a target domain. While the dominant SFT+RL pipeline offers a conv...",
+      "upvotes": 11,
+      "arxiv_id": "2610.05966",
+      "url": "https://huggingface.co/papers/2610.05966",
+      "githubRepo": "https://github.com/FreedomIntelligence/HuatuoGPT-3"
+    },
+    {
+      "title": "Personal-Agent Mediated Recommendation with Cross-Platform User History",
+      "summary": "Modern recommendation is shifting from platform-centric personalization toward user-governed personalization, where a personal LLM agent can act on the user's b...",
       "upvotes": 2,
-      "arxiv_id": "2610.06833",
-      "url": "https://huggingface.co/papers/2610.06833",
-      "githubRepo": "https://github.com/ifm-ai/xllm-loop"
+      "arxiv_id": "2610.07588",
+      "url": "https://huggingface.co/papers/2610.07588",
+      "githubRepo": null
     },
     {
-      "title": "Kandinsky 6.0 Video: Foundation Models for Synchronized Video and Audio Generation",
-      "summary": "We present Kandinsky 6.0 Video, a family of foundation diffusion models for synchronized text-to-audio-video generation, comprising Kandinsky 6.0 Video Lite (3B...",
+      "title": "Judged Useless, Queried Anyway: Tool-Using Agents Rarely Turn Their Own Evidence Judgments into Stopping Decisions",
+      "summary": "An agent whose tool keeps returning nothing useful should stop relying on it. In a retrieval environment with controlled source failures, we separate how agents...",
+      "upvotes": 1,
+      "arxiv_id": "2610.06191",
+      "url": "https://huggingface.co/papers/2610.06191",
+      "githubRepo": "https://github.com/bennidict23/judged-useless-queried-anyway"
+    },
+    {
+      "title": "GUI-HARVEST: Self-Improving GUI Agents through Evidence-Driven Harness Evolution",
+      "summary": "The executable harness surrounding a GUI model determines how observations are assembled, actions are executed, and verification, recovery, and termination are ...",
       "upvotes": 3,
-      "arxiv_id": "2610.05608",
-      "url": "https://huggingface.co/papers/2610.05608",
-      "githubRepo": null
-    },
-    {
-      "title": "InterMimicGen: Scaling Humanoid Loco-Manipulation through Self-Evolving Motion Imitation",
-      "summary": "Captured human-object interactions provide rich supervision for humanoid loco-manipulation, but they are sparse, heterogeneous, and not directly executable by r...",
-      "upvotes": 0,
-      "arxiv_id": "2610.06850",
-      "url": "https://huggingface.co/papers/2610.06850",
-      "githubRepo": null
-    },
-    {
-      "title": "CANOPY: Adaptive-Granularity Evidence Compression for Multimodal RAG",
-      "summary": "Multimodal RAG retrieves text, tables, images, and videos, but choosing a retrieval granularity does not determine how much context to retain within each item. ...",
-      "upvotes": 9,
-      "arxiv_id": "2610.00923",
-      "url": "https://huggingface.co/papers/2610.00923",
-      "githubRepo": null
+      "arxiv_id": "2610.00948",
+      "url": "https://huggingface.co/papers/2610.00948",
+      "githubRepo": "https://github.com/GaryYang12345/GUI-HARVEST"
     }
   ]
 }

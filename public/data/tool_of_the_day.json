@@ -1,24 +1,24 @@
 {
-  "date": "2026-10-06",
+  "date": "2026-10-07",
   "tool": {
-    "name": "DeepSeek-R1-Distill-Qwen-32B",
+    "name": "DeepSeek-R1",
     "type": "Model",
-    "summary": "Dense 32B reasoning model distilled from DeepSeek-R1 onto Qwen2.5-32B, delivering top-tier mathematical and coding logic on consumer hardware.",
+    "summary": "Breakthrough open-weights reasoning model trained via large-scale reinforcement learning (RL) without supervised fine-tuning, rivaling top proprietary reasoning models.",
     "task": "NLP",
     "license": "MIT",
     "year": 2025,
     "org": "DeepSeek",
-    "size": "32B params",
-    "architecture": "Qwen2.5-32B backbone fine-tuned on 800k DeepSeek-R1 reasoning trajectories.",
-    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\nmodel = AutoModelForCausalLM.from_pretrained(\"deepseek-ai/DeepSeek-R1-Distill-Qwen-32B\", device_map=\"auto\")",
-    "benchmarks": "AIME 2024: 72.6%, MATH-500: 94.3%, LiveCodeBench: 57.2%",
-    "limitations": "Higher resource consumption than 8B models; requires ~20GB VRAM with 4-bit quantization.",
+    "size": "671B (37B active)",
+    "architecture": "DeepSeek-V3 Base + Large-scale Multi-Stage RL with self-verification reasoning.",
+    "usage": "from openai import OpenAI\nclient = OpenAI(api_key=\"YOUR_KEY\", base_url=\"https://api.deepseek.com\")\nresponse = client.chat.completions.create(\n  model=\"deepseek-reasoner\",\n  messages=[{\"role\": \"user\", \"content\": \"Solve: What is the sum of integers from 1 to 100?\"}]\n)",
+    "benchmarks": "AIME 2024: 79.8%, MATH-500: 97.3%, Codeforces: 96.3 percentile",
+    "limitations": "Outputs lengthy reasoning chains which increase token consumption and response latency.",
     "popular": true,
-    "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+    "url": "https://www.deepseek.com",
     "citations": [
       {
-        "text": "DeepSeek-R1 Distillation",
-        "url": "https://github.com/deepseek-ai/DeepSeek-R1"
+        "text": "DeepSeek-R1 Technical Report",
+        "url": "https://arxiv.org/abs/2501.12948"
       }
     ]
   }
