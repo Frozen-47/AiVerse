@@ -1,24 +1,24 @@
 {
-  "date": "2026-10-07",
+  "date": "2026-10-08",
   "tool": {
-    "name": "DeepSeek-R1",
+    "name": "DeepSeek-V3",
     "type": "Model",
-    "summary": "Breakthrough open-weights reasoning model trained via large-scale reinforcement learning (RL) without supervised fine-tuning, rivaling top proprietary reasoning models.",
+    "summary": "DeepSeek's flagship 671B Mixture-of-Experts (MoE) model with Multi-head Latent Attention (MLA), activating 37B params per token with industry-leading efficiency.",
     "task": "NLP",
     "license": "MIT",
-    "year": 2025,
+    "year": 2024,
     "org": "DeepSeek",
     "size": "671B (37B active)",
-    "architecture": "DeepSeek-V3 Base + Large-scale Multi-Stage RL with self-verification reasoning.",
-    "usage": "from openai import OpenAI\nclient = OpenAI(api_key=\"YOUR_KEY\", base_url=\"https://api.deepseek.com\")\nresponse = client.chat.completions.create(\n  model=\"deepseek-reasoner\",\n  messages=[{\"role\": \"user\", \"content\": \"Solve: What is the sum of integers from 1 to 100?\"}]\n)",
-    "benchmarks": "AIME 2024: 79.8%, MATH-500: 97.3%, Codeforces: 96.3 percentile",
-    "limitations": "Outputs lengthy reasoning chains which increase token consumption and response latency.",
+    "architecture": "Multi-head Latent Attention (MLA) + DeepSeekMoE + FP8 Mixed Precision Training.",
+    "usage": "from openai import OpenAI\nclient = OpenAI(api_key=\"YOUR_KEY\", base_url=\"https://api.deepseek.com\")\nresponse = client.chat.completions.create(\n  model=\"deepseek-chat\",\n  messages=[{\"role\": \"user\", \"content\": \"Explain MLA architecture.\"}]\n)",
+    "benchmarks": "MMLU-Redux: 89.1%, HumanEval: 90.2%, MATH-500: 75.7%",
+    "limitations": "Massive parameter footprint requires multi-GPU or cloud API hosting.",
     "popular": true,
     "url": "https://www.deepseek.com",
     "citations": [
       {
-        "text": "DeepSeek-R1 Technical Report",
-        "url": "https://arxiv.org/abs/2501.12948"
+        "text": "DeepSeek-V3 Technical Report",
+        "url": "https://github.com/deepseek-ai/DeepSeek-V3"
       }
     ]
   }

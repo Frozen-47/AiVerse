@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-07)
+### ⚡ Daily AI Pulse (2026-10-08)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **GEV-26B-Decide** (`Model`), **model-pulse** (`Platform`), **tiktok-5.6B-videos** (`Dataset`) |
-| 🌟 **Tool of the Day** | **DeepSeek-R1** (DeepSeek) — [Explore](https://www.deepseek.com) |
-| 🗄️ **Catalog Entries** | **346** AI assets tracked (278 featured) |
-| 🔥 **Top Trending Model** | [Cloudflare/clef](https://huggingface.co/Cloudflare/clef) |
-| 📜 **Top Daily Paper** | [Attacca: Goal-Directed Control under State Continu...](https://huggingface.co/papers/2610.07785) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Daily Run** | `Wed, 07 Oct 2026 03:29:59 GMT` |
+| 🆕 **New Assets Added** | **embeddinggemma-2** (`Model`), **bfs-best-face-swap** (`Platform`), **jabarti-llm-dataset** (`Dataset`) |
+| 🌟 **Tool of the Day** | **DeepSeek-V3** (DeepSeek) — [Explore](https://www.deepseek.com) |
+| 🗄️ **Catalog Entries** | **349** AI assets tracked (280 featured) |
+| 🔥 **Top Trending Model** | [autotrust/JEV-27B-VL](https://huggingface.co/autotrust/JEV-27B-VL) |
+| 📜 **Top Daily Paper** | [Tetris3D: 3D Scene Generation With Objects That Fi...](https://huggingface.co/papers/2610.10539) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Daily Run** | `Thu, 08 Oct 2026 03:44:26 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

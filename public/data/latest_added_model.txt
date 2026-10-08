@@ -1,1 +1,1 @@
-GEV-26B-Decide
+embeddinggemma-2

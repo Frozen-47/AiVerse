@@ -1,4 +1,4 @@
--- Seed / Upsert all 346 AiVerse entries into Supabase
+-- Seed / Upsert all 349 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -7260,6 +7260,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('tiktok-5.6B-videos', 'datasocial', 'Dataset', 'NLP', 'CC-BY-NC-4.0', 2026, '1B<n<10B', 'Contact 	 Telegram: @hashfunction_dev X: @hashfunction Email: hashfunction.dev@gmail.com TikTok scraper source code The code that collected these 5.6 billion videos. Ti (71 likes, 1,181 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("datasocial/tiktok-5.6B-videos")', 'Trending Score: 67, Likes: 71, Downloads: 1,181', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/datasocial/tiktok-5.6B-videos', '[{"text":"datasocial/tiktok-5.6B-videos on Hugging Face Datasets","url":"https://huggingface.co/datasets/datasocial/tiktok-5.6B-videos"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('embeddinggemma-2', 'Google', 'Model', 'NLP', 'APACHE-2.0', 2026, 'Open Weights', 'High-performance NLP open-weights model by Google, trending with over 990 community likes and 7,562 downloads on Hugging Face.', 'Google feature extraction architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("google/embeddinggemma-2", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("google/embeddinggemma-2")', 'Trending Score: 965, Likes: 990, Downloads: 7,562', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/google/embeddinggemma-2', '[{"text":"google/embeddinggemma-2 on Hugging Face","url":"https://huggingface.co/google/embeddinggemma-2"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('bfs-best-face-swap', 'hugging-apps', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 119 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap', 'Trending Score: 80, Community Likes: 119', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap', '[{"text":"hugging-apps/bfs-best-face-swap on Hugging Face Spaces","url":"https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('jabarti-llm-dataset', 'bakrianoo', 'Dataset', 'NLP', 'CC-BY-SA-4.0', 2026, '1M<n<10M', 'jabarti-llm-dataset 	 Cleaned, section-chunked training corpus for a small bilingual LLM (Arabic + English), combining a curated Egyptian-history collection with genera (40 likes, 904 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("bakrianoo/jabarti-llm-dataset")', 'Trending Score: 35, Likes: 40, Downloads: 904', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset', '[{"text":"bakrianoo/jabarti-llm-dataset on Hugging Face Datasets","url":"https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

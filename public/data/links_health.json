@@ -1,28 +1,18 @@
 {
-  "timestamp": "2026-10-07T03:29:54.780Z",
+  "timestamp": "2026-10-08T03:44:23.192Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "o1 (OpenAI)",
-      "url": "https://openai.com/o1",
+      "name": "Midjourney (Platform)",
+      "url": "https://www.midjourney.com/",
       "status": 403
     },
     {
-      "name": "Perplexity",
-      "url": "https://www.perplexity.ai",
+      "name": "Codex",
+      "url": "https://openai.com/blog/openai-codex",
       "status": 403
-    },
-    {
-      "name": "OpenAI Platform",
-      "url": "https://platform.openai.com",
-      "status": 403
-    },
-    {
-      "name": "OpenWebText",
-      "url": "https://huggingface.co/datasets/openwebtext",
-      "status": 404
     }
   ]
 }

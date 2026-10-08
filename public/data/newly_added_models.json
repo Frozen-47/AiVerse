@@ -1,5 +1,76 @@
 [
   {
+    "date": "2026-10-08",
+    "assets": [
+      {
+        "name": "embeddinggemma-2",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by Google, trending with over 990 community likes and 7,562 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Google",
+        "size": "Open Weights",
+        "architecture": "Google feature extraction architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"google/embeddinggemma-2\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"google/embeddinggemma-2\")",
+        "benchmarks": "Trending Score: 965, Likes: 990, Downloads: 7,562",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": true,
+        "url": "https://huggingface.co/google/embeddinggemma-2",
+        "citations": [
+          {
+            "text": "google/embeddinggemma-2 on Hugging Face",
+            "url": "https://huggingface.co/google/embeddinggemma-2"
+          }
+        ]
+      },
+      {
+        "name": "bfs-best-face-swap",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 119 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "hugging-apps",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap",
+        "benchmarks": "Trending Score: 80, Community Likes: 119",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": true,
+        "url": "https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap",
+        "citations": [
+          {
+            "text": "hugging-apps/bfs-best-face-swap on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap"
+          }
+        ]
+      },
+      {
+        "name": "jabarti-llm-dataset",
+        "type": "Dataset",
+        "summary": "jabarti-llm-dataset \t Cleaned, section-chunked training corpus for a small bilingual LLM (Arabic + English), combining a curated Egyptian-history collection with genera (40 likes, 904 downloads).",
+        "task": "NLP",
+        "license": "CC-BY-SA-4.0",
+        "year": 2026,
+        "org": "bakrianoo",
+        "size": "1M<n<10M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"bakrianoo/jabarti-llm-dataset\")",
+        "benchmarks": "Trending Score: 35, Likes: 40, Downloads: 904",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "url": "https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset",
+        "citations": [
+          {
+            "text": "bakrianoo/jabarti-llm-dataset on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-07",
     "assets": [
       {

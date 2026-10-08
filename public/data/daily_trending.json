@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-07T03:29:54.668Z",
+  "timestamp": "2026-10-08T03:44:23.093Z",
   "models": [
-    {
-      "id": "Cloudflare/clef",
-      "author": "Cloudflare",
-      "likes": 1703,
-      "downloads": 7255,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Cloudflare/clef"
-    },
     {
       "id": "autotrust/JEV-27B-VL",
       "author": "autotrust",
-      "likes": 995,
-      "downloads": 1525286,
+      "likes": 2097,
+      "downloads": 1529210,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/autotrust/JEV-27B-VL"
     },
     {
+      "id": "Cloudflare/clef",
+      "author": "Cloudflare",
+      "likes": 1831,
+      "downloads": 9513,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/Cloudflare/clef"
+    },
+    {
+      "id": "autotrust/GEV-26B-Decide",
+      "author": "autotrust",
+      "likes": 1394,
+      "downloads": 895867,
+      "pipeline_tag": "text-classification",
+      "url": "https://huggingface.co/autotrust/GEV-26B-Decide"
+    },
+    {
+      "id": "google/embeddinggemma-2",
+      "author": "google",
+      "likes": 990,
+      "downloads": 7562,
+      "pipeline_tag": "feature-extraction",
+      "url": "https://huggingface.co/google/embeddinggemma-2"
+    },
+    {
       "id": "Aleph-Alpha/Kolibri-1",
       "author": "Aleph-Alpha",
-      "likes": 723,
-      "downloads": 4138,
+      "likes": 785,
+      "downloads": 5775,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1"
     },
     {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
       "author": "abenzerps",
-      "likes": 3449,
-      "downloads": 1721760,
+      "likes": 3590,
+      "downloads": 1820627,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
-    },
-    {
-      "id": "autotrust/GEV-26B-Decide",
-      "author": "autotrust",
-      "likes": 743,
-      "downloads": 854574,
-      "pipeline_tag": "text-classification",
-      "url": "https://huggingface.co/autotrust/GEV-26B-Decide"
-    },
-    {
-      "id": "Cloudflare/clef-flash",
-      "author": "Cloudflare",
-      "likes": 609,
-      "downloads": 10638,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Cloudflare/clef-flash"
     }
   ],
   "papers": [
     {
-      "title": "Attacca: Goal-Directed Control under State Continuity for Long-Horizon Embodied Agents",
-      "summary": "A central capability of embodied agents is to accomplish complex objectives through sequences of interdependent tasks. Yet existing visual goal-conditioned poli...",
-      "upvotes": 1,
-      "arxiv_id": "2610.07785",
-      "url": "https://huggingface.co/papers/2610.07785",
-      "githubRepo": "https://github.com/attacca-project/attacca"
+      "title": "Tetris3D: 3D Scene Generation With Objects That Fit Together",
+      "summary": "We propose Tetris3D, a generative framework for single-image 3D scene reconstruction that recovers objects which are physically and geometrically coherent as a ...",
+      "upvotes": 8,
+      "arxiv_id": "2610.10539",
+      "url": "https://huggingface.co/papers/2610.10539",
+      "githubRepo": "https://github.com/cvlab-kaist/Tetris3D"
     },
     {
-      "title": "HuatuoGPT-3: RL-Only Domain Adaptation from Base Models",
-      "summary": "Domain adaptation aims to turn a general-purpose large language model (LLM) into an expert for a target domain. While the dominant SFT+RL pipeline offers a conv...",
-      "upvotes": 11,
-      "arxiv_id": "2610.05966",
-      "url": "https://huggingface.co/papers/2610.05966",
-      "githubRepo": "https://github.com/FreedomIntelligence/HuatuoGPT-3"
-    },
-    {
-      "title": "Personal-Agent Mediated Recommendation with Cross-Platform User History",
-      "summary": "Modern recommendation is shifting from platform-centric personalization toward user-governed personalization, where a personal LLM agent can act on the user's b...",
-      "upvotes": 2,
-      "arxiv_id": "2610.07588",
-      "url": "https://huggingface.co/papers/2610.07588",
+      "title": "SWE-Game: Can Coding Agents Build the Games We Want?",
+      "summary": "We introduce SWE-Game, a benchmark of 247 tasks grounded in 41 executable reference Godot games spanning 13 gameplay categories in 2D and 3D. Five task types co...",
+      "upvotes": 4,
+      "arxiv_id": "2609.33678",
+      "url": "https://huggingface.co/papers/2609.33678",
       "githubRepo": null
     },
     {
-      "title": "Judged Useless, Queried Anyway: Tool-Using Agents Rarely Turn Their Own Evidence Judgments into Stopping Decisions",
-      "summary": "An agent whose tool keeps returning nothing useful should stop relying on it. In a retrieval environment with controlled source failures, we separate how agents...",
-      "upvotes": 1,
-      "arxiv_id": "2610.06191",
-      "url": "https://huggingface.co/papers/2610.06191",
-      "githubRepo": "https://github.com/bennidict23/judged-useless-queried-anyway"
+      "title": "DLoop: Looped Speculative Decoding",
+      "summary": "Speculative decoding accelerates autoregressive generation in large language models. In each drafting stage, a lightweight draft model proposes tokens that the ...",
+      "upvotes": 2,
+      "arxiv_id": "2610.07659",
+      "url": "https://huggingface.co/papers/2610.07659",
+      "githubRepo": null
     },
     {
-      "title": "GUI-HARVEST: Self-Improving GUI Agents through Evidence-Driven Harness Evolution",
-      "summary": "The executable harness surrounding a GUI model determines how observations are assembled, actions are executed, and verification, recovery, and termination are ...",
-      "upvotes": 3,
-      "arxiv_id": "2610.00948",
-      "url": "https://huggingface.co/papers/2610.00948",
-      "githubRepo": "https://github.com/GaryYang12345/GUI-HARVEST"
+      "title": "RunningTab: Direct Workspace Interaction with Environment-Side Tabs",
+      "summary": "Much knowledge work produces new deliverables from files a workspace already holds, and LLM agents are beginning to take such work over. Through direct corpus i...",
+      "upvotes": 0,
+      "arxiv_id": "2610.10444",
+      "url": "https://huggingface.co/papers/2610.10444",
+      "githubRepo": null
+    },
+    {
+      "title": "UniWAM: Unified World-Action Model",
+      "summary": "Vision-language-action models benefit from the understanding and reasoning capabilities of pretrained vision-language models, but action-only supervision provid...",
+      "upvotes": 1,
+      "arxiv_id": "2610.02054",
+      "url": "https://huggingface.co/papers/2610.02054",
+      "githubRepo": "https://github.com/UniWAM/UniWAM"
     }
   ]
 }
