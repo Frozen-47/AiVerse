@@ -37,6 +37,7 @@ import {
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useAuth } from './AuthContext';
+import { getSessionTurnstileToken } from '../lib/turnstile';
 import type { Entry } from '../types';
 import { EcosystemLogo } from './EcosystemLogo';
 import {
@@ -861,6 +862,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
           userName: userName || undefined,
           model: modeConfig.model,
           stream: true,
+          turnstileToken: getSessionTurnstileToken() || undefined,
         }),
       });
 

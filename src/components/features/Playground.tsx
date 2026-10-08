@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../AuthContext";
+import { getSessionTurnstileToken } from "../../lib/turnstile";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {
@@ -126,6 +127,7 @@ export const Playground: React.FC = () => {
             messages: [{ role: "user", content: prompt }],
             model: modelId,
             systemInstruction: systemInstruction.trim() || undefined,
+            turnstileToken: getSessionTurnstileToken() || undefined,
           }),
         });
 

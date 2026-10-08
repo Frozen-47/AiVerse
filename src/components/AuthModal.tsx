@@ -3,6 +3,8 @@ import { X, Loader2, Eye, EyeOff, ArrowRight } from 'lucide-react';
 import { useAuth } from './AuthContext';
 import { useTokens, useTheme } from '../lib/theme';
 import { supabase } from '../lib/supabase';
+import { TurnstileWidget } from './TurnstileWidget';
+import { isSessionHumanVerified } from '../lib/turnstile';
 
 
 
@@ -21,6 +23,9 @@ export const AuthModal: React.FC = () => {
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(() =>
+    isSessionHumanVerified() ? 'session_verified' : null
+  );
 
   // Reset fields on open/close
   useEffect(() => {
@@ -32,6 +37,7 @@ export const AuthModal: React.FC = () => {
       setFirstName('');
       setLastName('');
       setAgreeTerms(false);
+      setTurnstileToken(isSessionHumanVerified() ? 'session_verified' : null);
     }
   }, [authMode, isAuthModalOpen]);
 
@@ -58,6 +64,12 @@ export const AuthModal: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+
+    if (!turnstileToken) {
+      setError('Please complete the Cloudflare security verification.');
+      setLoading(false);
+      return;
+    }
 
     if (!isLogin && !agreeTerms) {
       setError('Please agree to the Terms & Conditions to continue.');
@@ -380,9 +392,20 @@ export const AuthModal: React.FC = () => {
                 </span>
               </label>
 
+              {!turnstileToken && (
+                <div className="py-1">
+                  <TurnstileWidget
+                    action="signup"
+                    size="compact"
+                    onVerify={(token) => setTurnstileToken(token)}
+                    onExpire={() => setTurnstileToken(null)}
+                  />
+                </div>
+              )}
+
               <ErrorMsg msg={error} />
 
-              <button type="submit" disabled={loading} className={primaryBtnCls}>
+              <button type="submit" disabled={loading || !turnstileToken} className={primaryBtnCls}>
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : (
                   <><span>Create account</span><ArrowRight size={14} strokeWidth={2.5} /></>
                 )}
@@ -423,9 +446,20 @@ export const AuthModal: React.FC = () => {
                 isDark={isDark}
               />
 
+              {!turnstileToken && (
+                <div className="py-1">
+                  <TurnstileWidget
+                    action="signin"
+                    size="compact"
+                    onVerify={(token) => setTurnstileToken(token)}
+                    onExpire={() => setTurnstileToken(null)}
+                  />
+                </div>
+              )}
+
               <ErrorMsg msg={error} />
 
-              <button type="submit" disabled={loading} className={primaryBtnCls}>
+              <button type="submit" disabled={loading || !turnstileToken} className={primaryBtnCls}>
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : (
                   <><span>Sign in</span><ArrowRight size={14} strokeWidth={2.5} /></>
                 )}

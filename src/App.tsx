@@ -21,6 +21,7 @@ import { FeatureRibbon } from "./components/FeatureRibbon";
 import { PreferencesLoginPrompt } from "./components/PreferencesLoginPrompt";
 import { AuthProvider, useAuth } from "./components/AuthContext";
 import { AuthModal } from "./components/AuthModal";
+import { SiteSecurityBadge } from "./components/SiteSecurityBadge";
 import { AdminDashboard } from "./components/AdminDashboard";
 import { useDebouncedValue } from "./lib/useDebouncedValue";
 import { clearLocalBookmarks, loadBookmarks } from "./lib/bookmarks";
@@ -2312,6 +2313,7 @@ const App: React.FC = () => {
       <AuthProvider>
         <Inner />
         <AuthModal />
+        <SiteSecurityBadge />
       </AuthProvider>
     </ThemeContext.Provider>
   );

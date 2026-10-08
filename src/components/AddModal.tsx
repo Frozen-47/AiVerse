@@ -3,6 +3,8 @@ import { X, Plus, Server, Layers, Cpu, Code2, BookOpen, HelpCircle } from "lucid
 import { useTokens, useTheme } from "../lib/theme";
 import type { Entry } from "../types";
 import { useAuth } from "./AuthContext";
+import { TurnstileWidget } from "./TurnstileWidget";
+import { isSessionHumanVerified } from "../lib/turnstile";
 
 type PartialEntry = Partial<Entry>;
 
@@ -39,6 +41,9 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
 
   const [entry, setEntry] = useState<PartialEntry>(emptyEntry());
   const [showBackendMsg, setShowBackendMsg] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(() =>
+    isSessionHumanVerified() ? "session_verified" : null
+  );
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -73,6 +78,7 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!entry.name || !entry.summary) return;
+    if (!turnstileToken) return;
     
     setShowBackendMsg(true);
     try {
@@ -284,6 +290,20 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
             </div>
           </div>
 
+          {/* Cloudflare Turnstile Human Verification */}
+          {!turnstileToken && (
+            <div className="p-4 rounded-2xl border border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-white/[0.02]">
+              <div className="text-xs font-semibold text-neutral-800 dark:text-neutral-200 mb-2 text-center">
+                Cloudflare Security Verification
+              </div>
+              <TurnstileWidget
+                action="submit_resource"
+                onVerify={(token) => setTurnstileToken(token)}
+                onExpire={() => setTurnstileToken(null)}
+              />
+            </div>
+          )}
+
           {/* Backend Progress Message */}
           {showBackendMsg && (
             <div className="p-3.5 rounded-2xl border flex items-center gap-3 text-[13px] bg-blue-500/10 border-blue-500/20 text-[#1a73e8] dark:text-[#8ab4f8] font-medium">
@@ -313,9 +333,9 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
               </button>
               <button 
                 type="submit" 
-                disabled={showBackendMsg}
+                disabled={showBackendMsg || !turnstileToken}
                 className={`inline-flex items-center gap-1.5 px-6 py-2 rounded-full text-xs font-medium bg-[#1a73e8] hover:bg-[#1557b0] text-white shadow-xs transition-all cursor-pointer ${
-                  showBackendMsg ? 'opacity-50 cursor-not-allowed' : ''
+                  showBackendMsg || !turnstileToken ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
               >
                 <Plus size={14} /> Create Resource
