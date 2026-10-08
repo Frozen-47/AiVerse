@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-05T03:14:13.339Z",
+  "timestamp": "2026-10-08T03:44:23.093Z",
   "models": [
+    {
+      "id": "autotrust/JEV-27B-VL",
+      "author": "autotrust",
+      "likes": 2097,
+      "downloads": 1529210,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/autotrust/JEV-27B-VL"
+    },
     {
       "id": "Cloudflare/clef",
       "author": "Cloudflare",
-      "likes": 1227,
-      "downloads": 4214,
+      "likes": 1831,
+      "downloads": 9513,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Cloudflare/clef"
     },
     {
-      "id": "convaiinnovations/laya",
-      "author": "convaiinnovations",
-      "likes": 5166,
-      "downloads": 3752,
+      "id": "autotrust/GEV-26B-Decide",
+      "author": "autotrust",
+      "likes": 1394,
+      "downloads": 895867,
       "pipeline_tag": "text-classification",
-      "url": "https://huggingface.co/convaiinnovations/laya"
+      "url": "https://huggingface.co/autotrust/GEV-26B-Decide"
     },
     {
-      "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
-      "author": "abenzerps",
-      "likes": 3151,
-      "downloads": 1553744,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
-    },
-    {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 6322,
-      "downloads": 1626951,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5"
-    },
-    {
-      "id": "Cloudflare/clef-flash",
-      "author": "Cloudflare",
-      "likes": 435,
-      "downloads": 6372,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Cloudflare/clef-flash"
+      "id": "google/embeddinggemma-2",
+      "author": "google",
+      "likes": 990,
+      "downloads": 7562,
+      "pipeline_tag": "feature-extraction",
+      "url": "https://huggingface.co/google/embeddinggemma-2"
     },
     {
       "id": "Aleph-Alpha/Kolibri-1",
       "author": "Aleph-Alpha",
-      "likes": 407,
-      "downloads": 1135,
+      "likes": 785,
+      "downloads": 5775,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1"
+    },
+    {
+      "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
+      "author": "abenzerps",
+      "likes": 3590,
+      "downloads": 1820627,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
     }
   ],
   "papers": [
     {
-      "title": "Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Papers",
-      "summary": "AI-generated content, often called AI slop, is increasingly common everywhere, particularly in academia. Slop in AI-generated scientific papers, however, has mo...",
-      "upvotes": 2,
-      "arxiv_id": "2610.00531",
-      "url": "https://huggingface.co/papers/2610.00531",
-      "githubRepo": "https://github.com/yerimoh/ScientificSlop"
+      "title": "Tetris3D: 3D Scene Generation With Objects That Fit Together",
+      "summary": "We propose Tetris3D, a generative framework for single-image 3D scene reconstruction that recovers objects which are physically and geometrically coherent as a ...",
+      "upvotes": 8,
+      "arxiv_id": "2610.10539",
+      "url": "https://huggingface.co/papers/2610.10539",
+      "githubRepo": "https://github.com/cvlab-kaist/Tetris3D"
     },
     {
-      "title": "PDE-JEPA: Predictive Representation Learning of Latent Dynamics Modeling for Parametric PDEs",
-      "summary": "Physical trajectories contain more than snapshots of a system: they also reveal how its states evolve under governing conditions. However, representation learni...",
+      "title": "SWE-Game: Can Coding Agents Build the Games We Want?",
+      "summary": "We introduce SWE-Game, a benchmark of 247 tasks grounded in 41 executable reference Godot games spanning 13 gameplay categories in 2D and 3D. Five task types co...",
       "upvotes": 4,
-      "arxiv_id": "2609.34715",
-      "url": "https://huggingface.co/papers/2609.34715",
-      "githubRepo": "https://github.com/Tanpig-X/PDE-JEPA"
-    },
-    {
-      "title": "MetaRubric: Learning to Reward for Rubric-Based Reinforcement Learning",
-      "summary": "Rubric-based reinforcement learning extends reward-driven optimization to open-ended tasks by assigning partial credit to individual response requirements. Howe...",
-      "upvotes": 1,
-      "arxiv_id": "2610.02824",
-      "url": "https://huggingface.co/papers/2610.02824",
-      "githubRepo": "https://github.com/metarubric/metarubric"
-    },
-    {
-      "title": "FrameMorrow: Future-guided Frame Selection with Prospective Tokens for Long-Horizon Video Generation",
-      "summary": "Long-horizon video generation requires models to effectively leverage an increasingly long generation history. As the generated history grows, retaining all pre...",
-      "upvotes": 2,
-      "arxiv_id": "2609.38839",
-      "url": "https://huggingface.co/papers/2609.38839",
-      "githubRepo": "https://github.com/YinBo0927/FrameMorrow"
-    },
-    {
-      "title": "Covert Assistance: Helpful LLM Agents Evade Oversight in Multi-Agent Systems",
-      "summary": "As multi-agent systems enter high-stakes domains, the possibility that agents may circumvent safety boundaries is a growing concern. Prior work has examined thi...",
-      "upvotes": 1,
-      "arxiv_id": "2609.39050",
-      "url": "https://huggingface.co/papers/2609.39050",
+      "arxiv_id": "2609.33678",
+      "url": "https://huggingface.co/papers/2609.33678",
       "githubRepo": null
+    },
+    {
+      "title": "DLoop: Looped Speculative Decoding",
+      "summary": "Speculative decoding accelerates autoregressive generation in large language models. In each drafting stage, a lightweight draft model proposes tokens that the ...",
+      "upvotes": 2,
+      "arxiv_id": "2610.07659",
+      "url": "https://huggingface.co/papers/2610.07659",
+      "githubRepo": null
+    },
+    {
+      "title": "RunningTab: Direct Workspace Interaction with Environment-Side Tabs",
+      "summary": "Much knowledge work produces new deliverables from files a workspace already holds, and LLM agents are beginning to take such work over. Through direct corpus i...",
+      "upvotes": 0,
+      "arxiv_id": "2610.10444",
+      "url": "https://huggingface.co/papers/2610.10444",
+      "githubRepo": null
+    },
+    {
+      "title": "UniWAM: Unified World-Action Model",
+      "summary": "Vision-language-action models benefit from the understanding and reasoning capabilities of pretrained vision-language models, but action-only supervision provid...",
+      "upvotes": 1,
+      "arxiv_id": "2610.02054",
+      "url": "https://huggingface.co/papers/2610.02054",
+      "githubRepo": "https://github.com/UniWAM/UniWAM"
     }
   ]
 }

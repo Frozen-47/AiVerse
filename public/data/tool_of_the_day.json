@@ -1,24 +1,24 @@
 {
-  "date": "2026-10-05",
+  "date": "2026-10-08",
   "tool": {
-    "name": "Llama 3.3 (70B)",
+    "name": "DeepSeek-V3",
     "type": "Model",
-    "summary": "Meta's flagship open-weights instruction model delivering capabilities comparable to previous 405B models with 70B parameter efficiency.",
+    "summary": "DeepSeek's flagship 671B Mixture-of-Experts (MoE) model with Multi-head Latent Attention (MLA), activating 37B params per token with industry-leading efficiency.",
     "task": "NLP",
-    "license": "Llama 3.3 Community License",
+    "license": "MIT",
     "year": 2024,
-    "org": "Meta AI",
-    "size": "70B params",
-    "architecture": "Autoregressive Transformer with Grouped-Query Attention (GQA) and 128k context length.",
-    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\nmodel = AutoModelForCausalLM.from_pretrained(\"meta-llama/Llama-3.3-70B-Instruct\", device_map=\"auto\")",
-    "benchmarks": "MMLU: 88.6%, HumanEval: 88.4%, GPQA: 50.5%",
-    "limitations": "Commercial restriction for products exceeding 700M monthly active users.",
+    "org": "DeepSeek",
+    "size": "671B (37B active)",
+    "architecture": "Multi-head Latent Attention (MLA) + DeepSeekMoE + FP8 Mixed Precision Training.",
+    "usage": "from openai import OpenAI\nclient = OpenAI(api_key=\"YOUR_KEY\", base_url=\"https://api.deepseek.com\")\nresponse = client.chat.completions.create(\n  model=\"deepseek-chat\",\n  messages=[{\"role\": \"user\", \"content\": \"Explain MLA architecture.\"}]\n)",
+    "benchmarks": "MMLU-Redux: 89.1%, HumanEval: 90.2%, MATH-500: 75.7%",
+    "limitations": "Massive parameter footprint requires multi-GPU or cloud API hosting.",
     "popular": true,
-    "url": "https://ai.meta.com/llama/",
+    "url": "https://www.deepseek.com",
     "citations": [
       {
-        "text": "Llama 3.3 Release",
-        "url": "https://ai.meta.com/blog/llama-3-3/"
+        "text": "DeepSeek-V3 Technical Report",
+        "url": "https://github.com/deepseek-ai/DeepSeek-V3"
       }
     ]
   }

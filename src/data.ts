@@ -7516,6 +7516,204 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/ankitjh4/bharat-government-documents"
           }
       ]
+  },
+  {
+      "name": "JEV-27B-VL",
+      "type": "Model",
+      "summary": "High-performance Multimodal open-weights model by autotrust, trending with over 685 community likes and 1,278,569 downloads on Hugging Face.",
+      "task": "Multimodal",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "autotrust",
+      "size": "27B params",
+      "architecture": "autotrust image text to text architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"autotrust/JEV-27B-VL\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"autotrust/JEV-27B-VL\")",
+      "benchmarks": "Trending Score: 551, Likes: 685, Downloads: 1,278,569",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/autotrust/JEV-27B-VL",
+      "citations": [
+          {
+              "text": "autotrust/JEV-27B-VL on Hugging Face",
+              "url": "https://huggingface.co/autotrust/JEV-27B-VL"
+          }
+      ]
+  },
+  {
+      "name": "JEV-27B-Demo",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 93 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "autotrust",
+      "size": "DOCKER Platform",
+      "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/autotrust/JEV-27B-Demo",
+      "benchmarks": "Trending Score: 69, Community Likes: 93",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/autotrust/JEV-27B-Demo",
+      "citations": [
+          {
+              "text": "autotrust/JEV-27B-Demo on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/autotrust/JEV-27B-Demo"
+          }
+      ]
+  },
+  {
+      "name": "ai-village",
+      "type": "Dataset",
+      "summary": "AI Village dataset \t AI Village is an ongoing experiment by AI Digest in which a group of AI agents — built on frontier models from Anthropic, OpenAI, and Google — live (105 likes, 1,715 downloads).",
+      "task": "NLP",
+      "license": "OTHER",
+      "year": 2026,
+      "org": "aidigestorg",
+      "size": "1M<n<10M",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"aidigestorg/ai-village\")",
+      "benchmarks": "Trending Score: 40, Likes: 105, Downloads: 1,715",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": true,
+      "url": "https://huggingface.co/datasets/aidigestorg/ai-village",
+      "citations": [
+          {
+              "text": "aidigestorg/ai-village on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/aidigestorg/ai-village"
+          }
+      ]
+  },
+  {
+      "name": "GEV-26B-Decide",
+      "type": "Model",
+      "summary": "High-performance NLP open-weights model by autotrust, trending with over 743 community likes and 854,574 downloads on Hugging Face.",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "autotrust",
+      "size": "26B params",
+      "architecture": "autotrust text classification architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"autotrust/GEV-26B-Decide\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"autotrust/GEV-26B-Decide\")",
+      "benchmarks": "Trending Score: 604, Likes: 743, Downloads: 854,574",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/autotrust/GEV-26B-Decide",
+      "citations": [
+          {
+              "text": "autotrust/GEV-26B-Decide on Hugging Face",
+              "url": "https://huggingface.co/autotrust/GEV-26B-Decide"
+          }
+      ]
+  },
+  {
+      "name": "model-pulse",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by tardellirs. Trending with 101 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "tardellirs",
+      "size": "STATIC Platform",
+      "architecture": "STATIC cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/tardellirs/model-pulse",
+      "benchmarks": "Trending Score: 89, Community Likes: 101",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/tardellirs/model-pulse",
+      "citations": [
+          {
+              "text": "tardellirs/model-pulse on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/tardellirs/model-pulse"
+          }
+      ]
+  },
+  {
+      "name": "tiktok-5.6B-videos",
+      "type": "Dataset",
+      "summary": "Contact \t Telegram: @hashfunction_dev X: @hashfunction Email: hashfunction.dev@gmail.com TikTok scraper source code The code that collected these 5.6 billion videos. Ti (71 likes, 1,181 downloads).",
+      "task": "NLP",
+      "license": "CC-BY-NC-4.0",
+      "year": 2026,
+      "org": "datasocial",
+      "size": "1B<n<10B",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"datasocial/tiktok-5.6B-videos\")",
+      "benchmarks": "Trending Score: 67, Likes: 71, Downloads: 1,181",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/datasocial/tiktok-5.6B-videos",
+      "citations": [
+          {
+              "text": "datasocial/tiktok-5.6B-videos on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/datasocial/tiktok-5.6B-videos"
+          }
+      ]
+  },
+  {
+      "name": "embeddinggemma-2",
+      "type": "Model",
+      "summary": "High-performance NLP open-weights model by Google, trending with over 990 community likes and 7,562 downloads on Hugging Face.",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "Google",
+      "size": "Open Weights",
+      "architecture": "Google feature extraction architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"google/embeddinggemma-2\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"google/embeddinggemma-2\")",
+      "benchmarks": "Trending Score: 965, Likes: 990, Downloads: 7,562",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/google/embeddinggemma-2",
+      "citations": [
+          {
+              "text": "google/embeddinggemma-2 on Hugging Face",
+              "url": "https://huggingface.co/google/embeddinggemma-2"
+          }
+      ]
+  },
+  {
+      "name": "bfs-best-face-swap",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 119 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "hugging-apps",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap",
+      "benchmarks": "Trending Score: 80, Community Likes: 119",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap",
+      "citations": [
+          {
+              "text": "hugging-apps/bfs-best-face-swap on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap"
+          }
+      ]
+  },
+  {
+      "name": "jabarti-llm-dataset",
+      "type": "Dataset",
+      "summary": "jabarti-llm-dataset \t Cleaned, section-chunked training corpus for a small bilingual LLM (Arabic + English), combining a curated Egyptian-history collection with genera (40 likes, 904 downloads).",
+      "task": "NLP",
+      "license": "CC-BY-SA-4.0",
+      "year": 2026,
+      "org": "bakrianoo",
+      "size": "1M<n<10M",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"bakrianoo/jabarti-llm-dataset\")",
+      "benchmarks": "Trending Score: 35, Likes: 40, Downloads: 904",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset",
+      "citations": [
+          {
+              "text": "bakrianoo/jabarti-llm-dataset on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset"
+          }
+      ]
   }
 ];
 

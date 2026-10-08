@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-05)
+### ⚡ Daily AI Pulse (2026-10-08)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Kolibri-1** (`Model`), **chessfly** (`Platform`), **bharat-government-documents** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Llama 3.3 (70B)** (Meta AI) — [Explore](https://ai.meta.com/llama/) |
-| 🗄️ **Catalog Entries** | **340** AI assets tracked (273 featured) |
-| 🔥 **Top Trending Model** | [Cloudflare/clef](https://huggingface.co/Cloudflare/clef) |
-| 📜 **Top Daily Paper** | [Science or Slop?: Benchmarking and Mitigating Scie...](https://huggingface.co/papers/2610.00531) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Daily Run** | `Mon, 05 Oct 2026 03:14:16 GMT` |
+| 🆕 **New Assets Added** | **embeddinggemma-2** (`Model`), **bfs-best-face-swap** (`Platform`), **jabarti-llm-dataset** (`Dataset`) |
+| 🌟 **Tool of the Day** | **DeepSeek-V3** (DeepSeek) — [Explore](https://www.deepseek.com) |
+| 🗄️ **Catalog Entries** | **349** AI assets tracked (280 featured) |
+| 🔥 **Top Trending Model** | [autotrust/JEV-27B-VL](https://huggingface.co/autotrust/JEV-27B-VL) |
+| 📜 **Top Daily Paper** | [Tetris3D: 3D Scene Generation With Objects That Fi...](https://huggingface.co/papers/2610.10539) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Daily Run** | `Thu, 08 Oct 2026 03:44:26 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

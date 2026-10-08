@@ -1,23 +1,18 @@
 {
-  "timestamp": "2026-10-05T03:14:13.394Z",
+  "timestamp": "2026-10-08T03:44:23.192Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "Gamma",
-      "url": "https://gamma.app",
+      "name": "Midjourney (Platform)",
+      "url": "https://www.midjourney.com/",
       "status": 403
     },
     {
-      "name": "wan555",
-      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
-      "status": 401
-    },
-    {
-      "name": "Google Gemini",
-      "url": "https://gemini.google.com",
-      "status": "Network Error"
+      "name": "Codex",
+      "url": "https://openai.com/blog/openai-codex",
+      "status": 403
     }
   ]
 }
