@@ -40,6 +40,7 @@ export default defineConfig(({ mode }) => {
   process.env.GROQ_API_KEY = env.GROQ_API_KEY || process.env.GROQ_API_KEY;
   process.env.VITE_SUPABASE_URL = env.VITE_SUPABASE_URL || process.env.VITE_SUPABASE_URL;
   process.env.VITE_SUPABASE_ANON_KEY = env.VITE_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
+  process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY = env.CLOUDFLARE_TURNSTILE_SECRET_KEY || process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY;
 
   return {
     plugins: [

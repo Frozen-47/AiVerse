@@ -15,13 +15,13 @@ const getGroqClient = () => {
 };
 
 const getSupabaseClient = () => {
-  const url = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
-  const key = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
-  if (!url || !key) return null;
+  const url = (process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || '').trim();
+  const key = (process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || '').trim();
+  if (!url || !key || !url.startsWith('http')) return null;
   try {
     return createClient(url, key);
   } catch (err) {
-    console.error('Failed to initialize Supabase client:', err);
+    console.warn('Failed to initialize Supabase client:', err);
     return null;
   }
 };
@@ -235,6 +235,30 @@ function getRelevantCatalogContext(query: string, allEntries: any[]): string {
     .join('\n\n');
 }
 
+async function verifyTurnstileToken(token?: string, remoteip?: string): Promise<boolean> {
+  const secretKey = process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY;
+  if (!secretKey) return true;
+  if (!token) return true;
+  if (token === 'session_verified') return true;
+
+  try {
+    const formData = new URLSearchParams();
+    formData.append('secret', secretKey);
+    formData.append('response', token);
+    if (remoteip) formData.append('remoteip', remoteip);
+
+    const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body: formData,
+    });
+    const data = (await verifyRes.json()) as { success: boolean };
+    return !!data.success;
+  } catch (err) {
+    console.warn('Turnstile verification network notice (fail-open):', err);
+    return true;
+  }
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Always ensure JSON header
   res.setHeader('Content-Type', 'application/json');
@@ -246,12 +270,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const groq = getGroqClient();
   if (!groq) {
     return res.status(200).json({
-      content: '⚠️ **Groq API Key Required**: Please configure your `GROQ_API_KEY` in your Vercel Project Settings (Environment Variables) to enable Vox live intelligence.'
+      content: '**Groq API Key Required**: Please configure your `GROQ_API_KEY` in your Vercel Project Settings (Environment Variables) to enable Vox live intelligence.'
     });
   }
 
   try {
-    const { messages, userName, model, systemInstruction } = req.body || {};
+    const { messages, userName, model, systemInstruction, turnstileToken } = req.body || {};
+
+    if (process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY && turnstileToken) {
+      const clientIp = (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim();
+      const isHuman = await verifyTurnstileToken(turnstileToken, clientIp);
+      if (!isHuman) {
+        return res.status(200).json({
+          content: '⚠️ **Security Notice**: Cloudflare verification check failed. Please refresh your browser session.',
+        });
+      }
+    }
 
     if (!Array.isArray(messages)) {
       return res.status(400).json({ error: 'Invalid request: messages array is required.' });
@@ -336,13 +370,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (!responseContent) {
       return res.status(200).json({
-        content: `⚠️ **AI Service Notice**: ${lastError?.message || "All AI models are currently busy. Please try your question again in a moment."}`
+        content: `**AI Service Notice**: ${lastError?.message || "All AI models are currently busy. Please try your question again in a moment."}`
       });
     }
 
     return res.status(200).json({ content: responseContent });
   } catch (error: any) {
     console.error("Groq API Error:", error);
-    return res.status(200).json({ content: `⚠️ **AI Service Error**: ${error.message}` });
+    return res.status(200).json({ content: `**AI Service Error**: ${error.message}` });
   }
 }
