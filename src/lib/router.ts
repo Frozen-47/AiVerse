@@ -24,9 +24,9 @@ export type AdminSection =
   | "audit";
 
 export type AppRoute =
-  | { type: "home" }
+  | { type: "dashboard" }
   | {
-      type: "dashboard";
+      type: "entries";
       tab: "assets" | "ecosystems" | "saved";
     }
   | {
@@ -52,38 +52,38 @@ function cleanPath(pathname: string): string {
 
 /**
  * Parse a URL pathname and search query into a structured AppRoute.
- * Supports both structured paths (/features/compare, /dashboard) and legacy aliases (/arena, /entries).
+ * Separates /dashboard (main landing & pulse dashboard) and /entries (full catalog directory).
  */
 export function parseRoute(pathname: string, search: string = ""): AppRoute {
   const p = cleanPath(pathname);
   const params = new URLSearchParams(search);
 
-  // 1. Home
-  if (p === "/" || p === "/home") {
-    return { type: "home" };
+  // 1. Dashboard (Main Landing Dashboard: Hero, Pulse, Spotlight)
+  if (p === "/" || p === "/dashboard" || p === "/home") {
+    return { type: "dashboard" };
   }
 
-  // 2. Dashboard / Catalog Directory
-  if (p === "/dashboard" || p === "/entries" || p === "/catalog") {
+  // 2. Entries (Full Catalog & Resource Directory)
+  if (p === "/entries" || p === "/catalog") {
     const tabParam = params.get("tab") || params.get("view");
     const isSaved = params.get("saved") === "true" || tabParam === "saved";
     const isEcosystems = tabParam === "ecosystems";
 
     if (isSaved) {
-      return { type: "dashboard", tab: "saved" };
+      return { type: "entries", tab: "saved" };
     }
     if (isEcosystems) {
-      return { type: "dashboard", tab: "ecosystems" };
+      return { type: "entries", tab: "ecosystems" };
     }
-    return { type: "dashboard", tab: "assets" };
+    return { type: "entries", tab: "assets" };
   }
 
-  // Dashboard Subroutes (/dashboard/ecosystems, /dashboard/saved)
-  if (p === "/dashboard/ecosystems" || p === "/entries/ecosystems") {
-    return { type: "dashboard", tab: "ecosystems" };
+  // Entries Subroutes (/entries/ecosystems, /entries/saved)
+  if (p === "/entries/ecosystems") {
+    return { type: "entries", tab: "ecosystems" };
   }
-  if (p === "/dashboard/saved" || p === "/entries/saved") {
-    return { type: "dashboard", tab: "saved" };
+  if (p === "/entries/saved") {
+    return { type: "entries", tab: "saved" };
   }
 
   // 3. Admin Console
@@ -150,8 +150,8 @@ export function parseRoute(pathname: string, search: string = ""): AppRoute {
     return { type: "terms" };
   }
 
-  // Default fallback to home
-  return { type: "home" };
+  // Default fallback to dashboard
+  return { type: "dashboard" };
 }
 
 /**
@@ -168,12 +168,12 @@ export function routeToUrl(
   const params = new URLSearchParams();
 
   switch (route.type) {
-    case "home":
-      path = "/";
-      break;
-
     case "dashboard":
       path = "/dashboard";
+      break;
+
+    case "entries":
+      path = "/entries";
       if (route.tab === "ecosystems") {
         params.set("view", "ecosystems");
       } else if (route.tab === "saved") {
@@ -305,7 +305,7 @@ export function getCurrentEntrySlug(): string | null {
  */
 export function useAppRouter() {
   const [route, setRoute] = useState<AppRoute>(() => {
-    if (typeof window === "undefined") return { type: "home" };
+    if (typeof window === "undefined") return { type: "dashboard" };
     return parseRoute(window.location.pathname, window.location.search);
   });
 
@@ -372,26 +372,26 @@ export function getRouteSeo(route: AppRoute, entryName?: string | null) {
   let path = "/";
 
   switch (route.type) {
-    case "home":
-      title = "AiVerse - The Ultimate AI Tool & Model Directory";
+    case "dashboard":
+      title = "AiVerse — Universal AI Knowledge Directory & Model Ecosystem";
       desc =
-        "AiVerse is a comprehensive, open-source guide to AI tools, models, datasets, and frameworks. Search, compare, and discover the best AI technologies.";
-      path = "/";
+        "Explore verified AI models, architectures, benchmark evaluations, licenses, and ecosystem telemetry on AiVerse.";
+      path = "/dashboard";
       break;
 
-    case "dashboard":
+    case "entries":
       if (route.tab === "ecosystems") {
         title = "AI Ecosystems Map & Labs Directory | AiVerse";
         desc = "Explore leading AI organizations, labs, and their ecosystems of models, frameworks, and datasets.";
-        path = "/dashboard?view=ecosystems";
+        path = "/entries?view=ecosystems";
       } else if (route.tab === "saved") {
         title = "Saved Bookmarks & Resources | AiVerse";
         desc = "Your saved and bookmarked AI tools, frameworks, and models on AiVerse.";
-        path = "/dashboard?tab=saved";
+        path = "/entries?tab=saved";
       } else {
         title = "AI Catalog Directory | AiVerse";
         desc = "Explore our comprehensive directory of language models, frameworks, datasets, platforms, and AI apps.";
-        path = "/dashboard";
+        path = "/entries";
       }
       break;
 

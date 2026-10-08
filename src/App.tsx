@@ -112,13 +112,13 @@ const Inner: React.FC = () => {
   const isArena = route.type === "features" && route.subpage === "compare";
   const isPlayground = route.type === "features" && route.subpage === "playground";
   const profileUsername = route.type === "profile" ? route.username : null;
-  const isDashboard = route.type === "dashboard";
-  const activeView: "landing" | "catalog" = isDashboard ? "catalog" : "landing";
+  const isEntries = route.type === "entries";
+  const activeView: "landing" | "catalog" = isEntries ? "catalog" : "landing";
   const [adminDashboardKey, setAdminDashboardKey] = useState(0);
 
-  // Synchronize dashboard tab with catalog display mode & saved filter
+  // Synchronize entries tab with catalog display mode & saved filter
   useEffect(() => {
-    if (route.type === "dashboard") {
+    if (route.type === "entries") {
       if (route.tab === "ecosystems") {
         setCatalogDisplayMode("ecosystems");
         setSavedOnly(false);
@@ -864,11 +864,11 @@ const Inner: React.FC = () => {
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
         onViewSaved={() => {
-          navigate("/dashboard?tab=saved");
+          navigate("/entries?tab=saved");
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
         onHomeClick={() => {
-          navigate("/");
+          navigate("/dashboard");
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
         onViewAdminDashboard={() => {
@@ -878,12 +878,12 @@ const Inner: React.FC = () => {
         entryCount={entries.length}
         ecosystemsCount={ecosystemsCount}
         onBrowseAll={() => {
-          navigate("/dashboard");
+          navigate("/entries");
           setCurrentPage(1);
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
         onViewEcosystems={() => {
-          navigate("/dashboard?view=ecosystems");
+          navigate("/entries?view=ecosystems");
           setCurrentPage(1);
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
@@ -952,12 +952,12 @@ const Inner: React.FC = () => {
           setTypeFilter={(filter) => setTypeFilter(filter as TypeFilter)}
           setSearchInput={setSearchInput}
           setBrowseAll={(browse) => {
-            if (browse) navigate("/dashboard");
-            else navigate("/");
+            if (browse) navigate("/entries");
+            else navigate("/dashboard");
           }}
           setActiveView={(view) => {
-            if (view === "catalog") navigate("/dashboard");
-            else navigate("/");
+            if (view === "catalog") navigate("/entries");
+            else navigate("/dashboard");
           }}
           setSavedOnly={setSavedOnly}
           setPopularOnly={setPopularOnly}
@@ -1165,7 +1165,7 @@ const Inner: React.FC = () => {
                         {/* View All Entries button */}
                         <button
                           onClick={() => {
-                            navigate("/dashboard");
+                            navigate("/entries");
                             window.scrollTo({ top: 0, behavior: "smooth" });
                           }}
                           className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 hover:opacity-90 transition-all cursor-pointer flex items-center gap-1.5 shadow-xs"
@@ -1297,7 +1297,7 @@ const Inner: React.FC = () => {
                       <div className="flex flex-wrap items-center gap-2.5">
                         <button
                           onClick={() => {
-                            navigate("/dashboard");
+                            navigate("/entries");
                             window.scrollTo({ top: 0, behavior: "smooth" });
                           }}
                           className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-all cursor-pointer flex items-center gap-1.5 shadow-xs"
@@ -1378,7 +1378,7 @@ const Inner: React.FC = () => {
                   entries={entries}
                   ratingSummaries={ratingSummaries}
                   onViewAllEntries={() => {
-                    navigate("/dashboard");
+                    navigate("/entries");
                     setCurrentPage(1);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
@@ -1395,7 +1395,7 @@ const Inner: React.FC = () => {
                   <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
                     <button
                       onClick={() => {
-                        navigate("/");
+                        navigate("/dashboard");
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
                       className="hover:text-blue-500 hover:underline cursor-pointer flex items-center gap-1 transition-colors"
@@ -1839,7 +1839,7 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      navigate("/dashboard");
+                      navigate("/entries");
                       window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
@@ -1850,7 +1850,7 @@ const Inner: React.FC = () => {
                 <li>
                   <button 
                     onClick={() => { 
-                      navigate("/dashboard?view=ecosystems");
+                      navigate("/entries?view=ecosystems");
                       window.scrollTo({ top: 0, behavior: "smooth" }); 
                     }} 
                     className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer text-left transition-colors"
