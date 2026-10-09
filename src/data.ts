@@ -7714,6 +7714,72 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset"
           }
       ]
+  },
+  {
+      "name": "Xing4.0-29B-A4B-GGUF",
+      "type": "Model",
+      "summary": "High-performance NLP open-weights model by Venastine-Research, trending with over 669 community likes and 36,481 downloads on Hugging Face.",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "Venastine-Research",
+      "size": "29B params",
+      "architecture": "Venastine-Research text generation architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Venastine-Research/Xing4.0-29B-A4B-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Venastine-Research/Xing4.0-29B-A4B-GGUF\")",
+      "benchmarks": "Trending Score: 617, Likes: 669, Downloads: 36,481",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF",
+      "citations": [
+          {
+              "text": "Venastine-Research/Xing4.0-29B-A4B-GGUF on Hugging Face",
+              "url": "https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF"
+          }
+      ]
+  },
+  {
+      "name": "jev-9b-decision-demo",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 94 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "autotrust",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/autotrust/jev-9b-decision-demo",
+      "benchmarks": "Trending Score: 75, Community Likes: 94",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/autotrust/jev-9b-decision-demo",
+      "citations": [
+          {
+              "text": "autotrust/jev-9b-decision-demo on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/autotrust/jev-9b-decision-demo"
+          }
+      ]
+  },
+  {
+      "name": "EgoStandard",
+      "type": "Dataset",
+      "summary": "EgoStandard The 90,000-hour head-view line of EgoSuite-Open100K.   Data Bucket ·   Collection ·   EgoDemo ·   EgoPro ·   Project page Explore EgoSuite-Open100K ↗ Data location: Eg (186 likes, 388 downloads).",
+      "task": "Multimodal",
+      "license": "OTHER",
+      "year": 2026,
+      "org": "LightwheelAI",
+      "size": "10K<n<100K",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"LightwheelAI/EgoStandard\")",
+      "benchmarks": "Trending Score: 47, Likes: 186, Downloads: 388",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": true,
+      "url": "https://huggingface.co/datasets/LightwheelAI/EgoStandard",
+      "citations": [
+          {
+              "text": "LightwheelAI/EgoStandard on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/LightwheelAI/EgoStandard"
+          }
+      ]
   }
 ];
 

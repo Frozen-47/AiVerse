@@ -1,24 +1,24 @@
 {
-  "date": "2026-10-08",
+  "date": "2026-10-09",
   "tool": {
-    "name": "DeepSeek-V3",
-    "type": "Model",
-    "summary": "DeepSeek's flagship 671B Mixture-of-Experts (MoE) model with Multi-head Latent Attention (MLA), activating 37B params per token with industry-leading efficiency.",
-    "task": "NLP",
-    "license": "MIT",
-    "year": 2024,
-    "org": "DeepSeek",
-    "size": "671B (37B active)",
-    "architecture": "Multi-head Latent Attention (MLA) + DeepSeekMoE + FP8 Mixed Precision Training.",
-    "usage": "from openai import OpenAI\nclient = OpenAI(api_key=\"YOUR_KEY\", base_url=\"https://api.deepseek.com\")\nresponse = client.chat.completions.create(\n  model=\"deepseek-chat\",\n  messages=[{\"role\": \"user\", \"content\": \"Explain MLA architecture.\"}]\n)",
-    "benchmarks": "MMLU-Redux: 89.1%, HumanEval: 90.2%, MATH-500: 75.7%",
-    "limitations": "Massive parameter footprint requires multi-GPU or cloud API hosting.",
+    "name": "jev-9b-decision-demo",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 94 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "autotrust",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/autotrust/jev-9b-decision-demo",
+    "benchmarks": "Trending Score: 75, Community Likes: 94",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
     "popular": true,
-    "url": "https://www.deepseek.com",
+    "url": "https://huggingface.co/spaces/autotrust/jev-9b-decision-demo",
     "citations": [
       {
-        "text": "DeepSeek-V3 Technical Report",
-        "url": "https://github.com/deepseek-ai/DeepSeek-V3"
+        "text": "autotrust/jev-9b-decision-demo on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/autotrust/jev-9b-decision-demo"
       }
     ]
   }

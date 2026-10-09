@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-10-08T03:44:23.192Z",
+  "timestamp": "2026-10-09T03:49:51.390Z",
   "checked": 25,
   "healthy": 23,
   "broken": 2,
   "issues": [
     {
-      "name": "Midjourney (Platform)",
-      "url": "https://www.midjourney.com/",
+      "name": "o3-mini",
+      "url": "https://openai.com",
       "status": 403
     },
     {
-      "name": "Codex",
-      "url": "https://openai.com/blog/openai-codex",
+      "name": "Poe",
+      "url": "https://poe.com",
       "status": 403
     }
   ]

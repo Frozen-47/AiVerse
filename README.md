@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-08)
+### ⚡ Daily AI Pulse (2026-10-09)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **embeddinggemma-2** (`Model`), **bfs-best-face-swap** (`Platform`), **jabarti-llm-dataset** (`Dataset`) |
-| 🌟 **Tool of the Day** | **DeepSeek-V3** (DeepSeek) — [Explore](https://www.deepseek.com) |
-| 🗄️ **Catalog Entries** | **349** AI assets tracked (280 featured) |
+| 🆕 **New Assets Added** | **Xing4.0-29B-A4B-GGUF** (`Model`), **jev-9b-decision-demo** (`Platform`), **EgoStandard** (`Dataset`) |
+| 🌟 **Tool of the Day** | **jev-9b-decision-demo** (autotrust) — [Explore](https://huggingface.co/spaces/autotrust/jev-9b-decision-demo) |
+| 🗄️ **Catalog Entries** | **352** AI assets tracked (283 featured) |
 | 🔥 **Top Trending Model** | [autotrust/JEV-27B-VL](https://huggingface.co/autotrust/JEV-27B-VL) |
-| 📜 **Top Daily Paper** | [Tetris3D: 3D Scene Generation With Objects That Fi...](https://huggingface.co/papers/2610.10539) |
+| 📜 **Top Daily Paper** | [Multi-Agent Egocentric World Model with Fine-Grain...](https://huggingface.co/papers/2610.12299) |
 | 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Daily Run** | `Thu, 08 Oct 2026 03:44:26 GMT` |
+| 🕒 **Last Daily Run** | `Fri, 09 Oct 2026 03:49:54 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

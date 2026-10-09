@@ -1,44 +1,44 @@
-# ⚡ AiVerse Daily Pulse (2026-10-08)
+# ⚡ AiVerse Daily Pulse (2026-10-09)
 
 > Automatically generated daily intelligence report syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Thu, 08 Oct 2026 03:44:26 GMT`*
+*Last Synchronized: `Fri, 09 Oct 2026 03:49:54 GMT`*
 
 ---
 
 ## 🆕 Newly Ingested Assets Today (3)
 
-### **embeddinggemma-2** (`Model` • *Google*)
-> High-performance NLP open-weights model by Google, trending with over 990 community likes and 7,562 downloads on Hugging Face.
+### **Xing4.0-29B-A4B-GGUF** (`Model` • *Venastine-Research*)
+> High-performance NLP open-weights model by Venastine-Research, trending with over 669 community likes and 36,481 downloads on Hugging Face.
 
 - 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 965, Likes: 990, Downloads: 7,562`
-- 🔗 **Resource Link**: [https://huggingface.co/google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2)
+- ⚡ **Metrics**: `Trending Score: 617, Likes: 669, Downloads: 36,481`
+- 🔗 **Resource Link**: [https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF](https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF)
 
-### **bfs-best-face-swap** (`Platform` • *hugging-apps*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 119 community stars.
+### **jev-9b-decision-demo** (`Platform` • *autotrust*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 94 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 80, Community Likes: 119`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap](https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap)
+- ⚡ **Metrics**: `Trending Score: 75, Community Likes: 94`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/autotrust/jev-9b-decision-demo](https://huggingface.co/spaces/autotrust/jev-9b-decision-demo)
 
-### **jabarti-llm-dataset** (`Dataset` • *bakrianoo*)
-> jabarti-llm-dataset 	 Cleaned, section-chunked training corpus for a small bilingual LLM (Arabic + English), combining a curated Egyptian-history collection with genera (40 likes, 904 downloads).
+### **EgoStandard** (`Dataset` • *LightwheelAI*)
+> EgoStandard The 90,000-hour head-view line of EgoSuite-Open100K.   Data Bucket ·   Collection ·   EgoDemo ·   EgoPro ·   Project page Explore EgoSuite-Open100K ↗ Data location: Eg (186 likes, 388 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `CC-BY-SA-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 35, Likes: 40, Downloads: 904`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset](https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset)
+- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 47, Likes: 186, Downloads: 388`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/LightwheelAI/EgoStandard](https://huggingface.co/datasets/LightwheelAI/EgoStandard)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **DeepSeek-V3** (`Model` • *DeepSeek*)
-> DeepSeek's flagship 671B Mixture-of-Experts (MoE) model with Multi-head Latent Attention (MLA), activating 37B params per token with industry-leading efficiency.
+### **jev-9b-decision-demo** (`Platform` • *autotrust*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 94 community stars.
 
-- 🏛️ **Architecture**: Multi-head Latent Attention (MLA) + DeepSeekMoE + FP8 Mixed Precision Training.
-- ⚡ **Benchmarks**: `MMLU-Redux: 89.1%, HumanEval: 90.2%, MATH-500: 75.7%`
-- 🏷️ **Domain & License**: `NLP` • `MIT` (Released: 2024)
-- 🔗 **Resource Link**: [https://www.deepseek.com](https://www.deepseek.com)
+- 🏛️ **Architecture**: GRADIO cloud runtime container with interactive browser interface.
+- ⚡ **Benchmarks**: `Trending Score: 75, Community Likes: 94`
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (Released: 2026)
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/autotrust/jev-9b-decision-demo](https://huggingface.co/spaces/autotrust/jev-9b-decision-demo)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -46,12 +46,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `autotrust/JEV-27B-VL` | image-text-to-text | ❤️ 2,097 | 📥 1,529,210 | [View](https://huggingface.co/autotrust/JEV-27B-VL) |
-| `Cloudflare/clef` | image-text-to-text | ❤️ 1,831 | 📥 9,513 | [View](https://huggingface.co/Cloudflare/clef) |
-| `autotrust/GEV-26B-Decide` | text-classification | ❤️ 1,394 | 📥 895,867 | [View](https://huggingface.co/autotrust/GEV-26B-Decide) |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 990 | 📥 7,562 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `Aleph-Alpha/Kolibri-1` | text-generation | ❤️ 785 | 📥 5,775 | [View](https://huggingface.co/Aleph-Alpha/Kolibri-1) |
-| `abenzerps/Qwen-Image-2.1-Uncensored-GGUF` | text-to-image | ❤️ 3,590 | 📥 1,820,627 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF) |
+| `autotrust/JEV-27B-VL` | image-text-to-text | ❤️ 3,004 | 📥 1,533,034 | [View](https://huggingface.co/autotrust/JEV-27B-VL) |
+| `autotrust/GEV-26B-Decide` | text-classification | ❤️ 1,873 | 📥 903,866 | [View](https://huggingface.co/autotrust/GEV-26B-Decide) |
+| `Cloudflare/clef` | image-text-to-text | ❤️ 1,896 | 📥 10,874 | [View](https://huggingface.co/Cloudflare/clef) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 1,215 | 📥 21,148 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `Aleph-Alpha/Kolibri-1` | text-generation | ❤️ 816 | 📥 6,777 | [View](https://huggingface.co/Aleph-Alpha/Kolibri-1) |
+| `abenzerps/Qwen-Image-2.1-Uncensored-GGUF` | text-to-image | ❤️ 3,684 | 📥 1,933,066 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF) |
 
 
 ---
@@ -61,19 +61,19 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Tetris3D: 3D Scene Generation With Objects That Fit Together** | 👍 8 | We propose Tetris3D, a generative framework for single-image 3D scene reconstruction that recovers objects which are physically and geometrically coherent as a ... | [Read](https://huggingface.co/papers/2610.10539) |
-| **SWE-Game: Can Coding Agents Build the Games We Want?** | 👍 4 | We introduce SWE-Game, a benchmark of 247 tasks grounded in 41 executable reference Godot games spanning 13 gameplay categories in 2D and 3D. Five task types co... | [Read](https://huggingface.co/papers/2609.33678) |
-| **DLoop: Looped Speculative Decoding** | 👍 2 | Speculative decoding accelerates autoregressive generation in large language models. In each drafting stage, a lightweight draft model proposes tokens that the ... | [Read](https://huggingface.co/papers/2610.07659) |
-| **RunningTab: Direct Workspace Interaction with Environment-Side Tabs** | 👍 0 | Much knowledge work produces new deliverables from files a workspace already holds, and LLM agents are beginning to take such work over. Through direct corpus i... | [Read](https://huggingface.co/papers/2610.10444) |
-| **UniWAM: Unified World-Action Model** | 👍 1 | Vision-language-action models benefit from the understanding and reasoning capabilities of pretrained vision-language models, but action-only supervision provid... | [Read](https://huggingface.co/papers/2610.02054) |
+| **Multi-Agent Egocentric World Model with Fine-Grained Embodied Interaction** | 👍 2 | Egocentric world models predict first-person observations conditioned on an agent's actions, but most focus on a single agent. Real embodied settings often invo... | [Read](https://huggingface.co/papers/2610.12299) |
+| **OneSearch-VL: Unified Multimodal Deep Research Agent for Image and Video** | 👍 2 | Single-image, multi-image, and video deep research require different visual operations but share a workflow of visual grounding, external retrieval, and fact co... | [Read](https://huggingface.co/papers/2610.12419) |
+| **Distilling Routed 3D Privilege for Spatial Reasoning in Vision-Language Models** | 👍 0 | Spatial reasoning remains a persistent weakness of vision-language models (VLMs), because RGB inputs do not directly provide geometric evidence. Existing remedi... | [Read](https://huggingface.co/papers/2610.12355) |
+| **TerraVis: Towards Evaluation of World-Grounded Visual Consistency in Text-to-Image Generation via MLLM Workflows** | 👍 1 | Recent text-to-image models have made substantial progress in photorealism, aesthetics, and text-image alignment. Yet visually appealing images can still violat... | [Read](https://huggingface.co/papers/2610.02959) |
+| **TestPrism: Rethinking Test Evaluation Beyond a Single Reference** | 👍 5 | Large language model (LLM) coding agents have advanced test generation across diverse programming tasks. However, the common practice of evaluating tests agains... | [Read](https://huggingface.co/papers/2610.12289) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `349`
-- **Featured / Starred Tools**: `280`
-- **Asset Breakdown**: **Models**: 124 • **Frameworks**: 33 • **Platforms**: 61 • **Datasets**: 60 • **AIs**: 71
+- **Total Registered Assets**: `352`
+- **Featured / Starred Tools**: `283`
+- **Asset Breakdown**: **Models**: 125 • **Frameworks**: 33 • **Platforms**: 62 • **Datasets**: 61 • **AIs**: 71
 
 ---
 

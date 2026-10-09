@@ -1,4 +1,4 @@
--- Seed / Upsert all 349 AiVerse entries into Supabase
+-- Seed / Upsert all 352 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -7322,6 +7322,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('jabarti-llm-dataset', 'bakrianoo', 'Dataset', 'NLP', 'CC-BY-SA-4.0', 2026, '1M<n<10M', 'jabarti-llm-dataset 	 Cleaned, section-chunked training corpus for a small bilingual LLM (Arabic + English), combining a curated Egyptian-history collection with genera (40 likes, 904 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("bakrianoo/jabarti-llm-dataset")', 'Trending Score: 35, Likes: 40, Downloads: 904', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset', '[{"text":"bakrianoo/jabarti-llm-dataset on Hugging Face Datasets","url":"https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Xing4.0-29B-A4B-GGUF', 'Venastine-Research', 'Model', 'NLP', 'APACHE-2.0', 2026, '29B params', 'High-performance NLP open-weights model by Venastine-Research, trending with over 669 community likes and 36,481 downloads on Hugging Face.', 'Venastine-Research text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Venastine-Research/Xing4.0-29B-A4B-GGUF", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Venastine-Research/Xing4.0-29B-A4B-GGUF")', 'Trending Score: 617, Likes: 669, Downloads: 36,481', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF', '[{"text":"Venastine-Research/Xing4.0-29B-A4B-GGUF on Hugging Face","url":"https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('jev-9b-decision-demo', 'autotrust', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 94 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/autotrust/jev-9b-decision-demo', 'Trending Score: 75, Community Likes: 94', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/autotrust/jev-9b-decision-demo', '[{"text":"autotrust/jev-9b-decision-demo on Hugging Face Spaces","url":"https://huggingface.co/spaces/autotrust/jev-9b-decision-demo"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('EgoStandard', 'LightwheelAI', 'Dataset', 'Multimodal', 'OTHER', 2026, '10K<n<100K', 'EgoStandard The 90,000-hour head-view line of EgoSuite-Open100K.   Data Bucket ·   Collection ·   EgoDemo ·   EgoPro ·   Project page Explore EgoSuite-Open100K ↗ Data location: Eg (186 likes, 388 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("LightwheelAI/EgoStandard")', 'Trending Score: 47, Likes: 186, Downloads: 388', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/LightwheelAI/EgoStandard', '[{"text":"LightwheelAI/EgoStandard on Hugging Face Datasets","url":"https://huggingface.co/datasets/LightwheelAI/EgoStandard"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
