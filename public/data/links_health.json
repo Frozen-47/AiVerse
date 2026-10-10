@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-10-09T03:49:51.390Z",
+  "timestamp": "2026-10-10T03:33:24.074Z",
   "checked": 25,
   "healthy": 23,
   "broken": 2,
   "issues": [
     {
-      "name": "o3-mini",
-      "url": "https://openai.com",
+      "name": "Phind",
+      "url": "https://www.phind.com",
       "status": 403
     },
     {
-      "name": "Poe",
-      "url": "https://poe.com",
+      "name": "GPT-4o mini",
+      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
       "status": 403
     }
   ]

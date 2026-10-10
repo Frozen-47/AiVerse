@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-09)
+### ⚡ Daily AI Pulse (2026-10-10)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Xing4.0-29B-A4B-GGUF** (`Model`), **jev-9b-decision-demo** (`Platform`), **EgoStandard** (`Dataset`) |
-| 🌟 **Tool of the Day** | **jev-9b-decision-demo** (autotrust) — [Explore](https://huggingface.co/spaces/autotrust/jev-9b-decision-demo) |
-| 🗄️ **Catalog Entries** | **352** AI assets tracked (283 featured) |
-| 🔥 **Top Trending Model** | [autotrust/JEV-27B-VL](https://huggingface.co/autotrust/JEV-27B-VL) |
-| 📜 **Top Daily Paper** | [Multi-Agent Egocentric World Model with Fine-Grain...](https://huggingface.co/papers/2610.12299) |
+| 🆕 **New Assets Added** | **humanizer** (`Model`), **LTX-2.3-10Eros** (`Platform`), **precinct6-cybersecurity** (`Dataset`) |
+| 🌟 **Tool of the Day** | **EgoStandard** (LightwheelAI) — [Explore](https://huggingface.co/datasets/LightwheelAI/EgoStandard) |
+| 🗄️ **Catalog Entries** | **355** AI assets tracked (285 featured) |
+| 🔥 **Top Trending Model** | [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) |
+| 📜 **Top Daily Paper** | [The Lattice of Transition Laws...](https://huggingface.co/papers/2610.11216) |
 | 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Daily Run** | `Fri, 09 Oct 2026 03:49:54 GMT` |
+| 🕒 **Last Daily Run** | `Sat, 10 Oct 2026 03:33:28 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

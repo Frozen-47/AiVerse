@@ -1,4 +1,4 @@
--- Seed / Upsert all 352 AiVerse entries into Supabase
+-- Seed / Upsert all 355 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -7384,6 +7384,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('EgoStandard', 'LightwheelAI', 'Dataset', 'Multimodal', 'OTHER', 2026, '10K<n<100K', 'EgoStandard The 90,000-hour head-view line of EgoSuite-Open100K.   Data Bucket ·   Collection ·   EgoDemo ·   EgoPro ·   Project page Explore EgoSuite-Open100K ↗ Data location: Eg (186 likes, 388 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("LightwheelAI/EgoStandard")', 'Trending Score: 47, Likes: 186, Downloads: 388', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/LightwheelAI/EgoStandard', '[{"text":"LightwheelAI/EgoStandard on Hugging Face Datasets","url":"https://huggingface.co/datasets/LightwheelAI/EgoStandard"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('humanizer', 'jialinyyzz', 'Model', 'NLP', 'APACHE-2.0', 2026, 'Open Weights', 'High-performance NLP open-weights model by jialinyyzz, trending with over 766 community likes and 29,470 downloads on Hugging Face.', 'jialinyyzz text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("jialinyyzz/humanizer", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("jialinyyzz/humanizer")', 'Trending Score: 717, Likes: 766, Downloads: 29,470', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/jialinyyzz/humanizer', '[{"text":"jialinyyzz/humanizer on Hugging Face","url":"https://huggingface.co/jialinyyzz/humanizer"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('LTX-2.3-10Eros', '00000tt', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by 00000tt. Trending with 185 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros', 'Trending Score: 61, Community Likes: 185', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros', '[{"text":"00000tt/LTX-2.3-10Eros on Hugging Face Spaces","url":"https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('precinct6-cybersecurity', 'witfoo', 'Dataset', 'NLP', 'APACHE-2.0', 2026, '1M<n<10M', 'WitFoo Precinct6 Cybersecurity Dataset 	 Version 2.1.0 (built 2026-09-22). Regenerated to address feedback from the University of Canterbury PIDS evaluation: attacks an (49 likes, 3,326 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("witfoo/precinct6-cybersecurity")', 'Trending Score: 34, Likes: 49, Downloads: 3,326', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/witfoo/precinct6-cybersecurity', '[{"text":"witfoo/precinct6-cybersecurity on Hugging Face Datasets","url":"https://huggingface.co/datasets/witfoo/precinct6-cybersecurity"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

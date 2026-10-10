@@ -1,24 +1,24 @@
 {
-  "date": "2026-10-09",
+  "date": "2026-10-10",
   "tool": {
-    "name": "jev-9b-decision-demo",
-    "type": "Platform",
-    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 94 community stars.",
+    "name": "EgoStandard",
+    "type": "Dataset",
+    "summary": "EgoStandard The 90,000-hour head-view line of EgoSuite-Open100K.   Data Bucket ·   Collection ·   EgoDemo ·   EgoPro ·   Project page Explore EgoSuite-Open100K ↗ Data location: Eg (186 likes, 388 downloads).",
     "task": "Multimodal",
-    "license": "Community Hosted",
+    "license": "OTHER",
     "year": 2026,
-    "org": "autotrust",
-    "size": "GRADIO Platform",
-    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/autotrust/jev-9b-decision-demo",
-    "benchmarks": "Trending Score: 75, Community Likes: 94",
-    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "org": "LightwheelAI",
+    "size": "10K<n<100K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"LightwheelAI/EgoStandard\")",
+    "benchmarks": "Trending Score: 47, Likes: 186, Downloads: 388",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
     "popular": true,
-    "url": "https://huggingface.co/spaces/autotrust/jev-9b-decision-demo",
+    "url": "https://huggingface.co/datasets/LightwheelAI/EgoStandard",
     "citations": [
       {
-        "text": "autotrust/jev-9b-decision-demo on Hugging Face Spaces",
-        "url": "https://huggingface.co/spaces/autotrust/jev-9b-decision-demo"
+        "text": "LightwheelAI/EgoStandard on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/LightwheelAI/EgoStandard"
       }
     ]
   }

@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-09T03:49:51.231Z",
+  "timestamp": "2026-10-10T03:33:23.920Z",
   "models": [
-    {
-      "id": "autotrust/JEV-27B-VL",
-      "author": "autotrust",
-      "likes": 3004,
-      "downloads": 1533034,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/autotrust/JEV-27B-VL"
-    },
-    {
-      "id": "autotrust/GEV-26B-Decide",
-      "author": "autotrust",
-      "likes": 1873,
-      "downloads": 903866,
-      "pipeline_tag": "text-classification",
-      "url": "https://huggingface.co/autotrust/GEV-26B-Decide"
-    },
-    {
-      "id": "Cloudflare/clef",
-      "author": "Cloudflare",
-      "likes": 1896,
-      "downloads": 10874,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Cloudflare/clef"
-    },
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 1215,
-      "downloads": 21148,
+      "likes": 1365,
+      "downloads": 29185,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
     },
     {
+      "id": "Cloudflare/clef",
+      "author": "Cloudflare",
+      "likes": 1947,
+      "downloads": 12066,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/Cloudflare/clef"
+    },
+    {
       "id": "Aleph-Alpha/Kolibri-1",
       "author": "Aleph-Alpha",
-      "likes": 816,
-      "downloads": 6777,
+      "likes": 845,
+      "downloads": 8474,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1"
     },
     {
+      "id": "jialinyyzz/humanizer",
+      "author": "jialinyyzz",
+      "likes": 766,
+      "downloads": 29470,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/jialinyyzz/humanizer"
+    },
+    {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
       "author": "abenzerps",
-      "likes": 3684,
-      "downloads": 1933066,
+      "likes": 3781,
+      "downloads": 2013268,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
+    },
+    {
+      "id": "Venastine-Research/Xing4.0-29B-A4B-GGUF",
+      "author": "Venastine-Research",
+      "likes": 676,
+      "downloads": 38740,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF"
     }
   ],
   "papers": [
     {
-      "title": "Multi-Agent Egocentric World Model with Fine-Grained Embodied Interaction",
-      "summary": "Egocentric world models predict first-person observations conditioned on an agent's actions, but most focus on a single agent. Real embodied settings often invo...",
-      "upvotes": 2,
-      "arxiv_id": "2610.12299",
-      "url": "https://huggingface.co/papers/2610.12299",
-      "githubRepo": "https://github.com/cvlab-kaist/ME-World"
-    },
-    {
-      "title": "OneSearch-VL: Unified Multimodal Deep Research Agent for Image and Video",
-      "summary": "Single-image, multi-image, and video deep research require different visual operations but share a workflow of visual grounding, external retrieval, and fact co...",
-      "upvotes": 2,
-      "arxiv_id": "2610.12419",
-      "url": "https://huggingface.co/papers/2610.12419",
-      "githubRepo": "https://github.com/appletea233/OneSearch-VL"
-    },
-    {
-      "title": "Distilling Routed 3D Privilege for Spatial Reasoning in Vision-Language Models",
-      "summary": "Spatial reasoning remains a persistent weakness of vision-language models (VLMs), because RGB inputs do not directly provide geometric evidence. Existing remedi...",
-      "upvotes": 0,
-      "arxiv_id": "2610.12355",
-      "url": "https://huggingface.co/papers/2610.12355",
-      "githubRepo": "https://github.com/ZJU-REAL/GPD"
-    },
-    {
-      "title": "TerraVis: Towards Evaluation of World-Grounded Visual Consistency in Text-to-Image Generation via MLLM Workflows",
-      "summary": "Recent text-to-image models have made substantial progress in photorealism, aesthetics, and text-image alignment. Yet visually appealing images can still violat...",
+      "title": "The Lattice of Transition Laws",
+      "summary": "Diffusion and autoregression (AR) have long been seen as different categories of generative models, with diffusion specialising in continuous fields and AR spec...",
       "upvotes": 1,
-      "arxiv_id": "2610.02959",
-      "url": "https://huggingface.co/papers/2610.02959",
-      "githubRepo": "https://github.com/ShyFoo/TerraVis"
+      "arxiv_id": "2610.11216",
+      "url": "https://huggingface.co/papers/2610.11216",
+      "githubRepo": "https://github.com/TSUITUENYUE/The-Lattice-of-Transition-Laws"
     },
     {
-      "title": "TestPrism: Rethinking Test Evaluation Beyond a Single Reference",
-      "summary": "Large language model (LLM) coding agents have advanced test generation across diverse programming tasks. However, the common practice of evaluating tests agains...",
-      "upvotes": 5,
-      "arxiv_id": "2610.12289",
-      "url": "https://huggingface.co/papers/2610.12289",
-      "githubRepo": null
+      "title": "Behavioral Persistence and Incomplete Functional Transfer of Co-evolved Communication in Evolutionary Robotics",
+      "summary": "This work evaluates the direct transfer of a co-evolved communication protocol from a 2D simulation to a 3D physical environment, without retraining the network...",
+      "upvotes": 0,
+      "arxiv_id": "2609.38527",
+      "url": "https://huggingface.co/papers/2609.38527",
+      "githubRepo": "https://github.com/ferdiex/essim"
+    },
+    {
+      "title": "Evaluating the Transfer of Co-Evolved Communication from 2D to 3D Simulation",
+      "summary": "This work examines the transfer of a co-evolved communication mechanism between two robotic agents from a discrete two-dimensional (2D) simulator to a three-dim...",
+      "upvotes": 0,
+      "arxiv_id": "2610.09280",
+      "url": "https://huggingface.co/papers/2610.09280",
+      "githubRepo": "https://github.com/ferdiex/essim2d3d"
+    },
+    {
+      "title": "Opera: A Verbal Critic Framework for Long-horizon Coding Agents",
+      "summary": "Long-horizon coding agents need timely corrections, yet feedback can be ineffective or even harmful when it misjudges ongoing work or fails to address the under...",
+      "upvotes": 8,
+      "arxiv_id": "2609.33987",
+      "url": "https://huggingface.co/papers/2609.33987",
+      "githubRepo": "https://github.com/dongyuanjushi/Opera"
+    },
+    {
+      "title": "Skill Constellations: Tracing the Supply Chain of Agent Skills on GitHub",
+      "summary": "Agent skills are SKILL.md instructions and scripts that AI coding agents such as Claude Code and Codex run with the permissions of their user. Developers share ...",
+      "upvotes": 1,
+      "arxiv_id": "2610.11169",
+      "url": "https://huggingface.co/papers/2610.11169",
+      "githubRepo": "https://github.com/FahdSeddik/Skill-Constellations"
     }
   ]
 }

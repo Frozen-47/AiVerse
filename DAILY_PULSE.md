@@ -1,44 +1,44 @@
-# ⚡ AiVerse Daily Pulse (2026-10-09)
+# ⚡ AiVerse Daily Pulse (2026-10-10)
 
 > Automatically generated daily intelligence report syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 09 Oct 2026 03:49:54 GMT`*
+*Last Synchronized: `Sat, 10 Oct 2026 03:33:28 GMT`*
 
 ---
 
 ## 🆕 Newly Ingested Assets Today (3)
 
-### **Xing4.0-29B-A4B-GGUF** (`Model` • *Venastine-Research*)
-> High-performance NLP open-weights model by Venastine-Research, trending with over 669 community likes and 36,481 downloads on Hugging Face.
+### **humanizer** (`Model` • *jialinyyzz*)
+> High-performance NLP open-weights model by jialinyyzz, trending with over 766 community likes and 29,470 downloads on Hugging Face.
 
 - 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 617, Likes: 669, Downloads: 36,481`
-- 🔗 **Resource Link**: [https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF](https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF)
+- ⚡ **Metrics**: `Trending Score: 717, Likes: 766, Downloads: 29,470`
+- 🔗 **Resource Link**: [https://huggingface.co/jialinyyzz/humanizer](https://huggingface.co/jialinyyzz/humanizer)
 
-### **jev-9b-decision-demo** (`Platform` • *autotrust*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 94 community stars.
+### **LTX-2.3-10Eros** (`Platform` • *00000tt*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by 00000tt. Trending with 185 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 75, Community Likes: 94`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/autotrust/jev-9b-decision-demo](https://huggingface.co/spaces/autotrust/jev-9b-decision-demo)
+- ⚡ **Metrics**: `Trending Score: 61, Community Likes: 185`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros](https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros)
 
-### **EgoStandard** (`Dataset` • *LightwheelAI*)
-> EgoStandard The 90,000-hour head-view line of EgoSuite-Open100K.   Data Bucket ·   Collection ·   EgoDemo ·   EgoPro ·   Project page Explore EgoSuite-Open100K ↗ Data location: Eg (186 likes, 388 downloads).
+### **precinct6-cybersecurity** (`Dataset` • *witfoo*)
+> WitFoo Precinct6 Cybersecurity Dataset 	 Version 2.1.0 (built 2026-09-22). Regenerated to address feedback from the University of Canterbury PIDS evaluation: attacks an (49 likes, 3,326 downloads).
 
-- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 47, Likes: 186, Downloads: 388`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/LightwheelAI/EgoStandard](https://huggingface.co/datasets/LightwheelAI/EgoStandard)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 34, Likes: 49, Downloads: 3,326`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/witfoo/precinct6-cybersecurity](https://huggingface.co/datasets/witfoo/precinct6-cybersecurity)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **jev-9b-decision-demo** (`Platform` • *autotrust*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 94 community stars.
+### **EgoStandard** (`Dataset` • *LightwheelAI*)
+> EgoStandard The 90,000-hour head-view line of EgoSuite-Open100K.   Data Bucket ·   Collection ·   EgoDemo ·   EgoPro ·   Project page Explore EgoSuite-Open100K ↗ Data location: Eg (186 likes, 388 downloads).
 
-- 🏛️ **Architecture**: GRADIO cloud runtime container with interactive browser interface.
-- ⚡ **Benchmarks**: `Trending Score: 75, Community Likes: 94`
-- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (Released: 2026)
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/autotrust/jev-9b-decision-demo](https://huggingface.co/spaces/autotrust/jev-9b-decision-demo)
+- 🏛️ **Architecture**: Parquet / Arrow structured tabular & tokenized dataset.
+- ⚡ **Benchmarks**: `Trending Score: 47, Likes: 186, Downloads: 388`
+- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (Released: 2026)
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/LightwheelAI/EgoStandard](https://huggingface.co/datasets/LightwheelAI/EgoStandard)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -46,12 +46,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `autotrust/JEV-27B-VL` | image-text-to-text | ❤️ 3,004 | 📥 1,533,034 | [View](https://huggingface.co/autotrust/JEV-27B-VL) |
-| `autotrust/GEV-26B-Decide` | text-classification | ❤️ 1,873 | 📥 903,866 | [View](https://huggingface.co/autotrust/GEV-26B-Decide) |
-| `Cloudflare/clef` | image-text-to-text | ❤️ 1,896 | 📥 10,874 | [View](https://huggingface.co/Cloudflare/clef) |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 1,215 | 📥 21,148 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `Aleph-Alpha/Kolibri-1` | text-generation | ❤️ 816 | 📥 6,777 | [View](https://huggingface.co/Aleph-Alpha/Kolibri-1) |
-| `abenzerps/Qwen-Image-2.1-Uncensored-GGUF` | text-to-image | ❤️ 3,684 | 📥 1,933,066 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 1,365 | 📥 29,185 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `Cloudflare/clef` | image-text-to-text | ❤️ 1,947 | 📥 12,066 | [View](https://huggingface.co/Cloudflare/clef) |
+| `Aleph-Alpha/Kolibri-1` | text-generation | ❤️ 845 | 📥 8,474 | [View](https://huggingface.co/Aleph-Alpha/Kolibri-1) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 766 | 📥 29,470 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `abenzerps/Qwen-Image-2.1-Uncensored-GGUF` | text-to-image | ❤️ 3,781 | 📥 2,013,268 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF) |
+| `Venastine-Research/Xing4.0-29B-A4B-GGUF` | text-generation | ❤️ 676 | 📥 38,740 | [View](https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF) |
 
 
 ---
@@ -61,19 +61,19 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Multi-Agent Egocentric World Model with Fine-Grained Embodied Interaction** | 👍 2 | Egocentric world models predict first-person observations conditioned on an agent's actions, but most focus on a single agent. Real embodied settings often invo... | [Read](https://huggingface.co/papers/2610.12299) |
-| **OneSearch-VL: Unified Multimodal Deep Research Agent for Image and Video** | 👍 2 | Single-image, multi-image, and video deep research require different visual operations but share a workflow of visual grounding, external retrieval, and fact co... | [Read](https://huggingface.co/papers/2610.12419) |
-| **Distilling Routed 3D Privilege for Spatial Reasoning in Vision-Language Models** | 👍 0 | Spatial reasoning remains a persistent weakness of vision-language models (VLMs), because RGB inputs do not directly provide geometric evidence. Existing remedi... | [Read](https://huggingface.co/papers/2610.12355) |
-| **TerraVis: Towards Evaluation of World-Grounded Visual Consistency in Text-to-Image Generation via MLLM Workflows** | 👍 1 | Recent text-to-image models have made substantial progress in photorealism, aesthetics, and text-image alignment. Yet visually appealing images can still violat... | [Read](https://huggingface.co/papers/2610.02959) |
-| **TestPrism: Rethinking Test Evaluation Beyond a Single Reference** | 👍 5 | Large language model (LLM) coding agents have advanced test generation across diverse programming tasks. However, the common practice of evaluating tests agains... | [Read](https://huggingface.co/papers/2610.12289) |
+| **The Lattice of Transition Laws** | 👍 1 | Diffusion and autoregression (AR) have long been seen as different categories of generative models, with diffusion specialising in continuous fields and AR spec... | [Read](https://huggingface.co/papers/2610.11216) |
+| **Behavioral Persistence and Incomplete Functional Transfer of Co-evolved Communication in Evolutionary Robotics** | 👍 0 | This work evaluates the direct transfer of a co-evolved communication protocol from a 2D simulation to a 3D physical environment, without retraining the network... | [Read](https://huggingface.co/papers/2609.38527) |
+| **Evaluating the Transfer of Co-Evolved Communication from 2D to 3D Simulation** | 👍 0 | This work examines the transfer of a co-evolved communication mechanism between two robotic agents from a discrete two-dimensional (2D) simulator to a three-dim... | [Read](https://huggingface.co/papers/2610.09280) |
+| **Opera: A Verbal Critic Framework for Long-horizon Coding Agents** | 👍 8 | Long-horizon coding agents need timely corrections, yet feedback can be ineffective or even harmful when it misjudges ongoing work or fails to address the under... | [Read](https://huggingface.co/papers/2609.33987) |
+| **Skill Constellations: Tracing the Supply Chain of Agent Skills on GitHub** | 👍 1 | Agent skills are SKILL.md instructions and scripts that AI coding agents such as Claude Code and Codex run with the permissions of their user. Developers share ... | [Read](https://huggingface.co/papers/2610.11169) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `352`
-- **Featured / Starred Tools**: `283`
-- **Asset Breakdown**: **Models**: 125 • **Frameworks**: 33 • **Platforms**: 62 • **Datasets**: 61 • **AIs**: 71
+- **Total Registered Assets**: `355`
+- **Featured / Starred Tools**: `285`
+- **Asset Breakdown**: **Models**: 126 • **Frameworks**: 33 • **Platforms**: 63 • **Datasets**: 62 • **AIs**: 71
 
 ---
 

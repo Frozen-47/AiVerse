@@ -7780,6 +7780,72 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/LightwheelAI/EgoStandard"
           }
       ]
+  },
+  {
+      "name": "humanizer",
+      "type": "Model",
+      "summary": "High-performance NLP open-weights model by jialinyyzz, trending with over 766 community likes and 29,470 downloads on Hugging Face.",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "jialinyyzz",
+      "size": "Open Weights",
+      "architecture": "jialinyyzz text generation architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"jialinyyzz/humanizer\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"jialinyyzz/humanizer\")",
+      "benchmarks": "Trending Score: 717, Likes: 766, Downloads: 29,470",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/jialinyyzz/humanizer",
+      "citations": [
+          {
+              "text": "jialinyyzz/humanizer on Hugging Face",
+              "url": "https://huggingface.co/jialinyyzz/humanizer"
+          }
+      ]
+  },
+  {
+      "name": "LTX-2.3-10Eros",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by 00000tt. Trending with 185 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "00000tt",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros",
+      "benchmarks": "Trending Score: 61, Community Likes: 185",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros",
+      "citations": [
+          {
+              "text": "00000tt/LTX-2.3-10Eros on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros"
+          }
+      ]
+  },
+  {
+      "name": "precinct6-cybersecurity",
+      "type": "Dataset",
+      "summary": "WitFoo Precinct6 Cybersecurity Dataset \t Version 2.1.0 (built 2026-09-22). Regenerated to address feedback from the University of Canterbury PIDS evaluation: attacks an (49 likes, 3,326 downloads).",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "witfoo",
+      "size": "1M<n<10M",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"witfoo/precinct6-cybersecurity\")",
+      "benchmarks": "Trending Score: 34, Likes: 49, Downloads: 3,326",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/witfoo/precinct6-cybersecurity",
+      "citations": [
+          {
+              "text": "witfoo/precinct6-cybersecurity on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/witfoo/precinct6-cybersecurity"
+          }
+      ]
   }
 ];
 
