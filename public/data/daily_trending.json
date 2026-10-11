@@ -1,60 +1,60 @@
 {
-  "timestamp": "2026-10-10T03:33:23.920Z",
+  "timestamp": "2026-10-11T03:06:12.554Z",
   "models": [
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 1365,
-      "downloads": 29185,
+      "likes": 1529,
+      "downloads": 45605,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
     },
     {
-      "id": "Cloudflare/clef",
-      "author": "Cloudflare",
-      "likes": 1947,
-      "downloads": 12066,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Cloudflare/clef"
-    },
-    {
-      "id": "Aleph-Alpha/Kolibri-1",
-      "author": "Aleph-Alpha",
-      "likes": 845,
-      "downloads": 8474,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1"
-    },
-    {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 766,
-      "downloads": 29470,
+      "likes": 976,
+      "downloads": 33664,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
     },
     {
+      "id": "Cloudflare/clef",
+      "author": "Cloudflare",
+      "likes": 2001,
+      "downloads": 13579,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/Cloudflare/clef"
+    },
+    {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
       "author": "abenzerps",
-      "likes": 3781,
-      "downloads": 2013268,
+      "likes": 3890,
+      "downloads": 2096562,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
     },
     {
-      "id": "Venastine-Research/Xing4.0-29B-A4B-GGUF",
-      "author": "Venastine-Research",
-      "likes": 676,
-      "downloads": 38740,
+      "id": "Aleph-Alpha/Kolibri-1",
+      "author": "Aleph-Alpha",
+      "likes": 871,
+      "downloads": 10496,
       "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF"
+      "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1"
+    },
+    {
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 7192,
+      "downloads": 1720888,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5"
     }
   ],
   "papers": [
     {
       "title": "The Lattice of Transition Laws",
       "summary": "Diffusion and autoregression (AR) have long been seen as different categories of generative models, with diffusion specialising in continuous fields and AR spec...",
-      "upvotes": 1,
+      "upvotes": 5,
       "arxiv_id": "2610.11216",
       "url": "https://huggingface.co/papers/2610.11216",
       "githubRepo": "https://github.com/TSUITUENYUE/The-Lattice-of-Transition-Laws"
@@ -62,7 +62,7 @@
     {
       "title": "Behavioral Persistence and Incomplete Functional Transfer of Co-evolved Communication in Evolutionary Robotics",
       "summary": "This work evaluates the direct transfer of a co-evolved communication protocol from a 2D simulation to a 3D physical environment, without retraining the network...",
-      "upvotes": 0,
+      "upvotes": 4,
       "arxiv_id": "2609.38527",
       "url": "https://huggingface.co/papers/2609.38527",
       "githubRepo": "https://github.com/ferdiex/essim"
@@ -70,7 +70,7 @@
     {
       "title": "Evaluating the Transfer of Co-Evolved Communication from 2D to 3D Simulation",
       "summary": "This work examines the transfer of a co-evolved communication mechanism between two robotic agents from a discrete two-dimensional (2D) simulator to a three-dim...",
-      "upvotes": 0,
+      "upvotes": 4,
       "arxiv_id": "2610.09280",
       "url": "https://huggingface.co/papers/2610.09280",
       "githubRepo": "https://github.com/ferdiex/essim2d3d"
@@ -78,7 +78,7 @@
     {
       "title": "Opera: A Verbal Critic Framework for Long-horizon Coding Agents",
       "summary": "Long-horizon coding agents need timely corrections, yet feedback can be ineffective or even harmful when it misjudges ongoing work or fails to address the under...",
-      "upvotes": 8,
+      "upvotes": 14,
       "arxiv_id": "2609.33987",
       "url": "https://huggingface.co/papers/2609.33987",
       "githubRepo": "https://github.com/dongyuanjushi/Opera"
@@ -86,7 +86,7 @@
     {
       "title": "Skill Constellations: Tracing the Supply Chain of Agent Skills on GitHub",
       "summary": "Agent skills are SKILL.md instructions and scripts that AI coding agents such as Claude Code and Codex run with the permissions of their user. Developers share ...",
-      "upvotes": 1,
+      "upvotes": 5,
       "arxiv_id": "2610.11169",
       "url": "https://huggingface.co/papers/2610.11169",
       "githubRepo": "https://github.com/FahdSeddik/Skill-Constellations"

@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-10)
+### ⚡ Daily AI Pulse (2026-10-11)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **humanizer** (`Model`), **LTX-2.3-10Eros** (`Platform`), **precinct6-cybersecurity** (`Dataset`) |
-| 🌟 **Tool of the Day** | **EgoStandard** (LightwheelAI) — [Explore](https://huggingface.co/datasets/LightwheelAI/EgoStandard) |
-| 🗄️ **Catalog Entries** | **355** AI assets tracked (285 featured) |
+| 🆕 **New Assets Added** | **Qwen-Image-2.1-Turbo** (`Model`), **embeddinggemma-2-webgpu** (`Platform`), **DeskForge-1M** (`Dataset`) |
+| 🌟 **Tool of the Day** | **humanizer** (jialinyyzz) — [Explore](https://huggingface.co/jialinyyzz/humanizer) |
+| 🗄️ **Catalog Entries** | **358** AI assets tracked (287 featured) |
 | 🔥 **Top Trending Model** | [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) |
 | 📜 **Top Daily Paper** | [The Lattice of Transition Laws...](https://huggingface.co/papers/2610.11216) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Daily Run** | `Sat, 10 Oct 2026 03:33:28 GMT` |
+| 🛡️ **Catalog Links Checked** | **9/25** operational |
+| 🕒 **Last Daily Run** | `Sun, 11 Oct 2026 03:06:20 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

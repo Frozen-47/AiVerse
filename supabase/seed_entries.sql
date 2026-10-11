@@ -1,4 +1,4 @@
--- Seed / Upsert all 355 AiVerse entries into Supabase
+-- Seed / Upsert all 358 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -7446,6 +7446,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('precinct6-cybersecurity', 'witfoo', 'Dataset', 'NLP', 'APACHE-2.0', 2026, '1M<n<10M', 'WitFoo Precinct6 Cybersecurity Dataset 	 Version 2.1.0 (built 2026-09-22). Regenerated to address feedback from the University of Canterbury PIDS evaluation: attacks an (49 likes, 3,326 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("witfoo/precinct6-cybersecurity")', 'Trending Score: 34, Likes: 49, Downloads: 3,326', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/witfoo/precinct6-cybersecurity', '[{"text":"witfoo/precinct6-cybersecurity on Hugging Face Datasets","url":"https://huggingface.co/datasets/witfoo/precinct6-cybersecurity"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen-Image-2.1-Turbo', 'Alibaba (Qwen)', 'Model', 'Image Generation', 'OTHER', 2026, 'Open Weights', 'High-performance Image Generation open-weights model by Alibaba (Qwen), trending with over 463 community likes and 2,138 downloads on Hugging Face.', 'Alibaba (Qwen) text to image architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-Image-2.1-Turbo", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-Image-2.1-Turbo")', 'Trending Score: 456, Likes: 463, Downloads: 2,138', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo', '[{"text":"Qwen/Qwen-Image-2.1-Turbo on Hugging Face","url":"https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('embeddinggemma-2-webgpu', 'webml-community', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'STATIC Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by webml-community. Trending with 48 community stars.', 'STATIC cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu', 'Trending Score: 48, Community Likes: 48', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu', '[{"text":"webml-community/embeddinggemma-2-webgpu on Hugging Face Spaces","url":"https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('DeskForge-1M', 'docling-project', 'Dataset', 'Computer Vision', 'MIT', 2026, '1M<n<10M', 'DeskForge-1M 	 DeskForge-1M is a corpus of 1.21M annotated desktop screenshots with 159.7M element instances and 917K recorded click transitions, generated with DeskFor (34 likes, 4,899 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("docling-project/DeskForge-1M")', 'Trending Score: 34, Likes: 34, Downloads: 4,899', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/docling-project/DeskForge-1M', '[{"text":"docling-project/DeskForge-1M on Hugging Face Datasets","url":"https://huggingface.co/datasets/docling-project/DeskForge-1M"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

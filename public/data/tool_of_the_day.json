@@ -1,24 +1,24 @@
 {
-  "date": "2026-10-10",
+  "date": "2026-10-11",
   "tool": {
-    "name": "EgoStandard",
-    "type": "Dataset",
-    "summary": "EgoStandard The 90,000-hour head-view line of EgoSuite-Open100K.   Data Bucket ·   Collection ·   EgoDemo ·   EgoPro ·   Project page Explore EgoSuite-Open100K ↗ Data location: Eg (186 likes, 388 downloads).",
-    "task": "Multimodal",
-    "license": "OTHER",
+    "name": "humanizer",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by jialinyyzz, trending with over 766 community likes and 29,470 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
     "year": 2026,
-    "org": "LightwheelAI",
-    "size": "10K<n<100K",
-    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"LightwheelAI/EgoStandard\")",
-    "benchmarks": "Trending Score: 47, Likes: 186, Downloads: 388",
-    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "org": "jialinyyzz",
+    "size": "Open Weights",
+    "architecture": "jialinyyzz text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"jialinyyzz/humanizer\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"jialinyyzz/humanizer\")",
+    "benchmarks": "Trending Score: 717, Likes: 766, Downloads: 29,470",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
     "popular": true,
-    "url": "https://huggingface.co/datasets/LightwheelAI/EgoStandard",
+    "url": "https://huggingface.co/jialinyyzz/humanizer",
     "citations": [
       {
-        "text": "LightwheelAI/EgoStandard on Hugging Face Datasets",
-        "url": "https://huggingface.co/datasets/LightwheelAI/EgoStandard"
+        "text": "jialinyyzz/humanizer on Hugging Face",
+        "url": "https://huggingface.co/jialinyyzz/humanizer"
       }
     ]
   }

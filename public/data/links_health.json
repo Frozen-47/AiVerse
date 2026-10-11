@@ -1,18 +1,88 @@
 {
-  "timestamp": "2026-10-10T03:33:24.074Z",
+  "timestamp": "2026-10-11T03:06:12.704Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 9,
+  "broken": 16,
   "issues": [
     {
-      "name": "Phind",
-      "url": "https://www.phind.com",
+      "name": "Midjourney",
+      "url": "https://www.midjourney.com",
       "status": 403
     },
     {
-      "name": "GPT-4o mini",
-      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
-      "status": 403
+      "name": "ERNIE Bot",
+      "url": "https://yiyan.baidu.com",
+      "status": "Timeout"
+    },
+    {
+      "name": "Socratic by Google",
+      "url": "https://socratic.org",
+      "status": "Timeout"
+    },
+    {
+      "name": "Cohere Coral",
+      "url": "https://coral.cohere.com",
+      "status": "Timeout"
+    },
+    {
+      "name": "Play.ht",
+      "url": "https://play.ht",
+      "status": "Timeout"
+    },
+    {
+      "name": "tiktok-5.6B-videos",
+      "url": "https://huggingface.co/datasets/datasocial/tiktok-5.6B-videos",
+      "status": "Timeout"
+    },
+    {
+      "name": "Unsloth",
+      "url": "https://github.com/unslothai/unsloth",
+      "status": "Timeout"
+    },
+    {
+      "name": "DeepSeek-R1",
+      "url": "https://www.deepseek.com",
+      "status": "Timeout"
+    },
+    {
+      "name": "DALL-E 3",
+      "url": "https://openai.com/dall-e-3",
+      "status": "Timeout"
+    },
+    {
+      "name": "Qwen 2.5 (72B)",
+      "url": "https://github.com/QwenLM/Qwen2.5",
+      "status": "Timeout"
+    },
+    {
+      "name": "Claude 3.5 Haiku",
+      "url": "https://www.anthropic.com/claude",
+      "status": "Timeout"
+    },
+    {
+      "name": "ai-village",
+      "url": "https://huggingface.co/datasets/aidigestorg/ai-village",
+      "status": "Timeout"
+    },
+    {
+      "name": "Jasper",
+      "url": "https://www.jasper.ai",
+      "status": "Timeout"
+    },
+    {
+      "name": "Llama 3.2 Vision (11B)",
+      "url": "https://ai.meta.com/llama/",
+      "status": "Timeout"
+    },
+    {
+      "name": "GAIA Benchmark",
+      "url": "https://huggingface.co/spaces/gaia-benchmark/leaderboard",
+      "status": "Timeout"
+    },
+    {
+      "name": "Weights & Biases Weave",
+      "url": "https://wandb.ai/site/weave",
+      "status": "Timeout"
     }
   ]
 }
