@@ -7912,6 +7912,72 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/docling-project/DeskForge-1M"
           }
       ]
+  },
+  {
+      "name": "ema-lightning",
+      "type": "Model",
+      "summary": "High-performance Audio open-weights model by canberkkkkkk, trending with over 358 community likes and 18,079 downloads on Hugging Face.",
+      "task": "Audio",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "canberkkkkkk",
+      "size": "Open Weights",
+      "architecture": "canberkkkkkk text to speech architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"canberkkkkkk/ema-lightning\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"canberkkkkkk/ema-lightning\")",
+      "benchmarks": "Trending Score: 327, Likes: 358, Downloads: 18,079",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/canberkkkkkk/ema-lightning",
+      "citations": [
+          {
+              "text": "canberkkkkkk/ema-lightning on Hugging Face",
+              "url": "https://huggingface.co/canberkkkkkk/ema-lightning"
+          }
+      ]
+  },
+  {
+      "name": "minimax-h3-character-swap-lora",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 103 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "hugging-apps",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora",
+      "benchmarks": "Trending Score: 46, Community Likes: 103",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora",
+      "citations": [
+          {
+              "text": "hugging-apps/minimax-h3-character-swap-lora on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora"
+          }
+      ]
+  },
+  {
+      "name": "EgoDemo",
+      "type": "Dataset",
+      "summary": "EgoDemo A 50-hour sample from EgoSuite-Open100K, covering every annotated subset plus two raw-video variants.   Collection ·   EgoStandard ·   EgoPro ·   Project page Explore EgoS (190 likes, 61,148 downloads).",
+      "task": "Multimodal",
+      "license": "OTHER",
+      "year": 2026,
+      "org": "LightwheelAI",
+      "size": "1K<n<10K",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"LightwheelAI/EgoDemo\")",
+      "benchmarks": "Trending Score: 54, Likes: 190, Downloads: 61,148",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": true,
+      "url": "https://huggingface.co/datasets/LightwheelAI/EgoDemo",
+      "citations": [
+          {
+              "text": "LightwheelAI/EgoDemo on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/LightwheelAI/EgoDemo"
+          }
+      ]
   }
 ];
 

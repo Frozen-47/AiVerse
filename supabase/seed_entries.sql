@@ -1,4 +1,4 @@
--- Seed / Upsert all 358 AiVerse entries into Supabase
+-- Seed / Upsert all 361 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -7508,6 +7508,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('DeskForge-1M', 'docling-project', 'Dataset', 'Computer Vision', 'MIT', 2026, '1M<n<10M', 'DeskForge-1M 	 DeskForge-1M is a corpus of 1.21M annotated desktop screenshots with 159.7M element instances and 917K recorded click transitions, generated with DeskFor (34 likes, 4,899 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("docling-project/DeskForge-1M")', 'Trending Score: 34, Likes: 34, Downloads: 4,899', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/docling-project/DeskForge-1M', '[{"text":"docling-project/DeskForge-1M on Hugging Face Datasets","url":"https://huggingface.co/datasets/docling-project/DeskForge-1M"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('ema-lightning', 'canberkkkkkk', 'Model', 'Audio', 'APACHE-2.0', 2026, 'Open Weights', 'High-performance Audio open-weights model by canberkkkkkk, trending with over 358 community likes and 18,079 downloads on Hugging Face.', 'canberkkkkkk text to speech architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("canberkkkkkk/ema-lightning", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("canberkkkkkk/ema-lightning")', 'Trending Score: 327, Likes: 358, Downloads: 18,079', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/canberkkkkkk/ema-lightning', '[{"text":"canberkkkkkk/ema-lightning on Hugging Face","url":"https://huggingface.co/canberkkkkkk/ema-lightning"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('minimax-h3-character-swap-lora', 'hugging-apps', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 103 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora', 'Trending Score: 46, Community Likes: 103', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora', '[{"text":"hugging-apps/minimax-h3-character-swap-lora on Hugging Face Spaces","url":"https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('EgoDemo', 'LightwheelAI', 'Dataset', 'Multimodal', 'OTHER', 2026, '1K<n<10K', 'EgoDemo A 50-hour sample from EgoSuite-Open100K, covering every annotated subset plus two raw-video variants.   Collection ·   EgoStandard ·   EgoPro ·   Project page Explore EgoS (190 likes, 61,148 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("LightwheelAI/EgoDemo")', 'Trending Score: 54, Likes: 190, Downloads: 61,148', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/LightwheelAI/EgoDemo', '[{"text":"LightwheelAI/EgoDemo on Hugging Face Datasets","url":"https://huggingface.co/datasets/LightwheelAI/EgoDemo"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

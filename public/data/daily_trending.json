@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-11T03:06:12.554Z",
+  "timestamp": "2026-10-12T03:29:40.143Z",
   "models": [
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 1529,
-      "downloads": 45605,
+      "likes": 1735,
+      "downloads": 98829,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
     },
     {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 976,
-      "downloads": 33664,
+      "likes": 1118,
+      "downloads": 37647,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
     },
     {
       "id": "Cloudflare/clef",
       "author": "Cloudflare",
-      "likes": 2001,
-      "downloads": 13579,
+      "likes": 2029,
+      "downloads": 14351,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Cloudflare/clef"
     },
     {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
       "author": "abenzerps",
-      "likes": 3890,
-      "downloads": 2096562,
+      "likes": 4000,
+      "downloads": 2188658,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
     },
     {
-      "id": "Aleph-Alpha/Kolibri-1",
-      "author": "Aleph-Alpha",
-      "likes": 871,
-      "downloads": 10496,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1"
+      "id": "Qwen/Qwen-Image-2.1-Turbo",
+      "author": "Qwen",
+      "likes": 548,
+      "downloads": 4702,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"
     },
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 7192,
-      "downloads": 1720888,
+      "likes": 7328,
+      "downloads": 1726683,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     }
   ],
   "papers": [
     {
-      "title": "The Lattice of Transition Laws",
-      "summary": "Diffusion and autoregression (AR) have long been seen as different categories of generative models, with diffusion specialising in continuous fields and AR spec...",
-      "upvotes": 5,
-      "arxiv_id": "2610.11216",
-      "url": "https://huggingface.co/papers/2610.11216",
-      "githubRepo": "https://github.com/TSUITUENYUE/The-Lattice-of-Transition-Laws"
+      "title": "InstantFusion: A Shared Latent Interface for Heterogeneous Image Generators",
+      "summary": "Diffusion/flow models have emerged as the de facto paradigms for image generation, giving rise to a diverse family of modern generators with increasingly hetero...",
+      "upvotes": 2,
+      "arxiv_id": "2610.13944",
+      "url": "https://huggingface.co/papers/2610.13944",
+      "githubRepo": "https://github.com/InternLM/InstantFusion"
     },
     {
-      "title": "Behavioral Persistence and Incomplete Functional Transfer of Co-evolved Communication in Evolutionary Robotics",
-      "summary": "This work evaluates the direct transfer of a co-evolved communication protocol from a 2D simulation to a 3D physical environment, without retraining the network...",
+      "title": "VisionWeave: Weaving Elastic Visual Representations as a Native Capability of MLLMs",
+      "summary": "Multimodal large language models have become the dominant paradigm for visual understanding, but incur substantial costs by encoding inputs into dense, fixed-si...",
       "upvotes": 4,
-      "arxiv_id": "2609.38527",
-      "url": "https://huggingface.co/papers/2609.38527",
-      "githubRepo": "https://github.com/ferdiex/essim"
+      "arxiv_id": "2610.07987",
+      "url": "https://huggingface.co/papers/2610.07987",
+      "githubRepo": "https://github.com/FFY0/VisionWeave"
     },
     {
-      "title": "Evaluating the Transfer of Co-Evolved Communication from 2D to 3D Simulation",
-      "summary": "This work examines the transfer of a co-evolved communication mechanism between two robotic agents from a discrete two-dimensional (2D) simulator to a three-dim...",
-      "upvotes": 4,
-      "arxiv_id": "2610.09280",
-      "url": "https://huggingface.co/papers/2610.09280",
-      "githubRepo": "https://github.com/ferdiex/essim2d3d"
+      "title": "Inducing Process Supervision from Outcome-Only Reinforcement Learning",
+      "summary": "Process reward models (PRMs) have become a key component for LLMs, as their step-level feedback supports both post-training and test-time reasoning. However, tr...",
+      "upvotes": 3,
+      "arxiv_id": "2609.36641",
+      "url": "https://huggingface.co/papers/2609.36641",
+      "githubRepo": null
     },
     {
-      "title": "Opera: A Verbal Critic Framework for Long-horizon Coding Agents",
-      "summary": "Long-horizon coding agents need timely corrections, yet feedback can be ineffective or even harmful when it misjudges ongoing work or fails to address the under...",
-      "upvotes": 14,
-      "arxiv_id": "2609.33987",
-      "url": "https://huggingface.co/papers/2609.33987",
-      "githubRepo": "https://github.com/dongyuanjushi/Opera"
+      "title": "Video-RSI: Recursive Self-Improvement of Video Understanding Agents via Harness Evolution",
+      "summary": "Video understanding agents acquire evidence through an executable harness that controls what they observe and how they use those observations. However, executio...",
+      "upvotes": 3,
+      "arxiv_id": "2609.37950",
+      "url": "https://huggingface.co/papers/2609.37950",
+      "githubRepo": "https://github.com/bingjunluo/Video-RSI"
     },
     {
-      "title": "Skill Constellations: Tracing the Supply Chain of Agent Skills on GitHub",
-      "summary": "Agent skills are SKILL.md instructions and scripts that AI coding agents such as Claude Code and Codex run with the permissions of their user. Developers share ...",
-      "upvotes": 5,
-      "arxiv_id": "2610.11169",
-      "url": "https://huggingface.co/papers/2610.11169",
-      "githubRepo": "https://github.com/FahdSeddik/Skill-Constellations"
+      "title": "Stateless Language Agents: Scaling Long-Horizon Automated Research",
+      "summary": "Automated research systems increasingly run LLM agents over long horizons, but more inference does not by itself produce more progress: agents replay growing hi...",
+      "upvotes": 1,
+      "arxiv_id": "2610.07625",
+      "url": "https://huggingface.co/papers/2610.07625",
+      "githubRepo": "https://github.com/Alex-q-z/stateless-language-agents"
     }
   ]
 }

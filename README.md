@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-11)
+### ⚡ Daily AI Pulse (2026-10-12)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Qwen-Image-2.1-Turbo** (`Model`), **embeddinggemma-2-webgpu** (`Platform`), **DeskForge-1M** (`Dataset`) |
-| 🌟 **Tool of the Day** | **humanizer** (jialinyyzz) — [Explore](https://huggingface.co/jialinyyzz/humanizer) |
-| 🗄️ **Catalog Entries** | **358** AI assets tracked (287 featured) |
+| 🆕 **New Assets Added** | **ema-lightning** (`Model`), **minimax-h3-character-swap-lora** (`Platform`), **EgoDemo** (`Dataset`) |
+| 🌟 **Tool of the Day** | **LTX-2.3-10Eros** (00000tt) — [Explore](https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros) |
+| 🗄️ **Catalog Entries** | **361** AI assets tracked (290 featured) |
 | 🔥 **Top Trending Model** | [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) |
-| 📜 **Top Daily Paper** | [The Lattice of Transition Laws...](https://huggingface.co/papers/2610.11216) |
-| 🛡️ **Catalog Links Checked** | **9/25** operational |
-| 🕒 **Last Daily Run** | `Sun, 11 Oct 2026 03:06:20 GMT` |
+| 📜 **Top Daily Paper** | [InstantFusion: A Shared Latent Interface for Heter...](https://huggingface.co/papers/2610.13944) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Daily Run** | `Mon, 12 Oct 2026 03:29:45 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->
