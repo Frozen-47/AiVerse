@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-12T03:29:40.143Z",
+  "timestamp": "2026-10-13T04:43:47.641Z",
   "models": [
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 1735,
-      "downloads": 98829,
+      "likes": 1960,
+      "downloads": 115763,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
     },
     {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 1118,
-      "downloads": 37647,
+      "likes": 1343,
+      "downloads": 46070,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
     },
     {
-      "id": "Cloudflare/clef",
-      "author": "Cloudflare",
-      "likes": 2029,
-      "downloads": 14351,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Cloudflare/clef"
-    },
-    {
-      "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
-      "author": "abenzerps",
-      "likes": 4000,
-      "downloads": 2188658,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
-    },
-    {
       "id": "Qwen/Qwen-Image-2.1-Turbo",
       "author": "Qwen",
-      "likes": 548,
-      "downloads": 4702,
+      "likes": 647,
+      "downloads": 6787,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"
     },
     {
+      "id": "abenzerps/Qwen-Image-2.1-Uncensored-Quantized",
+      "author": "abenzerps",
+      "likes": 4111,
+      "downloads": 2188658,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized"
+    },
+    {
+      "id": "Cloudflare/clef",
+      "author": "Cloudflare",
+      "likes": 2101,
+      "downloads": 15064,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/Cloudflare/clef"
+    },
+    {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 7328,
-      "downloads": 1726683,
+      "likes": 7503,
+      "downloads": 1719766,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     }
   ],
   "papers": [
     {
-      "title": "InstantFusion: A Shared Latent Interface for Heterogeneous Image Generators",
-      "summary": "Diffusion/flow models have emerged as the de facto paradigms for image generation, giving rise to a diverse family of modern generators with increasingly hetero...",
+      "title": "AgentSWE: Can Coding Agents Build the Agent You Actually Want?",
+      "summary": "As the production of software passes into the hands of software itself, coding agents are increasingly commissioned to build agents fitted to their users' own w...",
       "upvotes": 2,
-      "arxiv_id": "2610.13944",
-      "url": "https://huggingface.co/papers/2610.13944",
-      "githubRepo": "https://github.com/InternLM/InstantFusion"
-    },
-    {
-      "title": "VisionWeave: Weaving Elastic Visual Representations as a Native Capability of MLLMs",
-      "summary": "Multimodal large language models have become the dominant paradigm for visual understanding, but incur substantial costs by encoding inputs into dense, fixed-si...",
-      "upvotes": 4,
-      "arxiv_id": "2610.07987",
-      "url": "https://huggingface.co/papers/2610.07987",
-      "githubRepo": "https://github.com/FFY0/VisionWeave"
-    },
-    {
-      "title": "Inducing Process Supervision from Outcome-Only Reinforcement Learning",
-      "summary": "Process reward models (PRMs) have become a key component for LLMs, as their step-level feedback supports both post-training and test-time reasoning. However, tr...",
-      "upvotes": 3,
-      "arxiv_id": "2609.36641",
-      "url": "https://huggingface.co/papers/2609.36641",
+      "arxiv_id": "2610.13361",
+      "url": "https://huggingface.co/papers/2610.13361",
       "githubRepo": null
     },
     {
-      "title": "Video-RSI: Recursive Self-Improvement of Video Understanding Agents via Harness Evolution",
-      "summary": "Video understanding agents acquire evidence through an executable harness that controls what they observe and how they use those observations. However, executio...",
-      "upvotes": 3,
-      "arxiv_id": "2609.37950",
-      "url": "https://huggingface.co/papers/2609.37950",
-      "githubRepo": "https://github.com/bingjunluo/Video-RSI"
+      "title": "GroundAnything: Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed",
+      "summary": "Autoregressive (AR) grounding models serialize spatial predictions, introducing sequential latency and imposing a causal order on output tokens. We view groundi...",
+      "upvotes": 12,
+      "arxiv_id": "2609.39600",
+      "url": "https://huggingface.co/papers/2609.39600",
+      "githubRepo": "https://github.com/groundingpi/GroundAnything"
     },
     {
-      "title": "Stateless Language Agents: Scaling Long-Horizon Automated Research",
-      "summary": "Automated research systems increasingly run LLM agents over long horizons, but more inference does not by itself produce more progress: agents replay growing hi...",
-      "upvotes": 1,
-      "arxiv_id": "2610.07625",
-      "url": "https://huggingface.co/papers/2610.07625",
-      "githubRepo": "https://github.com/Alex-q-z/stateless-language-agents"
+      "title": "GroundingPI: A Grounding Foundation Model towards Physical Intelligence with Visual Primitives",
+      "summary": "Precise grounding matters. It specifies which object is the target and where that object is, even in clutter and for tiny objects, and it has to be fast enough ...",
+      "upvotes": 28,
+      "arxiv_id": "2609.39601",
+      "url": "https://huggingface.co/papers/2609.39601",
+      "githubRepo": "https://github.com/groundingpi/GroundingPI"
+    },
+    {
+      "title": "Scaling Agentic Data for Long-Horizon Terminal Intelligence",
+      "summary": "Terminal agents are moving beyond local operations toward completing real-world professional tasks. Short trajectories can demonstrate commands and tool calls, ...",
+      "upvotes": 28,
+      "arxiv_id": "2610.13166",
+      "url": "https://huggingface.co/papers/2610.13166",
+      "githubRepo": null
+    },
+    {
+      "title": "T3lescope: Arbitrary-Resolution High-Fidelity Generative Surface Reconstruction from Images",
+      "summary": "We reconstruct high-fidelity 3D scene meshes from posed multi-view images without per-scene optimization, across scales ranging from single objects to large out...",
+      "upvotes": 7,
+      "arxiv_id": "2610.03308",
+      "url": "https://huggingface.co/papers/2610.03308",
+      "githubRepo": "https://github.com/pfnet-research/t3lescope"
     }
   ]
 }

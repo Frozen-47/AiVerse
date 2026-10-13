@@ -1,5 +1,76 @@
 [
   {
+    "date": "2026-10-13",
+    "assets": [
+      {
+        "name": "Qwen-Image-2.1-Uncensored-Quantized",
+        "type": "Model",
+        "summary": "High-performance Image Generation open-weights model by abenzerps, trending with over 4,111 community likes and 2,188,658 downloads on Hugging Face.",
+        "task": "Image Generation",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "abenzerps",
+        "size": "Open Weights",
+        "architecture": "abenzerps text to image architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"abenzerps/Qwen-Image-2.1-Uncensored-Quantized\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"abenzerps/Qwen-Image-2.1-Uncensored-Quantized\")",
+        "benchmarks": "Trending Score: 585, Likes: 4,111, Downloads: 2,188,658",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": true,
+        "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized",
+        "citations": [
+          {
+            "text": "abenzerps/Qwen-Image-2.1-Uncensored-Quantized on Hugging Face",
+            "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized"
+          }
+        ]
+      },
+      {
+        "name": "Qwen-2511-Plus-Flux.2-klein-9B",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by AST-1320. Trending with 68 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "AST-1320",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B",
+        "benchmarks": "Trending Score: 39, Community Likes: 68",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": true,
+        "url": "https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B",
+        "citations": [
+          {
+            "text": "AST-1320/Qwen-2511-Plus-Flux.2-klein-9B on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B"
+          }
+        ]
+      },
+      {
+        "name": "openai-math",
+        "type": "Dataset",
+        "summary": "openai/math as Harbor environments \t Experimental. Built on a research release that is itself new and not yet independently reviewed. Expect rough edges, and read any p (60 likes, 2,587 downloads).",
+        "task": "AI Coding",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "FineEnvs",
+        "size": "n<1K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"FineEnvs/openai-math\")",
+        "benchmarks": "Trending Score: 58, Likes: 60, Downloads: 2,587",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "url": "https://huggingface.co/datasets/FineEnvs/openai-math",
+        "citations": [
+          {
+            "text": "FineEnvs/openai-math on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/FineEnvs/openai-math"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-12",
     "assets": [
       {

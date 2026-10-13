@@ -1,23 +1,33 @@
 {
-  "timestamp": "2026-10-12T03:29:40.188Z",
+  "timestamp": "2026-10-13T04:43:47.781Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 20,
+  "broken": 5,
   "issues": [
-    {
-      "name": "Midjourney v6",
-      "url": "https://www.midjourney.com/",
-      "status": 403
-    },
-    {
-      "name": "Midjourney",
-      "url": "https://www.midjourney.com",
-      "status": 403
-    },
     {
       "name": "Leonardo.ai",
       "url": "https://leonardo.ai",
       "status": 403
+    },
+    {
+      "name": "NightCafe",
+      "url": "https://creator.nightcafe.studio",
+      "status": 403
+    },
+    {
+      "name": "Play.ht",
+      "url": "https://play.ht",
+      "status": "Network Error"
+    },
+    {
+      "name": "Ideogram",
+      "url": "https://ideogram.ai",
+      "status": 403
+    },
+    {
+      "name": "Arena-Hard-Auto",
+      "url": "https://github.com/sunshanghai/arena-hard-auto",
+      "status": 404
     }
   ]
 }

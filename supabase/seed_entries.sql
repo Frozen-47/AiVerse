@@ -1,4 +1,4 @@
--- Seed / Upsert all 361 AiVerse entries into Supabase
+-- Seed / Upsert all 364 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -7570,6 +7570,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('EgoDemo', 'LightwheelAI', 'Dataset', 'Multimodal', 'OTHER', 2026, '1K<n<10K', 'EgoDemo A 50-hour sample from EgoSuite-Open100K, covering every annotated subset plus two raw-video variants.   Collection ·   EgoStandard ·   EgoPro ·   Project page Explore EgoS (190 likes, 61,148 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("LightwheelAI/EgoDemo")', 'Trending Score: 54, Likes: 190, Downloads: 61,148', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/LightwheelAI/EgoDemo', '[{"text":"LightwheelAI/EgoDemo on Hugging Face Datasets","url":"https://huggingface.co/datasets/LightwheelAI/EgoDemo"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen-Image-2.1-Uncensored-Quantized', 'abenzerps', 'Model', 'Image Generation', 'OTHER', 2026, 'Open Weights', 'High-performance Image Generation open-weights model by abenzerps, trending with over 4,111 community likes and 2,188,658 downloads on Hugging Face.', 'abenzerps text to image architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("abenzerps/Qwen-Image-2.1-Uncensored-Quantized", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("abenzerps/Qwen-Image-2.1-Uncensored-Quantized")', 'Trending Score: 585, Likes: 4,111, Downloads: 2,188,658', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized', '[{"text":"abenzerps/Qwen-Image-2.1-Uncensored-Quantized on Hugging Face","url":"https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen-2511-Plus-Flux.2-klein-9B', 'AST-1320', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by AST-1320. Trending with 68 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B', 'Trending Score: 39, Community Likes: 68', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B', '[{"text":"AST-1320/Qwen-2511-Plus-Flux.2-klein-9B on Hugging Face Spaces","url":"https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('openai-math', 'FineEnvs', 'Dataset', 'AI Coding', 'APACHE-2.0', 2026, 'n<1K', 'openai/math as Harbor environments 	 Experimental. Built on a research release that is itself new and not yet independently reviewed. Expect rough edges, and read any p (60 likes, 2,587 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("FineEnvs/openai-math")', 'Trending Score: 58, Likes: 60, Downloads: 2,587', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/FineEnvs/openai-math', '[{"text":"FineEnvs/openai-math on Hugging Face Datasets","url":"https://huggingface.co/datasets/FineEnvs/openai-math"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
