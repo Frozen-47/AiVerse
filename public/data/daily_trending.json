@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-13T04:43:47.641Z",
+  "timestamp": "2026-10-14T02:52:34.403Z",
   "models": [
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 1960,
-      "downloads": 115763,
+      "likes": 2113,
+      "downloads": 124930,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
     },
     {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 1343,
-      "downloads": 46070,
+      "likes": 1529,
+      "downloads": 54039,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
     },
     {
       "id": "Qwen/Qwen-Image-2.1-Turbo",
       "author": "Qwen",
-      "likes": 647,
-      "downloads": 6787,
+      "likes": 713,
+      "downloads": 9665,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"
     },
     {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-Quantized",
       "author": "abenzerps",
-      "likes": 4111,
-      "downloads": 2188658,
+      "likes": 4212,
+      "downloads": 2247929,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized"
     },
     {
-      "id": "Cloudflare/clef",
-      "author": "Cloudflare",
-      "likes": 2101,
-      "downloads": 15064,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Cloudflare/clef"
-    },
-    {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 7503,
-      "downloads": 1719766,
+      "likes": 7659,
+      "downloads": 1724548,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
+    },
+    {
+      "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
+      "author": "openbmb",
+      "likes": 473,
+      "downloads": 630,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
     }
   ],
   "papers": [
     {
-      "title": "AgentSWE: Can Coding Agents Build the Agent You Actually Want?",
-      "summary": "As the production of software passes into the hands of software itself, coding agents are increasingly commissioned to build agents fitted to their users' own w...",
+      "title": "RSIPO: Recursive Self-Improving Policy Optimization for Agentic Reinforcement Learning via Skill-Policy Co-Evolution",
+      "summary": "Recent focus in agentic reinforcement learning (RL) seeks to improve credit assignment in long-horizon tasks. One promising direction combines reinforcement lea...",
+      "upvotes": 1,
+      "arxiv_id": "2610.15772",
+      "url": "https://huggingface.co/papers/2610.15772",
+      "githubRepo": "https://github.com/zfkarl/RSIPO"
+    },
+    {
+      "title": "Harness^2: Recursive Agent Harnessing for an Open World",
+      "summary": "LLM agents' capabilities depend not only on their underlying models but also on their execution harnesses. Recursive self-improvement (RSI) offers a promising a...",
+      "upvotes": 10,
+      "arxiv_id": "2610.14224",
+      "url": "https://huggingface.co/papers/2610.14224",
+      "githubRepo": "https://github.com/google-research/harness2"
+    },
+    {
+      "title": "Vela: User Behavior as Supervision Sparks LLM Intelligence",
+      "summary": "Large language models are increasingly deployed in applications that act on users' long-term behavior histories, from personal assistants to recommendation and ...",
       "upvotes": 2,
-      "arxiv_id": "2610.13361",
-      "url": "https://huggingface.co/papers/2610.13361",
-      "githubRepo": null
+      "arxiv_id": "2610.14709",
+      "url": "https://huggingface.co/papers/2610.14709",
+      "githubRepo": "https://github.com/AllSpark-Research/Vela"
     },
     {
-      "title": "GroundAnything: Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed",
-      "summary": "Autoregressive (AR) grounding models serialize spatial predictions, introducing sequential latency and imposing a causal order on output tokens. We view groundi...",
-      "upvotes": 12,
-      "arxiv_id": "2609.39600",
-      "url": "https://huggingface.co/papers/2609.39600",
-      "githubRepo": "https://github.com/groundingpi/GroundAnything"
+      "title": "DoSA: Dots Sparse Attention",
+      "summary": "Sparse attention visits few keys, yet finding them can still require scoring every key with every indexer head. We introduce DoSA (Dots Sparse Attention), a los...",
+      "upvotes": 13,
+      "arxiv_id": "2610.13990",
+      "url": "https://huggingface.co/papers/2610.13990",
+      "githubRepo": "https://github.com/llm-sys/flash-indexer"
     },
     {
-      "title": "GroundingPI: A Grounding Foundation Model towards Physical Intelligence with Visual Primitives",
-      "summary": "Precise grounding matters. It specifies which object is the target and where that object is, even in clutter and for tiny objects, and it has to be fast enough ...",
-      "upvotes": 28,
-      "arxiv_id": "2609.39601",
-      "url": "https://huggingface.co/papers/2609.39601",
-      "githubRepo": "https://github.com/groundingpi/GroundingPI"
-    },
-    {
-      "title": "Scaling Agentic Data for Long-Horizon Terminal Intelligence",
-      "summary": "Terminal agents are moving beyond local operations toward completing real-world professional tasks. Short trajectories can demonstrate commands and tool calls, ...",
-      "upvotes": 28,
-      "arxiv_id": "2610.13166",
-      "url": "https://huggingface.co/papers/2610.13166",
-      "githubRepo": null
-    },
-    {
-      "title": "T3lescope: Arbitrary-Resolution High-Fidelity Generative Surface Reconstruction from Images",
-      "summary": "We reconstruct high-fidelity 3D scene meshes from posed multi-view images without per-scene optimization, across scales ranging from single objects to large out...",
-      "upvotes": 7,
-      "arxiv_id": "2610.03308",
-      "url": "https://huggingface.co/papers/2610.03308",
-      "githubRepo": "https://github.com/pfnet-research/t3lescope"
+      "title": "LeWAM: End-to-End World and Action Modeling with JEPAs",
+      "summary": "Joint-embedding predictive architectures (JEPAs) learn compact latent world models without pixel reconstruction. Existing JEPA pipelines typically train visual ...",
+      "upvotes": 22,
+      "arxiv_id": "2610.12818",
+      "url": "https://huggingface.co/papers/2610.12818",
+      "githubRepo": "https://github.com/MinghaoFu/lewam"
     }
   ]
 }

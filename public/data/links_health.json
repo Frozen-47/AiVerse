@@ -1,33 +1,18 @@
 {
-  "timestamp": "2026-10-13T04:43:47.781Z",
+  "timestamp": "2026-10-14T02:52:34.572Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "Leonardo.ai",
-      "url": "https://leonardo.ai",
-      "status": 403
-    },
-    {
-      "name": "NightCafe",
-      "url": "https://creator.nightcafe.studio",
-      "status": 403
-    },
-    {
-      "name": "Play.ht",
-      "url": "https://play.ht",
+      "name": "SAM (Segment Anything Model)",
+      "url": "https://segment-anything.com/",
       "status": "Network Error"
     },
     {
-      "name": "Ideogram",
-      "url": "https://ideogram.ai",
+      "name": "Pi",
+      "url": "https://pi.ai",
       "status": 403
-    },
-    {
-      "name": "Arena-Hard-Auto",
-      "url": "https://github.com/sunshanghai/arena-hard-auto",
-      "status": 404
     }
   ]
 }

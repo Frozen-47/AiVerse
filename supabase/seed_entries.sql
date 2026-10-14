@@ -1,4 +1,4 @@
--- Seed / Upsert all 364 AiVerse entries into Supabase
+-- Seed / Upsert all 367 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -7632,6 +7632,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('openai-math', 'FineEnvs', 'Dataset', 'AI Coding', 'APACHE-2.0', 2026, 'n<1K', 'openai/math as Harbor environments 	 Experimental. Built on a research release that is itself new and not yet independently reviewed. Expect rough edges, and read any p (60 likes, 2,587 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("FineEnvs/openai-math")', 'Trending Score: 58, Likes: 60, Downloads: 2,587', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/FineEnvs/openai-math', '[{"text":"FineEnvs/openai-math on Hugging Face Datasets","url":"https://huggingface.co/datasets/FineEnvs/openai-math"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MiniCPM-V-4.7-35B-A3B', 'openbmb', 'Model', 'Multimodal', 'APACHE-2.0', 2026, '35B params', 'High-performance Multimodal open-weights model by openbmb, trending with over 473 community likes and 630 downloads on Hugging Face.', 'openbmb image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("openbmb/MiniCPM-V-4.7-35B-A3B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("openbmb/MiniCPM-V-4.7-35B-A3B")', 'Trending Score: 428, Likes: 473, Downloads: 630', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B', '[{"text":"openbmb/MiniCPM-V-4.7-35B-A3B on Hugging Face","url":"https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('LightOnOCR-3-Demo', 'lightonai', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by lightonai. Trending with 45 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo', 'Trending Score: 43, Community Likes: 45', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo', '[{"text":"lightonai/LightOnOCR-3-Demo on Hugging Face Spaces","url":"https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('freeinference_agentic_trace', 'harvardMadsys', 'Dataset', 'NLP', 'CC-BY-4.0', 2026, '1M<n<10M', 'FreeInference Agentic Trace 	 New: Interactive Session Explorer! We''ve launched an interactive session explorer to help you explore the dataset interactively. Try it ou (37 likes, 1,450 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("harvardMadsys/freeinference_agentic_trace")', 'Trending Score: 35, Likes: 37, Downloads: 1,450', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/harvardMadsys/freeinference_agentic_trace', '[{"text":"harvardMadsys/freeinference_agentic_trace on Hugging Face Datasets","url":"https://huggingface.co/datasets/harvardMadsys/freeinference_agentic_trace"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

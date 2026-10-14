@@ -1,1 +1,1 @@
-Qwen-Image-2.1-Uncensored-Quantized
+MiniCPM-V-4.7-35B-A3B

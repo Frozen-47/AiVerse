@@ -1,44 +1,44 @@
-# ⚡ AiVerse Daily Pulse (2026-10-13)
+# ⚡ AiVerse Daily Pulse (2026-10-14)
 
 > Automatically generated daily intelligence report syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Tue, 13 Oct 2026 04:43:51 GMT`*
+*Last Synchronized: `Wed, 14 Oct 2026 02:52:39 GMT`*
 
 ---
 
 ## 🆕 Newly Ingested Assets Today (3)
 
-### **Qwen-Image-2.1-Uncensored-Quantized** (`Model` • *abenzerps*)
-> High-performance Image Generation open-weights model by abenzerps, trending with over 4,111 community likes and 2,188,658 downloads on Hugging Face.
+### **MiniCPM-V-4.7-35B-A3B** (`Model` • *openbmb*)
+> High-performance Multimodal open-weights model by openbmb, trending with over 473 community likes and 630 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Image Generation` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 585, Likes: 4,111, Downloads: 2,188,658`
-- 🔗 **Resource Link**: [https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized)
+- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 428, Likes: 473, Downloads: 630`
+- 🔗 **Resource Link**: [https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B)
 
-### **Qwen-2511-Plus-Flux.2-klein-9B** (`Platform` • *AST-1320*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by AST-1320. Trending with 68 community stars.
+### **LightOnOCR-3-Demo** (`Platform` • *lightonai*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by lightonai. Trending with 45 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 39, Community Likes: 68`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B](https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B)
+- ⚡ **Metrics**: `Trending Score: 43, Community Likes: 45`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo](https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo)
 
-### **openai-math** (`Dataset` • *FineEnvs*)
-> openai/math as Harbor environments 	 Experimental. Built on a research release that is itself new and not yet independently reviewed. Expect rough edges, and read any p (60 likes, 2,587 downloads).
+### **freeinference_agentic_trace** (`Dataset` • *harvardMadsys*)
+> FreeInference Agentic Trace 	 New: Interactive Session Explorer! We've launched an interactive session explorer to help you explore the dataset interactively. Try it ou (37 likes, 1,450 downloads).
 
-- 🏷️ **Domain & License**: `AI Coding` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 58, Likes: 60, Downloads: 2,587`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/FineEnvs/openai-math](https://huggingface.co/datasets/FineEnvs/openai-math)
+- 🏷️ **Domain & License**: `NLP` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 35, Likes: 37, Downloads: 1,450`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/harvardMadsys/freeinference_agentic_trace](https://huggingface.co/datasets/harvardMadsys/freeinference_agentic_trace)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **Qwen-Image-2.1-Turbo** (`Model` • *Alibaba (Qwen)*)
-> High-performance Image Generation open-weights model by Alibaba (Qwen), trending with over 463 community likes and 2,138 downloads on Hugging Face.
+### **embeddinggemma-2-webgpu** (`Platform` • *webml-community*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by webml-community. Trending with 48 community stars.
 
-- 🏛️ **Architecture**: Alibaba (Qwen) text to image architecture with community-tuned weights.
-- ⚡ **Benchmarks**: `Trending Score: 456, Likes: 463, Downloads: 2,138`
-- 🏷️ **Domain & License**: `Image Generation` • `OTHER` (Released: 2026)
-- 🔗 **Resource Link**: [https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo)
+- 🏛️ **Architecture**: STATIC cloud runtime container with interactive browser interface.
+- ⚡ **Benchmarks**: `Trending Score: 48, Community Likes: 48`
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (Released: 2026)
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu](https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -46,12 +46,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 1,960 | 📥 115,763 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `jialinyyzz/humanizer` | text-generation | ❤️ 1,343 | 📥 46,070 | [View](https://huggingface.co/jialinyyzz/humanizer) |
-| `Qwen/Qwen-Image-2.1-Turbo` | text-to-image | ❤️ 647 | 📥 6,787 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo) |
-| `abenzerps/Qwen-Image-2.1-Uncensored-Quantized` | text-to-image | ❤️ 4,111 | 📥 2,188,658 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized) |
-| `Cloudflare/clef` | image-text-to-text | ❤️ 2,101 | 📥 15,064 | [View](https://huggingface.co/Cloudflare/clef) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 7,503 | 📥 1,719,766 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,113 | 📥 124,930 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 1,529 | 📥 54,039 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `Qwen/Qwen-Image-2.1-Turbo` | text-to-image | ❤️ 713 | 📥 9,665 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo) |
+| `abenzerps/Qwen-Image-2.1-Uncensored-Quantized` | text-to-image | ❤️ 4,212 | 📥 2,247,929 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 7,659 | 📥 1,724,548 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 473 | 📥 630 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
 
 
 ---
@@ -61,24 +61,24 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **AgentSWE: Can Coding Agents Build the Agent You Actually Want?** | 👍 2 | As the production of software passes into the hands of software itself, coding agents are increasingly commissioned to build agents fitted to their users' own w... | [Read](https://huggingface.co/papers/2610.13361) |
-| **GroundAnything: Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed** | 👍 12 | Autoregressive (AR) grounding models serialize spatial predictions, introducing sequential latency and imposing a causal order on output tokens. We view groundi... | [Read](https://huggingface.co/papers/2609.39600) |
-| **GroundingPI: A Grounding Foundation Model towards Physical Intelligence with Visual Primitives** | 👍 28 | Precise grounding matters. It specifies which object is the target and where that object is, even in clutter and for tiny objects, and it has to be fast enough ... | [Read](https://huggingface.co/papers/2609.39601) |
-| **Scaling Agentic Data for Long-Horizon Terminal Intelligence** | 👍 28 | Terminal agents are moving beyond local operations toward completing real-world professional tasks. Short trajectories can demonstrate commands and tool calls, ... | [Read](https://huggingface.co/papers/2610.13166) |
-| **T3lescope: Arbitrary-Resolution High-Fidelity Generative Surface Reconstruction from Images** | 👍 7 | We reconstruct high-fidelity 3D scene meshes from posed multi-view images without per-scene optimization, across scales ranging from single objects to large out... | [Read](https://huggingface.co/papers/2610.03308) |
+| **RSIPO: Recursive Self-Improving Policy Optimization for Agentic Reinforcement Learning via Skill-Policy Co-Evolution** | 👍 1 | Recent focus in agentic reinforcement learning (RL) seeks to improve credit assignment in long-horizon tasks. One promising direction combines reinforcement lea... | [Read](https://huggingface.co/papers/2610.15772) |
+| **Harness^2: Recursive Agent Harnessing for an Open World** | 👍 10 | LLM agents' capabilities depend not only on their underlying models but also on their execution harnesses. Recursive self-improvement (RSI) offers a promising a... | [Read](https://huggingface.co/papers/2610.14224) |
+| **Vela: User Behavior as Supervision Sparks LLM Intelligence** | 👍 2 | Large language models are increasingly deployed in applications that act on users' long-term behavior histories, from personal assistants to recommendation and ... | [Read](https://huggingface.co/papers/2610.14709) |
+| **DoSA: Dots Sparse Attention** | 👍 13 | Sparse attention visits few keys, yet finding them can still require scoring every key with every indexer head. We introduce DoSA (Dots Sparse Attention), a los... | [Read](https://huggingface.co/papers/2610.13990) |
+| **LeWAM: End-to-End World and Action Modeling with JEPAs** | 👍 22 | Joint-embedding predictive architectures (JEPAs) learn compact latent world models without pixel reconstruction. Existing JEPA pipelines typically train visual ... | [Read](https://huggingface.co/papers/2610.12818) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `364`
-- **Featured / Starred Tools**: `292`
-- **Asset Breakdown**: **Models**: 129 • **Frameworks**: 33 • **Platforms**: 66 • **Datasets**: 65 • **AIs**: 71
+- **Total Registered Assets**: `367`
+- **Featured / Starred Tools**: `294`
+- **Asset Breakdown**: **Models**: 130 • **Frameworks**: 33 • **Platforms**: 67 • **Datasets**: 66 • **AIs**: 71
 
 ---
 
 ## 🛡️ Daily System & Ecosystem Health
-- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
+- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
 - **Dependency Security**: `34` advisories flagged across `561` dependencies (`1` critical, `29` high)
 
 ---

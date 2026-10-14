@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-13)
+### ⚡ Daily AI Pulse (2026-10-14)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **Qwen-Image-2.1-Uncensored-Quantized** (`Model`), **Qwen-2511-Plus-Flux.2-klein-9B** (`Platform`), **openai-math** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Qwen-Image-2.1-Turbo** (Alibaba (Qwen)) — [Explore](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo) |
-| 🗄️ **Catalog Entries** | **364** AI assets tracked (292 featured) |
+| 🆕 **New Assets Added** | **MiniCPM-V-4.7-35B-A3B** (`Model`), **LightOnOCR-3-Demo** (`Platform`), **freeinference_agentic_trace** (`Dataset`) |
+| 🌟 **Tool of the Day** | **embeddinggemma-2-webgpu** (webml-community) — [Explore](https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu) |
+| 🗄️ **Catalog Entries** | **367** AI assets tracked (294 featured) |
 | 🔥 **Top Trending Model** | [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) |
-| 📜 **Top Daily Paper** | [AgentSWE: Can Coding Agents Build the Agent You Ac...](https://huggingface.co/papers/2610.13361) |
-| 🛡️ **Catalog Links Checked** | **20/25** operational |
-| 🕒 **Last Daily Run** | `Tue, 13 Oct 2026 04:43:51 GMT` |
+| 📜 **Top Daily Paper** | [RSIPO: Recursive Self-Improving Policy Optimizatio...](https://huggingface.co/papers/2610.15772) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Daily Run** | `Wed, 14 Oct 2026 02:52:39 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

@@ -8044,6 +8044,72 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/FineEnvs/openai-math"
           }
       ]
+  },
+  {
+      "name": "MiniCPM-V-4.7-35B-A3B",
+      "type": "Model",
+      "summary": "High-performance Multimodal open-weights model by openbmb, trending with over 473 community likes and 630 downloads on Hugging Face.",
+      "task": "Multimodal",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "openbmb",
+      "size": "35B params",
+      "architecture": "openbmb image text to text architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"openbmb/MiniCPM-V-4.7-35B-A3B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"openbmb/MiniCPM-V-4.7-35B-A3B\")",
+      "benchmarks": "Trending Score: 428, Likes: 473, Downloads: 630",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B",
+      "citations": [
+          {
+              "text": "openbmb/MiniCPM-V-4.7-35B-A3B on Hugging Face",
+              "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
+          }
+      ]
+  },
+  {
+      "name": "LightOnOCR-3-Demo",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by lightonai. Trending with 45 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "lightonai",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo",
+      "benchmarks": "Trending Score: 43, Community Likes: 45",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo",
+      "citations": [
+          {
+              "text": "lightonai/LightOnOCR-3-Demo on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo"
+          }
+      ]
+  },
+  {
+      "name": "freeinference_agentic_trace",
+      "type": "Dataset",
+      "summary": "FreeInference Agentic Trace \t New: Interactive Session Explorer! We've launched an interactive session explorer to help you explore the dataset interactively. Try it ou (37 likes, 1,450 downloads).",
+      "task": "NLP",
+      "license": "CC-BY-4.0",
+      "year": 2026,
+      "org": "harvardMadsys",
+      "size": "1M<n<10M",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"harvardMadsys/freeinference_agentic_trace\")",
+      "benchmarks": "Trending Score: 35, Likes: 37, Downloads: 1,450",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/harvardMadsys/freeinference_agentic_trace",
+      "citations": [
+          {
+              "text": "harvardMadsys/freeinference_agentic_trace on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/harvardMadsys/freeinference_agentic_trace"
+          }
+      ]
   }
 ];
 
