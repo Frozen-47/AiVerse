@@ -1,44 +1,44 @@
-# ⚡ AiVerse Daily Pulse (2026-10-14)
+# ⚡ AiVerse Daily Pulse (2026-10-15)
 
 > Automatically generated daily intelligence report syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Wed, 14 Oct 2026 02:52:39 GMT`*
+*Last Synchronized: `Thu, 15 Oct 2026 02:31:31 GMT`*
 
 ---
 
 ## 🆕 Newly Ingested Assets Today (3)
 
-### **MiniCPM-V-4.7-35B-A3B** (`Model` • *openbmb*)
-> High-performance Multimodal open-weights model by openbmb, trending with over 473 community likes and 630 downloads on Hugging Face.
+### **JEV-35B** (`Model` • *autotrust*)
+> High-performance NLP open-weights model by autotrust, trending with over 745 community likes and 27,970 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 428, Likes: 473, Downloads: 630`
-- 🔗 **Resource Link**: [https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 469, Likes: 745, Downloads: 27,970`
+- 🔗 **Resource Link**: [https://huggingface.co/autotrust/JEV-35B](https://huggingface.co/autotrust/JEV-35B)
 
-### **LightOnOCR-3-Demo** (`Platform` • *lightonai*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by lightonai. Trending with 45 community stars.
+### **qwen-image-21-uncensored** (`Platform` • *vclnhihihi*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vclnhihihi. Trending with 70 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 43, Community Likes: 45`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo](https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo)
+- ⚡ **Metrics**: `Trending Score: 54, Community Likes: 70`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored](https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored)
 
-### **freeinference_agentic_trace** (`Dataset` • *harvardMadsys*)
-> FreeInference Agentic Trace 	 New: Interactive Session Explorer! We've launched an interactive session explorer to help you explore the dataset interactively. Try it ou (37 likes, 1,450 downloads).
+### **MMLU-Pro** (`Dataset` • *TIGER-Lab*)
+> MMLU-Pro Dataset 	 MMLU-Pro dataset is a more robust and challenging massive multi-task understanding dataset tailored to more rigorously benchmark large language model (570 likes, 226,194 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `CC-BY-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 35, Likes: 37, Downloads: 1,450`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/harvardMadsys/freeinference_agentic_trace](https://huggingface.co/datasets/harvardMadsys/freeinference_agentic_trace)
+- 🏷️ **Domain & License**: `NLP` • `MIT` (2026)
+- ⚡ **Metrics**: `Trending Score: 30, Likes: 570, Downloads: 226,194`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **embeddinggemma-2-webgpu** (`Platform` • *webml-community*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by webml-community. Trending with 48 community stars.
+### **ema-lightning** (`Model` • *canberkkkkkk*)
+> High-performance Audio open-weights model by canberkkkkkk, trending with over 358 community likes and 18,079 downloads on Hugging Face.
 
-- 🏛️ **Architecture**: STATIC cloud runtime container with interactive browser interface.
-- ⚡ **Benchmarks**: `Trending Score: 48, Community Likes: 48`
-- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (Released: 2026)
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu](https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu)
+- 🏛️ **Architecture**: canberkkkkkk text to speech architecture with community-tuned weights.
+- ⚡ **Benchmarks**: `Trending Score: 327, Likes: 358, Downloads: 18,079`
+- 🏷️ **Domain & License**: `Audio` • `APACHE-2.0` (Released: 2026)
+- 🔗 **Resource Link**: [https://huggingface.co/canberkkkkkk/ema-lightning](https://huggingface.co/canberkkkkkk/ema-lightning)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -46,12 +46,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,113 | 📥 124,930 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `jialinyyzz/humanizer` | text-generation | ❤️ 1,529 | 📥 54,039 | [View](https://huggingface.co/jialinyyzz/humanizer) |
-| `Qwen/Qwen-Image-2.1-Turbo` | text-to-image | ❤️ 713 | 📥 9,665 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo) |
-| `abenzerps/Qwen-Image-2.1-Uncensored-Quantized` | text-to-image | ❤️ 4,212 | 📥 2,247,929 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 7,659 | 📥 1,724,548 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 473 | 📥 630 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,268 | 📥 135,175 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 1,640 | 📥 65,616 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `Qwen/Qwen-Image-2.1-Turbo` | text-to-image | ❤️ 778 | 📥 12,704 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo) |
+| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 634 | 📥 4,157 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
+| `abenzerps/Qwen-Image-2.1-Uncensored-Quantized` | text-to-image | ❤️ 4,312 | 📥 2,315,771 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized) |
+| `autotrust/JEV-35B` | text-classification | ❤️ 745 | 📥 27,970 | [View](https://huggingface.co/autotrust/JEV-35B) |
 
 
 ---
@@ -61,24 +61,24 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **RSIPO: Recursive Self-Improving Policy Optimization for Agentic Reinforcement Learning via Skill-Policy Co-Evolution** | 👍 1 | Recent focus in agentic reinforcement learning (RL) seeks to improve credit assignment in long-horizon tasks. One promising direction combines reinforcement lea... | [Read](https://huggingface.co/papers/2610.15772) |
-| **Harness^2: Recursive Agent Harnessing for an Open World** | 👍 10 | LLM agents' capabilities depend not only on their underlying models but also on their execution harnesses. Recursive self-improvement (RSI) offers a promising a... | [Read](https://huggingface.co/papers/2610.14224) |
-| **Vela: User Behavior as Supervision Sparks LLM Intelligence** | 👍 2 | Large language models are increasingly deployed in applications that act on users' long-term behavior histories, from personal assistants to recommendation and ... | [Read](https://huggingface.co/papers/2610.14709) |
-| **DoSA: Dots Sparse Attention** | 👍 13 | Sparse attention visits few keys, yet finding them can still require scoring every key with every indexer head. We introduce DoSA (Dots Sparse Attention), a los... | [Read](https://huggingface.co/papers/2610.13990) |
-| **LeWAM: End-to-End World and Action Modeling with JEPAs** | 👍 22 | Joint-embedding predictive architectures (JEPAs) learn compact latent world models without pixel reconstruction. Existing JEPA pipelines typically train visual ... | [Read](https://huggingface.co/papers/2610.12818) |
+| **HumanoidToolBench: Benchmarking Humanoid Tool Use from Selection to Mobile Execution** | 👍 0 | As robotic hardware and learning methods advance, humanoids need tools to perform tasks beyond their inherent physical limits. Successful tool use requires sele... | [Read](https://huggingface.co/papers/2610.02089) |
+| **Acting Through Registers** | 👍 1 | World Action Models (WAMs) use generative visual representations to condition robot actions, yet how these representations organize action-relevant information ... | [Read](https://huggingface.co/papers/2610.17638) |
+| **The COUNT: Counting N-grams Unlocks Scaling on Host Memory and Training-Free Adaptation** | 👍 1 | The scaling relationship of compute and performance for language models (LMs) has been extensively studied; more recently, models are being designed to scale me... | [Read](https://huggingface.co/papers/2610.20456) |
+| **Any Time, Any Space: A World-State-Centric Framework for Agentic Video Generation** | 👍 4 | Long-form agentic video generation must turn a screenplay into shots that remain spatially and temporally consistent across nonconsecutive requests. Passing pro... | [Read](https://huggingface.co/papers/2610.20571) |
+| **Exploring the Limits of Combinatorial Generalization in Embodied Manipulation** | 👍 1 | In embodied manipulation, Vision Language Action (VLA) models can execute atomic skills, but long-horizon manipulation requires recombining these skills without... | [Read](https://huggingface.co/papers/2610.15425) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `367`
-- **Featured / Starred Tools**: `294`
-- **Asset Breakdown**: **Models**: 130 • **Frameworks**: 33 • **Platforms**: 67 • **Datasets**: 66 • **AIs**: 71
+- **Total Registered Assets**: `370`
+- **Featured / Starred Tools**: `297`
+- **Asset Breakdown**: **Models**: 131 • **Frameworks**: 33 • **Platforms**: 68 • **Datasets**: 67 • **AIs**: 71
 
 ---
 
 ## 🛡️ Daily System & Ecosystem Health
-- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
+- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
 - **Dependency Security**: `34` advisories flagged across `561` dependencies (`1` critical, `29` high)
 
 ---

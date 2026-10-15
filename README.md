@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-14)
+### ⚡ Daily AI Pulse (2026-10-15)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **MiniCPM-V-4.7-35B-A3B** (`Model`), **LightOnOCR-3-Demo** (`Platform`), **freeinference_agentic_trace** (`Dataset`) |
-| 🌟 **Tool of the Day** | **embeddinggemma-2-webgpu** (webml-community) — [Explore](https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu) |
-| 🗄️ **Catalog Entries** | **367** AI assets tracked (294 featured) |
+| 🆕 **New Assets Added** | **JEV-35B** (`Model`), **qwen-image-21-uncensored** (`Platform`), **MMLU-Pro** (`Dataset`) |
+| 🌟 **Tool of the Day** | **ema-lightning** (canberkkkkkk) — [Explore](https://huggingface.co/canberkkkkkk/ema-lightning) |
+| 🗄️ **Catalog Entries** | **370** AI assets tracked (297 featured) |
 | 🔥 **Top Trending Model** | [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) |
-| 📜 **Top Daily Paper** | [RSIPO: Recursive Self-Improving Policy Optimizatio...](https://huggingface.co/papers/2610.15772) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Daily Run** | `Wed, 14 Oct 2026 02:52:39 GMT` |
+| 📜 **Top Daily Paper** | [HumanoidToolBench: Benchmarking Humanoid Tool Use ...](https://huggingface.co/papers/2610.02089) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Daily Run** | `Thu, 15 Oct 2026 02:31:31 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

@@ -1,24 +1,24 @@
 {
-  "date": "2026-10-14",
+  "date": "2026-10-15",
   "tool": {
-    "name": "embeddinggemma-2-webgpu",
-    "type": "Platform",
-    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by webml-community. Trending with 48 community stars.",
-    "task": "Multimodal",
-    "license": "Community Hosted",
+    "name": "ema-lightning",
+    "type": "Model",
+    "summary": "High-performance Audio open-weights model by canberkkkkkk, trending with over 358 community likes and 18,079 downloads on Hugging Face.",
+    "task": "Audio",
+    "license": "APACHE-2.0",
     "year": 2026,
-    "org": "webml-community",
-    "size": "STATIC Platform",
-    "architecture": "STATIC cloud runtime container with interactive browser interface.",
-    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu",
-    "benchmarks": "Trending Score: 48, Community Likes: 48",
-    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "org": "canberkkkkkk",
+    "size": "Open Weights",
+    "architecture": "canberkkkkkk text to speech architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"canberkkkkkk/ema-lightning\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"canberkkkkkk/ema-lightning\")",
+    "benchmarks": "Trending Score: 327, Likes: 358, Downloads: 18,079",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
     "popular": true,
-    "url": "https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu",
+    "url": "https://huggingface.co/canberkkkkkk/ema-lightning",
     "citations": [
       {
-        "text": "webml-community/embeddinggemma-2-webgpu on Hugging Face Spaces",
-        "url": "https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu"
+        "text": "canberkkkkkk/ema-lightning on Hugging Face",
+        "url": "https://huggingface.co/canberkkkkkk/ema-lightning"
       }
     ]
   }

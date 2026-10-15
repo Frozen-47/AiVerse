@@ -8110,6 +8110,72 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/harvardMadsys/freeinference_agentic_trace"
           }
       ]
+  },
+  {
+      "name": "JEV-35B",
+      "type": "Model",
+      "summary": "High-performance NLP open-weights model by autotrust, trending with over 745 community likes and 27,970 downloads on Hugging Face.",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "autotrust",
+      "size": "35B params",
+      "architecture": "autotrust text classification architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"autotrust/JEV-35B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"autotrust/JEV-35B\")",
+      "benchmarks": "Trending Score: 469, Likes: 745, Downloads: 27,970",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/autotrust/JEV-35B",
+      "citations": [
+          {
+              "text": "autotrust/JEV-35B on Hugging Face",
+              "url": "https://huggingface.co/autotrust/JEV-35B"
+          }
+      ]
+  },
+  {
+      "name": "qwen-image-21-uncensored",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vclnhihihi. Trending with 70 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "vclnhihihi",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored",
+      "benchmarks": "Trending Score: 54, Community Likes: 70",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored",
+      "citations": [
+          {
+              "text": "vclnhihihi/qwen-image-21-uncensored on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored"
+          }
+      ]
+  },
+  {
+      "name": "MMLU-Pro",
+      "type": "Dataset",
+      "summary": "MMLU-Pro Dataset \t MMLU-Pro dataset is a more robust and challenging massive multi-task understanding dataset tailored to more rigorously benchmark large language model (570 likes, 226,194 downloads).",
+      "task": "NLP",
+      "license": "MIT",
+      "year": 2026,
+      "org": "TIGER-Lab",
+      "size": "10K<n<100K",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"TIGER-Lab/MMLU-Pro\")",
+      "benchmarks": "Trending Score: 30, Likes: 570, Downloads: 226,194",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": true,
+      "url": "https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro",
+      "citations": [
+          {
+              "text": "TIGER-Lab/MMLU-Pro on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro"
+          }
+      ]
   }
 ];
 

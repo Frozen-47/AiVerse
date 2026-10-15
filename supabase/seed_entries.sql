@@ -1,4 +1,4 @@
--- Seed / Upsert all 367 AiVerse entries into Supabase
+-- Seed / Upsert all 370 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -7694,6 +7694,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('freeinference_agentic_trace', 'harvardMadsys', 'Dataset', 'NLP', 'CC-BY-4.0', 2026, '1M<n<10M', 'FreeInference Agentic Trace 	 New: Interactive Session Explorer! We''ve launched an interactive session explorer to help you explore the dataset interactively. Try it ou (37 likes, 1,450 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("harvardMadsys/freeinference_agentic_trace")', 'Trending Score: 35, Likes: 37, Downloads: 1,450', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/harvardMadsys/freeinference_agentic_trace', '[{"text":"harvardMadsys/freeinference_agentic_trace on Hugging Face Datasets","url":"https://huggingface.co/datasets/harvardMadsys/freeinference_agentic_trace"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('JEV-35B', 'autotrust', 'Model', 'NLP', 'APACHE-2.0', 2026, '35B params', 'High-performance NLP open-weights model by autotrust, trending with over 745 community likes and 27,970 downloads on Hugging Face.', 'autotrust text classification architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("autotrust/JEV-35B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("autotrust/JEV-35B")', 'Trending Score: 469, Likes: 745, Downloads: 27,970', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/autotrust/JEV-35B', '[{"text":"autotrust/JEV-35B on Hugging Face","url":"https://huggingface.co/autotrust/JEV-35B"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('qwen-image-21-uncensored', 'vclnhihihi', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vclnhihihi. Trending with 70 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored', 'Trending Score: 54, Community Likes: 70', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored', '[{"text":"vclnhihihi/qwen-image-21-uncensored on Hugging Face Spaces","url":"https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MMLU-Pro', 'TIGER-Lab', 'Dataset', 'NLP', 'MIT', 2026, '10K<n<100K', 'MMLU-Pro Dataset 	 MMLU-Pro dataset is a more robust and challenging massive multi-task understanding dataset tailored to more rigorously benchmark large language model (570 likes, 226,194 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("TIGER-Lab/MMLU-Pro")', 'Trending Score: 30, Likes: 570, Downloads: 226,194', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro', '[{"text":"TIGER-Lab/MMLU-Pro on Hugging Face Datasets","url":"https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

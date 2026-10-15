@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-14T02:52:34.403Z",
+  "timestamp": "2026-10-15T02:31:27.176Z",
   "models": [
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 2113,
-      "downloads": 124930,
+      "likes": 2268,
+      "downloads": 135175,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
     },
     {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 1529,
-      "downloads": 54039,
+      "likes": 1640,
+      "downloads": 65616,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
     },
     {
       "id": "Qwen/Qwen-Image-2.1-Turbo",
       "author": "Qwen",
-      "likes": 713,
-      "downloads": 9665,
+      "likes": 778,
+      "downloads": 12704,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"
     },
     {
+      "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
+      "author": "openbmb",
+      "likes": 634,
+      "downloads": 4157,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
+    },
+    {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-Quantized",
       "author": "abenzerps",
-      "likes": 4212,
-      "downloads": 2247929,
+      "likes": 4312,
+      "downloads": 2315771,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized"
     },
     {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 7659,
-      "downloads": 1724548,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5"
-    },
-    {
-      "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
-      "author": "openbmb",
-      "likes": 473,
-      "downloads": 630,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
+      "id": "autotrust/JEV-35B",
+      "author": "autotrust",
+      "likes": 745,
+      "downloads": 27970,
+      "pipeline_tag": "text-classification",
+      "url": "https://huggingface.co/autotrust/JEV-35B"
     }
   ],
   "papers": [
     {
-      "title": "RSIPO: Recursive Self-Improving Policy Optimization for Agentic Reinforcement Learning via Skill-Policy Co-Evolution",
-      "summary": "Recent focus in agentic reinforcement learning (RL) seeks to improve credit assignment in long-horizon tasks. One promising direction combines reinforcement lea...",
+      "title": "HumanoidToolBench: Benchmarking Humanoid Tool Use from Selection to Mobile Execution",
+      "summary": "As robotic hardware and learning methods advance, humanoids need tools to perform tasks beyond their inherent physical limits. Successful tool use requires sele...",
+      "upvotes": 0,
+      "arxiv_id": "2610.02089",
+      "url": "https://huggingface.co/papers/2610.02089",
+      "githubRepo": "https://github.com/SNU-PI/HumanoidToolBench"
+    },
+    {
+      "title": "Acting Through Registers",
+      "summary": "World Action Models (WAMs) use generative visual representations to condition robot actions, yet how these representations organize action-relevant information ...",
       "upvotes": 1,
-      "arxiv_id": "2610.15772",
-      "url": "https://huggingface.co/papers/2610.15772",
-      "githubRepo": "https://github.com/zfkarl/RSIPO"
+      "arxiv_id": "2610.17638",
+      "url": "https://huggingface.co/papers/2610.17638",
+      "githubRepo": "https://github.com/Z1zyw/RegisterWAM"
     },
     {
-      "title": "Harness^2: Recursive Agent Harnessing for an Open World",
-      "summary": "LLM agents' capabilities depend not only on their underlying models but also on their execution harnesses. Recursive self-improvement (RSI) offers a promising a...",
-      "upvotes": 10,
-      "arxiv_id": "2610.14224",
-      "url": "https://huggingface.co/papers/2610.14224",
-      "githubRepo": "https://github.com/google-research/harness2"
+      "title": "The COUNT: Counting N-grams Unlocks Scaling on Host Memory and Training-Free Adaptation",
+      "summary": "The scaling relationship of compute and performance for language models (LMs) has been extensively studied; more recently, models are being designed to scale me...",
+      "upvotes": 1,
+      "arxiv_id": "2610.20456",
+      "url": "https://huggingface.co/papers/2610.20456",
+      "githubRepo": "https://github.com/IanMagnusson/COUNT"
     },
     {
-      "title": "Vela: User Behavior as Supervision Sparks LLM Intelligence",
-      "summary": "Large language models are increasingly deployed in applications that act on users' long-term behavior histories, from personal assistants to recommendation and ...",
-      "upvotes": 2,
-      "arxiv_id": "2610.14709",
-      "url": "https://huggingface.co/papers/2610.14709",
-      "githubRepo": "https://github.com/AllSpark-Research/Vela"
+      "title": "Any Time, Any Space: A World-State-Centric Framework for Agentic Video Generation",
+      "summary": "Long-form agentic video generation must turn a screenplay into shots that remain spatially and temporally consistent across nonconsecutive requests. Passing pro...",
+      "upvotes": 4,
+      "arxiv_id": "2610.20571",
+      "url": "https://huggingface.co/papers/2610.20571",
+      "githubRepo": "https://github.com/ziplab/ATAS"
     },
     {
-      "title": "DoSA: Dots Sparse Attention",
-      "summary": "Sparse attention visits few keys, yet finding them can still require scoring every key with every indexer head. We introduce DoSA (Dots Sparse Attention), a los...",
-      "upvotes": 13,
-      "arxiv_id": "2610.13990",
-      "url": "https://huggingface.co/papers/2610.13990",
-      "githubRepo": "https://github.com/llm-sys/flash-indexer"
-    },
-    {
-      "title": "LeWAM: End-to-End World and Action Modeling with JEPAs",
-      "summary": "Joint-embedding predictive architectures (JEPAs) learn compact latent world models without pixel reconstruction. Existing JEPA pipelines typically train visual ...",
-      "upvotes": 22,
-      "arxiv_id": "2610.12818",
-      "url": "https://huggingface.co/papers/2610.12818",
-      "githubRepo": "https://github.com/MinghaoFu/lewam"
+      "title": "Exploring the Limits of Combinatorial Generalization in Embodied Manipulation",
+      "summary": "In embodied manipulation, Vision Language Action (VLA) models can execute atomic skills, but long-horizon manipulation requires recombining these skills without...",
+      "upvotes": 1,
+      "arxiv_id": "2610.15425",
+      "url": "https://huggingface.co/papers/2610.15425",
+      "githubRepo": "https://github.com/AutoLab-SAI-SJTU/RoboCombine"
     }
   ]
 }
