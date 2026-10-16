@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-16T13:31:46.412Z",
+  "timestamp": "2026-10-16T13:36:30.573Z",
   "models": [
     {
       "id": "google/embeddinggemma-2",
@@ -36,7 +36,7 @@
     {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 516,
+      "likes": 519,
       "downloads": 6158,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"

@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 16 Oct 2026 13:31:51 GMT`*
+*Last Synchronized: `Fri, 16 Oct 2026 13:36:35 GMT`*
 
 ---
 
@@ -10,26 +10,26 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **LFM2.5-24B-A2B** (`Model` • *LiquidAI*)
-> High-performance NLP open-weights model by LiquidAI, trending with over 406 community likes and 9,356 downloads on Hugging Face.
+### **Muse-Spark-Open-816B-A42B** (`Model` • *meta-models*)
+> High-performance Multimodal open-weights model by meta-models, trending with over 374 community likes and 815 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 398, Likes: 406, Downloads: 9,356`
-- 🔗 **Resource Link**: [https://huggingface.co/LiquidAI/LFM2.5-24B-A2B](https://huggingface.co/LiquidAI/LFM2.5-24B-A2B)
+- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 355, Likes: 374, Downloads: 815`
+- 🔗 **Resource Link**: [https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B)
 
-### **qwen-qwen-image-2-1-turbo** (`Platform` • *hugging-apps*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 77 community stars.
+### **flux-3-image-klein** (`Platform` • *black-forest-labs*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by black-forest-labs. Trending with 58 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 61, Community Likes: 77`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/hugging-apps/qwen-qwen-image-2-1-turbo](https://huggingface.co/spaces/hugging-apps/qwen-qwen-image-2-1-turbo)
+- ⚡ **Metrics**: `Trending Score: 57, Community Likes: 58`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein](https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein)
 
-### **cyber-security** (`Dataset` • *Vyber07*)
-> Cybersecurity AI Knowledge Base — PhD-Level Dataset 	 	 		 	 	 		Overview 	 This is the most comprehensive cybersecurity knowledge base ever assembled for AI training. (160 likes, 3,124 downloads).
+### **lunara-art-eval** (`Dataset` • *moonworks*)
+> Moonworks Lunara Art Eval 	 Paper: Moonworks Lunara: Modeling Artistic Intelligence by Wang et al. (2026). An image-generation evaluation dataset containing 8,000 gener (43 likes, 1,878 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 26, Likes: 160, Downloads: 3,124`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security)
+- 🏷️ **Domain & License**: `Computer Vision` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 26, Likes: 43, Downloads: 1,878`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/moonworks/lunara-art-eval](https://huggingface.co/datasets/moonworks/lunara-art-eval)
 
 ---
 
@@ -52,7 +52,7 @@
 | `jialinyyzz/humanizer` | text-generation | ❤️ 1,788 | 📥 85,612 | [View](https://huggingface.co/jialinyyzz/humanizer) |
 | `Qwen/Qwen-Image-2.1-Turbo` | text-to-image | ❤️ 916 | 📥 17,421 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo) |
 | `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 814 | 📥 17,553 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 516 | 📥 6,158 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 519 | 📥 6,158 | [View](https://huggingface.co/fishaudio/drama-3) |
 | `abenzerps/Qwen-Image-2.1-Uncensored-Quantized` | text-to-image | ❤️ 4,415 | 📥 2,477,554 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized) |
 
 
@@ -80,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
 - **Dependency Security**: `34` advisories flagged across `561` dependencies (`1` critical, `29` high)
 
 ---

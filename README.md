@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-16)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **LFM2.5-24B-A2B** (`Model`), **qwen-qwen-image-2-1-turbo** (`Platform`), **cyber-security** (`Dataset`) |
+| 📥 **Queued for Review** | **Muse-Spark-Open-816B-A42B** (`Model`), **flux-3-image-klein** (`Platform`), **lunara-art-eval** (`Dataset`) |
 | 🌟 **Tool of the Day** | **minimax-h3-character-swap-lora** (hugging-apps) — [Explore](https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) |
 | 📜 **Top Daily Paper** | [Beyond Policy Rollouts: Embedding-Space Directiona...](https://huggingface.co/papers/2610.16105) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 16 Oct 2026 13:31:51 GMT` |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 16 Oct 2026 13:36:35 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

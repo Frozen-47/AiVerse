@@ -1,23 +1,18 @@
 {
-  "timestamp": "2026-10-16T13:31:46.974Z",
+  "timestamp": "2026-10-16T13:36:30.620Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
-    {
-      "name": "Codex",
-      "url": "https://openai.com/blog/openai-codex",
-      "status": 403
-    },
     {
       "name": "wan555",
       "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
       "status": 401
     },
     {
-      "name": "Pi",
-      "url": "https://pi.ai",
-      "status": 403
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
     }
   ]
 }
