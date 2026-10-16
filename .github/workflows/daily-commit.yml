@@ -40,11 +40,12 @@ jobs:
           if git diff --staged --quiet; then
             echo "No updates to commit today."
           else
-            if [ -f public/data/latest_added_model.txt ]; then
+            if [ -f public/data/latest_added_model.txt ] && [ -s public/data/latest_added_model.txt ]; then
               MODEL_NAME=$(cat public/data/latest_added_model.txt)
-              git commit -m "chore(pulse): ingest latest models, platforms & update daily AI pulse [skip ci]"
+              git commit -m "chore(pulse): ingest ${MODEL_NAME} & update AI pulse [skip ci]"
             else
-              git commit -m "chore(pulse): sync daily AI trends, catalog metrics & ecosystem health [skip ci]"
+              git commit -m "chore(pulse): sync AI trends, catalog metrics & ecosystem health [skip ci]"
             fi
+            git pull --rebase origin ${GITHUB_REF#refs/heads/} || true
             git push origin HEAD:${{ github.ref }}
           fi
