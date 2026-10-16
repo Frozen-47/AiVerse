@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-16T13:36:30.573Z",
+  "timestamp": "2026-10-16T17:46:47.974Z",
   "models": [
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 2470,
+      "likes": 2494,
       "downloads": 151258,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
@@ -12,31 +12,31 @@
     {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 1788,
+      "likes": 1805,
       "downloads": 85612,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
     },
     {
-      "id": "Qwen/Qwen-Image-2.1-Turbo",
-      "author": "Qwen",
-      "likes": 916,
-      "downloads": 17421,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"
-    },
-    {
       "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
       "author": "openbmb",
-      "likes": 814,
+      "likes": 832,
       "downloads": 17553,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
     },
     {
+      "id": "Qwen/Qwen-Image-2.1-Turbo",
+      "author": "Qwen",
+      "likes": 929,
+      "downloads": 17421,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"
+    },
+    {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 519,
+      "likes": 535,
       "downloads": 6158,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
@@ -44,7 +44,7 @@
     {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-Quantized",
       "author": "abenzerps",
-      "likes": 4415,
+      "likes": 4421,
       "downloads": 2477554,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "Beyond Policy Rollouts: Embedding-Space Directional Exploration with Anchored Noise for LLM RLVR",
-      "summary": "EDEN improves reinforcement learning with verifiable rewards by injecting anchored embedding noise into rollout conditioning to increase diversity and strengthen group-relative advantage signals without altering inference.",
+      "title": "LeanPRM: Lean-Grounded Process Supervision for Natural Language Proof Verification",
+      "summary": "LeanPRM uses the Lean proof assistant to automatically generate step-level correctness labels for natural-language mathematical proofs, enabling scalable training of learned verifiers without human annotation.",
       "upvotes": 1,
-      "arxiv_id": "2610.16105",
-      "url": "https://huggingface.co/papers/2610.16105",
+      "arxiv_id": "2610.17697",
+      "url": "https://huggingface.co/papers/2610.17697",
       "githubRepo": null
     },
     {
-      "title": "One Bias Score, Two Factors: How Mitigations Affect Option Bias in Multiple-Choice Evaluation",
-      "summary": "Selection bias and order sensitivity in multiple-choice models are decomposed into flip rate and positional skew via pooled standard deviation, showing that prior correction and aggregation target different factors and should be reported together with accuracy.",
+      "title": "Equal CER, Unequal Damage: Severity-Weighted Character Error Rate for OCR",
+      "summary": "A new metric called semCER uses an LLM judge to weight grapheme edits by severity, improving alignment with human ratings over standard character error rate for OCR and vision-language models.",
       "upvotes": 1,
-      "arxiv_id": "2610.20993",
-      "url": "https://huggingface.co/papers/2610.20993",
+      "arxiv_id": "2610.20461",
+      "url": "https://huggingface.co/papers/2610.20461",
+      "githubRepo": "https://github.com/nguyenx2t/semcer"
+    },
+    {
+      "title": "PathFM: Fast Generative Forecasting of Multivariate Trajectories",
+      "summary": "PathFM is a trajectory-based forecasting model using flow matching to generate complete future paths, enabling efficient multi-path sampling and improved dependence modeling for time series.",
+      "upvotes": 1,
+      "arxiv_id": "2610.22358",
+      "url": "https://huggingface.co/papers/2610.22358",
       "githubRepo": null
     },
     {
-      "title": "Gen4P: Video Generators are 4D Perceivers",
-      "summary": "Gen4P repurposes a pretrained video generator into a feed-forward 4D perceiver that predicts geometry and motion from monocular video via on-demand cross-attention decoding and frozen depth priors.",
+      "title": "Learning to Read Out: Unembedding Dynamics in Language Model Pretraining",
+      "summary": "Hidden states encode task information before the readout expresses it, so behavioral timelines reflect readout learning rather than model acquisition, and faster readout training closes this gap earlier.",
       "upvotes": 1,
-      "arxiv_id": "2610.22371",
-      "url": "https://huggingface.co/papers/2610.22371",
-      "githubRepo": "https://github.com/yitongx/Gen4P"
+      "arxiv_id": "2610.21025",
+      "url": "https://huggingface.co/papers/2610.21025",
+      "githubRepo": "https://github.com/hematteo/learning-to-read-out"
     },
     {
-      "title": "When the KV Cache Is Slower Than the GPU: Scaling Remote KV Tiers for Context-Parallel Prefill",
-      "summary": "Remote KV caching for long-context LLM serving can severely degrade latency unless the store is sharded by parallel rank, loaded asynchronously, and paired with high-bandwidth retrieval, yielding large throughput gains.",
-      "upvotes": 0,
-      "arxiv_id": "2610.21500",
-      "url": "https://huggingface.co/papers/2610.21500",
+      "title": "Copy-Paste Language Models",
+      "summary": "Copy-Paste Language Models enhance in-context copying by adding a lightweight head that improves training efficiency, downstream performance, and long-context retrieval with minimal overhead.",
+      "upvotes": 1,
+      "arxiv_id": "2610.19247",
+      "url": "https://huggingface.co/papers/2610.19247",
       "githubRepo": null
-    },
-    {
-      "title": "Virtual Head Attention",
-      "summary": "Virtual Head Attention improves long-context model efficiency by reducing KV cache and compute while preserving quality through lightweight linear query and output transformations.",
-      "upvotes": 3,
-      "arxiv_id": "2610.17959",
-      "url": "https://huggingface.co/papers/2610.17959",
-      "githubRepo": "https://github.com/PaddlePaddle/VHA"
     }
   ]
 }

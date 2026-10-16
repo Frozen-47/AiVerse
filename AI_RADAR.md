@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 16 Oct 2026 13:36:35 GMT`*
+*Last Synchronized: `Fri, 16 Oct 2026 17:46:52 GMT`*
 
 ---
 
@@ -10,26 +10,26 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Muse-Spark-Open-816B-A42B** (`Model` • *meta-models*)
-> High-performance Multimodal open-weights model by meta-models, trending with over 374 community likes and 815 downloads on Hugging Face.
+### **flux-3-image-klein-comfy** (`Model` • *black-forest-labs*)
+> High-performance NLP open-weights model by black-forest-labs, trending with over 394 community likes and 73,767 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 355, Likes: 374, Downloads: 815`
-- 🔗 **Resource Link**: [https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 357, Likes: 394, Downloads: 73,767`
+- 🔗 **Resource Link**: [https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy)
 
-### **flux-3-image-klein** (`Platform` • *black-forest-labs*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by black-forest-labs. Trending with 58 community stars.
+### **minimax-h3-360-orbit** (`Platform` • *pablodawson*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by pablodawson. Trending with 80 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 57, Community Likes: 58`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein](https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein)
+- ⚡ **Metrics**: `Trending Score: 45, Community Likes: 80`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/pablodawson/minimax-h3-360-orbit](https://huggingface.co/spaces/pablodawson/minimax-h3-360-orbit)
 
-### **lunara-art-eval** (`Dataset` • *moonworks*)
-> Moonworks Lunara Art Eval 	 Paper: Moonworks Lunara: Modeling Artistic Intelligence by Wang et al. (2026). An image-generation evaluation dataset containing 8,000 gener (43 likes, 1,878 downloads).
+### **FDE-Gym** (`Dataset` • *DeepLethe*)
+> FDE-Gym: The Last Mile of AI Delivery 	 FDE-Gym tests whether an agent can do the work of a forward-deployed engineer: enter a customer's running environment, find out (80 likes, 64 downloads).
 
-- 🏷️ **Domain & License**: `Computer Vision` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 26, Likes: 43, Downloads: 1,878`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/moonworks/lunara-art-eval](https://huggingface.co/datasets/moonworks/lunara-art-eval)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 43, Likes: 80, Downloads: 64`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/DeepLethe/FDE-Gym](https://huggingface.co/datasets/DeepLethe/FDE-Gym)
 
 ---
 
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,470 | 📥 151,258 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `jialinyyzz/humanizer` | text-generation | ❤️ 1,788 | 📥 85,612 | [View](https://huggingface.co/jialinyyzz/humanizer) |
-| `Qwen/Qwen-Image-2.1-Turbo` | text-to-image | ❤️ 916 | 📥 17,421 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo) |
-| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 814 | 📥 17,553 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 519 | 📥 6,158 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `abenzerps/Qwen-Image-2.1-Uncensored-Quantized` | text-to-image | ❤️ 4,415 | 📥 2,477,554 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,494 | 📥 151,258 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 1,805 | 📥 85,612 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 832 | 📥 17,553 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
+| `Qwen/Qwen-Image-2.1-Turbo` | text-to-image | ❤️ 929 | 📥 17,421 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 535 | 📥 6,158 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `abenzerps/Qwen-Image-2.1-Uncensored-Quantized` | text-to-image | ❤️ 4,421 | 📥 2,477,554 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Beyond Policy Rollouts: Embedding-Space Directional Exploration with Anchored Noise for LLM RLVR** | 👍 1 | EDEN improves reinforcement learning with verifiable rewards by injecting anchored embedding noise into rollout conditioning to increase diversity and strengthen group-relative advantage signals without altering inference. | [Read](https://huggingface.co/papers/2610.16105) |
-| **One Bias Score, Two Factors: How Mitigations Affect Option Bias in Multiple-Choice Evaluation** | 👍 1 | Selection bias and order sensitivity in multiple-choice models are decomposed into flip rate and positional skew via pooled standard deviation, showing that prior correction and aggregation target different factors and should be reported together with accuracy. | [Read](https://huggingface.co/papers/2610.20993) |
-| **Gen4P: Video Generators are 4D Perceivers** | 👍 1 | Gen4P repurposes a pretrained video generator into a feed-forward 4D perceiver that predicts geometry and motion from monocular video via on-demand cross-attention decoding and frozen depth priors. | [Read](https://huggingface.co/papers/2610.22371) |
-| **When the KV Cache Is Slower Than the GPU: Scaling Remote KV Tiers for Context-Parallel Prefill** | 👍 0 | Remote KV caching for long-context LLM serving can severely degrade latency unless the store is sharded by parallel rank, loaded asynchronously, and paired with high-bandwidth retrieval, yielding large throughput gains. | [Read](https://huggingface.co/papers/2610.21500) |
-| **Virtual Head Attention** | 👍 3 | Virtual Head Attention improves long-context model efficiency by reducing KV cache and compute while preserving quality through lightweight linear query and output transformations. | [Read](https://huggingface.co/papers/2610.17959) |
+| **LeanPRM: Lean-Grounded Process Supervision for Natural Language Proof Verification** | 👍 1 | LeanPRM uses the Lean proof assistant to automatically generate step-level correctness labels for natural-language mathematical proofs, enabling scalable training of learned verifiers without human annotation. | [Read](https://huggingface.co/papers/2610.17697) |
+| **Equal CER, Unequal Damage: Severity-Weighted Character Error Rate for OCR** | 👍 1 | A new metric called semCER uses an LLM judge to weight grapheme edits by severity, improving alignment with human ratings over standard character error rate for OCR and vision-language models. | [Read](https://huggingface.co/papers/2610.20461) |
+| **PathFM: Fast Generative Forecasting of Multivariate Trajectories** | 👍 1 | PathFM is a trajectory-based forecasting model using flow matching to generate complete future paths, enabling efficient multi-path sampling and improved dependence modeling for time series. | [Read](https://huggingface.co/papers/2610.22358) |
+| **Learning to Read Out: Unembedding Dynamics in Language Model Pretraining** | 👍 1 | Hidden states encode task information before the readout expresses it, so behavioral timelines reflect readout learning rather than model acquisition, and faster readout training closes this gap earlier. | [Read](https://huggingface.co/papers/2610.21025) |
+| **Copy-Paste Language Models** | 👍 1 | Copy-Paste Language Models enhance in-context copying by adding a lightweight head that improves training efficiency, downstream performance, and long-context retrieval with minimal overhead. | [Read](https://huggingface.co/papers/2610.19247) |
 
 
 ---
