@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-15)
+### ⚡ Daily AI Pulse (2026-10-16)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **JEV-35B** (`Model`), **qwen-image-21-uncensored** (`Platform`), **MMLU-Pro** (`Dataset`) |
-| 🌟 **Tool of the Day** | **ema-lightning** (canberkkkkkk) — [Explore](https://huggingface.co/canberkkkkkk/ema-lightning) |
-| 🗄️ **Catalog Entries** | **370** AI assets tracked (297 featured) |
+| 🆕 **New Assets Added** | **drama-3** (`Model`), **shorts** (`Platform`), **china-a-share-l2-level2-limit-order-book-tick-data** (`Dataset`) |
+| 🌟 **Tool of the Day** | **minimax-h3-character-swap-lora** (hugging-apps) — [Explore](https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora) |
+| 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) |
-| 📜 **Top Daily Paper** | [HumanoidToolBench: Benchmarking Humanoid Tool Use ...](https://huggingface.co/papers/2610.02089) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Daily Run** | `Thu, 15 Oct 2026 02:31:31 GMT` |
+| 📜 **Top Daily Paper** | [SCOPE: Semantic Bounded Credit Optimization for Pr...](https://huggingface.co/papers/2610.22264) |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Daily Run** | `Fri, 16 Oct 2026 02:26:10 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

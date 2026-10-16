@@ -1,4 +1,4 @@
--- Seed / Upsert all 370 AiVerse entries into Supabase
+-- Seed / Upsert all 373 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -7756,6 +7756,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('MMLU-Pro', 'TIGER-Lab', 'Dataset', 'NLP', 'MIT', 2026, '10K<n<100K', 'MMLU-Pro Dataset 	 MMLU-Pro dataset is a more robust and challenging massive multi-task understanding dataset tailored to more rigorously benchmark large language model (570 likes, 226,194 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("TIGER-Lab/MMLU-Pro")', 'Trending Score: 30, Likes: 570, Downloads: 226,194', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro', '[{"text":"TIGER-Lab/MMLU-Pro on Hugging Face Datasets","url":"https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('drama-3', 'fishaudio', 'Model', 'Audio', 'OTHER', 2026, 'Open Weights', 'High-performance Audio open-weights model by fishaudio, trending with over 480 community likes and 4,048 downloads on Hugging Face.', 'fishaudio text to speech architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("fishaudio/drama-3", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("fishaudio/drama-3")', 'Trending Score: 466, Likes: 480, Downloads: 4,048', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/fishaudio/drama-3', '[{"text":"fishaudio/drama-3 on Hugging Face","url":"https://huggingface.co/fishaudio/drama-3"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('shorts', 'autotrust', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'STATIC Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 151 community stars.', 'STATIC cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/autotrust/shorts', 'Trending Score: 79, Community Likes: 151', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/autotrust/shorts', '[{"text":"autotrust/shorts on Hugging Face Spaces","url":"https://huggingface.co/spaces/autotrust/shorts"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('china-a-share-l2-level2-limit-order-book-tick-data', 'venvoo', 'Dataset', 'NLP', 'OTHER', 2026, 'n>1T', 'China A-Share Level-2 Archive 	 2017–2026 · Quotes, orders and trades · Parquet A historical archive of Chinese exchange Level-2 data, supplied through a vendor export. (281 likes, 120,455 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("venvoo/china-a-share-l2-level2-limit-order-book-tick-data")', 'Trending Score: 33, Likes: 281, Downloads: 120,455', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data', '[{"text":"venvoo/china-a-share-l2-level2-limit-order-book-tick-data on Hugging Face Datasets","url":"https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

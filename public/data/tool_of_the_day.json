@@ -1,24 +1,24 @@
 {
-  "date": "2026-10-15",
+  "date": "2026-10-16",
   "tool": {
-    "name": "ema-lightning",
-    "type": "Model",
-    "summary": "High-performance Audio open-weights model by canberkkkkkk, trending with over 358 community likes and 18,079 downloads on Hugging Face.",
-    "task": "Audio",
-    "license": "APACHE-2.0",
+    "name": "minimax-h3-character-swap-lora",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 103 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
     "year": 2026,
-    "org": "canberkkkkkk",
-    "size": "Open Weights",
-    "architecture": "canberkkkkkk text to speech architecture with community-tuned weights.",
-    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"canberkkkkkk/ema-lightning\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"canberkkkkkk/ema-lightning\")",
-    "benchmarks": "Trending Score: 327, Likes: 358, Downloads: 18,079",
-    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "org": "hugging-apps",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora",
+    "benchmarks": "Trending Score: 46, Community Likes: 103",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
     "popular": true,
-    "url": "https://huggingface.co/canberkkkkkk/ema-lightning",
+    "url": "https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora",
     "citations": [
       {
-        "text": "canberkkkkkk/ema-lightning on Hugging Face",
-        "url": "https://huggingface.co/canberkkkkkk/ema-lightning"
+        "text": "hugging-apps/minimax-h3-character-swap-lora on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora"
       }
     ]
   }
