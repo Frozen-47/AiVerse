@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-16T17:46:47.974Z",
+  "timestamp": "2026-10-16T21:52:41.395Z",
   "models": [
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 2494,
+      "likes": 2506,
       "downloads": 151258,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
@@ -12,7 +12,7 @@
     {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 1805,
+      "likes": 1820,
       "downloads": 85612,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
@@ -20,31 +20,31 @@
     {
       "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
       "author": "openbmb",
-      "likes": 832,
+      "likes": 843,
       "downloads": 17553,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
     },
     {
-      "id": "Qwen/Qwen-Image-2.1-Turbo",
-      "author": "Qwen",
-      "likes": 929,
-      "downloads": 17421,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"
-    },
-    {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 535,
+      "likes": 551,
       "downloads": 6158,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
     },
     {
+      "id": "Qwen/Qwen-Image-2.1-Turbo",
+      "author": "Qwen",
+      "likes": 938,
+      "downloads": 17421,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"
+    },
+    {
       "id": "abenzerps/Qwen-Image-2.1-Uncensored-Quantized",
       "author": "abenzerps",
-      "likes": 4421,
+      "likes": 4434,
       "downloads": 2477554,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized"
@@ -52,43 +52,43 @@
   ],
   "papers": [
     {
+      "title": "Behavioral Compositionality of Sparse Autoencoder Representations",
+      "summary": "Sparse autoencoder features are partially compositional but require interaction terms for accurate behavioral predictions and steering.",
+      "upvotes": 1,
+      "arxiv_id": "2610.21261",
+      "url": "https://huggingface.co/papers/2610.21261",
+      "githubRepo": "https://github.com/OpenSAE/SAE-Behavioral-Compositionality"
+    },
+    {
+      "title": "Diminishing Returns of Data in Sparse Autoencoders: Functional Behavior does not Guarantee Feature Reproducibility",
+      "summary": "Sparse autoencoders can be trained with far fewer activation tokens when data budgets align with evaluation goals, though feature-level reproducibility demands larger scales.",
+      "upvotes": 0,
+      "arxiv_id": "2610.20680",
+      "url": "https://huggingface.co/papers/2610.20680",
+      "githubRepo": null
+    },
+    {
+      "title": "LEASH: Uncertainty-Aware Weak-to-Strong Escalation and Oversight for Computer-Use Agents",
+      "summary": "LEASH is a training-free framework that uses latent uncertainty to escalate from a weak to a strong computer-use agent only when needed and monitors the strong agent afterward, reducing cost while maintaining high success.",
+      "upvotes": 2,
+      "arxiv_id": "2610.22280",
+      "url": "https://huggingface.co/papers/2610.22280",
+      "githubRepo": null
+    },
+    {
+      "title": "Scalable Weak-to-Strong Verifier Hardening for Agent Environments",
+      "summary": "The study proposes an automated weak-to-strong loop that hardens agent environment verifiers against reward hacking by iteratively finding and repairing vulnerabilities in isolated sandboxes.",
+      "upvotes": 0,
+      "arxiv_id": "2610.15924",
+      "url": "https://huggingface.co/papers/2610.15924",
+      "githubRepo": null
+    },
+    {
       "title": "LeanPRM: Lean-Grounded Process Supervision for Natural Language Proof Verification",
       "summary": "LeanPRM uses the Lean proof assistant to automatically generate step-level correctness labels for natural-language mathematical proofs, enabling scalable training of learned verifiers without human annotation.",
-      "upvotes": 1,
+      "upvotes": 3,
       "arxiv_id": "2610.17697",
       "url": "https://huggingface.co/papers/2610.17697",
-      "githubRepo": null
-    },
-    {
-      "title": "Equal CER, Unequal Damage: Severity-Weighted Character Error Rate for OCR",
-      "summary": "A new metric called semCER uses an LLM judge to weight grapheme edits by severity, improving alignment with human ratings over standard character error rate for OCR and vision-language models.",
-      "upvotes": 1,
-      "arxiv_id": "2610.20461",
-      "url": "https://huggingface.co/papers/2610.20461",
-      "githubRepo": "https://github.com/nguyenx2t/semcer"
-    },
-    {
-      "title": "PathFM: Fast Generative Forecasting of Multivariate Trajectories",
-      "summary": "PathFM is a trajectory-based forecasting model using flow matching to generate complete future paths, enabling efficient multi-path sampling and improved dependence modeling for time series.",
-      "upvotes": 1,
-      "arxiv_id": "2610.22358",
-      "url": "https://huggingface.co/papers/2610.22358",
-      "githubRepo": null
-    },
-    {
-      "title": "Learning to Read Out: Unembedding Dynamics in Language Model Pretraining",
-      "summary": "Hidden states encode task information before the readout expresses it, so behavioral timelines reflect readout learning rather than model acquisition, and faster readout training closes this gap earlier.",
-      "upvotes": 1,
-      "arxiv_id": "2610.21025",
-      "url": "https://huggingface.co/papers/2610.21025",
-      "githubRepo": "https://github.com/hematteo/learning-to-read-out"
-    },
-    {
-      "title": "Copy-Paste Language Models",
-      "summary": "Copy-Paste Language Models enhance in-context copying by adding a lightweight head that improves training efficiency, downstream performance, and long-context retrieval with minimal overhead.",
-      "upvotes": 1,
-      "arxiv_id": "2610.19247",
-      "url": "https://huggingface.co/papers/2610.19247",
       "githubRepo": null
     }
   ]

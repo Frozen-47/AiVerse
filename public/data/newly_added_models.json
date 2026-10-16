@@ -4,6 +4,84 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Unlimited-OCR",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by baidu, trending with over 4,744 community likes and 1,262,307 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "MIT",
+        "year": 2026,
+        "org": "baidu",
+        "size": "Open Weights",
+        "architecture": "baidu image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"baidu/Unlimited-OCR\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"baidu/Unlimited-OCR\")",
+        "benchmarks": "Trending Score: 355, Likes: 4,744, Downloads: 1,262,307",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/baidu/Unlimited-OCR",
+        "citations": [
+          {
+            "text": "baidu/Unlimited-OCR on Hugging Face",
+            "url": "https://huggingface.co/baidu/Unlimited-OCR"
+          }
+        ]
+      },
+      {
+        "name": "iris-3b",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by speridlabs. Trending with 42 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "speridlabs",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/speridlabs/iris-3b",
+        "benchmarks": "Trending Score: 34, Community Likes: 42",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/speridlabs/iris-3b",
+        "citations": [
+          {
+            "text": "speridlabs/iris-3b on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/speridlabs/iris-3b"
+          }
+        ]
+      },
+      {
+        "name": "UltraData-Stack-v3-L2",
+        "type": "Dataset",
+        "summary": "UltraData-Stack-v3-L2 \t    📦 UltraData Collection | 🌐 UltraData | 📖 Tech Report | 🤗 UltraData-Code | 🤗 UltraData-Code-L2 Classifier English | 中文 \t \t\t \t \t \t\t📚 Intr (27 likes, 919 downloads).",
+        "task": "AI Coding",
+        "license": "ODC-BY",
+        "year": 2026,
+        "org": "openbmb",
+        "size": "100M<n<1B",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"openbmb/UltraData-Stack-v3-L2\")",
+        "benchmarks": "Trending Score: 22, Likes: 27, Downloads: 919",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/openbmb/UltraData-Stack-v3-L2",
+        "citations": [
+          {
+            "text": "openbmb/UltraData-Stack-v3-L2 on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/openbmb/UltraData-Stack-v3-L2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-16",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "flux-3-image-klein-comfy",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by black-forest-labs, trending with over 394 community likes and 73,767 downloads on Hugging Face.",

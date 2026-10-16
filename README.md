@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-16)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **flux-3-image-klein-comfy** (`Model`), **minimax-h3-360-orbit** (`Platform`), **FDE-Gym** (`Dataset`) |
+| 📥 **Queued for Review** | **Unlimited-OCR** (`Model`), **iris-3b** (`Platform`), **UltraData-Stack-v3-L2** (`Dataset`) |
 | 🌟 **Tool of the Day** | **minimax-h3-character-swap-lora** (hugging-apps) — [Explore](https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) |
-| 📜 **Top Daily Paper** | [LeanPRM: Lean-Grounded Process Supervision for Nat...](https://huggingface.co/papers/2610.17697) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 16 Oct 2026 17:46:52 GMT` |
+| 📜 **Top Daily Paper** | [Behavioral Compositionality of Sparse Autoencoder ...](https://huggingface.co/papers/2610.21261) |
+| 🛡️ **Catalog Links Checked** | **19/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 16 Oct 2026 21:52:46 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

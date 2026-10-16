@@ -1,18 +1,38 @@
 {
-  "timestamp": "2026-10-16T17:46:48.116Z",
+  "timestamp": "2026-10-16T21:52:41.542Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 19,
+  "broken": 6,
   "issues": [
     {
-      "name": "GPT-4o",
-      "url": "https://openai.com/chatgpt",
+      "name": "OpenAI Platform",
+      "url": "https://platform.openai.com",
       "status": 403
     },
     {
-      "name": "Quizlet AI",
-      "url": "https://quizlet.com/features/quizlet-ai",
+      "name": "Perplexity AI",
+      "url": "https://www.perplexity.ai/",
       "status": 403
+    },
+    {
+      "name": "Poe",
+      "url": "https://poe.com",
+      "status": 403
+    },
+    {
+      "name": "Phind",
+      "url": "https://www.phind.com",
+      "status": 403
+    },
+    {
+      "name": "LMSYS Chatbot Arena Conversations",
+      "url": "https://chat.lmsys.org",
+      "status": "Network Error"
+    },
+    {
+      "name": "OpenWebText",
+      "url": "https://huggingface.co/datasets/openwebtext",
+      "status": 404
     }
   ]
 }
