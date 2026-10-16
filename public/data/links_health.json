@@ -1,28 +1,23 @@
 {
-  "timestamp": "2026-10-16T02:26:03.115Z",
+  "timestamp": "2026-10-16T13:31:46.974Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "UltraFeedback",
-      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
+      "name": "Codex",
+      "url": "https://openai.com/blog/openai-codex",
+      "status": 403
+    },
+    {
+      "name": "wan555",
+      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
       "status": 401
     },
     {
-      "name": "Arena-Hard-Auto",
-      "url": "https://github.com/sunshanghai/arena-hard-auto",
-      "status": 404
-    },
-    {
-      "name": "Grammarly",
-      "url": "https://www.grammarly.com",
-      "status": 405
-    },
-    {
-      "name": "LLaMA",
-      "url": "https://ai.meta.com/llama/",
-      "status": "Timeout"
+      "name": "Pi",
+      "url": "https://pi.ai",
+      "status": 403
     }
   ]
 }

@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-16T02:26:02.946Z",
+  "timestamp": "2026-10-16T13:31:46.412Z",
   "models": [
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 2409,
-      "downloads": 144280,
+      "likes": 2470,
+      "downloads": 151258,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
     },
     {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 1742,
-      "downloads": 75253,
+      "likes": 1788,
+      "downloads": 85612,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
     },
     {
       "id": "Qwen/Qwen-Image-2.1-Turbo",
       "author": "Qwen",
-      "likes": 881,
-      "downloads": 15315,
+      "likes": 916,
+      "downloads": 17421,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"
     },
     {
       "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
       "author": "openbmb",
-      "likes": 795,
-      "downloads": 9278,
+      "likes": 814,
+      "downloads": 17553,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
     },
     {
-      "id": "abenzerps/Qwen-Image-2.1-Uncensored-Quantized",
-      "author": "abenzerps",
-      "likes": 4391,
-      "downloads": 2415278,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized"
-    },
-    {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 480,
-      "downloads": 4048,
+      "likes": 516,
+      "downloads": 6158,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
+    },
+    {
+      "id": "abenzerps/Qwen-Image-2.1-Uncensored-Quantized",
+      "author": "abenzerps",
+      "likes": 4415,
+      "downloads": 2477554,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized"
     }
   ],
   "papers": [
     {
-      "title": "SCOPE: Semantic Bounded Credit Optimization for Prompt Engineering in Text-to-image Generation",
-      "summary": "SCOPE improves text-to-image prompt rewriting via reinforcement learning by aligning policy updates with semantic spans, boosting generation quality without extra rendering.",
+      "title": "Beyond Policy Rollouts: Embedding-Space Directional Exploration with Anchored Noise for LLM RLVR",
+      "summary": "EDEN improves reinforcement learning with verifiable rewards by injecting anchored embedding noise into rollout conditioning to increase diversity and strengthen group-relative advantage signals without altering inference.",
       "upvotes": 1,
-      "arxiv_id": "2610.22264",
-      "url": "https://huggingface.co/papers/2610.22264",
-      "githubRepo": "https://github.com/MAC-AutoML/SCOPE"
+      "arxiv_id": "2610.16105",
+      "url": "https://huggingface.co/papers/2610.16105",
+      "githubRepo": null
     },
     {
-      "title": "Orbia: Do Generated Videos Form a Consistent 3D World?",
-      "summary": "Orbia introduces a benchmark that systematically evaluates 3D consistency in interactive video world models through controlled exploration, revisit protocols, and multi-dimensional measurements of input preservation, content persistence, and geometric self-consistency.",
-      "upvotes": 8,
-      "arxiv_id": "2610.20693",
-      "url": "https://huggingface.co/papers/2610.20693",
-      "githubRepo": "https://github.com/worldbench/orbia"
-    },
-    {
-      "title": "AutoSFT: An Agentic System for Automated Data Research in Supervised Fine-Tuning",
-      "summary": "AutoSFT uses multi-agent collaboration to automate diverse supervised fine-tuning data actions, improving evaluation scores over single-agent systems by separating execution, analysis, and synthesis.",
+      "title": "One Bias Score, Two Factors: How Mitigations Affect Option Bias in Multiple-Choice Evaluation",
+      "summary": "Selection bias and order sensitivity in multiple-choice models are decomposed into flip rate and positional skew via pooled standard deviation, showing that prior correction and aggregation target different factors and should be reported together with accuracy.",
       "upvotes": 1,
-      "arxiv_id": "2610.22194",
-      "url": "https://huggingface.co/papers/2610.22194",
-      "githubRepo": "https://github.com/Thinking-Space/AutoSFT"
+      "arxiv_id": "2610.20993",
+      "url": "https://huggingface.co/papers/2610.20993",
+      "githubRepo": null
     },
     {
-      "title": "Speculative Forcing for Efficient Autoregressive Video Generation",
-      "summary": "Speculative Forcing accelerates few-step autoregressive video generation by accepting early token drafts and skipping unnecessary denoising steps while preserving output quality.",
-      "upvotes": 27,
-      "arxiv_id": "2610.22347",
-      "url": "https://huggingface.co/papers/2610.22347",
-      "githubRepo": "https://github.com/naver-ai/speculative-forcing"
+      "title": "Gen4P: Video Generators are 4D Perceivers",
+      "summary": "Gen4P repurposes a pretrained video generator into a feed-forward 4D perceiver that predicts geometry and motion from monocular video via on-demand cross-attention decoding and frozen depth priors.",
+      "upvotes": 1,
+      "arxiv_id": "2610.22371",
+      "url": "https://huggingface.co/papers/2610.22371",
+      "githubRepo": "https://github.com/yitongx/Gen4P"
     },
     {
-      "title": "OmniCompass: A Holistic Benchmark for Omni-Modal Video Grounding and Understanding",
-      "summary": "OmniCompass is a holistic benchmark for omni-modal video grounding and understanding that evaluates vision-language and audio-visual reasoning through temporal grounding, spatial grounding, and question answering tasks.",
-      "upvotes": 7,
-      "arxiv_id": "2610.18829",
-      "url": "https://huggingface.co/papers/2610.18829",
-      "githubRepo": "https://github.com/PolyU-VCLab/OmniCompass"
+      "title": "When the KV Cache Is Slower Than the GPU: Scaling Remote KV Tiers for Context-Parallel Prefill",
+      "summary": "Remote KV caching for long-context LLM serving can severely degrade latency unless the store is sharded by parallel rank, loaded asynchronously, and paired with high-bandwidth retrieval, yielding large throughput gains.",
+      "upvotes": 0,
+      "arxiv_id": "2610.21500",
+      "url": "https://huggingface.co/papers/2610.21500",
+      "githubRepo": null
+    },
+    {
+      "title": "Virtual Head Attention",
+      "summary": "Virtual Head Attention improves long-context model efficiency by reducing KV cache and compute while preserving quality through lightweight linear query and output transformations.",
+      "upvotes": 3,
+      "arxiv_id": "2610.17959",
+      "url": "https://huggingface.co/papers/2610.17959",
+      "githubRepo": "https://github.com/PaddlePaddle/VHA"
     }
   ]
 }

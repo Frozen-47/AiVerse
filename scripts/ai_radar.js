@@ -102,7 +102,7 @@ function updateSeedSql(entries) {
   }
 }
 
-// Helper to sync entries directly to Supabase
+// Helper to sync pending entries directly to Supabase Request List
 async function syncToSupabase(entriesToSync) {
   const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || 'https://iajivjjzfvkhullzfsom.supabase.co';
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -117,80 +117,54 @@ async function syncToSupabase(entriesToSync) {
   const isServiceRole = Boolean(serviceRoleKey);
   const cleanUrl = supabaseUrl.replace(/\/+$/, '');
 
-  console.log(`[Supabase Sync] Connecting to ${cleanUrl} (${isServiceRole ? 'Service Role Key' : 'Anon Key'})...`);
+  console.log(`[Supabase Sync] Sending ${entriesToSync.length} asset(s) to Supabase Request List (approved: false)...`);
 
-  // Try 1: If service role key is available, directly upsert approved entries
+  const payload = entriesToSync.map(entry => ({
+    name: entry.name,
+    type: entry.type,
+    task: entry.task,
+    summary: entry.summary,
+    org: entry.org || null,
+    license: entry.license || null,
+    year: entry.year || new Date().getFullYear(),
+    size: entry.size || null,
+    architecture: entry.architecture || null,
+    usage: entry.usage || null,
+    benchmarks: entry.benchmarks || null,
+    limitations: entry.limitations || null,
+    url: entry.url || null,
+    citations: entry.citations || [],
+    popular: false,
+    approved: false, // KEPT IN REQUEST LIST FOR MANUAL ADMIN VERIFICATION
+    submitted_by: 'daily-pulse-bot'
+  }));
+
+  // Attempt 1: Direct batch insert with ignore-duplicates (works with Service Role Key)
   if (isServiceRole) {
     try {
-      const payload = entriesToSync.map(e => ({ ...e, approved: true }));
       const res = await fetch(`${cleanUrl}/rest/v1/entries`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'apikey': keyToUse,
           'Authorization': `Bearer ${keyToUse}`,
-          'Prefer': 'resolution=merge-duplicates'
+          'Prefer': 'resolution=ignore-duplicates'
         },
         body: JSON.stringify(payload)
       });
       if (res.ok) {
-        console.log(`[Supabase Sync] ✅ Successfully upserted ${entriesToSync.length} approved entry/entries using Service Role.`);
+        console.log(`[Supabase Sync] 📥 Added ${entriesToSync.length} entry/entries to Supabase Request List using Service Role.`);
         return;
       }
     } catch (err) {
-      console.warn('[Supabase Sync] Direct service role upsert error:', err.message);
+      console.warn('[Supabase Sync] Service role request list insert error:', err.message);
     }
   }
 
-  // Try 2: Call sync_catalog_entry RPC function if available (SECURITY DEFINER)
-  let rpcSuccessCount = 0;
-  for (const entry of entriesToSync) {
-    try {
-      const res = await fetch(`${cleanUrl}/rest/v1/rpc/sync_catalog_entry`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': keyToUse,
-          'Authorization': `Bearer ${keyToUse}`
-        },
-        body: JSON.stringify({ entry_data: entry })
-      });
-      if (res.ok) {
-        rpcSuccessCount++;
-      }
-    } catch {
-      // RPC may not exist in database yet
-    }
-  }
-
-  if (rpcSuccessCount > 0) {
-    console.log(`[Supabase Sync] ✅ Successfully synced ${rpcSuccessCount}/${entriesToSync.length} entries to Supabase via RPC.`);
-    return;
-  }
-
-  // Try 3: Insert with approved=false so items are captured in database queue for admin approval
+  // Attempt 2: Row-by-row insert with anon key for community queue
   try {
     let pendingCount = 0;
-    for (const entry of entriesToSync) {
-      const payload = {
-        name: entry.name,
-        type: entry.type,
-        task: entry.task,
-        summary: entry.summary,
-        org: entry.org || null,
-        license: entry.license || null,
-        year: entry.year || new Date().getFullYear(),
-        size: entry.size || null,
-        architecture: entry.architecture || null,
-        usage: entry.usage || null,
-        benchmarks: entry.benchmarks || null,
-        limitations: entry.limitations || null,
-        url: entry.url || null,
-        citations: entry.citations || [],
-        popular: false,
-        approved: false,
-        submitted_by: 'pulse-sync-bot'
-      };
+    for (const item of payload) {
       const res = await fetch(`${cleanUrl}/rest/v1/entries`, {
         method: 'POST',
         headers: {
@@ -199,15 +173,15 @@ async function syncToSupabase(entriesToSync) {
           'Authorization': `Bearer ${keyToUse}`,
           'Prefer': 'return=minimal'
         },
-        body: JSON.stringify([payload])
+        body: JSON.stringify([item])
       });
       if (res.ok) pendingCount++;
     }
     if (pendingCount > 0) {
-      console.log(`[Supabase Sync] 📥 Added ${pendingCount} entry/entries to Supabase queue (pending admin approval).`);
+      console.log(`[Supabase Sync] 📥 Added ${pendingCount} entry/entries to Supabase Request List (pending admin approval).`);
     }
   } catch (err) {
-    console.warn('[Supabase Sync] Could not insert pending entries:', err.message);
+    console.warn('[Supabase Sync] Could not insert pending entries into request list:', err.message);
   }
 }
 
@@ -217,6 +191,20 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
   const existingEntries = readRawEntries();
   const existingNames = new Set(existingEntries.map(e => (e.name || '').toLowerCase().trim()));
   const existingUrls = new Set(existingEntries.map(e => (e.url || '').toLowerCase().trim()));
+
+  // Also include items already pending in request list to prevent duplicate submissions
+  const pendingFile = path.join(publicDataDir, 'pending_pulse_requests.json');
+  if (fs.existsSync(pendingFile)) {
+    try {
+      const pendingList = JSON.parse(fs.readFileSync(pendingFile, 'utf-8'));
+      if (Array.isArray(pendingList)) {
+        pendingList.forEach(p => {
+          if (p.name) existingNames.add(p.name.toLowerCase().trim());
+          if (p.url) existingUrls.add(p.url.toLowerCase().trim());
+        });
+      }
+    } catch {}
+  }
 
   const isAlreadyPresent = (name, url) => {
     return existingNames.has((name || '').toLowerCase().trim()) || existingUrls.has((url || '').toLowerCase().trim());
@@ -278,7 +266,9 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
           usage: `from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained("${m.id}", device_map="auto")\ntokenizer = AutoTokenizer.from_pretrained("${m.id}")`,
           benchmarks: `Trending Score: ${Math.round(m.trendingScore || 0)}, Likes: ${(m.likes || 0).toLocaleString()}, Downloads: ${(m.downloads || 0).toLocaleString()}`,
           limitations: `Requires GPU VRAM or quantization for efficient local deployment.`,
-          popular: true,
+          popular: false,
+          approved: false,
+          submitted_by: 'daily-pulse-bot',
           url: modelUrl,
           citations: [{ text: `${m.id} on Hugging Face`, url: modelUrl }]
         };
@@ -333,7 +323,9 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
           usage: `Launch and explore the platform directly in your browser: ${spaceUrl}`,
           benchmarks: `Trending Score: ${Math.round(s.trendingScore || 0)}, Community Likes: ${(s.likes || 0).toLocaleString()}`,
           limitations: `Cloud container subject to community traffic quotas and queue times.`,
-          popular: true,
+          popular: false,
+          approved: false,
+          submitted_by: 'daily-pulse-bot',
           url: spaceUrl,
           citations: [{ text: `${s.id} on Hugging Face Spaces`, url: spaceUrl }]
         };
@@ -386,7 +378,9 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
           usage: `git clone ${repo.html_url}\ncd ${repo.name}\npip install -e .`,
           benchmarks: `GitHub Stars: ${(repo.stargazers_count || 0).toLocaleString()}, Forks: ${(repo.forks_count || 0).toLocaleString()}`,
           limitations: `Requires local Python environment and dependency configuration.`,
-          popular: true,
+          popular: false,
+          approved: false,
+          submitted_by: 'daily-pulse-bot',
           url,
           citations: [{ text: `${repo.full_name} on GitHub`, url }]
         };
@@ -447,7 +441,9 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
           usage: `from datasets import load_dataset\n\ndataset = load_dataset("${d.id}")`,
           benchmarks: `Trending Score: ${Math.round(d.trendingScore || 0)}, Likes: ${(d.likes || 0).toLocaleString()}, Downloads: ${(d.downloads || 0).toLocaleString()}`,
           limitations: `Subject to licensing compliance and dataset-specific terms of use.`,
-          popular: (d.likes || 0) > 100,
+          popular: false,
+          approved: false,
+          submitted_by: 'daily-pulse-bot',
           url: dsUrl,
           citations: [{ text: `${d.id} on Hugging Face Datasets`, url: dsUrl }]
         };
@@ -462,36 +458,43 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
     console.warn('[Ingest] Dataset ingestion warning:', err.message);
   }
 
-  // ── Write newly added items into src/data.ts ──
+  // ── Record newly queued items into pending_pulse_requests.json (Request List) ──
   if (added.length > 0) {
-    const dataPath = path.join(rootDir, 'src', 'data.ts');
-    let content = fs.readFileSync(dataPath, 'utf-8');
+    console.log(`[Ingest] 📥 Queued ${added.length} newly discovered asset(s) in Request List (Pending Admin Verification):`);
+    added.forEach(a => console.log(`   • [${a.type}] ${a.name} (${a.org})`));
 
-    const formatted = added.map(entry => '  ' + JSON.stringify(entry, null, 4).replace(/\n/g, '\n  ')).join(',\n');
-    const target = /(\r?\n\];\s*\r?\nexport const typeFilters)/;
+    // Update tracking metadata for commit messages and status
+    fs.writeFileSync(path.join(publicDataDir, 'latest_added_model.txt'), added[0].name, 'utf-8');
 
-    if (target.test(content)) {
-      content = content.replace(target, `,\n${formatted}$1`);
-      fs.writeFileSync(dataPath, content, 'utf-8');
-      console.log(`[Ingest] ✨ Added ${added.length} new asset(s) to src/data.ts:`);
-      added.forEach(a => console.log(`   • [${a.type}] ${a.name} (${a.org})`));
-
-      // Update tracking metadata
-      fs.writeFileSync(path.join(publicDataDir, 'latest_added_model.txt'), added[0].name, 'utf-8');
-
-      const historyPath = path.join(publicDataDir, 'newly_added_models.json');
-      let history = [];
-      if (fs.existsSync(historyPath)) {
-        try { history = JSON.parse(fs.readFileSync(historyPath, 'utf-8')); } catch {}
-      }
-      history.unshift({
-        date: new Date().toISOString().split('T')[0],
-        assets: added
-      });
-      fs.writeFileSync(historyPath, JSON.stringify(history.slice(0, 100), null, 2));
+    // Save/update public/data/pending_pulse_requests.json
+    const pendingPath = path.join(publicDataDir, 'pending_pulse_requests.json');
+    let pendingList = [];
+    if (fs.existsSync(pendingPath)) {
+      try { pendingList = JSON.parse(fs.readFileSync(pendingPath, 'utf-8')); } catch {}
     }
+    for (const a of added) {
+      if (!pendingList.some(p => (p.name || '').toLowerCase() === (a.name || '').toLowerCase())) {
+        pendingList.unshift({
+          ...a,
+          created_at: new Date().toISOString()
+        });
+      }
+    }
+    fs.writeFileSync(pendingPath, JSON.stringify(pendingList, null, 2), 'utf-8');
+
+    const historyPath = path.join(publicDataDir, 'newly_added_models.json');
+    let history = [];
+    if (fs.existsSync(historyPath)) {
+      try { history = JSON.parse(fs.readFileSync(historyPath, 'utf-8')); } catch {}
+    }
+    history.unshift({
+      date: new Date().toISOString().split('T')[0],
+      status: 'queued_in_review_list',
+      assets: added
+    });
+    fs.writeFileSync(historyPath, JSON.stringify(history.slice(0, 100), null, 2));
   } else {
-    console.log('[Ingest] Catalog is fully up to date; no new external assets ingested today.');
+    console.log('[Ingest] Catalog and Request List are fully up to date; no new external assets queued.');
   }
 
   return added;
@@ -745,7 +748,8 @@ function generatePulseDocs(stats, trending, health, security, toolOfTheDay, newl
 
   let newItemsSection = '';
   if (newlyIngested && newlyIngested.length > 0) {
-    newItemsSection = `## 🆕 Newly Ingested Assets Today (${newlyIngested.length})\n\n`;
+    newItemsSection = `## 📥 Newly Queued Assets for Review (${newlyIngested.length})\n\n`;
+    newItemsSection += `> Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.\n\n`;
     for (const item of newlyIngested) {
       newItemsSection += `### **${item.name}** (\`${item.type}\` • *${item.org}*)\n> ${item.summary}\n\n`;
       newItemsSection += `- 🏷️ **Domain & License**: \`${item.task}\` • \`${item.license}\` (${item.year})\n`;
@@ -791,9 +795,9 @@ function generatePulseDocs(stats, trending, health, security, toolOfTheDay, newl
 
   const typeBreakdown = stats ? Object.entries(stats.byType).map(([k, v]) => `**${k}s**: ${v}`).join(' • ') : 'N/A';
 
-  const pulseContent = `# ⚡ AiVerse Daily Pulse (${today})
+  const radarContent = `# ⚡ AiVerse AI Radar (${today})
 
-> Automatically generated daily intelligence report syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
+> Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
 *Last Synchronized: \`${timeUtc}\`*
 
@@ -806,7 +810,7 @@ ${modelsTable}
 
 ---
 
-## 📜 Daily Breakthrough Research Papers
+## 📜 Breakthrough Research Papers
 *Top papers curated and upvoted today*
 
 ${papersTable}
@@ -820,16 +824,16 @@ ${papersTable}
 
 ---
 
-## 🛡️ Daily System & Ecosystem Health
+## 🛡️ System & Ecosystem Health
 - **Sample Link Health Check**: \`${health.healthy}/${health.checked}\` healthy verified (\`${health.broken}\` flagged / timed out)
 - **Dependency Security**: \`${security.vulnerabilities.total}\` advisories flagged across \`${security.totalDependencies}\` dependencies (\`${security.vulnerabilities.critical}\` critical, \`${security.vulnerabilities.high}\` high)
 
 ---
-*Generated automatically by GitHub Actions daily pulse workflow.*
+*Generated automatically by GitHub Actions AI Radar & Ecosystem Sync.*
 `;
 
-  fs.writeFileSync(path.join(rootDir, 'DAILY_PULSE.md'), pulseContent, 'utf-8');
-  console.log('[Docs] Updated DAILY_PULSE.md successfully.');
+  fs.writeFileSync(path.join(rootDir, 'AI_RADAR.md'), radarContent, 'utf-8');
+  console.log('[Docs] Updated AI_RADAR.md successfully.');
 
   try {
     const readmePath = path.join(rootDir, 'README.md');
@@ -838,11 +842,11 @@ ${papersTable}
     let newItemsRow = '';
     if (newlyIngested && newlyIngested.length > 0) {
       const summaryList = newlyIngested.map(i => `**${i.name}** (\`${i.type}\`)`).join(', ');
-      newItemsRow = `| 🆕 **New Assets Added** | ${summaryList} |\n`;
+      newItemsRow = `| 📥 **Queued for Review** | ${summaryList} |\n`;
     }
 
-    const pulseSnippet = `<!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (${today})
+    const radarSnippet = `<!-- AI_RADAR:START -->
+### ⚡ AiVerse AI Radar (${today})
 | Metric | Status / Count |
 | :--- | :--- |
 ${newItemsRow}| 🌟 **Tool of the Day** | **${tool ? tool.name : 'N/A'}** (${tool ? tool.org : ''}) — [Explore](${tool?.url || '#'}) |
@@ -850,24 +854,31 @@ ${newItemsRow}| 🌟 **Tool of the Day** | **${tool ? tool.name : 'N/A'}** (${to
 | 🔥 **Top Trending Model** | [${trending.models[0]?.id || 'N/A'}](${trending.models[0]?.url || '#'}) |
 | 📜 **Top Daily Paper** | [${trending.papers[0]?.title?.slice(0, 50) || 'N/A'}...](${trending.papers[0]?.url || '#'}) |
 | 🛡️ **Catalog Links Checked** | **${health.healthy}/${health.checked}** operational |
-| 🕒 **Last Daily Run** | \`${timeUtc}\` |
+| 🕒 **Last Synchronized** | \`${timeUtc}\` |
 
-*Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
-<!-- DAILY_PULSE:END -->`;
+*Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
+<!-- AI_RADAR:END -->`;
 
-    if (readme.includes('<!-- DAILY_PULSE:START -->') && readme.includes('<!-- DAILY_PULSE:END -->')) {
+    if (readme.includes('<!-- AI_RADAR:START -->') && readme.includes('<!-- AI_RADAR:END -->')) {
       readme = readme.replace(
-        /<!-- DAILY_PULSE:START -->[\s\S]*?<!-- DAILY_PULSE:END -->/,
-        pulseSnippet
+        /<!-- AI_RADAR:START -->[\s\S]*?<!-- AI_RADAR:END -->/,
+        radarSnippet
       );
       fs.writeFileSync(readmePath, readme, 'utf-8');
-      console.log('[Docs] Updated README.md daily pulse section.');
+      console.log('[Docs] Updated README.md AI Radar section.');
+    } else if (readme.includes('<!-- DAILY_PULSE:START -->') && readme.includes('<!-- DAILY_PULSE:END -->')) {
+      readme = readme.replace(
+        /<!-- DAILY_PULSE:START -->[\s\S]*?<!-- DAILY_PULSE:END -->/,
+        radarSnippet
+      );
+      fs.writeFileSync(readmePath, readme, 'utf-8');
+      console.log('[Docs] Migrated README.md to AI Radar section.');
     } else {
       const regex = /(## ✨ Features\r?\n)/;
       if (regex.test(readme)) {
-        readme = readme.replace(regex, `$1\n${pulseSnippet}\n\n`);
+        readme = readme.replace(regex, `$1\n${radarSnippet}\n\n`);
         fs.writeFileSync(readmePath, readme, 'utf-8');
-        console.log('[Docs] Added daily pulse section to README.md.');
+        console.log('[Docs] Added AI Radar section to README.md.');
       }
     }
   } catch (err) {
@@ -876,7 +887,7 @@ ${newItemsRow}| 🌟 **Tool of the Day** | **${tool ? tool.name : 'N/A'}** (${to
 }
 
 async function run() {
-  console.log('🚀 Running AiVerse Daily Pulse & Multi-Category Ingestion...');
+  console.log('🚀 Running AiVerse AI Radar & Multi-Category Discovery...');
   
   // Auto-ingest new Model, Platform, Framework, and Dataset
   const newlyIngested = await ingestNewAssets({
@@ -891,7 +902,7 @@ async function run() {
   // Update SQL seed file
   updateSeedSql(entries);
 
-  // Sync newly ingested items directly to Supabase
+  // Sync newly ingested items directly to Supabase Request List
   if (newlyIngested.length > 0) {
     await syncToSupabase(newlyIngested);
   }
@@ -900,7 +911,7 @@ async function run() {
   const health = await checkLinksHealth(urls, 25);
   const security = getSecurityAudit();
   generatePulseDocs(stats, trending, health, security, toolOfTheDay, newlyIngested);
-  console.log('✨ Daily Pulse completed successfully!');
+  console.log('✨ AI Radar sync completed successfully!');
 }
 
 run();

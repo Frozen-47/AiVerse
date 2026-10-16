@@ -1,4 +1,4 @@
-name: Daily AI Pulse & Auto Commit
+name: AI Radar & Ecosystem Sync
 
 on:
   schedule:
@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  daily-pulse:
+  ai-radar:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,10 +25,10 @@ jobs:
         with:
           node-version: 20
 
-      - name: Run Daily Pulse Sync
-        run: node scripts/daily_pulse.js
+      - name: Run AI Radar Sync
+        run: node scripts/ai_radar.js
 
-      - name: Commit and push daily intelligence updates
+      - name: Commit and push AI radar intelligence updates
         run: |
           git config --local user.name "Sabareesh G"
           git config --local user.email "sabareeshgm47@gmail.com"
@@ -36,15 +36,15 @@ jobs:
           export GIT_AUTHOR_EMAIL="sabareeshgm47@gmail.com"
           export GIT_COMMITTER_NAME="Sabareesh G"
           export GIT_COMMITTER_EMAIL="sabareeshgm47@gmail.com"
-          git add src/data.ts public/data/ DAILY_PULSE.md README.md supabase/seed_entries.sql
+          git add src/data.ts public/data/ AI_RADAR.md README.md supabase/seed_entries.sql
           if git diff --staged --quiet; then
-            echo "No updates to commit today."
+            echo "No updates to commit."
           else
             if [ -f public/data/latest_added_model.txt ] && [ -s public/data/latest_added_model.txt ]; then
               MODEL_NAME=$(cat public/data/latest_added_model.txt)
-              git commit -m "chore(pulse): ingest ${MODEL_NAME} & update AI pulse [skip ci]"
+              git commit -m "chore(radar): queue ${MODEL_NAME} for review & sync AI radar [skip ci]"
             else
-              git commit -m "chore(pulse): sync AI trends, catalog metrics & ecosystem health [skip ci]"
+              git commit -m "chore(radar): sync AI trends, catalog metrics & ecosystem health [skip ci]"
             fi
             git pull --rebase origin ${GITHUB_REF#refs/heads/} || true
             git push origin HEAD:${{ github.ref }}

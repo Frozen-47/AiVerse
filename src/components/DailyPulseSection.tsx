@@ -80,16 +80,16 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-2">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-500" />
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
-              Live Daily Pulse
+              Live AI Radar
             </span>
           </div>
           <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
-            Today's AI Pulse & Spotlight
+            Live AI Radar & Ecosystem Spotlight
           </h3>
           <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
-            Synchronized daily: Featured tool of the day, top trending open-weights, and research papers.
+            Real-time ecosystem radar: Trending foundation models, featured tool of the day, and breakthrough research papers.
           </p>
         </div>
 

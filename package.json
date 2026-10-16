@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "daily-pulse": "node scripts/daily_pulse.js"
+    "ai-radar": "node scripts/ai_radar.js",
+    "daily-pulse": "node scripts/ai_radar.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.105.4",

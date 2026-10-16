@@ -13,20 +13,20 @@
 **AiVerse** is an open-source platform that organizes and explains different AI tools, models, and technologies in one centralized location. Think of it as a Wikipedia for AI — making artificial intelligence more accessible and understandable for everyone.
 ## ✨ Features
 
-<!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-16)
+<!-- AI_RADAR:START -->
+### ⚡ AiVerse AI Radar (2026-10-16)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **drama-3** (`Model`), **shorts** (`Platform`), **china-a-share-l2-level2-limit-order-book-tick-data** (`Dataset`) |
+| 📥 **Queued for Review** | **LFM2.5-24B-A2B** (`Model`), **qwen-qwen-image-2-1-turbo** (`Platform`), **cyber-security** (`Dataset`) |
 | 🌟 **Tool of the Day** | **minimax-h3-character-swap-lora** (hugging-apps) — [Explore](https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) |
-| 📜 **Top Daily Paper** | [SCOPE: Semantic Bounded Credit Optimization for Pr...](https://huggingface.co/papers/2610.22264) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Daily Run** | `Fri, 16 Oct 2026 02:26:10 GMT` |
+| 📜 **Top Daily Paper** | [Beyond Policy Rollouts: Embedding-Space Directiona...](https://huggingface.co/papers/2610.16105) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 16 Oct 2026 13:31:51 GMT` |
 
-*Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
-<!-- DAILY_PULSE:END -->
+*Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
+<!-- AI_RADAR:END -->
 
 
 - 🗄️ **Dynamic Database** - Comprehensive catalog of models, frameworks, datasets, and platforms synced with Supabase.

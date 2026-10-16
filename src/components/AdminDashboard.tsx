@@ -277,7 +277,25 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         .order("created_at", { ascending: false });
 
       if (pendingErr) throw pendingErr;
-      setPendingEntries((pendingData as Entry[]) || []);
+      const loadedPending: Entry[] = (pendingData as Entry[]) || [];
+
+      // Also merge any automated daily pulse requests waiting for review
+      try {
+        const pulseRes = await fetch("/data/pending_pulse_requests.json");
+        if (pulseRes.ok) {
+          const pulseItems = await pulseRes.json();
+          if (Array.isArray(pulseItems)) {
+            const existingNames = new Set(loadedPending.map((p) => (p.name || "").toLowerCase().trim()));
+            pulseItems.forEach((item: Entry) => {
+              if (item && item.name && !existingNames.has(item.name.toLowerCase().trim())) {
+                loadedPending.push({ ...item, approved: false, submitted_by: item.submitted_by || "daily-pulse-bot" });
+              }
+            });
+          }
+        }
+      } catch {}
+
+      setPendingEntries(loadedPending);
 
       // 2. Fetch approved entries (approved = true)
       const { data: approvedData, error: approvedErr } = await supabase
@@ -400,12 +418,19 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const handleApprove = async (entry: Entry) => {
     setActioningId(entry.name);
     try {
-      const { error: err } = await supabase
+      const { data: updated, error: err } = await supabase
         .from("entries")
         .update({ approved: true })
-        .eq("name", entry.name);
+        .eq("name", entry.name)
+        .select();
 
-      if (err) throw err;
+      if (err || !updated || updated.length === 0) {
+        // Fallback: upsert into Supabase catalog as approved
+        const { error: upsertErr } = await supabase
+          .from("entries")
+          .upsert([{ ...entry, approved: true, popular: entry.popular || false }]);
+        if (upsertErr && err) throw err;
+      }
 
       setPendingEntries((prev) => prev.filter((e) => e.name !== entry.name));
       setApprovedEntries((prev) => [{ ...entry, approved: true }, ...prev]);
@@ -424,12 +449,16 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     setActioningId("batch_approve");
     try {
       const names = pendingEntries.map((e) => e.name);
-      const { error: err } = await supabase
+      await supabase
         .from("entries")
         .update({ approved: true })
         .in("name", names);
 
-      if (err) throw err;
+      // Also ensure batch upsert for items originating from local request list
+      const payload = pendingEntries.map((e) => ({ ...e, approved: true }));
+      await supabase
+        .from("entries")
+        .upsert(payload, { onConflict: "name" });
 
       const count = pendingEntries.length;
       setApprovedEntries((prev) => [
@@ -1706,18 +1735,25 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                               </td>
                               <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.task}</td>
                               <td className="px-3 py-3">
-                                <div className="flex items-center gap-1.5">
-                                  <div className="w-5 h-5 rounded-full overflow-hidden bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center text-[9px] font-bold">
-                                    {submitter?.avatarUrl ? (
-                                      <img src={submitter.avatarUrl} alt="" className="w-full h-full object-cover" />
-                                    ) : (
-                                      submitter?.displayName ? submitter.displayName[0].toUpperCase() : "U"
-                                    )}
-                                  </div>
-                                  <span className="text-[#202124] dark:text-[#e8eaed] truncate max-w-[110px]">
-                                    {submitter ? submitter.displayName : "Anonymous"}
-                                  </span>
-                                </div>
+                                  {entry.submitted_by === "daily-pulse-bot" ? (
+                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#e8f0fe] text-[#1967d2] dark:bg-[#1a2e4c] dark:text-[#a8c7fa] border border-[#1967d2]/20">
+                                      <Sparkles size={11} className="text-[#1967d2] dark:text-[#a8c7fa]" />
+                                      Daily Pulse Bot
+                                    </span>
+                                  ) : (
+                                    <div className="flex items-center gap-1.5">
+                                      <div className="w-5 h-5 rounded-full overflow-hidden bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center text-[9px] font-bold">
+                                        {submitter?.avatarUrl ? (
+                                          <img src={submitter.avatarUrl} alt="" className="w-full h-full object-cover" />
+                                        ) : (
+                                          submitter?.displayName ? submitter.displayName[0].toUpperCase() : "U"
+                                        )}
+                                      </div>
+                                      <span className="text-[#202124] dark:text-[#e8eaed] truncate max-w-[110px]">
+                                        {submitter ? submitter.displayName : "Community Member"}
+                                      </span>
+                                    </div>
+                                  )}
                               </td>
                               <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">
                                 {entry.license} · {entry.size}
