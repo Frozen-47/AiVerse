@@ -139,7 +139,7 @@ const Inner: React.FC = () => {
       if (entry) {
         navigate(route, { entry: entry.name });
       } else {
-        navigate(route, { entry: null });
+        navigate(route, { entry: null, replace: true });
       }
     },
     [route, navigate]

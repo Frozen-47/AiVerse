@@ -226,7 +226,7 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onBackToHome }) 
               </h2>
             </div>
             <p className={`text-[13px] leading-relaxed font-light ${t.textSecondary}`}>
-              These Terms of Service (&quot;Terms&quot;) constitute a legally binding agreement between you (&quot;User,&quot; &quot;Developer,&quot; or &quot;Contributor&quot;) and <strong>AiVerse</strong> (&quot;Platform,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), accessible at <a href="https://aiverse.frozenn.in" className="text-emerald-400 hover:text-emerald-300 hover:underline font-semibold">https://aiverse.frozenn.in</a>.
+              These Terms of Service (&quot;Terms&quot;) constitute a legally binding agreement between you (&quot;User,&quot; &quot;Developer,&quot; or &quot;Contributor&quot;) and <strong>AiVerse</strong> (&quot;Platform,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), accessible at <a href={typeof window !== "undefined" ? window.location.origin : "https://aiverse.frozenn.in"} className="text-emerald-400 hover:text-emerald-300 hover:underline font-semibold">{typeof window !== "undefined" ? window.location.origin : "https://aiverse.frozenn.in"}</a>.
             </p>
             <p className={`text-[13px] leading-relaxed font-light ${t.textSecondary}`}>
               By accessing our website, querying our catalog, utilizing the Discovery Wizard, or authenticating an account, you represent and warrant that:

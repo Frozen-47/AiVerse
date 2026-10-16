@@ -1,5 +1,76 @@
 [
   {
+    "date": "2026-10-16",
+    "assets": [
+      {
+        "name": "humanizer",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by jialinyyzz, trending with over 1,783 community likes and 85,612 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "jialinyyzz",
+        "size": "Open Weights",
+        "architecture": "jialinyyzz text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"jialinyyzz/humanizer\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"jialinyyzz/humanizer\")",
+        "benchmarks": "Trending Score: 859, Likes: 1,783, Downloads: 85,612",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": true,
+        "url": "https://huggingface.co/jialinyyzz/humanizer",
+        "citations": [
+          {
+            "text": "jialinyyzz/humanizer on Hugging Face",
+            "url": "https://huggingface.co/jialinyyzz/humanizer"
+          }
+        ]
+      },
+      {
+        "name": "qwen-image-21-uncensored",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vclnhihihi. Trending with 117 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "vclnhihihi",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored",
+        "benchmarks": "Trending Score: 93, Community Likes: 117",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": true,
+        "url": "https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored",
+        "citations": [
+          {
+            "text": "vclnhihihi/qwen-image-21-uncensored on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored"
+          }
+        ]
+      },
+      {
+        "name": "openai-math",
+        "type": "Dataset",
+        "summary": "openai/math as Harbor environments \t Experimental. Built on a research release that is itself new and not yet independently reviewed. Expect rough edges, and read any p (93 likes, 6,915 downloads).",
+        "task": "AI Coding",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "FineEnvs",
+        "size": "n<1K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"FineEnvs/openai-math\")",
+        "benchmarks": "Trending Score: 88, Likes: 93, Downloads: 6,915",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "url": "https://huggingface.co/datasets/FineEnvs/openai-math",
+        "citations": [
+          {
+            "text": "FineEnvs/openai-math on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/FineEnvs/openai-math"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-08",
     "assets": [
       {

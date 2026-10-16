@@ -1,18 +1,38 @@
 {
-  "timestamp": "2026-10-08T03:44:23.192Z",
+  "timestamp": "2026-10-16T12:00:18.224Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 19,
+  "broken": 6,
   "issues": [
     {
-      "name": "Midjourney (Platform)",
-      "url": "https://www.midjourney.com/",
+      "name": "Quizlet AI",
+      "url": "https://quizlet.com/features/quizlet-ai",
       "status": 403
     },
     {
-      "name": "Codex",
-      "url": "https://openai.com/blog/openai-codex",
+      "name": "Ideogram",
+      "url": "https://ideogram.ai",
       "status": 403
+    },
+    {
+      "name": "Canva AI",
+      "url": "https://www.canva.com/ai-image-generator",
+      "status": 403
+    },
+    {
+      "name": "Google Gemini",
+      "url": "https://gemini.google.com",
+      "status": "Network Error"
+    },
+    {
+      "name": "Tome",
+      "url": "https://tome.app",
+      "status": 404
+    },
+    {
+      "name": "ERNIE Bot",
+      "url": "https://yiyan.baidu.com",
+      "status": "Timeout"
     }
   ]
 }

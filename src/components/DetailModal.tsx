@@ -190,6 +190,16 @@ function CompareTable({
 
 function generateCodeSnippets(entry: Entry): Record<CodeLang, string> {
   const slug = entry.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const nameLower = entry.name.toLowerCase();
+  const orgLower = (entry.org || "").toLowerCase();
+
+  const isOpenAI = orgLower.includes("openai") || nameLower.includes("gpt") || nameLower.includes("o1") || nameLower.includes("o3") || nameLower.includes("whisper") || nameLower.includes("dall-e");
+  const isAnthropic = orgLower.includes("anthropic") || nameLower.includes("claude");
+  const isDeepSeek = orgLower.includes("deepseek");
+  const isGoogle = orgLower.includes("google") || nameLower.includes("gemini") || nameLower.includes("gemma");
+  const isMistral = orgLower.includes("mistral");
+  const isDataset = entry.type === "Dataset";
+  const isFramework = entry.type === "Framework" || entry.type === "Platform";
 
   let pythonSnippet = entry.usage?.trim() || "";
   const isRealPython =
@@ -200,64 +210,220 @@ function generateCodeSnippets(entry: Entry): Record<CodeLang, string> {
     pythonSnippet.includes("client =");
 
   if (!isRealPython) {
-    pythonSnippet = `# Python SDK Quickstart for ${entry.name}
+    if (isOpenAI) {
+      pythonSnippet = `# Python Quickstart with OpenAI SDK
+from openai import OpenAI
+
+client = OpenAI()
+response = client.chat.completions.create(
+    model="${nameLower}",
+    messages=[{"role": "user", "content": "Explain core intuition behind this architecture."}]
+)
+print(response.choices[0].message.content)`;
+    } else if (isAnthropic) {
+      pythonSnippet = `# Python Quickstart with Anthropic SDK
+import anthropic
+
+client = anthropic.Anthropic()
+message = client.messages.create(
+    model="${nameLower}",
+    max_tokens=1024,
+    messages=[{"role": "user", "content": "Explain core intuition behind this architecture."}]
+)
+print(message.content[0].text)`;
+    } else if (isDeepSeek) {
+      pythonSnippet = `# Python Quickstart with DeepSeek API
+from openai import OpenAI
 import os
-import requests
 
-API_ENDPOINT = "https://api.aiverse.frozenn.in/v1/models/${slug}/generate"
-API_KEY = os.environ.get("AIVERSE_API_KEY", "YOUR_API_KEY")
+client = OpenAI(
+    api_key=os.environ.get("DEEPSEEK_API_KEY"),
+    base_url="https://api.deepseek.com"
+)
+response = client.chat.completions.create(
+    model="${nameLower.includes("r1") ? "deepseek-reasoner" : "deepseek-chat"}",
+    messages=[{"role": "user", "content": "Explain core intuition behind this architecture."}]
+)
+print(response.choices[0].message.content)`;
+    } else if (isGoogle) {
+      pythonSnippet = `# Python Quickstart with Google GenAI SDK
+from google import genai
 
-payload = {
-    "model": "${entry.name}",
-    "prompt": "Explain the core intuition behind quantum algorithms.",
-    "temperature": 0.7,
-    "max_tokens": 1024
-}
+client = genai.Client()
+response = client.models.generate_content(
+    model="${nameLower.includes("gemini") ? nameLower : "gemini-2.0-flash"}",
+    contents="Explain core intuition behind this architecture."
+)
+print(response.text)`;
+    } else if (isMistral) {
+      pythonSnippet = `# Python Quickstart with Mistral SDK
+from mistralai import Mistral
+import os
 
-headers = {
-    "Authorization": f"Bearer {API_KEY}",
-    "Content-Type": "application/json"
-}
+client = Mistral(api_key=os.environ.get("MISTRAL_API_KEY"))
+response = client.chat.complete(
+    model="${nameLower.includes("mistral") ? nameLower : "mistral-large-latest"}",
+    messages=[{"role": "user", "content": "Explain core intuition behind this architecture."}]
+)
+print(response.choices[0].message.content)`;
+    } else if (isDataset) {
+      pythonSnippet = `# Python Quickstart for Dataset: ${entry.name}
+from datasets import load_dataset
 
-response = requests.post(API_ENDPOINT, json=payload, headers=headers)
-print(response.json())`;
+dataset = load_dataset("${entry.org ? `${entry.org}/${slug}` : slug}")
+print(dataset)`;
+    } else if (isFramework) {
+      pythonSnippet = `# Python Quickstart for ${entry.name}
+# Install package: pip install ${slug.replace(/-/g, "_")}
+import ${slug.replace(/-/g, "_")}
+print("${entry.name} initialized successfully.")`;
+    } else {
+      pythonSnippet = `# Python Quickstart with Transformers
+from transformers import AutoModelForCausalLM, AutoTokenizer
+import torch
+
+model_id = "${entry.org ? `${entry.org}/${entry.name}` : entry.name}"
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+model = AutoModelForCausalLM.from_pretrained(
+    model_id,
+    torch_dtype=torch.bfloat16,
+    device_map="auto"
+)
+print(f"Loaded {model_id} model.")`;
+    }
   }
 
-  const jsSnippet = `// Node.js & Browser Fetch Quickstart for ${entry.name}
-const API_ENDPOINT = "https://api.aiverse.frozenn.in/v1/models/${slug}/generate";
-const API_KEY = process.env.AIVERSE_API_KEY || "YOUR_API_KEY";
+  let jsSnippet = "";
+  if (isOpenAI) {
+    jsSnippet = `// Node.js Quickstart with OpenAI SDK
+import OpenAI from "openai";
 
-async function runInference() {
-  const response = await fetch(API_ENDPOINT, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": \`Bearer \${API_KEY}\`,
-    },
-    body: JSON.stringify({
-      model: "${entry.name}",
-      prompt: "Explain the core intuition behind quantum algorithms.",
-      temperature: 0.7,
-      max_tokens: 1024,
-    }),
-  });
+const openai = new OpenAI();
+const completion = await openai.chat.completions.create({
+  model: "${nameLower}",
+  messages: [{ role: "user", content: "Explain core intuition behind this architecture." }],
+});
+console.log(completion.choices[0].message.content);`;
+  } else if (isAnthropic) {
+    jsSnippet = `// Node.js Quickstart with Anthropic SDK
+import Anthropic from "@anthropic-ai/sdk";
 
-  const data = await response.json();
-  console.log("Inference output:", data);
-}
+const anthropic = new Anthropic();
+const message = await anthropic.messages.create({
+  model: "${nameLower}",
+  max_tokens: 1024,
+  messages: [{ role: "user", content: "Explain core intuition behind this architecture." }],
+});
+console.log(message.content[0].text);`;
+  } else if (isDeepSeek) {
+    jsSnippet = `// Node.js Quickstart with DeepSeek API
+import OpenAI from "openai";
 
-runInference().catch(console.error);`;
+const openai = new OpenAI({
+  baseURL: "https://api.deepseek.com",
+  apiKey: process.env.DEEPSEEK_API_KEY,
+});
 
-  const curlSnippet = `# cURL / REST API Quickstart for ${entry.name}
-curl -X POST "https://api.aiverse.frozenn.in/v1/models/${slug}/generate" \\
+const completion = await openai.chat.completions.create({
+  model: "${nameLower.includes("r1") ? "deepseek-reasoner" : "deepseek-chat"}",
+  messages: [{ role: "user", content: "Explain core intuition behind this architecture." }],
+});
+console.log(completion.choices[0].message.content);`;
+  } else if (isGoogle) {
+    jsSnippet = `// Node.js Quickstart with Google Generative AI
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ model: "${nameLower.includes("gemini") ? nameLower : "gemini-2.0-flash"}" });
+const result = await model.generateContent("Explain core intuition behind this architecture.");
+console.log(result.response.text());`;
+  } else if (isMistral) {
+    jsSnippet = `// Node.js Quickstart with Mistral Client
+import { Mistral } from "@mistralai/mistralai";
+
+const client = new Mistral({ apiKey: process.env.MISTRAL_API_KEY });
+const response = await client.chat.complete({
+  model: "${nameLower.includes("mistral") ? nameLower : "mistral-large-latest"}",
+  messages: [{ role: "user", content: "Explain core intuition behind this architecture." }],
+});
+console.log(response.choices[0].message.content);`;
+  } else if (isFramework || isDataset) {
+    jsSnippet = `// JavaScript / Node.js for ${entry.name}
+// Package: npm install ${slug}
+// Documentation: ${entry.url || "https://github.com"}
+console.log("Explore ${entry.name} documentation at: ${entry.url || "official repository"}");`;
+  } else {
+    jsSnippet = `// Node.js Inference via Hugging Face SDK
+import { HfInference } from "@huggingface/inference";
+
+const hf = new HfInference(process.env.HF_TOKEN);
+const result = await hf.textGeneration({
+  model: "${entry.org ? `${entry.org}/${entry.name}` : entry.name}",
+  inputs: "Explain core intuition behind this architecture.",
+  parameters: { max_new_tokens: 512 },
+});
+console.log(result.generated_text);`;
+  }
+
+  let curlSnippet = "";
+  if (isOpenAI) {
+    curlSnippet = `# cURL / REST API for OpenAI
+curl https://api.openai.com/v1/chat/completions \\
   -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $AIVERSE_API_KEY" \\
+  -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -d '{
-    "model": "${entry.name}",
-    "prompt": "Explain the core intuition behind quantum algorithms.",
-    "temperature": 0.7,
-    "max_tokens": 1024
+    "model": "${nameLower}",
+    "messages": [{"role": "user", "content": "Explain core intuition behind this architecture."}]
   }'`;
+  } else if (isAnthropic) {
+    curlSnippet = `# cURL / REST API for Anthropic
+curl https://api.anthropic.com/v1/messages \\
+  -H "x-api-key: $ANTHROPIC_API_KEY" \\
+  -H "anthropic-version: 2023-06-01" \\
+  -H "content-type: application/json" \\
+  -d '{
+    "model": "${nameLower}",
+    "max_tokens": 1024,
+    "messages": [{"role": "user", "content": "Explain core intuition behind this architecture."}]
+  }'`;
+  } else if (isDeepSeek) {
+    curlSnippet = `# cURL / REST API for DeepSeek
+curl https://api.deepseek.com/chat/completions \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer $DEEPSEEK_API_KEY" \\
+  -d '{
+    "model": "${nameLower.includes("r1") ? "deepseek-reasoner" : "deepseek-chat"}",
+    "messages": [{"role": "user", "content": "Explain core intuition behind this architecture."}]
+  }'`;
+  } else if (isGoogle) {
+    curlSnippet = `# cURL / REST API for Google Gemini
+curl "https://generativelanguage.googleapis.com/v1beta/models/${nameLower.includes("gemini") ? nameLower : "gemini-2.0-flash"}:generateContent?key=$GEMINI_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "contents": [{"parts": [{"text": "Explain core intuition behind this architecture."}]}]
+  }'`;
+  } else if (isMistral) {
+    curlSnippet = `# cURL / REST API for Mistral
+curl https://api.mistral.ai/v1/chat/completions \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer $MISTRAL_API_KEY" \\
+  -d '{
+    "model": "${nameLower.includes("mistral") ? nameLower : "mistral-large-latest"}",
+    "messages": [{"role": "user", "content": "Explain core intuition behind this architecture."}]
+  }'`;
+  } else if (isFramework || isDataset) {
+    curlSnippet = `# Check official repository & release metadata
+curl -sL "${entry.url || "https://github.com"}" | head -n 30`;
+  } else {
+    curlSnippet = `# Hugging Face Serverless Inference API Quickstart
+curl https://api-inference.huggingface.co/models/${entry.org ? `${entry.org}/${entry.name}` : entry.name} \\
+  -H "Authorization: Bearer $HF_TOKEN" \\
+  -H "Content-Type: application/json" \\
+  -d '{"inputs": "Explain core intuition behind this architecture."}'
+
+# Or run locally using Ollama:
+# ollama run ${slug} "Explain core intuition behind this architecture."`;
+  }
 
   return {
     python: pythonSnippet,

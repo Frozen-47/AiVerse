@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- DAILY_PULSE:START -->
-### ⚡ Daily AI Pulse (2026-10-08)
+### ⚡ Daily AI Pulse (2026-10-16)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **embeddinggemma-2** (`Model`), **bfs-best-face-swap** (`Platform`), **jabarti-llm-dataset** (`Dataset`) |
-| 🌟 **Tool of the Day** | **DeepSeek-V3** (DeepSeek) — [Explore](https://www.deepseek.com) |
-| 🗄️ **Catalog Entries** | **349** AI assets tracked (280 featured) |
-| 🔥 **Top Trending Model** | [autotrust/JEV-27B-VL](https://huggingface.co/autotrust/JEV-27B-VL) |
-| 📜 **Top Daily Paper** | [Tetris3D: 3D Scene Generation With Objects That Fi...](https://huggingface.co/papers/2610.10539) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Daily Run** | `Thu, 08 Oct 2026 03:44:26 GMT` |
+| 🆕 **New Assets Added** | **humanizer** (`Model`), **qwen-image-21-uncensored** (`Platform`), **openai-math** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Qwen 2.5 (72B)** (Alibaba Cloud) — [Explore](https://github.com/QwenLM/Qwen2.5) |
+| 🗄️ **Catalog Entries** | **352** AI assets tracked (282 featured) |
+| 🔥 **Top Trending Model** | [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) |
+| 📜 **Top Daily Paper** | [Beyond Policy Rollouts: Embedding-Space Directiona...](https://huggingface.co/papers/2610.16105) |
+| 🛡️ **Catalog Links Checked** | **19/25** operational |
+| 🕒 **Last Daily Run** | `Fri, 16 Oct 2026 12:00:33 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->

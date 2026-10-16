@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-08T03:44:23.093Z",
+  "timestamp": "2026-10-16T12:00:17.669Z",
   "models": [
-    {
-      "id": "autotrust/JEV-27B-VL",
-      "author": "autotrust",
-      "likes": 2097,
-      "downloads": 1529210,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/autotrust/JEV-27B-VL"
-    },
-    {
-      "id": "Cloudflare/clef",
-      "author": "Cloudflare",
-      "likes": 1831,
-      "downloads": 9513,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Cloudflare/clef"
-    },
-    {
-      "id": "autotrust/GEV-26B-Decide",
-      "author": "autotrust",
-      "likes": 1394,
-      "downloads": 895867,
-      "pipeline_tag": "text-classification",
-      "url": "https://huggingface.co/autotrust/GEV-26B-Decide"
-    },
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 990,
-      "downloads": 7562,
+      "likes": 2460,
+      "downloads": 151258,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
     },
     {
-      "id": "Aleph-Alpha/Kolibri-1",
-      "author": "Aleph-Alpha",
-      "likes": 785,
-      "downloads": 5775,
+      "id": "jialinyyzz/humanizer",
+      "author": "jialinyyzz",
+      "likes": 1783,
+      "downloads": 85612,
       "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1"
+      "url": "https://huggingface.co/jialinyyzz/humanizer"
     },
     {
-      "id": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
-      "author": "abenzerps",
-      "likes": 3590,
-      "downloads": 1820627,
+      "id": "Qwen/Qwen-Image-2.1-Turbo",
+      "author": "Qwen",
+      "likes": 910,
+      "downloads": 17421,
       "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"
+    },
+    {
+      "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
+      "author": "openbmb",
+      "likes": 813,
+      "downloads": 17553,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
+    },
+    {
+      "id": "fishaudio/drama-3",
+      "author": "fishaudio",
+      "likes": 513,
+      "downloads": 6158,
+      "pipeline_tag": "text-to-speech",
+      "url": "https://huggingface.co/fishaudio/drama-3"
+    },
+    {
+      "id": "abenzerps/Qwen-Image-2.1-Uncensored-Quantized",
+      "author": "abenzerps",
+      "likes": 4411,
+      "downloads": 2477554,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized"
     }
   ],
   "papers": [
     {
-      "title": "Tetris3D: 3D Scene Generation With Objects That Fit Together",
-      "summary": "We propose Tetris3D, a generative framework for single-image 3D scene reconstruction that recovers objects which are physically and geometrically coherent as a ...",
-      "upvotes": 8,
-      "arxiv_id": "2610.10539",
-      "url": "https://huggingface.co/papers/2610.10539",
-      "githubRepo": "https://github.com/cvlab-kaist/Tetris3D"
-    },
-    {
-      "title": "SWE-Game: Can Coding Agents Build the Games We Want?",
-      "summary": "We introduce SWE-Game, a benchmark of 247 tasks grounded in 41 executable reference Godot games spanning 13 gameplay categories in 2D and 3D. Five task types co...",
-      "upvotes": 4,
-      "arxiv_id": "2609.33678",
-      "url": "https://huggingface.co/papers/2609.33678",
-      "githubRepo": null
-    },
-    {
-      "title": "DLoop: Looped Speculative Decoding",
-      "summary": "Speculative decoding accelerates autoregressive generation in large language models. In each drafting stage, a lightweight draft model proposes tokens that the ...",
-      "upvotes": 2,
-      "arxiv_id": "2610.07659",
-      "url": "https://huggingface.co/papers/2610.07659",
-      "githubRepo": null
-    },
-    {
-      "title": "RunningTab: Direct Workspace Interaction with Environment-Side Tabs",
-      "summary": "Much knowledge work produces new deliverables from files a workspace already holds, and LLM agents are beginning to take such work over. Through direct corpus i...",
-      "upvotes": 0,
-      "arxiv_id": "2610.10444",
-      "url": "https://huggingface.co/papers/2610.10444",
-      "githubRepo": null
-    },
-    {
-      "title": "UniWAM: Unified World-Action Model",
-      "summary": "Vision-language-action models benefit from the understanding and reasoning capabilities of pretrained vision-language models, but action-only supervision provid...",
+      "title": "Beyond Policy Rollouts: Embedding-Space Directional Exploration with Anchored Noise for LLM RLVR",
+      "summary": "EDEN improves reinforcement learning with verifiable rewards by injecting anchored embedding noise into rollout conditioning to increase diversity and strengthen group-relative advantage signals without altering inference.",
       "upvotes": 1,
-      "arxiv_id": "2610.02054",
-      "url": "https://huggingface.co/papers/2610.02054",
-      "githubRepo": "https://github.com/UniWAM/UniWAM"
+      "arxiv_id": "2610.16105",
+      "url": "https://huggingface.co/papers/2610.16105",
+      "githubRepo": null
+    },
+    {
+      "title": "One Bias Score, Two Factors: How Mitigations Affect Option Bias in Multiple-Choice Evaluation",
+      "summary": "Selection bias and order sensitivity in multiple-choice models are decomposed into flip rate and positional skew via pooled standard deviation, showing that prior correction and aggregation target different factors and should be reported together with accuracy.",
+      "upvotes": 1,
+      "arxiv_id": "2610.20993",
+      "url": "https://huggingface.co/papers/2610.20993",
+      "githubRepo": null
+    },
+    {
+      "title": "Gen4P: Video Generators are 4D Perceivers",
+      "summary": "Gen4P repurposes a pretrained video generator into a feed-forward 4D perceiver that predicts geometry and motion from monocular video via on-demand cross-attention decoding and frozen depth priors.",
+      "upvotes": 1,
+      "arxiv_id": "2610.22371",
+      "url": "https://huggingface.co/papers/2610.22371",
+      "githubRepo": "https://github.com/yitongx/Gen4P"
+    },
+    {
+      "title": "When the KV Cache Is Slower Than the GPU: Scaling Remote KV Tiers for Context-Parallel Prefill",
+      "summary": "Remote KV caching for long-context LLM serving can severely degrade latency unless the store is sharded by parallel rank, loaded asynchronously, and paired with high-bandwidth retrieval, yielding large throughput gains.",
+      "upvotes": 0,
+      "arxiv_id": "2610.21500",
+      "url": "https://huggingface.co/papers/2610.21500",
+      "githubRepo": null
+    },
+    {
+      "title": "Virtual Head Attention",
+      "summary": "Virtual Head Attention improves long-context model efficiency by reducing KV cache and compute while preserving quality through lightweight linear query and output transformations.",
+      "upvotes": 3,
+      "arxiv_id": "2610.17959",
+      "url": "https://huggingface.co/papers/2610.17959",
+      "githubRepo": "https://github.com/PaddlePaddle/VHA"
     }
   ]
 }

@@ -1,4 +1,4 @@
--- Seed / Upsert all 349 AiVerse entries into Supabase
+-- Seed / Upsert all 352 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -7322,6 +7322,68 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('jabarti-llm-dataset', 'bakrianoo', 'Dataset', 'NLP', 'CC-BY-SA-4.0', 2026, '1M<n<10M', 'jabarti-llm-dataset 	 Cleaned, section-chunked training corpus for a small bilingual LLM (Arabic + English), combining a curated Egyptian-history collection with genera (40 likes, 904 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("bakrianoo/jabarti-llm-dataset")', 'Trending Score: 35, Likes: 40, Downloads: 904', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset', '[{"text":"bakrianoo/jabarti-llm-dataset on Hugging Face Datasets","url":"https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('humanizer', 'jialinyyzz', 'Model', 'NLP', 'APACHE-2.0', 2026, 'Open Weights', 'High-performance NLP open-weights model by jialinyyzz, trending with over 1,783 community likes and 85,612 downloads on Hugging Face.', 'jialinyyzz text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("jialinyyzz/humanizer", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("jialinyyzz/humanizer")', 'Trending Score: 859, Likes: 1,783, Downloads: 85,612', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/jialinyyzz/humanizer', '[{"text":"jialinyyzz/humanizer on Hugging Face","url":"https://huggingface.co/jialinyyzz/humanizer"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('qwen-image-21-uncensored', 'vclnhihihi', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vclnhihihi. Trending with 117 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored', 'Trending Score: 93, Community Likes: 117', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored', '[{"text":"vclnhihihi/qwen-image-21-uncensored on Hugging Face Spaces","url":"https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('openai-math', 'FineEnvs', 'Dataset', 'AI Coding', 'APACHE-2.0', 2026, 'n<1K', 'openai/math as Harbor environments 	 Experimental. Built on a research release that is itself new and not yet independently reviewed. Expect rough edges, and read any p (93 likes, 6,915 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("FineEnvs/openai-math")', 'Trending Score: 88, Likes: 93, Downloads: 6,915', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/FineEnvs/openai-math', '[{"text":"FineEnvs/openai-math on Hugging Face Datasets","url":"https://huggingface.co/datasets/FineEnvs/openai-math"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

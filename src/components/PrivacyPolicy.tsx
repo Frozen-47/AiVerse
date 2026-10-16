@@ -227,7 +227,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
               </h2>
             </div>
             <p className={`text-[13px] leading-relaxed font-light ${t.textSecondary}`}>
-              Welcome to <strong>AiVerse</strong> (&quot;Platform,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), available at <a href="https://aiverse.frozenn.in" className="text-sky-400 hover:text-sky-300 hover:underline font-semibold">https://aiverse.frozenn.in</a>. We are committed to safeguarding builder privacy and maintaining transparency in all computational practices.
+              Welcome to <strong>AiVerse</strong> (&quot;Platform,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), available at <a href={typeof window !== "undefined" ? window.location.origin : "https://aiverse.frozenn.in"} className="text-sky-400 hover:text-sky-300 hover:underline font-semibold">{typeof window !== "undefined" ? window.location.origin : "https://aiverse.frozenn.in"}</a>. We are committed to safeguarding builder privacy and maintaining transparency in all computational practices.
             </p>
             <p className={`text-[13px] leading-relaxed font-light ${t.textSecondary}`}>
               This Privacy Policy describes the minimal categories of information we collect, the cloud infrastructures utilized, and the global mechanisms provided for you to inspect, export, or permanently erase your data.

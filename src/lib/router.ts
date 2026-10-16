@@ -9,9 +9,7 @@ export type FeatureSubpage =
   | "overview"
   | "compare"
   | "wizard"
-  | "playground"
-  | "pulse"
-  | "ecosystems";
+  | "playground";
 
 export type AdminSection =
   | "users"
@@ -52,13 +50,13 @@ function cleanPath(pathname: string): string {
 
 /**
  * Parse a URL pathname and search query into a structured AppRoute.
- * Separates /dashboard (main landing & pulse dashboard) and /entries (full catalog directory).
+ * Separates / (main landing & pulse dashboard) and /entries (full catalog directory).
  */
 export function parseRoute(pathname: string, search: string = ""): AppRoute {
   const p = cleanPath(pathname);
   const params = new URLSearchParams(search);
 
-  // 1. Dashboard (Main Landing Dashboard: Hero, Pulse, Spotlight)
+  // 1. Dashboard / Home (Main Landing: Hero, Pulse, Spotlight)
   if (p === "/" || p === "/dashboard" || p === "/home") {
     return { type: "dashboard" };
   }
@@ -78,11 +76,11 @@ export function parseRoute(pathname: string, search: string = ""): AppRoute {
     return { type: "entries", tab: "assets" };
   }
 
-  // Entries Subroutes (/entries/ecosystems, /entries/saved)
-  if (p === "/entries/ecosystems") {
+  // Entries Subroutes / Aliases (/entries/ecosystems, /ecosystems, /features/ecosystems, /entries/saved)
+  if (p === "/entries/ecosystems" || p === "/ecosystems" || p === "/features/ecosystems") {
     return { type: "entries", tab: "ecosystems" };
   }
-  if (p === "/entries/saved") {
+  if (p === "/entries/saved" || p === "/saved") {
     return { type: "entries", tab: "saved" };
   }
 
@@ -99,7 +97,7 @@ export function parseRoute(pathname: string, search: string = ""): AppRoute {
     return { type: "admin", section };
   }
 
-  // 4. Features Suite & Subpages (/features, /features/compare, /features/wizard, etc.)
+  // 4. Features Suite & Subpages (/features, /features/compare, /features/wizard, /features/playground)
   if (p === "/features" || p.startsWith("/features/")) {
     const sub = p.split("/")[2]?.toLowerCase();
     if (sub === "compare" || sub === "arena") {
@@ -110,12 +108,6 @@ export function parseRoute(pathname: string, search: string = ""): AppRoute {
     }
     if (sub === "playground") {
       return { type: "features", subpage: "playground" };
-    }
-    if (sub === "pulse" || sub === "daily-pulse") {
-      return { type: "features", subpage: "pulse" };
-    }
-    if (sub === "ecosystems") {
-      return { type: "features", subpage: "ecosystems" };
     }
     return { type: "features", subpage: "overview" };
   }
@@ -129,6 +121,9 @@ export function parseRoute(pathname: string, search: string = ""): AppRoute {
   }
   if (p === "/playground") {
     return { type: "features", subpage: "playground" };
+  }
+  if (p === "/pulse" || p === "/daily-pulse") {
+    return { type: "dashboard" };
   }
 
   // 5. Chat Assistant
@@ -150,7 +145,7 @@ export function parseRoute(pathname: string, search: string = ""): AppRoute {
     return { type: "terms" };
   }
 
-  // Default fallback to dashboard
+  // Default fallback to dashboard (home)
   return { type: "dashboard" };
 }
 
@@ -169,7 +164,7 @@ export function routeToUrl(
 
   switch (route.type) {
     case "dashboard":
-      path = "/dashboard";
+      path = "/";
       break;
 
     case "entries":
@@ -195,10 +190,6 @@ export function routeToUrl(
         path = "/features/wizard";
       } else if (route.subpage === "playground") {
         path = "/features/playground";
-      } else if (route.subpage === "pulse") {
-        path = "/features/pulse";
-      } else if (route.subpage === "ecosystems") {
-        path = "/features/ecosystems";
       } else {
         path = "/features";
       }
@@ -376,7 +367,7 @@ export function getRouteSeo(route: AppRoute, entryName?: string | null) {
       title = "AiVerse — Universal AI Knowledge Directory & Model Ecosystem";
       desc =
         "Explore verified AI models, architectures, benchmark evaluations, licenses, and ecosystem telemetry on AiVerse.";
-      path = "/dashboard";
+      path = "/";
       break;
 
     case "entries":
@@ -414,10 +405,6 @@ export function getRouteSeo(route: AppRoute, entryName?: string | null) {
         title = "Model Playground | AiVerse Features";
         desc = "Prompt LLMs side-by-side with system constraints, custom prompts, and live comparison.";
         path = "/features/playground";
-      } else if (route.subpage === "pulse") {
-        title = "Daily Pulse | AiVerse Features";
-        desc = "Discover trending AI tools, daily highlights, and community favorites on AiVerse.";
-        path = "/features/pulse";
       } else {
         title = "Features Suite | AiVerse";
         desc = "Explore category dashboards, system capacity metrics, spotlight highlights, values prop overlays, and all integrated capabilities.";

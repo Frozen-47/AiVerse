@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-10-08T03:44:17.948Z",
-  "totalEntries": 349,
-  "popularEntries": 280,
+  "timestamp": "2026-10-16T12:00:15.864Z",
+  "totalEntries": 352,
+  "popularEntries": 282,
   "totalUsers": 11,
   "averageRating": 4.38,
   "totalRatings": 8,
-  "newEntriesCount": 122,
+  "newEntriesCount": 125,
   "byType": {
-    "Model": 124,
+    "Model": 125,
     "Framework": 33,
-    "Platform": 61,
-    "Dataset": 60,
+    "Platform": 62,
+    "Dataset": 61,
     "AI": 71
   },
   "byTask": {
-    "NLP": 130,
-    "AI Coding": 27,
-    "Multimodal": 56,
+    "NLP": 131,
+    "AI Coding": 28,
+    "Multimodal": 57,
     "Research": 11,
     "Image Generation": 12,
     "Video Generation": 11,
@@ -66,9 +66,9 @@
     "Proprietary / DeepSeek License": 1,
     "Open Source UI / Various model licenses": 1,
     "Free": 1,
-    "APACHE-2.0": 35,
+    "APACHE-2.0": 37,
     "OTHER": 15,
-    "Community Hosted": 36,
+    "Community Hosted": 37,
     "NOASSERTION": 4,
     "CC-BY-SA-4.0": 2,
     "Open Data": 2,
@@ -83,24 +83,24 @@
     "OPENMDW-1.1": 1
   },
   "toolOfTheDay": {
-    "name": "DeepSeek-V3",
+    "name": "Qwen 2.5 (72B)",
     "type": "Model",
-    "summary": "DeepSeek's flagship 671B Mixture-of-Experts (MoE) model with Multi-head Latent Attention (MLA), activating 37B params per token with industry-leading efficiency.",
+    "summary": "Alibaba Cloud's flagship open LLM featuring world-class multilingual capabilities across 29+ languages, 128k context support, and leading coding benchmarks.",
     "task": "NLP",
-    "license": "MIT",
+    "license": "Apache-2.0",
     "year": 2024,
-    "org": "DeepSeek",
-    "size": "671B (37B active)",
-    "architecture": "Multi-head Latent Attention (MLA) + DeepSeekMoE + FP8 Mixed Precision Training.",
-    "usage": "from openai import OpenAI\nclient = OpenAI(api_key=\"YOUR_KEY\", base_url=\"https://api.deepseek.com\")\nresponse = client.chat.completions.create(\n  model=\"deepseek-chat\",\n  messages=[{\"role\": \"user\", \"content\": \"Explain MLA architecture.\"}]\n)",
-    "benchmarks": "MMLU-Redux: 89.1%, HumanEval: 90.2%, MATH-500: 75.7%",
-    "limitations": "Massive parameter footprint requires multi-GPU or cloud API hosting.",
+    "org": "Alibaba Cloud",
+    "size": "72.7B params",
+    "architecture": "Dense Transformer with RoPE, SwiGLU, RMSNorm, and GQA.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\nmodel = AutoModelForCausalLM.from_pretrained(\"Qwen/Qwen2.5-72B-Instruct\", device_map=\"auto\")",
+    "benchmarks": "MMLU: 86.8%, MATH: 83.1%, HumanEval: 86.6%",
+    "limitations": "Full precision requires ~145GB VRAM; requires 4-bit quant to run on single 24GB/48GB GPU.",
     "popular": true,
-    "url": "https://www.deepseek.com",
+    "url": "https://github.com/QwenLM/Qwen2.5",
     "citations": [
       {
-        "text": "DeepSeek-V3 Technical Report",
-        "url": "https://github.com/deepseek-ai/DeepSeek-V3"
+        "text": "Qwen2.5 Announcement",
+        "url": "https://qwenlm.github.io/blog/qwen2.5/"
       }
     ]
   }

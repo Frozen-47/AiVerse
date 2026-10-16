@@ -2,8 +2,8 @@ name: Daily AI Pulse & Auto Commit
 
 on:
   schedule:
-    # Runs daily at midnight (00:00 UTC)
-    - cron: '0 0 * * *'
+    # Runs 10 times per day (~every 2.4 hours) at 00:00, 02:00, 05:00, 07:00, 10:00, 12:00, 14:00, 17:00, 19:00, 22:00 UTC
+    - cron: '0 0,2,5,7,10,12,14,17,19,22 * * *'
   workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab
 
 permissions:

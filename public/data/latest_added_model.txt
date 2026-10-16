@@ -1,1 +1,1 @@
-embeddinggemma-2
+humanizer

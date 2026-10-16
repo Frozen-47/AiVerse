@@ -22,9 +22,13 @@ export function findEntryBySlug(entries: Entry[], slug: string): Entry | undefin
 }
 
 export function shareUrlForEntry(name: string): string {
-  const url = new URL(window.location.href);
-  url.searchParams.set("entry", name);
-  return url.toString();
+  if (typeof window === "undefined") {
+    return `/?entry=${encodeURIComponent(name)}`;
+  }
+  const origin = window.location.origin;
+  const isCatalog = window.location.pathname.startsWith("/entries");
+  const path = isCatalog ? "/entries" : "/";
+  return `${origin}${path}?entry=${encodeURIComponent(name)}`;
 }
 
 const PROFILE_PATH_RE = /\/user\/(@?[a-z0-9_-]+)\/?$/;
@@ -64,9 +68,8 @@ export function migrateLegacyProfileQueryUrl(): string | null {
 }
 
 export function shareUrlForProfile(username: string): string {
-  const url = new URL(window.location.origin);
-  url.pathname = `/user/${profilePathSlug(username)}`;
-  url.search = "";
-  url.hash = "";
-  return url.toString();
+  if (typeof window === "undefined") {
+    return `/user/${profilePathSlug(username)}`;
+  }
+  return `${window.location.origin}/user/${profilePathSlug(username)}`;
 }
