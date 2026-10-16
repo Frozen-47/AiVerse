@@ -2,43 +2,43 @@
 
 > Automatically generated daily intelligence report syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 16 Oct 2026 12:00:33 GMT`*
+*Last Synchronized: `Fri, 16 Oct 2026 02:26:10 GMT`*
 
 ---
 
 ## 🆕 Newly Ingested Assets Today (3)
 
-### **humanizer** (`Model` • *jialinyyzz*)
-> High-performance NLP open-weights model by jialinyyzz, trending with over 1,783 community likes and 85,612 downloads on Hugging Face.
+### **drama-3** (`Model` • *fishaudio*)
+> High-performance Audio open-weights model by fishaudio, trending with over 480 community likes and 4,048 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 859, Likes: 1,783, Downloads: 85,612`
-- 🔗 **Resource Link**: [https://huggingface.co/jialinyyzz/humanizer](https://huggingface.co/jialinyyzz/humanizer)
+- 🏷️ **Domain & License**: `Audio` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 466, Likes: 480, Downloads: 4,048`
+- 🔗 **Resource Link**: [https://huggingface.co/fishaudio/drama-3](https://huggingface.co/fishaudio/drama-3)
 
-### **qwen-image-21-uncensored** (`Platform` • *vclnhihihi*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vclnhihihi. Trending with 117 community stars.
+### **shorts** (`Platform` • *autotrust*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 151 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 93, Community Likes: 117`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored](https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored)
+- ⚡ **Metrics**: `Trending Score: 79, Community Likes: 151`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/autotrust/shorts](https://huggingface.co/spaces/autotrust/shorts)
 
-### **openai-math** (`Dataset` • *FineEnvs*)
-> openai/math as Harbor environments 	 Experimental. Built on a research release that is itself new and not yet independently reviewed. Expect rough edges, and read any p (93 likes, 6,915 downloads).
+### **china-a-share-l2-level2-limit-order-book-tick-data** (`Dataset` • *venvoo*)
+> China A-Share Level-2 Archive 	 2017–2026 · Quotes, orders and trades · Parquet A historical archive of Chinese exchange Level-2 data, supplied through a vendor export. (281 likes, 120,455 downloads).
 
-- 🏷️ **Domain & License**: `AI Coding` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 88, Likes: 93, Downloads: 6,915`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/FineEnvs/openai-math](https://huggingface.co/datasets/FineEnvs/openai-math)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 33, Likes: 281, Downloads: 120,455`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data](https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **Qwen 2.5 (72B)** (`Model` • *Alibaba Cloud*)
-> Alibaba Cloud's flagship open LLM featuring world-class multilingual capabilities across 29+ languages, 128k context support, and leading coding benchmarks.
+### **minimax-h3-character-swap-lora** (`Platform` • *hugging-apps*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 103 community stars.
 
-- 🏛️ **Architecture**: Dense Transformer with RoPE, SwiGLU, RMSNorm, and GQA.
-- ⚡ **Benchmarks**: `MMLU: 86.8%, MATH: 83.1%, HumanEval: 86.6%`
-- 🏷️ **Domain & License**: `NLP` • `Apache-2.0` (Released: 2024)
-- 🔗 **Resource Link**: [https://github.com/QwenLM/Qwen2.5](https://github.com/QwenLM/Qwen2.5)
+- 🏛️ **Architecture**: GRADIO cloud runtime container with interactive browser interface.
+- ⚡ **Benchmarks**: `Trending Score: 46, Community Likes: 103`
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (Released: 2026)
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora](https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -46,12 +46,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,460 | 📥 151,258 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `jialinyyzz/humanizer` | text-generation | ❤️ 1,783 | 📥 85,612 | [View](https://huggingface.co/jialinyyzz/humanizer) |
-| `Qwen/Qwen-Image-2.1-Turbo` | text-to-image | ❤️ 910 | 📥 17,421 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo) |
-| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 813 | 📥 17,553 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 513 | 📥 6,158 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `abenzerps/Qwen-Image-2.1-Uncensored-Quantized` | text-to-image | ❤️ 4,411 | 📥 2,477,554 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,409 | 📥 144,280 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 1,742 | 📥 75,253 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `Qwen/Qwen-Image-2.1-Turbo` | text-to-image | ❤️ 881 | 📥 15,315 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo) |
+| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 795 | 📥 9,278 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
+| `abenzerps/Qwen-Image-2.1-Uncensored-Quantized` | text-to-image | ❤️ 4,391 | 📥 2,415,278 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 480 | 📥 4,048 | [View](https://huggingface.co/fishaudio/drama-3) |
 
 
 ---
@@ -61,24 +61,24 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Beyond Policy Rollouts: Embedding-Space Directional Exploration with Anchored Noise for LLM RLVR** | 👍 1 | EDEN improves reinforcement learning with verifiable rewards by injecting anchored embedding noise into rollout conditioning to increase diversity and strengthen group-relative advantage signals without altering inference. | [Read](https://huggingface.co/papers/2610.16105) |
-| **One Bias Score, Two Factors: How Mitigations Affect Option Bias in Multiple-Choice Evaluation** | 👍 1 | Selection bias and order sensitivity in multiple-choice models are decomposed into flip rate and positional skew via pooled standard deviation, showing that prior correction and aggregation target different factors and should be reported together with accuracy. | [Read](https://huggingface.co/papers/2610.20993) |
-| **Gen4P: Video Generators are 4D Perceivers** | 👍 1 | Gen4P repurposes a pretrained video generator into a feed-forward 4D perceiver that predicts geometry and motion from monocular video via on-demand cross-attention decoding and frozen depth priors. | [Read](https://huggingface.co/papers/2610.22371) |
-| **When the KV Cache Is Slower Than the GPU: Scaling Remote KV Tiers for Context-Parallel Prefill** | 👍 0 | Remote KV caching for long-context LLM serving can severely degrade latency unless the store is sharded by parallel rank, loaded asynchronously, and paired with high-bandwidth retrieval, yielding large throughput gains. | [Read](https://huggingface.co/papers/2610.21500) |
-| **Virtual Head Attention** | 👍 3 | Virtual Head Attention improves long-context model efficiency by reducing KV cache and compute while preserving quality through lightweight linear query and output transformations. | [Read](https://huggingface.co/papers/2610.17959) |
+| **SCOPE: Semantic Bounded Credit Optimization for Prompt Engineering in Text-to-image Generation** | 👍 1 | SCOPE improves text-to-image prompt rewriting via reinforcement learning by aligning policy updates with semantic spans, boosting generation quality without extra rendering. | [Read](https://huggingface.co/papers/2610.22264) |
+| **Orbia: Do Generated Videos Form a Consistent 3D World?** | 👍 8 | Orbia introduces a benchmark that systematically evaluates 3D consistency in interactive video world models through controlled exploration, revisit protocols, and multi-dimensional measurements of input preservation, content persistence, and geometric self-consistency. | [Read](https://huggingface.co/papers/2610.20693) |
+| **AutoSFT: An Agentic System for Automated Data Research in Supervised Fine-Tuning** | 👍 1 | AutoSFT uses multi-agent collaboration to automate diverse supervised fine-tuning data actions, improving evaluation scores over single-agent systems by separating execution, analysis, and synthesis. | [Read](https://huggingface.co/papers/2610.22194) |
+| **Speculative Forcing for Efficient Autoregressive Video Generation** | 👍 27 | Speculative Forcing accelerates few-step autoregressive video generation by accepting early token drafts and skipping unnecessary denoising steps while preserving output quality. | [Read](https://huggingface.co/papers/2610.22347) |
+| **OmniCompass: A Holistic Benchmark for Omni-Modal Video Grounding and Understanding** | 👍 7 | OmniCompass is a holistic benchmark for omni-modal video grounding and understanding that evaluates vision-language and audio-visual reasoning through temporal grounding, spatial grounding, and question answering tasks. | [Read](https://huggingface.co/papers/2610.18829) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `352`
-- **Featured / Starred Tools**: `282`
-- **Asset Breakdown**: **Models**: 125 • **Frameworks**: 33 • **Platforms**: 62 • **Datasets**: 61 • **AIs**: 71
+- **Total Registered Assets**: `373`
+- **Featured / Starred Tools**: `300`
+- **Asset Breakdown**: **Models**: 132 • **Frameworks**: 33 • **Platforms**: 69 • **Datasets**: 68 • **AIs**: 71
 
 ---
 
 ## 🛡️ Daily System & Ecosystem Health
-- **Sample Link Health Check**: `19/25` healthy verified (`6` flagged / timed out)
+- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
 - **Dependency Security**: `34` advisories flagged across `561` dependencies (`1` critical, `29` high)
 
 ---

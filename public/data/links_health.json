@@ -1,37 +1,27 @@
 {
-  "timestamp": "2026-10-16T12:00:18.224Z",
+  "timestamp": "2026-10-16T02:26:03.115Z",
   "checked": 25,
-  "healthy": 19,
-  "broken": 6,
+  "healthy": 21,
+  "broken": 4,
   "issues": [
     {
-      "name": "Quizlet AI",
-      "url": "https://quizlet.com/features/quizlet-ai",
-      "status": 403
+      "name": "UltraFeedback",
+      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
+      "status": 401
     },
     {
-      "name": "Ideogram",
-      "url": "https://ideogram.ai",
-      "status": 403
-    },
-    {
-      "name": "Canva AI",
-      "url": "https://www.canva.com/ai-image-generator",
-      "status": 403
-    },
-    {
-      "name": "Google Gemini",
-      "url": "https://gemini.google.com",
-      "status": "Network Error"
-    },
-    {
-      "name": "Tome",
-      "url": "https://tome.app",
+      "name": "Arena-Hard-Auto",
+      "url": "https://github.com/sunshanghai/arena-hard-auto",
       "status": 404
     },
     {
-      "name": "ERNIE Bot",
-      "url": "https://yiyan.baidu.com",
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
+    },
+    {
+      "name": "LLaMA",
+      "url": "https://ai.meta.com/llama/",
       "status": "Timeout"
     }
   ]

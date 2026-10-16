@@ -1,24 +1,24 @@
 {
   "date": "2026-10-16",
   "tool": {
-    "name": "Qwen 2.5 (72B)",
-    "type": "Model",
-    "summary": "Alibaba Cloud's flagship open LLM featuring world-class multilingual capabilities across 29+ languages, 128k context support, and leading coding benchmarks.",
-    "task": "NLP",
-    "license": "Apache-2.0",
-    "year": 2024,
-    "org": "Alibaba Cloud",
-    "size": "72.7B params",
-    "architecture": "Dense Transformer with RoPE, SwiGLU, RMSNorm, and GQA.",
-    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\nmodel = AutoModelForCausalLM.from_pretrained(\"Qwen/Qwen2.5-72B-Instruct\", device_map=\"auto\")",
-    "benchmarks": "MMLU: 86.8%, MATH: 83.1%, HumanEval: 86.6%",
-    "limitations": "Full precision requires ~145GB VRAM; requires 4-bit quant to run on single 24GB/48GB GPU.",
+    "name": "minimax-h3-character-swap-lora",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 103 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "hugging-apps",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora",
+    "benchmarks": "Trending Score: 46, Community Likes: 103",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
     "popular": true,
-    "url": "https://github.com/QwenLM/Qwen2.5",
+    "url": "https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora",
     "citations": [
       {
-        "text": "Qwen2.5 Announcement",
-        "url": "https://qwenlm.github.io/blog/qwen2.5/"
+        "text": "hugging-apps/minimax-h3-character-swap-lora on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora"
       }
     ]
   }

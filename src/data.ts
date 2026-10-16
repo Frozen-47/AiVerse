@@ -7716,9 +7716,75 @@ export const entries: Entry[] = [
       ]
   },
   {
+      "name": "Xing4.0-29B-A4B-GGUF",
+      "type": "Model",
+      "summary": "High-performance NLP open-weights model by Venastine-Research, trending with over 669 community likes and 36,481 downloads on Hugging Face.",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "Venastine-Research",
+      "size": "29B params",
+      "architecture": "Venastine-Research text generation architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Venastine-Research/Xing4.0-29B-A4B-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Venastine-Research/Xing4.0-29B-A4B-GGUF\")",
+      "benchmarks": "Trending Score: 617, Likes: 669, Downloads: 36,481",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF",
+      "citations": [
+          {
+              "text": "Venastine-Research/Xing4.0-29B-A4B-GGUF on Hugging Face",
+              "url": "https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF"
+          }
+      ]
+  },
+  {
+      "name": "jev-9b-decision-demo",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 94 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "autotrust",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/autotrust/jev-9b-decision-demo",
+      "benchmarks": "Trending Score: 75, Community Likes: 94",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/autotrust/jev-9b-decision-demo",
+      "citations": [
+          {
+              "text": "autotrust/jev-9b-decision-demo on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/autotrust/jev-9b-decision-demo"
+          }
+      ]
+  },
+  {
+      "name": "EgoStandard",
+      "type": "Dataset",
+      "summary": "EgoStandard The 90,000-hour head-view line of EgoSuite-Open100K.   Data Bucket ·   Collection ·   EgoDemo ·   EgoPro ·   Project page Explore EgoSuite-Open100K ↗ Data location: Eg (186 likes, 388 downloads).",
+      "task": "Multimodal",
+      "license": "OTHER",
+      "year": 2026,
+      "org": "LightwheelAI",
+      "size": "10K<n<100K",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"LightwheelAI/EgoStandard\")",
+      "benchmarks": "Trending Score: 47, Likes: 186, Downloads: 388",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": true,
+      "url": "https://huggingface.co/datasets/LightwheelAI/EgoStandard",
+      "citations": [
+          {
+              "text": "LightwheelAI/EgoStandard on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/LightwheelAI/EgoStandard"
+          }
+      ]
+  },
+  {
       "name": "humanizer",
       "type": "Model",
-      "summary": "High-performance NLP open-weights model by jialinyyzz, trending with over 1,783 community likes and 85,612 downloads on Hugging Face.",
+      "summary": "High-performance NLP open-weights model by jialinyyzz, trending with over 766 community likes and 29,470 downloads on Hugging Face.",
       "task": "NLP",
       "license": "APACHE-2.0",
       "year": 2026,
@@ -7726,7 +7792,7 @@ export const entries: Entry[] = [
       "size": "Open Weights",
       "architecture": "jialinyyzz text generation architecture with community-tuned weights.",
       "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"jialinyyzz/humanizer\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"jialinyyzz/humanizer\")",
-      "benchmarks": "Trending Score: 859, Likes: 1,783, Downloads: 85,612",
+      "benchmarks": "Trending Score: 717, Likes: 766, Downloads: 29,470",
       "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
       "popular": true,
       "url": "https://huggingface.co/jialinyyzz/humanizer",
@@ -7738,9 +7804,339 @@ export const entries: Entry[] = [
       ]
   },
   {
+      "name": "LTX-2.3-10Eros",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by 00000tt. Trending with 185 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "00000tt",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros",
+      "benchmarks": "Trending Score: 61, Community Likes: 185",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros",
+      "citations": [
+          {
+              "text": "00000tt/LTX-2.3-10Eros on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros"
+          }
+      ]
+  },
+  {
+      "name": "precinct6-cybersecurity",
+      "type": "Dataset",
+      "summary": "WitFoo Precinct6 Cybersecurity Dataset \t Version 2.1.0 (built 2026-09-22). Regenerated to address feedback from the University of Canterbury PIDS evaluation: attacks an (49 likes, 3,326 downloads).",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "witfoo",
+      "size": "1M<n<10M",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"witfoo/precinct6-cybersecurity\")",
+      "benchmarks": "Trending Score: 34, Likes: 49, Downloads: 3,326",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/witfoo/precinct6-cybersecurity",
+      "citations": [
+          {
+              "text": "witfoo/precinct6-cybersecurity on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/witfoo/precinct6-cybersecurity"
+          }
+      ]
+  },
+  {
+      "name": "Qwen-Image-2.1-Turbo",
+      "type": "Model",
+      "summary": "High-performance Image Generation open-weights model by Alibaba (Qwen), trending with over 463 community likes and 2,138 downloads on Hugging Face.",
+      "task": "Image Generation",
+      "license": "OTHER",
+      "year": 2026,
+      "org": "Alibaba (Qwen)",
+      "size": "Open Weights",
+      "architecture": "Alibaba (Qwen) text to image architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Qwen/Qwen-Image-2.1-Turbo\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Qwen/Qwen-Image-2.1-Turbo\")",
+      "benchmarks": "Trending Score: 456, Likes: 463, Downloads: 2,138",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo",
+      "citations": [
+          {
+              "text": "Qwen/Qwen-Image-2.1-Turbo on Hugging Face",
+              "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"
+          }
+      ]
+  },
+  {
+      "name": "embeddinggemma-2-webgpu",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by webml-community. Trending with 48 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "webml-community",
+      "size": "STATIC Platform",
+      "architecture": "STATIC cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu",
+      "benchmarks": "Trending Score: 48, Community Likes: 48",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu",
+      "citations": [
+          {
+              "text": "webml-community/embeddinggemma-2-webgpu on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu"
+          }
+      ]
+  },
+  {
+      "name": "DeskForge-1M",
+      "type": "Dataset",
+      "summary": "DeskForge-1M \t DeskForge-1M is a corpus of 1.21M annotated desktop screenshots with 159.7M element instances and 917K recorded click transitions, generated with DeskFor (34 likes, 4,899 downloads).",
+      "task": "Computer Vision",
+      "license": "MIT",
+      "year": 2026,
+      "org": "docling-project",
+      "size": "1M<n<10M",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"docling-project/DeskForge-1M\")",
+      "benchmarks": "Trending Score: 34, Likes: 34, Downloads: 4,899",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/docling-project/DeskForge-1M",
+      "citations": [
+          {
+              "text": "docling-project/DeskForge-1M on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/docling-project/DeskForge-1M"
+          }
+      ]
+  },
+  {
+      "name": "ema-lightning",
+      "type": "Model",
+      "summary": "High-performance Audio open-weights model by canberkkkkkk, trending with over 358 community likes and 18,079 downloads on Hugging Face.",
+      "task": "Audio",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "canberkkkkkk",
+      "size": "Open Weights",
+      "architecture": "canberkkkkkk text to speech architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"canberkkkkkk/ema-lightning\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"canberkkkkkk/ema-lightning\")",
+      "benchmarks": "Trending Score: 327, Likes: 358, Downloads: 18,079",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/canberkkkkkk/ema-lightning",
+      "citations": [
+          {
+              "text": "canberkkkkkk/ema-lightning on Hugging Face",
+              "url": "https://huggingface.co/canberkkkkkk/ema-lightning"
+          }
+      ]
+  },
+  {
+      "name": "minimax-h3-character-swap-lora",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 103 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "hugging-apps",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora",
+      "benchmarks": "Trending Score: 46, Community Likes: 103",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora",
+      "citations": [
+          {
+              "text": "hugging-apps/minimax-h3-character-swap-lora on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora"
+          }
+      ]
+  },
+  {
+      "name": "EgoDemo",
+      "type": "Dataset",
+      "summary": "EgoDemo A 50-hour sample from EgoSuite-Open100K, covering every annotated subset plus two raw-video variants.   Collection ·   EgoStandard ·   EgoPro ·   Project page Explore EgoS (190 likes, 61,148 downloads).",
+      "task": "Multimodal",
+      "license": "OTHER",
+      "year": 2026,
+      "org": "LightwheelAI",
+      "size": "1K<n<10K",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"LightwheelAI/EgoDemo\")",
+      "benchmarks": "Trending Score: 54, Likes: 190, Downloads: 61,148",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": true,
+      "url": "https://huggingface.co/datasets/LightwheelAI/EgoDemo",
+      "citations": [
+          {
+              "text": "LightwheelAI/EgoDemo on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/LightwheelAI/EgoDemo"
+          }
+      ]
+  },
+  {
+      "name": "Qwen-Image-2.1-Uncensored-Quantized",
+      "type": "Model",
+      "summary": "High-performance Image Generation open-weights model by abenzerps, trending with over 4,111 community likes and 2,188,658 downloads on Hugging Face.",
+      "task": "Image Generation",
+      "license": "OTHER",
+      "year": 2026,
+      "org": "abenzerps",
+      "size": "Open Weights",
+      "architecture": "abenzerps text to image architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"abenzerps/Qwen-Image-2.1-Uncensored-Quantized\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"abenzerps/Qwen-Image-2.1-Uncensored-Quantized\")",
+      "benchmarks": "Trending Score: 585, Likes: 4,111, Downloads: 2,188,658",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized",
+      "citations": [
+          {
+              "text": "abenzerps/Qwen-Image-2.1-Uncensored-Quantized on Hugging Face",
+              "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized"
+          }
+      ]
+  },
+  {
+      "name": "Qwen-2511-Plus-Flux.2-klein-9B",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by AST-1320. Trending with 68 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "AST-1320",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B",
+      "benchmarks": "Trending Score: 39, Community Likes: 68",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B",
+      "citations": [
+          {
+              "text": "AST-1320/Qwen-2511-Plus-Flux.2-klein-9B on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B"
+          }
+      ]
+  },
+  {
+      "name": "openai-math",
+      "type": "Dataset",
+      "summary": "openai/math as Harbor environments \t Experimental. Built on a research release that is itself new and not yet independently reviewed. Expect rough edges, and read any p (60 likes, 2,587 downloads).",
+      "task": "AI Coding",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "FineEnvs",
+      "size": "n<1K",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"FineEnvs/openai-math\")",
+      "benchmarks": "Trending Score: 58, Likes: 60, Downloads: 2,587",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/FineEnvs/openai-math",
+      "citations": [
+          {
+              "text": "FineEnvs/openai-math on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/FineEnvs/openai-math"
+          }
+      ]
+  },
+  {
+      "name": "MiniCPM-V-4.7-35B-A3B",
+      "type": "Model",
+      "summary": "High-performance Multimodal open-weights model by openbmb, trending with over 473 community likes and 630 downloads on Hugging Face.",
+      "task": "Multimodal",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "openbmb",
+      "size": "35B params",
+      "architecture": "openbmb image text to text architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"openbmb/MiniCPM-V-4.7-35B-A3B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"openbmb/MiniCPM-V-4.7-35B-A3B\")",
+      "benchmarks": "Trending Score: 428, Likes: 473, Downloads: 630",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B",
+      "citations": [
+          {
+              "text": "openbmb/MiniCPM-V-4.7-35B-A3B on Hugging Face",
+              "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
+          }
+      ]
+  },
+  {
+      "name": "LightOnOCR-3-Demo",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by lightonai. Trending with 45 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "lightonai",
+      "size": "GRADIO Platform",
+      "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo",
+      "benchmarks": "Trending Score: 43, Community Likes: 45",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo",
+      "citations": [
+          {
+              "text": "lightonai/LightOnOCR-3-Demo on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo"
+          }
+      ]
+  },
+  {
+      "name": "freeinference_agentic_trace",
+      "type": "Dataset",
+      "summary": "FreeInference Agentic Trace \t New: Interactive Session Explorer! We've launched an interactive session explorer to help you explore the dataset interactively. Try it ou (37 likes, 1,450 downloads).",
+      "task": "NLP",
+      "license": "CC-BY-4.0",
+      "year": 2026,
+      "org": "harvardMadsys",
+      "size": "1M<n<10M",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"harvardMadsys/freeinference_agentic_trace\")",
+      "benchmarks": "Trending Score: 35, Likes: 37, Downloads: 1,450",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": false,
+      "url": "https://huggingface.co/datasets/harvardMadsys/freeinference_agentic_trace",
+      "citations": [
+          {
+              "text": "harvardMadsys/freeinference_agentic_trace on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/harvardMadsys/freeinference_agentic_trace"
+          }
+      ]
+  },
+  {
+      "name": "JEV-35B",
+      "type": "Model",
+      "summary": "High-performance NLP open-weights model by autotrust, trending with over 745 community likes and 27,970 downloads on Hugging Face.",
+      "task": "NLP",
+      "license": "APACHE-2.0",
+      "year": 2026,
+      "org": "autotrust",
+      "size": "35B params",
+      "architecture": "autotrust text classification architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"autotrust/JEV-35B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"autotrust/JEV-35B\")",
+      "benchmarks": "Trending Score: 469, Likes: 745, Downloads: 27,970",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/autotrust/JEV-35B",
+      "citations": [
+          {
+              "text": "autotrust/JEV-35B on Hugging Face",
+              "url": "https://huggingface.co/autotrust/JEV-35B"
+          }
+      ]
+  },
+  {
       "name": "qwen-image-21-uncensored",
       "type": "Platform",
-      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vclnhihihi. Trending with 117 community stars.",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vclnhihihi. Trending with 70 community stars.",
       "task": "Multimodal",
       "license": "Community Hosted",
       "year": 2026,
@@ -7748,7 +8144,7 @@ export const entries: Entry[] = [
       "size": "GRADIO Platform",
       "architecture": "GRADIO cloud runtime container with interactive browser interface.",
       "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored",
-      "benchmarks": "Trending Score: 93, Community Likes: 117",
+      "benchmarks": "Trending Score: 54, Community Likes: 70",
       "limitations": "Cloud container subject to community traffic quotas and queue times.",
       "popular": true,
       "url": "https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored",
@@ -7760,24 +8156,90 @@ export const entries: Entry[] = [
       ]
   },
   {
-      "name": "openai-math",
+      "name": "MMLU-Pro",
       "type": "Dataset",
-      "summary": "openai/math as Harbor environments \t Experimental. Built on a research release that is itself new and not yet independently reviewed. Expect rough edges, and read any p (93 likes, 6,915 downloads).",
-      "task": "AI Coding",
-      "license": "APACHE-2.0",
+      "summary": "MMLU-Pro Dataset \t MMLU-Pro dataset is a more robust and challenging massive multi-task understanding dataset tailored to more rigorously benchmark large language model (570 likes, 226,194 downloads).",
+      "task": "NLP",
+      "license": "MIT",
       "year": 2026,
-      "org": "FineEnvs",
-      "size": "n<1K",
+      "org": "TIGER-Lab",
+      "size": "10K<n<100K",
       "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"FineEnvs/openai-math\")",
-      "benchmarks": "Trending Score: 88, Likes: 93, Downloads: 6,915",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"TIGER-Lab/MMLU-Pro\")",
+      "benchmarks": "Trending Score: 30, Likes: 570, Downloads: 226,194",
       "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-      "popular": false,
-      "url": "https://huggingface.co/datasets/FineEnvs/openai-math",
+      "popular": true,
+      "url": "https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro",
       "citations": [
           {
-              "text": "FineEnvs/openai-math on Hugging Face Datasets",
-              "url": "https://huggingface.co/datasets/FineEnvs/openai-math"
+              "text": "TIGER-Lab/MMLU-Pro on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro"
+          }
+      ]
+  },
+  {
+      "name": "drama-3",
+      "type": "Model",
+      "summary": "High-performance Audio open-weights model by fishaudio, trending with over 480 community likes and 4,048 downloads on Hugging Face.",
+      "task": "Audio",
+      "license": "OTHER",
+      "year": 2026,
+      "org": "fishaudio",
+      "size": "Open Weights",
+      "architecture": "fishaudio text to speech architecture with community-tuned weights.",
+      "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"fishaudio/drama-3\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"fishaudio/drama-3\")",
+      "benchmarks": "Trending Score: 466, Likes: 480, Downloads: 4,048",
+      "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+      "popular": true,
+      "url": "https://huggingface.co/fishaudio/drama-3",
+      "citations": [
+          {
+              "text": "fishaudio/drama-3 on Hugging Face",
+              "url": "https://huggingface.co/fishaudio/drama-3"
+          }
+      ]
+  },
+  {
+      "name": "shorts",
+      "type": "Platform",
+      "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 151 community stars.",
+      "task": "Multimodal",
+      "license": "Community Hosted",
+      "year": 2026,
+      "org": "autotrust",
+      "size": "STATIC Platform",
+      "architecture": "STATIC cloud runtime container with interactive browser interface.",
+      "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/autotrust/shorts",
+      "benchmarks": "Trending Score: 79, Community Likes: 151",
+      "limitations": "Cloud container subject to community traffic quotas and queue times.",
+      "popular": true,
+      "url": "https://huggingface.co/spaces/autotrust/shorts",
+      "citations": [
+          {
+              "text": "autotrust/shorts on Hugging Face Spaces",
+              "url": "https://huggingface.co/spaces/autotrust/shorts"
+          }
+      ]
+  },
+  {
+      "name": "china-a-share-l2-level2-limit-order-book-tick-data",
+      "type": "Dataset",
+      "summary": "China A-Share Level-2 Archive \t 2017–2026 · Quotes, orders and trades · Parquet A historical archive of Chinese exchange Level-2 data, supplied through a vendor export. (281 likes, 120,455 downloads).",
+      "task": "NLP",
+      "license": "OTHER",
+      "year": 2026,
+      "org": "venvoo",
+      "size": "n>1T",
+      "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+      "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"venvoo/china-a-share-l2-level2-limit-order-book-tick-data\")",
+      "benchmarks": "Trending Score: 33, Likes: 281, Downloads: 120,455",
+      "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+      "popular": true,
+      "url": "https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data",
+      "citations": [
+          {
+              "text": "venvoo/china-a-share-l2-level2-limit-order-book-tick-data on Hugging Face Datasets",
+              "url": "https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data"
           }
       ]
   }

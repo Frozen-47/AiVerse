@@ -1,4 +1,4 @@
--- Seed / Upsert all 352 AiVerse entries into Supabase
+-- Seed / Upsert all 373 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -7340,10 +7340,72 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('humanizer', 'jialinyyzz', 'Model', 'NLP', 'APACHE-2.0', 2026, 'Open Weights', 'High-performance NLP open-weights model by jialinyyzz, trending with over 1,783 community likes and 85,612 downloads on Hugging Face.', 'jialinyyzz text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+VALUES ('Xing4.0-29B-A4B-GGUF', 'Venastine-Research', 'Model', 'NLP', 'APACHE-2.0', 2026, '29B params', 'High-performance NLP open-weights model by Venastine-Research, trending with over 669 community likes and 36,481 downloads on Hugging Face.', 'Venastine-Research text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Venastine-Research/Xing4.0-29B-A4B-GGUF", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Venastine-Research/Xing4.0-29B-A4B-GGUF")', 'Trending Score: 617, Likes: 669, Downloads: 36,481', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF', '[{"text":"Venastine-Research/Xing4.0-29B-A4B-GGUF on Hugging Face","url":"https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('jev-9b-decision-demo', 'autotrust', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 94 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/autotrust/jev-9b-decision-demo', 'Trending Score: 75, Community Likes: 94', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/autotrust/jev-9b-decision-demo', '[{"text":"autotrust/jev-9b-decision-demo on Hugging Face Spaces","url":"https://huggingface.co/spaces/autotrust/jev-9b-decision-demo"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('EgoStandard', 'LightwheelAI', 'Dataset', 'Multimodal', 'OTHER', 2026, '10K<n<100K', 'EgoStandard The 90,000-hour head-view line of EgoSuite-Open100K.   Data Bucket ·   Collection ·   EgoDemo ·   EgoPro ·   Project page Explore EgoSuite-Open100K ↗ Data location: Eg (186 likes, 388 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("LightwheelAI/EgoStandard")', 'Trending Score: 47, Likes: 186, Downloads: 388', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/LightwheelAI/EgoStandard', '[{"text":"LightwheelAI/EgoStandard on Hugging Face Datasets","url":"https://huggingface.co/datasets/LightwheelAI/EgoStandard"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('humanizer', 'jialinyyzz', 'Model', 'NLP', 'APACHE-2.0', 2026, 'Open Weights', 'High-performance NLP open-weights model by jialinyyzz, trending with over 766 community likes and 29,470 downloads on Hugging Face.', 'jialinyyzz text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
 
 model = AutoModelForCausalLM.from_pretrained("jialinyyzz/humanizer", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("jialinyyzz/humanizer")', 'Trending Score: 859, Likes: 1,783, Downloads: 85,612', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/jialinyyzz/humanizer', '[{"text":"jialinyyzz/humanizer on Hugging Face","url":"https://huggingface.co/jialinyyzz/humanizer"}]'::jsonb, true, true)
+tokenizer = AutoTokenizer.from_pretrained("jialinyyzz/humanizer")', 'Trending Score: 717, Likes: 766, Downloads: 29,470', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/jialinyyzz/humanizer', '[{"text":"jialinyyzz/humanizer on Hugging Face","url":"https://huggingface.co/jialinyyzz/humanizer"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -7362,7 +7424,7 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('qwen-image-21-uncensored', 'vclnhihihi', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vclnhihihi. Trending with 117 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored', 'Trending Score: 93, Community Likes: 117', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored', '[{"text":"vclnhihihi/qwen-image-21-uncensored on Hugging Face Spaces","url":"https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored"}]'::jsonb, true, true)
+VALUES ('LTX-2.3-10Eros', '00000tt', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by 00000tt. Trending with 185 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros', 'Trending Score: 61, Community Likes: 185', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros', '[{"text":"00000tt/LTX-2.3-10Eros on Hugging Face Spaces","url":"https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -7381,9 +7443,381 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('openai-math', 'FineEnvs', 'Dataset', 'AI Coding', 'APACHE-2.0', 2026, 'n<1K', 'openai/math as Harbor environments 	 Experimental. Built on a research release that is itself new and not yet independently reviewed. Expect rough edges, and read any p (93 likes, 6,915 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+VALUES ('precinct6-cybersecurity', 'witfoo', 'Dataset', 'NLP', 'APACHE-2.0', 2026, '1M<n<10M', 'WitFoo Precinct6 Cybersecurity Dataset 	 Version 2.1.0 (built 2026-09-22). Regenerated to address feedback from the University of Canterbury PIDS evaluation: attacks an (49 likes, 3,326 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
-dataset = load_dataset("FineEnvs/openai-math")', 'Trending Score: 88, Likes: 93, Downloads: 6,915', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/FineEnvs/openai-math', '[{"text":"FineEnvs/openai-math on Hugging Face Datasets","url":"https://huggingface.co/datasets/FineEnvs/openai-math"}]'::jsonb, false, true)
+dataset = load_dataset("witfoo/precinct6-cybersecurity")', 'Trending Score: 34, Likes: 49, Downloads: 3,326', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/witfoo/precinct6-cybersecurity', '[{"text":"witfoo/precinct6-cybersecurity on Hugging Face Datasets","url":"https://huggingface.co/datasets/witfoo/precinct6-cybersecurity"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen-Image-2.1-Turbo', 'Alibaba (Qwen)', 'Model', 'Image Generation', 'OTHER', 2026, 'Open Weights', 'High-performance Image Generation open-weights model by Alibaba (Qwen), trending with over 463 community likes and 2,138 downloads on Hugging Face.', 'Alibaba (Qwen) text to image architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-Image-2.1-Turbo", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-Image-2.1-Turbo")', 'Trending Score: 456, Likes: 463, Downloads: 2,138', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo', '[{"text":"Qwen/Qwen-Image-2.1-Turbo on Hugging Face","url":"https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('embeddinggemma-2-webgpu', 'webml-community', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'STATIC Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by webml-community. Trending with 48 community stars.', 'STATIC cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu', 'Trending Score: 48, Community Likes: 48', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu', '[{"text":"webml-community/embeddinggemma-2-webgpu on Hugging Face Spaces","url":"https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('DeskForge-1M', 'docling-project', 'Dataset', 'Computer Vision', 'MIT', 2026, '1M<n<10M', 'DeskForge-1M 	 DeskForge-1M is a corpus of 1.21M annotated desktop screenshots with 159.7M element instances and 917K recorded click transitions, generated with DeskFor (34 likes, 4,899 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("docling-project/DeskForge-1M")', 'Trending Score: 34, Likes: 34, Downloads: 4,899', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/docling-project/DeskForge-1M', '[{"text":"docling-project/DeskForge-1M on Hugging Face Datasets","url":"https://huggingface.co/datasets/docling-project/DeskForge-1M"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('ema-lightning', 'canberkkkkkk', 'Model', 'Audio', 'APACHE-2.0', 2026, 'Open Weights', 'High-performance Audio open-weights model by canberkkkkkk, trending with over 358 community likes and 18,079 downloads on Hugging Face.', 'canberkkkkkk text to speech architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("canberkkkkkk/ema-lightning", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("canberkkkkkk/ema-lightning")', 'Trending Score: 327, Likes: 358, Downloads: 18,079', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/canberkkkkkk/ema-lightning', '[{"text":"canberkkkkkk/ema-lightning on Hugging Face","url":"https://huggingface.co/canberkkkkkk/ema-lightning"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('minimax-h3-character-swap-lora', 'hugging-apps', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 103 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora', 'Trending Score: 46, Community Likes: 103', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora', '[{"text":"hugging-apps/minimax-h3-character-swap-lora on Hugging Face Spaces","url":"https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('EgoDemo', 'LightwheelAI', 'Dataset', 'Multimodal', 'OTHER', 2026, '1K<n<10K', 'EgoDemo A 50-hour sample from EgoSuite-Open100K, covering every annotated subset plus two raw-video variants.   Collection ·   EgoStandard ·   EgoPro ·   Project page Explore EgoS (190 likes, 61,148 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("LightwheelAI/EgoDemo")', 'Trending Score: 54, Likes: 190, Downloads: 61,148', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/LightwheelAI/EgoDemo', '[{"text":"LightwheelAI/EgoDemo on Hugging Face Datasets","url":"https://huggingface.co/datasets/LightwheelAI/EgoDemo"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen-Image-2.1-Uncensored-Quantized', 'abenzerps', 'Model', 'Image Generation', 'OTHER', 2026, 'Open Weights', 'High-performance Image Generation open-weights model by abenzerps, trending with over 4,111 community likes and 2,188,658 downloads on Hugging Face.', 'abenzerps text to image architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("abenzerps/Qwen-Image-2.1-Uncensored-Quantized", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("abenzerps/Qwen-Image-2.1-Uncensored-Quantized")', 'Trending Score: 585, Likes: 4,111, Downloads: 2,188,658', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized', '[{"text":"abenzerps/Qwen-Image-2.1-Uncensored-Quantized on Hugging Face","url":"https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen-2511-Plus-Flux.2-klein-9B', 'AST-1320', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by AST-1320. Trending with 68 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B', 'Trending Score: 39, Community Likes: 68', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B', '[{"text":"AST-1320/Qwen-2511-Plus-Flux.2-klein-9B on Hugging Face Spaces","url":"https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('openai-math', 'FineEnvs', 'Dataset', 'AI Coding', 'APACHE-2.0', 2026, 'n<1K', 'openai/math as Harbor environments 	 Experimental. Built on a research release that is itself new and not yet independently reviewed. Expect rough edges, and read any p (60 likes, 2,587 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("FineEnvs/openai-math")', 'Trending Score: 58, Likes: 60, Downloads: 2,587', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/FineEnvs/openai-math', '[{"text":"FineEnvs/openai-math on Hugging Face Datasets","url":"https://huggingface.co/datasets/FineEnvs/openai-math"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MiniCPM-V-4.7-35B-A3B', 'openbmb', 'Model', 'Multimodal', 'APACHE-2.0', 2026, '35B params', 'High-performance Multimodal open-weights model by openbmb, trending with over 473 community likes and 630 downloads on Hugging Face.', 'openbmb image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("openbmb/MiniCPM-V-4.7-35B-A3B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("openbmb/MiniCPM-V-4.7-35B-A3B")', 'Trending Score: 428, Likes: 473, Downloads: 630', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B', '[{"text":"openbmb/MiniCPM-V-4.7-35B-A3B on Hugging Face","url":"https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('LightOnOCR-3-Demo', 'lightonai', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by lightonai. Trending with 45 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo', 'Trending Score: 43, Community Likes: 45', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo', '[{"text":"lightonai/LightOnOCR-3-Demo on Hugging Face Spaces","url":"https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('freeinference_agentic_trace', 'harvardMadsys', 'Dataset', 'NLP', 'CC-BY-4.0', 2026, '1M<n<10M', 'FreeInference Agentic Trace 	 New: Interactive Session Explorer! We''ve launched an interactive session explorer to help you explore the dataset interactively. Try it ou (37 likes, 1,450 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("harvardMadsys/freeinference_agentic_trace")', 'Trending Score: 35, Likes: 37, Downloads: 1,450', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/harvardMadsys/freeinference_agentic_trace', '[{"text":"harvardMadsys/freeinference_agentic_trace on Hugging Face Datasets","url":"https://huggingface.co/datasets/harvardMadsys/freeinference_agentic_trace"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('JEV-35B', 'autotrust', 'Model', 'NLP', 'APACHE-2.0', 2026, '35B params', 'High-performance NLP open-weights model by autotrust, trending with over 745 community likes and 27,970 downloads on Hugging Face.', 'autotrust text classification architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("autotrust/JEV-35B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("autotrust/JEV-35B")', 'Trending Score: 469, Likes: 745, Downloads: 27,970', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/autotrust/JEV-35B', '[{"text":"autotrust/JEV-35B on Hugging Face","url":"https://huggingface.co/autotrust/JEV-35B"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('qwen-image-21-uncensored', 'vclnhihihi', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vclnhihihi. Trending with 70 community stars.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored', 'Trending Score: 54, Community Likes: 70', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored', '[{"text":"vclnhihihi/qwen-image-21-uncensored on Hugging Face Spaces","url":"https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MMLU-Pro', 'TIGER-Lab', 'Dataset', 'NLP', 'MIT', 2026, '10K<n<100K', 'MMLU-Pro Dataset 	 MMLU-Pro dataset is a more robust and challenging massive multi-task understanding dataset tailored to more rigorously benchmark large language model (570 likes, 226,194 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("TIGER-Lab/MMLU-Pro")', 'Trending Score: 30, Likes: 570, Downloads: 226,194', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro', '[{"text":"TIGER-Lab/MMLU-Pro on Hugging Face Datasets","url":"https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('drama-3', 'fishaudio', 'Model', 'Audio', 'OTHER', 2026, 'Open Weights', 'High-performance Audio open-weights model by fishaudio, trending with over 480 community likes and 4,048 downloads on Hugging Face.', 'fishaudio text to speech architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("fishaudio/drama-3", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("fishaudio/drama-3")', 'Trending Score: 466, Likes: 480, Downloads: 4,048', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/fishaudio/drama-3', '[{"text":"fishaudio/drama-3 on Hugging Face","url":"https://huggingface.co/fishaudio/drama-3"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('shorts', 'autotrust', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'STATIC Platform', 'Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 151 community stars.', 'STATIC cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/autotrust/shorts', 'Trending Score: 79, Community Likes: 151', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/autotrust/shorts', '[{"text":"autotrust/shorts on Hugging Face Spaces","url":"https://huggingface.co/spaces/autotrust/shorts"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('china-a-share-l2-level2-limit-order-book-tick-data', 'venvoo', 'Dataset', 'NLP', 'OTHER', 2026, 'n>1T', 'China A-Share Level-2 Archive 	 2017–2026 · Quotes, orders and trades · Parquet A historical archive of Chinese exchange Level-2 data, supplied through a vendor export. (281 likes, 120,455 downloads).', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("venvoo/china-a-share-l2-level2-limit-order-book-tick-data")', 'Trending Score: 33, Likes: 281, Downloads: 120,455', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data', '[{"text":"venvoo/china-a-share-l2-level2-limit-order-book-tick-data on Hugging Face Datasets","url":"https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

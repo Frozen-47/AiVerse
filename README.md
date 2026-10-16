@@ -17,13 +17,13 @@
 ### ⚡ Daily AI Pulse (2026-10-16)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🆕 **New Assets Added** | **humanizer** (`Model`), **qwen-image-21-uncensored** (`Platform`), **openai-math** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Qwen 2.5 (72B)** (Alibaba Cloud) — [Explore](https://github.com/QwenLM/Qwen2.5) |
-| 🗄️ **Catalog Entries** | **352** AI assets tracked (282 featured) |
+| 🆕 **New Assets Added** | **drama-3** (`Model`), **shorts** (`Platform`), **china-a-share-l2-level2-limit-order-book-tick-data** (`Dataset`) |
+| 🌟 **Tool of the Day** | **minimax-h3-character-swap-lora** (hugging-apps) — [Explore](https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora) |
+| 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) |
-| 📜 **Top Daily Paper** | [Beyond Policy Rollouts: Embedding-Space Directiona...](https://huggingface.co/papers/2610.16105) |
-| 🛡️ **Catalog Links Checked** | **19/25** operational |
-| 🕒 **Last Daily Run** | `Fri, 16 Oct 2026 12:00:33 GMT` |
+| 📜 **Top Daily Paper** | [SCOPE: Semantic Bounded Credit Optimization for Pr...](https://huggingface.co/papers/2610.22264) |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Daily Run** | `Fri, 16 Oct 2026 02:26:10 GMT` |
 
 *Full daily metrics and paper summaries available in [DAILY_PULSE.md](DAILY_PULSE.md).*
 <!-- DAILY_PULSE:END -->
