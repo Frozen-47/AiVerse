@@ -2,27 +2,20 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sat, 17 Oct 2026 21:20:50 GMT`*
+*Last Synchronized: `Sat, 17 Oct 2026 23:42:12 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (2)
+## 📥 Newly Queued Assets for Review (1)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **d3** (`Model` • *vllm-sr*)
-> High-performance NLP open-weights model by vllm-sr, trending with over 229 community likes and 4,263 downloads on Hugging Face.
+### **MOSS-Image-Base** (`Model` • *OpenMOSS-Team*)
+> High-performance Image Generation open-weights model by OpenMOSS-Team, trending with over 226 community likes and 958 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 212, Likes: 229, Downloads: 4,263`
-- 🔗 **Resource Link**: [https://huggingface.co/vllm-sr/d3](https://huggingface.co/vllm-sr/d3)
-
-### **ExeWorldBench** (`Dataset` • *HelenPeng*)
-> ExeWorldBench: Benchmarking Code-Based Executable 3D World Modeling 	 📄 Paper 🌐 Project Page 	 		 	 	 		Overview 	 ExeWorldBench is a benchmark for evaluating world u (28 likes, 603 downloads).
-
-- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 18, Likes: 28, Downloads: 603`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/HelenPeng/ExeWorldBench](https://huggingface.co/datasets/HelenPeng/ExeWorldBench)
+- 🏷️ **Domain & License**: `Image Generation` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 218, Likes: 226, Downloads: 958`
+- 🔗 **Resource Link**: [https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base](https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base)
 
 ---
 
@@ -41,12 +34,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,584 | 📥 158,490 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 884 | 📥 0 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `jialinyyzz/humanizer` | text-generation | ❤️ 1,893 | 📥 95,870 | [View](https://huggingface.co/jialinyyzz/humanizer) |
-| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 895 | 📥 36,252 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,593 | 📥 158,490 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 920 | 📥 0 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 1,895 | 📥 95,870 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 898 | 📥 36,252 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
 | `fishaudio/drama-3` | text-to-speech | ❤️ 616 | 📥 8,193 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 634 | 📥 224,108 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 647 | 📥 224,108 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
 
 
 ---
@@ -73,7 +66,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
+- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
 - **Dependency Security**: `34` advisories flagged across `578` dependencies (`1` critical, `29` high)
 
 ---

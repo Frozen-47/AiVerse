@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-17)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **d3** (`Model`), **ExeWorldBench** (`Dataset`) |
+| 📥 **Queued for Review** | **MOSS-Image-Base** (`Model`) |
 | 🌟 **Tool of the Day** | **EgoDemo** (LightwheelAI) — [Explore](https://huggingface.co/datasets/LightwheelAI/EgoDemo) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) |
 | 📜 **Top Daily Paper** | [Mine, Sample, Render: Test-Time Diversity Alignmen...](https://huggingface.co/papers/2610.21185) |
-| 🛡️ **Catalog Links Checked** | **24/25** operational |
-| 🕒 **Last Synchronized** | `Sat, 17 Oct 2026 21:20:50 GMT` |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Synchronized** | `Sat, 17 Oct 2026 23:42:12 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

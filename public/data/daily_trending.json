@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-17T21:20:43.781Z",
+  "timestamp": "2026-10-17T23:42:09.256Z",
   "models": [
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 2584,
+      "likes": 2593,
       "downloads": 158490,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
@@ -12,7 +12,7 @@
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 884,
+      "likes": 920,
       "downloads": 0,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -20,7 +20,7 @@
     {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 1893,
+      "likes": 1895,
       "downloads": 95870,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
@@ -28,7 +28,7 @@
     {
       "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
       "author": "openbmb",
-      "likes": 895,
+      "likes": 898,
       "downloads": 36252,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
@@ -44,7 +44,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 634,
+      "likes": 647,
       "downloads": 224108,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
