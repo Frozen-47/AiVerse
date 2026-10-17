@@ -240,7 +240,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     }
   }, [toast]);
 
-  const logAudit = (action: string, details: string) => {
+  const logAudit = async (action: string, details: string) => {
     try {
       const newLog: AuditLogItem = {
         id: `${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
@@ -251,18 +251,39 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       };
       setAuditLogs((prev) => {
         const updated = [newLog, ...prev].slice(0, 100);
-        localStorage.setItem("aiverse_admin_audit_logs", JSON.stringify(updated));
+        try {
+          localStorage.setItem("aiverse_admin_audit_logs", JSON.stringify(updated));
+        } catch {}
         return updated;
       });
+
+      // Persist to Supabase server-side audit logs
+      try {
+        await supabase.from("admin_audit_logs").insert([
+          {
+            actor_email: user?.email || "admin",
+            action,
+            details,
+            metadata: {
+              timestamp: newLog.timestamp,
+              userKey: user ? `supabase_${user.id}` : undefined,
+            },
+          },
+        ]);
+      } catch (dbErr) {
+        console.warn("Server audit log write notice (stored locally):", dbErr);
+      }
     } catch (err) {
       console.error("Failed to write audit log:", err);
     }
   };
 
   const clearAuditLogs = () => {
-    localStorage.removeItem("aiverse_admin_audit_logs");
+    try {
+      localStorage.removeItem("aiverse_admin_audit_logs");
+    } catch {}
     setAuditLogs([]);
-    showToast("success", "Audit trail cleared.");
+    showToast("success", "Local audit display cleared. Server audit trail remains immutable.");
   };
 
   const loadData = async () => {
@@ -400,6 +421,31 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         const liveAnn = await fetchSiteAnnouncement();
         if (liveAnn) setAnnouncement(liveAnn);
       } catch {}
+
+      // 5. Fetch server-persisted audit logs
+      try {
+        const { data: serverLogs, error: logsErr } = await supabase
+          .from("admin_audit_logs")
+          .select("*")
+          .order("created_at", { ascending: false })
+          .limit(100);
+
+        if (!logsErr && serverLogs && serverLogs.length > 0) {
+          const mappedLogs: AuditLogItem[] = serverLogs.map((log: any) => ({
+            id: log.id,
+            action: log.action,
+            details: log.details,
+            adminEmail: log.actor_email || "admin",
+            timestamp: log.created_at,
+          }));
+          setAuditLogs(mappedLogs);
+          try {
+            localStorage.setItem("aiverse_admin_audit_logs", JSON.stringify(mappedLogs));
+          } catch {}
+        }
+      } catch (logErr) {
+        console.warn("Server audit logs notice (falling back to local cache):", logErr);
+      }
     } catch (err: any) {
       console.error("Admin dashboard load failed:", err);
       setError(err.message || "Failed to query admin records.");

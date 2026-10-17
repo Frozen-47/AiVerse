@@ -40,7 +40,7 @@
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v16 or higher)
+- Node.js (v20 or higher)
 - Git
 
 ### Installation

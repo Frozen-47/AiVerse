@@ -29,7 +29,7 @@ We welcome all forms of contribution, including UI/UX enhancements, new database
 Follow these steps to run the AiVerse project on your local machine:
 
 ### 1. Prerequisites
-- **Node.js** (v18.0.0 or higher recommended)
+- **Node.js** (v20.0.0 or higher recommended)
 - **Git**
 
 ### 2. Fork and Clone

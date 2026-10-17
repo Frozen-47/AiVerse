@@ -39,7 +39,7 @@ import {
   type UserRole,
 } from "../lib/onboarding";
 import { useTokens, useTheme } from "../lib/theme";
-import { getOAuthAvatarUrl, supabase } from "../lib/supabase";
+import { getOAuthAvatarUrl, isAdminUser, supabase } from "../lib/supabase";
 import { navigateTo } from "../lib/router";
 
 // Custom SVG Logos for platforms not in standard Lucide version
@@ -1074,7 +1074,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
         )}
 
         {/* ── Admin Dashboard ── */}
-        {(user?.email === "frozennheart47@gmail.com" || user?.user_metadata?.role === "admin") && (
+        {isAdminUser(user) && (
           <button
             type="button"
             onClick={() => {

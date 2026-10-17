@@ -54,7 +54,7 @@ SET search_path = ''
 AS $$
   SELECT 
     auth.jwt() ->> 'email' = 'frozennheart47@gmail.com' 
-    OR auth.jwt() -> 'user_metadata' ->> 'role' = 'admin';
+    OR auth.jwt() -> 'app_metadata' ->> 'role' = 'admin';
 $$;
 
 REVOKE ALL ON FUNCTION private.app_user_key() FROM PUBLIC;
@@ -214,9 +214,9 @@ CREATE POLICY "Insert own comments"
 
 DROP POLICY IF EXISTS "Allow public read bookmarks" ON user_bookmarks;
 DROP POLICY IF EXISTS "Read own bookmarks" ON user_bookmarks;
-CREATE POLICY "Allow public read bookmarks"
+CREATE POLICY "Read own bookmarks"
   ON user_bookmarks FOR SELECT
-  USING (true);
+  USING (user_key = private.app_user_key() OR private.is_admin());
 
 DROP POLICY IF EXISTS "Allow public insert bookmarks" ON user_bookmarks;
 DROP POLICY IF EXISTS "Insert own bookmarks" ON user_bookmarks;

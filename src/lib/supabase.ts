@@ -237,3 +237,17 @@ export function getOAuthAvatarUrl(user: any): string | undefined {
   return undefined;
 }
 
+/**
+ * Verifies if a user has platform administrator privileges.
+ * Relies on hardcoded platform owner email or server-controlled app_metadata.
+ * Strictly avoids user-writable user_metadata.
+ */
+export function isAdminUser(
+  user?: { email?: string | null; app_metadata?: Record<string, any> } | null
+): boolean {
+  if (!user) return false;
+  if (user.email === 'frozennheart47@gmail.com') return true;
+  if (user.app_metadata && user.app_metadata.role === 'admin') return true;
+  return false;
+}
+

@@ -187,7 +187,7 @@ AS $$
   SELECT 
     auth.jwt() ->> 'email' = 'frozennheart47@gmail.com' 
     OR auth.jwt() ->> 'sub' = '20f48b0a-737d-4b78-9098-847a8ba450e8'
-    OR auth.jwt() -> 'user_metadata' ->> 'role' = 'admin';
+    OR auth.jwt() -> 'app_metadata' ->> 'role' = 'admin';
 $$;
 
 REVOKE ALL ON FUNCTION private.app_user_key() FROM PUBLIC;
@@ -605,7 +605,7 @@ DECLARE
 BEGIN
   caller_email := auth.jwt() ->> 'email';
   caller_sub := auth.jwt() ->> 'sub';
-  caller_role := auth.jwt() -> 'user_metadata' ->> 'role';
+  caller_role := auth.jwt() -> 'app_metadata' ->> 'role';
 
   IF NOT (
     caller_email = 'frozennheart47@gmail.com'
@@ -757,5 +757,33 @@ $$;
 
 REVOKE ALL ON FUNCTION public.sync_catalog_entry(jsonb) FROM PUBLIC, anon;
 GRANT EXECUTE ON FUNCTION public.sync_catalog_entry(jsonb) TO authenticated, service_role;
+
+-- ─── admin_audit_logs ─────────────────────────────────────────────────────────
+
+CREATE TABLE IF NOT EXISTS admin_audit_logs (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  created_at timestamptz DEFAULT now() NOT NULL,
+  actor_email text NOT NULL,
+  action text NOT NULL,
+  details text NOT NULL,
+  metadata jsonb DEFAULT '{}'::jsonb
+);
+
+CREATE INDEX IF NOT EXISTS idx_admin_audit_logs_created_at ON admin_audit_logs(created_at DESC);
+
+ALTER TABLE admin_audit_logs ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Admins can view audit logs" ON admin_audit_logs;
+CREATE POLICY "Admins can view audit logs"
+  ON admin_audit_logs FOR SELECT
+  USING (private.is_admin());
+
+DROP POLICY IF EXISTS "Admins can insert audit logs" ON admin_audit_logs;
+CREATE POLICY "Admins can insert audit logs"
+  ON admin_audit_logs FOR INSERT
+  WITH CHECK (private.is_admin());
+
+REVOKE UPDATE, DELETE ON admin_audit_logs FROM anon, authenticated;
+
 
 

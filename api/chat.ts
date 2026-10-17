@@ -235,27 +235,64 @@ function getRelevantCatalogContext(query: string, allEntries: any[]): string {
     .join('\n\n');
 }
 
+// In-memory rate limiting map (IP -> timestamps[])
+const rateLimitMap = new Map<string, number[]>();
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 30;
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = rateLimitMap.get(ip) || [];
+  const validTimestamps = timestamps.filter(ts => now - ts < RATE_LIMIT_WINDOW_MS);
+
+  if (validTimestamps.length >= MAX_REQUESTS_PER_WINDOW) {
+    rateLimitMap.set(ip, validTimestamps);
+    return true;
+  }
+
+  validTimestamps.push(now);
+  rateLimitMap.set(ip, validTimestamps);
+
+  // Periodic cleanup if map grows large
+  if (rateLimitMap.size > 5000) {
+    for (const [key, list] of rateLimitMap.entries()) {
+      if (list.length === 0 || now - list[list.length - 1] > RATE_LIMIT_WINDOW_MS) {
+        rateLimitMap.delete(key);
+      }
+    }
+  }
+
+  return false;
+}
+
 async function verifyTurnstileToken(token?: string, remoteip?: string): Promise<boolean> {
   const secretKey = process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY;
+  // If not configured (local dev/test), allow bypass
   if (!secretKey) return true;
-  if (!token) return true;
-  if (token === 'session_verified') return true;
+  // If configured, require valid token and disallow mock strings
+  if (!token || typeof token !== 'string' || !token.trim() || token === 'session_verified') {
+    return false;
+  }
 
   try {
     const formData = new URLSearchParams();
     formData.append('secret', secretKey);
-    formData.append('response', token);
+    formData.append('response', token.trim());
     if (remoteip) formData.append('remoteip', remoteip);
 
     const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
       body: formData,
     });
+    if (!verifyRes.ok) {
+      console.warn('Turnstile verification HTTP non-200 response:', verifyRes.status);
+      return false; // Fail closed
+    }
     const data = (await verifyRes.json()) as { success: boolean };
     return !!data.success;
   } catch (err) {
-    console.warn('Turnstile verification network notice (fail-open):', err);
-    return true;
+    console.error('Turnstile verification error (fail-closed):', err);
+    return false; // Fail closed
   }
 }
 
@@ -267,6 +304,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
+  const clientIp = ((req.headers['x-forwarded-for'] as string)?.split(',')[0] || req.socket?.remoteAddress || 'unknown').trim();
+  if (clientIp !== 'unknown' && isRateLimited(clientIp)) {
+    return res.status(429).json({ error: 'Too many requests. Please wait a moment before sending more messages.' });
+  }
+
   const groq = getGroqClient();
   if (!groq) {
     return res.status(200).json({
@@ -275,23 +317,42 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { messages, userName, model, systemInstruction, turnstileToken } = req.body || {};
+    const { messages, userName, model, turnstileToken } = req.body || {};
 
-    if (process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY && turnstileToken) {
-      const clientIp = (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim();
+    // Enforce Turnstile verification if secret key is present in environment
+    if (process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY) {
+      if (!turnstileToken) {
+        return res.status(403).json({
+          error: 'Turnstile human verification token is required.'
+        });
+      }
       const isHuman = await verifyTurnstileToken(turnstileToken, clientIp);
       if (!isHuman) {
-        return res.status(200).json({
-          content: '⚠️ **Security Notice**: Cloudflare verification check failed. Please refresh your browser session.',
+        return res.status(403).json({
+          error: 'Cloudflare Turnstile verification check failed. Please refresh your browser or complete the challenge.',
         });
       }
     }
 
-    if (!Array.isArray(messages)) {
+    if (!Array.isArray(messages) || messages.length === 0) {
       return res.status(400).json({ error: 'Invalid request: messages array is required.' });
     }
 
-    const sanitizedMessages = messages.map(({ role, content }) => ({ role, content }));
+    // Bound conversation depth to last 20 messages to prevent excessive token usage
+    const boundedMessages = messages.slice(-20);
+
+    // Filter to only user and assistant roles (prevents client-side 'system' role injection)
+    // and bound length of each message to 4000 characters
+    const sanitizedMessages = boundedMessages
+      .filter((m) => m && typeof m.content === 'string' && (m.role === 'user' || m.role === 'assistant'))
+      .map(({ role, content }) => ({
+        role,
+        content: (content as string).slice(0, 4000)
+      }));
+
+    if (sanitizedMessages.length === 0) {
+      return res.status(400).json({ error: 'Invalid request: no valid user or assistant messages found.' });
+    }
 
     const userMessages = sanitizedMessages.filter(m => m.role === 'user');
     const latestUserQuery = userMessages.length > 0 ? userMessages[userMessages.length - 1].content : '';
@@ -299,11 +360,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const allEntries = await getCatalogEntries();
     const catalogContext = getRelevantCatalogContext(latestUserQuery, allEntries);
 
-    const nameStr = userName ? `The user's name is ${userName}. Greet them or address them by this name occasionally to be polite and personal.` : '';
+    const safeUserName = typeof userName === 'string'
+      ? userName.trim().slice(0, 50).replace(/[^\w\s-]/g, '')
+      : '';
+    const nameStr = safeUserName ? `The user's name is ${safeUserName}. Greet them or address them by this name occasionally to be polite and personal.` : '';
 
-    const systemPromptContent = systemInstruction && typeof systemInstruction === 'string'
-      ? systemInstruction
-      : `You are Vox, an AI assistant and expert encyclopedia curator strictly dedicated to the AiVerse platform. ${nameStr} You MUST REFUSE to answer any questions that are not related to Artificial Intelligence, machine learning, AI models, frameworks, platforms, datasets, or the AiVerse platform itself. If a user asks about off-topic subjects, politely decline and steer the conversation back to AI technologies.\n\nHere are relevant AI items from the AiVerse encyclopedia (${allEntries.length}+ total indexed entries):\n${catalogContext || 'No catalog items found'}\n\nUse these technical facts, architectures, and benchmarks to accurately answer questions and offer comparisons.\n\nCRITICAL INSTRUCTIONS:\n1. **ACCURACY & CATALOG GROUNDING**: Rely on facts, benchmarks, and architectures provided in the catalog.\n2. **ORGANIZE CLEARLY**: Provide clean, highly structured responses with bullet points and bold headers.\n3. **HIGHLIGHT ENTITY NAMES**: Use **bold text** for AI entity names (e.g. **DeepSeek-R1**, **Llama 3.3 (70B)**, **LangGraph**, **FLUX.1 Schnell**, **Cursor**).\n4. **INCLUDE LINKS**: If a URL is available in the catalog, format as [Official Website](URL) or [Documentation](URL).`;
+    // Enforce trusted server-controlled system prompt (caller cannot override systemInstruction)
+    const systemPromptContent = `You are Vox, an AI assistant and expert encyclopedia curator strictly dedicated to the AiVerse platform. ${nameStr} You MUST REFUSE to answer any questions that are not related to Artificial Intelligence, machine learning, AI models, frameworks, platforms, datasets, or the AiVerse platform itself. If a user asks about off-topic subjects, politely decline and steer the conversation back to AI technologies.\n\nHere are relevant AI items from the AiVerse encyclopedia (${allEntries.length}+ total indexed entries):\n${catalogContext || 'No catalog items found'}\n\nUse these technical facts, architectures, and benchmarks to accurately answer questions and offer comparisons.\n\nCRITICAL INSTRUCTIONS:\n1. **ACCURACY & CATALOG GROUNDING**: Rely on facts, benchmarks, and architectures provided in the catalog.\n2. **ORGANIZE CLEARLY**: Provide clean, highly structured responses with bullet points and bold headers.\n3. **HIGHLIGHT ENTITY NAMES**: Use **bold text** for AI entity names (e.g. **DeepSeek-R1**, **Llama 3.3 (70B)**, **LangGraph**, **FLUX.1 Schnell**, **Cursor**).\n4. **INCLUDE LINKS**: If a URL is available in the catalog, format as [Official Website](URL) or [Documentation](URL).`;
 
     const systemPrompt = {
       role: 'system',

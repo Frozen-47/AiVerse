@@ -27,7 +27,7 @@ BEGIN
   -- Extract calling user claims safely
   caller_email := auth.jwt() ->> 'email';
   caller_sub := auth.jwt() ->> 'sub';
-  caller_role := auth.jwt() -> 'user_metadata' ->> 'role';
+  caller_role := auth.jwt() -> 'app_metadata' ->> 'role';
 
   -- Verify caller is an administrator
   IF NOT (
@@ -231,7 +231,7 @@ DECLARE
 BEGIN
   caller_email := auth.jwt() ->> 'email';
   caller_sub := auth.jwt() ->> 'sub';
-  caller_role := auth.jwt() -> 'user_metadata' ->> 'role';
+  caller_role := auth.jwt() -> 'app_metadata' ->> 'role';
 
   IF NOT (
     caller_email = 'frozennheart47@gmail.com'

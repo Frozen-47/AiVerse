@@ -50,7 +50,7 @@ const ChatWidget = lazy(() =>
 );
 import type { Entry, EntryRatingSummary, Theme, TypeFilter, TaskFilter } from "./types";
 import { fetchRatingSummaries } from "./lib/entryFeedback";
-import { fetchEntries } from "./lib/supabase";
+import { fetchEntries, isAdminUser } from "./lib/supabase";
 import { typeFilters as staticTypeFilters, taskFilters as staticTaskFilters, entries as staticEntries } from "./data";
 import {
   partitionByInterests,
@@ -1000,7 +1000,7 @@ const Inner: React.FC = () => {
           ratingSummaries={ratingSummaries}
         />
       ) : isAdminDashboard ? (
-        (user?.email === "frozennheart47@gmail.com" || user?.user_metadata?.role === "admin") ? (
+        isAdminUser(user) ? (
           <AdminDashboard
             key={adminDashboardKey}
             initialSection={route.type === "admin" ? route.section : undefined}
