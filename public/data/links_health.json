@@ -1,33 +1,23 @@
 {
-  "timestamp": "2026-10-17T11:18:21.320Z",
+  "timestamp": "2026-10-17T14:47:57.553Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "DALL-E 3",
-      "url": "https://openai.com/dall-e-3",
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
+    },
+    {
+      "name": "Ideogram",
+      "url": "https://ideogram.ai",
       "status": 403
     },
     {
-      "name": "GPT-3",
-      "url": "https://openai.com/research/language-models-are-few-shot-learners",
+      "name": "Midjourney",
+      "url": "https://www.midjourney.com",
       "status": 403
-    },
-    {
-      "name": "DALL-E 2",
-      "url": "https://openai.com/dall-e-2",
-      "status": 403
-    },
-    {
-      "name": "Midjourney v6",
-      "url": "https://www.midjourney.com/",
-      "status": 403
-    },
-    {
-      "name": "SAM (Segment Anything Model)",
-      "url": "https://segment-anything.com/",
-      "status": "Network Error"
     }
   ]
 }

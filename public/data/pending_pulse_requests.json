@@ -1,5 +1,30 @@
 [
   {
+    "name": "sam3",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by facebook, trending with over 4,545 community likes and 2,013,498 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "facebook",
+    "size": "Open Weights",
+    "architecture": "facebook mask generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"facebook/sam3\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"facebook/sam3\")",
+    "benchmarks": "Trending Score: 224, Likes: 4,545, Downloads: 2,013,498",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/facebook/sam3",
+    "citations": [
+      {
+        "text": "facebook/sam3 on Hugging Face",
+        "url": "https://huggingface.co/facebook/sam3"
+      }
+    ],
+    "created_at": "2026-10-17T14:47:55.177Z"
+  },
+  {
     "name": "DeepSeek-V4.1-Flash-1017",
     "type": "Model",
     "summary": "High-performance Multimodal open-weights model by DeepSeek, trending with over 393 community likes and 0 downloads on Hugging Face.",

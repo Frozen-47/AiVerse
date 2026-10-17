@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sat, 17 Oct 2026 11:18:25 GMT`*
+*Last Synchronized: `Sat, 17 Oct 2026 14:48:01 GMT`*
 
 ---
 
@@ -10,12 +10,12 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **DeepSeek-V4.1-Flash-1017** (`Model` • *DeepSeek*)
-> High-performance Multimodal open-weights model by DeepSeek, trending with over 393 community likes and 0 downloads on Hugging Face.
+### **sam3** (`Model` • *facebook*)
+> High-performance NLP open-weights model by facebook, trending with over 4,545 community likes and 2,013,498 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `MIT` (2026)
-- ⚡ **Metrics**: `Trending Score: 391, Likes: 393, Downloads: 0`
-- 🔗 **Resource Link**: [https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 224, Likes: 4,545, Downloads: 2,013,498`
+- 🔗 **Resource Link**: [https://huggingface.co/facebook/sam3](https://huggingface.co/facebook/sam3)
 
 ---
 
@@ -34,12 +34,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,547 | 📥 158,490 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `jialinyyzz/humanizer` | text-generation | ❤️ 1,856 | 📥 95,870 | [View](https://huggingface.co/jialinyyzz/humanizer) |
-| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 869 | 📥 36,252 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 576 | 📥 8,193 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 545 | 📥 224,108 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 8,150 | 📥 1,993,003 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,564 | 📥 158,490 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 1,871 | 📥 95,870 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 880 | 📥 36,252 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 635 | 📥 0 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 590 | 📥 8,193 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 573 | 📥 224,108 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
 
 
 ---
@@ -66,8 +66,8 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
-- **Dependency Security**: `34` advisories flagged across `561` dependencies (`1` critical, `29` high)
+- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Dependency Security**: `34` advisories flagged across `578` dependencies (`1` critical, `29` high)
 
 ---
 *Generated automatically by GitHub Actions AI Radar & Ecosystem Sync.*
