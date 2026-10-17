@@ -4,6 +4,60 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "d3",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by vllm-sr, trending with over 229 community likes and 4,263 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "vllm-sr",
+        "size": "Open Weights",
+        "architecture": "vllm-sr zero shot classification architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"vllm-sr/d3\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"vllm-sr/d3\")",
+        "benchmarks": "Trending Score: 212, Likes: 229, Downloads: 4,263",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/vllm-sr/d3",
+        "citations": [
+          {
+            "text": "vllm-sr/d3 on Hugging Face",
+            "url": "https://huggingface.co/vllm-sr/d3"
+          }
+        ]
+      },
+      {
+        "name": "ExeWorldBench",
+        "type": "Dataset",
+        "summary": "ExeWorldBench: Benchmarking Code-Based Executable 3D World Modeling \t 📄 Paper 🌐 Project Page \t \t\t \t \t \t\tOverview \t ExeWorldBench is a benchmark for evaluating world u (28 likes, 603 downloads).",
+        "task": "Computer Vision",
+        "license": "CC-BY-4.0",
+        "year": 2026,
+        "org": "HelenPeng",
+        "size": "1K<n<10K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"HelenPeng/ExeWorldBench\")",
+        "benchmarks": "Trending Score: 18, Likes: 28, Downloads: 603",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/HelenPeng/ExeWorldBench",
+        "citations": [
+          {
+            "text": "HelenPeng/ExeWorldBench on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/HelenPeng/ExeWorldBench"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-17",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "MOSS-Image-SFT",
         "type": "Model",
         "summary": "High-performance Image Generation open-weights model by OpenMOSS-Team, trending with over 223 community likes and 1,036 downloads on Hugging Face.",

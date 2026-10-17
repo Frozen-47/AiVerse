@@ -1,34 +1,34 @@
 {
-  "timestamp": "2026-10-17T18:58:57.925Z",
+  "timestamp": "2026-10-17T21:20:43.781Z",
   "models": [
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 2579,
+      "likes": 2584,
       "downloads": 158490,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
     },
     {
-      "id": "jialinyyzz/humanizer",
-      "author": "jialinyyzz",
-      "likes": 1885,
-      "downloads": 95870,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/jialinyyzz/humanizer"
-    },
-    {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 829,
+      "likes": 884,
       "downloads": 0,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
+      "id": "jialinyyzz/humanizer",
+      "author": "jialinyyzz",
+      "likes": 1893,
+      "downloads": 95870,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/jialinyyzz/humanizer"
+    },
+    {
       "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
       "author": "openbmb",
-      "likes": 893,
+      "likes": 895,
       "downloads": 36252,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
@@ -36,7 +36,7 @@
     {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 609,
+      "likes": 616,
       "downloads": 8193,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
@@ -44,7 +44,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 621,
+      "likes": 634,
       "downloads": 224108,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -62,7 +62,7 @@
     {
       "title": "Behavioral Compositionality of Sparse Autoencoder Representations",
       "summary": "Sparse autoencoder features are partially compositional but require interaction terms for accurate behavioral predictions and steering.",
-      "upvotes": 104,
+      "upvotes": 105,
       "arxiv_id": "2610.21261",
       "url": "https://huggingface.co/papers/2610.21261",
       "githubRepo": "https://github.com/OpenSAE/SAE-Behavioral-Compositionality"
@@ -86,7 +86,7 @@
     {
       "title": "Scalable Weak-to-Strong Verifier Hardening for Agent Environments",
       "summary": "The study proposes an automated weak-to-strong loop that hardens agent environment verifiers against reward hacking by iteratively finding and repairing vulnerabilities in isolated sandboxes.",
-      "upvotes": 3,
+      "upvotes": 4,
       "arxiv_id": "2610.15924",
       "url": "https://huggingface.co/papers/2610.15924",
       "githubRepo": null
