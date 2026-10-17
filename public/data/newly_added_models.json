@@ -4,6 +4,84 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "MiniCPM-V-4.7-1B",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by openbmb, trending with over 369 community likes and 8,822 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "openbmb",
+        "size": "1B params",
+        "architecture": "openbmb image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"openbmb/MiniCPM-V-4.7-1B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"openbmb/MiniCPM-V-4.7-1B\")",
+        "benchmarks": "Trending Score: 275, Likes: 369, Downloads: 8,822",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-1B",
+        "citations": [
+          {
+            "text": "openbmb/MiniCPM-V-4.7-1B on Hugging Face",
+            "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-1B"
+          }
+        ]
+      },
+      {
+        "name": "MOSS-Image",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by OpenMOSS-Team. Trending with 34 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "OpenMOSS-Team",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/OpenMOSS-Team/MOSS-Image",
+        "benchmarks": "Trending Score: 34, Community Likes: 34",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/OpenMOSS-Team/MOSS-Image",
+        "citations": [
+          {
+            "text": "OpenMOSS-Team/MOSS-Image on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/OpenMOSS-Team/MOSS-Image"
+          }
+        ]
+      },
+      {
+        "name": "BlenderWorld",
+        "type": "Dataset",
+        "summary": "BlenderWorld \t BlenderWorld is the first comprehensive benchmark dedicated to evaluating frontier models on realistic 3D creation tasks. BlenderWorld comprises 223 task (19 likes, 614 downloads).",
+        "task": "Multimodal",
+        "license": "MIT",
+        "year": 2026,
+        "org": "Qwen",
+        "size": "n<1K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Qwen/BlenderWorld\")",
+        "benchmarks": "Trending Score: 19, Likes: 19, Downloads: 614",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/Qwen/BlenderWorld",
+        "citations": [
+          {
+            "text": "Qwen/BlenderWorld on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/Qwen/BlenderWorld"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-17",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Underdog-Saluki-27B-1.0",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by ConwayResearch, trending with over 511 community likes and 370,955 downloads on Hugging Face.",

@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-17T00:06:07.695Z",
+  "timestamp": "2026-10-17T06:27:44.659Z",
   "models": [
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 2511,
+      "likes": 2524,
       "downloads": 151258,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
@@ -12,7 +12,7 @@
     {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 1826,
+      "likes": 1841,
       "downloads": 85612,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
@@ -20,7 +20,7 @@
     {
       "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
       "author": "openbmb",
-      "likes": 848,
+      "likes": 859,
       "downloads": 17553,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
@@ -28,7 +28,7 @@
     {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 556,
+      "likes": 564,
       "downloads": 6158,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
@@ -36,7 +36,7 @@
     {
       "id": "Qwen/Qwen-Image-2.1-Turbo",
       "author": "Qwen",
-      "likes": 943,
+      "likes": 947,
       "downloads": 17421,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"
@@ -44,7 +44,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 8086,
+      "likes": 8110,
       "downloads": 1920611,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -52,9 +52,17 @@
   ],
   "papers": [
     {
+      "title": "Mine, Sample, Render: Test-Time Diversity Alignment Of Generative Models",
+      "summary": "MSR improves generative diversity by mining categorical schemas from real artifacts to guide conditional rendering at test time.",
+      "upvotes": 5,
+      "arxiv_id": "2610.21185",
+      "url": "https://huggingface.co/papers/2610.21185",
+      "githubRepo": null
+    },
+    {
       "title": "Behavioral Compositionality of Sparse Autoencoder Representations",
       "summary": "Sparse autoencoder features are partially compositional but require interaction terms for accurate behavioral predictions and steering.",
-      "upvotes": 3,
+      "upvotes": 82,
       "arxiv_id": "2610.21261",
       "url": "https://huggingface.co/papers/2610.21261",
       "githubRepo": "https://github.com/OpenSAE/SAE-Behavioral-Compositionality"
@@ -70,7 +78,7 @@
     {
       "title": "LEASH: Uncertainty-Aware Weak-to-Strong Escalation and Oversight for Computer-Use Agents",
       "summary": "LEASH is a training-free framework that uses latent uncertainty to escalate from a weak to a strong computer-use agent only when needed and monitors the strong agent afterward, reducing cost while maintaining high success.",
-      "upvotes": 4,
+      "upvotes": 5,
       "arxiv_id": "2610.22280",
       "url": "https://huggingface.co/papers/2610.22280",
       "githubRepo": null
@@ -78,17 +86,9 @@
     {
       "title": "Scalable Weak-to-Strong Verifier Hardening for Agent Environments",
       "summary": "The study proposes an automated weak-to-strong loop that hardens agent environment verifiers against reward hacking by iteratively finding and repairing vulnerabilities in isolated sandboxes.",
-      "upvotes": 2,
+      "upvotes": 3,
       "arxiv_id": "2610.15924",
       "url": "https://huggingface.co/papers/2610.15924",
-      "githubRepo": null
-    },
-    {
-      "title": "LeanPRM: Lean-Grounded Process Supervision for Natural Language Proof Verification",
-      "summary": "LeanPRM uses the Lean proof assistant to automatically generate step-level correctness labels for natural-language mathematical proofs, enabling scalable training of learned verifiers without human annotation.",
-      "upvotes": 4,
-      "arxiv_id": "2610.17697",
-      "url": "https://huggingface.co/papers/2610.17697",
       "githubRepo": null
     }
   ]

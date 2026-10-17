@@ -1,1 +1,1 @@
-Underdog-Saluki-27B-1.0
+MiniCPM-V-4.7-1B
