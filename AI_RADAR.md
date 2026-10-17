@@ -2,20 +2,27 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sat, 17 Oct 2026 14:48:01 GMT`*
+*Last Synchronized: `Sat, 17 Oct 2026 18:59:01 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (1)
+## 📥 Newly Queued Assets for Review (2)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **sam3** (`Model` • *facebook*)
-> High-performance NLP open-weights model by facebook, trending with over 4,545 community likes and 2,013,498 downloads on Hugging Face.
+### **MOSS-Image-SFT** (`Model` • *OpenMOSS-Team*)
+> High-performance Image Generation open-weights model by OpenMOSS-Team, trending with over 223 community likes and 1,036 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 224, Likes: 4,545, Downloads: 2,013,498`
-- 🔗 **Resource Link**: [https://huggingface.co/facebook/sam3](https://huggingface.co/facebook/sam3)
+- 🏷️ **Domain & License**: `Image Generation` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 215, Likes: 223, Downloads: 1,036`
+- 🔗 **Resource Link**: [https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT)
+
+### **Nemotron-Personas-Vietnam** (`Dataset` • *nvidia*)
+> Nemotron-Personas-Vietnam 	           Hệ thống AI kết hợp để tạo personas tổng hợp dựa trên phân bố thực tế của Việt Nam     A compound AI approach to personas grounded (103 likes, 1,788 downloads).
+
+- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 34, Likes: 103, Downloads: 1,788`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/Nemotron-Personas-Vietnam](https://huggingface.co/datasets/nvidia/Nemotron-Personas-Vietnam)
 
 ---
 
@@ -34,12 +41,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,564 | 📥 158,490 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `jialinyyzz/humanizer` | text-generation | ❤️ 1,871 | 📥 95,870 | [View](https://huggingface.co/jialinyyzz/humanizer) |
-| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 880 | 📥 36,252 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 635 | 📥 0 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 590 | 📥 8,193 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 573 | 📥 224,108 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,579 | 📥 158,490 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 1,885 | 📥 95,870 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 829 | 📥 0 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 893 | 📥 36,252 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 609 | 📥 8,193 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 621 | 📥 224,108 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
 
 
 ---

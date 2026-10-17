@@ -4,6 +4,60 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "MOSS-Image-SFT",
+        "type": "Model",
+        "summary": "High-performance Image Generation open-weights model by OpenMOSS-Team, trending with over 223 community likes and 1,036 downloads on Hugging Face.",
+        "task": "Image Generation",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "OpenMOSS-Team",
+        "size": "Open Weights",
+        "architecture": "OpenMOSS-Team text to image architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"OpenMOSS-Team/MOSS-Image-SFT\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"OpenMOSS-Team/MOSS-Image-SFT\")",
+        "benchmarks": "Trending Score: 215, Likes: 223, Downloads: 1,036",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT",
+        "citations": [
+          {
+            "text": "OpenMOSS-Team/MOSS-Image-SFT on Hugging Face",
+            "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
+          }
+        ]
+      },
+      {
+        "name": "Nemotron-Personas-Vietnam",
+        "type": "Dataset",
+        "summary": "Nemotron-Personas-Vietnam \t           Hệ thống AI kết hợp để tạo personas tổng hợp dựa trên phân bố thực tế của Việt Nam     A compound AI approach to personas grounded (103 likes, 1,788 downloads).",
+        "task": "Computer Vision",
+        "license": "CC-BY-4.0",
+        "year": 2026,
+        "org": "nvidia",
+        "size": "1M<n<10M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/Nemotron-Personas-Vietnam\")",
+        "benchmarks": "Trending Score: 34, Likes: 103, Downloads: 1,788",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Vietnam",
+        "citations": [
+          {
+            "text": "nvidia/Nemotron-Personas-Vietnam on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Vietnam"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-17",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "sam3",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by facebook, trending with over 4,545 community likes and 2,013,498 downloads on Hugging Face.",
