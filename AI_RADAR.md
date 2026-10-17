@@ -1,8 +1,8 @@
-# ⚡ AiVerse AI Radar (2026-10-16)
+# ⚡ AiVerse AI Radar (2026-10-17)
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 16 Oct 2026 21:52:46 GMT`*
+*Last Synchronized: `Sat, 17 Oct 2026 00:06:12 GMT`*
 
 ---
 
@@ -10,37 +10,37 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Unlimited-OCR** (`Model` • *baidu*)
-> High-performance Multimodal open-weights model by baidu, trending with over 4,744 community likes and 1,262,307 downloads on Hugging Face.
+### **Underdog-Saluki-27B-1.0** (`Model` • *ConwayResearch*)
+> High-performance NLP open-weights model by ConwayResearch, trending with over 511 community likes and 370,955 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `MIT` (2026)
-- ⚡ **Metrics**: `Trending Score: 355, Likes: 4,744, Downloads: 1,262,307`
-- 🔗 **Resource Link**: [https://huggingface.co/baidu/Unlimited-OCR](https://huggingface.co/baidu/Unlimited-OCR)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 291, Likes: 511, Downloads: 370,955`
+- 🔗 **Resource Link**: [https://huggingface.co/ConwayResearch/Underdog-Saluki-27B-1.0](https://huggingface.co/ConwayResearch/Underdog-Saluki-27B-1.0)
 
-### **iris-3b** (`Platform` • *speridlabs*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by speridlabs. Trending with 42 community stars.
+### **microduck-arena** (`Platform` • *pollen-robotics*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by pollen-robotics. Trending with 32 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 34, Community Likes: 42`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/speridlabs/iris-3b](https://huggingface.co/spaces/speridlabs/iris-3b)
+- ⚡ **Metrics**: `Trending Score: 31, Community Likes: 32`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/pollen-robotics/microduck-arena](https://huggingface.co/spaces/pollen-robotics/microduck-arena)
 
-### **UltraData-Stack-v3-L2** (`Dataset` • *openbmb*)
-> UltraData-Stack-v3-L2 	    📦 UltraData Collection | 🌐 UltraData | 📖 Tech Report | 🤗 UltraData-Code | 🤗 UltraData-Code-L2 Classifier English | 中文 	 		 	 	 		📚 Intr (27 likes, 919 downloads).
+### **Open-Jev** (`Dataset` • *ZefanCai*)
+> Open-Jev: typed decision datasets 	 Open-Jev turns a state and a question into a typed decision: a yes/no probability, a distribution over choices, independent label pr (109 likes, 7,294 downloads).
 
-- 🏷️ **Domain & License**: `AI Coding` • `ODC-BY` (2026)
-- ⚡ **Metrics**: `Trending Score: 22, Likes: 27, Downloads: 919`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/openbmb/UltraData-Stack-v3-L2](https://huggingface.co/datasets/openbmb/UltraData-Stack-v3-L2)
+- 🏷️ **Domain & License**: `NLP` • `CC0-1.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 19, Likes: 109, Downloads: 7,294`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/ZefanCai/Open-Jev](https://huggingface.co/datasets/ZefanCai/Open-Jev)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **minimax-h3-character-swap-lora** (`Platform` • *hugging-apps*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 103 community stars.
+### **EgoDemo** (`Dataset` • *LightwheelAI*)
+> EgoDemo A 50-hour sample from EgoSuite-Open100K, covering every annotated subset plus two raw-video variants.   Collection ·   EgoStandard ·   EgoPro ·   Project page Explore EgoS (190 likes, 61,148 downloads).
 
-- 🏛️ **Architecture**: GRADIO cloud runtime container with interactive browser interface.
-- ⚡ **Benchmarks**: `Trending Score: 46, Community Likes: 103`
-- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (Released: 2026)
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora](https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora)
+- 🏛️ **Architecture**: Parquet / Arrow structured tabular & tokenized dataset.
+- ⚡ **Benchmarks**: `Trending Score: 54, Likes: 190, Downloads: 61,148`
+- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (Released: 2026)
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/LightwheelAI/EgoDemo](https://huggingface.co/datasets/LightwheelAI/EgoDemo)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,506 | 📥 151,258 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `jialinyyzz/humanizer` | text-generation | ❤️ 1,820 | 📥 85,612 | [View](https://huggingface.co/jialinyyzz/humanizer) |
-| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 843 | 📥 17,553 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 551 | 📥 6,158 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `Qwen/Qwen-Image-2.1-Turbo` | text-to-image | ❤️ 938 | 📥 17,421 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo) |
-| `abenzerps/Qwen-Image-2.1-Uncensored-Quantized` | text-to-image | ❤️ 4,434 | 📥 2,477,554 | [View](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,511 | 📥 151,258 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 1,826 | 📥 85,612 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 848 | 📥 17,553 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 556 | 📥 6,158 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `Qwen/Qwen-Image-2.1-Turbo` | text-to-image | ❤️ 943 | 📥 17,421 | [View](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 8,086 | 📥 1,920,611 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Behavioral Compositionality of Sparse Autoencoder Representations** | 👍 1 | Sparse autoencoder features are partially compositional but require interaction terms for accurate behavioral predictions and steering. | [Read](https://huggingface.co/papers/2610.21261) |
-| **Diminishing Returns of Data in Sparse Autoencoders: Functional Behavior does not Guarantee Feature Reproducibility** | 👍 0 | Sparse autoencoders can be trained with far fewer activation tokens when data budgets align with evaluation goals, though feature-level reproducibility demands larger scales. | [Read](https://huggingface.co/papers/2610.20680) |
-| **LEASH: Uncertainty-Aware Weak-to-Strong Escalation and Oversight for Computer-Use Agents** | 👍 2 | LEASH is a training-free framework that uses latent uncertainty to escalate from a weak to a strong computer-use agent only when needed and monitors the strong agent afterward, reducing cost while maintaining high success. | [Read](https://huggingface.co/papers/2610.22280) |
-| **Scalable Weak-to-Strong Verifier Hardening for Agent Environments** | 👍 0 | The study proposes an automated weak-to-strong loop that hardens agent environment verifiers against reward hacking by iteratively finding and repairing vulnerabilities in isolated sandboxes. | [Read](https://huggingface.co/papers/2610.15924) |
-| **LeanPRM: Lean-Grounded Process Supervision for Natural Language Proof Verification** | 👍 3 | LeanPRM uses the Lean proof assistant to automatically generate step-level correctness labels for natural-language mathematical proofs, enabling scalable training of learned verifiers without human annotation. | [Read](https://huggingface.co/papers/2610.17697) |
+| **Behavioral Compositionality of Sparse Autoencoder Representations** | 👍 3 | Sparse autoencoder features are partially compositional but require interaction terms for accurate behavioral predictions and steering. | [Read](https://huggingface.co/papers/2610.21261) |
+| **Diminishing Returns of Data in Sparse Autoencoders: Functional Behavior does not Guarantee Feature Reproducibility** | 👍 1 | Sparse autoencoders can be trained with far fewer activation tokens when data budgets align with evaluation goals, though feature-level reproducibility demands larger scales. | [Read](https://huggingface.co/papers/2610.20680) |
+| **LEASH: Uncertainty-Aware Weak-to-Strong Escalation and Oversight for Computer-Use Agents** | 👍 4 | LEASH is a training-free framework that uses latent uncertainty to escalate from a weak to a strong computer-use agent only when needed and monitors the strong agent afterward, reducing cost while maintaining high success. | [Read](https://huggingface.co/papers/2610.22280) |
+| **Scalable Weak-to-Strong Verifier Hardening for Agent Environments** | 👍 2 | The study proposes an automated weak-to-strong loop that hardens agent environment verifiers against reward hacking by iteratively finding and repairing vulnerabilities in isolated sandboxes. | [Read](https://huggingface.co/papers/2610.15924) |
+| **LeanPRM: Lean-Grounded Process Supervision for Natural Language Proof Verification** | 👍 4 | LeanPRM uses the Lean proof assistant to automatically generate step-level correctness labels for natural-language mathematical proofs, enabling scalable training of learned verifiers without human annotation. | [Read](https://huggingface.co/papers/2610.17697) |
 
 
 ---

@@ -1,5 +1,83 @@
 [
   {
+    "date": "2026-10-17",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "Underdog-Saluki-27B-1.0",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by ConwayResearch, trending with over 511 community likes and 370,955 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "ConwayResearch",
+        "size": "27B params",
+        "architecture": "ConwayResearch text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ConwayResearch/Underdog-Saluki-27B-1.0\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ConwayResearch/Underdog-Saluki-27B-1.0\")",
+        "benchmarks": "Trending Score: 291, Likes: 511, Downloads: 370,955",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/ConwayResearch/Underdog-Saluki-27B-1.0",
+        "citations": [
+          {
+            "text": "ConwayResearch/Underdog-Saluki-27B-1.0 on Hugging Face",
+            "url": "https://huggingface.co/ConwayResearch/Underdog-Saluki-27B-1.0"
+          }
+        ]
+      },
+      {
+        "name": "microduck-arena",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by pollen-robotics. Trending with 32 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "pollen-robotics",
+        "size": "DOCKER Platform",
+        "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/pollen-robotics/microduck-arena",
+        "benchmarks": "Trending Score: 31, Community Likes: 32",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/pollen-robotics/microduck-arena",
+        "citations": [
+          {
+            "text": "pollen-robotics/microduck-arena on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/pollen-robotics/microduck-arena"
+          }
+        ]
+      },
+      {
+        "name": "Open-Jev",
+        "type": "Dataset",
+        "summary": "Open-Jev: typed decision datasets \t Open-Jev turns a state and a question into a typed decision: a yes/no probability, a distribution over choices, independent label pr (109 likes, 7,294 downloads).",
+        "task": "NLP",
+        "license": "CC0-1.0",
+        "year": 2026,
+        "org": "ZefanCai",
+        "size": "100K<n<1M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"ZefanCai/Open-Jev\")",
+        "benchmarks": "Trending Score: 19, Likes: 109, Downloads: 7,294",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/ZefanCai/Open-Jev",
+        "citations": [
+          {
+            "text": "ZefanCai/Open-Jev on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/ZefanCai/Open-Jev"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-16",
     "status": "queued_in_review_list",
     "assets": [

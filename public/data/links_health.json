@@ -1,28 +1,28 @@
 {
-  "timestamp": "2026-10-16T21:52:41.542Z",
+  "timestamp": "2026-10-17T00:06:07.793Z",
   "checked": 25,
   "healthy": 19,
   "broken": 6,
   "issues": [
     {
-      "name": "OpenAI Platform",
-      "url": "https://platform.openai.com",
+      "name": "Perplexity",
+      "url": "https://www.perplexity.ai",
       "status": 403
     },
     {
-      "name": "Perplexity AI",
-      "url": "https://www.perplexity.ai/",
+      "name": "Arena-Hard-Auto",
+      "url": "https://github.com/sunshanghai/arena-hard-auto",
+      "status": 404
+    },
+    {
+      "name": "DeepSeek Chat",
+      "url": "https://chat.deepseek.com",
       "status": 403
     },
     {
-      "name": "Poe",
-      "url": "https://poe.com",
-      "status": 403
-    },
-    {
-      "name": "Phind",
-      "url": "https://www.phind.com",
-      "status": 403
+      "name": "OpenWebText",
+      "url": "https://huggingface.co/datasets/openwebtext",
+      "status": 404
     },
     {
       "name": "LMSYS Chatbot Arena Conversations",
@@ -30,9 +30,9 @@
       "status": "Network Error"
     },
     {
-      "name": "OpenWebText",
-      "url": "https://huggingface.co/datasets/openwebtext",
-      "status": 404
+      "name": "Tabnine",
+      "url": "https://www.tabnine.com",
+      "status": "Network Error"
     }
   ]
 }

@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-10-16)
+### ⚡ AiVerse AI Radar (2026-10-17)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Unlimited-OCR** (`Model`), **iris-3b** (`Platform`), **UltraData-Stack-v3-L2** (`Dataset`) |
-| 🌟 **Tool of the Day** | **minimax-h3-character-swap-lora** (hugging-apps) — [Explore](https://huggingface.co/spaces/hugging-apps/minimax-h3-character-swap-lora) |
+| 📥 **Queued for Review** | **Underdog-Saluki-27B-1.0** (`Model`), **microduck-arena** (`Platform`), **Open-Jev** (`Dataset`) |
+| 🌟 **Tool of the Day** | **EgoDemo** (LightwheelAI) — [Explore](https://huggingface.co/datasets/LightwheelAI/EgoDemo) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) |
 | 📜 **Top Daily Paper** | [Behavioral Compositionality of Sparse Autoencoder ...](https://huggingface.co/papers/2610.21261) |
 | 🛡️ **Catalog Links Checked** | **19/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 16 Oct 2026 21:52:46 GMT` |
+| 🕒 **Last Synchronized** | `Sat, 17 Oct 2026 00:06:12 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
