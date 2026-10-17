@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-10-17T06:27:44.791Z",
+  "timestamp": "2026-10-17T11:18:21.320Z",
   "checked": 25,
-  "healthy": 17,
-  "broken": 8,
+  "healthy": 20,
+  "broken": 5,
   "issues": [
     {
       "name": "DALL-E 3",
@@ -15,33 +15,18 @@
       "status": 403
     },
     {
-      "name": "GPT-4o",
-      "url": "https://openai.com/chatgpt",
+      "name": "DALL-E 2",
+      "url": "https://openai.com/dall-e-2",
       "status": 403
     },
     {
-      "name": "OpenWebText",
-      "url": "https://huggingface.co/datasets/openwebtext",
-      "status": 404
-    },
-    {
-      "name": "Poe",
-      "url": "https://poe.com",
+      "name": "Midjourney v6",
+      "url": "https://www.midjourney.com/",
       "status": 403
     },
     {
-      "name": "Phind",
-      "url": "https://www.phind.com",
-      "status": 403
-    },
-    {
-      "name": "Google Gemini",
-      "url": "https://gemini.google.com",
-      "status": "Network Error"
-    },
-    {
-      "name": "LMSYS Chatbot Arena Conversations",
-      "url": "https://chat.lmsys.org",
+      "name": "SAM (Segment Anything Model)",
+      "url": "https://segment-anything.com/",
       "status": "Network Error"
     }
   ]

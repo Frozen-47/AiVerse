@@ -4,6 +4,36 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "DeepSeek-V4.1-Flash-1017",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by DeepSeek, trending with over 393 community likes and 0 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "MIT",
+        "year": 2026,
+        "org": "DeepSeek",
+        "size": "Open Weights",
+        "architecture": "DeepSeek image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"deepseek-ai/DeepSeek-V4.1-Flash-1017\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"deepseek-ai/DeepSeek-V4.1-Flash-1017\")",
+        "benchmarks": "Trending Score: 391, Likes: 393, Downloads: 0",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+        "citations": [
+          {
+            "text": "deepseek-ai/DeepSeek-V4.1-Flash-1017 on Hugging Face",
+            "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-17",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "MiniCPM-V-4.7-1B",
         "type": "Model",
         "summary": "High-performance Multimodal open-weights model by openbmb, trending with over 369 community likes and 8,822 downloads on Hugging Face.",
