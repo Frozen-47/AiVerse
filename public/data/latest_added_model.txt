@@ -1,1 +1,1 @@
-Qwen3.8-Flash-Next-FP4-Local
+MiniMax-H3-360-Orbit-LoRA

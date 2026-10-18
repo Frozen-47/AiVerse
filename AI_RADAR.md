@@ -2,20 +2,27 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sun, 18 Oct 2026 09:16:44 GMT`*
+*Last Synchronized: `Sun, 18 Oct 2026 13:43:09 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (1)
+## 📥 Newly Queued Assets for Review (2)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Qwen3.8-Flash-Next-FP4-Local** (`Model` • *nvidia*)
-> High-performance Multimodal open-weights model by nvidia, trending with over 193 community likes and 4,876 downloads on Hugging Face.
+### **MiniMax-H3-360-Orbit-LoRA** (`Model` • *pablodawson*)
+> High-performance Multimodal open-weights model by pablodawson, trending with over 506 community likes and 25,366 downloads on Hugging Face.
 
 - 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 191, Likes: 193, Downloads: 4,876`
-- 🔗 **Resource Link**: [https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local)
+- ⚡ **Metrics**: `Trending Score: 189, Likes: 506, Downloads: 25,366`
+- 🔗 **Resource Link**: [https://huggingface.co/pablodawson/MiniMax-H3-360-Orbit-LoRA](https://huggingface.co/pablodawson/MiniMax-H3-360-Orbit-LoRA)
+
+### **system-one-arcade** (`Platform` • *LiquidAI*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by LiquidAI. Trending with 47 community stars.
+
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 25, Community Likes: 47`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/LiquidAI/system-one-arcade](https://huggingface.co/spaces/LiquidAI/system-one-arcade)
 
 ---
 
@@ -34,12 +41,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 1,142 | 📥 10,233 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,621 | 📥 164,339 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `jialinyyzz/humanizer` | text-generation | ❤️ 1,916 | 📥 103,709 | [View](https://huggingface.co/jialinyyzz/humanizer) |
-| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 909 | 📥 57,935 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 639 | 📥 9,620 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 708 | 📥 338,036 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 1,212 | 📥 10,233 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,634 | 📥 164,339 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 939 | 📥 57,935 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 1,924 | 📥 103,709 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 653 | 📥 9,620 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 743 | 📥 338,036 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
 
 
 ---
@@ -66,7 +73,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `18/25` healthy verified (`7` flagged / timed out)
+- **Sample Link Health Check**: `19/25` healthy verified (`6` flagged / timed out)
 - **Dependency Security**: `34` advisories flagged across `578` dependencies (`1` critical, `29` high)
 
 ---

@@ -1,42 +1,37 @@
 {
-  "timestamp": "2026-10-18T09:16:40.748Z",
+  "timestamp": "2026-10-18T13:43:05.516Z",
   "checked": 25,
-  "healthy": 18,
-  "broken": 7,
+  "healthy": 19,
+  "broken": 6,
   "issues": [
     {
-      "name": "Meta AI",
-      "url": "https://www.meta.ai",
+      "name": "DALL-E 2",
+      "url": "https://openai.com/dall-e-2",
       "status": 403
     },
     {
-      "name": "Pi",
-      "url": "https://pi.ai",
+      "name": "DALL-E 3",
+      "url": "https://openai.com/dall-e-3",
       "status": 403
     },
     {
-      "name": "Midjourney (Platform)",
-      "url": "https://www.midjourney.com/",
+      "name": "Poe",
+      "url": "https://poe.com",
       "status": 403
     },
     {
-      "name": "Arena-Hard-Auto",
-      "url": "https://github.com/sunshanghai/arena-hard-auto",
+      "name": "Midjourney",
+      "url": "https://www.midjourney.com",
+      "status": 403
+    },
+    {
+      "name": "GPT-3.5 Turbo",
+      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
       "status": 404
     },
     {
-      "name": "GPT-3",
-      "url": "https://openai.com/research/language-models-are-few-shot-learners",
-      "status": 403
-    },
-    {
-      "name": "Character.ai",
-      "url": "https://character.ai",
-      "status": 403
-    },
-    {
-      "name": "Tabnine",
-      "url": "https://www.tabnine.com",
+      "name": "LMSYS Chatbot Arena Conversations",
+      "url": "https://chat.lmsys.org",
       "status": "Network Error"
     }
   ]

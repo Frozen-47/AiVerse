@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-18T09:16:40.601Z",
+  "timestamp": "2026-10-18T13:43:05.436Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 1142,
+      "likes": 1212,
       "downloads": 10233,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,31 +12,31 @@
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 2621,
+      "likes": 2634,
       "downloads": 164339,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
     },
     {
-      "id": "jialinyyzz/humanizer",
-      "author": "jialinyyzz",
-      "likes": 1916,
-      "downloads": 103709,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/jialinyyzz/humanizer"
-    },
-    {
       "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
       "author": "openbmb",
-      "likes": 909,
+      "likes": 939,
       "downloads": 57935,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
     },
     {
+      "id": "jialinyyzz/humanizer",
+      "author": "jialinyyzz",
+      "likes": 1924,
+      "downloads": 103709,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/jialinyyzz/humanizer"
+    },
+    {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 639,
+      "likes": 653,
       "downloads": 9620,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
@@ -44,7 +44,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 708,
+      "likes": 743,
       "downloads": 338036,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
