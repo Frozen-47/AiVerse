@@ -4,6 +4,60 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Hy-Memory-30B-A3B",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by tencent, trending with over 186 community likes and 1,187 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "tencent",
+        "size": "30B params",
+        "architecture": "tencent text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"tencent/Hy-Memory-30B-A3B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"tencent/Hy-Memory-30B-A3B\")",
+        "benchmarks": "Trending Score: 185, Likes: 186, Downloads: 1,187",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/tencent/Hy-Memory-30B-A3B",
+        "citations": [
+          {
+            "text": "tencent/Hy-Memory-30B-A3B on Hugging Face",
+            "url": "https://huggingface.co/tencent/Hy-Memory-30B-A3B"
+          }
+        ]
+      },
+      {
+        "name": "Qwen-2511-Plus-Flux.2-klein",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by AST-1320. Trending with 134 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "AST-1320",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein",
+        "benchmarks": "Trending Score: 73, Community Likes: 134",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein",
+        "citations": [
+          {
+            "text": "AST-1320/Qwen-2511-Plus-Flux.2-klein on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-18",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "indra-ocr",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by datalab-to, trending with over 192 community likes and 1,811 downloads on Hugging Face.",

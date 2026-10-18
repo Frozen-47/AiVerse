@@ -1,38 +1,18 @@
 {
-  "timestamp": "2026-10-18T17:02:24.763Z",
+  "timestamp": "2026-10-18T21:12:34.843Z",
   "checked": 25,
-  "healthy": 19,
-  "broken": 6,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "NightCafe",
-      "url": "https://creator.nightcafe.studio",
+      "name": "GPT-4o mini",
+      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
       "status": 403
     },
     {
-      "name": "Perplexity AI",
-      "url": "https://www.perplexity.ai/",
-      "status": 403
-    },
-    {
-      "name": "Midjourney v6",
-      "url": "https://www.midjourney.com/",
-      "status": 403
-    },
-    {
-      "name": "Midjourney",
-      "url": "https://www.midjourney.com",
-      "status": 403
-    },
-    {
-      "name": "Canva AI",
-      "url": "https://www.canva.com/ai-image-generator",
-      "status": 403
-    },
-    {
-      "name": "OpenAI Platform",
-      "url": "https://platform.openai.com",
-      "status": 403
+      "name": "wan2-2-i2v-v3",
+      "url": "https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3",
+      "status": 401
     }
   ]
 }

@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-18)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **indra-ocr** (`Model`), **speech-to-decisions** (`Platform`) |
+| 📥 **Queued for Review** | **Hy-Memory-30B-A3B** (`Model`), **Qwen-2511-Plus-Flux.2-klein** (`Platform`) |
 | 🌟 **Tool of the Day** | **Qwen-Image-2.1-Uncensored-Quantized** (abenzerps) — [Explore](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
 | 📜 **Top Daily Paper** | [Mine, Sample, Render: Test-Time Diversity Alignmen...](https://huggingface.co/papers/2610.21185) |
-| 🛡️ **Catalog Links Checked** | **19/25** operational |
-| 🕒 **Last Synchronized** | `Sun, 18 Oct 2026 17:02:28 GMT` |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Sun, 18 Oct 2026 21:12:39 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

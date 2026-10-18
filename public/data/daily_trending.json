@@ -1,34 +1,34 @@
 {
-  "timestamp": "2026-10-18T17:02:24.600Z",
+  "timestamp": "2026-10-18T21:12:34.661Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 1251,
+      "likes": 1305,
       "downloads": 10233,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
-      "id": "google/embeddinggemma-2",
-      "author": "google",
-      "likes": 2642,
-      "downloads": 164339,
-      "pipeline_tag": "feature-extraction",
-      "url": "https://huggingface.co/google/embeddinggemma-2"
-    },
-    {
       "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
       "author": "openbmb",
-      "likes": 969,
+      "likes": 1002,
       "downloads": 57935,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
     },
     {
+      "id": "google/embeddinggemma-2",
+      "author": "google",
+      "likes": 2656,
+      "downloads": 164339,
+      "pipeline_tag": "feature-extraction",
+      "url": "https://huggingface.co/google/embeddinggemma-2"
+    },
+    {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 1931,
+      "likes": 1939,
       "downloads": 103709,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
@@ -36,7 +36,7 @@
     {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 671,
+      "likes": 684,
       "downloads": 9620,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
@@ -44,7 +44,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 765,
+      "likes": 790,
       "downloads": 338036,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -54,7 +54,7 @@
     {
       "title": "Mine, Sample, Render: Test-Time Diversity Alignment Of Generative Models",
       "summary": "MSR improves generative diversity by mining categorical schemas from real artifacts to guide conditional rendering at test time.",
-      "upvotes": 5,
+      "upvotes": 6,
       "arxiv_id": "2610.21185",
       "url": "https://huggingface.co/papers/2610.21185",
       "githubRepo": null
@@ -78,7 +78,7 @@
     {
       "title": "LEASH: Uncertainty-Aware Weak-to-Strong Escalation and Oversight for Computer-Use Agents",
       "summary": "LEASH is a training-free framework that uses latent uncertainty to escalate from a weak to a strong computer-use agent only when needed and monitors the strong agent afterward, reducing cost while maintaining high success.",
-      "upvotes": 7,
+      "upvotes": 8,
       "arxiv_id": "2610.22280",
       "url": "https://huggingface.co/papers/2610.22280",
       "githubRepo": null
