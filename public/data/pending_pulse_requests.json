@@ -1,5 +1,55 @@
 [
   {
+    "name": "CodeVideoBench",
+    "type": "Dataset",
+    "summary": "CodeVideoBench \t CodeVideoBench provides 22 video cases across eight applications for code-guided video generation. Each case includes a Three.js code video, a referenc (21 likes, 2,176 downloads).",
+    "task": "Computer Vision",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "code-video-model",
+    "size": "n<1K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"code-video-model/CodeVideoBench\")",
+    "benchmarks": "Trending Score: 19, Likes: 21, Downloads: 2,176",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/code-video-model/CodeVideoBench",
+    "citations": [
+      {
+        "text": "code-video-model/CodeVideoBench on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/code-video-model/CodeVideoBench"
+      }
+    ],
+    "created_at": "2026-10-18T23:51:10.559Z"
+  },
+  {
+    "name": "Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by nerkyor, trending with over 431 community likes and 256,336 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "nerkyor",
+    "size": "27B params",
+    "architecture": "nerkyor image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2\")",
+    "benchmarks": "Trending Score: 161, Likes: 431, Downloads: 256,336",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2",
+    "citations": [
+      {
+        "text": "nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2 on Hugging Face",
+        "url": "https://huggingface.co/nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2"
+      }
+    ],
+    "created_at": "2026-10-18T23:51:10.559Z"
+  },
+  {
     "name": "Qwen-2511-Plus-Flux.2-klein",
     "type": "Platform",
     "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by AST-1320. Trending with 134 community stars.",

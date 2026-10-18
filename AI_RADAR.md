@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sun, 18 Oct 2026 21:12:39 GMT`*
+*Last Synchronized: `Sun, 18 Oct 2026 23:51:17 GMT`*
 
 ---
 
@@ -10,19 +10,19 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Hy-Memory-30B-A3B** (`Model` • *tencent*)
-> High-performance NLP open-weights model by tencent, trending with over 186 community likes and 1,187 downloads on Hugging Face.
+### **Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2** (`Model` • *nerkyor*)
+> High-performance Multimodal open-weights model by nerkyor, trending with over 431 community likes and 256,336 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 185, Likes: 186, Downloads: 1,187`
-- 🔗 **Resource Link**: [https://huggingface.co/tencent/Hy-Memory-30B-A3B](https://huggingface.co/tencent/Hy-Memory-30B-A3B)
+- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 161, Likes: 431, Downloads: 256,336`
+- 🔗 **Resource Link**: [https://huggingface.co/nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2](https://huggingface.co/nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2)
 
-### **Qwen-2511-Plus-Flux.2-klein** (`Platform` • *AST-1320*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by AST-1320. Trending with 134 community stars.
+### **CodeVideoBench** (`Dataset` • *code-video-model*)
+> CodeVideoBench 	 CodeVideoBench provides 22 video cases across eight applications for code-guided video generation. Each case includes a Three.js code video, a referenc (21 likes, 2,176 downloads).
 
-- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 73, Community Likes: 134`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein](https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein)
+- 🏷️ **Domain & License**: `Computer Vision` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 19, Likes: 21, Downloads: 2,176`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/code-video-model/CodeVideoBench](https://huggingface.co/datasets/code-video-model/CodeVideoBench)
 
 ---
 
@@ -41,12 +41,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 1,305 | 📥 10,233 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 1,002 | 📥 57,935 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,656 | 📥 164,339 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `jialinyyzz/humanizer` | text-generation | ❤️ 1,939 | 📥 103,709 | [View](https://huggingface.co/jialinyyzz/humanizer) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 684 | 📥 9,620 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 790 | 📥 338,036 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 1,330 | 📥 10,233 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 1,007 | 📥 57,935 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,661 | 📥 164,339 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 1,946 | 📥 103,709 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 691 | 📥 9,620 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 806 | 📥 338,036 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
 
 
 ---
@@ -73,7 +73,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
+- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
 - **Dependency Security**: `34` advisories flagged across `578` dependencies (`1` critical, `29` high)
 
 ---
