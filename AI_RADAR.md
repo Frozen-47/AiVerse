@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sun, 18 Oct 2026 13:43:09 GMT`*
+*Last Synchronized: `Sun, 18 Oct 2026 17:02:28 GMT`*
 
 ---
 
@@ -10,19 +10,19 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **MiniMax-H3-360-Orbit-LoRA** (`Model` • *pablodawson*)
-> High-performance Multimodal open-weights model by pablodawson, trending with over 506 community likes and 25,366 downloads on Hugging Face.
+### **indra-ocr** (`Model` • *datalab-to*)
+> High-performance NLP open-weights model by datalab-to, trending with over 192 community likes and 1,811 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 189, Likes: 506, Downloads: 25,366`
-- 🔗 **Resource Link**: [https://huggingface.co/pablodawson/MiniMax-H3-360-Orbit-LoRA](https://huggingface.co/pablodawson/MiniMax-H3-360-Orbit-LoRA)
+- 🏷️ **Domain & License**: `NLP` • `OPENRAIL` (2026)
+- ⚡ **Metrics**: `Trending Score: 190, Likes: 192, Downloads: 1,811`
+- 🔗 **Resource Link**: [https://huggingface.co/datalab-to/indra-ocr](https://huggingface.co/datalab-to/indra-ocr)
 
-### **system-one-arcade** (`Platform` • *LiquidAI*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by LiquidAI. Trending with 47 community stars.
+### **speech-to-decisions** (`Platform` • *ibm-granite*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by ibm-granite. Trending with 25 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 25, Community Likes: 47`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/LiquidAI/system-one-arcade](https://huggingface.co/spaces/LiquidAI/system-one-arcade)
+- ⚡ **Metrics**: `Trending Score: 25, Community Likes: 25`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/ibm-granite/speech-to-decisions](https://huggingface.co/spaces/ibm-granite/speech-to-decisions)
 
 ---
 
@@ -41,12 +41,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 1,212 | 📥 10,233 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,634 | 📥 164,339 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 939 | 📥 57,935 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
-| `jialinyyzz/humanizer` | text-generation | ❤️ 1,924 | 📥 103,709 | [View](https://huggingface.co/jialinyyzz/humanizer) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 653 | 📥 9,620 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 743 | 📥 338,036 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 1,251 | 📥 10,233 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,642 | 📥 164,339 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 969 | 📥 57,935 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 1,931 | 📥 103,709 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 671 | 📥 9,620 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 765 | 📥 338,036 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
 
 
 ---

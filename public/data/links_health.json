@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-10-18T13:43:05.516Z",
+  "timestamp": "2026-10-18T17:02:24.763Z",
   "checked": 25,
   "healthy": 19,
   "broken": 6,
   "issues": [
     {
-      "name": "DALL-E 2",
-      "url": "https://openai.com/dall-e-2",
+      "name": "NightCafe",
+      "url": "https://creator.nightcafe.studio",
       "status": 403
     },
     {
-      "name": "DALL-E 3",
-      "url": "https://openai.com/dall-e-3",
+      "name": "Perplexity AI",
+      "url": "https://www.perplexity.ai/",
       "status": 403
     },
     {
-      "name": "Poe",
-      "url": "https://poe.com",
+      "name": "Midjourney v6",
+      "url": "https://www.midjourney.com/",
       "status": 403
     },
     {
@@ -25,14 +25,14 @@
       "status": 403
     },
     {
-      "name": "GPT-3.5 Turbo",
-      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
-      "status": 404
+      "name": "Canva AI",
+      "url": "https://www.canva.com/ai-image-generator",
+      "status": 403
     },
     {
-      "name": "LMSYS Chatbot Arena Conversations",
-      "url": "https://chat.lmsys.org",
-      "status": "Network Error"
+      "name": "OpenAI Platform",
+      "url": "https://platform.openai.com",
+      "status": 403
     }
   ]
 }
