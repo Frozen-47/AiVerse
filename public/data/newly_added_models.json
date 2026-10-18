@@ -4,6 +4,36 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Qwen3.8-Flash-Next-FP4-Local",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by nvidia, trending with over 193 community likes and 4,876 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "nvidia",
+        "size": "Open Weights",
+        "architecture": "nvidia image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"nvidia/Qwen3.8-Flash-Next-FP4-Local\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"nvidia/Qwen3.8-Flash-Next-FP4-Local\")",
+        "benchmarks": "Trending Score: 191, Likes: 193, Downloads: 4,876",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local",
+        "citations": [
+          {
+            "text": "nvidia/Qwen3.8-Flash-Next-FP4-Local on Hugging Face",
+            "url": "https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-18",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "LFM2.5-24B-A2B-GGUF",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by LiquidAI, trending with over 197 community likes and 82,115 downloads on Hugging Face.",

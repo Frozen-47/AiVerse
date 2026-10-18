@@ -1,51 +1,51 @@
 {
-  "timestamp": "2026-10-18T02:34:41.124Z",
+  "timestamp": "2026-10-18T09:16:40.601Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 987,
-      "downloads": 0,
+      "likes": 1142,
+      "downloads": 10233,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 2599,
-      "downloads": 158490,
+      "likes": 2621,
+      "downloads": 164339,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
     },
     {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 1900,
-      "downloads": 95870,
+      "likes": 1916,
+      "downloads": 103709,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
     },
     {
       "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
       "author": "openbmb",
-      "likes": 907,
-      "downloads": 36252,
+      "likes": 909,
+      "downloads": 57935,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
     },
     {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 623,
-      "downloads": 8193,
+      "likes": 639,
+      "downloads": 9620,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
     },
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 660,
-      "downloads": 224108,
+      "likes": 708,
+      "downloads": 338036,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
     }
@@ -78,7 +78,7 @@
     {
       "title": "LEASH: Uncertainty-Aware Weak-to-Strong Escalation and Oversight for Computer-Use Agents",
       "summary": "LEASH is a training-free framework that uses latent uncertainty to escalate from a weak to a strong computer-use agent only when needed and monitors the strong agent afterward, reducing cost while maintaining high success.",
-      "upvotes": 6,
+      "upvotes": 7,
       "arxiv_id": "2610.22280",
       "url": "https://huggingface.co/papers/2610.22280",
       "githubRepo": null

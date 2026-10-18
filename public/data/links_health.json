@@ -1,83 +1,43 @@
 {
-  "timestamp": "2026-10-18T02:34:41.246Z",
+  "timestamp": "2026-10-18T09:16:40.748Z",
   "checked": 25,
-  "healthy": 10,
-  "broken": 15,
+  "healthy": 18,
+  "broken": 7,
   "issues": [
     {
-      "name": "Weights & Biases Weave",
-      "url": "https://wandb.ai/site/weave",
-      "status": "Timeout"
+      "name": "Meta AI",
+      "url": "https://www.meta.ai",
+      "status": 403
     },
     {
-      "name": "Gemini 2.0 Flash",
-      "url": "https://deepmind.google/technologies/gemini/",
-      "status": "Timeout"
+      "name": "Pi",
+      "url": "https://pi.ai",
+      "status": 403
     },
     {
-      "name": "Qwen 2.5 (72B)",
-      "url": "https://github.com/QwenLM/Qwen2.5",
-      "status": "Timeout"
-    },
-    {
-      "name": "Cerebras Cloud",
-      "url": "https://cerebras.ai",
-      "status": "Timeout"
-    },
-    {
-      "name": "Fireworks AI",
-      "url": "https://fireworks.ai",
-      "status": "Timeout"
-    },
-    {
-      "name": "CogVideoX-5B",
-      "url": "https://github.com/THUDM/CogVideo",
-      "status": "Timeout"
-    },
-    {
-      "name": "Llama 3.2 Vision (11B)",
-      "url": "https://ai.meta.com/llama/",
-      "status": "Timeout"
-    },
-    {
-      "name": "Portkey AI Gateway",
-      "url": "https://portkey.ai",
-      "status": "Timeout"
-    },
-    {
-      "name": "HunyuanVideo",
-      "url": "https://github.com/Tencent/HunyuanVideo",
-      "status": "Timeout"
-    },
-    {
-      "name": "Outlines",
-      "url": "https://github.com/dottxt-ai/outlines",
-      "status": "Timeout"
-    },
-    {
-      "name": "Llama 3.1 (405B)",
-      "url": "https://llama.meta.com/",
-      "status": "Timeout"
-    },
-    {
-      "name": "Command R+",
-      "url": "https://cohere.com/command",
-      "status": "Timeout"
+      "name": "Midjourney (Platform)",
+      "url": "https://www.midjourney.com/",
+      "status": 403
     },
     {
       "name": "Arena-Hard-Auto",
       "url": "https://github.com/sunshanghai/arena-hard-auto",
-      "status": "Timeout"
+      "status": 404
     },
     {
-      "name": "Glean",
-      "url": "https://www.glean.com",
-      "status": "Timeout"
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
+      "status": 403
     },
     {
-      "name": "PaLM 2",
-      "url": "https://ai.google/discover/palm2",
-      "status": "Timeout"
+      "name": "Character.ai",
+      "url": "https://character.ai",
+      "status": 403
+    },
+    {
+      "name": "Tabnine",
+      "url": "https://www.tabnine.com",
+      "status": "Network Error"
     }
   ]
 }

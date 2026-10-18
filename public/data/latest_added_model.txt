@@ -1,1 +1,1 @@
-LFM2.5-24B-A2B-GGUF
+Qwen3.8-Flash-Next-FP4-Local
