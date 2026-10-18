@@ -1,24 +1,24 @@
 {
-  "date": "2026-10-17",
+  "date": "2026-10-18",
   "tool": {
-    "name": "EgoDemo",
-    "type": "Dataset",
-    "summary": "EgoDemo A 50-hour sample from EgoSuite-Open100K, covering every annotated subset plus two raw-video variants.   Collection ·   EgoStandard ·   EgoPro ·   Project page Explore EgoS (190 likes, 61,148 downloads).",
-    "task": "Multimodal",
+    "name": "Qwen-Image-2.1-Uncensored-Quantized",
+    "type": "Model",
+    "summary": "High-performance Image Generation open-weights model by abenzerps, trending with over 4,111 community likes and 2,188,658 downloads on Hugging Face.",
+    "task": "Image Generation",
     "license": "OTHER",
     "year": 2026,
-    "org": "LightwheelAI",
-    "size": "1K<n<10K",
-    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"LightwheelAI/EgoDemo\")",
-    "benchmarks": "Trending Score: 54, Likes: 190, Downloads: 61,148",
-    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "org": "abenzerps",
+    "size": "Open Weights",
+    "architecture": "abenzerps text to image architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"abenzerps/Qwen-Image-2.1-Uncensored-Quantized\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"abenzerps/Qwen-Image-2.1-Uncensored-Quantized\")",
+    "benchmarks": "Trending Score: 585, Likes: 4,111, Downloads: 2,188,658",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
     "popular": true,
-    "url": "https://huggingface.co/datasets/LightwheelAI/EgoDemo",
+    "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized",
     "citations": [
       {
-        "text": "LightwheelAI/EgoDemo on Hugging Face Datasets",
-        "url": "https://huggingface.co/datasets/LightwheelAI/EgoDemo"
+        "text": "abenzerps/Qwen-Image-2.1-Uncensored-Quantized on Hugging Face",
+        "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized"
       }
     ]
   }

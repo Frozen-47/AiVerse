@@ -1,28 +1,83 @@
 {
-  "timestamp": "2026-10-17T23:42:09.407Z",
+  "timestamp": "2026-10-18T02:34:41.246Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 10,
+  "broken": 15,
   "issues": [
     {
-      "name": "Ideogram",
-      "url": "https://ideogram.ai",
-      "status": 403
+      "name": "Weights & Biases Weave",
+      "url": "https://wandb.ai/site/weave",
+      "status": "Timeout"
     },
     {
-      "name": "Quizlet AI",
-      "url": "https://quizlet.com/features/quizlet-ai",
-      "status": 403
+      "name": "Gemini 2.0 Flash",
+      "url": "https://deepmind.google/technologies/gemini/",
+      "status": "Timeout"
     },
     {
-      "name": "tiktok-videos-4b",
-      "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
-      "status": 401
+      "name": "Qwen 2.5 (72B)",
+      "url": "https://github.com/QwenLM/Qwen2.5",
+      "status": "Timeout"
     },
     {
-      "name": "Gamma",
-      "url": "https://gamma.app",
-      "status": 403
+      "name": "Cerebras Cloud",
+      "url": "https://cerebras.ai",
+      "status": "Timeout"
+    },
+    {
+      "name": "Fireworks AI",
+      "url": "https://fireworks.ai",
+      "status": "Timeout"
+    },
+    {
+      "name": "CogVideoX-5B",
+      "url": "https://github.com/THUDM/CogVideo",
+      "status": "Timeout"
+    },
+    {
+      "name": "Llama 3.2 Vision (11B)",
+      "url": "https://ai.meta.com/llama/",
+      "status": "Timeout"
+    },
+    {
+      "name": "Portkey AI Gateway",
+      "url": "https://portkey.ai",
+      "status": "Timeout"
+    },
+    {
+      "name": "HunyuanVideo",
+      "url": "https://github.com/Tencent/HunyuanVideo",
+      "status": "Timeout"
+    },
+    {
+      "name": "Outlines",
+      "url": "https://github.com/dottxt-ai/outlines",
+      "status": "Timeout"
+    },
+    {
+      "name": "Llama 3.1 (405B)",
+      "url": "https://llama.meta.com/",
+      "status": "Timeout"
+    },
+    {
+      "name": "Command R+",
+      "url": "https://cohere.com/command",
+      "status": "Timeout"
+    },
+    {
+      "name": "Arena-Hard-Auto",
+      "url": "https://github.com/sunshanghai/arena-hard-auto",
+      "status": "Timeout"
+    },
+    {
+      "name": "Glean",
+      "url": "https://www.glean.com",
+      "status": "Timeout"
+    },
+    {
+      "name": "PaLM 2",
+      "url": "https://ai.google/discover/palm2",
+      "status": "Timeout"
     }
   ]
 }

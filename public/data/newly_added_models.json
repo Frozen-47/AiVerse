@@ -1,5 +1,59 @@
 [
   {
+    "date": "2026-10-18",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "LFM2.5-24B-A2B-GGUF",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by LiquidAI, trending with over 197 community likes and 82,115 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "LiquidAI",
+        "size": "24B params",
+        "architecture": "LiquidAI text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"LiquidAI/LFM2.5-24B-A2B-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"LiquidAI/LFM2.5-24B-A2B-GGUF\")",
+        "benchmarks": "Trending Score: 193, Likes: 197, Downloads: 82,115",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B-GGUF",
+        "citations": [
+          {
+            "text": "LiquidAI/LFM2.5-24B-A2B-GGUF on Hugging Face",
+            "url": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B-GGUF"
+          }
+        ]
+      },
+      {
+        "name": "TRELLIS.2",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by microsoft. Trending with 2,232 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "microsoft",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/microsoft/TRELLIS.2",
+        "benchmarks": "Trending Score: 26, Community Likes: 2,232",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/microsoft/TRELLIS.2",
+        "citations": [
+          {
+            "text": "microsoft/TRELLIS.2 on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/microsoft/TRELLIS.2"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-17",
     "status": "queued_in_review_list",
     "assets": [

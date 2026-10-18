@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-10-17T23:42:09.256Z",
+  "timestamp": "2026-10-18T02:34:41.124Z",
   "models": [
-    {
-      "id": "google/embeddinggemma-2",
-      "author": "google",
-      "likes": 2593,
-      "downloads": 158490,
-      "pipeline_tag": "feature-extraction",
-      "url": "https://huggingface.co/google/embeddinggemma-2"
-    },
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 920,
+      "likes": 987,
       "downloads": 0,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
+      "id": "google/embeddinggemma-2",
+      "author": "google",
+      "likes": 2599,
+      "downloads": 158490,
+      "pipeline_tag": "feature-extraction",
+      "url": "https://huggingface.co/google/embeddinggemma-2"
+    },
+    {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 1895,
+      "likes": 1900,
       "downloads": 95870,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
@@ -28,7 +28,7 @@
     {
       "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
       "author": "openbmb",
-      "likes": 898,
+      "likes": 907,
       "downloads": 36252,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
@@ -36,7 +36,7 @@
     {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 616,
+      "likes": 623,
       "downloads": 8193,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
@@ -44,7 +44,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 647,
+      "likes": 660,
       "downloads": 224108,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -62,7 +62,7 @@
     {
       "title": "Behavioral Compositionality of Sparse Autoencoder Representations",
       "summary": "Sparse autoencoder features are partially compositional but require interaction terms for accurate behavioral predictions and steering.",
-      "upvotes": 105,
+      "upvotes": 106,
       "arxiv_id": "2610.21261",
       "url": "https://huggingface.co/papers/2610.21261",
       "githubRepo": "https://github.com/OpenSAE/SAE-Behavioral-Compositionality"

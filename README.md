@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-10-17)
+### ⚡ AiVerse AI Radar (2026-10-18)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **MOSS-Image-Base** (`Model`) |
-| 🌟 **Tool of the Day** | **EgoDemo** (LightwheelAI) — [Explore](https://huggingface.co/datasets/LightwheelAI/EgoDemo) |
+| 📥 **Queued for Review** | **LFM2.5-24B-A2B-GGUF** (`Model`), **TRELLIS.2** (`Platform`) |
+| 🌟 **Tool of the Day** | **Qwen-Image-2.1-Uncensored-Quantized** (abenzerps) — [Explore](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
-| 🔥 **Top Trending Model** | [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) |
+| 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
 | 📜 **Top Daily Paper** | [Mine, Sample, Render: Test-Time Diversity Alignmen...](https://huggingface.co/papers/2610.21185) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Synchronized** | `Sat, 17 Oct 2026 23:42:12 GMT` |
+| 🛡️ **Catalog Links Checked** | **10/25** operational |
+| 🕒 **Last Synchronized** | `Sun, 18 Oct 2026 02:34:48 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

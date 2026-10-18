@@ -1,32 +1,39 @@
-# ⚡ AiVerse AI Radar (2026-10-17)
+# ⚡ AiVerse AI Radar (2026-10-18)
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sat, 17 Oct 2026 23:42:12 GMT`*
+*Last Synchronized: `Sun, 18 Oct 2026 02:34:48 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (1)
+## 📥 Newly Queued Assets for Review (2)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **MOSS-Image-Base** (`Model` • *OpenMOSS-Team*)
-> High-performance Image Generation open-weights model by OpenMOSS-Team, trending with over 226 community likes and 958 downloads on Hugging Face.
+### **LFM2.5-24B-A2B-GGUF** (`Model` • *LiquidAI*)
+> High-performance NLP open-weights model by LiquidAI, trending with over 197 community likes and 82,115 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Image Generation` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 218, Likes: 226, Downloads: 958`
-- 🔗 **Resource Link**: [https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base](https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 193, Likes: 197, Downloads: 82,115`
+- 🔗 **Resource Link**: [https://huggingface.co/LiquidAI/LFM2.5-24B-A2B-GGUF](https://huggingface.co/LiquidAI/LFM2.5-24B-A2B-GGUF)
+
+### **TRELLIS.2** (`Platform` • *microsoft*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by microsoft. Trending with 2,232 community stars.
+
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 26, Community Likes: 2,232`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/microsoft/TRELLIS.2](https://huggingface.co/spaces/microsoft/TRELLIS.2)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **EgoDemo** (`Dataset` • *LightwheelAI*)
-> EgoDemo A 50-hour sample from EgoSuite-Open100K, covering every annotated subset plus two raw-video variants.   Collection ·   EgoStandard ·   EgoPro ·   Project page Explore EgoS (190 likes, 61,148 downloads).
+### **Qwen-Image-2.1-Uncensored-Quantized** (`Model` • *abenzerps*)
+> High-performance Image Generation open-weights model by abenzerps, trending with over 4,111 community likes and 2,188,658 downloads on Hugging Face.
 
-- 🏛️ **Architecture**: Parquet / Arrow structured tabular & tokenized dataset.
-- ⚡ **Benchmarks**: `Trending Score: 54, Likes: 190, Downloads: 61,148`
-- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (Released: 2026)
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/LightwheelAI/EgoDemo](https://huggingface.co/datasets/LightwheelAI/EgoDemo)
+- 🏛️ **Architecture**: abenzerps text to image architecture with community-tuned weights.
+- ⚡ **Benchmarks**: `Trending Score: 585, Likes: 4,111, Downloads: 2,188,658`
+- 🏷️ **Domain & License**: `Image Generation` • `OTHER` (Released: 2026)
+- 🔗 **Resource Link**: [https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -34,12 +41,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,593 | 📥 158,490 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 920 | 📥 0 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `jialinyyzz/humanizer` | text-generation | ❤️ 1,895 | 📥 95,870 | [View](https://huggingface.co/jialinyyzz/humanizer) |
-| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 898 | 📥 36,252 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 616 | 📥 8,193 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 647 | 📥 224,108 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 987 | 📥 0 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,599 | 📥 158,490 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 1,900 | 📥 95,870 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 907 | 📥 36,252 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 623 | 📥 8,193 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 660 | 📥 224,108 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
 
 
 ---
@@ -50,7 +57,7 @@
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
 | **Mine, Sample, Render: Test-Time Diversity Alignment Of Generative Models** | 👍 5 | MSR improves generative diversity by mining categorical schemas from real artifacts to guide conditional rendering at test time. | [Read](https://huggingface.co/papers/2610.21185) |
-| **Behavioral Compositionality of Sparse Autoencoder Representations** | 👍 105 | Sparse autoencoder features are partially compositional but require interaction terms for accurate behavioral predictions and steering. | [Read](https://huggingface.co/papers/2610.21261) |
+| **Behavioral Compositionality of Sparse Autoencoder Representations** | 👍 106 | Sparse autoencoder features are partially compositional but require interaction terms for accurate behavioral predictions and steering. | [Read](https://huggingface.co/papers/2610.21261) |
 | **Diminishing Returns of Data in Sparse Autoencoders: Functional Behavior does not Guarantee Feature Reproducibility** | 👍 1 | Sparse autoencoders can be trained with far fewer activation tokens when data budgets align with evaluation goals, though feature-level reproducibility demands larger scales. | [Read](https://huggingface.co/papers/2610.20680) |
 | **LEASH: Uncertainty-Aware Weak-to-Strong Escalation and Oversight for Computer-Use Agents** | 👍 6 | LEASH is a training-free framework that uses latent uncertainty to escalate from a weak to a strong computer-use agent only when needed and monitors the strong agent afterward, reducing cost while maintaining high success. | [Read](https://huggingface.co/papers/2610.22280) |
 | **Scalable Weak-to-Strong Verifier Hardening for Agent Environments** | 👍 4 | The study proposes an automated weak-to-strong loop that hardens agent environment verifiers against reward hacking by iteratively finding and repairing vulnerabilities in isolated sandboxes. | [Read](https://huggingface.co/papers/2610.15924) |
@@ -66,7 +73,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
+- **Sample Link Health Check**: `10/25` healthy verified (`15` flagged / timed out)
 - **Dependency Security**: `34` advisories flagged across `578` dependencies (`1` critical, `29` high)
 
 ---
