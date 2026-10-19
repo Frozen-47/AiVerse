@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-19)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Timestral-209M** (`Model`), **MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow** (`Platform`) |
+| 📥 **Queued for Review** | **NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4** (`Model`), **RL-Explorer** (`Platform`), **fineweb-edu** (`Dataset`) |
 | 🌟 **Tool of the Day** | **Qwen-2511-Plus-Flux.2-klein-9B** (AST-1320) — [Explore](https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [Lean4AgenticRL: Advancing Agentic RL with Verifiab...](https://huggingface.co/papers/2610.22448) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 19 Oct 2026 18:09:07 GMT` |
+| 📜 **Top Daily Paper** | [Robust Explanatory Analysis for Structured Optimiz...](https://huggingface.co/papers/2610.19378) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Mon, 19 Oct 2026 22:44:59 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

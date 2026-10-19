@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-19T18:09:02.425Z",
+  "timestamp": "2026-10-19T22:44:55.657Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 1635,
+      "likes": 1676,
       "downloads": 17924,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,31 +12,31 @@
     {
       "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
       "author": "openbmb",
-      "likes": 1044,
+      "likes": 1061,
       "downloads": 76410,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
     },
     {
-      "id": "fishaudio/drama-3",
-      "author": "fishaudio",
-      "likes": 750,
-      "downloads": 11795,
-      "pipeline_tag": "text-to-speech",
-      "url": "https://huggingface.co/fishaudio/drama-3"
-    },
-    {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 922,
+      "likes": 955,
       "downloads": 393062,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
     },
     {
+      "id": "fishaudio/drama-3",
+      "author": "fishaudio",
+      "likes": 768,
+      "downloads": 11795,
+      "pipeline_tag": "text-to-speech",
+      "url": "https://huggingface.co/fishaudio/drama-3"
+    },
+    {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 2712,
+      "likes": 2724,
       "downloads": 167750,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
@@ -44,7 +44,7 @@
     {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 1974,
+      "likes": 1986,
       "downloads": 109937,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
+      "title": "Robust Explanatory Analysis for Structured Optimization Networks (REASON) in Learning",
+      "summary": "A two-loop inference framework resolves residual errors via fast and evidence-seeking loops to improve robustness under distribution shift with lower computation.",
+      "upvotes": 0,
+      "arxiv_id": "2610.19378",
+      "url": "https://huggingface.co/papers/2610.19378",
+      "githubRepo": null
+    },
+    {
+      "title": "Recognition Is Not Grounding: Benchmarking Multilingual Financial Evidence Extraction",
+      "summary": "The study introduces MULTIFINGROUND, a multilingual benchmark showing that language models recognize financial concepts across languages but frequently fail to recover all corresponding numerical evidence.",
+      "upvotes": 1,
+      "arxiv_id": "2610.19432",
+      "url": "https://huggingface.co/papers/2610.19432",
+      "githubRepo": null
+    },
+    {
+      "title": "BRACE: Adapting Whole-Body References for Force and Terrain Aware Humanoid Motion Tracking",
+      "summary": "BRACE is a whole-body humanoid tracker that integrates commanded hand forces and terrain adaptation by transforming references and distilling teachers into a proprioceptive flow-matching policy.",
+      "upvotes": 3,
+      "arxiv_id": "2610.07052",
+      "url": "https://huggingface.co/papers/2610.07052",
+      "githubRepo": "https://github.com/multiplylabs/brace"
+    },
+    {
+      "title": "DisaggKD: Efficient Knowledge Distillation through Teacher-Student Disaggregation and a Fused Loss",
+      "summary": "Knowledge distillation (KD) frameworks place teacher and student on the same GPUs, so per-GPU memory limits the teachers that fit. DisaggKD separates them acros...",
+      "upvotes": 1,
+      "arxiv_id": "2610.17644",
+      "url": "https://huggingface.co/papers/2610.17644",
+      "githubRepo": null
+    },
+    {
       "title": "Lean4AgenticRL: Advancing Agentic RL with Verifiable Multi-level Process Rewards",
       "summary": "Lean4AgenticRL integrates multi-level process rewards into a Lean4 formalization framework to improve agentic reinforcement learning for software engineering and terminal tasks, yielding stronger model performance.",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2610.22448",
       "url": "https://huggingface.co/papers/2610.22448",
       "githubRepo": "https://github.com/RickySkywalker/Lean4AgenticRL"
-    },
-    {
-      "title": "EvoWeb: A Benchmark for Coding Agents on Evolving Web Applications",
-      "summary": "Web application development often proceeds through successive requests that extend an existing implementation. Yet web-generation benchmarks primarily evaluate ...",
-      "upvotes": 3,
-      "arxiv_id": "2610.16402",
-      "url": "https://huggingface.co/papers/2610.16402",
-      "githubRepo": "https://github.com/two-delta/EvoWeb"
-    },
-    {
-      "title": "OmniXRef: A Unified Framework for Multimodal Multi-Reference Video Editing",
-      "summary": "Creative intent in video editing can be expressed through text instructions (e.g., \"remove the people\"), image references (e.g., subject appearance), video refe...",
-      "upvotes": 13,
-      "arxiv_id": "2610.22744",
-      "url": "https://huggingface.co/papers/2610.22744",
-      "githubRepo": null
-    },
-    {
-      "title": "Librarian Agents: Training LLMs to Curate Long-Context Workspaces that Anticipate Future Queries",
-      "summary": "Librarian Agents use reinforcement learning to train builder agents that reorganize document corpora into reusable hierarchical workspaces, improving downstream reasoning accuracy and amortizing costs across queries.",
-      "upvotes": 0,
-      "arxiv_id": "2610.22273",
-      "url": "https://huggingface.co/papers/2610.22273",
-      "githubRepo": null
-    },
-    {
-      "title": "GlobeBench: Evaluating Text-Based World Model Capabilities for Scalable Environment Simulations",
-      "summary": "GlobeBench introduces a standardized benchmark of 1,632 tasks across five domains to evaluate text-based world models, revealing that current LLMs struggle with propagating action effects across dependent objects.",
-      "upvotes": 1,
-      "arxiv_id": "2610.22708",
-      "url": "https://huggingface.co/papers/2610.22708",
-      "githubRepo": "https://github.com/patronus-ai/globebench"
     }
   ]
 }

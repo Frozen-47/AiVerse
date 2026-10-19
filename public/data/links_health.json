@@ -1,27 +1,17 @@
 {
-  "timestamp": "2026-10-19T18:09:02.568Z",
+  "timestamp": "2026-10-19T22:44:55.803Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "Ideogram",
-      "url": "https://ideogram.ai",
-      "status": 403
+      "name": "wan555",
+      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
+      "status": 401
     },
     {
-      "name": "Quizlet AI",
-      "url": "https://quizlet.com/features/quizlet-ai",
-      "status": 403
-    },
-    {
-      "name": "NightCafe",
-      "url": "https://creator.nightcafe.studio",
-      "status": 403
-    },
-    {
-      "name": "ChatGPT",
-      "url": "https://chatgpt.com",
+      "name": "o3-mini",
+      "url": "https://openai.com",
       "status": 403
     }
   ]

@@ -2,27 +2,34 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Mon, 19 Oct 2026 18:09:07 GMT`*
+*Last Synchronized: `Mon, 19 Oct 2026 22:44:59 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (2)
+## 📥 Newly Queued Assets for Review (3)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Timestral-209M** (`Model` • *Mistral AI*)
-> High-performance NLP open-weights model by Mistral AI, trending with over 172 community likes and 2,601 downloads on Hugging Face.
+### **NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4** (`Model` • *nvidia*)
+> High-performance Multimodal open-weights model by nvidia, trending with over 170 community likes and 9,322 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 165, Likes: 172, Downloads: 2,601`
-- 🔗 **Resource Link**: [https://huggingface.co/mistralai/Timestral-209M](https://huggingface.co/mistralai/Timestral-209M)
+- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 165, Likes: 170, Downloads: 9,322`
+- 🔗 **Resource Link**: [https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4)
 
-### **MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow** (`Platform` • *glitchlab*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by glitchlab. Trending with 69 community stars.
+### **RL-Explorer** (`Platform` • *FineEnvs*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by FineEnvs. Trending with 35 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 24, Community Likes: 69`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow](https://huggingface.co/spaces/glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow)
+- ⚡ **Metrics**: `Trending Score: 21, Community Likes: 35`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/FineEnvs/RL-Explorer](https://huggingface.co/spaces/FineEnvs/RL-Explorer)
+
+### **fineweb-edu** (`Dataset` • *HuggingFaceFW*)
+> 📚 FineWeb-Edu 	      1.3 trillion tokens of the finest educational data the 🌐 web has to offer Paper: https://arxiv.org/abs/2406.17557 	 		 	 	 		What is it? 	 📚 Fin (1,361 likes, 429,596 downloads).
+
+- 🏷️ **Domain & License**: `NLP` • `ODC-BY` (2026)
+- ⚡ **Metrics**: `Trending Score: 17, Likes: 1,361, Downloads: 429,596`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu](https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu)
 
 ---
 
@@ -41,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 1,635 | 📥 17,924 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 1,044 | 📥 76,410 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 750 | 📥 11,795 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 922 | 📥 393,062 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,712 | 📥 167,750 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `jialinyyzz/humanizer` | text-generation | ❤️ 1,974 | 📥 109,937 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 1,676 | 📥 17,924 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 1,061 | 📥 76,410 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 955 | 📥 393,062 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 768 | 📥 11,795 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,724 | 📥 167,750 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 1,986 | 📥 109,937 | [View](https://huggingface.co/jialinyyzz/humanizer) |
 
 
 ---
@@ -56,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Lean4AgenticRL: Advancing Agentic RL with Verifiable Multi-level Process Rewards** | 👍 1 | Lean4AgenticRL integrates multi-level process rewards into a Lean4 formalization framework to improve agentic reinforcement learning for software engineering and terminal tasks, yielding stronger model performance. | [Read](https://huggingface.co/papers/2610.22448) |
-| **EvoWeb: A Benchmark for Coding Agents on Evolving Web Applications** | 👍 3 | Web application development often proceeds through successive requests that extend an existing implementation. Yet web-generation benchmarks primarily evaluate ... | [Read](https://huggingface.co/papers/2610.16402) |
-| **OmniXRef: A Unified Framework for Multimodal Multi-Reference Video Editing** | 👍 13 | Creative intent in video editing can be expressed through text instructions (e.g., "remove the people"), image references (e.g., subject appearance), video refe... | [Read](https://huggingface.co/papers/2610.22744) |
-| **Librarian Agents: Training LLMs to Curate Long-Context Workspaces that Anticipate Future Queries** | 👍 0 | Librarian Agents use reinforcement learning to train builder agents that reorganize document corpora into reusable hierarchical workspaces, improving downstream reasoning accuracy and amortizing costs across queries. | [Read](https://huggingface.co/papers/2610.22273) |
-| **GlobeBench: Evaluating Text-Based World Model Capabilities for Scalable Environment Simulations** | 👍 1 | GlobeBench introduces a standardized benchmark of 1,632 tasks across five domains to evaluate text-based world models, revealing that current LLMs struggle with propagating action effects across dependent objects. | [Read](https://huggingface.co/papers/2610.22708) |
+| **Robust Explanatory Analysis for Structured Optimization Networks (REASON) in Learning** | 👍 0 | A two-loop inference framework resolves residual errors via fast and evidence-seeking loops to improve robustness under distribution shift with lower computation. | [Read](https://huggingface.co/papers/2610.19378) |
+| **Recognition Is Not Grounding: Benchmarking Multilingual Financial Evidence Extraction** | 👍 1 | The study introduces MULTIFINGROUND, a multilingual benchmark showing that language models recognize financial concepts across languages but frequently fail to recover all corresponding numerical evidence. | [Read](https://huggingface.co/papers/2610.19432) |
+| **BRACE: Adapting Whole-Body References for Force and Terrain Aware Humanoid Motion Tracking** | 👍 3 | BRACE is a whole-body humanoid tracker that integrates commanded hand forces and terrain adaptation by transforming references and distilling teachers into a proprioceptive flow-matching policy. | [Read](https://huggingface.co/papers/2610.07052) |
+| **DisaggKD: Efficient Knowledge Distillation through Teacher-Student Disaggregation and a Fused Loss** | 👍 1 | Knowledge distillation (KD) frameworks place teacher and student on the same GPUs, so per-GPU memory limits the teachers that fit. DisaggKD separates them acros... | [Read](https://huggingface.co/papers/2610.17644) |
+| **Lean4AgenticRL: Advancing Agentic RL with Verifiable Multi-level Process Rewards** | 👍 2 | Lean4AgenticRL integrates multi-level process rewards into a Lean4 formalization framework to improve agentic reinforcement learning for software engineering and terminal tasks, yielding stronger model performance. | [Read](https://huggingface.co/papers/2610.22448) |
 
 
 ---
@@ -73,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
+- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
 - **Dependency Security**: `34` advisories flagged across `578` dependencies (`1` critical, `29` high)
 
 ---
