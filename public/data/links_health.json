@@ -1,12 +1,17 @@
 {
-  "timestamp": "2026-10-19T02:48:07.161Z",
+  "timestamp": "2026-10-19T10:26:57.800Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "GPT-3",
-      "url": "https://openai.com/research/language-models-are-few-shot-learners",
+      "name": "Gamma",
+      "url": "https://gamma.app",
+      "status": 403
+    },
+    {
+      "name": "Canva AI",
+      "url": "https://www.canva.com/ai-image-generator",
       "status": 403
     }
   ]

@@ -1,5 +1,80 @@
 [
   {
+    "name": "Jev-RAG-Claim-Verification-130K",
+    "type": "Dataset",
+    "summary": "RAG Claim Verification — Jev 130K \t \t \t\t \t \t \t\tDoes the answer actually follow from its evidence? \t 130,000 typed RAG decisions connecting source-derived reference labe (22 likes, 58 downloads).",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "MaziyarPanahi",
+    "size": "100K<n<1M",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"MaziyarPanahi/Jev-RAG-Claim-Verification-130K\")",
+    "benchmarks": "Trending Score: 22, Likes: 22, Downloads: 58",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/MaziyarPanahi/Jev-RAG-Claim-Verification-130K",
+    "citations": [
+      {
+        "text": "MaziyarPanahi/Jev-RAG-Claim-Verification-130K on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/MaziyarPanahi/Jev-RAG-Claim-Verification-130K"
+      }
+    ],
+    "created_at": "2026-10-19T10:26:55.726Z"
+  },
+  {
+    "name": "Omni-Image-Editor",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by selfit-camera. Trending with 2,815 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "selfit-camera",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/selfit-camera/Omni-Image-Editor",
+    "benchmarks": "Trending Score: 24, Community Likes: 2,815",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/selfit-camera/Omni-Image-Editor",
+    "citations": [
+      {
+        "text": "selfit-camera/Omni-Image-Editor on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/selfit-camera/Omni-Image-Editor"
+      }
+    ],
+    "created_at": "2026-10-19T10:26:55.726Z"
+  },
+  {
+    "name": "MiniCPM-V-4.7-35B-A3B-gguf",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by openbmb, trending with over 169 community likes and 170,728 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "openbmb",
+    "size": "35B params",
+    "architecture": "openbmb image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"openbmb/MiniCPM-V-4.7-35B-A3B-gguf\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"openbmb/MiniCPM-V-4.7-35B-A3B-gguf\")",
+    "benchmarks": "Trending Score: 164, Likes: 169, Downloads: 170,728",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
+    "citations": [
+      {
+        "text": "openbmb/MiniCPM-V-4.7-35B-A3B-gguf on Hugging Face",
+        "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-gguf"
+      }
+    ],
+    "created_at": "2026-10-19T10:26:55.726Z"
+  },
+  {
     "name": "CodeVideoBench",
     "type": "Dataset",
     "summary": "CodeVideoBench \t CodeVideoBench provides 22 video cases across eight applications for code-guided video generation. Each case includes a Three.js code video, a referenc (21 likes, 2,176 downloads).",

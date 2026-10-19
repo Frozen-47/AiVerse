@@ -17,12 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-19)
 | Metric | Status / Count |
 | :--- | :--- |
+| 📥 **Queued for Review** | **MiniCPM-V-4.7-35B-A3B-gguf** (`Model`), **Omni-Image-Editor** (`Platform`), **Jev-RAG-Claim-Verification-130K** (`Dataset`) |
 | 🌟 **Tool of the Day** | **Qwen-2511-Plus-Flux.2-klein-9B** (AST-1320) — [Explore](https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [Has GPT-6-Astra Achieved Embodied Intelligence?...](https://huggingface.co/papers/2610.22471) |
-| 🛡️ **Catalog Links Checked** | **24/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 19 Oct 2026 02:48:11 GMT` |
+| 📜 **Top Daily Paper** | [AI-Driven Disaster Response and Displacement Monit...](https://huggingface.co/papers/2610.21482) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Mon, 19 Oct 2026 10:27:01 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

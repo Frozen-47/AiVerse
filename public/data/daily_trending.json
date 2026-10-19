@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-19T02:48:07.114Z",
+  "timestamp": "2026-10-19T10:26:57.652Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 1368,
-      "downloads": 10233,
+      "likes": 1522,
+      "downloads": 17924,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
       "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
       "author": "openbmb",
-      "likes": 1010,
-      "downloads": 57935,
+      "likes": 1025,
+      "downloads": 76410,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
     },
     {
-      "id": "google/embeddinggemma-2",
-      "author": "google",
-      "likes": 2667,
-      "downloads": 164339,
-      "pipeline_tag": "feature-extraction",
-      "url": "https://huggingface.co/google/embeddinggemma-2"
-    },
-    {
-      "id": "jialinyyzz/humanizer",
-      "author": "jialinyyzz",
-      "likes": 1950,
-      "downloads": 103709,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/jialinyyzz/humanizer"
-    },
-    {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 701,
-      "downloads": 9620,
+      "likes": 724,
+      "downloads": 11795,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
     },
     {
+      "id": "google/embeddinggemma-2",
+      "author": "google",
+      "likes": 2684,
+      "downloads": 167750,
+      "pipeline_tag": "feature-extraction",
+      "url": "https://huggingface.co/google/embeddinggemma-2"
+    },
+    {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 821,
-      "downloads": 338036,
+      "likes": 863,
+      "downloads": 393062,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
+    },
+    {
+      "id": "jialinyyzz/humanizer",
+      "author": "jialinyyzz",
+      "likes": 1966,
+      "downloads": 109937,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/jialinyyzz/humanizer"
     }
   ],
   "papers": [
     {
-      "title": "Has GPT-6-Astra Achieved Embodied Intelligence?",
-      "summary": "GPT-6-Astra achieves high performance across diverse robotic tasks via in-context learning, yet real-world deployment reveals gaps in demonstration cost, execution time, and practical embodied intelligence.",
+      "title": "AI-Driven Disaster Response and Displacement Monitoring",
+      "summary": "ARTIFICIAL INTELLIGENCE (AI) has demonstrated its potential across a wide range of humanitarian tasks, offering scalable and data-driven solutions to some of th...",
       "upvotes": 1,
-      "arxiv_id": "2610.22471",
-      "url": "https://huggingface.co/papers/2610.22471",
-      "githubRepo": "https://github.com/OpenSenseNova/SenseNova-RoboRSI"
-    },
-    {
-      "title": "HexaShell: A Thin Harness for Exploring the Limits of VLM Agents as Robot Coding Agents",
-      "summary": "HexaShell is a coding agent that controls a dual-arm robot via vision and self-written tools, achieving state-of-the-art results on RoboDojo but struggling with contact-heavy tasks.",
-      "upvotes": 3,
-      "arxiv_id": "2610.23479",
-      "url": "https://huggingface.co/papers/2610.23479",
-      "githubRepo": "https://github.com/HexaFuture/HexaShell"
-    },
-    {
-      "title": "OS-Helix: Unifying GUI Interaction and Code Execution in Native Computer-Using Agents",
-      "summary": "OS-Helix is an end-to-end trained multimodal agent that integrates GUI actions and code execution via hybrid supervised and reinforcement learning, achieving substantial gains on desktop automation benchmarks.",
-      "upvotes": 1,
-      "arxiv_id": "2610.22234",
-      "url": "https://huggingface.co/papers/2610.22234",
-      "githubRepo": "https://github.com/OS-Copilot/OS-Helix"
-    },
-    {
-      "title": "DLite: History-free Speculative Decoding for Agentic AI",
-      "summary": "DLite improves speculative decoding for agentic AI by eliminating historical context maintenance and using target hidden states for local predictions, boosting acceptance length and reducing overhead.",
-      "upvotes": 2,
-      "arxiv_id": "2610.23787",
-      "url": "https://huggingface.co/papers/2610.23787",
-      "githubRepo": "https://github.com/SJTU-DAI-Sys/DLite"
-    },
-    {
-      "title": "StopWatch: Goal Grounding for Object-goal Navigation",
-      "summary": "Explicit goal grounding fixes the dominant failure in vision-language navigation policies, yielding near-expert success with minimal policy changes.",
-      "upvotes": 1,
-      "arxiv_id": "2610.23841",
-      "url": "https://huggingface.co/papers/2610.23841",
+      "arxiv_id": "2610.21482",
+      "url": "https://huggingface.co/papers/2610.21482",
       "githubRepo": null
+    },
+    {
+      "title": "Xiaomi-Lens-0 Technical Report",
+      "summary": "Xiaomi-Lens-0 is a 4B multimodal model that predicts masks from internal visual representations to improve fine-grained region reasoning and referring comprehension.",
+      "upvotes": 12,
+      "arxiv_id": "2610.23279",
+      "url": "https://huggingface.co/papers/2610.23279",
+      "githubRepo": "https://github.com/SeerRay-Lab/Xiaomi-Lens-0"
+    },
+    {
+      "title": "MTEdit: Packed Trajectories Beat Rollouts for Multi-Turn Image Editing",
+      "summary": "MTEdit is a large-scale multi-turn image editing dataset using packed trajectory canvas generation to reduce visual drift, enabling improved multi-turn editing models evaluated on MTEdit-Bench.",
+      "upvotes": 1,
+      "arxiv_id": "2610.23751",
+      "url": "https://huggingface.co/papers/2610.23751",
+      "githubRepo": null
+    },
+    {
+      "title": "LiveMACE: Process-Aware Evaluation of LLM Agent Capabilities in Evolving Markets",
+      "summary": "LiveMACEBench evaluates persistent LLM agents in live financial markets using decision traces to reveal gaps between outcomes and underlying capabilities.",
+      "upvotes": 43,
+      "arxiv_id": "2610.09872",
+      "url": "https://huggingface.co/papers/2610.09872",
+      "githubRepo": "https://github.com/RaymondVoldemortFu/LiveMACE"
+    },
+    {
+      "title": "Scene-Designer: Learning Design Intelligence for Agentic 3D Scene Generation",
+      "summary": "Generating complete, coherent, and usable 3D indoor scenes from natural language requires strong design intelligence: the ability to design high-quality scenes ...",
+      "upvotes": 40,
+      "arxiv_id": "2610.23121",
+      "url": "https://huggingface.co/papers/2610.23121",
+      "githubRepo": "https://github.com/ZJU-OmniAI/Scene-Designer"
     }
   ]
 }
