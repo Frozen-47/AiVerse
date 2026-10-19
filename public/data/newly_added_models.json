@@ -4,6 +4,60 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Timestral-209M",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by Mistral AI, trending with over 172 community likes and 2,601 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "Mistral AI",
+        "size": "209M params",
+        "architecture": "Mistral AI time series forecasting architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"mistralai/Timestral-209M\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"mistralai/Timestral-209M\")",
+        "benchmarks": "Trending Score: 165, Likes: 172, Downloads: 2,601",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/mistralai/Timestral-209M",
+        "citations": [
+          {
+            "text": "mistralai/Timestral-209M on Hugging Face",
+            "url": "https://huggingface.co/mistralai/Timestral-209M"
+          }
+        ]
+      },
+      {
+        "name": "MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by glitchlab. Trending with 69 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "glitchlab",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow",
+        "benchmarks": "Trending Score: 24, Community Likes: 69",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow",
+        "citations": [
+          {
+            "text": "glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-19",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "MiniCPM-V-4.7-35B-A3B-gguf",
         "type": "Model",
         "summary": "High-performance Multimodal open-weights model by openbmb, trending with over 169 community likes and 170,728 downloads on Hugging Face.",

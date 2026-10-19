@@ -1,17 +1,27 @@
 {
-  "timestamp": "2026-10-19T10:26:57.800Z",
+  "timestamp": "2026-10-19T18:09:02.568Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 21,
+  "broken": 4,
   "issues": [
     {
-      "name": "Gamma",
-      "url": "https://gamma.app",
+      "name": "Ideogram",
+      "url": "https://ideogram.ai",
       "status": 403
     },
     {
-      "name": "Canva AI",
-      "url": "https://www.canva.com/ai-image-generator",
+      "name": "Quizlet AI",
+      "url": "https://quizlet.com/features/quizlet-ai",
+      "status": 403
+    },
+    {
+      "name": "NightCafe",
+      "url": "https://creator.nightcafe.studio",
+      "status": 403
+    },
+    {
+      "name": "ChatGPT",
+      "url": "https://chatgpt.com",
       "status": 403
     }
   ]
