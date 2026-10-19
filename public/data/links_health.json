@@ -1,28 +1,13 @@
 {
-  "timestamp": "2026-10-18T23:51:13.713Z",
+  "timestamp": "2026-10-19T02:48:07.161Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
-      "name": "DALL-E 3",
-      "url": "https://openai.com/dall-e-3",
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
       "status": 403
-    },
-    {
-      "name": "Pi",
-      "url": "https://pi.ai",
-      "status": 403
-    },
-    {
-      "name": "Whisper",
-      "url": "https://openai.com/research/whisper",
-      "status": 403
-    },
-    {
-      "name": "Tabnine",
-      "url": "https://www.tabnine.com",
-      "status": "Network Error"
     }
   ]
 }

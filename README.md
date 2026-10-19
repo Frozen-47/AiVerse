@@ -14,16 +14,15 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-10-18)
+### ⚡ AiVerse AI Radar (2026-10-19)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2** (`Model`), **CodeVideoBench** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Qwen-Image-2.1-Uncensored-Quantized** (abenzerps) — [Explore](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized) |
+| 🌟 **Tool of the Day** | **Qwen-2511-Plus-Flux.2-klein-9B** (AST-1320) — [Explore](https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [Mine, Sample, Render: Test-Time Diversity Alignmen...](https://huggingface.co/papers/2610.21185) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Synchronized** | `Sun, 18 Oct 2026 23:51:17 GMT` |
+| 📜 **Top Daily Paper** | [Has GPT-6-Astra Achieved Embodied Intelligence?...](https://huggingface.co/papers/2610.22471) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Synchronized** | `Mon, 19 Oct 2026 02:48:11 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
