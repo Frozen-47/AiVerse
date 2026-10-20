@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-20)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Muse-Spark-Open-816B-A42B-NVFP4** (`Model`), **Faceswap-Headswap** (`Platform`), **VDEBench** (`Dataset`) |
+| 📥 **Queued for Review** | **MOSS-Image-SFT-8-steps-dmd** (`Model`), **uncensored-imageTOimage2Ref** (`Platform`), **SharpaDex-v1.0** (`Dataset`) |
 | 🌟 **Tool of the Day** | **MiniCPM-V-4.7-35B-A3B** (openbmb) — [Explore](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [RealityBench: Simulated Environments to Evaluate a...](https://huggingface.co/papers/2610.14397) |
-| 🛡️ **Catalog Links Checked** | **20/25** operational |
-| 🕒 **Last Synchronized** | `Tue, 20 Oct 2026 09:45:58 GMT` |
+| 📜 **Top Daily Paper** | [Training Reasoning Models to Generate Diverse Scie...](https://huggingface.co/papers/2610.22324) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Tue, 20 Oct 2026 14:37:06 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

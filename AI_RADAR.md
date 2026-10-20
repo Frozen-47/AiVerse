@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Tue, 20 Oct 2026 09:45:58 GMT`*
+*Last Synchronized: `Tue, 20 Oct 2026 14:37:06 GMT`*
 
 ---
 
@@ -10,26 +10,26 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Muse-Spark-Open-816B-A42B-NVFP4** (`Model` • *meta-models*)
-> High-performance Multimodal open-weights model by meta-models, trending with over 188 community likes and 5,553 downloads on Hugging Face.
+### **MOSS-Image-SFT-8-steps-dmd** (`Model` • *lodestones*)
+> High-performance NLP open-weights model by lodestones, trending with over 170 community likes and 54,814 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 168, Likes: 188, Downloads: 5,553`
-- 🔗 **Resource Link**: [https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B-NVFP4](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B-NVFP4)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 168, Likes: 170, Downloads: 54,814`
+- 🔗 **Resource Link**: [https://huggingface.co/lodestones/MOSS-Image-SFT-8-steps-dmd](https://huggingface.co/lodestones/MOSS-Image-SFT-8-steps-dmd)
 
-### **Faceswap-Headswap** (`Platform` • *keysersoze*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by keysersoze. Trending with 44 community stars.
+### **uncensored-imageTOimage2Ref** (`Platform` • *fishpasters*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by fishpasters. Trending with 33 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 20, Community Likes: 44`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/keysersoze/Faceswap-Headswap](https://huggingface.co/spaces/keysersoze/Faceswap-Headswap)
+- ⚡ **Metrics**: `Trending Score: 24, Community Likes: 33`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/fishpasters/uncensored-imageTOimage2Ref](https://huggingface.co/spaces/fishpasters/uncensored-imageTOimage2Ref)
 
-### **VDEBench** (`Dataset` • *hongzhuyi*)
-> VDEBench: Visual Document Editing Benchmark 	 Edit the requested text or table. Preserve the rest of the document. VDEBench evaluates instruction-guided image editing o (22 likes, 1,311 downloads).
+### **SharpaDex-v1.0** (`Dataset` • *Sharpa-Robotics*)
+> SharpaDex v1.0   A multimodal dataset of real-world teleoperated demonstrations for bimanual dexterous manipulation.               Overview ·   Get Started ·   Tasks ·   Examples · (22 likes, 66,553 downloads).
 
-- 🏷️ **Domain & License**: `Computer Vision` • `Open Data` (2026)
-- ⚡ **Metrics**: `Trending Score: 22, Likes: 22, Downloads: 1,311`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/hongzhuyi/VDEBench](https://huggingface.co/datasets/hongzhuyi/VDEBench)
+- 🏷️ **Domain & License**: `NLP` • `CC-BY-NC-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 19, Likes: 22, Downloads: 66,553`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/Sharpa-Robotics/SharpaDex-v1.0](https://huggingface.co/datasets/Sharpa-Robotics/SharpaDex-v1.0)
 
 ---
 
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 1,798 | 📥 27,737 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,021 | 📥 439,528 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 790 | 📥 13,495 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,736 | 📥 172,474 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `jialinyyzz/humanizer` | text-generation | ❤️ 2,009 | 📥 115,341 | [View](https://huggingface.co/jialinyyzz/humanizer) |
-| `meta-models/Muse-Spark-Open-816B-A42B` | image-text-to-text | ❤️ 592 | 📥 2,592 | [View](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 1,858 | 📥 27,737 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,040 | 📥 439,528 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 803 | 📥 13,495 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 2,016 | 📥 115,341 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,748 | 📥 172,474 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `meta-models/Muse-Spark-Open-816B-A42B` | image-text-to-text | ❤️ 596 | 📥 2,592 | [View](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **RealityBench: Simulated Environments to Evaluate a Vision Language Model's Ability to Document Human Physical Work** | 👍 1 | Researchers benchmark vision-language models on simulated physical work tasks, finding strengths in text-based documentation but weaknesses in measurement reading, spatial reasoning, and acceptability judgment. | [Read](https://huggingface.co/papers/2610.14397) |
-| **RoboValue: A Fine-Grained Sim-and-Real Benchmark for Unified Evaluation of Robotic Value Models** | 👍 3 | RoboValue introduces a benchmark to evaluate robotic value models across task-state understanding, progress tracking, failure recovery, and consistency in both simulated and real-world settings. | [Read](https://huggingface.co/papers/2610.26663) |
-| **Harnessing Textual Refusal Directions for Multimodal Safety** | 👍 2 | MARS enables multimodal safety steering using only text-derived refusal directions, avoiding the need for multimodal safety data. | [Read](https://huggingface.co/papers/2606.31876) |
-| **Policy Is Not Capability: Some Safety Benchmarks Measure Which Definition of "Unsafe" You Trained On** | 👍 0 | Guardrail benchmark scores primarily reflect labeling policy rather than detection ability, with minor parameter changes shifting results across full ranges and training contamination undermining reported safety metrics. | [Read](https://huggingface.co/papers/2610.25060) |
-| **A Conditional No-Hair Theorem for Transformers: How Language Models Forget Their Prompt** | 👍 1 | Autoregressive transformers retain prompt influence via a power-law decay driven by attention dilution and relay mechanisms, with trained models forgetting faster than untrained ones. | [Read](https://huggingface.co/papers/2610.24133) |
+| **Training Reasoning Models to Generate Diverse Scientific Ideas** | 👍 1 | Researchers propose a set-level reinforcement learning objective to train language models for diverse, high-quality, document-grounded idea generation, achieving stronger creative utility than larger proprietary models. | [Read](https://huggingface.co/papers/2610.22324) |
+| **ACEdit: Stable Multi-Turn Image Editing via Asymmetric Conditioning** | 👍 8 | Self-forcing training with teacher distillation and asymmetric conditioning stabilizes multi-turn image editing against accumulating distribution shifts. | [Read](https://huggingface.co/papers/2610.22328) |
+| **CyberArena: Benchmarking AI Agents in Live Symmetric Attack-and-Defense Combat** | 👍 1 | CyberArena is a dynamic adversarial benchmark that evaluates AI agents through concurrent multi-round attack-and-defense combat in evolving environments, measuring capabilities via a dynamical scoring model. | [Read](https://huggingface.co/papers/2610.19005) |
+| **N-Gram Memories at Two Bits: Quantizing Lookup Tables in Large Language Models** | 👍 2 | Conditional Program compresses language-model embedding tables by reconstructing only requested rows via shared codes and local scales, reducing storage by 75% while improving fidelity. | [Read](https://huggingface.co/papers/2610.21810) |
+| **Beyond Maliciousness: Static and Runtime Attack-Surface Profiling of Agent Skills** | 👍 1 | Agent skills are Markdown documents that a tool-using agent reads as instructions and then acts on with the privileges of the session that loaded them. Installi... | [Read](https://huggingface.co/papers/2610.19264) |
 
 
 ---
@@ -80,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
+- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
 - **Dependency Security**: `34` advisories flagged across `578` dependencies (`1` critical, `29` high)
 
 ---

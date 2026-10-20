@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-20T09:45:52.079Z",
+  "timestamp": "2026-10-20T14:37:01.197Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 1798,
+      "likes": 1858,
       "downloads": 27737,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1021,
+      "likes": 1040,
       "downloads": 439528,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -20,31 +20,31 @@
     {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 790,
+      "likes": 803,
       "downloads": 13495,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
     },
     {
-      "id": "google/embeddinggemma-2",
-      "author": "google",
-      "likes": 2736,
-      "downloads": 172474,
-      "pipeline_tag": "feature-extraction",
-      "url": "https://huggingface.co/google/embeddinggemma-2"
-    },
-    {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 2009,
+      "likes": 2016,
       "downloads": 115341,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
     },
     {
+      "id": "google/embeddinggemma-2",
+      "author": "google",
+      "likes": 2748,
+      "downloads": 172474,
+      "pipeline_tag": "feature-extraction",
+      "url": "https://huggingface.co/google/embeddinggemma-2"
+    },
+    {
       "id": "meta-models/Muse-Spark-Open-816B-A42B",
       "author": "meta-models",
-      "likes": 592,
+      "likes": 596,
       "downloads": 2592,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "RealityBench: Simulated Environments to Evaluate a Vision Language Model's Ability to Document Human Physical Work",
-      "summary": "Researchers benchmark vision-language models on simulated physical work tasks, finding strengths in text-based documentation but weaknesses in measurement reading, spatial reasoning, and acceptability judgment.",
+      "title": "Training Reasoning Models to Generate Diverse Scientific Ideas",
+      "summary": "Researchers propose a set-level reinforcement learning objective to train language models for diverse, high-quality, document-grounded idea generation, achieving stronger creative utility than larger proprietary models.",
       "upvotes": 1,
-      "arxiv_id": "2610.14397",
-      "url": "https://huggingface.co/papers/2610.14397",
+      "arxiv_id": "2610.22324",
+      "url": "https://huggingface.co/papers/2610.22324",
+      "githubRepo": "https://github.com/ManyaWadhwa/diverge_ideation"
+    },
+    {
+      "title": "ACEdit: Stable Multi-Turn Image Editing via Asymmetric Conditioning",
+      "summary": "Self-forcing training with teacher distillation and asymmetric conditioning stabilizes multi-turn image editing against accumulating distribution shifts.",
+      "upvotes": 8,
+      "arxiv_id": "2610.22328",
+      "url": "https://huggingface.co/papers/2610.22328",
       "githubRepo": null
     },
     {
-      "title": "RoboValue: A Fine-Grained Sim-and-Real Benchmark for Unified Evaluation of Robotic Value Models",
-      "summary": "RoboValue introduces a benchmark to evaluate robotic value models across task-state understanding, progress tracking, failure recovery, and consistency in both simulated and real-world settings.",
-      "upvotes": 3,
-      "arxiv_id": "2610.26663",
-      "url": "https://huggingface.co/papers/2610.26663",
-      "githubRepo": "https://github.com/RoboValue-Benchmark/RoboValue"
+      "title": "CyberArena: Benchmarking AI Agents in Live Symmetric Attack-and-Defense Combat",
+      "summary": "CyberArena is a dynamic adversarial benchmark that evaluates AI agents through concurrent multi-round attack-and-defense combat in evolving environments, measuring capabilities via a dynamical scoring model.",
+      "upvotes": 1,
+      "arxiv_id": "2610.19005",
+      "url": "https://huggingface.co/papers/2610.19005",
+      "githubRepo": "https://github.com/cyber-arena-ai/cyber-arena"
     },
     {
-      "title": "Harnessing Textual Refusal Directions for Multimodal Safety",
-      "summary": "MARS enables multimodal safety steering using only text-derived refusal directions, avoiding the need for multimodal safety data.",
+      "title": "N-Gram Memories at Two Bits: Quantizing Lookup Tables in Large Language Models",
+      "summary": "Conditional Program compresses language-model embedding tables by reconstructing only requested rows via shared codes and local scales, reducing storage by 75% while improving fidelity.",
       "upvotes": 2,
-      "arxiv_id": "2606.31876",
-      "url": "https://huggingface.co/papers/2606.31876",
-      "githubRepo": "https://github.com/Moreno98/MARS"
-    },
-    {
-      "title": "Policy Is Not Capability: Some Safety Benchmarks Measure Which Definition of \"Unsafe\" You Trained On",
-      "summary": "Guardrail benchmark scores primarily reflect labeling policy rather than detection ability, with minor parameter changes shifting results across full ranges and training contamination undermining reported safety metrics.",
-      "upvotes": 0,
-      "arxiv_id": "2610.25060",
-      "url": "https://huggingface.co/papers/2610.25060",
+      "arxiv_id": "2610.21810",
+      "url": "https://huggingface.co/papers/2610.21810",
       "githubRepo": null
     },
     {
-      "title": "A Conditional No-Hair Theorem for Transformers: How Language Models Forget Their Prompt",
-      "summary": "Autoregressive transformers retain prompt influence via a power-law decay driven by attention dilution and relay mechanisms, with trained models forgetting faster than untrained ones.",
+      "title": "Beyond Maliciousness: Static and Runtime Attack-Surface Profiling of Agent Skills",
+      "summary": "Agent skills are Markdown documents that a tool-using agent reads as instructions and then acts on with the privileges of the session that loaded them. Installi...",
       "upvotes": 1,
-      "arxiv_id": "2610.24133",
-      "url": "https://huggingface.co/papers/2610.24133",
-      "githubRepo": "https://github.com/ShuyangenFrance/no-hair-transformers"
+      "arxiv_id": "2610.19264",
+      "url": "https://huggingface.co/papers/2610.19264",
+      "githubRepo": null
     }
   ]
 }
