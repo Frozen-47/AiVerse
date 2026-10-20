@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-20T02:59:00.787Z",
+  "timestamp": "2026-10-20T09:45:52.079Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 1710,
-      "downloads": 17924,
+      "likes": 1798,
+      "downloads": 27737,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 976,
-      "downloads": 393062,
+      "likes": 1021,
+      "downloads": 439528,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
     },
     {
-      "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
-      "author": "openbmb",
-      "likes": 1069,
-      "downloads": 76410,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
-    },
-    {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 773,
-      "downloads": 11795,
+      "likes": 790,
+      "downloads": 13495,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
     },
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 2728,
-      "downloads": 167750,
+      "likes": 2736,
+      "downloads": 172474,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
     },
     {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 1990,
-      "downloads": 109937,
+      "likes": 2009,
+      "downloads": 115341,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
+    },
+    {
+      "id": "meta-models/Muse-Spark-Open-816B-A42B",
+      "author": "meta-models",
+      "likes": 592,
+      "downloads": 2592,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
     }
   ],
   "papers": [
     {
-      "title": "RoAR-VAE: Improving Latent Diffusability through Robust Prediction",
-      "summary": "RoAR-VAE improves visual tokenizers by enforcing robust prediction of semantics and reconstruction from corrupted latents, balancing fidelity with diffusion learnability.",
-      "upvotes": 4,
-      "arxiv_id": "2610.26216",
-      "url": "https://huggingface.co/papers/2610.26216",
-      "githubRepo": "https://github.com/LeapLabTHU/RoAR-VAE"
-    },
-    {
-      "title": "Learning to Discriminate Scene Structures Makes Self-Supervised Depth Learning Scalable",
-      "summary": "The MaSS framework improves self-supervised monocular depth estimation across diverse scenes by separating structural representations from contextual features and using a scene-structure discrimination objective, enabling scalable mixed-domain training and strong zero-shot generalization.",
-      "upvotes": 3,
-      "arxiv_id": "2610.23600",
-      "url": "https://huggingface.co/papers/2610.23600",
-      "githubRepo": "https://github.com/mengtanZ/MaSS"
-    },
-    {
-      "title": "Frechet Forcing: Training Long-Horizon Streaming World Models from Short Clips",
-      "summary": "Fréchet Forcing fine-tunes streaming video world models using self-generated rollouts and real-data statistics to prevent long-horizon drift without requiring teachers or long videos.",
-      "upvotes": 5,
-      "arxiv_id": "2610.25666",
-      "url": "https://huggingface.co/papers/2610.25666",
-      "githubRepo": "https://github.com/zhao-yian/Frechet_Forcing"
-    },
-    {
-      "title": "Self-Evolving Coding Agents via Harness-Policy Optimization",
-      "summary": "Self-HPO is a recursive framework that alternates harness and policy optimization for coding agents, improving performance by targeting evolving failure modes through reinforcement learning.",
-      "upvotes": 17,
-      "arxiv_id": "2610.22791",
-      "url": "https://huggingface.co/papers/2610.22791",
-      "githubRepo": "https://github.com/MSR-Orchard/Self-HPO"
-    },
-    {
-      "title": "World Model Interpretability: From Decoding Representations to Understanding Latent Worlds",
-      "summary": "JEPA latent-world interpretability should shift from decoding representations to analyzing how latent variables interact, evolve, and causally drive prediction through grounding, structuring, verifying, and acting.",
+      "title": "RealityBench: Simulated Environments to Evaluate a Vision Language Model's Ability to Document Human Physical Work",
+      "summary": "Researchers benchmark vision-language models on simulated physical work tasks, finding strengths in text-based documentation but weaknesses in measurement reading, spatial reasoning, and acceptability judgment.",
       "upvotes": 1,
-      "arxiv_id": "2610.25296",
-      "url": "https://huggingface.co/papers/2610.25296",
-      "githubRepo": "https://github.com/Jize-W/Awesome-World-Model-Interpretability"
+      "arxiv_id": "2610.14397",
+      "url": "https://huggingface.co/papers/2610.14397",
+      "githubRepo": null
+    },
+    {
+      "title": "RoboValue: A Fine-Grained Sim-and-Real Benchmark for Unified Evaluation of Robotic Value Models",
+      "summary": "RoboValue introduces a benchmark to evaluate robotic value models across task-state understanding, progress tracking, failure recovery, and consistency in both simulated and real-world settings.",
+      "upvotes": 3,
+      "arxiv_id": "2610.26663",
+      "url": "https://huggingface.co/papers/2610.26663",
+      "githubRepo": "https://github.com/RoboValue-Benchmark/RoboValue"
+    },
+    {
+      "title": "Harnessing Textual Refusal Directions for Multimodal Safety",
+      "summary": "MARS enables multimodal safety steering using only text-derived refusal directions, avoiding the need for multimodal safety data.",
+      "upvotes": 2,
+      "arxiv_id": "2606.31876",
+      "url": "https://huggingface.co/papers/2606.31876",
+      "githubRepo": "https://github.com/Moreno98/MARS"
+    },
+    {
+      "title": "Policy Is Not Capability: Some Safety Benchmarks Measure Which Definition of \"Unsafe\" You Trained On",
+      "summary": "Guardrail benchmark scores primarily reflect labeling policy rather than detection ability, with minor parameter changes shifting results across full ranges and training contamination undermining reported safety metrics.",
+      "upvotes": 0,
+      "arxiv_id": "2610.25060",
+      "url": "https://huggingface.co/papers/2610.25060",
+      "githubRepo": null
+    },
+    {
+      "title": "A Conditional No-Hair Theorem for Transformers: How Language Models Forget Their Prompt",
+      "summary": "Autoregressive transformers retain prompt influence via a power-law decay driven by attention dilution and relay mechanisms, with trained models forgetting faster than untrained ones.",
+      "upvotes": 1,
+      "arxiv_id": "2610.24133",
+      "url": "https://huggingface.co/papers/2610.24133",
+      "githubRepo": "https://github.com/ShuyangenFrance/no-hair-transformers"
     }
   ]
 }

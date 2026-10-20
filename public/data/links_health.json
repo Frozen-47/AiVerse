@@ -1,13 +1,33 @@
 {
-  "timestamp": "2026-10-20T02:59:00.937Z",
+  "timestamp": "2026-10-20T09:45:52.262Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 20,
+  "broken": 5,
   "issues": [
     {
-      "name": "LMSYS Chatbot Arena Conversations",
-      "url": "https://chat.lmsys.org",
-      "status": "Timeout"
+      "name": "DeepSeek Chat",
+      "url": "https://chat.deepseek.com",
+      "status": 403
+    },
+    {
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
+      "status": 403
+    },
+    {
+      "name": "o1 (OpenAI)",
+      "url": "https://openai.com/o1",
+      "status": 403
+    },
+    {
+      "name": "Phind",
+      "url": "https://www.phind.com",
+      "status": 403
+    },
+    {
+      "name": "Arena-Hard-Auto",
+      "url": "https://github.com/sunshanghai/arena-hard-auto",
+      "status": 404
     }
   ]
 }

@@ -2,27 +2,34 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Tue, 20 Oct 2026 02:59:08 GMT`*
+*Last Synchronized: `Tue, 20 Oct 2026 09:45:58 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (2)
+## 📥 Newly Queued Assets for Review (3)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Beam-1.0-501B-A23B** (`Model` • *reflection*)
-> High-performance NLP open-weights model by reflection, trending with over 170 community likes and 2,097 downloads on Hugging Face.
+### **Muse-Spark-Open-816B-A42B-NVFP4** (`Model` • *meta-models*)
+> High-performance Multimodal open-weights model by meta-models, trending with over 188 community likes and 5,553 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 168, Likes: 170, Downloads: 2,097`
-- 🔗 **Resource Link**: [https://huggingface.co/reflection/Beam-1.0-501B-A23B](https://huggingface.co/reflection/Beam-1.0-501B-A23B)
+- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 168, Likes: 188, Downloads: 5,553`
+- 🔗 **Resource Link**: [https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B-NVFP4](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B-NVFP4)
 
-### **InfiniSplat2** (`Platform` • *Edisoneh*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Edisoneh. Trending with 25 community stars.
+### **Faceswap-Headswap** (`Platform` • *keysersoze*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by keysersoze. Trending with 44 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 21, Community Likes: 25`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/Edisoneh/InfiniSplat2](https://huggingface.co/spaces/Edisoneh/InfiniSplat2)
+- ⚡ **Metrics**: `Trending Score: 20, Community Likes: 44`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/keysersoze/Faceswap-Headswap](https://huggingface.co/spaces/keysersoze/Faceswap-Headswap)
+
+### **VDEBench** (`Dataset` • *hongzhuyi*)
+> VDEBench: Visual Document Editing Benchmark 	 Edit the requested text or table. Preserve the rest of the document. VDEBench evaluates instruction-guided image editing o (22 likes, 1,311 downloads).
+
+- 🏷️ **Domain & License**: `Computer Vision` • `Open Data` (2026)
+- ⚡ **Metrics**: `Trending Score: 22, Likes: 22, Downloads: 1,311`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/hongzhuyi/VDEBench](https://huggingface.co/datasets/hongzhuyi/VDEBench)
 
 ---
 
@@ -41,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 1,710 | 📥 17,924 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 976 | 📥 393,062 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `openbmb/MiniCPM-V-4.7-35B-A3B` | image-text-to-text | ❤️ 1,069 | 📥 76,410 | [View](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 773 | 📥 11,795 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,728 | 📥 167,750 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `jialinyyzz/humanizer` | text-generation | ❤️ 1,990 | 📥 109,937 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 1,798 | 📥 27,737 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,021 | 📥 439,528 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 790 | 📥 13,495 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,736 | 📥 172,474 | [View](https://huggingface.co/google/embeddinggemma-2) |
+| `jialinyyzz/humanizer` | text-generation | ❤️ 2,009 | 📥 115,341 | [View](https://huggingface.co/jialinyyzz/humanizer) |
+| `meta-models/Muse-Spark-Open-816B-A42B` | image-text-to-text | ❤️ 592 | 📥 2,592 | [View](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B) |
 
 
 ---
@@ -56,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **RoAR-VAE: Improving Latent Diffusability through Robust Prediction** | 👍 4 | RoAR-VAE improves visual tokenizers by enforcing robust prediction of semantics and reconstruction from corrupted latents, balancing fidelity with diffusion learnability. | [Read](https://huggingface.co/papers/2610.26216) |
-| **Learning to Discriminate Scene Structures Makes Self-Supervised Depth Learning Scalable** | 👍 3 | The MaSS framework improves self-supervised monocular depth estimation across diverse scenes by separating structural representations from contextual features and using a scene-structure discrimination objective, enabling scalable mixed-domain training and strong zero-shot generalization. | [Read](https://huggingface.co/papers/2610.23600) |
-| **Frechet Forcing: Training Long-Horizon Streaming World Models from Short Clips** | 👍 5 | Fréchet Forcing fine-tunes streaming video world models using self-generated rollouts and real-data statistics to prevent long-horizon drift without requiring teachers or long videos. | [Read](https://huggingface.co/papers/2610.25666) |
-| **Self-Evolving Coding Agents via Harness-Policy Optimization** | 👍 17 | Self-HPO is a recursive framework that alternates harness and policy optimization for coding agents, improving performance by targeting evolving failure modes through reinforcement learning. | [Read](https://huggingface.co/papers/2610.22791) |
-| **World Model Interpretability: From Decoding Representations to Understanding Latent Worlds** | 👍 1 | JEPA latent-world interpretability should shift from decoding representations to analyzing how latent variables interact, evolve, and causally drive prediction through grounding, structuring, verifying, and acting. | [Read](https://huggingface.co/papers/2610.25296) |
+| **RealityBench: Simulated Environments to Evaluate a Vision Language Model's Ability to Document Human Physical Work** | 👍 1 | Researchers benchmark vision-language models on simulated physical work tasks, finding strengths in text-based documentation but weaknesses in measurement reading, spatial reasoning, and acceptability judgment. | [Read](https://huggingface.co/papers/2610.14397) |
+| **RoboValue: A Fine-Grained Sim-and-Real Benchmark for Unified Evaluation of Robotic Value Models** | 👍 3 | RoboValue introduces a benchmark to evaluate robotic value models across task-state understanding, progress tracking, failure recovery, and consistency in both simulated and real-world settings. | [Read](https://huggingface.co/papers/2610.26663) |
+| **Harnessing Textual Refusal Directions for Multimodal Safety** | 👍 2 | MARS enables multimodal safety steering using only text-derived refusal directions, avoiding the need for multimodal safety data. | [Read](https://huggingface.co/papers/2606.31876) |
+| **Policy Is Not Capability: Some Safety Benchmarks Measure Which Definition of "Unsafe" You Trained On** | 👍 0 | Guardrail benchmark scores primarily reflect labeling policy rather than detection ability, with minor parameter changes shifting results across full ranges and training contamination undermining reported safety metrics. | [Read](https://huggingface.co/papers/2610.25060) |
+| **A Conditional No-Hair Theorem for Transformers: How Language Models Forget Their Prompt** | 👍 1 | Autoregressive transformers retain prompt influence via a power-law decay driven by attention dilution and relay mechanisms, with trained models forgetting faster than untrained ones. | [Read](https://huggingface.co/papers/2610.24133) |
 
 
 ---
@@ -73,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
+- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
 - **Dependency Security**: `34` advisories flagged across `578` dependencies (`1` critical, `29` high)
 
 ---
