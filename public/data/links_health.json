@@ -1,18 +1,13 @@
 {
-  "timestamp": "2026-10-19T22:44:55.803Z",
+  "timestamp": "2026-10-20T02:59:00.937Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
-      "name": "wan555",
-      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
-      "status": 401
-    },
-    {
-      "name": "o3-mini",
-      "url": "https://openai.com",
-      "status": 403
+      "name": "LMSYS Chatbot Arena Conversations",
+      "url": "https://chat.lmsys.org",
+      "status": "Timeout"
     }
   ]
 }

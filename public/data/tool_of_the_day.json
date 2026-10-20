@@ -1,24 +1,24 @@
 {
-  "date": "2026-10-19",
+  "date": "2026-10-20",
   "tool": {
-    "name": "Qwen-2511-Plus-Flux.2-klein-9B",
-    "type": "Platform",
-    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by AST-1320. Trending with 68 community stars.",
+    "name": "MiniCPM-V-4.7-35B-A3B",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by openbmb, trending with over 473 community likes and 630 downloads on Hugging Face.",
     "task": "Multimodal",
-    "license": "Community Hosted",
+    "license": "APACHE-2.0",
     "year": 2026,
-    "org": "AST-1320",
-    "size": "GRADIO Platform",
-    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B",
-    "benchmarks": "Trending Score: 39, Community Likes: 68",
-    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "org": "openbmb",
+    "size": "35B params",
+    "architecture": "openbmb image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"openbmb/MiniCPM-V-4.7-35B-A3B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"openbmb/MiniCPM-V-4.7-35B-A3B\")",
+    "benchmarks": "Trending Score: 428, Likes: 473, Downloads: 630",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
     "popular": true,
-    "url": "https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B",
+    "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B",
     "citations": [
       {
-        "text": "AST-1320/Qwen-2511-Plus-Flux.2-klein-9B on Hugging Face Spaces",
-        "url": "https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B"
+        "text": "openbmb/MiniCPM-V-4.7-35B-A3B on Hugging Face",
+        "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
       }
     ]
   }

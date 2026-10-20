@@ -1,5 +1,59 @@
 [
   {
+    "date": "2026-10-20",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "Beam-1.0-501B-A23B",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by reflection, trending with over 170 community likes and 2,097 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "reflection",
+        "size": "501B params",
+        "architecture": "reflection text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"reflection/Beam-1.0-501B-A23B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"reflection/Beam-1.0-501B-A23B\")",
+        "benchmarks": "Trending Score: 168, Likes: 170, Downloads: 2,097",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "citations": [
+          {
+            "text": "reflection/Beam-1.0-501B-A23B on Hugging Face",
+            "url": "https://huggingface.co/reflection/Beam-1.0-501B-A23B"
+          }
+        ]
+      },
+      {
+        "name": "InfiniSplat2",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Edisoneh. Trending with 25 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "Edisoneh",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Edisoneh/InfiniSplat2",
+        "benchmarks": "Trending Score: 21, Community Likes: 25",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/Edisoneh/InfiniSplat2",
+        "citations": [
+          {
+            "text": "Edisoneh/InfiniSplat2 on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/Edisoneh/InfiniSplat2"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-19",
     "status": "queued_in_review_list",
     "assets": [

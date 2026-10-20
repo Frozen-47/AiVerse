@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-10-19)
+### ⚡ AiVerse AI Radar (2026-10-20)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4** (`Model`), **RL-Explorer** (`Platform`), **fineweb-edu** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Qwen-2511-Plus-Flux.2-klein-9B** (AST-1320) — [Explore](https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B) |
+| 📥 **Queued for Review** | **Beam-1.0-501B-A23B** (`Model`), **InfiniSplat2** (`Platform`) |
+| 🌟 **Tool of the Day** | **MiniCPM-V-4.7-35B-A3B** (openbmb) — [Explore](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [Robust Explanatory Analysis for Structured Optimiz...](https://huggingface.co/papers/2610.19378) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 19 Oct 2026 22:44:59 GMT` |
+| 📜 **Top Daily Paper** | [RoAR-VAE: Improving Latent Diffusability through R...](https://huggingface.co/papers/2610.26216) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Synchronized** | `Tue, 20 Oct 2026 02:59:08 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

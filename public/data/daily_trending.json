@@ -1,34 +1,34 @@
 {
-  "timestamp": "2026-10-19T22:44:55.657Z",
+  "timestamp": "2026-10-20T02:59:00.787Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 1676,
+      "likes": 1710,
       "downloads": 17924,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
-      "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
-      "author": "openbmb",
-      "likes": 1061,
-      "downloads": 76410,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
-    },
-    {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 955,
+      "likes": 976,
       "downloads": 393062,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
     },
     {
+      "id": "openbmb/MiniCPM-V-4.7-35B-A3B",
+      "author": "openbmb",
+      "likes": 1069,
+      "downloads": 76410,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
+    },
+    {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 768,
+      "likes": 773,
       "downloads": 11795,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
@@ -36,7 +36,7 @@
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 2724,
+      "likes": 2728,
       "downloads": 167750,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
@@ -44,7 +44,7 @@
     {
       "id": "jialinyyzz/humanizer",
       "author": "jialinyyzz",
-      "likes": 1986,
+      "likes": 1990,
       "downloads": 109937,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/jialinyyzz/humanizer"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "Robust Explanatory Analysis for Structured Optimization Networks (REASON) in Learning",
-      "summary": "A two-loop inference framework resolves residual errors via fast and evidence-seeking loops to improve robustness under distribution shift with lower computation.",
-      "upvotes": 0,
-      "arxiv_id": "2610.19378",
-      "url": "https://huggingface.co/papers/2610.19378",
-      "githubRepo": null
+      "title": "RoAR-VAE: Improving Latent Diffusability through Robust Prediction",
+      "summary": "RoAR-VAE improves visual tokenizers by enforcing robust prediction of semantics and reconstruction from corrupted latents, balancing fidelity with diffusion learnability.",
+      "upvotes": 4,
+      "arxiv_id": "2610.26216",
+      "url": "https://huggingface.co/papers/2610.26216",
+      "githubRepo": "https://github.com/LeapLabTHU/RoAR-VAE"
     },
     {
-      "title": "Recognition Is Not Grounding: Benchmarking Multilingual Financial Evidence Extraction",
-      "summary": "The study introduces MULTIFINGROUND, a multilingual benchmark showing that language models recognize financial concepts across languages but frequently fail to recover all corresponding numerical evidence.",
-      "upvotes": 1,
-      "arxiv_id": "2610.19432",
-      "url": "https://huggingface.co/papers/2610.19432",
-      "githubRepo": null
-    },
-    {
-      "title": "BRACE: Adapting Whole-Body References for Force and Terrain Aware Humanoid Motion Tracking",
-      "summary": "BRACE is a whole-body humanoid tracker that integrates commanded hand forces and terrain adaptation by transforming references and distilling teachers into a proprioceptive flow-matching policy.",
+      "title": "Learning to Discriminate Scene Structures Makes Self-Supervised Depth Learning Scalable",
+      "summary": "The MaSS framework improves self-supervised monocular depth estimation across diverse scenes by separating structural representations from contextual features and using a scene-structure discrimination objective, enabling scalable mixed-domain training and strong zero-shot generalization.",
       "upvotes": 3,
-      "arxiv_id": "2610.07052",
-      "url": "https://huggingface.co/papers/2610.07052",
-      "githubRepo": "https://github.com/multiplylabs/brace"
+      "arxiv_id": "2610.23600",
+      "url": "https://huggingface.co/papers/2610.23600",
+      "githubRepo": "https://github.com/mengtanZ/MaSS"
     },
     {
-      "title": "DisaggKD: Efficient Knowledge Distillation through Teacher-Student Disaggregation and a Fused Loss",
-      "summary": "Knowledge distillation (KD) frameworks place teacher and student on the same GPUs, so per-GPU memory limits the teachers that fit. DisaggKD separates them acros...",
+      "title": "Frechet Forcing: Training Long-Horizon Streaming World Models from Short Clips",
+      "summary": "Fréchet Forcing fine-tunes streaming video world models using self-generated rollouts and real-data statistics to prevent long-horizon drift without requiring teachers or long videos.",
+      "upvotes": 5,
+      "arxiv_id": "2610.25666",
+      "url": "https://huggingface.co/papers/2610.25666",
+      "githubRepo": "https://github.com/zhao-yian/Frechet_Forcing"
+    },
+    {
+      "title": "Self-Evolving Coding Agents via Harness-Policy Optimization",
+      "summary": "Self-HPO is a recursive framework that alternates harness and policy optimization for coding agents, improving performance by targeting evolving failure modes through reinforcement learning.",
+      "upvotes": 17,
+      "arxiv_id": "2610.22791",
+      "url": "https://huggingface.co/papers/2610.22791",
+      "githubRepo": "https://github.com/MSR-Orchard/Self-HPO"
+    },
+    {
+      "title": "World Model Interpretability: From Decoding Representations to Understanding Latent Worlds",
+      "summary": "JEPA latent-world interpretability should shift from decoding representations to analyzing how latent variables interact, evolve, and causally drive prediction through grounding, structuring, verifying, and acting.",
       "upvotes": 1,
-      "arxiv_id": "2610.17644",
-      "url": "https://huggingface.co/papers/2610.17644",
-      "githubRepo": null
-    },
-    {
-      "title": "Lean4AgenticRL: Advancing Agentic RL with Verifiable Multi-level Process Rewards",
-      "summary": "Lean4AgenticRL integrates multi-level process rewards into a Lean4 formalization framework to improve agentic reinforcement learning for software engineering and terminal tasks, yielding stronger model performance.",
-      "upvotes": 2,
-      "arxiv_id": "2610.22448",
-      "url": "https://huggingface.co/papers/2610.22448",
-      "githubRepo": "https://github.com/RickySkywalker/Lean4AgenticRL"
+      "arxiv_id": "2610.25296",
+      "url": "https://huggingface.co/papers/2610.25296",
+      "githubRepo": "https://github.com/Jize-W/Awesome-World-Model-Interpretability"
     }
   ]
 }
