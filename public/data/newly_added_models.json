@@ -4,6 +4,84 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "DeepSeek-V4.1-Flash-1017-UNCENSORED-FP8",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by dealignai, trending with over 185 community likes and 2,803 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "MIT",
+        "year": 2026,
+        "org": "dealignai",
+        "size": "Open Weights",
+        "architecture": "dealignai image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"dealignai/DeepSeek-V4.1-Flash-1017-UNCENSORED-FP8\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"dealignai/DeepSeek-V4.1-Flash-1017-UNCENSORED-FP8\")",
+        "benchmarks": "Trending Score: 169, Likes: 185, Downloads: 2,803",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/dealignai/DeepSeek-V4.1-Flash-1017-UNCENSORED-FP8",
+        "citations": [
+          {
+            "text": "dealignai/DeepSeek-V4.1-Flash-1017-UNCENSORED-FP8 on Hugging Face",
+            "url": "https://huggingface.co/dealignai/DeepSeek-V4.1-Flash-1017-UNCENSORED-FP8"
+          }
+        ]
+      },
+      {
+        "name": "free-ai-humanizer",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Lynote. Trending with 425 community stars.",
+        "task": "NLP",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "Lynote",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Lynote/free-ai-humanizer",
+        "benchmarks": "Trending Score: 22, Community Likes: 425",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/Lynote/free-ai-humanizer",
+        "citations": [
+          {
+            "text": "Lynote/free-ai-humanizer on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/Lynote/free-ai-humanizer"
+          }
+        ]
+      },
+      {
+        "name": "seed",
+        "type": "Dataset",
+        "summary": "BONES-SEED: Skeletal Everyday Embodiment Dataset \t BONES-SEED is an open dataset of 142,220 annotated human motion animations for humanoid robotics. It provides motion capt (305 likes, 6,441 downloads).",
+        "task": "Multimodal",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "bones-studio",
+        "size": "100K<n<1M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"bones-studio/seed\")",
+        "benchmarks": "Trending Score: 18, Likes: 305, Downloads: 6,441",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/bones-studio/seed",
+        "citations": [
+          {
+            "text": "bones-studio/seed on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/bones-studio/seed"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-20",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "MOSS-Image-SFT-8-steps-dmd",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by lodestones, trending with over 170 community likes and 54,814 downloads on Hugging Face.",

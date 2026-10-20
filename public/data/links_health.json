@@ -1,23 +1,78 @@
 {
-  "timestamp": "2026-10-20T14:37:01.289Z",
+  "timestamp": "2026-10-20T20:14:48.107Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 11,
+  "broken": 14,
   "issues": [
     {
-      "name": "o1 (OpenAI)",
-      "url": "https://openai.com/o1",
+      "name": "Poe",
+      "url": "https://poe.com",
       "status": 403
     },
     {
-      "name": "Character.ai",
-      "url": "https://character.ai",
+      "name": "GPT-4",
+      "url": "https://openai.com/gpt-4",
       "status": 403
     },
     {
-      "name": "LMSYS Chatbot Arena Conversations",
-      "url": "https://chat.lmsys.org",
-      "status": "Network Error"
+      "name": "DALL-E 2",
+      "url": "https://openai.com/dall-e-2",
+      "status": 403
+    },
+    {
+      "name": "Sora",
+      "url": "https://openai.com/sora",
+      "status": 403
+    },
+    {
+      "name": "Runway Gen-3 Alpha",
+      "url": "https://runwayml.com/",
+      "status": "Timeout"
+    },
+    {
+      "name": "JAX",
+      "url": "https://github.com/google/jax",
+      "status": "Timeout"
+    },
+    {
+      "name": "Vicuna-13B",
+      "url": "https://lmsys.org/blog/2023-03-30-vicuna/",
+      "status": "Timeout"
+    },
+    {
+      "name": "LLaMA",
+      "url": "https://ai.meta.com/llama/",
+      "status": "Timeout"
+    },
+    {
+      "name": "Grok-2",
+      "url": "https://x.ai/",
+      "status": "Timeout"
+    },
+    {
+      "name": "OpenWebText",
+      "url": "https://huggingface.co/datasets/openwebtext",
+      "status": "Timeout"
+    },
+    {
+      "name": "Grok",
+      "url": "https://x.ai",
+      "status": "Timeout"
+    },
+    {
+      "name": "CLIP",
+      "url": "https://github.com/openai/CLIP",
+      "status": "Timeout"
+    },
+    {
+      "name": "DeepSeek-Coder",
+      "url": "https://github.com/deepseek-ai/DeepSeek-Coder",
+      "status": "Timeout"
+    },
+    {
+      "name": "OpenHermes 2.5",
+      "url": "https://huggingface.co/datasets/teknium/OpenHermes-2.5",
+      "status": "Timeout"
     }
   ]
 }

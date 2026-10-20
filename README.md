@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-20)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **MOSS-Image-SFT-8-steps-dmd** (`Model`), **uncensored-imageTOimage2Ref** (`Platform`), **SharpaDex-v1.0** (`Dataset`) |
+| 📥 **Queued for Review** | **DeepSeek-V4.1-Flash-1017-UNCENSORED-FP8** (`Model`), **free-ai-humanizer** (`Platform`), **seed** (`Dataset`) |
 | 🌟 **Tool of the Day** | **MiniCPM-V-4.7-35B-A3B** (openbmb) — [Explore](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [Training Reasoning Models to Generate Diverse Scie...](https://huggingface.co/papers/2610.22324) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Tue, 20 Oct 2026 14:37:06 GMT` |
+| 📜 **Top Daily Paper** | [Vision as Proprioception: Estimating Humanoid Robo...](https://huggingface.co/papers/2610.25288) |
+| 🛡️ **Catalog Links Checked** | **11/25** operational |
+| 🕒 **Last Synchronized** | `Tue, 20 Oct 2026 20:14:55 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
