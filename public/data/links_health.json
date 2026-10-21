@@ -1,23 +1,38 @@
 {
-  "timestamp": "2026-10-21T12:38:42.568Z",
+  "timestamp": "2026-10-21T18:20:11.622Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 19,
+  "broken": 6,
   "issues": [
     {
-      "name": "UltraFeedback",
-      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
-      "status": 401
-    },
-    {
-      "name": "wan555",
-      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
-      "status": 401
-    },
-    {
-      "name": "GPT-4o",
-      "url": "https://openai.com/chatgpt",
+      "name": "GPT-4o mini",
+      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
       "status": 403
+    },
+    {
+      "name": "GPT-4",
+      "url": "https://openai.com/gpt-4",
+      "status": 403
+    },
+    {
+      "name": "DALL-E 2",
+      "url": "https://openai.com/dall-e-2",
+      "status": 403
+    },
+    {
+      "name": "Google Gemini",
+      "url": "https://gemini.google.com",
+      "status": "Network Error"
+    },
+    {
+      "name": "GPT-3.5 Turbo",
+      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
+      "status": 404
+    },
+    {
+      "name": "ERNIE Bot",
+      "url": "https://yiyan.baidu.com",
+      "status": 404
     }
   ]
 }

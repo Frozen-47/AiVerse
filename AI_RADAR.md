@@ -2,27 +2,34 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Wed, 21 Oct 2026 12:38:48 GMT`*
+*Last Synchronized: `Wed, 21 Oct 2026 18:20:18 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (2)
+## 📥 Newly Queued Assets for Review (3)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **free-ai-detector** (`Platform` • *Lynote*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Lynote. Trending with 429 community stars.
+### **OrcaCyber-Nano-1.0** (`Model` • *orcarouter*)
+> High-performance Multimodal open-weights model by orcarouter, trending with over 163 community likes and 19,697 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 22, Community Likes: 429`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/Lynote/free-ai-detector](https://huggingface.co/spaces/Lynote/free-ai-detector)
+- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 154, Likes: 163, Downloads: 19,697`
+- 🔗 **Resource Link**: [https://huggingface.co/orcarouter/OrcaCyber-Nano-1.0](https://huggingface.co/orcarouter/OrcaCyber-Nano-1.0)
 
-### **Nemotron-Personas-Germany** (`Dataset` • *nvidia*)
-> Nemotron-Personas-Germany 	           Ein Compound-AI-Ansatz für synthetische Personas auf Basis realer Verteilungen     A compound AI approach to personas grounded in (20 likes, 113 downloads).
+### **nlp-before-llms** (`Platform` • *dlouapre*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by dlouapre. Trending with 27 community stars.
 
-- 🏷️ **Domain & License**: `NLP` • `CC-BY-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 18, Likes: 20, Downloads: 113`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/Nemotron-Personas-Germany](https://huggingface.co/datasets/nvidia/Nemotron-Personas-Germany)
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 26, Community Likes: 27`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/dlouapre/nlp-before-llms](https://huggingface.co/spaces/dlouapre/nlp-before-llms)
+
+### **open-yap-1k** (`Dataset` • *TheAgenticDataCompany*)
+> Open Yap 1K: 1,000 hours of full-duplex natural conversation, free for commercial use 	 Today we're releasing Open Yap 1K: 1,000 hours of dual-channel English conversat (137 likes, 2,537 downloads).
+
+- 🏷️ **Domain & License**: `Audio` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 17, Likes: 137, Downloads: 2,537`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/TheAgenticDataCompany/open-yap-1k](https://huggingface.co/datasets/TheAgenticDataCompany/open-yap-1k)
 
 ---
 
@@ -41,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,078 | 📥 42,122 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,133 | 📥 490,447 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 865 | 📥 15,274 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `meta-models/Muse-Spark-Open-816B-A42B` | image-text-to-text | ❤️ 620 | 📥 2,891 | [View](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B) |
-| `black-forest-labs/flux-3-image-klein` | image-to-image | ❤️ 586 | 📥 92,604 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein) |
-| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 513 | 📥 5,840 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,131 | 📥 42,122 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,161 | 📥 490,447 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `meta-models/Muse-Spark-Open-816B-A42B` | image-text-to-text | ❤️ 629 | 📥 2,891 | [View](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 877 | 📥 15,274 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `black-forest-labs/flux-3-image-klein` | image-to-image | ❤️ 595 | 📥 92,604 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein) |
+| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 524 | 📥 5,840 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
 
 
 ---
@@ -56,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **HRoPE: Homography Relative Positional Encoding** | 👍 1 | HRoPE introduces surface-aware positional encoding using slanted 3D planes and homographies to improve cross-view alignment and novel view synthesis without requiring ground-truth geometry. | [Read](https://huggingface.co/papers/2610.28284) |
-| **OverSeer: Multi-Agent World Models Beyond What Agents See** | 👍 1 | OverSeer improves multi-agent world models by adding fixed auxiliary camera views that stabilize consistency and are compressed via delta-VAE to reduce computation. | [Read](https://huggingface.co/papers/2610.28554) |
-| **On the Fragility of Tasks under Composition: Implicit Budgeting in Language Models** | 👍 4 | Modern language models are increasingly asked to handle several tasks within a single prompt. Doing so requires solving each task correctly while integrating th... | [Read](https://huggingface.co/papers/2610.27190) |
-| **PhysLDM: Latent Diffusion for High-Fidelity Deformable Simulation** | 👍 1 | PhysLDM introduces a spatiotemporal latent diffusion framework for high-fidelity deformable body simulation, using a holistic VAE and diffusion to model chaotic dynamics and enable zero-shot generalization. | [Read](https://huggingface.co/papers/2610.07609) |
-| **PVBench: Quantifying Physical Plausibility in Video Generation with Object-Level Physical Measurements** | 👍 4 | PVBench introduces a quantitative benchmark with 46 physical dimensions to evaluate the plausibility of generated videos using specialized vision models and human-aligned metrics. | [Read](https://huggingface.co/papers/2610.26711) |
+| **BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks** | 👍 1 | BiDex-100 is a simulation benchmark for bimanual dexterous manipulation that evaluates vision-language-action models across diverse tasks, robustness variants, and demonstration scales. | [Read](https://huggingface.co/papers/2610.25459) |
+| **Training the Whole Agent, Not Just the Model** | 👍 4 | HarnessAdapt-RL jointly trains a coding policy and adapts its evaluation harness via mechanism-level skills and evolving tools, improving benchmark pass rates over fixed-harness reinforcement learning. | [Read](https://huggingface.co/papers/2610.28069) |
+| **Axiomatic World Modeling for Physics Reasoning** | 👍 1 | RLAWM improves physics reasoning by penalizing divergence between a model's internal world model and true physical axioms through hierarchical modeling and solving rewards. | [Read](https://huggingface.co/papers/2610.24519) |
+| **World Models with Configurable Perception** | 👍 1 | ConfigWM uses task descriptions to steer visual embeddings into task-specific state spaces, filtering irrelevant noise for robust planning. | [Read](https://huggingface.co/papers/2610.27914) |
+| **On the Tip of the Tongue: First-Token Cueing as a Behavioral Probe of Recall Failures in LLMs** | 👍 2 | Many factual errors in large language models stem from failing to generate the correct first token of an answer, and providing that token allows the model to complete and recognize the correct response. | [Read](https://huggingface.co/papers/2610.23400) |
 
 
 ---
@@ -73,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `19/25` healthy verified (`6` flagged / timed out)
 - **Dependency Security**: `35` advisories flagged across `578` dependencies (`1` critical, `30` high)
 
 ---

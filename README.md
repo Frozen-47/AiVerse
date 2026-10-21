@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-21)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **free-ai-detector** (`Platform`), **Nemotron-Personas-Germany** (`Dataset`) |
+| 📥 **Queued for Review** | **OrcaCyber-Nano-1.0** (`Model`), **nlp-before-llms** (`Platform`), **open-yap-1k** (`Dataset`) |
 | 🌟 **Tool of the Day** | **LightOnOCR-3-Demo** (lightonai) — [Explore](https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [HRoPE: Homography Relative Positional Encoding...](https://huggingface.co/papers/2610.28284) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Wed, 21 Oct 2026 12:38:48 GMT` |
+| 📜 **Top Daily Paper** | [BiDex-100: A Comprehensive Benchmark for Bimanual ...](https://huggingface.co/papers/2610.25459) |
+| 🛡️ **Catalog Links Checked** | **19/25** operational |
+| 🕒 **Last Synchronized** | `Wed, 21 Oct 2026 18:20:18 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
