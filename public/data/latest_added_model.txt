@@ -1,1 +1,1 @@
-NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16
+free-ai-detector

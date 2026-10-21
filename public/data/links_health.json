@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-10-21T06:53:20.825Z",
+  "timestamp": "2026-10-21T12:38:42.568Z",
   "checked": 25,
   "healthy": 22,
   "broken": 3,
   "issues": [
     {
-      "name": "GPT-3",
-      "url": "https://openai.com/research/language-models-are-few-shot-learners",
-      "status": 403
+      "name": "UltraFeedback",
+      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
+      "status": 401
     },
     {
-      "name": "Whisper",
-      "url": "https://openai.com/research/whisper",
-      "status": 403
+      "name": "wan555",
+      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
+      "status": 401
     },
     {
-      "name": "Phind",
-      "url": "https://www.phind.com",
+      "name": "GPT-4o",
+      "url": "https://openai.com/chatgpt",
       "status": 403
     }
   ]
