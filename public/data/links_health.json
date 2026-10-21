@@ -1,38 +1,23 @@
 {
-  "timestamp": "2026-10-21T00:19:26.397Z",
+  "timestamp": "2026-10-21T06:53:20.825Z",
   "checked": 25,
-  "healthy": 19,
-  "broken": 6,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "o3-mini",
-      "url": "https://openai.com",
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
       "status": 403
     },
     {
-      "name": "Grammarly",
-      "url": "https://www.grammarly.com",
-      "status": 405
-    },
-    {
-      "name": "Tome",
-      "url": "https://tome.app",
-      "status": 404
-    },
-    {
-      "name": "Ideogram",
-      "url": "https://ideogram.ai",
+      "name": "Whisper",
+      "url": "https://openai.com/research/whisper",
       "status": 403
     },
     {
-      "name": "wan555",
-      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
-      "status": 401
-    },
-    {
-      "name": "Google Gemini",
-      "url": "https://gemini.google.com",
-      "status": "Network Error"
+      "name": "Phind",
+      "url": "https://www.phind.com",
+      "status": 403
     }
   ]
 }

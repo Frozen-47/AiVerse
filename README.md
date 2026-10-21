@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-21)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Kromoss** (`Model`), **3dcodeverse** (`Dataset`) |
+| 📥 **Queued for Review** | **NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16** (`Model`), **Qwen3-TTS** (`Platform`), **scorpion-toxin-binder-design** (`Dataset`) |
 | 🌟 **Tool of the Day** | **LightOnOCR-3-Demo** (lightonai) — [Explore](https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [TokenGate: Adapting LLMs for Fast and Memory-Effic...](https://huggingface.co/papers/2610.26754) |
-| 🛡️ **Catalog Links Checked** | **19/25** operational |
-| 🕒 **Last Synchronized** | `Wed, 21 Oct 2026 00:19:31 GMT` |
+| 📜 **Top Daily Paper** | [Evolving Agent Interfaces...](https://huggingface.co/papers/2610.28601) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Wed, 21 Oct 2026 06:53:23 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

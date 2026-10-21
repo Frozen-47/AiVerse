@@ -2,27 +2,34 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Wed, 21 Oct 2026 00:19:31 GMT`*
+*Last Synchronized: `Wed, 21 Oct 2026 06:53:23 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (2)
+## 📥 Newly Queued Assets for Review (3)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Kromoss** (`Model` • *lodestones*)
-> High-performance Image Generation open-weights model by lodestones, trending with over 171 community likes and 5,365 downloads on Hugging Face.
+### **NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16** (`Model` • *nvidia*)
+> High-performance NLP open-weights model by nvidia, trending with over 146 community likes and 2,480 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Image Generation` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 170, Likes: 171, Downloads: 5,365`
-- 🔗 **Resource Link**: [https://huggingface.co/lodestones/Kromoss](https://huggingface.co/lodestones/Kromoss)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 145, Likes: 146, Downloads: 2,480`
+- 🔗 **Resource Link**: [https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16](https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16)
 
-### **3dcodeverse** (`Dataset` • *ilabai*)
-> 3DCodeVerse — Towards Building the Universe via Code 	 3DCodeVerse aims to gather any code that creates, renders, or governs 3D — every dialect, one corpus. Text / Imag (20 likes, 41,705 downloads).
+### **Qwen3-TTS** (`Platform` • *Qwen*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Qwen. Trending with 2,337 community stars.
 
-- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-NC-SA-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 15, Likes: 20, Downloads: 41,705`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/ilabai/3dcodeverse](https://huggingface.co/datasets/ilabai/3dcodeverse)
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 22, Community Likes: 2,337`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/Qwen/Qwen3-TTS](https://huggingface.co/spaces/Qwen/Qwen3-TTS)
+
+### **scorpion-toxin-binder-design** (`Dataset` • *Anthropic*)
+> Scorpion toxin binder design: data release 	 Claude designed proteins de novo to bind five scorpion toxins: Cn2, Ts1, AaH II, AaH I, and LqhIII. Two contract research o (18 likes, 6 downloads).
+
+- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 18, Likes: 18, Downloads: 6`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/Anthropic/scorpion-toxin-binder-design](https://huggingface.co/datasets/Anthropic/scorpion-toxin-binder-design)
 
 ---
 
@@ -41,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 1,952 | 📥 27,737 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,091 | 📥 439,528 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 836 | 📥 13,495 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `meta-models/Muse-Spark-Open-816B-A42B` | image-text-to-text | ❤️ 608 | 📥 2,592 | [View](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B) |
-| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,765 | 📥 172,474 | [View](https://huggingface.co/google/embeddinggemma-2) |
-| `black-forest-labs/flux-3-image-klein` | image-to-image | ❤️ 565 | 📥 78,897 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,017 | 📥 27,737 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,108 | 📥 439,528 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 847 | 📥 13,495 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `meta-models/Muse-Spark-Open-816B-A42B` | image-text-to-text | ❤️ 613 | 📥 2,592 | [View](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B) |
+| `black-forest-labs/flux-3-image-klein` | image-to-image | ❤️ 573 | 📥 78,897 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein) |
+| `google/embeddinggemma-2` | feature-extraction | ❤️ 2,777 | 📥 172,474 | [View](https://huggingface.co/google/embeddinggemma-2) |
 
 
 ---
@@ -56,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **TokenGate: Adapting LLMs for Fast and Memory-Efficient Prefill with Learned Token Pruning** | 👍 1 | TokenGate is a lightweight learnable token-pruning module that accelerates long-context prefill in transformers by selectively skipping unimportant tokens via token-gated attention. | [Read](https://huggingface.co/papers/2610.26754) |
-| **Harness-Delta Attribution: Dissecting Gains From Harness Evolution** | 👍 1 | Harness-Delta Attribution dissects harness evolution gains into overfitting, test-time scaling, and residual generalizable improvement, finding that most search-set gains do not reliably transfer to held-out tasks. | [Read](https://huggingface.co/papers/2610.22466) |
-| **Vision as Proprioception: Estimating Humanoid Robot Pose from Video** | 👍 0 | HumanoidPose recovers full-body humanoid robot joint configurations from video by combining human-pose features with robot kinematics and self-training on unlabeled videos. | [Read](https://huggingface.co/papers/2610.25288) |
-| **A Language-Informed Loss for Visual Generation** | 👍 2 | LILIE uses an invertible normalizing-flow encoder to derive language-informed supervision for text-to-image generation, improving fidelity over pixel-only training. | [Read](https://huggingface.co/papers/2610.23653) |
-| **First Passage Attention** | 👍 0 | First Passage Attention replaces monotonic decay accumulation with path extrema to selectively retain older context, enabling perfect long-range retrieval with compressed caches. | [Read](https://huggingface.co/papers/2610.22714) |
+| **Evolving Agent Interfaces** | 👍 1 | Agent S4 autonomously evolves computer-use interfaces from task experience, significantly improving open-source agent performance and reducing costs compared to larger proprietary models. | [Read](https://huggingface.co/papers/2610.28601) |
+| **Specter: Fast MoE Inference via Quantization-Enabled Multi-Step Speculative Offloading** | 👍 8 | Specter accelerates single-GPU mixture-of-experts inference by combining quantized speculative decoding with expert offloading to hide PCIe latency and improve throughput. | [Read](https://huggingface.co/papers/2511.14102) |
+| **Multimodal Reranking Is a System One Decision** | 👍 1 | A general vision-language model can serve as a multimodal reranker via single-pass choice questions, matching or exceeding dedicated rerankers with minimal tuning. | [Read](https://huggingface.co/papers/2610.28435) |
+| **Painting Change Map as guidance for generating painting processes** | 👍 6 | This work introduces a spatio-temporal Painting Change Map to control video generation of artwork by tracking localized structural changes across time, enabling fine-grained guidance for painting and unpainting processes. | [Read](https://huggingface.co/papers/2610.25369) |
+| **CoEvo-RSI: When Harnesses Evolve, Which Models Should Follow?** | 👍 21 | CoEvo-RSI reduces brain-body mismatch in recursive self-improving agents by using bidirectional historical inheritance to align model capabilities with evolving harness requirements, achieving strong results via supervised fine-tuning. | [Read](https://huggingface.co/papers/2610.25078) |
 
 
 ---
@@ -73,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `19/25` healthy verified (`6` flagged / timed out)
+- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
 - **Dependency Security**: `35` advisories flagged across `578` dependencies (`1` critical, `30` high)
 
 ---

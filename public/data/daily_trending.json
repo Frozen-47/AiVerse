@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-21T00:19:26.251Z",
+  "timestamp": "2026-10-21T06:53:20.568Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 1952,
+      "likes": 2017,
       "downloads": 27737,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1091,
+      "likes": 1108,
       "downloads": 439528,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -20,7 +20,7 @@
     {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 836,
+      "likes": 847,
       "downloads": 13495,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
@@ -28,68 +28,68 @@
     {
       "id": "meta-models/Muse-Spark-Open-816B-A42B",
       "author": "meta-models",
-      "likes": 608,
+      "likes": 613,
       "downloads": 2592,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
     },
     {
-      "id": "google/embeddinggemma-2",
-      "author": "google",
-      "likes": 2765,
-      "downloads": 172474,
-      "pipeline_tag": "feature-extraction",
-      "url": "https://huggingface.co/google/embeddinggemma-2"
-    },
-    {
       "id": "black-forest-labs/flux-3-image-klein",
       "author": "black-forest-labs",
-      "likes": 565,
+      "likes": 573,
       "downloads": 78897,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein"
+    },
+    {
+      "id": "google/embeddinggemma-2",
+      "author": "google",
+      "likes": 2777,
+      "downloads": 172474,
+      "pipeline_tag": "feature-extraction",
+      "url": "https://huggingface.co/google/embeddinggemma-2"
     }
   ],
   "papers": [
     {
-      "title": "TokenGate: Adapting LLMs for Fast and Memory-Efficient Prefill with Learned Token Pruning",
-      "summary": "TokenGate is a lightweight learnable token-pruning module that accelerates long-context prefill in transformers by selectively skipping unimportant tokens via token-gated attention.",
+      "title": "Evolving Agent Interfaces",
+      "summary": "Agent S4 autonomously evolves computer-use interfaces from task experience, significantly improving open-source agent performance and reducing costs compared to larger proprietary models.",
       "upvotes": 1,
-      "arxiv_id": "2610.26754",
-      "url": "https://huggingface.co/papers/2610.26754",
+      "arxiv_id": "2610.28601",
+      "url": "https://huggingface.co/papers/2610.28601",
       "githubRepo": null
     },
     {
-      "title": "Harness-Delta Attribution: Dissecting Gains From Harness Evolution",
-      "summary": "Harness-Delta Attribution dissects harness evolution gains into overfitting, test-time scaling, and residual generalizable improvement, finding that most search-set gains do not reliably transfer to held-out tasks.",
-      "upvotes": 1,
-      "arxiv_id": "2610.22466",
-      "url": "https://huggingface.co/papers/2610.22466",
-      "githubRepo": "https://github.com/Wenwen-D/HarnessDeltaAttribution"
-    },
-    {
-      "title": "Vision as Proprioception: Estimating Humanoid Robot Pose from Video",
-      "summary": "HumanoidPose recovers full-body humanoid robot joint configurations from video by combining human-pose features with robot kinematics and self-training on unlabeled videos.",
-      "upvotes": 0,
-      "arxiv_id": "2610.25288",
-      "url": "https://huggingface.co/papers/2610.25288",
-      "githubRepo": "https://github.com/eth-siplab/HumanoidPose"
-    },
-    {
-      "title": "A Language-Informed Loss for Visual Generation",
-      "summary": "LILIE uses an invertible normalizing-flow encoder to derive language-informed supervision for text-to-image generation, improving fidelity over pixel-only training.",
-      "upvotes": 2,
-      "arxiv_id": "2610.23653",
-      "url": "https://huggingface.co/papers/2610.23653",
+      "title": "Specter: Fast MoE Inference via Quantization-Enabled Multi-Step Speculative Offloading",
+      "summary": "Specter accelerates single-GPU mixture-of-experts inference by combining quantized speculative decoding with expert offloading to hide PCIe latency and improve throughput.",
+      "upvotes": 8,
+      "arxiv_id": "2511.14102",
+      "url": "https://huggingface.co/papers/2511.14102",
       "githubRepo": null
     },
     {
-      "title": "First Passage Attention",
-      "summary": "First Passage Attention replaces monotonic decay accumulation with path extrema to selectively retain older context, enabling perfect long-range retrieval with compressed caches.",
-      "upvotes": 0,
-      "arxiv_id": "2610.22714",
-      "url": "https://huggingface.co/papers/2610.22714",
-      "githubRepo": "https://github.com/yliu-fort/first-passage-attention"
+      "title": "Multimodal Reranking Is a System One Decision",
+      "summary": "A general vision-language model can serve as a multimodal reranker via single-pass choice questions, matching or exceeding dedicated rerankers with minimal tuning.",
+      "upvotes": 1,
+      "arxiv_id": "2610.28435",
+      "url": "https://huggingface.co/papers/2610.28435",
+      "githubRepo": "https://github.com/Ryenhails/rerank-as-decision"
+    },
+    {
+      "title": "Painting Change Map as guidance for generating painting processes",
+      "summary": "This work introduces a spatio-temporal Painting Change Map to control video generation of artwork by tracking localized structural changes across time, enabling fine-grained guidance for painting and unpainting processes.",
+      "upvotes": 6,
+      "arxiv_id": "2610.25369",
+      "url": "https://huggingface.co/papers/2610.25369",
+      "githubRepo": "https://github.com/Markus-Pobitzer/painting-change-map"
+    },
+    {
+      "title": "CoEvo-RSI: When Harnesses Evolve, Which Models Should Follow?",
+      "summary": "CoEvo-RSI reduces brain-body mismatch in recursive self-improving agents by using bidirectional historical inheritance to align model capabilities with evolving harness requirements, achieving strong results via supervised fine-tuning.",
+      "upvotes": 21,
+      "arxiv_id": "2610.25078",
+      "url": "https://huggingface.co/papers/2610.25078",
+      "githubRepo": null
     }
   ]
 }
