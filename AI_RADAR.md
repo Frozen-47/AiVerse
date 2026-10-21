@@ -2,34 +2,27 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Wed, 21 Oct 2026 18:20:18 GMT`*
+*Last Synchronized: `Wed, 21 Oct 2026 22:03:43 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (3)
+## 📥 Newly Queued Assets for Review (2)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **OrcaCyber-Nano-1.0** (`Model` • *orcarouter*)
-> High-performance Multimodal open-weights model by orcarouter, trending with over 163 community likes and 19,697 downloads on Hugging Face.
+### **flint** (`Model` • *RecursiveSI*)
+> High-performance NLP open-weights model by RecursiveSI, trending with over 200 community likes and 0 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 154, Likes: 163, Downloads: 19,697`
-- 🔗 **Resource Link**: [https://huggingface.co/orcarouter/OrcaCyber-Nano-1.0](https://huggingface.co/orcarouter/OrcaCyber-Nano-1.0)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 199, Likes: 200, Downloads: 0`
+- 🔗 **Resource Link**: [https://huggingface.co/RecursiveSI/flint](https://huggingface.co/RecursiveSI/flint)
 
-### **nlp-before-llms** (`Platform` • *dlouapre*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by dlouapre. Trending with 27 community stars.
+### **hle** (`Dataset` • *cais*)
+> [!NOTE] IMPORTANT: Please help us protect the integrity of this benchmark by not publicly sharing, re-uploading, or distributing the dataset. 	 		 	 	 		Humanity's Last Exam 	 🌐 (1,036 likes, 28,753 downloads).
 
-- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 26, Community Likes: 27`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/dlouapre/nlp-before-llms](https://huggingface.co/spaces/dlouapre/nlp-before-llms)
-
-### **open-yap-1k** (`Dataset` • *TheAgenticDataCompany*)
-> Open Yap 1K: 1,000 hours of full-duplex natural conversation, free for commercial use 	 Today we're releasing Open Yap 1K: 1,000 hours of dual-channel English conversat (137 likes, 2,537 downloads).
-
-- 🏷️ **Domain & License**: `Audio` • `CC-BY-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 17, Likes: 137, Downloads: 2,537`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/TheAgenticDataCompany/open-yap-1k](https://huggingface.co/datasets/TheAgenticDataCompany/open-yap-1k)
+- 🏷️ **Domain & License**: `Computer Vision` • `MIT` (2026)
+- ⚡ **Metrics**: `Trending Score: 15, Likes: 1,036, Downloads: 28,753`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/cais/hle](https://huggingface.co/datasets/cais/hle)
 
 ---
 
@@ -48,12 +41,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,131 | 📥 42,122 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,161 | 📥 490,447 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `meta-models/Muse-Spark-Open-816B-A42B` | image-text-to-text | ❤️ 629 | 📥 2,891 | [View](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 877 | 📥 15,274 | [View](https://huggingface.co/fishaudio/drama-3) |
-| `black-forest-labs/flux-3-image-klein` | image-to-image | ❤️ 595 | 📥 92,604 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein) |
-| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 524 | 📥 5,840 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,148 | 📥 42,122 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,182 | 📥 490,447 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `meta-models/Muse-Spark-Open-816B-A42B` | image-text-to-text | ❤️ 635 | 📥 2,891 | [View](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B) |
+| `fishaudio/drama-3` | text-to-speech | ❤️ 885 | 📥 15,274 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `black-forest-labs/flux-3-image-klein` | image-to-image | ❤️ 597 | 📥 92,604 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein) |
+| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 529 | 📥 5,840 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
 
 
 ---
@@ -63,11 +56,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
+| **What Makes a Good Symbol for Hybrid Discrete-Continuous Planning?** | 👍 1 | Symbols for robot planning are invented by identifying discrete commitments that simplify solving continuous optimization problems, reducing cost while preserving quality. | [Read](https://huggingface.co/papers/2610.23010) |
+| **Not All Features Are Created Equal: A Mechanistic Study of Vision-Language-Action Models** | 👍 0 | A mechanistic interpretability study of vision-language-action policies reveals that motor programs are bound to absolute coordinates and ignores visual scene changes, with sparse autoencoder analysis separating instruction encoding and motor generation across architectures. | [Read](https://huggingface.co/papers/2603.19233) |
 | **BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks** | 👍 1 | BiDex-100 is a simulation benchmark for bimanual dexterous manipulation that evaluates vision-language-action models across diverse tasks, robustness variants, and demonstration scales. | [Read](https://huggingface.co/papers/2610.25459) |
 | **Training the Whole Agent, Not Just the Model** | 👍 4 | HarnessAdapt-RL jointly trains a coding policy and adapts its evaluation harness via mechanism-level skills and evolving tools, improving benchmark pass rates over fixed-harness reinforcement learning. | [Read](https://huggingface.co/papers/2610.28069) |
 | **Axiomatic World Modeling for Physics Reasoning** | 👍 1 | RLAWM improves physics reasoning by penalizing divergence between a model's internal world model and true physical axioms through hierarchical modeling and solving rewards. | [Read](https://huggingface.co/papers/2610.24519) |
-| **World Models with Configurable Perception** | 👍 1 | ConfigWM uses task descriptions to steer visual embeddings into task-specific state spaces, filtering irrelevant noise for robust planning. | [Read](https://huggingface.co/papers/2610.27914) |
-| **On the Tip of the Tongue: First-Token Cueing as a Behavioral Probe of Recall Failures in LLMs** | 👍 2 | Many factual errors in large language models stem from failing to generate the correct first token of an answer, and providing that token allows the model to complete and recognize the correct response. | [Read](https://huggingface.co/papers/2610.23400) |
 
 
 ---
@@ -80,7 +73,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `19/25` healthy verified (`6` flagged / timed out)
+- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
 - **Dependency Security**: `35` advisories flagged across `578` dependencies (`1` critical, `30` high)
 
 ---

@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-21T18:20:11.490Z",
+  "timestamp": "2026-10-21T22:03:37.004Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 2131,
+      "likes": 2148,
       "downloads": 42122,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1161,
+      "likes": 1182,
       "downloads": 490447,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -20,7 +20,7 @@
     {
       "id": "meta-models/Muse-Spark-Open-816B-A42B",
       "author": "meta-models",
-      "likes": 629,
+      "likes": 635,
       "downloads": 2891,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
@@ -28,7 +28,7 @@
     {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 877,
+      "likes": 885,
       "downloads": 15274,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
@@ -36,7 +36,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein",
       "author": "black-forest-labs",
-      "likes": 595,
+      "likes": 597,
       "downloads": 92604,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein"
@@ -44,13 +44,29 @@
     {
       "id": "OpenMOSS-Team/MOSS-Image-SFT",
       "author": "OpenMOSS-Team",
-      "likes": 524,
+      "likes": 529,
       "downloads": 5840,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
     }
   ],
   "papers": [
+    {
+      "title": "What Makes a Good Symbol for Hybrid Discrete-Continuous Planning?",
+      "summary": "Symbols for robot planning are invented by identifying discrete commitments that simplify solving continuous optimization problems, reducing cost while preserving quality.",
+      "upvotes": 1,
+      "arxiv_id": "2610.23010",
+      "url": "https://huggingface.co/papers/2610.23010",
+      "githubRepo": null
+    },
+    {
+      "title": "Not All Features Are Created Equal: A Mechanistic Study of Vision-Language-Action Models",
+      "summary": "A mechanistic interpretability study of vision-language-action policies reveals that motor programs are bound to absolute coordinates and ignores visual scene changes, with sparse autoencoder analysis separating instruction encoding and motor generation across architectures.",
+      "upvotes": 0,
+      "arxiv_id": "2603.19233",
+      "url": "https://huggingface.co/papers/2603.19233",
+      "githubRepo": "https://github.com/CWRU-AISM/action-atlas"
+    },
     {
       "title": "BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks",
       "summary": "BiDex-100 is a simulation benchmark for bimanual dexterous manipulation that evaluates vision-language-action models across diverse tasks, robustness variants, and demonstration scales.",
@@ -73,22 +89,6 @@
       "upvotes": 1,
       "arxiv_id": "2610.24519",
       "url": "https://huggingface.co/papers/2610.24519",
-      "githubRepo": null
-    },
-    {
-      "title": "World Models with Configurable Perception",
-      "summary": "ConfigWM uses task descriptions to steer visual embeddings into task-specific state spaces, filtering irrelevant noise for robust planning.",
-      "upvotes": 1,
-      "arxiv_id": "2610.27914",
-      "url": "https://huggingface.co/papers/2610.27914",
-      "githubRepo": "https://github.com/yijunshens/ConfigWM"
-    },
-    {
-      "title": "On the Tip of the Tongue: First-Token Cueing as a Behavioral Probe of Recall Failures in LLMs",
-      "summary": "Many factual errors in large language models stem from failing to generate the correct first token of an answer, and providing that token allows the model to complete and recognize the correct response.",
-      "upvotes": 2,
-      "arxiv_id": "2610.23400",
-      "url": "https://huggingface.co/papers/2610.23400",
       "githubRepo": null
     }
   ]

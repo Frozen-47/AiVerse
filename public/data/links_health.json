@@ -1,33 +1,23 @@
 {
-  "timestamp": "2026-10-21T18:20:11.622Z",
+  "timestamp": "2026-10-21T22:03:37.151Z",
   "checked": 25,
-  "healthy": 19,
-  "broken": 6,
+  "healthy": 21,
+  "broken": 4,
   "issues": [
     {
-      "name": "GPT-4o mini",
-      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+      "name": "o3-mini",
+      "url": "https://openai.com",
       "status": 403
     },
     {
-      "name": "GPT-4",
-      "url": "https://openai.com/gpt-4",
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
       "status": 403
     },
     {
-      "name": "DALL-E 2",
-      "url": "https://openai.com/dall-e-2",
+      "name": "ChatGPT",
+      "url": "https://chatgpt.com",
       "status": 403
-    },
-    {
-      "name": "Google Gemini",
-      "url": "https://gemini.google.com",
-      "status": "Network Error"
-    },
-    {
-      "name": "GPT-3.5 Turbo",
-      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
-      "status": 404
     },
     {
       "name": "ERNIE Bot",

@@ -1,5 +1,55 @@
 [
   {
+    "name": "hle",
+    "type": "Dataset",
+    "summary": "[!NOTE] IMPORTANT: Please help us protect the integrity of this benchmark by not publicly sharing, re-uploading, or distributing the dataset. \t \t\t \t \t \t\tHumanity's Last Exam \t 🌐 (1,036 likes, 28,753 downloads).",
+    "task": "Computer Vision",
+    "license": "MIT",
+    "year": 2026,
+    "org": "cais",
+    "size": "1K<n<10K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"cais/hle\")",
+    "benchmarks": "Trending Score: 15, Likes: 1,036, Downloads: 28,753",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/cais/hle",
+    "citations": [
+      {
+        "text": "cais/hle on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/cais/hle"
+      }
+    ],
+    "created_at": "2026-10-21T22:03:34.683Z"
+  },
+  {
+    "name": "flint",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by RecursiveSI, trending with over 200 community likes and 0 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "RecursiveSI",
+    "size": "Open Weights",
+    "architecture": "RecursiveSI text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"RecursiveSI/flint\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"RecursiveSI/flint\")",
+    "benchmarks": "Trending Score: 199, Likes: 200, Downloads: 0",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/RecursiveSI/flint",
+    "citations": [
+      {
+        "text": "RecursiveSI/flint on Hugging Face",
+        "url": "https://huggingface.co/RecursiveSI/flint"
+      }
+    ],
+    "created_at": "2026-10-21T22:03:34.683Z"
+  },
+  {
     "name": "open-yap-1k",
     "type": "Dataset",
     "summary": "Open Yap 1K: 1,000 hours of full-duplex natural conversation, free for commercial use \t Today we're releasing Open Yap 1K: 1,000 hours of dual-channel English conversat (137 likes, 2,537 downloads).",
