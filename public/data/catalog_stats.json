@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-20T20:14:46.223Z",
+  "timestamp": "2026-10-21T00:19:25.318Z",
   "totalEntries": 373,
   "popularEntries": 300,
   "totalUsers": 9,
@@ -83,24 +83,24 @@
     "OPENMDW-1.1": 1
   },
   "toolOfTheDay": {
-    "name": "MiniCPM-V-4.7-35B-A3B",
-    "type": "Model",
-    "summary": "High-performance Multimodal open-weights model by openbmb, trending with over 473 community likes and 630 downloads on Hugging Face.",
+    "name": "LightOnOCR-3-Demo",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by lightonai. Trending with 45 community stars.",
     "task": "Multimodal",
-    "license": "APACHE-2.0",
+    "license": "Community Hosted",
     "year": 2026,
-    "org": "openbmb",
-    "size": "35B params",
-    "architecture": "openbmb image text to text architecture with community-tuned weights.",
-    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"openbmb/MiniCPM-V-4.7-35B-A3B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"openbmb/MiniCPM-V-4.7-35B-A3B\")",
-    "benchmarks": "Trending Score: 428, Likes: 473, Downloads: 630",
-    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "org": "lightonai",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo",
+    "benchmarks": "Trending Score: 43, Community Likes: 45",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
     "popular": true,
-    "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B",
+    "url": "https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo",
     "citations": [
       {
-        "text": "openbmb/MiniCPM-V-4.7-35B-A3B on Hugging Face",
-        "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
+        "text": "lightonai/LightOnOCR-3-Demo on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo"
       }
     ]
   }

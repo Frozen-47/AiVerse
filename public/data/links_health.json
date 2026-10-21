@@ -1,78 +1,38 @@
 {
-  "timestamp": "2026-10-20T20:14:48.107Z",
+  "timestamp": "2026-10-21T00:19:26.397Z",
   "checked": 25,
-  "healthy": 11,
-  "broken": 14,
+  "healthy": 19,
+  "broken": 6,
   "issues": [
     {
-      "name": "Poe",
-      "url": "https://poe.com",
+      "name": "o3-mini",
+      "url": "https://openai.com",
       "status": 403
     },
     {
-      "name": "GPT-4",
-      "url": "https://openai.com/gpt-4",
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
+    },
+    {
+      "name": "Tome",
+      "url": "https://tome.app",
+      "status": 404
+    },
+    {
+      "name": "Ideogram",
+      "url": "https://ideogram.ai",
       "status": 403
     },
     {
-      "name": "DALL-E 2",
-      "url": "https://openai.com/dall-e-2",
-      "status": 403
+      "name": "wan555",
+      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
+      "status": 401
     },
     {
-      "name": "Sora",
-      "url": "https://openai.com/sora",
-      "status": 403
-    },
-    {
-      "name": "Runway Gen-3 Alpha",
-      "url": "https://runwayml.com/",
-      "status": "Timeout"
-    },
-    {
-      "name": "JAX",
-      "url": "https://github.com/google/jax",
-      "status": "Timeout"
-    },
-    {
-      "name": "Vicuna-13B",
-      "url": "https://lmsys.org/blog/2023-03-30-vicuna/",
-      "status": "Timeout"
-    },
-    {
-      "name": "LLaMA",
-      "url": "https://ai.meta.com/llama/",
-      "status": "Timeout"
-    },
-    {
-      "name": "Grok-2",
-      "url": "https://x.ai/",
-      "status": "Timeout"
-    },
-    {
-      "name": "OpenWebText",
-      "url": "https://huggingface.co/datasets/openwebtext",
-      "status": "Timeout"
-    },
-    {
-      "name": "Grok",
-      "url": "https://x.ai",
-      "status": "Timeout"
-    },
-    {
-      "name": "CLIP",
-      "url": "https://github.com/openai/CLIP",
-      "status": "Timeout"
-    },
-    {
-      "name": "DeepSeek-Coder",
-      "url": "https://github.com/deepseek-ai/DeepSeek-Coder",
-      "status": "Timeout"
-    },
-    {
-      "name": "OpenHermes 2.5",
-      "url": "https://huggingface.co/datasets/teknium/OpenHermes-2.5",
-      "status": "Timeout"
+      "name": "Google Gemini",
+      "url": "https://gemini.google.com",
+      "status": "Network Error"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-20T20:14:47.995Z",
+  "timestamp": "2026-10-21T00:19:26.251Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 1920,
+      "likes": 1952,
       "downloads": 27737,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1072,
+      "likes": 1091,
       "downloads": 439528,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -20,7 +20,7 @@
     {
       "id": "fishaudio/drama-3",
       "author": "fishaudio",
-      "likes": 823,
+      "likes": 836,
       "downloads": 13495,
       "pipeline_tag": "text-to-speech",
       "url": "https://huggingface.co/fishaudio/drama-3"
@@ -28,7 +28,7 @@
     {
       "id": "meta-models/Muse-Spark-Open-816B-A42B",
       "author": "meta-models",
-      "likes": 606,
+      "likes": 608,
       "downloads": 2592,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
@@ -36,7 +36,7 @@
     {
       "id": "google/embeddinggemma-2",
       "author": "google",
-      "likes": 2758,
+      "likes": 2765,
       "downloads": 172474,
       "pipeline_tag": "feature-extraction",
       "url": "https://huggingface.co/google/embeddinggemma-2"
@@ -44,13 +44,29 @@
     {
       "id": "black-forest-labs/flux-3-image-klein",
       "author": "black-forest-labs",
-      "likes": 558,
+      "likes": 565,
       "downloads": 78897,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein"
     }
   ],
   "papers": [
+    {
+      "title": "TokenGate: Adapting LLMs for Fast and Memory-Efficient Prefill with Learned Token Pruning",
+      "summary": "TokenGate is a lightweight learnable token-pruning module that accelerates long-context prefill in transformers by selectively skipping unimportant tokens via token-gated attention.",
+      "upvotes": 1,
+      "arxiv_id": "2610.26754",
+      "url": "https://huggingface.co/papers/2610.26754",
+      "githubRepo": null
+    },
+    {
+      "title": "Harness-Delta Attribution: Dissecting Gains From Harness Evolution",
+      "summary": "Harness-Delta Attribution dissects harness evolution gains into overfitting, test-time scaling, and residual generalizable improvement, finding that most search-set gains do not reliably transfer to held-out tasks.",
+      "upvotes": 1,
+      "arxiv_id": "2610.22466",
+      "url": "https://huggingface.co/papers/2610.22466",
+      "githubRepo": "https://github.com/Wenwen-D/HarnessDeltaAttribution"
+    },
     {
       "title": "Vision as Proprioception: Estimating Humanoid Robot Pose from Video",
       "summary": "HumanoidPose recovers full-body humanoid robot joint configurations from video by combining human-pose features with robot kinematics and self-training on unlabeled videos.",
@@ -62,7 +78,7 @@
     {
       "title": "A Language-Informed Loss for Visual Generation",
       "summary": "LILIE uses an invertible normalizing-flow encoder to derive language-informed supervision for text-to-image generation, improving fidelity over pixel-only training.",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2610.23653",
       "url": "https://huggingface.co/papers/2610.23653",
       "githubRepo": null
@@ -74,22 +90,6 @@
       "arxiv_id": "2610.22714",
       "url": "https://huggingface.co/papers/2610.22714",
       "githubRepo": "https://github.com/yliu-fort/first-passage-attention"
-    },
-    {
-      "title": "Competence-Based Evaluation of Logical Reasoning in Large Language Models",
-      "summary": "Competence-based evaluation reveals that large language models fail to consistently apply reasoning rules across varied problem presentations despite high accuracy on bounded tasks.",
-      "upvotes": 0,
-      "arxiv_id": "2610.22894",
-      "url": "https://huggingface.co/papers/2610.22894",
-      "githubRepo": null
-    },
-    {
-      "title": "Legal Guidance in the Wild: How Users Seek Legal Help in Real-World LLM Conversations",
-      "summary": "The study develops a taxonomy to identify legal guidance requests in conversational AI, annotates thousands of chats, and evaluates ModernBERT models against a baseline for detecting such queries.",
-      "upvotes": 1,
-      "arxiv_id": "2610.25159",
-      "url": "https://huggingface.co/papers/2610.25159",
-      "githubRepo": "https://github.com/Amir-Mohseni/Legal-Guidance-in-the-Wild"
     }
   ]
 }

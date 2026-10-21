@@ -1,5 +1,59 @@
 [
   {
+    "date": "2026-10-21",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "Kromoss",
+        "type": "Model",
+        "summary": "High-performance Image Generation open-weights model by lodestones, trending with over 171 community likes and 5,365 downloads on Hugging Face.",
+        "task": "Image Generation",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "lodestones",
+        "size": "Open Weights",
+        "architecture": "lodestones text to image architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"lodestones/Kromoss\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"lodestones/Kromoss\")",
+        "benchmarks": "Trending Score: 170, Likes: 171, Downloads: 5,365",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/lodestones/Kromoss",
+        "citations": [
+          {
+            "text": "lodestones/Kromoss on Hugging Face",
+            "url": "https://huggingface.co/lodestones/Kromoss"
+          }
+        ]
+      },
+      {
+        "name": "3dcodeverse",
+        "type": "Dataset",
+        "summary": "3DCodeVerse — Towards Building the Universe via Code \t 3DCodeVerse aims to gather any code that creates, renders, or governs 3D — every dialect, one corpus. Text / Imag (20 likes, 41,705 downloads).",
+        "task": "Computer Vision",
+        "license": "CC-BY-NC-SA-4.0",
+        "year": 2026,
+        "org": "ilabai",
+        "size": "1M<n<10M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"ilabai/3dcodeverse\")",
+        "benchmarks": "Trending Score: 15, Likes: 20, Downloads: 41,705",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/ilabai/3dcodeverse",
+        "citations": [
+          {
+            "text": "ilabai/3dcodeverse on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/ilabai/3dcodeverse"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-20",
     "status": "queued_in_review_list",
     "assets": [
