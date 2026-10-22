@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-22T14:49:01.629Z",
+  "timestamp": "2026-10-22T20:22:27.458Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 2299,
+      "likes": 2341,
       "downloads": 51911,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,84 +12,84 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1254,
+      "likes": 1285,
       "downloads": 512524,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
     },
     {
-      "id": "meta-models/Muse-Spark-Open-816B-A42B",
-      "author": "meta-models",
-      "likes": 651,
-      "downloads": 3163,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
-    },
-    {
-      "id": "black-forest-labs/flux-3-image-klein",
-      "author": "black-forest-labs",
-      "likes": 624,
-      "downloads": 102903,
-      "pipeline_tag": "image-to-image",
-      "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein"
-    },
-    {
       "id": "OpenMOSS-Team/MOSS-Image-SFT",
       "author": "OpenMOSS-Team",
-      "likes": 552,
+      "likes": 569,
       "downloads": 6890,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
     },
     {
-      "id": "fishaudio/drama-3",
-      "author": "fishaudio",
-      "likes": 903,
-      "downloads": 16305,
-      "pipeline_tag": "text-to-speech",
-      "url": "https://huggingface.co/fishaudio/drama-3"
+      "id": "RecursiveSI/flint",
+      "author": "RecursiveSI",
+      "likes": 495,
+      "downloads": 420,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/RecursiveSI/flint"
+    },
+    {
+      "id": "OpenMOSS-Team/MOSS-Image-Base",
+      "author": "OpenMOSS-Team",
+      "likes": 484,
+      "downloads": 5013,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base"
+    },
+    {
+      "id": "meta-models/Muse-Spark-Open-816B-A42B",
+      "author": "meta-models",
+      "likes": 658,
+      "downloads": 3163,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
     }
   ],
   "papers": [
     {
-      "title": "ToM2Vec: Continuous Theory-of-Mind Tokens for Multi-Agent Coordination",
-      "summary": "ToM2Vec learns abstract partner-state representations via continuous latent reasoning tokens to improve multi-agent collaboration across diverse settings.",
-      "upvotes": 0,
-      "arxiv_id": "2610.29934",
-      "url": "https://huggingface.co/papers/2610.29934",
-      "githubRepo": "https://github.com/nsivaku/tom2vec"
+      "title": "StyleStream 2.0: Fast and Controllable Streaming Voice Style Conversion",
+      "summary": "StyleStream 2.0 improves streaming voice conversion with lower latency via a few-step MeanFlow model and enables text-based voice design and editing through a unified flow matching model.",
+      "upvotes": 8,
+      "arxiv_id": "2610.28940",
+      "url": "https://huggingface.co/papers/2610.28940",
+      "githubRepo": "https://github.com/Berkeley-Speech-Group/StyleStream2.0"
     },
     {
-      "title": "Design Anything, Design at Scale",
-      "summary": "Design Anything uses an intent-execution graph and task contracts to maintain design alignment across long projects, improving constraint satisfaction and deliverable completeness over baseline agents.",
-      "upvotes": 1,
-      "arxiv_id": "2610.24771",
-      "url": "https://huggingface.co/papers/2610.24771",
-      "githubRepo": "https://github.com/Gemus-AI/DesignAnything"
+      "title": "FrontierCS 2: A Benchmark for Computer Science R&D",
+      "summary": "FrontierCS 2 evaluates LLM agents on open-ended computer science R&D tasks using hidden evaluation suites and reveals that even the best agents pass only about half of tasks.",
+      "upvotes": 2,
+      "arxiv_id": "2610.29932",
+      "url": "https://huggingface.co/papers/2610.29932",
+      "githubRepo": "https://github.com/FrontierCS/FrontierCS-2"
     },
     {
-      "title": "Retrieval Augmented Generation Compositionality",
-      "summary": "LASAGNA evaluates composed RAG pipelines across scales and finds that isolated technique gains do not reliably predict combined retrieval quality, faithfulness, or large-corpus performance.",
-      "upvotes": 21,
-      "arxiv_id": "2610.29722",
-      "url": "https://huggingface.co/papers/2610.29722",
-      "githubRepo": "https://github.com/dolev31/lasagna"
+      "title": "Language Models Learn to Improve Language Models",
+      "summary": "LM2LM uses a frozen research world model to provide scalable reinforcement learning rewards for generating language model improvements, maintaining reliability through periodic real execution and outperforming larger baselines at lower cost.",
+      "upvotes": 5,
+      "arxiv_id": "2610.23344",
+      "url": "https://huggingface.co/papers/2610.23344",
+      "githubRepo": null
     },
     {
-      "title": "From RL Papers to Framework Code: Inclusion and Review in Seven Open-Source Training Frameworks",
-      "summary": "Most proposed reinforcement learning training methods for language models are not adopted by open-source frameworks, with adoption rates remaining low despite growing publication volumes.",
-      "upvotes": 6,
-      "arxiv_id": "2610.28027",
-      "url": "https://huggingface.co/papers/2610.28027",
-      "githubRepo": "https://github.com/pth2002/rl-method-tracker"
+      "title": "VerifierBench: Benchmarking the Generation of Executable Verifiers for LLM Agents",
+      "summary": "Agents generate executable verifiers to validate outputs, but these verifiers often wrongly reject valid solutions due to hidden assumptions, prompting recommendations to test acceptance of diverse correct answers.",
+      "upvotes": 4,
+      "arxiv_id": "2610.28679",
+      "url": "https://huggingface.co/papers/2610.28679",
+      "githubRepo": "https://github.com/DwanZhang-AI/verifier-suite"
     },
     {
-      "title": "WorldStream: Streaming Interactive 3D Worlds with Hierarchical Planning and Persistent State",
-      "summary": "WorldStream is an open-ended 3D world model that continuously expands terrain, processes language commands, and preserves edits through hierarchical planning and streaming compilation.",
-      "upvotes": 9,
-      "arxiv_id": "2610.28827",
-      "url": "https://huggingface.co/papers/2610.28827",
-      "githubRepo": "https://github.com/krennic999/WorldStream"
+      "title": "Looped Uniform Diffusion Language Models",
+      "summary": "Looping early Transformer layers improves training and inference efficiency of uniform diffusion language models without altering their objective or sampler.",
+      "upvotes": 4,
+      "arxiv_id": "2610.30066",
+      "url": "https://huggingface.co/papers/2610.30066",
+      "githubRepo": null
     }
   ]
 }

@@ -20,9 +20,9 @@
 | 🌟 **Tool of the Day** | **JEV-35B** (autotrust) — [Explore](https://huggingface.co/autotrust/JEV-35B) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [ToM2Vec: Continuous Theory-of-Mind Tokens for Mult...](https://huggingface.co/papers/2610.29934) |
-| 🛡️ **Catalog Links Checked** | **19/25** operational |
-| 🕒 **Last Synchronized** | `Thu, 22 Oct 2026 14:49:07 GMT` |
+| 📜 **Top Daily Paper** | [StyleStream 2.0: Fast and Controllable Streaming V...](https://huggingface.co/papers/2610.28940) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Thu, 22 Oct 2026 20:22:31 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

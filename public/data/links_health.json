@@ -1,38 +1,23 @@
 {
-  "timestamp": "2026-10-22T14:49:01.783Z",
+  "timestamp": "2026-10-22T20:22:27.555Z",
   "checked": 25,
-  "healthy": 19,
-  "broken": 6,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "o3-mini",
-      "url": "https://openai.com",
+      "name": "Whisper",
+      "url": "https://openai.com/research/whisper",
       "status": 403
     },
     {
-      "name": "Sora",
-      "url": "https://openai.com/sora",
+      "name": "Character.ai",
+      "url": "https://character.ai",
       "status": 403
     },
     {
-      "name": "Codex",
-      "url": "https://openai.com/blog/openai-codex",
+      "name": "Perplexity AI",
+      "url": "https://www.perplexity.ai/",
       "status": 403
-    },
-    {
-      "name": "SAM (Segment Anything Model)",
-      "url": "https://segment-anything.com/",
-      "status": "Network Error"
-    },
-    {
-      "name": "Google Gemini",
-      "url": "https://gemini.google.com",
-      "status": "Network Error"
-    },
-    {
-      "name": "GPT-3.5 Turbo",
-      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
-      "status": 404
     }
   ]
 }

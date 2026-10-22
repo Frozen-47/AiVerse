@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Thu, 22 Oct 2026 14:49:07 GMT`*
+*Last Synchronized: `Thu, 22 Oct 2026 20:22:31 GMT`*
 
 ---
 
@@ -21,12 +21,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,299 | 📥 51,911 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,254 | 📥 512,524 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `meta-models/Muse-Spark-Open-816B-A42B` | image-text-to-text | ❤️ 651 | 📥 3,163 | [View](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B) |
-| `black-forest-labs/flux-3-image-klein` | image-to-image | ❤️ 624 | 📥 102,903 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein) |
-| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 552 | 📥 6,890 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
-| `fishaudio/drama-3` | text-to-speech | ❤️ 903 | 📥 16,305 | [View](https://huggingface.co/fishaudio/drama-3) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,341 | 📥 51,911 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,285 | 📥 512,524 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 569 | 📥 6,890 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
+| `RecursiveSI/flint` | text-generation | ❤️ 495 | 📥 420 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `OpenMOSS-Team/MOSS-Image-Base` | text-to-image | ❤️ 484 | 📥 5,013 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base) |
+| `meta-models/Muse-Spark-Open-816B-A42B` | image-text-to-text | ❤️ 658 | 📥 3,163 | [View](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B) |
 
 
 ---
@@ -36,11 +36,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **ToM2Vec: Continuous Theory-of-Mind Tokens for Multi-Agent Coordination** | 👍 0 | ToM2Vec learns abstract partner-state representations via continuous latent reasoning tokens to improve multi-agent collaboration across diverse settings. | [Read](https://huggingface.co/papers/2610.29934) |
-| **Design Anything, Design at Scale** | 👍 1 | Design Anything uses an intent-execution graph and task contracts to maintain design alignment across long projects, improving constraint satisfaction and deliverable completeness over baseline agents. | [Read](https://huggingface.co/papers/2610.24771) |
-| **Retrieval Augmented Generation Compositionality** | 👍 21 | LASAGNA evaluates composed RAG pipelines across scales and finds that isolated technique gains do not reliably predict combined retrieval quality, faithfulness, or large-corpus performance. | [Read](https://huggingface.co/papers/2610.29722) |
-| **From RL Papers to Framework Code: Inclusion and Review in Seven Open-Source Training Frameworks** | 👍 6 | Most proposed reinforcement learning training methods for language models are not adopted by open-source frameworks, with adoption rates remaining low despite growing publication volumes. | [Read](https://huggingface.co/papers/2610.28027) |
-| **WorldStream: Streaming Interactive 3D Worlds with Hierarchical Planning and Persistent State** | 👍 9 | WorldStream is an open-ended 3D world model that continuously expands terrain, processes language commands, and preserves edits through hierarchical planning and streaming compilation. | [Read](https://huggingface.co/papers/2610.28827) |
+| **StyleStream 2.0: Fast and Controllable Streaming Voice Style Conversion** | 👍 8 | StyleStream 2.0 improves streaming voice conversion with lower latency via a few-step MeanFlow model and enables text-based voice design and editing through a unified flow matching model. | [Read](https://huggingface.co/papers/2610.28940) |
+| **FrontierCS 2: A Benchmark for Computer Science R&D** | 👍 2 | FrontierCS 2 evaluates LLM agents on open-ended computer science R&D tasks using hidden evaluation suites and reveals that even the best agents pass only about half of tasks. | [Read](https://huggingface.co/papers/2610.29932) |
+| **Language Models Learn to Improve Language Models** | 👍 5 | LM2LM uses a frozen research world model to provide scalable reinforcement learning rewards for generating language model improvements, maintaining reliability through periodic real execution and outperforming larger baselines at lower cost. | [Read](https://huggingface.co/papers/2610.23344) |
+| **VerifierBench: Benchmarking the Generation of Executable Verifiers for LLM Agents** | 👍 4 | Agents generate executable verifiers to validate outputs, but these verifiers often wrongly reject valid solutions due to hidden assumptions, prompting recommendations to test acceptance of diverse correct answers. | [Read](https://huggingface.co/papers/2610.28679) |
+| **Looped Uniform Diffusion Language Models** | 👍 4 | Looping early Transformer layers improves training and inference efficiency of uniform diffusion language models without altering their objective or sampler. | [Read](https://huggingface.co/papers/2610.30066) |
 
 
 ---
@@ -53,7 +53,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `19/25` healthy verified (`6` flagged / timed out)
+- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
 - **Dependency Security**: `35` advisories flagged across `578` dependencies (`1` critical, `30` high)
 
 ---
