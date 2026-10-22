@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-22)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Spark-X2.6-4B** (`Model`) |
+| 📥 **Queued for Review** | **Sage-A1.5** (`Model`), **Daimon-Infinity** (`Dataset`) |
 | 🌟 **Tool of the Day** | **JEV-35B** (autotrust) — [Explore](https://huggingface.co/autotrust/JEV-35B) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [Qwen-Audio-3.1-ASR Technical Report...](https://huggingface.co/papers/2610.28711) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Thu, 22 Oct 2026 02:57:21 GMT` |
+| 📜 **Top Daily Paper** | [SpatialScout: Can VLM Agents Actively Explore and ...](https://huggingface.co/papers/2610.26659) |
+| 🛡️ **Catalog Links Checked** | **18/25** operational |
+| 🕒 **Last Synchronized** | `Thu, 22 Oct 2026 09:47:28 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

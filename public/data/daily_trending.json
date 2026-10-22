@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-22T02:52:18.808Z",
+  "timestamp": "2026-10-22T09:47:23.574Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 2182,
-      "downloads": 42122,
+      "likes": 2249,
+      "downloads": 51911,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1195,
-      "downloads": 490447,
+      "likes": 1227,
+      "downloads": 512524,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
     },
     {
       "id": "meta-models/Muse-Spark-Open-816B-A42B",
       "author": "meta-models",
-      "likes": 638,
-      "downloads": 2891,
+      "likes": 646,
+      "downloads": 3163,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
     },
     {
       "id": "black-forest-labs/flux-3-image-klein",
       "author": "black-forest-labs",
-      "likes": 603,
-      "downloads": 92604,
+      "likes": 616,
+      "downloads": 102903,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein"
     },
     {
-      "id": "fishaudio/drama-3",
-      "author": "fishaudio",
-      "likes": 890,
-      "downloads": 15274,
-      "pipeline_tag": "text-to-speech",
-      "url": "https://huggingface.co/fishaudio/drama-3"
-    },
-    {
       "id": "OpenMOSS-Team/MOSS-Image-SFT",
       "author": "OpenMOSS-Team",
-      "likes": 537,
-      "downloads": 5840,
+      "likes": 545,
+      "downloads": 6890,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
+    },
+    {
+      "id": "fishaudio/drama-3",
+      "author": "fishaudio",
+      "likes": 900,
+      "downloads": 16305,
+      "pipeline_tag": "text-to-speech",
+      "url": "https://huggingface.co/fishaudio/drama-3"
     }
   ],
   "papers": [
     {
-      "title": "Qwen-Audio-3.1-ASR Technical Report",
-      "summary": "We present Qwen-Audio-3.1-ASR, a family of audio-language models that builds upon its predecesor Qwen-Audio-3.0-ASR with improved speech recognition and expande...",
-      "upvotes": 1,
-      "arxiv_id": "2610.28711",
-      "url": "https://huggingface.co/papers/2610.28711",
+      "title": "SpatialScout: Can VLM Agents Actively Explore and Map 3D Scenes?",
+      "summary": "SpatialScout evaluates vision-language agents on active 3D object mapping, revealing major gaps in precise metric map construction.",
+      "upvotes": 62,
+      "arxiv_id": "2610.26659",
+      "url": "https://huggingface.co/papers/2610.26659",
+      "githubRepo": "https://github.com/JesseZZZZZ/SpatialScout"
+    },
+    {
+      "title": "From VLM Planners to Robotic Agents: Self-Evolving Harnesses for History-Dependent Manipulation",
+      "summary": "SERA improves long-horizon robotic manipulation by using an editable harness to maintain task context and evolve planning through execution feedback, paired with a fixed low-level VLA executor.",
+      "upvotes": 5,
+      "arxiv_id": "2610.29560",
+      "url": "https://huggingface.co/papers/2610.29560",
+      "githubRepo": "https://github.com/StevenKKXS/SERA"
+    },
+    {
+      "title": "CompactSplat: Spatially Adaptive Gaussian Distribution for Feedforward Scene Reconstruction",
+      "summary": "CompactSplat is a feedforward framework that adaptively allocates 3D Gaussians via texture-guided spatial partitioning and hierarchical sampling, improving geometry and texture recovery while allowing dynamic sparsity control.",
+      "upvotes": 2,
+      "arxiv_id": "2610.13177",
+      "url": "https://huggingface.co/papers/2610.13177",
+      "githubRepo": "https://github.com/hebing-sjtu/CompactSplat"
+    },
+    {
+      "title": "Right Screen, Wrong Transition: World Models as Verifiers for GUI Agents",
+      "summary": "A decoder-free, action-conditioned world model predicts next-screen representations to verify GUI transitions and detect hijacked screens with high accuracy and low latency.",
+      "upvotes": 2,
+      "arxiv_id": "2610.11942",
+      "url": "https://huggingface.co/papers/2610.11942",
+      "githubRepo": "https://github.com/jiamingzhang94/lgwm"
+    },
+    {
+      "title": "PACE: Periodic and Channel-Aligned Encoding of Four-Bit Recurrent States",
+      "summary": "PACE is a post-hoc four-bit quantizer for linear-attention recurrent states that rounds less frequently and uses column-wise scales to reduce error, enabling lower memory usage without fine-tuning.",
+      "upvotes": 10,
+      "arxiv_id": "2610.29545",
+      "url": "https://huggingface.co/papers/2610.29545",
       "githubRepo": null
-    },
-    {
-      "title": "Evolving with Open Worlds: Towards Recursive Self-Improvement for Future Forecasting",
-      "summary": "Most contemporary artificial intelligence (AI) systems are released with frozen parameters and improve through external updates, whereas an ideal system would k...",
-      "upvotes": 1,
-      "arxiv_id": "2610.29784",
-      "url": "https://huggingface.co/papers/2610.29784",
-      "githubRepo": "https://github.com/RUCAIBox/DeepEvolve"
-    },
-    {
-      "title": "Spectral-Spatial Interpretation",
-      "summary": "Spectral-Spatial Interpretation assigns localized channel importance at each spatial position via conditional Shapley values, yielding full spectral-spatial attribution matrices that outperform existing methods on multispectral image tasks.",
-      "upvotes": 1,
-      "arxiv_id": "2610.21114",
-      "url": "https://huggingface.co/papers/2610.21114",
-      "githubRepo": "https://github.com/AtheavenMa/Spectral-Spatial-Interpretation"
-    },
-    {
-      "title": "Agentic World Action Models",
-      "summary": "Recent world action models provide visual foresight and future prediction for robot manipulation, but lack explicit mechanisms for compositional skill reuse. Ag...",
-      "upvotes": 1,
-      "arxiv_id": "2610.30136",
-      "url": "https://huggingface.co/papers/2610.30136",
-      "githubRepo": null
-    },
-    {
-      "title": "CulturalRiddles: A Multicultural Benchmark of Riddles",
-      "summary": "As LLMs expand their language coverage, evaluating how well they understand and represent diverse cultures becomes increasingly important. However, many benchma...",
-      "upvotes": 1,
-      "arxiv_id": "2610.29968",
-      "url": "https://huggingface.co/papers/2610.29968",
-      "githubRepo": "https://github.com/Cohere-Labs-Community/CulturalRiddles"
     }
   ]
 }

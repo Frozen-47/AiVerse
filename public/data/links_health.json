@@ -1,18 +1,43 @@
 {
-  "timestamp": "2026-10-22T02:52:18.847Z",
+  "timestamp": "2026-10-22T09:47:23.700Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 18,
+  "broken": 7,
   "issues": [
     {
-      "name": "Ideogram",
-      "url": "https://ideogram.ai",
+      "name": "Tome",
+      "url": "https://tome.app",
+      "status": 404
+    },
+    {
+      "name": "NightCafe",
+      "url": "https://creator.nightcafe.studio",
       "status": 403
     },
     {
-      "name": "LMSYS Chatbot Arena Conversations",
-      "url": "https://chat.lmsys.org",
-      "status": "Network Error"
+      "name": "GPT-4o",
+      "url": "https://openai.com/chatgpt",
+      "status": 403
+    },
+    {
+      "name": "Sora",
+      "url": "https://openai.com/sora",
+      "status": 403
+    },
+    {
+      "name": "Midjourney v6",
+      "url": "https://www.midjourney.com/",
+      "status": 403
+    },
+    {
+      "name": "OpenWebText",
+      "url": "https://huggingface.co/datasets/openwebtext",
+      "status": 404
+    },
+    {
+      "name": "GPT-3.5 Turbo",
+      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
+      "status": 404
     }
   ]
 }

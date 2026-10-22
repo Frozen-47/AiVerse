@@ -1,5 +1,55 @@
 [
   {
+    "name": "Daimon-Infinity",
+    "type": "Dataset",
+    "summary": "Daimon-Infinity The world's largest omni-modal robotics dataset for physical AI, including high-resolution tactile sensing.                           🌐 Language: English | 中文 (37 likes, 13,384 downloads).",
+    "task": "NLP",
+    "license": "CC-BY-NC-SA-4.0",
+    "year": 2026,
+    "org": "daimonrobotics",
+    "size": "Curated Dataset",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"daimonrobotics/Daimon-Infinity\")",
+    "benchmarks": "Trending Score: 18, Likes: 37, Downloads: 13,384",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/daimonrobotics/Daimon-Infinity",
+    "citations": [
+      {
+        "text": "daimonrobotics/Daimon-Infinity on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/daimonrobotics/Daimon-Infinity"
+      }
+    ],
+    "created_at": "2026-10-22T09:47:21.545Z"
+  },
+  {
+    "name": "Sage-A1.5",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by InternScience, trending with over 181 community likes and 396 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "InternScience",
+    "size": "Open Weights",
+    "architecture": "InternScience text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"InternScience/Sage-A1.5\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"InternScience/Sage-A1.5\")",
+    "benchmarks": "Trending Score: 180, Likes: 181, Downloads: 396",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/InternScience/Sage-A1.5",
+    "citations": [
+      {
+        "text": "InternScience/Sage-A1.5 on Hugging Face",
+        "url": "https://huggingface.co/InternScience/Sage-A1.5"
+      }
+    ],
+    "created_at": "2026-10-22T09:47:21.545Z"
+  },
+  {
     "name": "Spark-X2.6-4B",
     "type": "Model",
     "summary": "High-performance NLP open-weights model by XHToken, trending with over 183 community likes and 85 downloads on Hugging Face.",
