@@ -1,24 +1,24 @@
 {
-  "date": "2026-10-21",
+  "date": "2026-10-22",
   "tool": {
-    "name": "LightOnOCR-3-Demo",
-    "type": "Platform",
-    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by lightonai. Trending with 45 community stars.",
-    "task": "Multimodal",
-    "license": "Community Hosted",
+    "name": "JEV-35B",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by autotrust, trending with over 745 community likes and 27,970 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
     "year": 2026,
-    "org": "lightonai",
-    "size": "GRADIO Platform",
-    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo",
-    "benchmarks": "Trending Score: 43, Community Likes: 45",
-    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "org": "autotrust",
+    "size": "35B params",
+    "architecture": "autotrust text classification architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"autotrust/JEV-35B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"autotrust/JEV-35B\")",
+    "benchmarks": "Trending Score: 469, Likes: 745, Downloads: 27,970",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
     "popular": true,
-    "url": "https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo",
+    "url": "https://huggingface.co/autotrust/JEV-35B",
     "citations": [
       {
-        "text": "lightonai/LightOnOCR-3-Demo on Hugging Face Spaces",
-        "url": "https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo"
+        "text": "autotrust/JEV-35B on Hugging Face",
+        "url": "https://huggingface.co/autotrust/JEV-35B"
       }
     ]
   }

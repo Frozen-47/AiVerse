@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-21T22:03:37.004Z",
+  "timestamp": "2026-10-22T02:52:18.808Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 2148,
+      "likes": 2182,
       "downloads": 42122,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1182,
+      "likes": 1195,
       "downloads": 490447,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -20,31 +20,31 @@
     {
       "id": "meta-models/Muse-Spark-Open-816B-A42B",
       "author": "meta-models",
-      "likes": 635,
+      "likes": 638,
       "downloads": 2891,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
     },
     {
-      "id": "fishaudio/drama-3",
-      "author": "fishaudio",
-      "likes": 885,
-      "downloads": 15274,
-      "pipeline_tag": "text-to-speech",
-      "url": "https://huggingface.co/fishaudio/drama-3"
-    },
-    {
       "id": "black-forest-labs/flux-3-image-klein",
       "author": "black-forest-labs",
-      "likes": 597,
+      "likes": 603,
       "downloads": 92604,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein"
     },
     {
+      "id": "fishaudio/drama-3",
+      "author": "fishaudio",
+      "likes": 890,
+      "downloads": 15274,
+      "pipeline_tag": "text-to-speech",
+      "url": "https://huggingface.co/fishaudio/drama-3"
+    },
+    {
       "id": "OpenMOSS-Team/MOSS-Image-SFT",
       "author": "OpenMOSS-Team",
-      "likes": 529,
+      "likes": 537,
       "downloads": 5840,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "What Makes a Good Symbol for Hybrid Discrete-Continuous Planning?",
-      "summary": "Symbols for robot planning are invented by identifying discrete commitments that simplify solving continuous optimization problems, reducing cost while preserving quality.",
+      "title": "Qwen-Audio-3.1-ASR Technical Report",
+      "summary": "We present Qwen-Audio-3.1-ASR, a family of audio-language models that builds upon its predecesor Qwen-Audio-3.0-ASR with improved speech recognition and expande...",
       "upvotes": 1,
-      "arxiv_id": "2610.23010",
-      "url": "https://huggingface.co/papers/2610.23010",
+      "arxiv_id": "2610.28711",
+      "url": "https://huggingface.co/papers/2610.28711",
       "githubRepo": null
     },
     {
-      "title": "Not All Features Are Created Equal: A Mechanistic Study of Vision-Language-Action Models",
-      "summary": "A mechanistic interpretability study of vision-language-action policies reveals that motor programs are bound to absolute coordinates and ignores visual scene changes, with sparse autoencoder analysis separating instruction encoding and motor generation across architectures.",
-      "upvotes": 0,
-      "arxiv_id": "2603.19233",
-      "url": "https://huggingface.co/papers/2603.19233",
-      "githubRepo": "https://github.com/CWRU-AISM/action-atlas"
-    },
-    {
-      "title": "BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks",
-      "summary": "BiDex-100 is a simulation benchmark for bimanual dexterous manipulation that evaluates vision-language-action models across diverse tasks, robustness variants, and demonstration scales.",
+      "title": "Evolving with Open Worlds: Towards Recursive Self-Improvement for Future Forecasting",
+      "summary": "Most contemporary artificial intelligence (AI) systems are released with frozen parameters and improve through external updates, whereas an ideal system would k...",
       "upvotes": 1,
-      "arxiv_id": "2610.25459",
-      "url": "https://huggingface.co/papers/2610.25459",
-      "githubRepo": "https://github.com/robbyant-research/BiDex-100"
+      "arxiv_id": "2610.29784",
+      "url": "https://huggingface.co/papers/2610.29784",
+      "githubRepo": "https://github.com/RUCAIBox/DeepEvolve"
     },
     {
-      "title": "Training the Whole Agent, Not Just the Model",
-      "summary": "HarnessAdapt-RL jointly trains a coding policy and adapts its evaluation harness via mechanism-level skills and evolving tools, improving benchmark pass rates over fixed-harness reinforcement learning.",
-      "upvotes": 4,
-      "arxiv_id": "2610.28069",
-      "url": "https://huggingface.co/papers/2610.28069",
-      "githubRepo": "https://github.com/lingxiaotang/HarnessAdapt-RL"
-    },
-    {
-      "title": "Axiomatic World Modeling for Physics Reasoning",
-      "summary": "RLAWM improves physics reasoning by penalizing divergence between a model's internal world model and true physical axioms through hierarchical modeling and solving rewards.",
+      "title": "Spectral-Spatial Interpretation",
+      "summary": "Spectral-Spatial Interpretation assigns localized channel importance at each spatial position via conditional Shapley values, yielding full spectral-spatial attribution matrices that outperform existing methods on multispectral image tasks.",
       "upvotes": 1,
-      "arxiv_id": "2610.24519",
-      "url": "https://huggingface.co/papers/2610.24519",
+      "arxiv_id": "2610.21114",
+      "url": "https://huggingface.co/papers/2610.21114",
+      "githubRepo": "https://github.com/AtheavenMa/Spectral-Spatial-Interpretation"
+    },
+    {
+      "title": "Agentic World Action Models",
+      "summary": "Recent world action models provide visual foresight and future prediction for robot manipulation, but lack explicit mechanisms for compositional skill reuse. Ag...",
+      "upvotes": 1,
+      "arxiv_id": "2610.30136",
+      "url": "https://huggingface.co/papers/2610.30136",
       "githubRepo": null
+    },
+    {
+      "title": "CulturalRiddles: A Multicultural Benchmark of Riddles",
+      "summary": "As LLMs expand their language coverage, evaluating how well they understand and represent diverse cultures becomes increasingly important. However, many benchma...",
+      "upvotes": 1,
+      "arxiv_id": "2610.29968",
+      "url": "https://huggingface.co/papers/2610.29968",
+      "githubRepo": "https://github.com/Cohere-Labs-Community/CulturalRiddles"
     }
   ]
 }

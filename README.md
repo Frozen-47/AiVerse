@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-10-21)
+### ⚡ AiVerse AI Radar (2026-10-22)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **flint** (`Model`), **hle** (`Dataset`) |
-| 🌟 **Tool of the Day** | **LightOnOCR-3-Demo** (lightonai) — [Explore](https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo) |
+| 📥 **Queued for Review** | **Spark-X2.6-4B** (`Model`) |
+| 🌟 **Tool of the Day** | **JEV-35B** (autotrust) — [Explore](https://huggingface.co/autotrust/JEV-35B) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [What Makes a Good Symbol for Hybrid Discrete-Conti...](https://huggingface.co/papers/2610.23010) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Synchronized** | `Wed, 21 Oct 2026 22:03:43 GMT` |
+| 📜 **Top Daily Paper** | [Qwen-Audio-3.1-ASR Technical Report...](https://huggingface.co/papers/2610.28711) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Thu, 22 Oct 2026 02:57:21 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
