@@ -1,1 +1,1 @@
-MiniMax-M3.1-Flash
+Fibo-2.0-editing

@@ -1,33 +1,13 @@
 {
-  "timestamp": "2026-10-23T12:20:43.099Z",
+  "timestamp": "2026-10-23T18:03:23.332Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
-      "name": "DeepSeek Chat",
-      "url": "https://chat.deepseek.com",
-      "status": 403
-    },
-    {
-      "name": "Perplexity AI",
-      "url": "https://www.perplexity.ai/",
-      "status": 403
-    },
-    {
-      "name": "GPT-4",
-      "url": "https://openai.com/gpt-4",
-      "status": 403
-    },
-    {
-      "name": "DALL-E 2",
-      "url": "https://openai.com/dall-e-2",
-      "status": 403
-    },
-    {
-      "name": "Canva AI",
-      "url": "https://www.canva.com/ai-image-generator",
-      "status": 403
+      "name": "wan555",
+      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
+      "status": 401
     }
   ]
 }

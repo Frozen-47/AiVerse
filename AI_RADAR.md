@@ -2,34 +2,27 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 23 Oct 2026 12:20:49 GMT`*
+*Last Synchronized: `Fri, 23 Oct 2026 18:03:28 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (3)
+## 📥 Newly Queued Assets for Review (2)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **MiniMax-M3.1-Flash** (`Model` • *MiniMaxAI*)
-> High-performance Multimodal open-weights model by MiniMaxAI, trending with over 186 community likes and 1,096 downloads on Hugging Face.
-
-- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 181, Likes: 186, Downloads: 1,096`
-- 🔗 **Resource Link**: [https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash](https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash)
-
-### **simready-central** (`Platform` • *nvidia*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by nvidia. Trending with 47 community stars.
+### **Fibo-2.0-editing** (`Platform` • *briaai*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by briaai. Trending with 33 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 43, Community Likes: 47`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/nvidia/simready-central](https://huggingface.co/spaces/nvidia/simready-central)
+- ⚡ **Metrics**: `Trending Score: 31, Community Likes: 33`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/briaai/Fibo-2.0-editing](https://huggingface.co/spaces/briaai/Fibo-2.0-editing)
 
-### **CulturalRiddles** (`Dataset` • *CohereLabsCommunity*)
-> Cultural Riddles 	 Paper: arXiv:2610.29968 · Explore the results: dashboard · Play: try the riddles yourself · Code: github.com/Cohere-Labs-Community/CulturalRiddles A (21 likes, 248 downloads).
+### **3d-collection** (`Dataset` • *scenario-labs*)
+> Scenario 3D Collection 	 1,342 selected AI-generated 3D examples, with all 1,500 output files downloaded. About 39 GB including previews and available source inputs. An (39 likes, 693 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 20, Likes: 21, Downloads: 248`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/CohereLabsCommunity/CulturalRiddles](https://huggingface.co/datasets/CohereLabsCommunity/CulturalRiddles)
+- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 38, Likes: 39, Downloads: 693`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/scenario-labs/3d-collection](https://huggingface.co/datasets/scenario-labs/3d-collection)
 
 ---
 
@@ -48,12 +41,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,475 | 📥 57,715 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,346 | 📥 534,837 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `RecursiveSI/flint` | text-generation | ❤️ 610 | 📥 1,904 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 618 | 📥 7,658 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
-| `OpenMOSS-Team/MOSS-Image-Base` | text-to-image | ❤️ 508 | 📥 5,618 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 8,960 | 📥 2,026,951 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,536 | 📥 57,715 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,389 | 📥 534,837 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `RecursiveSI/flint` | text-generation | ❤️ 653 | 📥 1,904 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 639 | 📥 7,658 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 8,995 | 📥 2,026,951 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `OpenMOSS-Team/MOSS-Image-Base` | text-to-image | ❤️ 514 | 📥 5,618 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base) |
 
 
 ---
@@ -63,11 +56,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Realism VS Accuracy: Event Sequence Forecasting from a Generative Modeling Perspective** | 👍 0 | Event sequence forecasting is evaluated as conditional generative modeling, revealing a trade-off between accuracy and realism, and a proposed algorithm converts realism into predictive accuracy. | [Read](https://huggingface.co/papers/2610.12586) |
-| **MambaAct: Efficient Mamba Action Experts for Flow-Matching Vision-Language-Action Models** | 👍 1 | MambaAct replaces the transformer action expert in flow-matching VLA policies with a compact Mamba-based expert and a context compressor to cut inference latency while improving robotic manipulation success. | [Read](https://huggingface.co/papers/2610.22951) |
-| **SplatLab: Autonomous Scientific Discovery for 3DGS Research** | 👍 1 | SplatLab autonomously reproduces 3D Gaussian Splatting baselines, proposes extensions, and writes manuscripts with fully traceable training logs, improving PSNR by up to 3.78 dB. | [Read](https://huggingface.co/papers/2610.30468) |
-| **RTAformer: Relation-Transition-Aware Transformer for Video Scene Graph Generation** | 👍 8 | RTAformer separately models persistent entities and changing relations in video scene graphs by injecting calibrated query differences and aligning cross-frame instances to overcome relational semantic inertia. | [Read](https://huggingface.co/papers/2610.20091) |
-| **IQuest-Q1: Advancing Foundation Capabilities for Agentic CLI Systems** | 👍 45 | IQuest-Q1 is a sparse Mixture-of-Experts foundation model trained via multi-stage pre-training, mid-training, and post-training to achieve strong agentic coding and general capabilities. | [Read](https://huggingface.co/papers/2610.30949) |
+| **Bridging Exploration and Persona: Information-Directed Dueling for Test-Time Agent Personalization** | 👍 0 | ID-TAP uses a neural dueling-bandit framework with similarity-weighted warm starts to adapt LLM agents to user preferences via binary response comparisons within a limited interaction budget. | [Read](https://huggingface.co/papers/2610.24385) |
+| **IF-MAP: Influence-Function-Inspired Agent Prioritization in Multi-Agent Systems** | 👍 1 | IF-MAP identifies high-impact agents in multi-agent LLM systems via prompt perturbation analysis to maximize system-level gains from targeted improvements. | [Read](https://huggingface.co/papers/2610.24383) |
+| **Agent Mosaic: Recognizing Confidentiality Leaks in Agentic LLM Systems** | 👍 5 | LLM agents frequently leak sensitive conclusions assembled from multiple confidential documents, and common safeguards fail to eliminate this mosaic-style disclosure risk. | [Read](https://huggingface.co/papers/2610.30418) |
+| **HyperDrone: Simulation-to-Reality Transfer at Millions of Frames per Second** | 👍 0 | HyperDrone is a GPU-accelerated quadrotor simulator using a ray-tracing engine to render high-fidelity observations at high speed, enabling vision-based policy training and real-world transfer. | [Read](https://huggingface.co/papers/2610.28950) |
+| **BrickWright: Agentic Creation of Physically Feasible Brick Builds** | 👍 1 | BrickWright improves physical validity of AI-generated LEGO assemblies by providing agents with an assembly API and feasibility validator, achieving perfect validity while preserving prompt adherence. | [Read](https://huggingface.co/papers/2610.31651) |
 
 
 ---
@@ -80,8 +73,8 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
-- **Dependency Security**: `35` advisories flagged across `578` dependencies (`1` critical, `30` high)
+- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
+- **Dependency Security**: `30` advisories flagged across `578` dependencies (`1` critical, `24` high)
 
 ---
 *Generated automatically by GitHub Actions AI Radar & Ecosystem Sync.*
