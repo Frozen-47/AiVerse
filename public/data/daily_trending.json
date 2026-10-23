@@ -1,94 +1,94 @@
 {
-  "timestamp": "2026-10-23T06:49:59.917Z",
+  "timestamp": "2026-10-23T12:20:42.917Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 2418,
-      "downloads": 51911,
+      "likes": 2475,
+      "downloads": 57715,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1325,
-      "downloads": 512524,
+      "likes": 1346,
+      "downloads": 534837,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
     },
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 583,
-      "downloads": 420,
+      "likes": 610,
+      "downloads": 1904,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
     },
     {
       "id": "OpenMOSS-Team/MOSS-Image-SFT",
       "author": "OpenMOSS-Team",
-      "likes": 600,
-      "downloads": 6890,
+      "likes": 618,
+      "downloads": 7658,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
     },
     {
       "id": "OpenMOSS-Team/MOSS-Image-Base",
       "author": "OpenMOSS-Team",
-      "likes": 500,
-      "downloads": 5013,
+      "likes": 508,
+      "downloads": 5618,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base"
     },
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 8927,
-      "downloads": 2054990,
+      "likes": 8960,
+      "downloads": 2026951,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     }
   ],
   "papers": [
     {
-      "title": "What Makes a Good Unmasking Policy? A Controlled Study of Learned Unmasking in Diffusion Language Models",
-      "summary": "Optimized unmasking policies for masked diffusion language models improve efficiency by using trajectory-contraction targets with confidence and hidden states, achieving better speed-accuracy trade-offs with minimal overhead.",
+      "title": "Realism VS Accuracy: Event Sequence Forecasting from a Generative Modeling Perspective",
+      "summary": "Event sequence forecasting is evaluated as conditional generative modeling, revealing a trade-off between accuracy and realism, and a proposed algorithm converts realism into predictive accuracy.",
+      "upvotes": 0,
+      "arxiv_id": "2610.12586",
+      "url": "https://huggingface.co/papers/2610.12586",
+      "githubRepo": "https://github.com/xaosina/event-sequence-forecasting"
+    },
+    {
+      "title": "MambaAct: Efficient Mamba Action Experts for Flow-Matching Vision-Language-Action Models",
+      "summary": "MambaAct replaces the transformer action expert in flow-matching VLA policies with a compact Mamba-based expert and a context compressor to cut inference latency while improving robotic manipulation success.",
       "upvotes": 1,
-      "arxiv_id": "2610.31576",
-      "url": "https://huggingface.co/papers/2610.31576",
-      "githubRepo": null
+      "arxiv_id": "2610.22951",
+      "url": "https://huggingface.co/papers/2610.22951",
+      "githubRepo": "https://github.com/giakhuyendihoc/MambaAct"
     },
     {
-      "title": "RLSplat: Resource-Linear Budget Control for Feed-forward 3D Gaussian Splatting",
-      "summary": "RLSplat enables feed-forward 3D Gaussian splatting with linear reductions in latency, memory, and model size by allocating Gaussians regionally and decoding them via local attention.",
-      "upvotes": 9,
-      "arxiv_id": "2610.27712",
-      "url": "https://huggingface.co/papers/2610.27712",
-      "githubRepo": "https://github.com/mlvlab/RLSplat"
-    },
-    {
-      "title": "TILDE: Teacher-in-the-Loop Distillation from Embodied Foundation Models",
-      "summary": "TILDE distills embodied foundation model capabilities into robot policies via on-policy teacher supervision and autonomous recovery data collection, improving real-world task performance without large-scale action pretraining.",
+      "title": "SplatLab: Autonomous Scientific Discovery for 3DGS Research",
+      "summary": "SplatLab autonomously reproduces 3D Gaussian Splatting baselines, proposes extensions, and writes manuscripts with fully traceable training logs, improving PSNR by up to 3.78 dB.",
       "upvotes": 1,
-      "arxiv_id": "2610.25376",
-      "url": "https://huggingface.co/papers/2610.25376",
-      "githubRepo": "https://github.com/hku-sail/TILDE"
+      "arxiv_id": "2610.30468",
+      "url": "https://huggingface.co/papers/2610.30468",
+      "githubRepo": "https://github.com/seemandhar/SplatLab"
     },
     {
-      "title": "RouteWeaver: Weaving Mode Selection and Execution into Unified LLM Routing",
-      "summary": "RouteWeaver unifies heterogeneous LLM routing modes via coordinated training and progressive exploration, improving accuracy across diverse reasoning tasks.",
-      "upvotes": 6,
-      "arxiv_id": "2610.19705",
-      "url": "https://huggingface.co/papers/2610.19705",
-      "githubRepo": "https://github.com/LaughKing/RouteWeaver"
+      "title": "RTAformer: Relation-Transition-Aware Transformer for Video Scene Graph Generation",
+      "summary": "RTAformer separately models persistent entities and changing relations in video scene graphs by injecting calibrated query differences and aligning cross-frame instances to overcome relational semantic inertia.",
+      "upvotes": 8,
+      "arxiv_id": "2610.20091",
+      "url": "https://huggingface.co/papers/2610.20091",
+      "githubRepo": "https://github.com/sejong-rcv/RTAformer"
     },
     {
-      "title": "Heartbeat Thinking: Speculative Reasoning and Tool Execution While Listening in Realtime Voice Agents",
-      "summary": "A heartbeat-style speculative reasoning approach lets voice agents continue preparing tool calls during speech updates, improving coverage and reducing response latency.",
-      "upvotes": 13,
-      "arxiv_id": "2610.26233",
-      "url": "https://huggingface.co/papers/2610.26233",
+      "title": "IQuest-Q1: Advancing Foundation Capabilities for Agentic CLI Systems",
+      "summary": "IQuest-Q1 is a sparse Mixture-of-Experts foundation model trained via multi-stage pre-training, mid-training, and post-training to achieve strong agentic coding and general capabilities.",
+      "upvotes": 45,
+      "arxiv_id": "2610.30949",
+      "url": "https://huggingface.co/papers/2610.30949",
       "githubRepo": null
     }
   ]

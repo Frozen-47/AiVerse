@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-23)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Carbon-X-Release** (`Platform`), **simready-assets** (`Dataset`) |
+| 📥 **Queued for Review** | **MiniMax-M3.1-Flash** (`Model`), **simready-central** (`Platform`), **CulturalRiddles** (`Dataset`) |
 | 🌟 **Tool of the Day** | **qwen-image-21-uncensored** (vclnhihihi) — [Explore](https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [What Makes a Good Unmasking Policy? A Controlled S...](https://huggingface.co/papers/2610.31576) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 23 Oct 2026 06:50:03 GMT` |
+| 📜 **Top Daily Paper** | [Realism VS Accuracy: Event Sequence Forecasting fr...](https://huggingface.co/papers/2610.12586) |
+| 🛡️ **Catalog Links Checked** | **20/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 23 Oct 2026 12:20:49 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

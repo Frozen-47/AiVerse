@@ -2,27 +2,34 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 23 Oct 2026 06:50:03 GMT`*
+*Last Synchronized: `Fri, 23 Oct 2026 12:20:49 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (2)
+## 📥 Newly Queued Assets for Review (3)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Carbon-X-Release** (`Platform` • *HuggingFaceBio*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceBio. Trending with 35 community stars.
+### **MiniMax-M3.1-Flash** (`Model` • *MiniMaxAI*)
+> High-performance Multimodal open-weights model by MiniMaxAI, trending with over 186 community likes and 1,096 downloads on Hugging Face.
+
+- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 181, Likes: 186, Downloads: 1,096`
+- 🔗 **Resource Link**: [https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash](https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash)
+
+### **simready-central** (`Platform` • *nvidia*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by nvidia. Trending with 47 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 34, Community Likes: 35`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/HuggingFaceBio/Carbon-X-Release](https://huggingface.co/spaces/HuggingFaceBio/Carbon-X-Release)
+- ⚡ **Metrics**: `Trending Score: 43, Community Likes: 47`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/nvidia/simready-central](https://huggingface.co/spaces/nvidia/simready-central)
 
-### **simready-assets** (`Dataset` • *nvidia*)
-> High-quality Computer Vision dataset by nvidia for benchmarking and foundation model training. (36 likes, 210,209 downloads).
+### **CulturalRiddles** (`Dataset` • *CohereLabsCommunity*)
+> Cultural Riddles 	 Paper: arXiv:2610.29968 · Explore the results: dashboard · Play: try the riddles yourself · Code: github.com/Cohere-Labs-Community/CulturalRiddles A (21 likes, 248 downloads).
 
-- 🏷️ **Domain & License**: `Computer Vision` • `Open Data` (2026)
-- ⚡ **Metrics**: `Trending Score: 18, Likes: 36, Downloads: 210,209`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 20, Likes: 21, Downloads: 248`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/CohereLabsCommunity/CulturalRiddles](https://huggingface.co/datasets/CohereLabsCommunity/CulturalRiddles)
 
 ---
 
@@ -41,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,418 | 📥 51,911 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,325 | 📥 512,524 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `RecursiveSI/flint` | text-generation | ❤️ 583 | 📥 420 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 600 | 📥 6,890 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
-| `OpenMOSS-Team/MOSS-Image-Base` | text-to-image | ❤️ 500 | 📥 5,013 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 8,927 | 📥 2,054,990 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,475 | 📥 57,715 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,346 | 📥 534,837 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `RecursiveSI/flint` | text-generation | ❤️ 610 | 📥 1,904 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 618 | 📥 7,658 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
+| `OpenMOSS-Team/MOSS-Image-Base` | text-to-image | ❤️ 508 | 📥 5,618 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 8,960 | 📥 2,026,951 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
 
 
 ---
@@ -56,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **What Makes a Good Unmasking Policy? A Controlled Study of Learned Unmasking in Diffusion Language Models** | 👍 1 | Optimized unmasking policies for masked diffusion language models improve efficiency by using trajectory-contraction targets with confidence and hidden states, achieving better speed-accuracy trade-offs with minimal overhead. | [Read](https://huggingface.co/papers/2610.31576) |
-| **RLSplat: Resource-Linear Budget Control for Feed-forward 3D Gaussian Splatting** | 👍 9 | RLSplat enables feed-forward 3D Gaussian splatting with linear reductions in latency, memory, and model size by allocating Gaussians regionally and decoding them via local attention. | [Read](https://huggingface.co/papers/2610.27712) |
-| **TILDE: Teacher-in-the-Loop Distillation from Embodied Foundation Models** | 👍 1 | TILDE distills embodied foundation model capabilities into robot policies via on-policy teacher supervision and autonomous recovery data collection, improving real-world task performance without large-scale action pretraining. | [Read](https://huggingface.co/papers/2610.25376) |
-| **RouteWeaver: Weaving Mode Selection and Execution into Unified LLM Routing** | 👍 6 | RouteWeaver unifies heterogeneous LLM routing modes via coordinated training and progressive exploration, improving accuracy across diverse reasoning tasks. | [Read](https://huggingface.co/papers/2610.19705) |
-| **Heartbeat Thinking: Speculative Reasoning and Tool Execution While Listening in Realtime Voice Agents** | 👍 13 | A heartbeat-style speculative reasoning approach lets voice agents continue preparing tool calls during speech updates, improving coverage and reducing response latency. | [Read](https://huggingface.co/papers/2610.26233) |
+| **Realism VS Accuracy: Event Sequence Forecasting from a Generative Modeling Perspective** | 👍 0 | Event sequence forecasting is evaluated as conditional generative modeling, revealing a trade-off between accuracy and realism, and a proposed algorithm converts realism into predictive accuracy. | [Read](https://huggingface.co/papers/2610.12586) |
+| **MambaAct: Efficient Mamba Action Experts for Flow-Matching Vision-Language-Action Models** | 👍 1 | MambaAct replaces the transformer action expert in flow-matching VLA policies with a compact Mamba-based expert and a context compressor to cut inference latency while improving robotic manipulation success. | [Read](https://huggingface.co/papers/2610.22951) |
+| **SplatLab: Autonomous Scientific Discovery for 3DGS Research** | 👍 1 | SplatLab autonomously reproduces 3D Gaussian Splatting baselines, proposes extensions, and writes manuscripts with fully traceable training logs, improving PSNR by up to 3.78 dB. | [Read](https://huggingface.co/papers/2610.30468) |
+| **RTAformer: Relation-Transition-Aware Transformer for Video Scene Graph Generation** | 👍 8 | RTAformer separately models persistent entities and changing relations in video scene graphs by injecting calibrated query differences and aligning cross-frame instances to overcome relational semantic inertia. | [Read](https://huggingface.co/papers/2610.20091) |
+| **IQuest-Q1: Advancing Foundation Capabilities for Agentic CLI Systems** | 👍 45 | IQuest-Q1 is a sparse Mixture-of-Experts foundation model trained via multi-stage pre-training, mid-training, and post-training to achieve strong agentic coding and general capabilities. | [Read](https://huggingface.co/papers/2610.30949) |
 
 
 ---
@@ -73,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
 - **Dependency Security**: `35` advisories flagged across `578` dependencies (`1` critical, `30` high)
 
 ---

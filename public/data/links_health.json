@@ -1,22 +1,32 @@
 {
-  "timestamp": "2026-10-23T06:50:00.009Z",
+  "timestamp": "2026-10-23T12:20:43.099Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 20,
+  "broken": 5,
   "issues": [
+    {
+      "name": "DeepSeek Chat",
+      "url": "https://chat.deepseek.com",
+      "status": 403
+    },
+    {
+      "name": "Perplexity AI",
+      "url": "https://www.perplexity.ai/",
+      "status": 403
+    },
     {
       "name": "GPT-4",
       "url": "https://openai.com/gpt-4",
       "status": 403
     },
     {
-      "name": "o3-mini",
-      "url": "https://openai.com",
+      "name": "DALL-E 2",
+      "url": "https://openai.com/dall-e-2",
       "status": 403
     },
     {
-      "name": "Leonardo.ai",
-      "url": "https://leonardo.ai",
+      "name": "Canva AI",
+      "url": "https://www.canva.com/ai-image-generator",
       "status": 403
     }
   ]

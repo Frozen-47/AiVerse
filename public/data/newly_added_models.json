@@ -4,6 +4,84 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "MiniMax-M3.1-Flash",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by MiniMaxAI, trending with over 186 community likes and 1,096 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "MiniMaxAI",
+        "size": "Open Weights",
+        "architecture": "MiniMaxAI image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"MiniMaxAI/MiniMax-M3.1-Flash\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"MiniMaxAI/MiniMax-M3.1-Flash\")",
+        "benchmarks": "Trending Score: 181, Likes: 186, Downloads: 1,096",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+        "citations": [
+          {
+            "text": "MiniMaxAI/MiniMax-M3.1-Flash on Hugging Face",
+            "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
+          }
+        ]
+      },
+      {
+        "name": "simready-central",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by nvidia. Trending with 47 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "nvidia",
+        "size": "DOCKER Platform",
+        "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/nvidia/simready-central",
+        "benchmarks": "Trending Score: 43, Community Likes: 47",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/nvidia/simready-central",
+        "citations": [
+          {
+            "text": "nvidia/simready-central on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/nvidia/simready-central"
+          }
+        ]
+      },
+      {
+        "name": "CulturalRiddles",
+        "type": "Dataset",
+        "summary": "Cultural Riddles \t Paper: arXiv:2610.29968 · Explore the results: dashboard · Play: try the riddles yourself · Code: github.com/Cohere-Labs-Community/CulturalRiddles A (21 likes, 248 downloads).",
+        "task": "NLP",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "CohereLabsCommunity",
+        "size": "100K<n<1M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"CohereLabsCommunity/CulturalRiddles\")",
+        "benchmarks": "Trending Score: 20, Likes: 21, Downloads: 248",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/CohereLabsCommunity/CulturalRiddles",
+        "citations": [
+          {
+            "text": "CohereLabsCommunity/CulturalRiddles on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/CohereLabsCommunity/CulturalRiddles"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-23",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Carbon-X-Release",
         "type": "Platform",
         "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceBio. Trending with 35 community stars.",
