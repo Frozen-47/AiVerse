@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-23T00:20:13.733Z",
+  "timestamp": "2026-10-23T06:49:59.917Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 2354,
+      "likes": 2418,
       "downloads": 51911,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,31 +12,31 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1301,
+      "likes": 1325,
       "downloads": 512524,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
     },
     {
-      "id": "OpenMOSS-Team/MOSS-Image-SFT",
-      "author": "OpenMOSS-Team",
-      "likes": 579,
-      "downloads": 6890,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
-    },
-    {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 533,
+      "likes": 583,
       "downloads": 420,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
     },
     {
+      "id": "OpenMOSS-Team/MOSS-Image-SFT",
+      "author": "OpenMOSS-Team",
+      "likes": 600,
+      "downloads": 6890,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
+    },
+    {
       "id": "OpenMOSS-Team/MOSS-Image-Base",
       "author": "OpenMOSS-Team",
-      "likes": 486,
+      "likes": 500,
       "downloads": 5013,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base"
@@ -44,7 +44,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 8896,
+      "likes": 8927,
       "downloads": 2054990,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "Same Simulation, Different Evidence: Where Retrieved Tool Output Costs LLM Agents Accuracy",
-      "summary": "Agent harnesses that retrieve long simulator outputs from files rather than including them in context cause GPT models to substitute their own approximations for authoritative results, reducing accuracy despite correct underlying computations.",
+      "title": "What Makes a Good Unmasking Policy? A Controlled Study of Learned Unmasking in Diffusion Language Models",
+      "summary": "Optimized unmasking policies for masked diffusion language models improve efficiency by using trajectory-contraction targets with confidence and hidden states, achieving better speed-accuracy trade-offs with minimal overhead.",
       "upvotes": 1,
-      "arxiv_id": "2610.26836",
-      "url": "https://huggingface.co/papers/2610.26836",
-      "githubRepo": "https://github.com/grenadeComing/same-simulation-different-evidence"
+      "arxiv_id": "2610.31576",
+      "url": "https://huggingface.co/papers/2610.31576",
+      "githubRepo": null
     },
     {
-      "title": "Bridged Self-Distillation for On-Policy Learning",
-      "summary": "Bridged Self-Distillation unifies on-policy reasoning transfer from any teacher by using privileged reasoning traces to score student rollouts and guide updates via outcome verification.",
-      "upvotes": 1,
-      "arxiv_id": "2610.26397",
-      "url": "https://huggingface.co/papers/2610.26397",
-      "githubRepo": "https://github.com/TUMLegalTech/Bridged-Self-Distillation"
-    },
-    {
-      "title": "Stratified Sparse Attention: Reducing the Sparse-to-Dense Gap at Extreme Sparsity",
-      "summary": "Stratified Sparse Attention unifies deterministic retrieval and score-guided sampling to recover attention mass, improving long-context inference accuracy and speed across multiple benchmarks.",
-      "upvotes": 2,
-      "arxiv_id": "2610.28441",
-      "url": "https://huggingface.co/papers/2610.28441",
-      "githubRepo": "https://github.com/skylight-org/SSA-Paper-Code"
-    },
-    {
-      "title": "StyleStream 2.0: Fast and Controllable Streaming Voice Style Conversion",
-      "summary": "StyleStream 2.0 improves streaming voice conversion with lower latency via a few-step MeanFlow model and enables text-based voice design and editing through a unified flow matching model.",
+      "title": "RLSplat: Resource-Linear Budget Control for Feed-forward 3D Gaussian Splatting",
+      "summary": "RLSplat enables feed-forward 3D Gaussian splatting with linear reductions in latency, memory, and model size by allocating Gaussians regionally and decoding them via local attention.",
       "upvotes": 9,
-      "arxiv_id": "2610.28940",
-      "url": "https://huggingface.co/papers/2610.28940",
-      "githubRepo": "https://github.com/Berkeley-Speech-Group/StyleStream2.0"
+      "arxiv_id": "2610.27712",
+      "url": "https://huggingface.co/papers/2610.27712",
+      "githubRepo": "https://github.com/mlvlab/RLSplat"
     },
     {
-      "title": "FrontierCS 2: A Benchmark for Computer Science R&D",
-      "summary": "FrontierCS 2 evaluates LLM agents on open-ended computer science R&D tasks using hidden evaluation suites and reveals that even the best agents pass only about half of tasks.",
-      "upvotes": 2,
-      "arxiv_id": "2610.29932",
-      "url": "https://huggingface.co/papers/2610.29932",
-      "githubRepo": "https://github.com/FrontierCS/FrontierCS-2"
+      "title": "TILDE: Teacher-in-the-Loop Distillation from Embodied Foundation Models",
+      "summary": "TILDE distills embodied foundation model capabilities into robot policies via on-policy teacher supervision and autonomous recovery data collection, improving real-world task performance without large-scale action pretraining.",
+      "upvotes": 1,
+      "arxiv_id": "2610.25376",
+      "url": "https://huggingface.co/papers/2610.25376",
+      "githubRepo": "https://github.com/hku-sail/TILDE"
+    },
+    {
+      "title": "RouteWeaver: Weaving Mode Selection and Execution into Unified LLM Routing",
+      "summary": "RouteWeaver unifies heterogeneous LLM routing modes via coordinated training and progressive exploration, improving accuracy across diverse reasoning tasks.",
+      "upvotes": 6,
+      "arxiv_id": "2610.19705",
+      "url": "https://huggingface.co/papers/2610.19705",
+      "githubRepo": "https://github.com/LaughKing/RouteWeaver"
+    },
+    {
+      "title": "Heartbeat Thinking: Speculative Reasoning and Tool Execution While Listening in Realtime Voice Agents",
+      "summary": "A heartbeat-style speculative reasoning approach lets voice agents continue preparing tool calls during speech updates, improving coverage and reducing response latency.",
+      "upvotes": 13,
+      "arxiv_id": "2610.26233",
+      "url": "https://huggingface.co/papers/2610.26233",
+      "githubRepo": null
     }
   ]
 }

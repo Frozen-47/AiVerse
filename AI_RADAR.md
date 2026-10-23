@@ -2,20 +2,27 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 23 Oct 2026 00:20:19 GMT`*
+*Last Synchronized: `Fri, 23 Oct 2026 06:50:03 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (1)
+## 📥 Newly Queued Assets for Review (2)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **flint-GGUF** (`Model` • *unsloth*)
-> High-performance NLP open-weights model by unsloth, trending with over 150 community likes and 7,401 downloads on Hugging Face.
+### **Carbon-X-Release** (`Platform` • *HuggingFaceBio*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceBio. Trending with 35 community stars.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 149, Likes: 150, Downloads: 7,401`
-- 🔗 **Resource Link**: [https://huggingface.co/unsloth/flint-GGUF](https://huggingface.co/unsloth/flint-GGUF)
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 34, Community Likes: 35`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/HuggingFaceBio/Carbon-X-Release](https://huggingface.co/spaces/HuggingFaceBio/Carbon-X-Release)
+
+### **simready-assets** (`Dataset` • *nvidia*)
+> High-quality Computer Vision dataset by nvidia for benchmarking and foundation model training. (36 likes, 210,209 downloads).
+
+- 🏷️ **Domain & License**: `Computer Vision` • `Open Data` (2026)
+- ⚡ **Metrics**: `Trending Score: 18, Likes: 36, Downloads: 210,209`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets)
 
 ---
 
@@ -34,12 +41,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,354 | 📥 51,911 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,301 | 📥 512,524 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 579 | 📥 6,890 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
-| `RecursiveSI/flint` | text-generation | ❤️ 533 | 📥 420 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `OpenMOSS-Team/MOSS-Image-Base` | text-to-image | ❤️ 486 | 📥 5,013 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 8,896 | 📥 2,054,990 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,418 | 📥 51,911 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,325 | 📥 512,524 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `RecursiveSI/flint` | text-generation | ❤️ 583 | 📥 420 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 600 | 📥 6,890 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
+| `OpenMOSS-Team/MOSS-Image-Base` | text-to-image | ❤️ 500 | 📥 5,013 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 8,927 | 📥 2,054,990 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
 
 
 ---
@@ -49,11 +56,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Same Simulation, Different Evidence: Where Retrieved Tool Output Costs LLM Agents Accuracy** | 👍 1 | Agent harnesses that retrieve long simulator outputs from files rather than including them in context cause GPT models to substitute their own approximations for authoritative results, reducing accuracy despite correct underlying computations. | [Read](https://huggingface.co/papers/2610.26836) |
-| **Bridged Self-Distillation for On-Policy Learning** | 👍 1 | Bridged Self-Distillation unifies on-policy reasoning transfer from any teacher by using privileged reasoning traces to score student rollouts and guide updates via outcome verification. | [Read](https://huggingface.co/papers/2610.26397) |
-| **Stratified Sparse Attention: Reducing the Sparse-to-Dense Gap at Extreme Sparsity** | 👍 2 | Stratified Sparse Attention unifies deterministic retrieval and score-guided sampling to recover attention mass, improving long-context inference accuracy and speed across multiple benchmarks. | [Read](https://huggingface.co/papers/2610.28441) |
-| **StyleStream 2.0: Fast and Controllable Streaming Voice Style Conversion** | 👍 9 | StyleStream 2.0 improves streaming voice conversion with lower latency via a few-step MeanFlow model and enables text-based voice design and editing through a unified flow matching model. | [Read](https://huggingface.co/papers/2610.28940) |
-| **FrontierCS 2: A Benchmark for Computer Science R&D** | 👍 2 | FrontierCS 2 evaluates LLM agents on open-ended computer science R&D tasks using hidden evaluation suites and reveals that even the best agents pass only about half of tasks. | [Read](https://huggingface.co/papers/2610.29932) |
+| **What Makes a Good Unmasking Policy? A Controlled Study of Learned Unmasking in Diffusion Language Models** | 👍 1 | Optimized unmasking policies for masked diffusion language models improve efficiency by using trajectory-contraction targets with confidence and hidden states, achieving better speed-accuracy trade-offs with minimal overhead. | [Read](https://huggingface.co/papers/2610.31576) |
+| **RLSplat: Resource-Linear Budget Control for Feed-forward 3D Gaussian Splatting** | 👍 9 | RLSplat enables feed-forward 3D Gaussian splatting with linear reductions in latency, memory, and model size by allocating Gaussians regionally and decoding them via local attention. | [Read](https://huggingface.co/papers/2610.27712) |
+| **TILDE: Teacher-in-the-Loop Distillation from Embodied Foundation Models** | 👍 1 | TILDE distills embodied foundation model capabilities into robot policies via on-policy teacher supervision and autonomous recovery data collection, improving real-world task performance without large-scale action pretraining. | [Read](https://huggingface.co/papers/2610.25376) |
+| **RouteWeaver: Weaving Mode Selection and Execution into Unified LLM Routing** | 👍 6 | RouteWeaver unifies heterogeneous LLM routing modes via coordinated training and progressive exploration, improving accuracy across diverse reasoning tasks. | [Read](https://huggingface.co/papers/2610.19705) |
+| **Heartbeat Thinking: Speculative Reasoning and Tool Execution While Listening in Realtime Voice Agents** | 👍 13 | A heartbeat-style speculative reasoning approach lets voice agents continue preparing tool calls during speech updates, improving coverage and reducing response latency. | [Read](https://huggingface.co/papers/2610.26233) |
 
 
 ---
@@ -66,7 +73,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
+- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
 - **Dependency Security**: `35` advisories flagged across `578` dependencies (`1` critical, `30` high)
 
 ---

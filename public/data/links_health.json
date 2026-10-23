@@ -1,18 +1,23 @@
 {
-  "timestamp": "2026-10-23T00:20:13.944Z",
+  "timestamp": "2026-10-23T06:50:00.009Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
+    {
+      "name": "GPT-4",
+      "url": "https://openai.com/gpt-4",
+      "status": 403
+    },
+    {
+      "name": "o3-mini",
+      "url": "https://openai.com",
+      "status": 403
+    },
     {
       "name": "Leonardo.ai",
       "url": "https://leonardo.ai",
       "status": 403
-    },
-    {
-      "name": "wan2-2-i2v-v3",
-      "url": "https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3",
-      "status": 401
     }
   ]
 }
