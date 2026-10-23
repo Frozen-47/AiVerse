@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-22T20:22:27.458Z",
+  "timestamp": "2026-10-23T00:20:13.733Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 2341,
+      "likes": 2354,
       "downloads": 51911,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1285,
+      "likes": 1301,
       "downloads": 512524,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -20,7 +20,7 @@
     {
       "id": "OpenMOSS-Team/MOSS-Image-SFT",
       "author": "OpenMOSS-Team",
-      "likes": 569,
+      "likes": 579,
       "downloads": 6890,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
@@ -28,7 +28,7 @@
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 495,
+      "likes": 533,
       "downloads": 420,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
@@ -36,25 +36,49 @@
     {
       "id": "OpenMOSS-Team/MOSS-Image-Base",
       "author": "OpenMOSS-Team",
-      "likes": 484,
+      "likes": 486,
       "downloads": 5013,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base"
     },
     {
-      "id": "meta-models/Muse-Spark-Open-816B-A42B",
-      "author": "meta-models",
-      "likes": 658,
-      "downloads": 3163,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 8896,
+      "downloads": 2054990,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5"
     }
   ],
   "papers": [
     {
+      "title": "Same Simulation, Different Evidence: Where Retrieved Tool Output Costs LLM Agents Accuracy",
+      "summary": "Agent harnesses that retrieve long simulator outputs from files rather than including them in context cause GPT models to substitute their own approximations for authoritative results, reducing accuracy despite correct underlying computations.",
+      "upvotes": 1,
+      "arxiv_id": "2610.26836",
+      "url": "https://huggingface.co/papers/2610.26836",
+      "githubRepo": "https://github.com/grenadeComing/same-simulation-different-evidence"
+    },
+    {
+      "title": "Bridged Self-Distillation for On-Policy Learning",
+      "summary": "Bridged Self-Distillation unifies on-policy reasoning transfer from any teacher by using privileged reasoning traces to score student rollouts and guide updates via outcome verification.",
+      "upvotes": 1,
+      "arxiv_id": "2610.26397",
+      "url": "https://huggingface.co/papers/2610.26397",
+      "githubRepo": "https://github.com/TUMLegalTech/Bridged-Self-Distillation"
+    },
+    {
+      "title": "Stratified Sparse Attention: Reducing the Sparse-to-Dense Gap at Extreme Sparsity",
+      "summary": "Stratified Sparse Attention unifies deterministic retrieval and score-guided sampling to recover attention mass, improving long-context inference accuracy and speed across multiple benchmarks.",
+      "upvotes": 2,
+      "arxiv_id": "2610.28441",
+      "url": "https://huggingface.co/papers/2610.28441",
+      "githubRepo": "https://github.com/skylight-org/SSA-Paper-Code"
+    },
+    {
       "title": "StyleStream 2.0: Fast and Controllable Streaming Voice Style Conversion",
       "summary": "StyleStream 2.0 improves streaming voice conversion with lower latency via a few-step MeanFlow model and enables text-based voice design and editing through a unified flow matching model.",
-      "upvotes": 8,
+      "upvotes": 9,
       "arxiv_id": "2610.28940",
       "url": "https://huggingface.co/papers/2610.28940",
       "githubRepo": "https://github.com/Berkeley-Speech-Group/StyleStream2.0"
@@ -66,30 +90,6 @@
       "arxiv_id": "2610.29932",
       "url": "https://huggingface.co/papers/2610.29932",
       "githubRepo": "https://github.com/FrontierCS/FrontierCS-2"
-    },
-    {
-      "title": "Language Models Learn to Improve Language Models",
-      "summary": "LM2LM uses a frozen research world model to provide scalable reinforcement learning rewards for generating language model improvements, maintaining reliability through periodic real execution and outperforming larger baselines at lower cost.",
-      "upvotes": 5,
-      "arxiv_id": "2610.23344",
-      "url": "https://huggingface.co/papers/2610.23344",
-      "githubRepo": null
-    },
-    {
-      "title": "VerifierBench: Benchmarking the Generation of Executable Verifiers for LLM Agents",
-      "summary": "Agents generate executable verifiers to validate outputs, but these verifiers often wrongly reject valid solutions due to hidden assumptions, prompting recommendations to test acceptance of diverse correct answers.",
-      "upvotes": 4,
-      "arxiv_id": "2610.28679",
-      "url": "https://huggingface.co/papers/2610.28679",
-      "githubRepo": "https://github.com/DwanZhang-AI/verifier-suite"
-    },
-    {
-      "title": "Looped Uniform Diffusion Language Models",
-      "summary": "Looping early Transformer layers improves training and inference efficiency of uniform diffusion language models without altering their objective or sampler.",
-      "upvotes": 4,
-      "arxiv_id": "2610.30066",
-      "url": "https://huggingface.co/papers/2610.30066",
-      "githubRepo": null
     }
   ]
 }

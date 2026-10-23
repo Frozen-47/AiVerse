@@ -14,15 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-10-22)
+### ⚡ AiVerse AI Radar (2026-10-23)
 | Metric | Status / Count |
 | :--- | :--- |
-| 🌟 **Tool of the Day** | **JEV-35B** (autotrust) — [Explore](https://huggingface.co/autotrust/JEV-35B) |
+| 📥 **Queued for Review** | **flint-GGUF** (`Model`) |
+| 🌟 **Tool of the Day** | **qwen-image-21-uncensored** (vclnhihihi) — [Explore](https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [StyleStream 2.0: Fast and Controllable Streaming V...](https://huggingface.co/papers/2610.28940) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Thu, 22 Oct 2026 20:22:31 GMT` |
+| 📜 **Top Daily Paper** | [Same Simulation, Different Evidence: Where Retriev...](https://huggingface.co/papers/2610.26836) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 23 Oct 2026 00:20:19 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

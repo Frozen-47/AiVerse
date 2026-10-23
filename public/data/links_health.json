@@ -1,23 +1,18 @@
 {
-  "timestamp": "2026-10-22T20:22:27.555Z",
+  "timestamp": "2026-10-23T00:20:13.944Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "Whisper",
-      "url": "https://openai.com/research/whisper",
+      "name": "Leonardo.ai",
+      "url": "https://leonardo.ai",
       "status": 403
     },
     {
-      "name": "Character.ai",
-      "url": "https://character.ai",
-      "status": 403
-    },
-    {
-      "name": "Perplexity AI",
-      "url": "https://www.perplexity.ai/",
-      "status": 403
+      "name": "wan2-2-i2v-v3",
+      "url": "https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3",
+      "status": 401
     }
   ]
 }
