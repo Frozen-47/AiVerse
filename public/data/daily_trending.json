@@ -1,34 +1,34 @@
 {
-  "timestamp": "2026-10-23T18:03:23.227Z",
+  "timestamp": "2026-10-23T21:47:58.543Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 2536,
+      "likes": 2568,
       "downloads": 57715,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
-      "id": "black-forest-labs/flux-3-image-klein-comfy",
-      "author": "black-forest-labs",
-      "likes": 1389,
-      "downloads": 534837,
-      "pipeline_tag": "image-to-image",
-      "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
-    },
-    {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 653,
+      "likes": 673,
       "downloads": 1904,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
     },
     {
+      "id": "black-forest-labs/flux-3-image-klein-comfy",
+      "author": "black-forest-labs",
+      "likes": 1398,
+      "downloads": 534837,
+      "pipeline_tag": "image-to-image",
+      "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
+    },
+    {
       "id": "OpenMOSS-Team/MOSS-Image-SFT",
       "author": "OpenMOSS-Team",
-      "likes": 639,
+      "likes": 645,
       "downloads": 7658,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
@@ -36,7 +36,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 8995,
+      "likes": 9023,
       "downloads": 2026951,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -44,7 +44,7 @@
     {
       "id": "OpenMOSS-Team/MOSS-Image-Base",
       "author": "OpenMOSS-Team",
-      "likes": 514,
+      "likes": 518,
       "downloads": 5618,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base"
@@ -54,7 +54,7 @@
     {
       "title": "Bridging Exploration and Persona: Information-Directed Dueling for Test-Time Agent Personalization",
       "summary": "ID-TAP uses a neural dueling-bandit framework with similarity-weighted warm starts to adapt LLM agents to user preferences via binary response comparisons within a limited interaction budget.",
-      "upvotes": 0,
+      "upvotes": 1,
       "arxiv_id": "2610.24385",
       "url": "https://huggingface.co/papers/2610.24385",
       "githubRepo": "https://github.com/s1412/ID-TAP"
@@ -62,7 +62,7 @@
     {
       "title": "IF-MAP: Influence-Function-Inspired Agent Prioritization in Multi-Agent Systems",
       "summary": "IF-MAP identifies high-impact agents in multi-agent LLM systems via prompt perturbation analysis to maximize system-level gains from targeted improvements.",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2610.24383",
       "url": "https://huggingface.co/papers/2610.24383",
       "githubRepo": "https://github.com/s1412/IF-MAP"
@@ -70,7 +70,7 @@
     {
       "title": "Agent Mosaic: Recognizing Confidentiality Leaks in Agentic LLM Systems",
       "summary": "LLM agents frequently leak sensitive conclusions assembled from multiple confidential documents, and common safeguards fail to eliminate this mosaic-style disclosure risk.",
-      "upvotes": 5,
+      "upvotes": 11,
       "arxiv_id": "2610.30418",
       "url": "https://huggingface.co/papers/2610.30418",
       "githubRepo": null
@@ -78,7 +78,7 @@
     {
       "title": "HyperDrone: Simulation-to-Reality Transfer at Millions of Frames per Second",
       "summary": "HyperDrone is a GPU-accelerated quadrotor simulator using a ray-tracing engine to render high-fidelity observations at high speed, enabling vision-based policy training and real-world transfer.",
-      "upvotes": 0,
+      "upvotes": 1,
       "arxiv_id": "2610.28950",
       "url": "https://huggingface.co/papers/2610.28950",
       "githubRepo": null
@@ -86,7 +86,7 @@
     {
       "title": "BrickWright: Agentic Creation of Physically Feasible Brick Builds",
       "summary": "BrickWright improves physical validity of AI-generated LEGO assemblies by providing agents with an assembly API and feasibility validator, achieving perfect validity while preserving prompt adherence.",
-      "upvotes": 1,
+      "upvotes": 3,
       "arxiv_id": "2610.31651",
       "url": "https://huggingface.co/papers/2610.31651",
       "githubRepo": "https://github.com/AvaLovelace1/brickwright"

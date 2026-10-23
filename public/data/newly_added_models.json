@@ -4,6 +4,60 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Fibo-2.0",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by Comfy-Org, trending with over 149 community likes and 70,682 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "CC-BY-NC-4.0",
+        "year": 2026,
+        "org": "Comfy-Org",
+        "size": "Open Weights",
+        "architecture": "Comfy-Org transformer architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Comfy-Org/Fibo-2.0\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Comfy-Org/Fibo-2.0\")",
+        "benchmarks": "Trending Score: 149, Likes: 149, Downloads: 70,682",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/Comfy-Org/Fibo-2.0",
+        "citations": [
+          {
+            "text": "Comfy-Org/Fibo-2.0 on Hugging Face",
+            "url": "https://huggingface.co/Comfy-Org/Fibo-2.0"
+          }
+        ]
+      },
+      {
+        "name": "Nemotron-Personas-UK",
+        "type": "Dataset",
+        "summary": "Nemotron-Personas-UK \t           A compound AI approach to personas grounded in real-world distributions    \t \t\t \t \t \t\tDataset Overview \t Nemotron-Personas-UK is an ope (25 likes, 496 downloads).",
+        "task": "NLP",
+        "license": "CC-BY-4.0",
+        "year": 2026,
+        "org": "nvidia",
+        "size": "1M<n<10M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/Nemotron-Personas-UK\")",
+        "benchmarks": "Trending Score: 21, Likes: 25, Downloads: 496",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-UK",
+        "citations": [
+          {
+            "text": "nvidia/Nemotron-Personas-UK on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-UK"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-23",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Fibo-2.0-editing",
         "type": "Platform",
         "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by briaai. Trending with 33 community stars.",

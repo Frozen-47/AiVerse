@@ -1,13 +1,18 @@
 {
-  "timestamp": "2026-10-23T18:03:23.332Z",
+  "timestamp": "2026-10-23T21:47:58.696Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "wan555",
-      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
-      "status": 401
+      "name": "o3-mini",
+      "url": "https://openai.com",
+      "status": 403
+    },
+    {
+      "name": "Whisper",
+      "url": "https://openai.com/research/whisper",
+      "status": 403
     }
   ]
 }

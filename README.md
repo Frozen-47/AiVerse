@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-23)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Fibo-2.0-editing** (`Platform`), **3d-collection** (`Dataset`) |
+| 📥 **Queued for Review** | **Fibo-2.0** (`Model`), **Nemotron-Personas-UK** (`Dataset`) |
 | 🌟 **Tool of the Day** | **qwen-image-21-uncensored** (vclnhihihi) — [Explore](https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
 | 📜 **Top Daily Paper** | [Bridging Exploration and Persona: Information-Dire...](https://huggingface.co/papers/2610.24385) |
-| 🛡️ **Catalog Links Checked** | **24/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 23 Oct 2026 18:03:28 GMT` |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 23 Oct 2026 21:48:03 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
