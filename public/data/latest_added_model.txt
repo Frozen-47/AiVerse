@@ -1,1 +1,1 @@
-imagenet-1k
+MiniCPM-V-4.7-Demo

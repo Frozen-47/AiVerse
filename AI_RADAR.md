@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sat, 24 Oct 2026 19:11:48 GMT`*
+*Last Synchronized: `Sat, 24 Oct 2026 23:55:52 GMT`*
 
 ---
 
@@ -10,12 +10,12 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **imagenet-1k** (`Dataset` • *ILSVRC*)
-> Dataset Card for ImageNet 	 	 		 	 	 		Dataset Summary 	 ILSVRC 2012, commonly known as 'ImageNet' is an image dataset organized according to the WordNet hierarchy. Eac (1,052 likes, 93,609 downloads).
+### **MiniCPM-V-4.7-Demo** (`Platform` • *openbmb*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by openbmb. Trending with 57 community stars.
 
-- 🏷️ **Domain & License**: `Computer Vision` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 17, Likes: 1,052, Downloads: 93,609`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/ILSVRC/imagenet-1k](https://huggingface.co/datasets/ILSVRC/imagenet-1k)
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 31, Community Likes: 57`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/openbmb/MiniCPM-V-4.7-Demo](https://huggingface.co/spaces/openbmb/MiniCPM-V-4.7-Demo)
 
 ---
 
@@ -34,12 +34,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,737 | 📥 73,215 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `RecursiveSI/flint` | text-generation | ❤️ 752 | 📥 4,795 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,478 | 📥 590,742 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 683 | 📥 9,717 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,146 | 📥 2,087,721 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 437 | 📥 2,537 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,769 | 📥 73,215 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `RecursiveSI/flint` | text-generation | ❤️ 770 | 📥 4,795 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,496 | 📥 590,742 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,173 | 📥 2,087,721 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 687 | 📥 9,717 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
+| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 444 | 📥 2,537 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
 
 
 ---
@@ -66,7 +66,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
+- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
 - **Dependency Security**: `32` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

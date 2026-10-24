@@ -1,32 +1,22 @@
 {
-  "timestamp": "2026-10-24T19:11:43.198Z",
+  "timestamp": "2026-10-24T23:55:47.897Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
-    {
-      "name": "Lovable.dev",
-      "url": "https://lovable.dev",
-      "status": 403
-    },
-    {
-      "name": "Codex",
-      "url": "https://openai.com/blog/openai-codex",
-      "status": 403
-    },
     {
       "name": "OpenAI Platform",
       "url": "https://platform.openai.com",
       "status": 403
     },
     {
-      "name": "Tome",
-      "url": "https://tome.app",
-      "status": 404
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
+      "status": 403
     },
     {
-      "name": "GPT-4",
-      "url": "https://openai.com/gpt-4",
+      "name": "Canva AI",
+      "url": "https://www.canva.com/ai-image-generator",
       "status": 403
     }
   ]
