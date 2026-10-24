@@ -1,24 +1,24 @@
 {
-  "date": "2026-10-23",
+  "date": "2026-10-24",
   "tool": {
-    "name": "qwen-image-21-uncensored",
-    "type": "Platform",
-    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vclnhihihi. Trending with 70 community stars.",
-    "task": "Multimodal",
-    "license": "Community Hosted",
+    "name": "MMLU-Pro",
+    "type": "Dataset",
+    "summary": "MMLU-Pro Dataset \t MMLU-Pro dataset is a more robust and challenging massive multi-task understanding dataset tailored to more rigorously benchmark large language model (570 likes, 226,194 downloads).",
+    "task": "NLP",
+    "license": "MIT",
     "year": 2026,
-    "org": "vclnhihihi",
-    "size": "GRADIO Platform",
-    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored",
-    "benchmarks": "Trending Score: 54, Community Likes: 70",
-    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "org": "TIGER-Lab",
+    "size": "10K<n<100K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"TIGER-Lab/MMLU-Pro\")",
+    "benchmarks": "Trending Score: 30, Likes: 570, Downloads: 226,194",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
     "popular": true,
-    "url": "https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored",
+    "url": "https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro",
     "citations": [
       {
-        "text": "vclnhihihi/qwen-image-21-uncensored on Hugging Face Spaces",
-        "url": "https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored"
+        "text": "TIGER-Lab/MMLU-Pro on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro"
       }
     ]
   }

@@ -1,39 +1,32 @@
-# ⚡ AiVerse AI Radar (2026-10-23)
+# ⚡ AiVerse AI Radar (2026-10-24)
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 23 Oct 2026 21:48:03 GMT`*
+*Last Synchronized: `Sat, 24 Oct 2026 00:10:35 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (2)
+## 📥 Newly Queued Assets for Review (1)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Fibo-2.0** (`Model` • *Comfy-Org*)
-> High-performance NLP open-weights model by Comfy-Org, trending with over 149 community likes and 70,682 downloads on Hugging Face.
+### **text-to-3d-with-llm-code** (`Dataset` • *Rapidata*)
+> Rapidata Text-to-3D with LLM code Benchmark 	 Built by Rapidata, collected with the Rapidata Python SDK. To evaluate your own models and create a leaderboard, check out (22 likes, 430 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `CC-BY-NC-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 149, Likes: 149, Downloads: 70,682`
-- 🔗 **Resource Link**: [https://huggingface.co/Comfy-Org/Fibo-2.0](https://huggingface.co/Comfy-Org/Fibo-2.0)
-
-### **Nemotron-Personas-UK** (`Dataset` • *nvidia*)
-> Nemotron-Personas-UK 	           A compound AI approach to personas grounded in real-world distributions    	 		 	 	 		Dataset Overview 	 Nemotron-Personas-UK is an ope (25 likes, 496 downloads).
-
-- 🏷️ **Domain & License**: `NLP` • `CC-BY-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 21, Likes: 25, Downloads: 496`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/Nemotron-Personas-UK](https://huggingface.co/datasets/nvidia/Nemotron-Personas-UK)
+- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 21, Likes: 22, Downloads: 430`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/Rapidata/text-to-3d-with-llm-code](https://huggingface.co/datasets/Rapidata/text-to-3d-with-llm-code)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **qwen-image-21-uncensored** (`Platform` • *vclnhihihi*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vclnhihihi. Trending with 70 community stars.
+### **MMLU-Pro** (`Dataset` • *TIGER-Lab*)
+> MMLU-Pro Dataset 	 MMLU-Pro dataset is a more robust and challenging massive multi-task understanding dataset tailored to more rigorously benchmark large language model (570 likes, 226,194 downloads).
 
-- 🏛️ **Architecture**: GRADIO cloud runtime container with interactive browser interface.
-- ⚡ **Benchmarks**: `Trending Score: 54, Community Likes: 70`
-- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (Released: 2026)
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored](https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored)
+- 🏛️ **Architecture**: Parquet / Arrow structured tabular & tokenized dataset.
+- ⚡ **Benchmarks**: `Trending Score: 30, Likes: 570, Downloads: 226,194`
+- 🏷️ **Domain & License**: `NLP` • `MIT` (Released: 2026)
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -41,12 +34,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,568 | 📥 57,715 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `RecursiveSI/flint` | text-generation | ❤️ 673 | 📥 1,904 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,398 | 📥 534,837 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 645 | 📥 7,658 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,023 | 📥 2,026,951 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `OpenMOSS-Team/MOSS-Image-Base` | text-to-image | ❤️ 518 | 📥 5,618 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,581 | 📥 57,715 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `RecursiveSI/flint` | text-generation | ❤️ 686 | 📥 1,904 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,405 | 📥 534,837 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 649 | 📥 7,658 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,033 | 📥 2,026,951 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 410 | 📥 1,060 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
 
 
 ---
@@ -56,11 +49,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
+| **EvalResearchBench: Can AI Agents Build Their Own Feedback for Recursive Self-Improvement?** | 👍 0 | AI agents can automate benchmark design to reduce evaluation costs, but their generated evaluators still fall short of target agreement and suffer from budget exhaustion and score dominance issues. | [Read](https://huggingface.co/papers/2610.04184) |
+| **Diffusion Language Models Change Speed Across Tasks and Languages** | 👍 1 | Diffusion language models spend more computation on novel, rare, or incorrect outputs, and decoding speed can improve inference efficiency and reliability. | [Read](https://huggingface.co/papers/2610.25835) |
+| **Different Tasks, Different Timesteps: Temporal Task-Aware Quantization for Diffusion Language Models** | 👍 4 | T2Quant improves diffusion language model quantization by dynamically allocating activation precision across denoising steps based on predicted task- and time-dependent sensitivity. | [Read](https://huggingface.co/papers/2610.31198) |
 | **Bridging Exploration and Persona: Information-Directed Dueling for Test-Time Agent Personalization** | 👍 1 | ID-TAP uses a neural dueling-bandit framework with similarity-weighted warm starts to adapt LLM agents to user preferences via binary response comparisons within a limited interaction budget. | [Read](https://huggingface.co/papers/2610.24385) |
 | **IF-MAP: Influence-Function-Inspired Agent Prioritization in Multi-Agent Systems** | 👍 2 | IF-MAP identifies high-impact agents in multi-agent LLM systems via prompt perturbation analysis to maximize system-level gains from targeted improvements. | [Read](https://huggingface.co/papers/2610.24383) |
-| **Agent Mosaic: Recognizing Confidentiality Leaks in Agentic LLM Systems** | 👍 11 | LLM agents frequently leak sensitive conclusions assembled from multiple confidential documents, and common safeguards fail to eliminate this mosaic-style disclosure risk. | [Read](https://huggingface.co/papers/2610.30418) |
-| **HyperDrone: Simulation-to-Reality Transfer at Millions of Frames per Second** | 👍 1 | HyperDrone is a GPU-accelerated quadrotor simulator using a ray-tracing engine to render high-fidelity observations at high speed, enabling vision-based policy training and real-world transfer. | [Read](https://huggingface.co/papers/2610.28950) |
-| **BrickWright: Agentic Creation of Physically Feasible Brick Builds** | 👍 3 | BrickWright improves physical validity of AI-generated LEGO assemblies by providing agents with an assembly API and feasibility validator, achieving perfect validity while preserving prompt adherence. | [Read](https://huggingface.co/papers/2610.31651) |
 
 
 ---
@@ -73,7 +66,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
+- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
 - **Dependency Security**: `32` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

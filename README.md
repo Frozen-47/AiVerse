@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-10-23)
+### ⚡ AiVerse AI Radar (2026-10-24)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Fibo-2.0** (`Model`), **Nemotron-Personas-UK** (`Dataset`) |
-| 🌟 **Tool of the Day** | **qwen-image-21-uncensored** (vclnhihihi) — [Explore](https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored) |
+| 📥 **Queued for Review** | **text-to-3d-with-llm-code** (`Dataset`) |
+| 🌟 **Tool of the Day** | **MMLU-Pro** (TIGER-Lab) — [Explore](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [Bridging Exploration and Persona: Information-Dire...](https://huggingface.co/papers/2610.24385) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 23 Oct 2026 21:48:03 GMT` |
+| 📜 **Top Daily Paper** | [EvalResearchBench: Can AI Agents Build Their Own F...](https://huggingface.co/papers/2610.04184) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Synchronized** | `Sat, 24 Oct 2026 00:10:35 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
