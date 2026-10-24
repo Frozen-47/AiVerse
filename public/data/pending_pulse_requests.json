@@ -1,5 +1,30 @@
 [
   {
+    "name": "Raon-1-mini-preview",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by KRAFTON, trending with over 154 community likes and 917 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "KRAFTON",
+    "size": "Open Weights",
+    "architecture": "KRAFTON text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"KRAFTON/Raon-1-mini-preview\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"KRAFTON/Raon-1-mini-preview\")",
+    "benchmarks": "Trending Score: 145, Likes: 154, Downloads: 917",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+    "citations": [
+      {
+        "text": "KRAFTON/Raon-1-mini-preview on Hugging Face",
+        "url": "https://huggingface.co/KRAFTON/Raon-1-mini-preview"
+      }
+    ],
+    "created_at": "2026-10-24T11:47:26.447Z"
+  },
+  {
     "name": "Ornith-1.5-122B",
     "type": "Model",
     "summary": "High-performance NLP open-weights model by ornith-ai, trending with over 151 community likes and 14,049 downloads on Hugging Face.",

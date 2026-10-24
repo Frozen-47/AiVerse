@@ -1,7 +1,28 @@
 {
-  "timestamp": "2026-10-24T06:46:46.059Z",
+  "timestamp": "2026-10-24T11:47:28.593Z",
   "checked": 25,
-  "healthy": 25,
-  "broken": 0,
-  "issues": []
+  "healthy": 21,
+  "broken": 4,
+  "issues": [
+    {
+      "name": "Midjourney (Platform)",
+      "url": "https://www.midjourney.com/",
+      "status": 403
+    },
+    {
+      "name": "OpenAI Platform",
+      "url": "https://platform.openai.com",
+      "status": 403
+    },
+    {
+      "name": "wan2-2-i2v-v3",
+      "url": "https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3",
+      "status": 401
+    },
+    {
+      "name": "Phind",
+      "url": "https://www.phind.com",
+      "status": 403
+    }
+  ]
 }

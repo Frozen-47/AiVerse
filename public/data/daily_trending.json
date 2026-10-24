@@ -1,51 +1,51 @@
 {
-  "timestamp": "2026-10-24T06:46:45.960Z",
+  "timestamp": "2026-10-24T11:47:28.448Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 2615,
-      "downloads": 57715,
+      "likes": 2667,
+      "downloads": 73215,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 703,
-      "downloads": 1904,
+      "likes": 722,
+      "downloads": 4795,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
     },
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1429,
-      "downloads": 534837,
+      "likes": 1446,
+      "downloads": 590742,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
     },
     {
       "id": "OpenMOSS-Team/MOSS-Image-SFT",
       "author": "OpenMOSS-Team",
-      "likes": 660,
-      "downloads": 7658,
+      "likes": 666,
+      "downloads": 9717,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
     },
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 9065,
-      "downloads": 2026951,
+      "likes": 9096,
+      "downloads": 2087721,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     },
     {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 422,
-      "downloads": 1060,
+      "likes": 428,
+      "downloads": 2537,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
     }
@@ -54,7 +54,7 @@
     {
       "title": "TARSphere: A Robot-Oriented Full-Stack Framework for Long-Horizon Embodied Agents in Evolving Physical and Social Environments",
       "summary": "TARSphere is a robot framework that integrates physics simulation, embodied NPCs, and a frozen multimodal language model to evaluate long-horizon embodied agents across diverse indoor tasks and social conditions.",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2610.30043",
       "url": "https://huggingface.co/papers/2610.30043",
       "githubRepo": "https://github.com/xuyicheng-zju/TARSphere"
@@ -62,7 +62,7 @@
     {
       "title": "The LLM-Attacker: A Unified Red-Team Framework for Privacy Evaluation of Split and Distributed LLM Systems",
       "summary": "LLM-Attacker standardizes privacy evaluations for split language models by recording attacker configurations, enabling comparable scoring of reconstruction attacks, and requiring linked undefended baselines for defense claims.",
-      "upvotes": 2,
+      "upvotes": 4,
       "arxiv_id": "2610.22722",
       "url": "https://huggingface.co/papers/2610.22722",
       "githubRepo": "https://github.com/setloop-io/LLM-Attack-Suite"
@@ -70,7 +70,7 @@
     {
       "title": "EvalResearchBench: Can AI Agents Build Their Own Feedback for Recursive Self-Improvement?",
       "summary": "AI agents can automate benchmark design to reduce evaluation costs, but their generated evaluators still fall short of target agreement and suffer from budget exhaustion and score dominance issues.",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2610.04184",
       "url": "https://huggingface.co/papers/2610.04184",
       "githubRepo": "https://github.com/Mercury7353/self-evaluation-bench"
@@ -78,7 +78,7 @@
     {
       "title": "Diffusion Language Models Change Speed Across Tasks and Languages",
       "summary": "Diffusion language models spend more computation on novel, rare, or incorrect outputs, and decoding speed can improve inference efficiency and reliability.",
-      "upvotes": 2,
+      "upvotes": 3,
       "arxiv_id": "2610.25835",
       "url": "https://huggingface.co/papers/2610.25835",
       "githubRepo": null
@@ -86,7 +86,7 @@
     {
       "title": "Different Tasks, Different Timesteps: Temporal Task-Aware Quantization for Diffusion Language Models",
       "summary": "T2Quant improves diffusion language model quantization by dynamically allocating activation precision across denoising steps based on predicted task- and time-dependent sensitivity.",
-      "upvotes": 5,
+      "upvotes": 10,
       "arxiv_id": "2610.31198",
       "url": "https://huggingface.co/papers/2610.31198",
       "githubRepo": "https://github.com/OfekAvivi/T2Quant"

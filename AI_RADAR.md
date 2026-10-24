@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sat, 24 Oct 2026 06:46:50 GMT`*
+*Last Synchronized: `Sat, 24 Oct 2026 11:47:31 GMT`*
 
 ---
 
@@ -10,12 +10,12 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Ornith-1.5-122B** (`Model` • *ornith-ai*)
-> High-performance NLP open-weights model by ornith-ai, trending with over 151 community likes and 14,049 downloads on Hugging Face.
+### **Raon-1-mini-preview** (`Model` • *KRAFTON*)
+> High-performance NLP open-weights model by KRAFTON, trending with over 154 community likes and 917 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `MIT` (2026)
-- ⚡ **Metrics**: `Trending Score: 146, Likes: 151, Downloads: 14,049`
-- 🔗 **Resource Link**: [https://huggingface.co/ornith-ai/Ornith-1.5-122B](https://huggingface.co/ornith-ai/Ornith-1.5-122B)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 145, Likes: 154, Downloads: 917`
+- 🔗 **Resource Link**: [https://huggingface.co/KRAFTON/Raon-1-mini-preview](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
 
 ---
 
@@ -34,12 +34,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,615 | 📥 57,715 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `RecursiveSI/flint` | text-generation | ❤️ 703 | 📥 1,904 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,429 | 📥 534,837 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 660 | 📥 7,658 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,065 | 📥 2,026,951 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 422 | 📥 1,060 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,667 | 📥 73,215 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `RecursiveSI/flint` | text-generation | ❤️ 722 | 📥 4,795 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,446 | 📥 590,742 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 666 | 📥 9,717 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,096 | 📥 2,087,721 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 428 | 📥 2,537 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
 
 
 ---
@@ -49,11 +49,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **TARSphere: A Robot-Oriented Full-Stack Framework for Long-Horizon Embodied Agents in Evolving Physical and Social Environments** | 👍 1 | TARSphere is a robot framework that integrates physics simulation, embodied NPCs, and a frozen multimodal language model to evaluate long-horizon embodied agents across diverse indoor tasks and social conditions. | [Read](https://huggingface.co/papers/2610.30043) |
-| **The LLM-Attacker: A Unified Red-Team Framework for Privacy Evaluation of Split and Distributed LLM Systems** | 👍 2 | LLM-Attacker standardizes privacy evaluations for split language models by recording attacker configurations, enabling comparable scoring of reconstruction attacks, and requiring linked undefended baselines for defense claims. | [Read](https://huggingface.co/papers/2610.22722) |
-| **EvalResearchBench: Can AI Agents Build Their Own Feedback for Recursive Self-Improvement?** | 👍 1 | AI agents can automate benchmark design to reduce evaluation costs, but their generated evaluators still fall short of target agreement and suffer from budget exhaustion and score dominance issues. | [Read](https://huggingface.co/papers/2610.04184) |
-| **Diffusion Language Models Change Speed Across Tasks and Languages** | 👍 2 | Diffusion language models spend more computation on novel, rare, or incorrect outputs, and decoding speed can improve inference efficiency and reliability. | [Read](https://huggingface.co/papers/2610.25835) |
-| **Different Tasks, Different Timesteps: Temporal Task-Aware Quantization for Diffusion Language Models** | 👍 5 | T2Quant improves diffusion language model quantization by dynamically allocating activation precision across denoising steps based on predicted task- and time-dependent sensitivity. | [Read](https://huggingface.co/papers/2610.31198) |
+| **TARSphere: A Robot-Oriented Full-Stack Framework for Long-Horizon Embodied Agents in Evolving Physical and Social Environments** | 👍 2 | TARSphere is a robot framework that integrates physics simulation, embodied NPCs, and a frozen multimodal language model to evaluate long-horizon embodied agents across diverse indoor tasks and social conditions. | [Read](https://huggingface.co/papers/2610.30043) |
+| **The LLM-Attacker: A Unified Red-Team Framework for Privacy Evaluation of Split and Distributed LLM Systems** | 👍 4 | LLM-Attacker standardizes privacy evaluations for split language models by recording attacker configurations, enabling comparable scoring of reconstruction attacks, and requiring linked undefended baselines for defense claims. | [Read](https://huggingface.co/papers/2610.22722) |
+| **EvalResearchBench: Can AI Agents Build Their Own Feedback for Recursive Self-Improvement?** | 👍 2 | AI agents can automate benchmark design to reduce evaluation costs, but their generated evaluators still fall short of target agreement and suffer from budget exhaustion and score dominance issues. | [Read](https://huggingface.co/papers/2610.04184) |
+| **Diffusion Language Models Change Speed Across Tasks and Languages** | 👍 3 | Diffusion language models spend more computation on novel, rare, or incorrect outputs, and decoding speed can improve inference efficiency and reliability. | [Read](https://huggingface.co/papers/2610.25835) |
+| **Different Tasks, Different Timesteps: Temporal Task-Aware Quantization for Diffusion Language Models** | 👍 10 | T2Quant improves diffusion language model quantization by dynamically allocating activation precision across denoising steps based on predicted task- and time-dependent sensitivity. | [Read](https://huggingface.co/papers/2610.31198) |
 
 
 ---
@@ -66,7 +66,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `25/25` healthy verified (`0` flagged / timed out)
+- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
 - **Dependency Security**: `32` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---
