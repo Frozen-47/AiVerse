@@ -4,6 +4,36 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by ISTA-DASLab, trending with over 159 community likes and 32,479 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "MIT",
+        "year": 2026,
+        "org": "ISTA-DASLab",
+        "size": "Open Weights",
+        "architecture": "ISTA-DASLab text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF\")",
+        "benchmarks": "Trending Score: 155, Likes: 159, Downloads: 32,479",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF",
+        "citations": [
+          {
+            "text": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF on Hugging Face",
+            "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-24",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Raon-1-mini-preview",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by KRAFTON, trending with over 154 community likes and 917 downloads on Hugging Face.",

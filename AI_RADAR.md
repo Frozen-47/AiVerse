@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sat, 24 Oct 2026 11:47:31 GMT`*
+*Last Synchronized: `Sat, 24 Oct 2026 15:13:35 GMT`*
 
 ---
 
@@ -10,12 +10,12 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Raon-1-mini-preview** (`Model` • *KRAFTON*)
-> High-performance NLP open-weights model by KRAFTON, trending with over 154 community likes and 917 downloads on Hugging Face.
+### **DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF** (`Model` • *ISTA-DASLab*)
+> High-performance NLP open-weights model by ISTA-DASLab, trending with over 159 community likes and 32,479 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 145, Likes: 154, Downloads: 917`
-- 🔗 **Resource Link**: [https://huggingface.co/KRAFTON/Raon-1-mini-preview](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- 🏷️ **Domain & License**: `NLP` • `MIT` (2026)
+- ⚡ **Metrics**: `Trending Score: 155, Likes: 159, Downloads: 32,479`
+- 🔗 **Resource Link**: [https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF)
 
 ---
 
@@ -34,12 +34,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,667 | 📥 73,215 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `RecursiveSI/flint` | text-generation | ❤️ 722 | 📥 4,795 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,446 | 📥 590,742 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 666 | 📥 9,717 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,096 | 📥 2,087,721 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 428 | 📥 2,537 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,704 | 📥 73,215 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `RecursiveSI/flint` | text-generation | ❤️ 741 | 📥 4,795 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,463 | 📥 590,742 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 677 | 📥 9,717 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,120 | 📥 2,087,721 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 432 | 📥 2,537 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
 
 
 ---
@@ -53,7 +53,7 @@
 | **The LLM-Attacker: A Unified Red-Team Framework for Privacy Evaluation of Split and Distributed LLM Systems** | 👍 4 | LLM-Attacker standardizes privacy evaluations for split language models by recording attacker configurations, enabling comparable scoring of reconstruction attacks, and requiring linked undefended baselines for defense claims. | [Read](https://huggingface.co/papers/2610.22722) |
 | **EvalResearchBench: Can AI Agents Build Their Own Feedback for Recursive Self-Improvement?** | 👍 2 | AI agents can automate benchmark design to reduce evaluation costs, but their generated evaluators still fall short of target agreement and suffer from budget exhaustion and score dominance issues. | [Read](https://huggingface.co/papers/2610.04184) |
 | **Diffusion Language Models Change Speed Across Tasks and Languages** | 👍 3 | Diffusion language models spend more computation on novel, rare, or incorrect outputs, and decoding speed can improve inference efficiency and reliability. | [Read](https://huggingface.co/papers/2610.25835) |
-| **Different Tasks, Different Timesteps: Temporal Task-Aware Quantization for Diffusion Language Models** | 👍 10 | T2Quant improves diffusion language model quantization by dynamically allocating activation precision across denoising steps based on predicted task- and time-dependent sensitivity. | [Read](https://huggingface.co/papers/2610.31198) |
+| **Different Tasks, Different Timesteps: Temporal Task-Aware Quantization for Diffusion Language Models** | 👍 14 | T2Quant improves diffusion language model quantization by dynamically allocating activation precision across denoising steps based on predicted task- and time-dependent sensitivity. | [Read](https://huggingface.co/papers/2610.31198) |
 
 
 ---
@@ -66,7 +66,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
+- **Sample Link Health Check**: `19/25` healthy verified (`6` flagged / timed out)
 - **Dependency Security**: `32` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---
