@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-24T15:13:30.492Z",
+  "timestamp": "2026-10-24T19:11:43.044Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 2704,
+      "likes": 2737,
       "downloads": 73215,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 741,
+      "likes": 752,
       "downloads": 4795,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
@@ -20,7 +20,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1463,
+      "likes": 1478,
       "downloads": 590742,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -28,7 +28,7 @@
     {
       "id": "OpenMOSS-Team/MOSS-Image-SFT",
       "author": "OpenMOSS-Team",
-      "likes": 677,
+      "likes": 683,
       "downloads": 9717,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
@@ -36,7 +36,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 9120,
+      "likes": 9146,
       "downloads": 2087721,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -44,7 +44,7 @@
     {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 432,
+      "likes": 437,
       "downloads": 2537,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
@@ -86,7 +86,7 @@
     {
       "title": "Different Tasks, Different Timesteps: Temporal Task-Aware Quantization for Diffusion Language Models",
       "summary": "T2Quant improves diffusion language model quantization by dynamically allocating activation precision across denoising steps based on predicted task- and time-dependent sensitivity.",
-      "upvotes": 14,
+      "upvotes": 15,
       "arxiv_id": "2610.31198",
       "url": "https://huggingface.co/papers/2610.31198",
       "githubRepo": "https://github.com/OfekAvivi/T2Quant"

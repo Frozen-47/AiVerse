@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-24)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF** (`Model`) |
+| 📥 **Queued for Review** | **imagenet-1k** (`Dataset`) |
 | 🌟 **Tool of the Day** | **MMLU-Pro** (TIGER-Lab) — [Explore](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
 | 📜 **Top Daily Paper** | [TARSphere: A Robot-Oriented Full-Stack Framework f...](https://huggingface.co/papers/2610.30043) |
-| 🛡️ **Catalog Links Checked** | **19/25** operational |
-| 🕒 **Last Synchronized** | `Sat, 24 Oct 2026 15:13:35 GMT` |
+| 🛡️ **Catalog Links Checked** | **20/25** operational |
+| 🕒 **Last Synchronized** | `Sat, 24 Oct 2026 19:11:48 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

@@ -1,38 +1,33 @@
 {
-  "timestamp": "2026-10-24T15:13:30.639Z",
+  "timestamp": "2026-10-24T19:11:43.198Z",
   "checked": 25,
-  "healthy": 19,
-  "broken": 6,
+  "healthy": 20,
+  "broken": 5,
   "issues": [
+    {
+      "name": "Lovable.dev",
+      "url": "https://lovable.dev",
+      "status": 403
+    },
+    {
+      "name": "Codex",
+      "url": "https://openai.com/blog/openai-codex",
+      "status": 403
+    },
+    {
+      "name": "OpenAI Platform",
+      "url": "https://platform.openai.com",
+      "status": 403
+    },
+    {
+      "name": "Tome",
+      "url": "https://tome.app",
+      "status": 404
+    },
     {
       "name": "GPT-4",
       "url": "https://openai.com/gpt-4",
       "status": 403
-    },
-    {
-      "name": "GPT-4o mini",
-      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
-      "status": 403
-    },
-    {
-      "name": "GPT-3",
-      "url": "https://openai.com/research/language-models-are-few-shot-learners",
-      "status": 403
-    },
-    {
-      "name": "Claude",
-      "url": "https://claude.ai",
-      "status": 403
-    },
-    {
-      "name": "Midjourney",
-      "url": "https://www.midjourney.com",
-      "status": 403
-    },
-    {
-      "name": "GPT-3.5 Turbo",
-      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
-      "status": 404
     }
   ]
 }

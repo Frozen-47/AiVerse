@@ -1,1 +1,1 @@
-DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF
+imagenet-1k
