@@ -1,1 +1,1 @@
-text-to-3d-with-llm-code
+Ornith-1.5-122B

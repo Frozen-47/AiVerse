@@ -4,6 +4,36 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Ornith-1.5-122B",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by ornith-ai, trending with over 151 community likes and 14,049 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "MIT",
+        "year": 2026,
+        "org": "ornith-ai",
+        "size": "122B params",
+        "architecture": "ornith-ai text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ornith-ai/Ornith-1.5-122B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ornith-ai/Ornith-1.5-122B\")",
+        "benchmarks": "Trending Score: 146, Likes: 151, Downloads: 14,049",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+        "citations": [
+          {
+            "text": "ornith-ai/Ornith-1.5-122B on Hugging Face",
+            "url": "https://huggingface.co/ornith-ai/Ornith-1.5-122B"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-24",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "text-to-3d-with-llm-code",
         "type": "Dataset",
         "summary": "Rapidata Text-to-3D with LLM code Benchmark \t Built by Rapidata, collected with the Rapidata Python SDK. To evaluate your own models and create a leaderboard, check out (22 likes, 430 downloads).",

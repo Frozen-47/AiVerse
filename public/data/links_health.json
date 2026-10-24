@@ -1,13 +1,7 @@
 {
-  "timestamp": "2026-10-24T00:10:30.937Z",
+  "timestamp": "2026-10-24T06:46:46.059Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
-  "issues": [
-    {
-      "name": "GPT-4o mini",
-      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
-      "status": 403
-    }
-  ]
+  "healthy": 25,
+  "broken": 0,
+  "issues": []
 }
