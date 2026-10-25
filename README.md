@@ -17,12 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-25)
 | Metric | Status / Count |
 | :--- | :--- |
+| 📥 **Queued for Review** | **DeepSeek-V4.1-Flash-1017-abliterated-GGUF** (`Model`) |
 | 🌟 **Tool of the Day** | **drama-3** (fishaudio) — [Explore](https://huggingface.co/fishaudio/drama-3) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
 | 📜 **Top Daily Paper** | [TARSphere: A Robot-Oriented Full-Stack Framework f...](https://huggingface.co/papers/2610.30043) |
-| 🛡️ **Catalog Links Checked** | **19/25** operational |
-| 🕒 **Last Synchronized** | `Sun, 25 Oct 2026 02:55:42 GMT` |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Sun, 25 Oct 2026 09:32:00 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

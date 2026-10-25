@@ -1,5 +1,35 @@
 [
   {
+    "date": "2026-10-25",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "DeepSeek-V4.1-Flash-1017-abliterated-GGUF",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by orcarouter, trending with over 169 community likes and 7,293 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "MIT",
+        "year": 2026,
+        "org": "orcarouter",
+        "size": "Open Weights",
+        "architecture": "orcarouter text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF\")",
+        "benchmarks": "Trending Score: 159, Likes: 169, Downloads: 7,293",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF",
+        "citations": [
+          {
+            "text": "orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF on Hugging Face",
+            "url": "https://huggingface.co/orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-24",
     "status": "queued_in_review_list",
     "assets": [

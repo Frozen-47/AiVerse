@@ -1,1 +1,1 @@
-MiniCPM-V-4.7-Demo
+DeepSeek-V4.1-Flash-1017-abliterated-GGUF

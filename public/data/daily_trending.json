@@ -1,51 +1,51 @@
 {
-  "timestamp": "2026-10-25T02:55:37.804Z",
+  "timestamp": "2026-10-25T09:31:57.027Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 2801,
-      "downloads": 73215,
+      "likes": 2849,
+      "downloads": 85275,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 782,
-      "downloads": 4795,
+      "likes": 797,
+      "downloads": 6444,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
     },
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1507,
-      "downloads": 590742,
+      "likes": 1538,
+      "downloads": 660874,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
     },
     {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 9197,
-      "downloads": 2087721,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5"
-    },
-    {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 455,
-      "downloads": 2537,
+      "likes": 464,
+      "downloads": 3488,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
     },
     {
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 9227,
+      "downloads": 2107108,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5"
+    },
+    {
       "id": "OpenMOSS-Team/MOSS-Image-SFT",
       "author": "OpenMOSS-Team",
-      "likes": 701,
-      "downloads": 9717,
+      "likes": 704,
+      "downloads": 10757,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
     }
@@ -70,7 +70,7 @@
     {
       "title": "EvalResearchBench: Can AI Agents Build Their Own Feedback for Recursive Self-Improvement?",
       "summary": "AI agents can automate benchmark design to reduce evaluation costs, but their generated evaluators still fall short of target agreement and suffer from budget exhaustion and score dominance issues.",
-      "upvotes": 7,
+      "upvotes": 19,
       "arxiv_id": "2610.04184",
       "url": "https://huggingface.co/papers/2610.04184",
       "githubRepo": "https://github.com/Mercury7353/self-evaluation-bench"
@@ -86,7 +86,7 @@
     {
       "title": "Different Tasks, Different Timesteps: Temporal Task-Aware Quantization for Diffusion Language Models",
       "summary": "T2Quant improves diffusion language model quantization by dynamically allocating activation precision across denoising steps based on predicted task- and time-dependent sensitivity.",
-      "upvotes": 19,
+      "upvotes": 23,
       "arxiv_id": "2610.31198",
       "url": "https://huggingface.co/papers/2610.31198",
       "githubRepo": "https://github.com/OfekAvivi/T2Quant"
