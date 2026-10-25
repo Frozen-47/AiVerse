@@ -1,23 +1,48 @@
 {
-  "timestamp": "2026-10-25T09:31:57.181Z",
+  "timestamp": "2026-10-25T14:03:09.238Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 17,
+  "broken": 8,
   "issues": [
     {
-      "name": "Pi",
-      "url": "https://pi.ai",
+      "name": "Ideogram",
+      "url": "https://ideogram.ai",
       "status": 403
     },
     {
-      "name": "GPT-4o",
-      "url": "https://openai.com/chatgpt",
+      "name": "OpenAI Platform",
+      "url": "https://platform.openai.com",
       "status": 403
     },
     {
-      "name": "wan555",
-      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
-      "status": 401
+      "name": "GPT-4",
+      "url": "https://openai.com/gpt-4",
+      "status": 403
+    },
+    {
+      "name": "Midjourney v6",
+      "url": "https://www.midjourney.com/",
+      "status": 403
+    },
+    {
+      "name": "ChatGPT",
+      "url": "https://chatgpt.com",
+      "status": 403
+    },
+    {
+      "name": "SAM (Segment Anything Model)",
+      "url": "https://segment-anything.com/",
+      "status": "Network Error"
+    },
+    {
+      "name": "Arena-Hard-Auto",
+      "url": "https://github.com/sunshanghai/arena-hard-auto",
+      "status": 404
+    },
+    {
+      "name": "ERNIE Bot",
+      "url": "https://yiyan.baidu.com",
+      "status": "Timeout"
     }
   ]
 }
