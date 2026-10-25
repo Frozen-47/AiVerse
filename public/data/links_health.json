@@ -1,22 +1,37 @@
 {
-  "timestamp": "2026-10-24T23:55:47.897Z",
+  "timestamp": "2026-10-25T02:55:37.943Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 19,
+  "broken": 6,
   "issues": [
+    {
+      "name": "Codex",
+      "url": "https://openai.com/blog/openai-codex",
+      "status": 403
+    },
+    {
+      "name": "o1 (OpenAI)",
+      "url": "https://openai.com/o1",
+      "status": 403
+    },
+    {
+      "name": "GPT-4",
+      "url": "https://openai.com/gpt-4",
+      "status": 403
+    },
+    {
+      "name": "Whisper",
+      "url": "https://openai.com/research/whisper",
+      "status": 403
+    },
     {
       "name": "OpenAI Platform",
       "url": "https://platform.openai.com",
       "status": 403
     },
     {
-      "name": "GPT-3",
-      "url": "https://openai.com/research/language-models-are-few-shot-learners",
-      "status": 403
-    },
-    {
-      "name": "Canva AI",
-      "url": "https://www.canva.com/ai-image-generator",
+      "name": "Leonardo.ai",
+      "url": "https://leonardo.ai",
       "status": 403
     }
   ]
