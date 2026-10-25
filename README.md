@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-25)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Nanbeige4.3-33B** (`Model`) |
+| 📥 **Queued for Review** | **Pro-Realism-Edit-Studio** (`Platform`) |
 | 🌟 **Tool of the Day** | **drama-3** (fishaudio) — [Explore](https://huggingface.co/fishaudio/drama-3) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
 | 📜 **Top Daily Paper** | [TARSphere: A Robot-Oriented Full-Stack Framework f...](https://huggingface.co/papers/2610.30043) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Synchronized** | `Sun, 25 Oct 2026 19:25:11 GMT` |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Sun, 25 Oct 2026 23:42:49 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

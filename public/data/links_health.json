@@ -1,27 +1,17 @@
 {
-  "timestamp": "2026-10-25T19:25:06.812Z",
+  "timestamp": "2026-10-25T23:42:44.016Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "tiktok-videos-4b",
-      "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
-      "status": 401
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
     },
     {
-      "name": "wan555",
-      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
-      "status": 401
-    },
-    {
-      "name": "Google Gemini",
-      "url": "https://gemini.google.com",
-      "status": "Network Error"
-    },
-    {
-      "name": "Tabnine",
-      "url": "https://www.tabnine.com",
+      "name": "Play.ht",
+      "url": "https://play.ht",
       "status": "Network Error"
     }
   ]

@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-25T19:25:06.667Z",
+  "timestamp": "2026-10-25T23:42:43.873Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 2950,
+      "likes": 2977,
       "downloads": 85275,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 837,
+      "likes": 855,
       "downloads": 6444,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
@@ -20,7 +20,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1584,
+      "likes": 1600,
       "downloads": 660874,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -28,7 +28,7 @@
     {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 488,
+      "likes": 495,
       "downloads": 3488,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
@@ -36,18 +36,18 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 9304,
+      "likes": 9333,
       "downloads": 2107108,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     },
     {
-      "id": "OpenMOSS-Team/MOSS-Image-SFT",
-      "author": "OpenMOSS-Team",
-      "likes": 722,
-      "downloads": 10757,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
+      "id": "Nanbeige/Nanbeige4.3-33B",
+      "author": "Nanbeige",
+      "likes": 356,
+      "downloads": 0,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
     }
   ],
   "papers": [
@@ -62,7 +62,7 @@
     {
       "title": "The LLM-Attacker: A Unified Red-Team Framework for Privacy Evaluation of Split and Distributed LLM Systems",
       "summary": "LLM-Attacker standardizes privacy evaluations for split language models by recording attacker configurations, enabling comparable scoring of reconstruction attacks, and requiring linked undefended baselines for defense claims.",
-      "upvotes": 9,
+      "upvotes": 10,
       "arxiv_id": "2610.22722",
       "url": "https://huggingface.co/papers/2610.22722",
       "githubRepo": "https://github.com/setloop-io/LLM-Attack-Suite"
@@ -70,7 +70,7 @@
     {
       "title": "EvalResearchBench: Can AI Agents Build Their Own Feedback for Recursive Self-Improvement?",
       "summary": "AI agents can automate benchmark design to reduce evaluation costs, but their generated evaluators still fall short of target agreement and suffer from budget exhaustion and score dominance issues.",
-      "upvotes": 21,
+      "upvotes": 22,
       "arxiv_id": "2610.04184",
       "url": "https://huggingface.co/papers/2610.04184",
       "githubRepo": "https://github.com/Mercury7353/self-evaluation-bench"
@@ -78,7 +78,7 @@
     {
       "title": "Diffusion Language Models Change Speed Across Tasks and Languages",
       "summary": "Diffusion language models spend more computation on novel, rare, or incorrect outputs, and decoding speed can improve inference efficiency and reliability.",
-      "upvotes": 9,
+      "upvotes": 10,
       "arxiv_id": "2610.25835",
       "url": "https://huggingface.co/papers/2610.25835",
       "githubRepo": null
