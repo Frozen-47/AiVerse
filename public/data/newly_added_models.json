@@ -4,6 +4,36 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Nanbeige4.3-33B",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by Nanbeige, trending with over 283 community likes and 0 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Nanbeige",
+        "size": "33B params",
+        "architecture": "Nanbeige text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Nanbeige/Nanbeige4.3-33B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Nanbeige/Nanbeige4.3-33B\")",
+        "benchmarks": "Trending Score: 283, Likes: 283, Downloads: 0",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+        "citations": [
+          {
+            "text": "Nanbeige/Nanbeige4.3-33B on Hugging Face",
+            "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-25",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Carbon-X",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by HuggingFaceBio, trending with over 164 community likes and 807 downloads on Hugging Face.",

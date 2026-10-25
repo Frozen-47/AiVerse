@@ -1,48 +1,28 @@
 {
-  "timestamp": "2026-10-25T14:03:09.238Z",
+  "timestamp": "2026-10-25T19:25:06.812Z",
   "checked": 25,
-  "healthy": 17,
-  "broken": 8,
+  "healthy": 21,
+  "broken": 4,
   "issues": [
     {
-      "name": "Ideogram",
-      "url": "https://ideogram.ai",
-      "status": 403
+      "name": "tiktok-videos-4b",
+      "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
+      "status": 401
     },
     {
-      "name": "OpenAI Platform",
-      "url": "https://platform.openai.com",
-      "status": 403
+      "name": "wan555",
+      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
+      "status": 401
     },
     {
-      "name": "GPT-4",
-      "url": "https://openai.com/gpt-4",
-      "status": 403
-    },
-    {
-      "name": "Midjourney v6",
-      "url": "https://www.midjourney.com/",
-      "status": 403
-    },
-    {
-      "name": "ChatGPT",
-      "url": "https://chatgpt.com",
-      "status": 403
-    },
-    {
-      "name": "SAM (Segment Anything Model)",
-      "url": "https://segment-anything.com/",
+      "name": "Google Gemini",
+      "url": "https://gemini.google.com",
       "status": "Network Error"
     },
     {
-      "name": "Arena-Hard-Auto",
-      "url": "https://github.com/sunshanghai/arena-hard-auto",
-      "status": 404
-    },
-    {
-      "name": "ERNIE Bot",
-      "url": "https://yiyan.baidu.com",
-      "status": "Timeout"
+      "name": "Tabnine",
+      "url": "https://www.tabnine.com",
+      "status": "Network Error"
     }
   ]
 }

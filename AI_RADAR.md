@@ -2,27 +2,20 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sun, 25 Oct 2026 14:03:16 GMT`*
+*Last Synchronized: `Sun, 25 Oct 2026 19:25:11 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (2)
+## 📥 Newly Queued Assets for Review (1)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Carbon-X** (`Model` • *HuggingFaceBio*)
-> High-performance NLP open-weights model by HuggingFaceBio, trending with over 164 community likes and 807 downloads on Hugging Face.
+### **Nanbeige4.3-33B** (`Model` • *Nanbeige*)
+> High-performance NLP open-weights model by Nanbeige, trending with over 283 community likes and 0 downloads on Hugging Face.
 
 - 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 159, Likes: 164, Downloads: 807`
-- 🔗 **Resource Link**: [https://huggingface.co/HuggingFaceBio/Carbon-X](https://huggingface.co/HuggingFaceBio/Carbon-X)
-
-### **Nemotron-SFT-Agentic-Finance-v1** (`Dataset` • *nvidia*)
-> Dataset Description: 	 This dataset contains 7,878 multi-turn tool-calling examples for training financial reasoning agents. It covers Numerical Reasoning, Financial Mo (20 likes, 1,215 downloads).
-
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 17, Likes: 20, Downloads: 1,215`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/Nemotron-SFT-Agentic-Finance-v1](https://huggingface.co/datasets/nvidia/Nemotron-SFT-Agentic-Finance-v1)
+- ⚡ **Metrics**: `Trending Score: 283, Likes: 283, Downloads: 0`
+- 🔗 **Resource Link**: [https://huggingface.co/Nanbeige/Nanbeige4.3-33B](https://huggingface.co/Nanbeige/Nanbeige4.3-33B)
 
 ---
 
@@ -41,12 +34,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,899 | 📥 85,275 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `RecursiveSI/flint` | text-generation | ❤️ 814 | 📥 6,444 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,564 | 📥 660,874 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 479 | 📥 3,488 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,249 | 📥 2,107,108 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 714 | 📥 10,757 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 2,950 | 📥 85,275 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `RecursiveSI/flint` | text-generation | ❤️ 837 | 📥 6,444 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,584 | 📥 660,874 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 488 | 📥 3,488 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,304 | 📥 2,107,108 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `OpenMOSS-Team/MOSS-Image-SFT` | text-to-image | ❤️ 722 | 📥 10,757 | [View](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT) |
 
 
 ---
@@ -73,7 +66,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `17/25` healthy verified (`8` flagged / timed out)
+- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
 - **Dependency Security**: `32` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

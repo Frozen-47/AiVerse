@@ -1,5 +1,30 @@
 [
   {
+    "name": "Nanbeige4.3-33B",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by Nanbeige, trending with over 283 community likes and 0 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "Nanbeige",
+    "size": "33B params",
+    "architecture": "Nanbeige text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Nanbeige/Nanbeige4.3-33B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Nanbeige/Nanbeige4.3-33B\")",
+    "benchmarks": "Trending Score: 283, Likes: 283, Downloads: 0",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+    "citations": [
+      {
+        "text": "Nanbeige/Nanbeige4.3-33B on Hugging Face",
+        "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
+      }
+    ],
+    "created_at": "2026-10-25T19:25:04.715Z"
+  },
+  {
     "name": "Nemotron-SFT-Agentic-Finance-v1",
     "type": "Dataset",
     "summary": "Dataset Description: \t This dataset contains 7,878 multi-turn tool-calling examples for training financial reasoning agents. It covers Numerical Reasoning, Financial Mo (20 likes, 1,215 downloads).",
