@@ -225,6 +225,11 @@ CREATE POLICY "Admin delete entries"
   ON public.entries FOR DELETE
   USING (private.is_admin());
 
+DROP POLICY IF EXISTS "Admin insert entries" ON public.entries;
+CREATE POLICY "Admin insert entries"
+  ON public.entries FOR INSERT
+  WITH CHECK (private.is_admin());
+
 DROP POLICY IF EXISTS "Allow public inserts" ON public.entries;
 DROP POLICY IF EXISTS "Public submit unapproved entries" ON public.entries;
 CREATE POLICY "Public submit unapproved entries"

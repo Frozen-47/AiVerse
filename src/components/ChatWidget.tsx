@@ -238,6 +238,10 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
   });
 
   const [currentSessionId, setCurrentSessionId] = useState<string>(() => {
+    if (isChatRoute || initialOpen) {
+      const empty = sessions.find((s) => !s.messages.some((m) => m.role === 'user'));
+      if (empty) return empty.id;
+    }
     return sessions[0]?.id || 'session_' + Date.now();
   });
 
@@ -256,6 +260,90 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
   const recognitionRef = useRef<any>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
 
+  // Transition tracking refs so opening chat starts fresh, while expanding/minimizing preserves state
+  const isExpandingFromMiniRef = useRef(false);
+  const isMinimizingFromStudioRef = useRef(false);
+  const prevIsMiniOpenRef = useRef(isMiniOpen);
+  const prevIsChatRouteRef = useRef(isChatRoute);
+
+  // Create a new chat session
+  const createNewSession = useCallback(() => {
+    if (isStreaming && abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    const newId = 'session_' + Date.now();
+    const newSession: ChatSession = {
+      id: newId,
+      title: 'New conversation',
+      createdAt: Date.now(),
+      mode: currentMode,
+      messages: [
+        {
+          role: 'assistant',
+          content: userName
+            ? `Hello **${userName}**! I'm **Vox**, running on **Groq LPU silicon** delivering 500+ tokens/sec inference. Ask me to compare models, analyze architectures, or check benchmark performance across our 330+ indexed technologies.`
+            : `Hello! I'm **Vox**, running on **Groq LPU silicon** delivering 500+ tokens/sec inference. Ask me to compare frontier models, analyze architectures, or check benchmark performance across our 330+ indexed technologies.`,
+        },
+      ],
+    };
+    setSessions((prev) => [newSession, ...prev]);
+    setCurrentSessionId(newId);
+    setInput('');
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    setCurrentlySpeakingIdx(null);
+    if (currentUserKey) {
+      saveUserChat(currentUserKey, newSession);
+    }
+    return newId;
+  }, [currentMode, currentUserKey, isStreaming, userName]);
+
+  // Ensure fresh new session whenever opening chat
+  const ensureNewSessionOnOpen = useCallback(() => {
+    if (isStreaming && abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    setInput('');
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    setCurrentlySpeakingIdx(null);
+
+    setSessions((prev) => {
+      // 1. If active session is already fresh and empty (no user messages), keep it
+      const current = prev.find((s) => s.id === currentSessionId);
+      if (current && !current.messages.some((m) => m.role === 'user')) {
+        return prev;
+      }
+
+      // 2. If another session in history is empty, switch to it
+      const existingEmpty = prev.find((s) => !s.messages.some((m) => m.role === 'user'));
+      if (existingEmpty) {
+        setCurrentSessionId(existingEmpty.id);
+        return prev;
+      }
+
+      // 3. Otherwise, initialize a fresh session with Vox's welcome greeting
+      const newId = 'session_' + Date.now();
+      const newSession: ChatSession = {
+        id: newId,
+        title: 'New conversation',
+        createdAt: Date.now(),
+        mode: currentMode,
+        messages: [
+          {
+            role: 'assistant',
+            content: userName
+              ? `Hello **${userName}**! I'm **Vox**, running on **Groq LPU silicon** delivering 500+ tokens/sec inference. Ask me to compare models, analyze architectures, or check benchmark performance across our 330+ indexed technologies.`
+              : `Hello! I'm **Vox**, running on **Groq LPU silicon** delivering 500+ tokens/sec inference. Ask me to compare frontier models, analyze architectures, or check benchmark performance across our 330+ indexed technologies.`,
+          },
+        ],
+      };
+      setCurrentSessionId(newId);
+      if (currentUserKey) {
+        saveUserChat(currentUserKey, newSession);
+      }
+      return [newSession, ...prev];
+    });
+  }, [currentMode, currentSessionId, currentUserKey, isStreaming, userName]);
+
   // Check speech recognition support
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -271,7 +359,13 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
         if (isChatRoute) {
           onExitChatRoute?.();
         } else {
-          setIsMiniOpen((prev) => !prev);
+          setIsMiniOpen((prev) => {
+            const next = !prev;
+            if (next) {
+              ensureNewSessionOnOpen();
+            }
+            return next;
+          });
         }
       } else if (e.key === 'Escape') {
         if (isChatRoute) {
@@ -283,6 +377,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
     };
 
     const handleCustomOpen = () => {
+      ensureNewSessionOnOpen();
       if (onNavigateToChat) {
         onNavigateToChat();
       } else {
@@ -296,7 +391,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('open-aiverse-chat', handleCustomOpen);
     };
-  }, [isMiniOpen, isChatRoute, onNavigateToChat, onExitChatRoute]);
+  }, [isMiniOpen, isChatRoute, onNavigateToChat, onExitChatRoute, ensureNewSessionOnOpen]);
 
   // Load account chats from Supabase when user logs in or switches accounts
   useEffect(() => {
@@ -373,7 +468,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
     }
   }, [messages, isChatRoute, isMiniOpen]);
 
-  // Focus textarea when open
+  // Focus textarea when chat opened
   useEffect(() => {
     if (isChatRoute) {
       setTimeout(() => textareaRef.current?.focus(), 150);
@@ -382,33 +477,29 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
     }
   }, [isChatRoute, isMiniOpen]);
 
-  // Create a new chat session
-  const createNewSession = () => {
-    if (isStreaming && abortControllerRef.current) {
-      abortControllerRef.current.abort();
+  // Ensure fresh new session when mini floating widget opens
+  useEffect(() => {
+    if (!prevIsMiniOpenRef.current && isMiniOpen) {
+      if (isMinimizingFromStudioRef.current) {
+        isMinimizingFromStudioRef.current = false;
+      } else {
+        ensureNewSessionOnOpen();
+      }
     }
-    const newId = 'session_' + Date.now();
-    const newSession: ChatSession = {
-      id: newId,
-      title: 'New conversation',
-      createdAt: Date.now(),
-      mode: currentMode,
-      messages: [
-        {
-          role: 'assistant',
-          content: `New conversation started. Ask me anything about AI models, architectures, frameworks, or benchmarks!`,
-        },
-      ],
-    };
-    setSessions((prev) => [newSession, ...prev]);
-    setCurrentSessionId(newId);
-    setInput('');
-    if (window.speechSynthesis) window.speechSynthesis.cancel();
-    setCurrentlySpeakingIdx(null);
-    if (currentUserKey) {
-      saveUserChat(currentUserKey, newSession);
+    prevIsMiniOpenRef.current = isMiniOpen;
+  }, [isMiniOpen, ensureNewSessionOnOpen]);
+
+  // Ensure fresh new session when entering /chat route
+  useEffect(() => {
+    if (isChatRoute) {
+      if (isExpandingFromMiniRef.current) {
+        isExpandingFromMiniRef.current = false;
+      } else if (!prevIsChatRouteRef.current) {
+        ensureNewSessionOnOpen();
+      }
     }
-  };
+    prevIsChatRouteRef.current = isChatRoute;
+  }, [isChatRoute, ensureNewSessionOnOpen]);
 
   // Delete session
   const deleteSession = (sessionId: string, e: React.MouseEvent) => {
@@ -1256,6 +1347,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
               {/* Minimize back to mini right bottom widget */}
               <button
                 onClick={() => {
+                  isMinimizingFromStudioRef.current = true;
                   onExitChatRoute?.();
                   setIsMiniOpen(true);
                 }}
@@ -1561,7 +1653,10 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
       {/* ── Sleek Collapsed Trigger Button in Right Bottom ── */}
       {!isMiniOpen && (
         <button
-          onClick={() => setIsMiniOpen(true)}
+          onClick={() => {
+            ensureNewSessionOnOpen();
+            setIsMiniOpen(true);
+          }}
           className="group fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 px-3.5 py-2.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.18)] dark:shadow-[0_8px_30px_rgba(255,255,255,0.12)] bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 border border-neutral-800 dark:border-white/20 hover:border-neutral-700 dark:hover:border-white/40 transition-colors duration-150 cursor-pointer"
           aria-label="Open Groq AI Assistant"
         >
@@ -1605,6 +1700,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
               {/* Expand to Fullscreen /chat Studio */}
               <button
                 onClick={() => {
+                  isExpandingFromMiniRef.current = true;
                   setIsMiniOpen(false);
                   onNavigateToChat?.();
                 }}

@@ -290,44 +290,27 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     setLoading(true);
     setError(null);
     try {
-      // 1. Fetch pending entries (approved = false)
-      const { data: pendingData, error: pendingErr } = await supabase
-        .from("entries")
-        .select("*")
-        .eq("approved", false)
-        .order("created_at", { ascending: false });
+      // 1. Fetch pending & approved entries in parallel
+      const [pendingResult, approvedResult] = await Promise.all([
+        supabase
+          .from("entries")
+          .select("*")
+          .eq("approved", false)
+          .order("created_at", { ascending: false }),
+        supabase
+          .from("entries")
+          .select("*")
+          .eq("approved", true)
+          .order("created_at", { ascending: false }),
+      ]);
 
-      if (pendingErr) throw pendingErr;
-      const loadedPending: Entry[] = (pendingData as Entry[]) || [];
+      if (pendingResult.error) throw pendingResult.error;
+      if (approvedResult.error) throw approvedResult.error;
 
-      // Also merge any automated daily pulse requests waiting for review
-      try {
-        const pulseRes = await fetch("/data/pending_pulse_requests.json");
-        if (pulseRes.ok) {
-          const pulseItems = await pulseRes.json();
-          if (Array.isArray(pulseItems)) {
-            const existingNames = new Set(loadedPending.map((p) => (p.name || "").toLowerCase().trim()));
-            pulseItems.forEach((item: Entry) => {
-              if (item && item.name && !existingNames.has(item.name.toLowerCase().trim())) {
-                loadedPending.push({ ...item, approved: false, submitted_by: item.submitted_by || "daily-pulse-bot" });
-              }
-            });
-          }
-        }
-      } catch {}
+      const loadedPendingRaw: Entry[] = (pendingResult.data as Entry[]) || [];
+      const loadedApproved: Entry[] = (approvedResult.data as Entry[]) || [];
 
-      setPendingEntries(loadedPending);
-
-      // 2. Fetch approved entries (approved = true)
-      const { data: approvedData, error: approvedErr } = await supabase
-        .from("entries")
-        .select("*")
-        .eq("approved", true)
-        .order("created_at", { ascending: false });
-
-      if (approvedErr) throw approvedErr;
-
-      const loadedApproved = (approvedData as Entry[]) || [];
+      // Build approved map and lookup set (combining defaultEntries & remote approved)
       const mergedMap = new Map<string, Entry>();
       defaultEntries.forEach((e) => {
         if (e && e.name) mergedMap.set(e.name.toLowerCase().trim(), { ...e, approved: true });
@@ -335,7 +318,70 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       loadedApproved.forEach((e) => {
         if (e && e.name) mergedMap.set(e.name.toLowerCase().trim(), e);
       });
-      setApprovedEntries(Array.from(mergedMap.values()));
+      const approvedEntriesList = Array.from(mergedMap.values());
+      setApprovedEntries(approvedEntriesList);
+
+      const approvedNamesSet = new Set<string>();
+      approvedEntriesList.forEach((e) => {
+        if (e && e.name) approvedNamesSet.add(e.name.toLowerCase().trim());
+      });
+
+      // Track locally approved and dismissed pulse requests
+      let localApprovedPulse = new Set<string>();
+      try {
+        const stored = localStorage.getItem("aiverse_approved_pulse_requests");
+        if (stored) {
+          const arr = JSON.parse(stored);
+          if (Array.isArray(arr)) arr.forEach((n) => localApprovedPulse.add(String(n).toLowerCase().trim()));
+        }
+      } catch {}
+
+      let localDismissedPulse = new Set<string>();
+      try {
+        const stored = localStorage.getItem("aiverse_dismissed_pulse_requests");
+        if (stored) {
+          const arr = JSON.parse(stored);
+          if (Array.isArray(arr)) arr.forEach((n) => localDismissedPulse.add(String(n).toLowerCase().trim()));
+        }
+      } catch {}
+
+      // Filter loaded pending: exclude soft-deleted entries, already-approved entries, and dismissed entries
+      const loadedPending: Entry[] = loadedPendingRaw.filter((p) => {
+        if (!p || !p.name) return false;
+        const normName = p.name.toLowerCase().trim();
+        if (p.summary === "[Deleted from Directory]" || p.summary?.startsWith("[Deleted")) return false;
+        if (approvedNamesSet.has(normName) || localApprovedPulse.has(normName)) return false;
+        if (localDismissedPulse.has(normName)) return false;
+        return true;
+      });
+
+      // Also merge any automated daily pulse requests waiting for review (ONLY if not approved or dismissed)
+      try {
+        const pulseRes = await fetch("/data/pending_pulse_requests.json");
+        if (pulseRes.ok) {
+          const pulseItems = await pulseRes.json();
+          if (Array.isArray(pulseItems)) {
+            const pendingNames = new Set(loadedPending.map((p) => (p.name || "").toLowerCase().trim()));
+            pulseItems.forEach((item: Entry) => {
+              if (item && item.name) {
+                const normName = item.name.toLowerCase().trim();
+                if (
+                  !pendingNames.has(normName) &&
+                  !approvedNamesSet.has(normName) &&
+                  !localApprovedPulse.has(normName) &&
+                  !localDismissedPulse.has(normName) &&
+                  item.summary !== "[Deleted from Directory]"
+                ) {
+                  loadedPending.push({ ...item, approved: false, submitted_by: item.submitted_by || "daily-pulse-bot" });
+                  pendingNames.add(normName);
+                }
+              }
+            });
+          }
+        }
+      } catch {}
+
+      setPendingEntries(loadedPending);
 
       // 3. Fetch user accounts (try get_admin_users to capture all auth.users, fallback to user_preferences)
       let usersRows: any[] = [];
@@ -478,6 +524,25 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         if (upsertErr && err) throw err;
       }
 
+      // Persist to local approved pulse tracking
+      try {
+        const stored = localStorage.getItem("aiverse_approved_pulse_requests");
+        const list: string[] = stored ? JSON.parse(stored) : [];
+        const set = new Set(list.map((n) => n.toLowerCase().trim()));
+        set.add(entry.name.toLowerCase().trim());
+        localStorage.setItem("aiverse_approved_pulse_requests", JSON.stringify(Array.from(set)));
+      } catch {}
+
+      // Clean from dismissed pulse tracking if previously recorded
+      try {
+        const stored = localStorage.getItem("aiverse_dismissed_pulse_requests");
+        if (stored) {
+          const list: string[] = JSON.parse(stored);
+          const filtered = list.filter((n) => n.toLowerCase().trim() !== entry.name.toLowerCase().trim());
+          localStorage.setItem("aiverse_dismissed_pulse_requests", JSON.stringify(filtered));
+        }
+      } catch {}
+
       setPendingEntries((prev) => prev.filter((e) => e.name !== entry.name));
       setApprovedEntries((prev) => [{ ...entry, approved: true }, ...prev]);
       if (reviewingEntry?.name === entry.name) setReviewingEntry(null);
@@ -507,6 +572,27 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         .upsert(payload, { onConflict: "name" });
 
       const count = pendingEntries.length;
+
+      // Persist all approved names to local tracking
+      try {
+        const stored = localStorage.getItem("aiverse_approved_pulse_requests");
+        const list: string[] = stored ? JSON.parse(stored) : [];
+        const set = new Set(list.map((n) => n.toLowerCase().trim()));
+        names.forEach((n) => set.add(n.toLowerCase().trim()));
+        localStorage.setItem("aiverse_approved_pulse_requests", JSON.stringify(Array.from(set)));
+      } catch {}
+
+      // Clean all approved names from dismissed tracking
+      try {
+        const stored = localStorage.getItem("aiverse_dismissed_pulse_requests");
+        if (stored) {
+          const list: string[] = JSON.parse(stored);
+          const nameSet = new Set(names.map((n) => n.toLowerCase().trim()));
+          const filtered = list.filter((n) => !nameSet.has(n.toLowerCase().trim()));
+          localStorage.setItem("aiverse_dismissed_pulse_requests", JSON.stringify(filtered));
+        }
+      } catch {}
+
       setApprovedEntries((prev) => [
         ...pendingEntries.map((e) => ({ ...e, approved: true })),
         ...prev,
@@ -535,6 +621,27 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       if (err) throw err;
 
       const count = pendingEntries.length;
+
+      // Persist rejected names to local dismissed tracking
+      try {
+        const stored = localStorage.getItem("aiverse_dismissed_pulse_requests");
+        const list: string[] = stored ? JSON.parse(stored) : [];
+        const set = new Set(list.map((n) => n.toLowerCase().trim()));
+        names.forEach((n) => set.add(n.toLowerCase().trim()));
+        localStorage.setItem("aiverse_dismissed_pulse_requests", JSON.stringify(Array.from(set)));
+      } catch {}
+
+      // Clean from approved tracking if present
+      try {
+        const stored = localStorage.getItem("aiverse_approved_pulse_requests");
+        if (stored) {
+          const list: string[] = JSON.parse(stored);
+          const nameSet = new Set(names.map((n) => n.toLowerCase().trim()));
+          const filtered = list.filter((n) => !nameSet.has(n.toLowerCase().trim()));
+          localStorage.setItem("aiverse_approved_pulse_requests", JSON.stringify(filtered));
+        }
+      } catch {}
+
       setPendingEntries([]);
       setBatchConfirm(null);
       showToast("success", `Purged all ${count} submissions.`);
@@ -560,6 +667,25 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         }, { onConflict: "name" });
 
       if (err) throw err;
+
+      // Track as dismissed pulse / deleted
+      try {
+        const stored = localStorage.getItem("aiverse_dismissed_pulse_requests");
+        const list: string[] = stored ? JSON.parse(stored) : [];
+        const set = new Set(list.map((n) => n.toLowerCase().trim()));
+        set.add(entryName.toLowerCase().trim());
+        localStorage.setItem("aiverse_dismissed_pulse_requests", JSON.stringify(Array.from(set)));
+      } catch {}
+
+      // Remove from approved tracking if present
+      try {
+        const stored = localStorage.getItem("aiverse_approved_pulse_requests");
+        if (stored) {
+          const list: string[] = JSON.parse(stored);
+          const filtered = list.filter((n) => n.toLowerCase().trim() !== entryName.toLowerCase().trim());
+          localStorage.setItem("aiverse_approved_pulse_requests", JSON.stringify(filtered));
+        }
+      } catch {}
 
       setPendingEntries((prev) => prev.filter((e) => e.name !== entryName));
       setApprovedEntries((prev) => prev.filter((e) => e.name !== entryName));

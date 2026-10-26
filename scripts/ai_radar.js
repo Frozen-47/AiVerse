@@ -30,6 +30,11 @@ if (fs.existsSync(envPath)) {
   }
 }
 
+// Global Supabase credentials from environment (.env or CI secrets)
+const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || '';
+const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+const anonKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || '';
+
 // Helper to get raw entries from src/data.ts
 function readRawEntries() {
   const dataPath = path.join(rootDir, 'src', 'data.ts');
@@ -104,12 +109,8 @@ function updateSeedSql(entries) {
 
 // Helper to sync pending entries directly to Supabase Request List
 async function syncToSupabase(entriesToSync) {
-  const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || 'https://iajivjjzfvkhullzfsom.supabase.co';
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  const anonKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlhaml2amp6ZnZraHVsbHpmc29tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4OTk4MzEsImV4cCI6MjA5NDQ3NTgzMX0.QtZ6f8KYZXWBOil2JvOUwx45TMw5qeblcfhQysIqptg';
-
   if (!supabaseUrl || (!serviceRoleKey && !anonKey)) {
-    console.log('[Supabase Sync] No Supabase credentials detected. Skipping live DB sync.');
+    console.log('[Supabase Sync] No Supabase credentials detected in environment. Skipping live DB sync.');
     return;
   }
 
@@ -192,13 +193,43 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
   const existingNames = new Set(existingEntries.map(e => (e.name || '').toLowerCase().trim()));
   const existingUrls = new Set(existingEntries.map(e => (e.url || '').toLowerCase().trim()));
 
-  // Also include items already pending in request list to prevent duplicate submissions
+  // Fetch Supabase approved entries so we never duplicate or re-queue approved models
+  if (supabaseUrl && (serviceRoleKey || anonKey)) {
+    const keyToUse = serviceRoleKey || anonKey;
+    try {
+      const cleanUrl = supabaseUrl.replace(/\/+$/, '');
+      const sRes = await fetch(`${cleanUrl}/rest/v1/entries?select=name,url,approved`, {
+        headers: { apikey: anonKey, Authorization: `Bearer ${anonKey}` }
+      });
+      if (sRes.ok) {
+        const dbEntries = await sRes.json();
+        if (Array.isArray(dbEntries)) {
+          dbEntries.forEach(e => {
+            if (e.approved !== false) {
+              if (e.name) existingNames.add(e.name.toLowerCase().trim());
+              if (e.url) existingUrls.add(e.url.toLowerCase().trim());
+            }
+          });
+        }
+      }
+    } catch (err) {
+      console.warn('[Ingest] Remote entries fetch warning:', err.message);
+    }
+  }
+
+  // Prune items already approved in catalog or Supabase from pending_pulse_requests.json
   const pendingFile = path.join(publicDataDir, 'pending_pulse_requests.json');
   if (fs.existsSync(pendingFile)) {
     try {
-      const pendingList = JSON.parse(fs.readFileSync(pendingFile, 'utf-8'));
+      let pendingList = JSON.parse(fs.readFileSync(pendingFile, 'utf-8'));
       if (Array.isArray(pendingList)) {
-        pendingList.forEach(p => {
+        const originalLen = pendingList.length;
+        const unapprovedPending = pendingList.filter(p => !existingNames.has((p.name || '').toLowerCase().trim()));
+        if (unapprovedPending.length !== originalLen) {
+          console.log(`[Ingest] Pruned ${originalLen - unapprovedPending.length} already-approved entries from pending_pulse_requests.json.`);
+          fs.writeFileSync(pendingFile, JSON.stringify(unapprovedPending, null, 2), 'utf-8');
+        }
+        unapprovedPending.forEach(p => {
           if (p.name) existingNames.add(p.name.toLowerCase().trim());
           if (p.url) existingUrls.add(p.url.toLowerCase().trim());
         });
@@ -539,11 +570,10 @@ async function getCatalogStats() {
     let totalRatings = 8;
 
     try {
-      const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || 'https://iajivjjzfvkhullzfsom.supabase.co';
-      const anonKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlhaml2amp6ZnZraHVsbHpmc29tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4OTk4MzEsImV4cCI6MjA5NDQ3NTgzMX0.QtZ6f8KYZXWBOil2JvOUwx45TMw5qeblcfhQysIqptg';
-      if (supabaseUrl && anonKey) {
+      if (supabaseUrl && (serviceRoleKey || anonKey)) {
+        const keyToUse = serviceRoleKey || anonKey;
         const cleanUrl = supabaseUrl.replace(/\/+$/, '');
-        const headers = { apikey: anonKey, Authorization: `Bearer ${anonKey}` };
+        const headers = { apikey: keyToUse, Authorization: `Bearer ${keyToUse}` };
         const [uRes, rRes] = await Promise.all([
           fetch(`${cleanUrl}/rest/v1/user_preferences?select=updated_at`, { headers }),
           fetch(`${cleanUrl}/rest/v1/entry_ratings?select=rating`, { headers })
