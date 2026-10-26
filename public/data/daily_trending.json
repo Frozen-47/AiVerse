@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-26T18:04:04.189Z",
+  "timestamp": "2026-10-26T22:58:59.023Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 3148,
+      "likes": 3180,
       "downloads": 95889,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 901,
+      "likes": 918,
       "downloads": 8470,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
@@ -20,7 +20,7 @@
     {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 562,
+      "likes": 590,
       "downloads": 2787,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
@@ -28,7 +28,7 @@
     {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 630,
+      "likes": 639,
       "downloads": 4726,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
@@ -36,7 +36,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1674,
+      "likes": 1695,
       "downloads": 700652,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -44,7 +44,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 9424,
+      "likes": 9452,
       "downloads": 2117147,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "FLORA: An Open Model Suite for Scaling Robotics Data Engines",
-      "summary": "Flora is an open-source industrial data engine for robotics foundation models that provides captioning, outcome and process reward labeling, and pretraining data curation at scale with high accuracy and low cost.",
-      "upvotes": 0,
-      "arxiv_id": "2610.31779",
-      "url": "https://huggingface.co/papers/2610.31779",
-      "githubRepo": "https://github.com/NVIDIA/Flora"
-    },
-    {
-      "title": "KANLab: TensorFlow Playground for Kolmogorov-Arnold Networks",
-      "summary": "KANLab is an interactive browser tool for teaching Kolmogorov-Arnold Networks by visualizing B-spline activation curves, gradient descent, and pruning in a compact 2D setting.",
-      "upvotes": 2,
-      "arxiv_id": "2610.20117",
-      "url": "https://huggingface.co/papers/2610.20117",
-      "githubRepo": "https://github.com/lniehaus/kanlab"
-    },
-    {
-      "title": "LLM2Cert: LLM Synthesis of Certificates with SMT/Lean Verification",
-      "summary": "A benchmark of nonlinear dynamical systems and an LLM-driven framework that synthesizes and verifies stability and safety certificates via SMT solvers and proof repair agents achieve substantial verification improvements.",
+      "title": "How Much Feedback Is Needed to Break Template Protection? The Geometric Vulnerability of Biometric Authentication",
+      "summary": "Biometric authentication leaks geometric information enabling precise template reconstruction from binary feedback, and diffusion priors reduce query costs significantly.",
       "upvotes": 1,
-      "arxiv_id": "2610.30524",
-      "url": "https://huggingface.co/papers/2610.30524",
-      "githubRepo": "https://github.com/FormalCert-AI/llm2cert"
+      "arxiv_id": "2610.25118",
+      "url": "https://huggingface.co/papers/2610.25118",
+      "githubRepo": "https://github.com/ElironRahimi/geometric_biometric_reconstruction"
     },
     {
-      "title": "JockeyBench: Evaluating LLM Agents on Horse-Racing Decision-Making",
-      "summary": "JockeyBench evaluates repeated event forecasting via Japanese horse racing, finding that reusable predictors improve efficiency but all configurations yield negative average betting returns.",
-      "upvotes": 2,
-      "arxiv_id": "2610.19589",
-      "url": "https://huggingface.co/papers/2610.19589",
-      "githubRepo": "https://github.com/HKUST-KnowComp/JockeyBench"
+      "title": "Kolab: Benchmarking Human-Agent Collaboration in Long-Horizon Workflows",
+      "summary": "Kolab is a dataset of professional screen recordings that reveals frontier AI agents overestimate collaboration quality and fail to predict expert adoption of contributions in long-horizon workflows.",
+      "upvotes": 5,
+      "arxiv_id": "2610.21109",
+      "url": "https://huggingface.co/papers/2610.21109",
+      "githubRepo": "https://github.com/minnesotanlp/kolab"
     },
     {
-      "title": "PaperFormalizer: Author-in-the-Loop Autoformalization of Research Papers in Lean",
-      "summary": "Even a carefully proofread paper can leave small gaps in its proofs or its stated assumptions. We introduce PaperFormalizer, a Lean-based agentic pipeline that ...",
-      "upvotes": 2,
-      "arxiv_id": "2610.31810",
-      "url": "https://huggingface.co/papers/2610.31810",
-      "githubRepo": null
+      "title": "Predictive Closure: A Set-Level Characterization of JEPA's Feature Selection",
+      "summary": "JEPA feature selection depends on predictive relationships between features rather than individual predictability, allowing unpredictable but relationally useful features to be retained and enabling indirect steering of representations.",
+      "upvotes": 0,
+      "arxiv_id": "2610.27364",
+      "url": "https://huggingface.co/papers/2610.27364",
+      "githubRepo": "https://github.com/Mosh0110/predictive-closure"
+    },
+    {
+      "title": "Judging the Justification: Decision Certificate Supervision for Generative Reward Models",
+      "summary": "DeCert evaluates and improves generative reward model rationales by assessing justification validity and verdict consistency without reference explanations, yielding stronger preference supervision.",
+      "upvotes": 1,
+      "arxiv_id": "2610.27528",
+      "url": "https://huggingface.co/papers/2610.27528",
+      "githubRepo": "https://github.com/UConn-DSIS/DeCert"
+    },
+    {
+      "title": "On the Token Collapse Phenomenon in Textual Graph Soft Prompting",
+      "summary": "Graph soft prompting in LLMs suffers from token collapse, where learned graph tokens become indistinguishable and function as generic prompts rather than conveying relational structure, prompting evaluation via alignment probes rather than accuracy alone.",
+      "upvotes": 0,
+      "arxiv_id": "2610.31572",
+      "url": "https://huggingface.co/papers/2610.31572",
+      "githubRepo": "https://github.com/difra100/Token_Collapse_KGQA"
     }
   ]
 }
