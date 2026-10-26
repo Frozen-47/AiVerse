@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-26T02:42:53.994Z",
+  "timestamp": "2026-10-26T10:42:05.359Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 3001,
-      "downloads": 85275,
+      "likes": 3069,
+      "downloads": 95889,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 863,
-      "downloads": 6444,
+      "likes": 880,
+      "downloads": 8470,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
     },
     {
-      "id": "black-forest-labs/flux-3-image-klein-comfy",
-      "author": "black-forest-labs",
-      "likes": 1607,
-      "downloads": 660874,
-      "pipeline_tag": "image-to-image",
-      "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
+      "id": "Nanbeige/Nanbeige4.3-33B",
+      "author": "Nanbeige",
+      "likes": 499,
+      "downloads": 2787,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
     },
     {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 521,
-      "downloads": 3488,
+      "likes": 562,
+      "downloads": 4726,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
     },
     {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 9344,
-      "downloads": 2107108,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5"
+      "id": "black-forest-labs/flux-3-image-klein-comfy",
+      "author": "black-forest-labs",
+      "likes": 1639,
+      "downloads": 700652,
+      "pipeline_tag": "image-to-image",
+      "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
     },
     {
-      "id": "Nanbeige/Nanbeige4.3-33B",
-      "author": "Nanbeige",
-      "likes": 393,
-      "downloads": 0,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 9377,
+      "downloads": 2117147,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5"
     }
   ],
   "papers": [
     {
-      "title": "UserArena: Benchmarking Interactive User Simulation for Long-Horizon Shopping Agents",
-      "summary": "UserArena introduces a real-world interactive benchmark with long-horizon shopping trajectories and an evaluation framework, alongside On-Policy Trajectory Distillation to improve simulator fidelity for agentic recommendations.",
-      "upvotes": 5,
-      "arxiv_id": "2610.30932",
-      "url": "https://huggingface.co/papers/2610.30932",
-      "githubRepo": "https://github.com/RecGPT-Team/UserArena"
+      "title": "Reading, Writing, Sharing, and Interacting with the World through Video",
+      "summary": "This survey unifies video understanding and generation through world modeling, organizing progress around inferring, synthesizing, sharing, and interacting with latent temporal states to emphasize persistent dynamics over clip-level perception.",
+      "upvotes": 16,
+      "arxiv_id": "2610.31668",
+      "url": "https://huggingface.co/papers/2610.31668",
+      "githubRepo": "https://github.com/vid-gen/awesome-video-world-model"
     },
     {
-      "title": "DirCast: Live Esports Directing and Commentary with a Single Streaming Video-Language Model",
-      "summary": "DirCast is a streaming video language model that simultaneously directs live esports broadcasts by selecting cameras and generates real-time commentary using only past context.",
+      "title": "RoboJudge: Multimodal Language Models as Judges for Embodied Video Generation",
+      "summary": "Researchers introduce a benchmark and training dataset to evaluate multimodal language models as judges of physically valid, instruction-aligned embodied video generation, yielding a fine-tuned 9B judge with high human agreement.",
+      "upvotes": 2,
+      "arxiv_id": "2610.27782",
+      "url": "https://huggingface.co/papers/2610.27782",
+      "githubRepo": "https://github.com/Sphere-AI-Lab/RoboJudge"
+    },
+    {
+      "title": "SliderEdit++: Improved Slider Trajectories in Instruction-Based Image Editing",
+      "summary": "SlideBench benchmarks continuous image editing and SliderEdit++ improves slider reliability via trajectory regularization and disentanglement for smoother, faster control.",
       "upvotes": 1,
-      "arxiv_id": "2610.31734",
-      "url": "https://huggingface.co/papers/2610.31734",
+      "arxiv_id": "2610.14253",
+      "url": "https://huggingface.co/papers/2610.14253",
       "githubRepo": null
     },
     {
-      "title": "HoloBoxing: A Simple Recipe for Humanoid Boxing with 7 Minutes of Single-GPU Training",
-      "summary": "HoloBoxing learns humanoid boxing by combining a frozen whole-body controller with a compact planner that predicts body-point targets, using imitation initialization and reinforcement learning to refine interaction behavior with minimal additional training.",
+      "title": "MMVistaReason: Toward Open-Data and Post-Training Recipes for Multimodal Reasoning",
+      "summary": "MMVistaReason improves open multimodal reasoning through structured data construction, difficulty-aware distillation, and specialized reinforcement learning integration.",
+      "upvotes": 3,
+      "arxiv_id": "2610.01352",
+      "url": "https://huggingface.co/papers/2610.01352",
+      "githubRepo": "https://github.com/JackieForest/MMVistaReason"
+    },
+    {
+      "title": "Co-adaptive Rule Routing and Constraining for Structured Knowledge Retrieval",
+      "summary": "CoRE jointly learns reasoning rules and constrained evidence retrieval through alternating reinforcement and contrastive learning without predefined query-rule supervision.",
       "upvotes": 1,
-      "arxiv_id": "2610.32909",
-      "url": "https://huggingface.co/papers/2610.32909",
+      "arxiv_id": "2610.14465",
+      "url": "https://huggingface.co/papers/2610.14465",
       "githubRepo": null
-    },
-    {
-      "title": "Omni-Woodpecker: Hallucination Correction via Evidence-Prior Rebalancing for Omni LLMs",
-      "summary": "Omni-Woodpecker is a training-free framework that reduces cross-modal hallucinations in omni LLMs by identifying modality conflicts and rebalancing hidden representations to suppress misleading priors.",
-      "upvotes": 5,
-      "arxiv_id": "2610.27103",
-      "url": "https://huggingface.co/papers/2610.27103",
-      "githubRepo": "https://github.com/ZiiJianLiu/Omni-Woodpecker"
-    },
-    {
-      "title": "TARSphere: A Robot-Oriented Full-Stack Framework for Long-Horizon Embodied Agents in Evolving Physical and Social Environments",
-      "summary": "TARSphere is a robot framework that integrates physics simulation, embodied NPCs, and a frozen multimodal language model to evaluate long-horizon embodied agents across diverse indoor tasks and social conditions.",
-      "upvotes": 8,
-      "arxiv_id": "2610.30043",
-      "url": "https://huggingface.co/papers/2610.30043",
-      "githubRepo": "https://github.com/xuyicheng-zju/TARSphere"
     }
   ]
 }

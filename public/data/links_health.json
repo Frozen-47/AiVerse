@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-10-26T02:42:54.141Z",
+  "timestamp": "2026-10-26T10:42:05.396Z",
   "checked": 25,
   "healthy": 22,
   "broken": 3,
   "issues": [
     {
-      "name": "NightCafe",
-      "url": "https://creator.nightcafe.studio",
-      "status": 403
+      "name": "Arena-Hard-Auto",
+      "url": "https://github.com/sunshanghai/arena-hard-auto",
+      "status": 404
     },
     {
-      "name": "Midjourney v6",
-      "url": "https://www.midjourney.com/",
-      "status": 403
+      "name": "LMSYS Chatbot Arena Conversations",
+      "url": "https://chat.lmsys.org",
+      "status": "Network Error"
     },
     {
-      "name": "Meta AI",
-      "url": "https://www.meta.ai",
+      "name": "OpenAI Platform",
+      "url": "https://platform.openai.com",
       "status": 403
     }
   ]

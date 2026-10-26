@@ -2,7 +2,34 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Mon, 26 Oct 2026 02:43:00 GMT`*
+*Last Synchronized: `Mon, 26 Oct 2026 10:42:10 GMT`*
+
+---
+
+## 📥 Newly Queued Assets for Review (3)
+
+> Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
+
+### **DeepSeek-V4.1-Flash-1017** (`Model` • *DeepSeek*)
+> High-performance Multimodal open-weights model by DeepSeek, trending with over 3,069 community likes and 95,889 downloads on Hugging Face.
+
+- 🏷️ **Domain & License**: `Multimodal` • `MIT` (2026)
+- ⚡ **Metrics**: `Trending Score: 1107, Likes: 3,069, Downloads: 95,889`
+- 🔗 **Resource Link**: [https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+
+### **MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow** (`Platform` • *glitchlab*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by glitchlab. Trending with 395 community stars.
+
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 288, Community Likes: 395`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow](https://huggingface.co/spaces/glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow)
+
+### **simready-assets** (`Dataset` • *nvidia*)
+> High-quality Computer Vision dataset by nvidia for benchmarking and foundation model training. (303 likes, 393,196 downloads).
+
+- 🏷️ **Domain & License**: `Computer Vision` • `Open Data` (2026)
+- ⚡ **Metrics**: `Trending Score: 255, Likes: 303, Downloads: 393,196`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets)
 
 ---
 
@@ -21,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,001 | 📥 85,275 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `RecursiveSI/flint` | text-generation | ❤️ 863 | 📥 6,444 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,607 | 📥 660,874 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 521 | 📥 3,488 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,344 | 📥 2,107,108 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 393 | 📥 0 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,069 | 📥 95,889 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `RecursiveSI/flint` | text-generation | ❤️ 880 | 📥 8,470 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 499 | 📥 2,787 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
+| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 562 | 📥 4,726 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,639 | 📥 700,652 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,377 | 📥 2,117,147 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
 
 
 ---
@@ -36,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **UserArena: Benchmarking Interactive User Simulation for Long-Horizon Shopping Agents** | 👍 5 | UserArena introduces a real-world interactive benchmark with long-horizon shopping trajectories and an evaluation framework, alongside On-Policy Trajectory Distillation to improve simulator fidelity for agentic recommendations. | [Read](https://huggingface.co/papers/2610.30932) |
-| **DirCast: Live Esports Directing and Commentary with a Single Streaming Video-Language Model** | 👍 1 | DirCast is a streaming video language model that simultaneously directs live esports broadcasts by selecting cameras and generates real-time commentary using only past context. | [Read](https://huggingface.co/papers/2610.31734) |
-| **HoloBoxing: A Simple Recipe for Humanoid Boxing with 7 Minutes of Single-GPU Training** | 👍 1 | HoloBoxing learns humanoid boxing by combining a frozen whole-body controller with a compact planner that predicts body-point targets, using imitation initialization and reinforcement learning to refine interaction behavior with minimal additional training. | [Read](https://huggingface.co/papers/2610.32909) |
-| **Omni-Woodpecker: Hallucination Correction via Evidence-Prior Rebalancing for Omni LLMs** | 👍 5 | Omni-Woodpecker is a training-free framework that reduces cross-modal hallucinations in omni LLMs by identifying modality conflicts and rebalancing hidden representations to suppress misleading priors. | [Read](https://huggingface.co/papers/2610.27103) |
-| **TARSphere: A Robot-Oriented Full-Stack Framework for Long-Horizon Embodied Agents in Evolving Physical and Social Environments** | 👍 8 | TARSphere is a robot framework that integrates physics simulation, embodied NPCs, and a frozen multimodal language model to evaluate long-horizon embodied agents across diverse indoor tasks and social conditions. | [Read](https://huggingface.co/papers/2610.30043) |
+| **Reading, Writing, Sharing, and Interacting with the World through Video** | 👍 16 | This survey unifies video understanding and generation through world modeling, organizing progress around inferring, synthesizing, sharing, and interacting with latent temporal states to emphasize persistent dynamics over clip-level perception. | [Read](https://huggingface.co/papers/2610.31668) |
+| **RoboJudge: Multimodal Language Models as Judges for Embodied Video Generation** | 👍 2 | Researchers introduce a benchmark and training dataset to evaluate multimodal language models as judges of physically valid, instruction-aligned embodied video generation, yielding a fine-tuned 9B judge with high human agreement. | [Read](https://huggingface.co/papers/2610.27782) |
+| **SliderEdit++: Improved Slider Trajectories in Instruction-Based Image Editing** | 👍 1 | SlideBench benchmarks continuous image editing and SliderEdit++ improves slider reliability via trajectory regularization and disentanglement for smoother, faster control. | [Read](https://huggingface.co/papers/2610.14253) |
+| **MMVistaReason: Toward Open-Data and Post-Training Recipes for Multimodal Reasoning** | 👍 3 | MMVistaReason improves open multimodal reasoning through structured data construction, difficulty-aware distillation, and specialized reinforcement learning integration. | [Read](https://huggingface.co/papers/2610.01352) |
+| **Co-adaptive Rule Routing and Constraining for Structured Knowledge Retrieval** | 👍 1 | CoRE jointly learns reasoning rules and constrained evidence retrieval through alternating reinforcement and contrastive learning without predefined query-rule supervision. | [Read](https://huggingface.co/papers/2610.14465) |
 
 
 ---
