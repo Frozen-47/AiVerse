@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-26)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **DeepSeek-V4.1-Flash-1017** (`Model`), **MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow** (`Platform`), **simready-assets** (`Dataset`) |
+| 📥 **Queued for Review** | **flint** (`Model`), **uncensored-imageTOimage2Ref** (`Platform`), **3d-collection** (`Dataset`) |
 | 🌟 **Tool of the Day** | **shorts** (autotrust) — [Explore](https://huggingface.co/spaces/autotrust/shorts) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [Reading, Writing, Sharing, and Interacting with th...](https://huggingface.co/papers/2610.31668) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 26 Oct 2026 10:42:10 GMT` |
+| 📜 **Top Daily Paper** | [FLORA: An Open Model Suite for Scaling Robotics Da...](https://huggingface.co/papers/2610.31779) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Mon, 26 Oct 2026 18:04:07 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

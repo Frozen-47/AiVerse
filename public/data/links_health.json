@@ -1,23 +1,18 @@
 {
-  "timestamp": "2026-10-26T10:42:05.396Z",
+  "timestamp": "2026-10-26T18:04:04.227Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "Arena-Hard-Auto",
-      "url": "https://github.com/sunshanghai/arena-hard-auto",
-      "status": 404
-    },
-    {
-      "name": "LMSYS Chatbot Arena Conversations",
-      "url": "https://chat.lmsys.org",
-      "status": "Network Error"
-    },
-    {
-      "name": "OpenAI Platform",
-      "url": "https://platform.openai.com",
+      "name": "Canva AI",
+      "url": "https://www.canva.com/ai-image-generator",
       "status": 403
+    },
+    {
+      "name": "tiktok-videos-4b",
+      "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
+      "status": 401
     }
   ]
 }

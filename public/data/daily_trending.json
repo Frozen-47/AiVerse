@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-26T10:42:05.359Z",
+  "timestamp": "2026-10-26T18:04:04.189Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 3069,
+      "likes": 3148,
       "downloads": 95889,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 880,
+      "likes": 901,
       "downloads": 8470,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
@@ -20,7 +20,7 @@
     {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 499,
+      "likes": 562,
       "downloads": 2787,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
@@ -28,7 +28,7 @@
     {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 562,
+      "likes": 630,
       "downloads": 4726,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
@@ -36,7 +36,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1639,
+      "likes": 1674,
       "downloads": 700652,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -44,7 +44,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 9377,
+      "likes": 9424,
       "downloads": 2117147,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -52,43 +52,43 @@
   ],
   "papers": [
     {
-      "title": "Reading, Writing, Sharing, and Interacting with the World through Video",
-      "summary": "This survey unifies video understanding and generation through world modeling, organizing progress around inferring, synthesizing, sharing, and interacting with latent temporal states to emphasize persistent dynamics over clip-level perception.",
-      "upvotes": 16,
-      "arxiv_id": "2610.31668",
-      "url": "https://huggingface.co/papers/2610.31668",
-      "githubRepo": "https://github.com/vid-gen/awesome-video-world-model"
+      "title": "FLORA: An Open Model Suite for Scaling Robotics Data Engines",
+      "summary": "Flora is an open-source industrial data engine for robotics foundation models that provides captioning, outcome and process reward labeling, and pretraining data curation at scale with high accuracy and low cost.",
+      "upvotes": 0,
+      "arxiv_id": "2610.31779",
+      "url": "https://huggingface.co/papers/2610.31779",
+      "githubRepo": "https://github.com/NVIDIA/Flora"
     },
     {
-      "title": "RoboJudge: Multimodal Language Models as Judges for Embodied Video Generation",
-      "summary": "Researchers introduce a benchmark and training dataset to evaluate multimodal language models as judges of physically valid, instruction-aligned embodied video generation, yielding a fine-tuned 9B judge with high human agreement.",
+      "title": "KANLab: TensorFlow Playground for Kolmogorov-Arnold Networks",
+      "summary": "KANLab is an interactive browser tool for teaching Kolmogorov-Arnold Networks by visualizing B-spline activation curves, gradient descent, and pruning in a compact 2D setting.",
       "upvotes": 2,
-      "arxiv_id": "2610.27782",
-      "url": "https://huggingface.co/papers/2610.27782",
-      "githubRepo": "https://github.com/Sphere-AI-Lab/RoboJudge"
+      "arxiv_id": "2610.20117",
+      "url": "https://huggingface.co/papers/2610.20117",
+      "githubRepo": "https://github.com/lniehaus/kanlab"
     },
     {
-      "title": "SliderEdit++: Improved Slider Trajectories in Instruction-Based Image Editing",
-      "summary": "SlideBench benchmarks continuous image editing and SliderEdit++ improves slider reliability via trajectory regularization and disentanglement for smoother, faster control.",
+      "title": "LLM2Cert: LLM Synthesis of Certificates with SMT/Lean Verification",
+      "summary": "A benchmark of nonlinear dynamical systems and an LLM-driven framework that synthesizes and verifies stability and safety certificates via SMT solvers and proof repair agents achieve substantial verification improvements.",
       "upvotes": 1,
-      "arxiv_id": "2610.14253",
-      "url": "https://huggingface.co/papers/2610.14253",
-      "githubRepo": null
+      "arxiv_id": "2610.30524",
+      "url": "https://huggingface.co/papers/2610.30524",
+      "githubRepo": "https://github.com/FormalCert-AI/llm2cert"
     },
     {
-      "title": "MMVistaReason: Toward Open-Data and Post-Training Recipes for Multimodal Reasoning",
-      "summary": "MMVistaReason improves open multimodal reasoning through structured data construction, difficulty-aware distillation, and specialized reinforcement learning integration.",
-      "upvotes": 3,
-      "arxiv_id": "2610.01352",
-      "url": "https://huggingface.co/papers/2610.01352",
-      "githubRepo": "https://github.com/JackieForest/MMVistaReason"
+      "title": "JockeyBench: Evaluating LLM Agents on Horse-Racing Decision-Making",
+      "summary": "JockeyBench evaluates repeated event forecasting via Japanese horse racing, finding that reusable predictors improve efficiency but all configurations yield negative average betting returns.",
+      "upvotes": 2,
+      "arxiv_id": "2610.19589",
+      "url": "https://huggingface.co/papers/2610.19589",
+      "githubRepo": "https://github.com/HKUST-KnowComp/JockeyBench"
     },
     {
-      "title": "Co-adaptive Rule Routing and Constraining for Structured Knowledge Retrieval",
-      "summary": "CoRE jointly learns reasoning rules and constrained evidence retrieval through alternating reinforcement and contrastive learning without predefined query-rule supervision.",
-      "upvotes": 1,
-      "arxiv_id": "2610.14465",
-      "url": "https://huggingface.co/papers/2610.14465",
+      "title": "PaperFormalizer: Author-in-the-Loop Autoformalization of Research Papers in Lean",
+      "summary": "Even a carefully proofread paper can leave small gaps in its proofs or its stated assumptions. We introduce PaperFormalizer, a Lean-based agentic pipeline that ...",
+      "upvotes": 2,
+      "arxiv_id": "2610.31810",
+      "url": "https://huggingface.co/papers/2610.31810",
       "githubRepo": null
     }
   ]

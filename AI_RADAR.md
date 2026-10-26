@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Mon, 26 Oct 2026 10:42:10 GMT`*
+*Last Synchronized: `Mon, 26 Oct 2026 18:04:07 GMT`*
 
 ---
 
@@ -10,26 +10,26 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **DeepSeek-V4.1-Flash-1017** (`Model` • *DeepSeek*)
-> High-performance Multimodal open-weights model by DeepSeek, trending with over 3,069 community likes and 95,889 downloads on Hugging Face.
+### **flint** (`Model` • *RecursiveSI*)
+> High-performance NLP open-weights model by RecursiveSI, trending with over 901 community likes and 8,470 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `MIT` (2026)
-- ⚡ **Metrics**: `Trending Score: 1107, Likes: 3,069, Downloads: 95,889`
-- 🔗 **Resource Link**: [https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 865, Likes: 901, Downloads: 8,470`
+- 🔗 **Resource Link**: [https://huggingface.co/RecursiveSI/flint](https://huggingface.co/RecursiveSI/flint)
 
-### **MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow** (`Platform` • *glitchlab*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by glitchlab. Trending with 395 community stars.
+### **uncensored-imageTOimage2Ref** (`Platform` • *fishpasters*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by fishpasters. Trending with 241 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 288, Community Likes: 395`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow](https://huggingface.co/spaces/glitchlab/MiniMax-H3-Turbo-Lora-UNCENSORED-Workflow)
+- ⚡ **Metrics**: `Trending Score: 169, Community Likes: 241`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/fishpasters/uncensored-imageTOimage2Ref](https://huggingface.co/spaces/fishpasters/uncensored-imageTOimage2Ref)
 
-### **simready-assets** (`Dataset` • *nvidia*)
-> High-quality Computer Vision dataset by nvidia for benchmarking and foundation model training. (303 likes, 393,196 downloads).
+### **3d-collection** (`Dataset` • *scenario-labs*)
+> Scenario 3D Collection 	 1,342 selected AI-generated 3D examples, with all 1,500 output files downloaded. About 39 GB including previews and available source inputs. An (258 likes, 20,299 downloads).
 
-- 🏷️ **Domain & License**: `Computer Vision` • `Open Data` (2026)
-- ⚡ **Metrics**: `Trending Score: 255, Likes: 303, Downloads: 393,196`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets)
+- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 240, Likes: 258, Downloads: 20,299`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/scenario-labs/3d-collection](https://huggingface.co/datasets/scenario-labs/3d-collection)
 
 ---
 
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,069 | 📥 95,889 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `RecursiveSI/flint` | text-generation | ❤️ 880 | 📥 8,470 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 499 | 📥 2,787 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
-| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 562 | 📥 4,726 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,639 | 📥 700,652 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,377 | 📥 2,117,147 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,148 | 📥 95,889 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `RecursiveSI/flint` | text-generation | ❤️ 901 | 📥 8,470 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 562 | 📥 2,787 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
+| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 630 | 📥 4,726 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,674 | 📥 700,652 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,424 | 📥 2,117,147 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Reading, Writing, Sharing, and Interacting with the World through Video** | 👍 16 | This survey unifies video understanding and generation through world modeling, organizing progress around inferring, synthesizing, sharing, and interacting with latent temporal states to emphasize persistent dynamics over clip-level perception. | [Read](https://huggingface.co/papers/2610.31668) |
-| **RoboJudge: Multimodal Language Models as Judges for Embodied Video Generation** | 👍 2 | Researchers introduce a benchmark and training dataset to evaluate multimodal language models as judges of physically valid, instruction-aligned embodied video generation, yielding a fine-tuned 9B judge with high human agreement. | [Read](https://huggingface.co/papers/2610.27782) |
-| **SliderEdit++: Improved Slider Trajectories in Instruction-Based Image Editing** | 👍 1 | SlideBench benchmarks continuous image editing and SliderEdit++ improves slider reliability via trajectory regularization and disentanglement for smoother, faster control. | [Read](https://huggingface.co/papers/2610.14253) |
-| **MMVistaReason: Toward Open-Data and Post-Training Recipes for Multimodal Reasoning** | 👍 3 | MMVistaReason improves open multimodal reasoning through structured data construction, difficulty-aware distillation, and specialized reinforcement learning integration. | [Read](https://huggingface.co/papers/2610.01352) |
-| **Co-adaptive Rule Routing and Constraining for Structured Knowledge Retrieval** | 👍 1 | CoRE jointly learns reasoning rules and constrained evidence retrieval through alternating reinforcement and contrastive learning without predefined query-rule supervision. | [Read](https://huggingface.co/papers/2610.14465) |
+| **FLORA: An Open Model Suite for Scaling Robotics Data Engines** | 👍 0 | Flora is an open-source industrial data engine for robotics foundation models that provides captioning, outcome and process reward labeling, and pretraining data curation at scale with high accuracy and low cost. | [Read](https://huggingface.co/papers/2610.31779) |
+| **KANLab: TensorFlow Playground for Kolmogorov-Arnold Networks** | 👍 2 | KANLab is an interactive browser tool for teaching Kolmogorov-Arnold Networks by visualizing B-spline activation curves, gradient descent, and pruning in a compact 2D setting. | [Read](https://huggingface.co/papers/2610.20117) |
+| **LLM2Cert: LLM Synthesis of Certificates with SMT/Lean Verification** | 👍 1 | A benchmark of nonlinear dynamical systems and an LLM-driven framework that synthesizes and verifies stability and safety certificates via SMT solvers and proof repair agents achieve substantial verification improvements. | [Read](https://huggingface.co/papers/2610.30524) |
+| **JockeyBench: Evaluating LLM Agents on Horse-Racing Decision-Making** | 👍 2 | JockeyBench evaluates repeated event forecasting via Japanese horse racing, finding that reusable predictors improve efficiency but all configurations yield negative average betting returns. | [Read](https://huggingface.co/papers/2610.19589) |
+| **PaperFormalizer: Author-in-the-Loop Autoformalization of Research Papers in Lean** | 👍 2 | Even a carefully proofread paper can leave small gaps in its proofs or its stated assumptions. We introduce PaperFormalizer, a Lean-based agentic pipeline that ... | [Read](https://huggingface.co/papers/2610.31810) |
 
 
 ---
@@ -80,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
 - **Dependency Security**: `32` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---
