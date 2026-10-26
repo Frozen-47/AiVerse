@@ -1,18 +1,23 @@
 {
-  "timestamp": "2026-10-25T23:42:44.016Z",
+  "timestamp": "2026-10-26T02:42:54.141Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "Grammarly",
-      "url": "https://www.grammarly.com",
-      "status": 405
+      "name": "NightCafe",
+      "url": "https://creator.nightcafe.studio",
+      "status": 403
     },
     {
-      "name": "Play.ht",
-      "url": "https://play.ht",
-      "status": "Network Error"
+      "name": "Midjourney v6",
+      "url": "https://www.midjourney.com/",
+      "status": 403
+    },
+    {
+      "name": "Meta AI",
+      "url": "https://www.meta.ai",
+      "status": 403
     }
   ]
 }
