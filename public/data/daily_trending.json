@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-26T22:58:59.023Z",
+  "timestamp": "2026-10-27T03:17:15.236Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 3180,
+      "likes": 3204,
       "downloads": 95889,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 918,
+      "likes": 926,
       "downloads": 8470,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
@@ -20,7 +20,7 @@
     {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 590,
+      "likes": 603,
       "downloads": 2787,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
@@ -28,7 +28,7 @@
     {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 639,
+      "likes": 669,
       "downloads": 4726,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
@@ -36,7 +36,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1695,
+      "likes": 1710,
       "downloads": 700652,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -44,7 +44,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 9452,
+      "likes": 9466,
       "downloads": 2117147,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "How Much Feedback Is Needed to Break Template Protection? The Geometric Vulnerability of Biometric Authentication",
-      "summary": "Biometric authentication leaks geometric information enabling precise template reconstruction from binary feedback, and diffusion priors reduce query costs significantly.",
+      "title": "Work Agents: Systems, Capabilities, and Optimization",
+      "summary": "The paper proposes a unified framework for work agents that integrates foundation models with runtime harnesses to execute complex digital tasks reliably, introducing dimensions of persistence and openness alongside capability families and evaluation metrics.",
       "upvotes": 1,
-      "arxiv_id": "2610.25118",
-      "url": "https://huggingface.co/papers/2610.25118",
-      "githubRepo": "https://github.com/ElironRahimi/geometric_biometric_reconstruction"
+      "arxiv_id": "2610.35845",
+      "url": "https://huggingface.co/papers/2610.35845",
+      "githubRepo": "https://github.com/EnjunDu/awesome-working-agent"
     },
     {
-      "title": "Kolab: Benchmarking Human-Agent Collaboration in Long-Horizon Workflows",
-      "summary": "Kolab is a dataset of professional screen recordings that reveals frontier AI agents overestimate collaboration quality and fail to predict expert adoption of contributions in long-horizon workflows.",
-      "upvotes": 5,
-      "arxiv_id": "2610.21109",
-      "url": "https://huggingface.co/papers/2610.21109",
-      "githubRepo": "https://github.com/minnesotanlp/kolab"
+      "title": "Qwen-Image-PE: Learning Visual Design for Text-to-Image Prompt Enhancement",
+      "summary": "Qwen-Image-PE improves text-to-image prompts via two-stage training with caption-based reverse distillation and groupwise design rewards, scaling across data, model size, and information density.",
+      "upvotes": 2,
+      "arxiv_id": "2610.33472",
+      "url": "https://huggingface.co/papers/2610.33472",
+      "githubRepo": null
     },
     {
-      "title": "Predictive Closure: A Set-Level Characterization of JEPA's Feature Selection",
-      "summary": "JEPA feature selection depends on predictive relationships between features rather than individual predictability, allowing unpredictable but relationally useful features to be retained and enabling indirect steering of representations.",
-      "upvotes": 0,
-      "arxiv_id": "2610.27364",
-      "url": "https://huggingface.co/papers/2610.27364",
-      "githubRepo": "https://github.com/Mosh0110/predictive-closure"
+      "title": "Extreme Compression of Per-Layer Embeddings via Cross-Layer Latent Vector Quantization",
+      "summary": "OPTIC achieves extreme compression of per-layer embeddings by using token-shared indexed codes and layer-specific affine decoders fitted to the output path, preserving most model performance at up to 1000x compression with minimal inference overhead.",
+      "upvotes": 2,
+      "arxiv_id": "2610.31309",
+      "url": "https://huggingface.co/papers/2610.31309",
+      "githubRepo": "https://github.com/VILA-Lab/optic"
     },
     {
-      "title": "Judging the Justification: Decision Certificate Supervision for Generative Reward Models",
-      "summary": "DeCert evaluates and improves generative reward model rationales by assessing justification validity and verdict consistency without reference explanations, yielding stronger preference supervision.",
-      "upvotes": 1,
-      "arxiv_id": "2610.27528",
-      "url": "https://huggingface.co/papers/2610.27528",
-      "githubRepo": "https://github.com/UConn-DSIS/DeCert"
+      "title": "StreamVibe: Proactive Video Agents for Evolving User Intent",
+      "summary": "StreamVibe introduces a benchmark, streaming vision-language model, and hierarchical memory harness to enable proactive, intent-aware interaction with implicit and evolving user goals.",
+      "upvotes": 19,
+      "arxiv_id": "2610.34662",
+      "url": "https://huggingface.co/papers/2610.34662",
+      "githubRepo": null
     },
     {
-      "title": "On the Token Collapse Phenomenon in Textual Graph Soft Prompting",
-      "summary": "Graph soft prompting in LLMs suffers from token collapse, where learned graph tokens become indistinguishable and function as generic prompts rather than conveying relational structure, prompting evaluation via alignment probes rather than accuracy alone.",
-      "upvotes": 0,
-      "arxiv_id": "2610.31572",
-      "url": "https://huggingface.co/papers/2610.31572",
-      "githubRepo": "https://github.com/difra100/Token_Collapse_KGQA"
+      "title": "Trajectory2Gym: Decision-Grounded Compositional Interaction Synthesis for Tool-Use Agents",
+      "summary": "Trajectory2Gym improves tool-use training by constructing interactions with compositional coverage and decision grounding rather than collecting successful trajectories.",
+      "upvotes": 33,
+      "arxiv_id": "2610.33568",
+      "url": "https://huggingface.co/papers/2610.33568",
+      "githubRepo": "https://github.com/yihaohu0118/Trajectory2Gym"
     }
   ]
 }

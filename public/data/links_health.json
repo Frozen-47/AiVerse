@@ -1,28 +1,13 @@
 {
-  "timestamp": "2026-10-26T22:58:59.066Z",
+  "timestamp": "2026-10-27T03:17:15.367Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
-      "name": "Ideogram",
-      "url": "https://ideogram.ai",
+      "name": "o1 (OpenAI)",
+      "url": "https://openai.com/o1",
       "status": 403
-    },
-    {
-      "name": "Midjourney",
-      "url": "https://www.midjourney.com",
-      "status": 403
-    },
-    {
-      "name": "Tome",
-      "url": "https://tome.app",
-      "status": 404
-    },
-    {
-      "name": "Play.ht",
-      "url": "https://play.ht",
-      "status": "Network Error"
     }
   ]
 }

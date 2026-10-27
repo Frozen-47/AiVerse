@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-10-26)
+### ⚡ AiVerse AI Radar (2026-10-27)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Nanbeige4.3-33B** (`Model`), **simready-central** (`Platform`), **cyber-security** (`Dataset`) |
-| 🌟 **Tool of the Day** | **shorts** (autotrust) — [Explore](https://huggingface.co/spaces/autotrust/shorts) |
+| 📥 **Queued for Review** | **Spark-X2.6-4B** (`Model`), **nlp-before-llms** (`Platform`), **Nemotron-Personas-Vietnam** (`Dataset`) |
+| 🌟 **Tool of the Day** | **china-a-share-l2-level2-limit-order-book-tick-data** (venvoo) — [Explore](https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [How Much Feedback Is Needed to Break Template Prot...](https://huggingface.co/papers/2610.25118) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 26 Oct 2026 22:59:02 GMT` |
+| 📜 **Top Daily Paper** | [Work Agents: Systems, Capabilities, and Optimizati...](https://huggingface.co/papers/2610.35845) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Synchronized** | `Tue, 27 Oct 2026 03:17:20 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
