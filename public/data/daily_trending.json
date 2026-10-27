@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-27T03:17:15.236Z",
+  "timestamp": "2026-10-27T10:09:41.296Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 3204,
-      "downloads": 95889,
+      "likes": 3278,
+      "downloads": 105667,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 926,
-      "downloads": 8470,
+      "likes": 939,
+      "downloads": 10574,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
     },
     {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 603,
-      "downloads": 2787,
+      "likes": 624,
+      "downloads": 4785,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
     },
     {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 669,
-      "downloads": 4726,
+      "likes": 733,
+      "downloads": 6191,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
     },
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1710,
-      "downloads": 700652,
+      "likes": 1781,
+      "downloads": 750694,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
     },
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 9466,
-      "downloads": 2117147,
+      "likes": 9497,
+      "downloads": 2163739,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     }
   ],
   "papers": [
     {
-      "title": "Work Agents: Systems, Capabilities, and Optimization",
-      "summary": "The paper proposes a unified framework for work agents that integrates foundation models with runtime harnesses to execute complex digital tasks reliably, introducing dimensions of persistence and openness alongside capability families and evaluation metrics.",
+      "title": "CausalAlign: Causal Alignment of Video Generation Models for Consistent Ego-Motion",
+      "summary": "CausalAlign improves long-horizon camera ego-motion consistency in diffusion video generators by aligning internal representations to 3D dynamics via delta-token space.",
       "upvotes": 1,
-      "arxiv_id": "2610.35845",
-      "url": "https://huggingface.co/papers/2610.35845",
-      "githubRepo": "https://github.com/EnjunDu/awesome-working-agent"
+      "arxiv_id": "2610.29915",
+      "url": "https://huggingface.co/papers/2610.29915",
+      "githubRepo": "https://github.com/PKU-VaLuE-Lab/CausalAlign"
     },
     {
-      "title": "Qwen-Image-PE: Learning Visual Design for Text-to-Image Prompt Enhancement",
-      "summary": "Qwen-Image-PE improves text-to-image prompts via two-stage training with caption-based reverse distillation and groupwise design rewards, scaling across data, model size, and information density.",
-      "upvotes": 2,
-      "arxiv_id": "2610.33472",
-      "url": "https://huggingface.co/papers/2610.33472",
+      "title": "AV-FABLE: Audio-Visual Manipulation Forensics in Long-Form Videos",
+      "summary": "AV-FABLE introduces a long-form audio-visual benchmark for sparse manipulations, showing that frozen perception features of audio-visual large language models contain forensic evidence best recovered via separate temporal decoders rather than language outputs.",
+      "upvotes": 8,
+      "arxiv_id": "2610.33413",
+      "url": "https://huggingface.co/papers/2610.33413",
       "githubRepo": null
     },
     {
-      "title": "Extreme Compression of Per-Layer Embeddings via Cross-Layer Latent Vector Quantization",
-      "summary": "OPTIC achieves extreme compression of per-layer embeddings by using token-shared indexed codes and layer-specific affine decoders fitted to the output path, preserving most model performance at up to 1000x compression with minimal inference overhead.",
+      "title": "Joint or Per-Option? Compact Encoders for Closed-Set Decisions from 17 Million to 1 Billion Parameters",
+      "summary": "Many language-model pipelines end in a closed-set decision, such as selecting a tool. Prompting a large language model for it is slow and order-sensitive. We as...",
       "upvotes": 2,
-      "arxiv_id": "2610.31309",
-      "url": "https://huggingface.co/papers/2610.31309",
-      "githubRepo": "https://github.com/VILA-Lab/optic"
+      "arxiv_id": "2610.30970",
+      "url": "https://huggingface.co/papers/2610.30970",
+      "githubRepo": "https://github.com/tardellirs/crivo-decision-encoders"
     },
     {
-      "title": "StreamVibe: Proactive Video Agents for Evolving User Intent",
-      "summary": "StreamVibe introduces a benchmark, streaming vision-language model, and hierarchical memory harness to enable proactive, intent-aware interaction with implicit and evolving user goals.",
-      "upvotes": 19,
-      "arxiv_id": "2610.34662",
-      "url": "https://huggingface.co/papers/2610.34662",
-      "githubRepo": null
+      "title": "More Memory, Better Videos? A Controlled Study of Visual Memory in Long-Video Generation",
+      "summary": "Visual memory improves historical consistency but can reduce current-story accuracy by reinforcing outdated appearances, showing that retrieval relevance alone does not prove memory utility.",
+      "upvotes": 5,
+      "arxiv_id": "2610.35001",
+      "url": "https://huggingface.co/papers/2610.35001",
+      "githubRepo": "https://github.com/Suchenl/VMem-Bench"
     },
     {
-      "title": "Trajectory2Gym: Decision-Grounded Compositional Interaction Synthesis for Tool-Use Agents",
-      "summary": "Trajectory2Gym improves tool-use training by constructing interactions with compositional coverage and decision grounding rather than collecting successful trajectories.",
-      "upvotes": 33,
-      "arxiv_id": "2610.33568",
-      "url": "https://huggingface.co/papers/2610.33568",
-      "githubRepo": "https://github.com/yihaohu0118/Trajectory2Gym"
+      "title": "RoboHarness: A Simple Harness Outperforms VLA and World Action Models",
+      "summary": "RoboHarness enables LLM agents to perform embodied manipulation via a visual-geometric control interface, surpassing specialized vision-language-action models on robotics benchmarks.",
+      "upvotes": 1,
+      "arxiv_id": "2610.14018",
+      "url": "https://huggingface.co/papers/2610.14018",
+      "githubRepo": "https://github.com/BinceQu/RoboHarness"
     }
   ]
 }

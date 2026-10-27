@@ -4,6 +4,84 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "flux-3-image-klein-comfy",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by black-forest-labs, trending with over 1,781 community likes and 750,694 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "black-forest-labs",
+        "size": "Open Weights",
+        "architecture": "black-forest-labs image to image architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"black-forest-labs/flux-3-image-klein-comfy\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"black-forest-labs/flux-3-image-klein-comfy\")",
+        "benchmarks": "Trending Score: 424, Likes: 1,781, Downloads: 750,694",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
+        "citations": [
+          {
+            "text": "black-forest-labs/flux-3-image-klein-comfy on Hugging Face",
+            "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
+          }
+        ]
+      },
+      {
+        "name": "Qwen-2511-Plus-Flux.2-klein",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by AST-1320. Trending with 265 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "AST-1320",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein",
+        "benchmarks": "Trending Score: 85, Community Likes: 265",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein",
+        "citations": [
+          {
+            "text": "AST-1320/Qwen-2511-Plus-Flux.2-klein on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein"
+          }
+        ]
+      },
+      {
+        "name": "10-2026-qwen-investigation-traces",
+        "type": "Dataset",
+        "summary": "Qwen 3.8 Flash Next Investigation \t This dataset contains the model trace and corresponding raw token IDs from the behaviour observed in https://cohere.com/blog/concern (49 likes, 0 downloads).",
+        "task": "NLP",
+        "license": "Open Data",
+        "year": 2026,
+        "org": "CohereLabs",
+        "size": "n<1K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"CohereLabs/10-2026-qwen-investigation-traces\")",
+        "benchmarks": "Trending Score: 48, Likes: 49, Downloads: 0",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/CohereLabs/10-2026-qwen-investigation-traces",
+        "citations": [
+          {
+            "text": "CohereLabs/10-2026-qwen-investigation-traces on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/CohereLabs/10-2026-qwen-investigation-traces"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-27",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Spark-X2.6-4B",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by XHToken, trending with over 669 community likes and 4,726 downloads on Hugging Face.",
