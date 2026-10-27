@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Tue, 27 Oct 2026 10:09:46 GMT`*
+*Last Synchronized: `Tue, 27 Oct 2026 17:13:29 GMT`*
 
 ---
 
@@ -10,26 +10,26 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **flux-3-image-klein-comfy** (`Model` • *black-forest-labs*)
-> High-performance NLP open-weights model by black-forest-labs, trending with over 1,781 community likes and 750,694 downloads on Hugging Face.
+### **MiniMax-M3.1-Flash** (`Model` • *MiniMaxAI*)
+> High-performance Multimodal open-weights model by MiniMaxAI, trending with over 402 community likes and 11,075 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 424, Likes: 1,781, Downloads: 750,694`
-- 🔗 **Resource Link**: [https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy)
+- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 385, Likes: 402, Downloads: 11,075`
+- 🔗 **Resource Link**: [https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash](https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash)
 
-### **Qwen-2511-Plus-Flux.2-klein** (`Platform` • *AST-1320*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by AST-1320. Trending with 265 community stars.
+### **flux-3-image-klein** (`Platform` • *black-forest-labs*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by black-forest-labs. Trending with 233 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 85, Community Likes: 265`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein](https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein)
+- ⚡ **Metrics**: `Trending Score: 81, Community Likes: 233`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein](https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein)
 
-### **10-2026-qwen-investigation-traces** (`Dataset` • *CohereLabs*)
-> Qwen 3.8 Flash Next Investigation 	 This dataset contains the model trace and corresponding raw token IDs from the behaviour observed in https://cohere.com/blog/concern (49 likes, 0 downloads).
+### **Nemotron-Personas-Germany** (`Dataset` • *nvidia*)
+> Nemotron-Personas-Germany 	           Ein Compound-AI-Ansatz für synthetische Personas auf Basis realer Verteilungen     A compound AI approach to personas grounded in (51 likes, 2,210 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `Open Data` (2026)
-- ⚡ **Metrics**: `Trending Score: 48, Likes: 49, Downloads: 0`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/CohereLabs/10-2026-qwen-investigation-traces](https://huggingface.co/datasets/CohereLabs/10-2026-qwen-investigation-traces)
+- 🏷️ **Domain & License**: `NLP` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 42, Likes: 51, Downloads: 2,210`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/Nemotron-Personas-Germany](https://huggingface.co/datasets/nvidia/Nemotron-Personas-Germany)
 
 ---
 
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,278 | 📥 105,667 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `RecursiveSI/flint` | text-generation | ❤️ 939 | 📥 10,574 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 624 | 📥 4,785 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
-| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 733 | 📥 6,191 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,781 | 📥 750,694 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,497 | 📥 2,163,739 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,329 | 📥 105,667 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `RecursiveSI/flint` | text-generation | ❤️ 954 | 📥 10,574 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 645 | 📥 4,785 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
+| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 765 | 📥 6,191 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,819 | 📥 750,694 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,539 | 📥 2,163,739 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **CausalAlign: Causal Alignment of Video Generation Models for Consistent Ego-Motion** | 👍 1 | CausalAlign improves long-horizon camera ego-motion consistency in diffusion video generators by aligning internal representations to 3D dynamics via delta-token space. | [Read](https://huggingface.co/papers/2610.29915) |
-| **AV-FABLE: Audio-Visual Manipulation Forensics in Long-Form Videos** | 👍 8 | AV-FABLE introduces a long-form audio-visual benchmark for sparse manipulations, showing that frozen perception features of audio-visual large language models contain forensic evidence best recovered via separate temporal decoders rather than language outputs. | [Read](https://huggingface.co/papers/2610.33413) |
-| **Joint or Per-Option? Compact Encoders for Closed-Set Decisions from 17 Million to 1 Billion Parameters** | 👍 2 | Many language-model pipelines end in a closed-set decision, such as selecting a tool. Prompting a large language model for it is slow and order-sensitive. We as... | [Read](https://huggingface.co/papers/2610.30970) |
-| **More Memory, Better Videos? A Controlled Study of Visual Memory in Long-Video Generation** | 👍 5 | Visual memory improves historical consistency but can reduce current-story accuracy by reinforcing outdated appearances, showing that retrieval relevance alone does not prove memory utility. | [Read](https://huggingface.co/papers/2610.35001) |
-| **RoboHarness: A Simple Harness Outperforms VLA and World Action Models** | 👍 1 | RoboHarness enables LLM agents to perform embodied manipulation via a visual-geometric control interface, surpassing specialized vision-language-action models on robotics benchmarks. | [Read](https://huggingface.co/papers/2610.14018) |
+| **ThinkBit: Search Codewords, Recalibrate Scales, Select by Reasoning** | 👍 0 | ThinkBit is a scalar two-bit quantization framework that preserves reasoning by assigning layerwise bit tiers, optimizing codewords via Gumbel-softmax, and recalibrating with knowledge distillation followed by quantization-aware training. | [Read](https://huggingface.co/papers/2610.34886) |
+| **iPrefBench: A User-Centric Benchmark for Personalized Mobile Use Agents** | 👍 2 | The study introduces iPrefBench, a benchmark for assessing whether mobile agents can infer missing user preferences from activity history or ask for necessary clarification, revealing that current agents execute actions well but fail at personalization. | [Read](https://huggingface.co/papers/2610.34735) |
+| **Semantic Concept Steering Breaks the Explanation Drift Loop in Continual Learning** | 👍 1 | C3L prevents explanation drift in continual learning by anchoring saliency regularization to offline-discovered semantic concepts, suppressing spurious correlations through a relevance crowding-out effect. | [Read](https://huggingface.co/papers/2610.33877) |
+| **Learning from Automatic 3D Gaussian Splatting Edits for Online Bayesian Scene Change Detection** | 👍 0 | The method learns scene-specific evidence models and priors from automatically edited 3D Gaussian Splatting representations to perform efficient online change detection via Bayesian fusion and object-guided refinement. | [Read](https://huggingface.co/papers/2610.28490) |
+| **Intrinsic Goals for Autonomous Agents: Hierarchical Exploration Captures Future Volitional Action in Drosophila** | 👍 2 | Hierarchical intrinsically motivated agents trained with competency-based objectives replicate fruit fly exploratory behavior and neural representations of future actions, supporting reverse-engineering of autonomous decision-making. | [Read](https://huggingface.co/papers/2610.34638) |
 
 
 ---
@@ -80,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
+- **Sample Link Health Check**: `25/25` healthy verified (`0` flagged / timed out)
 - **Dependency Security**: `32` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

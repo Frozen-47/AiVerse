@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-27T10:09:41.296Z",
+  "timestamp": "2026-10-27T17:13:23.268Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 3278,
+      "likes": 3329,
       "downloads": 105667,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 939,
+      "likes": 954,
       "downloads": 10574,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
@@ -20,7 +20,7 @@
     {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 624,
+      "likes": 645,
       "downloads": 4785,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
@@ -28,7 +28,7 @@
     {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 733,
+      "likes": 765,
       "downloads": 6191,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
@@ -36,7 +36,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1781,
+      "likes": 1819,
       "downloads": 750694,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -44,7 +44,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 9497,
+      "likes": 9539,
       "downloads": 2163739,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "CausalAlign: Causal Alignment of Video Generation Models for Consistent Ego-Motion",
-      "summary": "CausalAlign improves long-horizon camera ego-motion consistency in diffusion video generators by aligning internal representations to 3D dynamics via delta-token space.",
-      "upvotes": 1,
-      "arxiv_id": "2610.29915",
-      "url": "https://huggingface.co/papers/2610.29915",
-      "githubRepo": "https://github.com/PKU-VaLuE-Lab/CausalAlign"
-    },
-    {
-      "title": "AV-FABLE: Audio-Visual Manipulation Forensics in Long-Form Videos",
-      "summary": "AV-FABLE introduces a long-form audio-visual benchmark for sparse manipulations, showing that frozen perception features of audio-visual large language models contain forensic evidence best recovered via separate temporal decoders rather than language outputs.",
-      "upvotes": 8,
-      "arxiv_id": "2610.33413",
-      "url": "https://huggingface.co/papers/2610.33413",
+      "title": "ThinkBit: Search Codewords, Recalibrate Scales, Select by Reasoning",
+      "summary": "ThinkBit is a scalar two-bit quantization framework that preserves reasoning by assigning layerwise bit tiers, optimizing codewords via Gumbel-softmax, and recalibrating with knowledge distillation followed by quantization-aware training.",
+      "upvotes": 0,
+      "arxiv_id": "2610.34886",
+      "url": "https://huggingface.co/papers/2610.34886",
       "githubRepo": null
     },
     {
-      "title": "Joint or Per-Option? Compact Encoders for Closed-Set Decisions from 17 Million to 1 Billion Parameters",
-      "summary": "Many language-model pipelines end in a closed-set decision, such as selecting a tool. Prompting a large language model for it is slow and order-sensitive. We as...",
+      "title": "iPrefBench: A User-Centric Benchmark for Personalized Mobile Use Agents",
+      "summary": "The study introduces iPrefBench, a benchmark for assessing whether mobile agents can infer missing user preferences from activity history or ask for necessary clarification, revealing that current agents execute actions well but fail at personalization.",
       "upvotes": 2,
-      "arxiv_id": "2610.30970",
-      "url": "https://huggingface.co/papers/2610.30970",
-      "githubRepo": "https://github.com/tardellirs/crivo-decision-encoders"
+      "arxiv_id": "2610.34735",
+      "url": "https://huggingface.co/papers/2610.34735",
+      "githubRepo": null
     },
     {
-      "title": "More Memory, Better Videos? A Controlled Study of Visual Memory in Long-Video Generation",
-      "summary": "Visual memory improves historical consistency but can reduce current-story accuracy by reinforcing outdated appearances, showing that retrieval relevance alone does not prove memory utility.",
-      "upvotes": 5,
-      "arxiv_id": "2610.35001",
-      "url": "https://huggingface.co/papers/2610.35001",
-      "githubRepo": "https://github.com/Suchenl/VMem-Bench"
-    },
-    {
-      "title": "RoboHarness: A Simple Harness Outperforms VLA and World Action Models",
-      "summary": "RoboHarness enables LLM agents to perform embodied manipulation via a visual-geometric control interface, surpassing specialized vision-language-action models on robotics benchmarks.",
+      "title": "Semantic Concept Steering Breaks the Explanation Drift Loop in Continual Learning",
+      "summary": "C3L prevents explanation drift in continual learning by anchoring saliency regularization to offline-discovered semantic concepts, suppressing spurious correlations through a relevance crowding-out effect.",
       "upvotes": 1,
-      "arxiv_id": "2610.14018",
-      "url": "https://huggingface.co/papers/2610.14018",
-      "githubRepo": "https://github.com/BinceQu/RoboHarness"
+      "arxiv_id": "2610.33877",
+      "url": "https://huggingface.co/papers/2610.33877",
+      "githubRepo": null
+    },
+    {
+      "title": "Learning from Automatic 3D Gaussian Splatting Edits for Online Bayesian Scene Change Detection",
+      "summary": "The method learns scene-specific evidence models and priors from automatically edited 3D Gaussian Splatting representations to perform efficient online change detection via Bayesian fusion and object-guided refinement.",
+      "upvotes": 0,
+      "arxiv_id": "2610.28490",
+      "url": "https://huggingface.co/papers/2610.28490",
+      "githubRepo": "https://github.com/changruizhu96/LEGO-SCD"
+    },
+    {
+      "title": "Intrinsic Goals for Autonomous Agents: Hierarchical Exploration Captures Future Volitional Action in Drosophila",
+      "summary": "Hierarchical intrinsically motivated agents trained with competency-based objectives replicate fruit fly exploratory behavior and neural representations of future actions, supporting reverse-engineering of autonomous decision-making.",
+      "upvotes": 2,
+      "arxiv_id": "2610.34638",
+      "url": "https://huggingface.co/papers/2610.34638",
+      "githubRepo": "https://github.com/neuroagents-lab/autonomous_drosophila"
     }
   ]
 }

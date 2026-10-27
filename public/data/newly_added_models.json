@@ -4,6 +4,84 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "MiniMax-M3.1-Flash",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by MiniMaxAI, trending with over 402 community likes and 11,075 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "MiniMaxAI",
+        "size": "Open Weights",
+        "architecture": "MiniMaxAI image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"MiniMaxAI/MiniMax-M3.1-Flash\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"MiniMaxAI/MiniMax-M3.1-Flash\")",
+        "benchmarks": "Trending Score: 385, Likes: 402, Downloads: 11,075",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+        "citations": [
+          {
+            "text": "MiniMaxAI/MiniMax-M3.1-Flash on Hugging Face",
+            "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
+          }
+        ]
+      },
+      {
+        "name": "flux-3-image-klein",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by black-forest-labs. Trending with 233 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "black-forest-labs",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
+        "benchmarks": "Trending Score: 81, Community Likes: 233",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
+        "citations": [
+          {
+            "text": "black-forest-labs/flux-3-image-klein on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein"
+          }
+        ]
+      },
+      {
+        "name": "Nemotron-Personas-Germany",
+        "type": "Dataset",
+        "summary": "Nemotron-Personas-Germany \t           Ein Compound-AI-Ansatz für synthetische Personas auf Basis realer Verteilungen     A compound AI approach to personas grounded in (51 likes, 2,210 downloads).",
+        "task": "NLP",
+        "license": "CC-BY-4.0",
+        "year": 2026,
+        "org": "nvidia",
+        "size": "1M<n<10M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/Nemotron-Personas-Germany\")",
+        "benchmarks": "Trending Score: 42, Likes: 51, Downloads: 2,210",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Germany",
+        "citations": [
+          {
+            "text": "nvidia/Nemotron-Personas-Germany on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Germany"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-27",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "flux-3-image-klein-comfy",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by black-forest-labs, trending with over 1,781 community likes and 750,694 downloads on Hugging Face.",

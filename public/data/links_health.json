@@ -1,28 +1,7 @@
 {
-  "timestamp": "2026-10-27T10:09:41.371Z",
+  "timestamp": "2026-10-27T17:13:23.352Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
-  "issues": [
-    {
-      "name": "GPT-3",
-      "url": "https://openai.com/research/language-models-are-few-shot-learners",
-      "status": 403
-    },
-    {
-      "name": "DALL-E 2",
-      "url": "https://openai.com/dall-e-2",
-      "status": 403
-    },
-    {
-      "name": "Perplexity AI",
-      "url": "https://www.perplexity.ai/",
-      "status": 403
-    },
-    {
-      "name": "Google Gemini",
-      "url": "https://gemini.google.com",
-      "status": "Network Error"
-    }
-  ]
+  "healthy": 25,
+  "broken": 0,
+  "issues": []
 }

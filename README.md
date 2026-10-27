@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-27)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **flux-3-image-klein-comfy** (`Model`), **Qwen-2511-Plus-Flux.2-klein** (`Platform`), **10-2026-qwen-investigation-traces** (`Dataset`) |
+| 📥 **Queued for Review** | **MiniMax-M3.1-Flash** (`Model`), **flux-3-image-klein** (`Platform`), **Nemotron-Personas-Germany** (`Dataset`) |
 | 🌟 **Tool of the Day** | **china-a-share-l2-level2-limit-order-book-tick-data** (venvoo) — [Explore](https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [CausalAlign: Causal Alignment of Video Generation ...](https://huggingface.co/papers/2610.29915) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Synchronized** | `Tue, 27 Oct 2026 10:09:46 GMT` |
+| 📜 **Top Daily Paper** | [ThinkBit: Search Codewords, Recalibrate Scales, Se...](https://huggingface.co/papers/2610.34886) |
+| 🛡️ **Catalog Links Checked** | **25/25** operational |
+| 🕒 **Last Synchronized** | `Tue, 27 Oct 2026 17:13:29 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
