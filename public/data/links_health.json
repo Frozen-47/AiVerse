@@ -1,7 +1,18 @@
 {
-  "timestamp": "2026-10-27T17:13:23.352Z",
+  "timestamp": "2026-10-27T22:48:46.807Z",
   "checked": 25,
-  "healthy": 25,
-  "broken": 0,
-  "issues": []
+  "healthy": 23,
+  "broken": 2,
+  "issues": [
+    {
+      "name": "GPT-4o",
+      "url": "https://openai.com/chatgpt",
+      "status": 403
+    },
+    {
+      "name": "Whisper",
+      "url": "https://openai.com/research/whisper",
+      "status": 403
+    }
+  ]
 }

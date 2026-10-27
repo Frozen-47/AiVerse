@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-27T17:13:23.268Z",
+  "timestamp": "2026-10-27T22:48:46.699Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 3329,
+      "likes": 3364,
       "downloads": 105667,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 954,
+      "likes": 967,
       "downloads": 10574,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
@@ -20,7 +20,7 @@
     {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 645,
+      "likes": 664,
       "downloads": 4785,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
@@ -28,7 +28,7 @@
     {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 765,
+      "likes": 782,
       "downloads": 6191,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
@@ -36,7 +36,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1819,
+      "likes": 1850,
       "downloads": 750694,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -44,7 +44,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 9539,
+      "likes": 9570,
       "downloads": 2163739,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "ThinkBit: Search Codewords, Recalibrate Scales, Select by Reasoning",
-      "summary": "ThinkBit is a scalar two-bit quantization framework that preserves reasoning by assigning layerwise bit tiers, optimizing codewords via Gumbel-softmax, and recalibrating with knowledge distillation followed by quantization-aware training.",
-      "upvotes": 0,
-      "arxiv_id": "2610.34886",
-      "url": "https://huggingface.co/papers/2610.34886",
-      "githubRepo": null
-    },
-    {
-      "title": "iPrefBench: A User-Centric Benchmark for Personalized Mobile Use Agents",
-      "summary": "The study introduces iPrefBench, a benchmark for assessing whether mobile agents can infer missing user preferences from activity history or ask for necessary clarification, revealing that current agents execute actions well but fail at personalization.",
-      "upvotes": 2,
-      "arxiv_id": "2610.34735",
-      "url": "https://huggingface.co/papers/2610.34735",
-      "githubRepo": null
-    },
-    {
-      "title": "Semantic Concept Steering Breaks the Explanation Drift Loop in Continual Learning",
-      "summary": "C3L prevents explanation drift in continual learning by anchoring saliency regularization to offline-discovered semantic concepts, suppressing spurious correlations through a relevance crowding-out effect.",
+      "title": "Representation Redistribution in Sparse Autoencoders",
+      "summary": "Sparse autoencoders decompose language model activations into sparse features, and the redistribution sensitivity score identifies recurring feature changes that contribute to downstream readout failures without equating representation change with failure.",
       "upvotes": 1,
-      "arxiv_id": "2610.33877",
-      "url": "https://huggingface.co/papers/2610.33877",
-      "githubRepo": null
+      "arxiv_id": "2610.21240",
+      "url": "https://huggingface.co/papers/2610.21240",
+      "githubRepo": "https://github.com/OpenSAE/Redistribution-Sensitivity-Score"
     },
     {
-      "title": "Learning from Automatic 3D Gaussian Splatting Edits for Online Bayesian Scene Change Detection",
-      "summary": "The method learns scene-specific evidence models and priors from automatically edited 3D Gaussian Splatting representations to perform efficient online change detection via Bayesian fusion and object-guided refinement.",
+      "title": "EnvLunch: The Environment as a Free Lunch for Learning to Interact",
+      "summary": "EnvLunch leverages executable environments to generate verifiable training trajectories without human annotations, improving agent performance and reducing labeled data requirements for downstream tasks.",
+      "upvotes": 1,
+      "arxiv_id": "2610.33817",
+      "url": "https://huggingface.co/papers/2610.33817",
+      "githubRepo": "https://github.com/thinkwee/EnvLunch"
+    },
+    {
+      "title": "Can Test-Time Memory Evolution Outperform Test-Time Training for Scientific Discovery?",
+      "summary": "Test-Time Memory Evolution updates external memory without changing model weights to guide scientific discovery more efficiently than test-time training.",
+      "upvotes": 3,
+      "arxiv_id": "2610.32046",
+      "url": "https://huggingface.co/papers/2610.32046",
+      "githubRepo": "https://github.com/yepengliu/TTME"
+    },
+    {
+      "title": "Did the Model Use That? Counterfactual Training Boosts Self-Attribution in Language Models",
+      "summary": "CREDIT improves language model self-attribution of external information via counterfactual training, reducing false acknowledgment of non-influential sources.",
       "upvotes": 0,
-      "arxiv_id": "2610.28490",
-      "url": "https://huggingface.co/papers/2610.28490",
-      "githubRepo": "https://github.com/changruizhu96/LEGO-SCD"
+      "arxiv_id": "2610.35295",
+      "url": "https://huggingface.co/papers/2610.35295",
+      "githubRepo": "https://github.com/stanford-oval/CREDIT"
     },
     {
-      "title": "Intrinsic Goals for Autonomous Agents: Hierarchical Exploration Captures Future Volitional Action in Drosophila",
-      "summary": "Hierarchical intrinsically motivated agents trained with competency-based objectives replicate fruit fly exploratory behavior and neural representations of future actions, supporting reverse-engineering of autonomous decision-making.",
+      "title": "Rethinking Verification in Agent Harnesses",
+      "summary": "Verification strategies for agent harnesses—spanning instructions, reminders, gates, and independent review—show that independent critic review improves accuracy with minimal cost increases, guiding practical test-time scaling design.",
       "upvotes": 2,
-      "arxiv_id": "2610.34638",
-      "url": "https://huggingface.co/papers/2610.34638",
-      "githubRepo": "https://github.com/neuroagents-lab/autonomous_drosophila"
+      "arxiv_id": "2610.34577",
+      "url": "https://huggingface.co/papers/2610.34577",
+      "githubRepo": null
     }
   ]
 }

@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-27)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **MiniMax-M3.1-Flash** (`Model`), **flux-3-image-klein** (`Platform`), **Nemotron-Personas-Germany** (`Dataset`) |
+| 📥 **Queued for Review** | **DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF** (`Model`), **Fibo-2.0-editing** (`Platform`), **CulturalRiddles** (`Dataset`) |
 | 🌟 **Tool of the Day** | **china-a-share-l2-level2-limit-order-book-tick-data** (venvoo) — [Explore](https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [ThinkBit: Search Codewords, Recalibrate Scales, Se...](https://huggingface.co/papers/2610.34886) |
-| 🛡️ **Catalog Links Checked** | **25/25** operational |
-| 🕒 **Last Synchronized** | `Tue, 27 Oct 2026 17:13:29 GMT` |
+| 📜 **Top Daily Paper** | [Representation Redistribution in Sparse Autoencode...](https://huggingface.co/papers/2610.21240) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Tue, 27 Oct 2026 22:48:51 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

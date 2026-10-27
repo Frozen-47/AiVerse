@@ -1,5 +1,80 @@
 [
   {
+    "name": "CulturalRiddles",
+    "type": "Dataset",
+    "summary": "Cultural Riddles \t Paper: arXiv:2610.29968 · Explore the results: dashboard · Play: try the riddles yourself · Code: github.com/Cohere-Labs-Community/CulturalRiddles A (33 likes, 395 downloads).",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "CohereLabsCommunity",
+    "size": "100K<n<1M",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"CohereLabsCommunity/CulturalRiddles\")",
+    "benchmarks": "Trending Score: 31, Likes: 33, Downloads: 395",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/CohereLabsCommunity/CulturalRiddles",
+    "citations": [
+      {
+        "text": "CohereLabsCommunity/CulturalRiddles on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/CohereLabsCommunity/CulturalRiddles"
+      }
+    ],
+    "created_at": "2026-10-27T22:48:46.573Z"
+  },
+  {
+    "name": "Fibo-2.0-editing",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by briaai. Trending with 88 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "briaai",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/briaai/Fibo-2.0-editing",
+    "benchmarks": "Trending Score: 67, Community Likes: 88",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/briaai/Fibo-2.0-editing",
+    "citations": [
+      {
+        "text": "briaai/Fibo-2.0-editing on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/briaai/Fibo-2.0-editing"
+      }
+    ],
+    "created_at": "2026-10-27T22:48:46.573Z"
+  },
+  {
+    "name": "DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by ISTA-DASLab, trending with over 390 community likes and 1,105,751 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "MIT",
+    "year": 2026,
+    "org": "ISTA-DASLab",
+    "size": "Open Weights",
+    "architecture": "ISTA-DASLab text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF\")",
+    "benchmarks": "Trending Score: 368, Likes: 390, Downloads: 1,105,751",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF",
+    "citations": [
+      {
+        "text": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF on Hugging Face",
+        "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF"
+      }
+    ],
+    "created_at": "2026-10-27T22:48:46.573Z"
+  },
+  {
     "name": "Nemotron-Personas-Germany",
     "type": "Dataset",
     "summary": "Nemotron-Personas-Germany \t           Ein Compound-AI-Ansatz für synthetische Personas auf Basis realer Verteilungen     A compound AI approach to personas grounded in (51 likes, 2,210 downloads).",
