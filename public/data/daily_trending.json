@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-28T10:55:46.895Z",
+  "timestamp": "2026-10-28T17:46:48.437Z",
   "models": [
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 1112,
+      "likes": 1142,
       "downloads": 14047,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
@@ -12,7 +12,7 @@
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 3467,
+      "likes": 3503,
       "downloads": 116770,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -20,7 +20,7 @@
     {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 691,
+      "likes": 707,
       "downloads": 7412,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
@@ -28,7 +28,7 @@
     {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 826,
+      "likes": 844,
       "downloads": 8222,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
@@ -36,7 +36,7 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1900,
+      "likes": 1936,
       "downloads": 798943,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
@@ -44,7 +44,7 @@
     {
       "id": "MiniMaxAI/MiniMax-M3.1-Flash",
       "author": "MiniMaxAI",
-      "likes": 434,
+      "likes": 444,
       "downloads": 13247,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
@@ -52,43 +52,43 @@
   ],
   "papers": [
     {
-      "title": "The Lexical Imprint of Pre-training Data",
-      "summary": "Pre-training corpora leave a lexical imprint on zero-shot accuracy that is consistently tracked by word-level unigram cross-entropy across benchmarks, document selection, and prompt routing.",
-      "upvotes": 4,
-      "arxiv_id": "2602.10657",
-      "url": "https://huggingface.co/papers/2602.10657",
-      "githubRepo": "https://github.com/penpaperkeycode/lexical-imprint"
+      "title": "Lipi-Ghor: A Large-Scale, Diarized, Multi-Domain Bengali Speech Corpus and a Scalable Pipeline for Building It",
+      "summary": "Lipi-Ghor is a large-scale weakly supervised Bengali speech corpus with speaker-diarized long-form annotations and a gold evaluation split for benchmarking ASR models.",
+      "upvotes": 0,
+      "arxiv_id": "2610.36184",
+      "url": "https://huggingface.co/papers/2610.36184",
+      "githubRepo": "https://github.com/Sanjidh090/Lipi-Ghor-bn-882-SSTT"
     },
     {
-      "title": "Zooming without Zooming v2: From Seeing Details to Connecting Evidence for Generalizable Multimodal Perception",
-      "summary": "EvidenceConnect synthesizes training data to strengthen visual evidence connection, improving spatial perception and multimodal reasoning across diverse tasks.",
-      "upvotes": 17,
-      "arxiv_id": "2610.37037",
-      "url": "https://huggingface.co/papers/2610.37037",
-      "githubRepo": "https://github.com/inclusionAI/Zooming-without-Zooming-v2"
+      "title": "Beyond the Estimate: Wiener-Informed Decoding for Easier Training of Pixel-Space Flow Models",
+      "summary": "Wiener-informed Decoding accelerates pixel-space velocity model training and improves image generation by integrating statistical predictions into decoder computation without altering native blocks.",
+      "upvotes": 7,
+      "arxiv_id": "2610.36192",
+      "url": "https://huggingface.co/papers/2610.36192",
+      "githubRepo": "https://github.com/NUS-HPC-AI-Lab/WiD"
     },
     {
-      "title": "Can Discrete Tokens Serve as Semantically Lossless Representations of Visual Signals?",
-      "summary": "Factorized Vector Quantization improves discrete visual token quality by using parallel codebooks on complementary feature views, enabling discrete representations to match continuous ones in multimodal understanding.",
-      "upvotes": 44,
-      "arxiv_id": "2610.37662",
-      "url": "https://huggingface.co/papers/2610.37662",
-      "githubRepo": "https://github.com/hustvl/FVQ"
+      "title": "What Outcome RL Buys: Finishing, Reliability, Rarely Reach",
+      "summary": "Reinforcement learning improves pass@1 mainly by finishing answers faster and increasing reliability rather than acquiring new problem-solving knowledge, with minimal reach gains under fixed token budgets.",
+      "upvotes": 1,
+      "arxiv_id": "2610.34894",
+      "url": "https://huggingface.co/papers/2610.34894",
+      "githubRepo": "https://github.com/shanyang-me/outcome-rl-buys"
     },
     {
-      "title": "Truncate or Not? A Scaling Study of Looped Transformers with Truncated Backpropagation",
-      "summary": "Looped transformers trained with full backpropagation through time outperform truncated alternatives under matched compute, with scaling laws identifying two loops as optimal when model size is adjustable.",
-      "upvotes": 26,
-      "arxiv_id": "2610.26030",
-      "url": "https://huggingface.co/papers/2610.26030",
-      "githubRepo": "https://github.com/xjxyys/Truncate-or-Not"
+      "title": "How Much Does the Hint Matter? Scope Conditions for Hindsight Self-Distillation in Financial Reasoning",
+      "summary": "Fin-SD improves local multi-step financial reasoning by using self-generated error critiques and truncated correct prefixes for on-policy distillation without external teachers.",
+      "upvotes": 2,
+      "arxiv_id": "2610.36082",
+      "url": "https://huggingface.co/papers/2610.36082",
+      "githubRepo": "https://github.com/johnnyhyu/fin-sd"
     },
     {
-      "title": "Rare, Relevant, and Still Wrong: How Memory Fails LLM Group Decisions",
-      "summary": "When compressing multi-agent discussions for final decisions, memory selection by rarity or relevance both fail due to decoy inclusion and social-proof bias, and even full transcripts reduce accuracy compared to no notes.",
-      "upvotes": 3,
-      "arxiv_id": "2610.37624",
-      "url": "https://huggingface.co/papers/2610.37624",
+      "title": "EmbeddingGemma 2: Unified and Efficient Multimodal Representations",
+      "summary": "EmbeddingGemma 2 is an open multimodal embedding model that unifies text, images, audio, and video representations with efficient resource-flexible design and state-of-the-art benchmark performance.",
+      "upvotes": 9,
+      "arxiv_id": "2610.37364",
+      "url": "https://huggingface.co/papers/2610.37364",
       "githubRepo": null
     }
   ]

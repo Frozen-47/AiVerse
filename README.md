@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-28)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **flint-GGUF** (`Model`), **GEAR** (`Platform`), **text-to-3d-with-llm-code** (`Dataset`) |
+| 📥 **Queued for Review** | **LFM3-1.7B** (`Model`), **qwen-image-2.1-uncensored-aio-loras-2** (`Platform`), **VDEBench** (`Dataset`) |
 | 🌟 **Tool of the Day** | **DeepSeek-V3** (DeepSeek) — [Explore](https://www.deepseek.com) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [RecursiveSI/flint](https://huggingface.co/RecursiveSI/flint) |
-| 📜 **Top Daily Paper** | [The Lexical Imprint of Pre-training Data...](https://huggingface.co/papers/2602.10657) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Wed, 28 Oct 2026 10:55:51 GMT` |
+| 📜 **Top Daily Paper** | [Lipi-Ghor: A Large-Scale, Diarized, Multi-Domain B...](https://huggingface.co/papers/2610.36184) |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Synchronized** | `Wed, 28 Oct 2026 17:46:52 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

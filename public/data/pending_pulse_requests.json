@@ -1,5 +1,80 @@
 [
   {
+    "name": "VDEBench",
+    "type": "Dataset",
+    "summary": "VDEBench: Visual Document Editing Benchmark \t Edit the requested text or table. Preserve the rest of the document. VDEBench evaluates instruction-guided image editing o (58 likes, 4,372 downloads).",
+    "task": "Computer Vision",
+    "license": "Open Data",
+    "year": 2026,
+    "org": "hongzhuyi",
+    "size": "1K<n<10K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"hongzhuyi/VDEBench\")",
+    "benchmarks": "Trending Score: 27, Likes: 58, Downloads: 4,372",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/hongzhuyi/VDEBench",
+    "citations": [
+      {
+        "text": "hongzhuyi/VDEBench on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/hongzhuyi/VDEBench"
+      }
+    ],
+    "created_at": "2026-10-28T17:46:48.425Z"
+  },
+  {
+    "name": "qwen-image-2.1-uncensored-aio-loras-2",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by wank3r. Trending with 61 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "wank3r",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/wank3r/qwen-image-2.1-uncensored-aio-loras-2",
+    "benchmarks": "Trending Score: 47, Community Likes: 61",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/wank3r/qwen-image-2.1-uncensored-aio-loras-2",
+    "citations": [
+      {
+        "text": "wank3r/qwen-image-2.1-uncensored-aio-loras-2 on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/wank3r/qwen-image-2.1-uncensored-aio-loras-2"
+      }
+    ],
+    "created_at": "2026-10-28T17:46:48.425Z"
+  },
+  {
+    "name": "LFM3-1.7B",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by LiquidAI, trending with over 344 community likes and 8,892 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "LiquidAI",
+    "size": "1.7B params",
+    "architecture": "LiquidAI text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"LiquidAI/LFM3-1.7B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"LiquidAI/LFM3-1.7B\")",
+    "benchmarks": "Trending Score: 341, Likes: 344, Downloads: 8,892",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/LiquidAI/LFM3-1.7B",
+    "citations": [
+      {
+        "text": "LiquidAI/LFM3-1.7B on Hugging Face",
+        "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
+      }
+    ],
+    "created_at": "2026-10-28T17:46:48.425Z"
+  },
+  {
     "name": "text-to-3d-with-llm-code",
     "type": "Dataset",
     "summary": "Rapidata Text-to-3D with LLM code Benchmark \t Built by Rapidata, collected with the Rapidata Python SDK. To evaluate your own models and create a leaderboard, check out (42 likes, 2,399 downloads).",
