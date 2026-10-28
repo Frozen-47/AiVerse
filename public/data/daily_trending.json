@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-10-28T17:46:48.437Z",
+  "timestamp": "2026-10-28T22:55:47.757Z",
   "models": [
-    {
-      "id": "RecursiveSI/flint",
-      "author": "RecursiveSI",
-      "likes": 1142,
-      "downloads": 14047,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/RecursiveSI/flint"
-    },
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 3503,
+      "likes": 3536,
       "downloads": 116770,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
+      "id": "RecursiveSI/flint",
+      "author": "RecursiveSI",
+      "likes": 1152,
+      "downloads": 14047,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/RecursiveSI/flint"
+    },
+    {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 707,
+      "likes": 719,
       "downloads": 7412,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
@@ -28,29 +28,53 @@
     {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 844,
+      "likes": 851,
       "downloads": 8222,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
     },
     {
-      "id": "black-forest-labs/flux-3-image-klein-comfy",
-      "author": "black-forest-labs",
-      "likes": 1936,
-      "downloads": 798943,
-      "pipeline_tag": "image-to-image",
-      "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
-    },
-    {
       "id": "MiniMaxAI/MiniMax-M3.1-Flash",
       "author": "MiniMaxAI",
-      "likes": 444,
+      "likes": 450,
       "downloads": 13247,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
+    },
+    {
+      "id": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF",
+      "author": "ISTA-DASLab",
+      "likes": 431,
+      "downloads": 1377570,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF"
     }
   ],
   "papers": [
+    {
+      "title": "Quaternion Approximate Networks for Enhanced Image Classification and Oriented Object Detection",
+      "summary": "QUAN is a quaternion-based deep learning framework that approximates quaternion convolution with real-valued operations to achieve rotation-equivariant image classification and object detection with improved efficiency.",
+      "upvotes": 1,
+      "arxiv_id": "2509.05512",
+      "url": "https://huggingface.co/papers/2509.05512",
+      "githubRepo": "https://github.com/bryceag11/QUAN_ultralytics"
+    },
+    {
+      "title": "AlphaBet: Reinforcement Learning for LLM Event Forecasting Agents",
+      "summary": "AlphaBet uses agentic reinforcement learning to train a single LLM policy to search, reason, and report forecast probabilities across multiple dates, reducing Brier scores by improving both evidence acquisition and probability reporting.",
+      "upvotes": 1,
+      "arxiv_id": "2610.22684",
+      "url": "https://huggingface.co/papers/2610.22684",
+      "githubRepo": "https://github.com/AlphaBet-Agent/AlphaBet"
+    },
+    {
+      "title": "Sub-monolayer tracking of molecular states at buried interfaces",
+      "summary": "Machine learning-enhanced optical modeling of polarized resonant soft X-ray scattering enables quantitative, depth-resolved analysis of molecular orientation and packing at buried interfaces.",
+      "upvotes": 2,
+      "arxiv_id": "2610.31924",
+      "url": "https://huggingface.co/papers/2610.31924",
+      "githubRepo": "https://github.com/WSU-Carbon-Lab/refl-analysis"
+    },
     {
       "title": "Lipi-Ghor: A Large-Scale, Diarized, Multi-Domain Bengali Speech Corpus and a Scalable Pipeline for Building It",
       "summary": "Lipi-Ghor is a large-scale weakly supervised Bengali speech corpus with speaker-diarized long-form annotations and a gold evaluation split for benchmarking ASR models.",
@@ -62,34 +86,10 @@
     {
       "title": "Beyond the Estimate: Wiener-Informed Decoding for Easier Training of Pixel-Space Flow Models",
       "summary": "Wiener-informed Decoding accelerates pixel-space velocity model training and improves image generation by integrating statistical predictions into decoder computation without altering native blocks.",
-      "upvotes": 7,
+      "upvotes": 9,
       "arxiv_id": "2610.36192",
       "url": "https://huggingface.co/papers/2610.36192",
       "githubRepo": "https://github.com/NUS-HPC-AI-Lab/WiD"
-    },
-    {
-      "title": "What Outcome RL Buys: Finishing, Reliability, Rarely Reach",
-      "summary": "Reinforcement learning improves pass@1 mainly by finishing answers faster and increasing reliability rather than acquiring new problem-solving knowledge, with minimal reach gains under fixed token budgets.",
-      "upvotes": 1,
-      "arxiv_id": "2610.34894",
-      "url": "https://huggingface.co/papers/2610.34894",
-      "githubRepo": "https://github.com/shanyang-me/outcome-rl-buys"
-    },
-    {
-      "title": "How Much Does the Hint Matter? Scope Conditions for Hindsight Self-Distillation in Financial Reasoning",
-      "summary": "Fin-SD improves local multi-step financial reasoning by using self-generated error critiques and truncated correct prefixes for on-policy distillation without external teachers.",
-      "upvotes": 2,
-      "arxiv_id": "2610.36082",
-      "url": "https://huggingface.co/papers/2610.36082",
-      "githubRepo": "https://github.com/johnnyhyu/fin-sd"
-    },
-    {
-      "title": "EmbeddingGemma 2: Unified and Efficient Multimodal Representations",
-      "summary": "EmbeddingGemma 2 is an open multimodal embedding model that unifies text, images, audio, and video representations with efficient resource-flexible design and state-of-the-art benchmark performance.",
-      "upvotes": 9,
-      "arxiv_id": "2610.37364",
-      "url": "https://huggingface.co/papers/2610.37364",
-      "githubRepo": null
     }
   ]
 }

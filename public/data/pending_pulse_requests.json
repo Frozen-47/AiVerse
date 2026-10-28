@@ -1,5 +1,80 @@
 [
   {
+    "name": "BlenderWorld",
+    "type": "Dataset",
+    "summary": "BlenderWorld \t BlenderWorld is the first comprehensive benchmark dedicated to evaluating frontier models on realistic 3D creation tasks. BlenderWorld comprises 223 task (68 likes, 9,152 downloads).",
+    "task": "Multimodal",
+    "license": "MIT",
+    "year": 2026,
+    "org": "Qwen",
+    "size": "n<1K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Qwen/BlenderWorld\")",
+    "benchmarks": "Trending Score: 23, Likes: 68, Downloads: 9,152",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/Qwen/BlenderWorld",
+    "citations": [
+      {
+        "text": "Qwen/BlenderWorld on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Qwen/BlenderWorld"
+      }
+    ],
+    "created_at": "2026-10-28T22:55:47.740Z"
+  },
+  {
+    "name": "phonon",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by gradium. Trending with 69 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "gradium",
+    "size": "STATIC Platform",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/gradium/phonon",
+    "benchmarks": "Trending Score: 47, Community Likes: 69",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/gradium/phonon",
+    "citations": [
+      {
+        "text": "gradium/phonon on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/gradium/phonon"
+      }
+    ],
+    "created_at": "2026-10-28T22:55:47.740Z"
+  },
+  {
+    "name": "Hy-SimulMT-30B-A3B-FP8",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by tencent, trending with over 338 community likes and 165 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "tencent",
+    "size": "30B params",
+    "architecture": "tencent translation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"tencent/Hy-SimulMT-30B-A3B-FP8\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"tencent/Hy-SimulMT-30B-A3B-FP8\")",
+    "benchmarks": "Trending Score: 333, Likes: 338, Downloads: 165",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/tencent/Hy-SimulMT-30B-A3B-FP8",
+    "citations": [
+      {
+        "text": "tencent/Hy-SimulMT-30B-A3B-FP8 on Hugging Face",
+        "url": "https://huggingface.co/tencent/Hy-SimulMT-30B-A3B-FP8"
+      }
+    ],
+    "created_at": "2026-10-28T22:55:47.740Z"
+  },
+  {
     "name": "VDEBench",
     "type": "Dataset",
     "summary": "VDEBench: Visual Document Editing Benchmark \t Edit the requested text or table. Preserve the rest of the document. VDEBench evaluates instruction-guided image editing o (58 likes, 4,372 downloads).",

@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-28)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **LFM3-1.7B** (`Model`), **qwen-image-2.1-uncensored-aio-loras-2** (`Platform`), **VDEBench** (`Dataset`) |
+| 📥 **Queued for Review** | **Hy-SimulMT-30B-A3B-FP8** (`Model`), **phonon** (`Platform`), **BlenderWorld** (`Dataset`) |
 | 🌟 **Tool of the Day** | **DeepSeek-V3** (DeepSeek) — [Explore](https://www.deepseek.com) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
-| 🔥 **Top Trending Model** | [RecursiveSI/flint](https://huggingface.co/RecursiveSI/flint) |
-| 📜 **Top Daily Paper** | [Lipi-Ghor: A Large-Scale, Diarized, Multi-Domain B...](https://huggingface.co/papers/2610.36184) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Synchronized** | `Wed, 28 Oct 2026 17:46:52 GMT` |
+| 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| 📜 **Top Daily Paper** | [Quaternion Approximate Networks for Enhanced Image...](https://huggingface.co/papers/2509.05512) |
+| 🛡️ **Catalog Links Checked** | **16/25** operational |
+| 🕒 **Last Synchronized** | `Wed, 28 Oct 2026 22:55:55 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
