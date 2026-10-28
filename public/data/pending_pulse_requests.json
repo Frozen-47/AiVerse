@@ -1,5 +1,80 @@
 [
   {
+    "name": "simready-central-library",
+    "type": "Dataset",
+    "summary": "Welcome to SimReady Central \t SimReady Central is in Alpha. We are accepting contributors through the Community tab. SimReady Central connects creators and users of sim (50 likes, 155 downloads).",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "nvidia",
+    "size": "Curated Dataset",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/simready-central-library\")",
+    "benchmarks": "Trending Score: 34, Likes: 50, Downloads: 155",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/nvidia/simready-central-library",
+    "citations": [
+      {
+        "text": "nvidia/simready-central-library on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/nvidia/simready-central-library"
+      }
+    ],
+    "created_at": "2026-10-28T03:32:48.990Z"
+  },
+  {
+    "name": "Carbon-X-Release",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceBio. Trending with 66 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "HuggingFaceBio",
+    "size": "STATIC Platform",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/HuggingFaceBio/Carbon-X-Release",
+    "benchmarks": "Trending Score: 58, Community Likes: 66",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/HuggingFaceBio/Carbon-X-Release",
+    "citations": [
+      {
+        "text": "HuggingFaceBio/Carbon-X-Release on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/HuggingFaceBio/Carbon-X-Release"
+      }
+    ],
+    "created_at": "2026-10-28T03:32:48.990Z"
+  },
+  {
+    "name": "Sage-A1.5",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by InternScience, trending with over 347 community likes and 6,613 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "InternScience",
+    "size": "Open Weights",
+    "architecture": "InternScience text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"InternScience/Sage-A1.5\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"InternScience/Sage-A1.5\")",
+    "benchmarks": "Trending Score: 334, Likes: 347, Downloads: 6,613",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/InternScience/Sage-A1.5",
+    "citations": [
+      {
+        "text": "InternScience/Sage-A1.5 on Hugging Face",
+        "url": "https://huggingface.co/InternScience/Sage-A1.5"
+      }
+    ],
+    "created_at": "2026-10-28T03:32:48.990Z"
+  },
+  {
     "name": "CulturalRiddles",
     "type": "Dataset",
     "summary": "Cultural Riddles \t Paper: arXiv:2610.29968 · Explore the results: dashboard · Play: try the riddles yourself · Code: github.com/Cohere-Labs-Community/CulturalRiddles A (33 likes, 395 downloads).",

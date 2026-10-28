@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-10-27)
+### ⚡ AiVerse AI Radar (2026-10-28)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF** (`Model`), **Fibo-2.0-editing** (`Platform`), **CulturalRiddles** (`Dataset`) |
-| 🌟 **Tool of the Day** | **china-a-share-l2-level2-limit-order-book-tick-data** (venvoo) — [Explore](https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data) |
+| 📥 **Queued for Review** | **Sage-A1.5** (`Model`), **Carbon-X-Release** (`Platform`), **simready-central-library** (`Dataset`) |
+| 🌟 **Tool of the Day** | **DeepSeek-V3** (DeepSeek) — [Explore](https://www.deepseek.com) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [Representation Redistribution in Sparse Autoencode...](https://huggingface.co/papers/2610.21240) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Tue, 27 Oct 2026 22:48:51 GMT` |
+| 📜 **Top Daily Paper** | [MoveBench: A Rubric-Based Benchmark for Evaluating...](https://huggingface.co/papers/2610.26185) |
+| 🛡️ **Catalog Links Checked** | **25/25** operational |
+| 🕒 **Last Synchronized** | `Wed, 28 Oct 2026 03:32:54 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

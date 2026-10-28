@@ -1,8 +1,8 @@
-# ⚡ AiVerse AI Radar (2026-10-27)
+# ⚡ AiVerse AI Radar (2026-10-28)
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Tue, 27 Oct 2026 22:48:51 GMT`*
+*Last Synchronized: `Wed, 28 Oct 2026 03:32:54 GMT`*
 
 ---
 
@@ -10,37 +10,37 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF** (`Model` • *ISTA-DASLab*)
-> High-performance NLP open-weights model by ISTA-DASLab, trending with over 390 community likes and 1,105,751 downloads on Hugging Face.
+### **Sage-A1.5** (`Model` • *InternScience*)
+> High-performance NLP open-weights model by InternScience, trending with over 347 community likes and 6,613 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `MIT` (2026)
-- ⚡ **Metrics**: `Trending Score: 368, Likes: 390, Downloads: 1,105,751`
-- 🔗 **Resource Link**: [https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 334, Likes: 347, Downloads: 6,613`
+- 🔗 **Resource Link**: [https://huggingface.co/InternScience/Sage-A1.5](https://huggingface.co/InternScience/Sage-A1.5)
 
-### **Fibo-2.0-editing** (`Platform` • *briaai*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by briaai. Trending with 88 community stars.
+### **Carbon-X-Release** (`Platform` • *HuggingFaceBio*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceBio. Trending with 66 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 67, Community Likes: 88`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/briaai/Fibo-2.0-editing](https://huggingface.co/spaces/briaai/Fibo-2.0-editing)
+- ⚡ **Metrics**: `Trending Score: 58, Community Likes: 66`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/HuggingFaceBio/Carbon-X-Release](https://huggingface.co/spaces/HuggingFaceBio/Carbon-X-Release)
 
-### **CulturalRiddles** (`Dataset` • *CohereLabsCommunity*)
-> Cultural Riddles 	 Paper: arXiv:2610.29968 · Explore the results: dashboard · Play: try the riddles yourself · Code: github.com/Cohere-Labs-Community/CulturalRiddles A (33 likes, 395 downloads).
+### **simready-central-library** (`Dataset` • *nvidia*)
+> Welcome to SimReady Central 	 SimReady Central is in Alpha. We are accepting contributors through the Community tab. SimReady Central connects creators and users of sim (50 likes, 155 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 31, Likes: 33, Downloads: 395`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/CohereLabsCommunity/CulturalRiddles](https://huggingface.co/datasets/CohereLabsCommunity/CulturalRiddles)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 34, Likes: 50, Downloads: 155`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/simready-central-library](https://huggingface.co/datasets/nvidia/simready-central-library)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **china-a-share-l2-level2-limit-order-book-tick-data** (`Dataset` • *venvoo*)
-> China A-Share Level-2 Archive 	 2017–2026 · Quotes, orders and trades · Parquet A historical archive of Chinese exchange Level-2 data, supplied through a vendor export. (281 likes, 120,455 downloads).
+### **DeepSeek-V3** (`Model` • *DeepSeek*)
+> DeepSeek's flagship 671B Mixture-of-Experts (MoE) model with Multi-head Latent Attention (MLA), activating 37B params per token with industry-leading efficiency.
 
-- 🏛️ **Architecture**: Parquet / Arrow structured tabular & tokenized dataset.
-- ⚡ **Benchmarks**: `Trending Score: 33, Likes: 281, Downloads: 120,455`
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (Released: 2026)
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data](https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data)
+- 🏛️ **Architecture**: Multi-head Latent Attention (MLA) + DeepSeekMoE + FP8 Mixed Precision Training.
+- ⚡ **Benchmarks**: `MMLU-Redux: 89.1%, HumanEval: 90.2%, MATH-500: 75.7%`
+- 🏷️ **Domain & License**: `NLP` • `MIT` (Released: 2024)
+- 🔗 **Resource Link**: [https://www.deepseek.com](https://www.deepseek.com)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,364 | 📥 105,667 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `RecursiveSI/flint` | text-generation | ❤️ 967 | 📥 10,574 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 664 | 📥 4,785 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
-| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 782 | 📥 6,191 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,850 | 📥 750,694 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 9,570 | 📥 2,163,739 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,408 | 📥 105,667 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `RecursiveSI/flint` | text-generation | ❤️ 985 | 📥 10,574 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 678 | 📥 4,785 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
+| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 807 | 📥 6,191 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,871 | 📥 750,694 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `MiniMaxAI/MiniMax-M3.1-Flash` | image-text-to-text | ❤️ 423 | 📥 11,075 | [View](https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Representation Redistribution in Sparse Autoencoders** | 👍 1 | Sparse autoencoders decompose language model activations into sparse features, and the redistribution sensitivity score identifies recurring feature changes that contribute to downstream readout failures without equating representation change with failure. | [Read](https://huggingface.co/papers/2610.21240) |
-| **EnvLunch: The Environment as a Free Lunch for Learning to Interact** | 👍 1 | EnvLunch leverages executable environments to generate verifiable training trajectories without human annotations, improving agent performance and reducing labeled data requirements for downstream tasks. | [Read](https://huggingface.co/papers/2610.33817) |
-| **Can Test-Time Memory Evolution Outperform Test-Time Training for Scientific Discovery?** | 👍 3 | Test-Time Memory Evolution updates external memory without changing model weights to guide scientific discovery more efficiently than test-time training. | [Read](https://huggingface.co/papers/2610.32046) |
-| **Did the Model Use That? Counterfactual Training Boosts Self-Attribution in Language Models** | 👍 0 | CREDIT improves language model self-attribution of external information via counterfactual training, reducing false acknowledgment of non-influential sources. | [Read](https://huggingface.co/papers/2610.35295) |
-| **Rethinking Verification in Agent Harnesses** | 👍 2 | Verification strategies for agent harnesses—spanning instructions, reminders, gates, and independent review—show that independent critic review improves accuracy with minimal cost increases, guiding practical test-time scaling design. | [Read](https://huggingface.co/papers/2610.34577) |
+| **MoveBench: A Rubric-Based Benchmark for Evaluating Large Language Models in Sports and Health Coaching** | 👍 1 | MoveBench introduces a specialized benchmark for evaluating large language models on sports and health coaching, emphasizing safety, scientific validity, and personalization across multiple-choice and open-ended tasks. | [Read](https://huggingface.co/papers/2610.26185) |
+| **MLE-World: Predicting Machine Learning Experiment Outcomes with a Learned World Model** | 👍 1 | A world model predicts machine learning program outcomes to enable affordable test-time scaling for AI research agents, improving performance with fewer real executions. | [Read](https://huggingface.co/papers/2610.37175) |
+| **Vision-Language-Action or World-Action? Just Action Models** | 👍 1 | Just Action Model decouples backbone initialization, future observation objectives, and inference machinery to improve robot control with foresight training and reduced computation. | [Read](https://huggingface.co/papers/2610.37219) |
+| **Timestral** | 👍 1 | Timestral is a family of time series foundation models that achieves state-of-the-art probabilistic forecasting through decoupled horizon forecasting, native future covariate support, and synthetic pretraining followed by mixed post-training. | [Read](https://huggingface.co/papers/2610.37585) |
+| **Learning and Reasoning with Geometry: How Generation Helps Spatial Understanding** | 👍 1 | GeoUG improves spatial reasoning by combining depth and multi-view generation with adaptive geometric verification during inference. | [Read](https://huggingface.co/papers/2610.36022) |
 
 
 ---
@@ -80,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
+- **Sample Link Health Check**: `25/25` healthy verified (`0` flagged / timed out)
 - **Dependency Security**: `32` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

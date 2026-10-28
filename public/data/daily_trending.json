@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-27T22:48:46.699Z",
+  "timestamp": "2026-10-28T03:32:49.006Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 3364,
+      "likes": 3408,
       "downloads": 105667,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 967,
+      "likes": 985,
       "downloads": 10574,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
@@ -20,7 +20,7 @@
     {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 664,
+      "likes": 678,
       "downloads": 4785,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
@@ -28,7 +28,7 @@
     {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 782,
+      "likes": 807,
       "downloads": 6191,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
@@ -36,60 +36,60 @@
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1850,
+      "likes": 1871,
       "downloads": 750694,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
     },
     {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 9570,
-      "downloads": 2163739,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5"
+      "id": "MiniMaxAI/MiniMax-M3.1-Flash",
+      "author": "MiniMaxAI",
+      "likes": 423,
+      "downloads": 11075,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
     }
   ],
   "papers": [
     {
-      "title": "Representation Redistribution in Sparse Autoencoders",
-      "summary": "Sparse autoencoders decompose language model activations into sparse features, and the redistribution sensitivity score identifies recurring feature changes that contribute to downstream readout failures without equating representation change with failure.",
+      "title": "MoveBench: A Rubric-Based Benchmark for Evaluating Large Language Models in Sports and Health Coaching",
+      "summary": "MoveBench introduces a specialized benchmark for evaluating large language models on sports and health coaching, emphasizing safety, scientific validity, and personalization across multiple-choice and open-ended tasks.",
       "upvotes": 1,
-      "arxiv_id": "2610.21240",
-      "url": "https://huggingface.co/papers/2610.21240",
-      "githubRepo": "https://github.com/OpenSAE/Redistribution-Sensitivity-Score"
+      "arxiv_id": "2610.26185",
+      "url": "https://huggingface.co/papers/2610.26185",
+      "githubRepo": "https://github.com/Keep-Tech/MoveBench"
     },
     {
-      "title": "EnvLunch: The Environment as a Free Lunch for Learning to Interact",
-      "summary": "EnvLunch leverages executable environments to generate verifiable training trajectories without human annotations, improving agent performance and reducing labeled data requirements for downstream tasks.",
+      "title": "MLE-World: Predicting Machine Learning Experiment Outcomes with a Learned World Model",
+      "summary": "A world model predicts machine learning program outcomes to enable affordable test-time scaling for AI research agents, improving performance with fewer real executions.",
       "upvotes": 1,
-      "arxiv_id": "2610.33817",
-      "url": "https://huggingface.co/papers/2610.33817",
-      "githubRepo": "https://github.com/thinkwee/EnvLunch"
-    },
-    {
-      "title": "Can Test-Time Memory Evolution Outperform Test-Time Training for Scientific Discovery?",
-      "summary": "Test-Time Memory Evolution updates external memory without changing model weights to guide scientific discovery more efficiently than test-time training.",
-      "upvotes": 3,
-      "arxiv_id": "2610.32046",
-      "url": "https://huggingface.co/papers/2610.32046",
-      "githubRepo": "https://github.com/yepengliu/TTME"
-    },
-    {
-      "title": "Did the Model Use That? Counterfactual Training Boosts Self-Attribution in Language Models",
-      "summary": "CREDIT improves language model self-attribution of external information via counterfactual training, reducing false acknowledgment of non-influential sources.",
-      "upvotes": 0,
-      "arxiv_id": "2610.35295",
-      "url": "https://huggingface.co/papers/2610.35295",
-      "githubRepo": "https://github.com/stanford-oval/CREDIT"
-    },
-    {
-      "title": "Rethinking Verification in Agent Harnesses",
-      "summary": "Verification strategies for agent harnesses—spanning instructions, reminders, gates, and independent review—show that independent critic review improves accuracy with minimal cost increases, guiding practical test-time scaling design.",
-      "upvotes": 2,
-      "arxiv_id": "2610.34577",
-      "url": "https://huggingface.co/papers/2610.34577",
+      "arxiv_id": "2610.37175",
+      "url": "https://huggingface.co/papers/2610.37175",
       "githubRepo": null
+    },
+    {
+      "title": "Vision-Language-Action or World-Action? Just Action Models",
+      "summary": "Just Action Model decouples backbone initialization, future observation objectives, and inference machinery to improve robot control with foresight training and reduced computation.",
+      "upvotes": 1,
+      "arxiv_id": "2610.37219",
+      "url": "https://huggingface.co/papers/2610.37219",
+      "githubRepo": "https://github.com/y0urOy/JAM"
+    },
+    {
+      "title": "Timestral",
+      "summary": "Timestral is a family of time series foundation models that achieves state-of-the-art probabilistic forecasting through decoupled horizon forecasting, native future covariate support, and synthetic pretraining followed by mixed post-training.",
+      "upvotes": 1,
+      "arxiv_id": "2610.37585",
+      "url": "https://huggingface.co/papers/2610.37585",
+      "githubRepo": null
+    },
+    {
+      "title": "Learning and Reasoning with Geometry: How Generation Helps Spatial Understanding",
+      "summary": "GeoUG improves spatial reasoning by combining depth and multi-view generation with adaptive geometric verification during inference.",
+      "upvotes": 1,
+      "arxiv_id": "2610.36022",
+      "url": "https://huggingface.co/papers/2610.36022",
+      "githubRepo": "https://github.com/hku-sail/GeoUG"
     }
   ]
 }

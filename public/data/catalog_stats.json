@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-27T22:48:46.693Z",
+  "timestamp": "2026-10-28T03:32:49.000Z",
   "totalEntries": 373,
   "popularEntries": 300,
   "totalUsers": 10,
@@ -83,24 +83,24 @@
     "OPENMDW-1.1": 1
   },
   "toolOfTheDay": {
-    "name": "china-a-share-l2-level2-limit-order-book-tick-data",
-    "type": "Dataset",
-    "summary": "China A-Share Level-2 Archive \t 2017–2026 · Quotes, orders and trades · Parquet A historical archive of Chinese exchange Level-2 data, supplied through a vendor export. (281 likes, 120,455 downloads).",
+    "name": "DeepSeek-V3",
+    "type": "Model",
+    "summary": "DeepSeek's flagship 671B Mixture-of-Experts (MoE) model with Multi-head Latent Attention (MLA), activating 37B params per token with industry-leading efficiency.",
     "task": "NLP",
-    "license": "OTHER",
-    "year": 2026,
-    "org": "venvoo",
-    "size": "n>1T",
-    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"venvoo/china-a-share-l2-level2-limit-order-book-tick-data\")",
-    "benchmarks": "Trending Score: 33, Likes: 281, Downloads: 120,455",
-    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "license": "MIT",
+    "year": 2024,
+    "org": "DeepSeek",
+    "size": "671B (37B active)",
+    "architecture": "Multi-head Latent Attention (MLA) + DeepSeekMoE + FP8 Mixed Precision Training.",
+    "usage": "from openai import OpenAI\nclient = OpenAI(api_key=\"YOUR_KEY\", base_url=\"https://api.deepseek.com\")\nresponse = client.chat.completions.create(\n  model=\"deepseek-chat\",\n  messages=[{\"role\": \"user\", \"content\": \"Explain MLA architecture.\"}]\n)",
+    "benchmarks": "MMLU-Redux: 89.1%, HumanEval: 90.2%, MATH-500: 75.7%",
+    "limitations": "Massive parameter footprint requires multi-GPU or cloud API hosting.",
     "popular": true,
-    "url": "https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data",
+    "url": "https://www.deepseek.com",
     "citations": [
       {
-        "text": "venvoo/china-a-share-l2-level2-limit-order-book-tick-data on Hugging Face Datasets",
-        "url": "https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data"
+        "text": "DeepSeek-V3 Technical Report",
+        "url": "https://github.com/deepseek-ai/DeepSeek-V3"
       }
     ]
   }
