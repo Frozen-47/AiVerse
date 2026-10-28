@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-28T03:32:49.006Z",
+  "timestamp": "2026-10-28T10:55:46.895Z",
   "models": [
-    {
-      "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
-      "author": "deepseek-ai",
-      "likes": 3408,
-      "downloads": 105667,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
-    },
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 985,
-      "downloads": 10574,
+      "likes": 1112,
+      "downloads": 14047,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
     },
     {
+      "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "author": "deepseek-ai",
+      "likes": 3467,
+      "downloads": 116770,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+    },
+    {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 678,
-      "downloads": 4785,
+      "likes": 691,
+      "downloads": 7412,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
     },
     {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 807,
-      "downloads": 6191,
+      "likes": 826,
+      "downloads": 8222,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
     },
     {
       "id": "black-forest-labs/flux-3-image-klein-comfy",
       "author": "black-forest-labs",
-      "likes": 1871,
-      "downloads": 750694,
+      "likes": 1900,
+      "downloads": 798943,
       "pipeline_tag": "image-to-image",
       "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
     },
     {
       "id": "MiniMaxAI/MiniMax-M3.1-Flash",
       "author": "MiniMaxAI",
-      "likes": 423,
-      "downloads": 11075,
+      "likes": 434,
+      "downloads": 13247,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
     }
   ],
   "papers": [
     {
-      "title": "MoveBench: A Rubric-Based Benchmark for Evaluating Large Language Models in Sports and Health Coaching",
-      "summary": "MoveBench introduces a specialized benchmark for evaluating large language models on sports and health coaching, emphasizing safety, scientific validity, and personalization across multiple-choice and open-ended tasks.",
-      "upvotes": 1,
-      "arxiv_id": "2610.26185",
-      "url": "https://huggingface.co/papers/2610.26185",
-      "githubRepo": "https://github.com/Keep-Tech/MoveBench"
+      "title": "The Lexical Imprint of Pre-training Data",
+      "summary": "Pre-training corpora leave a lexical imprint on zero-shot accuracy that is consistently tracked by word-level unigram cross-entropy across benchmarks, document selection, and prompt routing.",
+      "upvotes": 4,
+      "arxiv_id": "2602.10657",
+      "url": "https://huggingface.co/papers/2602.10657",
+      "githubRepo": "https://github.com/penpaperkeycode/lexical-imprint"
     },
     {
-      "title": "MLE-World: Predicting Machine Learning Experiment Outcomes with a Learned World Model",
-      "summary": "A world model predicts machine learning program outcomes to enable affordable test-time scaling for AI research agents, improving performance with fewer real executions.",
-      "upvotes": 1,
-      "arxiv_id": "2610.37175",
-      "url": "https://huggingface.co/papers/2610.37175",
+      "title": "Zooming without Zooming v2: From Seeing Details to Connecting Evidence for Generalizable Multimodal Perception",
+      "summary": "EvidenceConnect synthesizes training data to strengthen visual evidence connection, improving spatial perception and multimodal reasoning across diverse tasks.",
+      "upvotes": 17,
+      "arxiv_id": "2610.37037",
+      "url": "https://huggingface.co/papers/2610.37037",
+      "githubRepo": "https://github.com/inclusionAI/Zooming-without-Zooming-v2"
+    },
+    {
+      "title": "Can Discrete Tokens Serve as Semantically Lossless Representations of Visual Signals?",
+      "summary": "Factorized Vector Quantization improves discrete visual token quality by using parallel codebooks on complementary feature views, enabling discrete representations to match continuous ones in multimodal understanding.",
+      "upvotes": 44,
+      "arxiv_id": "2610.37662",
+      "url": "https://huggingface.co/papers/2610.37662",
+      "githubRepo": "https://github.com/hustvl/FVQ"
+    },
+    {
+      "title": "Truncate or Not? A Scaling Study of Looped Transformers with Truncated Backpropagation",
+      "summary": "Looped transformers trained with full backpropagation through time outperform truncated alternatives under matched compute, with scaling laws identifying two loops as optimal when model size is adjustable.",
+      "upvotes": 26,
+      "arxiv_id": "2610.26030",
+      "url": "https://huggingface.co/papers/2610.26030",
+      "githubRepo": "https://github.com/xjxyys/Truncate-or-Not"
+    },
+    {
+      "title": "Rare, Relevant, and Still Wrong: How Memory Fails LLM Group Decisions",
+      "summary": "When compressing multi-agent discussions for final decisions, memory selection by rarity or relevance both fail due to decoy inclusion and social-proof bias, and even full transcripts reduce accuracy compared to no notes.",
+      "upvotes": 3,
+      "arxiv_id": "2610.37624",
+      "url": "https://huggingface.co/papers/2610.37624",
       "githubRepo": null
-    },
-    {
-      "title": "Vision-Language-Action or World-Action? Just Action Models",
-      "summary": "Just Action Model decouples backbone initialization, future observation objectives, and inference machinery to improve robot control with foresight training and reduced computation.",
-      "upvotes": 1,
-      "arxiv_id": "2610.37219",
-      "url": "https://huggingface.co/papers/2610.37219",
-      "githubRepo": "https://github.com/y0urOy/JAM"
-    },
-    {
-      "title": "Timestral",
-      "summary": "Timestral is a family of time series foundation models that achieves state-of-the-art probabilistic forecasting through decoupled horizon forecasting, native future covariate support, and synthetic pretraining followed by mixed post-training.",
-      "upvotes": 1,
-      "arxiv_id": "2610.37585",
-      "url": "https://huggingface.co/papers/2610.37585",
-      "githubRepo": null
-    },
-    {
-      "title": "Learning and Reasoning with Geometry: How Generation Helps Spatial Understanding",
-      "summary": "GeoUG improves spatial reasoning by combining depth and multi-view generation with adaptive geometric verification during inference.",
-      "upvotes": 1,
-      "arxiv_id": "2610.36022",
-      "url": "https://huggingface.co/papers/2610.36022",
-      "githubRepo": "https://github.com/hku-sail/GeoUG"
     }
   ]
 }

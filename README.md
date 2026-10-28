@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-28)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Sage-A1.5** (`Model`), **Carbon-X-Release** (`Platform`), **simready-central-library** (`Dataset`) |
+| 📥 **Queued for Review** | **flint-GGUF** (`Model`), **GEAR** (`Platform`), **text-to-3d-with-llm-code** (`Dataset`) |
 | 🌟 **Tool of the Day** | **DeepSeek-V3** (DeepSeek) — [Explore](https://www.deepseek.com) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
-| 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [MoveBench: A Rubric-Based Benchmark for Evaluating...](https://huggingface.co/papers/2610.26185) |
-| 🛡️ **Catalog Links Checked** | **25/25** operational |
-| 🕒 **Last Synchronized** | `Wed, 28 Oct 2026 03:32:54 GMT` |
+| 🔥 **Top Trending Model** | [RecursiveSI/flint](https://huggingface.co/RecursiveSI/flint) |
+| 📜 **Top Daily Paper** | [The Lexical Imprint of Pre-training Data...](https://huggingface.co/papers/2602.10657) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Wed, 28 Oct 2026 10:55:51 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

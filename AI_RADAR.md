@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Wed, 28 Oct 2026 03:32:54 GMT`*
+*Last Synchronized: `Wed, 28 Oct 2026 10:55:51 GMT`*
 
 ---
 
@@ -10,26 +10,26 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Sage-A1.5** (`Model` • *InternScience*)
-> High-performance NLP open-weights model by InternScience, trending with over 347 community likes and 6,613 downloads on Hugging Face.
+### **flint-GGUF** (`Model` • *unsloth*)
+> High-performance NLP open-weights model by unsloth, trending with over 301 community likes and 178,000 downloads on Hugging Face.
 
 - 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 334, Likes: 347, Downloads: 6,613`
-- 🔗 **Resource Link**: [https://huggingface.co/InternScience/Sage-A1.5](https://huggingface.co/InternScience/Sage-A1.5)
+- ⚡ **Metrics**: `Trending Score: 283, Likes: 301, Downloads: 178,000`
+- 🔗 **Resource Link**: [https://huggingface.co/unsloth/flint-GGUF](https://huggingface.co/unsloth/flint-GGUF)
 
-### **Carbon-X-Release** (`Platform` • *HuggingFaceBio*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceBio. Trending with 66 community stars.
+### **GEAR** (`Platform` • *WizardTY*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by WizardTY. Trending with 58 community stars.
 
-- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 58, Community Likes: 66`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/HuggingFaceBio/Carbon-X-Release](https://huggingface.co/spaces/HuggingFaceBio/Carbon-X-Release)
+- 🏷️ **Domain & License**: `NLP` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 46, Community Likes: 58`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/WizardTY/GEAR](https://huggingface.co/spaces/WizardTY/GEAR)
 
-### **simready-central-library** (`Dataset` • *nvidia*)
-> Welcome to SimReady Central 	 SimReady Central is in Alpha. We are accepting contributors through the Community tab. SimReady Central connects creators and users of sim (50 likes, 155 downloads).
+### **text-to-3d-with-llm-code** (`Dataset` • *Rapidata*)
+> Rapidata Text-to-3D with LLM code Benchmark 	 Built by Rapidata, collected with the Rapidata Python SDK. To evaluate your own models and create a leaderboard, check out (42 likes, 2,399 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 34, Likes: 50, Downloads: 155`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/simready-central-library](https://huggingface.co/datasets/nvidia/simready-central-library)
+- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 31, Likes: 42, Downloads: 2,399`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/Rapidata/text-to-3d-with-llm-code](https://huggingface.co/datasets/Rapidata/text-to-3d-with-llm-code)
 
 ---
 
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,408 | 📥 105,667 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `RecursiveSI/flint` | text-generation | ❤️ 985 | 📥 10,574 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 678 | 📥 4,785 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
-| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 807 | 📥 6,191 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
-| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,871 | 📥 750,694 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
-| `MiniMaxAI/MiniMax-M3.1-Flash` | image-text-to-text | ❤️ 423 | 📥 11,075 | [View](https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash) |
+| `RecursiveSI/flint` | text-generation | ❤️ 1,112 | 📥 14,047 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,467 | 📥 116,770 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 691 | 📥 7,412 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
+| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 826 | 📥 8,222 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
+| `black-forest-labs/flux-3-image-klein-comfy` | image-to-image | ❤️ 1,900 | 📥 798,943 | [View](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) |
+| `MiniMaxAI/MiniMax-M3.1-Flash` | image-text-to-text | ❤️ 434 | 📥 13,247 | [View](https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **MoveBench: A Rubric-Based Benchmark for Evaluating Large Language Models in Sports and Health Coaching** | 👍 1 | MoveBench introduces a specialized benchmark for evaluating large language models on sports and health coaching, emphasizing safety, scientific validity, and personalization across multiple-choice and open-ended tasks. | [Read](https://huggingface.co/papers/2610.26185) |
-| **MLE-World: Predicting Machine Learning Experiment Outcomes with a Learned World Model** | 👍 1 | A world model predicts machine learning program outcomes to enable affordable test-time scaling for AI research agents, improving performance with fewer real executions. | [Read](https://huggingface.co/papers/2610.37175) |
-| **Vision-Language-Action or World-Action? Just Action Models** | 👍 1 | Just Action Model decouples backbone initialization, future observation objectives, and inference machinery to improve robot control with foresight training and reduced computation. | [Read](https://huggingface.co/papers/2610.37219) |
-| **Timestral** | 👍 1 | Timestral is a family of time series foundation models that achieves state-of-the-art probabilistic forecasting through decoupled horizon forecasting, native future covariate support, and synthetic pretraining followed by mixed post-training. | [Read](https://huggingface.co/papers/2610.37585) |
-| **Learning and Reasoning with Geometry: How Generation Helps Spatial Understanding** | 👍 1 | GeoUG improves spatial reasoning by combining depth and multi-view generation with adaptive geometric verification during inference. | [Read](https://huggingface.co/papers/2610.36022) |
+| **The Lexical Imprint of Pre-training Data** | 👍 4 | Pre-training corpora leave a lexical imprint on zero-shot accuracy that is consistently tracked by word-level unigram cross-entropy across benchmarks, document selection, and prompt routing. | [Read](https://huggingface.co/papers/2602.10657) |
+| **Zooming without Zooming v2: From Seeing Details to Connecting Evidence for Generalizable Multimodal Perception** | 👍 17 | EvidenceConnect synthesizes training data to strengthen visual evidence connection, improving spatial perception and multimodal reasoning across diverse tasks. | [Read](https://huggingface.co/papers/2610.37037) |
+| **Can Discrete Tokens Serve as Semantically Lossless Representations of Visual Signals?** | 👍 44 | Factorized Vector Quantization improves discrete visual token quality by using parallel codebooks on complementary feature views, enabling discrete representations to match continuous ones in multimodal understanding. | [Read](https://huggingface.co/papers/2610.37662) |
+| **Truncate or Not? A Scaling Study of Looped Transformers with Truncated Backpropagation** | 👍 26 | Looped transformers trained with full backpropagation through time outperform truncated alternatives under matched compute, with scaling laws identifying two loops as optimal when model size is adjustable. | [Read](https://huggingface.co/papers/2610.26030) |
+| **Rare, Relevant, and Still Wrong: How Memory Fails LLM Group Decisions** | 👍 3 | When compressing multi-agent discussions for final decisions, memory selection by rarity or relevance both fail due to decoy inclusion and social-proof bias, and even full transcripts reduce accuracy compared to no notes. | [Read](https://huggingface.co/papers/2610.37624) |
 
 
 ---
@@ -80,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `25/25` healthy verified (`0` flagged / timed out)
+- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
 - **Dependency Security**: `32` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

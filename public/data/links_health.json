@@ -1,7 +1,18 @@
 {
-  "timestamp": "2026-10-28T03:32:49.167Z",
+  "timestamp": "2026-10-28T10:55:46.941Z",
   "checked": 25,
-  "healthy": 25,
-  "broken": 0,
-  "issues": []
+  "healthy": 23,
+  "broken": 2,
+  "issues": [
+    {
+      "name": "GPT-4",
+      "url": "https://openai.com/gpt-4",
+      "status": 403
+    },
+    {
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
+    }
+  ]
 }

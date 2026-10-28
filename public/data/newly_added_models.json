@@ -4,6 +4,84 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "flint-GGUF",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by unsloth, trending with over 301 community likes and 178,000 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "unsloth",
+        "size": "Open Weights",
+        "architecture": "unsloth text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"unsloth/flint-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"unsloth/flint-GGUF\")",
+        "benchmarks": "Trending Score: 283, Likes: 301, Downloads: 178,000",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/unsloth/flint-GGUF",
+        "citations": [
+          {
+            "text": "unsloth/flint-GGUF on Hugging Face",
+            "url": "https://huggingface.co/unsloth/flint-GGUF"
+          }
+        ]
+      },
+      {
+        "name": "GEAR",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by WizardTY. Trending with 58 community stars.",
+        "task": "NLP",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "WizardTY",
+        "size": "STATIC Platform",
+        "architecture": "STATIC cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/WizardTY/GEAR",
+        "benchmarks": "Trending Score: 46, Community Likes: 58",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/WizardTY/GEAR",
+        "citations": [
+          {
+            "text": "WizardTY/GEAR on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/WizardTY/GEAR"
+          }
+        ]
+      },
+      {
+        "name": "text-to-3d-with-llm-code",
+        "type": "Dataset",
+        "summary": "Rapidata Text-to-3D with LLM code Benchmark \t Built by Rapidata, collected with the Rapidata Python SDK. To evaluate your own models and create a leaderboard, check out (42 likes, 2,399 downloads).",
+        "task": "Computer Vision",
+        "license": "CC-BY-4.0",
+        "year": 2026,
+        "org": "Rapidata",
+        "size": "10K<n<100K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Rapidata/text-to-3d-with-llm-code\")",
+        "benchmarks": "Trending Score: 31, Likes: 42, Downloads: 2,399",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/Rapidata/text-to-3d-with-llm-code",
+        "citations": [
+          {
+            "text": "Rapidata/text-to-3d-with-llm-code on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/Rapidata/text-to-3d-with-llm-code"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-28",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Sage-A1.5",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by InternScience, trending with over 347 community likes and 6,613 downloads on Hugging Face.",
@@ -6522,33 +6600,6 @@
           {
             "text": "rajpurkar/squad on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/rajpurkar/squad"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-06",
-    "models": [
-      {
-        "name": "Spark-X2.5-4B",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by XHToken, trending with over 570 community likes and 5,477 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "XHToken",
-        "size": "4B params",
-        "architecture": "XHToken text generation architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"XHToken/Spark-X2.5-4B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"XHToken/Spark-X2.5-4B\")",
-        "benchmarks": "Trending Score: 474, Likes: 570, Downloads: 5,477",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": true,
-        "url": "https://huggingface.co/XHToken/Spark-X2.5-4B",
-        "citations": [
-          {
-            "text": "XHToken/Spark-X2.5-4B on Hugging Face",
-            "url": "https://huggingface.co/XHToken/Spark-X2.5-4B"
           }
         ]
       }
