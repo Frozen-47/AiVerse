@@ -1,34 +1,34 @@
 {
-  "timestamp": "2026-10-28T22:55:47.757Z",
+  "timestamp": "2026-10-29T03:53:56.781Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 3536,
+      "likes": 3580,
       "downloads": 116770,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
-      "id": "RecursiveSI/flint",
-      "author": "RecursiveSI",
-      "likes": 1152,
-      "downloads": 14047,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/RecursiveSI/flint"
-    },
-    {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 719,
+      "likes": 734,
       "downloads": 7412,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
     },
     {
+      "id": "RecursiveSI/flint",
+      "author": "RecursiveSI",
+      "likes": 1183,
+      "downloads": 14047,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/RecursiveSI/flint"
+    },
+    {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 851,
+      "likes": 871,
       "downloads": 8222,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
@@ -36,60 +36,60 @@
     {
       "id": "MiniMaxAI/MiniMax-M3.1-Flash",
       "author": "MiniMaxAI",
-      "likes": 450,
+      "likes": 466,
       "downloads": 13247,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
     },
     {
-      "id": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF",
-      "author": "ISTA-DASLab",
-      "likes": 431,
-      "downloads": 1377570,
+      "id": "LiquidAI/LFM3-1.7B",
+      "author": "LiquidAI",
+      "likes": 408,
+      "downloads": 8892,
       "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF"
+      "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
     }
   ],
   "papers": [
     {
-      "title": "Quaternion Approximate Networks for Enhanced Image Classification and Oriented Object Detection",
-      "summary": "QUAN is a quaternion-based deep learning framework that approximates quaternion convolution with real-valued operations to achieve rotation-equivariant image classification and object detection with improved efficiency.",
-      "upvotes": 1,
-      "arxiv_id": "2509.05512",
-      "url": "https://huggingface.co/papers/2509.05512",
-      "githubRepo": "https://github.com/bryceag11/QUAN_ultralytics"
+      "title": "OmniShowcase: Omnidirectional Subject-Consistent Video Generation from Multi-View Images",
+      "summary": "OmniShowcase improves subject-to-video generation by using geometry-driven training data and surface-normal conditioning to maintain 3D consistency across novel viewpoints.",
+      "upvotes": 5,
+      "arxiv_id": "2610.35684",
+      "url": "https://huggingface.co/papers/2610.35684",
+      "githubRepo": "https://github.com/justin4ai/OmniShowcase"
     },
     {
-      "title": "AlphaBet: Reinforcement Learning for LLM Event Forecasting Agents",
-      "summary": "AlphaBet uses agentic reinforcement learning to train a single LLM policy to search, reason, and report forecast probabilities across multiple dates, reducing Brier scores by improving both evidence acquisition and probability reporting.",
-      "upvotes": 1,
-      "arxiv_id": "2610.22684",
-      "url": "https://huggingface.co/papers/2610.22684",
-      "githubRepo": "https://github.com/AlphaBet-Agent/AlphaBet"
-    },
-    {
-      "title": "Sub-monolayer tracking of molecular states at buried interfaces",
-      "summary": "Machine learning-enhanced optical modeling of polarized resonant soft X-ray scattering enables quantitative, depth-resolved analysis of molecular orientation and packing at buried interfaces.",
-      "upvotes": 2,
-      "arxiv_id": "2610.31924",
-      "url": "https://huggingface.co/papers/2610.31924",
-      "githubRepo": "https://github.com/WSU-Carbon-Lab/refl-analysis"
-    },
-    {
-      "title": "Lipi-Ghor: A Large-Scale, Diarized, Multi-Domain Bengali Speech Corpus and a Scalable Pipeline for Building It",
-      "summary": "Lipi-Ghor is a large-scale weakly supervised Bengali speech corpus with speaker-diarized long-form annotations and a gold evaluation split for benchmarking ASR models.",
-      "upvotes": 0,
-      "arxiv_id": "2610.36184",
-      "url": "https://huggingface.co/papers/2610.36184",
-      "githubRepo": "https://github.com/Sanjidh090/Lipi-Ghor-bn-882-SSTT"
-    },
-    {
-      "title": "Beyond the Estimate: Wiener-Informed Decoding for Easier Training of Pixel-Space Flow Models",
-      "summary": "Wiener-informed Decoding accelerates pixel-space velocity model training and improves image generation by integrating statistical predictions into decoder computation without altering native blocks.",
+      "title": "Efficient Streaming Audio-Visual Target Speaker Extraction for Real-World Acoustic Scenes",
+      "summary": "Falcon is a lightweight causal audio-visual target speaker extraction method that achieves high quality with drastically reduced parameters and latency, supported by the realistic RealSSA benchmark.",
       "upvotes": 9,
-      "arxiv_id": "2610.36192",
-      "url": "https://huggingface.co/papers/2610.36192",
-      "githubRepo": "https://github.com/NUS-HPC-AI-Lab/WiD"
+      "arxiv_id": "2610.32749",
+      "url": "https://huggingface.co/papers/2610.32749",
+      "githubRepo": "https://github.com/JusperLee/Falcon"
+    },
+    {
+      "title": "DTCA: Denoising Token Credit Assignment for Reinforcement Learning in Diffusion Language Models",
+      "summary": "DTCA improves reinforcement learning for diffusion language models by assigning token-level credit via confidence improvements and entropy calibration, boosting mathematical reasoning.",
+      "upvotes": 254,
+      "arxiv_id": "2610.35201",
+      "url": "https://huggingface.co/papers/2610.35201",
+      "githubRepo": "https://github.com/ZJU-OmniAI/DTCA"
+    },
+    {
+      "title": "AdaPRA: Process Reward Agents with Adaptive Rubrics for Data Science",
+      "summary": "AdaPRA improves data science agents via persistent knowledge accumulation and adaptive rubric-guided process supervision, reducing errors and boosting leaderboard performance.",
+      "upvotes": 1,
+      "arxiv_id": "2610.33245",
+      "url": "https://huggingface.co/papers/2610.33245",
+      "githubRepo": null
+    },
+    {
+      "title": "Self-Assessment Reinforcement Learning for Search-State Awareness in Retrieval-Augmented Large Language Models",
+      "summary": "Self-Assessment Reinforcement Learning trains search agents to recognize missing information and improve search efficiency without extra inference-time assessment.",
+      "upvotes": 2,
+      "arxiv_id": "2610.30435",
+      "url": "https://huggingface.co/papers/2610.30435",
+      "githubRepo": null
     }
   ]
 }

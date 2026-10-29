@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-10-28)
+### ⚡ AiVerse AI Radar (2026-10-29)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Hy-SimulMT-30B-A3B-FP8** (`Model`), **phonon** (`Platform`), **BlenderWorld** (`Dataset`) |
-| 🌟 **Tool of the Day** | **DeepSeek-V3** (DeepSeek) — [Explore](https://www.deepseek.com) |
+| 📥 **Queued for Review** | **Unlimited-OCR-2** (`Model`), **MOSS-Image** (`Platform`), **seed** (`Dataset`) |
+| 🌟 **Tool of the Day** | **DeepSeek-R1** (DeepSeek) — [Explore](https://www.deepseek.com) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [Quaternion Approximate Networks for Enhanced Image...](https://huggingface.co/papers/2509.05512) |
-| 🛡️ **Catalog Links Checked** | **16/25** operational |
-| 🕒 **Last Synchronized** | `Wed, 28 Oct 2026 22:55:55 GMT` |
+| 📜 **Top Daily Paper** | [OmniShowcase: Omnidirectional Subject-Consistent V...](https://huggingface.co/papers/2610.35684) |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Synchronized** | `Thu, 29 Oct 2026 03:54:00 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
