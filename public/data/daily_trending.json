@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-29T11:14:00.558Z",
+  "timestamp": "2026-10-29T17:53:44.736Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 3676,
+      "likes": 3729,
       "downloads": 131062,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 748,
+      "likes": 760,
       "downloads": 9655,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
@@ -20,7 +20,7 @@
     {
       "id": "RecursiveSI/flint",
       "author": "RecursiveSI",
-      "likes": 1221,
+      "likes": 1233,
       "downloads": 16598,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/RecursiveSI/flint"
@@ -28,7 +28,7 @@
     {
       "id": "XHToken/Spark-X2.6-4B",
       "author": "XHToken",
-      "likes": 885,
+      "likes": 897,
       "downloads": 10163,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
@@ -36,7 +36,7 @@
     {
       "id": "tencent/Hy-SimulMT-30B-A3B-FP8",
       "author": "tencent",
-      "likes": 454,
+      "likes": 458,
       "downloads": 396,
       "pipeline_tag": "translation",
       "url": "https://huggingface.co/tencent/Hy-SimulMT-30B-A3B-FP8"
@@ -44,7 +44,7 @@
     {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 436,
+      "likes": 456,
       "downloads": 15885,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "TauIndianBankBench: Procedure-Aware, Action-Oriented Evaluation of Tool-Using Conversational Agents",
-      "summary": "TauIndianBankBench evaluates language model assistants on Indian retail banking by verifying both procedural compliance and final outcomes across 1,000 simulated tasks.",
-      "upvotes": 1,
-      "arxiv_id": "2610.30161",
-      "url": "https://huggingface.co/papers/2610.30161",
-      "githubRepo": "https://github.com/npci/TauIndianBankBench"
-    },
-    {
-      "title": "CausGround: Causal Interaction Grounding for Adaptive Embodied Planning",
-      "summary": "CausGround extracts reusable action preconditions and effects from interaction experience to improve embodied planning and reasoning across diverse environments without model retraining.",
-      "upvotes": 1,
-      "arxiv_id": "2610.29702",
-      "url": "https://huggingface.co/papers/2610.29702",
-      "githubRepo": "https://github.com/Intelligent-Interaction/CausGround"
-    },
-    {
-      "title": "HuGe: Scaling Humanoid Generalist Vision-Language-Action Models with Egocentric Experience",
-      "summary": "HuGe pre-trains vision-language-action models on egocentric human and robot data with pseudo-proprioception and visual adaptation to enable whole-body humanoid control.",
-      "upvotes": 1,
-      "arxiv_id": "2610.34186",
-      "url": "https://huggingface.co/papers/2610.34186",
-      "githubRepo": "https://github.com/yliu-cs/HuGe"
-    },
-    {
-      "title": "OmniSpectra: A Unified Foundation Model for Universal Spectra Representation Learning",
-      "summary": "OmniSpectra is a wavelength-native spectral foundation model that uses continuous coordinates and physics-grounded decoders to learn cross-instrument representations without destructive resampling, achieving high performance with far fewer parameters.",
-      "upvotes": 0,
-      "arxiv_id": "2601.15351",
-      "url": "https://huggingface.co/papers/2601.15351",
+      "title": "Evaluating DeepSeek V4.1 Flash-1017 for loss of control and harmful manipulation risks",
+      "summary": "Independent safety evaluation of DeepSeek V4.1 Flash-1017 reveals substantial improvements over prior versions and near-parity with leading closed-source models, while recommending process-level observability, incremental safety testing, and private benchmarks.",
+      "upvotes": 2,
+      "arxiv_id": "2610.35671",
+      "url": "https://huggingface.co/papers/2610.35671",
       "githubRepo": null
     },
     {
-      "title": "Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success",
-      "summary": "Sensorimotor alignment measures how sensory representations match physical motion geometry, serving as a low-cost offline predictor of robot model performance.",
-      "upvotes": 33,
-      "arxiv_id": "2610.31670",
-      "url": "https://huggingface.co/papers/2610.31670",
-      "githubRepo": "https://github.com/yunfeixie233/sensorimotor-alignment"
+      "title": "Amortizing Sequential Experimental Design in Reasoning LLMs",
+      "summary": "Large language models learn adaptive information gathering by training reasoning with information-gain rewards, improving experimental design efficiency and generalizing across tasks.",
+      "upvotes": 4,
+      "arxiv_id": "2610.20832",
+      "url": "https://huggingface.co/papers/2610.20832",
+      "githubRepo": "https://github.com/anitakriz/ar-bed"
+    },
+    {
+      "title": "RealCLI: Toward a Unified Evaluation of Human-Agent Collaboration for CLI Agents",
+      "summary": "REALCLI is a benchmark that jointly evaluates CLI agent task execution and human-agent collaboration quality, revealing major gaps in steerability, trust calibration, and safety management.",
+      "upvotes": 15,
+      "arxiv_id": "2610.22507",
+      "url": "https://huggingface.co/papers/2610.22507",
+      "githubRepo": null
+    },
+    {
+      "title": "LongZero: Enhancing Long-Context Reasoning in LLMs from Zero Data",
+      "summary": "LongZero enables large language models to self-improve long-context reasoning by synthesizing structured multi-hop and retrieval tasks and training with GRPO without external data.",
+      "upvotes": 3,
+      "arxiv_id": "2610.30132",
+      "url": "https://huggingface.co/papers/2610.30132",
+      "githubRepo": "https://github.com/zhennan1/LongZero"
+    },
+    {
+      "title": "TauIndianBankBench: Procedure-Aware, Action-Oriented Evaluation of Tool-Using Conversational Agents",
+      "summary": "TauIndianBankBench evaluates language model assistants on Indian retail banking by verifying both procedural compliance and final outcomes across 1,000 simulated tasks.",
+      "upvotes": 9,
+      "arxiv_id": "2610.30161",
+      "url": "https://huggingface.co/papers/2610.30161",
+      "githubRepo": "https://github.com/npci/TauIndianBankBench"
     }
   ]
 }

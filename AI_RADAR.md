@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Thu, 29 Oct 2026 11:14:04 GMT`*
+*Last Synchronized: `Thu, 29 Oct 2026 17:53:51 GMT`*
 
 ---
 
@@ -10,26 +10,26 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **NVIDIA-Nemotron-3.5-Transcribe-30B-A4B** (`Model` • *nvidia*)
-> High-performance Audio open-weights model by nvidia, trending with over 314 community likes and 4,276 downloads on Hugging Face.
+### **DeepSeek-V4.1-Flash-1017-abliterated-GGUF** (`Model` • *orcarouter*)
+> High-performance NLP open-weights model by orcarouter, trending with over 335 community likes and 28,763 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Audio` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 306, Likes: 314, Downloads: 4,276`
-- 🔗 **Resource Link**: [https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B)
+- 🏷️ **Domain & License**: `NLP` • `MIT` (2026)
+- ⚡ **Metrics**: `Trending Score: 271, Likes: 335, Downloads: 28,763`
+- 🔗 **Resource Link**: [https://huggingface.co/orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF](https://huggingface.co/orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF)
 
-### **qwen-image-2-1-realtime** (`Platform` • *linoyts*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by linoyts. Trending with 54 community stars.
+### **FastH3-Omni** (`Platform` • *FastVideo*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by FastVideo. Trending with 58 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 45, Community Likes: 54`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/linoyts/qwen-image-2-1-realtime](https://huggingface.co/spaces/linoyts/qwen-image-2-1-realtime)
+- ⚡ **Metrics**: `Trending Score: 40, Community Likes: 58`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/FastVideo/FastH3-Omni](https://huggingface.co/spaces/FastVideo/FastH3-Omni)
 
-### **imagenet-1k** (`Dataset` • *ILSVRC*)
-> Dataset Card for ImageNet 	 	 		 	 	 		Dataset Summary 	 ILSVRC 2012, commonly known as 'ImageNet' is an image dataset organized according to the WordNet hierarchy. Eac (1,077 likes, 95,537 downloads).
+### **PhysicalAI-Autonomous-Vehicles-Foundation4D** (`Dataset` • *nvidia*)
+> PhysicalAI Autonomous Vehicles - Foundation4D 	 	 		 	 	 		Dataset Description: 	 This release extends NVIDIA’s existing public PhysicalAI-Autonomous-Vehicles dataset w (28 likes, 1,496 downloads).
 
-- 🏷️ **Domain & License**: `Computer Vision` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 20, Likes: 1,077, Downloads: 95,537`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/ILSVRC/imagenet-1k](https://huggingface.co/datasets/ILSVRC/imagenet-1k)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 22, Likes: 28, Downloads: 1,496`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D](https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D)
 
 ---
 
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,676 | 📥 131,062 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 748 | 📥 9,655 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
-| `RecursiveSI/flint` | text-generation | ❤️ 1,221 | 📥 16,598 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 885 | 📥 10,163 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
-| `tencent/Hy-SimulMT-30B-A3B-FP8` | translation | ❤️ 454 | 📥 396 | [View](https://huggingface.co/tencent/Hy-SimulMT-30B-A3B-FP8) |
-| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 436 | 📥 15,885 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,729 | 📥 131,062 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 760 | 📥 9,655 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
+| `RecursiveSI/flint` | text-generation | ❤️ 1,233 | 📥 16,598 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 897 | 📥 10,163 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
+| `tencent/Hy-SimulMT-30B-A3B-FP8` | translation | ❤️ 458 | 📥 396 | [View](https://huggingface.co/tencent/Hy-SimulMT-30B-A3B-FP8) |
+| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 456 | 📥 15,885 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **TauIndianBankBench: Procedure-Aware, Action-Oriented Evaluation of Tool-Using Conversational Agents** | 👍 1 | TauIndianBankBench evaluates language model assistants on Indian retail banking by verifying both procedural compliance and final outcomes across 1,000 simulated tasks. | [Read](https://huggingface.co/papers/2610.30161) |
-| **CausGround: Causal Interaction Grounding for Adaptive Embodied Planning** | 👍 1 | CausGround extracts reusable action preconditions and effects from interaction experience to improve embodied planning and reasoning across diverse environments without model retraining. | [Read](https://huggingface.co/papers/2610.29702) |
-| **HuGe: Scaling Humanoid Generalist Vision-Language-Action Models with Egocentric Experience** | 👍 1 | HuGe pre-trains vision-language-action models on egocentric human and robot data with pseudo-proprioception and visual adaptation to enable whole-body humanoid control. | [Read](https://huggingface.co/papers/2610.34186) |
-| **OmniSpectra: A Unified Foundation Model for Universal Spectra Representation Learning** | 👍 0 | OmniSpectra is a wavelength-native spectral foundation model that uses continuous coordinates and physics-grounded decoders to learn cross-instrument representations without destructive resampling, achieving high performance with far fewer parameters. | [Read](https://huggingface.co/papers/2601.15351) |
-| **Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success** | 👍 33 | Sensorimotor alignment measures how sensory representations match physical motion geometry, serving as a low-cost offline predictor of robot model performance. | [Read](https://huggingface.co/papers/2610.31670) |
+| **Evaluating DeepSeek V4.1 Flash-1017 for loss of control and harmful manipulation risks** | 👍 2 | Independent safety evaluation of DeepSeek V4.1 Flash-1017 reveals substantial improvements over prior versions and near-parity with leading closed-source models, while recommending process-level observability, incremental safety testing, and private benchmarks. | [Read](https://huggingface.co/papers/2610.35671) |
+| **Amortizing Sequential Experimental Design in Reasoning LLMs** | 👍 4 | Large language models learn adaptive information gathering by training reasoning with information-gain rewards, improving experimental design efficiency and generalizing across tasks. | [Read](https://huggingface.co/papers/2610.20832) |
+| **RealCLI: Toward a Unified Evaluation of Human-Agent Collaboration for CLI Agents** | 👍 15 | REALCLI is a benchmark that jointly evaluates CLI agent task execution and human-agent collaboration quality, revealing major gaps in steerability, trust calibration, and safety management. | [Read](https://huggingface.co/papers/2610.22507) |
+| **LongZero: Enhancing Long-Context Reasoning in LLMs from Zero Data** | 👍 3 | LongZero enables large language models to self-improve long-context reasoning by synthesizing structured multi-hop and retrieval tasks and training with GRPO without external data. | [Read](https://huggingface.co/papers/2610.30132) |
+| **TauIndianBankBench: Procedure-Aware, Action-Oriented Evaluation of Tool-Using Conversational Agents** | 👍 9 | TauIndianBankBench evaluates language model assistants on Indian retail banking by verifying both procedural compliance and final outcomes across 1,000 simulated tasks. | [Read](https://huggingface.co/papers/2610.30161) |
 
 
 ---
@@ -80,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
 - **Dependency Security**: `32` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

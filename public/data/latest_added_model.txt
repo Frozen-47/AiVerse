@@ -1,1 +1,1 @@
-NVIDIA-Nemotron-3.5-Transcribe-30B-A4B
+DeepSeek-V4.1-Flash-1017-abliterated-GGUF

@@ -1,5 +1,80 @@
 [
   {
+    "name": "PhysicalAI-Autonomous-Vehicles-Foundation4D",
+    "type": "Dataset",
+    "summary": "PhysicalAI Autonomous Vehicles - Foundation4D \t \t \t\t \t \t \t\tDataset Description: \t This release extends NVIDIA’s existing public PhysicalAI-Autonomous-Vehicles dataset w (28 likes, 1,496 downloads).",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "nvidia",
+    "size": "Curated Dataset",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D\")",
+    "benchmarks": "Trending Score: 22, Likes: 28, Downloads: 1,496",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D",
+    "citations": [
+      {
+        "text": "nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D"
+      }
+    ],
+    "created_at": "2026-10-29T17:53:44.719Z"
+  },
+  {
+    "name": "FastH3-Omni",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by FastVideo. Trending with 58 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "FastVideo",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/FastVideo/FastH3-Omni",
+    "benchmarks": "Trending Score: 40, Community Likes: 58",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/FastVideo/FastH3-Omni",
+    "citations": [
+      {
+        "text": "FastVideo/FastH3-Omni on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/FastVideo/FastH3-Omni"
+      }
+    ],
+    "created_at": "2026-10-29T17:53:44.719Z"
+  },
+  {
+    "name": "DeepSeek-V4.1-Flash-1017-abliterated-GGUF",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by orcarouter, trending with over 335 community likes and 28,763 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "MIT",
+    "year": 2026,
+    "org": "orcarouter",
+    "size": "Open Weights",
+    "architecture": "orcarouter text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF\")",
+    "benchmarks": "Trending Score: 271, Likes: 335, Downloads: 28,763",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF",
+    "citations": [
+      {
+        "text": "orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF on Hugging Face",
+        "url": "https://huggingface.co/orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF"
+      }
+    ],
+    "created_at": "2026-10-29T17:53:44.719Z"
+  },
+  {
     "name": "imagenet-1k",
     "type": "Dataset",
     "summary": "Dataset Card for ImageNet \t \t \t\t \t \t \t\tDataset Summary \t ILSVRC 2012, commonly known as 'ImageNet' is an image dataset organized according to the WordNet hierarchy. Eac (1,077 likes, 95,537 downloads).",

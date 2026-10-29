@@ -1,23 +1,18 @@
 {
-  "timestamp": "2026-10-29T11:14:00.634Z",
+  "timestamp": "2026-10-29T17:53:44.904Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "Canva AI",
-      "url": "https://www.canva.com/ai-image-generator",
+      "name": "GPT-4o",
+      "url": "https://openai.com/chatgpt",
       "status": 403
     },
     {
-      "name": "Midjourney",
-      "url": "https://www.midjourney.com",
-      "status": 403
-    },
-    {
-      "name": "NightCafe",
-      "url": "https://creator.nightcafe.studio",
-      "status": 403
+      "name": "tiktok-videos-4b",
+      "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
+      "status": 401
     }
   ]
 }
