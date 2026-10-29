@@ -1,5 +1,80 @@
 [
   {
+    "name": "Granary-v2",
+    "type": "Dataset",
+    "summary": "Granary-v2: Multilingual Speech Recognition, Translation and Instruction Data \t                                                        Granary-v2 is NVIDIA's second rel (23 likes, 1,074 downloads).",
+    "task": "Audio",
+    "license": "OPENMDW-1.1",
+    "year": 2026,
+    "org": "nvidia",
+    "size": "Curated Dataset",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/Granary-v2\")",
+    "benchmarks": "Trending Score: 23, Likes: 23, Downloads: 1,074",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/nvidia/Granary-v2",
+    "citations": [
+      {
+        "text": "nvidia/Granary-v2 on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/nvidia/Granary-v2"
+      }
+    ],
+    "created_at": "2026-10-29T23:04:06.374Z"
+  },
+  {
+    "name": "TRELLIS.2",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by microsoft. Trending with 2,309 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "microsoft",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/microsoft/TRELLIS.2",
+    "benchmarks": "Trending Score: 33, Community Likes: 2,309",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/microsoft/TRELLIS.2",
+    "citations": [
+      {
+        "text": "microsoft/TRELLIS.2 on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/microsoft/TRELLIS.2"
+      }
+    ],
+    "created_at": "2026-10-29T23:04:06.374Z"
+  },
+  {
+    "name": "Mistral-Large-4-1T-A52B",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by Mistral AI, trending with over 1,204 community likes and 278 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "Mistral AI",
+    "size": "52B params",
+    "architecture": "Mistral AI image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"mistralai/Mistral-Large-4-1T-A52B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"mistralai/Mistral-Large-4-1T-A52B\")",
+    "benchmarks": "Trending Score: 285, Likes: 1,204, Downloads: 278",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B",
+    "citations": [
+      {
+        "text": "mistralai/Mistral-Large-4-1T-A52B on Hugging Face",
+        "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
+      }
+    ],
+    "created_at": "2026-10-29T23:04:06.374Z"
+  },
+  {
     "name": "PhysicalAI-Autonomous-Vehicles-Foundation4D",
     "type": "Dataset",
     "summary": "PhysicalAI Autonomous Vehicles - Foundation4D \t \t \t\t \t \t \t\tDataset Description: \t This release extends NVIDIA’s existing public PhysicalAI-Autonomous-Vehicles dataset w (28 likes, 1,496 downloads).",

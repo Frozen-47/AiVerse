@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-29)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **DeepSeek-V4.1-Flash-1017-abliterated-GGUF** (`Model`), **FastH3-Omni** (`Platform`), **PhysicalAI-Autonomous-Vehicles-Foundation4D** (`Dataset`) |
+| 📥 **Queued for Review** | **Mistral-Large-4-1T-A52B** (`Model`), **TRELLIS.2** (`Platform`), **Granary-v2** (`Dataset`) |
 | 🌟 **Tool of the Day** | **DeepSeek-R1** (DeepSeek) — [Explore](https://www.deepseek.com) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [Evaluating DeepSeek V4.1 Flash-1017 for loss of co...](https://huggingface.co/papers/2610.35671) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Thu, 29 Oct 2026 17:53:51 GMT` |
+| 📜 **Top Daily Paper** | [Know, then Draw: A New Learning Paradigm for Visua...](https://huggingface.co/papers/2610.37626) |
+| 🛡️ **Catalog Links Checked** | **18/25** operational |
+| 🕒 **Last Synchronized** | `Thu, 29 Oct 2026 23:04:13 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

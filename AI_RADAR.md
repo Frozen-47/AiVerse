@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Thu, 29 Oct 2026 17:53:51 GMT`*
+*Last Synchronized: `Thu, 29 Oct 2026 23:04:13 GMT`*
 
 ---
 
@@ -10,26 +10,26 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **DeepSeek-V4.1-Flash-1017-abliterated-GGUF** (`Model` • *orcarouter*)
-> High-performance NLP open-weights model by orcarouter, trending with over 335 community likes and 28,763 downloads on Hugging Face.
+### **Mistral-Large-4-1T-A52B** (`Model` • *Mistral AI*)
+> High-performance Multimodal open-weights model by Mistral AI, trending with over 1,204 community likes and 278 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `MIT` (2026)
-- ⚡ **Metrics**: `Trending Score: 271, Likes: 335, Downloads: 28,763`
-- 🔗 **Resource Link**: [https://huggingface.co/orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF](https://huggingface.co/orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF)
+- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 285, Likes: 1,204, Downloads: 278`
+- 🔗 **Resource Link**: [https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B)
 
-### **FastH3-Omni** (`Platform` • *FastVideo*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by FastVideo. Trending with 58 community stars.
+### **TRELLIS.2** (`Platform` • *microsoft*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by microsoft. Trending with 2,309 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 40, Community Likes: 58`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/FastVideo/FastH3-Omni](https://huggingface.co/spaces/FastVideo/FastH3-Omni)
+- ⚡ **Metrics**: `Trending Score: 33, Community Likes: 2,309`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/microsoft/TRELLIS.2](https://huggingface.co/spaces/microsoft/TRELLIS.2)
 
-### **PhysicalAI-Autonomous-Vehicles-Foundation4D** (`Dataset` • *nvidia*)
-> PhysicalAI Autonomous Vehicles - Foundation4D 	 	 		 	 	 		Dataset Description: 	 This release extends NVIDIA’s existing public PhysicalAI-Autonomous-Vehicles dataset w (28 likes, 1,496 downloads).
+### **Granary-v2** (`Dataset` • *nvidia*)
+> Granary-v2: Multilingual Speech Recognition, Translation and Instruction Data 	                                                        Granary-v2 is NVIDIA's second rel (23 likes, 1,074 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 22, Likes: 28, Downloads: 1,496`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D](https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D)
+- 🏷️ **Domain & License**: `Audio` • `OPENMDW-1.1` (2026)
+- ⚡ **Metrics**: `Trending Score: 23, Likes: 23, Downloads: 1,074`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/Granary-v2](https://huggingface.co/datasets/nvidia/Granary-v2)
 
 ---
 
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,729 | 📥 131,062 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 760 | 📥 9,655 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
-| `RecursiveSI/flint` | text-generation | ❤️ 1,233 | 📥 16,598 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 897 | 📥 10,163 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
-| `tencent/Hy-SimulMT-30B-A3B-FP8` | translation | ❤️ 458 | 📥 396 | [View](https://huggingface.co/tencent/Hy-SimulMT-30B-A3B-FP8) |
-| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 456 | 📥 15,885 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,761 | 📥 131,062 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 769 | 📥 9,655 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
+| `RecursiveSI/flint` | text-generation | ❤️ 1,238 | 📥 16,598 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 475 | 📥 15,885 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 904 | 📥 10,163 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
+| `MiniMaxAI/MiniMax-M3.1-Flash` | image-text-to-text | ❤️ 487 | 📥 15,738 | [View](https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Evaluating DeepSeek V4.1 Flash-1017 for loss of control and harmful manipulation risks** | 👍 2 | Independent safety evaluation of DeepSeek V4.1 Flash-1017 reveals substantial improvements over prior versions and near-parity with leading closed-source models, while recommending process-level observability, incremental safety testing, and private benchmarks. | [Read](https://huggingface.co/papers/2610.35671) |
-| **Amortizing Sequential Experimental Design in Reasoning LLMs** | 👍 4 | Large language models learn adaptive information gathering by training reasoning with information-gain rewards, improving experimental design efficiency and generalizing across tasks. | [Read](https://huggingface.co/papers/2610.20832) |
+| **Know, then Draw: A New Learning Paradigm for Visual Generation** | 👍 0 | A hybrid paradigm combining autoregressive pretraining for semantics and diffusion post-training for rendering achieves efficient, high-quality text-to-image generation with favorable scaling laws. | [Read](https://huggingface.co/papers/2610.37626) |
+| **Instruction Capacity: Behavior and Degradation of Language Models under Controlled Load** | 👍 1 | Researchers developed a statistical instrument using atomic replacement rules to measure language model instruction capacity with quantified uncertainty, finding GPT-4o mini holds about 37-38 rules at 95% accuracy. | [Read](https://huggingface.co/papers/2610.36095) |
+| **Evaluating DeepSeek V4.1 Flash-1017 for loss of control and harmful manipulation risks** | 👍 3 | Independent safety evaluation of DeepSeek V4.1 Flash-1017 reveals substantial improvements over prior versions and near-parity with leading closed-source models, while recommending process-level observability, incremental safety testing, and private benchmarks. | [Read](https://huggingface.co/papers/2610.35671) |
+| **Amortizing Sequential Experimental Design in Reasoning LLMs** | 👍 5 | Large language models learn adaptive information gathering by training reasoning with information-gain rewards, improving experimental design efficiency and generalizing across tasks. | [Read](https://huggingface.co/papers/2610.20832) |
 | **RealCLI: Toward a Unified Evaluation of Human-Agent Collaboration for CLI Agents** | 👍 15 | REALCLI is a benchmark that jointly evaluates CLI agent task execution and human-agent collaboration quality, revealing major gaps in steerability, trust calibration, and safety management. | [Read](https://huggingface.co/papers/2610.22507) |
-| **LongZero: Enhancing Long-Context Reasoning in LLMs from Zero Data** | 👍 3 | LongZero enables large language models to self-improve long-context reasoning by synthesizing structured multi-hop and retrieval tasks and training with GRPO without external data. | [Read](https://huggingface.co/papers/2610.30132) |
-| **TauIndianBankBench: Procedure-Aware, Action-Oriented Evaluation of Tool-Using Conversational Agents** | 👍 9 | TauIndianBankBench evaluates language model assistants on Indian retail banking by verifying both procedural compliance and final outcomes across 1,000 simulated tasks. | [Read](https://huggingface.co/papers/2610.30161) |
 
 
 ---
@@ -80,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
+- **Sample Link Health Check**: `18/25` healthy verified (`7` flagged / timed out)
 - **Dependency Security**: `32` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

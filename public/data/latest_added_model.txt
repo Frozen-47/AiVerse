@@ -1,1 +1,1 @@
-DeepSeek-V4.1-Flash-1017-abliterated-GGUF
+Mistral-Large-4-1T-A52B

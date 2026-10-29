@@ -1,18 +1,43 @@
 {
-  "timestamp": "2026-10-29T17:53:44.904Z",
+  "timestamp": "2026-10-29T23:04:06.488Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 18,
+  "broken": 7,
   "issues": [
     {
-      "name": "GPT-4o",
-      "url": "https://openai.com/chatgpt",
+      "name": "GPT-4",
+      "url": "https://openai.com/gpt-4",
       "status": 403
     },
     {
-      "name": "tiktok-videos-4b",
-      "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
-      "status": 401
+      "name": "Poe",
+      "url": "https://poe.com",
+      "status": 403
+    },
+    {
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
+      "status": 403
+    },
+    {
+      "name": "Character.ai",
+      "url": "https://character.ai",
+      "status": 403
+    },
+    {
+      "name": "Tabnine",
+      "url": "https://www.tabnine.com",
+      "status": "Network Error"
+    },
+    {
+      "name": "ERNIE Bot",
+      "url": "https://yiyan.baidu.com",
+      "status": 404
+    },
+    {
+      "name": "ImageNet",
+      "url": "https://image-net.org",
+      "status": "Timeout"
     }
   ]
 }
