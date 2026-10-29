@@ -4,6 +4,84 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+        "type": "Model",
+        "summary": "High-performance Audio open-weights model by nvidia, trending with over 314 community likes and 4,276 downloads on Hugging Face.",
+        "task": "Audio",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "nvidia",
+        "size": "30B params",
+        "architecture": "nvidia automatic speech recognition architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B\")",
+        "benchmarks": "Trending Score: 306, Likes: 314, Downloads: 4,276",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+        "citations": [
+          {
+            "text": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B on Hugging Face",
+            "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
+          }
+        ]
+      },
+      {
+        "name": "qwen-image-2-1-realtime",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by linoyts. Trending with 54 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "linoyts",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/linoyts/qwen-image-2-1-realtime",
+        "benchmarks": "Trending Score: 45, Community Likes: 54",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/linoyts/qwen-image-2-1-realtime",
+        "citations": [
+          {
+            "text": "linoyts/qwen-image-2-1-realtime on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/linoyts/qwen-image-2-1-realtime"
+          }
+        ]
+      },
+      {
+        "name": "imagenet-1k",
+        "type": "Dataset",
+        "summary": "Dataset Card for ImageNet \t \t \t\t \t \t \t\tDataset Summary \t ILSVRC 2012, commonly known as 'ImageNet' is an image dataset organized according to the WordNet hierarchy. Eac (1,077 likes, 95,537 downloads).",
+        "task": "Computer Vision",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "ILSVRC",
+        "size": "1M<n<10M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"ILSVRC/imagenet-1k\")",
+        "benchmarks": "Trending Score: 20, Likes: 1,077, Downloads: 95,537",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/ILSVRC/imagenet-1k",
+        "citations": [
+          {
+            "text": "ILSVRC/imagenet-1k on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/ILSVRC/imagenet-1k"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-29",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Unlimited-OCR-2",
         "type": "Model",
         "summary": "High-performance Multimodal open-weights model by baidu, trending with over 341 community likes and 8,357 downloads on Hugging Face.",
@@ -6462,99 +6540,6 @@
           {
             "text": "markov-ai/cad-1000-hours on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/markov-ai/cad-1000-hours"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-07",
-    "assets": [
-      {
-        "name": "LTX-2.5",
-        "type": "Model",
-        "summary": "High-performance Video Generation open-weights model by Lightricks, trending with over 2,964 community likes and 1,526,928 downloads on Hugging Face.",
-        "task": "Video Generation",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "Lightricks",
-        "size": "Open Weights",
-        "architecture": "Lightricks image to video architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Lightricks/LTX-2.5\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Lightricks/LTX-2.5\")",
-        "benchmarks": "Trending Score: 342, Likes: 2,964, Downloads: 1,526,928",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": true,
-        "url": "https://huggingface.co/Lightricks/LTX-2.5",
-        "citations": [
-          {
-            "text": "Lightricks/LTX-2.5 on Hugging Face",
-            "url": "https://huggingface.co/Lightricks/LTX-2.5"
-          }
-        ]
-      },
-      {
-        "name": "Krea-2-Turbo_I2I",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by MrdDickDickenson. Trending with 103 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "MrdDickDickenson",
-        "size": "GRADIO Platform",
-        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/MrdDickDickenson/Krea-2-Turbo_I2I",
-        "benchmarks": "Trending Score: 87, Community Likes: 103",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": true,
-        "url": "https://huggingface.co/spaces/MrdDickDickenson/Krea-2-Turbo_I2I",
-        "citations": [
-          {
-            "text": "MrdDickDickenson/Krea-2-Turbo_I2I on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/MrdDickDickenson/Krea-2-Turbo_I2I"
-          }
-        ]
-      },
-      {
-        "name": "pybroker",
-        "type": "Framework",
-        "summary": "Algorithmic Trading in Python with Machine Learning",
-        "task": "MLOps",
-        "license": "NOASSERTION",
-        "year": 2026,
-        "org": "edtechre",
-        "size": "8MB Repo",
-        "architecture": "Modular AI codebase with native Python/C++ bindings and distributed workflow support.",
-        "usage": "git clone https://github.com/edtechre/pybroker\ncd pybroker\npip install -e .",
-        "benchmarks": "GitHub Stars: 3,533, Forks: 454",
-        "limitations": "Requires local Python environment and dependency configuration.",
-        "popular": true,
-        "url": "https://github.com/edtechre/pybroker",
-        "citations": [
-          {
-            "text": "edtechre/pybroker on GitHub",
-            "url": "https://github.com/edtechre/pybroker"
-          }
-        ]
-      },
-      {
-        "name": "tiktok-videos-4b",
-        "type": "Dataset",
-        "summary": "TikTok Videos: 4.5 billion posts with engagement metrics \t 4.5 billion TikTok video records with captions, engagement counts, sound identifiers and timing. Collected fr (162 likes, 4,818 downloads).",
-        "task": "NLP",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "kuben-developer",
-        "size": "1B<n<10B",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"kuben-developer/tiktok-videos-4b\")",
-        "benchmarks": "Trending Score: 156, Likes: 162, Downloads: 4,818",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": true,
-        "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
-        "citations": [
-          {
-            "text": "kuben-developer/tiktok-videos-4b on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b"
           }
         ]
       }

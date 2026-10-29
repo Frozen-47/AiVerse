@@ -1,27 +1,22 @@
 {
-  "timestamp": "2026-10-29T03:53:56.923Z",
+  "timestamp": "2026-10-29T11:14:00.634Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "tiktok-videos-4b",
-      "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
-      "status": 401
-    },
-    {
-      "name": "Leonardo.ai",
-      "url": "https://leonardo.ai",
+      "name": "Canva AI",
+      "url": "https://www.canva.com/ai-image-generator",
       "status": 403
     },
     {
-      "name": "wan555",
-      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
-      "status": 401
+      "name": "Midjourney",
+      "url": "https://www.midjourney.com",
+      "status": 403
     },
     {
-      "name": "OpenAI Platform",
-      "url": "https://platform.openai.com",
+      "name": "NightCafe",
+      "url": "https://creator.nightcafe.studio",
       "status": 403
     }
   ]

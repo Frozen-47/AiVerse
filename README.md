@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-29)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Unlimited-OCR-2** (`Model`), **MOSS-Image** (`Platform`), **seed** (`Dataset`) |
+| 📥 **Queued for Review** | **NVIDIA-Nemotron-3.5-Transcribe-30B-A4B** (`Model`), **qwen-image-2-1-realtime** (`Platform`), **imagenet-1k** (`Dataset`) |
 | 🌟 **Tool of the Day** | **DeepSeek-R1** (DeepSeek) — [Explore](https://www.deepseek.com) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [OmniShowcase: Omnidirectional Subject-Consistent V...](https://huggingface.co/papers/2610.35684) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Synchronized** | `Thu, 29 Oct 2026 03:54:00 GMT` |
+| 📜 **Top Daily Paper** | [TauIndianBankBench: Procedure-Aware, Action-Orient...](https://huggingface.co/papers/2610.30161) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Thu, 29 Oct 2026 11:14:04 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
