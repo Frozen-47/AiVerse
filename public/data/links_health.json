@@ -1,43 +1,23 @@
 {
-  "timestamp": "2026-10-30T11:08:08.276Z",
+  "timestamp": "2026-10-30T17:36:22.146Z",
   "checked": 25,
-  "healthy": 18,
-  "broken": 7,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "GPT-4o mini",
-      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
       "status": 403
     },
     {
-      "name": "Phind",
-      "url": "https://www.phind.com",
+      "name": "Sora",
+      "url": "https://openai.com/sora",
       "status": 403
     },
     {
-      "name": "Lovable.dev",
-      "url": "https://lovable.dev",
-      "status": 403
-    },
-    {
-      "name": "GPT-4o",
-      "url": "https://openai.com/chatgpt",
-      "status": 403
-    },
-    {
-      "name": "Ideogram",
-      "url": "https://ideogram.ai",
-      "status": 403
-    },
-    {
-      "name": "UltraFeedback",
-      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
-      "status": 401
-    },
-    {
-      "name": "LMSYS Chatbot Arena Conversations",
-      "url": "https://chat.lmsys.org",
-      "status": "Network Error"
+      "name": "ERNIE Bot",
+      "url": "https://yiyan.baidu.com",
+      "status": 404
     }
   ]
 }

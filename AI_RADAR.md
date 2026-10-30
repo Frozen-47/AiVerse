@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 30 Oct 2026 11:08:13 GMT`*
+*Last Synchronized: `Fri, 30 Oct 2026 17:36:28 GMT`*
 
 ---
 
@@ -10,26 +10,26 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **NVIDIA-Nemotron-3.5-Bolt-E4B-4GB** (`Model` • *nvidia*)
-> High-performance NLP open-weights model by nvidia, trending with over 267 community likes and 64,263 downloads on Hugging Face.
+### **LFM3-Omni-2B** (`Model` • *LiquidAI*)
+> High-performance NLP open-weights model by LiquidAI, trending with over 221 community likes and 3,080 downloads on Hugging Face.
 
 - 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 248, Likes: 267, Downloads: 64,263`
-- 🔗 **Resource Link**: [https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB)
+- ⚡ **Metrics**: `Trending Score: 216, Likes: 221, Downloads: 3,080`
+- 🔗 **Resource Link**: [https://huggingface.co/LiquidAI/LFM3-Omni-2B](https://huggingface.co/LiquidAI/LFM3-Omni-2B)
 
-### **minimax-h3-flashgen-4step** (`Platform` • *hugging-apps*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 159 community stars.
+### **H3EROS** (`Platform` • *Daankular*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Daankular. Trending with 70 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 28, Community Likes: 159`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/hugging-apps/minimax-h3-flashgen-4step](https://huggingface.co/spaces/hugging-apps/minimax-h3-flashgen-4step)
+- ⚡ **Metrics**: `Trending Score: 30, Community Likes: 70`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/Daankular/H3EROS](https://huggingface.co/spaces/Daankular/H3EROS)
 
-### **DataWorld-Train-2k-part1** (`Dataset` • *Zhanli-Li*)
-> Scaling Data Environments from Scratch   Specify the world behind the files. Generate the data. Ground the supervision.                           	 		 	 	 		DataWorld-Train-2 (21 likes, 29,323 downloads).
+### **simready-glb** (`Dataset` • *codepawl*)
+> SimReady GLB 	 Open the 3D viewer to search all 2,595 models and orbit any of them in the browser. Web-ready glTF binary (.glb) copies of the 3D models in nvidia/simrea (17 likes, 1,761 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 17, Likes: 21, Downloads: 29,323`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part1](https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part1)
+- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 17, Likes: 17, Downloads: 1,761`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/codepawl/simready-glb](https://huggingface.co/datasets/codepawl/simready-glb)
 
 ---
 
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,926 | 📥 145,869 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 787 | 📥 12,178 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
-| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 518 | 📥 23,694 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| `RecursiveSI/flint` | text-generation | ❤️ 1,249 | 📥 19,015 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF` | text-generation | ❤️ 490 | 📥 1,747,945 | [View](https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF) |
-| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 450 | 📥 15,980 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,974 | 📥 145,869 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 792 | 📥 12,178 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
+| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 536 | 📥 23,694 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 474 | 📥 15,980 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
+| `ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF` | text-generation | ❤️ 499 | 📥 1,747,945 | [View](https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF) |
+| `RecursiveSI/flint` | text-generation | ❤️ 1,253 | 📥 19,015 | [View](https://huggingface.co/RecursiveSI/flint) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Youtu-Parsing-Omni: One Encoder, One Schema, All Modalities** | 👍 2 | Youtu-Parsing-Omni is a unified multi-modal parser that encodes documents, images, audio, and video into structured spatiotemporal records using shared weights and cross-modal fusion, achieving state-of-the-art results across parsing benchmarks through a self-evolving on-policy distillation procedure. | [Read](https://huggingface.co/papers/2610.39301) |
-| **OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation** | 👍 1 | OpenFlyV2 is a unified onboard vision-language-action model that enables real-time aerial navigation and reasoning on resource-constrained hardware using shared multimodal representations. | [Read](https://huggingface.co/papers/2610.39287) |
-| **PhysInsert: Physically Plausible Object Insertion with Geometric Priors and Bidirectional Object-Scene Interactions** | 👍 11 | PhysInsert enables physically plausible object insertion by jointly adapting objects and scenes using geometry-guided adaptation and spatial supervision on aligned counterfactual data. | [Read](https://huggingface.co/papers/2610.40453) |
-| **AB-Attention: Accurate Block Attention for Accelerating Video Diffusion Transformers** | 👍 3 | AB-Attention approximates dense video diffusion attention with high sparsity via intra-block clustering, weighted sampling, and fine-grained kernel gathering, improving fidelity and speed. | [Read](https://huggingface.co/papers/2610.39663) |
-| **Multi-Token Prediction Done Right** | 👍 2 | Soft-MTP removes a noisy gradient residual from multi-token prediction via a straight-through KL recovery trick, improving perplexity, speculative decoding, and reasoning without added cost. | [Read](https://huggingface.co/papers/2610.38331) |
+| **Unlocking Any-Order Generation in Pretrained Autoregressive Image Models** | 👍 1 | Pretrained raster-scan autoregressive image models can be adapted into flexible any-order generators via future-aware positional embeddings and an ordering curriculum, enabling inpainting and outpainting with minimal extra compute. | [Read](https://huggingface.co/papers/2610.39293) |
+| **Matched Capabilities, Different Behaviors: A Controlled Study of MCP and CLI Interfaces for Language Agents** | 👍 2 | Matched interface representations significantly alter agent behavior despite identical executable capabilities, and targeted repair of interface-specific realization improves performance while reducing cost. | [Read](https://huggingface.co/papers/2610.34298) |
+| **Broken on Arrival: Non-Functional Quantized LLM Artifacts in Public Model Registries and How to Catch Them** | 👍 2 | Quantized small language model files in public registries can be non-functional due to uncalibrated quantization recipes, and screening plus calibration is recommended before release. | [Read](https://huggingface.co/papers/2609.05881) |
+| **Training Foundation Models with a Single Algorithm** | 👍 2 | Foundation-model training stages can be unified under a single likelihood-based algorithm that blends static data and reinforcement learning generations, improving efficiency and capability retention. | [Read](https://huggingface.co/papers/2610.40564) |
+| **ABF-Bench: A Verifiable Benchmark for Agentic Blockchain Forensics** | 👍 3 | ABF-Bench introduces an interactive, evidence-backed benchmark for blockchain fund tracing that evaluates adaptive agents against fixed tracers, revealing gaps in recall and overconfidence while enabling verifiable LLM agent training. | [Read](https://huggingface.co/papers/2610.23656) |
 
 
 ---
@@ -80,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `18/25` healthy verified (`7` flagged / timed out)
+- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
 - **Dependency Security**: `32` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

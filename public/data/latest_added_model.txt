@@ -1,1 +1,1 @@
-NVIDIA-Nemotron-3.5-Bolt-E4B-4GB
+LFM3-Omni-2B

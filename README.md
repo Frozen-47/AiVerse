@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-30)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **NVIDIA-Nemotron-3.5-Bolt-E4B-4GB** (`Model`), **minimax-h3-flashgen-4step** (`Platform`), **DataWorld-Train-2k-part1** (`Dataset`) |
+| 📥 **Queued for Review** | **LFM3-Omni-2B** (`Model`), **H3EROS** (`Platform`), **simready-glb** (`Dataset`) |
 | 🌟 **Tool of the Day** | **DeepSeek-R1-Distill-Qwen-32B** (DeepSeek) — [Explore](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [Youtu-Parsing-Omni: One Encoder, One Schema, All M...](https://huggingface.co/papers/2610.39301) |
-| 🛡️ **Catalog Links Checked** | **18/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 30 Oct 2026 11:08:13 GMT` |
+| 📜 **Top Daily Paper** | [Unlocking Any-Order Generation in Pretrained Autor...](https://huggingface.co/papers/2610.39293) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 30 Oct 2026 17:36:28 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

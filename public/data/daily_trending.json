@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-30T11:08:08.132Z",
+  "timestamp": "2026-10-30T17:36:22.093Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 3926,
+      "likes": 3974,
       "downloads": 145869,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 787,
+      "likes": 792,
       "downloads": 12178,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
@@ -20,76 +20,76 @@
     {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 518,
+      "likes": 536,
       "downloads": 23694,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
     },
     {
-      "id": "RecursiveSI/flint",
-      "author": "RecursiveSI",
-      "likes": 1249,
-      "downloads": 19015,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/RecursiveSI/flint"
+      "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+      "author": "nvidia",
+      "likes": 474,
+      "downloads": 15980,
+      "pipeline_tag": "automatic-speech-recognition",
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
     },
     {
       "id": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF",
       "author": "ISTA-DASLab",
-      "likes": 490,
+      "likes": 499,
       "downloads": 1747945,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF"
     },
     {
-      "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
-      "author": "nvidia",
-      "likes": 450,
-      "downloads": 15980,
-      "pipeline_tag": "automatic-speech-recognition",
-      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
+      "id": "RecursiveSI/flint",
+      "author": "RecursiveSI",
+      "likes": 1253,
+      "downloads": 19015,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/RecursiveSI/flint"
     }
   ],
   "papers": [
     {
-      "title": "Youtu-Parsing-Omni: One Encoder, One Schema, All Modalities",
-      "summary": "Youtu-Parsing-Omni is a unified multi-modal parser that encodes documents, images, audio, and video into structured spatiotemporal records using shared weights and cross-modal fusion, achieving state-of-the-art results across parsing benchmarks through a self-evolving on-policy distillation procedure.",
-      "upvotes": 2,
-      "arxiv_id": "2610.39301",
-      "url": "https://huggingface.co/papers/2610.39301",
-      "githubRepo": null
-    },
-    {
-      "title": "OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation",
-      "summary": "OpenFlyV2 is a unified onboard vision-language-action model that enables real-time aerial navigation and reasoning on resource-constrained hardware using shared multimodal representations.",
+      "title": "Unlocking Any-Order Generation in Pretrained Autoregressive Image Models",
+      "summary": "Pretrained raster-scan autoregressive image models can be adapted into flexible any-order generators via future-aware positional embeddings and an ordering curriculum, enabling inpainting and outpainting with minimal extra compute.",
       "upvotes": 1,
-      "arxiv_id": "2610.39287",
-      "url": "https://huggingface.co/papers/2610.39287",
-      "githubRepo": "https://github.com/Ideal-ljl/AeroBrain"
+      "arxiv_id": "2610.39293",
+      "url": "https://huggingface.co/papers/2610.39293",
+      "githubRepo": "https://github.com/Ordered-AR/unlockedadaptation"
     },
     {
-      "title": "PhysInsert: Physically Plausible Object Insertion with Geometric Priors and Bidirectional Object-Scene Interactions",
-      "summary": "PhysInsert enables physically plausible object insertion by jointly adapting objects and scenes using geometry-guided adaptation and spatial supervision on aligned counterfactual data.",
-      "upvotes": 11,
-      "arxiv_id": "2610.40453",
-      "url": "https://huggingface.co/papers/2610.40453",
-      "githubRepo": null
-    },
-    {
-      "title": "AB-Attention: Accurate Block Attention for Accelerating Video Diffusion Transformers",
-      "summary": "AB-Attention approximates dense video diffusion attention with high sparsity via intra-block clustering, weighted sampling, and fine-grained kernel gathering, improving fidelity and speed.",
-      "upvotes": 3,
-      "arxiv_id": "2610.39663",
-      "url": "https://huggingface.co/papers/2610.39663",
-      "githubRepo": "https://github.com/InfRec-Cardinal/AB-Attention"
-    },
-    {
-      "title": "Multi-Token Prediction Done Right",
-      "summary": "Soft-MTP removes a noisy gradient residual from multi-token prediction via a straight-through KL recovery trick, improving perplexity, speculative decoding, and reasoning without added cost.",
+      "title": "Matched Capabilities, Different Behaviors: A Controlled Study of MCP and CLI Interfaces for Language Agents",
+      "summary": "Matched interface representations significantly alter agent behavior despite identical executable capabilities, and targeted repair of interface-specific realization improves performance while reducing cost.",
       "upvotes": 2,
-      "arxiv_id": "2610.38331",
-      "url": "https://huggingface.co/papers/2610.38331",
-      "githubRepo": "https://github.com/JaydenTeoh/Soft-MTP"
+      "arxiv_id": "2610.34298",
+      "url": "https://huggingface.co/papers/2610.34298",
+      "githubRepo": "https://github.com/ModalityDance/MICA"
+    },
+    {
+      "title": "Broken on Arrival: Non-Functional Quantized LLM Artifacts in Public Model Registries and How to Catch Them",
+      "summary": "Quantized small language model files in public registries can be non-functional due to uncalibrated quantization recipes, and screening plus calibration is recommended before release.",
+      "upvotes": 2,
+      "arxiv_id": "2609.05881",
+      "url": "https://huggingface.co/papers/2609.05881",
+      "githubRepo": "https://github.com/aditi-p31/quantcheck"
+    },
+    {
+      "title": "Training Foundation Models with a Single Algorithm",
+      "summary": "Foundation-model training stages can be unified under a single likelihood-based algorithm that blends static data and reinforcement learning generations, improving efficiency and capability retention.",
+      "upvotes": 2,
+      "arxiv_id": "2610.40564",
+      "url": "https://huggingface.co/papers/2610.40564",
+      "githubRepo": "https://github.com/yudasong/unified-training"
+    },
+    {
+      "title": "ABF-Bench: A Verifiable Benchmark for Agentic Blockchain Forensics",
+      "summary": "ABF-Bench introduces an interactive, evidence-backed benchmark for blockchain fund tracing that evaluates adaptive agents against fixed tracers, revealing gaps in recall and overconfidence while enabling verifiable LLM agent training.",
+      "upvotes": 3,
+      "arxiv_id": "2610.23656",
+      "url": "https://huggingface.co/papers/2610.23656",
+      "githubRepo": null
     }
   ]
 }
