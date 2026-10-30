@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-10-29)
+### ⚡ AiVerse AI Radar (2026-10-30)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Mistral-Large-4-1T-A52B** (`Model`), **TRELLIS.2** (`Platform`), **Granary-v2** (`Dataset`) |
-| 🌟 **Tool of the Day** | **DeepSeek-R1** (DeepSeek) — [Explore](https://www.deepseek.com) |
+| 📥 **Queued for Review** | **Qwen3.5-4B-3D-Coder** (`Model`), **Omni-Image-Editor** (`Platform`), **GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset** (`Dataset`) |
+| 🌟 **Tool of the Day** | **DeepSeek-R1-Distill-Qwen-32B** (DeepSeek) — [Explore](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [Know, then Draw: A New Learning Paradigm for Visua...](https://huggingface.co/papers/2610.37626) |
-| 🛡️ **Catalog Links Checked** | **18/25** operational |
-| 🕒 **Last Synchronized** | `Thu, 29 Oct 2026 23:04:13 GMT` |
+| 📜 **Top Daily Paper** | [Co-Design Bench: Multimodal Collaborative Coding E...](https://huggingface.co/papers/2610.35138) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 30 Oct 2026 03:55:53 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

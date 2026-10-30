@@ -1,1 +1,1 @@
-Mistral-Large-4-1T-A52B
+Qwen3.5-4B-3D-Coder

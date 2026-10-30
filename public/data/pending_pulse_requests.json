@@ -1,5 +1,80 @@
 [
   {
+    "name": "GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset",
+    "type": "Dataset",
+    "summary": "📖 The Open Distillation Codex \t \t \t\t \t \t \t\t🌌 The Ultimate Open-Source Distillation Dataset — No Skip, Full, with Attack & Defense 🌌 \t Where 73 open-source minds conv (256 likes, 13,074 downloads).",
+    "task": "AI Coding",
+    "license": "MIT",
+    "year": 2026,
+    "org": "Manusagents",
+    "size": "10M<n<100M",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset\")",
+    "benchmarks": "Trending Score: 21, Likes: 256, Downloads: 13,074",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset",
+    "citations": [
+      {
+        "text": "Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset"
+      }
+    ],
+    "created_at": "2026-10-30T03:55:50.085Z"
+  },
+  {
+    "name": "Omni-Image-Editor",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by selfit-camera. Trending with 2,876 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "selfit-camera",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/selfit-camera/Omni-Image-Editor",
+    "benchmarks": "Trending Score: 26, Community Likes: 2,876",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/selfit-camera/Omni-Image-Editor",
+    "citations": [
+      {
+        "text": "selfit-camera/Omni-Image-Editor on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/selfit-camera/Omni-Image-Editor"
+      }
+    ],
+    "created_at": "2026-10-30T03:55:50.085Z"
+  },
+  {
+    "name": "Qwen3.5-4B-3D-Coder",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by ccore, trending with over 287 community likes and 12,237 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "ccore",
+    "size": "4B params",
+    "architecture": "ccore transformer architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ccore/Qwen3.5-4B-3D-Coder\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ccore/Qwen3.5-4B-3D-Coder\")",
+    "benchmarks": "Trending Score: 271, Likes: 287, Downloads: 12,237",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder",
+    "citations": [
+      {
+        "text": "ccore/Qwen3.5-4B-3D-Coder on Hugging Face",
+        "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
+      }
+    ],
+    "created_at": "2026-10-30T03:55:50.085Z"
+  },
+  {
     "name": "Granary-v2",
     "type": "Dataset",
     "summary": "Granary-v2: Multilingual Speech Recognition, Translation and Instruction Data \t                                                        Granary-v2 is NVIDIA's second rel (23 likes, 1,074 downloads).",

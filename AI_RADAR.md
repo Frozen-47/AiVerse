@@ -1,8 +1,8 @@
-# ⚡ AiVerse AI Radar (2026-10-29)
+# ⚡ AiVerse AI Radar (2026-10-30)
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Thu, 29 Oct 2026 23:04:13 GMT`*
+*Last Synchronized: `Fri, 30 Oct 2026 03:55:53 GMT`*
 
 ---
 
@@ -10,37 +10,37 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Mistral-Large-4-1T-A52B** (`Model` • *Mistral AI*)
-> High-performance Multimodal open-weights model by Mistral AI, trending with over 1,204 community likes and 278 downloads on Hugging Face.
+### **Qwen3.5-4B-3D-Coder** (`Model` • *ccore*)
+> High-performance NLP open-weights model by ccore, trending with over 287 community likes and 12,237 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 285, Likes: 1,204, Downloads: 278`
-- 🔗 **Resource Link**: [https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 271, Likes: 287, Downloads: 12,237`
+- 🔗 **Resource Link**: [https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder](https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder)
 
-### **TRELLIS.2** (`Platform` • *microsoft*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by microsoft. Trending with 2,309 community stars.
+### **Omni-Image-Editor** (`Platform` • *selfit-camera*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by selfit-camera. Trending with 2,876 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 33, Community Likes: 2,309`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/microsoft/TRELLIS.2](https://huggingface.co/spaces/microsoft/TRELLIS.2)
+- ⚡ **Metrics**: `Trending Score: 26, Community Likes: 2,876`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/selfit-camera/Omni-Image-Editor](https://huggingface.co/spaces/selfit-camera/Omni-Image-Editor)
 
-### **Granary-v2** (`Dataset` • *nvidia*)
-> Granary-v2: Multilingual Speech Recognition, Translation and Instruction Data 	                                                        Granary-v2 is NVIDIA's second rel (23 likes, 1,074 downloads).
+### **GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset** (`Dataset` • *Manusagents*)
+> 📖 The Open Distillation Codex 	 	 		 	 	 		🌌 The Ultimate Open-Source Distillation Dataset — No Skip, Full, with Attack & Defense 🌌 	 Where 73 open-source minds conv (256 likes, 13,074 downloads).
 
-- 🏷️ **Domain & License**: `Audio` • `OPENMDW-1.1` (2026)
-- ⚡ **Metrics**: `Trending Score: 23, Likes: 23, Downloads: 1,074`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/Granary-v2](https://huggingface.co/datasets/nvidia/Granary-v2)
+- 🏷️ **Domain & License**: `AI Coding` • `MIT` (2026)
+- ⚡ **Metrics**: `Trending Score: 21, Likes: 256, Downloads: 13,074`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset](https://huggingface.co/datasets/Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **DeepSeek-R1** (`Model` • *DeepSeek*)
-> Breakthrough open-weights reasoning model trained via large-scale reinforcement learning (RL) without supervised fine-tuning, rivaling top proprietary reasoning models.
+### **DeepSeek-R1-Distill-Qwen-32B** (`Model` • *DeepSeek*)
+> Dense 32B reasoning model distilled from DeepSeek-R1 onto Qwen2.5-32B, delivering top-tier mathematical and coding logic on consumer hardware.
 
-- 🏛️ **Architecture**: DeepSeek-V3 Base + Large-scale Multi-Stage RL with self-verification reasoning.
-- ⚡ **Benchmarks**: `AIME 2024: 79.8%, MATH-500: 97.3%, Codeforces: 96.3 percentile`
+- 🏛️ **Architecture**: Qwen2.5-32B backbone fine-tuned on 800k DeepSeek-R1 reasoning trajectories.
+- ⚡ **Benchmarks**: `AIME 2024: 72.6%, MATH-500: 94.3%, LiveCodeBench: 57.2%`
 - 🏷️ **Domain & License**: `NLP` • `MIT` (Released: 2025)
-- 🔗 **Resource Link**: [https://www.deepseek.com](https://www.deepseek.com)
+- 🔗 **Resource Link**: [https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,761 | 📥 131,062 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 769 | 📥 9,655 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
-| `RecursiveSI/flint` | text-generation | ❤️ 1,238 | 📥 16,598 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 475 | 📥 15,885 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 904 | 📥 10,163 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
-| `MiniMaxAI/MiniMax-M3.1-Flash` | image-text-to-text | ❤️ 487 | 📥 15,738 | [View](https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,887 | 📥 131,062 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 781 | 📥 9,655 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
+| `RecursiveSI/flint` | text-generation | ❤️ 1,246 | 📥 16,598 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 490 | 📥 15,885 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 911 | 📥 10,163 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
+| `ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF` | text-generation | ❤️ 478 | 📥 1,578,937 | [View](https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Know, then Draw: A New Learning Paradigm for Visual Generation** | 👍 0 | A hybrid paradigm combining autoregressive pretraining for semantics and diffusion post-training for rendering achieves efficient, high-quality text-to-image generation with favorable scaling laws. | [Read](https://huggingface.co/papers/2610.37626) |
-| **Instruction Capacity: Behavior and Degradation of Language Models under Controlled Load** | 👍 1 | Researchers developed a statistical instrument using atomic replacement rules to measure language model instruction capacity with quantified uncertainty, finding GPT-4o mini holds about 37-38 rules at 95% accuracy. | [Read](https://huggingface.co/papers/2610.36095) |
-| **Evaluating DeepSeek V4.1 Flash-1017 for loss of control and harmful manipulation risks** | 👍 3 | Independent safety evaluation of DeepSeek V4.1 Flash-1017 reveals substantial improvements over prior versions and near-parity with leading closed-source models, while recommending process-level observability, incremental safety testing, and private benchmarks. | [Read](https://huggingface.co/papers/2610.35671) |
-| **Amortizing Sequential Experimental Design in Reasoning LLMs** | 👍 5 | Large language models learn adaptive information gathering by training reasoning with information-gain rewards, improving experimental design efficiency and generalizing across tasks. | [Read](https://huggingface.co/papers/2610.20832) |
-| **RealCLI: Toward a Unified Evaluation of Human-Agent Collaboration for CLI Agents** | 👍 15 | REALCLI is a benchmark that jointly evaluates CLI agent task execution and human-agent collaboration quality, revealing major gaps in steerability, trust calibration, and safety management. | [Read](https://huggingface.co/papers/2610.22507) |
+| **Co-Design Bench: Multimodal Collaborative Coding Evaluation for Agentic Models** | 👍 1 | Evaluating human-AI co-design requires testing whether coding agents can translate real users' multimodal requests into working application revisions. We introd... | [Read](https://huggingface.co/papers/2610.35138) |
+| **AskStream: When and What to Ask Proactively under Uncertainty in Streaming Video Understanding** | 👍 2 | Proactive video understanding should include asking for missing information under uncertainty, and the AskStream benchmark reveals current models struggle with this decision. | [Read](https://huggingface.co/papers/2610.38678) |
+| **EditAgent: Rethinking Agentic Image Editing** | 👍 4 | EditAgent broadens agentic image editing by routing steps to diverse editors and using verification records for listwise judging, improving reliability and efficiency. | [Read](https://huggingface.co/papers/2610.39664) |
+| **WeVisCut: The Whole Editing Room in One Agent From Narration to Long-Form Video** | 👍 10 | WeVisCut is a script-to-video system that trains a compact policy to coordinate video editing tools, recover from failures, and reduce token usage while maintaining quality. | [Read](https://huggingface.co/papers/2610.38352) |
+| **IntReal: A Real-World Dataset and Benchmark for Multimodal Interleaved Generation** | 👍 8 | IntReal introduces a real-world interleaved multimodal dataset and evaluation framework to diagnose unified model strengths and improve generation through targeted training. | [Read](https://huggingface.co/papers/2610.38425) |
 
 
 ---
@@ -80,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `18/25` healthy verified (`7` flagged / timed out)
+- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
 - **Dependency Security**: `32` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---
