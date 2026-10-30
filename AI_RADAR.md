@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 30 Oct 2026 17:36:28 GMT`*
+*Last Synchronized: `Fri, 30 Oct 2026 22:45:28 GMT`*
 
 ---
 
@@ -10,26 +10,26 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **LFM3-Omni-2B** (`Model` • *LiquidAI*)
-> High-performance NLP open-weights model by LiquidAI, trending with over 221 community likes and 3,080 downloads on Hugging Face.
+### **MiniCPM-OCR-1.0** (`Model` • *openbmb*)
+> High-performance Multimodal open-weights model by openbmb, trending with over 363 community likes and 2,413 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 216, Likes: 221, Downloads: 3,080`
-- 🔗 **Resource Link**: [https://huggingface.co/LiquidAI/LFM3-Omni-2B](https://huggingface.co/LiquidAI/LFM3-Omni-2B)
+- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 200, Likes: 363, Downloads: 2,413`
+- 🔗 **Resource Link**: [https://huggingface.co/openbmb/MiniCPM-OCR-1.0](https://huggingface.co/openbmb/MiniCPM-OCR-1.0)
 
-### **H3EROS** (`Platform` • *Daankular*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Daankular. Trending with 70 community stars.
+### **neuron-studio** (`Platform` • *webml-community*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by webml-community. Trending with 28 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 30, Community Likes: 70`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/Daankular/H3EROS](https://huggingface.co/spaces/Daankular/H3EROS)
+- ⚡ **Metrics**: `Trending Score: 28, Community Likes: 28`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/webml-community/neuron-studio](https://huggingface.co/spaces/webml-community/neuron-studio)
 
-### **simready-glb** (`Dataset` • *codepawl*)
-> SimReady GLB 	 Open the 3D viewer to search all 2,595 models and orbit any of them in the browser. Web-ready glTF binary (.glb) copies of the 3D models in nvidia/simrea (17 likes, 1,761 downloads).
+### **open-yap-1k** (`Dataset` • *TheAgenticDataCompany*)
+> Open Yap 1K: 1,000 hours of full-duplex natural conversation, free for commercial use 	 Today we're releasing Open Yap 1K: 1,000 hours of dual-channel English conversat (170 likes, 3,706 downloads).
 
-- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 17, Likes: 17, Downloads: 1,761`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/codepawl/simready-glb](https://huggingface.co/datasets/codepawl/simready-glb)
+- 🏷️ **Domain & License**: `Audio` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 17, Likes: 170, Downloads: 3,706`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/TheAgenticDataCompany/open-yap-1k](https://huggingface.co/datasets/TheAgenticDataCompany/open-yap-1k)
 
 ---
 
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,974 | 📥 145,869 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 792 | 📥 12,178 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
-| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 536 | 📥 23,694 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 474 | 📥 15,980 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
-| `ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF` | text-generation | ❤️ 499 | 📥 1,747,945 | [View](https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF) |
-| `RecursiveSI/flint` | text-generation | ❤️ 1,253 | 📥 19,015 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 4,001 | 📥 145,869 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 796 | 📥 12,178 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
+| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 557 | 📥 23,694 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 496 | 📥 15,980 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
+| `ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF` | text-generation | ❤️ 506 | 📥 1,747,945 | [View](https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF) |
+| `baidu/Unlimited-OCR-2` | image-text-to-text | ❤️ 450 | 📥 24,276 | [View](https://huggingface.co/baidu/Unlimited-OCR-2) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
+| **EPSBench: Benchmarking LLM Agents for Earnings Forecasting** | 👍 0 | The study introduces EPSBench to evaluate AI agents in forecasting quarterly earnings by linking financial evidence to income-statement drivers and comparing model predictions to analyst consensus. | [Read](https://huggingface.co/papers/2610.38293) |
+| **Weaken to Strengthen: Weakening-Induced On-Policy Self-Distillation for Large Reasoning Models** | 👍 0 | WISD improves reasoning models by contrasting them with weaker quantized or pruned versions to generate training signals without privileged data. | [Read](https://huggingface.co/papers/2610.38681) |
 | **Unlocking Any-Order Generation in Pretrained Autoregressive Image Models** | 👍 1 | Pretrained raster-scan autoregressive image models can be adapted into flexible any-order generators via future-aware positional embeddings and an ordering curriculum, enabling inpainting and outpainting with minimal extra compute. | [Read](https://huggingface.co/papers/2610.39293) |
 | **Matched Capabilities, Different Behaviors: A Controlled Study of MCP and CLI Interfaces for Language Agents** | 👍 2 | Matched interface representations significantly alter agent behavior despite identical executable capabilities, and targeted repair of interface-specific realization improves performance while reducing cost. | [Read](https://huggingface.co/papers/2610.34298) |
 | **Broken on Arrival: Non-Functional Quantized LLM Artifacts in Public Model Registries and How to Catch Them** | 👍 2 | Quantized small language model files in public registries can be non-functional due to uncalibrated quantization recipes, and screening plus calibration is recommended before release. | [Read](https://huggingface.co/papers/2609.05881) |
-| **Training Foundation Models with a Single Algorithm** | 👍 2 | Foundation-model training stages can be unified under a single likelihood-based algorithm that blends static data and reinforcement learning generations, improving efficiency and capability retention. | [Read](https://huggingface.co/papers/2610.40564) |
-| **ABF-Bench: A Verifiable Benchmark for Agentic Blockchain Forensics** | 👍 3 | ABF-Bench introduces an interactive, evidence-backed benchmark for blockchain fund tracing that evaluates adaptive agents against fixed tracers, revealing gaps in recall and overconfidence while enabling verifiable LLM agent training. | [Read](https://huggingface.co/papers/2610.23656) |
 
 
 ---

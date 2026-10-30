@@ -4,6 +4,84 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "MiniCPM-OCR-1.0",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by openbmb, trending with over 363 community likes and 2,413 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "openbmb",
+        "size": "Open Weights",
+        "architecture": "openbmb image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"openbmb/MiniCPM-OCR-1.0\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"openbmb/MiniCPM-OCR-1.0\")",
+        "benchmarks": "Trending Score: 200, Likes: 363, Downloads: 2,413",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/openbmb/MiniCPM-OCR-1.0",
+        "citations": [
+          {
+            "text": "openbmb/MiniCPM-OCR-1.0 on Hugging Face",
+            "url": "https://huggingface.co/openbmb/MiniCPM-OCR-1.0"
+          }
+        ]
+      },
+      {
+        "name": "neuron-studio",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by webml-community. Trending with 28 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "webml-community",
+        "size": "STATIC Platform",
+        "architecture": "STATIC cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/webml-community/neuron-studio",
+        "benchmarks": "Trending Score: 28, Community Likes: 28",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/webml-community/neuron-studio",
+        "citations": [
+          {
+            "text": "webml-community/neuron-studio on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/webml-community/neuron-studio"
+          }
+        ]
+      },
+      {
+        "name": "open-yap-1k",
+        "type": "Dataset",
+        "summary": "Open Yap 1K: 1,000 hours of full-duplex natural conversation, free for commercial use \t Today we're releasing Open Yap 1K: 1,000 hours of dual-channel English conversat (170 likes, 3,706 downloads).",
+        "task": "Audio",
+        "license": "CC-BY-4.0",
+        "year": 2026,
+        "org": "TheAgenticDataCompany",
+        "size": "n<1K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"TheAgenticDataCompany/open-yap-1k\")",
+        "benchmarks": "Trending Score: 17, Likes: 170, Downloads: 3,706",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/TheAgenticDataCompany/open-yap-1k",
+        "citations": [
+          {
+            "text": "TheAgenticDataCompany/open-yap-1k on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/TheAgenticDataCompany/open-yap-1k"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-30",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "LFM3-Omni-2B",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by LiquidAI, trending with over 221 community likes and 3,080 downloads on Hugging Face.",
@@ -6372,99 +6450,6 @@
           {
             "text": "Anthropic/hh-rlhf on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/Anthropic/hh-rlhf"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-12",
-    "assets": [
-      {
-        "name": "Nex-N2.5-mini",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by nex-agi, trending with over 692 community likes and 3,121 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "nex-agi",
-        "size": "Open Weights",
-        "architecture": "nex-agi text generation architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"nex-agi/Nex-N2.5-mini\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"nex-agi/Nex-N2.5-mini\")",
-        "benchmarks": "Trending Score: 539, Likes: 692, Downloads: 3,121",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": true,
-        "url": "https://huggingface.co/nex-agi/Nex-N2.5-mini",
-        "citations": [
-          {
-            "text": "nex-agi/Nex-N2.5-mini on Hugging Face",
-            "url": "https://huggingface.co/nex-agi/Nex-N2.5-mini"
-          }
-        ]
-      },
-      {
-        "name": "fruit-fly-simulation",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Xenova. Trending with 70 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "Xenova",
-        "size": "STATIC Platform",
-        "architecture": "STATIC cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Xenova/fruit-fly-simulation",
-        "benchmarks": "Trending Score: 62, Community Likes: 70",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": true,
-        "url": "https://huggingface.co/spaces/Xenova/fruit-fly-simulation",
-        "citations": [
-          {
-            "text": "Xenova/fruit-fly-simulation on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/Xenova/fruit-fly-simulation"
-          }
-        ]
-      },
-      {
-        "name": "agency",
-        "type": "Framework",
-        "summary": "A fast and minimal framework for building agentic systems",
-        "task": "NLP",
-        "license": "MIT",
-        "year": 2026,
-        "org": "operand",
-        "size": "3MB Repo",
-        "architecture": "Modular AI codebase with native Python/C++ bindings and distributed workflow support.",
-        "usage": "git clone https://github.com/operand/agency\ncd agency\npip install -e .",
-        "benchmarks": "GitHub Stars: 490, Forks: 29",
-        "limitations": "Requires local Python environment and dependency configuration.",
-        "popular": true,
-        "url": "https://github.com/operand/agency",
-        "citations": [
-          {
-            "text": "operand/agency on GitHub",
-            "url": "https://github.com/operand/agency"
-          }
-        ]
-      },
-      {
-        "name": "various",
-        "type": "Dataset",
-        "summary": "malcolmrey's Various AI Model Repository \t This is the repository of malcolmrey where various things related to Stable Diffusion, Flux, WAN, and other upcoming model ar (182 likes, 53,192 downloads).",
-        "task": "Computer Vision",
-        "license": "WTFPL",
-        "year": 2026,
-        "org": "malcolmrey",
-        "size": "n<1K",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"malcolmrey/various\")",
-        "benchmarks": "Trending Score: 46, Likes: 182, Downloads: 53,192",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": true,
-        "url": "https://huggingface.co/datasets/malcolmrey/various",
-        "citations": [
-          {
-            "text": "malcolmrey/various on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/malcolmrey/various"
           }
         ]
       }

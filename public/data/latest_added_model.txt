@@ -1,1 +1,1 @@
-LFM3-Omni-2B
+MiniCPM-OCR-1.0

@@ -1,5 +1,80 @@
 [
   {
+    "name": "open-yap-1k",
+    "type": "Dataset",
+    "summary": "Open Yap 1K: 1,000 hours of full-duplex natural conversation, free for commercial use \t Today we're releasing Open Yap 1K: 1,000 hours of dual-channel English conversat (170 likes, 3,706 downloads).",
+    "task": "Audio",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "org": "TheAgenticDataCompany",
+    "size": "n<1K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"TheAgenticDataCompany/open-yap-1k\")",
+    "benchmarks": "Trending Score: 17, Likes: 170, Downloads: 3,706",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/TheAgenticDataCompany/open-yap-1k",
+    "citations": [
+      {
+        "text": "TheAgenticDataCompany/open-yap-1k on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/TheAgenticDataCompany/open-yap-1k"
+      }
+    ],
+    "created_at": "2026-10-30T22:45:24.491Z"
+  },
+  {
+    "name": "neuron-studio",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by webml-community. Trending with 28 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "webml-community",
+    "size": "STATIC Platform",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/webml-community/neuron-studio",
+    "benchmarks": "Trending Score: 28, Community Likes: 28",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/webml-community/neuron-studio",
+    "citations": [
+      {
+        "text": "webml-community/neuron-studio on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/webml-community/neuron-studio"
+      }
+    ],
+    "created_at": "2026-10-30T22:45:24.491Z"
+  },
+  {
+    "name": "MiniCPM-OCR-1.0",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by openbmb, trending with over 363 community likes and 2,413 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "openbmb",
+    "size": "Open Weights",
+    "architecture": "openbmb image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"openbmb/MiniCPM-OCR-1.0\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"openbmb/MiniCPM-OCR-1.0\")",
+    "benchmarks": "Trending Score: 200, Likes: 363, Downloads: 2,413",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/openbmb/MiniCPM-OCR-1.0",
+    "citations": [
+      {
+        "text": "openbmb/MiniCPM-OCR-1.0 on Hugging Face",
+        "url": "https://huggingface.co/openbmb/MiniCPM-OCR-1.0"
+      }
+    ],
+    "created_at": "2026-10-30T22:45:24.491Z"
+  },
+  {
     "name": "simready-glb",
     "type": "Dataset",
     "summary": "SimReady GLB \t Open the 3D viewer to search all 2,595 models and orbit any of them in the browser. Web-ready glTF binary (.glb) copies of the 3D models in nvidia/simrea (17 likes, 1,761 downloads).",

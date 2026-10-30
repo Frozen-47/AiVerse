@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-30T17:36:22.093Z",
+  "timestamp": "2026-10-30T22:45:24.509Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 3974,
+      "likes": 4001,
       "downloads": 145869,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 792,
+      "likes": 796,
       "downloads": 12178,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
@@ -20,7 +20,7 @@
     {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 536,
+      "likes": 557,
       "downloads": 23694,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
@@ -28,7 +28,7 @@
     {
       "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
       "author": "nvidia",
-      "likes": 474,
+      "likes": 496,
       "downloads": 15980,
       "pipeline_tag": "automatic-speech-recognition",
       "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
@@ -36,21 +36,37 @@
     {
       "id": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF",
       "author": "ISTA-DASLab",
-      "likes": 499,
+      "likes": 506,
       "downloads": 1747945,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF"
     },
     {
-      "id": "RecursiveSI/flint",
-      "author": "RecursiveSI",
-      "likes": 1253,
-      "downloads": 19015,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/RecursiveSI/flint"
+      "id": "baidu/Unlimited-OCR-2",
+      "author": "baidu",
+      "likes": 450,
+      "downloads": 24276,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/baidu/Unlimited-OCR-2"
     }
   ],
   "papers": [
+    {
+      "title": "EPSBench: Benchmarking LLM Agents for Earnings Forecasting",
+      "summary": "The study introduces EPSBench to evaluate AI agents in forecasting quarterly earnings by linking financial evidence to income-statement drivers and comparing model predictions to analyst consensus.",
+      "upvotes": 0,
+      "arxiv_id": "2610.38293",
+      "url": "https://huggingface.co/papers/2610.38293",
+      "githubRepo": "https://github.com/JadeXu16/epsbench"
+    },
+    {
+      "title": "Weaken to Strengthen: Weakening-Induced On-Policy Self-Distillation for Large Reasoning Models",
+      "summary": "WISD improves reasoning models by contrasting them with weaker quantized or pruned versions to generate training signals without privileged data.",
+      "upvotes": 0,
+      "arxiv_id": "2610.38681",
+      "url": "https://huggingface.co/papers/2610.38681",
+      "githubRepo": "https://github.com/jet-ai-projects/WISD"
+    },
     {
       "title": "Unlocking Any-Order Generation in Pretrained Autoregressive Image Models",
       "summary": "Pretrained raster-scan autoregressive image models can be adapted into flexible any-order generators via future-aware positional embeddings and an ordering curriculum, enabling inpainting and outpainting with minimal extra compute.",
@@ -74,22 +90,6 @@
       "arxiv_id": "2609.05881",
       "url": "https://huggingface.co/papers/2609.05881",
       "githubRepo": "https://github.com/aditi-p31/quantcheck"
-    },
-    {
-      "title": "Training Foundation Models with a Single Algorithm",
-      "summary": "Foundation-model training stages can be unified under a single likelihood-based algorithm that blends static data and reinforcement learning generations, improving efficiency and capability retention.",
-      "upvotes": 2,
-      "arxiv_id": "2610.40564",
-      "url": "https://huggingface.co/papers/2610.40564",
-      "githubRepo": "https://github.com/yudasong/unified-training"
-    },
-    {
-      "title": "ABF-Bench: A Verifiable Benchmark for Agentic Blockchain Forensics",
-      "summary": "ABF-Bench introduces an interactive, evidence-backed benchmark for blockchain fund tracing that evaluates adaptive agents against fixed tracers, revealing gaps in recall and overconfidence while enabling verifiable LLM agent training.",
-      "upvotes": 3,
-      "arxiv_id": "2610.23656",
-      "url": "https://huggingface.co/papers/2610.23656",
-      "githubRepo": null
     }
   ]
 }
