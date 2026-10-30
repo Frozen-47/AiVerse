@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-30)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Qwen3.5-4B-3D-Coder** (`Model`), **Omni-Image-Editor** (`Platform`), **GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset** (`Dataset`) |
+| 📥 **Queued for Review** | **NVIDIA-Nemotron-3.5-Bolt-E4B-4GB** (`Model`), **minimax-h3-flashgen-4step** (`Platform`), **DataWorld-Train-2k-part1** (`Dataset`) |
 | 🌟 **Tool of the Day** | **DeepSeek-R1-Distill-Qwen-32B** (DeepSeek) — [Explore](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [Co-Design Bench: Multimodal Collaborative Coding E...](https://huggingface.co/papers/2610.35138) |
-| 🛡️ **Catalog Links Checked** | **24/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 30 Oct 2026 03:55:53 GMT` |
+| 📜 **Top Daily Paper** | [Youtu-Parsing-Omni: One Encoder, One Schema, All M...](https://huggingface.co/papers/2610.39301) |
+| 🛡️ **Catalog Links Checked** | **18/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 30 Oct 2026 11:08:13 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

@@ -1,5 +1,80 @@
 [
   {
+    "name": "DataWorld-Train-2k-part1",
+    "type": "Dataset",
+    "summary": "Scaling Data Environments from Scratch   Specify the world behind the files. Generate the data. Ground the supervision.                           \t \t\t \t \t \t\tDataWorld-Train-2 (21 likes, 29,323 downloads).",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "Zhanli-Li",
+    "size": "1K<n<10K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Zhanli-Li/DataWorld-Train-2k-part1\")",
+    "benchmarks": "Trending Score: 17, Likes: 21, Downloads: 29,323",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part1",
+    "citations": [
+      {
+        "text": "Zhanli-Li/DataWorld-Train-2k-part1 on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part1"
+      }
+    ],
+    "created_at": "2026-10-30T11:08:08.115Z"
+  },
+  {
+    "name": "minimax-h3-flashgen-4step",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 159 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "hugging-apps",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/minimax-h3-flashgen-4step",
+    "benchmarks": "Trending Score: 28, Community Likes: 159",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/hugging-apps/minimax-h3-flashgen-4step",
+    "citations": [
+      {
+        "text": "hugging-apps/minimax-h3-flashgen-4step on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/hugging-apps/minimax-h3-flashgen-4step"
+      }
+    ],
+    "created_at": "2026-10-30T11:08:08.115Z"
+  },
+  {
+    "name": "NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by nvidia, trending with over 267 community likes and 64,263 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "nvidia",
+    "size": "4B params",
+    "architecture": "nvidia text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB\")",
+    "benchmarks": "Trending Score: 248, Likes: 267, Downloads: 64,263",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
+    "citations": [
+      {
+        "text": "nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB on Hugging Face",
+        "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB"
+      }
+    ],
+    "created_at": "2026-10-30T11:08:08.114Z"
+  },
+  {
     "name": "GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset",
     "type": "Dataset",
     "summary": "📖 The Open Distillation Codex \t \t \t\t \t \t \t\t🌌 The Ultimate Open-Source Distillation Dataset — No Skip, Full, with Attack & Defense 🌌 \t Where 73 open-source minds conv (256 likes, 13,074 downloads).",

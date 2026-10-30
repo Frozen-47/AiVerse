@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-10-30T03:55:50.100Z",
+  "timestamp": "2026-10-30T11:08:08.132Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 3887,
-      "downloads": 131062,
+      "likes": 3926,
+      "downloads": 145869,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 781,
-      "downloads": 9655,
+      "likes": 787,
+      "downloads": 12178,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
     },
     {
-      "id": "RecursiveSI/flint",
-      "author": "RecursiveSI",
-      "likes": 1246,
-      "downloads": 16598,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/RecursiveSI/flint"
-    },
-    {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 490,
-      "downloads": 15885,
+      "likes": 518,
+      "downloads": 23694,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
     },
     {
-      "id": "XHToken/Spark-X2.6-4B",
-      "author": "XHToken",
-      "likes": 911,
-      "downloads": 10163,
+      "id": "RecursiveSI/flint",
+      "author": "RecursiveSI",
+      "likes": 1249,
+      "downloads": 19015,
       "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
+      "url": "https://huggingface.co/RecursiveSI/flint"
     },
     {
       "id": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF",
       "author": "ISTA-DASLab",
-      "likes": 478,
-      "downloads": 1578937,
+      "likes": 490,
+      "downloads": 1747945,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF"
+    },
+    {
+      "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+      "author": "nvidia",
+      "likes": 450,
+      "downloads": 15980,
+      "pipeline_tag": "automatic-speech-recognition",
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
     }
   ],
   "papers": [
     {
-      "title": "Co-Design Bench: Multimodal Collaborative Coding Evaluation for Agentic Models",
-      "summary": "Evaluating human-AI co-design requires testing whether coding agents can translate real users' multimodal requests into working application revisions. We introd...",
-      "upvotes": 1,
-      "arxiv_id": "2610.35138",
-      "url": "https://huggingface.co/papers/2610.35138",
-      "githubRepo": "https://github.com/Wiselnn570/Co-Design-Bench"
-    },
-    {
-      "title": "AskStream: When and What to Ask Proactively under Uncertainty in Streaming Video Understanding",
-      "summary": "Proactive video understanding should include asking for missing information under uncertainty, and the AskStream benchmark reveals current models struggle with this decision.",
+      "title": "Youtu-Parsing-Omni: One Encoder, One Schema, All Modalities",
+      "summary": "Youtu-Parsing-Omni is a unified multi-modal parser that encodes documents, images, audio, and video into structured spatiotemporal records using shared weights and cross-modal fusion, achieving state-of-the-art results across parsing benchmarks through a self-evolving on-policy distillation procedure.",
       "upvotes": 2,
-      "arxiv_id": "2610.38678",
-      "url": "https://huggingface.co/papers/2610.38678",
-      "githubRepo": "https://github.com/wanglu-cs/AskStream"
-    },
-    {
-      "title": "EditAgent: Rethinking Agentic Image Editing",
-      "summary": "EditAgent broadens agentic image editing by routing steps to diverse editors and using verification records for listwise judging, improving reliability and efficiency.",
-      "upvotes": 4,
-      "arxiv_id": "2610.39664",
-      "url": "https://huggingface.co/papers/2610.39664",
+      "arxiv_id": "2610.39301",
+      "url": "https://huggingface.co/papers/2610.39301",
       "githubRepo": null
     },
     {
-      "title": "WeVisCut: The Whole Editing Room in One Agent From Narration to Long-Form Video",
-      "summary": "WeVisCut is a script-to-video system that trains a compact policy to coordinate video editing tools, recover from failures, and reduce token usage while maintaining quality.",
-      "upvotes": 10,
-      "arxiv_id": "2610.38352",
-      "url": "https://huggingface.co/papers/2610.38352",
-      "githubRepo": "https://github.com/Tencent/WeVisCut"
+      "title": "OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation",
+      "summary": "OpenFlyV2 is a unified onboard vision-language-action model that enables real-time aerial navigation and reasoning on resource-constrained hardware using shared multimodal representations.",
+      "upvotes": 1,
+      "arxiv_id": "2610.39287",
+      "url": "https://huggingface.co/papers/2610.39287",
+      "githubRepo": "https://github.com/Ideal-ljl/AeroBrain"
     },
     {
-      "title": "IntReal: A Real-World Dataset and Benchmark for Multimodal Interleaved Generation",
-      "summary": "IntReal introduces a real-world interleaved multimodal dataset and evaluation framework to diagnose unified model strengths and improve generation through targeted training.",
-      "upvotes": 8,
-      "arxiv_id": "2610.38425",
-      "url": "https://huggingface.co/papers/2610.38425",
-      "githubRepo": "https://github.com/yushaohan/IntReal"
+      "title": "PhysInsert: Physically Plausible Object Insertion with Geometric Priors and Bidirectional Object-Scene Interactions",
+      "summary": "PhysInsert enables physically plausible object insertion by jointly adapting objects and scenes using geometry-guided adaptation and spatial supervision on aligned counterfactual data.",
+      "upvotes": 11,
+      "arxiv_id": "2610.40453",
+      "url": "https://huggingface.co/papers/2610.40453",
+      "githubRepo": null
+    },
+    {
+      "title": "AB-Attention: Accurate Block Attention for Accelerating Video Diffusion Transformers",
+      "summary": "AB-Attention approximates dense video diffusion attention with high sparsity via intra-block clustering, weighted sampling, and fine-grained kernel gathering, improving fidelity and speed.",
+      "upvotes": 3,
+      "arxiv_id": "2610.39663",
+      "url": "https://huggingface.co/papers/2610.39663",
+      "githubRepo": "https://github.com/InfRec-Cardinal/AB-Attention"
+    },
+    {
+      "title": "Multi-Token Prediction Done Right",
+      "summary": "Soft-MTP removes a noisy gradient residual from multi-token prediction via a straight-through KL recovery trick, improving perplexity, speculative decoding, and reasoning without added cost.",
+      "upvotes": 2,
+      "arxiv_id": "2610.38331",
+      "url": "https://huggingface.co/papers/2610.38331",
+      "githubRepo": "https://github.com/JaydenTeoh/Soft-MTP"
     }
   ]
 }

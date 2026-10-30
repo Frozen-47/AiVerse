@@ -1,13 +1,43 @@
 {
-  "timestamp": "2026-10-30T03:55:50.194Z",
+  "timestamp": "2026-10-30T11:08:08.276Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 18,
+  "broken": 7,
   "issues": [
     {
-      "name": "OpenWebText",
-      "url": "https://huggingface.co/datasets/openwebtext",
-      "status": 404
+      "name": "GPT-4o mini",
+      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+      "status": 403
+    },
+    {
+      "name": "Phind",
+      "url": "https://www.phind.com",
+      "status": 403
+    },
+    {
+      "name": "Lovable.dev",
+      "url": "https://lovable.dev",
+      "status": 403
+    },
+    {
+      "name": "GPT-4o",
+      "url": "https://openai.com/chatgpt",
+      "status": 403
+    },
+    {
+      "name": "Ideogram",
+      "url": "https://ideogram.ai",
+      "status": 403
+    },
+    {
+      "name": "UltraFeedback",
+      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
+      "status": 401
+    },
+    {
+      "name": "LMSYS Chatbot Arena Conversations",
+      "url": "https://chat.lmsys.org",
+      "status": "Network Error"
     }
   ]
 }

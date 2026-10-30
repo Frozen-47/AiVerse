@@ -1,1 +1,1 @@
-Qwen3.5-4B-3D-Coder
+NVIDIA-Nemotron-3.5-Bolt-E4B-4GB

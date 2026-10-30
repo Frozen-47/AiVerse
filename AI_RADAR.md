@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 30 Oct 2026 03:55:53 GMT`*
+*Last Synchronized: `Fri, 30 Oct 2026 11:08:13 GMT`*
 
 ---
 
@@ -10,26 +10,26 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Qwen3.5-4B-3D-Coder** (`Model` • *ccore*)
-> High-performance NLP open-weights model by ccore, trending with over 287 community likes and 12,237 downloads on Hugging Face.
+### **NVIDIA-Nemotron-3.5-Bolt-E4B-4GB** (`Model` • *nvidia*)
+> High-performance NLP open-weights model by nvidia, trending with over 267 community likes and 64,263 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 271, Likes: 287, Downloads: 12,237`
-- 🔗 **Resource Link**: [https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder](https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 248, Likes: 267, Downloads: 64,263`
+- 🔗 **Resource Link**: [https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB)
 
-### **Omni-Image-Editor** (`Platform` • *selfit-camera*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by selfit-camera. Trending with 2,876 community stars.
+### **minimax-h3-flashgen-4step** (`Platform` • *hugging-apps*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 159 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 26, Community Likes: 2,876`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/selfit-camera/Omni-Image-Editor](https://huggingface.co/spaces/selfit-camera/Omni-Image-Editor)
+- ⚡ **Metrics**: `Trending Score: 28, Community Likes: 159`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/hugging-apps/minimax-h3-flashgen-4step](https://huggingface.co/spaces/hugging-apps/minimax-h3-flashgen-4step)
 
-### **GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset** (`Dataset` • *Manusagents*)
-> 📖 The Open Distillation Codex 	 	 		 	 	 		🌌 The Ultimate Open-Source Distillation Dataset — No Skip, Full, with Attack & Defense 🌌 	 Where 73 open-source minds conv (256 likes, 13,074 downloads).
+### **DataWorld-Train-2k-part1** (`Dataset` • *Zhanli-Li*)
+> Scaling Data Environments from Scratch   Specify the world behind the files. Generate the data. Ground the supervision.                           	 		 	 	 		DataWorld-Train-2 (21 likes, 29,323 downloads).
 
-- 🏷️ **Domain & License**: `AI Coding` • `MIT` (2026)
-- ⚡ **Metrics**: `Trending Score: 21, Likes: 256, Downloads: 13,074`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset](https://huggingface.co/datasets/Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 17, Likes: 21, Downloads: 29,323`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part1](https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part1)
 
 ---
 
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,887 | 📥 131,062 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 781 | 📥 9,655 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
-| `RecursiveSI/flint` | text-generation | ❤️ 1,246 | 📥 16,598 | [View](https://huggingface.co/RecursiveSI/flint) |
-| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 490 | 📥 15,885 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| `XHToken/Spark-X2.6-4B` | text-generation | ❤️ 911 | 📥 10,163 | [View](https://huggingface.co/XHToken/Spark-X2.6-4B) |
-| `ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF` | text-generation | ❤️ 478 | 📥 1,578,937 | [View](https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 3,926 | 📥 145,869 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 787 | 📥 12,178 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
+| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 518 | 📥 23,694 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| `RecursiveSI/flint` | text-generation | ❤️ 1,249 | 📥 19,015 | [View](https://huggingface.co/RecursiveSI/flint) |
+| `ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF` | text-generation | ❤️ 490 | 📥 1,747,945 | [View](https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF) |
+| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 450 | 📥 15,980 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Co-Design Bench: Multimodal Collaborative Coding Evaluation for Agentic Models** | 👍 1 | Evaluating human-AI co-design requires testing whether coding agents can translate real users' multimodal requests into working application revisions. We introd... | [Read](https://huggingface.co/papers/2610.35138) |
-| **AskStream: When and What to Ask Proactively under Uncertainty in Streaming Video Understanding** | 👍 2 | Proactive video understanding should include asking for missing information under uncertainty, and the AskStream benchmark reveals current models struggle with this decision. | [Read](https://huggingface.co/papers/2610.38678) |
-| **EditAgent: Rethinking Agentic Image Editing** | 👍 4 | EditAgent broadens agentic image editing by routing steps to diverse editors and using verification records for listwise judging, improving reliability and efficiency. | [Read](https://huggingface.co/papers/2610.39664) |
-| **WeVisCut: The Whole Editing Room in One Agent From Narration to Long-Form Video** | 👍 10 | WeVisCut is a script-to-video system that trains a compact policy to coordinate video editing tools, recover from failures, and reduce token usage while maintaining quality. | [Read](https://huggingface.co/papers/2610.38352) |
-| **IntReal: A Real-World Dataset and Benchmark for Multimodal Interleaved Generation** | 👍 8 | IntReal introduces a real-world interleaved multimodal dataset and evaluation framework to diagnose unified model strengths and improve generation through targeted training. | [Read](https://huggingface.co/papers/2610.38425) |
+| **Youtu-Parsing-Omni: One Encoder, One Schema, All Modalities** | 👍 2 | Youtu-Parsing-Omni is a unified multi-modal parser that encodes documents, images, audio, and video into structured spatiotemporal records using shared weights and cross-modal fusion, achieving state-of-the-art results across parsing benchmarks through a self-evolving on-policy distillation procedure. | [Read](https://huggingface.co/papers/2610.39301) |
+| **OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation** | 👍 1 | OpenFlyV2 is a unified onboard vision-language-action model that enables real-time aerial navigation and reasoning on resource-constrained hardware using shared multimodal representations. | [Read](https://huggingface.co/papers/2610.39287) |
+| **PhysInsert: Physically Plausible Object Insertion with Geometric Priors and Bidirectional Object-Scene Interactions** | 👍 11 | PhysInsert enables physically plausible object insertion by jointly adapting objects and scenes using geometry-guided adaptation and spatial supervision on aligned counterfactual data. | [Read](https://huggingface.co/papers/2610.40453) |
+| **AB-Attention: Accurate Block Attention for Accelerating Video Diffusion Transformers** | 👍 3 | AB-Attention approximates dense video diffusion attention with high sparsity via intra-block clustering, weighted sampling, and fine-grained kernel gathering, improving fidelity and speed. | [Read](https://huggingface.co/papers/2610.39663) |
+| **Multi-Token Prediction Done Right** | 👍 2 | Soft-MTP removes a noisy gradient residual from multi-token prediction via a straight-through KL recovery trick, improving perplexity, speculative decoding, and reasoning without added cost. | [Read](https://huggingface.co/papers/2610.38331) |
 
 
 ---
@@ -80,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
+- **Sample Link Health Check**: `18/25` healthy verified (`7` flagged / timed out)
 - **Dependency Security**: `32` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---
