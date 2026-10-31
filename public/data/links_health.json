@@ -1,38 +1,38 @@
 {
-  "timestamp": "2026-10-31T10:41:27.814Z",
+  "timestamp": "2026-10-31T16:40:07.424Z",
   "checked": 25,
   "healthy": 19,
   "broken": 6,
   "issues": [
     {
-      "name": "DALL-E 2",
-      "url": "https://openai.com/dall-e-2",
+      "name": "Ideogram",
+      "url": "https://ideogram.ai",
       "status": 403
     },
     {
-      "name": "o3-mini",
-      "url": "https://openai.com",
+      "name": "Gamma",
+      "url": "https://gamma.app",
       "status": 403
     },
     {
-      "name": "Midjourney (Platform)",
-      "url": "https://www.midjourney.com/",
+      "name": "Quizlet AI",
+      "url": "https://quizlet.com/features/quizlet-ai",
       "status": 403
     },
     {
-      "name": "Phind",
-      "url": "https://www.phind.com",
+      "name": "Canva AI",
+      "url": "https://www.canva.com/ai-image-generator",
       "status": 403
     },
     {
-      "name": "Midjourney v6",
-      "url": "https://www.midjourney.com/",
-      "status": 403
+      "name": "Play.ht",
+      "url": "https://play.ht",
+      "status": "Network Error"
     },
     {
-      "name": "ERNIE Bot",
-      "url": "https://yiyan.baidu.com",
-      "status": "Timeout"
+      "name": "Tabnine",
+      "url": "https://www.tabnine.com",
+      "status": "Network Error"
     }
   ]
 }

@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-31)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **LFM3-VL-2B** (`Model`), **LFM3-Omni-2B-WebGPU** (`Platform`), **HolyCyber** (`Dataset`) |
-| 🌟 **Tool of the Day** | **DeepSeek-Coder-V2** (DeepSeek) — [Explore](https://github.com/deepseek-ai/DeepSeek-Coder-V2) |
-| 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
+| 📥 **Queued for Review** | **Clover-35B-A3B-Preview** (`Model`), **pornflux-i2v-6e9et** (`Platform`), **ThreeJS-3D-Scenes** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Qwen-2511-Plus-Flux.2-klein-9B** (Alibaba (Qwen)) — [Explore](https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B) |
+| 🗄️ **Catalog Entries** | **385** AI assets tracked (312 featured) |
 | 🔥 **Top Trending Model** | [Nanbeige/Nanbeige4.3-33B](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
 | 📜 **Top Daily Paper** | [EPSBench: Benchmarking LLM Agents for Earnings For...](https://huggingface.co/papers/2610.38293) |
 | 🛡️ **Catalog Links Checked** | **19/25** operational |
-| 🕒 **Last Synchronized** | `Sat, 31 Oct 2026 10:42:07 GMT` |
+| 🕒 **Last Synchronized** | `Sat, 31 Oct 2026 16:40:53 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
