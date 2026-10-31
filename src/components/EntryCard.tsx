@@ -56,7 +56,7 @@ export const EntryCard = memo(function EntryCard({
               {entry.org || "AiVerse Resource"}
             </span>
             <span className="text-[11px] text-neutral-500 dark:text-neutral-400 font-normal truncate leading-tight">
-              aiverse.dev › {entry.type.toLowerCase()} › {entry.task.toLowerCase().replace(/\s+/g, '-')}
+              aiverse › {entry.type.toLowerCase()} › {entry.task.toLowerCase().replace(/\s+/g, '-')}
             </span>
           </div>
         </div>

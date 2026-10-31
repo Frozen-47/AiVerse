@@ -315,7 +315,7 @@ export const AddModal: React.FC<AddModalProps> = ({ typeFilters, taskFilters, on
           {/* ── Google Cloud Bottom Action Bar ── */}
           <div className="flex items-center justify-between pt-4 border-t border-neutral-200 dark:border-white/10">
             <a 
-              href="https://aiverse.dev" 
+              href="https://github.com/Frozen-47/AiVerse#contributing" 
               target="_blank" 
               rel="noreferrer" 
               className="inline-flex items-center gap-1 text-xs text-[#1a73e8] dark:text-[#8ab4f8] hover:underline"
