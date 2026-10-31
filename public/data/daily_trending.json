@@ -1,60 +1,60 @@
 {
-  "timestamp": "2026-10-31T03:40:15.010Z",
+  "timestamp": "2026-10-31T10:41:27.712Z",
   "models": [
-    {
-      "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
-      "author": "deepseek-ai",
-      "likes": 4019,
-      "downloads": 145869,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
-    },
     {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 799,
-      "downloads": 12178,
+      "likes": 816,
+      "downloads": 13832,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
     },
     {
+      "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "author": "deepseek-ai",
+      "likes": 4049,
+      "downloads": 156373,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+    },
+    {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 572,
-      "downloads": 23694,
+      "likes": 593,
+      "downloads": 32933,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
     },
     {
       "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
       "author": "nvidia",
-      "likes": 506,
-      "downloads": 15980,
+      "likes": 516,
+      "downloads": 24357,
       "pipeline_tag": "automatic-speech-recognition",
       "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
     },
     {
-      "id": "baidu/Unlimited-OCR-2",
-      "author": "baidu",
-      "likes": 457,
-      "downloads": 24276,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/baidu/Unlimited-OCR-2"
-    },
-    {
       "id": "mistralai/Mistral-Large-4-1T-A52B",
       "author": "mistralai",
-      "likes": 1350,
-      "downloads": 1239,
+      "likes": 1367,
+      "downloads": 2945,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
+    },
+    {
+      "id": "baidu/Unlimited-OCR-2",
+      "author": "baidu",
+      "likes": 466,
+      "downloads": 69231,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/baidu/Unlimited-OCR-2"
     }
   ],
   "papers": [
     {
       "title": "EPSBench: Benchmarking LLM Agents for Earnings Forecasting",
       "summary": "The study introduces EPSBench to evaluate AI agents in forecasting quarterly earnings by linking financial evidence to income-statement drivers and comparing model predictions to analyst consensus.",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2610.38293",
       "url": "https://huggingface.co/papers/2610.38293",
       "githubRepo": "https://github.com/JadeXu16/epsbench"
@@ -62,7 +62,7 @@
     {
       "title": "Weaken to Strengthen: Weakening-Induced On-Policy Self-Distillation for Large Reasoning Models",
       "summary": "WISD improves reasoning models by contrasting them with weaker quantized or pruned versions to generate training signals without privileged data.",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2610.38681",
       "url": "https://huggingface.co/papers/2610.38681",
       "githubRepo": "https://github.com/jet-ai-projects/WISD"

@@ -1,23 +1,38 @@
 {
-  "timestamp": "2026-10-31T03:40:15.193Z",
+  "timestamp": "2026-10-31T10:41:27.814Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 19,
+  "broken": 6,
   "issues": [
     {
-      "name": "Perplexity",
-      "url": "https://www.perplexity.ai",
+      "name": "DALL-E 2",
+      "url": "https://openai.com/dall-e-2",
       "status": 403
     },
     {
-      "name": "Whisper",
-      "url": "https://openai.com/research/whisper",
+      "name": "o3-mini",
+      "url": "https://openai.com",
       "status": 403
     },
     {
-      "name": "OpenAI Platform",
-      "url": "https://platform.openai.com",
+      "name": "Midjourney (Platform)",
+      "url": "https://www.midjourney.com/",
       "status": 403
+    },
+    {
+      "name": "Phind",
+      "url": "https://www.phind.com",
+      "status": 403
+    },
+    {
+      "name": "Midjourney v6",
+      "url": "https://www.midjourney.com/",
+      "status": 403
+    },
+    {
+      "name": "ERNIE Bot",
+      "url": "https://yiyan.baidu.com",
+      "status": "Timeout"
     }
   ]
 }
