@@ -4,6 +4,84 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "sam3",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by facebook, trending with over 5,557 community likes and 1,900,570 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "facebook",
+        "size": "Open Weights",
+        "architecture": "facebook mask generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"facebook/sam3\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"facebook/sam3\")",
+        "benchmarks": "Trending Score: 181, Likes: 5,557, Downloads: 1,900,570",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/facebook/sam3",
+        "citations": [
+          {
+            "text": "facebook/sam3 on Hugging Face",
+            "url": "https://huggingface.co/facebook/sam3"
+          }
+        ]
+      },
+      {
+        "name": "convfill-speech-demo",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by smolagents. Trending with 27 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "smolagents",
+        "size": "DOCKER Platform",
+        "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/smolagents/convfill-speech-demo",
+        "benchmarks": "Trending Score: 27, Community Likes: 27",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/smolagents/convfill-speech-demo",
+        "citations": [
+          {
+            "text": "smolagents/convfill-speech-demo on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/smolagents/convfill-speech-demo"
+          }
+        ]
+      },
+      {
+        "name": "DataWorld-Train-2k-part2",
+        "type": "Dataset",
+        "summary": "Scaling Data Environments from Scratch   Specify the world behind the files. Generate the data. Ground the supervision.                           \t \t\t \t \t \t\tDataWorld-Train-2 (20 likes, 3,834 downloads).",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Zhanli-Li",
+        "size": "1K<n<10K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Zhanli-Li/DataWorld-Train-2k-part2\")",
+        "benchmarks": "Trending Score: 16, Likes: 20, Downloads: 3,834",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part2",
+        "citations": [
+          {
+            "text": "Zhanli-Li/DataWorld-Train-2k-part2 on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Clover-35B-A3B-Preview",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by Diffuspace, trending with over 184 community likes and 2,021 downloads on Hugging Face.",
@@ -6378,77 +6456,6 @@
           {
             "text": "wikimedia/wikipedia on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/wikimedia/wikipedia"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-16",
-    "assets": [
-      {
-        "name": "NeoHorse-1-4B",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by TokenRhythm, trending with over 2,056 community likes and 11,904 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "TokenRhythm",
-        "size": "4B params",
-        "architecture": "TokenRhythm text generation architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"TokenRhythm/NeoHorse-1-4B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"TokenRhythm/NeoHorse-1-4B\")",
-        "benchmarks": "Trending Score: 392, Likes: 2,056, Downloads: 11,904",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": true,
-        "url": "https://huggingface.co/TokenRhythm/NeoHorse-1-4B",
-        "citations": [
-          {
-            "text": "TokenRhythm/NeoHorse-1-4B on Hugging Face",
-            "url": "https://huggingface.co/TokenRhythm/NeoHorse-1-4B"
-          }
-        ]
-      },
-      {
-        "name": "ai-notes",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Lynote. Trending with 99 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "Lynote",
-        "size": "STATIC Platform",
-        "architecture": "STATIC cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Lynote/ai-notes",
-        "benchmarks": "Trending Score: 81, Community Likes: 99",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": true,
-        "url": "https://huggingface.co/spaces/Lynote/ai-notes",
-        "citations": [
-          {
-            "text": "Lynote/ai-notes on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/Lynote/ai-notes"
-          }
-        ]
-      },
-      {
-        "name": "Fable-5.1-Max-Reasoning-Filtered-5000x",
-        "type": "Dataset",
-        "summary": "Dataset Description \t This dataset contains 5,000 coding and reasoning traces generated by the new Fable 5.1 model using max reasoning effort. It holds almost 150,000,0 (50 likes, 950 downloads).",
-        "task": "AI Coding",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "MoreThought",
-        "size": "1K<n<10K",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"MoreThought/Fable-5.1-Max-Reasoning-Filtered-5000x\")",
-        "benchmarks": "Trending Score: 33, Likes: 50, Downloads: 950",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "url": "https://huggingface.co/datasets/MoreThought/Fable-5.1-Max-Reasoning-Filtered-5000x",
-        "citations": [
-          {
-            "text": "MoreThought/Fable-5.1-Max-Reasoning-Filtered-5000x on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/MoreThought/Fable-5.1-Max-Reasoning-Filtered-5000x"
           }
         ]
       }

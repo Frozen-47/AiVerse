@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sat, 31 Oct 2026 16:40:53 GMT`*
+*Last Synchronized: `Sat, 31 Oct 2026 20:23:42 GMT`*
 
 ---
 
@@ -10,26 +10,26 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Clover-35B-A3B-Preview** (`Model` • *Diffuspace*)
-> High-performance NLP open-weights model by Diffuspace, trending with over 184 community likes and 2,021 downloads on Hugging Face.
+### **sam3** (`Model` • *facebook*)
+> High-performance NLP open-weights model by facebook, trending with over 5,557 community likes and 1,900,570 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 181, Likes: 184, Downloads: 2,021`
-- 🔗 **Resource Link**: [https://huggingface.co/Diffuspace/Clover-35B-A3B-Preview](https://huggingface.co/Diffuspace/Clover-35B-A3B-Preview)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 181, Likes: 5,557, Downloads: 1,900,570`
+- 🔗 **Resource Link**: [https://huggingface.co/facebook/sam3](https://huggingface.co/facebook/sam3)
 
-### **pornflux-i2v-6e9et** (`Platform` • *Tanyakhan*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Tanyakhan. Trending with 62 community stars.
+### **convfill-speech-demo** (`Platform` • *smolagents*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by smolagents. Trending with 27 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 27, Community Likes: 62`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/Tanyakhan/pornflux-i2v-6e9et](https://huggingface.co/spaces/Tanyakhan/pornflux-i2v-6e9et)
+- ⚡ **Metrics**: `Trending Score: 27, Community Likes: 27`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/smolagents/convfill-speech-demo](https://huggingface.co/spaces/smolagents/convfill-speech-demo)
 
-### **ThreeJS-3D-Scenes** (`Dataset` • *ccore*)
-> CCORE Three.js 3D Scenes 	 4,146 high-quality 3D scene examples with prompts, full thinking traces, and complete HTML/JavaScript responses. The scene code and thinking (19 likes, 1,296 downloads).
+### **DataWorld-Train-2k-part2** (`Dataset` • *Zhanli-Li*)
+> Scaling Data Environments from Scratch   Specify the world behind the files. Generate the data. Ground the supervision.                           	 		 	 	 		DataWorld-Train-2 (20 likes, 3,834 downloads).
 
-- 🏷️ **Domain & License**: `Computer Vision` • `MIT` (2026)
-- ⚡ **Metrics**: `Trending Score: 19, Likes: 19, Downloads: 1,296`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/ccore/ThreeJS-3D-Scenes](https://huggingface.co/datasets/ccore/ThreeJS-3D-Scenes)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 16, Likes: 20, Downloads: 3,834`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part2](https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part2)
 
 ---
 
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 842 | 📥 13,832 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 4,073 | 📥 156,373 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 610 | 📥 32,933 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 528 | 📥 24,357 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
-| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,389 | 📥 2,945 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
-| `baidu/Unlimited-OCR-2` | image-text-to-text | ❤️ 469 | 📥 69,231 | [View](https://huggingface.co/baidu/Unlimited-OCR-2) |
+| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 855 | 📥 13,832 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 4,093 | 📥 156,373 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 624 | 📥 32,933 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 537 | 📥 24,357 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
+| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,399 | 📥 2,945 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
+| `baidu/Unlimited-OCR-2` | image-text-to-text | ❤️ 472 | 📥 69,231 | [View](https://huggingface.co/baidu/Unlimited-OCR-2) |
 
 
 ---
@@ -80,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `19/25` healthy verified (`6` flagged / timed out)
+- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
 - **Dependency Security**: `47` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

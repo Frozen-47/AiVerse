@@ -1,5 +1,80 @@
 [
   {
+    "name": "DataWorld-Train-2k-part2",
+    "type": "Dataset",
+    "summary": "Scaling Data Environments from Scratch   Specify the world behind the files. Generate the data. Ground the supervision.                           \t \t\t \t \t \t\tDataWorld-Train-2 (20 likes, 3,834 downloads).",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "Zhanli-Li",
+    "size": "1K<n<10K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Zhanli-Li/DataWorld-Train-2k-part2\")",
+    "benchmarks": "Trending Score: 16, Likes: 20, Downloads: 3,834",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part2",
+    "citations": [
+      {
+        "text": "Zhanli-Li/DataWorld-Train-2k-part2 on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part2"
+      }
+    ],
+    "created_at": "2026-10-31T20:22:57.692Z"
+  },
+  {
+    "name": "convfill-speech-demo",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by smolagents. Trending with 27 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "smolagents",
+    "size": "DOCKER Platform",
+    "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/smolagents/convfill-speech-demo",
+    "benchmarks": "Trending Score: 27, Community Likes: 27",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/smolagents/convfill-speech-demo",
+    "citations": [
+      {
+        "text": "smolagents/convfill-speech-demo on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/smolagents/convfill-speech-demo"
+      }
+    ],
+    "created_at": "2026-10-31T20:22:57.692Z"
+  },
+  {
+    "name": "sam3",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by facebook, trending with over 5,557 community likes and 1,900,570 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "facebook",
+    "size": "Open Weights",
+    "architecture": "facebook mask generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"facebook/sam3\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"facebook/sam3\")",
+    "benchmarks": "Trending Score: 181, Likes: 5,557, Downloads: 1,900,570",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/facebook/sam3",
+    "citations": [
+      {
+        "text": "facebook/sam3 on Hugging Face",
+        "url": "https://huggingface.co/facebook/sam3"
+      }
+    ],
+    "created_at": "2026-10-31T20:22:57.692Z"
+  },
+  {
     "name": "ThreeJS-3D-Scenes",
     "type": "Dataset",
     "summary": "CCORE Three.js 3D Scenes \t 4,146 high-quality 3D scene examples with prompts, full thinking traces, and complete HTML/JavaScript responses. The scene code and thinking (19 likes, 1,296 downloads).",

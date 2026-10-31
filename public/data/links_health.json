@@ -1,38 +1,28 @@
 {
-  "timestamp": "2026-10-31T16:40:07.424Z",
+  "timestamp": "2026-10-31T20:22:57.748Z",
   "checked": 25,
-  "healthy": 19,
-  "broken": 6,
+  "healthy": 21,
+  "broken": 4,
   "issues": [
     {
-      "name": "Ideogram",
-      "url": "https://ideogram.ai",
+      "name": "OpenAI Platform",
+      "url": "https://platform.openai.com",
       "status": 403
     },
     {
-      "name": "Gamma",
-      "url": "https://gamma.app",
+      "name": "Codex",
+      "url": "https://openai.com/blog/openai-codex",
       "status": 403
     },
     {
-      "name": "Quizlet AI",
-      "url": "https://quizlet.com/features/quizlet-ai",
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
+    },
+    {
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
       "status": 403
-    },
-    {
-      "name": "Canva AI",
-      "url": "https://www.canva.com/ai-image-generator",
-      "status": 403
-    },
-    {
-      "name": "Play.ht",
-      "url": "https://play.ht",
-      "status": "Network Error"
-    },
-    {
-      "name": "Tabnine",
-      "url": "https://www.tabnine.com",
-      "status": "Network Error"
     }
   ]
 }

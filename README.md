@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-10-31)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Clover-35B-A3B-Preview** (`Model`), **pornflux-i2v-6e9et** (`Platform`), **ThreeJS-3D-Scenes** (`Dataset`) |
+| 📥 **Queued for Review** | **sam3** (`Model`), **convfill-speech-demo** (`Platform`), **DataWorld-Train-2k-part2** (`Dataset`) |
 | 🌟 **Tool of the Day** | **Qwen-2511-Plus-Flux.2-klein-9B** (Alibaba (Qwen)) — [Explore](https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B) |
 | 🗄️ **Catalog Entries** | **385** AI assets tracked (312 featured) |
 | 🔥 **Top Trending Model** | [Nanbeige/Nanbeige4.3-33B](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
 | 📜 **Top Daily Paper** | [EPSBench: Benchmarking LLM Agents for Earnings For...](https://huggingface.co/papers/2610.38293) |
-| 🛡️ **Catalog Links Checked** | **19/25** operational |
-| 🕒 **Last Synchronized** | `Sat, 31 Oct 2026 16:40:53 GMT` |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Synchronized** | `Sat, 31 Oct 2026 20:23:42 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
