@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-10-30)
+### ⚡ AiVerse AI Radar (2026-10-31)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **MiniCPM-OCR-1.0** (`Model`), **neuron-studio** (`Platform`), **open-yap-1k** (`Dataset`) |
-| 🌟 **Tool of the Day** | **DeepSeek-R1-Distill-Qwen-32B** (DeepSeek) — [Explore](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) |
+| 📥 **Queued for Review** | **Pika-H3-Flex** (`Model`), **idol** (`Platform`), **DataWorld-Bench** (`Dataset`) |
+| 🌟 **Tool of the Day** | **DeepSeek-Coder-V2** (DeepSeek) — [Explore](https://github.com/deepseek-ai/DeepSeek-Coder-V2) |
 | 🗄️ **Catalog Entries** | **373** AI assets tracked (300 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
 | 📜 **Top Daily Paper** | [EPSBench: Benchmarking LLM Agents for Earnings For...](https://huggingface.co/papers/2610.38293) |
 | 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 30 Oct 2026 22:45:28 GMT` |
+| 🕒 **Last Synchronized** | `Sat, 31 Oct 2026 03:41:00 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

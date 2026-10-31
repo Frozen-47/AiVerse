@@ -1,23 +1,23 @@
 {
-  "timestamp": "2026-10-30T22:45:24.671Z",
+  "timestamp": "2026-10-31T03:40:15.193Z",
   "checked": 25,
   "healthy": 22,
   "broken": 3,
   "issues": [
     {
-      "name": "Canva AI",
-      "url": "https://www.canva.com/ai-image-generator",
+      "name": "Perplexity",
+      "url": "https://www.perplexity.ai",
       "status": 403
     },
     {
-      "name": "Quizlet AI",
-      "url": "https://quizlet.com/features/quizlet-ai",
+      "name": "Whisper",
+      "url": "https://openai.com/research/whisper",
       "status": 403
     },
     {
-      "name": "tiktok-videos-4b",
-      "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
-      "status": 401
+      "name": "OpenAI Platform",
+      "url": "https://platform.openai.com",
+      "status": 403
     }
   ]
 }

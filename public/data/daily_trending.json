@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-30T22:45:24.509Z",
+  "timestamp": "2026-10-31T03:40:15.010Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 4001,
+      "likes": 4019,
       "downloads": 145869,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "Nanbeige/Nanbeige4.3-33B",
       "author": "Nanbeige",
-      "likes": 796,
+      "likes": 799,
       "downloads": 12178,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
@@ -20,7 +20,7 @@
     {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 557,
+      "likes": 572,
       "downloads": 23694,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
@@ -28,33 +28,33 @@
     {
       "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
       "author": "nvidia",
-      "likes": 496,
+      "likes": 506,
       "downloads": 15980,
       "pipeline_tag": "automatic-speech-recognition",
       "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
     },
     {
-      "id": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF",
-      "author": "ISTA-DASLab",
-      "likes": 506,
-      "downloads": 1747945,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF"
-    },
-    {
       "id": "baidu/Unlimited-OCR-2",
       "author": "baidu",
-      "likes": 450,
+      "likes": 457,
       "downloads": 24276,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/baidu/Unlimited-OCR-2"
+    },
+    {
+      "id": "mistralai/Mistral-Large-4-1T-A52B",
+      "author": "mistralai",
+      "likes": 1350,
+      "downloads": 1239,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
     }
   ],
   "papers": [
     {
       "title": "EPSBench: Benchmarking LLM Agents for Earnings Forecasting",
       "summary": "The study introduces EPSBench to evaluate AI agents in forecasting quarterly earnings by linking financial evidence to income-statement drivers and comparing model predictions to analyst consensus.",
-      "upvotes": 0,
+      "upvotes": 1,
       "arxiv_id": "2610.38293",
       "url": "https://huggingface.co/papers/2610.38293",
       "githubRepo": "https://github.com/JadeXu16/epsbench"
@@ -62,7 +62,7 @@
     {
       "title": "Weaken to Strengthen: Weakening-Induced On-Policy Self-Distillation for Large Reasoning Models",
       "summary": "WISD improves reasoning models by contrasting them with weaker quantized or pruned versions to generate training signals without privileged data.",
-      "upvotes": 0,
+      "upvotes": 1,
       "arxiv_id": "2610.38681",
       "url": "https://huggingface.co/papers/2610.38681",
       "githubRepo": "https://github.com/jet-ai-projects/WISD"
@@ -70,7 +70,7 @@
     {
       "title": "Unlocking Any-Order Generation in Pretrained Autoregressive Image Models",
       "summary": "Pretrained raster-scan autoregressive image models can be adapted into flexible any-order generators via future-aware positional embeddings and an ordering curriculum, enabling inpainting and outpainting with minimal extra compute.",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2610.39293",
       "url": "https://huggingface.co/papers/2610.39293",
       "githubRepo": "https://github.com/Ordered-AR/unlockedadaptation"
@@ -78,7 +78,7 @@
     {
       "title": "Matched Capabilities, Different Behaviors: A Controlled Study of MCP and CLI Interfaces for Language Agents",
       "summary": "Matched interface representations significantly alter agent behavior despite identical executable capabilities, and targeted repair of interface-specific realization improves performance while reducing cost.",
-      "upvotes": 2,
+      "upvotes": 3,
       "arxiv_id": "2610.34298",
       "url": "https://huggingface.co/papers/2610.34298",
       "githubRepo": "https://github.com/ModalityDance/MICA"
@@ -86,7 +86,7 @@
     {
       "title": "Broken on Arrival: Non-Functional Quantized LLM Artifacts in Public Model Registries and How to Catch Them",
       "summary": "Quantized small language model files in public registries can be non-functional due to uncalibrated quantization recipes, and screening plus calibration is recommended before release.",
-      "upvotes": 2,
+      "upvotes": 3,
       "arxiv_id": "2609.05881",
       "url": "https://huggingface.co/papers/2609.05881",
       "githubRepo": "https://github.com/aditi-p31/quantcheck"
