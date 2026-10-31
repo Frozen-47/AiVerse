@@ -26,6 +26,7 @@ export type AppRoute =
   | {
       type: "entries";
       tab: "assets" | "ecosystems" | "saved";
+      ecosystem?: string;
     }
   | {
       type: "admin";
@@ -66,19 +67,21 @@ export function parseRoute(pathname: string, search: string = ""): AppRoute {
     const tabParam = params.get("tab") || params.get("view");
     const isSaved = params.get("saved") === "true" || tabParam === "saved";
     const isEcosystems = tabParam === "ecosystems";
+    const ecoParam = params.get("eco") || params.get("lab") || undefined;
 
     if (isSaved) {
       return { type: "entries", tab: "saved" };
     }
     if (isEcosystems) {
-      return { type: "entries", tab: "ecosystems" };
+      return { type: "entries", tab: "ecosystems", ecosystem: ecoParam };
     }
     return { type: "entries", tab: "assets" };
   }
 
   // Entries Subroutes / Aliases (/entries/ecosystems, /ecosystems, /features/ecosystems, /entries/saved)
   if (p === "/entries/ecosystems" || p === "/ecosystems" || p === "/features/ecosystems") {
-    return { type: "entries", tab: "ecosystems" };
+    const ecoParam = params.get("eco") || params.get("lab") || undefined;
+    return { type: "entries", tab: "ecosystems", ecosystem: ecoParam };
   }
   if (p === "/entries/saved" || p === "/saved") {
     return { type: "entries", tab: "saved" };

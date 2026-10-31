@@ -21,6 +21,8 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
   bookmarks,
   onToggleBookmark,
   ratingSummaries,
+  selectedEcosystemId,
+  onClearSelectedEcosystem,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeEcosystem, setActiveEcosystem] = useState<EcosystemGroup | null>(null);
@@ -33,6 +35,24 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
   const allEcosystems = useMemo(() => {
     return groupEntriesByEcosystem(entries);
   }, [entries]);
+
+  // Automatically activate ecosystem when selectedEcosystemId is passed (e.g. from "View Ecosystem" button)
+  useEffect(() => {
+    if (selectedEcosystemId) {
+      const target = selectedEcosystemId.trim().toLowerCase();
+      const targetSlug = target.replace(/[^a-z0-9]+/g, "-");
+      const match = allEcosystems.find(
+        (eco) =>
+          eco.id === targetSlug ||
+          eco.name.toLowerCase() === target ||
+          eco.normalizedOrg.toLowerCase() === target ||
+          eco.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") === targetSlug
+      );
+      if (match) {
+        setActiveEcosystem(match);
+      }
+    }
+  }, [selectedEcosystemId, allEcosystems]);
 
   // Reset to page 1 whenever search query or category filter changes
   useEffect(() => {
@@ -106,7 +126,10 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
     return (
       <EcosystemDeepDive
         ecosystem={activeEcosystem}
-        onBack={() => setActiveEcosystem(null)}
+        onBack={() => {
+          setActiveEcosystem(null);
+          onClearSelectedEcosystem?.();
+        }}
         onSelectEntry={(entryName) => {
           const found = entries.find((e) => e.name === entryName);
           if (found) onSelectEntry(found);

@@ -11,6 +11,7 @@ interface EntryCardProps {
   ratingSummary?: EntryRatingSummary;
   isBookmarked?: boolean;
   onToggleBookmark?: (name: string) => void;
+  onViewEcosystem?: (orgName: string) => void;
 }
 
 export const EntryCard = memo(function EntryCard({
@@ -21,6 +22,7 @@ export const EntryCard = memo(function EntryCard({
   ratingSummary,
   isBookmarked,
   onToggleBookmark,
+  onViewEcosystem,
 }: EntryCardProps) {
   const { resolvedTheme } = useTheme();
   const isAmoled = resolvedTheme === "amoled";
@@ -52,9 +54,23 @@ export const EntryCard = memo(function EntryCard({
             {TYPE_GLYPH[entry.type] ?? "◆"}
           </div>
           <div className="flex flex-col min-w-0">
-            <span className="text-xs font-medium text-neutral-900 dark:text-neutral-100 truncate leading-tight">
-              {entry.org || "AiVerse Resource"}
-            </span>
+            {onViewEcosystem && entry.org ? (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onViewEcosystem(entry.org);
+                }}
+                className="text-xs font-medium text-neutral-900 dark:text-neutral-100 truncate leading-tight hover:text-blue-600 dark:hover:text-blue-400 hover:underline cursor-pointer text-left"
+                title={`View ${entry.org} Ecosystem`}
+              >
+                {entry.org}
+              </button>
+            ) : (
+              <span className="text-xs font-medium text-neutral-900 dark:text-neutral-100 truncate leading-tight">
+                {entry.org || "AiVerse Resource"}
+              </span>
+            )}
             <span className="text-[11px] text-neutral-500 dark:text-neutral-400 font-normal truncate leading-tight">
               aiverse › {entry.type.toLowerCase()} › {entry.task.toLowerCase().replace(/\s+/g, '-')}
             </span>

@@ -44,6 +44,7 @@ export interface DetailModalProps {
   compareCandidates?: Entry[];
   onViewProfile?: (username: string) => void;
   onOpenPlayground?: (modelName?: string) => void;
+  onViewEcosystem?: (orgName: string) => void;
 }
 
 type TabType = "overview" | "specs" | "code" | "reviews";
@@ -443,6 +444,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
   compareCandidates = [],
   onViewProfile,
   onOpenPlayground,
+  onViewEcosystem,
 }) => {
   const t = useTokens();
   const { user, openAuthModal } = useAuth();
@@ -549,6 +551,20 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
         {/* Right: Action Controls */}
         <div className="flex items-center gap-2 shrink-0">
+          {onViewEcosystem && entry.org && (
+            <button
+              onClick={() => {
+                onClose();
+                onViewEcosystem(entry.org);
+              }}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 transition-all cursor-pointer shadow-2xs"
+              title={`View ${entry.org} Ecosystem`}
+            >
+              <Building2 size={12} />
+              <span>View Ecosystem</span>
+            </button>
+          )}
+
           {onOpenPlayground && (
             <button
               onClick={() => onOpenPlayground(entry.name)}
@@ -645,10 +661,28 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                     {entry.task}
                   </span>
                   <span className="opacity-30">•</span>
-                  <span className="flex items-center gap-1">
-                    <Building2 size={12} className="opacity-70" />
-                    <span className="font-medium text-[#202124] dark:text-[#c4c7c5]">{entry.org}</span>
-                  </span>
+                  {onViewEcosystem && entry.org ? (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onClose();
+                        onViewEcosystem(entry.org);
+                      }}
+                      className="flex items-center gap-1.5 hover:text-[#1a73e8] dark:hover:text-[#a8c7fa] hover:underline cursor-pointer group/org transition-colors"
+                      title={`View ${entry.org} Ecosystem`}
+                    >
+                      <Building2 size={12} className="opacity-70 group-hover/org:text-[#1a73e8] dark:group-hover/org:text-[#a8c7fa]" />
+                      <span className="font-medium text-[#202124] dark:text-[#c4c7c5] group-hover/org:text-[#1a73e8] dark:group-hover/org:text-[#a8c7fa]">{entry.org}</span>
+                      <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 font-semibold border border-blue-500/20">
+                        Ecosystem ↗
+                      </span>
+                    </button>
+                  ) : (
+                    <span className="flex items-center gap-1">
+                      <Building2 size={12} className="opacity-70" />
+                      <span className="font-medium text-[#202124] dark:text-[#c4c7c5]">{entry.org}</span>
+                    </span>
+                  )}
                   <span className="opacity-30">•</span>
                   <span className="flex items-center gap-1">
                     <Calendar size={12} className="opacity-70" />
@@ -673,8 +707,22 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             </div>
 
             {/* Quick action buttons on desktop */}
-            {entry.url && (
-              <div className="hidden lg:flex items-center gap-2 shrink-0">
+            <div className="hidden lg:flex items-center gap-2 shrink-0">
+              {onViewEcosystem && entry.org && (
+                <button
+                  onClick={() => {
+                    onClose();
+                    onViewEcosystem(entry.org);
+                  }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 transition-colors cursor-pointer shadow-2xs"
+                  title={`View all ${entry.org} models & assets in Ecosystem`}
+                >
+                  <Building2 size={12} />
+                  <span>View Ecosystem</span>
+                  <ArrowRight size={10} className="opacity-70" />
+                </button>
+              )}
+              {entry.url && (
                 <a
                   href={entry.url}
                   target="_blank"
@@ -685,8 +733,8 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                   <span>Docs</span>
                   <ExternalLink size={10} className="opacity-60" />
                 </a>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -768,12 +816,32 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 <div className="space-y-5">
                   {/* Google Quick Specs Grid */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                    <div className="p-3.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-[#1a73e8] dark:text-[#a8c7fa] mb-1">
-                        <Building2 size={12} />
-                        <span>Developer</span>
+                    <div
+                      onClick={() => {
+                        if (onViewEcosystem && entry.org) {
+                          onClose();
+                          onViewEcosystem(entry.org);
+                        }
+                      }}
+                      className={`p-3.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20] transition-all ${
+                        onViewEcosystem && entry.org
+                          ? "cursor-pointer hover:border-blue-500/40 hover:bg-blue-500/[0.03] group/dev"
+                          : ""
+                      }`}
+                      title={onViewEcosystem && entry.org ? `Explore ${entry.org} Ecosystem` : undefined}
+                    >
+                      <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-[#1a73e8] dark:text-[#a8c7fa] mb-1">
+                        <div className="flex items-center gap-1.5">
+                          <Building2 size={12} />
+                          <span>Developer</span>
+                        </div>
+                        {onViewEcosystem && entry.org && (
+                          <span className="text-[10px] lowercase text-blue-600 dark:text-blue-400 font-medium group-hover/dev:underline flex items-center gap-0.5">
+                            view <ArrowRight size={9} />
+                          </span>
+                        )}
                       </div>
-                      <p className="text-xs font-bold text-[#202124] dark:text-[#e3e3e3] truncate">
+                      <p className="text-xs font-bold text-[#202124] dark:text-[#e3e3e3] truncate group-hover/dev:text-[#1a73e8] dark:group-hover/dev:text-[#a8c7fa] transition-colors">
                         {entry.org}
                       </p>
                     </div>
@@ -1132,6 +1200,23 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                         {entry.year}
                       </span>
                     </div>
+
+                    {onViewEcosystem && entry.org && (
+                      <div className="pt-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            onClose();
+                            onViewEcosystem(entry.org);
+                          }}
+                          className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-xs hover:shadow transition-all cursor-pointer"
+                        >
+                          <Building2 size={13} />
+                          <span>View {entry.org} Ecosystem</span>
+                          <ArrowRight size={12} />
+                        </button>
+                      </div>
+                    )}
 
                     {entry.url && (
                       <div className="pt-1">

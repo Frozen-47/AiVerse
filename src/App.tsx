@@ -11,7 +11,7 @@ import { Sidebar } from "./components/Sidebar";
 import { SearchBar } from "./components/SearchBar";
 import { EntryCard } from "./components/EntryCard";
 import { EcosystemsSection } from "./components/EcosystemsSection";
-import { groupEntriesByEcosystem } from "./lib/ecosystems";
+import { groupEntriesByEcosystem, getNormalizedOrgName } from "./lib/ecosystems";
 import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
 import { UserProfileModal } from "./components/UserProfileModal";
 import { OverviewCards } from "./components/OverviewCards";
@@ -101,6 +101,7 @@ const Inner: React.FC = () => {
   const [taskFilter, setTaskFilter] = useState<TaskFilter>("All Tasks");
   const [popularOnly, setPopularOnly] = useState(false);
   const [catalogDisplayMode, setCatalogDisplayMode] = useState<"assets" | "ecosystems">("assets");
+  const [selectedEcosystemId, setSelectedEcosystemId] = useState<string | null>(null);
   const { route, entrySlug, navigate } = useAppRouter();
   const [selected, setSelected] = useState<Entry | null>(null);
 
@@ -122,6 +123,9 @@ const Inner: React.FC = () => {
     if (route.type === "entries") {
       if (route.tab === "ecosystems") {
         setCatalogDisplayMode("ecosystems");
+        if (route.ecosystem) {
+          setSelectedEcosystemId(route.ecosystem);
+        }
         setSavedOnly(false);
       } else if (route.tab === "saved") {
         setSavedOnly(true);
@@ -143,6 +147,28 @@ const Inner: React.FC = () => {
       }
     },
     [route, navigate]
+  );
+
+  const handleViewEcosystem = useCallback(
+    (orgName: string) => {
+      const normalized = getNormalizedOrgName(orgName);
+      setSelectedEcosystemId(normalized);
+      setCatalogDisplayMode("ecosystems");
+      setCurrentPage(1);
+      handleSelectEntry(null);
+
+      const ecoId = normalized.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+      navigate(`/entries?view=ecosystems&eco=${encodeURIComponent(ecoId)}`);
+
+      setTimeout(() => {
+        if (catalogSectionRef.current) {
+          catalogSectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, 60);
+    },
+    [navigate, handleSelectEntry]
   );
 
   // Synchronize selected entry with URL entrySlug
@@ -1188,6 +1214,8 @@ const Inner: React.FC = () => {
                     bookmarks={bookmarks}
                     onToggleBookmark={handleToggleBookmark}
                     ratingSummaries={ratingSummaries}
+                    selectedEcosystemId={selectedEcosystemId}
+                    onClearSelectedEcosystem={() => setSelectedEcosystemId(null)}
                   />
                 ) : (
                   <>
@@ -1260,6 +1288,7 @@ const Inner: React.FC = () => {
                             ratingSummary={ratingSummaries[entry.name]}
                             isBookmarked={bookmarks.includes(entry.name)}
                             onToggleBookmark={handleToggleBookmark}
+                            onViewEcosystem={handleViewEcosystem}
                           />
                         ))}
                       </div>
@@ -1490,6 +1519,8 @@ const Inner: React.FC = () => {
                     bookmarks={bookmarks}
                     onToggleBookmark={handleToggleBookmark}
                     ratingSummaries={ratingSummaries}
+                    selectedEcosystemId={selectedEcosystemId}
+                    onClearSelectedEcosystem={() => setSelectedEcosystemId(null)}
                   />
                 </div>
               ) : (
@@ -1627,6 +1658,7 @@ const Inner: React.FC = () => {
                                 ratingSummary={ratingSummaries[entry.name]}
                                 isBookmarked={bookmarks.includes(entry.name)}
                                 onToggleBookmark={handleToggleBookmark}
+                                onViewEcosystem={handleViewEcosystem}
                               />
                             ))}
                           </div>
@@ -1654,6 +1686,7 @@ const Inner: React.FC = () => {
                               ratingSummary={ratingSummaries[entry.name]}
                               isBookmarked={bookmarks.includes(entry.name)}
                               onToggleBookmark={handleToggleBookmark}
+                              onViewEcosystem={handleViewEcosystem}
                             />
                           ))}
                         </div>
@@ -2183,6 +2216,7 @@ const Inner: React.FC = () => {
               navigate("/features/playground");
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
+            onViewEcosystem={handleViewEcosystem}
           />
         </Suspense>
       )}
