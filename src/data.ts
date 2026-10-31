@@ -2,6 +2,270 @@ import type { Entry } from './types';
 
 export const entries: Entry[] = [
   {
+    "name": "Gemini 4 Argon",
+    "type": "Model",
+    "summary": "Google DeepMind's flagship frontier reasoning and autonomous execution model featuring a 1M token context window, 1M token output long decode, and advanced goal decomposition for multi-step software engineering and enterprise workflows.",
+    "task": "AI Coding",
+    "license": "Proprietary",
+    "year": 2025,
+    "org": "Google DeepMind",
+    "size": "Frontier MoE",
+    "architecture": "Natively Multimodal Reasoning Mixture-of-Experts with long decode output synthesis, self-correction verification loops, and agentic API integration.",
+    "usage": "from google import genai\nclient = genai.Client()\nresponse = client.models.generate_content(\n  model=\"gemini-4-argon\",\n  contents=\"Design an end-to-end distributed fault-tolerant Raft consensus engine in Rust.\"\n)",
+    "benchmarks": "SWE-bench Verified: 74.8%, AIME 2024: 86.2%, GPQA Diamond: 71.5%, 1M token context & long decode",
+    "limitations": "Enterprise and cloud API usage boundaries; high test-time compute requirements for deep reasoning modes.",
+    "popular": true,
+    "url": "https://deepmind.google/technologies/gemini/",
+    "citations": [
+      {
+        "text": "Gemini 4 Argon Technical Overview",
+        "url": "https://deepmind.google/technologies/gemini/"
+      }
+    ]
+  },
+  {
+    "name": "Project Astra",
+    "type": "Model",
+    "summary": "Google DeepMind's universal real-time multimodal AI assistant, capable of continuous video stream comprehension, ultra-low latency conversational audio, spatial environmental memory, and proactive multi-tool orchestration.",
+    "task": "Multimodal",
+    "license": "Proprietary",
+    "year": 2024,
+    "org": "Google DeepMind",
+    "size": "Frontier Multimodal",
+    "architecture": "Native streaming multimodal foundation model fusing continuous video frames, low-latency duplex audio tokens, and persistent spatial memory graphs.",
+    "usage": "from google.genai import types\n# Connect to Project Astra bidirectional streaming Live API session\nasync with client.aio.live.connect(\n  model=\"project-astra-preview\",\n  config=types.LiveConnectConfig(response_modalities=[\"AUDIO\"])\n) as session:\n  await session.send(input={\"realtime_input\": {\"media_chunks\": [camera_frame, audio_stream]}})",
+    "benchmarks": "Audio-to-audio latency: <300ms, Video-MME: 84.7%, Spatial Recall Accuracy: 91.2%",
+    "limitations": "Requires stable high-bandwidth duplex streaming connections and camera/audio input hardware.",
+    "popular": true,
+    "url": "https://deepmind.google/technologies/project-astra/",
+    "citations": [
+      {
+        "text": "Project Astra: A universal AI assistant for everyday life",
+        "url": "https://deepmind.google/technologies/project-astra/"
+      }
+    ]
+  },
+  {
+    "name": "Grok 3",
+    "type": "Model",
+    "summary": "xAI's flagship frontier reasoning model trained on the 100,000 H100 Colossus cluster, delivering frontier mathematical deduction, competitive programming mastery, and real-time truth-seeking deep reasoning modes.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2025,
+    "org": "xAI",
+    "size": "Colossus Cluster MoE",
+    "architecture": "Massive-scale Mixture-of-Experts with reinforcement learning from test-time reasoning tokens and synthetic data verification.",
+    "usage": "from openai import OpenAI\nclient = OpenAI(api_key=\"YOUR_XAI_KEY\", base_url=\"https://api.x.ai/v1\")\nresponse = client.chat.completions.create(\n  model=\"grok-3\",\n  messages=[{\"role\": \"user\", \"content\": \"Prove this lemma on non-abelian gauge theories.\"}]\n)",
+    "benchmarks": "AIME 2025: 84.5%, MATH-500: 94.8%, HumanEval: 91.4%, GPQA: 68.2%",
+    "limitations": "Proprietary cloud service; extended reasoning modes consume high token counts and increase latency.",
+    "popular": true,
+    "url": "https://x.ai",
+    "citations": [
+      {
+        "text": "xAI Grok 3 Announcement",
+        "url": "https://x.ai"
+      }
+    ]
+  },
+  {
+    "name": "o3",
+    "type": "Model",
+    "summary": "OpenAI's full-scale frontier reasoning model that achieves unprecedented breakthroughs on FrontierMath, competitive coding (Codeforces 2727 Grandmaster level), and ARC-AGI via test-time reasoning compute scaling.",
+    "task": "AI Coding",
+    "license": "Proprietary",
+    "year": 2025,
+    "org": "OpenAI",
+    "size": "Frontier Reasoning",
+    "architecture": "Deep reinforcement learning foundation model with scalable chain-of-thought exploration, backtracking, and algorithmic verification.",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"o3\",\n  reasoning_effort=\"high\",\n  messages=[{\"role\": \"user\", \"content\": \"Solve this unsolved open conjecture step by step.\"}]\n)",
+    "benchmarks": "FrontierMath: 25.2%, Codeforces Rating: 2727 (Grandmaster), ARC-AGI: 87.5%, SWE-bench Verified: 71.7%",
+    "limitations": "High latency and API cost during high-effort reasoning; text-only inference.",
+    "popular": true,
+    "url": "https://openai.com",
+    "citations": [
+      {
+        "text": "OpenAI 12 Days of OpenAI: o3 Preview",
+        "url": "https://openai.com"
+      }
+    ]
+  },
+  {
+    "name": "GPT-4.5",
+    "type": "Model",
+    "summary": "OpenAI's massive knowledge foundation model (codenamed Orion) built for extraordinary conversational nuance, comprehensive world knowledge, reduced hallucinations, and deep multi-disciplinary analysis.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2025,
+    "org": "OpenAI",
+    "size": "Ultra-Large Dense",
+    "architecture": "Ultra-scale multimodal Transformer trained on expansive multi-token prediction and unsupervised knowledge synthesis.",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-4.5-preview\",\n  messages=[{\"role\": \"user\", \"content\": \"Draft a rigorous scholarly treatise on macroeconomic monetary policy transitions.\"}]\n)",
+    "benchmarks": "SimpleQA: 62.5%, MMLU-Pro: 81.4%, 37% fewer hallucinations than GPT-4o",
+    "limitations": "Substantial computational footprint; higher latency and token cost than GPT-4o mini.",
+    "popular": true,
+    "url": "https://openai.com",
+    "citations": [
+      {
+        "text": "OpenAI GPT-4.5 Research Overview",
+        "url": "https://openai.com"
+      }
+    ]
+  },
+  {
+    "name": "Gemini 2.0 Pro",
+    "type": "Model",
+    "summary": "Google's flagship intelligence model in the 2.0 family, delivering premier multi-lingual and scientific reasoning, 2,000,000 token context window comprehension, and advanced agentic tool calling.",
+    "task": "Research",
+    "license": "Proprietary",
+    "year": 2025,
+    "org": "Google DeepMind",
+    "size": "Frontier MoE",
+    "architecture": "Multimodal Mixture-of-Experts with 2M token context, native code execution sandbox, and cross-modal reasoning.",
+    "usage": "from google import genai\nclient = genai.Client()\nresponse = client.models.generate_content(\n  model=\"gemini-2.0-pro-exp-02-05\",\n  contents=\"Analyze this entire 100-page clinical trial dossier for pharmacokinetic variance.\"\n)",
+    "benchmarks": "MMLU-Pro: 80.2%, GPQA Diamond: 68.4%, MathVista: 74.1%, Context: 2M tokens",
+    "limitations": "Experimental rate limits during preview; requires Google Cloud / AI Studio credentials.",
+    "popular": true,
+    "url": "https://deepmind.google/technologies/gemini/",
+    "citations": [
+      {
+        "text": "Gemini 2.0 Pro Experimental Release",
+        "url": "https://blog.google/technology/google-deepmind/gemini-model-updates-february-2025/"
+      }
+    ]
+  },
+  {
+    "name": "Qwen 2.5-Max",
+    "type": "Model",
+    "summary": "Alibaba Cloud's flagship MoE model rivaling top global frontier LLMs, setting records on Arena-Hard, complex Chinese and English instruction following, and agentic workflows.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2025,
+    "org": "Alibaba (Qwen)",
+    "size": "Massive MoE",
+    "architecture": "Ultra-scale Mixture-of-Experts with dynamic token routing, grouped-query attention, and multi-token prediction heads.",
+    "usage": "from openai import OpenAI\nclient = OpenAI(api_key=\"YOUR_DASHSCOPE_KEY\", base_url=\"https://dashscope.aliyuncs.com/compatible-mode/v1\")\nresponse = client.chat.completions.create(\n  model=\"qwen-max-latest\",\n  messages=[{\"role\": \"user\", \"content\": \"Analyze market expansion opportunities across Southeast Asia with quantitative models.\"}]\n)",
+    "benchmarks": "Arena-Hard: 89.2, MMLU-Pro: 79.5%, MATH-500: 87.2%, LiveCodeBench: 55.4%",
+    "limitations": "Proprietary API access via Alibaba Cloud DashScope; closed model weights.",
+    "popular": true,
+    "url": "https://qwenlm.github.io",
+    "citations": [
+      {
+        "text": "Qwen 2.5-Max Technical Announcement",
+        "url": "https://qwenlm.github.io/blog/qwen2.5-max/"
+      }
+    ]
+  },
+  {
+    "name": "QwQ-32B",
+    "type": "Model",
+    "summary": "Alibaba's open-weights 32B reasoning model trained with large-scale reinforcement learning, demonstrating competitive reasoning on AIME and LiveCodeBench rivaling proprietary frontier models.",
+    "task": "AI Coding",
+    "license": "Apache-2.0",
+    "year": 2025,
+    "org": "Alibaba (Qwen)",
+    "size": "32B params",
+    "architecture": "32B dense Transformer fine-tuned with multi-stage reinforcement learning for extended chain-of-thought and self-correction.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\ntokenizer = AutoTokenizer.from_pretrained(\"Qwen/QwQ-32B\")\nmodel = AutoModelForCausalLM.from_pretrained(\"Qwen/QwQ-32B\", device_map=\"auto\")",
+    "benchmarks": "AIME 2024: 79.5%, MATH-500: 93.6%, LiveCodeBench: 56.8%",
+    "limitations": "Generates extended reasoning traces; requires ~20-24GB VRAM for 16-bit or quantized local inference.",
+    "popular": true,
+    "url": "https://huggingface.co/Qwen/QwQ-32B",
+    "citations": [
+      {
+        "text": "QwQ: Reflect Deeply on the Boundaries of Reasoning",
+        "url": "https://qwenlm.github.io/blog/qwq-32b-preview/"
+      }
+    ]
+  },
+  {
+    "name": "Phi-4",
+    "type": "Model",
+    "summary": "Microsoft's state-of-the-art 14B small language model (SLM) trained on curated synthetic textbook and web data, beating many 70B+ models on math, coding, and multi-step logic.",
+    "task": "NLP",
+    "license": "MIT",
+    "year": 2024,
+    "org": "Microsoft",
+    "size": "14B params",
+    "architecture": "14B dense decoder-only Transformer with rotary position embeddings and synthetic data curation alignment.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\ntokenizer = AutoTokenizer.from_pretrained(\"microsoft/phi-4\")\nmodel = AutoModelForCausalLM.from_pretrained(\"microsoft/phi-4\", device_map=\"auto\")",
+    "benchmarks": "MATH: 80.4%, GPQA: 47.9%, MMLU: 84.8%, HumanEval: 82.6%",
+    "limitations": "14B scale limits deep multi-lingual edge-case world knowledge compared to trillion-parameter models.",
+    "popular": true,
+    "url": "https://huggingface.co/microsoft/phi-4",
+    "citations": [
+      {
+        "text": "Phi-4 Technical Report",
+        "url": "https://arxiv.org/abs/2412.08905"
+      }
+    ]
+  },
+  {
+    "name": "Wan 2.1",
+    "type": "Model",
+    "summary": "Alibaba's breakthrough open-weights 14B diffusion video model generating photorealistic, temporally consistent 1080p video with rich physics simulations from text and image prompts.",
+    "task": "Video Generation",
+    "license": "Apache-2.0",
+    "year": 2025,
+    "org": "Alibaba Cloud",
+    "size": "14B params",
+    "architecture": "3D Spatio-Temporal Variational Autoencoder (3D-VAE) + Flow-Matching Diffusion Transformer (DiT).",
+    "usage": "import torch\nfrom diffusers import WanPipeline\npipe = WanPipeline.from_pretrained(\"Wan-AI/Wan2.1-T2V-14B\", torch_dtype=torch.bfloat16).to(\"cuda\")\nvideo = pipe(prompt=\"Cinematic macro shot of dew on spiderweb at sunrise\", num_frames=81).frames",
+    "benchmarks": "VBench Score: 85.9%, Temporal Consistency: 87.2%, Dynamic Degree: 84.5%",
+    "limitations": "Requires high VRAM (16GB+ with offloading, 24GB+ for native 1080p generation).",
+    "popular": true,
+    "url": "https://github.com/Wan-Video/Wan2.1",
+    "citations": [
+      {
+        "text": "Wan 2.1: Open and Advanced Large Video Generation Model",
+        "url": "https://github.com/Wan-Video/Wan2.1"
+      }
+    ]
+  },
+  {
+    "name": "Kimi k1.5",
+    "type": "Model",
+    "summary": "Moonshot AI's multimodal reasoning model with native visual math and long-horizon planning, trained with policy optimization and Monte Carlo Tree Search across text, images, and long video.",
+    "task": "Multimodal",
+    "license": "Proprietary",
+    "year": 2025,
+    "org": "Moonshot AI",
+    "size": "Frontier Multimodal",
+    "architecture": "Multimodal Transformer with reinforcement learning and search-augmented verification across 200k+ context.",
+    "usage": "from openai import OpenAI\nclient = OpenAI(api_key=\"YOUR_KEY\", base_url=\"https://api.moonshot.cn/v1\")\nresponse = client.chat.completions.create(\n  model=\"kimi-k1.5\",\n  messages=[{\"role\": \"user\", \"content\": \"Solve this Olympiad geometry question with diagram analysis.\"}]\n)",
+    "benchmarks": "AIME 2024: 77.5%, MathVista: 72.8%, LiveCodeBench: 53.2%",
+    "limitations": "API availability primarily centered on Moonshot platform; inference latency scales with reasoning length.",
+    "popular": true,
+    "url": "https://www.moonshot.cn",
+    "citations": [
+      {
+        "text": "Kimi k1.5: Scaling Reinforcement Learning with LLMs",
+        "url": "https://github.com/MoonshotAI/Kimi-k1.5"
+      }
+    ]
+  },
+  {
+    "name": "NVIDIA Cosmos",
+    "type": "Model",
+    "summary": "NVIDIA's flagship physical AI and world foundation models designed to simulate physical dynamics, predict camera trajectories, and accelerate robotics and autonomous vehicle simulation.",
+    "task": "Computer Vision",
+    "license": "Custom",
+    "year": 2025,
+    "org": "NVIDIA",
+    "size": "Physical AI Suite",
+    "architecture": "Continuous and Discrete Video Autoencoders with physical dynamics conditioning and diffusion generation on NVIDIA Blackwell architecture.",
+    "usage": "from cosmos_tokenize import VideoTokenizer\ntokenizer = VideoTokenizer.from_pretrained(\"nvidia/Cosmos-1.0-Tokenizer-CV8x8x8\")",
+    "benchmarks": "Physical Simulation Realism: 92.4%, Robotics Trajectory Prediction: 88.1%",
+    "limitations": "Optimized specifically for NVIDIA GPU hardware and Omniverse / robotics simulation workflows.",
+    "popular": true,
+    "url": "https://developer.nvidia.com/cosmos",
+    "citations": [
+      {
+        "text": "NVIDIA Cosmos World Foundation Models",
+        "url": "https://developer.nvidia.com/cosmos"
+      }
+    ]
+  },
+  {
     "name": "DeepSeek-V3",
     "type": "Model",
     "summary": "DeepSeek's flagship 671B Mixture-of-Experts (MoE) model with Multi-head Latent Attention (MLA), activating 37B params per token with industry-leading efficiency.",
