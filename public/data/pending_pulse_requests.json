@@ -1,5 +1,55 @@
 [
   {
+    "name": "prompts.chat",
+    "type": "Dataset",
+    "summary": "a.k.a. Awesome ChatGPT Prompts This is a Dataset Repository mirror of prompts.chat — a social platform for AI prompts. \t \t\t \t \t \t\t📢 Notice \t This Hugging Face dataset is (9,926 likes, 27,184 downloads).",
+    "task": "NLP",
+    "license": "CC0-1.0",
+    "year": 2026,
+    "org": "fka",
+    "size": "1K<n<10K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"fka/prompts.chat\")",
+    "benchmarks": "Trending Score: 15, Likes: 9,926, Downloads: 27,184",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/fka/prompts.chat",
+    "citations": [
+      {
+        "text": "fka/prompts.chat on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/fka/prompts.chat"
+      }
+    ],
+    "created_at": "2026-11-01T08:33:43.501Z"
+  },
+  {
+    "name": "Audio8-TTS-Realistic-0.6b",
+    "type": "Model",
+    "summary": "High-performance Audio open-weights model by Edge0, trending with over 174 community likes and 2,755 downloads on Hugging Face.",
+    "task": "Audio",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "Edge0",
+    "size": "0.6B params",
+    "architecture": "Edge0 text to speech architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Edge0/Audio8-TTS-Realistic-0.6b\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Edge0/Audio8-TTS-Realistic-0.6b\")",
+    "benchmarks": "Trending Score: 171, Likes: 174, Downloads: 2,755",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/Edge0/Audio8-TTS-Realistic-0.6b",
+    "citations": [
+      {
+        "text": "Edge0/Audio8-TTS-Realistic-0.6b on Hugging Face",
+        "url": "https://huggingface.co/Edge0/Audio8-TTS-Realistic-0.6b"
+      }
+    ],
+    "created_at": "2026-11-01T08:33:43.501Z"
+  },
+  {
     "name": "MarathonDocBench",
     "type": "Dataset",
     "summary": "MarathonDocBench                                                 A New Benchmark for Ultra-Long Document Parsing: Targeting Hundred-Page-Scale Documents. MarathonDocBench is the f (17 likes, 5,071 downloads).",

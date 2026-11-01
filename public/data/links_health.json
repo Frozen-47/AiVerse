@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-01T00:37:03.993Z",
+  "timestamp": "2026-11-01T08:33:43.611Z",
   "checked": 25,
   "healthy": 23,
   "broken": 2,
   "issues": [
     {
-      "name": "Lovable.dev",
-      "url": "https://lovable.dev",
-      "status": 403
+      "name": "wan555",
+      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
+      "status": 401
     },
     {
-      "name": "Midjourney",
-      "url": "https://www.midjourney.com",
+      "name": "Character.ai",
+      "url": "https://character.ai",
       "status": 403
     }
   ]

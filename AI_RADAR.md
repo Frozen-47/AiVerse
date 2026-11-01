@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sun, 01 Nov 2026 00:37:41 GMT`*
+*Last Synchronized: `Sun, 01 Nov 2026 08:34:19 GMT`*
 
 ---
 
@@ -10,19 +10,19 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **LFM3-Audio-2B** (`Model` • *LiquidAI*)
-> High-performance NLP open-weights model by LiquidAI, trending with over 165 community likes and 4,790 downloads on Hugging Face.
+### **Audio8-TTS-Realistic-0.6b** (`Model` • *Edge0*)
+> High-performance Audio open-weights model by Edge0, trending with over 174 community likes and 2,755 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 164, Likes: 165, Downloads: 4,790`
-- 🔗 **Resource Link**: [https://huggingface.co/LiquidAI/LFM3-Audio-2B](https://huggingface.co/LiquidAI/LFM3-Audio-2B)
+- 🏷️ **Domain & License**: `Audio` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 171, Likes: 174, Downloads: 2,755`
+- 🔗 **Resource Link**: [https://huggingface.co/Edge0/Audio8-TTS-Realistic-0.6b](https://huggingface.co/Edge0/Audio8-TTS-Realistic-0.6b)
 
-### **MarathonDocBench** (`Dataset` • *baidu*)
-> MarathonDocBench                                                 A New Benchmark for Ultra-Long Document Parsing: Targeting Hundred-Page-Scale Documents. MarathonDocBench is the f (17 likes, 5,071 downloads).
+### **prompts.chat** (`Dataset` • *fka*)
+> a.k.a. Awesome ChatGPT Prompts This is a Dataset Repository mirror of prompts.chat — a social platform for AI prompts. 	 		 	 	 		📢 Notice 	 This Hugging Face dataset is (9,926 likes, 27,184 downloads).
 
-- 🏷️ **Domain & License**: `Computer Vision` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 16, Likes: 17, Downloads: 5,071`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/baidu/MarathonDocBench](https://huggingface.co/datasets/baidu/MarathonDocBench)
+- 🏷️ **Domain & License**: `NLP` • `CC0-1.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 15, Likes: 9,926, Downloads: 27,184`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/fka/prompts.chat](https://huggingface.co/datasets/fka/prompts.chat)
 
 ---
 
@@ -41,12 +41,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 874 | 📥 13,832 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 4,103 | 📥 156,373 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 632 | 📥 32,933 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 545 | 📥 24,357 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
-| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,403 | 📥 2,945 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
-| `baidu/Unlimited-OCR-2` | image-text-to-text | ❤️ 473 | 📥 69,231 | [View](https://huggingface.co/baidu/Unlimited-OCR-2) |
+| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 932 | 📥 13,832 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 4,141 | 📥 156,373 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 646 | 📥 32,933 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 559 | 📥 24,357 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
+| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,412 | 📥 2,945 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
+| `baidu/Unlimited-OCR-2` | image-text-to-text | ❤️ 484 | 📥 69,231 | [View](https://huggingface.co/baidu/Unlimited-OCR-2) |
 
 
 ---

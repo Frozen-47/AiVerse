@@ -4,6 +4,60 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Audio8-TTS-Realistic-0.6b",
+        "type": "Model",
+        "summary": "High-performance Audio open-weights model by Edge0, trending with over 174 community likes and 2,755 downloads on Hugging Face.",
+        "task": "Audio",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Edge0",
+        "size": "0.6B params",
+        "architecture": "Edge0 text to speech architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Edge0/Audio8-TTS-Realistic-0.6b\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Edge0/Audio8-TTS-Realistic-0.6b\")",
+        "benchmarks": "Trending Score: 171, Likes: 174, Downloads: 2,755",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/Edge0/Audio8-TTS-Realistic-0.6b",
+        "citations": [
+          {
+            "text": "Edge0/Audio8-TTS-Realistic-0.6b on Hugging Face",
+            "url": "https://huggingface.co/Edge0/Audio8-TTS-Realistic-0.6b"
+          }
+        ]
+      },
+      {
+        "name": "prompts.chat",
+        "type": "Dataset",
+        "summary": "a.k.a. Awesome ChatGPT Prompts This is a Dataset Repository mirror of prompts.chat — a social platform for AI prompts. \t \t\t \t \t \t\t📢 Notice \t This Hugging Face dataset is (9,926 likes, 27,184 downloads).",
+        "task": "NLP",
+        "license": "CC0-1.0",
+        "year": 2026,
+        "org": "fka",
+        "size": "1K<n<10K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"fka/prompts.chat\")",
+        "benchmarks": "Trending Score: 15, Likes: 9,926, Downloads: 27,184",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/fka/prompts.chat",
+        "citations": [
+          {
+            "text": "fka/prompts.chat on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/fka/prompts.chat"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-01",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "LFM3-Audio-2B",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by LiquidAI, trending with over 165 community likes and 4,790 downloads on Hugging Face.",
@@ -6368,77 +6422,6 @@
           {
             "text": "stablediffusiontutorials/Minimax-H3 on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/stablediffusiontutorials/Minimax-H3"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-18",
-    "assets": [
-      {
-        "name": "Swift-Qwen3.8-27b",
-        "type": "Model",
-        "summary": "High-performance Multimodal open-weights model by ukisai, trending with over 396 community likes and 3,221 downloads on Hugging Face.",
-        "task": "Multimodal",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "ukisai",
-        "size": "27B params",
-        "architecture": "ukisai image text to text architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ukisai/Swift-Qwen3.8-27b\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ukisai/Swift-Qwen3.8-27b\")",
-        "benchmarks": "Trending Score: 380, Likes: 396, Downloads: 3,221",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": true,
-        "url": "https://huggingface.co/ukisai/Swift-Qwen3.8-27b",
-        "citations": [
-          {
-            "text": "ukisai/Swift-Qwen3.8-27b on Hugging Face",
-            "url": "https://huggingface.co/ukisai/Swift-Qwen3.8-27b"
-          }
-        ]
-      },
-      {
-        "name": "wan2-2-i2v-v3",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by observantdistressed. Trending with 78 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "observantdistressed",
-        "size": "GRADIO Platform",
-        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3",
-        "benchmarks": "Trending Score: 68, Community Likes: 78",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": true,
-        "url": "https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3",
-        "citations": [
-          {
-            "text": "observantdistressed/wan2-2-i2v-v3 on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3"
-          }
-        ]
-      },
-      {
-        "name": "World-SimReady-Home",
-        "type": "Dataset",
-        "summary": "WorldSimReady-Home \t \t \t\t \t \t \t\tDataset description \t CAD-based SimReady assets Optimized CAD assets with configured collision and physical properties. Manually reviewe (34 likes, 424 downloads).",
-        "task": "Computer Vision",
-        "license": "CC-BY-NC-SA-4.0",
-        "year": 2026,
-        "org": "Yootta",
-        "size": "Curated Dataset",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Yootta/World-SimReady-Home\")",
-        "benchmarks": "Trending Score: 31, Likes: 34, Downloads: 424",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "url": "https://huggingface.co/datasets/Yootta/World-SimReady-Home",
-        "citations": [
-          {
-            "text": "Yootta/World-SimReady-Home on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/Yootta/World-SimReady-Home"
           }
         ]
       }

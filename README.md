@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-01)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **LFM3-Audio-2B** (`Model`), **MarathonDocBench** (`Dataset`) |
+| 📥 **Queued for Review** | **Audio8-TTS-Realistic-0.6b** (`Model`), **prompts.chat** (`Dataset`) |
 | 🌟 **Tool of the Day** | **MiniCPM-V-4.7-35B-A3B** (OpenBMB) — [Explore](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
 | 🗄️ **Catalog Entries** | **385** AI assets tracked (312 featured) |
 | 🔥 **Top Trending Model** | [Nanbeige/Nanbeige4.3-33B](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
 | 📜 **Top Daily Paper** | [EPSBench: Benchmarking LLM Agents for Earnings For...](https://huggingface.co/papers/2610.38293) |
 | 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Sun, 01 Nov 2026 00:37:41 GMT` |
+| 🕒 **Last Synchronized** | `Sun, 01 Nov 2026 08:34:19 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
