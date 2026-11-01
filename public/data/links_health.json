@@ -1,18 +1,33 @@
 {
-  "timestamp": "2026-11-01T08:33:43.611Z",
+  "timestamp": "2026-11-01T16:32:33.580Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 20,
+  "broken": 5,
   "issues": [
     {
-      "name": "wan555",
-      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
-      "status": 401
+      "name": "Meta AI",
+      "url": "https://www.meta.ai",
+      "status": 403
     },
     {
-      "name": "Character.ai",
-      "url": "https://character.ai",
+      "name": "Pi",
+      "url": "https://pi.ai",
       "status": 403
+    },
+    {
+      "name": "DALL-E 2",
+      "url": "https://openai.com/dall-e-2",
+      "status": 403
+    },
+    {
+      "name": "Mistral Le Chat",
+      "url": "https://chat.mistral.ai",
+      "status": 403
+    },
+    {
+      "name": "LMSYS Chatbot Arena Conversations",
+      "url": "https://chat.lmsys.org",
+      "status": "Network Error"
     }
   ]
 }

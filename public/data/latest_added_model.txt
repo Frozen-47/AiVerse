@@ -1,1 +1,1 @@
-Audio8-TTS-Realistic-0.6b
+LFM3-1.7B-Uncensored-GGUF

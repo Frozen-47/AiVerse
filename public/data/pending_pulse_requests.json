@@ -1,5 +1,55 @@
 [
   {
+    "name": "hi3dv1",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 33 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "hugging-apps",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/hi3dv1",
+    "benchmarks": "Trending Score: 27, Community Likes: 33",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/hugging-apps/hi3dv1",
+    "citations": [
+      {
+        "text": "hugging-apps/hi3dv1 on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/hugging-apps/hi3dv1"
+      }
+    ],
+    "created_at": "2026-11-01T16:32:33.458Z"
+  },
+  {
+    "name": "LFM3-1.7B-Uncensored-GGUF",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by AtomicChat, trending with over 171 community likes and 46,155 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "AtomicChat",
+    "size": "1.7B params",
+    "architecture": "AtomicChat text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"AtomicChat/LFM3-1.7B-Uncensored-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"AtomicChat/LFM3-1.7B-Uncensored-GGUF\")",
+    "benchmarks": "Trending Score: 161, Likes: 171, Downloads: 46,155",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/AtomicChat/LFM3-1.7B-Uncensored-GGUF",
+    "citations": [
+      {
+        "text": "AtomicChat/LFM3-1.7B-Uncensored-GGUF on Hugging Face",
+        "url": "https://huggingface.co/AtomicChat/LFM3-1.7B-Uncensored-GGUF"
+      }
+    ],
+    "created_at": "2026-11-01T16:32:33.458Z"
+  },
+  {
     "name": "prompts.chat",
     "type": "Dataset",
     "summary": "a.k.a. Awesome ChatGPT Prompts This is a Dataset Repository mirror of prompts.chat — a social platform for AI prompts. \t \t\t \t \t \t\t📢 Notice \t This Hugging Face dataset is (9,926 likes, 27,184 downloads).",

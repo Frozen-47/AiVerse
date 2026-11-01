@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sun, 01 Nov 2026 08:34:19 GMT`*
+*Last Synchronized: `Sun, 01 Nov 2026 16:33:07 GMT`*
 
 ---
 
@@ -10,19 +10,19 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Audio8-TTS-Realistic-0.6b** (`Model` • *Edge0*)
-> High-performance Audio open-weights model by Edge0, trending with over 174 community likes and 2,755 downloads on Hugging Face.
+### **LFM3-1.7B-Uncensored-GGUF** (`Model` • *AtomicChat*)
+> High-performance NLP open-weights model by AtomicChat, trending with over 171 community likes and 46,155 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Audio` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 171, Likes: 174, Downloads: 2,755`
-- 🔗 **Resource Link**: [https://huggingface.co/Edge0/Audio8-TTS-Realistic-0.6b](https://huggingface.co/Edge0/Audio8-TTS-Realistic-0.6b)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 161, Likes: 171, Downloads: 46,155`
+- 🔗 **Resource Link**: [https://huggingface.co/AtomicChat/LFM3-1.7B-Uncensored-GGUF](https://huggingface.co/AtomicChat/LFM3-1.7B-Uncensored-GGUF)
 
-### **prompts.chat** (`Dataset` • *fka*)
-> a.k.a. Awesome ChatGPT Prompts This is a Dataset Repository mirror of prompts.chat — a social platform for AI prompts. 	 		 	 	 		📢 Notice 	 This Hugging Face dataset is (9,926 likes, 27,184 downloads).
+### **hi3dv1** (`Platform` • *hugging-apps*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 33 community stars.
 
-- 🏷️ **Domain & License**: `NLP` • `CC0-1.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 15, Likes: 9,926, Downloads: 27,184`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/fka/prompts.chat](https://huggingface.co/datasets/fka/prompts.chat)
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 27, Community Likes: 33`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/hugging-apps/hi3dv1](https://huggingface.co/spaces/hugging-apps/hi3dv1)
 
 ---
 
@@ -41,12 +41,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 932 | 📥 13,832 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 4,141 | 📥 156,373 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 646 | 📥 32,933 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 559 | 📥 24,357 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
-| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,412 | 📥 2,945 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
-| `baidu/Unlimited-OCR-2` | image-text-to-text | ❤️ 484 | 📥 69,231 | [View](https://huggingface.co/baidu/Unlimited-OCR-2) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 4,194 | 📥 170,353 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 667 | 📥 37,568 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 963 | 📥 15,795 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
+| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 577 | 📥 29,364 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
+| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,427 | 📥 4,576 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
+| `baidu/Unlimited-OCR-2` | image-text-to-text | ❤️ 503 | 📥 109,519 | [View](https://huggingface.co/baidu/Unlimited-OCR-2) |
 
 
 ---
@@ -73,7 +73,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
+- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
 - **Dependency Security**: `47` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---
