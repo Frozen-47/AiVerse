@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-01T16:32:33.472Z",
+  "timestamp": "2026-11-01T20:55:22.324Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 4194,
+      "likes": 4256,
       "downloads": 170353,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,31 +12,31 @@
     {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 667,
+      "likes": 681,
       "downloads": 37568,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
     },
     {
-      "id": "Nanbeige/Nanbeige4.3-33B",
-      "author": "Nanbeige",
-      "likes": 963,
-      "downloads": 15795,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
-    },
-    {
       "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
       "author": "nvidia",
-      "likes": 577,
+      "likes": 587,
       "downloads": 29364,
       "pipeline_tag": "automatic-speech-recognition",
       "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
     },
     {
+      "id": "Nanbeige/Nanbeige4.3-33B",
+      "author": "Nanbeige",
+      "likes": 965,
+      "downloads": 15795,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
+    },
+    {
       "id": "mistralai/Mistral-Large-4-1T-A52B",
       "author": "mistralai",
-      "likes": 1427,
+      "likes": 1440,
       "downloads": 4576,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
@@ -44,7 +44,7 @@
     {
       "id": "baidu/Unlimited-OCR-2",
       "author": "baidu",
-      "likes": 503,
+      "likes": 511,
       "downloads": 109519,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/baidu/Unlimited-OCR-2"
@@ -78,7 +78,7 @@
     {
       "title": "Matched Capabilities, Different Behaviors: A Controlled Study of MCP and CLI Interfaces for Language Agents",
       "summary": "Matched interface representations significantly alter agent behavior despite identical executable capabilities, and targeted repair of interface-specific realization improves performance while reducing cost.",
-      "upvotes": 4,
+      "upvotes": 5,
       "arxiv_id": "2610.34298",
       "url": "https://huggingface.co/papers/2610.34298",
       "githubRepo": "https://github.com/ModalityDance/MICA"

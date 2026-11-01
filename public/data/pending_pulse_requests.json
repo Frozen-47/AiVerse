@@ -1,5 +1,55 @@
 [
   {
+    "name": "FineART",
+    "type": "Dataset",
+    "summary": "FineART: Fine-Grained Annotated Robotic Trajectory Dataset \t FineART is co-released by Scale AI and Hugging Face LeRobot. The data was collected and annotated by the Ph (32 likes, 481,434 downloads).",
+    "task": "Computer Vision",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "org": "lerobot",
+    "size": "100M<n<1B",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"lerobot/FineART\")",
+    "benchmarks": "Trending Score: 18, Likes: 32, Downloads: 481,434",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/lerobot/FineART",
+    "citations": [
+      {
+        "text": "lerobot/FineART on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/lerobot/FineART"
+      }
+    ],
+    "created_at": "2026-11-01T20:55:22.306Z"
+  },
+  {
+    "name": "numbat",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by burner22, trending with over 178 community likes and 5,846 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "Open Weights",
+    "year": 2026,
+    "org": "burner22",
+    "size": "Open Weights",
+    "architecture": "burner22 transformer architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"burner22/numbat\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"burner22/numbat\")",
+    "benchmarks": "Trending Score: 170, Likes: 178, Downloads: 5,846",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/burner22/numbat",
+    "citations": [
+      {
+        "text": "burner22/numbat on Hugging Face",
+        "url": "https://huggingface.co/burner22/numbat"
+      }
+    ],
+    "created_at": "2026-11-01T20:55:22.306Z"
+  },
+  {
     "name": "hi3dv1",
     "type": "Platform",
     "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 33 community stars.",
