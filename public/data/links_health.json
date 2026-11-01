@@ -1,27 +1,17 @@
 {
-  "timestamp": "2026-10-31T20:22:57.748Z",
+  "timestamp": "2026-11-01T00:37:03.993Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "OpenAI Platform",
-      "url": "https://platform.openai.com",
+      "name": "Lovable.dev",
+      "url": "https://lovable.dev",
       "status": 403
     },
     {
-      "name": "Codex",
-      "url": "https://openai.com/blog/openai-codex",
-      "status": 403
-    },
-    {
-      "name": "Grammarly",
-      "url": "https://www.grammarly.com",
-      "status": 405
-    },
-    {
-      "name": "GPT-3",
-      "url": "https://openai.com/research/language-models-are-few-shot-learners",
+      "name": "Midjourney",
+      "url": "https://www.midjourney.com",
       "status": 403
     }
   ]
