@@ -1,27 +1,52 @@
 {
-  "timestamp": "2026-11-01T20:55:22.426Z",
+  "timestamp": "2026-11-02T01:10:42.034Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 16,
+  "broken": 9,
   "issues": [
+    {
+      "name": "Canva AI",
+      "url": "https://www.canva.com/ai-image-generator",
+      "status": 403
+    },
     {
       "name": "o1 (OpenAI)",
       "url": "https://openai.com/o1",
       "status": 403
     },
     {
-      "name": "Arena-Hard-Auto",
-      "url": "https://github.com/sunshanghai/arena-hard-auto",
-      "status": 404
-    },
-    {
-      "name": "ChatGPT",
-      "url": "https://chatgpt.com",
+      "name": "Sora",
+      "url": "https://openai.com/sora",
       "status": 403
     },
     {
-      "name": "Mistral Le Chat",
-      "url": "https://chat.mistral.ai",
+      "name": "GPT-4o mini",
+      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+      "status": 403
+    },
+    {
+      "name": "Whisper",
+      "url": "https://openai.com/research/whisper",
+      "status": 403
+    },
+    {
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
+      "status": 403
+    },
+    {
+      "name": "DALL-E 3",
+      "url": "https://openai.com/dall-e-3",
+      "status": 403
+    },
+    {
+      "name": "Lovable.dev",
+      "url": "https://lovable.dev",
+      "status": 403
+    },
+    {
+      "name": "GPT-4o",
+      "url": "https://openai.com/chatgpt",
       "status": 403
     }
   ]
