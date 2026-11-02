@@ -750,52 +750,151 @@ const Inner: React.FC = () => {
 
   if (isLoading) {
     const isDark = resolvedTheme === "amoled";
-    const skeletonBg = isDark ? "bg-white/5" : "bg-neutral-200";
-    const skeletonBorder = isDark ? "border-white/5" : "border-neutral-200";
+    const skeletonBg = isDark ? "bg-white/[0.07]" : "bg-neutral-200/80";
+    const skeletonBorder = isDark ? "border-white/[0.08]" : "border-neutral-200/90";
+    const pageBg = isDark ? "bg-black text-white" : "bg-white text-neutral-900";
 
     return (
-      <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${t.page}`}>
-        {/* Navbar Skeleton */}
-        <div className={`h-16 border-b flex items-center justify-between px-4 sm:px-6 xl:px-12 ${skeletonBorder}`}>
-          <div className={`w-24 h-6 rounded-md animate-pulse ${skeletonBg}`} />
-          <div className="hidden md:flex gap-4">
-            <div className={`w-20 h-5 rounded-md animate-pulse ${skeletonBg}`} />
-            <div className={`w-20 h-5 rounded-md animate-pulse ${skeletonBg}`} />
-            <div className={`w-20 h-5 rounded-md animate-pulse ${skeletonBg}`} />
+      <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${pageBg}`}>
+        {/* 1. Navbar Skeleton (Matching Modern Navbar) */}
+        <div className={`sticky top-0 z-40 h-16 border-b backdrop-blur-xl flex items-center justify-between px-4 sm:px-6 xl:px-12 ${skeletonBorder} ${isDark ? "bg-black/80" : "bg-white/80"}`}>
+          {/* Brand Logo & Asset Pill */}
+          <div className="flex items-center gap-3">
+            <div className={`w-28 h-6 rounded-md animate-pulse ${skeletonBg}`} />
+            <div className={`hidden sm:inline-block w-20 h-5 rounded-full animate-pulse ${skeletonBg}`} />
+            {/* Nav Links in Center-Left */}
+            <div className="hidden md:flex items-center gap-2 ml-3 pl-3 border-l border-neutral-200/80 dark:border-white/[0.08]">
+              <div className={`w-20 h-7 rounded-full animate-pulse ${skeletonBg}`} />
+              <div className={`w-24 h-7 rounded-full animate-pulse ${skeletonBg}`} />
+              <div className={`w-24 h-7 rounded-full animate-pulse ${skeletonBg}`} />
+              <div className={`w-20 h-7 rounded-full animate-pulse ${skeletonBg}`} />
+            </div>
           </div>
-          <div className={`w-8 h-8 rounded-full animate-pulse ${skeletonBg}`} />
+
+          {/* Right actions */}
+          <div className="flex items-center gap-2.5">
+            <div className={`hidden md:block w-32 h-7 rounded-full animate-pulse ${skeletonBg}`} />
+            <div className={`w-24 h-7 rounded-full animate-pulse ${skeletonBg}`} />
+            <div className={`w-8 h-8 rounded-full animate-pulse ${skeletonBg}`} />
+          </div>
         </div>
 
-        {/* Catalog Layout Skeleton */}
-        <div className="w-full px-4 sm:px-6 xl:px-12 py-8 flex gap-8 flex-1">
-          {/* Left pane: Sidebar Skeleton */}
-          <div className="hidden lg:block w-56 shrink-0 space-y-6">
-            <div className={`w-32 h-6 rounded-md animate-pulse ${skeletonBg}`} />
-            <div className="space-y-3">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className={`w-full h-8 rounded-xl animate-pulse ${skeletonBg}`} />
-              ))}
+        {activeView === "landing" ? (
+          /* 2. Landing View Skeleton (Hero + Frontier Showcase) */
+          <div className="w-full flex flex-col">
+            {/* Full-Bleed Hero Skeleton (100vh fold) */}
+            <div className={`relative min-h-[calc(100vh-4rem)] w-full flex flex-col justify-between overflow-hidden border-b ${skeletonBorder} ${isDark ? "bg-black" : "bg-white"}`}>
+              <div className="flex-1 flex flex-col items-center justify-center px-5 py-12 text-center max-w-4xl mx-auto w-full">
+                {/* Grand Headline Skeleton */}
+                <div className={`h-11 sm:h-14 lg:h-16 w-3/4 max-w-2xl rounded-2xl animate-pulse ${skeletonBg}`} />
+                <div className={`h-11 sm:h-14 lg:h-16 w-2/3 max-w-xl rounded-2xl animate-pulse mt-3 sm:mt-4 ${skeletonBg}`} />
+                
+                {/* Subtitle Paragraph Skeleton */}
+                <div className={`h-4 w-4/5 max-w-md rounded-md animate-pulse mt-6 ${skeletonBg}`} />
+                <div className={`h-4 w-3/5 max-w-sm rounded-md animate-pulse mt-2 ${skeletonBg}`} />
+
+                {/* CTA Button Skeleton */}
+                <div className={`h-10 w-44 rounded-full animate-pulse mt-9 ${skeletonBg}`} />
+
+                {/* Verified Telemetry Pill Skeleton */}
+                <div className={`h-4 w-36 rounded-md animate-pulse mt-6 ${skeletonBg}`} />
+              </div>
+
+              {/* Bottom Ecosystem Marquee Skeleton */}
+              <div className="pb-16 pt-4 px-6 overflow-hidden">
+                <div className="flex items-center justify-center gap-8 sm:gap-12 opacity-60">
+                  {[...Array(8)].map((_, i) => (
+                    <div key={i} className={`h-6 w-20 sm:w-24 rounded-lg animate-pulse shrink-0 ${skeletonBg}`} />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Below Fold: Frontier Showcase Skeleton */}
+            <div className="w-full max-w-[1880px] 2xl:max-w-[2040px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-12 sm:py-16 space-y-8">
+              {/* Category Selector Pill Bar Skeleton */}
+              <div className="flex justify-center">
+                <div className={`flex items-center gap-1.5 p-1 rounded-2xl border max-w-full overflow-x-auto ${skeletonBorder} ${isDark ? "bg-white/[0.04]" : "bg-neutral-100/80"}`}>
+                  {[...Array(7)].map((_, i) => (
+                    <div key={i} className={`h-8 w-24 sm:w-28 rounded-xl animate-pulse shrink-0 ${skeletonBg}`} />
+                  ))}
+                </div>
+              </div>
+
+              {/* Section Header */}
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-4">
+                <div className="space-y-2">
+                  <div className={`h-5 w-36 rounded-full animate-pulse ${skeletonBg}`} />
+                  <div className={`h-7 w-64 rounded-xl animate-pulse ${skeletonBg}`} />
+                  <div className={`h-4 w-80 rounded-md animate-pulse ${skeletonBg}`} />
+                </div>
+                <div className={`h-8 w-32 rounded-full animate-pulse ${skeletonBg}`} />
+              </div>
+
+              {/* Modern 6-Card Grid (3x2) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {[...Array(6)].map((_, i) => (
+                  <div
+                    key={i}
+                    className={`p-5 rounded-2xl border flex flex-col justify-between space-y-4 ${skeletonBorder} ${isDark ? "bg-white/[0.02]" : "bg-white"}`}
+                    style={{ minHeight: "220px" }}
+                  >
+                    <div className="space-y-3 w-full">
+                      {/* Icon, Title, Type */}
+                      <div className="flex items-center gap-3">
+                        <div className={`w-11 h-11 rounded-xl shrink-0 animate-pulse ${skeletonBg}`} />
+                        <div className="space-y-1.5 flex-1">
+                          <div className={`w-2/3 h-4 rounded-md animate-pulse ${skeletonBg}`} />
+                          <div className={`w-1/3 h-3 rounded-md animate-pulse ${skeletonBg}`} />
+                        </div>
+                        <div className={`w-16 h-5 rounded-full animate-pulse ${skeletonBg}`} />
+                      </div>
+                      {/* Description */}
+                      <div className="space-y-2 pt-2">
+                        <div className={`w-full h-3 rounded-md animate-pulse ${skeletonBg}`} />
+                        <div className={`w-5/6 h-3 rounded-md animate-pulse ${skeletonBg}`} />
+                        <div className={`w-4/5 h-3 rounded-md animate-pulse ${skeletonBg}`} />
+                      </div>
+                    </div>
+                    {/* Stats & Footer */}
+                    <div className="flex justify-between items-center pt-3 border-t border-neutral-100 dark:border-white/5">
+                      <div className="flex gap-2">
+                        <div className={`w-14 h-4 rounded-md animate-pulse ${skeletonBg}`} />
+                        <div className={`w-16 h-4 rounded-md animate-pulse ${skeletonBg}`} />
+                      </div>
+                      <div className={`w-20 h-4 rounded-md animate-pulse ${skeletonBg}`} />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-
-          {/* Right pane: Content Skeleton */}
-          <div className="flex-1 min-w-0 space-y-6">
-            {/* Top Bar */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className={`w-36 h-9 rounded-xl animate-pulse ${skeletonBg}`} />
-              <div className={`w-full sm:w-72 md:w-80 h-10 rounded-xl animate-pulse ${skeletonBg}`} />
+        ) : (
+          /* 3. Catalog Directory Skeleton (/entries view) */
+          <div className="w-full max-w-[1880px] 2xl:max-w-[2040px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-12 space-y-6">
+            {/* Breadcrumbs & Header */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-neutral-200/80 dark:border-white/[0.08]">
+              <div className="space-y-2">
+                <div className={`w-32 h-4 rounded-md animate-pulse ${skeletonBg}`} />
+                <div className={`w-56 h-7 rounded-xl animate-pulse ${skeletonBg}`} />
+              </div>
+              <div className={`w-full sm:w-80 h-10 rounded-xl animate-pulse ${skeletonBg}`} />
             </div>
-
-            {/* Grid of Pulsing Entry Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+            {/* Filter Pills */}
+            <div className="flex items-center gap-2 overflow-x-auto pb-2">
               {[...Array(6)].map((_, i) => (
-                <div 
-                  key={i} 
-                  className={`p-6 rounded-2xl border flex flex-col justify-between space-y-4 ${skeletonBorder}`}
+                <div key={i} className={`w-24 h-8 rounded-xl shrink-0 animate-pulse ${skeletonBg}`} />
+              ))}
+            </div>
+            {/* Grid of 6 Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={i}
+                  className={`p-5 rounded-2xl border flex flex-col justify-between space-y-4 ${skeletonBorder} ${isDark ? "bg-white/[0.02]" : "bg-white"}`}
                   style={{ minHeight: "220px" }}
                 >
                   <div className="space-y-3 w-full">
-                    {/* Icon & Title Row */}
                     <div className="flex items-center gap-3">
                       <div className={`w-11 h-11 rounded-xl shrink-0 animate-pulse ${skeletonBg}`} />
                       <div className="space-y-1.5 flex-1">
@@ -803,23 +902,20 @@ const Inner: React.FC = () => {
                         <div className={`w-1/3 h-3 rounded-md animate-pulse ${skeletonBg}`} />
                       </div>
                     </div>
-                    {/* Description Paragraph */}
                     <div className="space-y-2 pt-2">
                       <div className={`w-full h-3 rounded-md animate-pulse ${skeletonBg}`} />
                       <div className={`w-5/6 h-3 rounded-md animate-pulse ${skeletonBg}`} />
-                      <div className={`w-4/5 h-3 rounded-md animate-pulse ${skeletonBg}`} />
                     </div>
                   </div>
-                  {/* Footer Row */}
-                  <div className="flex justify-between items-center pt-2">
-                    <div className={`w-16 h-3 rounded-md animate-pulse ${skeletonBg}`} />
-                    <div className={`w-24 h-3 rounded-md animate-pulse ${skeletonBg}`} />
+                  <div className="flex justify-between items-center pt-3 border-t border-neutral-100 dark:border-white/5">
+                    <div className={`w-16 h-4 rounded-md animate-pulse ${skeletonBg}`} />
+                    <div className={`w-20 h-4 rounded-md animate-pulse ${skeletonBg}`} />
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
@@ -978,10 +1074,21 @@ const Inner: React.FC = () => {
           window.scrollTo({ top: 0, behavior: "smooth" });
         }} />
       ) : isLeaderboard ? (
-        <LeaderboardView onBackToHome={() => {
-          navigate("/dashboard");
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }} />
+        <LeaderboardView
+          onBackToHome={() => {
+            navigate("/");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          onSelectEntryByName={(modelName) => {
+            const entry = entries.find(e => 
+              e.name.toLowerCase() === modelName.toLowerCase() || 
+              e.name.toLowerCase().includes(modelName.toLowerCase()) || 
+              modelName.toLowerCase().includes(e.name.toLowerCase())
+            );
+            if (entry) {
+              handleSelectEntry(entry);
+            }
+          }} />
       ) : (isWizard || isArena || isFeatures || isPlayground) ? (
         <FeaturesSuite
           initialTab={isWizard ? "wizard" : isArena ? "arena" : isPlayground ? "playground" : "overview"}

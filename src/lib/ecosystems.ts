@@ -97,7 +97,18 @@ const ORG_NORMALIZATION: Record<string, string> = {
   "Xiaomi": "Xiaomi (MiMo)",
   "XiaomiMiMo": "Xiaomi (MiMo)",
   "MiniMax": "MiniMax",
-  "MiniMax AI": "MiniMax",
+    "MiniMax AI": "MiniMax",
+  "Alibaba": "Alibaba (Qwen)",
+  "Qwen": "Alibaba (Qwen)",
+  "SpaceXAI": "xAI",
+  "Grok": "xAI",
+  "Z AI": "Zhipu AI (THUDM)",
+  "Zhipu": "Zhipu AI (THUDM)",
+  "Kimi": "Moonshot AI",
+  "Kimi AI": "Moonshot AI",
+  "StepFun": "StepFun",
+  "StepFun AI": "StepFun",
+  "Step-Fun": "StepFun",
 };
 
 interface LabMetadata {
@@ -562,7 +573,7 @@ const KNOWN_LABS: Record<string, LabMetadata> = {
       tagBg: "bg-orange-500/5",
     },
   },
-  "Krea AI": {
+    "Krea AI": {
     description: "Real-time generative canvas and creative platform accelerating visual art generation and video enhancement.",
     domain: "Real-time Generation · Canvas · Upscaling",
     website: "https://krea.ai",
@@ -570,6 +581,26 @@ const KNOWN_LABS: Record<string, LabMetadata> = {
       badge: "bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 border-fuchsia-500/20",
       accent: "text-fuchsia-500",
       tagBg: "bg-fuchsia-500/5",
+    },
+  },
+  "MiniMax": {
+    description: "Frontier Chinese AI lab developing the high-efficiency MiniMax M3.1 series, abab language models, and ultra-fast multimodal speech & reasoning architectures.",
+    domain: "Frontier MoE LLMs · MiniMax M3.1 · Fast Multimodal",
+    website: "https://minimax.io",
+    colorScheme: {
+      badge: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20",
+      accent: "text-teal-500",
+      tagBg: "bg-teal-500/5",
+    },
+  },
+  "StepFun": {
+    description: "Leading research organization pioneering Step-1, Step-2, and Step 5 multi-step chain-of-thought and multimodal foundation systems.",
+    domain: "Multi-Step Reasoning · Step 5 Preview · Multi-modal",
+    website: "https://stepfun.com",
+    colorScheme: {
+      badge: "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20",
+      accent: "text-violet-500",
+      tagBg: "bg-violet-500/5",
     },
   },
 };

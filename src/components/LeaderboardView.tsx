@@ -18,13 +18,14 @@ import { LEADERBOARD_MODELS, type LeaderboardModel } from "../data/leaderboardDa
 
 interface LeaderboardViewProps {
   onBackToHome?: () => void;
+  onSelectEntryByName?: (name: string) => void;
 }
 
 type MetricTab = "intelligence" | "pricing" | "speed" | "latency" | "all";
 type SortField = keyof LeaderboardModel;
 type SortOrder = "asc" | "desc";
 
-export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome }) => {
+export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, onSelectEntryByName }) => {
   const { resolvedTheme } = useTheme();
   const isAmoled = resolvedTheme === "amoled";
 
@@ -771,6 +772,16 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome }
             </div>
 
             <div className="flex items-center justify-end gap-3 pt-4 border-t border-neutral-100 dark:border-white/[0.08]">
+              {onSelectEntryByName && (
+                <button
+                  type="button"
+                  onClick={() => onSelectEntryByName(selectedModel.name)}
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/5 text-neutral-800 dark:text-neutral-200 transition-colors cursor-pointer"
+                >
+                  <Layers size={13} />
+                  <span>Explore in Compendium</span>
+                </button>
+              )}
               <a
                 href={selectedModel.modelUrl}
                 target="_blank"
@@ -779,8 +790,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome }
               >
                 <span>View on Artificial Analysis</span>
                 <ExternalLink size={12} />
-              </a>
-            </div>
+              </a></div>
           </div>
         </div>
       )}

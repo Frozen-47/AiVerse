@@ -8550,6 +8550,1566 @@ export const entries: Entry[] = [
               "url": "https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data"
           }
       ]
+  },
+  {
+    "name": "Gemini 4 Carbon (high)",
+    "type": "Model",
+    "summary": "Google DeepMind's frontier research model featured on the Artificial Analysis leaderboard with an Intelligence Index of 59, Briefcase Elo of 1610, and a massive 1M context window.",
+    "task": "Research",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Google DeepMind",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Google DeepMind, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (85 tok/s).",
+    "usage": "from google import genai\nclient = genai.Client()\nresponse = client.models.generate_content(\n  model=\"gemini-4-carbon-high\",\n  contents=\"Synthesize multimodal analysis over 1M context.\"\n)",
+    "benchmarks": "Intelligence Index: 59, Briefcase Elo: 1610, Accuracy: 58%, Non-Hallucination: 89%, FrontierCode: 41%, AutomationBench: 78%, TerminalBench 4: 65%, HLE Diamond: 69%, Speed: 85 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Google DeepMind developer platform; subject to API rate limits and token pricing ($4/M in, $20/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/gemini-4-carbon",
+    "citations": [
+      {
+        "text": "Gemini 4 Carbon (high) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gemini-4-carbon"
+      },
+      {
+        "text": "Gemini 4 Carbon (high) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gemini-4-carbon/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Opus 5.5 (max with fallback)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 58, Briefcase Elo of 1801, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (97 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-opus-5-5-max-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 58, Briefcase Elo: 1801, Accuracy: 66%, Non-Hallucination: 50%, FrontierCode: 46%, AutomationBench: 70%, TerminalBench 4: 60%, HLE Diamond: 68%, Speed: 97 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($4/M in, $20/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/claude-opus-5-5",
+    "citations": [
+      {
+        "text": "Claude Opus 5.5 (max with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-opus-5-5"
+      },
+      {
+        "text": "Claude Opus 5.5 (max with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-opus-5-5/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Opus 5.5 (xhigh with fallback)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 57, Briefcase Elo of 1761, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (85 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-opus-5-5-xhigh-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 57, Briefcase Elo: 1761, Accuracy: 66%, Non-Hallucination: 35%, FrontierCode: 44%, AutomationBench: 65%, TerminalBench 4: 60%, HLE Diamond: 64%, Speed: 85 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($4/M in, $20/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/claude-opus-5-5-xhigh",
+    "citations": [
+      {
+        "text": "Claude Opus 5.5 (xhigh with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-opus-5-5-xhigh"
+      },
+      {
+        "text": "Claude Opus 5.5 (xhigh with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-opus-5-5-xhigh/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6 Astra (max)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 57, Briefcase Elo of 1569, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (78 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-astra-max\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 57, Briefcase Elo: 1569, Accuracy: 62%, Non-Hallucination: 50%, FrontierCode: 42%, AutomationBench: 68%, TerminalBench 4: 59%, HLE Diamond: 64%, Speed: 78 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($10/M in, $50/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/gpt-6-astra",
+    "citations": [
+      {
+        "text": "GPT-6 Astra (max) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-astra"
+      },
+      {
+        "text": "GPT-6 Astra (max) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-astra/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6 Astra (xhigh)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 55, Briefcase Elo of 1544, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (66 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-astra-xhigh\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 55, Briefcase Elo: 1544, Accuracy: 61%, Non-Hallucination: 55%, FrontierCode: 41%, AutomationBench: 67%, TerminalBench 4: 60%, HLE Diamond: 62%, Speed: 66 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($10/M in, $50/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/gpt-6-astra-xhigh",
+    "citations": [
+      {
+        "text": "GPT-6 Astra (xhigh) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-astra-xhigh"
+      },
+      {
+        "text": "GPT-6 Astra (xhigh) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-astra-xhigh/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6 Astra (high)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 55, Briefcase Elo of 1505, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (63 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-astra-high\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 55, Briefcase Elo: 1505, Accuracy: 61%, Non-Hallucination: 57%, FrontierCode: 40%, AutomationBench: 67%, TerminalBench 4: 54%, HLE Diamond: 59%, Speed: 63 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($10/M in, $50/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/gpt-6-astra-high",
+    "citations": [
+      {
+        "text": "GPT-6 Astra (high) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-astra-high"
+      },
+      {
+        "text": "GPT-6 Astra (high) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-astra-high/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6.1 Sol (max)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 55, Briefcase Elo of 1555, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (79 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-1-sol-max\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 55, Briefcase Elo: 1555, Accuracy: 62%, Non-Hallucination: 48%, FrontierCode: 41%, AutomationBench: 65%, TerminalBench 4: 56%, HLE Diamond: 59%, Speed: 79 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($2/M in, $10/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+    "citations": [
+      {
+        "text": "GPT-6.1 Sol (max) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-sol"
+      },
+      {
+        "text": "GPT-6.1 Sol (max) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-sol/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Sonnet 5.5 (max with fallback)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 54, Briefcase Elo of 1814, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (139 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-sonnet-5-5-max-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 54, Briefcase Elo: 1814, Accuracy: 51%, Non-Hallucination: 57%, FrontierCode: 42%, AutomationBench: 72%, TerminalBench 4: 64%, HLE Diamond: 53%, Speed: 139 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($2/M in, $10/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5",
+    "citations": [
+      {
+        "text": "Claude Sonnet 5.5 (max with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5"
+      },
+      {
+        "text": "Claude Sonnet 5.5 (max with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6.1 Sol (xhigh)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 52, Briefcase Elo of 1502, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (71 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-1-sol-xhigh\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 52, Briefcase Elo: 1502, Accuracy: 61%, Non-Hallucination: 52%, FrontierCode: 39%, AutomationBench: 67%, TerminalBench 4: 54%, HLE Diamond: 56%, Speed: 71 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($2/M in, $10/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-xhigh",
+    "citations": [
+      {
+        "text": "GPT-6.1 Sol (xhigh) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-xhigh"
+      },
+      {
+        "text": "GPT-6.1 Sol (xhigh) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-xhigh/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Opus 5.5 (high with fallback)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 52, Briefcase Elo of 1682, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (80 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-opus-5-5-high-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 52, Briefcase Elo: 1682, Accuracy: 65%, Non-Hallucination: 36%, FrontierCode: 36%, AutomationBench: 63%, TerminalBench 4: 57%, HLE Diamond: 56%, Speed: 80 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($4/M in, $20/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/claude-opus-5-5-high",
+    "citations": [
+      {
+        "text": "Claude Opus 5.5 (high with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-opus-5-5-high"
+      },
+      {
+        "text": "Claude Opus 5.5 (high with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-opus-5-5-high/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6 Astra (medium)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 51, Briefcase Elo of 1462, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (57 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-astra-medium\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 51, Briefcase Elo: 1462, Accuracy: 60%, Non-Hallucination: 55%, FrontierCode: 37%, AutomationBench: 65%, TerminalBench 4: 49%, HLE Diamond: 53%, Speed: 57 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($10/M in, $50/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/gpt-6-astra-medium",
+    "citations": [
+      {
+        "text": "GPT-6 Astra (medium) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-astra-medium"
+      },
+      {
+        "text": "GPT-6 Astra (medium) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-astra-medium/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6.1 Terra (max)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 51, Briefcase Elo of 1402, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (97 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-1-terra-max\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 51, Briefcase Elo: 1402, Accuracy: 48%, Non-Hallucination: 65%, FrontierCode: 42%, AutomationBench: 60%, TerminalBench 4: 56%, HLE Diamond: 47%, Speed: 97 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($1/M in, $5/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/gpt-6-1-terra",
+    "citations": [
+      {
+        "text": "GPT-6.1 Terra (max) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-terra"
+      },
+      {
+        "text": "GPT-6.1 Terra (max) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-terra/providers"
+      }
+    ]
+  },
+  {
+    "name": "Gemini 4 Argon (high)",
+    "type": "Model",
+    "summary": "Google DeepMind's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 50, Briefcase Elo of 1484, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Google DeepMind",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Google DeepMind, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (83 tok/s).",
+    "usage": "from google import genai\nclient = genai.Client()\nresponse = client.models.generate_content(\n  model=\"gemini-4-argon-high\",\n  contents=\"Synthesize multimodal analysis over 1M context.\"\n)",
+    "benchmarks": "Intelligence Index: 50, Briefcase Elo: 1484, Accuracy: 48%, Non-Hallucination: 96%, FrontierCode: 26%, AutomationBench: 78%, TerminalBench 4: 57%, HLE Diamond: 57%, Speed: 83 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Google DeepMind developer platform; subject to API rate limits and token pricing ($4/M in, $20/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/gemini-4-argon",
+    "citations": [
+      {
+        "text": "Gemini 4 Argon (high) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gemini-4-argon"
+      },
+      {
+        "text": "Gemini 4 Argon (high) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gemini-4-argon/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6.1 Sol (high)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 50, Briefcase Elo of 1467, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (60 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-1-sol-high\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 50, Briefcase Elo: 1467, Accuracy: 60%, Non-Hallucination: 51%, FrontierCode: 37%, AutomationBench: 64%, TerminalBench 4: 52%, HLE Diamond: 52%, Speed: 60 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($2/M in, $10/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-high",
+    "citations": [
+      {
+        "text": "GPT-6.1 Sol (high) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-high"
+      },
+      {
+        "text": "GPT-6.1 Sol (high) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-high/providers"
+      }
+    ]
+  },
+  {
+    "name": "Muse Wonder Full (max)",
+    "type": "Model",
+    "summary": "Meta AI's frontier multimodal model featured on the Artificial Analysis leaderboard with an Intelligence Index of 50, Briefcase Elo of 1729, and a massive 1M context window.",
+    "task": "Multimodal",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Meta AI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Meta AI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (high-speed streaming).",
+    "usage": "import requests\n\nresponse = requests.post(\n  \"https://api.metaai.com/v1/chat/completions\",\n  json={\"model\": \"muse-wonder-full-max\", \"messages\": [{\"role\": \"user\", \"content\": \"Benchmark query\"}]}\n)",
+    "benchmarks": "Intelligence Index: 50, Briefcase Elo: 1729, Accuracy: 41%, Non-Hallucination: 82%, FrontierCode: 38%, AutomationBench: 71%, TerminalBench 4: 57%, HLE Diamond: 49%, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Meta AI developer platform; subject to API rate limits and token pricing ($0/M in, $0/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/muse-wonder-full",
+    "citations": [
+      {
+        "text": "Muse Wonder Full (max) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/muse-wonder-full"
+      },
+      {
+        "text": "Muse Wonder Full (max) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/muse-wonder-full/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Fable 5.1 (xhigh with fallback)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 50, Briefcase Elo of 1651, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (62 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-fable-5-1-xhigh-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 50, Briefcase Elo: 1651, Accuracy: 67%, Non-Hallucination: 30%, FrontierCode: 36%, AutomationBench: 58%, TerminalBench 4: 55%, HLE Diamond: 59%, Speed: 62 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($10/M in, $50/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/claude-fable-5-1-xhigh",
+    "citations": [
+      {
+        "text": "Claude Fable 5.1 (xhigh with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-1-xhigh"
+      },
+      {
+        "text": "Claude Fable 5.1 (xhigh with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-1-xhigh/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Sonnet 5.5 (xhigh with fallback)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 50, Briefcase Elo of 1744, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (107 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-sonnet-5-5-xhigh-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 50, Briefcase Elo: 1744, Accuracy: 51%, Non-Hallucination: 38%, FrontierCode: 36%, AutomationBench: 66%, TerminalBench 4: 57%, HLE Diamond: 44%, Speed: 107 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($2/M in, $10/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-xhigh",
+    "citations": [
+      {
+        "text": "Claude Sonnet 5.5 (xhigh with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-xhigh"
+      },
+      {
+        "text": "Claude Sonnet 5.5 (xhigh with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-xhigh/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Fable 5.1 (max with fallback)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 49, Briefcase Elo of 1670, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (69 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-fable-5-1-max-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 49, Briefcase Elo: 1670, Accuracy: 68%, Non-Hallucination: 30%, FrontierCode: 32%, AutomationBench: 59%, TerminalBench 4: 52%, HLE Diamond: 60%, Speed: 69 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($10/M in, $50/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/claude-fable-5-1",
+    "citations": [
+      {
+        "text": "Claude Fable 5.1 (max with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-1"
+      },
+      {
+        "text": "Claude Fable 5.1 (max with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-1/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Opus 5.5 (medium with fallback)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 48, Briefcase Elo of 1622, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (80 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-opus-5-5-medium-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 48, Briefcase Elo: 1622, Accuracy: 64%, Non-Hallucination: 33%, FrontierCode: 33%, AutomationBench: 61%, TerminalBench 4: 53%, HLE Diamond: 51%, Speed: 80 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($4/M in, $20/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/claude-opus-5-5-medium",
+    "citations": [
+      {
+        "text": "Claude Opus 5.5 (medium with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-opus-5-5-medium"
+      },
+      {
+        "text": "Claude Opus 5.5 (medium with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-opus-5-5-medium/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Fable 5.1 (high with fallback)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 47, Briefcase Elo of 1577, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (57 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-fable-5-1-high-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 47, Briefcase Elo: 1577, Accuracy: 65%, Non-Hallucination: 30%, FrontierCode: 30%, AutomationBench: 55%, TerminalBench 4: 52%, HLE Diamond: 50%, Speed: 57 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($10/M in, $50/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/claude-fable-5-1-high",
+    "citations": [
+      {
+        "text": "Claude Fable 5.1 (high with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-1-high"
+      },
+      {
+        "text": "Claude Fable 5.1 (high with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-1-high/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6.1 Sol (medium)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 46, Briefcase Elo of 1361, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (50 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-1-sol-medium\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 46, Briefcase Elo: 1361, Accuracy: 60%, Non-Hallucination: 52%, FrontierCode: 33%, AutomationBench: 63%, TerminalBench 4: 48%, HLE Diamond: 46%, Speed: 50 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($2/M in, $10/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-medium",
+    "citations": [
+      {
+        "text": "GPT-6.1 Sol (medium) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-medium"
+      },
+      {
+        "text": "GPT-6.1 Sol (medium) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-medium/providers"
+      }
+    ]
+  },
+  {
+    "name": "Kimi K3.1 Pro",
+    "type": "Model",
+    "summary": "Moonshot AI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 46, Briefcase Elo of 1676, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Moonshot AI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Moonshot AI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (31 tok/s).",
+    "usage": "import requests\n\nresponse = requests.post(\n  \"https://api.moonshotai.com/v1/chat/completions\",\n  json={\"model\": \"kimi-k3-1-pro\", \"messages\": [{\"role\": \"user\", \"content\": \"Benchmark query\"}]}\n)",
+    "benchmarks": "Intelligence Index: 46, Briefcase Elo: 1676, Accuracy: 49%, Non-Hallucination: 63%, FrontierCode: 25%, AutomationBench: 73%, TerminalBench 4: 67%, HLE Diamond: 37%, Speed: 31 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Moonshot AI developer platform; subject to API rate limits and token pricing ($2/M in, $10/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/kimi-k3-1-pro",
+    "citations": [
+      {
+        "text": "Kimi K3.1 Pro on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/kimi-k3-1-pro"
+      },
+      {
+        "text": "Kimi K3.1 Pro Inference Providers",
+        "url": "https://artificialanalysis.ai/models/kimi-k3-1-pro/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6.1 Terra (xhigh)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 45, Briefcase Elo of 1333, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (92 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-1-terra-xhigh\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 45, Briefcase Elo: 1333, Accuracy: 48%, Non-Hallucination: 63%, FrontierCode: 37%, AutomationBench: 60%, TerminalBench 4: 46%, HLE Diamond: 42%, Speed: 92 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($1/M in, $5/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-xhigh",
+    "citations": [
+      {
+        "text": "GPT-6.1 Terra (xhigh) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-xhigh"
+      },
+      {
+        "text": "GPT-6.1 Terra (xhigh) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-xhigh/providers"
+      }
+    ]
+  },
+  {
+    "name": "Muse Wonder (max)",
+    "type": "Model",
+    "summary": "Meta AI's frontier multimodal model featured on the Artificial Analysis leaderboard with an Intelligence Index of 43, Briefcase Elo of 1659, and a massive 1.05M context window.",
+    "task": "Multimodal",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Meta AI",
+    "size": "1.05M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Meta AI, featuring native 1.05M token window support, optimized reasoning chains, and low-latency inference throughput (143 tok/s).",
+    "usage": "import requests\n\nresponse = requests.post(\n  \"https://api.metaai.com/v1/chat/completions\",\n  json={\"model\": \"muse-wonder-max\", \"messages\": [{\"role\": \"user\", \"content\": \"Benchmark query\"}]}\n)",
+    "benchmarks": "Intelligence Index: 43, Briefcase Elo: 1659, Accuracy: 38%, Non-Hallucination: 79%, FrontierCode: 28%, AutomationBench: 68%, TerminalBench 4: 52%, HLE Diamond: 39%, Speed: 143 tok/s, Context Window: 1.05M",
+    "limitations": "Proprietary cloud API access via Meta AI developer platform; subject to API rate limits and token pricing ($4/M in, $20/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/muse-wonder",
+    "citations": [
+      {
+        "text": "Muse Wonder (max) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/muse-wonder"
+      },
+      {
+        "text": "Muse Wonder (max) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/muse-wonder/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6 Astra (low)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 43, Briefcase Elo of 1256, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (58 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-astra-low\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 43, Briefcase Elo: 1256, Accuracy: 59%, Non-Hallucination: 56%, FrontierCode: 26%, AutomationBench: 59%, TerminalBench 4: 42%, HLE Diamond: 45%, Speed: 58 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($10/M in, $50/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/gpt-6-astra-low",
+    "citations": [
+      {
+        "text": "GPT-6 Astra (low) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-astra-low"
+      },
+      {
+        "text": "GPT-6 Astra (low) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-astra-low/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Fable 5.1 (medium with fallback)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 43, Briefcase Elo of 1525, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (55 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-fable-5-1-medium-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 43, Briefcase Elo: 1525, Accuracy: 63%, Non-Hallucination: 30%, FrontierCode: 29%, AutomationBench: 55%, TerminalBench 4: 45%, HLE Diamond: 45%, Speed: 55 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($10/M in, $50/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/claude-fable-5-1-medium",
+    "citations": [
+      {
+        "text": "Claude Fable 5.1 (medium with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-1-medium"
+      },
+      {
+        "text": "Claude Fable 5.1 (medium with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-1-medium/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6.1 Terra (high)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 42, Briefcase Elo of 1264, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (91 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-1-terra-high\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 42, Briefcase Elo: 1264, Accuracy: 47%, Non-Hallucination: 63%, FrontierCode: 37%, AutomationBench: 58%, TerminalBench 4: 42%, HLE Diamond: 35%, Speed: 91 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($1/M in, $5/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-high",
+    "citations": [
+      {
+        "text": "GPT-6.1 Terra (high) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-high"
+      },
+      {
+        "text": "GPT-6.1 Terra (high) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-high/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Sonnet 5.5 (high with fallback)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 41, Briefcase Elo of 1635, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (103 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-sonnet-5-5-high-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 41, Briefcase Elo: 1635, Accuracy: 50%, Non-Hallucination: 36%, FrontierCode: 26%, AutomationBench: 59%, TerminalBench 4: 44%, HLE Diamond: 34%, Speed: 103 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($2/M in, $10/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-high",
+    "citations": [
+      {
+        "text": "Claude Sonnet 5.5 (high with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-high"
+      },
+      {
+        "text": "Claude Sonnet 5.5 (high with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-high/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Fable 5.1 (low with fallback)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 38, Briefcase Elo of 1479, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (55 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-fable-5-1-low-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 38, Briefcase Elo: 1479, Accuracy: 59%, Non-Hallucination: 40%, FrontierCode: 23%, AutomationBench: 52%, TerminalBench 4: 40%, HLE Diamond: 37%, Speed: 55 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($10/M in, $50/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/claude-fable-5-1-low",
+    "citations": [
+      {
+        "text": "Claude Fable 5.1 (low with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-1-low"
+      },
+      {
+        "text": "Claude Fable 5.1 (low with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-1-low/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6.1 Terra (medium)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 38, Briefcase Elo of 1191, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (91 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-1-terra-medium\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 38, Briefcase Elo: 1191, Accuracy: 47%, Non-Hallucination: 60%, FrontierCode: 35%, AutomationBench: 58%, TerminalBench 4: 32%, HLE Diamond: 31%, Speed: 91 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($1/M in, $5/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-medium",
+    "citations": [
+      {
+        "text": "GPT-6.1 Terra (medium) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-medium"
+      },
+      {
+        "text": "GPT-6.1 Terra (medium) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-medium/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Haiku 5.5 (max)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 36, Briefcase Elo of 1576, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (235 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-haiku-5-5-max\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 36, Briefcase Elo: 1576, Accuracy: 35%, Non-Hallucination: 66%, FrontierCode: 35%, AutomationBench: 35%, TerminalBench 4: 33%, HLE Diamond: 30%, Speed: 235 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($0.1/M in, $0.5/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/claude-haiku-5-5",
+    "citations": [
+      {
+        "text": "Claude Haiku 5.5 (max) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-haiku-5-5"
+      },
+      {
+        "text": "Claude Haiku 5.5 (max) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-haiku-5-5/providers"
+      }
+    ]
+  },
+  {
+    "name": "Grok 4.7 (high)",
+    "type": "Model",
+    "summary": "xAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 35, Briefcase Elo of 1629, and a massive 500k context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "xAI",
+    "size": "500k Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by xAI, featuring native 500k token window support, optimized reasoning chains, and low-latency inference throughput (78 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI(base_url=\"https://api.x.ai/v1\", api_key=\"XAI_API_KEY\")\nresponse = client.chat.completions.create(\n  model=\"grok-4-7-high\",\n  messages=[{\"role\": \"user\", \"content\": \"Analyze real-time data streaming telemetry.\"}]\n)",
+    "benchmarks": "Intelligence Index: 35, Briefcase Elo: 1629, Accuracy: 42%, Non-Hallucination: 80%, FrontierCode: 28%, AutomationBench: 64%, TerminalBench 4: 25%, HLE Diamond: 24%, Speed: 78 tok/s, Context Window: 500k",
+    "limitations": "Proprietary cloud API access via xAI developer platform; subject to API rate limits and token pricing ($2/M in, $6/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/grok-4-7-high",
+    "citations": [
+      {
+        "text": "Grok 4.7 (high) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/grok-4-7-high"
+      },
+      {
+        "text": "Grok 4.7 (high) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/grok-4-7-high/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6.1 Sol (low)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 35, Briefcase Elo of 1114, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (52 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-1-sol-low\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 35, Briefcase Elo: 1114, Accuracy: 59%, Non-Hallucination: 50%, FrontierCode: 20%, AutomationBench: 53%, TerminalBench 4: 31%, HLE Diamond: 38%, Speed: 52 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($2/M in, $10/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-low",
+    "citations": [
+      {
+        "text": "GPT-6.1 Sol (low) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-low"
+      },
+      {
+        "text": "GPT-6.1 Sol (low) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-low/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Opus 5.5 (low with fallback)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 35, Briefcase Elo of 1279, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (78 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-opus-5-5-low-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 35, Briefcase Elo: 1279, Accuracy: 63%, Non-Hallucination: 34%, FrontierCode: 16%, AutomationBench: 53%, TerminalBench 4: 31%, HLE Diamond: 42%, Speed: 78 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($4/M in, $20/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/claude-opus-5-5-low",
+    "citations": [
+      {
+        "text": "Claude Opus 5.5 (low with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-opus-5-5-low"
+      },
+      {
+        "text": "Claude Opus 5.5 (low with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-opus-5-5-low/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Haiku 5.5 (xhigh)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 34, Briefcase Elo of 1525, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (186 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-haiku-5-5-xhigh\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 34, Briefcase Elo: 1525, Accuracy: 34%, Non-Hallucination: 61%, FrontierCode: 30%, AutomationBench: 36%, TerminalBench 4: 29%, HLE Diamond: 29%, Speed: 186 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($0.1/M in, $0.5/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-xhigh",
+    "citations": [
+      {
+        "text": "Claude Haiku 5.5 (xhigh) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-xhigh"
+      },
+      {
+        "text": "Claude Haiku 5.5 (xhigh) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-xhigh/providers"
+      }
+    ]
+  },
+  {
+    "name": "Grok 4.7 (xhigh)",
+    "type": "Model",
+    "summary": "xAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 34, Briefcase Elo of 1638, and a massive 500k context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "xAI",
+    "size": "500k Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by xAI, featuring native 500k token window support, optimized reasoning chains, and low-latency inference throughput (87 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI(base_url=\"https://api.x.ai/v1\", api_key=\"XAI_API_KEY\")\nresponse = client.chat.completions.create(\n  model=\"grok-4-7-xhigh\",\n  messages=[{\"role\": \"user\", \"content\": \"Analyze real-time data streaming telemetry.\"}]\n)",
+    "benchmarks": "Intelligence Index: 34, Briefcase Elo: 1638, Accuracy: 43%, Non-Hallucination: 80%, FrontierCode: 29%, AutomationBench: 66%, TerminalBench 4: 26%, HLE Diamond: 23%, Speed: 87 tok/s, Context Window: 500k",
+    "limitations": "Proprietary cloud API access via xAI developer platform; subject to API rate limits and token pricing ($2/M in, $6/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/grok-4-7",
+    "citations": [
+      {
+        "text": "Grok 4.7 (xhigh) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/grok-4-7"
+      },
+      {
+        "text": "Grok 4.7 (xhigh) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/grok-4-7/providers"
+      }
+    ]
+  },
+  {
+    "name": "Qwen3.8 Max (0902)",
+    "type": "Model",
+    "summary": "Alibaba (Qwen)'s frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 34, Briefcase Elo of 1608, and a massive 984k context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Alibaba (Qwen)",
+    "size": "984k Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Alibaba (Qwen), featuring native 984k token window support, optimized reasoning chains, and low-latency inference throughput (40 tok/s).",
+    "usage": "import requests\n\nresponse = requests.post(\n  \"https://api.alibabaqwen.com/v1/chat/completions\",\n  json={\"model\": \"qwen3-8-max-0902\", \"messages\": [{\"role\": \"user\", \"content\": \"Benchmark query\"}]}\n)",
+    "benchmarks": "Intelligence Index: 34, Briefcase Elo: 1608, Accuracy: 30%, Non-Hallucination: 73%, FrontierCode: 23%, AutomationBench: 56%, TerminalBench 4: 39%, HLE Diamond: 24%, Speed: 40 tok/s, Context Window: 984k",
+    "limitations": "Proprietary cloud API access via Alibaba (Qwen) developer platform; subject to API rate limits and token pricing ($2/M in, $6/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/qwen3-8-max",
+    "citations": [
+      {
+        "text": "Qwen3.8 Max (0902) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/qwen3-8-max"
+      },
+      {
+        "text": "Qwen3.8 Max (0902) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/qwen3-8-max/providers"
+      }
+    ]
+  },
+  {
+    "name": "DeepSeek V4.1 Flash 1017 (max)",
+    "type": "Model",
+    "summary": "DeepSeek AI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 32, Briefcase Elo of 1570, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Open",
+    "year": 2026,
+    "org": "DeepSeek AI",
+    "size": "1M Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by DeepSeek AI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (175 tok/s).",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"DeepSeek/deepseek-v4-1-flash-1017-max\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"DeepSeek/deepseek-v4-1-flash-1017-max\")",
+    "benchmarks": "Intelligence Index: 32, Briefcase Elo: 1570, Accuracy: 40%, Non-Hallucination: 36%, FrontierCode: 28%, AutomationBench: 67%, TerminalBench 4: 34%, HLE Diamond: 25%, Speed: 175 tok/s, Context Window: 1M",
+    "limitations": "High memory requirements for local execution (1M context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017",
+    "citations": [
+      {
+        "text": "DeepSeek V4.1 Flash 1017 (max) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017"
+      },
+      {
+        "text": "DeepSeek V4.1 Flash 1017 (max) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017/providers"
+      }
+    ]
+  },
+  {
+    "name": "GLM-5.3 (max)",
+    "type": "Model",
+    "summary": "Zhipu AI (THUDM)'s frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 32, Briefcase Elo of 1505, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Open",
+    "year": 2026,
+    "org": "Zhipu AI (THUDM)",
+    "size": "1M Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by Zhipu AI (THUDM), featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (76 tok/s).",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Zhipu/glm-5-3-max\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Zhipu/glm-5-3-max\")",
+    "benchmarks": "Intelligence Index: 32, Briefcase Elo: 1505, Accuracy: 32%, Non-Hallucination: 61%, FrontierCode: 22%, AutomationBench: 62%, TerminalBench 4: 42%, HLE Diamond: 18%, Speed: 76 tok/s, Context Window: 1M",
+    "limitations": "High memory requirements for local execution (1M context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/glm-5-3",
+    "citations": [
+      {
+        "text": "GLM-5.3 (max) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/glm-5-3"
+      },
+      {
+        "text": "GLM-5.3 (max) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/glm-5-3/providers"
+      }
+    ]
+  },
+  {
+    "name": "Grok 4.7 (low)",
+    "type": "Model",
+    "summary": "xAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 31, Briefcase Elo of 1495, and a massive 500k context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "xAI",
+    "size": "500k Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by xAI, featuring native 500k token window support, optimized reasoning chains, and low-latency inference throughput (72 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI(base_url=\"https://api.x.ai/v1\", api_key=\"XAI_API_KEY\")\nresponse = client.chat.completions.create(\n  model=\"grok-4-7-low\",\n  messages=[{\"role\": \"user\", \"content\": \"Analyze real-time data streaming telemetry.\"}]\n)",
+    "benchmarks": "Intelligence Index: 31, Briefcase Elo: 1495, Accuracy: 46%, Non-Hallucination: 66%, FrontierCode: 22%, AutomationBench: 57%, TerminalBench 4: 16%, HLE Diamond: 19%, Speed: 72 tok/s, Context Window: 500k",
+    "limitations": "Proprietary cloud API access via xAI developer platform; subject to API rate limits and token pricing ($2/M in, $6/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/grok-4-7-low",
+    "citations": [
+      {
+        "text": "Grok 4.7 (low) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/grok-4-7-low"
+      },
+      {
+        "text": "Grok 4.7 (low) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/grok-4-7-low/providers"
+      }
+    ]
+  },
+  {
+    "name": "Gemini 3.8 Flash (high)",
+    "type": "Model",
+    "summary": "Google DeepMind's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 31, Briefcase Elo of 1203, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Google DeepMind",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Google DeepMind, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (120 tok/s).",
+    "usage": "from google import genai\nclient = genai.Client()\nresponse = client.models.generate_content(\n  model=\"gemini-3-8-flash-high\",\n  contents=\"Synthesize multimodal analysis over 1M context.\"\n)",
+    "benchmarks": "Intelligence Index: 31, Briefcase Elo: 1203, Accuracy: 51%, Non-Hallucination: 45%, FrontierCode: 19%, AutomationBench: 60%, TerminalBench 4: 20%, HLE Diamond: 33%, Speed: 120 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Google DeepMind developer platform; subject to API rate limits and token pricing ($0.75/M in, $3.75/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/gemini-3-8-flash",
+    "citations": [
+      {
+        "text": "Gemini 3.8 Flash (high) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gemini-3-8-flash"
+      },
+      {
+        "text": "Gemini 3.8 Flash (high) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gemini-3-8-flash/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6.1 Terra (non-reasoning)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 30, Briefcase Elo of 1228, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (90 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-1-terra-non-reasoning\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 30, Briefcase Elo: 1228, Accuracy: 41%, Non-Hallucination: 23%, FrontierCode: 33%, AutomationBench: 51%, TerminalBench 4: 27%, HLE Diamond: 14%, Speed: 90 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($1/M in, $5/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-non-reasoning",
+    "citations": [
+      {
+        "text": "GPT-6.1 Terra (non-reasoning) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-non-reasoning"
+      },
+      {
+        "text": "GPT-6.1 Terra (non-reasoning) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-non-reasoning/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Sonnet 5.5 (medium with fallback)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 30, Briefcase Elo of 1440, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (101 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-sonnet-5-5-medium-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 30, Briefcase Elo: 1440, Accuracy: 46%, Non-Hallucination: 50%, FrontierCode: 11%, AutomationBench: 55%, TerminalBench 4: 30%, HLE Diamond: 24%, Speed: 101 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($2/M in, $10/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-medium",
+    "citations": [
+      {
+        "text": "Claude Sonnet 5.5 (medium with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-medium"
+      },
+      {
+        "text": "Claude Sonnet 5.5 (medium with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-medium/providers"
+      }
+    ]
+  },
+  {
+    "name": "MiMo-V2.6-Pro",
+    "type": "Model",
+    "summary": "Xiaomi (MiMo)'s frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 30, Briefcase Elo of 1512, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Open",
+    "year": 2026,
+    "org": "Xiaomi (MiMo)",
+    "size": "1M Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by Xiaomi (MiMo), featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (49 tok/s).",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Xiaomi/mimo-v2-6-pro\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Xiaomi/mimo-v2-6-pro\")",
+    "benchmarks": "Intelligence Index: 30, Briefcase Elo: 1512, Accuracy: 35%, Non-Hallucination: 40%, FrontierCode: 24%, AutomationBench: 59%, TerminalBench 4: 35%, HLE Diamond: 15%, Speed: 49 tok/s, Context Window: 1M",
+    "limitations": "High memory requirements for local execution (1M context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+    "citations": [
+      {
+        "text": "MiMo-V2.6-Pro on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/mimo-v2-6-pro"
+      },
+      {
+        "text": "MiMo-V2.6-Pro Inference Providers",
+        "url": "https://artificialanalysis.ai/models/mimo-v2-6-pro/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Haiku 5.5 (high)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 30, Briefcase Elo of 1441, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (173 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-haiku-5-5-high\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 30, Briefcase Elo: 1441, Accuracy: 32%, Non-Hallucination: 61%, FrontierCode: 23%, AutomationBench: 34%, TerminalBench 4: 22%, HLE Diamond: 24%, Speed: 173 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($0.1/M in, $0.5/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-high",
+    "citations": [
+      {
+        "text": "Claude Haiku 5.5 (high) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-high"
+      },
+      {
+        "text": "Claude Haiku 5.5 (high) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-high/providers"
+      }
+    ]
+  },
+  {
+    "name": "MiniMax-M3.1-Flash",
+    "type": "Model",
+    "summary": "MiniMax's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 29, Briefcase Elo of 1475, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Open",
+    "year": 2026,
+    "org": "MiniMax",
+    "size": "1M Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by MiniMax, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (119 tok/s).",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"MiniMax/minimax-m3-1-flash\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"MiniMax/minimax-m3-1-flash\")",
+    "benchmarks": "Intelligence Index: 29, Briefcase Elo: 1475, Accuracy: 45%, Non-Hallucination: 6%, FrontierCode: 21%, AutomationBench: 73%, TerminalBench 4: 26%, HLE Diamond: 28%, Speed: 119 tok/s, Context Window: 1M",
+    "limitations": "High memory requirements for local execution (1M context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/minimax-m3-1-flash",
+    "citations": [
+      {
+        "text": "MiniMax-M3.1-Flash on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/minimax-m3-1-flash"
+      },
+      {
+        "text": "MiniMax-M3.1-Flash Inference Providers",
+        "url": "https://artificialanalysis.ai/models/minimax-m3-1-flash/providers"
+      }
+    ]
+  },
+  {
+    "name": "Step 5 Preview",
+    "type": "Model",
+    "summary": "StepFun's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 29, Briefcase Elo of 1425, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Open",
+    "year": 2026,
+    "org": "StepFun",
+    "size": "1M Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by StepFun, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (165 tok/s).",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"StepFun/step-5-preview\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"StepFun/step-5-preview\")",
+    "benchmarks": "Intelligence Index: 29, Briefcase Elo: 1425, Accuracy: 36%, Non-Hallucination: 69%, FrontierCode: 12%, AutomationBench: 51%, TerminalBench 4: 33%, HLE Diamond: 24%, Speed: 165 tok/s, Context Window: 1M",
+    "limitations": "High memory requirements for local execution (1M context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/step-5",
+    "citations": [
+      {
+        "text": "Step 5 Preview on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/step-5"
+      },
+      {
+        "text": "Step 5 Preview Inference Providers",
+        "url": "https://artificialanalysis.ai/models/step-5/providers"
+      }
+    ]
+  },
+  {
+    "name": "GPT-6 Luna (max)",
+    "type": "Model",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 28, Briefcase Elo of 1337, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (118 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-luna-max\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 28, Briefcase Elo: 1337, Accuracy: 40%, Non-Hallucination: 21%, FrontierCode: 25%, AutomationBench: 53%, TerminalBench 4: 13%, HLE Diamond: 22%, Speed: 118 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($0.1/M in, $0.5/M out).",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/gpt-6-luna",
+    "citations": [
+      {
+        "text": "GPT-6 Luna (max) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-luna"
+      },
+      {
+        "text": "GPT-6 Luna (max) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-luna/providers"
+      }
+    ]
+  },
+  {
+    "name": "Mistral Large 4 (high)",
+    "type": "Model",
+    "summary": "Mistral AI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 26, Briefcase Elo of 1350, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Open",
+    "year": 2026,
+    "org": "Mistral AI",
+    "size": "1M Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by Mistral AI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (161 tok/s).",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Mistral/mistral-large-4-high\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Mistral/mistral-large-4-high\")",
+    "benchmarks": "Intelligence Index: 26, Briefcase Elo: 1350, Accuracy: 26%, Non-Hallucination: 72%, FrontierCode: 15%, AutomationBench: 58%, TerminalBench 4: 25%, HLE Diamond: 17%, Speed: 161 tok/s, Context Window: 1M",
+    "limitations": "High memory requirements for local execution (1M context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/mistral-large-4",
+    "citations": [
+      {
+        "text": "Mistral Large 4 (high) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/mistral-large-4"
+      },
+      {
+        "text": "Mistral Large 4 (high) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/mistral-large-4/providers"
+      }
+    ]
+  },
+  {
+    "name": "Claude Sonnet 5.5 (low with fallback)",
+    "type": "Model",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 25, Briefcase Elo of 1268, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (105 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-sonnet-5-5-low-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 25, Briefcase Elo: 1268, Accuracy: 46%, Non-Hallucination: 52%, FrontierCode: 7%, AutomationBench: 49%, TerminalBench 4: 21%, HLE Diamond: 21%, Speed: 105 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($2/M in, $10/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-low",
+    "citations": [
+      {
+        "text": "Claude Sonnet 5.5 (low with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-low"
+      },
+      {
+        "text": "Claude Sonnet 5.5 (low with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-low/providers"
+      }
+    ]
+  },
+  {
+    "name": "DeepSeek V4.1 Flash 1017 (non-reasoning)",
+    "type": "Model",
+    "summary": "DeepSeek AI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 19, Briefcase Elo of 1426, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Open",
+    "year": 2026,
+    "org": "DeepSeek AI",
+    "size": "1M Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by DeepSeek AI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (1153 tok/s).",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"DeepSeek/deepseek-v4-1-flash-1017-non-reasoning\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"DeepSeek/deepseek-v4-1-flash-1017-non-reasoning\")",
+    "benchmarks": "Intelligence Index: 19, Briefcase Elo: 1426, Accuracy: 22%, Non-Hallucination: 75%, FrontierCode: 6%, AutomationBench: 49%, TerminalBench 4: 9%, HLE Diamond: 7%, Speed: 1153 tok/s, Context Window: 1M",
+    "limitations": "High memory requirements for local execution (1M context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017-non-reasoning",
+    "citations": [
+      {
+        "text": "DeepSeek V4.1 Flash 1017 (non-reasoning) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017-non-reasoning"
+      },
+      {
+        "text": "DeepSeek V4.1 Flash 1017 (non-reasoning) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017-non-reasoning/providers"
+      }
+    ]
+  },
+  {
+    "name": "Nemotron 3.5 Super VL",
+    "type": "Model",
+    "summary": "NVIDIA's frontier multimodal model featured on the Artificial Analysis leaderboard with an Intelligence Index of 14, Briefcase Elo of 999, and a massive 1M context window.",
+    "task": "Multimodal",
+    "license": "Open",
+    "year": 2026,
+    "org": "NVIDIA",
+    "size": "1M Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by NVIDIA, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (474 tok/s).",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"NVIDIA/nemotron-3-5-super-vl\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"NVIDIA/nemotron-3-5-super-vl\")",
+    "benchmarks": "Intelligence Index: 14, Briefcase Elo: 999, Accuracy: 21%, Non-Hallucination: 70%, FrontierCode: 6%, AutomationBench: 15%, TerminalBench 4: 0%, HLE Diamond: 9%, Speed: 474 tok/s, Context Window: 1M",
+    "limitations": "High memory requirements for local execution (1M context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/nemotron-3-5-super-vl",
+    "citations": [
+      {
+        "text": "Nemotron 3.5 Super VL on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/nemotron-3-5-super-vl"
+      },
+      {
+        "text": "Nemotron 3.5 Super VL Inference Providers",
+        "url": "https://artificialanalysis.ai/models/nemotron-3-5-super-vl/providers"
+      }
+    ]
+  },
+  {
+    "name": "Qwen3.8 27B (xhigh)",
+    "type": "Model",
+    "summary": "Alibaba (Qwen)'s frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 20, Briefcase Elo of 1393, and a massive 256k context window.",
+    "task": "NLP",
+    "license": "Open",
+    "year": 2026,
+    "org": "Alibaba (Qwen)",
+    "size": "256k Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by Alibaba (Qwen), featuring native 256k token window support, optimized reasoning chains, and low-latency inference throughput (38 tok/s).",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Alibaba/qwen3-8-27b-xhigh\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Alibaba/qwen3-8-27b-xhigh\")",
+    "benchmarks": "Intelligence Index: 20, Briefcase Elo: 1393, Accuracy: 17%, Non-Hallucination: 71%, FrontierCode: 15%, AutomationBench: 48%, TerminalBench 4: 6%, HLE Diamond: 15%, Speed: 38 tok/s, Context Window: 256k",
+    "limitations": "High memory requirements for local execution (256k context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/qwen3-8-27b",
+    "citations": [
+      {
+        "text": "Qwen3.8 27B (xhigh) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/qwen3-8-27b"
+      },
+      {
+        "text": "Qwen3.8 27B (xhigh) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/qwen3-8-27b/providers"
+      }
+    ]
+  },
+  {
+    "name": "Nemotron 3 Ultra",
+    "type": "Model",
+    "summary": "NVIDIA's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 12, Briefcase Elo of 877, and a massive 262k context window.",
+    "task": "NLP",
+    "license": "Open",
+    "year": 2026,
+    "org": "NVIDIA",
+    "size": "262k Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by NVIDIA, featuring native 262k token window support, optimized reasoning chains, and low-latency inference throughput (153 tok/s).",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"NVIDIA/nemotron-3-ultra\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"NVIDIA/nemotron-3-ultra\")",
+    "benchmarks": "Intelligence Index: 12, Briefcase Elo: 877, Accuracy: 21%, Non-Hallucination: 77%, FrontierCode: 1%, AutomationBench: 3%, TerminalBench 4: 1%, HLE Diamond: 9%, Speed: 153 tok/s, Context Window: 262k",
+    "limitations": "High memory requirements for local execution (262k context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/nvidia-nemotron-3-ultra-550b-a55b",
+    "citations": [
+      {
+        "text": "Nemotron 3 Ultra on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/nvidia-nemotron-3-ultra-550b-a55b"
+      },
+      {
+        "text": "Nemotron 3 Ultra Inference Providers",
+        "url": "https://artificialanalysis.ai/models/nvidia-nemotron-3-ultra-550b-a55b/providers"
+      }
+    ]
+  },
+  {
+    "name": "Gemini 3.5 Flash-Lite",
+    "type": "Model",
+    "summary": "Google DeepMind's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 12, Briefcase Elo of 651, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Google DeepMind",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Google DeepMind, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (406 tok/s).",
+    "usage": "from google import genai\nclient = genai.Client()\nresponse = client.models.generate_content(\n  model=\"gemini-3-5-flash-lite\",\n  contents=\"Synthesize multimodal analysis over 1M context.\"\n)",
+    "benchmarks": "Intelligence Index: 12, Briefcase Elo: 651, Accuracy: 27%, Non-Hallucination: 73%, FrontierCode: 6%, AutomationBench: 25%, TerminalBench 4: 1%, HLE Diamond: 10%, Speed: 406 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Google DeepMind developer platform; subject to API rate limits and token pricing ($0.3/M in, $2.5/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/gemini-3-5-flash-lite",
+    "citations": [
+      {
+        "text": "Gemini 3.5 Flash-Lite on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gemini-3-5-flash-lite"
+      },
+      {
+        "text": "Gemini 3.5 Flash-Lite Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gemini-3-5-flash-lite/providers"
+      }
+    ]
+  },
+  {
+    "name": "Qwen3.8 2.4T A95B",
+    "type": "Model",
+    "summary": "Alibaba (Qwen)'s frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of N/A, Briefcase Elo of 1431, and a massive 262k context window.",
+    "task": "NLP",
+    "license": "Open",
+    "year": 2026,
+    "org": "Alibaba (Qwen)",
+    "size": "262k Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by Alibaba (Qwen), featuring native 262k token window support, optimized reasoning chains, and low-latency inference throughput (36 tok/s).",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Alibaba/qwen3-8-2-4t-a95b\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Alibaba/qwen3-8-2-4t-a95b\")",
+    "benchmarks": "Briefcase Elo: 1431, Accuracy: 31%, Non-Hallucination: 66%, AutomationBench: 57%, TerminalBench 4: 11%, HLE Diamond: 20%, Speed: 36 tok/s, Context Window: 262k",
+    "limitations": "High memory requirements for local execution (262k context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.",
+    "popular": false,
+    "url": "https://artificialanalysis.ai/models/qwen3-8-2-4t-a95b",
+    "citations": [
+      {
+        "text": "Qwen3.8 2.4T A95B on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/qwen3-8-2-4t-a95b"
+      },
+      {
+        "text": "Qwen3.8 2.4T A95B Inference Providers",
+        "url": "https://artificialanalysis.ai/models/qwen3-8-2-4t-a95b/providers"
+      }
+    ]
+  },
+  {
+    "name": "Llama 4 Maverick",
+    "type": "Model",
+    "summary": "Meta AI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of N/A, and a massive 1M context window.",
+    "task": "NLP",
+    "license": "Open",
+    "year": 2026,
+    "org": "Meta AI",
+    "size": "1M Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by Meta AI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (12 tok/s).",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Meta/llama-4-maverick\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Meta/llama-4-maverick\")",
+    "benchmarks": "Briefcase Elo: 0, AutomationBench: 0%, TerminalBench 4: 0%, Speed: 12 tok/s, Context Window: 1M",
+    "limitations": "High memory requirements for local execution (1M context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/llama-4-maverick",
+    "citations": [
+      {
+        "text": "Llama 4 Maverick on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/llama-4-maverick"
+      },
+      {
+        "text": "Llama 4 Maverick Inference Providers",
+        "url": "https://artificialanalysis.ai/models/llama-4-maverick/providers"
+      }
+    ]
+  },
+  {
+    "name": "Llama 4 Scout",
+    "type": "Model",
+    "summary": "Meta AI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of N/A, and a massive 10M context window.",
+    "task": "NLP",
+    "license": "Open",
+    "year": 2026,
+    "org": "Meta AI",
+    "size": "10M Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by Meta AI, featuring native 10M token window support, optimized reasoning chains, and low-latency inference throughput (15 tok/s).",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Meta/llama-4-scout\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Meta/llama-4-scout\")",
+    "benchmarks": "Briefcase Elo: 0, AutomationBench: 0%, TerminalBench 4: 0%, Speed: 15 tok/s, Context Window: 10M",
+    "limitations": "High memory requirements for local execution (10M context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/llama-4-scout",
+    "citations": [
+      {
+        "text": "Llama 4 Scout on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/llama-4-scout"
+      },
+      {
+        "text": "Llama 4 Scout Inference Providers",
+        "url": "https://artificialanalysis.ai/models/llama-4-scout/providers"
+      }
+    ]
+  },
+  {
+    "name": "DeepSeek V4 Flash Vision (max)",
+    "type": "Model",
+    "summary": "DeepSeek AI's frontier multimodal model featured on the Artificial Analysis leaderboard with an Intelligence Index of N/A, Briefcase Elo of 1420, and a massive 1M context window.",
+    "task": "Multimodal",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "DeepSeek AI",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by DeepSeek AI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (40 tok/s).",
+    "usage": "import requests\n\nresponse = requests.post(\n  \"https://api.deepseekai.com/v1/chat/completions\",\n  json={\"model\": \"deepseek-v4-flash-vision-max\", \"messages\": [{\"role\": \"user\", \"content\": \"Benchmark query\"}]}\n)",
+    "benchmarks": "Briefcase Elo: 1420, AutomationBench: 47%, TerminalBench 4: 12%, HLE Diamond: 21%, Speed: 40 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via DeepSeek AI developer platform; subject to API rate limits and token pricing ($1.32/M in, $0.01/M out).",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/deepseek-v4-flash-vision",
+    "citations": [
+      {
+        "text": "DeepSeek V4 Flash Vision (max) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/deepseek-v4-flash-vision"
+      },
+      {
+        "text": "DeepSeek V4 Flash Vision (max) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/deepseek-v4-flash-vision/providers"
+      }
+    ]
+  },
+  {
+    "name": "Llama 3.1 405B",
+    "type": "Model",
+    "summary": "Meta AI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of N/A, and a massive 128k context window.",
+    "task": "NLP",
+    "license": "Open",
+    "year": 2024,
+    "org": "Meta AI",
+    "size": "128k Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by Meta AI, featuring native 128k token window support, optimized reasoning chains, and low-latency inference throughput (high-speed streaming).",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Meta/llama-3-1-405b\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Meta/llama-3-1-405b\")",
+    "benchmarks": "Context Window: 128k",
+    "limitations": "High memory requirements for local execution (128k context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.",
+    "popular": true,
+    "url": "https://artificialanalysis.ai/models/llama-3-1-instruct-405b",
+    "citations": [
+      {
+        "text": "Llama 3.1 405B on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/llama-3-1-instruct-405b"
+      },
+      {
+        "text": "Llama 3.1 405B Inference Providers",
+        "url": "https://artificialanalysis.ai/models/llama-3-1-instruct-405b/providers"
+      }
+    ]
   }
 ];
 

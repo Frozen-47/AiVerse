@@ -115,20 +115,20 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
           const u = x / w - 0.5;
           const v = y / h - 0.5;
 
-          // Calm, graceful drifting waves (restored to original gentle speed)
+          // Balanced, engaging wave speed (moderately faster than slow baseline)
           const n =
-            (Math.sin(x * 0.009 + t * 0.26) +
-              Math.sin(y * 0.013 - t * 0.18) +
-              Math.sin((x + y) * 0.007 + t * 0.14) +
-              Math.sin(Math.hypot(u * 1.5, v * 2.0) * 8 - t * 0.32)) /
+            (Math.sin(x * 0.010 + t * 0.40) +
+              Math.sin(y * 0.014 - t * 0.28) +
+              Math.sin((x + y) * 0.008 + t * 0.22) +
+              Math.sin(Math.hypot(u * 1.5, v * 2.0) * 8 - t * 0.48)) /
             4;
 
-          // Continuous wave intensity
-          const k = Math.max(0, n * 0.5 + 0.5 - 0.35) * 1.5;
+          // Normalized wave (0 to 1)
+          const wave = n * 0.5 + 0.5;
 
           // Center damping & soft edge mask to frame the headline typography
           const m =
-            (1 - 0.65 * Math.exp(-(u * u * 12 + v * v * 20))) *
+            (1 - 0.45 * Math.exp(-(u * u * 10 + v * v * 16))) *
             Math.min(1, (0.5 - Math.abs(u)) * 4) *
             Math.min(1, (0.5 - Math.abs(v)) * 5);
 
@@ -137,10 +137,11 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
           const near = Math.max(0, 1 - dist / 160);
           const swell = near * near * (3 - 2 * near); // smoothstep curve
 
-          // Elegant sizing: ambient micro-dots ~0.8px-1.6px, swelling to ~3.2px under cursor
-          const r = Math.min(s * 0.38, Math.max(0.45, (k * m * 1.5 + swell * 2.1) * (s / 13)));
+          // Tangible dot sizing in default auto animation (~0.95px - 2.2px) + cursor swell (~3.8px)
+          const ambientR = Math.max(0.75, (0.95 + wave * 1.25) * m);
+          const r = Math.min(s * 0.42, ambientR + swell * 1.65);
 
-          if (r > 0.42) {
+          if (r > 0.45) {
             ctx.moveTo(x + r, y);
             ctx.arc(x, y, r, 0, 6.2832);
           }
@@ -205,7 +206,7 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-x-0 top-[10%] h-[72%] opacity-75"
+      className="pointer-events-none absolute inset-x-0 top-[10%] h-[72%] opacity-85"
       style={{
         maskImage: "radial-gradient(ellipse 80% 65% at 50% 50%, black 45%, transparent 100%)",
         WebkitMaskImage: "radial-gradient(ellipse 80% 65% at 50% 50%, black 45%, transparent 100%)",
