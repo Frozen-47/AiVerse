@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { SignedIn, SignedOut, useAuth } from "./AuthContext";
-import { Plus, Moon, Sun, SlidersHorizontal, LayoutGrid, Building2, Zap, Trophy } from "lucide-react";
+import { Plus, Moon, Sun, SlidersHorizontal, LayoutGrid, Building2, Trophy } from "lucide-react";
 import { useTokens, useTheme } from "../lib/theme";
 import { UserProfileMenu } from "./UserProfileMenu";
 import { parseProfileMeta, type OnboardingProfile } from "../lib/onboarding";
@@ -46,7 +46,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   onBrowseAll,
   onViewEcosystems,
   onViewLeaderboard,
-  onViewChat,
   ecosystemsCount,
   entryCount,
   onboardingProfile = null,
@@ -194,18 +193,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <span>Leaderboard</span>
                 </button>
               )}
-
-              <button
-                onClick={() => {
-                  if (onViewChat) onViewChat();
-                  else window.dispatchEvent(new CustomEvent('open-aiverse-chat'));
-                }}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-neutral-800 dark:text-neutral-200 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 transition-all cursor-pointer border border-neutral-200 dark:border-white/10"
-                title="Groq LPU Accelerated AI Research (/chat)"
-              >
-                <Zap size={13} className="text-amber-500 fill-amber-500" />
-                <span>Groq Chat</span>
-              </button>
             </div>
           )}
         </div>

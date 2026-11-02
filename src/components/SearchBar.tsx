@@ -9,6 +9,7 @@ interface SearchBarProps {
   entries: Entry[];
   onSelect: (e: Entry) => void;
   showDropdown?: boolean;
+  placeholder?: string;
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({
@@ -17,6 +18,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   entries,
   onSelect,
   showDropdown = true,
+  placeholder = "Search models, frameworks, orgs…",
 }) => {
   const t = useTokens();
   const { resolvedTheme } = useTheme();
@@ -113,7 +115,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           onFocus={() => setOpen(true)}
           onBlur={() => setTimeout(() => setOpen(false), 180)}
           onKeyDown={handleKeyDown}
-          placeholder="Search models, frameworks, orgs…"
+          placeholder={placeholder}
           className={`flex-1 bg-transparent text-[14px] focus:outline-none ${t.textPrimary} placeholder:${t.textMuted}`}
         />
         {query && (

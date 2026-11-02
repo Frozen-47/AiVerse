@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from "react";
-import { Search, RotateCcw, ChevronLeft, ChevronRight, List, LayoutGrid } from "lucide-react";
+import { RotateCcw, ChevronLeft, ChevronRight, List, LayoutGrid } from "lucide-react";
 import type { Entry, EntryRatingSummary } from "../types";
 import { groupEntriesByEcosystem, type EcosystemGroup } from "../lib/ecosystems";
 import { EcosystemCard } from "./EcosystemCard";
@@ -13,6 +13,8 @@ interface EcosystemsSectionProps {
   ratingSummaries: Record<string, EntryRatingSummary>;
   selectedEcosystemId?: string | null;
   onClearSelectedEcosystem?: () => void;
+  searchQuery?: string;
+  onSearchQueryChange?: (q: string) => void;
 }
 
 export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
@@ -23,13 +25,17 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
   ratingSummaries,
   selectedEcosystemId,
   onClearSelectedEcosystem,
+  searchQuery: propSearchQuery,
+  onSearchQueryChange,
 }) => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [internalSearchQuery, setInternalSearchQuery] = useState("");
+  const searchQuery = propSearchQuery !== undefined ? propSearchQuery : internalSearchQuery;
+  const setSearchQuery = onSearchQueryChange || setInternalSearchQuery;
   const [activeEcosystem, setActiveEcosystem] = useState<EcosystemGroup | null>(null);
   const [filterFocus, setFilterFocus] = useState<"All" | "Frontier" | "Open" | "Multi">("All");
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(12);
-  const [viewMode, setViewMode] = useState<"list" | "grid">("list");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -171,47 +177,16 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
           })}
         </div>
 
-        {/* Search bar & count indicator */}
-        <div className="flex items-center gap-2.5 w-full lg:w-auto">
+        {/* Count indicator & View Mode Toggle (Grid first, then Line by Line) */}
+        <div className="flex items-center justify-between sm:justify-end gap-3 w-full lg:w-auto">
           <span className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400 whitespace-nowrap">
             {filteredEcosystems.length === allEcosystems.length
               ? `Page ${currentPage} of ${totalPages} (${allEcosystems.length} labs)`
               : `${filteredEcosystems.length} of ${allEcosystems.length} labs`}
           </span>
-          <div className="relative w-full sm:w-72">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search AI Labs (e.g. OpenAI, DeepSeek)..."
-              className="w-full pl-9 pr-8 py-1.5 rounded-full text-xs border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:border-blue-500 shadow-xs"
-            />
-            <Search size={13} className="absolute left-3 top-2.5 text-neutral-400" />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1.5 text-sm text-neutral-400 hover:text-neutral-600 dark:hover:text-white cursor-pointer"
-                title="Clear search"
-              >
-                ×
-              </button>
-            )}
-          </div>
 
-          {/* View Mode Toggle: Line by Line (List) vs Grid */}
+          {/* View Mode Toggle: Grid first, then Line by Line */}
           <div className="flex items-center p-1 rounded-xl bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08] shrink-0">
-            <button
-              onClick={() => setViewMode("list")}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                viewMode === "list"
-                  ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-xs"
-                  : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
-              }`}
-              title="Line-by-line list view"
-            >
-              <List size={13} />
-              <span className="hidden sm:inline">Line by Line</span>
-            </button>
             <button
               onClick={() => setViewMode("grid")}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
@@ -223,6 +198,18 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
             >
               <LayoutGrid size={13} />
               <span className="hidden sm:inline">Grid</span>
+            </button>
+            <button
+              onClick={() => setViewMode("list")}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                viewMode === "list"
+                  ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-xs"
+                  : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
+              }`}
+              title="Line-by-line list view"
+            >
+              <List size={13} />
+              <span className="hidden sm:inline">Line by Line</span>
             </button>
           </div>
         </div>

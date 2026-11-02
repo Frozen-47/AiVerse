@@ -1327,17 +1327,20 @@ const Inner: React.FC = () => {
                         </button>
                       </div>
 
-                      {catalogDisplayMode === "assets" && (
-                        <div className="w-full sm:w-72 shrink-0">
-                          <SearchBar
-                            query={searchInput}
-                            onChange={handleSearchChange}
-                            entries={entries}
-                            onSelect={handleSearchSelect}
-                            showDropdown={false}
-                          />
-                        </div>
-                      )}
+                      <div className="w-full sm:w-80 md:w-96 lg:w-[460px] xl:w-[520px] shrink-0">
+                        <SearchBar
+                          query={searchInput}
+                          onChange={handleSearchChange}
+                          entries={entries}
+                          onSelect={handleSearchSelect}
+                          showDropdown={false}
+                          placeholder={
+                            catalogDisplayMode === "ecosystems"
+                              ? "Search AI Labs & ecosystems (e.g. OpenAI, DeepSeek)…"
+                              : "Search models, frameworks, orgs…"
+                          }
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1353,6 +1356,8 @@ const Inner: React.FC = () => {
                     ratingSummaries={ratingSummaries}
                     selectedEcosystemId={selectedEcosystemId}
                     onClearSelectedEcosystem={() => setSelectedEcosystemId(null)}
+                    searchQuery={searchInput}
+                    onSearchQueryChange={handleSearchChange}
                   />
                 </div>
               ) : (

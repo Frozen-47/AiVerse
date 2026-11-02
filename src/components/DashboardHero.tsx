@@ -5,6 +5,7 @@ import { useTheme } from "../lib/theme";
 interface DashboardHeroProps {
   totalEntries: number;
   onScrollToCatalog: () => void;
+  showNav?: boolean;
   searchQuery?: string;
   onSearchChange?: (query: string) => void;
   activeType?: string;
@@ -38,12 +39,14 @@ const ECOSYSTEMS = [
 const EDGE = "linear-gradient(to right, transparent, #000 12%, #000 88%, transparent)";
 
 const CSS = `
+.dh-nav{animation:dh-drop .9s cubic-bezier(.2,.7,.2,1) .1s both}
 .dh-fade{animation:dh-fade 1s ease-out both}
 .dh-word{display:inline-block;animation:dh-word .95s cubic-bezier(.2,.7,.2,1) both}
 .dh-marquee{animation:dh-marquee 50s linear infinite}
 .dh-marquee:hover{animation-play-state:paused}
 .dh-btn::after{content:"";position:absolute;inset:auto 14% -2px;height:3px;border-radius:9px;background:linear-gradient(90deg,#8b5cf6,#3b82f6,#10b981,#facc15,#f43f5e,#8b5cf6);background-size:200% 100%;filter:blur(2.5px);animation:dh-slide 5s linear infinite;transition:inset .3s,filter .3s}
 .dh-btn:hover::after{inset:auto 6% -3px;filter:blur(5px)}
+@keyframes dh-drop{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
 @keyframes dh-fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes dh-word{from{opacity:0;transform:translateY(.55em);filter:blur(10px)}to{opacity:1;transform:none;filter:blur(0)}}
 @keyframes dh-marquee{to{transform:translateX(-50%)}}
@@ -58,13 +61,12 @@ const words = (list: string[], offset: number) =>
     </React.Fragment>
   ));
 
-/* Halftone dot field: all-time running continuous wave animation with magnetic mouse ripple */
+/* Artistic Halftone Field: cosmic soliton waves, galactic spiral curvature, and magnetic lens ripples */
 const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
   const ref = React.useRef<HTMLCanvasElement>(null);
   const darkRef = React.useRef(dark);
   const drawStaticRef = React.useRef<() => void>(() => {});
 
-  // Keep darkRef synced without unmounting or tearing down the continuous animation loop
   React.useEffect(() => {
     darkRef.current = dark;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -80,8 +82,38 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
 
     const host = cv.closest("section") ?? cv;
     const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let w = 0, h = 0, raf = 0, visible = true, mx = -9999, my = -9999;
+    let w = 0, h = 0, raf = 0, visible = true;
+    let mx = -9999, my = -9999, lastMx = -9999, lastMy = -9999, speed = 0;
     let cvRect = cv.getBoundingClientRect();
+
+    // Individual element bounding zones (NO monolithic box!)
+    let boxes: { cx: number; cy: number; hw: number; hh: number }[] = [];
+
+    const measureBoxes = () => {
+      cvRect = cv.getBoundingClientRect();
+      if (!host || cvRect.width === 0) return;
+
+      const els: Element[] = [];
+      const h1 = host.querySelector("h1");
+      if (h1) els.push(h1);
+      const ps = host.querySelectorAll("p");
+      ps.forEach((p) => els.push(p));
+      const btn = host.querySelector("button.dh-btn");
+      if (btn) els.push(btn);
+
+      boxes = els
+        .map((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.width === 0 || r.height === 0) return null;
+          return {
+            cx: r.left + r.width / 2 - cvRect.left,
+            cy: r.top + r.height / 2 - cvRect.top,
+            hw: r.width / 2 + 12,
+            hh: r.height / 2 + 8,
+          };
+        })
+        .filter((b): b is { cx: number; cy: number; hw: number; hh: number } => b !== null);
+    };
 
     const fit = () => {
       cvRect = cv.getBoundingClientRect();
@@ -92,6 +124,7 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
       cv.width = w * d;
       cv.height = h * d;
       ctx.setTransform(d, 0, 0, d, 0, 0);
+      measureBoxes();
     };
 
     const draw = (ms: number) => {
@@ -102,46 +135,85 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
 
       const isDark = darkRef.current;
       const t = ms / 1000;
-      // Grid spacing: 11px on mobile, 13px on desktop
-      const s = w < 640 ? 11 : 13;
+      // Staggered lattice step: 12px on mobile, 13.5px on desktop for refined editorial texture
+      const s = w < 640 ? 12 : 13.5;
       ctx.clearRect(0, 0, w, h);
 
-      // Vector-sharp crisp fills in single batch
-      ctx.fillStyle = isDark ? "#f5f5f5" : "#171717";
+      // Editorial ink vs dark mode celestial stardust
+      ctx.fillStyle = isDark ? "#f0f0f0" : "#1a1a1a";
       ctx.beginPath();
 
+      const numBoxes = boxes.length;
+
+      // Slow breathing cycle that gently breathes life into the universe field
+      const breath = Math.sin(t * 0.18) * 0.12;
+
       for (let y = s / 2, j = 0; y < h; y += s, j++) {
-        for (let x = s / 2 + (j % 2) * (s / 2); x < w; x += s) {
+        const v = y / h - 0.5;
+        // Soft outer vertical screen border fade
+        const edgeFadeY = Math.min(1, (0.5 - Math.abs(v)) * 4.5);
+        if (edgeFadeY <= 0) continue;
+
+        const xOffset = (j % 2) * (s / 2);
+
+        for (let x = s / 2 + xOffset; x < w; x += s) {
           const u = x / w - 0.5;
-          const v = y / h - 0.5;
+          const edgeFadeX = Math.min(1, (0.5 - Math.abs(u)) * 5);
+          const edgeFade = edgeFadeX * edgeFadeY;
+          if (edgeFade < 0.02) continue;
 
-          // Balanced, engaging wave speed (moderately faster than slow baseline)
-          const n =
-            (Math.sin(x * 0.010 + t * 0.40) +
-              Math.sin(y * 0.014 - t * 0.28) +
-              Math.sin((x + y) * 0.008 + t * 0.22) +
-              Math.sin(Math.hypot(u * 1.5, v * 2.0) * 8 - t * 0.48)) /
-            4;
+          // Distance to the nearest individual element (NO single giant box cutout!)
+          let minD = 999;
+          for (let b = 0; b < numBoxes; b++) {
+            const box = boxes[b];
+            const qx = Math.max(0, Math.abs(x - box.cx) - box.hw);
+            const qy = Math.max(0, Math.abs(y - box.cy) - box.hh);
+            const d = Math.hypot(qx, qy);
+            if (d < minD) minD = d;
+          }
 
-          // Normalized wave (0 to 1)
-          const wave = n * 0.5 + 0.5;
+          // Gentle text modulation:
+          // Over text: animation is softened by ~72% (dots remain calm, tiny pinpoints ~0.55-0.75px)
+          // Open background: animation forms full artistic crests (~2.4px)
+          const textT = Math.min(1, minD / 48);
+          const textMod = 0.28 + 0.72 * (textT * textT * (3 - 2 * textT));
 
-          // Center damping & soft edge mask to frame the headline typography
-          const m =
-            (1 - 0.45 * Math.exp(-(u * u * 10 + v * v * 16))) *
-            Math.min(1, (0.5 - Math.abs(u)) * 4) *
-            Math.min(1, (0.5 - Math.abs(v)) * 5);
+          // Artistic multi-layer wave harmonics:
+          // 1. Soliton transverse current with bilateral symmetry
+          const uSym = Math.abs(u);
+          const w1 = Math.sin(uSym * 7.2 - t * 0.24 + v * 3.0);
+          
+          // 2. Counter-flowing diagonal ribbon
+          const w2 = Math.sin((u * 4.8 - v * 5.2) * 1.1 + t * 0.18);
+          
+          // 3. Galactic spiral curvature centered in space
+          const distCenter = Math.hypot(u * 1.8, v * 1.4);
+          const angle = Math.atan2(v, u);
+          const w3 = Math.cos(distCenter * 6.2 - angle * 1.5 - t * 0.20 + breath);
 
-          // Prominent responsive mouse swell (160px interaction field)
-          const dist = Math.hypot(x - mx, y - my);
-          const near = Math.max(0, 1 - dist / 160);
-          const swell = near * near * (3 - 2 * near); // smoothstep curve
+          // Blended harmonic wave (normalized 0 to 1)
+          const rawWave = w1 * 0.44 + w2 * 0.36 + w3 * 0.20;
+          const waveNorm = rawWave * 0.5 + 0.5;
 
-          // Tangible dot sizing in default auto animation (~0.95px - 2.2px) + cursor swell (~3.8px)
-          const ambientR = Math.max(0.75, (0.95 + wave * 1.25) * m);
-          const r = Math.min(s * 0.42, ambientR + swell * 1.65);
+          // Artistic non-linear contrast curve: gives crests poetic, ribbon-like calligraphy
+          const artisticCrest = Math.pow(waveNorm, 1.85);
 
-          if (r > 0.45) {
+          // Base dot radius across the continuous field
+          let r = (0.45 + artisticCrest * 1.95 * textMod) * edgeFade;
+
+          // Interactive magnetic lens & elastic drop ripple
+          if (mx > -9000) {
+            const dist = Math.hypot(x - mx, y - my);
+            if (dist < 170) {
+              const near = 1 - dist / 170;
+              // Harmonic ripple ring combined with gravitational center swell
+              const ripple = Math.sin(near * Math.PI);
+              const swell = (near * near + ripple * 0.45 * (1 + speed * 0.4));
+              r = Math.min(s * 0.45, r + swell * 1.55 * textMod);
+            }
+          }
+
+          if (r > 0.35) {
             ctx.moveTo(x + r, y);
             ctx.arc(x, y, r, 0, 6.2832);
           }
@@ -152,7 +224,6 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
 
     drawStaticRef.current = () => draw(2000);
 
-    // All-time running loop: continuously animates and reacts to mouse/theme
     const loop = (ms: number) => {
       if (visible) draw(ms);
       raf = requestAnimationFrame(loop);
@@ -160,20 +231,35 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
 
     const move = (e: MouseEvent | PointerEvent) => {
       cvRect = cv.getBoundingClientRect();
-      mx = e.clientX - cvRect.left;
-      my = e.clientY - cvRect.top;
+      const newMx = e.clientX - cvRect.left;
+      const newMy = e.clientY - cvRect.top;
+      if (lastMx > -9000) {
+        const vx = newMx - lastMx;
+        const vy = newMy - lastMy;
+        speed = Math.min(1.5, Math.hypot(vx, vy) / 20);
+      }
+      lastMx = newMx;
+      lastMy = newMy;
+      mx = newMx;
+      my = newMy;
     };
 
     const leave = () => {
       mx = -9999;
       my = -9999;
+      lastMx = -9999;
+      lastMy = -9999;
+      speed = 0;
     };
 
     const onScrollOrResize = () => {
       fit();
+      measureBoxes();
     };
 
     fit();
+    const settleTimer = window.setTimeout(measureBoxes, 150);
+
     if (still) draw(2000);
     else raf = requestAnimationFrame(loop);
 
@@ -193,6 +279,7 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
     window.addEventListener("resize", onScrollOrResize, { passive: true });
 
     return () => {
+      window.clearTimeout(settleTimer);
       cancelAnimationFrame(raf);
       ro.disconnect();
       io.disconnect();
@@ -201,15 +288,17 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
       window.removeEventListener("scroll", onScrollOrResize);
       window.removeEventListener("resize", onScrollOrResize);
     };
-  }, []); // Run once on mount: all-time running loop, theme changes seamlessly via darkRef
+  }, []);
 
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-x-0 top-[10%] h-[72%] opacity-85"
+      className="pointer-events-none absolute inset-x-0 top-0 h-full w-full"
       style={{
-        maskImage: "radial-gradient(ellipse 80% 65% at 50% 50%, black 45%, transparent 100%)",
-        WebkitMaskImage: "radial-gradient(ellipse 80% 65% at 50% 50%, black 45%, transparent 100%)",
+        maskImage:
+          "linear-gradient(to bottom, transparent, black 8%, black 85%, transparent 100%)",
+        WebkitMaskImage:
+          "linear-gradient(to bottom, transparent, black 8%, black 85%, transparent 100%)",
       }}
     >
       <canvas ref={ref} className="h-full w-full" />
