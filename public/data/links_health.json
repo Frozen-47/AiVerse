@@ -1,33 +1,13 @@
 {
-  "timestamp": "2026-11-02T08:43:45.704Z",
+  "timestamp": "2026-11-02T19:55:52.127Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
-      "name": "Perplexity AI",
-      "url": "https://www.perplexity.ai/",
+      "name": "Gamma",
+      "url": "https://gamma.app",
       "status": 403
-    },
-    {
-      "name": "DeepSeek Chat",
-      "url": "https://chat.deepseek.com",
-      "status": 403
-    },
-    {
-      "name": "OpenAI Platform",
-      "url": "https://platform.openai.com",
-      "status": 403
-    },
-    {
-      "name": "Meta AI",
-      "url": "https://www.meta.ai",
-      "status": 403
-    },
-    {
-      "name": "ERNIE Bot",
-      "url": "https://yiyan.baidu.com",
-      "status": "Timeout"
     }
   ]
 }

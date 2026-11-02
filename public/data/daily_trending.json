@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-11-02T08:43:45.599Z",
+  "timestamp": "2026-11-02T19:55:51.968Z",
   "models": [
-    {
-      "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
-      "author": "deepseek-ai",
-      "likes": 4439,
-      "downloads": 170353,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
-    },
     {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 749,
-      "downloads": 37568,
+      "likes": 948,
+      "downloads": 42384,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
     },
     {
+      "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "author": "deepseek-ai",
+      "likes": 4669,
+      "downloads": 177009,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+    },
+    {
       "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
       "author": "nvidia",
-      "likes": 626,
-      "downloads": 29364,
+      "likes": 671,
+      "downloads": 32439,
       "pipeline_tag": "automatic-speech-recognition",
       "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
     },
     {
       "id": "mistralai/Mistral-Large-4-1T-A52B",
       "author": "mistralai",
-      "likes": 1466,
-      "downloads": 4576,
+      "likes": 1494,
+      "downloads": 5500,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
     },
     {
       "id": "baidu/Unlimited-OCR-2",
       "author": "baidu",
-      "likes": 539,
-      "downloads": 109519,
+      "likes": 556,
+      "downloads": 147588,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/baidu/Unlimited-OCR-2"
     },
     {
-      "id": "Nanbeige/Nanbeige4.3-33B",
-      "author": "Nanbeige",
-      "likes": 989,
-      "downloads": 15795,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 10338,
+      "downloads": 2467613,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5"
     }
   ],
   "papers": [
     {
-      "title": "REA: A Routed Embodied Agent Runtime for Asynchronous Brain-Cerebellum Control",
-      "summary": "REA unifies deliberative and reactive policies in a single runtime with asynchronous coordination, achieving high success rates with reduced control overhead across simulated and real robot tasks.",
-      "upvotes": 8,
-      "arxiv_id": "2610.42053",
-      "url": "https://huggingface.co/papers/2610.42053",
+      "title": "SOMA: A Benchmark for Fine-Grained Egocentric Behavior and Body-Motion Understanding",
+      "summary": "SOMA is a benchmark assessing fine-grained egocentric body-motion reasoning in multimodal models, revealing substantial gaps versus human performance and providing training data and a multimodal baseline to advance the field.",
+      "upvotes": 3,
+      "arxiv_id": "2610.36384",
+      "url": "https://huggingface.co/papers/2610.36384",
+      "githubRepo": "https://github.com/amathislab/soma"
+    },
+    {
+      "title": "GEPA-Curator: Curated Learning for Self Improving Agents",
+      "summary": "GEPA-Curator improves agentic prompt optimization by filtering unreliable failure signals and retrieving past successes, boosting performance across multiple benchmarks.",
+      "upvotes": 2,
+      "arxiv_id": "2610.37651",
+      "url": "https://huggingface.co/papers/2610.37651",
       "githubRepo": null
     },
     {
-      "title": "GLOW-FM: Efficient Generative Low-Light Image Enhancement with One-Step Latent Flow Matching",
-      "summary": "GLOW-FM is a one-step latent flow-matching framework that enables efficient generative low-light image enhancement via single-function evaluation in a compact latent space.",
+      "title": "AuditFL: A Contract-Backed Clearing Layer for Open Federated Learning",
+      "summary": "AuditFL is a blockchain-backed clearing layer that makes federated learning rounds auditable and economically constrained without removing the aggregator, preserving model accuracy under failures.",
       "upvotes": 1,
-      "arxiv_id": "2610.31222",
-      "url": "https://huggingface.co/papers/2610.31222",
-      "githubRepo": "https://github.com/arm-research/AAIR-GLOW-FM"
+      "arxiv_id": "2610.41278",
+      "url": "https://huggingface.co/papers/2610.41278",
+      "githubRepo": "https://github.com/katastrofh/AuditFL"
     },
     {
-      "title": "Latent Reasoning in Continuous Space for Unified Multimodal Models",
-      "summary": "LARC enables continuous latent reasoning for unified multimodal models, improving image generation quality and enabling test-time scaling without discrete token bottlenecks.",
-      "upvotes": 12,
-      "arxiv_id": "2610.42149",
-      "url": "https://huggingface.co/papers/2610.42149",
-      "githubRepo": "https://github.com/rootyJeon/LARC"
+      "title": "Follow the Gradient: Tracing Safety Degradation Back to Training Data",
+      "summary": "SimpleLoRIF uses gradient alignment to filter instruction data that silently degrades LLM safety, yielding a safer dataset that reduces adversarial success while preserving capabilities.",
+      "upvotes": 17,
+      "arxiv_id": "2610.37481",
+      "url": "https://huggingface.co/papers/2610.37481",
+      "githubRepo": null
     },
     {
-      "title": "TernScope: Model-Hardware Co-Design for Efficient Ternary Endoscopic Segmentation",
-      "summary": "TernScope co-designs a compact ternary-weight segmentation network with simplified hardware to achieve high accuracy and fast inference for edge medical imaging.",
-      "upvotes": 1,
-      "arxiv_id": "2610.29617",
-      "url": "https://huggingface.co/papers/2610.29617",
-      "githubRepo": "https://github.com/ReaganWu/TernScope"
-    },
-    {
-      "title": "SketchDirector: Complex Scene Sketching via Agentic Layout Reasoning and Detail Refinement",
-      "summary": "SketchDirector is an agentic framework that decomposes text prompts into draft vector assets, arranges them via iterative reasoning with self-evolving memory, and refines details using diffusion priors for complex scene sketching.",
-      "upvotes": 1,
-      "arxiv_id": "2610.41260",
-      "url": "https://huggingface.co/papers/2610.41260",
-      "githubRepo": "https://github.com/GVCLab/SketchDirector"
+      "title": "rTaste: Do Research Agents Have Taste? Evaluating Early Stage Research Judgment",
+      "summary": "Frontier AI research agents propose many sound experiments but show limited ability to rank them better than simple baselines, with teams offering no clear quality gains.",
+      "upvotes": 2,
+      "arxiv_id": "2610.40488",
+      "url": "https://huggingface.co/papers/2610.40488",
+      "githubRepo": "https://github.com/ArtKanke/rTaste"
     }
   ]
 }

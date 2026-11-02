@@ -4,6 +4,84 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Audio8-TTS-Realistic-Air",
+        "type": "Model",
+        "summary": "High-performance Audio open-weights model by Edge0, trending with over 241 community likes and 7,259 downloads on Hugging Face.",
+        "task": "Audio",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Edge0",
+        "size": "Open Weights",
+        "architecture": "Edge0 text to speech architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Edge0/Audio8-TTS-Realistic-Air\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Edge0/Audio8-TTS-Realistic-Air\")",
+        "benchmarks": "Trending Score: 223, Likes: 241, Downloads: 7,259",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/Edge0/Audio8-TTS-Realistic-Air",
+        "citations": [
+          {
+            "text": "Edge0/Audio8-TTS-Realistic-Air on Hugging Face",
+            "url": "https://huggingface.co/Edge0/Audio8-TTS-Realistic-Air"
+          }
+        ]
+      },
+      {
+        "name": "ava",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by townbox. Trending with 30 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "townbox",
+        "size": "STATIC Platform",
+        "architecture": "STATIC cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/townbox/ava",
+        "benchmarks": "Trending Score: 30, Community Likes: 30",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/townbox/ava",
+        "citations": [
+          {
+            "text": "townbox/ava on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/townbox/ava"
+          }
+        ]
+      },
+      {
+        "name": "darbuka_arabic_tts_dataset",
+        "type": "Dataset",
+        "summary": "Darbuka Arabic \t Darbuka Arabic brings together Arabic speech, automatic transcripts, and audio-quality measurements for speech recognition and text-to-speech research, (22 likes, 1,160 downloads).",
+        "task": "Computer Vision",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "bitmanagerai-speech-lab",
+        "size": "Curated Dataset",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"bitmanagerai-speech-lab/darbuka_arabic_tts_dataset\")",
+        "benchmarks": "Trending Score: 20, Likes: 22, Downloads: 1,160",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/bitmanagerai-speech-lab/darbuka_arabic_tts_dataset",
+        "citations": [
+          {
+            "text": "bitmanagerai-speech-lab/darbuka_arabic_tts_dataset on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/bitmanagerai-speech-lab/darbuka_arabic_tts_dataset"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-02",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "DeepSeek-V4.1-Flash-1017-obliterated",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by OBLITERATUS, trending with over 188 community likes and 520 downloads on Hugging Face.",
@@ -6307,77 +6385,6 @@
           {
             "text": "eidon-ai/tracker-pov on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/eidon-ai/tracker-pov"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-23",
-    "assets": [
-      {
-        "name": "Qwen-Image-2.1-Uncensored-GGUF",
-        "type": "Model",
-        "summary": "High-performance Image Generation open-weights model by abenzerps, trending with over 1,144 community likes and 182,313 downloads on Hugging Face.",
-        "task": "Image Generation",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "abenzerps",
-        "size": "Open Weights",
-        "architecture": "abenzerps text to image architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"abenzerps/Qwen-Image-2.1-Uncensored-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"abenzerps/Qwen-Image-2.1-Uncensored-GGUF\")",
-        "benchmarks": "Trending Score: 1027, Likes: 1,144, Downloads: 182,313",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": true,
-        "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF",
-        "citations": [
-          {
-            "text": "abenzerps/Qwen-Image-2.1-Uncensored-GGUF on Hugging Face",
-            "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF"
-          }
-        ]
-      },
-      {
-        "name": "jev-decision-index",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by multimodalart. Trending with 137 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "multimodalart",
-        "size": "STATIC Platform",
-        "architecture": "STATIC cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/multimodalart/jev-decision-index",
-        "benchmarks": "Trending Score: 134, Community Likes: 137",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": true,
-        "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index",
-        "citations": [
-          {
-            "text": "multimodalart/jev-decision-index on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index"
-          }
-        ]
-      },
-      {
-        "name": "saas-sales-conversations",
-        "type": "Dataset",
-        "summary": "saas-sales-conversations \t \t \t\t \t\tDataset Description \t This is a synthetic dataset of sales conversations for SaaS (Software as a Service) companies, designed for training (46 likes, 728 downloads).",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "DeepMostInnovations",
-        "size": "100K<n<1M",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"DeepMostInnovations/saas-sales-conversations\")",
-        "benchmarks": "Trending Score: 35, Likes: 46, Downloads: 728",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "url": "https://huggingface.co/datasets/DeepMostInnovations/saas-sales-conversations",
-        "citations": [
-          {
-            "text": "DeepMostInnovations/saas-sales-conversations on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/DeepMostInnovations/saas-sales-conversations"
           }
         ]
       }

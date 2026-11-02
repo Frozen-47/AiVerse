@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-02)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **DeepSeek-V4.1-Flash-1017-obliterated** (`Model`), **harness-lens** (`Platform`), **hacker-news** (`Dataset`) |
-| 🌟 **Tool of the Day** | **LightOnOCR-3-Demo** (lightonai) — [Explore](https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo) |
-| 🗄️ **Catalog Entries** | **385** AI assets tracked (312 featured) |
-| 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [REA: A Routed Embodied Agent Runtime for Asynchron...](https://huggingface.co/papers/2610.42053) |
-| 🛡️ **Catalog Links Checked** | **20/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 02 Nov 2026 08:44:16 GMT` |
+| 📥 **Queued for Review** | **Audio8-TTS-Realistic-Air** (`Model`), **ava** (`Platform`), **darbuka_arabic_tts_dataset** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Qwen-2511-Plus-Flux.2-klein-9B** (Alibaba (Qwen)) — [Explore](https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B) |
+| 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
+| 🔥 **Top Trending Model** | [LiquidAI/LFM3-1.7B](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| 📜 **Top Daily Paper** | [SOMA: A Benchmark for Fine-Grained Egocentric Beha...](https://huggingface.co/papers/2610.36384) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Synchronized** | `Mon, 02 Nov 2026 19:56:28 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
