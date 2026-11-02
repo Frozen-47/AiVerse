@@ -1,1 +1,1 @@
-LFM3-1.7B-GGUF
+DeepSeek-V4.1-Flash-1017-obliterated

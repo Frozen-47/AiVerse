@@ -2,27 +2,34 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Mon, 02 Nov 2026 01:11:14 GMT`*
+*Last Synchronized: `Mon, 02 Nov 2026 08:44:16 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (2)
+## 📥 Newly Queued Assets for Review (3)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **LFM3-1.7B-GGUF** (`Model` • *LiquidAI*)
-> High-performance NLP open-weights model by LiquidAI, trending with over 172 community likes and 150,260 downloads on Hugging Face.
+### **DeepSeek-V4.1-Flash-1017-obliterated** (`Model` • *OBLITERATUS*)
+> High-performance NLP open-weights model by OBLITERATUS, trending with over 188 community likes and 520 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 165, Likes: 172, Downloads: 150,260`
-- 🔗 **Resource Link**: [https://huggingface.co/LiquidAI/LFM3-1.7B-GGUF](https://huggingface.co/LiquidAI/LFM3-1.7B-GGUF)
+- 🏷️ **Domain & License**: `NLP` • `MIT` (2026)
+- ⚡ **Metrics**: `Trending Score: 167, Likes: 188, Downloads: 520`
+- 🔗 **Resource Link**: [https://huggingface.co/OBLITERATUS/DeepSeek-V4.1-Flash-1017-obliterated](https://huggingface.co/OBLITERATUS/DeepSeek-V4.1-Flash-1017-obliterated)
 
-### **FineDNA** (`Dataset` • *HuggingFaceBio*)
-> FineDNA 	 FineDNA is the training data of Carbon-X, the model that taught Qwen3-14B to read DNA, for all three of its training stages. Each stage is a group of configs: (23 likes, 72 downloads).
+### **harness-lens** (`Platform` • *harness-hub*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by harness-hub. Trending with 56 community stars.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 22, Likes: 23, Downloads: 72`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/HuggingFaceBio/FineDNA](https://huggingface.co/datasets/HuggingFaceBio/FineDNA)
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 28, Community Likes: 56`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/harness-hub/harness-lens](https://huggingface.co/spaces/harness-hub/harness-lens)
+
+### **hacker-news** (`Dataset` • *open-index*)
+> Hacker News - Complete Archive 	 Every Hacker News item since 2006, live-updated every 5 minutes 	 		 	 	 		What is it? 	 This dataset contains the complete Hacker News (379 likes, 434,325 downloads).
+
+- 🏷️ **Domain & License**: `NLP` • `ODC-BY` (2026)
+- ⚡ **Metrics**: `Trending Score: 24, Likes: 379, Downloads: 434,325`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/open-index/hacker-news](https://huggingface.co/datasets/open-index/hacker-news)
 
 ---
 
@@ -41,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 4,310 | 📥 170,353 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 697 | 📥 37,568 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 602 | 📥 29,364 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
-| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,451 | 📥 4,576 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
-| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 971 | 📥 15,795 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
-| `baidu/Unlimited-OCR-2` | image-text-to-text | ❤️ 518 | 📥 109,519 | [View](https://huggingface.co/baidu/Unlimited-OCR-2) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 4,439 | 📥 170,353 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 749 | 📥 37,568 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 626 | 📥 29,364 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
+| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,466 | 📥 4,576 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
+| `baidu/Unlimited-OCR-2` | image-text-to-text | ❤️ 539 | 📥 109,519 | [View](https://huggingface.co/baidu/Unlimited-OCR-2) |
+| `Nanbeige/Nanbeige4.3-33B` | text-generation | ❤️ 989 | 📥 15,795 | [View](https://huggingface.co/Nanbeige/Nanbeige4.3-33B) |
 
 
 ---
@@ -56,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **EPSBench: Benchmarking LLM Agents for Earnings Forecasting** | 👍 3 | The study introduces EPSBench to evaluate AI agents in forecasting quarterly earnings by linking financial evidence to income-statement drivers and comparing model predictions to analyst consensus. | [Read](https://huggingface.co/papers/2610.38293) |
-| **Weaken to Strengthen: Weakening-Induced On-Policy Self-Distillation for Large Reasoning Models** | 👍 3 | WISD improves reasoning models by contrasting them with weaker quantized or pruned versions to generate training signals without privileged data. | [Read](https://huggingface.co/papers/2610.38681) |
-| **Unlocking Any-Order Generation in Pretrained Autoregressive Image Models** | 👍 3 | Pretrained raster-scan autoregressive image models can be adapted into flexible any-order generators via future-aware positional embeddings and an ordering curriculum, enabling inpainting and outpainting with minimal extra compute. | [Read](https://huggingface.co/papers/2610.39293) |
-| **Matched Capabilities, Different Behaviors: A Controlled Study of MCP and CLI Interfaces for Language Agents** | 👍 6 | Matched interface representations significantly alter agent behavior despite identical executable capabilities, and targeted repair of interface-specific realization improves performance while reducing cost. | [Read](https://huggingface.co/papers/2610.34298) |
-| **Broken on Arrival: Non-Functional Quantized LLM Artifacts in Public Model Registries and How to Catch Them** | 👍 6 | Quantized small language model files in public registries can be non-functional due to uncalibrated quantization recipes, and screening plus calibration is recommended before release. | [Read](https://huggingface.co/papers/2609.05881) |
+| **REA: A Routed Embodied Agent Runtime for Asynchronous Brain-Cerebellum Control** | 👍 8 | REA unifies deliberative and reactive policies in a single runtime with asynchronous coordination, achieving high success rates with reduced control overhead across simulated and real robot tasks. | [Read](https://huggingface.co/papers/2610.42053) |
+| **GLOW-FM: Efficient Generative Low-Light Image Enhancement with One-Step Latent Flow Matching** | 👍 1 | GLOW-FM is a one-step latent flow-matching framework that enables efficient generative low-light image enhancement via single-function evaluation in a compact latent space. | [Read](https://huggingface.co/papers/2610.31222) |
+| **Latent Reasoning in Continuous Space for Unified Multimodal Models** | 👍 12 | LARC enables continuous latent reasoning for unified multimodal models, improving image generation quality and enabling test-time scaling without discrete token bottlenecks. | [Read](https://huggingface.co/papers/2610.42149) |
+| **TernScope: Model-Hardware Co-Design for Efficient Ternary Endoscopic Segmentation** | 👍 1 | TernScope co-designs a compact ternary-weight segmentation network with simplified hardware to achieve high accuracy and fast inference for edge medical imaging. | [Read](https://huggingface.co/papers/2610.29617) |
+| **SketchDirector: Complex Scene Sketching via Agentic Layout Reasoning and Detail Refinement** | 👍 1 | SketchDirector is an agentic framework that decomposes text prompts into draft vector assets, arranges them via iterative reasoning with self-evolving memory, and refines details using diffusion priors for complex scene sketching. | [Read](https://huggingface.co/papers/2610.41260) |
 
 
 ---
@@ -73,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `16/25` healthy verified (`9` flagged / timed out)
+- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
 - **Dependency Security**: `47` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

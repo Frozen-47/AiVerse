@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-02)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **LFM3-1.7B-GGUF** (`Model`), **FineDNA** (`Dataset`) |
+| 📥 **Queued for Review** | **DeepSeek-V4.1-Flash-1017-obliterated** (`Model`), **harness-lens** (`Platform`), **hacker-news** (`Dataset`) |
 | 🌟 **Tool of the Day** | **LightOnOCR-3-Demo** (lightonai) — [Explore](https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo) |
 | 🗄️ **Catalog Entries** | **385** AI assets tracked (312 featured) |
 | 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [EPSBench: Benchmarking LLM Agents for Earnings For...](https://huggingface.co/papers/2610.38293) |
-| 🛡️ **Catalog Links Checked** | **16/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 02 Nov 2026 01:11:14 GMT` |
+| 📜 **Top Daily Paper** | [REA: A Routed Embodied Agent Runtime for Asynchron...](https://huggingface.co/papers/2610.42053) |
+| 🛡️ **Catalog Links Checked** | **20/25** operational |
+| 🕒 **Last Synchronized** | `Mon, 02 Nov 2026 08:44:16 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

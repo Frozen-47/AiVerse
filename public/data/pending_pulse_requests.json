@@ -1,5 +1,80 @@
 [
   {
+    "name": "hacker-news",
+    "type": "Dataset",
+    "summary": "Hacker News - Complete Archive \t Every Hacker News item since 2006, live-updated every 5 minutes \t \t\t \t \t \t\tWhat is it? \t This dataset contains the complete Hacker News (379 likes, 434,325 downloads).",
+    "task": "NLP",
+    "license": "ODC-BY",
+    "year": 2026,
+    "org": "open-index",
+    "size": "10M<n<100M",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"open-index/hacker-news\")",
+    "benchmarks": "Trending Score: 24, Likes: 379, Downloads: 434,325",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/open-index/hacker-news",
+    "citations": [
+      {
+        "text": "open-index/hacker-news on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/open-index/hacker-news"
+      }
+    ],
+    "created_at": "2026-11-02T08:43:45.587Z"
+  },
+  {
+    "name": "harness-lens",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by harness-hub. Trending with 56 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "harness-hub",
+    "size": "DOCKER Platform",
+    "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/harness-hub/harness-lens",
+    "benchmarks": "Trending Score: 28, Community Likes: 56",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/harness-hub/harness-lens",
+    "citations": [
+      {
+        "text": "harness-hub/harness-lens on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/harness-hub/harness-lens"
+      }
+    ],
+    "created_at": "2026-11-02T08:43:45.587Z"
+  },
+  {
+    "name": "DeepSeek-V4.1-Flash-1017-obliterated",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by OBLITERATUS, trending with over 188 community likes and 520 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "MIT",
+    "year": 2026,
+    "org": "OBLITERATUS",
+    "size": "Open Weights",
+    "architecture": "OBLITERATUS text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"OBLITERATUS/DeepSeek-V4.1-Flash-1017-obliterated\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"OBLITERATUS/DeepSeek-V4.1-Flash-1017-obliterated\")",
+    "benchmarks": "Trending Score: 167, Likes: 188, Downloads: 520",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/OBLITERATUS/DeepSeek-V4.1-Flash-1017-obliterated",
+    "citations": [
+      {
+        "text": "OBLITERATUS/DeepSeek-V4.1-Flash-1017-obliterated on Hugging Face",
+        "url": "https://huggingface.co/OBLITERATUS/DeepSeek-V4.1-Flash-1017-obliterated"
+      }
+    ],
+    "created_at": "2026-11-02T08:43:45.587Z"
+  },
+  {
     "name": "FineDNA",
     "type": "Dataset",
     "summary": "FineDNA \t FineDNA is the training data of Carbon-X, the model that taught Qwen3-14B to read DNA, for all three of its training stages. Each stage is a group of configs: (23 likes, 72 downloads).",

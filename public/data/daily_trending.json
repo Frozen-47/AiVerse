@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-02T01:10:41.933Z",
+  "timestamp": "2026-11-02T08:43:45.599Z",
   "models": [
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 4310,
+      "likes": 4439,
       "downloads": 170353,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12,7 +12,7 @@
     {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 697,
+      "likes": 749,
       "downloads": 37568,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
@@ -20,7 +20,7 @@
     {
       "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
       "author": "nvidia",
-      "likes": 602,
+      "likes": 626,
       "downloads": 29364,
       "pipeline_tag": "automatic-speech-recognition",
       "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
@@ -28,68 +28,68 @@
     {
       "id": "mistralai/Mistral-Large-4-1T-A52B",
       "author": "mistralai",
-      "likes": 1451,
+      "likes": 1466,
       "downloads": 4576,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
     },
     {
-      "id": "Nanbeige/Nanbeige4.3-33B",
-      "author": "Nanbeige",
-      "likes": 971,
-      "downloads": 15795,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
-    },
-    {
       "id": "baidu/Unlimited-OCR-2",
       "author": "baidu",
-      "likes": 518,
+      "likes": 539,
       "downloads": 109519,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/baidu/Unlimited-OCR-2"
+    },
+    {
+      "id": "Nanbeige/Nanbeige4.3-33B",
+      "author": "Nanbeige",
+      "likes": 989,
+      "downloads": 15795,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
     }
   ],
   "papers": [
     {
-      "title": "EPSBench: Benchmarking LLM Agents for Earnings Forecasting",
-      "summary": "The study introduces EPSBench to evaluate AI agents in forecasting quarterly earnings by linking financial evidence to income-statement drivers and comparing model predictions to analyst consensus.",
-      "upvotes": 3,
-      "arxiv_id": "2610.38293",
-      "url": "https://huggingface.co/papers/2610.38293",
-      "githubRepo": "https://github.com/JadeXu16/epsbench"
+      "title": "REA: A Routed Embodied Agent Runtime for Asynchronous Brain-Cerebellum Control",
+      "summary": "REA unifies deliberative and reactive policies in a single runtime with asynchronous coordination, achieving high success rates with reduced control overhead across simulated and real robot tasks.",
+      "upvotes": 8,
+      "arxiv_id": "2610.42053",
+      "url": "https://huggingface.co/papers/2610.42053",
+      "githubRepo": null
     },
     {
-      "title": "Weaken to Strengthen: Weakening-Induced On-Policy Self-Distillation for Large Reasoning Models",
-      "summary": "WISD improves reasoning models by contrasting them with weaker quantized or pruned versions to generate training signals without privileged data.",
-      "upvotes": 3,
-      "arxiv_id": "2610.38681",
-      "url": "https://huggingface.co/papers/2610.38681",
-      "githubRepo": "https://github.com/jet-ai-projects/WISD"
+      "title": "GLOW-FM: Efficient Generative Low-Light Image Enhancement with One-Step Latent Flow Matching",
+      "summary": "GLOW-FM is a one-step latent flow-matching framework that enables efficient generative low-light image enhancement via single-function evaluation in a compact latent space.",
+      "upvotes": 1,
+      "arxiv_id": "2610.31222",
+      "url": "https://huggingface.co/papers/2610.31222",
+      "githubRepo": "https://github.com/arm-research/AAIR-GLOW-FM"
     },
     {
-      "title": "Unlocking Any-Order Generation in Pretrained Autoregressive Image Models",
-      "summary": "Pretrained raster-scan autoregressive image models can be adapted into flexible any-order generators via future-aware positional embeddings and an ordering curriculum, enabling inpainting and outpainting with minimal extra compute.",
-      "upvotes": 3,
-      "arxiv_id": "2610.39293",
-      "url": "https://huggingface.co/papers/2610.39293",
-      "githubRepo": "https://github.com/Ordered-AR/unlockedadaptation"
+      "title": "Latent Reasoning in Continuous Space for Unified Multimodal Models",
+      "summary": "LARC enables continuous latent reasoning for unified multimodal models, improving image generation quality and enabling test-time scaling without discrete token bottlenecks.",
+      "upvotes": 12,
+      "arxiv_id": "2610.42149",
+      "url": "https://huggingface.co/papers/2610.42149",
+      "githubRepo": "https://github.com/rootyJeon/LARC"
     },
     {
-      "title": "Matched Capabilities, Different Behaviors: A Controlled Study of MCP and CLI Interfaces for Language Agents",
-      "summary": "Matched interface representations significantly alter agent behavior despite identical executable capabilities, and targeted repair of interface-specific realization improves performance while reducing cost.",
-      "upvotes": 6,
-      "arxiv_id": "2610.34298",
-      "url": "https://huggingface.co/papers/2610.34298",
-      "githubRepo": "https://github.com/ModalityDance/MICA"
+      "title": "TernScope: Model-Hardware Co-Design for Efficient Ternary Endoscopic Segmentation",
+      "summary": "TernScope co-designs a compact ternary-weight segmentation network with simplified hardware to achieve high accuracy and fast inference for edge medical imaging.",
+      "upvotes": 1,
+      "arxiv_id": "2610.29617",
+      "url": "https://huggingface.co/papers/2610.29617",
+      "githubRepo": "https://github.com/ReaganWu/TernScope"
     },
     {
-      "title": "Broken on Arrival: Non-Functional Quantized LLM Artifacts in Public Model Registries and How to Catch Them",
-      "summary": "Quantized small language model files in public registries can be non-functional due to uncalibrated quantization recipes, and screening plus calibration is recommended before release.",
-      "upvotes": 6,
-      "arxiv_id": "2609.05881",
-      "url": "https://huggingface.co/papers/2609.05881",
-      "githubRepo": "https://github.com/aditi-p31/quantcheck"
+      "title": "SketchDirector: Complex Scene Sketching via Agentic Layout Reasoning and Detail Refinement",
+      "summary": "SketchDirector is an agentic framework that decomposes text prompts into draft vector assets, arranges them via iterative reasoning with self-evolving memory, and refines details using diffusion priors for complex scene sketching.",
+      "upvotes": 1,
+      "arxiv_id": "2610.41260",
+      "url": "https://huggingface.co/papers/2610.41260",
+      "githubRepo": "https://github.com/GVCLab/SketchDirector"
     }
   ]
 }
