@@ -688,11 +688,15 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                     <Calendar size={12} className="opacity-70" />
                     <span>{entry.year}</span>
                   </span>
-                  <span className="opacity-30">•</span>
-                  <span className="flex items-center gap-1">
-                    <Layers size={12} className="opacity-70" />
-                    <span>{entry.size}</span>
-                  </span>
+                  {entry.size && entry.size !== "N/A" && entry.size !== "Unknown" && (
+                    <>
+                      <span className="opacity-30">•</span>
+                      <span className="flex items-center gap-1">
+                        <Layers size={12} className="opacity-70" />
+                        <span>{entry.size}</span>
+                      </span>
+                    </>
+                  )}
                   <span className="opacity-30">•</span>
                   <span className="flex items-center gap-1">
                     <ShieldCheck size={12} className="opacity-70" />
@@ -852,7 +856,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                         <span>Parameters</span>
                       </div>
                       <p className="text-xs font-bold text-[#202124] dark:text-[#e3e3e3] truncate">
-                        {entry.size}
+                        {entry.size && entry.size !== "N/A" && entry.size !== "Unknown" ? entry.size : "SaaS / Service"}
                       </p>
                     </div>
 
@@ -1170,7 +1174,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                         <Layers size={13} /> Size / Parameters
                       </span>
                       <span className="font-semibold text-[#202124] dark:text-[#e3e3e3]">
-                        {entry.size}
+                        {entry.size && entry.size !== "N/A" && entry.size !== "Unknown" ? entry.size : "Not Applicable"}
                       </span>
                     </div>
 

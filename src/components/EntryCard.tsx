@@ -72,7 +72,7 @@ export const EntryCard = memo(function EntryCard({
               </span>
             )}
             <span className="text-[11px] text-neutral-500 dark:text-neutral-400 font-normal truncate leading-tight">
-              aiverse › {entry.type.toLowerCase()} › {entry.task.toLowerCase().replace(/\s+/g, '-')}
+              {entry.type} · {entry.task}
             </span>
           </div>
         </div>
@@ -129,13 +129,15 @@ export const EntryCard = memo(function EntryCard({
         }`}>
           {entry.task}
         </span>
-        <span className={`text-[11px] font-mono px-2 py-0.5 rounded-full border ${
-          isAmoled
-            ? "bg-white/[0.02] text-neutral-400 border-white/5"
-            : "bg-[#f8f9fa] text-neutral-600 border-neutral-200/60"
-        }`}>
-          {entry.size}
-        </span>
+        {entry.size && entry.size !== "N/A" && entry.size !== "Unknown" && entry.size.trim() !== "" && (
+          <span className={`text-[11px] font-mono px-2 py-0.5 rounded-full border ${
+            isAmoled
+              ? "bg-white/[0.02] text-neutral-400 border-white/5"
+              : "bg-[#f8f9fa] text-neutral-600 border-neutral-200/60"
+          }`}>
+            {entry.size}
+          </span>
+        )}
         <span className={`text-[11px] px-2 py-0.5 rounded-full border ${
           isAmoled
             ? "bg-white/[0.02] text-neutral-400 border-white/5"

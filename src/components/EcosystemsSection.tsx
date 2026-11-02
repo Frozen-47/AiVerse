@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from "react";
-import { Search, RotateCcw, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, RotateCcw, ChevronLeft, ChevronRight, List, LayoutGrid } from "lucide-react";
 import type { Entry, EntryRatingSummary } from "../types";
 import { groupEntriesByEcosystem, type EcosystemGroup } from "../lib/ecosystems";
 import { EcosystemCard } from "./EcosystemCard";
@@ -29,6 +29,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
   const [filterFocus, setFilterFocus] = useState<"All" | "Frontier" | "Open" | "Multi">("All");
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(12);
+  const [viewMode, setViewMode] = useState<"list" | "grid">("list");
 
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -196,10 +197,38 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
               </button>
             )}
           </div>
+
+          {/* View Mode Toggle: Line by Line (List) vs Grid */}
+          <div className="flex items-center p-1 rounded-xl bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08] shrink-0">
+            <button
+              onClick={() => setViewMode("list")}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                viewMode === "list"
+                  ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-xs"
+                  : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
+              }`}
+              title="Line-by-line list view"
+            >
+              <List size={13} />
+              <span className="hidden sm:inline">Line by Line</span>
+            </button>
+            <button
+              onClick={() => setViewMode("grid")}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                viewMode === "grid"
+                  ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-xs"
+                  : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
+              }`}
+              title="2-column grid view"
+            >
+              <LayoutGrid size={13} />
+              <span className="hidden sm:inline">Grid</span>
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Grid of Ecosystem Cards */}
+      {/* List / Grid of Ecosystem Cards */}
       {filteredEcosystems.length === 0 ? (
         <div className="p-12 text-center rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/50 dark:bg-white/[0.01] flex flex-col items-center justify-center my-4">
           <p className="text-base font-semibold text-neutral-900 dark:text-white mb-2">
@@ -221,7 +250,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className={viewMode === "list" ? "flex flex-col gap-3.5" : "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4.5"}>
             {paginatedEcosystems.map((eco) => (
               <EcosystemCard
                 key={eco.id}

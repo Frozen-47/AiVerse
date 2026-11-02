@@ -1,12 +1,13 @@
 import React, { useState, useMemo, useEffect, useCallback, useRef, lazy, Suspense } from "react";
-import { Filter, X, Check, Sparkles, ArrowLeft, AlertTriangle, Building2, Box, ChevronLeft, ChevronRight, LayoutGrid, ArrowRight, ShieldAlert } from "lucide-react";
+import { Filter, X, Check, Sparkles, ArrowLeft, AlertTriangle, Building2, Box, ChevronLeft, ChevronRight, ArrowRight, ShieldAlert } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
 import { PrivacyPolicy } from "./components/PrivacyPolicy";
 import { TermsOfService } from "./components/TermsOfService";
 import { FeaturesSuite } from "./components/FeaturesSuite";
-import { ValueProps } from "./components/features/ValueProps";
+import { LeaderboardView } from "./components/LeaderboardView";
+import { FrontierShowcase } from "./components/FrontierShowcase";
 import { Sidebar } from "./components/Sidebar";
 import { SearchBar } from "./components/SearchBar";
 import { EntryCard } from "./components/EntryCard";
@@ -17,7 +18,6 @@ import { UserProfileModal } from "./components/UserProfileModal";
 import { OverviewCards } from "./components/OverviewCards";
 import { DailyPulseSection } from "./components/DailyPulseSection";
 import { DashboardHero } from "./components/DashboardHero";
-import { FeatureRibbon } from "./components/FeatureRibbon";
 import { PreferencesLoginPrompt } from "./components/PreferencesLoginPrompt";
 import { AuthProvider, useAuth } from "./components/AuthContext";
 import { AuthModal } from "./components/AuthModal";
@@ -86,7 +86,7 @@ function checkBlockStatus(profile: OnboardingProfile | null) {
 const Inner: React.FC = () => {
   const t = useTokens();
   const { resolvedTheme, setTheme } = useTheme();
-  const { user, isLoaded, openAuthModal } = useAuth();
+  const { user, isLoaded } = useAuth();
   const [entries, setEntries] = useState<Entry[]>([]);
   const [blockedStatus, setBlockedStatus] = useState<{ isBlocked: boolean; blockedUntil?: string } | null>(null);
   const [typeFilters, setTypeFilters] = useState<string[]>([]);
@@ -110,6 +110,7 @@ const Inner: React.FC = () => {
   const isTerms = route.type === "terms";
   const isAdminDashboard = route.type === "admin";
   const isFeatures = route.type === "features";
+  const isLeaderboard = route.type === "leaderboard";
   const isWizard = route.type === "features" && route.subpage === "wizard";
   const isArena = route.type === "features" && route.subpage === "compare";
   const isPlayground = route.type === "features" && route.subpage === "playground";
@@ -185,7 +186,9 @@ const Inner: React.FC = () => {
 
   const catalogSectionRef = useRef<HTMLDivElement | null>(null);
   const scrollToCatalog = useCallback(() => {
-    catalogSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+    requestAnimationFrame(() => {
+      catalogSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   }, []);
   const [isAdding, setIsAdding] = useState(false);
   const [showBackendToast, setShowBackendToast] = useState(false);
@@ -658,11 +661,11 @@ const Inner: React.FC = () => {
   // Sync document body and meta tags for an orderly global theme switch
   useEffect(() => {
     if (resolvedTheme === "amoled") {
-      document.documentElement.style.backgroundColor = "#171717";
-      document.body.style.backgroundColor = "#171717";
+      document.documentElement.style.backgroundColor = "#131417";
+      document.body.style.backgroundColor = "#131417";
       document.documentElement.classList.remove("light");
       document.documentElement.classList.add("dark");
-      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#171717");
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#131417");
     } else {
       document.documentElement.style.backgroundColor = "#ffffff";
       document.body.style.backgroundColor = "#ffffff";
@@ -914,6 +917,10 @@ const Inner: React.FC = () => {
           setCurrentPage(1);
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
+        onViewLeaderboard={() => {
+          navigate("/leaderboard");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
         onViewChat={() => {
           navigate("/chat");
           window.scrollTo({ top: 0, behavior: "smooth" });
@@ -962,12 +969,17 @@ const Inner: React.FC = () => {
 
       {isPrivacy ? (
         <PrivacyPolicy onBackToHome={() => {
-          navigate("/");
+          navigate("/dashboard");
           window.scrollTo({ top: 0, behavior: "smooth" });
         }} />
       ) : isTerms ? (
         <TermsOfService onBackToHome={() => {
-          navigate("/");
+          navigate("/dashboard");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }} />
+      ) : isLeaderboard ? (
+        <LeaderboardView onBackToHome={() => {
+          navigate("/dashboard");
           window.scrollTo({ top: 0, behavior: "smooth" });
         }} />
       ) : (isWizard || isArena || isFeatures || isPlayground) ? (
@@ -998,7 +1010,7 @@ const Inner: React.FC = () => {
             navigate("/dashboard");
           }}
           onBackToHome={() => {
-            navigate("/");
+            navigate("/dashboard");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
           // Wizard Props
@@ -1032,7 +1044,7 @@ const Inner: React.FC = () => {
             initialSection={route.type === "admin" ? route.section : undefined}
             onSectionChange={(sec) => navigate(`/admin?section=${sec}`, { replace: true })}
             onBackToHome={() => {
-              navigate("/");
+              navigate("/dashboard");
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             onViewEntry={handleSelectEntry}
@@ -1054,7 +1066,7 @@ const Inner: React.FC = () => {
               <div className="flex flex-col gap-2 pt-2">
                 <button
                   onClick={() => {
-                    navigate("/");
+                    navigate("/dashboard");
                   }}
                   className="w-full py-2.5 rounded-xl text-xs font-medium border border-[#dadce0] dark:border-[#3c4043] hover:bg-neutral-100 dark:hover:bg-white/5 text-neutral-700 dark:text-neutral-300 transition-colors cursor-pointer"
                 >
@@ -1064,361 +1076,74 @@ const Inner: React.FC = () => {
             </div>
           </div>
         )
-      ) : (
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 py-8 sm:py-12">
-          {activeView === "landing" ? (
-            <div className="flex flex-col gap-12 sm:gap-16 w-full animate-[fadeUp_0.4s_ease-out]">
-              {/* 1. Header & Central Search */}
-              <DashboardHero
-                searchQuery={searchInput}
-                onSearchChange={handleSearchChange}
-                totalEntries={entries.length > 0 ? entries.length : staticEntries.length}
-                activeType={typeFilter}
-                onSelectType={(val) => setTypeFilter(val as TypeFilter)}
-                activeTask={taskFilter}
-                onSelectTask={(val) => setTaskFilter(val as TaskFilter)}
-                onScrollToCatalog={scrollToCatalog}
-                catalogDisplayMode={catalogDisplayMode}
-                onSelectDisplayMode={setCatalogDisplayMode}
-              />
+      ) : activeView === "landing" ? (
+        <div className="w-full flex flex-col animate-[fadeUp_0.4s_ease-out]">
+          {/* 1. Full-Bleed First Page Hero (Edge-to-Edge & 100vh fold) */}
+          <DashboardHero
+            totalEntries={entries.length > 0 ? entries.length : staticEntries.length}
+            onScrollToCatalog={scrollToCatalog}
+          />
 
-              {/* 2. Full-Width Google Suite Style Interactive Command Ribbon */}
-              <FeatureRibbon
-                user={user}
-                onOpenAuth={openAuthModal}
-                onOpenWizard={() => {
-                  navigate("/features/wizard");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-                onOpenArena={() => {
-                  navigate("/features/compare");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-                onOpenPlayground={() => {
-                  navigate("/features/playground");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-                onOpenSuite={() => {
-                  navigate("/features");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-              />
-
-              {/* 3. Live Daily AI Pulse & Model Spotlight (Full Width) */}
-              <DailyPulseSection entries={entries} onSelectEntry={setSelected} />
-
-              {/* 4. Full-Width Direct Ecosystem Catalog Explorer */}
-              <div ref={catalogSectionRef} className="pt-10 border-t border-neutral-200/80 dark:border-white/[0.08] scroll-mt-20 w-full">
-                {/* Catalog Controls Header */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                      <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400">
-                        {catalogDisplayMode === "ecosystems" ? `${ecosystemsCount} AI Organizations & Research Labs` : `${filtered.length} of ${entries.length} assets`}
-                      </span>
-                    </div>
-                    <h2 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
-                      {catalogDisplayMode === "ecosystems" ? "AI Labs & Ecosystems" : "Explore AI Technologies"}
-                    </h2>
-                  </div>
-
-                  {/* View Switcher and Quick Controls */}
-                  <div className="flex flex-wrap items-center gap-2.5">
-                    {/* Switcher: Individual vs By Lab */}
-                    <div className="flex items-center p-1 rounded-xl bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08]">
-                      <button
-                        onClick={() => setCatalogDisplayMode("assets")}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                          catalogDisplayMode === "assets"
-                            ? resolvedTheme === "amoled"
-                              ? "bg-white text-black shadow-xs"
-                              : "bg-neutral-900 text-white shadow-xs"
-                            : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
-                        }`}
-                      >
-                        <Box size={13} />
-                        <span>Individual Assets</span>
-                      </button>
-                      <button
-                        onClick={() => setCatalogDisplayMode("ecosystems")}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                          catalogDisplayMode === "ecosystems"
-                            ? resolvedTheme === "amoled"
-                              ? "bg-white text-black shadow-xs"
-                              : "bg-neutral-900 text-white shadow-xs"
-                            : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
-                        }`}
-                      >
-                        <Building2 size={13} />
-                        <span>By AI Lab</span>
-                      </button>
-                    </div>
-
-                    {catalogDisplayMode === "assets" && (
-                      <div className="flex flex-wrap items-center gap-2">
-                        {/* Starred toggle */}
-                        <button
-                          onClick={() => {
-                            setPopularOnly((p) => !p);
-                            setCurrentPage(1);
-                          }}
-                          className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all cursor-pointer flex items-center gap-1.5 ${
-                            popularOnly
-                              ? resolvedTheme === "amoled"
-                                ? "bg-white/10 text-white border-white/30 font-semibold"
-                                : "bg-neutral-200 text-neutral-900 border-neutral-300 font-semibold"
-                              : "border-neutral-200 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
-                          }`}
-                        >
-                          <Sparkles size={12} className={popularOnly ? "fill-current" : ""} />
-                          <span>Featured</span>
-                        </button>
-
-                        {/* Bookmarks toggle */}
-                        <button
-                          onClick={handleSavedToggle}
-                          className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all cursor-pointer flex items-center gap-1.5 ${
-                            savedOnly
-                              ? resolvedTheme === "amoled"
-                                ? "bg-white/10 text-white border-white/30 font-semibold"
-                                : "bg-neutral-200 text-neutral-900 border-neutral-300 font-semibold"
-                              : "border-neutral-200 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
-                          }`}
-                        >
-                          <span>Bookmarks ({bookmarks.length})</span>
-                        </button>
-
-                        {/* View All Entries button */}
-                        <button
-                          onClick={() => {
-                            navigate("/entries");
-                            window.scrollTo({ top: 0, behavior: "smooth" });
-                          }}
-                          className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 hover:opacity-90 transition-all cursor-pointer flex items-center gap-1.5 shadow-xs"
-                          title="Open full catalog directory with sidebar filters"
-                        >
-                          <LayoutGrid size={12} />
-                          <span>View All Entries ({entries.length})</span>
-                          <ArrowRight size={11} />
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {catalogDisplayMode === "ecosystems" ? (
-                  <EcosystemsSection
-                    entries={entries}
-                    onSelectEntry={(entry) => setSelected(entry)}
-                    bookmarks={bookmarks}
-                    onToggleBookmark={handleToggleBookmark}
-                    ratingSummaries={ratingSummaries}
-                    selectedEcosystemId={selectedEcosystemId}
-                    onClearSelectedEcosystem={() => setSelectedEcosystemId(null)}
-                  />
-                ) : (
-                  <>
-                    {/* Category pills - Apple segmented control */}
-                    <div className="inline-flex p-1 rounded-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08] mb-6 overflow-x-auto max-w-full">
-                      {(["All", "Model", "Framework", "Dataset", "Platform", "AI"] as const).map((type) => {
-                        const isSelected = typeFilter === type;
-                        const labelMap: Record<string, string> = {
-                          All: "All Types",
-                          Model: "Models",
-                          Framework: "Frameworks",
-                          Dataset: "Datasets",
-                          Platform: "Platforms",
-                          AI: "Apps",
-                        };
-                        return (
-                          <button
-                            key={type}
-                            onClick={() => {
-                              setTypeFilter(type);
-                              setCurrentPage(1);
-                            }}
-                            className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
-                              isSelected
-                                ? resolvedTheme === "amoled"
-                                  ? "bg-white text-black font-semibold shadow-xs"
-                                  : "bg-neutral-900 text-white font-semibold shadow-xs"
-                                : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
-                            }`}
-                          >
-                            <span>{labelMap[type]}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-
-                    {/* Cards Grid or Empty State */}
-                    {paginatedEntries.length === 0 ? (
-                      <div className={`p-12 text-center rounded-2xl border ${
-                        resolvedTheme === "amoled" ? "bg-neutral-900/40 border-white/[0.08]" : "bg-neutral-50/70 border-neutral-200/80"
-                      } flex flex-col items-center justify-center`}>
-                        <p className="text-base font-semibold text-neutral-900 dark:text-white mb-2">
-                          No tools found matching your filters
-                        </p>
-                        <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-4">
-                          Try clearing search terms or selecting a different category.
-                        </p>
-                        <button
-                          onClick={() => {
-                            setSearchInput("");
-                            setTypeFilter("All");
-                            setTaskFilter("All Tasks");
-                            setPopularOnly(false);
-                            setSavedOnly(false);
-                          }}
-                          className="px-4 py-2 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black shadow-xs cursor-pointer hover:opacity-90 transition-all"
-                        >
-                          Reset All Filters
-                        </button>
-                      </div>
-                    ) : (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                        {paginatedEntries.map((entry, i) => (
-                          <EntryCard
-                            key={entry.name}
-                            entry={entry}
-                            entryName={entry.name}
-                            onSelect={selectEntryByName}
-                            index={i}
-                            ratingSummary={ratingSummaries[entry.name]}
-                            isBookmarked={bookmarks.includes(entry.name)}
-                            onToggleBookmark={handleToggleBookmark}
-                            onViewEcosystem={handleViewEcosystem}
-                          />
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Rich Pagination & View All Controls on Landing Page */}
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 mt-8 border-t border-neutral-200/80 dark:border-white/[0.08]">
-                      {/* Left: Summary and Per Page Selector */}
-                      <div className="flex flex-wrap items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400">
-                        <span>
-                          Showing <strong className="text-neutral-900 dark:text-white font-semibold">{(currentPage - 1) * itemsPerPage + 1}–{Math.min(currentPage * itemsPerPage, listForPagination.length)}</strong> of <strong className="text-neutral-900 dark:text-white font-semibold">{listForPagination.length}</strong> assets <span className="opacity-75 font-normal">(Page {currentPage} of {totalPages})</span>
-                        </span>
-                        <span className="opacity-40">·</span>
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-[11px]">Per page:</span>
-                          {[12, 24, 48].map((size) => (
-                            <button
-                              key={size}
-                              onClick={() => {
-                                setItemsPerPage(size);
-                                setCurrentPage(1);
-                              }}
-                              className={`px-2 py-0.5 rounded text-[11px] font-semibold transition-colors cursor-pointer ${
-                                itemsPerPage === size
-                                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
-                                  : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
-                              }`}
-                            >
-                              {size}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Right: Page navigation and View All Entries button */}
-                      <div className="flex flex-wrap items-center gap-2.5">
-                        <button
-                          onClick={() => {
-                            navigate("/entries");
-                            window.scrollTo({ top: 0, behavior: "smooth" });
-                          }}
-                          className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-all cursor-pointer flex items-center gap-1.5 shadow-xs"
-                          title="Open full catalog directory with sidebar filters"
-                        >
-                          <LayoutGrid size={12} />
-                          <span>View All Entries ({entries.length})</span>
-                          <ArrowRight size={11} />
-                        </button>
-
-                        {totalPages > 1 && (
-                          <div className="flex items-center gap-1.5">
-                            <button
-                              onClick={() => {
-                                setCurrentPage((p) => Math.max(1, p - 1));
-                                scrollToCatalog();
-                              }}
-                              disabled={currentPage === 1}
-                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-xs"
-                            >
-                              <ChevronLeft size={13} />
-                              <span>Prev</span>
-                            </button>
-
-                            <div className="flex items-center gap-1">
-                              {getVisiblePages(currentPage, totalPages).map((page, idx) => {
-                                if (page === "...") {
-                                  return (
-                                    <span key={`dots-${idx}`} className="px-1.5 text-xs text-neutral-400 select-none">
-                                      …
-                                    </span>
-                                  );
-                                }
-                                const pageNum = page as number;
-                                const isCurrent = pageNum === currentPage;
-                                return (
-                                  <button
-                                    key={pageNum}
-                                    onClick={() => {
-                                      setCurrentPage(pageNum);
-                                      scrollToCatalog();
-                                    }}
-                                    className={`min-w-8 h-8 flex items-center justify-center rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                                      isCurrent
-                                        ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
-                                        : "border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05]"
-                                    }`}
-                                  >
-                                    {pageNum}
-                                  </button>
-                                );
-                              })}
-                            </div>
-
-                            <button
-                              onClick={() => {
-                                setCurrentPage((p) => Math.min(totalPages, p + 1));
-                                scrollToCatalog();
-                              }}
-                              disabled={currentPage === totalPages}
-                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-xs"
-                            >
-                              <span>Next</span>
-                              <ChevronRight size={13} />
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {/* 5. Google Cloud Style Telemetry & Platform Standards */}
-              <div className="pt-10 border-t border-neutral-200/80 dark:border-white/[0.08] flex flex-col gap-6 w-full">
-                <OverviewCards
-                  totalEntriesCount={entries.length}
-                  entries={entries}
-                  ratingSummaries={ratingSummaries}
-                  onViewAllEntries={() => {
+          {/* 2. Content Sections Below the Fold */}
+          <div className="w-full max-w-[1880px] 2xl:max-w-[2040px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-12 sm:py-16 flex flex-col gap-14 sm:gap-20">
+            {/* Curated Frontier Highlights & Ecosystem Showcase */}
+            <div ref={catalogSectionRef} className="scroll-mt-20 w-full">
+              <FrontierShowcase
+                entries={entries}
+                onSelectEntry={handleSelectEntry}
+                bookmarks={bookmarks}
+                onToggleBookmark={handleToggleBookmark}
+                ratingSummaries={ratingSummaries}
+                onViewEcosystem={handleViewEcosystem}
+                onViewAll={(targetCat) => {
+                  if (targetCat === "Ecosystems") {
+                    setCatalogDisplayMode("ecosystems");
+                    navigate("/entries?view=ecosystems");
+                  } else {
+                    setCatalogDisplayMode("assets");
+                    if (targetCat && targetCat !== "All") {
+                      setTypeFilter(targetCat as TypeFilter);
+                    }
                     navigate("/entries");
-                    setCurrentPage(1);
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                />
-                <ValueProps />
-              </div>
+                  }
+                  setCurrentPage(1);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                searchQuery={searchInput}
+                activeCategory={catalogDisplayMode === "ecosystems" ? "Ecosystems" : typeFilter}
+                onSelectCategory={(cat) => {
+                  if (cat === "Ecosystems") {
+                    setCatalogDisplayMode("ecosystems");
+                  } else {
+                    setCatalogDisplayMode("assets");
+                    setTypeFilter(cat as TypeFilter);
+                  }
+                }}
+              />
             </div>
-          ) : (
-            /* Google Cloud Console Style Catalog Directory */
-            <div className="flex flex-col gap-6 w-full animate-[fadeUp_0.3s_ease-out]">
+
+            {/* Live Daily AI Pulse & Model Spotlight */}
+            <DailyPulseSection entries={entries} onSelectEntry={handleSelectEntry} />
+
+            {/* Clean Platform Telemetry Overview */}
+            <div className="pt-8 border-t border-neutral-200/80 dark:border-white/[0.08] w-full">
+              <OverviewCards
+                totalEntriesCount={entries.length}
+                entries={entries}
+                ratingSummaries={ratingSummaries}
+                onViewAllEntries={() => {
+                  navigate("/entries");
+                  setCurrentPage(1);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      ) : (
+        /* Google Cloud Console Style Catalog Directory (Expanded Full-Bleed) */
+        <div className="w-full max-w-[1880px] 2xl:max-w-[2040px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-12">
+          <div className="flex flex-col gap-6 w-full animate-[fadeUp_0.3s_ease-out]">
               {/* Top Google Command Bar & Breadcrumbs */}
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-neutral-200/80 dark:border-white/[0.08]">
                 <div className="flex flex-col gap-1.5">
@@ -1515,7 +1240,7 @@ const Inner: React.FC = () => {
                 <div className="w-full pb-16">
                   <EcosystemsSection
                     entries={entries}
-                    onSelectEntry={(entry) => setSelected(entry)}
+                    onSelectEntry={handleSelectEntry}
                     bookmarks={bookmarks}
                     onToggleBookmark={handleToggleBookmark}
                     ratingSummaries={ratingSummaries}
@@ -1647,7 +1372,7 @@ const Inner: React.FC = () => {
                               {personalized.forYou.length} matched profile
                             </span>
                           </div>
-                          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4.5">
                             {pageForYou.map((entry, i) => (
                               <EntryCard
                                 key={entry.name}
@@ -1675,7 +1400,7 @@ const Inner: React.FC = () => {
                             </h2>
                           </div>
                         )}
-                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4.5">
                           {pageExplore.map((entry, i) => (
                             <EntryCard
                               key={entry.name}
@@ -1784,7 +1509,6 @@ const Inner: React.FC = () => {
               </div>
             )}
           </div>
-          )}
         </div>
       )}
 
@@ -1811,6 +1535,8 @@ const Inner: React.FC = () => {
               Systems Operational ({entries.length > 0 ? entries.length : staticEntries.length} Assets Verified)
             </div>
             <span className="opacity-30 hidden sm:inline">•</span>
+            <SiteSecurityBadge variant="inline" />
+            <span className="opacity-30 hidden sm:inline">•</span>
             <span className="hidden sm:inline font-mono opacity-80">v2.4.0 Live</span>
           </div>
         </div>
@@ -1825,7 +1551,7 @@ const Inner: React.FC = () => {
                 href="/"
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate("/");
+                  navigate("/dashboard");
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 className="flex items-center gap-3 text-neutral-900 dark:text-white hover:opacity-85 transition-opacity"
@@ -2081,8 +1807,8 @@ const Inner: React.FC = () => {
               </a>
             </div>
 
-            {/* Right: Google-style Privacy / Terms / Theme Toggle */}
-            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-6 gap-y-2">
+            {/* Right: Google-style Privacy / Terms / Theme Toggle (with clearance for floating controls) */}
+            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-6 gap-y-2 sm:pr-36">
               <button
                 onClick={() => {
                   navigate("/privacy");
@@ -2152,7 +1878,7 @@ const Inner: React.FC = () => {
             if (window.history.length > 1) {
               window.history.back();
             } else {
-              navigate("/");
+              navigate("/dashboard");
             }
           }}
           onViewEntry={(entry) => {
@@ -2193,7 +1919,7 @@ const Inner: React.FC = () => {
             navigate("/chat");
           }}
           onExitChatRoute={() => {
-            navigate("/");
+            navigate("/dashboard");
           }}
         />
       </Suspense>

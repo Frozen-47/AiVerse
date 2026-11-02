@@ -8,15 +8,12 @@ import {
   Database, 
   Server, 
   Bot, 
-  List, 
-  LayoutGrid, 
   Star, 
   Bookmark, 
   ChevronRight 
 } from "lucide-react";
 import type { EntryRatingSummary } from "../types";
 import type { EcosystemGroup } from "../lib/ecosystems";
-import { EntryCard } from "./EntryCard";
 import { EcosystemLogo } from "./EcosystemLogo";
 import { useTheme, TYPE_GLYPH } from "../lib/theme";
 
@@ -40,7 +37,6 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
   const { resolvedTheme } = useTheme();
   const isAmoled = resolvedTheme === "amoled";
   const [selectedType, setSelectedType] = useState<string>("All");
-  const [viewMode, setViewMode] = useState<"list" | "grid">("list");
 
   const filteredEntries = useMemo(() => {
     if (selectedType === "All") return ecosystem.entries;
@@ -140,71 +136,41 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
         </div>
       </div>
 
-      {/* Category Segmented Tabs & View Mode Switcher */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-1">
-        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
-          {typeFilterOptions.map((opt) => {
-            const Icon = opt.icon;
-            const isSelected = selectedType === opt.id;
-            return (
-              <button
-                key={opt.id}
-                onClick={() => setSelectedType(opt.id)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
-                  isSelected
-                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold shadow-xs"
-                    : "border border-neutral-200 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
-                }`}
-              >
-                <Icon size={12} className={isSelected ? "text-blue-400 dark:text-blue-600" : "opacity-60"} />
-                <span>{opt.label}</span>
-                <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
-                  isSelected ? "bg-white/20 dark:bg-black/20" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500"
-                }`}>
-                  {opt.count}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* View Mode Toggle: Line-by-Line (List) vs Cards (Grid) */}
-        <div className="flex items-center self-end sm:self-auto p-1 rounded-xl bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08] shrink-0">
-          <button
-            onClick={() => setViewMode("list")}
-            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-              viewMode === "list"
-                ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-xs"
-                : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
-            }`}
-            title="Line-by-line list view"
-          >
-            <List size={13} />
-            <span>Line by Line</span>
-          </button>
-          <button
-            onClick={() => setViewMode("grid")}
-            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-              viewMode === "grid"
-                ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-xs"
-                : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
-            }`}
-            title="Cards grid view"
-          >
-            <LayoutGrid size={13} />
-            <span>Grid</span>
-          </button>
-        </div>
+      {/* Category Segmented Tabs */}
+      <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1">
+        {typeFilterOptions.map((opt) => {
+          const Icon = opt.icon;
+          const isSelected = selectedType === opt.id;
+          return (
+            <button
+              key={opt.id}
+              onClick={() => setSelectedType(opt.id)}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
+                isSelected
+                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold shadow-xs"
+                  : "border border-neutral-200 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
+              }`}
+            >
+              <Icon size={12} className={isSelected ? "text-blue-400 dark:text-blue-600" : "opacity-60"} />
+              <span>{opt.label}</span>
+              <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
+                isSelected ? "bg-white/20 dark:bg-black/20" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500"
+              }`}>
+                {opt.count}
+              </span>
+            </button>
+          );
+        })}
       </div>
 
-      {/* Asset Directory Contents */}
+      {/* Asset Directory Contents (Strict Line by Line) */}
       {filteredEntries.length === 0 ? (
         <div className="p-10 text-center rounded-2xl border border-neutral-200 dark:border-white/10 bg-neutral-50/50 dark:bg-white/[0.02]">
           <p className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
             No assets found in this category for {ecosystem.name}.
           </p>
         </div>
-      ) : viewMode === "list" ? (
+      ) : (
         /* ─── Line by Line Directory Layout ─── */
         <div className="flex flex-col gap-2.5 w-full">
           {filteredEntries.map((entry, index) => {
@@ -313,22 +279,6 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
               </div>
             );
           })}
-        </div>
-      ) : (
-        /* ─── Alternative Grid Cards Layout ─── */
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-          {filteredEntries.map((entry, i) => (
-            <EntryCard
-              key={entry.name}
-              entry={entry}
-              entryName={entry.name}
-              onSelect={onSelectEntry}
-              index={i}
-              ratingSummary={ratingSummaries[entry.name]}
-              isBookmarked={bookmarks.includes(entry.name)}
-              onToggleBookmark={onToggleBookmark}
-            />
-          ))}
         </div>
       )}
     </div>

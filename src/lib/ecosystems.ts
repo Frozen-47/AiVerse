@@ -113,8 +113,8 @@ interface LabMetadata {
 
 const KNOWN_LABS: Record<string, LabMetadata> = {
   "OpenAI": {
-    description: "Pioneers of frontier multimodal models, reasoning chains (o1), speech (Whisper), and visual generation (DALL-E, Sora).",
-    domain: "Frontier LLMs · Reasoning · Multimodal",
+    description: "Pioneers of frontier intelligence including GPT-6 Astra, reasoning architectures (o3, o1), autonomous computer use, and generative media (Sora, DALL-E).",
+    domain: "Frontier LLMs · GPT-6 Astra · Reasoning",
     website: "https://openai.com",
     colorScheme: {
       badge: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
@@ -133,8 +133,8 @@ const KNOWN_LABS: Record<string, LabMetadata> = {
     },
   },
   "Anthropic": {
-    description: "Creator of the Claude 3 and 3.5 model families built with Constitutional AI, state-of-the-art coding, and deep reasoning.",
-    domain: "Coding Benchmarks · 200k Context · Safety",
+    description: "Creator of the Claude Fable and Claude 3.5 model families built with Constitutional AI, Mythos-class reasoning, and frontier agentic coding.",
+    domain: "Mythos Class · Claude Fable · Agentic Coding",
     website: "https://anthropic.com",
     colorScheme: {
       badge: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",

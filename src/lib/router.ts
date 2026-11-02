@@ -36,6 +36,7 @@ export type AppRoute =
       type: "features";
       subpage: FeatureSubpage;
     }
+  | { type: "leaderboard" }
   | { type: "chat" }
   | { type: "profile"; username: string }
   | { type: "privacy" }
@@ -129,7 +130,12 @@ export function parseRoute(pathname: string, search: string = ""): AppRoute {
     return { type: "dashboard" };
   }
 
-  // 5. Chat Assistant
+  // 5. Leaderboard (/leaderboard, /rankings, /benchmarks)
+  if (p === "/leaderboard" || p === "/rankings" || p === "/benchmarks") {
+    return { type: "leaderboard" };
+  }
+
+  // 6. Chat Assistant
   if (p === "/chat") {
     return { type: "chat" };
   }
@@ -167,7 +173,7 @@ export function routeToUrl(
 
   switch (route.type) {
     case "dashboard":
-      path = "/";
+      path = "/dashboard";
       break;
 
     case "entries":
@@ -196,6 +202,10 @@ export function routeToUrl(
       } else {
         path = "/features";
       }
+      break;
+
+    case "leaderboard":
+      path = "/leaderboard";
       break;
 
     case "chat":
@@ -248,6 +258,7 @@ export function navigateTo(
   let targetUrl: string;
 
   if (typeof target === "string") {
+    if (target === "/") target = "/dashboard";
     // If string path provided
     if (options?.entry) {
       const url = new URL(target, window.location.origin);
@@ -313,6 +324,16 @@ export function useAppRouter() {
     setRoute(newRoute);
     setEntrySlug(newSlug);
   }, []);
+
+  useEffect(() => {
+    // Immediate redirect from / to /dashboard
+    if (typeof window !== "undefined" && window.location.pathname === "/") {
+      const search = window.location.search;
+      const targetUrl = `/dashboard${search}`;
+      window.history.replaceState({ path: targetUrl }, "", targetUrl);
+      syncFromLocation();
+    }
+  }, [syncFromLocation]);
 
   useEffect(() => {
     // 1. Listen for browser back / forward navigation
@@ -413,6 +434,12 @@ export function getRouteSeo(route: AppRoute, entryName?: string | null) {
         desc = "Explore category dashboards, system capacity metrics, spotlight highlights, values prop overlays, and all integrated capabilities.";
         path = "/features";
       }
+      break;
+
+    case "leaderboard":
+      title = "AI Intelligence & Performance Leaderboard | AiVerse";
+      desc = "Comprehensive AI benchmarks, intelligence index, real-world pricing ($/1M tokens), generation speed, and latency verified across global model providers.";
+      path = "/leaderboard";
       break;
 
     case "chat":

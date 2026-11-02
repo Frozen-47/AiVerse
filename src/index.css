@@ -49,6 +49,19 @@
       transform: translateX(0);
     }
   }
+
+  --animate-float-left: floatLeft 8s ease-in-out infinite;
+  --animate-float-right: floatRight 8.5s ease-in-out infinite;
+
+  @keyframes floatLeft {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-0.5deg); }
+  }
+
+  @keyframes floatRight {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(0.5deg); }
+  }
 }
 
 .no-transitions,
@@ -328,4 +341,4 @@ html {
 }
 .success-check-pop {
   animation: successCheckPop 0.35s ease-out forwards;
-}
+}

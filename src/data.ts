@@ -2,6 +2,50 @@ import type { Entry } from './types';
 
 export const entries: Entry[] = [
   {
+    "name": "GPT-6 Astra",
+    "type": "Model",
+    "summary": "OpenAI's frontier flagship model released in September 2026, marking a generational leap in autonomous computer use, deep reasoning, and complex multi-step workflow automation across enterprise environments.",
+    "task": "AI Coding",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "Frontier Multimodal MoE",
+    "architecture": "Massive multimodal Mixture-of-Experts with reinforcement learning over deep thought chains, native OS-level computer use drivers, and dynamic tool orchestration.",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-astra\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute an end-to-end security audit and refactor the authentication pipeline.\"}]\n)",
+    "benchmarks": "SWE-bench Verified: 82.4%, AIME 2026: 92.1%, OSWorld: 72.3%, GPQA Diamond: 78.6%",
+    "limitations": "Available via ChatGPT Plus/Pro/Work and enterprise API; high compute intensity for prolonged agentic execution loops.",
+    "popular": true,
+    "url": "https://openai.com",
+    "citations": [
+      {
+        "text": "OpenAI GPT-6 Astra Announcement & Technical Report",
+        "url": "https://openai.com"
+      }
+    ]
+  },
+  {
+    "name": "Claude Fable",
+    "type": "Model",
+    "summary": "Anthropic's flagship Mythos-class generative AI model engineered for long-running agentic projects, multi-application computer use, and root-cause software engineering with frontier safety classifiers.",
+    "task": "AI Coding",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "Mythos-Class Architecture",
+    "architecture": "Constitutional AI foundation model sharing core weights with Claude Mythos, augmented with high-assurance safety classifiers and deep multi-step reflective reasoning.",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-fable-5-1\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Analyze root causes for distributed consensus race conditions across 100k nodes.\"}]\n)",
+    "benchmarks": "SWE-bench Verified: 80.9%, TAU-bench: 78.4%, Math-500: 95.2%, 1M token context window",
+    "limitations": "Proprietary cloud API via Anthropic Console, AWS Bedrock, and Google Cloud Vertex AI.",
+    "popular": true,
+    "url": "https://anthropic.com/claude",
+    "citations": [
+      {
+        "text": "Anthropic Claude Fable Overview",
+        "url": "https://anthropic.com"
+      }
+    ]
+  },
+  {
     "name": "Gemini 4 Argon",
     "type": "Model",
     "summary": "Google DeepMind's flagship frontier reasoning and autonomous execution model featuring a 1M token context window, 1M token output long decode, and advanced goal decomposition for multi-step software engineering and enterprise workflows.",
@@ -24,7 +68,7 @@ export const entries: Entry[] = [
     ]
   },
   {
-    "name": "Project Astra",
+    "name": "Project Astra (DeepMind Preview)",
     "type": "Model",
     "summary": "Google DeepMind's universal real-time multimodal AI assistant, capable of continuous video stream comprehension, ultra-low latency conversational audio, spatial environmental memory, and proactive multi-tool orchestration.",
     "task": "Multimodal",

@@ -195,6 +195,10 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
 
   // Mini floating popup open state (when not in full /chat route)
   const [isMiniOpen, setIsMiniOpen] = useState(initialOpen);
+
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent('aiverse-chat-state', { detail: { open: isMiniOpen } }));
+  }, [isMiniOpen]);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [currentMode, setCurrentMode] = useState<ChatMode>('flagship');
   const [showModeDropdown, setShowModeDropdown] = useState(false);

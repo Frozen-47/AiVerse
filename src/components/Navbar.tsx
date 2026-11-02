@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { SignedIn, SignedOut, useAuth } from "./AuthContext";
-import { Plus, Moon, Sun, SlidersHorizontal, LayoutGrid, Building2, Zap } from "lucide-react";
+import { Plus, Moon, Sun, SlidersHorizontal, LayoutGrid, Building2, Zap, Trophy } from "lucide-react";
 import { useTokens, useTheme } from "../lib/theme";
 import { UserProfileMenu } from "./UserProfileMenu";
 import { parseProfileMeta, type OnboardingProfile } from "../lib/onboarding";
 import { getOAuthAvatarUrl } from "../lib/supabase";
+import { SiteSecurityBadge } from "./SiteSecurityBadge";
 
 interface NavbarProps {
   onAddEntry: () => void;
@@ -15,6 +16,7 @@ interface NavbarProps {
   onViewAdminDashboard?: () => void;
   onBrowseAll?: () => void;
   onViewEcosystems?: () => void;
+  onViewLeaderboard?: () => void;
   onViewChat?: () => void;
   ecosystemsCount?: number;
   entryCount: number;
@@ -43,6 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onViewAdminDashboard,
   onBrowseAll,
   onViewEcosystems,
+  onViewLeaderboard,
   onViewChat,
   ecosystemsCount,
   entryCount,
@@ -114,7 +117,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="w-full px-4 sm:px-6 xl:px-12 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <a
-            href="/"
+            href="/dashboard"
             onClick={(e) => {
               if (onHomeClick) {
                 e.preventDefault();
@@ -181,6 +184,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </button>
               )}
 
+              {onViewLeaderboard && (
+                <button
+                  onClick={onViewLeaderboard}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-neutral-600 dark:text-neutral-300 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 transition-all cursor-pointer"
+                  title="Frontier AI Benchmarks & Performance Leaderboard"
+                >
+                  <Trophy size={13} className="text-amber-500" />
+                  <span>Leaderboard</span>
+                </button>
+              )}
+
               <button
                 onClick={() => {
                   if (onViewChat) onViewChat();
@@ -197,6 +211,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         <div className="flex items-center gap-2.5">
+          <SiteSecurityBadge variant="navbar" />
+
           <SignedIn>
             <button
               onClick={onAddEntry}

@@ -110,7 +110,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome }) =>
 
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 py-6 animate-[fadeUp_0.3s_ease-out]">
+    <div className="w-full max-w-[1880px] 2xl:max-w-[2040px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-6 animate-[fadeUp_0.3s_ease-out]">
       {/* Top Google Command Bar & Breadcrumbs */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-neutral-200/80 dark:border-white/[0.08] mb-8">
         <div className="flex flex-col gap-1.5">
