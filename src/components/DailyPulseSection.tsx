@@ -93,15 +93,15 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
           </p>
         </div>
 
-        {/* Apple-style Segmented Control */}
-        <div className={`inline-flex items-center p-1 rounded-full border shrink-0 self-start md:self-auto ${
+        {/* Segmented Control */}
+        <div className={`inline-flex items-center p-1 rounded-full border shrink-0 overflow-x-auto no-scrollbar max-w-full ${
           isAmoled 
             ? "bg-white/[0.04] border-white/10" 
             : "bg-neutral-100 border-neutral-200"
         }`}>
           <button
             onClick={() => setActiveTab("spotlight")}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+            className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer shrink-0 whitespace-nowrap ${
               activeTab === "spotlight"
                 ? isAmoled
                   ? "bg-neutral-800 text-white shadow-xs font-semibold"
@@ -114,7 +114,7 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
           </button>
           <button
             onClick={() => setActiveTab("models")}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+            className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer shrink-0 whitespace-nowrap ${
               activeTab === "models"
                 ? isAmoled
                   ? "bg-neutral-800 text-white shadow-xs font-semibold"
@@ -127,7 +127,7 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
           </button>
           <button
             onClick={() => setActiveTab("papers")}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+            className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer shrink-0 whitespace-nowrap ${
               activeTab === "papers"
                 ? isAmoled
                   ? "bg-neutral-800 text-white shadow-xs font-semibold"

@@ -149,8 +149,8 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
           </div>
 
           {/* Quick Presets */}
-          <div className="flex flex-wrap items-center gap-1.5 md:self-end">
-            <span className="text-[11px] font-semibold text-[#5f6368] dark:text-[#8e918f] mr-1">
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 max-w-full md:self-end">
+            <span className="text-[11px] font-semibold text-[#5f6368] dark:text-[#8e918f] mr-1 shrink-0">
               Presets:
             </span>
             {presets.map((match, idx) => (
@@ -162,7 +162,7 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
                   setCompareToolA(targetA); 
                   setCompareToolB(targetB); 
                 }}
-                className="px-3 py-1 rounded-full text-xs font-medium border border-[#dadce0] dark:border-[#3c4043]/60 bg-[#f8f9fa] dark:bg-[#282a2c]/40 text-[#5f6368] dark:text-[#c4c7c5] hover:border-[#1a73e8] dark:hover:border-[#a8c7fa] hover:text-[#1a73e8] dark:hover:text-[#a8c7fa] transition-colors cursor-pointer"
+                className="px-3 py-1 rounded-full text-xs font-medium border border-[#dadce0] dark:border-[#3c4043]/60 bg-[#f8f9fa] dark:bg-[#282a2c]/40 text-[#5f6368] dark:text-[#c4c7c5] hover:border-[#1a73e8] dark:hover:border-[#a8c7fa] hover:text-[#1a73e8] dark:hover:text-[#a8c7fa] transition-colors cursor-pointer shrink-0 whitespace-nowrap"
               >
                 {match.label}
               </button>
@@ -443,7 +443,10 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
                         key={vi}
                         className={`p-3 md:col-span-2 ${vi === 0 ? "border-b md:border-b-0 md:border-r border-[#dadce0]/70 dark:border-[#3c4043]/40" : ""} text-[#202124] dark:text-[#e3e3e3] flex items-center justify-between`}
                       >
-                        <div className="flex items-center gap-2 text-left">
+                        <div className="flex items-start sm:items-center gap-2 text-left">
+                          <span className="md:hidden text-[10px] font-bold uppercase tracking-wider text-[#1a73e8] dark:text-[#a8c7fa] shrink-0 pt-0.5 sm:pt-0">
+                            {isCompetitorA ? entryA.name : entryB.name}:
+                          </span>
                           {row.badge ? (
                             <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md border border-[#dadce0] dark:border-[#3c4043]/60 bg-[#f8f9fa] dark:bg-[#282a2c] text-[#202124] dark:text-[#e3e3e3]">
                               {val}

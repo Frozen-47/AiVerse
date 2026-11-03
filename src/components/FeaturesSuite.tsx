@@ -112,7 +112,7 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
       <FeatureHeader onBackToHome={props.onBackToHome} />
 
       {/* Google Material 3 Segmented Tab Controller */}
-      <div className="p-1 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] shadow-xs flex flex-wrap gap-1 w-fit">
+      <div className="p-1 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] shadow-xs flex items-center gap-1 overflow-x-auto no-scrollbar max-w-full w-fit sm:w-auto">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -123,7 +123,7 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
                 setActiveTab(tab.id);
                 props.onTabChange?.(tab.id);
               }}
-              className={`flex items-center gap-2 py-2 px-3.5 rounded-xl text-xs font-semibold transition-all cursor-pointer select-none ${
+              className={`flex items-center gap-2 py-2 px-3.5 rounded-xl text-xs font-semibold transition-all cursor-pointer select-none shrink-0 whitespace-nowrap ${
                 isActive
                   ? "bg-[#1a73e8] dark:bg-[#a8c7fa] text-white dark:text-[#041e49] shadow-xs"
                   : "text-[#5f6368] dark:text-[#8e918f] hover:text-[#202124] dark:hover:text-white hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c]"

@@ -130,22 +130,27 @@
   margin: auto !important;
 }
 
-/* Mobile App Optimizations */
+/* Mobile App & Touch Optimizations */
 html, body {
-  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+}
+
+/* Allow natural text selection on content while keeping UI controls clean */
+button, nav, [role="button"], [role="tab"] {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
-  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
-/* Allow text selection in inputs */
-input, textarea {
-  -webkit-user-select: auto;
-  user-select: auto;
+/* Ensure readable content is selectable */
+article, main, p, span, h1, h2, h3, h4, h5, h6, pre, code, blockquote, li, table, input, textarea {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
-/* Android / Capacitor safe-area insets for notch & punch-hole displays */
+/* Android / iOS safe-area insets for notch, dynamic island & gesture bars */
 :root {
   --sat: env(safe-area-inset-top, 0px);
   --sab: env(safe-area-inset-bottom, 0px);
@@ -153,14 +158,16 @@ input, textarea {
   --sar: env(safe-area-inset-right, 0px);
 }
 
-/* Prevent font inflation on orientation change (Android WebView) */
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
+.pb-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+}
+
+.pt-safe {
+  padding-top: max(1rem, env(safe-area-inset-top, 0px));
 }
 
 /* Native-feel momentum scrolling on scrollable containers */
-[data-scroll], .overflow-y-auto, .overflow-auto {
+[data-scroll], .overflow-y-auto, .overflow-x-auto, .overflow-auto {
   -webkit-overflow-scrolling: touch;
 }
 

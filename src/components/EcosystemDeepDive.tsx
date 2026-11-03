@@ -80,22 +80,22 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
       </div>
 
       {/* Lab Banner Header */}
-      <div className="p-6 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xs">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="flex items-start gap-4">
+      <div className="p-4 sm:p-6 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xs">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 sm:gap-6">
+          <div className="flex items-start gap-3.5 sm:gap-4">
             <EcosystemLogo
               name={ecosystem.name}
               website={ecosystem.website}
-              size={56}
-              className="rounded-2xl shadow-sm"
+              size={48}
+              className="rounded-2xl shadow-sm shrink-0"
             />
-            <div>
-              <div className="flex items-center gap-3 flex-wrap">
-                <h2 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white truncate">
                   {ecosystem.name} Ecosystem
                 </h2>
                 <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold border tabular-nums ${ecosystem.colorScheme.badge}`}>
-                  {ecosystem.totalCount} Integrated Assets
+                  {ecosystem.totalCount} Assets
                 </span>
                 {ecosystem.website && (
                   <a

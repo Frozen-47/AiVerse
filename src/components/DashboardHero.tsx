@@ -135,8 +135,8 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
 
       const isDark = darkRef.current;
       const t = ms / 1000;
-      // Staggered lattice step: 12px on mobile, 13.5px on desktop for refined editorial texture
-      const s = w < 640 ? 12 : 13.5;
+      // Staggered lattice step: 18px on mobile (efficient 60fps GPU rasterization), 13.5px on desktop
+      const s = w < 640 ? 18 : 13.5;
       ctx.clearRect(0, 0, w, h);
 
       // Editorial ink vs dark mode celestial stardust
@@ -225,7 +225,11 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
     drawStaticRef.current = () => draw(2000);
 
     const loop = (ms: number) => {
-      if (visible) draw(ms);
+      if (!visible) {
+        raf = 0;
+        return;
+      }
+      draw(ms);
       raf = requestAnimationFrame(loop);
     };
 
@@ -269,6 +273,9 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
     });
     const io = new IntersectionObserver(([e]) => {
       visible = e.isIntersecting;
+      if (visible && !raf && !still) {
+        raf = requestAnimationFrame(loop);
+      }
     });
     ro.observe(cv);
     io.observe(cv);
@@ -335,15 +342,15 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
 
   return (
     <section
-      className={`dh-hero relative flex min-h-[calc(100vh-4rem)] w-full flex-col overflow-hidden border-b text-neutral-950 transition-colors dark:text-white ${
+      className={`dh-hero relative flex min-h-[calc(100vh-4rem)] min-h-[calc(100dvh-4rem)] w-full flex-col overflow-hidden border-b text-neutral-950 transition-colors dark:text-white ${
         isAmoled ? "border-white/10 bg-black" : "border-neutral-200 bg-white dark:border-white/[0.08] dark:bg-[#0f1115]"
       }`}
     >
       <style>{CSS}</style>
       <Halftone dark={isDark} />
 
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-5 py-12 text-center">
-        <h1 className="max-w-4xl text-[2.5rem] font-medium leading-[1.05] tracking-[-0.035em] sm:text-6xl lg:text-7xl">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-14 text-center">
+        <h1 className="max-w-4xl text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.12] sm:leading-[1.05] tracking-[-0.035em]">
           <span className="block text-neutral-500">{words(LINE_1, 0)}</span>
           <span className="block">{words(LINE_2, LINE_1.length)}</span>
         </h1>

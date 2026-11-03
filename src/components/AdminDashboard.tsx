@@ -137,7 +137,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
   // Google Cloud Console Navigation State
   const [activeNav, setActiveNav] = useState<NavSectionId>(initialSection || "users");
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(() => typeof window !== "undefined" ? window.innerWidth >= 768 : true);
 
   useEffect(() => {
     if (initialSection && initialSection !== activeNav) {
@@ -148,6 +148,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const handleNavSelect = (sec: NavSectionId) => {
     setActiveNav(sec);
     onSectionChange?.(sec);
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      setSidebarOpen(false);
+    }
   };
 
   const [loading, setLoading] = useState(true);
@@ -1301,12 +1304,20 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       </header>
 
       {/* ── Main Layout: Google Cloud Left Navigation Drawer + Content Pane ── */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden relative">
+        {/* Mobile Backdrop when admin sidebar is open */}
+        {sidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs z-30 md:hidden animate-[fadeIn_0.15s_ease-out]"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+
         {/* Google Admin Left Navigation Sidebar */}
         <aside
           className={`${
-            sidebarOpen ? "w-64" : "w-0 -translate-x-full"
-          } transition-all duration-200 border-r border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] flex flex-col justify-between shrink-0 overflow-y-auto z-10`}
+            sidebarOpen ? "fixed md:relative inset-y-0 left-0 w-64 z-40 md:z-10 shadow-2xl md:shadow-none" : "w-0 -translate-x-full"
+          } transition-all duration-200 border-r border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] flex flex-col justify-between shrink-0 overflow-y-auto`}
         >
           <div className="py-3 px-2 space-y-4">
             {/* Group 1: Identity & Access Management */}

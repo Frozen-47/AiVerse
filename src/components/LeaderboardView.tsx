@@ -273,7 +273,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
                 Top-left represents maximum cost efficiency (High Intelligence, Low Cost).
               </p>
             </div>
-            <div className="flex items-center gap-3 text-xs text-neutral-400">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-neutral-400">
               <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-emerald-500" /> OpenAI</span>
               <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-amber-500" /> Anthropic</span>
               <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-blue-500" /> Google</span>
@@ -439,10 +439,18 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
       </div>
 
       {/* ── 5. High-Density Leaderboard Table ── */}
-      <div className={`overflow-x-auto rounded-2xl border ${
+      <div className={`rounded-2xl border overflow-hidden ${
         isAmoled ? "border-white/10 bg-[#161719]" : "border-neutral-200 bg-white shadow-xs"
       }`}>
-        <table className="w-full text-left border-collapse text-xs">
+        {/* Mobile Horizontal Scroll Indicator */}
+        <div className="md:hidden flex items-center justify-between px-3.5 py-1.5 text-[11px] text-neutral-500 dark:text-neutral-400 bg-neutral-100/80 dark:bg-white/[0.04] border-b border-neutral-200 dark:border-white/[0.08]">
+          <span className="flex items-center gap-1.5 font-medium">
+            <span>⇄</span> Scroll horizontally to inspect all metrics
+          </span>
+          <span className="font-mono text-[10px] opacity-75">{processedModels.length} models</span>
+        </div>
+        <div className="overflow-x-auto no-scrollbar">
+          <table className="w-full text-left border-collapse text-xs">
           <thead>
             <tr className={`border-b ${
               isAmoled
@@ -697,16 +705,17 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
             })}
           </tbody>
         </table>
+        </div>
       </div>
 
       {/* ── 6. Model Deep-Dive Modal ── */}
       {selectedModel && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
           onClick={() => setSelectedModel(null)}
         >
           <div
-            className={`relative w-full max-w-xl p-6 rounded-3xl border shadow-2xl ${
+            className={`relative w-full max-w-xl max-h-[90dvh] overflow-y-auto no-scrollbar p-5 sm:p-6 rounded-3xl border shadow-2xl ${
               isAmoled ? "bg-[#18191b] border-white/15" : "bg-white border-neutral-200"
             }`}
             onClick={(e) => e.stopPropagation()}

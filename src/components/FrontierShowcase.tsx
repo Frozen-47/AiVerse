@@ -336,9 +336,9 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
         </div>
 
         {/* Action Controls & Dynamic Category Selector */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 shrink-0">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 shrink-0 w-full sm:w-auto">
           {!searchResults && (
-            <div className={`p-1 rounded-2xl border flex items-center overflow-x-auto no-scrollbar max-w-full ${
+            <div className={`p-1 rounded-2xl border flex items-center overflow-x-auto no-scrollbar max-w-full w-full sm:w-auto ${
               isAmoled 
                 ? "bg-neutral-800/90 border-white/10 shadow-xs" 
                 : "bg-neutral-100/90 border-neutral-200/90 shadow-2xs"
@@ -368,7 +368,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
 
           <button
             onClick={() => onViewAll(currentCategory)}
-            className="px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0"
+            className="px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 whitespace-nowrap shrink-0 w-full sm:w-auto"
             title={`Open complete ${currentConfig.label} directory`}
           >
             <span>

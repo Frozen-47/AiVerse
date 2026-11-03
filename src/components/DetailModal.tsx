@@ -163,8 +163,8 @@ function CompareTable({
   right: Entry;
 }) {
   return (
-    <div className="rounded-xl border border-[#dadce0] dark:border-[#3c4043]/60 overflow-hidden bg-white dark:bg-[#1e1f20]">
-      <div className="grid grid-cols-[100px_minmax(0,1fr)_minmax(0,1fr)] sm:grid-cols-[130px_minmax(0,1fr)_minmax(0,1fr)] gap-px text-[10px] sm:text-[11px] uppercase tracking-wider font-semibold bg-[#f1f3f4] dark:bg-[#282a2c]">
+    <div className="rounded-xl border border-[#dadce0] dark:border-[#3c4043]/60 overflow-x-auto bg-white dark:bg-[#1e1f20]">
+      <div className="grid grid-cols-[100px_minmax(130px,1fr)_minmax(130px,1fr)] sm:grid-cols-[130px_minmax(0,1fr)_minmax(0,1fr)] min-w-[360px] sm:min-w-0 gap-px text-[10px] sm:text-[11px] uppercase tracking-wider font-semibold bg-[#f1f3f4] dark:bg-[#282a2c]">
         <div className="px-3.5 py-2.5 text-[#5f6368] dark:text-[#8e918f]">Metric</div>
         <div className="px-3.5 py-2.5 truncate font-bold text-[#202124] dark:text-[#e3e3e3]">{left.name}</div>
         <div className="px-3.5 py-2.5 truncate font-bold text-[#1a73e8] dark:text-[#a8c7fa]">{right.name}</div>
@@ -172,7 +172,7 @@ function CompareTable({
       {COMPARE_ROWS.map(({ label, get }) => (
         <div
           key={label}
-          className="grid grid-cols-[100px_minmax(0,1fr)_minmax(0,1fr)] sm:grid-cols-[130px_minmax(0,1fr)_minmax(0,1fr)] gap-px border-t border-[#dadce0] dark:border-[#3c4043]/40 bg-white dark:bg-[#1e1f20]"
+          className="grid grid-cols-[100px_minmax(130px,1fr)_minmax(130px,1fr)] sm:grid-cols-[130px_minmax(0,1fr)_minmax(0,1fr)] min-w-[360px] sm:min-w-0 gap-px border-t border-[#dadce0] dark:border-[#3c4043]/40 bg-white dark:bg-[#1e1f20]"
         >
           <div className="px-3.5 py-2.5 text-[10px] sm:text-[11px] uppercase tracking-wider font-semibold text-[#5f6368] dark:text-[#8e918f]">
             {label}
@@ -510,15 +510,15 @@ export const DetailModal: React.FC<DetailModalProps> = ({
       role="dialog"
       aria-modal="true"
       aria-label={`${entry.name} - Model Details`}
-      className="fixed inset-0 z-[70] flex flex-col overflow-y-auto overscroll-contain animate-[fadeIn_0.15s_ease-out] bg-[#f8f9fa] dark:bg-[#131314] text-[#202124] dark:text-[#e3e3e3]"
+      className="fixed inset-0 z-[70] flex flex-col overflow-y-auto overscroll-contain animate-[fadeIn_0.15s_ease-out] bg-[#f8f9fa] dark:bg-[#131314] text-[#202124] dark:text-[#e3e3e3] pb-safe"
     >
       {/* 1. Google Cloud / Model Garden Header (Clean & Compact) */}
-      <header className="sticky top-0 z-40 px-4 sm:px-6 h-13 sm:h-14 border-b border-[#dadce0] dark:border-[#3c4043]/50 bg-white/95 dark:bg-[#131314]/95 backdrop-blur-md flex items-center justify-between gap-4 transition-colors">
+      <header className="sticky top-0 z-40 px-3 sm:px-6 h-13 sm:h-14 border-b border-[#dadce0] dark:border-[#3c4043]/50 bg-white/95 dark:bg-[#131314]/95 backdrop-blur-md flex items-center justify-between gap-2 sm:gap-4 transition-colors">
         {/* Left: Back button & Breadcrumbs */}
-        <div className="flex items-center gap-2.5 min-w-0">
+        <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
           <button
             onClick={onClose}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#5f6368] dark:text-[#c4c7c5] hover:text-[#202124] dark:hover:text-white hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#5f6368] dark:text-[#c4c7c5] hover:text-[#202124] dark:hover:text-white hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-colors cursor-pointer shrink-0"
             title="Return to Catalog (Esc)"
           >
             <ArrowLeft size={13} />
@@ -535,33 +535,33 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="flex items-center gap-1 text-[#1a73e8] dark:text-[#a8c7fa] font-semibold shrink-0 hover:underline cursor-pointer"
+              className="hidden sm:flex items-center gap-1 text-[#1a73e8] dark:text-[#a8c7fa] font-semibold shrink-0 hover:underline cursor-pointer"
               title="Return to Catalog"
             >
               <Sparkles size={12} /> Model Garden
             </button>
-            <span className="opacity-40">/</span>
-            <span className="truncate">{entry.type}</span>
-            <span className="opacity-40">/</span>
-            <span className="font-semibold text-[#202124] dark:text-[#e3e3e3] truncate max-w-[140px] sm:max-w-xs">
+            <span className="hidden sm:inline opacity-40">/</span>
+            <span className="hidden md:inline truncate">{entry.type}</span>
+            <span className="hidden md:inline opacity-40">/</span>
+            <span className="font-semibold text-[#202124] dark:text-[#e3e3e3] truncate max-w-[130px] sm:max-w-xs">
               {entry.name}
             </span>
           </nav>
         </div>
 
         {/* Right: Action Controls */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {onViewEcosystem && entry.org && (
             <button
               onClick={() => {
                 onClose();
                 onViewEcosystem(entry.org);
               }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 transition-all cursor-pointer shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full text-xs font-semibold border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 transition-all cursor-pointer shadow-2xs"
               title={`View ${entry.org} Ecosystem`}
             >
               <Building2 size={12} />
-              <span>View Ecosystem</span>
+              <span><span className="hidden sm:inline">View </span>Ecosystem</span>
             </button>
           )}
 

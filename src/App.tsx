@@ -1282,13 +1282,13 @@ const Inner: React.FC = () => {
 
                     <div className="flex flex-wrap items-center gap-3">
                       {/* View Switcher: Individual vs By Lab */}
-                      <div className="flex items-center p-1 rounded-xl bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08]">
+                      <div className="flex items-center p-1 rounded-xl bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08] w-full sm:w-auto justify-between sm:justify-start">
                         <button
                           onClick={() => {
                             setCatalogDisplayMode("assets");
                             setCurrentPage(1);
                           }}
-                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                             catalogDisplayMode === "assets"
                               ? resolvedTheme === "amoled"
                                 ? "bg-white text-black shadow-xs"
@@ -1297,7 +1297,7 @@ const Inner: React.FC = () => {
                           }`}
                         >
                           <Box size={13} />
-                          <span>All Assets & Models</span>
+                          <span><span className="hidden sm:inline">All </span>Assets</span>
                           <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
                             catalogDisplayMode === "assets" ? "bg-white/20 dark:bg-black/20" : "bg-neutral-200/60 dark:bg-white/[0.08]"
                           }`}>
@@ -1309,7 +1309,7 @@ const Inner: React.FC = () => {
                             setCatalogDisplayMode("ecosystems");
                             setCurrentPage(1);
                           }}
-                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                             catalogDisplayMode === "ecosystems"
                               ? resolvedTheme === "amoled"
                                 ? "bg-white text-black shadow-xs"
@@ -1318,7 +1318,7 @@ const Inner: React.FC = () => {
                           }`}
                         >
                           <Building2 size={13} className={catalogDisplayMode === "ecosystems" ? "text-blue-400 dark:text-blue-600" : "text-blue-500"} />
-                          <span>AI Ecosystems</span>
+                          <span><span className="hidden sm:inline">AI </span>Ecosystems</span>
                           <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
                             catalogDisplayMode === "ecosystems" ? "bg-white/20 dark:bg-black/20" : "bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20"
                           }`}>
@@ -1571,7 +1571,13 @@ const Inner: React.FC = () => {
                               <span>Previous</span>
                             </button>
 
-                            <div className="flex items-center gap-1">
+                            {/* Mobile Compact Page Indicator */}
+                            <div className="sm:hidden text-xs font-semibold px-2 text-neutral-600 dark:text-neutral-300 tabular-nums">
+                              Page {currentPage} of {totalPages}
+                            </div>
+
+                            {/* Desktop Number Pills */}
+                            <div className="hidden sm:flex items-center gap-1">
                               {getVisiblePages(currentPage, totalPages).map((page, idx) => {
                                 if (page === "...") {
                                   return (
@@ -2066,49 +2072,62 @@ const Inner: React.FC = () => {
             className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" 
             onClick={() => setShowMobileSidebar(false)}
           />
-          <div className={`relative flex w-[85%] max-w-sm flex-col overflow-y-auto px-6 py-6 shadow-2xl no-scrollbar ${t.modal} border-r ${t.border} animate-[slideRight_0.3s_ease-out]`}>
-            <div className="flex items-center justify-between mb-8 shrink-0">
+          <div className={`relative flex w-[85%] max-w-sm flex-col overflow-y-auto px-5 sm:px-6 py-6 shadow-2xl no-scrollbar ${t.modal} border-r ${t.border} animate-[slideRight_0.3s_ease-out] pb-safe`}>
+            <div className="flex items-center justify-between mb-6 shrink-0">
               <h2 className={`text-lg font-bold tracking-tight ${t.textPrimary}`}>Filters</h2>
               <div className="flex items-center gap-1">
                 {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly || savedOnly) && (
                   <button
                     onClick={() => { setTypeFilter("All"); setTaskFilter("All Tasks"); setPopularOnly(false); setSavedOnly(false); }}
-                    className={`text-[11px] font-semibold underline underline-offset-2 ${t.textAccent} hover:text-white transition-colors mr-1`}
+                    className={`text-[11px] font-semibold underline underline-offset-2 ${t.textAccent} hover:text-white transition-colors mr-1 cursor-pointer`}
                   >
                     Clear All
                   </button>
                 )}
                 <button 
                   onClick={() => setShowMobileSidebar(false)}
-                  className={`p-2 rounded-full border transition-colors ${t.surface} ${t.border} ${t.textMuted} hover:${t.textPrimary} hover:bg-white/5`}
+                  className={`p-2 rounded-full border transition-colors ${t.surface} ${t.border} ${t.textMuted} hover:${t.textPrimary} hover:bg-white/5 cursor-pointer`}
+                  aria-label="Close filters"
                 >
                   <X size={16} />
                 </button>
               </div>
             </div>
             
-            <Sidebar
-              entries={entries}
-              currentFilter={typeFilter}
-              currentTask={taskFilter}
-              typeFilters={typeFilters}
-              taskFilters={taskFilters}
-              popularOnly={popularOnly}
-              filteredCount={filtered.length}
-              onTypeFilter={setTypeFilter}
-              onTaskFilter={setTaskFilter}
-              onPopularToggle={() => setPopularOnly((p) => !p)}
-              savedOnly={savedOnly}
-              savedCount={bookmarks.length}
-              onSavedToggle={handleSavedToggle}
-              catalogDisplayMode={catalogDisplayMode}
-              onSelectDisplayMode={(m) => {
-                setCatalogDisplayMode(m);
-                setShowMobileSidebar(false);
-                setCurrentPage(1);
-              }}
-              ecosystemsCount={ecosystemsCount}
-            />
+            <div className="flex-1">
+              <Sidebar
+                entries={entries}
+                currentFilter={typeFilter}
+                currentTask={taskFilter}
+                typeFilters={typeFilters}
+                taskFilters={taskFilters}
+                popularOnly={popularOnly}
+                filteredCount={filtered.length}
+                onTypeFilter={setTypeFilter}
+                onTaskFilter={setTaskFilter}
+                onPopularToggle={() => setPopularOnly((p) => !p)}
+                savedOnly={savedOnly}
+                savedCount={bookmarks.length}
+                onSavedToggle={handleSavedToggle}
+                catalogDisplayMode={catalogDisplayMode}
+                onSelectDisplayMode={(m) => {
+                  setCatalogDisplayMode(m);
+                  setShowMobileSidebar(false);
+                  setCurrentPage(1);
+                }}
+                ecosystemsCount={ecosystemsCount}
+              />
+            </div>
+
+            {/* Mobile Sticky Apply Button */}
+            <div className="sticky bottom-0 pt-4 mt-6 border-t border-neutral-200 dark:border-white/10 bg-inherit pb-2">
+              <button
+                onClick={() => setShowMobileSidebar(false)}
+                className="w-full py-2.5 rounded-xl text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black shadow-xs text-center cursor-pointer hover:opacity-90 transition-opacity"
+              >
+                Show {filtered.length} Resources
+              </button>
+            </div>
           </div>
         </div>
       )}

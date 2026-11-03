@@ -1127,10 +1127,18 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
   if (isChatRoute) {
     return (
       <div className="fixed inset-0 z-50 flex overflow-hidden bg-white dark:bg-[#212121] text-neutral-900 dark:text-white font-sans animate-[fadeIn_0.2s_ease-out]">
+        {/* Mobile Backdrop when sidebar is open */}
+        {sidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs z-30 md:hidden animate-[fadeIn_0.15s_ease-out]"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+
         {/* ──── LEFT SIDEBAR (Iconic ChatGPT style) ──── */}
         <aside
-          className={`flex flex-col h-full bg-[#f9f9f9] dark:bg-[#171717] border-r border-neutral-200/80 dark:border-white/[0.08] transition-all duration-300 ease-out z-20 ${
-            sidebarOpen ? 'w-[260px] translate-x-0' : 'w-0 -translate-x-full overflow-hidden'
+          className={`fixed md:relative inset-y-0 left-0 flex flex-col h-full bg-[#f9f9f9] dark:bg-[#171717] border-r border-neutral-200/80 dark:border-white/[0.08] transition-all duration-300 ease-out z-40 md:z-20 ${
+            sidebarOpen ? 'w-[270px] max-w-[85vw] translate-x-0 shadow-2xl md:shadow-none' : 'w-0 -translate-x-full overflow-hidden'
           }`}
         >
           {/* Sidebar Top: Logo + Collapse Sidebar */}
@@ -1154,7 +1162,10 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
           {/* New Chat Button */}
           <div className="p-3">
             <button
-              onClick={createNewSession}
+              onClick={() => {
+                createNewSession();
+                if (window.innerWidth < 768) setSidebarOpen(false);
+              }}
               className="w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border border-neutral-300/80 dark:border-white/10 hover:bg-white dark:hover:bg-white/[0.06] text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-xs transition-all cursor-pointer"
             >
               <Plus size={15} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
@@ -1197,7 +1208,10 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
               return (
                 <div
                   key={session.id}
-                  onClick={() => setCurrentSessionId(session.id)}
+                  onClick={() => {
+                    setCurrentSessionId(session.id);
+                    if (window.innerWidth < 768) setSidebarOpen(false);
+                  }}
                   className={`group relative flex items-center justify-between px-3 py-2 rounded-xl text-xs transition-all cursor-pointer ${
                     isActive
                       ? 'bg-neutral-200/80 dark:bg-white/[0.1] text-neutral-900 dark:text-white font-medium shadow-xs'
@@ -1674,7 +1688,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
 
       {/* ── Compact Mini Floating Card in Right Bottom Corner ── */}
       {isMiniOpen && (
-        <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-[410px] h-[530px] max-h-[calc(100vh-32px)] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.25)] dark:shadow-[0_24px_70px_rgba(0,0,0,0.7)] bg-white dark:bg-[#18191c] border border-neutral-200/90 dark:border-neutral-800 flex flex-col overflow-hidden backdrop-blur-2xl animate-[fadeUp_0.2s_ease-out]">
+        <div className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-24px)] sm:w-[410px] h-[520px] max-h-[calc(100dvh-24px)] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.25)] dark:shadow-[0_24px_70px_rgba(0,0,0,0.7)] bg-white dark:bg-[#18191c] border border-neutral-200/90 dark:border-neutral-800 flex flex-col overflow-hidden backdrop-blur-2xl animate-[fadeUp_0.2s_ease-out]">
           {/* Mini Header */}
           <div className="px-3.5 py-2.5 border-b border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/80 dark:bg-[#121315]/80 backdrop-blur-xl flex items-center justify-between shrink-0">
             <div className="flex items-center gap-2">
