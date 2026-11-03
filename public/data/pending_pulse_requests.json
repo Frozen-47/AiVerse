@@ -1,5 +1,55 @@
 [
   {
+    "name": "OffsecCyber",
+    "type": "Dataset",
+    "summary": "Security Vulnerability Instruction Dataset \t An English-language dataset of security-focused assistant conversations about software vulnerabilities. Examples cover vuln (35 likes, 0 downloads).",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "PentesterFlow",
+    "size": "10K<n<100K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"PentesterFlow/OffsecCyber\")",
+    "benchmarks": "Trending Score: 34, Likes: 35, Downloads: 0",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/PentesterFlow/OffsecCyber",
+    "citations": [
+      {
+        "text": "PentesterFlow/OffsecCyber on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/PentesterFlow/OffsecCyber"
+      }
+    ],
+    "created_at": "2026-11-03T20:23:08.379Z"
+  },
+  {
+    "name": "SenseNova-Loop-9B-Preview",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by sensenova, trending with over 205 community likes and 2,221 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "sensenova",
+    "size": "9B params",
+    "architecture": "sensenova image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"sensenova/SenseNova-Loop-9B-Preview\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"sensenova/SenseNova-Loop-9B-Preview\")",
+    "benchmarks": "Trending Score: 202, Likes: 205, Downloads: 2,221",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview",
+    "citations": [
+      {
+        "text": "sensenova/SenseNova-Loop-9B-Preview on Hugging Face",
+        "url": "https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview"
+      }
+    ],
+    "created_at": "2026-11-03T20:23:08.379Z"
+  },
+  {
     "name": "MOSS-Image-Character-Catalog",
     "type": "Platform",
     "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hide1. Trending with 28 community stars.",

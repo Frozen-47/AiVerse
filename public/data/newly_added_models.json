@@ -4,6 +4,60 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "SenseNova-Loop-9B-Preview",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by sensenova, trending with over 205 community likes and 2,221 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "sensenova",
+        "size": "9B params",
+        "architecture": "sensenova image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"sensenova/SenseNova-Loop-9B-Preview\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"sensenova/SenseNova-Loop-9B-Preview\")",
+        "benchmarks": "Trending Score: 202, Likes: 205, Downloads: 2,221",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview",
+        "citations": [
+          {
+            "text": "sensenova/SenseNova-Loop-9B-Preview on Hugging Face",
+            "url": "https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview"
+          }
+        ]
+      },
+      {
+        "name": "OffsecCyber",
+        "type": "Dataset",
+        "summary": "Security Vulnerability Instruction Dataset \t An English-language dataset of security-focused assistant conversations about software vulnerabilities. Examples cover vuln (35 likes, 0 downloads).",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "PentesterFlow",
+        "size": "10K<n<100K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"PentesterFlow/OffsecCyber\")",
+        "benchmarks": "Trending Score: 34, Likes: 35, Downloads: 0",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/PentesterFlow/OffsecCyber",
+        "citations": [
+          {
+            "text": "PentesterFlow/OffsecCyber on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/PentesterFlow/OffsecCyber"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-03",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by AtomicChat, trending with over 235 community likes and 53,913 downloads on Hugging Face.",
@@ -6280,77 +6334,6 @@
           {
             "text": "XiaomiMiMo/MiMo-V2.6-RL-oss on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/XiaomiMiMo/MiMo-V2.6-RL-oss"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-26",
-    "assets": [
-      {
-        "name": "Audio8-ASR-Infinite",
-        "type": "Model",
-        "summary": "High-performance Audio open-weights model by Edge0, trending with over 605 community likes and 2,853 downloads on Hugging Face.",
-        "task": "Audio",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "Edge0",
-        "size": "Open Weights",
-        "architecture": "Edge0 automatic speech recognition architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Edge0/Audio8-ASR-Infinite\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Edge0/Audio8-ASR-Infinite\")",
-        "benchmarks": "Trending Score: 541, Likes: 605, Downloads: 2,853",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": true,
-        "url": "https://huggingface.co/Edge0/Audio8-ASR-Infinite",
-        "citations": [
-          {
-            "text": "Edge0/Audio8-ASR-Infinite on Hugging Face",
-            "url": "https://huggingface.co/Edge0/Audio8-ASR-Infinite"
-          }
-        ]
-      },
-      {
-        "name": "Qwen-Image-2.1-viggle-turbo",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Viggle. Trending with 61 community stars.",
-        "task": "Image Generation",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "Viggle",
-        "size": "GRADIO Platform",
-        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
-        "benchmarks": "Trending Score: 59, Community Likes: 61",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": true,
-        "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo",
-        "citations": [
-          {
-            "text": "Viggle/Qwen-Image-2.1-viggle-turbo on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo"
-          }
-        ]
-      },
-      {
-        "name": "OmniVChat",
-        "type": "Dataset",
-        "summary": "OmniVChat: Synthesizing, Benchmarking, and Training for Native Audio-Visual Dialogue \t &nbsp;&nbsp;&nbsp;&nbsp; 1 The Chinese University of Hong Kong 2 Alibaba Token Hu (39 likes, 1,473 downloads).",
-        "task": "Audio",
-        "license": "CC-BY-NC-ND-4.0",
-        "year": 2026,
-        "org": "Harland",
-        "size": "1K<n<10K",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Harland/OmniVChat\")",
-        "benchmarks": "Trending Score: 39, Likes: 39, Downloads: 1,473",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "url": "https://huggingface.co/datasets/Harland/OmniVChat",
-        "citations": [
-          {
-            "text": "Harland/OmniVChat on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/Harland/OmniVChat"
           }
         ]
       }

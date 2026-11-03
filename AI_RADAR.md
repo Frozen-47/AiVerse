@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Tue, 03 Nov 2026 12:34:43 GMT`*
+*Last Synchronized: `Tue, 03 Nov 2026 20:23:53 GMT`*
 
 ---
 
@@ -10,19 +10,19 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF** (`Model` • *AtomicChat*)
-> High-performance NLP open-weights model by AtomicChat, trending with over 235 community likes and 53,913 downloads on Hugging Face.
+### **SenseNova-Loop-9B-Preview** (`Model` • *sensenova*)
+> High-performance Multimodal open-weights model by sensenova, trending with over 205 community likes and 2,221 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `MIT` (2026)
-- ⚡ **Metrics**: `Trending Score: 209, Likes: 235, Downloads: 53,913`
-- 🔗 **Resource Link**: [https://huggingface.co/AtomicChat/DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF](https://huggingface.co/AtomicChat/DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF)
+- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 202, Likes: 205, Downloads: 2,221`
+- 🔗 **Resource Link**: [https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview](https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview)
 
-### **MOSS-Image-Character-Catalog** (`Platform` • *hide1*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hide1. Trending with 28 community stars.
+### **OffsecCyber** (`Dataset` • *PentesterFlow*)
+> Security Vulnerability Instruction Dataset 	 An English-language dataset of security-focused assistant conversations about software vulnerabilities. Examples cover vuln (35 likes, 0 downloads).
 
-- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 27, Community Likes: 28`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/hide1/MOSS-Image-Character-Catalog](https://huggingface.co/spaces/hide1/MOSS-Image-Character-Catalog)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 34, Likes: 35, Downloads: 0`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/PentesterFlow/OffsecCyber](https://huggingface.co/datasets/PentesterFlow/OffsecCyber)
 
 ---
 
@@ -41,12 +41,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 1,317 | 📥 47,817 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 4,788 | 📥 187,260 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 706 | 📥 38,942 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
-| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,522 | 📥 6,556 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
-| `speridlabs/idol` | image-to-3d | ❤️ 466 | 📥 10,742 | [View](https://huggingface.co/speridlabs/idol) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 10,418 | 📥 2,488,128 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 1,387 | 📥 47,817 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 729 | 📥 38,942 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 4,837 | 📥 187,260 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,536 | 📥 6,556 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
+| `speridlabs/idol` | image-to-3d | ❤️ 496 | 📥 10,742 | [View](https://huggingface.co/speridlabs/idol) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 10,469 | 📥 2,488,128 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
 
 
 ---
@@ -56,11 +56,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Where Do Vision Language Models Fail at 3D Reasoning?** | 👍 1 | Vision-language models often judge 3D object properties correctly but fail to recover and consistently apply exact per-color counts, motivating evaluation by exact correctness, consistency, and visual dependence. | [Read](https://huggingface.co/papers/2610.39639) |
-| **SWE-Trail: History-Guided Trajectory Collection for Coding Agent Training** | 👍 10 | SWE-Trail improves trajectory collection for coding agents by using past rollouts to guide exploration without exposing history to the agent, yielding better-trained student models. | [Read](https://huggingface.co/papers/2611.02074) |
-| **LEANGUARD: Lean-Verified Guardrails for Tool-Using Agents** | 👍 1 | LeanGuard is a verified runtime that blocks policy-violating tool calls by language-model agents and can repair them via proof-guided search, reducing unauthorized executions and prompt-injection success without harming benign task performance. | [Read](https://huggingface.co/papers/2611.02332) |
-| **Advances in Agentic Computer Graphics** | 👍 43 | This report proposes a unified taxonomy and literature system for agentic computer graphics driven by large language models, analyzing trends and open challenges in human-agent collaboration and long-horizon planning. | [Read](https://huggingface.co/papers/2611.01860) |
-| **When Does Latent Prediction Error Support Physical Surprise Claims in Video World Models?** | 👍 16 | The study evaluates frozen video representations to show that prediction errors reflect appearance and motion rather than reliably measuring physical surprise. | [Read](https://huggingface.co/papers/2611.01815) |
+| **IdeaTaste: Do LLMs Share the Research Taste of Human Researchers?** | 👍 17 | IdeaTaste benchmarks LLM research proposals against future publications, revealing that AI agents match human communities in broad directions but fall far behind in concrete approaches and expected success. | [Read](https://huggingface.co/papers/2611.03424) |
+| **Order-Only On-Policy Distillation** | 👍 22 | Order-only on-policy distillation trains students to match teacher token rankings rather than probabilities, improving reasoning performance without temperature tuning. | [Read](https://huggingface.co/papers/2611.02112) |
+| **Advancing SVD-based LLM Compression via Layer-Wise Error Model Search** | 👍 4 | Layer-wise error modeling and token-wise Fisher statistics improve low-rank SVD compression of large language models by refining rank allocation and decomposition quality. | [Read](https://huggingface.co/papers/2610.32878) |
+| **DAMI: Dual-Axis Memory Initialization for Enhanced Long-Context Retrieval in Gated Linear Attention** | 👍 3 | Dual-Axis Memory Initialization improves long-context retrieval in gated linear recurrent models by jointly configuring decay and sensitivity parameters before training. | [Read](https://huggingface.co/papers/2610.41994) |
+| **DR Pixel: Page-Native Deep Research with Vision-Language Models** | 👍 4 | DR Pixel is an open-source multimodal agent that performs deep research directly on rendered document page images, improving retrieval and reasoning over scientific papers through counterfactual credit reweighting. | [Read](https://huggingface.co/papers/2611.03097) |
 
 
 ---
@@ -73,7 +73,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
+- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
 - **Dependency Security**: `47` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

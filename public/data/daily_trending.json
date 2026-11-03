@@ -1,34 +1,34 @@
 {
-  "timestamp": "2026-11-03T12:33:57.607Z",
+  "timestamp": "2026-11-03T20:23:08.398Z",
   "models": [
     {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 1317,
+      "likes": 1387,
       "downloads": 47817,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
     },
     {
-      "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
-      "author": "deepseek-ai",
-      "likes": 4788,
-      "downloads": 187260,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
-    },
-    {
       "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
       "author": "nvidia",
-      "likes": 706,
+      "likes": 729,
       "downloads": 38942,
       "pipeline_tag": "automatic-speech-recognition",
       "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
     },
     {
+      "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "author": "deepseek-ai",
+      "likes": 4837,
+      "downloads": 187260,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+    },
+    {
       "id": "mistralai/Mistral-Large-4-1T-A52B",
       "author": "mistralai",
-      "likes": 1522,
+      "likes": 1536,
       "downloads": 6556,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
@@ -36,7 +36,7 @@
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 466,
+      "likes": 496,
       "downloads": 10742,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -44,7 +44,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 10418,
+      "likes": 10469,
       "downloads": 2488128,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "Where Do Vision Language Models Fail at 3D Reasoning?",
-      "summary": "Vision-language models often judge 3D object properties correctly but fail to recover and consistently apply exact per-color counts, motivating evaluation by exact correctness, consistency, and visual dependence.",
-      "upvotes": 1,
-      "arxiv_id": "2610.39639",
-      "url": "https://huggingface.co/papers/2610.39639",
-      "githubRepo": "https://github.com/leduckhai/BedBench"
+      "title": "IdeaTaste: Do LLMs Share the Research Taste of Human Researchers?",
+      "summary": "IdeaTaste benchmarks LLM research proposals against future publications, revealing that AI agents match human communities in broad directions but fall far behind in concrete approaches and expected success.",
+      "upvotes": 17,
+      "arxiv_id": "2611.03424",
+      "url": "https://huggingface.co/papers/2611.03424",
+      "githubRepo": "https://github.com/cxcscmu/IdeaTaste"
     },
     {
-      "title": "SWE-Trail: History-Guided Trajectory Collection for Coding Agent Training",
-      "summary": "SWE-Trail improves trajectory collection for coding agents by using past rollouts to guide exploration without exposing history to the agent, yielding better-trained student models.",
-      "upvotes": 10,
-      "arxiv_id": "2611.02074",
-      "url": "https://huggingface.co/papers/2611.02074",
+      "title": "Order-Only On-Policy Distillation",
+      "summary": "Order-only on-policy distillation trains students to match teacher token rankings rather than probabilities, improving reasoning performance without temperature tuning.",
+      "upvotes": 22,
+      "arxiv_id": "2611.02112",
+      "url": "https://huggingface.co/papers/2611.02112",
       "githubRepo": null
     },
     {
-      "title": "LEANGUARD: Lean-Verified Guardrails for Tool-Using Agents",
-      "summary": "LeanGuard is a verified runtime that blocks policy-violating tool calls by language-model agents and can repair them via proof-guided search, reducing unauthorized executions and prompt-injection success without harming benign task performance.",
-      "upvotes": 1,
-      "arxiv_id": "2611.02332",
-      "url": "https://huggingface.co/papers/2611.02332",
-      "githubRepo": "https://github.com/DebarghaG/LeanGuard"
+      "title": "Advancing SVD-based LLM Compression via Layer-Wise Error Model Search",
+      "summary": "Layer-wise error modeling and token-wise Fisher statistics improve low-rank SVD compression of large language models by refining rank allocation and decomposition quality.",
+      "upvotes": 4,
+      "arxiv_id": "2610.32878",
+      "url": "https://huggingface.co/papers/2610.32878",
+      "githubRepo": "https://github.com/lems-svd/lems"
     },
     {
-      "title": "Advances in Agentic Computer Graphics",
-      "summary": "This report proposes a unified taxonomy and literature system for agentic computer graphics driven by large language models, analyzing trends and open challenges in human-agent collaboration and long-horizon planning.",
-      "upvotes": 43,
-      "arxiv_id": "2611.01860",
-      "url": "https://huggingface.co/papers/2611.01860",
-      "githubRepo": null
+      "title": "DAMI: Dual-Axis Memory Initialization for Enhanced Long-Context Retrieval in Gated Linear Attention",
+      "summary": "Dual-Axis Memory Initialization improves long-context retrieval in gated linear recurrent models by jointly configuring decay and sensitivity parameters before training.",
+      "upvotes": 3,
+      "arxiv_id": "2610.41994",
+      "url": "https://huggingface.co/papers/2610.41994",
+      "githubRepo": "https://github.com/SpeedAI-Lab/DAMI"
     },
     {
-      "title": "When Does Latent Prediction Error Support Physical Surprise Claims in Video World Models?",
-      "summary": "The study evaluates frozen video representations to show that prediction errors reflect appearance and motion rather than reliably measuring physical surprise.",
-      "upvotes": 16,
-      "arxiv_id": "2611.01815",
-      "url": "https://huggingface.co/papers/2611.01815",
-      "githubRepo": "https://github.com/3-ml/jepa-surprise"
+      "title": "DR Pixel: Page-Native Deep Research with Vision-Language Models",
+      "summary": "DR Pixel is an open-source multimodal agent that performs deep research directly on rendered document page images, improving retrieval and reasoning over scientific papers through counterfactual credit reweighting.",
+      "upvotes": 4,
+      "arxiv_id": "2611.03097",
+      "url": "https://huggingface.co/papers/2611.03097",
+      "githubRepo": "https://github.com/StarTrail-org/DRPixel"
     }
   ]
 }
