@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-11-02T19:55:52.127Z",
+  "timestamp": "2026-11-03T03:14:39.311Z",
   "checked": 25,
   "healthy": 24,
   "broken": 1,
   "issues": [
     {
-      "name": "Gamma",
-      "url": "https://gamma.app",
-      "status": 403
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
     }
   ]
 }

@@ -1,46 +1,39 @@
-# ⚡ AiVerse AI Radar (2026-11-02)
+# ⚡ AiVerse AI Radar (2026-11-03)
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Mon, 02 Nov 2026 19:56:28 GMT`*
+*Last Synchronized: `Tue, 03 Nov 2026 03:15:08 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (3)
+## 📥 Newly Queued Assets for Review (2)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Audio8-TTS-Realistic-Air** (`Model` • *Edge0*)
-> High-performance Audio open-weights model by Edge0, trending with over 241 community likes and 7,259 downloads on Hugging Face.
+### **Sulphur-3** (`Model` • *FusionCow*)
+> High-performance NLP open-weights model by FusionCow, trending with over 266 community likes and 195 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Audio` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 223, Likes: 241, Downloads: 7,259`
-- 🔗 **Resource Link**: [https://huggingface.co/Edge0/Audio8-TTS-Realistic-Air](https://huggingface.co/Edge0/Audio8-TTS-Realistic-Air)
+- 🏷️ **Domain & License**: `NLP` • `Open Weights` (2026)
+- ⚡ **Metrics**: `Trending Score: 222, Likes: 266, Downloads: 195`
+- 🔗 **Resource Link**: [https://huggingface.co/FusionCow/Sulphur-3](https://huggingface.co/FusionCow/Sulphur-3)
 
-### **ava** (`Platform` • *townbox*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by townbox. Trending with 30 community stars.
+### **nemotron-transcribe** (`Platform` • *nvidia*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by nvidia. Trending with 30 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
 - ⚡ **Metrics**: `Trending Score: 30, Community Likes: 30`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/townbox/ava](https://huggingface.co/spaces/townbox/ava)
-
-### **darbuka_arabic_tts_dataset** (`Dataset` • *bitmanagerai-speech-lab*)
-> Darbuka Arabic 	 Darbuka Arabic brings together Arabic speech, automatic transcripts, and audio-quality measurements for speech recognition and text-to-speech research, (22 likes, 1,160 downloads).
-
-- 🏷️ **Domain & License**: `Computer Vision` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 20, Likes: 22, Downloads: 1,160`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/bitmanagerai-speech-lab/darbuka_arabic_tts_dataset](https://huggingface.co/datasets/bitmanagerai-speech-lab/darbuka_arabic_tts_dataset)
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/nvidia/nemotron-transcribe](https://huggingface.co/spaces/nvidia/nemotron-transcribe)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **Qwen-2511-Plus-Flux.2-klein-9B** (`Platform` • *Alibaba (Qwen)*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by AST-1320. Trending with 68 community stars.
+### **MiniCPM-V-4.7-35B-A3B** (`Model` • *OpenBMB*)
+> High-performance Multimodal open-weights model by openbmb, trending with over 473 community likes and 630 downloads on Hugging Face.
 
-- 🏛️ **Architecture**: GRADIO cloud runtime container with interactive browser interface.
-- ⚡ **Benchmarks**: `Trending Score: 39, Community Likes: 68`
-- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (Released: 2026)
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B](https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B)
+- 🏛️ **Architecture**: openbmb image text to text architecture with community-tuned weights.
+- ⚡ **Benchmarks**: `Trending Score: 428, Likes: 473, Downloads: 630`
+- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (Released: 2026)
+- 🔗 **Resource Link**: [https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -48,12 +41,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 948 | 📥 42,384 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 4,669 | 📥 177,009 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 671 | 📥 32,439 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
-| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,494 | 📥 5,500 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
-| `baidu/Unlimited-OCR-2` | image-text-to-text | ❤️ 556 | 📥 147,588 | [View](https://huggingface.co/baidu/Unlimited-OCR-2) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 10,338 | 📥 2,467,613 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 1,176 | 📥 42,384 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 4,716 | 📥 177,009 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 688 | 📥 32,439 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
+| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,502 | 📥 5,500 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
+| `baidu/Unlimited-OCR-2` | image-text-to-text | ❤️ 564 | 📥 147,588 | [View](https://huggingface.co/baidu/Unlimited-OCR-2) |
+| `speridlabs/idol` | image-to-3d | ❤️ 426 | 📥 7,787 | [View](https://huggingface.co/speridlabs/idol) |
 
 
 ---
@@ -63,11 +56,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **SOMA: A Benchmark for Fine-Grained Egocentric Behavior and Body-Motion Understanding** | 👍 3 | SOMA is a benchmark assessing fine-grained egocentric body-motion reasoning in multimodal models, revealing substantial gaps versus human performance and providing training data and a multimodal baseline to advance the field. | [Read](https://huggingface.co/papers/2610.36384) |
-| **GEPA-Curator: Curated Learning for Self Improving Agents** | 👍 2 | GEPA-Curator improves agentic prompt optimization by filtering unreliable failure signals and retrieving past successes, boosting performance across multiple benchmarks. | [Read](https://huggingface.co/papers/2610.37651) |
-| **AuditFL: A Contract-Backed Clearing Layer for Open Federated Learning** | 👍 1 | AuditFL is a blockchain-backed clearing layer that makes federated learning rounds auditable and economically constrained without removing the aggregator, preserving model accuracy under failures. | [Read](https://huggingface.co/papers/2610.41278) |
-| **Follow the Gradient: Tracing Safety Degradation Back to Training Data** | 👍 17 | SimpleLoRIF uses gradient alignment to filter instruction data that silently degrades LLM safety, yielding a safer dataset that reduces adversarial success while preserving capabilities. | [Read](https://huggingface.co/papers/2610.37481) |
-| **rTaste: Do Research Agents Have Taste? Evaluating Early Stage Research Judgment** | 👍 2 | Frontier AI research agents propose many sound experiments but show limited ability to rank them better than simple baselines, with teams offering no clear quality gains. | [Read](https://huggingface.co/papers/2610.40488) |
+| **Diagnosing the Reference Gap: What Visual Scaffolds Can and Cannot Fix in Multimodal Reasoning** | 👍 2 | Multimodal language models fail at multi-step visual reasoning due to a reference gap rather than perception, and task-matched external references like numbering significantly improve accuracy without training. | [Read](https://huggingface.co/papers/2610.39419) |
+| **From Fragmentation to Fusion: A Survey and Roadmap for Omnimodal Embeddings** | 👍 1 | Embedding research across modalities is converging toward shared principles via contrastive learning and Transformers, and a framework of coverage, comparability, and compositionality is proposed to unify it through transformation, alignment, and joint embedding. | [Read](https://huggingface.co/papers/2611.00172) |
+| **MAServeBench: Benchmarking Multi-Agent LLM Serving Systems with Hierarchical Collaboration Workloads** | 👍 1 | MAServeBench evaluates LLM serving and hardware by modeling multi-agent collaboration as a configurable workload dimension with reproducible dependency traces. | [Read](https://huggingface.co/papers/2610.40293) |
+| **On-Policy Self-Distillation with Teacher Evolution** | 👍 1 | Teacher-Evolution Self-Distillation improves on-policy self-distillation by continuously enhancing self-teaching reliability through reward-guided teacher optimization and adaptive down-weighting of unreliable samples. | [Read](https://huggingface.co/papers/2610.38637) |
+| **Self-Improvement with Auxiliary Rewards: Learning from Verified Traces and Evaluating Transfer** | 👍 1 | Auxiliary trajectory preferences based on entropy and confidence metrics improve small language model self-improvement and transfer by distinguishing learning value among equally correct reasoning traces. | [Read](https://huggingface.co/papers/2610.41296) |
 
 
 ---

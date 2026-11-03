@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-02T19:55:51.968Z",
+  "timestamp": "2026-11-03T03:14:39.211Z",
   "models": [
     {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 948,
+      "likes": 1176,
       "downloads": 42384,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
@@ -12,7 +12,7 @@
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 4669,
+      "likes": 4716,
       "downloads": 177009,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -20,7 +20,7 @@
     {
       "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
       "author": "nvidia",
-      "likes": 671,
+      "likes": 688,
       "downloads": 32439,
       "pipeline_tag": "automatic-speech-recognition",
       "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
@@ -28,7 +28,7 @@
     {
       "id": "mistralai/Mistral-Large-4-1T-A52B",
       "author": "mistralai",
-      "likes": 1494,
+      "likes": 1502,
       "downloads": 5500,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
@@ -36,60 +36,60 @@
     {
       "id": "baidu/Unlimited-OCR-2",
       "author": "baidu",
-      "likes": 556,
+      "likes": 564,
       "downloads": 147588,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/baidu/Unlimited-OCR-2"
     },
     {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 10338,
-      "downloads": 2467613,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5"
+      "id": "speridlabs/idol",
+      "author": "speridlabs",
+      "likes": 426,
+      "downloads": 7787,
+      "pipeline_tag": "image-to-3d",
+      "url": "https://huggingface.co/speridlabs/idol"
     }
   ],
   "papers": [
     {
-      "title": "SOMA: A Benchmark for Fine-Grained Egocentric Behavior and Body-Motion Understanding",
-      "summary": "SOMA is a benchmark assessing fine-grained egocentric body-motion reasoning in multimodal models, revealing substantial gaps versus human performance and providing training data and a multimodal baseline to advance the field.",
-      "upvotes": 3,
-      "arxiv_id": "2610.36384",
-      "url": "https://huggingface.co/papers/2610.36384",
-      "githubRepo": "https://github.com/amathislab/soma"
-    },
-    {
-      "title": "GEPA-Curator: Curated Learning for Self Improving Agents",
-      "summary": "GEPA-Curator improves agentic prompt optimization by filtering unreliable failure signals and retrieving past successes, boosting performance across multiple benchmarks.",
+      "title": "Diagnosing the Reference Gap: What Visual Scaffolds Can and Cannot Fix in Multimodal Reasoning",
+      "summary": "Multimodal language models fail at multi-step visual reasoning due to a reference gap rather than perception, and task-matched external references like numbering significantly improve accuracy without training.",
       "upvotes": 2,
-      "arxiv_id": "2610.37651",
-      "url": "https://huggingface.co/papers/2610.37651",
-      "githubRepo": null
+      "arxiv_id": "2610.39419",
+      "url": "https://huggingface.co/papers/2610.39419",
+      "githubRepo": "https://github.com/regap-bench/ReGap-Bench"
     },
     {
-      "title": "AuditFL: A Contract-Backed Clearing Layer for Open Federated Learning",
-      "summary": "AuditFL is a blockchain-backed clearing layer that makes federated learning rounds auditable and economically constrained without removing the aggregator, preserving model accuracy under failures.",
+      "title": "From Fragmentation to Fusion: A Survey and Roadmap for Omnimodal Embeddings",
+      "summary": "Embedding research across modalities is converging toward shared principles via contrastive learning and Transformers, and a framework of coverage, comparability, and compositionality is proposed to unify it through transformation, alignment, and joint embedding.",
       "upvotes": 1,
-      "arxiv_id": "2610.41278",
-      "url": "https://huggingface.co/papers/2610.41278",
-      "githubRepo": "https://github.com/katastrofh/AuditFL"
+      "arxiv_id": "2611.00172",
+      "url": "https://huggingface.co/papers/2611.00172",
+      "githubRepo": "https://github.com/codefuse-ai/Awesome-Omnimodal-Embeddings"
     },
     {
-      "title": "Follow the Gradient: Tracing Safety Degradation Back to Training Data",
-      "summary": "SimpleLoRIF uses gradient alignment to filter instruction data that silently degrades LLM safety, yielding a safer dataset that reduces adversarial success while preserving capabilities.",
-      "upvotes": 17,
-      "arxiv_id": "2610.37481",
-      "url": "https://huggingface.co/papers/2610.37481",
+      "title": "MAServeBench: Benchmarking Multi-Agent LLM Serving Systems with Hierarchical Collaboration Workloads",
+      "summary": "MAServeBench evaluates LLM serving and hardware by modeling multi-agent collaboration as a configurable workload dimension with reproducible dependency traces.",
+      "upvotes": 1,
+      "arxiv_id": "2610.40293",
+      "url": "https://huggingface.co/papers/2610.40293",
+      "githubRepo": "https://github.com/ShengxuanQiu/MAServeBench"
+    },
+    {
+      "title": "On-Policy Self-Distillation with Teacher Evolution",
+      "summary": "Teacher-Evolution Self-Distillation improves on-policy self-distillation by continuously enhancing self-teaching reliability through reward-guided teacher optimization and adaptive down-weighting of unreliable samples.",
+      "upvotes": 1,
+      "arxiv_id": "2610.38637",
+      "url": "https://huggingface.co/papers/2610.38637",
       "githubRepo": null
     },
     {
-      "title": "rTaste: Do Research Agents Have Taste? Evaluating Early Stage Research Judgment",
-      "summary": "Frontier AI research agents propose many sound experiments but show limited ability to rank them better than simple baselines, with teams offering no clear quality gains.",
-      "upvotes": 2,
-      "arxiv_id": "2610.40488",
-      "url": "https://huggingface.co/papers/2610.40488",
-      "githubRepo": "https://github.com/ArtKanke/rTaste"
+      "title": "Self-Improvement with Auxiliary Rewards: Learning from Verified Traces and Evaluating Transfer",
+      "summary": "Auxiliary trajectory preferences based on entropy and confidence metrics improve small language model self-improvement and transfer by distinguishing learning value among equally correct reasoning traces.",
+      "upvotes": 1,
+      "arxiv_id": "2610.41296",
+      "url": "https://huggingface.co/papers/2610.41296",
+      "githubRepo": null
     }
   ]
 }

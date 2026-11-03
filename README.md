@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-02)
+### ⚡ AiVerse AI Radar (2026-11-03)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Audio8-TTS-Realistic-Air** (`Model`), **ava** (`Platform`), **darbuka_arabic_tts_dataset** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Qwen-2511-Plus-Flux.2-klein-9B** (Alibaba (Qwen)) — [Explore](https://huggingface.co/spaces/AST-1320/Qwen-2511-Plus-Flux.2-klein-9B) |
+| 📥 **Queued for Review** | **Sulphur-3** (`Model`), **nemotron-transcribe** (`Platform`) |
+| 🌟 **Tool of the Day** | **MiniCPM-V-4.7-35B-A3B** (OpenBMB) — [Explore](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [LiquidAI/LFM3-1.7B](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| 📜 **Top Daily Paper** | [SOMA: A Benchmark for Fine-Grained Egocentric Beha...](https://huggingface.co/papers/2610.36384) |
+| 📜 **Top Daily Paper** | [Diagnosing the Reference Gap: What Visual Scaffold...](https://huggingface.co/papers/2610.39419) |
 | 🛡️ **Catalog Links Checked** | **24/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 02 Nov 2026 19:56:28 GMT` |
+| 🕒 **Last Synchronized** | `Tue, 03 Nov 2026 03:15:08 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
