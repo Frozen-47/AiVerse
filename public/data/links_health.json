@@ -1,13 +1,28 @@
 {
-  "timestamp": "2026-11-03T03:14:39.311Z",
+  "timestamp": "2026-11-03T12:33:57.674Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 21,
+  "broken": 4,
   "issues": [
     {
-      "name": "Grammarly",
-      "url": "https://www.grammarly.com",
-      "status": 405
+      "name": "o3",
+      "url": "https://openai.com",
+      "status": 403
+    },
+    {
+      "name": "UltraFeedback",
+      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
+      "status": 401
+    },
+    {
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
+      "status": 403
+    },
+    {
+      "name": "o1 (OpenAI)",
+      "url": "https://openai.com/o1",
+      "status": 403
     }
   ]
 }

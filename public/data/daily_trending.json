@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-11-03T03:14:39.211Z",
+  "timestamp": "2026-11-03T12:33:57.607Z",
   "models": [
     {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 1176,
-      "downloads": 42384,
+      "likes": 1317,
+      "downloads": 47817,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
     },
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 4716,
-      "downloads": 177009,
+      "likes": 4788,
+      "downloads": 187260,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
       "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
       "author": "nvidia",
-      "likes": 688,
-      "downloads": 32439,
+      "likes": 706,
+      "downloads": 38942,
       "pipeline_tag": "automatic-speech-recognition",
       "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
     },
     {
       "id": "mistralai/Mistral-Large-4-1T-A52B",
       "author": "mistralai",
-      "likes": 1502,
-      "downloads": 5500,
+      "likes": 1522,
+      "downloads": 6556,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
     },
     {
-      "id": "baidu/Unlimited-OCR-2",
-      "author": "baidu",
-      "likes": 564,
-      "downloads": 147588,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/baidu/Unlimited-OCR-2"
-    },
-    {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 426,
-      "downloads": 7787,
+      "likes": 466,
+      "downloads": 10742,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
+    },
+    {
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 10418,
+      "downloads": 2488128,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5"
     }
   ],
   "papers": [
     {
-      "title": "Diagnosing the Reference Gap: What Visual Scaffolds Can and Cannot Fix in Multimodal Reasoning",
-      "summary": "Multimodal language models fail at multi-step visual reasoning due to a reference gap rather than perception, and task-matched external references like numbering significantly improve accuracy without training.",
-      "upvotes": 2,
-      "arxiv_id": "2610.39419",
-      "url": "https://huggingface.co/papers/2610.39419",
-      "githubRepo": "https://github.com/regap-bench/ReGap-Bench"
+      "title": "Where Do Vision Language Models Fail at 3D Reasoning?",
+      "summary": "Vision-language models often judge 3D object properties correctly but fail to recover and consistently apply exact per-color counts, motivating evaluation by exact correctness, consistency, and visual dependence.",
+      "upvotes": 1,
+      "arxiv_id": "2610.39639",
+      "url": "https://huggingface.co/papers/2610.39639",
+      "githubRepo": "https://github.com/leduckhai/BedBench"
     },
     {
-      "title": "From Fragmentation to Fusion: A Survey and Roadmap for Omnimodal Embeddings",
-      "summary": "Embedding research across modalities is converging toward shared principles via contrastive learning and Transformers, and a framework of coverage, comparability, and compositionality is proposed to unify it through transformation, alignment, and joint embedding.",
-      "upvotes": 1,
-      "arxiv_id": "2611.00172",
-      "url": "https://huggingface.co/papers/2611.00172",
-      "githubRepo": "https://github.com/codefuse-ai/Awesome-Omnimodal-Embeddings"
-    },
-    {
-      "title": "MAServeBench: Benchmarking Multi-Agent LLM Serving Systems with Hierarchical Collaboration Workloads",
-      "summary": "MAServeBench evaluates LLM serving and hardware by modeling multi-agent collaboration as a configurable workload dimension with reproducible dependency traces.",
-      "upvotes": 1,
-      "arxiv_id": "2610.40293",
-      "url": "https://huggingface.co/papers/2610.40293",
-      "githubRepo": "https://github.com/ShengxuanQiu/MAServeBench"
-    },
-    {
-      "title": "On-Policy Self-Distillation with Teacher Evolution",
-      "summary": "Teacher-Evolution Self-Distillation improves on-policy self-distillation by continuously enhancing self-teaching reliability through reward-guided teacher optimization and adaptive down-weighting of unreliable samples.",
-      "upvotes": 1,
-      "arxiv_id": "2610.38637",
-      "url": "https://huggingface.co/papers/2610.38637",
+      "title": "SWE-Trail: History-Guided Trajectory Collection for Coding Agent Training",
+      "summary": "SWE-Trail improves trajectory collection for coding agents by using past rollouts to guide exploration without exposing history to the agent, yielding better-trained student models.",
+      "upvotes": 10,
+      "arxiv_id": "2611.02074",
+      "url": "https://huggingface.co/papers/2611.02074",
       "githubRepo": null
     },
     {
-      "title": "Self-Improvement with Auxiliary Rewards: Learning from Verified Traces and Evaluating Transfer",
-      "summary": "Auxiliary trajectory preferences based on entropy and confidence metrics improve small language model self-improvement and transfer by distinguishing learning value among equally correct reasoning traces.",
+      "title": "LEANGUARD: Lean-Verified Guardrails for Tool-Using Agents",
+      "summary": "LeanGuard is a verified runtime that blocks policy-violating tool calls by language-model agents and can repair them via proof-guided search, reducing unauthorized executions and prompt-injection success without harming benign task performance.",
       "upvotes": 1,
-      "arxiv_id": "2610.41296",
-      "url": "https://huggingface.co/papers/2610.41296",
+      "arxiv_id": "2611.02332",
+      "url": "https://huggingface.co/papers/2611.02332",
+      "githubRepo": "https://github.com/DebarghaG/LeanGuard"
+    },
+    {
+      "title": "Advances in Agentic Computer Graphics",
+      "summary": "This report proposes a unified taxonomy and literature system for agentic computer graphics driven by large language models, analyzing trends and open challenges in human-agent collaboration and long-horizon planning.",
+      "upvotes": 43,
+      "arxiv_id": "2611.01860",
+      "url": "https://huggingface.co/papers/2611.01860",
       "githubRepo": null
+    },
+    {
+      "title": "When Does Latent Prediction Error Support Physical Surprise Claims in Video World Models?",
+      "summary": "The study evaluates frozen video representations to show that prediction errors reflect appearance and motion rather than reliably measuring physical surprise.",
+      "upvotes": 16,
+      "arxiv_id": "2611.01815",
+      "url": "https://huggingface.co/papers/2611.01815",
+      "githubRepo": "https://github.com/3-ml/jepa-surprise"
     }
   ]
 }

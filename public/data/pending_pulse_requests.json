@@ -1,5 +1,55 @@
 [
   {
+    "name": "MOSS-Image-Character-Catalog",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hide1. Trending with 28 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "hide1",
+    "size": "STATIC Platform",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hide1/MOSS-Image-Character-Catalog",
+    "benchmarks": "Trending Score: 27, Community Likes: 28",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/hide1/MOSS-Image-Character-Catalog",
+    "citations": [
+      {
+        "text": "hide1/MOSS-Image-Character-Catalog on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/hide1/MOSS-Image-Character-Catalog"
+      }
+    ],
+    "created_at": "2026-11-03T12:33:57.589Z"
+  },
+  {
+    "name": "DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by AtomicChat, trending with over 235 community likes and 53,913 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "MIT",
+    "year": 2026,
+    "org": "AtomicChat",
+    "size": "Open Weights",
+    "architecture": "AtomicChat text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"AtomicChat/DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"AtomicChat/DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF\")",
+    "benchmarks": "Trending Score: 209, Likes: 235, Downloads: 53,913",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/AtomicChat/DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF",
+    "citations": [
+      {
+        "text": "AtomicChat/DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF on Hugging Face",
+        "url": "https://huggingface.co/AtomicChat/DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF"
+      }
+    ],
+    "created_at": "2026-11-03T12:33:57.589Z"
+  },
+  {
     "name": "nemotron-transcribe",
     "type": "Platform",
     "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by nvidia. Trending with 30 community stars.",

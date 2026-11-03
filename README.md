@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-03)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Sulphur-3** (`Model`), **nemotron-transcribe** (`Platform`) |
+| 📥 **Queued for Review** | **DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF** (`Model`), **MOSS-Image-Character-Catalog** (`Platform`) |
 | 🌟 **Tool of the Day** | **MiniCPM-V-4.7-35B-A3B** (OpenBMB) — [Explore](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [LiquidAI/LFM3-1.7B](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| 📜 **Top Daily Paper** | [Diagnosing the Reference Gap: What Visual Scaffold...](https://huggingface.co/papers/2610.39419) |
-| 🛡️ **Catalog Links Checked** | **24/25** operational |
-| 🕒 **Last Synchronized** | `Tue, 03 Nov 2026 03:15:08 GMT` |
+| 📜 **Top Daily Paper** | [Where Do Vision Language Models Fail at 3D Reasoni...](https://huggingface.co/papers/2610.39639) |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Synchronized** | `Tue, 03 Nov 2026 12:34:43 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
