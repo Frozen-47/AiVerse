@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-02)
+### ⚡ AiVerse AI Radar (2026-11-03)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **DeepSeek-V4.1-Flash-1017-obliterated** (`Model`), **harness-lens** (`Platform`), **hacker-news** (`Dataset`) |
-| 🌟 **Tool of the Day** | **LightOnOCR-3-Demo** (lightonai) — [Explore](https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo) |
-| 🗄️ **Catalog Entries** | **385** AI assets tracked (312 featured) |
-| 🔥 **Top Trending Model** | [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| 📜 **Top Daily Paper** | [REA: A Routed Embodied Agent Runtime for Asynchron...](https://huggingface.co/papers/2610.42053) |
-| 🛡️ **Catalog Links Checked** | **20/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 02 Nov 2026 08:44:16 GMT` |
+| 📥 **Queued for Review** | **DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF** (`Model`), **MOSS-Image-Character-Catalog** (`Platform`) |
+| 🌟 **Tool of the Day** | **MiniCPM-V-4.7-35B-A3B** (OpenBMB) — [Explore](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
+| 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
+| 🔥 **Top Trending Model** | [LiquidAI/LFM3-1.7B](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| 📜 **Top Daily Paper** | [Where Do Vision Language Models Fail at 3D Reasoni...](https://huggingface.co/papers/2610.39639) |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Synchronized** | `Tue, 03 Nov 2026 12:34:43 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

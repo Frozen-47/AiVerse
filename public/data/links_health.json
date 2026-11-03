@@ -1,33 +1,28 @@
 {
-  "timestamp": "2026-11-02T08:43:45.704Z",
+  "timestamp": "2026-11-03T12:33:57.674Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
+  "healthy": 21,
+  "broken": 4,
   "issues": [
     {
-      "name": "Perplexity AI",
-      "url": "https://www.perplexity.ai/",
+      "name": "o3",
+      "url": "https://openai.com",
       "status": 403
     },
     {
-      "name": "DeepSeek Chat",
-      "url": "https://chat.deepseek.com",
+      "name": "UltraFeedback",
+      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
+      "status": 401
+    },
+    {
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
       "status": 403
     },
     {
-      "name": "OpenAI Platform",
-      "url": "https://platform.openai.com",
+      "name": "o1 (OpenAI)",
+      "url": "https://openai.com/o1",
       "status": 403
-    },
-    {
-      "name": "Meta AI",
-      "url": "https://www.meta.ai",
-      "status": 403
-    },
-    {
-      "name": "ERNIE Bot",
-      "url": "https://yiyan.baidu.com",
-      "status": "Timeout"
     }
   ]
 }

@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-11-02T08:43:45.599Z",
+  "timestamp": "2026-11-03T12:33:57.607Z",
   "models": [
-    {
-      "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
-      "author": "deepseek-ai",
-      "likes": 4439,
-      "downloads": 170353,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
-    },
     {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 749,
-      "downloads": 37568,
+      "likes": 1317,
+      "downloads": 47817,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
     },
     {
+      "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "author": "deepseek-ai",
+      "likes": 4788,
+      "downloads": 187260,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+    },
+    {
       "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
       "author": "nvidia",
-      "likes": 626,
-      "downloads": 29364,
+      "likes": 706,
+      "downloads": 38942,
       "pipeline_tag": "automatic-speech-recognition",
       "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
     },
     {
       "id": "mistralai/Mistral-Large-4-1T-A52B",
       "author": "mistralai",
-      "likes": 1466,
-      "downloads": 4576,
+      "likes": 1522,
+      "downloads": 6556,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
     },
     {
-      "id": "baidu/Unlimited-OCR-2",
-      "author": "baidu",
-      "likes": 539,
-      "downloads": 109519,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/baidu/Unlimited-OCR-2"
+      "id": "speridlabs/idol",
+      "author": "speridlabs",
+      "likes": 466,
+      "downloads": 10742,
+      "pipeline_tag": "image-to-3d",
+      "url": "https://huggingface.co/speridlabs/idol"
     },
     {
-      "id": "Nanbeige/Nanbeige4.3-33B",
-      "author": "Nanbeige",
-      "likes": 989,
-      "downloads": 15795,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 10418,
+      "downloads": 2488128,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5"
     }
   ],
   "papers": [
     {
-      "title": "REA: A Routed Embodied Agent Runtime for Asynchronous Brain-Cerebellum Control",
-      "summary": "REA unifies deliberative and reactive policies in a single runtime with asynchronous coordination, achieving high success rates with reduced control overhead across simulated and real robot tasks.",
-      "upvotes": 8,
-      "arxiv_id": "2610.42053",
-      "url": "https://huggingface.co/papers/2610.42053",
+      "title": "Where Do Vision Language Models Fail at 3D Reasoning?",
+      "summary": "Vision-language models often judge 3D object properties correctly but fail to recover and consistently apply exact per-color counts, motivating evaluation by exact correctness, consistency, and visual dependence.",
+      "upvotes": 1,
+      "arxiv_id": "2610.39639",
+      "url": "https://huggingface.co/papers/2610.39639",
+      "githubRepo": "https://github.com/leduckhai/BedBench"
+    },
+    {
+      "title": "SWE-Trail: History-Guided Trajectory Collection for Coding Agent Training",
+      "summary": "SWE-Trail improves trajectory collection for coding agents by using past rollouts to guide exploration without exposing history to the agent, yielding better-trained student models.",
+      "upvotes": 10,
+      "arxiv_id": "2611.02074",
+      "url": "https://huggingface.co/papers/2611.02074",
       "githubRepo": null
     },
     {
-      "title": "GLOW-FM: Efficient Generative Low-Light Image Enhancement with One-Step Latent Flow Matching",
-      "summary": "GLOW-FM is a one-step latent flow-matching framework that enables efficient generative low-light image enhancement via single-function evaluation in a compact latent space.",
+      "title": "LEANGUARD: Lean-Verified Guardrails for Tool-Using Agents",
+      "summary": "LeanGuard is a verified runtime that blocks policy-violating tool calls by language-model agents and can repair them via proof-guided search, reducing unauthorized executions and prompt-injection success without harming benign task performance.",
       "upvotes": 1,
-      "arxiv_id": "2610.31222",
-      "url": "https://huggingface.co/papers/2610.31222",
-      "githubRepo": "https://github.com/arm-research/AAIR-GLOW-FM"
+      "arxiv_id": "2611.02332",
+      "url": "https://huggingface.co/papers/2611.02332",
+      "githubRepo": "https://github.com/DebarghaG/LeanGuard"
     },
     {
-      "title": "Latent Reasoning in Continuous Space for Unified Multimodal Models",
-      "summary": "LARC enables continuous latent reasoning for unified multimodal models, improving image generation quality and enabling test-time scaling without discrete token bottlenecks.",
-      "upvotes": 12,
-      "arxiv_id": "2610.42149",
-      "url": "https://huggingface.co/papers/2610.42149",
-      "githubRepo": "https://github.com/rootyJeon/LARC"
+      "title": "Advances in Agentic Computer Graphics",
+      "summary": "This report proposes a unified taxonomy and literature system for agentic computer graphics driven by large language models, analyzing trends and open challenges in human-agent collaboration and long-horizon planning.",
+      "upvotes": 43,
+      "arxiv_id": "2611.01860",
+      "url": "https://huggingface.co/papers/2611.01860",
+      "githubRepo": null
     },
     {
-      "title": "TernScope: Model-Hardware Co-Design for Efficient Ternary Endoscopic Segmentation",
-      "summary": "TernScope co-designs a compact ternary-weight segmentation network with simplified hardware to achieve high accuracy and fast inference for edge medical imaging.",
-      "upvotes": 1,
-      "arxiv_id": "2610.29617",
-      "url": "https://huggingface.co/papers/2610.29617",
-      "githubRepo": "https://github.com/ReaganWu/TernScope"
-    },
-    {
-      "title": "SketchDirector: Complex Scene Sketching via Agentic Layout Reasoning and Detail Refinement",
-      "summary": "SketchDirector is an agentic framework that decomposes text prompts into draft vector assets, arranges them via iterative reasoning with self-evolving memory, and refines details using diffusion priors for complex scene sketching.",
-      "upvotes": 1,
-      "arxiv_id": "2610.41260",
-      "url": "https://huggingface.co/papers/2610.41260",
-      "githubRepo": "https://github.com/GVCLab/SketchDirector"
+      "title": "When Does Latent Prediction Error Support Physical Surprise Claims in Video World Models?",
+      "summary": "The study evaluates frozen video representations to show that prediction errors reflect appearance and motion rather than reliably measuring physical surprise.",
+      "upvotes": 16,
+      "arxiv_id": "2611.01815",
+      "url": "https://huggingface.co/papers/2611.01815",
+      "githubRepo": "https://github.com/3-ml/jepa-surprise"
     }
   ]
 }
