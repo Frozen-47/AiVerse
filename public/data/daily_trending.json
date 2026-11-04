@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-04T01:48:43.209Z",
+  "timestamp": "2026-11-04T08:27:27.816Z",
   "models": [
     {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 1406,
+      "likes": 1431,
       "downloads": 47817,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
@@ -12,7 +12,7 @@
     {
       "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
       "author": "nvidia",
-      "likes": 740,
+      "likes": 746,
       "downloads": 38942,
       "pipeline_tag": "automatic-speech-recognition",
       "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
@@ -20,7 +20,7 @@
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 4857,
+      "likes": 4901,
       "downloads": 187260,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -28,7 +28,7 @@
     {
       "id": "mistralai/Mistral-Large-4-1T-A52B",
       "author": "mistralai",
-      "likes": 1547,
+      "likes": 1559,
       "downloads": 6556,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
@@ -36,7 +36,7 @@
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 517,
+      "likes": 537,
       "downloads": 10742,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -44,7 +44,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 10495,
+      "likes": 10526,
       "downloads": 2488128,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "StreamDuo: A Live Commentator and a Research Agent for Unseen Games",
-      "summary": "StreamDuo pairs a trainable commentator with a frozen research agent that retrieves game wiki entries to improve cross-game streaming commentary without training on target games.",
-      "upvotes": 3,
-      "arxiv_id": "2611.01120",
-      "url": "https://huggingface.co/papers/2611.01120",
+      "title": "Every Pixel Is an Option: A System One Model for Medical Ultrasound Biometry",
+      "summary": "Kev-Bio is a vision-language model that guides ultrasound landmark detection via clinical questions, generating spatial probability maps to derive measurements with reduced operator variability.",
+      "upvotes": 2,
+      "arxiv_id": "2611.03360",
+      "url": "https://huggingface.co/papers/2611.03360",
       "githubRepo": null
     },
     {
-      "title": "A Tutorial on Generative Models for Music Audio",
-      "summary": "This monograph surveys neural methods for music audio generation, covering codecs, autoregressive and diffusion models, flow matching, preference optimization, evaluation practices, and legal considerations.",
-      "upvotes": 3,
-      "arxiv_id": "2610.38252",
-      "url": "https://huggingface.co/papers/2610.38252",
+      "title": "DreamX: Video Diffusion Model is a Universal Latent Action Learner",
+      "summary": "DreamX leverages a pretrained video diffusion model to learn compact, appearance-invariant latent actions that enable cross-embodiment transfer and efficient policy learning.",
+      "upvotes": 31,
+      "arxiv_id": "2611.05377",
+      "url": "https://huggingface.co/papers/2611.05377",
       "githubRepo": null
     },
     {
-      "title": "History Forcing: Distilling History-Dependent Continuations for Long-Horizon Video World Models",
-      "summary": "History Forcing improves long-range consistency in few-step autoregressive video generation by using historical context residuals to correct distillation targets.",
-      "upvotes": 5,
-      "arxiv_id": "2611.02782",
-      "url": "https://huggingface.co/papers/2611.02782",
-      "githubRepo": "https://github.com/ziplab/History-Forcing"
+      "title": "VidUEU-Agent: A Data-Curation Agent for Multimodal Understanding, Editing, and Unified Tasks",
+      "summary": "VidUEU-Agent automates instruction data synthesis from raw videos via a multi-stage pipeline with autonomous iteration, yielding a 100K-sample dataset that improves multimodal model performance.",
+      "upvotes": 20,
+      "arxiv_id": "2611.04418",
+      "url": "https://huggingface.co/papers/2611.04418",
+      "githubRepo": "https://github.com/LRuca/VidUEU-Agent"
     },
     {
-      "title": "IdeaTaste: Do LLMs Share the Research Taste of Human Researchers?",
-      "summary": "IdeaTaste benchmarks LLM research proposals against future publications, revealing that AI agents match human communities in broad directions but fall far behind in concrete approaches and expected success.",
-      "upvotes": 25,
-      "arxiv_id": "2611.03424",
-      "url": "https://huggingface.co/papers/2611.03424",
-      "githubRepo": "https://github.com/cxcscmu/IdeaTaste"
+      "title": "Going Deeper With Memories",
+      "summary": "DeepMem is a causal multiscale byte-level architecture that uses invertible subband transforms and fast weight memory to compress sequences for efficient reasoning while preserving exact byte identity via lossless carriers and attention-based super-resolution decoding.",
+      "upvotes": 1,
+      "arxiv_id": "2611.05255",
+      "url": "https://huggingface.co/papers/2611.05255",
+      "githubRepo": "https://github.com/akhadangi/deepmem"
     },
     {
-      "title": "Order-Only On-Policy Distillation",
-      "summary": "Order-only on-policy distillation trains students to match teacher token rankings rather than probabilities, improving reasoning performance without temperature tuning.",
-      "upvotes": 26,
-      "arxiv_id": "2611.02112",
-      "url": "https://huggingface.co/papers/2611.02112",
-      "githubRepo": null
+      "title": "RoboTryOn: Synthesizing Dexterous Robot Demonstrations from Human Videos via Virtual Try-On",
+      "summary": "RoboTryOn translates human demonstration videos into robot videos to train control policies without real robot demonstrations, improving success rates and reducing data collection costs.",
+      "upvotes": 1,
+      "arxiv_id": "2611.05163",
+      "url": "https://huggingface.co/papers/2611.05163",
+      "githubRepo": "https://github.com/ryan-seungyong-lee/RoboTryOn"
     }
   ]
 }

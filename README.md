@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-04)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Qwen-Image-2.1-Turbo-Quantized** (`Model`) |
+| 📥 **Queued for Review** | **Xiaomi-OCR-0** (`Model`), **motionbricks-playground** (`Platform`), **ChartNet** (`Dataset`) |
 | 🌟 **Tool of the Day** | **LightOnOCR-3-Demo** (lightonai) — [Explore](https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [LiquidAI/LFM3-1.7B](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| 📜 **Top Daily Paper** | [StreamDuo: A Live Commentator and a Research Agent...](https://huggingface.co/papers/2611.01120) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Wed, 04 Nov 2026 01:49:21 GMT` |
+| 📜 **Top Daily Paper** | [Every Pixel Is an Option: A System One Model for M...](https://huggingface.co/papers/2611.03360) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Wed, 04 Nov 2026 08:28:12 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

@@ -1,17 +1,22 @@
 {
-  "timestamp": "2026-11-04T01:48:43.358Z",
+  "timestamp": "2026-11-04T08:27:28.014Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "o3",
-      "url": "https://openai.com",
+      "name": "Canva AI",
+      "url": "https://www.canva.com/ai-image-generator",
       "status": 403
     },
     {
-      "name": "Tome",
-      "url": "https://tome.app",
+      "name": "Midjourney (Platform)",
+      "url": "https://www.midjourney.com/",
+      "status": 403
+    },
+    {
+      "name": "OpenWebText",
+      "url": "https://huggingface.co/datasets/openwebtext",
       "status": 404
     }
   ]

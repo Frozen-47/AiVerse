@@ -1,1 +1,1 @@
-Qwen-Image-2.1-Turbo-Quantized
+Xiaomi-OCR-0
