@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-03)
+### ⚡ AiVerse AI Radar (2026-11-04)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **SenseNova-Loop-9B-Preview** (`Model`), **OffsecCyber** (`Dataset`) |
-| 🌟 **Tool of the Day** | **MiniCPM-V-4.7-35B-A3B** (OpenBMB) — [Explore](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B) |
+| 📥 **Queued for Review** | **Qwen-Image-2.1-Turbo-Quantized** (`Model`) |
+| 🌟 **Tool of the Day** | **LightOnOCR-3-Demo** (lightonai) — [Explore](https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [LiquidAI/LFM3-1.7B](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| 📜 **Top Daily Paper** | [IdeaTaste: Do LLMs Share the Research Taste of Hum...](https://huggingface.co/papers/2611.03424) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Tue, 03 Nov 2026 20:23:53 GMT` |
+| 📜 **Top Daily Paper** | [StreamDuo: A Live Commentator and a Research Agent...](https://huggingface.co/papers/2611.01120) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Wed, 04 Nov 2026 01:49:21 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

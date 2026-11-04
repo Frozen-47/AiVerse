@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-03T20:23:08.398Z",
+  "timestamp": "2026-11-04T01:48:43.209Z",
   "models": [
     {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 1387,
+      "likes": 1406,
       "downloads": 47817,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
@@ -12,7 +12,7 @@
     {
       "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
       "author": "nvidia",
-      "likes": 729,
+      "likes": 740,
       "downloads": 38942,
       "pipeline_tag": "automatic-speech-recognition",
       "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
@@ -20,7 +20,7 @@
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 4837,
+      "likes": 4857,
       "downloads": 187260,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -28,7 +28,7 @@
     {
       "id": "mistralai/Mistral-Large-4-1T-A52B",
       "author": "mistralai",
-      "likes": 1536,
+      "likes": 1547,
       "downloads": 6556,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
@@ -36,7 +36,7 @@
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 496,
+      "likes": 517,
       "downloads": 10742,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -44,7 +44,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 10469,
+      "likes": 10495,
       "downloads": 2488128,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -52,9 +52,33 @@
   ],
   "papers": [
     {
+      "title": "StreamDuo: A Live Commentator and a Research Agent for Unseen Games",
+      "summary": "StreamDuo pairs a trainable commentator with a frozen research agent that retrieves game wiki entries to improve cross-game streaming commentary without training on target games.",
+      "upvotes": 3,
+      "arxiv_id": "2611.01120",
+      "url": "https://huggingface.co/papers/2611.01120",
+      "githubRepo": null
+    },
+    {
+      "title": "A Tutorial on Generative Models for Music Audio",
+      "summary": "This monograph surveys neural methods for music audio generation, covering codecs, autoregressive and diffusion models, flow matching, preference optimization, evaluation practices, and legal considerations.",
+      "upvotes": 3,
+      "arxiv_id": "2610.38252",
+      "url": "https://huggingface.co/papers/2610.38252",
+      "githubRepo": null
+    },
+    {
+      "title": "History Forcing: Distilling History-Dependent Continuations for Long-Horizon Video World Models",
+      "summary": "History Forcing improves long-range consistency in few-step autoregressive video generation by using historical context residuals to correct distillation targets.",
+      "upvotes": 5,
+      "arxiv_id": "2611.02782",
+      "url": "https://huggingface.co/papers/2611.02782",
+      "githubRepo": "https://github.com/ziplab/History-Forcing"
+    },
+    {
       "title": "IdeaTaste: Do LLMs Share the Research Taste of Human Researchers?",
       "summary": "IdeaTaste benchmarks LLM research proposals against future publications, revealing that AI agents match human communities in broad directions but fall far behind in concrete approaches and expected success.",
-      "upvotes": 17,
+      "upvotes": 25,
       "arxiv_id": "2611.03424",
       "url": "https://huggingface.co/papers/2611.03424",
       "githubRepo": "https://github.com/cxcscmu/IdeaTaste"
@@ -62,34 +86,10 @@
     {
       "title": "Order-Only On-Policy Distillation",
       "summary": "Order-only on-policy distillation trains students to match teacher token rankings rather than probabilities, improving reasoning performance without temperature tuning.",
-      "upvotes": 22,
+      "upvotes": 26,
       "arxiv_id": "2611.02112",
       "url": "https://huggingface.co/papers/2611.02112",
       "githubRepo": null
-    },
-    {
-      "title": "Advancing SVD-based LLM Compression via Layer-Wise Error Model Search",
-      "summary": "Layer-wise error modeling and token-wise Fisher statistics improve low-rank SVD compression of large language models by refining rank allocation and decomposition quality.",
-      "upvotes": 4,
-      "arxiv_id": "2610.32878",
-      "url": "https://huggingface.co/papers/2610.32878",
-      "githubRepo": "https://github.com/lems-svd/lems"
-    },
-    {
-      "title": "DAMI: Dual-Axis Memory Initialization for Enhanced Long-Context Retrieval in Gated Linear Attention",
-      "summary": "Dual-Axis Memory Initialization improves long-context retrieval in gated linear recurrent models by jointly configuring decay and sensitivity parameters before training.",
-      "upvotes": 3,
-      "arxiv_id": "2610.41994",
-      "url": "https://huggingface.co/papers/2610.41994",
-      "githubRepo": "https://github.com/SpeedAI-Lab/DAMI"
-    },
-    {
-      "title": "DR Pixel: Page-Native Deep Research with Vision-Language Models",
-      "summary": "DR Pixel is an open-source multimodal agent that performs deep research directly on rendered document page images, improving retrieval and reasoning over scientific papers through counterfactual credit reweighting.",
-      "upvotes": 4,
-      "arxiv_id": "2611.03097",
-      "url": "https://huggingface.co/papers/2611.03097",
-      "githubRepo": "https://github.com/StarTrail-org/DRPixel"
     }
   ]
 }

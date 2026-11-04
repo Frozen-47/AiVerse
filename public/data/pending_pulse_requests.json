@@ -1,5 +1,30 @@
 [
   {
+    "name": "Qwen-Image-2.1-Turbo-Quantized",
+    "type": "Model",
+    "summary": "High-performance Image Generation open-weights model by abenzerps, trending with over 5,623 community likes and 2,508,590 downloads on Hugging Face.",
+    "task": "Image Generation",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "abenzerps",
+    "size": "Open Weights",
+    "architecture": "abenzerps text to image architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"abenzerps/Qwen-Image-2.1-Turbo-Quantized\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"abenzerps/Qwen-Image-2.1-Turbo-Quantized\")",
+    "benchmarks": "Trending Score: 286, Likes: 5,623, Downloads: 2,508,590",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Turbo-Quantized",
+    "citations": [
+      {
+        "text": "abenzerps/Qwen-Image-2.1-Turbo-Quantized on Hugging Face",
+        "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Turbo-Quantized"
+      }
+    ],
+    "created_at": "2026-11-04T01:48:43.194Z"
+  },
+  {
     "name": "OffsecCyber",
     "type": "Dataset",
     "summary": "Security Vulnerability Instruction Dataset \t An English-language dataset of security-focused assistant conversations about software vulnerabilities. Examples cover vuln (35 likes, 0 downloads).",

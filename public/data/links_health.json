@@ -1,23 +1,18 @@
 {
-  "timestamp": "2026-11-03T20:23:08.589Z",
+  "timestamp": "2026-11-04T01:48:43.358Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "OpenAI Platform",
-      "url": "https://platform.openai.com",
+      "name": "o3",
+      "url": "https://openai.com",
       "status": 403
     },
     {
-      "name": "Leonardo.ai",
-      "url": "https://leonardo.ai",
-      "status": 403
-    },
-    {
-      "name": "Mistral Le Chat",
-      "url": "https://chat.mistral.ai",
-      "status": 403
+      "name": "Tome",
+      "url": "https://tome.app",
+      "status": 404
     }
   ]
 }
