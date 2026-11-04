@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Wed, 04 Nov 2026 08:28:12 GMT`*
+*Last Synchronized: `Wed, 04 Nov 2026 17:41:47 GMT`*
 
 ---
 
@@ -10,26 +10,26 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Xiaomi-OCR-0** (`Model` • *xiaomi-research*)
-> High-performance Multimodal open-weights model by xiaomi-research, trending with over 264 community likes and 20,802 downloads on Hugging Face.
+### **Kimi-K3.1-Pro** (`Model` • *moonshotai*)
+> High-performance Multimodal open-weights model by moonshotai, trending with over 287 community likes and 797 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 193, Likes: 264, Downloads: 20,802`
-- 🔗 **Resource Link**: [https://huggingface.co/xiaomi-research/Xiaomi-OCR-0](https://huggingface.co/xiaomi-research/Xiaomi-OCR-0)
+- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 284, Likes: 287, Downloads: 797`
+- 🔗 **Resource Link**: [https://huggingface.co/moonshotai/Kimi-K3.1-Pro](https://huggingface.co/moonshotai/Kimi-K3.1-Pro)
 
-### **motionbricks-playground** (`Platform` • *townbox*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by townbox. Trending with 25 community stars.
+### **P-H3-Image** (`Platform` • *PrunaAI*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by PrunaAI. Trending with 26 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 23, Community Likes: 25`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/townbox/motionbricks-playground](https://huggingface.co/spaces/townbox/motionbricks-playground)
+- ⚡ **Metrics**: `Trending Score: 25, Community Likes: 26`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/PrunaAI/P-H3-Image](https://huggingface.co/spaces/PrunaAI/P-H3-Image)
 
-### **ChartNet** (`Dataset` • *ibm-granite*)
-> ChartNet: A Million-Scale Multimodal Dataset for Chart Understanding 	 🌐 Homepage | 📖 arXiv 	 		 	 	 		📰 Latest Update — October 2026 	 	 		 	 	 		ChartNet introduce (68 likes, 18,197 downloads).
+### **scanned-objects-glb** (`Dataset` • *codepawl*)
+> Scanned Objects GLB 	 Web-ready glTF binary (.glb) copies of the 1,033 household products in Google Scanned Objects, taken from the official copies on Gazebo Fuel. Each (20 likes, 60 downloads).
 
-- 🏷️ **Domain & License**: `Computer Vision` • `CDLA-PERMISSIVE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 17, Likes: 68, Downloads: 18,197`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/ibm-granite/ChartNet](https://huggingface.co/datasets/ibm-granite/ChartNet)
+- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 20, Likes: 20, Downloads: 60`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/codepawl/scanned-objects-glb](https://huggingface.co/datasets/codepawl/scanned-objects-glb)
 
 ---
 
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 1,431 | 📥 47,817 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 746 | 📥 38,942 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 4,901 | 📥 187,260 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,559 | 📥 6,556 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
-| `speridlabs/idol` | image-to-3d | ❤️ 537 | 📥 10,742 | [View](https://huggingface.co/speridlabs/idol) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 10,526 | 📥 2,488,128 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 1,458 | 📥 44,939 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
+| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 5,247 | 📥 221,621 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 1,470 | 📥 54,959 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,582 | 📥 8,200 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
+| `speridlabs/idol` | image-to-3d | ❤️ 584 | 📥 14,613 | [View](https://huggingface.co/speridlabs/idol) |
+| `Pika-Labs/Pika-H3-Flex` | image-to-video | ❤️ 421 | 📥 749 | [View](https://huggingface.co/Pika-Labs/Pika-H3-Flex) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Every Pixel Is an Option: A System One Model for Medical Ultrasound Biometry** | 👍 2 | Kev-Bio is a vision-language model that guides ultrasound landmark detection via clinical questions, generating spatial probability maps to derive measurements with reduced operator variability. | [Read](https://huggingface.co/papers/2611.03360) |
-| **DreamX: Video Diffusion Model is a Universal Latent Action Learner** | 👍 31 | DreamX leverages a pretrained video diffusion model to learn compact, appearance-invariant latent actions that enable cross-embodiment transfer and efficient policy learning. | [Read](https://huggingface.co/papers/2611.05377) |
-| **VidUEU-Agent: A Data-Curation Agent for Multimodal Understanding, Editing, and Unified Tasks** | 👍 20 | VidUEU-Agent automates instruction data synthesis from raw videos via a multi-stage pipeline with autonomous iteration, yielding a 100K-sample dataset that improves multimodal model performance. | [Read](https://huggingface.co/papers/2611.04418) |
-| **Going Deeper With Memories** | 👍 1 | DeepMem is a causal multiscale byte-level architecture that uses invertible subband transforms and fast weight memory to compress sequences for efficient reasoning while preserving exact byte identity via lossless carriers and attention-based super-resolution decoding. | [Read](https://huggingface.co/papers/2611.05255) |
-| **RoboTryOn: Synthesizing Dexterous Robot Demonstrations from Human Videos via Virtual Try-On** | 👍 1 | RoboTryOn translates human demonstration videos into robot videos to train control policies without real robot demonstrations, improving success rates and reducing data collection costs. | [Read](https://huggingface.co/papers/2611.05163) |
+| **Adversarial Speculative Reasoning Improves Long Horizon Agents** | 👍 6 | Speculative decoding can be trained to reject critical reasoning tokens so they are verified by the target model, reducing numerical noise and improving long-horizon agent accuracy without altering the target model. | [Read](https://huggingface.co/papers/2611.05345) |
+| **BEND 2.0: Benchmarking the Capabilities Needed to Design DNA** | 👍 2 | BEND 2.0 evaluates DNA language models on predicting mutation effects and guiding sequence design, revealing that linear readouts and post-training improve performance but context-specific and multi-objective design remain challenging. | [Read](https://huggingface.co/papers/2611.03806) |
+| **Dory1.0-4B: A Looped Normalized-GPT** | 👍 4 | Dory1.0-4B is a 4-billion-parameter recurrent language model with elastic depth that improves accuracy and token efficiency by looping a shared block, outperforming larger models on multiple benchmarks. | [Read](https://huggingface.co/papers/2611.03998) |
+| **Every Token Needs Its Own Teacher: Multi-teacher Adaptive On-policy Self-distillation** | 👍 8 | Multi-teacher Adaptive On-policy Self-Distillation selects a preferred teacher for each token during training, improving mathematical reasoning performance over fixed-teacher methods. | [Read](https://huggingface.co/papers/2610.40574) |
+| **Kierston & KierstonBench: Simulation of Allentown, PA and Evaluation of Language Models in Crime Investigation and Surveillance Tasks** | 👍 1 | Kierston and KierstonBench provide a simulated city-scale environment to evaluate large language models on criminal investigation tasks using linked surveillance records, revealing that only frontier models perform reliably while remaining vulnerable to deception. | [Read](https://huggingface.co/papers/2611.04785) |
 
 
 ---

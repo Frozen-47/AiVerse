@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-04)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Xiaomi-OCR-0** (`Model`), **motionbricks-playground** (`Platform`), **ChartNet** (`Dataset`) |
+| 📥 **Queued for Review** | **Kimi-K3.1-Pro** (`Model`), **P-H3-Image** (`Platform`), **scanned-objects-glb** (`Dataset`) |
 | 🌟 **Tool of the Day** | **LightOnOCR-3-Demo** (lightonai) — [Explore](https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
-| 🔥 **Top Trending Model** | [LiquidAI/LFM3-1.7B](https://huggingface.co/LiquidAI/LFM3-1.7B) |
-| 📜 **Top Daily Paper** | [Every Pixel Is an Option: A System One Model for M...](https://huggingface.co/papers/2611.03360) |
+| 🔥 **Top Trending Model** | [nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
+| 📜 **Top Daily Paper** | [Adversarial Speculative Reasoning Improves Long Ho...](https://huggingface.co/papers/2611.05345) |
 | 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Wed, 04 Nov 2026 08:28:12 GMT` |
+| 🕒 **Last Synchronized** | `Wed, 04 Nov 2026 17:41:47 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

@@ -1,5 +1,80 @@
 [
   {
+    "name": "scanned-objects-glb",
+    "type": "Dataset",
+    "summary": "Scanned Objects GLB \t Web-ready glTF binary (.glb) copies of the 1,033 household products in Google Scanned Objects, taken from the official copies on Gazebo Fuel. Each (20 likes, 60 downloads).",
+    "task": "Computer Vision",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "org": "codepawl",
+    "size": "1K<n<10K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"codepawl/scanned-objects-glb\")",
+    "benchmarks": "Trending Score: 20, Likes: 20, Downloads: 60",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/codepawl/scanned-objects-glb",
+    "citations": [
+      {
+        "text": "codepawl/scanned-objects-glb on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/codepawl/scanned-objects-glb"
+      }
+    ],
+    "created_at": "2026-11-04T17:41:17.045Z"
+  },
+  {
+    "name": "P-H3-Image",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by PrunaAI. Trending with 26 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "PrunaAI",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/PrunaAI/P-H3-Image",
+    "benchmarks": "Trending Score: 25, Community Likes: 26",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/PrunaAI/P-H3-Image",
+    "citations": [
+      {
+        "text": "PrunaAI/P-H3-Image on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/PrunaAI/P-H3-Image"
+      }
+    ],
+    "created_at": "2026-11-04T17:41:17.045Z"
+  },
+  {
+    "name": "Kimi-K3.1-Pro",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by moonshotai, trending with over 287 community likes and 797 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "moonshotai",
+    "size": "Open Weights",
+    "architecture": "moonshotai image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"moonshotai/Kimi-K3.1-Pro\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"moonshotai/Kimi-K3.1-Pro\")",
+    "benchmarks": "Trending Score: 284, Likes: 287, Downloads: 797",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+    "citations": [
+      {
+        "text": "moonshotai/Kimi-K3.1-Pro on Hugging Face",
+        "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
+      }
+    ],
+    "created_at": "2026-11-04T17:41:17.044Z"
+  },
+  {
     "name": "ChartNet",
     "type": "Dataset",
     "summary": "ChartNet: A Million-Scale Multimodal Dataset for Chart Understanding \t 🌐 Homepage | 📖 arXiv \t \t\t \t \t \t\t📰 Latest Update — October 2026 \t \t \t\t \t \t \t\tChartNet introduce (68 likes, 18,197 downloads).",
