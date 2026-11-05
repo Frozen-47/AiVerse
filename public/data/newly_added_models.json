@@ -4,6 +4,84 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Ripple-65B-Preview",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by ricursiveAI, trending with over 222 community likes and 939 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "ricursiveAI",
+        "size": "65B params",
+        "architecture": "ricursiveAI transformer architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ricursiveAI/Ripple-65B-Preview\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ricursiveAI/Ripple-65B-Preview\")",
+        "benchmarks": "Trending Score: 216, Likes: 222, Downloads: 939",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview",
+        "citations": [
+          {
+            "text": "ricursiveAI/Ripple-65B-Preview on Hugging Face",
+            "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
+          }
+        ]
+      },
+      {
+        "name": "Faceswap-Headswap",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by keysersoze. Trending with 103 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "keysersoze",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/keysersoze/Faceswap-Headswap",
+        "benchmarks": "Trending Score: 25, Community Likes: 103",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/keysersoze/Faceswap-Headswap",
+        "citations": [
+          {
+            "text": "keysersoze/Faceswap-Headswap on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/keysersoze/Faceswap-Headswap"
+          }
+        ]
+      },
+      {
+        "name": "axion-training-data",
+        "type": "Dataset",
+        "summary": "Axion 1.0 Training Data   Scientific reasoning and tool use for open agent foundation models.   Project Page ·   Paper (Hugging Face) ·   Paper (PDF) ·   Code          Axion 1. (18 likes, 1,061 downloads).",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Axion1-0",
+        "size": "10K<n<100K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Axion1-0/axion-training-data\")",
+        "benchmarks": "Trending Score: 18, Likes: 18, Downloads: 1,061",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/Axion1-0/axion-training-data",
+        "citations": [
+          {
+            "text": "Axion1-0/axion-training-data on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/Axion1-0/axion-training-data"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-05",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Mage-VL-Cowork",
         "type": "Model",
         "summary": "High-performance Multimodal open-weights model by Microsoft, trending with over 183 community likes and 1,973 downloads on Hugging Face.",
@@ -6226,77 +6304,6 @@
           {
             "text": "LightwheelAI/EgoPro on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/LightwheelAI/EgoPro"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-02",
-    "assets": [
-      {
-        "name": "clef",
-        "type": "Model",
-        "summary": "High-performance Multimodal open-weights model by Cloudflare, trending with over 368 community likes and 18 downloads on Hugging Face.",
-        "task": "Multimodal",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "Cloudflare",
-        "size": "Open Weights",
-        "architecture": "Cloudflare image text to text architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Cloudflare/clef\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Cloudflare/clef\")",
-        "benchmarks": "Trending Score: 365, Likes: 368, Downloads: 18",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": true,
-        "url": "https://huggingface.co/Cloudflare/clef",
-        "citations": [
-          {
-            "text": "Cloudflare/clef on Hugging Face",
-            "url": "https://huggingface.co/Cloudflare/clef"
-          }
-        ]
-      },
-      {
-        "name": "OpenVuln",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by zai-org. Trending with 196 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "zai-org",
-        "size": "DOCKER Platform",
-        "architecture": "DOCKER cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/zai-org/OpenVuln",
-        "benchmarks": "Trending Score: 66, Community Likes: 196",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": true,
-        "url": "https://huggingface.co/spaces/zai-org/OpenVuln",
-        "citations": [
-          {
-            "text": "zai-org/OpenVuln on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/zai-org/OpenVuln"
-          }
-        ]
-      },
-      {
-        "name": "audit-findings-dataset",
-        "type": "Dataset",
-        "summary": "Smart Contract Audit Findings \t This is raw, semi-structured data — not a ready-to-train dataset. It still requires further cleaning and preparation (deduplication, sev (79 likes, 1,014 downloads).",
-        "task": "AI Coding",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "Zaevlad",
-        "size": "10K<n<100K",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Zaevlad/audit-findings-dataset\")",
-        "benchmarks": "Trending Score: 46, Likes: 79, Downloads: 1,014",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "url": "https://huggingface.co/datasets/Zaevlad/audit-findings-dataset",
-        "citations": [
-          {
-            "text": "Zaevlad/audit-findings-dataset on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/Zaevlad/audit-findings-dataset"
           }
         ]
       }

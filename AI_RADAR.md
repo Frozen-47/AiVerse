@@ -2,27 +2,34 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Thu, 05 Nov 2026 08:52:29 GMT`*
+*Last Synchronized: `Thu, 05 Nov 2026 17:48:42 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (2)
+## 📥 Newly Queued Assets for Review (3)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Mage-VL-Cowork** (`Model` • *Microsoft*)
-> High-performance Multimodal open-weights model by Microsoft, trending with over 183 community likes and 1,973 downloads on Hugging Face.
+### **Ripple-65B-Preview** (`Model` • *ricursiveAI*)
+> High-performance NLP open-weights model by ricursiveAI, trending with over 222 community likes and 939 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 166, Likes: 183, Downloads: 1,973`
-- 🔗 **Resource Link**: [https://huggingface.co/microsoft/Mage-VL-Cowork](https://huggingface.co/microsoft/Mage-VL-Cowork)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 216, Likes: 222, Downloads: 939`
+- 🔗 **Resource Link**: [https://huggingface.co/ricursiveAI/Ripple-65B-Preview](https://huggingface.co/ricursiveAI/Ripple-65B-Preview)
 
-### **abo-glb** (`Dataset` • *codepawl*)
-> Amazon Berkeley Objects GLB 	 The 7,953 3D models of Amazon Berkeley Objects (ABO), made small enough to load in a browser. Each product is one .glb with its full PBR m (22 likes, 0 downloads).
+### **Faceswap-Headswap** (`Platform` • *keysersoze*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by keysersoze. Trending with 103 community stars.
 
-- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 21, Likes: 22, Downloads: 0`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/codepawl/abo-glb](https://huggingface.co/datasets/codepawl/abo-glb)
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 25, Community Likes: 103`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/keysersoze/Faceswap-Headswap](https://huggingface.co/spaces/keysersoze/Faceswap-Headswap)
+
+### **axion-training-data** (`Dataset` • *Axion1-0*)
+> Axion 1.0 Training Data   Scientific reasoning and tool use for open agent foundation models.   Project Page ·   Paper (Hugging Face) ·   Paper (PDF) ·   Code          Axion 1. (18 likes, 1,061 downloads).
+
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 18, Likes: 18, Downloads: 1,061`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/Axion1-0/axion-training-data](https://huggingface.co/datasets/Axion1-0/axion-training-data)
 
 ---
 
@@ -41,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 3,023 | 📥 44,939 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
-| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 661 | 📥 797 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
-| `speridlabs/idol` | image-to-3d | ❤️ 653 | 📥 14,613 | [View](https://huggingface.co/speridlabs/idol) |
-| `deepseek-ai/DeepSeek-V4.1-Flash-1017` | image-text-to-text | ❤️ 5,306 | 📥 221,621 | [View](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
-| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,594 | 📥 8,200 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
-| `LiquidAI/LFM3-1.7B` | text-generation | ❤️ 1,495 | 📥 54,959 | [View](https://huggingface.co/LiquidAI/LFM3-1.7B) |
+| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 838 | 📥 11,658 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
+| `speridlabs/idol` | image-to-3d | ❤️ 713 | 📥 17,180 | [View](https://huggingface.co/speridlabs/idol) |
+| `Pika-Labs/Pika-H3-Flex` | image-to-video | ❤️ 456 | 📥 863 | [View](https://huggingface.co/Pika-Labs/Pika-H3-Flex) |
+| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,607 | 📥 9,592 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 10,696 | 📥 2,561,845 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `ccore/Qwen3.5-4B-3D-Coder` | general | ❤️ 684 | 📥 157,157 | [View](https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder) |
 
 
 ---
@@ -56,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Koopman Generative Operators for Efficient Probabilistic Time-Series Forecasting** | 👍 0 | KGO unifies structured latent dynamics with single-step flow matching and adaptive uncertainty gating to achieve accurate, efficient probabilistic time-series forecasting. | [Read](https://huggingface.co/papers/2611.04760) |
-| **VidDub: Replacement-Aware Distillation for Two-Step Video Dubbing** | 👍 4 | VidDub is a two-step diffusion video dubbing model that uses replacement-aware cross-audio supervision to avoid conflicting source-mouth targets and achieves strong lip synchronization with high visual fidelity. | [Read](https://huggingface.co/papers/2611.03404) |
-| **What Does Multi-Turn Reinforcement Learning Really Improve in LLM Agents?** | 👍 20 | While multi-turn agentic reinforcement learning (RL) excels on long-horizon tasks, its performance gains remain highly sensitive to interaction constraints. Eva... | [Read](https://huggingface.co/papers/2611.06483) |
-| **Turns Matter: Advancing Streaming Video RL via Turn-Level Credit** | 👍 50 | TurnWise improves streaming video understanding by assigning turn-level credit and balancing decision weights in group relative policy optimization. | [Read](https://huggingface.co/papers/2611.06728) |
-| **LoopVQ: Sub 1-bit KV Cache Quantization for Looped Transformers** | 👍 4 | Looped transformers are a parameter-efficient alternative to standard transformers for language modeling. By reapplying the same layers across multiple loop ste... | [Read](https://huggingface.co/papers/2611.05304) |
+| **Multi-layer Indexer: Overlapping Selection and Attention in DeepSeek Sparse Attention** | 👍 0 | A multi-layer indexer reuses adjacent layers’ token selections to overlap indexer scans with attention, improving long-context decode throughput when combined with cross-layer indexer reuse while maintaining accuracy. | [Read](https://huggingface.co/papers/2611.03768) |
+| **Halley: A Predictive Control Plane for Optical AI Data Center Networks** | 👍 8 | Halley is a predictive control framework for AI data center optical networks that improves effective throughput and reduces capacity needs by forecasting failures and controlling resources with formal guarantees. | [Read](https://huggingface.co/papers/2611.04408) |
+| **TaoMate-HD: Progressive-Resolution Autoregressive Audio-Video Generation** | 👍 1 | TaoMate-HD is an autoregressive streaming model that generates high-resolution audiovisual content in chunks with progressive denoising, history-based continuation, and optimized parallel deployment for faster, coherent long-form output. | [Read](https://huggingface.co/papers/2611.03394) |
+| **The SIMPLE Law for Energy Cost of LLM Inference** | 👍 4 | A four-parameter analytical law predicts LLM inference energy across architectures, revealing quadratic prefill costs, GQA savings, and super-linear growth from reasoning budgets and agentic serving. | [Read](https://huggingface.co/papers/2611.03330) |
+| **HERIT: Enabling Global Access to Hanja-to-English Historical Translation by Mitigating Temporal Bias** | 👍 1 | HERIT adapts machine translation to historical archives via retrieval-augmented pseudo-labeling, improving accuracy across time periods and unlocking global access. | [Read](https://huggingface.co/papers/2611.04949) |
 
 
 ---
@@ -73,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `18/25` healthy verified (`7` flagged / timed out)
+- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
 - **Dependency Security**: `43` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-05)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Mage-VL-Cowork** (`Model`), **abo-glb** (`Dataset`) |
+| 📥 **Queued for Review** | **Ripple-65B-Preview** (`Model`), **Faceswap-Headswap** (`Platform`), **axion-training-data** (`Dataset`) |
 | 🌟 **Tool of the Day** | **JEV-35B** (autotrust) — [Explore](https://huggingface.co/autotrust/JEV-35B) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
-| 🔥 **Top Trending Model** | [nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
-| 📜 **Top Daily Paper** | [Koopman Generative Operators for Efficient Probabi...](https://huggingface.co/papers/2611.04760) |
-| 🛡️ **Catalog Links Checked** | **18/25** operational |
-| 🕒 **Last Synchronized** | `Thu, 05 Nov 2026 08:52:29 GMT` |
+| 🔥 **Top Trending Model** | [moonshotai/Kimi-K3.1-Pro](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
+| 📜 **Top Daily Paper** | [Multi-layer Indexer: Overlapping Selection and Att...](https://huggingface.co/papers/2611.03768) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Thu, 05 Nov 2026 17:48:42 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

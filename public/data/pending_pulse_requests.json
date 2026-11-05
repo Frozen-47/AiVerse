@@ -1,5 +1,80 @@
 [
   {
+    "name": "axion-training-data",
+    "type": "Dataset",
+    "summary": "Axion 1.0 Training Data   Scientific reasoning and tool use for open agent foundation models.   Project Page ·   Paper (Hugging Face) ·   Paper (PDF) ·   Code          Axion 1. (18 likes, 1,061 downloads).",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "Axion1-0",
+    "size": "10K<n<100K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Axion1-0/axion-training-data\")",
+    "benchmarks": "Trending Score: 18, Likes: 18, Downloads: 1,061",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/Axion1-0/axion-training-data",
+    "citations": [
+      {
+        "text": "Axion1-0/axion-training-data on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Axion1-0/axion-training-data"
+      }
+    ],
+    "created_at": "2026-11-05T17:47:55.938Z"
+  },
+  {
+    "name": "Faceswap-Headswap",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by keysersoze. Trending with 103 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "keysersoze",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/keysersoze/Faceswap-Headswap",
+    "benchmarks": "Trending Score: 25, Community Likes: 103",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/keysersoze/Faceswap-Headswap",
+    "citations": [
+      {
+        "text": "keysersoze/Faceswap-Headswap on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/keysersoze/Faceswap-Headswap"
+      }
+    ],
+    "created_at": "2026-11-05T17:47:55.938Z"
+  },
+  {
+    "name": "Ripple-65B-Preview",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by ricursiveAI, trending with over 222 community likes and 939 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "ricursiveAI",
+    "size": "65B params",
+    "architecture": "ricursiveAI transformer architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ricursiveAI/Ripple-65B-Preview\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ricursiveAI/Ripple-65B-Preview\")",
+    "benchmarks": "Trending Score: 216, Likes: 222, Downloads: 939",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview",
+    "citations": [
+      {
+        "text": "ricursiveAI/Ripple-65B-Preview on Hugging Face",
+        "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
+      }
+    ],
+    "created_at": "2026-11-05T17:47:55.938Z"
+  },
+  {
     "name": "abo-glb",
     "type": "Dataset",
     "summary": "Amazon Berkeley Objects GLB \t The 7,953 3D models of Amazon Berkeley Objects (ABO), made small enough to load in a browser. Each product is one .glb with its full PBR m (22 likes, 0 downloads).",
