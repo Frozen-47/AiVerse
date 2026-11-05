@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-05)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **DeepSeek-V4.1-Flash-1017-GGUF** (`Model`), **free-ai-humanizer** (`Platform`), **GAIA** (`Dataset`) |
+| 📥 **Queued for Review** | **Mage-VL-Cowork** (`Model`), **abo-glb** (`Dataset`) |
 | 🌟 **Tool of the Day** | **JEV-35B** (autotrust) — [Explore](https://huggingface.co/autotrust/JEV-35B) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
-| 📜 **Top Daily Paper** | [When Fine-Grained Credit Assignment Helps and Hurt...](https://huggingface.co/papers/2610.35497) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Thu, 05 Nov 2026 00:05:19 GMT` |
+| 📜 **Top Daily Paper** | [Koopman Generative Operators for Efficient Probabi...](https://huggingface.co/papers/2611.04760) |
+| 🛡️ **Catalog Links Checked** | **18/25** operational |
+| 🕒 **Last Synchronized** | `Thu, 05 Nov 2026 08:52:29 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

@@ -1,23 +1,43 @@
 {
-  "timestamp": "2026-11-05T00:04:35.507Z",
+  "timestamp": "2026-11-05T08:51:50.399Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 18,
+  "broken": 7,
   "issues": [
-    {
-      "name": "OpenAI Platform",
-      "url": "https://platform.openai.com",
-      "status": 403
-    },
     {
       "name": "GPT-3",
       "url": "https://openai.com/research/language-models-are-few-shot-learners",
       "status": 403
     },
     {
-      "name": "Mistral Le Chat",
-      "url": "https://chat.mistral.ai",
+      "name": "DALL-E 3",
+      "url": "https://openai.com/dall-e-3",
       "status": 403
+    },
+    {
+      "name": "wan555",
+      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
+      "status": 401
+    },
+    {
+      "name": "ImageNet",
+      "url": "https://image-net.org",
+      "status": "Timeout"
+    },
+    {
+      "name": "Qwen 2.5-Math (72B)",
+      "url": "https://github.com/QwenLM/Qwen2.5-Math",
+      "status": "Timeout"
+    },
+    {
+      "name": "GitHub Copilot",
+      "url": "https://github.com/features/copilot",
+      "status": "Timeout"
+    },
+    {
+      "name": "Alpaca Dataset",
+      "url": "https://github.com/tatsu-lab/stanford_alpaca",
+      "status": "Timeout"
     }
   ]
 }

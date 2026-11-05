@@ -1,5 +1,55 @@
 [
   {
+    "name": "abo-glb",
+    "type": "Dataset",
+    "summary": "Amazon Berkeley Objects GLB \t The 7,953 3D models of Amazon Berkeley Objects (ABO), made small enough to load in a browser. Each product is one .glb with its full PBR m (22 likes, 0 downloads).",
+    "task": "Computer Vision",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "org": "codepawl",
+    "size": "1K<n<10K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"codepawl/abo-glb\")",
+    "benchmarks": "Trending Score: 21, Likes: 22, Downloads: 0",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/codepawl/abo-glb",
+    "citations": [
+      {
+        "text": "codepawl/abo-glb on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/codepawl/abo-glb"
+      }
+    ],
+    "created_at": "2026-11-05T08:51:50.254Z"
+  },
+  {
+    "name": "Mage-VL-Cowork",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by Microsoft, trending with over 183 community likes and 1,973 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "Microsoft",
+    "size": "Open Weights",
+    "architecture": "Microsoft image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"microsoft/Mage-VL-Cowork\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"microsoft/Mage-VL-Cowork\")",
+    "benchmarks": "Trending Score: 166, Likes: 183, Downloads: 1,973",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/microsoft/Mage-VL-Cowork",
+    "citations": [
+      {
+        "text": "microsoft/Mage-VL-Cowork on Hugging Face",
+        "url": "https://huggingface.co/microsoft/Mage-VL-Cowork"
+      }
+    ],
+    "created_at": "2026-11-05T08:51:50.254Z"
+  },
+  {
     "name": "GAIA",
     "type": "Dataset",
     "summary": "GAIA dataset \t GAIA is a benchmark which aims at evaluating next-generation LLMs (LLMs with augmented capabilities due to added tooling, efficient prompting, access to (936 likes, 10,974 downloads).",
