@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-04T17:41:17.056Z",
+  "timestamp": "2026-11-05T00:04:35.428Z",
   "models": [
     {
       "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
       "author": "nvidia",
-      "likes": 1458,
+      "likes": 1485,
       "downloads": 44939,
       "pipeline_tag": "automatic-speech-recognition",
       "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
@@ -12,15 +12,23 @@
     {
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "author": "deepseek-ai",
-      "likes": 5247,
+      "likes": 5266,
       "downloads": 221621,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
+      "id": "speridlabs/idol",
+      "author": "speridlabs",
+      "likes": 617,
+      "downloads": 14613,
+      "pipeline_tag": "image-to-3d",
+      "url": "https://huggingface.co/speridlabs/idol"
+    },
+    {
       "id": "LiquidAI/LFM3-1.7B",
       "author": "LiquidAI",
-      "likes": 1470,
+      "likes": 1485,
       "downloads": 54959,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
@@ -28,68 +36,60 @@
     {
       "id": "mistralai/Mistral-Large-4-1T-A52B",
       "author": "mistralai",
-      "likes": 1582,
+      "likes": 1589,
       "downloads": 8200,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
     },
     {
-      "id": "speridlabs/idol",
-      "author": "speridlabs",
-      "likes": 584,
-      "downloads": 14613,
-      "pipeline_tag": "image-to-3d",
-      "url": "https://huggingface.co/speridlabs/idol"
-    },
-    {
-      "id": "Pika-Labs/Pika-H3-Flex",
-      "author": "Pika-Labs",
-      "likes": 421,
-      "downloads": 749,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Pika-Labs/Pika-H3-Flex"
+      "id": "moonshotai/Kimi-K3.1-Pro",
+      "author": "moonshotai",
+      "likes": 482,
+      "downloads": 797,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
     }
   ],
   "papers": [
     {
-      "title": "Adversarial Speculative Reasoning Improves Long Horizon Agents",
-      "summary": "Speculative decoding can be trained to reject critical reasoning tokens so they are verified by the target model, reducing numerical noise and improving long-horizon agent accuracy without altering the target model.",
-      "upvotes": 6,
-      "arxiv_id": "2611.05345",
-      "url": "https://huggingface.co/papers/2611.05345",
-      "githubRepo": null
+      "title": "When Fine-Grained Credit Assignment Helps and Hurts: Multimodal Agentic Reinforcement Learning through Video Editing",
+      "summary": "Fine-grained process rewards improve long-horizon video editing tasks but cause reward hacking in shorter tasks, which is mitigated by decaying their weight, while on-policy self-distillation provides little benefit.",
+      "upvotes": 0,
+      "arxiv_id": "2610.35497",
+      "url": "https://huggingface.co/papers/2610.35497",
+      "githubRepo": "https://github.com/leizhao7/video-editing-credit-assignment"
     },
     {
-      "title": "BEND 2.0: Benchmarking the Capabilities Needed to Design DNA",
-      "summary": "BEND 2.0 evaluates DNA language models on predicting mutation effects and guiding sequence design, revealing that linear readouts and post-training improve performance but context-specific and multi-objective design remain challenging.",
-      "upvotes": 2,
-      "arxiv_id": "2611.03806",
-      "url": "https://huggingface.co/papers/2611.03806",
-      "githubRepo": "https://github.com/MachineLearningLifeScience/BEND2"
-    },
-    {
-      "title": "Dory1.0-4B: A Looped Normalized-GPT",
-      "summary": "Dory1.0-4B is a 4-billion-parameter recurrent language model with elastic depth that improves accuracy and token efficiency by looping a shared block, outperforming larger models on multiple benchmarks.",
-      "upvotes": 4,
-      "arxiv_id": "2611.03998",
-      "url": "https://huggingface.co/papers/2611.03998",
-      "githubRepo": null
-    },
-    {
-      "title": "Every Token Needs Its Own Teacher: Multi-teacher Adaptive On-policy Self-distillation",
-      "summary": "Multi-teacher Adaptive On-policy Self-Distillation selects a preferred teacher for each token during training, improving mathematical reasoning performance over fixed-teacher methods.",
-      "upvotes": 8,
-      "arxiv_id": "2610.40574",
-      "url": "https://huggingface.co/papers/2610.40574",
-      "githubRepo": "https://github.com/xingzhejun/MTA-OPSD"
-    },
-    {
-      "title": "Kierston & KierstonBench: Simulation of Allentown, PA and Evaluation of Language Models in Crime Investigation and Surveillance Tasks",
-      "summary": "Kierston and KierstonBench provide a simulated city-scale environment to evaluate large language models on criminal investigation tasks using linked surveillance records, revealing that only frontier models perform reliably while remaining vulnerable to deception.",
+      "title": "Cross-Prompt Reuse of Entity-Replacement Responses",
+      "summary": "Hidden-state reuse across factual questions partially transfers relation-specific answer shifts in small language models, with effectiveness depending on format, cohort, and source relation alignment.",
       "upvotes": 1,
-      "arxiv_id": "2611.04785",
-      "url": "https://huggingface.co/papers/2611.04785",
-      "githubRepo": "https://github.com/Kiz8-Team/kierston-oss"
+      "arxiv_id": "2611.00352",
+      "url": "https://huggingface.co/papers/2611.00352",
+      "githubRepo": null
+    },
+    {
+      "title": "SphereFlow: Missing Modality Imputation via Geometric Transport on Hypersphere",
+      "summary": "SphereFlow projects modalities onto a shared hypersphere to enable short-range cross-modal imputation via flow matching with geometry-aware noise and decoder modifications.",
+      "upvotes": 1,
+      "arxiv_id": "2611.04414",
+      "url": "https://huggingface.co/papers/2611.04414",
+      "githubRepo": "https://github.com/WTHH031230/SphereFlow"
+    },
+    {
+      "title": "Length Is Cheap, Competition Is Not: Attention Predicts Context Rot in Retrieval",
+      "summary": "In retrieval tasks, language model failure on long inputs stems from attention competition rather than sequence length, as rival evidence statements sharply reduce accuracy while neutral filler does not.",
+      "upvotes": 0,
+      "arxiv_id": "2611.04169",
+      "url": "https://huggingface.co/papers/2611.04169",
+      "githubRepo": "https://github.com/yliusci/length-is-cheap"
+    },
+    {
+      "title": "QFabric: Guarded Cross-Domain Task Recovery and Its Limits on a Linux-RTOS Board",
+      "summary": "QFabric demonstrates that migrating tasks to a microcontroller on heterogeneous boards fails to isolate them from Linux interference, emphasizing that guarded recovery mechanisms are essential to prevent harmful migrations.",
+      "upvotes": 0,
+      "arxiv_id": "2611.01598",
+      "url": "https://huggingface.co/papers/2611.01598",
+      "githubRepo": "https://github.com/elixpo/qfabric"
     }
   ]
 }

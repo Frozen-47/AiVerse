@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-11-04T17:41:17.160Z",
+  "timestamp": "2026-11-05T00:04:35.507Z",
   "checked": 25,
   "healthy": 22,
   "broken": 3,
   "issues": [
     {
-      "name": "GPT-4.5",
-      "url": "https://openai.com",
+      "name": "OpenAI Platform",
+      "url": "https://platform.openai.com",
       "status": 403
     },
     {
-      "name": "Perplexity",
-      "url": "https://www.perplexity.ai",
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
       "status": 403
     },
     {
-      "name": "DeepSeek Chat",
-      "url": "https://chat.deepseek.com",
+      "name": "Mistral Le Chat",
+      "url": "https://chat.mistral.ai",
       "status": 403
     }
   ]
