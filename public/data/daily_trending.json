@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-05T17:47:55.957Z",
+  "timestamp": "2026-11-05T23:55:38.932Z",
   "models": [
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 838,
+      "likes": 916,
       "downloads": 11658,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
@@ -12,31 +12,15 @@
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 713,
+      "likes": 769,
       "downloads": 17180,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
     },
     {
-      "id": "Pika-Labs/Pika-H3-Flex",
-      "author": "Pika-Labs",
-      "likes": 456,
-      "downloads": 863,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Pika-Labs/Pika-H3-Flex"
-    },
-    {
-      "id": "mistralai/Mistral-Large-4-1T-A52B",
-      "author": "mistralai",
-      "likes": 1607,
-      "downloads": 9592,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
-    },
-    {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 10696,
+      "likes": 10725,
       "downloads": 2561845,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -44,17 +28,33 @@
     {
       "id": "ccore/Qwen3.5-4B-3D-Coder",
       "author": "ccore",
-      "likes": 684,
+      "likes": 700,
       "downloads": 157157,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
+    },
+    {
+      "id": "Pika-Labs/Pika-H3-Flex",
+      "author": "Pika-Labs",
+      "likes": 473,
+      "downloads": 863,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Pika-Labs/Pika-H3-Flex"
+    },
+    {
+      "id": "mistralai/Mistral-Large-4-1T-A52B",
+      "author": "mistralai",
+      "likes": 1614,
+      "downloads": 9592,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
     }
   ],
   "papers": [
     {
       "title": "Multi-layer Indexer: Overlapping Selection and Attention in DeepSeek Sparse Attention",
       "summary": "A multi-layer indexer reuses adjacent layers’ token selections to overlap indexer scans with attention, improving long-context decode throughput when combined with cross-layer indexer reuse while maintaining accuracy.",
-      "upvotes": 0,
+      "upvotes": 2,
       "arxiv_id": "2611.03768",
       "url": "https://huggingface.co/papers/2611.03768",
       "githubRepo": "https://github.com/ArjunKrishnak/dsa-multi-layer-indexer"
@@ -62,7 +62,7 @@
     {
       "title": "Halley: A Predictive Control Plane for Optical AI Data Center Networks",
       "summary": "Halley is a predictive control framework for AI data center optical networks that improves effective throughput and reduces capacity needs by forecasting failures and controlling resources with formal guarantees.",
-      "upvotes": 8,
+      "upvotes": 28,
       "arxiv_id": "2611.04408",
       "url": "https://huggingface.co/papers/2611.04408",
       "githubRepo": null
@@ -78,7 +78,7 @@
     {
       "title": "The SIMPLE Law for Energy Cost of LLM Inference",
       "summary": "A four-parameter analytical law predicts LLM inference energy across architectures, revealing quadratic prefill costs, GQA savings, and super-linear growth from reasoning budgets and agentic serving.",
-      "upvotes": 4,
+      "upvotes": 8,
       "arxiv_id": "2611.03330",
       "url": "https://huggingface.co/papers/2611.03330",
       "githubRepo": null

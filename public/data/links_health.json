@@ -1,18 +1,23 @@
 {
-  "timestamp": "2026-11-05T17:47:56.110Z",
+  "timestamp": "2026-11-05T23:55:39.024Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "Character.ai",
-      "url": "https://character.ai",
+      "name": "Midjourney (Platform)",
+      "url": "https://www.midjourney.com/",
       "status": 403
     },
     {
-      "name": "GPT-3",
-      "url": "https://openai.com/research/language-models-are-few-shot-learners",
+      "name": "Sora",
+      "url": "https://openai.com/sora",
       "status": 403
+    },
+    {
+      "name": "ERNIE Bot",
+      "url": "https://yiyan.baidu.com",
+      "status": 404
     }
   ]
 }
