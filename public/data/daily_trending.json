@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-05T23:55:38.932Z",
+  "timestamp": "2026-11-06T04:49:24.385Z",
   "models": [
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 916,
+      "likes": 947,
       "downloads": 11658,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
@@ -12,39 +12,39 @@
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 769,
+      "likes": 803,
       "downloads": 17180,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
     },
     {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 10725,
-      "downloads": 2561845,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5"
-    },
-    {
       "id": "ccore/Qwen3.5-4B-3D-Coder",
       "author": "ccore",
-      "likes": 700,
+      "likes": 716,
       "downloads": 157157,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
     },
     {
-      "id": "Pika-Labs/Pika-H3-Flex",
-      "author": "Pika-Labs",
-      "likes": 473,
-      "downloads": 863,
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 10746,
+      "downloads": 2561845,
       "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Pika-Labs/Pika-H3-Flex"
+      "url": "https://huggingface.co/Lightricks/LTX-2.5"
+    },
+    {
+      "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+      "author": "nvidia",
+      "likes": 3061,
+      "downloads": 57297,
+      "pipeline_tag": "automatic-speech-recognition",
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
     },
     {
       "id": "mistralai/Mistral-Large-4-1T-A52B",
       "author": "mistralai",
-      "likes": 1614,
+      "likes": 1617,
       "downloads": 9592,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "Multi-layer Indexer: Overlapping Selection and Attention in DeepSeek Sparse Attention",
-      "summary": "A multi-layer indexer reuses adjacent layers’ token selections to overlap indexer scans with attention, improving long-context decode throughput when combined with cross-layer indexer reuse while maintaining accuracy.",
-      "upvotes": 2,
-      "arxiv_id": "2611.03768",
-      "url": "https://huggingface.co/papers/2611.03768",
-      "githubRepo": "https://github.com/ArjunKrishnak/dsa-multi-layer-indexer"
-    },
-    {
-      "title": "Halley: A Predictive Control Plane for Optical AI Data Center Networks",
-      "summary": "Halley is a predictive control framework for AI data center optical networks that improves effective throughput and reduces capacity needs by forecasting failures and controlling resources with formal guarantees.",
-      "upvotes": 28,
-      "arxiv_id": "2611.04408",
-      "url": "https://huggingface.co/papers/2611.04408",
+      "title": "NPCBench: A Clinical Apprenticeship Benchmark for Multimodal Care-Pathway Reasoning in Nasopharyngeal Carcinoma",
+      "summary": "NPCBench evaluates whether medical AI models can integrate subspecialty knowledge with multimodal evidence and maintain temporally coherent diagnostic and care decisions across longitudinal nasopharyngeal carcinoma patient pathways.",
+      "upvotes": 1,
+      "arxiv_id": "2611.08369",
+      "url": "https://huggingface.co/papers/2611.08369",
       "githubRepo": null
     },
     {
-      "title": "TaoMate-HD: Progressive-Resolution Autoregressive Audio-Video Generation",
-      "summary": "TaoMate-HD is an autoregressive streaming model that generates high-resolution audiovisual content in chunks with progressive denoising, history-based continuation, and optimized parallel deployment for faster, coherent long-form output.",
-      "upvotes": 1,
-      "arxiv_id": "2611.03394",
-      "url": "https://huggingface.co/papers/2611.03394",
-      "githubRepo": "https://github.com/TaoLiveAIGC/TaoMate-HD"
+      "title": "EDGAR: Efficient Diffusion-Driven Gaussian Avatar Refinement via Synthetic Failure",
+      "summary": "EDGAR is a conditional diffusion framework with a fusion block and Mixture-of-Experts that refines degraded Gaussian head avatars by injecting self-supervised identity features, using refined multi-view renderings as pseudo-targets to optimize a single avatar.",
+      "upvotes": 5,
+      "arxiv_id": "2611.07909",
+      "url": "https://huggingface.co/papers/2611.07909",
+      "githubRepo": "https://github.com/kwanyun/edgar-code"
     },
     {
-      "title": "The SIMPLE Law for Energy Cost of LLM Inference",
-      "summary": "A four-parameter analytical law predicts LLM inference energy across architectures, revealing quadratic prefill costs, GQA savings, and super-linear growth from reasoning budgets and agentic serving.",
-      "upvotes": 8,
-      "arxiv_id": "2611.03330",
-      "url": "https://huggingface.co/papers/2611.03330",
-      "githubRepo": null
+      "title": "Random Is Almost Enough? Stable and Low-Cost Benchmark Compression via BestRand",
+      "summary": "Benchmark compression reduces the often prohibitive time and cost of model evaluation by evaluating models on a small benchmark subset that closely matches full...",
+      "upvotes": 11,
+      "arxiv_id": "2611.00883",
+      "url": "https://huggingface.co/papers/2611.00883",
+      "githubRepo": "https://github.com/George-Ling3/BestRand"
     },
     {
-      "title": "HERIT: Enabling Global Access to Hanja-to-English Historical Translation by Mitigating Temporal Bias",
-      "summary": "HERIT adapts machine translation to historical archives via retrieval-augmented pseudo-labeling, improving accuracy across time periods and unlocking global access.",
-      "upvotes": 1,
-      "arxiv_id": "2611.04949",
-      "url": "https://huggingface.co/papers/2611.04949",
-      "githubRepo": "https://github.com/dandamdandam/HERIT"
+      "title": "Towards Foundation Decision Models: Drex",
+      "summary": "Drex open decision models return probability distributions over user-supplied options without autoregressive decoding, using supervised fine-tuning, RLAF, and consistency losses to improve accuracy, robustness, and latency.",
+      "upvotes": 9,
+      "arxiv_id": "2611.07854",
+      "url": "https://huggingface.co/papers/2611.07854",
+      "githubRepo": "https://github.com/nace-ai/drex-decision-models"
+    },
+    {
+      "title": "D3D: Decoupled Diffusion Drafting for Asynchronous Speculative Decoding",
+      "summary": "D3D is a standalone diffusion drafter that removes target-model hidden-state dependencies to enable asynchronous speculative decoding with high speedup.",
+      "upvotes": 10,
+      "arxiv_id": "2611.06425",
+      "url": "https://huggingface.co/papers/2611.06425",
+      "githubRepo": "https://github.com/fudan-generative-vision/D3D"
     }
   ]
 }

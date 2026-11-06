@@ -1,5 +1,80 @@
 [
   {
+    "name": "TailorRig",
+    "type": "Dataset",
+    "summary": "TailorRig \t Human character rigging dataset: 39,073 humanoid meshes with skeletons and skinning weights, stored as .npz files and packed into four source-based subset a (21 likes, 10 downloads).",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "tencent",
+    "size": "10K<n<100K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"tencent/TailorRig\")",
+    "benchmarks": "Trending Score: 20, Likes: 21, Downloads: 10",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/tencent/TailorRig",
+    "citations": [
+      {
+        "text": "tencent/TailorRig on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/tencent/TailorRig"
+      }
+    ],
+    "created_at": "2026-11-06T04:49:24.366Z"
+  },
+  {
+    "name": "MatterSeek",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by YuyaoTechnology. Trending with 1,675 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "YuyaoTechnology",
+    "size": "STATIC Platform",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/YuyaoTechnology/MatterSeek",
+    "benchmarks": "Trending Score: 45, Community Likes: 1,675",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/YuyaoTechnology/MatterSeek",
+    "citations": [
+      {
+        "text": "YuyaoTechnology/MatterSeek on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/YuyaoTechnology/MatterSeek"
+      }
+    ],
+    "created_at": "2026-11-06T04:49:24.366Z"
+  },
+  {
+    "name": "Qwen3.5-4B-GLB-3D-Coder",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by ccore, trending with over 191 community likes and 12,206 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "ccore",
+    "size": "4B params",
+    "architecture": "ccore text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ccore/Qwen3.5-4B-GLB-3D-Coder\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ccore/Qwen3.5-4B-GLB-3D-Coder\")",
+    "benchmarks": "Trending Score: 170, Likes: 191, Downloads: 12,206",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/ccore/Qwen3.5-4B-GLB-3D-Coder",
+    "citations": [
+      {
+        "text": "ccore/Qwen3.5-4B-GLB-3D-Coder on Hugging Face",
+        "url": "https://huggingface.co/ccore/Qwen3.5-4B-GLB-3D-Coder"
+      }
+    ],
+    "created_at": "2026-11-06T04:49:24.366Z"
+  },
+  {
     "name": "TacVerse",
     "type": "Dataset",
     "summary": "Language: English (current) · 中文 \t \t\t \t \t \t\tTacVerse: A Multi-scene Bimanual Visuo-Tactile Dataset \t TacVerse is a large-scale bimanual manipulation dataset in which every frame ca (21 likes, 1,637 downloads).",

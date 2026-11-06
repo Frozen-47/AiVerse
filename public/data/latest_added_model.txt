@@ -1,1 +1,1 @@
-P-H3-Image-Comfy
+Qwen3.5-4B-GLB-3D-Coder

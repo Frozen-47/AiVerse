@@ -1,8 +1,8 @@
-# ⚡ AiVerse AI Radar (2026-11-05)
+# ⚡ AiVerse AI Radar (2026-11-06)
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Thu, 05 Nov 2026 23:56:18 GMT`*
+*Last Synchronized: `Fri, 06 Nov 2026 04:50:10 GMT`*
 
 ---
 
@@ -10,37 +10,37 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **P-H3-Image-Comfy** (`Model` • *PrunaAI*)
-> High-performance Image Generation open-weights model by PrunaAI, trending with over 198 community likes and 218,534 downloads on Hugging Face.
+### **Qwen3.5-4B-GLB-3D-Coder** (`Model` • *ccore*)
+> High-performance NLP open-weights model by ccore, trending with over 191 community likes and 12,206 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Image Generation` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 171, Likes: 198, Downloads: 218,534`
-- 🔗 **Resource Link**: [https://huggingface.co/PrunaAI/P-H3-Image-Comfy](https://huggingface.co/PrunaAI/P-H3-Image-Comfy)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 170, Likes: 191, Downloads: 12,206`
+- 🔗 **Resource Link**: [https://huggingface.co/ccore/Qwen3.5-4B-GLB-3D-Coder](https://huggingface.co/ccore/Qwen3.5-4B-GLB-3D-Coder)
 
-### **moe-blogpost** (`Platform` • *huggingface*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by huggingface. Trending with 55 community stars.
+### **MatterSeek** (`Platform` • *YuyaoTechnology*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by YuyaoTechnology. Trending with 1,675 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 55, Community Likes: 55`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/huggingface/moe-blogpost](https://huggingface.co/spaces/huggingface/moe-blogpost)
+- ⚡ **Metrics**: `Trending Score: 45, Community Likes: 1,675`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/YuyaoTechnology/MatterSeek](https://huggingface.co/spaces/YuyaoTechnology/MatterSeek)
 
-### **TacVerse** (`Dataset` • *TacVerse*)
-> Language: English (current) · 中文 	 		 	 	 		TacVerse: A Multi-scene Bimanual Visuo-Tactile Dataset 	 TacVerse is a large-scale bimanual manipulation dataset in which every frame ca (21 likes, 1,637 downloads).
+### **TailorRig** (`Dataset` • *tencent*)
+> TailorRig 	 Human character rigging dataset: 39,073 humanoid meshes with skeletons and skinning weights, stored as .npz files and packed into four source-based subset a (21 likes, 10 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `CC-BY-SA-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 16, Likes: 21, Downloads: 1,637`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/TacVerse/TacVerse](https://huggingface.co/datasets/TacVerse/TacVerse)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 20, Likes: 21, Downloads: 10`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/tencent/TailorRig](https://huggingface.co/datasets/tencent/TailorRig)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **JEV-35B** (`Model` • *autotrust*)
-> High-performance NLP open-weights model by autotrust, trending with over 745 community likes and 27,970 downloads on Hugging Face.
+### **qwen-image-21-uncensored** (`Platform` • *Alibaba (Qwen)*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by vclnhihihi. Trending with 70 community stars.
 
-- 🏛️ **Architecture**: autotrust text classification architecture with community-tuned weights.
-- ⚡ **Benchmarks**: `Trending Score: 469, Likes: 745, Downloads: 27,970`
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (Released: 2026)
-- 🔗 **Resource Link**: [https://huggingface.co/autotrust/JEV-35B](https://huggingface.co/autotrust/JEV-35B)
+- 🏛️ **Architecture**: GRADIO cloud runtime container with interactive browser interface.
+- ⚡ **Benchmarks**: `Trending Score: 54, Community Likes: 70`
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (Released: 2026)
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored](https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 916 | 📥 11,658 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
-| `speridlabs/idol` | image-to-3d | ❤️ 769 | 📥 17,180 | [View](https://huggingface.co/speridlabs/idol) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 10,725 | 📥 2,561,845 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `ccore/Qwen3.5-4B-3D-Coder` | general | ❤️ 700 | 📥 157,157 | [View](https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder) |
-| `Pika-Labs/Pika-H3-Flex` | image-to-video | ❤️ 473 | 📥 863 | [View](https://huggingface.co/Pika-Labs/Pika-H3-Flex) |
-| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,614 | 📥 9,592 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
+| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 947 | 📥 11,658 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
+| `speridlabs/idol` | image-to-3d | ❤️ 803 | 📥 17,180 | [View](https://huggingface.co/speridlabs/idol) |
+| `ccore/Qwen3.5-4B-3D-Coder` | general | ❤️ 716 | 📥 157,157 | [View](https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 10,746 | 📥 2,561,845 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 3,061 | 📥 57,297 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
+| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,617 | 📥 9,592 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Multi-layer Indexer: Overlapping Selection and Attention in DeepSeek Sparse Attention** | 👍 2 | A multi-layer indexer reuses adjacent layers’ token selections to overlap indexer scans with attention, improving long-context decode throughput when combined with cross-layer indexer reuse while maintaining accuracy. | [Read](https://huggingface.co/papers/2611.03768) |
-| **Halley: A Predictive Control Plane for Optical AI Data Center Networks** | 👍 28 | Halley is a predictive control framework for AI data center optical networks that improves effective throughput and reduces capacity needs by forecasting failures and controlling resources with formal guarantees. | [Read](https://huggingface.co/papers/2611.04408) |
-| **TaoMate-HD: Progressive-Resolution Autoregressive Audio-Video Generation** | 👍 1 | TaoMate-HD is an autoregressive streaming model that generates high-resolution audiovisual content in chunks with progressive denoising, history-based continuation, and optimized parallel deployment for faster, coherent long-form output. | [Read](https://huggingface.co/papers/2611.03394) |
-| **The SIMPLE Law for Energy Cost of LLM Inference** | 👍 8 | A four-parameter analytical law predicts LLM inference energy across architectures, revealing quadratic prefill costs, GQA savings, and super-linear growth from reasoning budgets and agentic serving. | [Read](https://huggingface.co/papers/2611.03330) |
-| **HERIT: Enabling Global Access to Hanja-to-English Historical Translation by Mitigating Temporal Bias** | 👍 1 | HERIT adapts machine translation to historical archives via retrieval-augmented pseudo-labeling, improving accuracy across time periods and unlocking global access. | [Read](https://huggingface.co/papers/2611.04949) |
+| **NPCBench: A Clinical Apprenticeship Benchmark for Multimodal Care-Pathway Reasoning in Nasopharyngeal Carcinoma** | 👍 1 | NPCBench evaluates whether medical AI models can integrate subspecialty knowledge with multimodal evidence and maintain temporally coherent diagnostic and care decisions across longitudinal nasopharyngeal carcinoma patient pathways. | [Read](https://huggingface.co/papers/2611.08369) |
+| **EDGAR: Efficient Diffusion-Driven Gaussian Avatar Refinement via Synthetic Failure** | 👍 5 | EDGAR is a conditional diffusion framework with a fusion block and Mixture-of-Experts that refines degraded Gaussian head avatars by injecting self-supervised identity features, using refined multi-view renderings as pseudo-targets to optimize a single avatar. | [Read](https://huggingface.co/papers/2611.07909) |
+| **Random Is Almost Enough? Stable and Low-Cost Benchmark Compression via BestRand** | 👍 11 | Benchmark compression reduces the often prohibitive time and cost of model evaluation by evaluating models on a small benchmark subset that closely matches full... | [Read](https://huggingface.co/papers/2611.00883) |
+| **Towards Foundation Decision Models: Drex** | 👍 9 | Drex open decision models return probability distributions over user-supplied options without autoregressive decoding, using supervised fine-tuning, RLAF, and consistency losses to improve accuracy, robustness, and latency. | [Read](https://huggingface.co/papers/2611.07854) |
+| **D3D: Decoupled Diffusion Drafting for Asynchronous Speculative Decoding** | 👍 10 | D3D is a standalone diffusion drafter that removes target-model hidden-state dependencies to enable asynchronous speculative decoding with high speedup. | [Read](https://huggingface.co/papers/2611.06425) |
 
 
 ---

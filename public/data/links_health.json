@@ -1,23 +1,23 @@
 {
-  "timestamp": "2026-11-05T23:55:39.024Z",
+  "timestamp": "2026-11-06T04:49:24.551Z",
   "checked": 25,
   "healthy": 22,
   "broken": 3,
   "issues": [
     {
-      "name": "Midjourney (Platform)",
-      "url": "https://www.midjourney.com/",
+      "name": "Phind",
+      "url": "https://www.phind.com",
       "status": 403
     },
     {
-      "name": "Sora",
-      "url": "https://openai.com/sora",
+      "name": "Canva AI",
+      "url": "https://www.canva.com/ai-image-generator",
       "status": 403
     },
     {
-      "name": "ERNIE Bot",
-      "url": "https://yiyan.baidu.com",
-      "status": 404
+      "name": "Meta AI",
+      "url": "https://www.meta.ai",
+      "status": 403
     }
   ]
 }

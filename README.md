@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-05)
+### ⚡ AiVerse AI Radar (2026-11-06)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **P-H3-Image-Comfy** (`Model`), **moe-blogpost** (`Platform`), **TacVerse** (`Dataset`) |
-| 🌟 **Tool of the Day** | **JEV-35B** (autotrust) — [Explore](https://huggingface.co/autotrust/JEV-35B) |
+| 📥 **Queued for Review** | **Qwen3.5-4B-GLB-3D-Coder** (`Model`), **MatterSeek** (`Platform`), **TailorRig** (`Dataset`) |
+| 🌟 **Tool of the Day** | **qwen-image-21-uncensored** (Alibaba (Qwen)) — [Explore](https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [moonshotai/Kimi-K3.1-Pro](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
-| 📜 **Top Daily Paper** | [Multi-layer Indexer: Overlapping Selection and Att...](https://huggingface.co/papers/2611.03768) |
+| 📜 **Top Daily Paper** | [NPCBench: A Clinical Apprenticeship Benchmark for ...](https://huggingface.co/papers/2611.08369) |
 | 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Thu, 05 Nov 2026 23:56:18 GMT` |
+| 🕒 **Last Synchronized** | `Fri, 06 Nov 2026 04:50:10 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
