@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-06)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF** (`Model`), **harness-leaderboard** (`Platform`), **gigaspeech3** (`Dataset`) |
+| 📥 **Queued for Review** | **TwIL-8B** (`Model`), **llm-course-final-2026** (`Dataset`) |
 | 🌟 **Tool of the Day** | **qwen-image-21-uncensored** (Alibaba (Qwen)) — [Explore](https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [moonshotai/Kimi-K3.1-Pro](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
-| 📜 **Top Daily Paper** | [Reducing Representational Interference in Retrieva...](https://huggingface.co/papers/2611.07298) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 06 Nov 2026 12:40:27 GMT` |
+| 📜 **Top Daily Paper** | [StepX-OPD: Rethinking Multi-Teacher On-Policy Dist...](https://huggingface.co/papers/2611.04386) |
+| 🛡️ **Catalog Links Checked** | **20/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 06 Nov 2026 20:13:15 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

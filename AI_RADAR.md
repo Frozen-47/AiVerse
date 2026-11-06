@@ -2,34 +2,27 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 06 Nov 2026 12:40:27 GMT`*
+*Last Synchronized: `Fri, 06 Nov 2026 20:13:15 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (3)
+## 📥 Newly Queued Assets for Review (2)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF** (`Model` • *ISTA-DASLab*)
-> High-performance Multimodal open-weights model by ISTA-DASLab, trending with over 175 community likes and 222,222 downloads on Hugging Face.
+### **TwIL-8B** (`Model` • *webAI-Official*)
+> High-performance NLP open-weights model by webAI-Official, trending with over 170 community likes and 8,209 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `MIT` (2026)
-- ⚡ **Metrics**: `Trending Score: 156, Likes: 175, Downloads: 222,222`
-- 🔗 **Resource Link**: [https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF](https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 168, Likes: 170, Downloads: 8,209`
+- 🔗 **Resource Link**: [https://huggingface.co/webAI-Official/TwIL-8B](https://huggingface.co/webAI-Official/TwIL-8B)
 
-### **harness-leaderboard** (`Platform` • *joelniklaus*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by joelniklaus. Trending with 39 community stars.
+### **llm-course-final-2026** (`Dataset` • *bumbuboon*)
+> LLM course final RAG participant dataset 	 LLM講座の最終コンペで使用する、日本語Wikipediaを用いたRAG（検索拡張生成）用データセットです。約100万件の文章チャンクと検索用インデックスを収録しています。 (19 likes, 4,415 downloads).
 
-- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 35, Community Likes: 39`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/joelniklaus/harness-leaderboard](https://huggingface.co/spaces/joelniklaus/harness-leaderboard)
-
-### **gigaspeech3** (`Dataset` • *speechcolab*)
-> GigaSpeech 3 	 Scaling Multi-Dialect Arabic Speech Recognition with Weakly Labeled Data GigaSpeech 3 is a large-scale Arabic speech recognition corpus containing approx (19 likes, 7,022 downloads).
-
-- 🏷️ **Domain & License**: `Computer Vision` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 19, Likes: 19, Downloads: 7,022`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/speechcolab/gigaspeech3](https://huggingface.co/datasets/speechcolab/gigaspeech3)
+- 🏷️ **Domain & License**: `NLP` • `CC-BY-SA-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 18, Likes: 19, Downloads: 4,415`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/bumbuboon/llm-course-final-2026](https://huggingface.co/datasets/bumbuboon/llm-course-final-2026)
 
 ---
 
@@ -48,12 +41,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 1,358 | 📥 18,432 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
-| `speridlabs/idol` | image-to-3d | ❤️ 860 | 📥 19,139 | [View](https://huggingface.co/speridlabs/idol) |
-| `ccore/Qwen3.5-4B-3D-Coder` | general | ❤️ 745 | 📥 190,243 | [View](https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 10,793 | 📥 2,607,491 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `burner22/numbat` | general | ❤️ 360 | 📥 9,066 | [View](https://huggingface.co/burner22/numbat) |
-| `FusionCow/Sulphur-3` | general | ❤️ 387 | 📥 950 | [View](https://huggingface.co/FusionCow/Sulphur-3) |
+| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 1,450 | 📥 18,432 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
+| `speridlabs/idol` | image-to-3d | ❤️ 915 | 📥 19,139 | [View](https://huggingface.co/speridlabs/idol) |
+| `ccore/Qwen3.5-4B-3D-Coder` | general | ❤️ 774 | 📥 190,243 | [View](https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 10,846 | 📥 2,607,491 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `burner22/numbat` | general | ❤️ 369 | 📥 9,066 | [View](https://huggingface.co/burner22/numbat) |
+| `FusionCow/Sulphur-3` | general | ❤️ 392 | 📥 950 | [View](https://huggingface.co/FusionCow/Sulphur-3) |
 
 
 ---
@@ -63,11 +56,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Reducing Representational Interference in Retrieval Embeddings with Trainable Prefix Tokens** | 👍 0 | Prepending trainable [DUMP] tokens during embedding model training reduces residual token-level signals and improves retrieval representations without changing architecture, pooling, or loss. | [Read](https://huggingface.co/papers/2611.07298) |
-| **Hard Sample-Conditioned Decorrelated Attention for Robust Face Recognition** | 👍 1 | ViT-HarDis conditions attention head disentanglement on sample difficulty, applying stronger decorrelation to hard face-recognition samples and only in final transformer layers to improve recognition without architectural changes or extra inference cost. | [Read](https://huggingface.co/papers/2610.41789) |
-| **On the Opportunities and Challenges of Prefill-to-Autoregressive Cross-Model Transfer** | 👍 11 | Prefill-to-Autoregressive Cross-model Transfer (PACT), a form of latent communication between language models, combines a larger model's prompt representations ... | [Read](https://huggingface.co/papers/2611.06976) |
-| **Towards Real-Time Full-Waveform LiDAR Transformers via Intensity-Guided Token Reduction and Physics-Aware Augmentation** | 👍 2 | A token pruning and merging mechanism and a waveform-preserving augmentation improve a full-waveform LiDAR Transformer to real-time speed and higher accuracy with better generalization. | [Read](https://huggingface.co/papers/2611.07613) |
-| **SynthFaces: Balanced Large Scale Human Dataset** | 👍 1 | A pipeline combining Arc2Face diffusion with flow matching on identity embeddings generates a balanced synthetic face dataset to improve fairness and reduce privacy risks in generative model training. | [Read](https://huggingface.co/papers/2610.40119) |
+| **StepX-OPD: Rethinking Multi-Teacher On-Policy Distillation in Diffusion Models** | 👍 1 | StepX-OPD jointly trains a text-to-image diffusion model to acquire capabilities and few-step sampling simultaneously, outperforming sequential approaches while reducing training cost. | [Read](https://huggingface.co/papers/2611.04386) |
+| **SwarmEvolve: Latent Agent Swarms for Evolutionary Discovery and Optimization** | 👍 3 | LLM-guided evolutionary search uses AI agents to improve programs for mathematical and computational problems by iteratively refining solutions and combining hi... | [Read](https://huggingface.co/papers/2611.08483) |
+| **OpenFrontiers: A Collection of Open Research Problems and a Benchmark for Scientific Rediscovery** | 👍 1 | OpenFrontiers links a broad corpus of open research problems with a formally graded benchmark of recently resolved mathematics problems to evaluate LLM agents’ ability to rediscover solutions under different information-access conditions. | [Read](https://huggingface.co/papers/2610.37739) |
+| **Terminal-style Mathematical Modeling Bench: The First Agentic and Verifiable Benchmark for Mathematical Modeling** | 👍 5 | TB-MathModel is a terminal benchmark that makes complete contest-style mathematical modeling problems agentic and verifiable, scoring final numeric answers against multiple human references with feasibility checks. | [Read](https://huggingface.co/papers/2611.08237) |
+| **Muir: Linear Attention with Sensitivity-Allocated Gating and Matched-Filter Readout** | 👍 4 | A linear attention architecture called Muir allocates gate capacity by sensitivity, uses matched-filter readout and a stable parallel update, improving language modeling, long-context recall, and training speed over Gated DeltaNet-2 and Transformer baselines. | [Read](https://huggingface.co/papers/2611.08376) |
 
 
 ---
@@ -80,7 +73,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
 - **Dependency Security**: `43` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

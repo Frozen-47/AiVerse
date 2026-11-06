@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-06T12:39:42.033Z",
+  "timestamp": "2026-11-06T20:12:37.330Z",
   "models": [
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 1358,
+      "likes": 1450,
       "downloads": 18432,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
@@ -12,7 +12,7 @@
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 860,
+      "likes": 915,
       "downloads": 19139,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -20,7 +20,7 @@
     {
       "id": "ccore/Qwen3.5-4B-3D-Coder",
       "author": "ccore",
-      "likes": 745,
+      "likes": 774,
       "downloads": 190243,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
@@ -28,7 +28,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 10793,
+      "likes": 10846,
       "downloads": 2607491,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -36,7 +36,7 @@
     {
       "id": "burner22/numbat",
       "author": "burner22",
-      "likes": 360,
+      "likes": 369,
       "downloads": 9066,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/burner22/numbat"
@@ -44,7 +44,7 @@
     {
       "id": "FusionCow/Sulphur-3",
       "author": "FusionCow",
-      "likes": 387,
+      "likes": 392,
       "downloads": 950,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/FusionCow/Sulphur-3"
@@ -52,43 +52,43 @@
   ],
   "papers": [
     {
-      "title": "Reducing Representational Interference in Retrieval Embeddings with Trainable Prefix Tokens",
-      "summary": "Prepending trainable [DUMP] tokens during embedding model training reduces residual token-level signals and improves retrieval representations without changing architecture, pooling, or loss.",
-      "upvotes": 0,
-      "arxiv_id": "2611.07298",
-      "url": "https://huggingface.co/papers/2611.07298",
+      "title": "StepX-OPD: Rethinking Multi-Teacher On-Policy Distillation in Diffusion Models",
+      "summary": "StepX-OPD jointly trains a text-to-image diffusion model to acquire capabilities and few-step sampling simultaneously, outperforming sequential approaches while reducing training cost.",
+      "upvotes": 1,
+      "arxiv_id": "2611.04386",
+      "url": "https://huggingface.co/papers/2611.04386",
+      "githubRepo": "https://github.com/WinterCCC/StepX-OPD"
+    },
+    {
+      "title": "SwarmEvolve: Latent Agent Swarms for Evolutionary Discovery and Optimization",
+      "summary": "LLM-guided evolutionary search uses AI agents to improve programs for mathematical and computational problems by iteratively refining solutions and combining hi...",
+      "upvotes": 3,
+      "arxiv_id": "2611.08483",
+      "url": "https://huggingface.co/papers/2611.08483",
+      "githubRepo": "https://github.com/Qile-J/SwarmEvolve"
+    },
+    {
+      "title": "OpenFrontiers: A Collection of Open Research Problems and a Benchmark for Scientific Rediscovery",
+      "summary": "OpenFrontiers links a broad corpus of open research problems with a formally graded benchmark of recently resolved mathematics problems to evaluate LLM agents’ ability to rediscover solutions under different information-access conditions.",
+      "upvotes": 1,
+      "arxiv_id": "2610.37739",
+      "url": "https://huggingface.co/papers/2610.37739",
       "githubRepo": null
     },
     {
-      "title": "Hard Sample-Conditioned Decorrelated Attention for Robust Face Recognition",
-      "summary": "ViT-HarDis conditions attention head disentanglement on sample difficulty, applying stronger decorrelation to hard face-recognition samples and only in final transformer layers to improve recognition without architectural changes or extra inference cost.",
-      "upvotes": 1,
-      "arxiv_id": "2610.41789",
-      "url": "https://huggingface.co/papers/2610.41789",
-      "githubRepo": null
+      "title": "Terminal-style Mathematical Modeling Bench: The First Agentic and Verifiable Benchmark for Mathematical Modeling",
+      "summary": "TB-MathModel is a terminal benchmark that makes complete contest-style mathematical modeling problems agentic and verifiable, scoring final numeric answers against multiple human references with feasibility checks.",
+      "upvotes": 5,
+      "arxiv_id": "2611.08237",
+      "url": "https://huggingface.co/papers/2611.08237",
+      "githubRepo": "https://github.com/wxj630/terminal-bench-math-modeling"
     },
     {
-      "title": "On the Opportunities and Challenges of Prefill-to-Autoregressive Cross-Model Transfer",
-      "summary": "Prefill-to-Autoregressive Cross-model Transfer (PACT), a form of latent communication between language models, combines a larger model's prompt representations ...",
-      "upvotes": 11,
-      "arxiv_id": "2611.06976",
-      "url": "https://huggingface.co/papers/2611.06976",
-      "githubRepo": "https://github.com/zhenyi4/platour"
-    },
-    {
-      "title": "Towards Real-Time Full-Waveform LiDAR Transformers via Intensity-Guided Token Reduction and Physics-Aware Augmentation",
-      "summary": "A token pruning and merging mechanism and a waveform-preserving augmentation improve a full-waveform LiDAR Transformer to real-time speed and higher accuracy with better generalization.",
-      "upvotes": 2,
-      "arxiv_id": "2611.07613",
-      "url": "https://huggingface.co/papers/2611.07613",
-      "githubRepo": "https://github.com/Keio-CSG/FWL-ToPM"
-    },
-    {
-      "title": "SynthFaces: Balanced Large Scale Human Dataset",
-      "summary": "A pipeline combining Arc2Face diffusion with flow matching on identity embeddings generates a balanced synthetic face dataset to improve fairness and reduce privacy risks in generative model training.",
-      "upvotes": 1,
-      "arxiv_id": "2610.40119",
-      "url": "https://huggingface.co/papers/2610.40119",
+      "title": "Muir: Linear Attention with Sensitivity-Allocated Gating and Matched-Filter Readout",
+      "summary": "A linear attention architecture called Muir allocates gate capacity by sensitivity, uses matched-filter readout and a stable parallel update, improving language modeling, long-context recall, and training speed over Gated DeltaNet-2 and Transformer baselines.",
+      "upvotes": 4,
+      "arxiv_id": "2611.08376",
+      "url": "https://huggingface.co/papers/2611.08376",
       "githubRepo": null
     }
   ]
