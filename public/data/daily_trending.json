@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-11-06T04:49:24.385Z",
+  "timestamp": "2026-11-06T12:39:42.033Z",
   "models": [
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 947,
-      "downloads": 11658,
+      "likes": 1358,
+      "downloads": 18432,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
     },
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 803,
-      "downloads": 17180,
+      "likes": 860,
+      "downloads": 19139,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
     },
     {
       "id": "ccore/Qwen3.5-4B-3D-Coder",
       "author": "ccore",
-      "likes": 716,
-      "downloads": 157157,
+      "likes": 745,
+      "downloads": 190243,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
     },
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 10746,
-      "downloads": 2561845,
+      "likes": 10793,
+      "downloads": 2607491,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     },
     {
-      "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
-      "author": "nvidia",
-      "likes": 3061,
-      "downloads": 57297,
-      "pipeline_tag": "automatic-speech-recognition",
-      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
+      "id": "burner22/numbat",
+      "author": "burner22",
+      "likes": 360,
+      "downloads": 9066,
+      "pipeline_tag": "general",
+      "url": "https://huggingface.co/burner22/numbat"
     },
     {
-      "id": "mistralai/Mistral-Large-4-1T-A52B",
-      "author": "mistralai",
-      "likes": 1617,
-      "downloads": 9592,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
+      "id": "FusionCow/Sulphur-3",
+      "author": "FusionCow",
+      "likes": 387,
+      "downloads": 950,
+      "pipeline_tag": "general",
+      "url": "https://huggingface.co/FusionCow/Sulphur-3"
     }
   ],
   "papers": [
     {
-      "title": "NPCBench: A Clinical Apprenticeship Benchmark for Multimodal Care-Pathway Reasoning in Nasopharyngeal Carcinoma",
-      "summary": "NPCBench evaluates whether medical AI models can integrate subspecialty knowledge with multimodal evidence and maintain temporally coherent diagnostic and care decisions across longitudinal nasopharyngeal carcinoma patient pathways.",
-      "upvotes": 1,
-      "arxiv_id": "2611.08369",
-      "url": "https://huggingface.co/papers/2611.08369",
+      "title": "Reducing Representational Interference in Retrieval Embeddings with Trainable Prefix Tokens",
+      "summary": "Prepending trainable [DUMP] tokens during embedding model training reduces residual token-level signals and improves retrieval representations without changing architecture, pooling, or loss.",
+      "upvotes": 0,
+      "arxiv_id": "2611.07298",
+      "url": "https://huggingface.co/papers/2611.07298",
       "githubRepo": null
     },
     {
-      "title": "EDGAR: Efficient Diffusion-Driven Gaussian Avatar Refinement via Synthetic Failure",
-      "summary": "EDGAR is a conditional diffusion framework with a fusion block and Mixture-of-Experts that refines degraded Gaussian head avatars by injecting self-supervised identity features, using refined multi-view renderings as pseudo-targets to optimize a single avatar.",
-      "upvotes": 5,
-      "arxiv_id": "2611.07909",
-      "url": "https://huggingface.co/papers/2611.07909",
-      "githubRepo": "https://github.com/kwanyun/edgar-code"
+      "title": "Hard Sample-Conditioned Decorrelated Attention for Robust Face Recognition",
+      "summary": "ViT-HarDis conditions attention head disentanglement on sample difficulty, applying stronger decorrelation to hard face-recognition samples and only in final transformer layers to improve recognition without architectural changes or extra inference cost.",
+      "upvotes": 1,
+      "arxiv_id": "2610.41789",
+      "url": "https://huggingface.co/papers/2610.41789",
+      "githubRepo": null
     },
     {
-      "title": "Random Is Almost Enough? Stable and Low-Cost Benchmark Compression via BestRand",
-      "summary": "Benchmark compression reduces the often prohibitive time and cost of model evaluation by evaluating models on a small benchmark subset that closely matches full...",
+      "title": "On the Opportunities and Challenges of Prefill-to-Autoregressive Cross-Model Transfer",
+      "summary": "Prefill-to-Autoregressive Cross-model Transfer (PACT), a form of latent communication between language models, combines a larger model's prompt representations ...",
       "upvotes": 11,
-      "arxiv_id": "2611.00883",
-      "url": "https://huggingface.co/papers/2611.00883",
-      "githubRepo": "https://github.com/George-Ling3/BestRand"
+      "arxiv_id": "2611.06976",
+      "url": "https://huggingface.co/papers/2611.06976",
+      "githubRepo": "https://github.com/zhenyi4/platour"
     },
     {
-      "title": "Towards Foundation Decision Models: Drex",
-      "summary": "Drex open decision models return probability distributions over user-supplied options without autoregressive decoding, using supervised fine-tuning, RLAF, and consistency losses to improve accuracy, robustness, and latency.",
-      "upvotes": 9,
-      "arxiv_id": "2611.07854",
-      "url": "https://huggingface.co/papers/2611.07854",
-      "githubRepo": "https://github.com/nace-ai/drex-decision-models"
+      "title": "Towards Real-Time Full-Waveform LiDAR Transformers via Intensity-Guided Token Reduction and Physics-Aware Augmentation",
+      "summary": "A token pruning and merging mechanism and a waveform-preserving augmentation improve a full-waveform LiDAR Transformer to real-time speed and higher accuracy with better generalization.",
+      "upvotes": 2,
+      "arxiv_id": "2611.07613",
+      "url": "https://huggingface.co/papers/2611.07613",
+      "githubRepo": "https://github.com/Keio-CSG/FWL-ToPM"
     },
     {
-      "title": "D3D: Decoupled Diffusion Drafting for Asynchronous Speculative Decoding",
-      "summary": "D3D is a standalone diffusion drafter that removes target-model hidden-state dependencies to enable asynchronous speculative decoding with high speedup.",
-      "upvotes": 10,
-      "arxiv_id": "2611.06425",
-      "url": "https://huggingface.co/papers/2611.06425",
-      "githubRepo": "https://github.com/fudan-generative-vision/D3D"
+      "title": "SynthFaces: Balanced Large Scale Human Dataset",
+      "summary": "A pipeline combining Arc2Face diffusion with flow matching on identity embeddings generates a balanced synthetic face dataset to improve fairness and reduce privacy risks in generative model training.",
+      "upvotes": 1,
+      "arxiv_id": "2610.40119",
+      "url": "https://huggingface.co/papers/2610.40119",
+      "githubRepo": null
     }
   ]
 }

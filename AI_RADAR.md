@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 06 Nov 2026 04:50:10 GMT`*
+*Last Synchronized: `Fri, 06 Nov 2026 12:40:27 GMT`*
 
 ---
 
@@ -10,26 +10,26 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Qwen3.5-4B-GLB-3D-Coder** (`Model` • *ccore*)
-> High-performance NLP open-weights model by ccore, trending with over 191 community likes and 12,206 downloads on Hugging Face.
+### **DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF** (`Model` • *ISTA-DASLab*)
+> High-performance Multimodal open-weights model by ISTA-DASLab, trending with over 175 community likes and 222,222 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 170, Likes: 191, Downloads: 12,206`
-- 🔗 **Resource Link**: [https://huggingface.co/ccore/Qwen3.5-4B-GLB-3D-Coder](https://huggingface.co/ccore/Qwen3.5-4B-GLB-3D-Coder)
+- 🏷️ **Domain & License**: `Multimodal` • `MIT` (2026)
+- ⚡ **Metrics**: `Trending Score: 156, Likes: 175, Downloads: 222,222`
+- 🔗 **Resource Link**: [https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF](https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF)
 
-### **MatterSeek** (`Platform` • *YuyaoTechnology*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by YuyaoTechnology. Trending with 1,675 community stars.
+### **harness-leaderboard** (`Platform` • *joelniklaus*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by joelniklaus. Trending with 39 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 45, Community Likes: 1,675`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/YuyaoTechnology/MatterSeek](https://huggingface.co/spaces/YuyaoTechnology/MatterSeek)
+- ⚡ **Metrics**: `Trending Score: 35, Community Likes: 39`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/joelniklaus/harness-leaderboard](https://huggingface.co/spaces/joelniklaus/harness-leaderboard)
 
-### **TailorRig** (`Dataset` • *tencent*)
-> TailorRig 	 Human character rigging dataset: 39,073 humanoid meshes with skeletons and skinning weights, stored as .npz files and packed into four source-based subset a (21 likes, 10 downloads).
+### **gigaspeech3** (`Dataset` • *speechcolab*)
+> GigaSpeech 3 	 Scaling Multi-Dialect Arabic Speech Recognition with Weakly Labeled Data GigaSpeech 3 is a large-scale Arabic speech recognition corpus containing approx (19 likes, 7,022 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 20, Likes: 21, Downloads: 10`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/tencent/TailorRig](https://huggingface.co/datasets/tencent/TailorRig)
+- 🏷️ **Domain & License**: `Computer Vision` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 19, Likes: 19, Downloads: 7,022`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/speechcolab/gigaspeech3](https://huggingface.co/datasets/speechcolab/gigaspeech3)
 
 ---
 
@@ -48,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 947 | 📥 11,658 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
-| `speridlabs/idol` | image-to-3d | ❤️ 803 | 📥 17,180 | [View](https://huggingface.co/speridlabs/idol) |
-| `ccore/Qwen3.5-4B-3D-Coder` | general | ❤️ 716 | 📥 157,157 | [View](https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 10,746 | 📥 2,561,845 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` | automatic-speech-recognition | ❤️ 3,061 | 📥 57,297 | [View](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) |
-| `mistralai/Mistral-Large-4-1T-A52B` | image-text-to-text | ❤️ 1,617 | 📥 9,592 | [View](https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B) |
+| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 1,358 | 📥 18,432 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
+| `speridlabs/idol` | image-to-3d | ❤️ 860 | 📥 19,139 | [View](https://huggingface.co/speridlabs/idol) |
+| `ccore/Qwen3.5-4B-3D-Coder` | general | ❤️ 745 | 📥 190,243 | [View](https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 10,793 | 📥 2,607,491 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `burner22/numbat` | general | ❤️ 360 | 📥 9,066 | [View](https://huggingface.co/burner22/numbat) |
+| `FusionCow/Sulphur-3` | general | ❤️ 387 | 📥 950 | [View](https://huggingface.co/FusionCow/Sulphur-3) |
 
 
 ---
@@ -63,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **NPCBench: A Clinical Apprenticeship Benchmark for Multimodal Care-Pathway Reasoning in Nasopharyngeal Carcinoma** | 👍 1 | NPCBench evaluates whether medical AI models can integrate subspecialty knowledge with multimodal evidence and maintain temporally coherent diagnostic and care decisions across longitudinal nasopharyngeal carcinoma patient pathways. | [Read](https://huggingface.co/papers/2611.08369) |
-| **EDGAR: Efficient Diffusion-Driven Gaussian Avatar Refinement via Synthetic Failure** | 👍 5 | EDGAR is a conditional diffusion framework with a fusion block and Mixture-of-Experts that refines degraded Gaussian head avatars by injecting self-supervised identity features, using refined multi-view renderings as pseudo-targets to optimize a single avatar. | [Read](https://huggingface.co/papers/2611.07909) |
-| **Random Is Almost Enough? Stable and Low-Cost Benchmark Compression via BestRand** | 👍 11 | Benchmark compression reduces the often prohibitive time and cost of model evaluation by evaluating models on a small benchmark subset that closely matches full... | [Read](https://huggingface.co/papers/2611.00883) |
-| **Towards Foundation Decision Models: Drex** | 👍 9 | Drex open decision models return probability distributions over user-supplied options without autoregressive decoding, using supervised fine-tuning, RLAF, and consistency losses to improve accuracy, robustness, and latency. | [Read](https://huggingface.co/papers/2611.07854) |
-| **D3D: Decoupled Diffusion Drafting for Asynchronous Speculative Decoding** | 👍 10 | D3D is a standalone diffusion drafter that removes target-model hidden-state dependencies to enable asynchronous speculative decoding with high speedup. | [Read](https://huggingface.co/papers/2611.06425) |
+| **Reducing Representational Interference in Retrieval Embeddings with Trainable Prefix Tokens** | 👍 0 | Prepending trainable [DUMP] tokens during embedding model training reduces residual token-level signals and improves retrieval representations without changing architecture, pooling, or loss. | [Read](https://huggingface.co/papers/2611.07298) |
+| **Hard Sample-Conditioned Decorrelated Attention for Robust Face Recognition** | 👍 1 | ViT-HarDis conditions attention head disentanglement on sample difficulty, applying stronger decorrelation to hard face-recognition samples and only in final transformer layers to improve recognition without architectural changes or extra inference cost. | [Read](https://huggingface.co/papers/2610.41789) |
+| **On the Opportunities and Challenges of Prefill-to-Autoregressive Cross-Model Transfer** | 👍 11 | Prefill-to-Autoregressive Cross-model Transfer (PACT), a form of latent communication between language models, combines a larger model's prompt representations ... | [Read](https://huggingface.co/papers/2611.06976) |
+| **Towards Real-Time Full-Waveform LiDAR Transformers via Intensity-Guided Token Reduction and Physics-Aware Augmentation** | 👍 2 | A token pruning and merging mechanism and a waveform-preserving augmentation improve a full-waveform LiDAR Transformer to real-time speed and higher accuracy with better generalization. | [Read](https://huggingface.co/papers/2611.07613) |
+| **SynthFaces: Balanced Large Scale Human Dataset** | 👍 1 | A pipeline combining Arc2Face diffusion with flow matching on identity embeddings generates a balanced synthetic face dataset to improve fairness and reduce privacy risks in generative model training. | [Read](https://huggingface.co/papers/2610.40119) |
 
 
 ---

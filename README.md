@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-06)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Qwen3.5-4B-GLB-3D-Coder** (`Model`), **MatterSeek** (`Platform`), **TailorRig** (`Dataset`) |
+| 📥 **Queued for Review** | **DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF** (`Model`), **harness-leaderboard** (`Platform`), **gigaspeech3** (`Dataset`) |
 | 🌟 **Tool of the Day** | **qwen-image-21-uncensored** (Alibaba (Qwen)) — [Explore](https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [moonshotai/Kimi-K3.1-Pro](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
-| 📜 **Top Daily Paper** | [NPCBench: A Clinical Apprenticeship Benchmark for ...](https://huggingface.co/papers/2611.08369) |
+| 📜 **Top Daily Paper** | [Reducing Representational Interference in Retrieva...](https://huggingface.co/papers/2611.07298) |
 | 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 06 Nov 2026 04:50:10 GMT` |
+| 🕒 **Last Synchronized** | `Fri, 06 Nov 2026 12:40:27 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

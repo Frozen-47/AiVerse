@@ -1,5 +1,80 @@
 [
   {
+    "name": "gigaspeech3",
+    "type": "Dataset",
+    "summary": "GigaSpeech 3 \t Scaling Multi-Dialect Arabic Speech Recognition with Weakly Labeled Data GigaSpeech 3 is a large-scale Arabic speech recognition corpus containing approx (19 likes, 7,022 downloads).",
+    "task": "Computer Vision",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "speechcolab",
+    "size": "10M<n<100M",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"speechcolab/gigaspeech3\")",
+    "benchmarks": "Trending Score: 19, Likes: 19, Downloads: 7,022",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/speechcolab/gigaspeech3",
+    "citations": [
+      {
+        "text": "speechcolab/gigaspeech3 on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/speechcolab/gigaspeech3"
+      }
+    ],
+    "created_at": "2026-11-06T12:39:42.015Z"
+  },
+  {
+    "name": "harness-leaderboard",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by joelniklaus. Trending with 39 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "joelniklaus",
+    "size": "DOCKER Platform",
+    "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/joelniklaus/harness-leaderboard",
+    "benchmarks": "Trending Score: 35, Community Likes: 39",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/joelniklaus/harness-leaderboard",
+    "citations": [
+      {
+        "text": "joelniklaus/harness-leaderboard on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/joelniklaus/harness-leaderboard"
+      }
+    ],
+    "created_at": "2026-11-06T12:39:42.015Z"
+  },
+  {
+    "name": "DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by ISTA-DASLab, trending with over 175 community likes and 222,222 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "MIT",
+    "year": 2026,
+    "org": "ISTA-DASLab",
+    "size": "Open Weights",
+    "architecture": "ISTA-DASLab image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF\")",
+    "benchmarks": "Trending Score: 156, Likes: 175, Downloads: 222,222",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF",
+    "citations": [
+      {
+        "text": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF on Hugging Face",
+        "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF"
+      }
+    ],
+    "created_at": "2026-11-06T12:39:42.015Z"
+  },
+  {
     "name": "TailorRig",
     "type": "Dataset",
     "summary": "TailorRig \t Human character rigging dataset: 39,073 humanoid meshes with skeletons and skinning weights, stored as .npz files and packed into four source-based subset a (21 likes, 10 downloads).",
