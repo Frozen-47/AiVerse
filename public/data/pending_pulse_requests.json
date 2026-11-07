@@ -1,5 +1,55 @@
 [
   {
+    "name": "sand3d-objaverse",
+    "type": "Dataset",
+    "summary": "sand3d-objaverse \t 66 887 3D objects written as code. Each object is a short Python program in sand3d, the OpenUSD file that program exports, and a render of it. Everyd (17 likes, 21,981 downloads).",
+    "task": "Computer Vision",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "org": "Sandflow",
+    "size": "10K<n<100K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Sandflow/sand3d-objaverse\")",
+    "benchmarks": "Trending Score: 17, Likes: 17, Downloads: 21,981",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/Sandflow/sand3d-objaverse",
+    "citations": [
+      {
+        "text": "Sandflow/sand3d-objaverse on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Sandflow/sand3d-objaverse"
+      }
+    ],
+    "created_at": "2026-11-07T01:30:24.479Z"
+  },
+  {
+    "name": "Qwen3.8-Flash-Next-GGUF",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by unsloth, trending with over 1,465 community likes and 1,309,045 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "unsloth",
+    "size": "Open Weights",
+    "architecture": "unsloth image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"unsloth/Qwen3.8-Flash-Next-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"unsloth/Qwen3.8-Flash-Next-GGUF\")",
+    "benchmarks": "Trending Score: 172, Likes: 1,465, Downloads: 1,309,045",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF",
+    "citations": [
+      {
+        "text": "unsloth/Qwen3.8-Flash-Next-GGUF on Hugging Face",
+        "url": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF"
+      }
+    ],
+    "created_at": "2026-11-07T01:30:24.479Z"
+  },
+  {
     "name": "llm-course-final-2026",
     "type": "Dataset",
     "summary": "LLM course final RAG participant dataset \t LLM講座の最終コンペで使用する、日本語Wikipediaを用いたRAG（検索拡張生成）用データセットです。約100万件の文章チャンクと検索用インデックスを収録しています。 (19 likes, 4,415 downloads).",

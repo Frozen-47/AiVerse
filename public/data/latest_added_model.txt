@@ -1,1 +1,1 @@
-TwIL-8B
+Qwen3.8-Flash-Next-GGUF

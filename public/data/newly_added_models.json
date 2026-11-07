@@ -1,5 +1,59 @@
 [
   {
+    "date": "2026-11-07",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "Qwen3.8-Flash-Next-GGUF",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by unsloth, trending with over 1,465 community likes and 1,309,045 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "unsloth",
+        "size": "Open Weights",
+        "architecture": "unsloth image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"unsloth/Qwen3.8-Flash-Next-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"unsloth/Qwen3.8-Flash-Next-GGUF\")",
+        "benchmarks": "Trending Score: 172, Likes: 1,465, Downloads: 1,309,045",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF",
+        "citations": [
+          {
+            "text": "unsloth/Qwen3.8-Flash-Next-GGUF on Hugging Face",
+            "url": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF"
+          }
+        ]
+      },
+      {
+        "name": "sand3d-objaverse",
+        "type": "Dataset",
+        "summary": "sand3d-objaverse \t 66 887 3D objects written as code. Each object is a short Python program in sand3d, the OpenUSD file that program exports, and a render of it. Everyd (17 likes, 21,981 downloads).",
+        "task": "Computer Vision",
+        "license": "CC-BY-4.0",
+        "year": 2026,
+        "org": "Sandflow",
+        "size": "10K<n<100K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Sandflow/sand3d-objaverse\")",
+        "benchmarks": "Trending Score: 17, Likes: 17, Downloads: 21,981",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/Sandflow/sand3d-objaverse",
+        "citations": [
+          {
+            "text": "Sandflow/sand3d-objaverse on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/Sandflow/sand3d-objaverse"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-11-06",
     "status": "queued_in_review_list",
     "assets": [
@@ -6237,77 +6291,6 @@
           {
             "text": "bakrianoo/jabarti-llm-dataset on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-07",
-    "assets": [
-      {
-        "name": "GEV-26B-Decide",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by autotrust, trending with over 743 community likes and 854,574 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "autotrust",
-        "size": "26B params",
-        "architecture": "autotrust text classification architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"autotrust/GEV-26B-Decide\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"autotrust/GEV-26B-Decide\")",
-        "benchmarks": "Trending Score: 604, Likes: 743, Downloads: 854,574",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": true,
-        "url": "https://huggingface.co/autotrust/GEV-26B-Decide",
-        "citations": [
-          {
-            "text": "autotrust/GEV-26B-Decide on Hugging Face",
-            "url": "https://huggingface.co/autotrust/GEV-26B-Decide"
-          }
-        ]
-      },
-      {
-        "name": "model-pulse",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by tardellirs. Trending with 101 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "tardellirs",
-        "size": "STATIC Platform",
-        "architecture": "STATIC cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/tardellirs/model-pulse",
-        "benchmarks": "Trending Score: 89, Community Likes: 101",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": true,
-        "url": "https://huggingface.co/spaces/tardellirs/model-pulse",
-        "citations": [
-          {
-            "text": "tardellirs/model-pulse on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/tardellirs/model-pulse"
-          }
-        ]
-      },
-      {
-        "name": "tiktok-5.6B-videos",
-        "type": "Dataset",
-        "summary": "Contact \t Telegram: @hashfunction_dev X: @hashfunction Email: hashfunction.dev@gmail.com TikTok scraper source code The code that collected these 5.6 billion videos. Ti (71 likes, 1,181 downloads).",
-        "task": "NLP",
-        "license": "CC-BY-NC-4.0",
-        "year": 2026,
-        "org": "datasocial",
-        "size": "1B<n<10B",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"datasocial/tiktok-5.6B-videos\")",
-        "benchmarks": "Trending Score: 67, Likes: 71, Downloads: 1,181",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "url": "https://huggingface.co/datasets/datasocial/tiktok-5.6B-videos",
-        "citations": [
-          {
-            "text": "datasocial/tiktok-5.6B-videos on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/datasocial/tiktok-5.6B-videos"
           }
         ]
       }

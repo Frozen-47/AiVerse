@@ -1,33 +1,7 @@
 {
-  "timestamp": "2026-11-06T20:12:37.373Z",
+  "timestamp": "2026-11-07T01:30:24.656Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
-  "issues": [
-    {
-      "name": "DALL-E 2",
-      "url": "https://openai.com/dall-e-2",
-      "status": 403
-    },
-    {
-      "name": "Midjourney (Platform)",
-      "url": "https://www.midjourney.com/",
-      "status": 403
-    },
-    {
-      "name": "GPT-6 Astra",
-      "url": "https://openai.com",
-      "status": 403
-    },
-    {
-      "name": "Whisper",
-      "url": "https://openai.com/research/whisper",
-      "status": 403
-    },
-    {
-      "name": "Meta AI",
-      "url": "https://www.meta.ai",
-      "status": 403
-    }
-  ]
+  "healthy": 25,
+  "broken": 0,
+  "issues": []
 }

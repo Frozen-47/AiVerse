@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-06T20:12:37.330Z",
+  "timestamp": "2026-11-07T01:30:24.491Z",
   "models": [
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 1450,
+      "likes": 1500,
       "downloads": 18432,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
@@ -12,7 +12,7 @@
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 915,
+      "likes": 941,
       "downloads": 19139,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -20,7 +20,7 @@
     {
       "id": "ccore/Qwen3.5-4B-3D-Coder",
       "author": "ccore",
-      "likes": 774,
+      "likes": 793,
       "downloads": 190243,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
@@ -28,7 +28,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 10846,
+      "likes": 10869,
       "downloads": 2607491,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -36,7 +36,7 @@
     {
       "id": "burner22/numbat",
       "author": "burner22",
-      "likes": 369,
+      "likes": 373,
       "downloads": 9066,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/burner22/numbat"
@@ -44,7 +44,7 @@
     {
       "id": "FusionCow/Sulphur-3",
       "author": "FusionCow",
-      "likes": 392,
+      "likes": 395,
       "downloads": 950,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/FusionCow/Sulphur-3"
@@ -52,9 +52,25 @@
   ],
   "papers": [
     {
+      "title": "Tools Need Not Speak in Text: Latent Context Compression for Agents",
+      "summary": "Large language model (LLM) agents typically append raw tool outputs to their context. Over multi-step interactions, long and noisy observations incur substantia...",
+      "upvotes": 0,
+      "arxiv_id": "2611.06500",
+      "url": "https://huggingface.co/papers/2611.06500",
+      "githubRepo": "https://github.com/THU-Agent/Coca-cola"
+    },
+    {
+      "title": "Signed but Steerable: Measuring and Closing the Text-Vector Integrity Gap in Offline Retrieval-Augmented Generation",
+      "summary": "Signed retrieval packs can contain embedding vectors that do not match their text, and practical vector verification and compressed-index audits leave many queries vulnerable, while code-level verification with calibrated ambiguity handling accepts honest vectors.",
+      "upvotes": 1,
+      "arxiv_id": "2611.06498",
+      "url": "https://huggingface.co/papers/2611.06498",
+      "githubRepo": "https://github.com/securagenai/signed-but-steerable"
+    },
+    {
       "title": "StepX-OPD: Rethinking Multi-Teacher On-Policy Distillation in Diffusion Models",
       "summary": "StepX-OPD jointly trains a text-to-image diffusion model to acquire capabilities and few-step sampling simultaneously, outperforming sequential approaches while reducing training cost.",
-      "upvotes": 1,
+      "upvotes": 3,
       "arxiv_id": "2611.04386",
       "url": "https://huggingface.co/papers/2611.04386",
       "githubRepo": "https://github.com/WinterCCC/StepX-OPD"
@@ -70,25 +86,9 @@
     {
       "title": "OpenFrontiers: A Collection of Open Research Problems and a Benchmark for Scientific Rediscovery",
       "summary": "OpenFrontiers links a broad corpus of open research problems with a formally graded benchmark of recently resolved mathematics problems to evaluate LLM agents’ ability to rediscover solutions under different information-access conditions.",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2610.37739",
       "url": "https://huggingface.co/papers/2610.37739",
-      "githubRepo": null
-    },
-    {
-      "title": "Terminal-style Mathematical Modeling Bench: The First Agentic and Verifiable Benchmark for Mathematical Modeling",
-      "summary": "TB-MathModel is a terminal benchmark that makes complete contest-style mathematical modeling problems agentic and verifiable, scoring final numeric answers against multiple human references with feasibility checks.",
-      "upvotes": 5,
-      "arxiv_id": "2611.08237",
-      "url": "https://huggingface.co/papers/2611.08237",
-      "githubRepo": "https://github.com/wxj630/terminal-bench-math-modeling"
-    },
-    {
-      "title": "Muir: Linear Attention with Sensitivity-Allocated Gating and Matched-Filter Readout",
-      "summary": "A linear attention architecture called Muir allocates gate capacity by sensitivity, uses matched-filter readout and a stable parallel update, improving language modeling, long-context recall, and training speed over Gated DeltaNet-2 and Transformer baselines.",
-      "upvotes": 4,
-      "arxiv_id": "2611.08376",
-      "url": "https://huggingface.co/papers/2611.08376",
       "githubRepo": null
     }
   ]

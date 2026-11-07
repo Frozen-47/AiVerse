@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-06)
+### ⚡ AiVerse AI Radar (2026-11-07)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **TwIL-8B** (`Model`), **llm-course-final-2026** (`Dataset`) |
-| 🌟 **Tool of the Day** | **qwen-image-21-uncensored** (Alibaba (Qwen)) — [Explore](https://huggingface.co/spaces/vclnhihihi/qwen-image-21-uncensored) |
+| 📥 **Queued for Review** | **Qwen3.8-Flash-Next-GGUF** (`Model`), **sand3d-objaverse** (`Dataset`) |
+| 🌟 **Tool of the Day** | **MMLU-Pro** (TIGER-Lab) — [Explore](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [moonshotai/Kimi-K3.1-Pro](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
-| 📜 **Top Daily Paper** | [StepX-OPD: Rethinking Multi-Teacher On-Policy Dist...](https://huggingface.co/papers/2611.04386) |
-| 🛡️ **Catalog Links Checked** | **20/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 06 Nov 2026 20:13:15 GMT` |
+| 📜 **Top Daily Paper** | [Tools Need Not Speak in Text: Latent Context Compr...](https://huggingface.co/papers/2611.06500) |
+| 🛡️ **Catalog Links Checked** | **25/25** operational |
+| 🕒 **Last Synchronized** | `Sat, 07 Nov 2026 01:30:52 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
