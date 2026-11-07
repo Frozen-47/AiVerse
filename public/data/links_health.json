@@ -1,7 +1,23 @@
 {
-  "timestamp": "2026-11-07T01:30:24.656Z",
+  "timestamp": "2026-11-07T08:08:21.339Z",
   "checked": 25,
-  "healthy": 25,
-  "broken": 0,
-  "issues": []
+  "healthy": 22,
+  "broken": 3,
+  "issues": [
+    {
+      "name": "UltraFeedback",
+      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
+      "status": 401
+    },
+    {
+      "name": "Canva AI",
+      "url": "https://www.canva.com/ai-image-generator",
+      "status": 403
+    },
+    {
+      "name": "Quizlet AI",
+      "url": "https://quizlet.com/features/quizlet-ai",
+      "status": 403
+    }
+  ]
 }

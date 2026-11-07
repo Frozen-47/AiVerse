@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-07T01:30:24.491Z",
+  "timestamp": "2026-11-07T08:08:21.243Z",
   "models": [
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 1500,
+      "likes": 1562,
       "downloads": 18432,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
@@ -12,7 +12,7 @@
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 941,
+      "likes": 976,
       "downloads": 19139,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -20,7 +20,7 @@
     {
       "id": "ccore/Qwen3.5-4B-3D-Coder",
       "author": "ccore",
-      "likes": 793,
+      "likes": 808,
       "downloads": 190243,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
@@ -28,7 +28,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 10869,
+      "likes": 10894,
       "downloads": 2607491,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -36,25 +36,25 @@
     {
       "id": "burner22/numbat",
       "author": "burner22",
-      "likes": 373,
+      "likes": 372,
       "downloads": 9066,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/burner22/numbat"
     },
     {
-      "id": "FusionCow/Sulphur-3",
-      "author": "FusionCow",
-      "likes": 395,
-      "downloads": 950,
+      "id": "ricursiveAI/Ripple-65B-Preview",
+      "author": "ricursiveAI",
+      "likes": 344,
+      "downloads": 2013,
       "pipeline_tag": "general",
-      "url": "https://huggingface.co/FusionCow/Sulphur-3"
+      "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
     }
   ],
   "papers": [
     {
       "title": "Tools Need Not Speak in Text: Latent Context Compression for Agents",
       "summary": "Large language model (LLM) agents typically append raw tool outputs to their context. Over multi-step interactions, long and noisy observations incur substantia...",
-      "upvotes": 0,
+      "upvotes": 1,
       "arxiv_id": "2611.06500",
       "url": "https://huggingface.co/papers/2611.06500",
       "githubRepo": "https://github.com/THU-Agent/Coca-cola"

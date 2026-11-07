@@ -4,6 +4,60 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by xtools-at, trending with over 177 community likes and 772 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "xtools-at",
+        "size": "9B params",
+        "architecture": "xtools-at text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic\")",
+        "benchmarks": "Trending Score: 164, Likes: 177, Downloads: 772",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+        "citations": [
+          {
+            "text": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic on Hugging Face",
+            "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
+          }
+        ]
+      },
+      {
+        "name": "chess-position-evaluations",
+        "type": "Dataset",
+        "summary": "Dataset Card for the Lichess Evaluations dataset \t \t \t\t \t \t \t\tDataset Description \t 416,442,401 chess positions evaluated with Stockfish at various depths and node coun (55 likes, 5,114 downloads).",
+        "task": "NLP",
+        "license": "CC0-1.0",
+        "year": 2026,
+        "org": "Lichess",
+        "size": "1B<n<10B",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Lichess/chess-position-evaluations\")",
+        "benchmarks": "Trending Score: 16, Likes: 55, Downloads: 5,114",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/Lichess/chess-position-evaluations",
+        "citations": [
+          {
+            "text": "Lichess/chess-position-evaluations on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/Lichess/chess-position-evaluations"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-07",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Qwen3.8-Flash-Next-GGUF",
         "type": "Model",
         "summary": "High-performance Multimodal open-weights model by unsloth, trending with over 1,465 community likes and 1,309,045 downloads on Hugging Face.",
@@ -6220,77 +6274,6 @@
           {
             "text": "LightwheelAI/EgoStandard on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/LightwheelAI/EgoStandard"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-08",
-    "assets": [
-      {
-        "name": "embeddinggemma-2",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by Google, trending with over 990 community likes and 7,562 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "Google",
-        "size": "Open Weights",
-        "architecture": "Google feature extraction architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"google/embeddinggemma-2\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"google/embeddinggemma-2\")",
-        "benchmarks": "Trending Score: 965, Likes: 990, Downloads: 7,562",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": true,
-        "url": "https://huggingface.co/google/embeddinggemma-2",
-        "citations": [
-          {
-            "text": "google/embeddinggemma-2 on Hugging Face",
-            "url": "https://huggingface.co/google/embeddinggemma-2"
-          }
-        ]
-      },
-      {
-        "name": "bfs-best-face-swap",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 119 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "hugging-apps",
-        "size": "GRADIO Platform",
-        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap",
-        "benchmarks": "Trending Score: 80, Community Likes: 119",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": true,
-        "url": "https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap",
-        "citations": [
-          {
-            "text": "hugging-apps/bfs-best-face-swap on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/hugging-apps/bfs-best-face-swap"
-          }
-        ]
-      },
-      {
-        "name": "jabarti-llm-dataset",
-        "type": "Dataset",
-        "summary": "jabarti-llm-dataset \t Cleaned, section-chunked training corpus for a small bilingual LLM (Arabic + English), combining a curated Egyptian-history collection with genera (40 likes, 904 downloads).",
-        "task": "NLP",
-        "license": "CC-BY-SA-4.0",
-        "year": 2026,
-        "org": "bakrianoo",
-        "size": "1M<n<10M",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"bakrianoo/jabarti-llm-dataset\")",
-        "benchmarks": "Trending Score: 35, Likes: 40, Downloads: 904",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "url": "https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset",
-        "citations": [
-          {
-            "text": "bakrianoo/jabarti-llm-dataset on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/bakrianoo/jabarti-llm-dataset"
           }
         ]
       }
