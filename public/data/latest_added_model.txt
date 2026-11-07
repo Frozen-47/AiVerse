@@ -1,1 +1,1 @@
-ERNIE-5.5-Flash-Base
+Arete-27B

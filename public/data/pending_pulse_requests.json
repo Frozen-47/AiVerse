@@ -1,5 +1,55 @@
 [
   {
+    "name": "Propaganda_Eval",
+    "type": "Dataset",
+    "summary": "Censorship & Propaganda Eval \t 803 prompts about topics that the People's Republic of China censors or presents through an official narrative. Each prompt comes with 2– (27 likes, 212 downloads).",
+    "task": "NLP",
+    "license": "MIT",
+    "year": 2026,
+    "org": "NousResearch",
+    "size": "n<1K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"NousResearch/Propaganda_Eval\")",
+    "benchmarks": "Trending Score: 26, Likes: 27, Downloads: 212",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/NousResearch/Propaganda_Eval",
+    "citations": [
+      {
+        "text": "NousResearch/Propaganda_Eval on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/NousResearch/Propaganda_Eval"
+      }
+    ],
+    "created_at": "2026-11-07T20:38:01.824Z"
+  },
+  {
+    "name": "Arete-27B",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by NousResearch, trending with over 187 community likes and 989 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "NousResearch",
+    "size": "27B params",
+    "architecture": "NousResearch text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"NousResearch/Arete-27B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"NousResearch/Arete-27B\")",
+    "benchmarks": "Trending Score: 182, Likes: 187, Downloads: 989",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/NousResearch/Arete-27B",
+    "citations": [
+      {
+        "text": "NousResearch/Arete-27B on Hugging Face",
+        "url": "https://huggingface.co/NousResearch/Arete-27B"
+      }
+    ],
+    "created_at": "2026-11-07T20:38:01.824Z"
+  },
+  {
     "name": "arete-data-pairs",
     "type": "Dataset",
     "summary": "Arete data pairs — v1.0.0 \t Prompt–response pairs for seven values topics, each prompt answered by both the Inkling teacher (thinkingmachines/inkling) and the Qwen 3.8- (23 likes, 244 downloads).",

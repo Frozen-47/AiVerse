@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-07T16:01:28.593Z",
+  "timestamp": "2026-11-07T20:38:01.836Z",
   "models": [
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 1045,
+      "likes": 1087,
       "downloads": 20689,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -12,7 +12,7 @@
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 1602,
+      "likes": 1621,
       "downloads": 22571,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
@@ -20,7 +20,7 @@
     {
       "id": "ccore/Qwen3.5-4B-3D-Coder",
       "author": "ccore",
-      "likes": 843,
+      "likes": 864,
       "downloads": 221506,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
@@ -28,26 +28,26 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 10934,
+      "likes": 10964,
       "downloads": 2643778,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     },
     {
+      "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+      "author": "xtools-at",
+      "likes": 432,
+      "downloads": 1369,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
+    },
+    {
       "id": "ricursiveAI/Ripple-65B-Preview",
       "author": "ricursiveAI",
-      "likes": 357,
+      "likes": 365,
       "downloads": 3803,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
-    },
-    {
-      "id": "burner22/numbat",
-      "author": "burner22",
-      "likes": 376,
-      "downloads": 9212,
-      "pipeline_tag": "general",
-      "url": "https://huggingface.co/burner22/numbat"
     }
   ],
   "papers": [
@@ -78,7 +78,7 @@
     {
       "title": "SwarmEvolve: Latent Agent Swarms for Evolutionary Discovery and Optimization",
       "summary": "LLM-guided evolutionary search uses AI agents to improve programs for mathematical and computational problems by iteratively refining solutions and combining hi...",
-      "upvotes": 6,
+      "upvotes": 8,
       "arxiv_id": "2611.08483",
       "url": "https://huggingface.co/papers/2611.08483",
       "githubRepo": "https://github.com/Qile-J/SwarmEvolve"

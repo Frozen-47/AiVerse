@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-11-07T16:01:28.680Z",
+  "timestamp": "2026-11-07T20:38:01.978Z",
   "checked": 25,
   "healthy": 23,
   "broken": 2,
   "issues": [
     {
-      "name": "GPT-6 Astra",
-      "url": "https://openai.com",
+      "name": "GPT-4",
+      "url": "https://openai.com/gpt-4",
       "status": 403
     },
     {
-      "name": "LTX-2.3-10Eros",
-      "url": "https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros",
-      "status": 401
+      "name": "Play.ht",
+      "url": "https://play.ht",
+      "status": "Network Error"
     }
   ]
 }
