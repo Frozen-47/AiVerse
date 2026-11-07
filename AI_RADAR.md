@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sat, 07 Nov 2026 08:08:48 GMT`*
+*Last Synchronized: `Sat, 07 Nov 2026 16:01:57 GMT`*
 
 ---
 
@@ -10,19 +10,19 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic** (`Model` • *xtools-at*)
-> High-performance NLP open-weights model by xtools-at, trending with over 177 community likes and 772 downloads on Hugging Face.
+### **ERNIE-5.5-Flash-Base** (`Model` • *baidu*)
+> High-performance NLP open-weights model by baidu, trending with over 217 community likes and 971 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 164, Likes: 177, Downloads: 772`
-- 🔗 **Resource Link**: [https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 156, Likes: 217, Downloads: 971`
+- 🔗 **Resource Link**: [https://huggingface.co/baidu/ERNIE-5.5-Flash-Base](https://huggingface.co/baidu/ERNIE-5.5-Flash-Base)
 
-### **chess-position-evaluations** (`Dataset` • *Lichess*)
-> Dataset Card for the Lichess Evaluations dataset 	 	 		 	 	 		Dataset Description 	 416,442,401 chess positions evaluated with Stockfish at various depths and node coun (55 likes, 5,114 downloads).
+### **arete-data-pairs** (`Dataset` • *NousResearch*)
+> Arete data pairs — v1.0.0 	 Prompt–response pairs for seven values topics, each prompt answered by both the Inkling teacher (thinkingmachines/inkling) and the Qwen 3.8- (23 likes, 244 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `CC0-1.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 16, Likes: 55, Downloads: 5,114`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/Lichess/chess-position-evaluations](https://huggingface.co/datasets/Lichess/chess-position-evaluations)
+- 🏷️ **Domain & License**: `NLP` • `Open Data` (2026)
+- ⚡ **Metrics**: `Trending Score: 23, Likes: 23, Downloads: 244`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/NousResearch/arete-data-pairs](https://huggingface.co/datasets/NousResearch/arete-data-pairs)
 
 ---
 
@@ -41,12 +41,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 1,562 | 📥 18,432 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
-| `speridlabs/idol` | image-to-3d | ❤️ 976 | 📥 19,139 | [View](https://huggingface.co/speridlabs/idol) |
-| `ccore/Qwen3.5-4B-3D-Coder` | general | ❤️ 808 | 📥 190,243 | [View](https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 10,894 | 📥 2,607,491 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `burner22/numbat` | general | ❤️ 372 | 📥 9,066 | [View](https://huggingface.co/burner22/numbat) |
-| `ricursiveAI/Ripple-65B-Preview` | general | ❤️ 344 | 📥 2,013 | [View](https://huggingface.co/ricursiveAI/Ripple-65B-Preview) |
+| `speridlabs/idol` | image-to-3d | ❤️ 1,045 | 📥 20,689 | [View](https://huggingface.co/speridlabs/idol) |
+| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 1,602 | 📥 22,571 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
+| `ccore/Qwen3.5-4B-3D-Coder` | general | ❤️ 843 | 📥 221,506 | [View](https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 10,934 | 📥 2,643,778 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `ricursiveAI/Ripple-65B-Preview` | general | ❤️ 357 | 📥 3,803 | [View](https://huggingface.co/ricursiveAI/Ripple-65B-Preview) |
+| `burner22/numbat` | general | ❤️ 376 | 📥 9,212 | [View](https://huggingface.co/burner22/numbat) |
 
 
 ---
@@ -56,11 +56,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Tools Need Not Speak in Text: Latent Context Compression for Agents** | 👍 1 | Large language model (LLM) agents typically append raw tool outputs to their context. Over multi-step interactions, long and noisy observations incur substantia... | [Read](https://huggingface.co/papers/2611.06500) |
-| **Signed but Steerable: Measuring and Closing the Text-Vector Integrity Gap in Offline Retrieval-Augmented Generation** | 👍 1 | Signed retrieval packs can contain embedding vectors that do not match their text, and practical vector verification and compressed-index audits leave many queries vulnerable, while code-level verification with calibrated ambiguity handling accepts honest vectors. | [Read](https://huggingface.co/papers/2611.06498) |
-| **StepX-OPD: Rethinking Multi-Teacher On-Policy Distillation in Diffusion Models** | 👍 3 | StepX-OPD jointly trains a text-to-image diffusion model to acquire capabilities and few-step sampling simultaneously, outperforming sequential approaches while reducing training cost. | [Read](https://huggingface.co/papers/2611.04386) |
-| **SwarmEvolve: Latent Agent Swarms for Evolutionary Discovery and Optimization** | 👍 3 | LLM-guided evolutionary search uses AI agents to improve programs for mathematical and computational problems by iteratively refining solutions and combining hi... | [Read](https://huggingface.co/papers/2611.08483) |
-| **OpenFrontiers: A Collection of Open Research Problems and a Benchmark for Scientific Rediscovery** | 👍 2 | OpenFrontiers links a broad corpus of open research problems with a formally graded benchmark of recently resolved mathematics problems to evaluate LLM agents’ ability to rediscover solutions under different information-access conditions. | [Read](https://huggingface.co/papers/2610.37739) |
+| **Tools Need Not Speak in Text: Latent Context Compression for Agents** | 👍 2 | Large language model (LLM) agents typically append raw tool outputs to their context. Over multi-step interactions, long and noisy observations incur substantia... | [Read](https://huggingface.co/papers/2611.06500) |
+| **Signed but Steerable: Measuring and Closing the Text-Vector Integrity Gap in Offline Retrieval-Augmented Generation** | 👍 2 | Signed retrieval packs can contain embedding vectors that do not match their text, and practical vector verification and compressed-index audits leave many queries vulnerable, while code-level verification with calibrated ambiguity handling accepts honest vectors. | [Read](https://huggingface.co/papers/2611.06498) |
+| **StepX-OPD: Rethinking Multi-Teacher On-Policy Distillation in Diffusion Models** | 👍 4 | StepX-OPD jointly trains a text-to-image diffusion model to acquire capabilities and few-step sampling simultaneously, outperforming sequential approaches while reducing training cost. | [Read](https://huggingface.co/papers/2611.04386) |
+| **SwarmEvolve: Latent Agent Swarms for Evolutionary Discovery and Optimization** | 👍 6 | LLM-guided evolutionary search uses AI agents to improve programs for mathematical and computational problems by iteratively refining solutions and combining hi... | [Read](https://huggingface.co/papers/2611.08483) |
+| **OpenFrontiers: A Collection of Open Research Problems and a Benchmark for Scientific Rediscovery** | 👍 4 | OpenFrontiers links a broad corpus of open research problems with a formally graded benchmark of recently resolved mathematics problems to evaluate LLM agents’ ability to rediscover solutions under different information-access conditions. | [Read](https://huggingface.co/papers/2610.37739) |
 
 
 ---
@@ -73,7 +73,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
 - **Dependency Security**: `43` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

@@ -1,23 +1,18 @@
 {
-  "timestamp": "2026-11-07T08:08:21.339Z",
+  "timestamp": "2026-11-07T16:01:28.680Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "UltraFeedback",
-      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
+      "name": "GPT-6 Astra",
+      "url": "https://openai.com",
+      "status": 403
+    },
+    {
+      "name": "LTX-2.3-10Eros",
+      "url": "https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros",
       "status": 401
-    },
-    {
-      "name": "Canva AI",
-      "url": "https://www.canva.com/ai-image-generator",
-      "status": 403
-    },
-    {
-      "name": "Quizlet AI",
-      "url": "https://quizlet.com/features/quizlet-ai",
-      "status": 403
     }
   ]
 }

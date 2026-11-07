@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-07)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic** (`Model`), **chess-position-evaluations** (`Dataset`) |
+| 📥 **Queued for Review** | **ERNIE-5.5-Flash-Base** (`Model`), **arete-data-pairs** (`Dataset`) |
 | 🌟 **Tool of the Day** | **MMLU-Pro** (TIGER-Lab) — [Explore](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
-| 🔥 **Top Trending Model** | [moonshotai/Kimi-K3.1-Pro](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
+| 🔥 **Top Trending Model** | [speridlabs/idol](https://huggingface.co/speridlabs/idol) |
 | 📜 **Top Daily Paper** | [Tools Need Not Speak in Text: Latent Context Compr...](https://huggingface.co/papers/2611.06500) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Sat, 07 Nov 2026 08:08:48 GMT` |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Sat, 07 Nov 2026 16:01:57 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

@@ -1,5 +1,55 @@
 [
   {
+    "name": "arete-data-pairs",
+    "type": "Dataset",
+    "summary": "Arete data pairs — v1.0.0 \t Prompt–response pairs for seven values topics, each prompt answered by both the Inkling teacher (thinkingmachines/inkling) and the Qwen 3.8- (23 likes, 244 downloads).",
+    "task": "NLP",
+    "license": "Open Data",
+    "year": 2026,
+    "org": "NousResearch",
+    "size": "10K<n<100K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"NousResearch/arete-data-pairs\")",
+    "benchmarks": "Trending Score: 23, Likes: 23, Downloads: 244",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/NousResearch/arete-data-pairs",
+    "citations": [
+      {
+        "text": "NousResearch/arete-data-pairs on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/NousResearch/arete-data-pairs"
+      }
+    ],
+    "created_at": "2026-11-07T16:01:28.580Z"
+  },
+  {
+    "name": "ERNIE-5.5-Flash-Base",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by baidu, trending with over 217 community likes and 971 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "baidu",
+    "size": "Open Weights",
+    "architecture": "baidu text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"baidu/ERNIE-5.5-Flash-Base\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"baidu/ERNIE-5.5-Flash-Base\")",
+    "benchmarks": "Trending Score: 156, Likes: 217, Downloads: 971",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Base",
+    "citations": [
+      {
+        "text": "baidu/ERNIE-5.5-Flash-Base on Hugging Face",
+        "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Base"
+      }
+    ],
+    "created_at": "2026-11-07T16:01:28.580Z"
+  },
+  {
     "name": "chess-position-evaluations",
     "type": "Dataset",
     "summary": "Dataset Card for the Lichess Evaluations dataset \t \t \t\t \t \t \t\tDataset Description \t 416,442,401 chess positions evaluated with Stockfish at various depths and node coun (55 likes, 5,114 downloads).",

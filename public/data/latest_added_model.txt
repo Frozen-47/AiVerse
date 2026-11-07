@@ -1,1 +1,1 @@
-DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic
+ERNIE-5.5-Flash-Base

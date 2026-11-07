@@ -1,60 +1,60 @@
 {
-  "timestamp": "2026-11-07T08:08:21.243Z",
+  "timestamp": "2026-11-07T16:01:28.593Z",
   "models": [
-    {
-      "id": "moonshotai/Kimi-K3.1-Pro",
-      "author": "moonshotai",
-      "likes": 1562,
-      "downloads": 18432,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
-    },
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 976,
-      "downloads": 19139,
+      "likes": 1045,
+      "downloads": 20689,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
     },
     {
+      "id": "moonshotai/Kimi-K3.1-Pro",
+      "author": "moonshotai",
+      "likes": 1602,
+      "downloads": 22571,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
+    },
+    {
       "id": "ccore/Qwen3.5-4B-3D-Coder",
       "author": "ccore",
-      "likes": 808,
-      "downloads": 190243,
+      "likes": 843,
+      "downloads": 221506,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
     },
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 10894,
-      "downloads": 2607491,
+      "likes": 10934,
+      "downloads": 2643778,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     },
     {
-      "id": "burner22/numbat",
-      "author": "burner22",
-      "likes": 372,
-      "downloads": 9066,
-      "pipeline_tag": "general",
-      "url": "https://huggingface.co/burner22/numbat"
-    },
-    {
       "id": "ricursiveAI/Ripple-65B-Preview",
       "author": "ricursiveAI",
-      "likes": 344,
-      "downloads": 2013,
+      "likes": 357,
+      "downloads": 3803,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
+    },
+    {
+      "id": "burner22/numbat",
+      "author": "burner22",
+      "likes": 376,
+      "downloads": 9212,
+      "pipeline_tag": "general",
+      "url": "https://huggingface.co/burner22/numbat"
     }
   ],
   "papers": [
     {
       "title": "Tools Need Not Speak in Text: Latent Context Compression for Agents",
       "summary": "Large language model (LLM) agents typically append raw tool outputs to their context. Over multi-step interactions, long and noisy observations incur substantia...",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2611.06500",
       "url": "https://huggingface.co/papers/2611.06500",
       "githubRepo": "https://github.com/THU-Agent/Coca-cola"
@@ -62,7 +62,7 @@
     {
       "title": "Signed but Steerable: Measuring and Closing the Text-Vector Integrity Gap in Offline Retrieval-Augmented Generation",
       "summary": "Signed retrieval packs can contain embedding vectors that do not match their text, and practical vector verification and compressed-index audits leave many queries vulnerable, while code-level verification with calibrated ambiguity handling accepts honest vectors.",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2611.06498",
       "url": "https://huggingface.co/papers/2611.06498",
       "githubRepo": "https://github.com/securagenai/signed-but-steerable"
@@ -70,7 +70,7 @@
     {
       "title": "StepX-OPD: Rethinking Multi-Teacher On-Policy Distillation in Diffusion Models",
       "summary": "StepX-OPD jointly trains a text-to-image diffusion model to acquire capabilities and few-step sampling simultaneously, outperforming sequential approaches while reducing training cost.",
-      "upvotes": 3,
+      "upvotes": 4,
       "arxiv_id": "2611.04386",
       "url": "https://huggingface.co/papers/2611.04386",
       "githubRepo": "https://github.com/WinterCCC/StepX-OPD"
@@ -78,7 +78,7 @@
     {
       "title": "SwarmEvolve: Latent Agent Swarms for Evolutionary Discovery and Optimization",
       "summary": "LLM-guided evolutionary search uses AI agents to improve programs for mathematical and computational problems by iteratively refining solutions and combining hi...",
-      "upvotes": 3,
+      "upvotes": 6,
       "arxiv_id": "2611.08483",
       "url": "https://huggingface.co/papers/2611.08483",
       "githubRepo": "https://github.com/Qile-J/SwarmEvolve"
@@ -86,7 +86,7 @@
     {
       "title": "OpenFrontiers: A Collection of Open Research Problems and a Benchmark for Scientific Rediscovery",
       "summary": "OpenFrontiers links a broad corpus of open research problems with a formally graded benchmark of recently resolved mathematics problems to evaluate LLM agents’ ability to rediscover solutions under different information-access conditions.",
-      "upvotes": 2,
+      "upvotes": 4,
       "arxiv_id": "2610.37739",
       "url": "https://huggingface.co/papers/2610.37739",
       "githubRepo": null

@@ -4,6 +4,60 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "ERNIE-5.5-Flash-Base",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by baidu, trending with over 217 community likes and 971 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "baidu",
+        "size": "Open Weights",
+        "architecture": "baidu text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"baidu/ERNIE-5.5-Flash-Base\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"baidu/ERNIE-5.5-Flash-Base\")",
+        "benchmarks": "Trending Score: 156, Likes: 217, Downloads: 971",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Base",
+        "citations": [
+          {
+            "text": "baidu/ERNIE-5.5-Flash-Base on Hugging Face",
+            "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Base"
+          }
+        ]
+      },
+      {
+        "name": "arete-data-pairs",
+        "type": "Dataset",
+        "summary": "Arete data pairs — v1.0.0 \t Prompt–response pairs for seven values topics, each prompt answered by both the Inkling teacher (thinkingmachines/inkling) and the Qwen 3.8- (23 likes, 244 downloads).",
+        "task": "NLP",
+        "license": "Open Data",
+        "year": 2026,
+        "org": "NousResearch",
+        "size": "10K<n<100K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"NousResearch/arete-data-pairs\")",
+        "benchmarks": "Trending Score: 23, Likes: 23, Downloads: 244",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/NousResearch/arete-data-pairs",
+        "citations": [
+          {
+            "text": "NousResearch/arete-data-pairs on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/NousResearch/arete-data-pairs"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-07",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by xtools-at, trending with over 177 community likes and 772 downloads on Hugging Face.",
@@ -6203,77 +6257,6 @@
           {
             "text": "witfoo/precinct6-cybersecurity on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/witfoo/precinct6-cybersecurity"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-09",
-    "assets": [
-      {
-        "name": "Xing4.0-29B-A4B-GGUF",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by Venastine-Research, trending with over 669 community likes and 36,481 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "Venastine-Research",
-        "size": "29B params",
-        "architecture": "Venastine-Research text generation architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Venastine-Research/Xing4.0-29B-A4B-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Venastine-Research/Xing4.0-29B-A4B-GGUF\")",
-        "benchmarks": "Trending Score: 617, Likes: 669, Downloads: 36,481",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": true,
-        "url": "https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF",
-        "citations": [
-          {
-            "text": "Venastine-Research/Xing4.0-29B-A4B-GGUF on Hugging Face",
-            "url": "https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF"
-          }
-        ]
-      },
-      {
-        "name": "jev-9b-decision-demo",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 94 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "autotrust",
-        "size": "GRADIO Platform",
-        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/autotrust/jev-9b-decision-demo",
-        "benchmarks": "Trending Score: 75, Community Likes: 94",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": true,
-        "url": "https://huggingface.co/spaces/autotrust/jev-9b-decision-demo",
-        "citations": [
-          {
-            "text": "autotrust/jev-9b-decision-demo on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/autotrust/jev-9b-decision-demo"
-          }
-        ]
-      },
-      {
-        "name": "EgoStandard",
-        "type": "Dataset",
-        "summary": "EgoStandard The 90,000-hour head-view line of EgoSuite-Open100K.   Data Bucket ·   Collection ·   EgoDemo ·   EgoPro ·   Project page Explore EgoSuite-Open100K ↗ Data location: Eg (186 likes, 388 downloads).",
-        "task": "Multimodal",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "LightwheelAI",
-        "size": "10K<n<100K",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"LightwheelAI/EgoStandard\")",
-        "benchmarks": "Trending Score: 47, Likes: 186, Downloads: 388",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": true,
-        "url": "https://huggingface.co/datasets/LightwheelAI/EgoStandard",
-        "citations": [
-          {
-            "text": "LightwheelAI/EgoStandard on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/LightwheelAI/EgoStandard"
           }
         ]
       }
