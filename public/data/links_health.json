@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-11-07T20:38:01.978Z",
+  "timestamp": "2026-11-08T01:00:08.067Z",
   "checked": 25,
   "healthy": 23,
   "broken": 2,
   "issues": [
     {
-      "name": "GPT-4",
-      "url": "https://openai.com/gpt-4",
-      "status": 403
+      "name": "wan555",
+      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
+      "status": 401
     },
     {
-      "name": "Play.ht",
-      "url": "https://play.ht",
-      "status": "Network Error"
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
     }
   ]
 }

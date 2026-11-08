@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-07T20:38:01.836Z",
+  "timestamp": "2026-11-08T01:00:08.030Z",
   "models": [
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 1087,
+      "likes": 1121,
       "downloads": 20689,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -12,7 +12,7 @@
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 1621,
+      "likes": 1634,
       "downloads": 22571,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
@@ -20,31 +20,31 @@
     {
       "id": "ccore/Qwen3.5-4B-3D-Coder",
       "author": "ccore",
-      "likes": 864,
+      "likes": 875,
       "downloads": 221506,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
     },
     {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 10964,
-      "downloads": 2643778,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5"
-    },
-    {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 432,
+      "likes": 491,
       "downloads": 1369,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
     },
     {
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 10995,
+      "downloads": 2643778,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5"
+    },
+    {
       "id": "ricursiveAI/Ripple-65B-Preview",
       "author": "ricursiveAI",
-      "likes": 365,
+      "likes": 369,
       "downloads": 3803,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
@@ -62,7 +62,7 @@
     {
       "title": "Signed but Steerable: Measuring and Closing the Text-Vector Integrity Gap in Offline Retrieval-Augmented Generation",
       "summary": "Signed retrieval packs can contain embedding vectors that do not match their text, and practical vector verification and compressed-index audits leave many queries vulnerable, while code-level verification with calibrated ambiguity handling accepts honest vectors.",
-      "upvotes": 2,
+      "upvotes": 3,
       "arxiv_id": "2611.06498",
       "url": "https://huggingface.co/papers/2611.06498",
       "githubRepo": "https://github.com/securagenai/signed-but-steerable"

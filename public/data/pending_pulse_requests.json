@@ -1,5 +1,55 @@
 [
   {
+    "name": "pixel-art-atlas-1.4m",
+    "type": "Dataset",
+    "summary": "Pixel Art Atlas · 1.4M Synthetic Sprites \t 1,409,404 synthetic game sprites with English captions, covering 6,194 training subjects. Each sprite is a native 16×16 image (20 likes, 1,050 downloads).",
+    "task": "Computer Vision",
+    "license": "CC0-1.0",
+    "year": 2026,
+    "org": "Angais",
+    "size": "1M<n<10M",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Angais/pixel-art-atlas-1.4m\")",
+    "benchmarks": "Trending Score: 19, Likes: 20, Downloads: 1,050",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/Angais/pixel-art-atlas-1.4m",
+    "citations": [
+      {
+        "text": "Angais/pixel-art-atlas-1.4m on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Angais/pixel-art-atlas-1.4m"
+      }
+    ],
+    "created_at": "2026-11-08T01:00:08.009Z"
+  },
+  {
+    "name": "Viggle-Remake",
+    "type": "Model",
+    "summary": "High-performance Video Generation open-weights model by Viggle, trending with over 164 community likes and 64,942 downloads on Hugging Face.",
+    "task": "Video Generation",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "Viggle",
+    "size": "Open Weights",
+    "architecture": "Viggle video to video architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Viggle/Viggle-Remake\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Viggle/Viggle-Remake\")",
+    "benchmarks": "Trending Score: 160, Likes: 164, Downloads: 64,942",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/Viggle/Viggle-Remake",
+    "citations": [
+      {
+        "text": "Viggle/Viggle-Remake on Hugging Face",
+        "url": "https://huggingface.co/Viggle/Viggle-Remake"
+      }
+    ],
+    "created_at": "2026-11-08T01:00:08.009Z"
+  },
+  {
     "name": "Propaganda_Eval",
     "type": "Dataset",
     "summary": "Censorship & Propaganda Eval \t 803 prompts about topics that the People's Republic of China censors or presents through an official narrative. Each prompt comes with 2– (27 likes, 212 downloads).",
