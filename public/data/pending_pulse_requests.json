@@ -1,5 +1,30 @@
 [
   {
+    "name": "Qwen3.8-Flash-Next-GSQ-RCO-abliterated-GGUF",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by SC117, trending with over 785 community likes and 4,210,046 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "SC117",
+    "size": "Open Weights",
+    "architecture": "SC117 image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"SC117/Qwen3.8-Flash-Next-GSQ-RCO-abliterated-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"SC117/Qwen3.8-Flash-Next-GSQ-RCO-abliterated-GGUF\")",
+    "benchmarks": "Trending Score: 149, Likes: 785, Downloads: 4,210,046",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/SC117/Qwen3.8-Flash-Next-GSQ-RCO-abliterated-GGUF",
+    "citations": [
+      {
+        "text": "SC117/Qwen3.8-Flash-Next-GSQ-RCO-abliterated-GGUF on Hugging Face",
+        "url": "https://huggingface.co/SC117/Qwen3.8-Flash-Next-GSQ-RCO-abliterated-GGUF"
+      }
+    ],
+    "created_at": "2026-11-08T20:56:05.536Z"
+  },
+  {
     "name": "ThreeJS-3D-GLB-Assets",
     "type": "Dataset",
     "summary": "CCORE Three.js 3D GLB Assets \t 3,918 examples across 40 domains, with complete conversations, thinking traces, HTML/JavaScript responses, and a rendered reference for e (18 likes, 1,688 downloads).",

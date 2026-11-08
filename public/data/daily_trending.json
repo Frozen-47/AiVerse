@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-08T16:28:36.879Z",
+  "timestamp": "2026-11-08T20:56:05.551Z",
   "models": [
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 1309,
+      "likes": 1353,
       "downloads": 22854,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -12,7 +12,7 @@
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 770,
+      "likes": 809,
       "downloads": 7088,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
@@ -20,31 +20,31 @@
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 1706,
+      "likes": 1718,
       "downloads": 25569,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
     },
     {
-      "id": "ccore/Qwen3.5-4B-3D-Coder",
-      "author": "ccore",
-      "likes": 906,
-      "downloads": 254053,
-      "pipeline_tag": "general",
-      "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
-    },
-    {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 11090,
+      "likes": 11117,
       "downloads": 2661026,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     },
     {
+      "id": "ccore/Qwen3.5-4B-3D-Coder",
+      "author": "ccore",
+      "likes": 915,
+      "downloads": 254053,
+      "pipeline_tag": "general",
+      "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
+    },
+    {
       "id": "ricursiveAI/Ripple-65B-Preview",
       "author": "ricursiveAI",
-      "likes": 388,
+      "likes": 396,
       "downloads": 5087,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
@@ -54,7 +54,7 @@
     {
       "title": "Tools Need Not Speak in Text: Latent Context Compression for Agents",
       "summary": "Large language model (LLM) agents typically append raw tool outputs to their context. Over multi-step interactions, long and noisy observations incur substantia...",
-      "upvotes": 5,
+      "upvotes": 6,
       "arxiv_id": "2611.06500",
       "url": "https://huggingface.co/papers/2611.06500",
       "githubRepo": "https://github.com/THU-Agent/Coca-cola"

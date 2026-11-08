@@ -1,43 +1,33 @@
 {
-  "timestamp": "2026-11-08T16:28:36.963Z",
+  "timestamp": "2026-11-08T20:56:05.646Z",
   "checked": 25,
-  "healthy": 18,
-  "broken": 7,
+  "healthy": 20,
+  "broken": 5,
   "issues": [
     {
-      "name": "UltraFeedback",
-      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
-      "status": 401
-    },
-    {
-      "name": "DeepSeek Chat",
-      "url": "https://chat.deepseek.com",
+      "name": "GPT-4",
+      "url": "https://openai.com/gpt-4",
       "status": 403
     },
     {
-      "name": "o3-mini",
-      "url": "https://openai.com",
+      "name": "GPT-4o mini",
+      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
       "status": 403
     },
     {
-      "name": "GPT-6 Astra",
-      "url": "https://openai.com",
+      "name": "DALL-E 2",
+      "url": "https://openai.com/dall-e-2",
       "status": 403
     },
     {
-      "name": "wan555",
-      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
-      "status": 401
+      "name": "LMSYS Chatbot Arena Conversations",
+      "url": "https://chat.lmsys.org",
+      "status": "Network Error"
     },
     {
-      "name": "Midjourney v6",
-      "url": "https://www.midjourney.com/",
-      "status": 403
-    },
-    {
-      "name": "LTX-2.3-10Eros",
-      "url": "https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros",
-      "status": 401
+      "name": "GPT-3.5 Turbo",
+      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
+      "status": 404
     }
   ]
 }
