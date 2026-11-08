@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-08)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Viggle-Remake** (`Model`), **pixel-art-atlas-1.4m** (`Dataset`) |
+| 📥 **Queued for Review** | **plateau-city-glb** (`Dataset`) |
 | 🌟 **Tool of the Day** | **drama-3** (fishaudio) — [Explore](https://huggingface.co/fishaudio/drama-3) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [speridlabs/idol](https://huggingface.co/speridlabs/idol) |
 | 📜 **Top Daily Paper** | [Tools Need Not Speak in Text: Latent Context Compr...](https://huggingface.co/papers/2611.06500) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Sun, 08 Nov 2026 01:00:54 GMT` |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Synchronized** | `Sun, 08 Nov 2026 08:27:42 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
