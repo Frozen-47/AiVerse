@@ -1,13 +1,43 @@
 {
-  "timestamp": "2026-11-08T08:26:58.959Z",
+  "timestamp": "2026-11-08T16:28:36.963Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 18,
+  "broken": 7,
   "issues": [
     {
-      "name": "Tabnine",
-      "url": "https://www.tabnine.com",
-      "status": "Network Error"
+      "name": "UltraFeedback",
+      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
+      "status": 401
+    },
+    {
+      "name": "DeepSeek Chat",
+      "url": "https://chat.deepseek.com",
+      "status": 403
+    },
+    {
+      "name": "o3-mini",
+      "url": "https://openai.com",
+      "status": 403
+    },
+    {
+      "name": "GPT-6 Astra",
+      "url": "https://openai.com",
+      "status": 403
+    },
+    {
+      "name": "wan555",
+      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
+      "status": 401
+    },
+    {
+      "name": "Midjourney v6",
+      "url": "https://www.midjourney.com/",
+      "status": 403
+    },
+    {
+      "name": "LTX-2.3-10Eros",
+      "url": "https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros",
+      "status": 401
     }
   ]
 }

@@ -2,20 +2,34 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sun, 08 Nov 2026 08:27:42 GMT`*
+*Last Synchronized: `Sun, 08 Nov 2026 16:29:09 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (1)
+## 📥 Newly Queued Assets for Review (3)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **plateau-city-glb** (`Dataset` • *codepawl*)
-> PLATEAU Japan City Tiles as GLB 	 Japan's government 3D city models (MLIT Project PLATEAU) cut into streamable 1 km tiles: all of Tokyo's 23 wards plus central Osaka, Y (24 likes, 111 downloads).
+### **DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic-i1-GGUF** (`Model` • *mradermacher*)
+> High-performance NLP open-weights model by mradermacher, trending with over 176 community likes and 136,706 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 22, Likes: 24, Downloads: 111`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/codepawl/plateau-city-glb](https://huggingface.co/datasets/codepawl/plateau-city-glb)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 156, Likes: 176, Downloads: 136,706`
+- 🔗 **Resource Link**: [https://huggingface.co/mradermacher/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic-i1-GGUF](https://huggingface.co/mradermacher/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic-i1-GGUF)
+
+### **MatterSeek-Enables.Inverse.Design.of.Novel.Material** (`Platform` • *YuyaoTechnology*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by YuyaoTechnology. Trending with 3,155 community stars.
+
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 78, Community Likes: 3,155`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/YuyaoTechnology/MatterSeek-Enables.Inverse.Design.of.Novel.Material](https://huggingface.co/spaces/YuyaoTechnology/MatterSeek-Enables.Inverse.Design.of.Novel.Material)
+
+### **ThreeJS-3D-GLB-Assets** (`Dataset` • *ccore*)
+> CCORE Three.js 3D GLB Assets 	 3,918 examples across 40 domains, with complete conversations, thinking traces, HTML/JavaScript responses, and a rendered reference for e (18 likes, 1,688 downloads).
+
+- 🏷️ **Domain & License**: `Computer Vision` • `MIT` (2026)
+- ⚡ **Metrics**: `Trending Score: 18, Likes: 18, Downloads: 1,688`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/ccore/ThreeJS-3D-GLB-Assets](https://huggingface.co/datasets/ccore/ThreeJS-3D-GLB-Assets)
 
 ---
 
@@ -34,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `speridlabs/idol` | image-to-3d | ❤️ 1,202 | 📥 20,689 | [View](https://huggingface.co/speridlabs/idol) |
-| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 1,666 | 📥 22,571 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
-| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 607 | 📥 1,369 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| `ccore/Qwen3.5-4B-3D-Coder` | general | ❤️ 883 | 📥 221,506 | [View](https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 11,034 | 📥 2,643,778 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `ricursiveAI/Ripple-65B-Preview` | general | ❤️ 378 | 📥 3,803 | [View](https://huggingface.co/ricursiveAI/Ripple-65B-Preview) |
+| `speridlabs/idol` | image-to-3d | ❤️ 1,309 | 📥 22,854 | [View](https://huggingface.co/speridlabs/idol) |
+| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 770 | 📥 7,088 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
+| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 1,706 | 📥 25,569 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
+| `ccore/Qwen3.5-4B-3D-Coder` | general | ❤️ 906 | 📥 254,053 | [View](https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 11,090 | 📥 2,661,026 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `ricursiveAI/Ripple-65B-Preview` | general | ❤️ 388 | 📥 5,087 | [View](https://huggingface.co/ricursiveAI/Ripple-65B-Preview) |
 
 
 ---
@@ -66,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
+- **Sample Link Health Check**: `18/25` healthy verified (`7` flagged / timed out)
 - **Dependency Security**: `43` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---
