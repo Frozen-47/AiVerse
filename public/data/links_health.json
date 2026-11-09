@@ -1,23 +1,33 @@
 {
-  "timestamp": "2026-11-09T01:21:31.493Z",
+  "timestamp": "2026-11-09T08:56:41.753Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 20,
+  "broken": 5,
   "issues": [
     {
-      "name": "wan2-2-i2v-v3",
-      "url": "https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3",
-      "status": 401
-    },
-    {
-      "name": "GPT-6 Astra",
+      "name": "GPT-4.5",
       "url": "https://openai.com",
       "status": 403
     },
     {
-      "name": "LMSYS Chatbot Arena Conversations",
-      "url": "https://chat.lmsys.org",
-      "status": "Network Error"
+      "name": "Poe",
+      "url": "https://poe.com",
+      "status": 403
+    },
+    {
+      "name": "Lovable.dev",
+      "url": "https://lovable.dev",
+      "status": 403
+    },
+    {
+      "name": "Midjourney (Platform)",
+      "url": "https://www.midjourney.com/",
+      "status": 403
+    },
+    {
+      "name": "ImageNet",
+      "url": "https://image-net.org",
+      "status": "Timeout"
     }
   ]
 }

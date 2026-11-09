@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-09)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **GLM-5.3-SLIM-GGUF** (`Model`), **RFD4-Proteina** (`Dataset`) |
+| 📥 **Queued for Review** | **codex-tool-use-trajectories** (`Dataset`) |
 | 🌟 **Tool of the Day** | **shorts** (autotrust) — [Explore](https://huggingface.co/spaces/autotrust/shorts) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [speridlabs/idol](https://huggingface.co/speridlabs/idol) |
-| 📜 **Top Daily Paper** | [Tools Need Not Speak in Text: Latent Context Compr...](https://huggingface.co/papers/2611.06500) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 09 Nov 2026 01:21:58 GMT` |
+| 📜 **Top Daily Paper** | [AutoCompress: Automated Hardware-Guided Model Comp...](https://huggingface.co/papers/2611.08290) |
+| 🛡️ **Catalog Links Checked** | **20/25** operational |
+| 🕒 **Last Synchronized** | `Mon, 09 Nov 2026 08:57:30 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

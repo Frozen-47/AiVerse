@@ -4,6 +4,36 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "codex-tool-use-trajectories",
+        "type": "Dataset",
+        "summary": "Codex Tool-Use Trajectories \t Multi-step tool-use trajectories from a coding agent (OpenAI Codex Desktop) working in a local Windows workspace, cleaned and redacted fro (22 likes, 0 downloads).",
+        "task": "NLP",
+        "license": "MIT",
+        "year": 2026,
+        "org": "israellaguan",
+        "size": "1K<n<10K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"israellaguan/codex-tool-use-trajectories\")",
+        "benchmarks": "Trending Score: 20, Likes: 22, Downloads: 0",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/israellaguan/codex-tool-use-trajectories",
+        "citations": [
+          {
+            "text": "israellaguan/codex-tool-use-trajectories on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/israellaguan/codex-tool-use-trajectories"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-09",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "GLM-5.3-SLIM-GGUF",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by Scantist, trending with over 1,290 community likes and 4,938 downloads on Hugging Face.",
@@ -6060,77 +6090,6 @@
           {
             "text": "Lichess/standard-chess-games on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/Lichess/standard-chess-games"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-16",
-    "assets": [
-      {
-        "name": "drama-3",
-        "type": "Model",
-        "summary": "High-performance Audio open-weights model by fishaudio, trending with over 480 community likes and 4,048 downloads on Hugging Face.",
-        "task": "Audio",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "fishaudio",
-        "size": "Open Weights",
-        "architecture": "fishaudio text to speech architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"fishaudio/drama-3\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"fishaudio/drama-3\")",
-        "benchmarks": "Trending Score: 466, Likes: 480, Downloads: 4,048",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": true,
-        "url": "https://huggingface.co/fishaudio/drama-3",
-        "citations": [
-          {
-            "text": "fishaudio/drama-3 on Hugging Face",
-            "url": "https://huggingface.co/fishaudio/drama-3"
-          }
-        ]
-      },
-      {
-        "name": "shorts",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by autotrust. Trending with 151 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "autotrust",
-        "size": "STATIC Platform",
-        "architecture": "STATIC cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/autotrust/shorts",
-        "benchmarks": "Trending Score: 79, Community Likes: 151",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": true,
-        "url": "https://huggingface.co/spaces/autotrust/shorts",
-        "citations": [
-          {
-            "text": "autotrust/shorts on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/autotrust/shorts"
-          }
-        ]
-      },
-      {
-        "name": "china-a-share-l2-level2-limit-order-book-tick-data",
-        "type": "Dataset",
-        "summary": "China A-Share Level-2 Archive \t 2017–2026 · Quotes, orders and trades · Parquet A historical archive of Chinese exchange Level-2 data, supplied through a vendor export. (281 likes, 120,455 downloads).",
-        "task": "NLP",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "venvoo",
-        "size": "n>1T",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"venvoo/china-a-share-l2-level2-limit-order-book-tick-data\")",
-        "benchmarks": "Trending Score: 33, Likes: 281, Downloads: 120,455",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": true,
-        "url": "https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data",
-        "citations": [
-          {
-            "text": "venvoo/china-a-share-l2-level2-limit-order-book-tick-data on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data"
           }
         ]
       }

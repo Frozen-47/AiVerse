@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-09T01:21:31.417Z",
+  "timestamp": "2026-11-09T08:56:41.675Z",
   "models": [
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 1387,
+      "likes": 1453,
       "downloads": 22854,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -12,7 +12,7 @@
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 842,
+      "likes": 938,
       "downloads": 7088,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
@@ -20,7 +20,7 @@
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 1729,
+      "likes": 1749,
       "downloads": 25569,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
@@ -28,7 +28,7 @@
     {
       "id": "ricursiveAI/Ripple-65B-Preview",
       "author": "ricursiveAI",
-      "likes": 403,
+      "likes": 421,
       "downloads": 5087,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
@@ -36,7 +36,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 11136,
+      "likes": 11161,
       "downloads": 2661026,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -44,7 +44,7 @@
     {
       "id": "ccore/Qwen3.5-4B-3D-Coder",
       "author": "ccore",
-      "likes": 918,
+      "likes": 931,
       "downloads": 254053,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "Tools Need Not Speak in Text: Latent Context Compression for Agents",
-      "summary": "Large language model (LLM) agents typically append raw tool outputs to their context. Over multi-step interactions, long and noisy observations incur substantia...",
-      "upvotes": 6,
-      "arxiv_id": "2611.06500",
-      "url": "https://huggingface.co/papers/2611.06500",
-      "githubRepo": "https://github.com/THU-Agent/Coca-cola"
-    },
-    {
-      "title": "Signed but Steerable: Measuring and Closing the Text-Vector Integrity Gap in Offline Retrieval-Augmented Generation",
-      "summary": "Signed retrieval packs can contain embedding vectors that do not match their text, and practical vector verification and compressed-index audits leave many queries vulnerable, while code-level verification with calibrated ambiguity handling accepts honest vectors.",
-      "upvotes": 4,
-      "arxiv_id": "2611.06498",
-      "url": "https://huggingface.co/papers/2611.06498",
-      "githubRepo": "https://github.com/securagenai/signed-but-steerable"
-    },
-    {
-      "title": "StepX-OPD: Rethinking Multi-Teacher On-Policy Distillation in Diffusion Models",
-      "summary": "StepX-OPD jointly trains a text-to-image diffusion model to acquire capabilities and few-step sampling simultaneously, outperforming sequential approaches while reducing training cost.",
-      "upvotes": 4,
-      "arxiv_id": "2611.04386",
-      "url": "https://huggingface.co/papers/2611.04386",
-      "githubRepo": "https://github.com/WinterCCC/StepX-OPD"
-    },
-    {
-      "title": "SwarmEvolve: Latent Agent Swarms for Evolutionary Discovery and Optimization",
-      "summary": "LLM-guided evolutionary search uses AI agents to improve programs for mathematical and computational problems by iteratively refining solutions and combining hi...",
-      "upvotes": 9,
-      "arxiv_id": "2611.08483",
-      "url": "https://huggingface.co/papers/2611.08483",
-      "githubRepo": "https://github.com/Qile-J/SwarmEvolve"
-    },
-    {
-      "title": "OpenFrontiers: A Collection of Open Research Problems and a Benchmark for Scientific Rediscovery",
-      "summary": "OpenFrontiers links a broad corpus of open research problems with a formally graded benchmark of recently resolved mathematics problems to evaluate LLM agents’ ability to rediscover solutions under different information-access conditions.",
-      "upvotes": 6,
-      "arxiv_id": "2610.37739",
-      "url": "https://huggingface.co/papers/2610.37739",
+      "title": "AutoCompress: Automated Hardware-Guided Model Compression",
+      "summary": "AutoCompress is a hardware-guided compression framework that uses differentiable architecture search and serving-engine cost models to produce heterogeneous LLM architectures meeting latency, throughput, and memory constraints while preserving accuracy.",
+      "upvotes": 1,
+      "arxiv_id": "2611.08290",
+      "url": "https://huggingface.co/papers/2611.08290",
       "githubRepo": null
+    },
+    {
+      "title": "LongBanana: An Expert-Verified Benchmark for Long-Context Multi-Reference Image Synthesis",
+      "summary": "We introduce LongBanana, to our knowledge the first expert-designed and expert-verified benchmark for long-context multi-reference image synthesis in the age of...",
+      "upvotes": 21,
+      "arxiv_id": "2611.06856",
+      "url": "https://huggingface.co/papers/2611.06856",
+      "githubRepo": "https://github.com/KlingAIResearch/LongBanana"
+    },
+    {
+      "title": "Static Recovery Is Not Dynamic Stability: Dynamics-Aware Benchmarking of Protein Motif Scaffolding",
+      "summary": "New benchmarks and molecular dynamics frameworks are presented to rigorously evaluate protein scaffold-generation models by assessing dynamic fidelity and structural stability beyond static success.",
+      "upvotes": 0,
+      "arxiv_id": "2611.07723",
+      "url": "https://huggingface.co/papers/2611.07723",
+      "githubRepo": "https://github.com/PROFOUND-HFMI/BILBY-MD"
+    },
+    {
+      "title": "P^2-MOPD: Accelerating Multi-Teacher On-Policy Distillation via Parameter Priors",
+      "summary": "P$^2$-MOPD jointly optimizes mixing coefficients and student weights under an on-policy distillation objective, allowing experts to act as parameter priors and achieving faster, more balanced recovery than MOPD.",
+      "upvotes": 10,
+      "arxiv_id": "2611.03953",
+      "url": "https://huggingface.co/papers/2611.03953",
+      "githubRepo": "https://github.com/SinuoWang/P2-MOPD"
+    },
+    {
+      "title": "SplatAnything: Gaussian Spacing Normalization for Feed-forward 3DGS across Arbitrary Scenes",
+      "summary": "SplatAnything applies Gaussian Spacing Normalization to canonicalize scene-level Gaussian spacing statistics, improving feed-forward 3DGS reconstruction across varying scene scales and viewpoints.",
+      "upvotes": 54,
+      "arxiv_id": "2611.08264",
+      "url": "https://huggingface.co/papers/2611.08264",
+      "githubRepo": "https://github.com/zju3dv/SplatAnything"
     }
   ]
 }

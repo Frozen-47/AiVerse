@@ -1,5 +1,30 @@
 [
   {
+    "name": "codex-tool-use-trajectories",
+    "type": "Dataset",
+    "summary": "Codex Tool-Use Trajectories \t Multi-step tool-use trajectories from a coding agent (OpenAI Codex Desktop) working in a local Windows workspace, cleaned and redacted fro (22 likes, 0 downloads).",
+    "task": "NLP",
+    "license": "MIT",
+    "year": 2026,
+    "org": "israellaguan",
+    "size": "1K<n<10K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"israellaguan/codex-tool-use-trajectories\")",
+    "benchmarks": "Trending Score: 20, Likes: 22, Downloads: 0",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/israellaguan/codex-tool-use-trajectories",
+    "citations": [
+      {
+        "text": "israellaguan/codex-tool-use-trajectories on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/israellaguan/codex-tool-use-trajectories"
+      }
+    ],
+    "created_at": "2026-11-09T08:56:41.657Z"
+  },
+  {
     "name": "RFD4-Proteina",
     "type": "Dataset",
     "summary": "The structures behind biomolecular design.Indexed molecular records, sampling metadata, and traceable source inventories. Project page · Model · Inventory · Training guide (26 likes, 61,125 downloads).",
