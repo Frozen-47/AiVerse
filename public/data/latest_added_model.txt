@@ -1,1 +1,1 @@
-Qwen3.8-Flash-Next-GSQ-RCO-abliterated-GGUF
+GLM-5.3-SLIM-GGUF

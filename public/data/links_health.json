@@ -1,33 +1,23 @@
 {
-  "timestamp": "2026-11-08T20:56:05.646Z",
+  "timestamp": "2026-11-09T01:21:31.493Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "GPT-4",
-      "url": "https://openai.com/gpt-4",
-      "status": 403
+      "name": "wan2-2-i2v-v3",
+      "url": "https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3",
+      "status": 401
     },
     {
-      "name": "GPT-4o mini",
-      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
-      "status": 403
-    },
-    {
-      "name": "DALL-E 2",
-      "url": "https://openai.com/dall-e-2",
+      "name": "GPT-6 Astra",
+      "url": "https://openai.com",
       "status": 403
     },
     {
       "name": "LMSYS Chatbot Arena Conversations",
       "url": "https://chat.lmsys.org",
       "status": "Network Error"
-    },
-    {
-      "name": "GPT-3.5 Turbo",
-      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
-      "status": 404
     }
   ]
 }

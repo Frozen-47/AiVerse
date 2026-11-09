@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-08T20:56:05.551Z",
+  "timestamp": "2026-11-09T01:21:31.417Z",
   "models": [
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 1353,
+      "likes": 1387,
       "downloads": 22854,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -12,7 +12,7 @@
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 809,
+      "likes": 842,
       "downloads": 7088,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
@@ -20,15 +20,23 @@
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 1718,
+      "likes": 1729,
       "downloads": 25569,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
     },
     {
+      "id": "ricursiveAI/Ripple-65B-Preview",
+      "author": "ricursiveAI",
+      "likes": 403,
+      "downloads": 5087,
+      "pipeline_tag": "general",
+      "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
+    },
+    {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 11117,
+      "likes": 11136,
       "downloads": 2661026,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -36,18 +44,10 @@
     {
       "id": "ccore/Qwen3.5-4B-3D-Coder",
       "author": "ccore",
-      "likes": 915,
+      "likes": 918,
       "downloads": 254053,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
-    },
-    {
-      "id": "ricursiveAI/Ripple-65B-Preview",
-      "author": "ricursiveAI",
-      "likes": 396,
-      "downloads": 5087,
-      "pipeline_tag": "general",
-      "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
     }
   ],
   "papers": [

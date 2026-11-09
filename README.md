@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-08)
+### ⚡ AiVerse AI Radar (2026-11-09)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Qwen3.8-Flash-Next-GSQ-RCO-abliterated-GGUF** (`Model`) |
-| 🌟 **Tool of the Day** | **drama-3** (fishaudio) — [Explore](https://huggingface.co/fishaudio/drama-3) |
+| 📥 **Queued for Review** | **GLM-5.3-SLIM-GGUF** (`Model`), **RFD4-Proteina** (`Dataset`) |
+| 🌟 **Tool of the Day** | **shorts** (autotrust) — [Explore](https://huggingface.co/spaces/autotrust/shorts) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [speridlabs/idol](https://huggingface.co/speridlabs/idol) |
 | 📜 **Top Daily Paper** | [Tools Need Not Speak in Text: Latent Context Compr...](https://huggingface.co/papers/2611.06500) |
-| 🛡️ **Catalog Links Checked** | **20/25** operational |
-| 🕒 **Last Synchronized** | `Sun, 08 Nov 2026 20:56:42 GMT` |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Mon, 09 Nov 2026 01:21:58 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
