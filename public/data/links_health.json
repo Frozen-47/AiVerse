@@ -1,32 +1,27 @@
 {
-  "timestamp": "2026-11-09T08:56:41.753Z",
+  "timestamp": "2026-11-09T20:21:02.160Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
+  "healthy": 21,
+  "broken": 4,
   "issues": [
     {
-      "name": "GPT-4.5",
-      "url": "https://openai.com",
-      "status": 403
-    },
-    {
-      "name": "Poe",
-      "url": "https://poe.com",
-      "status": 403
-    },
-    {
-      "name": "Lovable.dev",
-      "url": "https://lovable.dev",
-      "status": 403
-    },
-    {
-      "name": "Midjourney (Platform)",
+      "name": "Midjourney v6",
       "url": "https://www.midjourney.com/",
       "status": 403
     },
     {
-      "name": "ImageNet",
-      "url": "https://image-net.org",
+      "name": "Whisper",
+      "url": "https://openai.com/research/whisper",
+      "status": 403
+    },
+    {
+      "name": "Gamma",
+      "url": "https://gamma.app",
+      "status": 403
+    },
+    {
+      "name": "ERNIE Bot",
+      "url": "https://yiyan.baidu.com",
       "status": "Timeout"
     }
   ]

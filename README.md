@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-09)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **codex-tool-use-trajectories** (`Dataset`) |
+| 📥 **Queued for Review** | **Qwen3.8-Flash-Next-E384-FP4-V2** (`Model`), **image-to-video** (`Platform`) |
 | 🌟 **Tool of the Day** | **shorts** (autotrust) — [Explore](https://huggingface.co/spaces/autotrust/shorts) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [speridlabs/idol](https://huggingface.co/speridlabs/idol) |
-| 📜 **Top Daily Paper** | [AutoCompress: Automated Hardware-Guided Model Comp...](https://huggingface.co/papers/2611.08290) |
-| 🛡️ **Catalog Links Checked** | **20/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 09 Nov 2026 08:57:30 GMT` |
+| 📜 **Top Daily Paper** | [PCBRouteAgent: How Close Are LLM Agents to Becomin...](https://huggingface.co/papers/2611.08175) |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Synchronized** | `Mon, 09 Nov 2026 20:21:48 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

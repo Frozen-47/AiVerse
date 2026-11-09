@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-11-09T08:56:41.675Z",
+  "timestamp": "2026-11-09T20:21:02.042Z",
   "models": [
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 1453,
-      "downloads": 22854,
+      "likes": 1586,
+      "downloads": 24747,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
     },
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 938,
-      "downloads": 7088,
+      "likes": 1022,
+      "downloads": 11755,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
     },
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 1749,
-      "downloads": 25569,
+      "likes": 1784,
+      "downloads": 27926,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
     },
     {
       "id": "ricursiveAI/Ripple-65B-Preview",
       "author": "ricursiveAI",
-      "likes": 421,
-      "downloads": 5087,
+      "likes": 446,
+      "downloads": 5835,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
     },
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 11161,
-      "downloads": 2661026,
+      "likes": 11244,
+      "downloads": 2720096,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     },
     {
       "id": "ccore/Qwen3.5-4B-3D-Coder",
       "author": "ccore",
-      "likes": 931,
-      "downloads": 254053,
+      "likes": 943,
+      "downloads": 289466,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
     }
   ],
   "papers": [
     {
-      "title": "AutoCompress: Automated Hardware-Guided Model Compression",
-      "summary": "AutoCompress is a hardware-guided compression framework that uses differentiable architecture search and serving-engine cost models to produce heterogeneous LLM architectures meeting latency, throughput, and memory constraints while preserving accuracy.",
-      "upvotes": 1,
-      "arxiv_id": "2611.08290",
-      "url": "https://huggingface.co/papers/2611.08290",
+      "title": "PCBRouteAgent: How Close Are LLM Agents to Becoming PCB Routing Engineers?",
+      "summary": "Automating printed circuit board (PCB) routing requires coordinating board-level connectivity decisions with geometric execution under strict design rules. Alth...",
+      "upvotes": 16,
+      "arxiv_id": "2611.08175",
+      "url": "https://huggingface.co/papers/2611.08175",
+      "githubRepo": "https://github.com/chip-ai-agent/PCBRouteAgent"
+    },
+    {
+      "title": "CPU-ARC: Agentic Reasoning Caching for on-CPU Reasoning Reuse",
+      "summary": "Reasoning caches built from LLM traces can efficiently apply previously derived solutions to new problem instances with robustness and much lower invocation cost than source models.",
+      "upvotes": 5,
+      "arxiv_id": "2611.09891",
+      "url": "https://huggingface.co/papers/2611.09891",
       "githubRepo": null
     },
     {
-      "title": "LongBanana: An Expert-Verified Benchmark for Long-Context Multi-Reference Image Synthesis",
-      "summary": "We introduce LongBanana, to our knowledge the first expert-designed and expert-verified benchmark for long-context multi-reference image synthesis in the age of...",
-      "upvotes": 21,
-      "arxiv_id": "2611.06856",
-      "url": "https://huggingface.co/papers/2611.06856",
-      "githubRepo": "https://github.com/KlingAIResearch/LongBanana"
+      "title": "IWIBench: Evaluating Gradient-Free Model Driven Intra-weight Injection",
+      "summary": "Intra-weight injection lets one model change another model's behaviour by editing its weights directly, without gradients. Such edits can range from altering le...",
+      "upvotes": 4,
+      "arxiv_id": "2611.08647",
+      "url": "https://huggingface.co/papers/2611.08647",
+      "githubRepo": "https://github.com/hcltech-robotics/iwibench"
     },
     {
-      "title": "Static Recovery Is Not Dynamic Stability: Dynamics-Aware Benchmarking of Protein Motif Scaffolding",
-      "summary": "New benchmarks and molecular dynamics frameworks are presented to rigorously evaluate protein scaffold-generation models by assessing dynamic fidelity and structural stability beyond static success.",
-      "upvotes": 0,
-      "arxiv_id": "2611.07723",
-      "url": "https://huggingface.co/papers/2611.07723",
-      "githubRepo": "https://github.com/PROFOUND-HFMI/BILBY-MD"
+      "title": "Human-Centred, Risk-Constrained Evaluation of Financial Document Recognition: Evidence, Critical Errors, and Selective Automation",
+      "summary": "Financial document recognition is often assessed using character and word error rates, although these metrics do not express whether a system preserves the fina...",
+      "upvotes": 5,
+      "arxiv_id": "2611.02775",
+      "url": "https://huggingface.co/papers/2611.02775",
+      "githubRepo": null
     },
     {
-      "title": "P^2-MOPD: Accelerating Multi-Teacher On-Policy Distillation via Parameter Priors",
-      "summary": "P$^2$-MOPD jointly optimizes mixing coefficients and student weights under an on-policy distillation objective, allowing experts to act as parameter priors and achieving faster, more balanced recovery than MOPD.",
-      "upvotes": 10,
-      "arxiv_id": "2611.03953",
-      "url": "https://huggingface.co/papers/2611.03953",
-      "githubRepo": "https://github.com/SinuoWang/P2-MOPD"
-    },
-    {
-      "title": "SplatAnything: Gaussian Spacing Normalization for Feed-forward 3DGS across Arbitrary Scenes",
-      "summary": "SplatAnything applies Gaussian Spacing Normalization to canonicalize scene-level Gaussian spacing statistics, improving feed-forward 3DGS reconstruction across varying scene scales and viewpoints.",
-      "upvotes": 54,
-      "arxiv_id": "2611.08264",
-      "url": "https://huggingface.co/papers/2611.08264",
-      "githubRepo": "https://github.com/zju3dv/SplatAnything"
+      "title": "Steerable Multi-Objective Group-Relative Preference Optimization with Jointly Trained Low-Rank Adapters",
+      "summary": "Language model deployment often requires different trade-offs between competing objectives as user preferences change, yet standard post-training methods typica...",
+      "upvotes": 5,
+      "arxiv_id": "2611.09634",
+      "url": "https://huggingface.co/papers/2611.09634",
+      "githubRepo": "https://github.com/ckarouzos/lambdamix"
     }
   ]
 }

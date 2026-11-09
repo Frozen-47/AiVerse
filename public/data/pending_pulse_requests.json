@@ -1,5 +1,55 @@
 [
   {
+    "name": "image-to-video",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by thea2026. Trending with 55 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "thea2026",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/thea2026/image-to-video",
+    "benchmarks": "Trending Score: 38, Community Likes: 55",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/thea2026/image-to-video",
+    "citations": [
+      {
+        "text": "thea2026/image-to-video on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/thea2026/image-to-video"
+      }
+    ],
+    "created_at": "2026-11-09T20:21:02.023Z"
+  },
+  {
+    "name": "Qwen3.8-Flash-Next-E384-FP4-V2",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by autotrust, trending with over 2,373 community likes and 46,017 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "autotrust",
+    "size": "Open Weights",
+    "architecture": "autotrust image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"autotrust/Qwen3.8-Flash-Next-E384-FP4-V2\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"autotrust/Qwen3.8-Flash-Next-E384-FP4-V2\")",
+    "benchmarks": "Trending Score: 148, Likes: 2,373, Downloads: 46,017",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/autotrust/Qwen3.8-Flash-Next-E384-FP4-V2",
+    "citations": [
+      {
+        "text": "autotrust/Qwen3.8-Flash-Next-E384-FP4-V2 on Hugging Face",
+        "url": "https://huggingface.co/autotrust/Qwen3.8-Flash-Next-E384-FP4-V2"
+      }
+    ],
+    "created_at": "2026-11-09T20:21:02.023Z"
+  },
+  {
     "name": "codex-tool-use-trajectories",
     "type": "Dataset",
     "summary": "Codex Tool-Use Trajectories \t Multi-step tool-use trajectories from a coding agent (OpenAI Codex Desktop) working in a local Windows workspace, cleaned and redacted fro (22 likes, 0 downloads).",
