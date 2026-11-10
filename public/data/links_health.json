@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-11-09T20:21:02.160Z",
+  "timestamp": "2026-11-10T03:55:42.219Z",
   "checked": 25,
   "healthy": 21,
   "broken": 4,
   "issues": [
     {
-      "name": "Midjourney v6",
-      "url": "https://www.midjourney.com/",
+      "name": "Pi",
+      "url": "https://pi.ai",
       "status": 403
     },
     {
-      "name": "Whisper",
-      "url": "https://openai.com/research/whisper",
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
+    },
+    {
+      "name": "GPT-6 Astra",
+      "url": "https://openai.com",
       "status": 403
     },
     {
-      "name": "Gamma",
-      "url": "https://gamma.app",
-      "status": 403
-    },
-    {
-      "name": "ERNIE Bot",
-      "url": "https://yiyan.baidu.com",
+      "name": "ImageNet",
+      "url": "https://image-net.org",
       "status": "Timeout"
     }
   ]

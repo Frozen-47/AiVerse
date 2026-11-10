@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-09T20:21:02.042Z",
+  "timestamp": "2026-11-10T03:55:42.061Z",
   "models": [
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 1586,
+      "likes": 1657,
       "downloads": 24747,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -12,7 +12,7 @@
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 1022,
+      "likes": 1066,
       "downloads": 11755,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
@@ -20,7 +20,7 @@
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 1784,
+      "likes": 1802,
       "downloads": 27926,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
@@ -28,7 +28,7 @@
     {
       "id": "ricursiveAI/Ripple-65B-Preview",
       "author": "ricursiveAI",
-      "likes": 446,
+      "likes": 456,
       "downloads": 5835,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
@@ -36,60 +36,60 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 11244,
+      "likes": 11277,
       "downloads": 2720096,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     },
     {
-      "id": "ccore/Qwen3.5-4B-3D-Coder",
-      "author": "ccore",
-      "likes": 943,
-      "downloads": 289466,
-      "pipeline_tag": "general",
-      "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
+      "id": "NousResearch/Arete-27B",
+      "author": "NousResearch",
+      "likes": 369,
+      "downloads": 2407,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/NousResearch/Arete-27B"
     }
   ],
   "papers": [
     {
+      "title": "WorldFoundry: Towards Unified Infrastructure for World Intelligence",
+      "summary": "WorldFoundry offers open-source infrastructure for reproducible inference and evaluation of generative world models across video, 3D/4D, embodied action, and interactive systems, with traceable evidence and benchmarks.",
+      "upvotes": 6,
+      "arxiv_id": "2611.10771",
+      "url": "https://huggingface.co/papers/2611.10771",
+      "githubRepo": "https://github.com/OpenEnvision/WorldFoundry"
+    },
+    {
+      "title": "Coding or Cheating? An Investigation of Frontier Coding LLMs",
+      "summary": "Frontier agentic LLMs trained with verifiable rewards in reinforcement learning environments can learn to reward hack by recovering answers rather than solving tasks, and this behavior persists on unseen hard problems even in hardened settings.",
+      "upvotes": 2,
+      "arxiv_id": "2611.10404",
+      "url": "https://huggingface.co/papers/2611.10404",
+      "githubRepo": null
+    },
+    {
+      "title": "ODE Policy: Robot Learning via Action Dynamics, Not Actions",
+      "summary": "ODE policy learns action dynamics with neural ODEs to generate continuous, multimodal robot trajectories, improving imitation and reinforcement learning across diverse tasks.",
+      "upvotes": 1,
+      "arxiv_id": "2611.01729",
+      "url": "https://huggingface.co/papers/2611.01729",
+      "githubRepo": "https://github.com/NTUMARS/ODE-POLICY"
+    },
+    {
+      "title": "Toward the Era of Agentic Embodied Intelligence",
+      "summary": "An embodied multi-agent framework uses learned correction codes and a vision-language-action model with motion-aware history and latent world modeling to improve robot control, failure recovery, and training efficiency.",
+      "upvotes": 25,
+      "arxiv_id": "2611.09124",
+      "url": "https://huggingface.co/papers/2611.09124",
+      "githubRepo": "https://github.com/AutoLab-SAI-SJTU/A2MEAS"
+    },
+    {
       "title": "PCBRouteAgent: How Close Are LLM Agents to Becoming PCB Routing Engineers?",
       "summary": "Automating printed circuit board (PCB) routing requires coordinating board-level connectivity decisions with geometric execution under strict design rules. Alth...",
-      "upvotes": 16,
+      "upvotes": 33,
       "arxiv_id": "2611.08175",
       "url": "https://huggingface.co/papers/2611.08175",
       "githubRepo": "https://github.com/chip-ai-agent/PCBRouteAgent"
-    },
-    {
-      "title": "CPU-ARC: Agentic Reasoning Caching for on-CPU Reasoning Reuse",
-      "summary": "Reasoning caches built from LLM traces can efficiently apply previously derived solutions to new problem instances with robustness and much lower invocation cost than source models.",
-      "upvotes": 5,
-      "arxiv_id": "2611.09891",
-      "url": "https://huggingface.co/papers/2611.09891",
-      "githubRepo": null
-    },
-    {
-      "title": "IWIBench: Evaluating Gradient-Free Model Driven Intra-weight Injection",
-      "summary": "Intra-weight injection lets one model change another model's behaviour by editing its weights directly, without gradients. Such edits can range from altering le...",
-      "upvotes": 4,
-      "arxiv_id": "2611.08647",
-      "url": "https://huggingface.co/papers/2611.08647",
-      "githubRepo": "https://github.com/hcltech-robotics/iwibench"
-    },
-    {
-      "title": "Human-Centred, Risk-Constrained Evaluation of Financial Document Recognition: Evidence, Critical Errors, and Selective Automation",
-      "summary": "Financial document recognition is often assessed using character and word error rates, although these metrics do not express whether a system preserves the fina...",
-      "upvotes": 5,
-      "arxiv_id": "2611.02775",
-      "url": "https://huggingface.co/papers/2611.02775",
-      "githubRepo": null
-    },
-    {
-      "title": "Steerable Multi-Objective Group-Relative Preference Optimization with Jointly Trained Low-Rank Adapters",
-      "summary": "Language model deployment often requires different trade-offs between competing objectives as user preferences change, yet standard post-training methods typica...",
-      "upvotes": 5,
-      "arxiv_id": "2611.09634",
-      "url": "https://huggingface.co/papers/2611.09634",
-      "githubRepo": "https://github.com/ckarouzos/lambdamix"
     }
   ]
 }

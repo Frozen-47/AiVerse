@@ -1,1 +1,1 @@
-Qwen3.8-Flash-Next-E384-FP4-V2
+Qwen3.8-27B-DSpine-b16

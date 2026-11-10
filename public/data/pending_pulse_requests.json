@@ -1,5 +1,55 @@
 [
   {
+    "name": "PhysicalAI-Human-1M-100K",
+    "type": "Dataset",
+    "summary": "Across AI, a common route to scale is distilling human experience into models: what people write, see, and create. The physical AI analogue is sensorized human data—egocentric vid (18 likes, 162 downloads).",
+    "task": "Computer Vision",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "org": "nvidia",
+    "size": "n<1K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/PhysicalAI-Human-1M-100K\")",
+    "benchmarks": "Trending Score: 18, Likes: 18, Downloads: 162",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-Human-1M-100K",
+    "citations": [
+      {
+        "text": "nvidia/PhysicalAI-Human-1M-100K on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-Human-1M-100K"
+      }
+    ],
+    "created_at": "2026-11-10T03:55:42.042Z"
+  },
+  {
+    "name": "Qwen3.8-27B-DSpine-b16",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by tencent, trending with over 150 community likes and 1,464 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "tencent",
+    "size": "27B params",
+    "architecture": "tencent text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"tencent/Qwen3.8-27B-DSpine-b16\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"tencent/Qwen3.8-27B-DSpine-b16\")",
+    "benchmarks": "Trending Score: 146, Likes: 150, Downloads: 1,464",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16",
+    "citations": [
+      {
+        "text": "tencent/Qwen3.8-27B-DSpine-b16 on Hugging Face",
+        "url": "https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16"
+      }
+    ],
+    "created_at": "2026-11-10T03:55:42.041Z"
+  },
+  {
     "name": "image-to-video",
     "type": "Platform",
     "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by thea2026. Trending with 55 community stars.",
