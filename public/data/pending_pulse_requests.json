@@ -1,5 +1,80 @@
 [
   {
+    "name": "arc-art",
+    "type": "Dataset",
+    "summary": "ARC art \t Blender projects and artwork videos by ARC (Abdullah Rashed AlSahli), made 2019-2024. The Blender files and videos behind 154 of my artworks. Use them for any (28 likes, 733 downloads).",
+    "task": "Computer Vision",
+    "license": "CC-BY-NC-4.0",
+    "year": 2026,
+    "org": "arc4g",
+    "size": "n<1K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"arc4g/arc-art\")",
+    "benchmarks": "Trending Score: 24, Likes: 28, Downloads: 733",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/arc4g/arc-art",
+    "citations": [
+      {
+        "text": "arc4g/arc-art on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/arc4g/arc-art"
+      }
+    ],
+    "created_at": "2026-11-10T20:40:28.302Z"
+  },
+  {
+    "name": "pixel-search",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by cfahlgren1. Trending with 33 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "cfahlgren1",
+    "size": "STATIC Platform",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/cfahlgren1/pixel-search",
+    "benchmarks": "Trending Score: 29, Community Likes: 33",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/cfahlgren1/pixel-search",
+    "citations": [
+      {
+        "text": "cfahlgren1/pixel-search on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/cfahlgren1/pixel-search"
+      }
+    ],
+    "created_at": "2026-11-10T20:40:28.302Z"
+  },
+  {
+    "name": "MiniMax-H3-Image",
+    "type": "Model",
+    "summary": "High-performance Image Generation open-weights model by MiniMaxAI, trending with over 308 community likes and 667 downloads on Hugging Face.",
+    "task": "Image Generation",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "MiniMaxAI",
+    "size": "Open Weights",
+    "architecture": "MiniMaxAI text to image architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"MiniMaxAI/MiniMax-H3-Image\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"MiniMaxAI/MiniMax-H3-Image\")",
+    "benchmarks": "Trending Score: 307, Likes: 308, Downloads: 667",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+    "citations": [
+      {
+        "text": "MiniMaxAI/MiniMax-H3-Image on Hugging Face",
+        "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
+      }
+    ],
+    "created_at": "2026-11-10T20:40:28.302Z"
+  },
+  {
     "name": "pixel-atlas-glb",
     "type": "Dataset",
     "summary": "Pixel Art Atlas 3D GLB \t 6,194 Low-Poly 3D Pixel game objects built from the 6,194 subjects of Pixel Art Atlas (1.4M 16x16 sprites by Angais, CC0). Each subject is buil (22 likes, 1,403 downloads).",

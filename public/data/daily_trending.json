@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-10T13:11:56.854Z",
+  "timestamp": "2026-11-10T20:40:28.314Z",
   "models": [
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 1755,
+      "likes": 1839,
       "downloads": 26470,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -12,7 +12,7 @@
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 1125,
+      "likes": 1169,
       "downloads": 14378,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
@@ -20,7 +20,7 @@
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 1828,
+      "likes": 1858,
       "downloads": 30721,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
@@ -28,7 +28,7 @@
     {
       "id": "ricursiveAI/Ripple-65B-Preview",
       "author": "ricursiveAI",
-      "likes": 469,
+      "likes": 477,
       "downloads": 6480,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
@@ -36,7 +36,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 11312,
+      "likes": 11358,
       "downloads": 2791606,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -44,7 +44,7 @@
     {
       "id": "NousResearch/Arete-27B",
       "author": "NousResearch",
-      "likes": 380,
+      "likes": 393,
       "downloads": 3431,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/NousResearch/Arete-27B"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "SkinMind: Equipping Agentic RAG with Human-Inspired Graph Probing for Reliable Dermatology AI",
-      "summary": "SkinMind is a multimodal agentic retrieval framework that iteratively probes a large dermatology knowledge graph to gather textual and visual evidence, yielding more accurate answers to dermatology visual questions than direct answering and other retrieval methods.",
-      "upvotes": 2,
-      "arxiv_id": "2611.08935",
-      "url": "https://huggingface.co/papers/2611.08935",
-      "githubRepo": null
-    },
-    {
-      "title": "Training Vision Transformers to Focus: Emergence of Spatial Attention Head Specialization",
-      "summary": "Two visual focusing losses align a Vision Transformer's multi-head attention with image regions, producing specialized spatial attention heads and improving dense prediction such as zero-shot segmentation without labels.",
-      "upvotes": 2,
-      "arxiv_id": "2611.11890",
-      "url": "https://huggingface.co/papers/2611.11890",
-      "githubRepo": "https://github.com/yuji-nozawa/ReFoCo"
-    },
-    {
-      "title": "InfraRSI: Harnessing Recursive Self-Improvement for Training Infrastructure",
-      "summary": "While Recursive Self-Improvement (RSI) accelerates isolated algorithm and kernel synthesis, distributed LLM training depends on tightly coupled launch settings,...",
-      "upvotes": 2,
-      "arxiv_id": "2611.11558",
-      "url": "https://huggingface.co/papers/2611.11558",
-      "githubRepo": null
-    },
-    {
-      "title": "InstantHMR : Real-Time Human Mesh Recovery on Your Phone",
-      "summary": "Real-time 3D human mesh recovery from a single image on mobile devices is a challenging problem with many applications, including robotics, biomechanics, AR/VR,...",
-      "upvotes": 2,
-      "arxiv_id": "2611.09195",
-      "url": "https://huggingface.co/papers/2611.09195",
-      "githubRepo": "https://github.com/Naturalpad-studio/InstantHMR"
-    },
-    {
-      "title": "Spatial Harness: Grounding Spatial Reasoning in Executable World States with Physics Engines",
-      "summary": "Spatial Harness improves vision-language models' spatial reasoning by using a Perceiver to construct explicit executable scene states in a physics engine, where a Reasoner simulates viewpoint changes and provides measurements and rendered views to guide answers.",
+      "title": "FraudBench: A Legal Evaluation of AI Deception",
+      "summary": "We introduce FraudBench, an evaluation of large language models' (LLMs) propensities to recommend, assist, or directly take actions that would constitute fraud ...",
       "upvotes": 1,
-      "arxiv_id": "2611.11344",
-      "url": "https://huggingface.co/papers/2611.11344",
-      "githubRepo": "https://github.com/tmlr-group/Spatial-Harness"
+      "arxiv_id": "2611.12167",
+      "url": "https://huggingface.co/papers/2611.12167",
+      "githubRepo": "https://github.com/GOAL-Lab/FraudBench-Public"
+    },
+    {
+      "title": "onóna: Twin Embeddings with Tied Unembeddings",
+      "summary": "A two-table weight-sharing method for Transformer language models improves output expressiveness and reduces validation loss and perplexity across several architectures and scales at the cost of an extra embedding table and vocabulary projection.",
+      "upvotes": 2,
+      "arxiv_id": "2611.10556",
+      "url": "https://huggingface.co/papers/2611.10556",
+      "githubRepo": null
+    },
+    {
+      "title": "RidgeFill: Training-Free Late-Layer Cache Fill for Faster Prefill",
+      "summary": "RidgeFill shortens prefill by not computing most of a model's upper layers for the prompt. The lower layers run exactly up to a split; from the split layer's st...",
+      "upvotes": 2,
+      "arxiv_id": "2611.09709",
+      "url": "https://huggingface.co/papers/2611.09709",
+      "githubRepo": "https://github.com/Approximate-Science/ridgefill-data"
+    },
+    {
+      "title": "Creative Priming: Decoupling Process from Product to Escape the Creative Paradox",
+      "summary": "A method called creative priming uses a priming model trained with GRPO to generate prompt-specific primers that help a response model produce novel, high-quality, and diverse outputs by separating the creative process from response generation.",
+      "upvotes": 1,
+      "arxiv_id": "2611.11740",
+      "url": "https://huggingface.co/papers/2611.11740",
+      "githubRepo": null
+    },
+    {
+      "title": "Click3R: Interactive Stereo 3D Reconstruction with Sparse Correspondence Clicks",
+      "summary": "A framework for interactive geometric correction enables sparse human correspondence clicks to improve feed-forward 3D reconstruction by injecting constraints through a lightweight adapter.",
+      "upvotes": 1,
+      "arxiv_id": "2611.12875",
+      "url": "https://huggingface.co/papers/2611.12875",
+      "githubRepo": "https://github.com/UVA-Computer-Vision-Lab/click3r"
     }
   ]
 }

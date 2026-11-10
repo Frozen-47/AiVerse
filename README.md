@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-10)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **gemma-4-31B-it-ARA-heretic-GGUF** (`Model`), **smol-training-playbook** (`Platform`), **pixel-atlas-glb** (`Dataset`) |
+| 📥 **Queued for Review** | **MiniMax-H3-Image** (`Model`), **pixel-search** (`Platform`), **arc-art** (`Dataset`) |
 | 🌟 **Tool of the Day** | **china-a-share-l2-level2-limit-order-book-tick-data** (venvoo) — [Explore](https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [speridlabs/idol](https://huggingface.co/speridlabs/idol) |
-| 📜 **Top Daily Paper** | [SkinMind: Equipping Agentic RAG with Human-Inspire...](https://huggingface.co/papers/2611.08935) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Synchronized** | `Tue, 10 Nov 2026 13:12:24 GMT` |
+| 📜 **Top Daily Paper** | [FraudBench: A Legal Evaluation of AI Deception...](https://huggingface.co/papers/2611.12167) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Synchronized** | `Tue, 10 Nov 2026 20:40:57 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

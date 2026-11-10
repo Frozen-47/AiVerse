@@ -1,27 +1,12 @@
 {
-  "timestamp": "2026-11-10T13:11:56.954Z",
+  "timestamp": "2026-11-10T20:40:28.403Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
-      "name": "DALL-E 3",
-      "url": "https://openai.com/dall-e-3",
-      "status": 403
-    },
-    {
-      "name": "GPT-6 Astra",
-      "url": "https://openai.com",
-      "status": 403
-    },
-    {
-      "name": "GPT-4.5",
-      "url": "https://openai.com",
-      "status": 403
-    },
-    {
-      "name": "o3",
-      "url": "https://openai.com",
+      "name": "OpenAI Platform",
+      "url": "https://platform.openai.com",
       "status": 403
     }
   ]
