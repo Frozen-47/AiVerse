@@ -1,1 +1,1 @@
-Qwen3.8-27B-DSpine-b16
+gemma-4-31B-it-ARA-heretic-GGUF

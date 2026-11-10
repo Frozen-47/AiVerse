@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-11-10T03:55:42.061Z",
+  "timestamp": "2026-11-10T13:11:56.854Z",
   "models": [
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 1657,
-      "downloads": 24747,
+      "likes": 1755,
+      "downloads": 26470,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
     },
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 1066,
-      "downloads": 11755,
+      "likes": 1125,
+      "downloads": 14378,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
     },
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 1802,
-      "downloads": 27926,
+      "likes": 1828,
+      "downloads": 30721,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
     },
     {
       "id": "ricursiveAI/Ripple-65B-Preview",
       "author": "ricursiveAI",
-      "likes": 456,
-      "downloads": 5835,
+      "likes": 469,
+      "downloads": 6480,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
     },
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 11277,
-      "downloads": 2720096,
+      "likes": 11312,
+      "downloads": 2791606,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     },
     {
       "id": "NousResearch/Arete-27B",
       "author": "NousResearch",
-      "likes": 369,
-      "downloads": 2407,
+      "likes": 380,
+      "downloads": 3431,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/NousResearch/Arete-27B"
     }
   ],
   "papers": [
     {
-      "title": "WorldFoundry: Towards Unified Infrastructure for World Intelligence",
-      "summary": "WorldFoundry offers open-source infrastructure for reproducible inference and evaluation of generative world models across video, 3D/4D, embodied action, and interactive systems, with traceable evidence and benchmarks.",
-      "upvotes": 6,
-      "arxiv_id": "2611.10771",
-      "url": "https://huggingface.co/papers/2611.10771",
-      "githubRepo": "https://github.com/OpenEnvision/WorldFoundry"
-    },
-    {
-      "title": "Coding or Cheating? An Investigation of Frontier Coding LLMs",
-      "summary": "Frontier agentic LLMs trained with verifiable rewards in reinforcement learning environments can learn to reward hack by recovering answers rather than solving tasks, and this behavior persists on unseen hard problems even in hardened settings.",
+      "title": "SkinMind: Equipping Agentic RAG with Human-Inspired Graph Probing for Reliable Dermatology AI",
+      "summary": "SkinMind is a multimodal agentic retrieval framework that iteratively probes a large dermatology knowledge graph to gather textual and visual evidence, yielding more accurate answers to dermatology visual questions than direct answering and other retrieval methods.",
       "upvotes": 2,
-      "arxiv_id": "2611.10404",
-      "url": "https://huggingface.co/papers/2611.10404",
+      "arxiv_id": "2611.08935",
+      "url": "https://huggingface.co/papers/2611.08935",
       "githubRepo": null
     },
     {
-      "title": "ODE Policy: Robot Learning via Action Dynamics, Not Actions",
-      "summary": "ODE policy learns action dynamics with neural ODEs to generate continuous, multimodal robot trajectories, improving imitation and reinforcement learning across diverse tasks.",
+      "title": "Training Vision Transformers to Focus: Emergence of Spatial Attention Head Specialization",
+      "summary": "Two visual focusing losses align a Vision Transformer's multi-head attention with image regions, producing specialized spatial attention heads and improving dense prediction such as zero-shot segmentation without labels.",
+      "upvotes": 2,
+      "arxiv_id": "2611.11890",
+      "url": "https://huggingface.co/papers/2611.11890",
+      "githubRepo": "https://github.com/yuji-nozawa/ReFoCo"
+    },
+    {
+      "title": "InfraRSI: Harnessing Recursive Self-Improvement for Training Infrastructure",
+      "summary": "While Recursive Self-Improvement (RSI) accelerates isolated algorithm and kernel synthesis, distributed LLM training depends on tightly coupled launch settings,...",
+      "upvotes": 2,
+      "arxiv_id": "2611.11558",
+      "url": "https://huggingface.co/papers/2611.11558",
+      "githubRepo": null
+    },
+    {
+      "title": "InstantHMR : Real-Time Human Mesh Recovery on Your Phone",
+      "summary": "Real-time 3D human mesh recovery from a single image on mobile devices is a challenging problem with many applications, including robotics, biomechanics, AR/VR,...",
+      "upvotes": 2,
+      "arxiv_id": "2611.09195",
+      "url": "https://huggingface.co/papers/2611.09195",
+      "githubRepo": "https://github.com/Naturalpad-studio/InstantHMR"
+    },
+    {
+      "title": "Spatial Harness: Grounding Spatial Reasoning in Executable World States with Physics Engines",
+      "summary": "Spatial Harness improves vision-language models' spatial reasoning by using a Perceiver to construct explicit executable scene states in a physics engine, where a Reasoner simulates viewpoint changes and provides measurements and rendered views to guide answers.",
       "upvotes": 1,
-      "arxiv_id": "2611.01729",
-      "url": "https://huggingface.co/papers/2611.01729",
-      "githubRepo": "https://github.com/NTUMARS/ODE-POLICY"
-    },
-    {
-      "title": "Toward the Era of Agentic Embodied Intelligence",
-      "summary": "An embodied multi-agent framework uses learned correction codes and a vision-language-action model with motion-aware history and latent world modeling to improve robot control, failure recovery, and training efficiency.",
-      "upvotes": 25,
-      "arxiv_id": "2611.09124",
-      "url": "https://huggingface.co/papers/2611.09124",
-      "githubRepo": "https://github.com/AutoLab-SAI-SJTU/A2MEAS"
-    },
-    {
-      "title": "PCBRouteAgent: How Close Are LLM Agents to Becoming PCB Routing Engineers?",
-      "summary": "Automating printed circuit board (PCB) routing requires coordinating board-level connectivity decisions with geometric execution under strict design rules. Alth...",
-      "upvotes": 33,
-      "arxiv_id": "2611.08175",
-      "url": "https://huggingface.co/papers/2611.08175",
-      "githubRepo": "https://github.com/chip-ai-agent/PCBRouteAgent"
+      "arxiv_id": "2611.11344",
+      "url": "https://huggingface.co/papers/2611.11344",
+      "githubRepo": "https://github.com/tmlr-group/Spatial-Harness"
     }
   ]
 }

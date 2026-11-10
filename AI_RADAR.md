@@ -2,27 +2,34 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Tue, 10 Nov 2026 03:56:29 GMT`*
+*Last Synchronized: `Tue, 10 Nov 2026 13:12:24 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (2)
+## 📥 Newly Queued Assets for Review (3)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Qwen3.8-27B-DSpine-b16** (`Model` • *tencent*)
-> High-performance NLP open-weights model by tencent, trending with over 150 community likes and 1,464 downloads on Hugging Face.
+### **gemma-4-31B-it-ARA-heretic-GGUF** (`Model` • *mradermacher*)
+> High-performance NLP open-weights model by mradermacher, trending with over 160 community likes and 42,215 downloads on Hugging Face.
 
 - 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 146, Likes: 150, Downloads: 1,464`
-- 🔗 **Resource Link**: [https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16](https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16)
+- ⚡ **Metrics**: `Trending Score: 148, Likes: 160, Downloads: 42,215`
+- 🔗 **Resource Link**: [https://huggingface.co/mradermacher/gemma-4-31B-it-ARA-heretic-GGUF](https://huggingface.co/mradermacher/gemma-4-31B-it-ARA-heretic-GGUF)
 
-### **PhysicalAI-Human-1M-100K** (`Dataset` • *nvidia*)
-> Across AI, a common route to scale is distilling human experience into models: what people write, see, and create. The physical AI analogue is sensorized human data—egocentric vid (18 likes, 162 downloads).
+### **smol-training-playbook** (`Platform` • *HuggingFaceTB*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceTB. Trending with 3,372 community stars.
 
-- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 18, Likes: 18, Downloads: 162`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/PhysicalAI-Human-1M-100K](https://huggingface.co/datasets/nvidia/PhysicalAI-Human-1M-100K)
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 26, Community Likes: 3,372`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook](https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook)
+
+### **pixel-atlas-glb** (`Dataset` • *codepawl*)
+> Pixel Art Atlas 3D GLB 	 6,194 Low-Poly 3D Pixel game objects built from the 6,194 subjects of Pixel Art Atlas (1.4M 16x16 sprites by Angais, CC0). Each subject is buil (22 likes, 1,403 downloads).
+
+- 🏷️ **Domain & License**: `Computer Vision` • `CC0-1.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 22, Likes: 22, Downloads: 1,403`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/codepawl/pixel-atlas-glb](https://huggingface.co/datasets/codepawl/pixel-atlas-glb)
 
 ---
 
@@ -41,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `speridlabs/idol` | image-to-3d | ❤️ 1,657 | 📥 24,747 | [View](https://huggingface.co/speridlabs/idol) |
-| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 1,066 | 📥 11,755 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 1,802 | 📥 27,926 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
-| `ricursiveAI/Ripple-65B-Preview` | general | ❤️ 456 | 📥 5,835 | [View](https://huggingface.co/ricursiveAI/Ripple-65B-Preview) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 11,277 | 📥 2,720,096 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `NousResearch/Arete-27B` | text-generation | ❤️ 369 | 📥 2,407 | [View](https://huggingface.co/NousResearch/Arete-27B) |
+| `speridlabs/idol` | image-to-3d | ❤️ 1,755 | 📥 26,470 | [View](https://huggingface.co/speridlabs/idol) |
+| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 1,125 | 📥 14,378 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
+| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 1,828 | 📥 30,721 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
+| `ricursiveAI/Ripple-65B-Preview` | general | ❤️ 469 | 📥 6,480 | [View](https://huggingface.co/ricursiveAI/Ripple-65B-Preview) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 11,312 | 📥 2,791,606 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `NousResearch/Arete-27B` | text-generation | ❤️ 380 | 📥 3,431 | [View](https://huggingface.co/NousResearch/Arete-27B) |
 
 
 ---
@@ -56,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **WorldFoundry: Towards Unified Infrastructure for World Intelligence** | 👍 6 | WorldFoundry offers open-source infrastructure for reproducible inference and evaluation of generative world models across video, 3D/4D, embodied action, and interactive systems, with traceable evidence and benchmarks. | [Read](https://huggingface.co/papers/2611.10771) |
-| **Coding or Cheating? An Investigation of Frontier Coding LLMs** | 👍 2 | Frontier agentic LLMs trained with verifiable rewards in reinforcement learning environments can learn to reward hack by recovering answers rather than solving tasks, and this behavior persists on unseen hard problems even in hardened settings. | [Read](https://huggingface.co/papers/2611.10404) |
-| **ODE Policy: Robot Learning via Action Dynamics, Not Actions** | 👍 1 | ODE policy learns action dynamics with neural ODEs to generate continuous, multimodal robot trajectories, improving imitation and reinforcement learning across diverse tasks. | [Read](https://huggingface.co/papers/2611.01729) |
-| **Toward the Era of Agentic Embodied Intelligence** | 👍 25 | An embodied multi-agent framework uses learned correction codes and a vision-language-action model with motion-aware history and latent world modeling to improve robot control, failure recovery, and training efficiency. | [Read](https://huggingface.co/papers/2611.09124) |
-| **PCBRouteAgent: How Close Are LLM Agents to Becoming PCB Routing Engineers?** | 👍 33 | Automating printed circuit board (PCB) routing requires coordinating board-level connectivity decisions with geometric execution under strict design rules. Alth... | [Read](https://huggingface.co/papers/2611.08175) |
+| **SkinMind: Equipping Agentic RAG with Human-Inspired Graph Probing for Reliable Dermatology AI** | 👍 2 | SkinMind is a multimodal agentic retrieval framework that iteratively probes a large dermatology knowledge graph to gather textual and visual evidence, yielding more accurate answers to dermatology visual questions than direct answering and other retrieval methods. | [Read](https://huggingface.co/papers/2611.08935) |
+| **Training Vision Transformers to Focus: Emergence of Spatial Attention Head Specialization** | 👍 2 | Two visual focusing losses align a Vision Transformer's multi-head attention with image regions, producing specialized spatial attention heads and improving dense prediction such as zero-shot segmentation without labels. | [Read](https://huggingface.co/papers/2611.11890) |
+| **InfraRSI: Harnessing Recursive Self-Improvement for Training Infrastructure** | 👍 2 | While Recursive Self-Improvement (RSI) accelerates isolated algorithm and kernel synthesis, distributed LLM training depends on tightly coupled launch settings,... | [Read](https://huggingface.co/papers/2611.11558) |
+| **InstantHMR : Real-Time Human Mesh Recovery on Your Phone** | 👍 2 | Real-time 3D human mesh recovery from a single image on mobile devices is a challenging problem with many applications, including robotics, biomechanics, AR/VR,... | [Read](https://huggingface.co/papers/2611.09195) |
+| **Spatial Harness: Grounding Spatial Reasoning in Executable World States with Physics Engines** | 👍 1 | Spatial Harness improves vision-language models' spatial reasoning by using a Perceiver to construct explicit executable scene states in a physics engine, where a Reasoner simulates viewpoint changes and provides measurements and rendered views to guide answers. | [Read](https://huggingface.co/papers/2611.11344) |
 
 
 ---

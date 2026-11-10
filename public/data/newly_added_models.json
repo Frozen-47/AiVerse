@@ -4,6 +4,84 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "gemma-4-31B-it-ARA-heretic-GGUF",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by mradermacher, trending with over 160 community likes and 42,215 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "mradermacher",
+        "size": "31B params",
+        "architecture": "mradermacher transformer architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"mradermacher/gemma-4-31B-it-ARA-heretic-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"mradermacher/gemma-4-31B-it-ARA-heretic-GGUF\")",
+        "benchmarks": "Trending Score: 148, Likes: 160, Downloads: 42,215",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/mradermacher/gemma-4-31B-it-ARA-heretic-GGUF",
+        "citations": [
+          {
+            "text": "mradermacher/gemma-4-31B-it-ARA-heretic-GGUF on Hugging Face",
+            "url": "https://huggingface.co/mradermacher/gemma-4-31B-it-ARA-heretic-GGUF"
+          }
+        ]
+      },
+      {
+        "name": "smol-training-playbook",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceTB. Trending with 3,372 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "HuggingFaceTB",
+        "size": "DOCKER Platform",
+        "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook",
+        "benchmarks": "Trending Score: 26, Community Likes: 3,372",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook",
+        "citations": [
+          {
+            "text": "HuggingFaceTB/smol-training-playbook on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook"
+          }
+        ]
+      },
+      {
+        "name": "pixel-atlas-glb",
+        "type": "Dataset",
+        "summary": "Pixel Art Atlas 3D GLB \t 6,194 Low-Poly 3D Pixel game objects built from the 6,194 subjects of Pixel Art Atlas (1.4M 16x16 sprites by Angais, CC0). Each subject is buil (22 likes, 1,403 downloads).",
+        "task": "Computer Vision",
+        "license": "CC0-1.0",
+        "year": 2026,
+        "org": "codepawl",
+        "size": "1K<n<10K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"codepawl/pixel-atlas-glb\")",
+        "benchmarks": "Trending Score: 22, Likes: 22, Downloads: 1,403",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/codepawl/pixel-atlas-glb",
+        "citations": [
+          {
+            "text": "codepawl/pixel-atlas-glb on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/codepawl/pixel-atlas-glb"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-10",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Qwen3.8-27B-DSpine-b16",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by tencent, trending with over 150 community likes and 1,464 downloads on Hugging Face.",
@@ -5964,84 +6042,6 @@
           {
             "text": "DeepLethe/FDE-Gym on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/DeepLethe/FDE-Gym"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-16",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "Muse-Spark-Open-816B-A42B",
-        "type": "Model",
-        "summary": "High-performance Multimodal open-weights model by meta-models, trending with over 374 community likes and 815 downloads on Hugging Face.",
-        "task": "Multimodal",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "meta-models",
-        "size": "816B params",
-        "architecture": "meta-models image text to text architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"meta-models/Muse-Spark-Open-816B-A42B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"meta-models/Muse-Spark-Open-816B-A42B\")",
-        "benchmarks": "Trending Score: 355, Likes: 374, Downloads: 815",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
-        "citations": [
-          {
-            "text": "meta-models/Muse-Spark-Open-816B-A42B on Hugging Face",
-            "url": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
-          }
-        ]
-      },
-      {
-        "name": "flux-3-image-klein",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by black-forest-labs. Trending with 58 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "black-forest-labs",
-        "size": "GRADIO Platform",
-        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
-        "benchmarks": "Trending Score: 57, Community Likes: 58",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein",
-        "citations": [
-          {
-            "text": "black-forest-labs/flux-3-image-klein on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/black-forest-labs/flux-3-image-klein"
-          }
-        ]
-      },
-      {
-        "name": "lunara-art-eval",
-        "type": "Dataset",
-        "summary": "Moonworks Lunara Art Eval \t Paper: Moonworks Lunara: Modeling Artistic Intelligence by Wang et al. (2026). An image-generation evaluation dataset containing 8,000 gener (43 likes, 1,878 downloads).",
-        "task": "Computer Vision",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "moonworks",
-        "size": "1K<n<10K",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"moonworks/lunara-art-eval\")",
-        "benchmarks": "Trending Score: 26, Likes: 43, Downloads: 1,878",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/moonworks/lunara-art-eval",
-        "citations": [
-          {
-            "text": "moonworks/lunara-art-eval on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/moonworks/lunara-art-eval"
           }
         ]
       }

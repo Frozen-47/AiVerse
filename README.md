@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-10)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Qwen3.8-27B-DSpine-b16** (`Model`), **PhysicalAI-Human-1M-100K** (`Dataset`) |
+| 📥 **Queued for Review** | **gemma-4-31B-it-ARA-heretic-GGUF** (`Model`), **smol-training-playbook** (`Platform`), **pixel-atlas-glb** (`Dataset`) |
 | 🌟 **Tool of the Day** | **china-a-share-l2-level2-limit-order-book-tick-data** (venvoo) — [Explore](https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [speridlabs/idol](https://huggingface.co/speridlabs/idol) |
-| 📜 **Top Daily Paper** | [WorldFoundry: Towards Unified Infrastructure for W...](https://huggingface.co/papers/2611.10771) |
+| 📜 **Top Daily Paper** | [SkinMind: Equipping Agentic RAG with Human-Inspire...](https://huggingface.co/papers/2611.08935) |
 | 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Synchronized** | `Tue, 10 Nov 2026 03:56:29 GMT` |
+| 🕒 **Last Synchronized** | `Tue, 10 Nov 2026 13:12:24 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

@@ -1,18 +1,13 @@
 {
-  "timestamp": "2026-11-10T03:55:42.219Z",
+  "timestamp": "2026-11-10T13:11:56.954Z",
   "checked": 25,
   "healthy": 21,
   "broken": 4,
   "issues": [
     {
-      "name": "Pi",
-      "url": "https://pi.ai",
+      "name": "DALL-E 3",
+      "url": "https://openai.com/dall-e-3",
       "status": 403
-    },
-    {
-      "name": "Grammarly",
-      "url": "https://www.grammarly.com",
-      "status": 405
     },
     {
       "name": "GPT-6 Astra",
@@ -20,9 +15,14 @@
       "status": 403
     },
     {
-      "name": "ImageNet",
-      "url": "https://image-net.org",
-      "status": "Timeout"
+      "name": "GPT-4.5",
+      "url": "https://openai.com",
+      "status": 403
+    },
+    {
+      "name": "o3",
+      "url": "https://openai.com",
+      "status": 403
     }
   ]
 }
