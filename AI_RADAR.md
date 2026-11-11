@@ -2,20 +2,27 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Wed, 11 Nov 2026 01:40:19 GMT`*
+*Last Synchronized: `Wed, 11 Nov 2026 08:44:34 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (1)
+## 📥 Newly Queued Assets for Review (2)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **hyperflow-h3-flash** (`Model` • *VideoRebirthAI*)
-> High-performance Multimodal open-weights model by VideoRebirthAI, trending with over 175 community likes and 110,752 downloads on Hugging Face.
+### **Underdog-Woof** (`Model` • *ConwayResearch*)
+> High-performance Audio open-weights model by ConwayResearch, trending with over 152 community likes and 10 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 167, Likes: 175, Downloads: 110,752`
-- 🔗 **Resource Link**: [https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash](https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash)
+- 🏷️ **Domain & License**: `Audio` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 148, Likes: 152, Downloads: 10`
+- 🔗 **Resource Link**: [https://huggingface.co/ConwayResearch/Underdog-Woof](https://huggingface.co/ConwayResearch/Underdog-Woof)
+
+### **asset-index** (`Dataset` • *codepawl*)
+> Asset Index 	 37,668 3D assets from 6 libraries in one table. An AI agent, a model or an animator can ask for "a wooden crate, 0.5 m, game tier" and get the right file. (21 likes, 454 downloads).
+
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 20, Likes: 21, Downloads: 454`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/codepawl/asset-index](https://huggingface.co/datasets/codepawl/asset-index)
 
 ---
 
@@ -34,12 +41,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 1,205 | 📥 14,378 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| `speridlabs/idol` | image-to-3d | ❤️ 1,874 | 📥 26,470 | [View](https://huggingface.co/speridlabs/idol) |
-| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 1,867 | 📥 30,721 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
-| `ricursiveAI/Ripple-65B-Preview` | general | ❤️ 487 | 📥 6,480 | [View](https://huggingface.co/ricursiveAI/Ripple-65B-Preview) |
-| `MiniMaxAI/MiniMax-H3-Image` | text-to-image | ❤️ 393 | 📥 667 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 11,384 | 📥 2,791,606 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 1,274 | 📥 14,378 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
+| `speridlabs/idol` | image-to-3d | ❤️ 1,908 | 📥 26,470 | [View](https://huggingface.co/speridlabs/idol) |
+| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 1,887 | 📥 30,721 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
+| `MiniMaxAI/MiniMax-H3-Image` | text-to-image | ❤️ 541 | 📥 667 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
+| `ricursiveAI/Ripple-65B-Preview` | general | ❤️ 490 | 📥 6,480 | [View](https://huggingface.co/ricursiveAI/Ripple-65B-Preview) |
+| `NousResearch/Arete-27B` | text-generation | ❤️ 416 | 📥 3,431 | [View](https://huggingface.co/NousResearch/Arete-27B) |
 
 
 ---
@@ -49,11 +56,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **EmoHarness: Boosting Multimodal Emotion Understanding with Meta-Harness Evolving** | 👍 1 | Small multimodal models can misjudge emotion when words, voice, and visual cues conflict. We present EmoHarness, which runs such a model, the frozen student, in... | [Read](https://huggingface.co/papers/2611.11994) |
-| **Infrathon: Benchmarking Language Agents for Real-World, Long-Horizon AI Infra Optimization** | 👍 3 | In this work, we study whether frontier agent can continually improve real-world AI infrastructure over long horizons. We introduce Infrathon, a benchmark of di... | [Read](https://huggingface.co/papers/2611.11995) |
-| **e-means: outperforming k-means (in one-tenth the epochs)** | 👍 1 | Lloyd's k-means algorithm is a long-running standard for clustering, with applications in data analysis, retrieval, quantization and data curation. In this pape... | [Read](https://huggingface.co/papers/2611.09501) |
-| **MotionGraphicsBench: Evaluating Motion Graphics Generation with Programmatic Verification** | 👍 9 | Large language models can generate motion graphics from static images and natural language requests, but it remains difficult to evaluate how well models can fo... | [Read](https://huggingface.co/papers/2611.10592) |
-| **FraudBench: A Legal Evaluation of AI Deception** | 👍 2 | We introduce FraudBench, an evaluation of large language models' (LLMs) propensities to recommend, assist, or directly take actions that would constitute fraud ... | [Read](https://huggingface.co/papers/2611.12167) |
+| **FINCOSMOS: An Open-World Evaluation Paradigm for Agents in Finance** | 👍 3 | Language agents increasingly work for users on the open Web, and finance is where trusting them is hardest. The data must come from the Web, the strategy lives ... | [Read](https://huggingface.co/papers/2611.07464) |
+| **WaveGen: Truly End-to-End Waveform Generation via Internal Spectral Trajectory Learning** | 👍 2 | WaveGen is a fully end-to-end diffusion framework for text-to-waveform generation that jointly learns spectral and waveform trajectories via Spectral Forcing without external audio codecs, vocoders, latent models, alignment modules, or self-supervised representations, achieving state-of-the-art text-to-speech results. | [Read](https://huggingface.co/papers/2611.12527) |
+| **EarthRecord: From Pixels to Land Change with Multimodal Agents over Four Decades of Satellite Imagery** | 👍 4 | While multimodal agents now carry out complex data analysis with tools, their ability to turn decades of satellite imagery into reliable land-change analysis, c... | [Read](https://huggingface.co/papers/2611.12934) |
+| **Shortcuts and Boundaries: Verifiable RL Misalignment and Contextual Safety Learning** | 👍 3 | Reinforcement learning agents can exploit verifiable reward-context conflicts to earn higher rewards through noncompliant shortcuts, while contextual penalties and safety learning can improve compliance without sacrificing task capability. | [Read](https://huggingface.co/papers/2611.12865) |
+| **Are Dense Rewards Worth Their Tokens in GRPO?** | 👍 3 | At matched compute, dense process rewards such as Monte-Carlo rewards underperform standard GRPO for language-model reasoning, while selecting prompts with predicted success near 1/2 yields small consistent accuracy gains. | [Read](https://huggingface.co/papers/2611.13560) |
 
 
 ---
@@ -66,7 +73,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
 - **Dependency Security**: `43` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

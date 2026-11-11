@@ -1,5 +1,55 @@
 [
   {
+    "name": "asset-index",
+    "type": "Dataset",
+    "summary": "Asset Index \t 37,668 3D assets from 6 libraries in one table. An AI agent, a model or an animator can ask for \"a wooden crate, 0.5 m, game tier\" and get the right file. (21 likes, 454 downloads).",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "codepawl",
+    "size": "10K<n<100K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"codepawl/asset-index\")",
+    "benchmarks": "Trending Score: 20, Likes: 21, Downloads: 454",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/codepawl/asset-index",
+    "citations": [
+      {
+        "text": "codepawl/asset-index on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/codepawl/asset-index"
+      }
+    ],
+    "created_at": "2026-11-11T08:44:03.133Z"
+  },
+  {
+    "name": "Underdog-Woof",
+    "type": "Model",
+    "summary": "High-performance Audio open-weights model by ConwayResearch, trending with over 152 community likes and 10 downloads on Hugging Face.",
+    "task": "Audio",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "ConwayResearch",
+    "size": "Open Weights",
+    "architecture": "ConwayResearch text to speech architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ConwayResearch/Underdog-Woof\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ConwayResearch/Underdog-Woof\")",
+    "benchmarks": "Trending Score: 148, Likes: 152, Downloads: 10",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/ConwayResearch/Underdog-Woof",
+    "citations": [
+      {
+        "text": "ConwayResearch/Underdog-Woof on Hugging Face",
+        "url": "https://huggingface.co/ConwayResearch/Underdog-Woof"
+      }
+    ],
+    "created_at": "2026-11-11T08:44:03.133Z"
+  },
+  {
     "name": "hyperflow-h3-flash",
     "type": "Model",
     "summary": "High-performance Multimodal open-weights model by VideoRebirthAI, trending with over 175 community likes and 110,752 downloads on Hugging Face.",

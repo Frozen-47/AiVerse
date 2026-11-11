@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-11T01:39:43.963Z",
+  "timestamp": "2026-11-11T08:44:03.146Z",
   "models": [
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 1205,
+      "likes": 1274,
       "downloads": 14378,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
@@ -12,7 +12,7 @@
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 1874,
+      "likes": 1908,
       "downloads": 26470,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -20,76 +20,76 @@
     {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 1867,
+      "likes": 1887,
       "downloads": 30721,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
     },
     {
-      "id": "ricursiveAI/Ripple-65B-Preview",
-      "author": "ricursiveAI",
-      "likes": 487,
-      "downloads": 6480,
-      "pipeline_tag": "general",
-      "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
-    },
-    {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 393,
+      "likes": 541,
       "downloads": 667,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
     },
     {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 11384,
-      "downloads": 2791606,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5"
+      "id": "ricursiveAI/Ripple-65B-Preview",
+      "author": "ricursiveAI",
+      "likes": 490,
+      "downloads": 6480,
+      "pipeline_tag": "general",
+      "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
+    },
+    {
+      "id": "NousResearch/Arete-27B",
+      "author": "NousResearch",
+      "likes": 416,
+      "downloads": 3431,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/NousResearch/Arete-27B"
     }
   ],
   "papers": [
     {
-      "title": "EmoHarness: Boosting Multimodal Emotion Understanding with Meta-Harness Evolving",
-      "summary": "Small multimodal models can misjudge emotion when words, voice, and visual cues conflict. We present EmoHarness, which runs such a model, the frozen student, in...",
-      "upvotes": 1,
-      "arxiv_id": "2611.11994",
-      "url": "https://huggingface.co/papers/2611.11994",
-      "githubRepo": "https://github.com/Emo-Harness/EmoHarness"
-    },
-    {
-      "title": "Infrathon: Benchmarking Language Agents for Real-World, Long-Horizon AI Infra Optimization",
-      "summary": "In this work, we study whether frontier agent can continually improve real-world AI infrastructure over long horizons. We introduce Infrathon, a benchmark of di...",
+      "title": "FINCOSMOS: An Open-World Evaluation Paradigm for Agents in Finance",
+      "summary": "Language agents increasingly work for users on the open Web, and finance is where trusting them is hardest. The data must come from the Web, the strategy lives ...",
       "upvotes": 3,
-      "arxiv_id": "2611.11995",
-      "url": "https://huggingface.co/papers/2611.11995",
+      "arxiv_id": "2611.07464",
+      "url": "https://huggingface.co/papers/2611.07464",
       "githubRepo": null
     },
     {
-      "title": "e-means: outperforming k-means (in one-tenth the epochs)",
-      "summary": "Lloyd's k-means algorithm is a long-running standard for clustering, with applications in data analysis, retrieval, quantization and data curation. In this pape...",
-      "upvotes": 1,
-      "arxiv_id": "2611.09501",
-      "url": "https://huggingface.co/papers/2611.09501",
-      "githubRepo": "https://github.com/facebookresearch/faiss"
-    },
-    {
-      "title": "MotionGraphicsBench: Evaluating Motion Graphics Generation with Programmatic Verification",
-      "summary": "Large language models can generate motion graphics from static images and natural language requests, but it remains difficult to evaluate how well models can fo...",
-      "upvotes": 9,
-      "arxiv_id": "2611.10592",
-      "url": "https://huggingface.co/papers/2611.10592",
-      "githubRepo": null
-    },
-    {
-      "title": "FraudBench: A Legal Evaluation of AI Deception",
-      "summary": "We introduce FraudBench, an evaluation of large language models' (LLMs) propensities to recommend, assist, or directly take actions that would constitute fraud ...",
+      "title": "WaveGen: Truly End-to-End Waveform Generation via Internal Spectral Trajectory Learning",
+      "summary": "WaveGen is a fully end-to-end diffusion framework for text-to-waveform generation that jointly learns spectral and waveform trajectories via Spectral Forcing without external audio codecs, vocoders, latent models, alignment modules, or self-supervised representations, achieving state-of-the-art text-to-speech results.",
       "upvotes": 2,
-      "arxiv_id": "2611.12167",
-      "url": "https://huggingface.co/papers/2611.12167",
-      "githubRepo": "https://github.com/GOAL-Lab/FraudBench-Public"
+      "arxiv_id": "2611.12527",
+      "url": "https://huggingface.co/papers/2611.12527",
+      "githubRepo": "https://github.com/sh-lee-prml/WaveGen"
+    },
+    {
+      "title": "EarthRecord: From Pixels to Land Change with Multimodal Agents over Four Decades of Satellite Imagery",
+      "summary": "While multimodal agents now carry out complex data analysis with tools, their ability to turn decades of satellite imagery into reliable land-change analysis, c...",
+      "upvotes": 4,
+      "arxiv_id": "2611.12934",
+      "url": "https://huggingface.co/papers/2611.12934",
+      "githubRepo": "https://github.com/ranranrannervous/EarthRecord"
+    },
+    {
+      "title": "Shortcuts and Boundaries: Verifiable RL Misalignment and Contextual Safety Learning",
+      "summary": "Reinforcement learning agents can exploit verifiable reward-context conflicts to earn higher rewards through noncompliant shortcuts, while contextual penalties and safety learning can improve compliance without sacrificing task capability.",
+      "upvotes": 3,
+      "arxiv_id": "2611.12865",
+      "url": "https://huggingface.co/papers/2611.12865",
+      "githubRepo": null
+    },
+    {
+      "title": "Are Dense Rewards Worth Their Tokens in GRPO?",
+      "summary": "At matched compute, dense process rewards such as Monte-Carlo rewards underperform standard GRPO for language-model reasoning, while selecting prompts with predicted success near 1/2 yields small consistent accuracy gains.",
+      "upvotes": 3,
+      "arxiv_id": "2611.13560",
+      "url": "https://huggingface.co/papers/2611.13560",
+      "githubRepo": null
     }
   ]
 }

@@ -1,22 +1,32 @@
 {
-  "timestamp": "2026-11-11T01:39:44.155Z",
+  "timestamp": "2026-11-11T08:44:03.244Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 20,
+  "broken": 5,
   "issues": [
     {
-      "name": "Grammarly",
-      "url": "https://www.grammarly.com",
-      "status": 405
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
+      "status": 403
     },
     {
-      "name": "LTX-2.3-10Eros",
-      "url": "https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros",
-      "status": 401
+      "name": "GPT-4",
+      "url": "https://openai.com/gpt-4",
+      "status": 403
     },
     {
-      "name": "Arena-Hard-Auto",
-      "url": "https://github.com/sunshanghai/arena-hard-auto",
+      "name": "o3",
+      "url": "https://openai.com",
+      "status": 403
+    },
+    {
+      "name": "Phind",
+      "url": "https://www.phind.com",
+      "status": 403
+    },
+    {
+      "name": "OpenWebText",
+      "url": "https://huggingface.co/datasets/openwebtext",
       "status": 404
     }
   ]
