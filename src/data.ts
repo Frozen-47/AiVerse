@@ -13,7 +13,7 @@ export const entries: Entry[] = [
     "architecture": "Cloud multimodal pipeline combining speech bubble segmentation, text in-painting, neural machine translation, and typography rendering with web studio and REST API.",
     "usage": "curl -X POST https://api.mangatranslate.com/v1/translate \\\n  -H \"Authorization: Bearer YOUR_API_KEY\" \\\n  -F \"image=@comic_page.png\" \\\n  -F \"target_lang=en\"",
     "benchmarks": "Supports 30+ languages, batch image translation, style-preserving font matching, and daily free check-in credits.",
-    "limitations": "Free tier has daily credit limits; enterprise volume, advanced Studio features, and API access require a paid plan.",
+    "limitations": "Free tier has daily credit limits; Enterprise volume, advanced Studio editing features, and high-throughput API access require a paid subscription.",
     "popular": false,
     "url": "https://www.mangatranslate.com/ko/ai-manga-translator/",
     "citations": [

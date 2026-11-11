@@ -653,14 +653,13 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 </div>
 
                 {/* Subtitle Chips Row */}
-                <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs text-[#5f6368] dark:text-[#8e918f] mb-3 sm:mb-3.5">
-                  <span className={`text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-md border ${typeBadge(entry.type, t)}`}>
+                <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs text-[#5f6368] dark:text-[#8e918f] mb-3.5">
+                  <span className={`text-[10.5px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-lg border ${typeBadge(entry.type, t)}`}>
                     {entry.type}
                   </span>
-                  <span className={`text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-md border ${taskBadge(entry.task, t)}`}>
+                  <span className={`text-[10.5px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-lg border ${taskBadge(entry.task, t)}`}>
                     {entry.task}
                   </span>
-                  <span className="opacity-25 px-0.5">•</span>
                   {onViewEcosystem && entry.org ? (
                     <button
                       type="button"
@@ -668,37 +667,29 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                         onClose();
                         onViewEcosystem(entry.org);
                       }}
-                      className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md hover:bg-neutral-100 dark:hover:bg-white/[0.06] hover:text-[#1a73e8] dark:hover:text-[#a8c7fa] cursor-pointer group/org transition-colors"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[#dadce0] dark:border-[#3c4043]/60 bg-white/70 dark:bg-white/[0.04] hover:bg-neutral-100 dark:hover:bg-white/[0.08] hover:text-[#1a73e8] dark:hover:text-[#a8c7fa] cursor-pointer group/org transition-colors"
                       title={`View ${entry.org} Ecosystem`}
                     >
                       <Building2 size={12} className="opacity-70 group-hover/org:text-[#1a73e8] dark:group-hover/org:text-[#a8c7fa]" />
                       <span className="font-semibold text-[#202124] dark:text-[#e3e3e3] group-hover/org:text-[#1a73e8] dark:group-hover/org:text-[#a8c7fa]">{entry.org}</span>
-                      <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400 font-medium border border-blue-500/20">
-                        Ecosystem ↗
-                      </span>
                     </button>
                   ) : (
-                    <span className="inline-flex items-center gap-1.5 px-1.5 py-0.5">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[#dadce0] dark:border-[#3c4043]/60 bg-white/70 dark:bg-white/[0.04]">
                       <Building2 size={12} className="opacity-70" />
                       <span className="font-semibold text-[#202124] dark:text-[#e3e3e3]">{entry.org}</span>
                     </span>
                   )}
-                  <span className="opacity-25 px-0.5">•</span>
-                  <span className="inline-flex items-center gap-1.5 px-1.5 py-0.5">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[#dadce0] dark:border-[#3c4043]/60 bg-white/70 dark:bg-white/[0.04]">
                     <Calendar size={12} className="opacity-70" />
                     <span>{entry.year}</span>
                   </span>
                   {entry.size && entry.size !== "N/A" && entry.size !== "Unknown" && (
-                    <>
-                      <span className="opacity-25 px-0.5">•</span>
-                      <span className="inline-flex items-center gap-1.5 px-1.5 py-0.5">
-                        <Layers size={12} className="opacity-70" />
-                        <span>{entry.size}</span>
-                      </span>
-                    </>
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[#dadce0] dark:border-[#3c4043]/60 bg-white/70 dark:bg-white/[0.04]">
+                      <Layers size={12} className="opacity-70" />
+                      <span>{entry.size}</span>
+                    </span>
                   )}
-                  <span className="opacity-25 px-0.5">•</span>
-                  <span className="inline-flex items-center gap-1.5 px-1.5 py-0.5">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[#dadce0] dark:border-[#3c4043]/60 bg-white/70 dark:bg-white/[0.04]">
                     <ShieldCheck size={12} className="opacity-70" />
                     <span>{entry.license}</span>
                   </span>
@@ -808,18 +799,18 @@ export const DetailModal: React.FC<DetailModalProps> = ({
           )}
 
           <div
-            className={`grid grid-cols-1 lg:grid-cols-12 gap-6 ${
+            className={`grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 ${
               !user ? "opacity-25 blur-[4px] pointer-events-none select-none max-h-[460px] overflow-hidden" : ""
             }`}
             {...(!user ? { inert: true } : {})}
           >
             {/* Left Main Content Column (8 cols on desktop) */}
-            <div className="lg:col-span-8 space-y-5">
+            <div className="lg:col-span-8 space-y-6">
               {/* TAB 1: OVERVIEW */}
               {activeTab === "overview" && (
-                <div className="space-y-5">
+                <div className="space-y-6">
                   {/* Google Quick Specs Grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
                     <div
                       onClick={() => {
                         if (onViewEcosystem && entry.org) {
@@ -827,14 +818,14 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                           onViewEcosystem(entry.org);
                         }
                       }}
-                      className={`p-3.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20] transition-all ${
+                      className={`p-4 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20] transition-all ${
                         onViewEcosystem && entry.org
                           ? "cursor-pointer hover:border-blue-500/40 hover:bg-blue-500/[0.03] group/dev"
                           : ""
                       }`}
                       title={onViewEcosystem && entry.org ? `Explore ${entry.org} Ecosystem` : undefined}
                     >
-                      <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-[#1a73e8] dark:text-[#a8c7fa] mb-1">
+                      <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-[#1a73e8] dark:text-[#a8c7fa] mb-1.5">
                         <div className="flex items-center gap-1.5">
                           <Building2 size={12} />
                           <span>Developer</span>
@@ -850,8 +841,8 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                       </p>
                     </div>
 
-                    <div className="p-3.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-purple-500 mb-1">
+                    <div className="p-4 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-purple-500 mb-1.5">
                         <Layers size={12} />
                         <span>Parameters</span>
                       </div>
@@ -860,8 +851,8 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                       </p>
                     </div>
 
-                    <div className="p-3.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-[#1a73e8] dark:text-[#a8c7fa] mb-1">
+                    <div className="p-4 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-[#1a73e8] dark:text-[#a8c7fa] mb-1.5">
                         <Sparkles size={12} />
                         <span>Primary Task</span>
                       </div>
@@ -870,8 +861,8 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                       </p>
                     </div>
 
-                    <div className="p-3.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-500 mb-1">
+                    <div className="p-4 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-500 mb-1.5">
                         <ShieldCheck size={12} />
                         <span>License</span>
                       </div>
@@ -882,39 +873,44 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                   </div>
 
                   {/* Architecture & Engineering Card */}
-                  <section className="p-5 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
-                    <div className="flex items-center gap-2 mb-2.5">
+                  <section className="p-5 sm:p-6 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
+                    <div className="flex items-center gap-2 mb-3">
                       <Cpu size={16} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
                       <h2 className="text-sm font-bold text-[#202124] dark:text-[#e3e3e3]">
                         Technical Architecture
                       </h2>
                     </div>
-                    <p className="text-xs sm:text-[13px] leading-relaxed text-[#3c4043] dark:text-[#c4c7c5]">
+                    <p className="text-xs sm:text-[13.5px] leading-relaxed text-[#3c4043] dark:text-[#c4c7c5]">
                       {entry.architecture}
                     </p>
                   </section>
 
                   {/* Responsible AI & Safety Limitations */}
-                  <section className="p-5 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
-                    <div className="flex items-center gap-2 mb-3">
-                      <ShieldAlert size={16} className="text-amber-500" />
-                      <div>
-                        <h2 className="text-sm font-bold text-[#202124] dark:text-[#e3e3e3]">
-                          Responsible AI & Constraints
-                        </h2>
-                      </div>
+                  <section className="p-5 sm:p-6 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
+                    <div className="flex items-center gap-2 mb-3.5">
+                      <ShieldAlert size={17} className="text-amber-500" />
+                      <h2 className="text-sm font-bold text-[#202124] dark:text-[#e3e3e3]">
+                        Responsible AI & Constraints
+                      </h2>
                     </div>
 
-                    <div className="flex flex-wrap gap-2">
-                      {entry.limitations.split(",").map((l, i) => (
-                        <div
-                          key={i}
-                          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400"
-                        >
-                          <AlertTriangle size={12} className="shrink-0" />
-                          <span>{l.trim()}</span>
-                        </div>
-                      ))}
+                    <div className="space-y-2.5">
+                      {(entry.limitations.includes(";")
+                        ? entry.limitations.split(";")
+                        : [entry.limitations]
+                      ).map((l, i) => {
+                        const trimmed = l.trim();
+                        if (!trimmed) return null;
+                        return (
+                          <div
+                            key={i}
+                            className="flex items-start gap-2.5 p-3 sm:p-3.5 rounded-xl bg-amber-500/8 dark:bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-300 text-xs sm:text-[13px] leading-relaxed"
+                          >
+                            <AlertTriangle size={15} className="shrink-0 mt-0.5 text-amber-500" />
+                            <span>{trimmed}</span>
+                          </div>
+                        );
+                      })}
                     </div>
                   </section>
 
@@ -1153,14 +1149,14 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             <aside className="lg:col-span-4 space-y-4">
               <div className="sticky top-28 space-y-4">
                 {/* Card 1: Resource Information */}
-                <div className="p-4 sm:p-5 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#5f6368] dark:text-[#8e918f] mb-3 flex items-center gap-1.5">
+                <div className="p-5 sm:p-6 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#5f6368] dark:text-[#8e918f] mb-4 flex items-center gap-1.5">
                     <Sparkles size={13} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
                     Resource Information
                   </h3>
 
-                  <div className="space-y-2.5 text-xs">
-                    <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
+                  <div className="space-y-3 text-xs">
+                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
                       <span className="text-[#5f6368] dark:text-[#8e918f] flex items-center gap-1.5">
                         <Building2 size={13} /> Organization
                       </span>
@@ -1169,7 +1165,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
+                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
                       <span className="text-[#5f6368] dark:text-[#8e918f] flex items-center gap-1.5">
                         <Layers size={13} /> Size / Parameters
                       </span>
@@ -1178,7 +1174,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
+                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
                       <span className="text-[#5f6368] dark:text-[#8e918f] flex items-center gap-1.5">
                         <Sparkles size={13} /> Task
                       </span>
@@ -1187,7 +1183,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
+                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
                       <span className="text-[#5f6368] dark:text-[#8e918f] flex items-center gap-1.5">
                         <ShieldCheck size={13} /> License
                       </span>
@@ -1196,7 +1192,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
+                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
                       <span className="text-[#5f6368] dark:text-[#8e918f] flex items-center gap-1.5">
                         <Calendar size={13} /> Release Year
                       </span>
