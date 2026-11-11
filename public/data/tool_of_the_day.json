@@ -1,24 +1,28 @@
 {
-  "date": "2026-11-10",
+  "date": "2026-11-11",
   "tool": {
-    "name": "china-a-share-l2-level2-limit-order-book-tick-data",
-    "type": "Dataset",
-    "summary": "China A-Share Level-2 Archive \t 2017–2026 · Quotes, orders and trades · Parquet A historical archive of Chinese exchange Level-2 data, supplied through a vendor export. (281 likes, 120,455 downloads).",
-    "task": "NLP",
-    "license": "OTHER",
+    "name": "Gemini 4 Carbon (high)",
+    "type": "Model",
+    "summary": "Google DeepMind's frontier research model featured on the Artificial Analysis leaderboard with an Intelligence Index of 59, Briefcase Elo of 1610, and a massive 1M context window.",
+    "task": "Research",
+    "license": "Proprietary",
     "year": 2026,
-    "org": "venvoo",
-    "size": "n>1T",
-    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"venvoo/china-a-share-l2-level2-limit-order-book-tick-data\")",
-    "benchmarks": "Trending Score: 33, Likes: 281, Downloads: 120,455",
-    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "org": "Google DeepMind",
+    "size": "1M Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Google DeepMind, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (85 tok/s).",
+    "usage": "from google import genai\nclient = genai.Client()\nresponse = client.models.generate_content(\n  model=\"gemini-4-carbon-high\",\n  contents=\"Synthesize multimodal analysis over 1M context.\"\n)",
+    "benchmarks": "Intelligence Index: 59, Briefcase Elo: 1610, Accuracy: 58%, Non-Hallucination: 89%, FrontierCode: 41%, AutomationBench: 78%, TerminalBench 4: 65%, HLE Diamond: 69%, Speed: 85 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Google DeepMind developer platform; subject to API rate limits and token pricing ($4/M in, $20/M out).",
     "popular": true,
-    "url": "https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data",
+    "url": "https://artificialanalysis.ai/models/gemini-4-carbon",
     "citations": [
       {
-        "text": "venvoo/china-a-share-l2-level2-limit-order-book-tick-data on Hugging Face Datasets",
-        "url": "https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data"
+        "text": "Gemini 4 Carbon (high) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gemini-4-carbon"
+      },
+      {
+        "text": "Gemini 4 Carbon (high) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gemini-4-carbon/providers"
       }
     ]
   }

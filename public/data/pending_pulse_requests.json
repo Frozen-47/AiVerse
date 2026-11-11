@@ -1,5 +1,30 @@
 [
   {
+    "name": "hyperflow-h3-flash",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by VideoRebirthAI, trending with over 175 community likes and 110,752 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "VideoRebirthAI",
+    "size": "Open Weights",
+    "architecture": "VideoRebirthAI image text to video architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"VideoRebirthAI/hyperflow-h3-flash\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"VideoRebirthAI/hyperflow-h3-flash\")",
+    "benchmarks": "Trending Score: 167, Likes: 175, Downloads: 110,752",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash",
+    "citations": [
+      {
+        "text": "VideoRebirthAI/hyperflow-h3-flash on Hugging Face",
+        "url": "https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash"
+      }
+    ],
+    "created_at": "2026-11-11T01:39:43.948Z"
+  },
+  {
     "name": "arc-art",
     "type": "Dataset",
     "summary": "ARC art \t Blender projects and artwork videos by ARC (Abdullah Rashed AlSahli), made 2019-2024. The Blender files and videos behind 154 of my artworks. Use them for any (28 likes, 733 downloads).",

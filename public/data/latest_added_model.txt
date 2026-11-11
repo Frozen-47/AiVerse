@@ -1,1 +1,1 @@
-MiniMax-H3-Image
+hyperflow-h3-flash

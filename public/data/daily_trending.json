@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-11-10T20:40:28.314Z",
+  "timestamp": "2026-11-11T01:39:43.963Z",
   "models": [
-    {
-      "id": "speridlabs/idol",
-      "author": "speridlabs",
-      "likes": 1839,
-      "downloads": 26470,
-      "pipeline_tag": "image-to-3d",
-      "url": "https://huggingface.co/speridlabs/idol"
-    },
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 1169,
+      "likes": 1205,
       "downloads": 14378,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
     },
     {
+      "id": "speridlabs/idol",
+      "author": "speridlabs",
+      "likes": 1874,
+      "downloads": 26470,
+      "pipeline_tag": "image-to-3d",
+      "url": "https://huggingface.co/speridlabs/idol"
+    },
+    {
       "id": "moonshotai/Kimi-K3.1-Pro",
       "author": "moonshotai",
-      "likes": 1858,
+      "likes": 1867,
       "downloads": 30721,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
@@ -28,68 +28,68 @@
     {
       "id": "ricursiveAI/Ripple-65B-Preview",
       "author": "ricursiveAI",
-      "likes": 477,
+      "likes": 487,
       "downloads": 6480,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
     },
     {
+      "id": "MiniMaxAI/MiniMax-H3-Image",
+      "author": "MiniMaxAI",
+      "likes": 393,
+      "downloads": 667,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
+    },
+    {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 11358,
+      "likes": 11384,
       "downloads": 2791606,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
-    },
-    {
-      "id": "NousResearch/Arete-27B",
-      "author": "NousResearch",
-      "likes": 393,
-      "downloads": 3431,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/NousResearch/Arete-27B"
     }
   ],
   "papers": [
     {
+      "title": "EmoHarness: Boosting Multimodal Emotion Understanding with Meta-Harness Evolving",
+      "summary": "Small multimodal models can misjudge emotion when words, voice, and visual cues conflict. We present EmoHarness, which runs such a model, the frozen student, in...",
+      "upvotes": 1,
+      "arxiv_id": "2611.11994",
+      "url": "https://huggingface.co/papers/2611.11994",
+      "githubRepo": "https://github.com/Emo-Harness/EmoHarness"
+    },
+    {
+      "title": "Infrathon: Benchmarking Language Agents for Real-World, Long-Horizon AI Infra Optimization",
+      "summary": "In this work, we study whether frontier agent can continually improve real-world AI infrastructure over long horizons. We introduce Infrathon, a benchmark of di...",
+      "upvotes": 3,
+      "arxiv_id": "2611.11995",
+      "url": "https://huggingface.co/papers/2611.11995",
+      "githubRepo": null
+    },
+    {
+      "title": "e-means: outperforming k-means (in one-tenth the epochs)",
+      "summary": "Lloyd's k-means algorithm is a long-running standard for clustering, with applications in data analysis, retrieval, quantization and data curation. In this pape...",
+      "upvotes": 1,
+      "arxiv_id": "2611.09501",
+      "url": "https://huggingface.co/papers/2611.09501",
+      "githubRepo": "https://github.com/facebookresearch/faiss"
+    },
+    {
+      "title": "MotionGraphicsBench: Evaluating Motion Graphics Generation with Programmatic Verification",
+      "summary": "Large language models can generate motion graphics from static images and natural language requests, but it remains difficult to evaluate how well models can fo...",
+      "upvotes": 9,
+      "arxiv_id": "2611.10592",
+      "url": "https://huggingface.co/papers/2611.10592",
+      "githubRepo": null
+    },
+    {
       "title": "FraudBench: A Legal Evaluation of AI Deception",
       "summary": "We introduce FraudBench, an evaluation of large language models' (LLMs) propensities to recommend, assist, or directly take actions that would constitute fraud ...",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2611.12167",
       "url": "https://huggingface.co/papers/2611.12167",
       "githubRepo": "https://github.com/GOAL-Lab/FraudBench-Public"
-    },
-    {
-      "title": "onóna: Twin Embeddings with Tied Unembeddings",
-      "summary": "A two-table weight-sharing method for Transformer language models improves output expressiveness and reduces validation loss and perplexity across several architectures and scales at the cost of an extra embedding table and vocabulary projection.",
-      "upvotes": 2,
-      "arxiv_id": "2611.10556",
-      "url": "https://huggingface.co/papers/2611.10556",
-      "githubRepo": null
-    },
-    {
-      "title": "RidgeFill: Training-Free Late-Layer Cache Fill for Faster Prefill",
-      "summary": "RidgeFill shortens prefill by not computing most of a model's upper layers for the prompt. The lower layers run exactly up to a split; from the split layer's st...",
-      "upvotes": 2,
-      "arxiv_id": "2611.09709",
-      "url": "https://huggingface.co/papers/2611.09709",
-      "githubRepo": "https://github.com/Approximate-Science/ridgefill-data"
-    },
-    {
-      "title": "Creative Priming: Decoupling Process from Product to Escape the Creative Paradox",
-      "summary": "A method called creative priming uses a priming model trained with GRPO to generate prompt-specific primers that help a response model produce novel, high-quality, and diverse outputs by separating the creative process from response generation.",
-      "upvotes": 1,
-      "arxiv_id": "2611.11740",
-      "url": "https://huggingface.co/papers/2611.11740",
-      "githubRepo": null
-    },
-    {
-      "title": "Click3R: Interactive Stereo 3D Reconstruction with Sparse Correspondence Clicks",
-      "summary": "A framework for interactive geometric correction enables sparse human correspondence clicks to improve feed-forward 3D reconstruction by injecting constraints through a lightweight adapter.",
-      "upvotes": 1,
-      "arxiv_id": "2611.12875",
-      "url": "https://huggingface.co/papers/2611.12875",
-      "githubRepo": "https://github.com/UVA-Computer-Vision-Lab/click3r"
     }
   ]
 }

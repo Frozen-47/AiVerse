@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-10)
+### ⚡ AiVerse AI Radar (2026-11-11)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **MiniMax-H3-Image** (`Model`), **pixel-search** (`Platform`), **arc-art** (`Dataset`) |
-| 🌟 **Tool of the Day** | **china-a-share-l2-level2-limit-order-book-tick-data** (venvoo) — [Explore](https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data) |
+| 📥 **Queued for Review** | **hyperflow-h3-flash** (`Model`) |
+| 🌟 **Tool of the Day** | **Gemini 4 Carbon (high)** (Google DeepMind) — [Explore](https://artificialanalysis.ai/models/gemini-4-carbon) |
 | 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
-| 🔥 **Top Trending Model** | [speridlabs/idol](https://huggingface.co/speridlabs/idol) |
-| 📜 **Top Daily Paper** | [FraudBench: A Legal Evaluation of AI Deception...](https://huggingface.co/papers/2611.12167) |
-| 🛡️ **Catalog Links Checked** | **24/25** operational |
-| 🕒 **Last Synchronized** | `Tue, 10 Nov 2026 20:40:57 GMT` |
+| 🔥 **Top Trending Model** | [xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
+| 📜 **Top Daily Paper** | [EmoHarness: Boosting Multimodal Emotion Understand...](https://huggingface.co/papers/2611.11994) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Wed, 11 Nov 2026 01:40:19 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

@@ -1,13 +1,23 @@
 {
-  "timestamp": "2026-11-10T20:40:28.403Z",
+  "timestamp": "2026-11-11T01:39:44.155Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "OpenAI Platform",
-      "url": "https://platform.openai.com",
-      "status": 403
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
+    },
+    {
+      "name": "LTX-2.3-10Eros",
+      "url": "https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros",
+      "status": 401
+    },
+    {
+      "name": "Arena-Hard-Auto",
+      "url": "https://github.com/sunshanghai/arena-hard-auto",
+      "status": 404
     }
   ]
 }
