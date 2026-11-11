@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-11-11T08:44:03.143Z",
-  "totalEntries": 447,
+  "timestamp": "2026-11-11T17:37:53.914Z",
+  "totalEntries": 448,
   "popularEntries": 345,
   "totalUsers": 10,
   "averageRating": 4.38,
   "totalRatings": 8,
   "newEntriesCount": 207,
   "byType": {
+    "Platform": 70,
     "Model": 206,
     "Framework": 33,
-    "Platform": 69,
     "Dataset": 68,
     "AI": 71
   },
   "byTask": {
+    "Multimodal": 74,
     "AI Coding": 33,
-    "Multimodal": 73,
     "NLP": 196,
     "Research": 13,
     "Video Generation": 12,
@@ -27,6 +27,7 @@
     "Education": 4
   },
   "byLicense": {
+    "Freemium": 1,
     "Proprietary": 171,
     "Apache-2.0": 37,
     "MIT": 49,

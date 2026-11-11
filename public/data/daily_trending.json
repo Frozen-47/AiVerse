@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-11-11T08:44:03.146Z",
+  "timestamp": "2026-11-11T17:37:53.919Z",
   "models": [
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 1274,
-      "downloads": 14378,
+      "likes": 2033,
+      "downloads": 16693,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
     },
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 1908,
-      "downloads": 26470,
+      "likes": 1956,
+      "downloads": 28250,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
     },
     {
-      "id": "moonshotai/Kimi-K3.1-Pro",
-      "author": "moonshotai",
-      "likes": 1887,
-      "downloads": 30721,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
-    },
-    {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 541,
-      "downloads": 667,
+      "likes": 649,
+      "downloads": 142989,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
     },
     {
+      "id": "moonshotai/Kimi-K3.1-Pro",
+      "author": "moonshotai",
+      "likes": 1910,
+      "downloads": 33617,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
+    },
+    {
       "id": "ricursiveAI/Ripple-65B-Preview",
       "author": "ricursiveAI",
-      "likes": 490,
-      "downloads": 6480,
+      "likes": 506,
+      "downloads": 7112,
       "pipeline_tag": "general",
       "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
     },
     {
       "id": "NousResearch/Arete-27B",
       "author": "NousResearch",
-      "likes": 416,
-      "downloads": 3431,
+      "likes": 422,
+      "downloads": 4023,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/NousResearch/Arete-27B"
     }
   ],
   "papers": [
     {
-      "title": "FINCOSMOS: An Open-World Evaluation Paradigm for Agents in Finance",
-      "summary": "Language agents increasingly work for users on the open Web, and finance is where trusting them is hardest. The data must come from the Web, the strategy lives ...",
+      "title": "PhyRubric: Rubric-Grounded Diagnostic Evaluation of Physical Commonsense in Text-to-Video Generation",
+      "summary": "A rubric-based diagnostic benchmark and judge assess physical commonsense in text-to-video generation, showing that current models still struggle and that the judge aligns closely with human judgments.",
+      "upvotes": 5,
+      "arxiv_id": "2611.13576",
+      "url": "https://huggingface.co/papers/2611.13576",
+      "githubRepo": "https://github.com/chenyil6/phyRubric"
+    },
+    {
+      "title": "DyCraft: An Agentic System for Long-Horizon 4D Scene Generation",
+      "summary": "DyCraft improves long-horizon 3D animation by decomposing it into planned static scenes, keyframe storyboards, and local motion authoring to reduce physical errors.",
       "upvotes": 3,
-      "arxiv_id": "2611.07464",
-      "url": "https://huggingface.co/papers/2611.07464",
+      "arxiv_id": "2610.40754",
+      "url": "https://huggingface.co/papers/2610.40754",
+      "githubRepo": "https://github.com/jefftan969/dycraft"
+    },
+    {
+      "title": "From Tool State to Scientific Action: Auditing Decision Provenance in Biomedical Research Agents",
+      "summary": "A scientific agent can give the same verdict while reading and citing different evidence. BioAgent-DF tests this separation using paired reference and candidate...",
+      "upvotes": 8,
+      "arxiv_id": "2611.01527",
+      "url": "https://huggingface.co/papers/2611.01527",
       "githubRepo": null
     },
     {
-      "title": "WaveGen: Truly End-to-End Waveform Generation via Internal Spectral Trajectory Learning",
-      "summary": "WaveGen is a fully end-to-end diffusion framework for text-to-waveform generation that jointly learns spectral and waveform trajectories via Spectral Forcing without external audio codecs, vocoders, latent models, alignment modules, or self-supervised representations, achieving state-of-the-art text-to-speech results.",
+      "title": "TorchCurves: Differentiable Parametric Curves",
+      "summary": "TorchCurves is a PyTorch library that enables differentiable, learnable vector-valued parametric curves for integration with neural models and applications such as continuous embeddings, Kolmogorov-Arnold networks, and functional regression.",
       "upvotes": 2,
-      "arxiv_id": "2611.12527",
-      "url": "https://huggingface.co/papers/2611.12527",
-      "githubRepo": "https://github.com/sh-lee-prml/WaveGen"
+      "arxiv_id": "2611.14516",
+      "url": "https://huggingface.co/papers/2611.14516",
+      "githubRepo": "https://github.com/alexshtf/torchcurves"
     },
     {
-      "title": "EarthRecord: From Pixels to Land Change with Multimodal Agents over Four Decades of Satellite Imagery",
-      "summary": "While multimodal agents now carry out complex data analysis with tools, their ability to turn decades of satellite imagery into reliable land-change analysis, c...",
-      "upvotes": 4,
-      "arxiv_id": "2611.12934",
-      "url": "https://huggingface.co/papers/2611.12934",
-      "githubRepo": "https://github.com/ranranrannervous/EarthRecord"
-    },
-    {
-      "title": "Shortcuts and Boundaries: Verifiable RL Misalignment and Contextual Safety Learning",
-      "summary": "Reinforcement learning agents can exploit verifiable reward-context conflicts to earn higher rewards through noncompliant shortcuts, while contextual penalties and safety learning can improve compliance without sacrificing task capability.",
-      "upvotes": 3,
-      "arxiv_id": "2611.12865",
-      "url": "https://huggingface.co/papers/2611.12865",
-      "githubRepo": null
-    },
-    {
-      "title": "Are Dense Rewards Worth Their Tokens in GRPO?",
-      "summary": "At matched compute, dense process rewards such as Monte-Carlo rewards underperform standard GRPO for language-model reasoning, while selecting prompts with predicted success near 1/2 yields small consistent accuracy gains.",
-      "upvotes": 3,
-      "arxiv_id": "2611.13560",
-      "url": "https://huggingface.co/papers/2611.13560",
-      "githubRepo": null
+      "title": "The Surprising Effectiveness of Deleting Weights in LLM Post-Training",
+      "summary": "How little of a pretrained large language model (LLM) has to change for it to acquire new capabilities? We find that zeroing fewer than 0.05% of its weights, wi...",
+      "upvotes": 11,
+      "arxiv_id": "2611.10866",
+      "url": "https://huggingface.co/papers/2611.10866",
+      "githubRepo": "https://github.com/agentic-learning-ai-lab/deleting-weights"
     }
   ]
 }

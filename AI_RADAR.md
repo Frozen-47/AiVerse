@@ -2,27 +2,20 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Wed, 11 Nov 2026 08:44:34 GMT`*
+*Last Synchronized: `Wed, 11 Nov 2026 17:38:37 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (2)
+## 📥 Newly Queued Assets for Review (1)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Underdog-Woof** (`Model` • *ConwayResearch*)
-> High-performance Audio open-weights model by ConwayResearch, trending with over 152 community likes and 10 downloads on Hugging Face.
+### **mirage** (`Model` • *Cactus-Compute*)
+> High-performance Multimodal open-weights model by Cactus-Compute, trending with over 156 community likes and 14,615 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Audio` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 148, Likes: 152, Downloads: 10`
-- 🔗 **Resource Link**: [https://huggingface.co/ConwayResearch/Underdog-Woof](https://huggingface.co/ConwayResearch/Underdog-Woof)
-
-### **asset-index** (`Dataset` • *codepawl*)
-> Asset Index 	 37,668 3D assets from 6 libraries in one table. An AI agent, a model or an animator can ask for "a wooden crate, 0.5 m, game tier" and get the right file. (21 likes, 454 downloads).
-
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 20, Likes: 21, Downloads: 454`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/codepawl/asset-index](https://huggingface.co/datasets/codepawl/asset-index)
+- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 151, Likes: 156, Downloads: 14,615`
+- 🔗 **Resource Link**: [https://huggingface.co/Cactus-Compute/mirage](https://huggingface.co/Cactus-Compute/mirage)
 
 ---
 
@@ -41,12 +34,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 1,274 | 📥 14,378 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| `speridlabs/idol` | image-to-3d | ❤️ 1,908 | 📥 26,470 | [View](https://huggingface.co/speridlabs/idol) |
-| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 1,887 | 📥 30,721 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
-| `MiniMaxAI/MiniMax-H3-Image` | text-to-image | ❤️ 541 | 📥 667 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
-| `ricursiveAI/Ripple-65B-Preview` | general | ❤️ 490 | 📥 6,480 | [View](https://huggingface.co/ricursiveAI/Ripple-65B-Preview) |
-| `NousResearch/Arete-27B` | text-generation | ❤️ 416 | 📥 3,431 | [View](https://huggingface.co/NousResearch/Arete-27B) |
+| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 2,033 | 📥 16,693 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
+| `speridlabs/idol` | image-to-3d | ❤️ 1,956 | 📥 28,250 | [View](https://huggingface.co/speridlabs/idol) |
+| `MiniMaxAI/MiniMax-H3-Image` | text-to-image | ❤️ 649 | 📥 142,989 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
+| `moonshotai/Kimi-K3.1-Pro` | image-text-to-text | ❤️ 1,910 | 📥 33,617 | [View](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) |
+| `ricursiveAI/Ripple-65B-Preview` | general | ❤️ 506 | 📥 7,112 | [View](https://huggingface.co/ricursiveAI/Ripple-65B-Preview) |
+| `NousResearch/Arete-27B` | text-generation | ❤️ 422 | 📥 4,023 | [View](https://huggingface.co/NousResearch/Arete-27B) |
 
 
 ---
@@ -56,24 +49,24 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **FINCOSMOS: An Open-World Evaluation Paradigm for Agents in Finance** | 👍 3 | Language agents increasingly work for users on the open Web, and finance is where trusting them is hardest. The data must come from the Web, the strategy lives ... | [Read](https://huggingface.co/papers/2611.07464) |
-| **WaveGen: Truly End-to-End Waveform Generation via Internal Spectral Trajectory Learning** | 👍 2 | WaveGen is a fully end-to-end diffusion framework for text-to-waveform generation that jointly learns spectral and waveform trajectories via Spectral Forcing without external audio codecs, vocoders, latent models, alignment modules, or self-supervised representations, achieving state-of-the-art text-to-speech results. | [Read](https://huggingface.co/papers/2611.12527) |
-| **EarthRecord: From Pixels to Land Change with Multimodal Agents over Four Decades of Satellite Imagery** | 👍 4 | While multimodal agents now carry out complex data analysis with tools, their ability to turn decades of satellite imagery into reliable land-change analysis, c... | [Read](https://huggingface.co/papers/2611.12934) |
-| **Shortcuts and Boundaries: Verifiable RL Misalignment and Contextual Safety Learning** | 👍 3 | Reinforcement learning agents can exploit verifiable reward-context conflicts to earn higher rewards through noncompliant shortcuts, while contextual penalties and safety learning can improve compliance without sacrificing task capability. | [Read](https://huggingface.co/papers/2611.12865) |
-| **Are Dense Rewards Worth Their Tokens in GRPO?** | 👍 3 | At matched compute, dense process rewards such as Monte-Carlo rewards underperform standard GRPO for language-model reasoning, while selecting prompts with predicted success near 1/2 yields small consistent accuracy gains. | [Read](https://huggingface.co/papers/2611.13560) |
+| **PhyRubric: Rubric-Grounded Diagnostic Evaluation of Physical Commonsense in Text-to-Video Generation** | 👍 5 | A rubric-based diagnostic benchmark and judge assess physical commonsense in text-to-video generation, showing that current models still struggle and that the judge aligns closely with human judgments. | [Read](https://huggingface.co/papers/2611.13576) |
+| **DyCraft: An Agentic System for Long-Horizon 4D Scene Generation** | 👍 3 | DyCraft improves long-horizon 3D animation by decomposing it into planned static scenes, keyframe storyboards, and local motion authoring to reduce physical errors. | [Read](https://huggingface.co/papers/2610.40754) |
+| **From Tool State to Scientific Action: Auditing Decision Provenance in Biomedical Research Agents** | 👍 8 | A scientific agent can give the same verdict while reading and citing different evidence. BioAgent-DF tests this separation using paired reference and candidate... | [Read](https://huggingface.co/papers/2611.01527) |
+| **TorchCurves: Differentiable Parametric Curves** | 👍 2 | TorchCurves is a PyTorch library that enables differentiable, learnable vector-valued parametric curves for integration with neural models and applications such as continuous embeddings, Kolmogorov-Arnold networks, and functional regression. | [Read](https://huggingface.co/papers/2611.14516) |
+| **The Surprising Effectiveness of Deleting Weights in LLM Post-Training** | 👍 11 | How little of a pretrained large language model (LLM) has to change for it to acquire new capabilities? We find that zeroing fewer than 0.05% of its weights, wi... | [Read](https://huggingface.co/papers/2611.10866) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `447`
+- **Total Registered Assets**: `448`
 - **Featured / Starred Tools**: `345`
-- **Asset Breakdown**: **Models**: 206 • **Frameworks**: 33 • **Platforms**: 69 • **Datasets**: 68 • **AIs**: 71
+- **Asset Breakdown**: **Platforms**: 70 • **Models**: 206 • **Frameworks**: 33 • **Datasets**: 68 • **AIs**: 71
 
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
+- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
 - **Dependency Security**: `43` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

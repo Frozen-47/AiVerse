@@ -1,33 +1,18 @@
 {
-  "timestamp": "2026-11-11T08:44:03.244Z",
+  "timestamp": "2026-11-11T17:37:53.962Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "GPT-3",
-      "url": "https://openai.com/research/language-models-are-few-shot-learners",
-      "status": 403
+      "name": "wan2-2-i2v-v3",
+      "url": "https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3",
+      "status": 401
     },
     {
-      "name": "GPT-4",
-      "url": "https://openai.com/gpt-4",
+      "name": "Midjourney v6",
+      "url": "https://www.midjourney.com/",
       "status": 403
-    },
-    {
-      "name": "o3",
-      "url": "https://openai.com",
-      "status": 403
-    },
-    {
-      "name": "Phind",
-      "url": "https://www.phind.com",
-      "status": 403
-    },
-    {
-      "name": "OpenWebText",
-      "url": "https://huggingface.co/datasets/openwebtext",
-      "status": 404
     }
   ]
 }

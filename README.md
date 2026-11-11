@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-11)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Underdog-Woof** (`Model`), **asset-index** (`Dataset`) |
+| 📥 **Queued for Review** | **mirage** (`Model`) |
 | 🌟 **Tool of the Day** | **Gemini 4 Carbon (high)** (Google DeepMind) — [Explore](https://artificialanalysis.ai/models/gemini-4-carbon) |
-| 🗄️ **Catalog Entries** | **447** AI assets tracked (345 featured) |
+| 🗄️ **Catalog Entries** | **448** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| 📜 **Top Daily Paper** | [FINCOSMOS: An Open-World Evaluation Paradigm for A...](https://huggingface.co/papers/2611.07464) |
-| 🛡️ **Catalog Links Checked** | **20/25** operational |
-| 🕒 **Last Synchronized** | `Wed, 11 Nov 2026 08:44:34 GMT` |
+| 📜 **Top Daily Paper** | [PhyRubric: Rubric-Grounded Diagnostic Evaluation o...](https://huggingface.co/papers/2611.13576) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Wed, 11 Nov 2026 17:38:37 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
