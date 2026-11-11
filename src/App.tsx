@@ -210,6 +210,8 @@ const Inner: React.FC = () => {
   const [showLoginForPrefs, setShowLoginForPrefs] = useState(false);
   const [showLoginForBookmarks, setShowLoginForBookmarks] = useState(false);
   const [prefsToast, setPrefsToast] = useState(false);
+  const [authToast, setAuthToast] = useState<{ show: boolean; message: string }>({ show: false, message: "" });
+  const prevUserRef = useRef<string | null>(null);
   const [ratingSummaries, setRatingSummaries] = useState<
     Record<string, EntryRatingSummary>
   >({});
@@ -423,8 +425,29 @@ const Inner: React.FC = () => {
     if (user) {
       setShowLoginForPrefs(false);
       setShowLoginForBookmarks(false);
+
+      if (prevUserRef.current === null && isLoaded) {
+        const name =
+          user.user_metadata?.firstName ||
+          user.user_metadata?.full_name ||
+          user.email?.split("@")[0] ||
+          "there";
+        setAuthToast({ show: true, message: `Signed in as ${name}` });
+        setTimeout(() => setAuthToast({ show: false, message: "" }), 3500);
+      }
+      prevUserRef.current = user.id;
+    } else {
+      if (prevUserRef.current !== null && isLoaded) {
+        // User logged out: redirect away from protected / account-specific views
+        if (route.type === "admin" || (route.type === "entries" && route.tab === "saved") || route.type === "profile") {
+          navigate("/dashboard", { replace: true });
+        }
+        setAuthToast({ show: true, message: "Signed out successfully." });
+        setTimeout(() => setAuthToast({ show: false, message: "" }), 3000);
+      }
+      prevUserRef.current = null;
     }
-  }, [user]);
+  }, [user, isLoaded, route, navigate]);
 
   useEffect(() => {
     if (!isLoaded) return;
@@ -2023,6 +2046,15 @@ const Inner: React.FC = () => {
           <div className={`p-4 rounded-xl border flex items-center gap-3 text-[13px] font-medium shadow-2xl backdrop-blur-xl ${t.successToast}`}>
             <Check size={18} className="shrink-0 text-emerald-400" />
             <span>Preferences saved — your feed is updated.</span>
+          </div>
+        </div>
+      )}
+
+      {authToast.show && (
+        <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 animate-[fadeUp_0.2s_ease-out]">
+          <div className={`p-4 rounded-xl border flex items-center gap-3 text-[13px] font-medium shadow-2xl backdrop-blur-xl ${t.successToast}`}>
+            <Check size={18} className="shrink-0 text-emerald-400" />
+            <span>{authToast.message}</span>
           </div>
         </div>
       )}

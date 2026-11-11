@@ -1141,9 +1141,9 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
       <div className="px-2 pt-1 pb-1 space-y-2">
         <button
           type="button"
-          onClick={() => {
-            signOut();
+          onClick={async () => {
             onClose?.();
+            await signOut("/dashboard");
           }}
           className="w-full flex items-center justify-center gap-2 py-2 rounded-full border border-neutral-300 dark:border-white/20 text-xs font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/5 transition-all cursor-pointer"
         >

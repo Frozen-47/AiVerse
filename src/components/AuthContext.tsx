@@ -10,7 +10,7 @@ interface AuthContextType {
   openAuthModal: (mode?: "signin" | "signup") => void;
   closeAuthModal: () => void;
   authMode: "signin" | "signup";
-  signOut: () => Promise<void>;
+  signOut: (redirectTo?: string) => Promise<void>;
   signInWithOAuth: (provider: "google" | "github") => Promise<void>;
 }
 
@@ -53,11 +53,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setSession(session);
       setUser(session?.user ?? null);
       if (session?.user) {
         syncOAuthAvatar(session.user);
+      }
+      if (event === "SIGNED_IN" || event === "USER_UPDATED") {
+        setIsAuthModalOpen(false);
+      }
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new CustomEvent("aiverse_auth_change", { detail: { event, session } }));
       }
     });
 
@@ -71,8 +77,33 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const closeAuthModal = () => setIsAuthModalOpen(false);
 
-  const signOut = async () => {
-    await supabase.auth.signOut();
+  const signOut = async (redirectTo: string = "/dashboard") => {
+    try {
+      await supabase.auth.signOut();
+    } catch (err) {
+      console.warn("Failed to sign out from Supabase:", err);
+    } finally {
+      setUser(null);
+      setSession(null);
+      setIsAuthModalOpen(false);
+
+      // Clean local storage user-specific keys and bookmarks
+      try {
+        localStorage.removeItem("aiverse_bookmarks");
+        localStorage.removeItem("vox_chatgpt_sessions");
+      } catch {}
+
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new CustomEvent("aiverse_auth_signout"));
+        if (redirectTo) {
+          if (window.location.pathname === redirectTo && !window.location.search) {
+            window.location.reload();
+          } else {
+            window.location.href = redirectTo;
+          }
+        }
+      }
+    }
   };
 
   const signInWithOAuth = async (provider: "google" | "github") => {
