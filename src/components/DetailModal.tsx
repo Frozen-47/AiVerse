@@ -614,13 +614,13 @@ export const DetailModal: React.FC<DetailModalProps> = ({
       </header>
 
       {/* 2. Hero Strip (Refined & Proportional) */}
-      <div className="border-b border-[#dadce0] dark:border-[#3c4043]/40 bg-white dark:bg-[#1e1f20]/30 transition-colors">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-5">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <div className="flex items-start gap-3.5">
+      <div className="border-b border-[#dadce0] dark:border-[#3c4043]/40 bg-white dark:bg-[#1a1b1e]/60 transition-colors">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-7 lg:py-8">
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-6">
+            <div className="flex items-start gap-4 sm:gap-5 flex-1 min-w-0">
               {/* Glyph Icon */}
               <div
-                className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-xl font-bold shrink-0 border border-[#dadce0] dark:border-[#3c4043]/60 ${typeIcon(
+                className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-bold shrink-0 border border-[#dadce0] dark:border-[#3c4043]/60 shadow-xs ${typeIcon(
                   entry.type,
                   t,
                 )}`}
@@ -629,38 +629,38 @@ export const DetailModal: React.FC<DetailModalProps> = ({
               </div>
 
               {/* Title & Metadata Badges */}
-              <div>
-                <div className="flex items-center gap-2 flex-wrap mb-1">
-                  <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#202124] dark:text-[#e3e3e3]">
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap mb-2 sm:mb-2.5">
+                  <h1 className="text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight text-[#202124] dark:text-[#e3e3e3] leading-tight">
                     {entry.name}
                   </h1>
 
                   {isNew && (
-                    <span className="inline-flex items-center text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-500/25 animate-pulse">
+                    <span className="inline-flex items-center text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-500/25 animate-pulse">
                       NEW
                     </span>
                   )}
 
                   {entry.popular && (
-                    <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${t.popular}`}>
+                    <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${t.popular}`}>
                       <Star size={9} className="fill-current text-amber-400" /> Popular
                     </span>
                   )}
 
-                  <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
-                    <CheckCircle2 size={10} /> Verified Spec
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                    <CheckCircle2 size={11} /> Verified Spec
                   </span>
                 </div>
 
                 {/* Subtitle Chips Row */}
-                <div className="flex flex-wrap items-center gap-2 text-xs text-[#5f6368] dark:text-[#8e918f] mb-1.5">
-                  <span className={`text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-md border ${typeBadge(entry.type, t)}`}>
+                <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs text-[#5f6368] dark:text-[#8e918f] mb-3 sm:mb-3.5">
+                  <span className={`text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-md border ${typeBadge(entry.type, t)}`}>
                     {entry.type}
                   </span>
-                  <span className={`text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-md border ${taskBadge(entry.task, t)}`}>
+                  <span className={`text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-md border ${taskBadge(entry.task, t)}`}>
                     {entry.task}
                   </span>
-                  <span className="opacity-30">•</span>
+                  <span className="opacity-25 px-0.5">•</span>
                   {onViewEcosystem && entry.org ? (
                     <button
                       type="button"
@@ -668,62 +668,62 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                         onClose();
                         onViewEcosystem(entry.org);
                       }}
-                      className="flex items-center gap-1.5 hover:text-[#1a73e8] dark:hover:text-[#a8c7fa] hover:underline cursor-pointer group/org transition-colors"
+                      className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md hover:bg-neutral-100 dark:hover:bg-white/[0.06] hover:text-[#1a73e8] dark:hover:text-[#a8c7fa] cursor-pointer group/org transition-colors"
                       title={`View ${entry.org} Ecosystem`}
                     >
                       <Building2 size={12} className="opacity-70 group-hover/org:text-[#1a73e8] dark:group-hover/org:text-[#a8c7fa]" />
-                      <span className="font-medium text-[#202124] dark:text-[#c4c7c5] group-hover/org:text-[#1a73e8] dark:group-hover/org:text-[#a8c7fa]">{entry.org}</span>
-                      <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 font-semibold border border-blue-500/20">
+                      <span className="font-semibold text-[#202124] dark:text-[#e3e3e3] group-hover/org:text-[#1a73e8] dark:group-hover/org:text-[#a8c7fa]">{entry.org}</span>
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400 font-medium border border-blue-500/20">
                         Ecosystem ↗
                       </span>
                     </button>
                   ) : (
-                    <span className="flex items-center gap-1">
+                    <span className="inline-flex items-center gap-1.5 px-1.5 py-0.5">
                       <Building2 size={12} className="opacity-70" />
-                      <span className="font-medium text-[#202124] dark:text-[#c4c7c5]">{entry.org}</span>
+                      <span className="font-semibold text-[#202124] dark:text-[#e3e3e3]">{entry.org}</span>
                     </span>
                   )}
-                  <span className="opacity-30">•</span>
-                  <span className="flex items-center gap-1">
+                  <span className="opacity-25 px-0.5">•</span>
+                  <span className="inline-flex items-center gap-1.5 px-1.5 py-0.5">
                     <Calendar size={12} className="opacity-70" />
                     <span>{entry.year}</span>
                   </span>
                   {entry.size && entry.size !== "N/A" && entry.size !== "Unknown" && (
                     <>
-                      <span className="opacity-30">•</span>
-                      <span className="flex items-center gap-1">
+                      <span className="opacity-25 px-0.5">•</span>
+                      <span className="inline-flex items-center gap-1.5 px-1.5 py-0.5">
                         <Layers size={12} className="opacity-70" />
                         <span>{entry.size}</span>
                       </span>
                     </>
                   )}
-                  <span className="opacity-30">•</span>
-                  <span className="flex items-center gap-1">
+                  <span className="opacity-25 px-0.5">•</span>
+                  <span className="inline-flex items-center gap-1.5 px-1.5 py-0.5">
                     <ShieldCheck size={12} className="opacity-70" />
                     <span>{entry.license}</span>
                   </span>
                 </div>
 
-                <p className="text-[13px] leading-relaxed text-[#5f6368] dark:text-[#c4c7c5] max-w-3xl">
+                <p className="text-[13.5px] sm:text-[14px] leading-relaxed text-[#3c4043] dark:text-[#c4c7c5] max-w-4xl pt-1">
                   {entry.summary}
                 </p>
               </div>
             </div>
 
             {/* Quick action buttons on desktop */}
-            <div className="hidden lg:flex items-center gap-2 shrink-0">
+            <div className="hidden lg:flex items-center gap-2.5 shrink-0 pt-1">
               {onViewEcosystem && entry.org && (
                 <button
                   onClick={() => {
                     onClose();
                     onViewEcosystem(entry.org);
                   }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 transition-colors cursor-pointer shadow-2xs"
+                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 transition-all cursor-pointer shadow-2xs hover:shadow-xs"
                   title={`View all ${entry.org} models & assets in Ecosystem`}
                 >
-                  <Building2 size={12} />
+                  <Building2 size={13} />
                   <span>View Ecosystem</span>
-                  <ArrowRight size={10} className="opacity-70" />
+                  <ArrowRight size={11} className="opacity-70" />
                 </button>
               )}
               {entry.url && (
@@ -731,11 +731,11 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                   href={entry.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#3c4043] dark:text-[#c4c7c5] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-colors"
+                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#3c4043] dark:text-[#c4c7c5] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-all shadow-2xs hover:shadow-xs"
                 >
-                  <Globe size={12} />
+                  <Globe size={13} />
                   <span>Docs</span>
-                  <ExternalLink size={10} className="opacity-60" />
+                  <ExternalLink size={11} className="opacity-60" />
                 </a>
               )}
             </div>
@@ -745,7 +745,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
       {/* 3. Google Material 3 Tabs Bar (Sticky) */}
       <div className="sticky top-[52px] sm:top-[56px] z-30 border-b border-[#dadce0] dark:border-[#3c4043]/50 bg-white/95 dark:bg-[#131314]/95 backdrop-blur-md transition-colors">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-1 sm:gap-2 overflow-x-auto scrollbar-none" role="tablist">
             {[
               { id: "overview", label: "Overview", icon: Sparkles },
@@ -776,7 +776,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
       </div>
 
       {/* 4. Responsive Body (Balanced 2-Column Grid) */}
-      <main className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 py-6">
+      <main className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <div className="relative">
           {/* Sign In prompt overlay for unauthenticated users */}
           {!user && (
