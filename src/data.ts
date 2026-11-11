@@ -2,6 +2,32 @@ import type { Entry } from './types';
 
 export const entries: Entry[] = [
   {
+    "name": "AI Manga Translator (MangaTranslate)",
+    "type": "Platform",
+    "summary": "Enterprise-grade manga and comic translation platform by Ficory LLC featuring batch translation, speech-bubble OCR, AI in-painting, an online Photoshop-style studio editor, and developer REST APIs.",
+    "task": "Multimodal",
+    "license": "Freemium",
+    "year": 2024,
+    "org": "Ficory LLC",
+    "size": "Cloud Platform & API",
+    "architecture": "Cloud multimodal pipeline combining speech bubble segmentation, text in-painting, neural machine translation, and typography rendering with web studio and REST API.",
+    "usage": "curl -X POST https://api.mangatranslate.com/v1/translate \\\n  -H \"Authorization: Bearer YOUR_API_KEY\" \\\n  -F \"image=@comic_page.png\" \\\n  -F \"target_lang=en\"",
+    "benchmarks": "Supports 30+ languages, batch image translation, style-preserving font matching, and daily free check-in credits.",
+    "limitations": "Free tier has daily credit limits; enterprise volume, advanced Studio features, and API access require a paid plan.",
+    "popular": false,
+    "url": "https://www.mangatranslate.com/ko/ai-manga-translator/",
+    "citations": [
+      {
+        "text": "AI Manga Translator - Official Overview",
+        "url": "https://www.mangatranslate.com/ko/ai-manga-translator/"
+      },
+      {
+        "text": "MangaTranslate Pricing & Credits",
+        "url": "https://www.mangatranslate.com/ko/ai-manga-translator/pricing/"
+      }
+    ]
+  },
+  {
     "name": "GPT-6 Astra",
     "type": "Model",
     "summary": "OpenAI's frontier flagship model released in September 2026, marking a generational leap in autonomous computer use, deep reasoning, and complex multi-step workflow automation across enterprise environments.",
