@@ -1,23 +1,33 @@
 {
-  "timestamp": "2026-11-12T01:14:08.162Z",
+  "timestamp": "2026-11-12T09:05:18.732Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 20,
+  "broken": 5,
   "issues": [
     {
-      "name": "OpenAI Platform",
-      "url": "https://platform.openai.com",
+      "name": "Perplexity",
+      "url": "https://www.perplexity.ai",
       "status": 403
     },
     {
-      "name": "DALL-E 3",
-      "url": "https://openai.com/dall-e-3",
+      "name": "GPT-6 Astra",
+      "url": "https://openai.com",
       "status": 403
     },
     {
-      "name": "wan2-2-i2v-v3",
-      "url": "https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3",
-      "status": 401
+      "name": "Midjourney",
+      "url": "https://www.midjourney.com",
+      "status": 403
+    },
+    {
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
+    },
+    {
+      "name": "ImageNet",
+      "url": "https://image-net.org",
+      "status": "Timeout"
     }
   ]
 }

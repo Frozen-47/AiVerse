@@ -4,6 +4,60 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "RelayVSR",
+        "type": "Model",
+        "summary": "High-performance Image Generation open-weights model by Comfy-Org, trending with over 186 community likes and 91,134 downloads on Hugging Face.",
+        "task": "Image Generation",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Comfy-Org",
+        "size": "Open Weights",
+        "architecture": "Comfy-Org unconditional image generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Comfy-Org/RelayVSR\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Comfy-Org/RelayVSR\")",
+        "benchmarks": "Trending Score: 168, Likes: 186, Downloads: 91,134",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/Comfy-Org/RelayVSR",
+        "citations": [
+          {
+            "text": "Comfy-Org/RelayVSR on Hugging Face",
+            "url": "https://huggingface.co/Comfy-Org/RelayVSR"
+          }
+        ]
+      },
+      {
+        "name": "Nemotron-Personas-Finance-Japan",
+        "type": "Dataset",
+        "summary": "Nemotron-Personas-Finance-Japan \t           現実世界の分布に基づいた金融に特化したペルソナ生成のための複合AIアプローチ    \t \t\t \t \t \t\tデータセット概要 (Dataset Overview): \t Nemotron-Personas-Finance-Japan は、日本における (19 likes, 1,732 downloads).",
+        "task": "Computer Vision",
+        "license": "CC-BY-4.0",
+        "year": 2026,
+        "org": "nvidia",
+        "size": "1M<n<10M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/Nemotron-Personas-Finance-Japan\")",
+        "benchmarks": "Trending Score: 18, Likes: 19, Downloads: 1,732",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Finance-Japan",
+        "citations": [
+          {
+            "text": "nvidia/Nemotron-Personas-Finance-Japan on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Finance-Japan"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-12",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "ZONOS3-Mini",
         "type": "Model",
         "summary": "High-performance Audio open-weights model by Zyphra, trending with over 174 community likes and 4,170 downloads on Hugging Face.",
@@ -5940,36 +5994,6 @@
           {
             "text": "nvidia/Nemotron-Personas-Vietnam on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Vietnam"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-17",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "sam3",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by facebook, trending with over 4,545 community likes and 2,013,498 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "facebook",
-        "size": "Open Weights",
-        "architecture": "facebook mask generation architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"facebook/sam3\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"facebook/sam3\")",
-        "benchmarks": "Trending Score: 224, Likes: 4,545, Downloads: 2,013,498",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/facebook/sam3",
-        "citations": [
-          {
-            "text": "facebook/sam3 on Hugging Face",
-            "url": "https://huggingface.co/facebook/sam3"
           }
         ]
       }

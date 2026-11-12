@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-12T01:14:08.055Z",
+  "timestamp": "2026-11-12T09:05:18.688Z",
   "models": [
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 3229,
+      "likes": 4585,
       "downloads": 16693,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
@@ -12,7 +12,7 @@
     {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 714,
+      "likes": 789,
       "downloads": 142989,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
@@ -20,7 +20,7 @@
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 2144,
+      "likes": 2174,
       "downloads": 28250,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -28,7 +28,7 @@
     {
       "id": "NousResearch/Arete-27B",
       "author": "NousResearch",
-      "likes": 437,
+      "likes": 448,
       "downloads": 4023,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/NousResearch/Arete-27B"
@@ -36,60 +36,60 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 11516,
+      "likes": 11555,
       "downloads": 2848771,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     },
     {
-      "id": "moonshotai/Kimi-K3.1-Pro",
-      "author": "moonshotai",
-      "likes": 1935,
-      "downloads": 33617,
+      "id": "DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF",
+      "author": "DavidAU",
+      "likes": 2937,
+      "downloads": 1532273,
       "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
+      "url": "https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF"
     }
   ],
   "papers": [
     {
-      "title": "Visual Similarity in Adult Word Extension and Artificial Word Learning",
-      "summary": "Visual similarity measured by a self-supervised visual encoder partially explains word generalization in adults and artificial learners, while the composition of teaching examples contributes additional structure beyond that distance.",
-      "upvotes": 2,
-      "arxiv_id": "2611.14116",
-      "url": "https://huggingface.co/papers/2611.14116",
+      "title": "Precision on Demand: Escalating Weight Bits at Uncertain Decoding Steps in a Small Local Model",
+      "summary": "A dynamic weight precision allocation strategy is proposed, utilizing low-bit quantization and uncertainty-based gating to selectively upgrade weight precision during LLM generation, thereby optimizing computational cost.",
+      "upvotes": 0,
+      "arxiv_id": "2611.14418",
+      "url": "https://huggingface.co/papers/2611.14418",
       "githubRepo": null
     },
     {
-      "title": "Prompt2Echo (P2Echo): Text-Prompted Multi-View Echocardiography Segmentation with One Model",
-      "summary": "P2Echo is a unified view-aware text-prompted segmentation framework that uses dynamic image-text alignment to segment diverse cardiac structures across multiple echocardiographic views with high accuracy and low computational cost.",
+      "title": "Bits or permutations? Spending a fixed inference budget on weight precision or on option-order averaging in small local language models",
+      "summary": "Local language models can save memory by storing weights in fewer bits, and they can reduce sensitivity to the order of answer options by averaging a few reorde...",
+      "upvotes": 0,
+      "arxiv_id": "2611.14413",
+      "url": "https://huggingface.co/papers/2611.14413",
+      "githubRepo": null
+    },
+    {
+      "title": "PolyRoute: A Twelve-Language and Code-Mixed Benchmark for Typed-Decision Routing, with Baselines and a Leaderboard",
+      "summary": "Typed-decision encoders answer a question about a text in one forward pass, but their behaviour outside English is rarely measured on a fixed yardstick. We rele...",
+      "upvotes": 0,
+      "arxiv_id": "2611.13843",
+      "url": "https://huggingface.co/papers/2611.13843",
+      "githubRepo": null
+    },
+    {
+      "title": "SteerDistill: Quantizing LLM Agents via Closed-Loop Teacher Steering",
+      "summary": "Low-bit quantized LLM agents can recover much of their task success through closed-loop guidance from a full-precision teacher, followed by unassisted student training on corrected and reference turns.",
+      "upvotes": 14,
+      "arxiv_id": "2611.13410",
+      "url": "https://huggingface.co/papers/2611.13410",
+      "githubRepo": "https://github.com/air-embodied-brain/SteerDistill"
+    },
+    {
+      "title": "Mixed Signals: Weight-Space Programming for EEG and ECG",
+      "summary": "Weight-space programming allows language models to read a trained neural network's weights and edit them. This opens the door to ``training'' by reasoning rathe...",
       "upvotes": 1,
-      "arxiv_id": "2611.13425",
-      "url": "https://huggingface.co/papers/2611.13425",
-      "githubRepo": "https://github.com/moeinheidari7829/P2Echo"
-    },
-    {
-      "title": "Test-Time Scaling for Diffusion Language Models with Frequency-Aware Remasking",
-      "summary": "Diffusion language models (DLMs) generate text through iterative denoising, where decisions about which tokens to commit or remask strongly affect output qualit...",
-      "upvotes": 8,
-      "arxiv_id": "2611.10486",
-      "url": "https://huggingface.co/papers/2611.10486",
+      "arxiv_id": "2611.13758",
+      "url": "https://huggingface.co/papers/2611.13758",
       "githubRepo": null
-    },
-    {
-      "title": "Embodied First Exam",
-      "summary": "Early successes on agentic robotics point to a potential paradigm shift toward using coding agents to control robots. Existing robotics benchmarks are built aro...",
-      "upvotes": 20,
-      "arxiv_id": "2611.12177",
-      "url": "https://huggingface.co/papers/2611.12177",
-      "githubRepo": "https://github.com/mll-lab-nu/embodied-first-exam"
-    },
-    {
-      "title": "LEASH: Stay Safe in Agentic Robotics",
-      "summary": "Foundation models such as GPT and Claude have shown strong capabilities in spatial understanding and embodied intelligence. These advances make agentic robotics...",
-      "upvotes": 4,
-      "arxiv_id": "2611.14115",
-      "url": "https://huggingface.co/papers/2611.14115",
-      "githubRepo": "https://github.com/zhuqinfeng1999/LEASH"
     }
   ]
 }

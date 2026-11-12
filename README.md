@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-12)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **ZONOS3-Mini** (`Model`), **FlowHMR** (`Platform`), **Open-HumanWAM-50K** (`Dataset`) |
+| 📥 **Queued for Review** | **RelayVSR** (`Model`), **Nemotron-Personas-Finance-Japan** (`Dataset`) |
 | 🌟 **Tool of the Day** | **Claude Opus 5.5 (max with fallback)** (Anthropic) — [Explore](https://artificialanalysis.ai/models/claude-opus-5-5) |
 | 🗄️ **Catalog Entries** | **448** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| 📜 **Top Daily Paper** | [Visual Similarity in Adult Word Extension and Arti...](https://huggingface.co/papers/2611.14116) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Thu, 12 Nov 2026 01:14:52 GMT` |
+| 📜 **Top Daily Paper** | [Precision on Demand: Escalating Weight Bits at Unc...](https://huggingface.co/papers/2611.14418) |
+| 🛡️ **Catalog Links Checked** | **20/25** operational |
+| 🕒 **Last Synchronized** | `Thu, 12 Nov 2026 09:06:04 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
