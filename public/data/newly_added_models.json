@@ -4,6 +4,60 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "sam-3d-body-dinov3",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by facebook, trending with over 1,077 community likes and 14,473 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "facebook",
+        "size": "Open Weights",
+        "architecture": "facebook transformer architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"facebook/sam-3d-body-dinov3\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"facebook/sam-3d-body-dinov3\")",
+        "benchmarks": "Trending Score: 159, Likes: 1,077, Downloads: 14,473",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/facebook/sam-3d-body-dinov3",
+        "citations": [
+          {
+            "text": "facebook/sam-3d-body-dinov3 on Hugging Face",
+            "url": "https://huggingface.co/facebook/sam-3d-body-dinov3"
+          }
+        ]
+      },
+      {
+        "name": "Omni-videos-custom",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by CumaSystem. Trending with 78 community stars.",
+        "task": "Image Generation",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "CumaSystem",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/CumaSystem/Omni-videos-custom",
+        "benchmarks": "Trending Score: 29, Community Likes: 78",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/CumaSystem/Omni-videos-custom",
+        "citations": [
+          {
+            "text": "CumaSystem/Omni-videos-custom on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/CumaSystem/Omni-videos-custom"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-12",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "dinov3-vitl16-pretrain-lvd1689m",
         "type": "Model",
         "summary": "High-performance NLP open-weights model by facebook, trending with over 2,145 community likes and 703,532 downloads on Hugging Face.",
@@ -5964,60 +6018,6 @@
           {
             "text": "OpenMOSS-Team/MOSS-Image-Base on Hugging Face",
             "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-17",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "d3",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by vllm-sr, trending with over 229 community likes and 4,263 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "vllm-sr",
-        "size": "Open Weights",
-        "architecture": "vllm-sr zero shot classification architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"vllm-sr/d3\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"vllm-sr/d3\")",
-        "benchmarks": "Trending Score: 212, Likes: 229, Downloads: 4,263",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/vllm-sr/d3",
-        "citations": [
-          {
-            "text": "vllm-sr/d3 on Hugging Face",
-            "url": "https://huggingface.co/vllm-sr/d3"
-          }
-        ]
-      },
-      {
-        "name": "ExeWorldBench",
-        "type": "Dataset",
-        "summary": "ExeWorldBench: Benchmarking Code-Based Executable 3D World Modeling \t 📄 Paper 🌐 Project Page \t \t\t \t \t \t\tOverview \t ExeWorldBench is a benchmark for evaluating world u (28 likes, 603 downloads).",
-        "task": "Computer Vision",
-        "license": "CC-BY-4.0",
-        "year": 2026,
-        "org": "HelenPeng",
-        "size": "1K<n<10K",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"HelenPeng/ExeWorldBench\")",
-        "benchmarks": "Trending Score: 18, Likes: 28, Downloads: 603",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/HelenPeng/ExeWorldBench",
-        "citations": [
-          {
-            "text": "HelenPeng/ExeWorldBench on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/HelenPeng/ExeWorldBench"
           }
         ]
       }

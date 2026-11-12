@@ -1,13 +1,28 @@
 {
-  "timestamp": "2026-11-12T17:50:14.923Z",
+  "timestamp": "2026-11-12T23:56:34.296Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 21,
+  "broken": 4,
   "issues": [
     {
       "name": "GPT-4.5",
       "url": "https://openai.com",
       "status": 403
+    },
+    {
+      "name": "Gamma",
+      "url": "https://gamma.app",
+      "status": 403
+    },
+    {
+      "name": "o1 (OpenAI)",
+      "url": "https://openai.com/o1",
+      "status": 403
+    },
+    {
+      "name": "OpenWebText",
+      "url": "https://huggingface.co/datasets/openwebtext",
+      "status": 404
     }
   ]
 }
