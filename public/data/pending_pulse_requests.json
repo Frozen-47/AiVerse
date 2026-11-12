@@ -1,5 +1,80 @@
 [
   {
+    "name": "Open-HumanWAM-50K",
+    "type": "Dataset",
+    "summary": "Open-HumanWAM \t An Open Recipe for Scaling Human and Robot Experience for Embodied Foundation Models Report · Code · Project page · Models · HF Paper · Citation Open-Hu (20 likes, 1,015,003 downloads).",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "DAGroup-PKU",
+    "size": "10M<n<100M",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"DAGroup-PKU/Open-HumanWAM-50K\")",
+    "benchmarks": "Trending Score: 18, Likes: 20, Downloads: 1,015,003",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/DAGroup-PKU/Open-HumanWAM-50K",
+    "citations": [
+      {
+        "text": "DAGroup-PKU/Open-HumanWAM-50K on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/DAGroup-PKU/Open-HumanWAM-50K"
+      }
+    ],
+    "created_at": "2026-11-12T01:14:08.038Z"
+  },
+  {
+    "name": "FlowHMR",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by fafsaf1. Trending with 45 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "fafsaf1",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/fafsaf1/FlowHMR",
+    "benchmarks": "Trending Score: 29, Community Likes: 45",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/fafsaf1/FlowHMR",
+    "citations": [
+      {
+        "text": "fafsaf1/FlowHMR on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/fafsaf1/FlowHMR"
+      }
+    ],
+    "created_at": "2026-11-12T01:14:08.038Z"
+  },
+  {
+    "name": "ZONOS3-Mini",
+    "type": "Model",
+    "summary": "High-performance Audio open-weights model by Zyphra, trending with over 174 community likes and 4,170 downloads on Hugging Face.",
+    "task": "Audio",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "Zyphra",
+    "size": "Open Weights",
+    "architecture": "Zyphra text to speech architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Zyphra/ZONOS3-Mini\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Zyphra/ZONOS3-Mini\")",
+    "benchmarks": "Trending Score: 155, Likes: 174, Downloads: 4,170",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/Zyphra/ZONOS3-Mini",
+    "citations": [
+      {
+        "text": "Zyphra/ZONOS3-Mini on Hugging Face",
+        "url": "https://huggingface.co/Zyphra/ZONOS3-Mini"
+      }
+    ],
+    "created_at": "2026-11-12T01:14:08.038Z"
+  },
+  {
     "name": "mirage",
     "type": "Model",
     "summary": "High-performance Multimodal open-weights model by Cactus-Compute, trending with over 156 community likes and 14,615 downloads on Hugging Face.",

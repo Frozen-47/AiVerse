@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-11)
+### ⚡ AiVerse AI Radar (2026-11-12)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **mirage** (`Model`) |
-| 🌟 **Tool of the Day** | **Gemini 4 Carbon (high)** (Google DeepMind) — [Explore](https://artificialanalysis.ai/models/gemini-4-carbon) |
+| 📥 **Queued for Review** | **ZONOS3-Mini** (`Model`), **FlowHMR** (`Platform`), **Open-HumanWAM-50K** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Claude Opus 5.5 (max with fallback)** (Anthropic) — [Explore](https://artificialanalysis.ai/models/claude-opus-5-5) |
 | 🗄️ **Catalog Entries** | **448** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| 📜 **Top Daily Paper** | [PhyRubric: Rubric-Grounded Diagnostic Evaluation o...](https://huggingface.co/papers/2611.13576) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Wed, 11 Nov 2026 17:38:37 GMT` |
+| 📜 **Top Daily Paper** | [Visual Similarity in Adult Word Extension and Arti...](https://huggingface.co/papers/2611.14116) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Thu, 12 Nov 2026 01:14:52 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

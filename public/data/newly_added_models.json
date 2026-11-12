@@ -1,5 +1,83 @@
 [
   {
+    "date": "2026-11-12",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "ZONOS3-Mini",
+        "type": "Model",
+        "summary": "High-performance Audio open-weights model by Zyphra, trending with over 174 community likes and 4,170 downloads on Hugging Face.",
+        "task": "Audio",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Zyphra",
+        "size": "Open Weights",
+        "architecture": "Zyphra text to speech architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Zyphra/ZONOS3-Mini\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Zyphra/ZONOS3-Mini\")",
+        "benchmarks": "Trending Score: 155, Likes: 174, Downloads: 4,170",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/Zyphra/ZONOS3-Mini",
+        "citations": [
+          {
+            "text": "Zyphra/ZONOS3-Mini on Hugging Face",
+            "url": "https://huggingface.co/Zyphra/ZONOS3-Mini"
+          }
+        ]
+      },
+      {
+        "name": "FlowHMR",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by fafsaf1. Trending with 45 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "fafsaf1",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/fafsaf1/FlowHMR",
+        "benchmarks": "Trending Score: 29, Community Likes: 45",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/fafsaf1/FlowHMR",
+        "citations": [
+          {
+            "text": "fafsaf1/FlowHMR on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/fafsaf1/FlowHMR"
+          }
+        ]
+      },
+      {
+        "name": "Open-HumanWAM-50K",
+        "type": "Dataset",
+        "summary": "Open-HumanWAM \t An Open Recipe for Scaling Human and Robot Experience for Embodied Foundation Models Report · Code · Project page · Models · HF Paper · Citation Open-Hu (20 likes, 1,015,003 downloads).",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "DAGroup-PKU",
+        "size": "10M<n<100M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"DAGroup-PKU/Open-HumanWAM-50K\")",
+        "benchmarks": "Trending Score: 18, Likes: 20, Downloads: 1,015,003",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/DAGroup-PKU/Open-HumanWAM-50K",
+        "citations": [
+          {
+            "text": "DAGroup-PKU/Open-HumanWAM-50K on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/DAGroup-PKU/Open-HumanWAM-50K"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-11-11",
     "status": "queued_in_review_list",
     "assets": [
@@ -5892,36 +5970,6 @@
           {
             "text": "facebook/sam3 on Hugging Face",
             "url": "https://huggingface.co/facebook/sam3"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-17",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "DeepSeek-V4.1-Flash-1017",
-        "type": "Model",
-        "summary": "High-performance Multimodal open-weights model by DeepSeek, trending with over 393 community likes and 0 downloads on Hugging Face.",
-        "task": "Multimodal",
-        "license": "MIT",
-        "year": 2026,
-        "org": "DeepSeek",
-        "size": "Open Weights",
-        "architecture": "DeepSeek image text to text architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"deepseek-ai/DeepSeek-V4.1-Flash-1017\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"deepseek-ai/DeepSeek-V4.1-Flash-1017\")",
-        "benchmarks": "Trending Score: 391, Likes: 393, Downloads: 0",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
-        "citations": [
-          {
-            "text": "deepseek-ai/DeepSeek-V4.1-Flash-1017 on Hugging Face",
-            "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
           }
         ]
       }

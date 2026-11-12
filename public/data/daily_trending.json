@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-11-11T17:37:53.919Z",
+  "timestamp": "2026-11-12T01:14:08.055Z",
   "models": [
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 2033,
+      "likes": 3229,
       "downloads": 16693,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
     },
     {
-      "id": "speridlabs/idol",
-      "author": "speridlabs",
-      "likes": 1956,
-      "downloads": 28250,
-      "pipeline_tag": "image-to-3d",
-      "url": "https://huggingface.co/speridlabs/idol"
-    },
-    {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 649,
+      "likes": 714,
       "downloads": 142989,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
     },
     {
-      "id": "moonshotai/Kimi-K3.1-Pro",
-      "author": "moonshotai",
-      "likes": 1910,
-      "downloads": 33617,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
-    },
-    {
-      "id": "ricursiveAI/Ripple-65B-Preview",
-      "author": "ricursiveAI",
-      "likes": 506,
-      "downloads": 7112,
-      "pipeline_tag": "general",
-      "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
+      "id": "speridlabs/idol",
+      "author": "speridlabs",
+      "likes": 2144,
+      "downloads": 28250,
+      "pipeline_tag": "image-to-3d",
+      "url": "https://huggingface.co/speridlabs/idol"
     },
     {
       "id": "NousResearch/Arete-27B",
       "author": "NousResearch",
-      "likes": 422,
+      "likes": 437,
       "downloads": 4023,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/NousResearch/Arete-27B"
+    },
+    {
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 11516,
+      "downloads": 2848771,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5"
+    },
+    {
+      "id": "moonshotai/Kimi-K3.1-Pro",
+      "author": "moonshotai",
+      "likes": 1935,
+      "downloads": 33617,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
     }
   ],
   "papers": [
     {
-      "title": "PhyRubric: Rubric-Grounded Diagnostic Evaluation of Physical Commonsense in Text-to-Video Generation",
-      "summary": "A rubric-based diagnostic benchmark and judge assess physical commonsense in text-to-video generation, showing that current models still struggle and that the judge aligns closely with human judgments.",
-      "upvotes": 5,
-      "arxiv_id": "2611.13576",
-      "url": "https://huggingface.co/papers/2611.13576",
-      "githubRepo": "https://github.com/chenyil6/phyRubric"
-    },
-    {
-      "title": "DyCraft: An Agentic System for Long-Horizon 4D Scene Generation",
-      "summary": "DyCraft improves long-horizon 3D animation by decomposing it into planned static scenes, keyframe storyboards, and local motion authoring to reduce physical errors.",
-      "upvotes": 3,
-      "arxiv_id": "2610.40754",
-      "url": "https://huggingface.co/papers/2610.40754",
-      "githubRepo": "https://github.com/jefftan969/dycraft"
-    },
-    {
-      "title": "From Tool State to Scientific Action: Auditing Decision Provenance in Biomedical Research Agents",
-      "summary": "A scientific agent can give the same verdict while reading and citing different evidence. BioAgent-DF tests this separation using paired reference and candidate...",
-      "upvotes": 8,
-      "arxiv_id": "2611.01527",
-      "url": "https://huggingface.co/papers/2611.01527",
+      "title": "Visual Similarity in Adult Word Extension and Artificial Word Learning",
+      "summary": "Visual similarity measured by a self-supervised visual encoder partially explains word generalization in adults and artificial learners, while the composition of teaching examples contributes additional structure beyond that distance.",
+      "upvotes": 2,
+      "arxiv_id": "2611.14116",
+      "url": "https://huggingface.co/papers/2611.14116",
       "githubRepo": null
     },
     {
-      "title": "TorchCurves: Differentiable Parametric Curves",
-      "summary": "TorchCurves is a PyTorch library that enables differentiable, learnable vector-valued parametric curves for integration with neural models and applications such as continuous embeddings, Kolmogorov-Arnold networks, and functional regression.",
-      "upvotes": 2,
-      "arxiv_id": "2611.14516",
-      "url": "https://huggingface.co/papers/2611.14516",
-      "githubRepo": "https://github.com/alexshtf/torchcurves"
+      "title": "Prompt2Echo (P2Echo): Text-Prompted Multi-View Echocardiography Segmentation with One Model",
+      "summary": "P2Echo is a unified view-aware text-prompted segmentation framework that uses dynamic image-text alignment to segment diverse cardiac structures across multiple echocardiographic views with high accuracy and low computational cost.",
+      "upvotes": 1,
+      "arxiv_id": "2611.13425",
+      "url": "https://huggingface.co/papers/2611.13425",
+      "githubRepo": "https://github.com/moeinheidari7829/P2Echo"
     },
     {
-      "title": "The Surprising Effectiveness of Deleting Weights in LLM Post-Training",
-      "summary": "How little of a pretrained large language model (LLM) has to change for it to acquire new capabilities? We find that zeroing fewer than 0.05% of its weights, wi...",
-      "upvotes": 11,
-      "arxiv_id": "2611.10866",
-      "url": "https://huggingface.co/papers/2611.10866",
-      "githubRepo": "https://github.com/agentic-learning-ai-lab/deleting-weights"
+      "title": "Test-Time Scaling for Diffusion Language Models with Frequency-Aware Remasking",
+      "summary": "Diffusion language models (DLMs) generate text through iterative denoising, where decisions about which tokens to commit or remask strongly affect output qualit...",
+      "upvotes": 8,
+      "arxiv_id": "2611.10486",
+      "url": "https://huggingface.co/papers/2611.10486",
+      "githubRepo": null
+    },
+    {
+      "title": "Embodied First Exam",
+      "summary": "Early successes on agentic robotics point to a potential paradigm shift toward using coding agents to control robots. Existing robotics benchmarks are built aro...",
+      "upvotes": 20,
+      "arxiv_id": "2611.12177",
+      "url": "https://huggingface.co/papers/2611.12177",
+      "githubRepo": "https://github.com/mll-lab-nu/embodied-first-exam"
+    },
+    {
+      "title": "LEASH: Stay Safe in Agentic Robotics",
+      "summary": "Foundation models such as GPT and Claude have shown strong capabilities in spatial understanding and embodied intelligence. These advances make agentic robotics...",
+      "upvotes": 4,
+      "arxiv_id": "2611.14115",
+      "url": "https://huggingface.co/papers/2611.14115",
+      "githubRepo": "https://github.com/zhuqinfeng1999/LEASH"
     }
   ]
 }

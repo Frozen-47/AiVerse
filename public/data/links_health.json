@@ -1,18 +1,23 @@
 {
-  "timestamp": "2026-11-11T17:37:53.962Z",
+  "timestamp": "2026-11-12T01:14:08.162Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
+    {
+      "name": "OpenAI Platform",
+      "url": "https://platform.openai.com",
+      "status": 403
+    },
+    {
+      "name": "DALL-E 3",
+      "url": "https://openai.com/dall-e-3",
+      "status": 403
+    },
     {
       "name": "wan2-2-i2v-v3",
       "url": "https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3",
       "status": 401
-    },
-    {
-      "name": "Midjourney v6",
-      "url": "https://www.midjourney.com/",
-      "status": 403
     }
   ]
 }
