@@ -1,33 +1,13 @@
 {
-  "timestamp": "2026-11-12T09:05:18.732Z",
+  "timestamp": "2026-11-12T17:50:14.923Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
-      "name": "Perplexity",
-      "url": "https://www.perplexity.ai",
-      "status": 403
-    },
-    {
-      "name": "GPT-6 Astra",
+      "name": "GPT-4.5",
       "url": "https://openai.com",
       "status": 403
-    },
-    {
-      "name": "Midjourney",
-      "url": "https://www.midjourney.com",
-      "status": 403
-    },
-    {
-      "name": "Grammarly",
-      "url": "https://www.grammarly.com",
-      "status": 405
-    },
-    {
-      "name": "ImageNet",
-      "url": "https://image-net.org",
-      "status": "Timeout"
     }
   ]
 }

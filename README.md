@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-12)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **RelayVSR** (`Model`), **Nemotron-Personas-Finance-Japan** (`Dataset`) |
+| 📥 **Queued for Review** | **dinov3-vitl16-pretrain-lvd1689m** (`Model`), **free-youtube-transcript** (`Platform`), **physical-engineerings-last-exam** (`Dataset`) |
 | 🌟 **Tool of the Day** | **Claude Opus 5.5 (max with fallback)** (Anthropic) — [Explore](https://artificialanalysis.ai/models/claude-opus-5-5) |
 | 🗄️ **Catalog Entries** | **448** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| 📜 **Top Daily Paper** | [Precision on Demand: Escalating Weight Bits at Unc...](https://huggingface.co/papers/2611.14418) |
-| 🛡️ **Catalog Links Checked** | **20/25** operational |
-| 🕒 **Last Synchronized** | `Thu, 12 Nov 2026 09:06:04 GMT` |
+| 📜 **Top Daily Paper** | [ScrapeBench: Evaluating Legal Compliance of AI Age...](https://huggingface.co/papers/2611.11306) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Synchronized** | `Thu, 12 Nov 2026 17:50:46 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

@@ -4,6 +4,84 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "dinov3-vitl16-pretrain-lvd1689m",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by facebook, trending with over 2,145 community likes and 703,532 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "facebook",
+        "size": "1689M params",
+        "architecture": "facebook image feature extraction architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"facebook/dinov3-vitl16-pretrain-lvd1689m\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"facebook/dinov3-vitl16-pretrain-lvd1689m\")",
+        "benchmarks": "Trending Score: 164, Likes: 2,145, Downloads: 703,532",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/facebook/dinov3-vitl16-pretrain-lvd1689m",
+        "citations": [
+          {
+            "text": "facebook/dinov3-vitl16-pretrain-lvd1689m on Hugging Face",
+            "url": "https://huggingface.co/facebook/dinov3-vitl16-pretrain-lvd1689m"
+          }
+        ]
+      },
+      {
+        "name": "free-youtube-transcript",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by fendouai. Trending with 104 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "fendouai",
+        "size": "STATIC Platform",
+        "architecture": "STATIC cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/fendouai/free-youtube-transcript",
+        "benchmarks": "Trending Score: 33, Community Likes: 104",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/fendouai/free-youtube-transcript",
+        "citations": [
+          {
+            "text": "fendouai/free-youtube-transcript on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/fendouai/free-youtube-transcript"
+          }
+        ]
+      },
+      {
+        "name": "physical-engineerings-last-exam",
+        "type": "Dataset",
+        "summary": "Physical-Engineering’s Last Exam (Dev Set) \t Physical-Engineering’s Last Exam (PLE) is a benchmark of long-horizon engineering tasks built by licensed practicing engine (33 likes, 41,085 downloads).",
+        "task": "NLP",
+        "license": "CC-BY-4.0",
+        "year": 2026,
+        "org": "google",
+        "size": "n<1K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"google/physical-engineerings-last-exam\")",
+        "benchmarks": "Trending Score: 17, Likes: 33, Downloads: 41,085",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/google/physical-engineerings-last-exam",
+        "citations": [
+          {
+            "text": "google/physical-engineerings-last-exam on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/google/physical-engineerings-last-exam"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-12",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "RelayVSR",
         "type": "Model",
         "summary": "High-performance Image Generation open-weights model by Comfy-Org, trending with over 186 community likes and 91,134 downloads on Hugging Face.",
@@ -5940,60 +6018,6 @@
           {
             "text": "HelenPeng/ExeWorldBench on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/HelenPeng/ExeWorldBench"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-17",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "MOSS-Image-SFT",
-        "type": "Model",
-        "summary": "High-performance Image Generation open-weights model by OpenMOSS-Team, trending with over 223 community likes and 1,036 downloads on Hugging Face.",
-        "task": "Image Generation",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "OpenMOSS-Team",
-        "size": "Open Weights",
-        "architecture": "OpenMOSS-Team text to image architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"OpenMOSS-Team/MOSS-Image-SFT\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"OpenMOSS-Team/MOSS-Image-SFT\")",
-        "benchmarks": "Trending Score: 215, Likes: 223, Downloads: 1,036",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT",
-        "citations": [
-          {
-            "text": "OpenMOSS-Team/MOSS-Image-SFT on Hugging Face",
-            "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
-          }
-        ]
-      },
-      {
-        "name": "Nemotron-Personas-Vietnam",
-        "type": "Dataset",
-        "summary": "Nemotron-Personas-Vietnam \t           Hệ thống AI kết hợp để tạo personas tổng hợp dựa trên phân bố thực tế của Việt Nam     A compound AI approach to personas grounded (103 likes, 1,788 downloads).",
-        "task": "Computer Vision",
-        "license": "CC-BY-4.0",
-        "year": 2026,
-        "org": "nvidia",
-        "size": "1M<n<10M",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/Nemotron-Personas-Vietnam\")",
-        "benchmarks": "Trending Score: 34, Likes: 103, Downloads: 1,788",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Vietnam",
-        "citations": [
-          {
-            "text": "nvidia/Nemotron-Personas-Vietnam on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Vietnam"
           }
         ]
       }

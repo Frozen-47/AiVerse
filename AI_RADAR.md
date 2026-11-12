@@ -2,27 +2,34 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Thu, 12 Nov 2026 09:06:04 GMT`*
+*Last Synchronized: `Thu, 12 Nov 2026 17:50:46 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (2)
+## 📥 Newly Queued Assets for Review (3)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **RelayVSR** (`Model` • *Comfy-Org*)
-> High-performance Image Generation open-weights model by Comfy-Org, trending with over 186 community likes and 91,134 downloads on Hugging Face.
+### **dinov3-vitl16-pretrain-lvd1689m** (`Model` • *facebook*)
+> High-performance NLP open-weights model by facebook, trending with over 2,145 community likes and 703,532 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Image Generation` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 168, Likes: 186, Downloads: 91,134`
-- 🔗 **Resource Link**: [https://huggingface.co/Comfy-Org/RelayVSR](https://huggingface.co/Comfy-Org/RelayVSR)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 164, Likes: 2,145, Downloads: 703,532`
+- 🔗 **Resource Link**: [https://huggingface.co/facebook/dinov3-vitl16-pretrain-lvd1689m](https://huggingface.co/facebook/dinov3-vitl16-pretrain-lvd1689m)
 
-### **Nemotron-Personas-Finance-Japan** (`Dataset` • *nvidia*)
-> Nemotron-Personas-Finance-Japan 	           現実世界の分布に基づいた金融に特化したペルソナ生成のための複合AIアプローチ    	 		 	 	 		データセット概要 (Dataset Overview): 	 Nemotron-Personas-Finance-Japan は、日本における (19 likes, 1,732 downloads).
+### **free-youtube-transcript** (`Platform` • *fendouai*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by fendouai. Trending with 104 community stars.
 
-- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 18, Likes: 19, Downloads: 1,732`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/Nemotron-Personas-Finance-Japan](https://huggingface.co/datasets/nvidia/Nemotron-Personas-Finance-Japan)
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 33, Community Likes: 104`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/fendouai/free-youtube-transcript](https://huggingface.co/spaces/fendouai/free-youtube-transcript)
+
+### **physical-engineerings-last-exam** (`Dataset` • *google*)
+> Physical-Engineering’s Last Exam (Dev Set) 	 Physical-Engineering’s Last Exam (PLE) is a benchmark of long-horizon engineering tasks built by licensed practicing engine (33 likes, 41,085 downloads).
+
+- 🏷️ **Domain & License**: `NLP` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 17, Likes: 33, Downloads: 41,085`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/google/physical-engineerings-last-exam](https://huggingface.co/datasets/google/physical-engineerings-last-exam)
 
 ---
 
@@ -41,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 4,585 | 📥 16,693 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| `MiniMaxAI/MiniMax-H3-Image` | text-to-image | ❤️ 789 | 📥 142,989 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
-| `speridlabs/idol` | image-to-3d | ❤️ 2,174 | 📥 28,250 | [View](https://huggingface.co/speridlabs/idol) |
-| `NousResearch/Arete-27B` | text-generation | ❤️ 448 | 📥 4,023 | [View](https://huggingface.co/NousResearch/Arete-27B) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 11,555 | 📥 2,848,771 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF` | image-text-to-text | ❤️ 2,937 | 📥 1,532,273 | [View](https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF) |
+| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 4,663 | 📥 18,933 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
+| `MiniMaxAI/MiniMax-H3-Image` | text-to-image | ❤️ 837 | 📥 306,718 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
+| `speridlabs/idol` | image-to-3d | ❤️ 2,210 | 📥 29,904 | [View](https://huggingface.co/speridlabs/idol) |
+| `NousResearch/Arete-27B` | text-generation | ❤️ 468 | 📥 4,669 | [View](https://huggingface.co/NousResearch/Arete-27B) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 11,594 | 📥 2,782,513 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF` | image-text-to-text | ❤️ 2,968 | 📥 1,599,836 | [View](https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF) |
 
 
 ---
@@ -56,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Precision on Demand: Escalating Weight Bits at Uncertain Decoding Steps in a Small Local Model** | 👍 0 | A dynamic weight precision allocation strategy is proposed, utilizing low-bit quantization and uncertainty-based gating to selectively upgrade weight precision during LLM generation, thereby optimizing computational cost. | [Read](https://huggingface.co/papers/2611.14418) |
-| **Bits or permutations? Spending a fixed inference budget on weight precision or on option-order averaging in small local language models** | 👍 0 | Local language models can save memory by storing weights in fewer bits, and they can reduce sensitivity to the order of answer options by averaging a few reorde... | [Read](https://huggingface.co/papers/2611.14413) |
-| **PolyRoute: A Twelve-Language and Code-Mixed Benchmark for Typed-Decision Routing, with Baselines and a Leaderboard** | 👍 0 | Typed-decision encoders answer a question about a text in one forward pass, but their behaviour outside English is rarely measured on a fixed yardstick. We rele... | [Read](https://huggingface.co/papers/2611.13843) |
-| **SteerDistill: Quantizing LLM Agents via Closed-Loop Teacher Steering** | 👍 14 | Low-bit quantized LLM agents can recover much of their task success through closed-loop guidance from a full-precision teacher, followed by unassisted student training on corrected and reference turns. | [Read](https://huggingface.co/papers/2611.13410) |
-| **Mixed Signals: Weight-Space Programming for EEG and ECG** | 👍 1 | Weight-space programming allows language models to read a trained neural network's weights and edit them. This opens the door to ``training'' by reasoning rathe... | [Read](https://huggingface.co/papers/2611.13758) |
+| **ScrapeBench: Evaluating Legal Compliance of AI Agents in Website Scraping** | 👍 1 | AI agents deployed on the open web are becoming more capable of performing actions that may breach contractual provisions and violate computer security laws. In... | [Read](https://huggingface.co/papers/2611.11306) |
+| **FAME-QP: A GPU-Accelerated Quadratic-Programming Solver for Real-Time Model Predictive Control** | 👍 1 | We present FAME-QP, a GPU-accelerated solver for dense quadratic programs arising in linear model predictive control. FAME-QP combines constraint-dependent oper... | [Read](https://huggingface.co/papers/2611.13766) |
+| **Evolving Infra: Agent-Adaptive LLM Serving at Scale** | 👍 10 | Agentic workloads are a major source of LLM inference demand. Existing prefill--decode (PD) disaggregated serving systems offer limited flexibility for runtime ... | [Read](https://huggingface.co/papers/2611.12304) |
+| **CARTBench: Rubric-Based Evaluation of Shopping Advice for Complex and Ambiguous Requests with Timelines** | 👍 1 | Large language model (LLM) shopping assistants now recommend products in multi-turn conversations. However, reliable evaluation faces Data scarcity and Difficul... | [Read](https://huggingface.co/papers/2611.05862) |
+| **Where Does Alignment Emerge and What Does It Mean? A Closer Look at the Platonic Representation Hypothesis** | 👍 4 | Cross-modal representational alignment between unimodal language and vision models increases with model capability when captions are clean and informative, but remains below same-modality alignment and can exceed explicitly aligned vision-language models. | [Read](https://huggingface.co/papers/2611.12869) |
 
 
 ---
@@ -73,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
+- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
 - **Dependency Security**: `43` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---
