@@ -1,1 +1,1 @@
-qwen35-3d-coder-studio
+Inkling-2-Small

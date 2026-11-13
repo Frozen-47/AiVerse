@@ -2,20 +2,34 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Fri, 13 Nov 2026 05:02:12 GMT`*
+*Last Synchronized: `Fri, 13 Nov 2026 15:02:25 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (1)
+## 📥 Newly Queued Assets for Review (3)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **qwen35-3d-coder-studio** (`Platform` • *akhaliq*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by akhaliq. Trending with 38 community stars.
+### **Inkling-2-Small** (`Model` • *thinkingmachines*)
+> High-performance Multimodal open-weights model by thinkingmachines, trending with over 190 community likes and 1,064 downloads on Hugging Face.
+
+- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 187, Likes: 190, Downloads: 1,064`
+- 🔗 **Resource Link**: [https://huggingface.co/thinkingmachines/Inkling-2-Small](https://huggingface.co/thinkingmachines/Inkling-2-Small)
+
+### **Krea2T-Revamped** (`Platform` • *waitinghere*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by waitinghere. Trending with 30 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 28, Community Likes: 38`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/akhaliq/qwen35-3d-coder-studio](https://huggingface.co/spaces/akhaliq/qwen35-3d-coder-studio)
+- ⚡ **Metrics**: `Trending Score: 27, Community Likes: 30`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/waitinghere/Krea2T-Revamped](https://huggingface.co/spaces/waitinghere/Krea2T-Revamped)
+
+### **multimodal-knowledge-agent** (`Dataset` • *google*)
+> Multimodal Knowledge Agent (MKA) — 10 Showcase Examples 	 Multimodal Knowledge Agent (MKA) is a benchmark from Google DeepMind for evaluating autonomous AI agents on co (22 likes, 2,239 downloads).
+
+- 🏷️ **Domain & License**: `Computer Vision` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 19, Likes: 22, Downloads: 2,239`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/google/multimodal-knowledge-agent](https://huggingface.co/datasets/google/multimodal-knowledge-agent)
 
 ---
 
@@ -34,12 +48,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 4,764 | 📥 18,933 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| `MiniMaxAI/MiniMax-H3-Image` | text-to-image | ❤️ 890 | 📥 306,718 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
-| `NousResearch/Arete-27B` | text-generation | ❤️ 491 | 📥 4,669 | [View](https://huggingface.co/NousResearch/Arete-27B) |
-| `speridlabs/idol` | image-to-3d | ❤️ 2,239 | 📥 29,904 | [View](https://huggingface.co/speridlabs/idol) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 11,646 | 📥 2,782,513 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `Qwen/Qwen3.8-27B` | image-text-to-text | ❤️ 19,758 | 📥 7,094,218 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
+| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 4,877 | 📥 21,586 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
+| `MiniMaxAI/MiniMax-H3-Image` | text-to-image | ❤️ 963 | 📥 437,039 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
+| `NousResearch/Arete-27B` | text-generation | ❤️ 519 | 📥 5,545 | [View](https://huggingface.co/NousResearch/Arete-27B) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 11,704 | 📥 2,778,909 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `speridlabs/idol` | image-to-3d | ❤️ 2,261 | 📥 31,367 | [View](https://huggingface.co/speridlabs/idol) |
+| `Qwen/Qwen3.8-27B` | image-text-to-text | ❤️ 19,815 | 📥 6,960,395 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
 
 
 ---
@@ -49,11 +63,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **From Large Language Models to Efficient System One Models via Adaptive Computation** | 👍 1 | Transferring LLMs into System One decision models typically replaces the language modeling head with a decision head while retaining the full backbone, making e... | [Read](https://huggingface.co/papers/2611.16321) |
-| **Duo: A Reciprocal World Model for Full-Duplex Interaction** | 👍 6 | A reciprocal world model enables real-time full-duplex audiovisual interaction by jointly modeling intent and realization using autoregressive reasoning, synchronized attention, and dual rollout distillation. | [Read](https://huggingface.co/papers/2611.15131) |
-| **G-STAR: Group-Scaled Token Capacity for Deeply Compressed Autoregressive Generation** | 👍 6 | Discrete autoregressive models offer a scalable framework for image generation. However, they face a fundamental trade-off: long token sequences preserve repres... | [Read](https://huggingface.co/papers/2611.13004) |
-| **BirdDreams: Joint Perspective and BEV Video Generation for a Plausible, Reactive Driving World Model** | 👍 18 | Driving world models aim to simulate how a scene unfolds under different ego actions. This requires plausible motion of surrounding vehicles as well as precise ... | [Read](https://huggingface.co/papers/2611.14815) |
-| **On the Design of Hyper-Connections: Simplification, Stability, and Scalability** | 👍 13 | A systematic study of Hyper-Connections architectures identifies the simpler efficient design SimpleHC, which removes residual mixing and uses shared memory access to match mHC performance while adding minimal training overhead and improving stability. | [Read](https://huggingface.co/papers/2611.05984) |
+| **JustRUA: A Controlled Study of GPT-6 Robot-Use Agents** | 👍 1 | A simplified evaluation harness that keeps full episode history and stops motions early substantially improves robot-use agent scores on RoboDojo, with scene geometry providing the largest additional benefit. | [Read](https://huggingface.co/papers/2611.16009) |
+| **Open Vision Banana: A Fully Open Recipe for Generative Visual Perception** | 👍 20 | Recent work suggests that pretrained image generators encode real-world understanding beyond image synthesis. Vision Banana exploits this by framing vision task... | [Read](https://huggingface.co/papers/2611.15844) |
+| **A Cross-Scenario Survey and Analysis of Self-Evolving Multimodal Agents** | 👍 1 | A survey analyzes why self-improvement mechanisms for multimodal agents transfer unevenly across reasoning, generation, navigation, and manipulation scenarios, framing them as trade-offs over scarce factors and task-structural resources. | [Read](https://huggingface.co/papers/2611.14256) |
+| **Learning the Task or Learning the Verifier? Rethinking Criteria Exposure in Embodied Self-Improvement** | 👍 3 | Exposing benchmark success criteria to self-improving embodied coding agents can raise measured success under those criteria without improving instructed-task completion, and the advantage weakens under slight criteria changes and transfers poorly across tasks, while instruction-faithful criteria better reflect instructed-task performance. | [Read](https://huggingface.co/papers/2611.08318) |
+| **DeepStress: Stress-Testing Deep Search Agents** | 👍 3 | A dynamic stress-testing framework shows that search agents often answer confidently despite unreliable retrieved evidence and may rely on memorized knowledge when documents are factually wrong. | [Read](https://huggingface.co/papers/2607.13920) |
 
 
 ---
@@ -66,7 +80,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `20/25` healthy verified (`5` flagged / timed out)
 - **Dependency Security**: `43` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-11-13T05:01:35.166Z",
+  "timestamp": "2026-11-13T15:01:40.948Z",
   "models": [
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 4764,
-      "downloads": 18933,
+      "likes": 4877,
+      "downloads": 21586,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
     },
     {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 890,
-      "downloads": 306718,
+      "likes": 963,
+      "downloads": 437039,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
     },
     {
       "id": "NousResearch/Arete-27B",
       "author": "NousResearch",
-      "likes": 491,
-      "downloads": 4669,
+      "likes": 519,
+      "downloads": 5545,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/NousResearch/Arete-27B"
     },
     {
-      "id": "speridlabs/idol",
-      "author": "speridlabs",
-      "likes": 2239,
-      "downloads": 29904,
-      "pipeline_tag": "image-to-3d",
-      "url": "https://huggingface.co/speridlabs/idol"
-    },
-    {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 11646,
-      "downloads": 2782513,
+      "likes": 11704,
+      "downloads": 2778909,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     },
     {
+      "id": "speridlabs/idol",
+      "author": "speridlabs",
+      "likes": 2261,
+      "downloads": 31367,
+      "pipeline_tag": "image-to-3d",
+      "url": "https://huggingface.co/speridlabs/idol"
+    },
+    {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 19758,
-      "downloads": 7094218,
+      "likes": 19815,
+      "downloads": 6960395,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
     }
   ],
   "papers": [
     {
-      "title": "From Large Language Models to Efficient System One Models via Adaptive Computation",
-      "summary": "Transferring LLMs into System One decision models typically replaces the language modeling head with a decision head while retaining the full backbone, making e...",
+      "title": "JustRUA: A Controlled Study of GPT-6 Robot-Use Agents",
+      "summary": "A simplified evaluation harness that keeps full episode history and stops motions early substantially improves robot-use agent scores on RoboDojo, with scene geometry providing the largest additional benefit.",
       "upvotes": 1,
-      "arxiv_id": "2611.16321",
-      "url": "https://huggingface.co/papers/2611.16321",
-      "githubRepo": "https://github.com/minhkks/NestOne"
+      "arxiv_id": "2611.16009",
+      "url": "https://huggingface.co/papers/2611.16009",
+      "githubRepo": "https://github.com/ZefanW/JustRUA"
     },
     {
-      "title": "Duo: A Reciprocal World Model for Full-Duplex Interaction",
-      "summary": "A reciprocal world model enables real-time full-duplex audiovisual interaction by jointly modeling intent and realization using autoregressive reasoning, synchronized attention, and dual rollout distillation.",
-      "upvotes": 6,
-      "arxiv_id": "2611.15131",
-      "url": "https://huggingface.co/papers/2611.15131",
+      "title": "Open Vision Banana: A Fully Open Recipe for Generative Visual Perception",
+      "summary": "Recent work suggests that pretrained image generators encode real-world understanding beyond image synthesis. Vision Banana exploits this by framing vision task...",
+      "upvotes": 20,
+      "arxiv_id": "2611.15844",
+      "url": "https://huggingface.co/papers/2611.15844",
+      "githubRepo": "https://github.com/OpenVisionBanana/OpenVisionBanana"
+    },
+    {
+      "title": "A Cross-Scenario Survey and Analysis of Self-Evolving Multimodal Agents",
+      "summary": "A survey analyzes why self-improvement mechanisms for multimodal agents transfer unevenly across reasoning, generation, navigation, and manipulation scenarios, framing them as trade-offs over scarce factors and task-structural resources.",
+      "upvotes": 1,
+      "arxiv_id": "2611.14256",
+      "url": "https://huggingface.co/papers/2611.14256",
+      "githubRepo": "https://github.com/jingjing12110/SE-MMAgents"
+    },
+    {
+      "title": "Learning the Task or Learning the Verifier? Rethinking Criteria Exposure in Embodied Self-Improvement",
+      "summary": "Exposing benchmark success criteria to self-improving embodied coding agents can raise measured success under those criteria without improving instructed-task completion, and the advantage weakens under slight criteria changes and transfers poorly across tasks, while instruction-faithful criteria better reflect instructed-task performance.",
+      "upvotes": 3,
+      "arxiv_id": "2611.08318",
+      "url": "https://huggingface.co/papers/2611.08318",
       "githubRepo": null
     },
     {
-      "title": "G-STAR: Group-Scaled Token Capacity for Deeply Compressed Autoregressive Generation",
-      "summary": "Discrete autoregressive models offer a scalable framework for image generation. However, they face a fundamental trade-off: long token sequences preserve repres...",
-      "upvotes": 6,
-      "arxiv_id": "2611.13004",
-      "url": "https://huggingface.co/papers/2611.13004",
-      "githubRepo": "https://github.com/DAGroup-PKU/G-STAR"
-    },
-    {
-      "title": "BirdDreams: Joint Perspective and BEV Video Generation for a Plausible, Reactive Driving World Model",
-      "summary": "Driving world models aim to simulate how a scene unfolds under different ego actions. This requires plausible motion of surrounding vehicles as well as precise ...",
-      "upvotes": 18,
-      "arxiv_id": "2611.14815",
-      "url": "https://huggingface.co/papers/2611.14815",
+      "title": "DeepStress: Stress-Testing Deep Search Agents",
+      "summary": "A dynamic stress-testing framework shows that search agents often answer confidently despite unreliable retrieved evidence and may rely on memorized knowledge when documents are factually wrong.",
+      "upvotes": 3,
+      "arxiv_id": "2607.13920",
+      "url": "https://huggingface.co/papers/2607.13920",
       "githubRepo": null
-    },
-    {
-      "title": "On the Design of Hyper-Connections: Simplification, Stability, and Scalability",
-      "summary": "A systematic study of Hyper-Connections architectures identifies the simpler efficient design SimpleHC, which removes residual mixing and uses shared memory access to match mHC performance while adding minimal training overhead and improving stability.",
-      "upvotes": 13,
-      "arxiv_id": "2611.05984",
-      "url": "https://huggingface.co/papers/2611.05984",
-      "githubRepo": "https://github.com/aHapBean/SimpleHC"
     }
   ]
 }

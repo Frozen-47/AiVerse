@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-13)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **qwen35-3d-coder-studio** (`Platform`) |
+| 📥 **Queued for Review** | **Inkling-2-Small** (`Model`), **Krea2T-Revamped** (`Platform`), **multimodal-knowledge-agent** (`Dataset`) |
 | 🌟 **Tool of the Day** | **Claude Opus 5.5 (xhigh with fallback)** (Anthropic) — [Explore](https://artificialanalysis.ai/models/claude-opus-5-5-xhigh) |
 | 🗄️ **Catalog Entries** | **448** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| 📜 **Top Daily Paper** | [From Large Language Models to Efficient System One...](https://huggingface.co/papers/2611.16321) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 13 Nov 2026 05:02:12 GMT` |
+| 📜 **Top Daily Paper** | [JustRUA: A Controlled Study of GPT-6 Robot-Use Age...](https://huggingface.co/papers/2611.16009) |
+| 🛡️ **Catalog Links Checked** | **20/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 13 Nov 2026 15:02:25 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

@@ -4,6 +4,84 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Inkling-2-Small",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by thinkingmachines, trending with over 190 community likes and 1,064 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "thinkingmachines",
+        "size": "Open Weights",
+        "architecture": "thinkingmachines image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"thinkingmachines/Inkling-2-Small\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"thinkingmachines/Inkling-2-Small\")",
+        "benchmarks": "Trending Score: 187, Likes: 190, Downloads: 1,064",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "citations": [
+          {
+            "text": "thinkingmachines/Inkling-2-Small on Hugging Face",
+            "url": "https://huggingface.co/thinkingmachines/Inkling-2-Small"
+          }
+        ]
+      },
+      {
+        "name": "Krea2T-Revamped",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by waitinghere. Trending with 30 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "waitinghere",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/waitinghere/Krea2T-Revamped",
+        "benchmarks": "Trending Score: 27, Community Likes: 30",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/waitinghere/Krea2T-Revamped",
+        "citations": [
+          {
+            "text": "waitinghere/Krea2T-Revamped on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/waitinghere/Krea2T-Revamped"
+          }
+        ]
+      },
+      {
+        "name": "multimodal-knowledge-agent",
+        "type": "Dataset",
+        "summary": "Multimodal Knowledge Agent (MKA) — 10 Showcase Examples \t Multimodal Knowledge Agent (MKA) is a benchmark from Google DeepMind for evaluating autonomous AI agents on co (22 likes, 2,239 downloads).",
+        "task": "Computer Vision",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "google",
+        "size": "n<1K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"google/multimodal-knowledge-agent\")",
+        "benchmarks": "Trending Score: 19, Likes: 22, Downloads: 2,239",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/google/multimodal-knowledge-agent",
+        "citations": [
+          {
+            "text": "google/multimodal-knowledge-agent on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/google/multimodal-knowledge-agent"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-13",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "qwen35-3d-coder-studio",
         "type": "Platform",
         "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by akhaliq. Trending with 38 community stars.",
@@ -5964,60 +6042,6 @@
           {
             "text": "nvidia/Qwen3.8-Flash-Next-FP4-Local on Hugging Face",
             "url": "https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-18",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "LFM2.5-24B-A2B-GGUF",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by LiquidAI, trending with over 197 community likes and 82,115 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "LiquidAI",
-        "size": "24B params",
-        "architecture": "LiquidAI text generation architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"LiquidAI/LFM2.5-24B-A2B-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"LiquidAI/LFM2.5-24B-A2B-GGUF\")",
-        "benchmarks": "Trending Score: 193, Likes: 197, Downloads: 82,115",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B-GGUF",
-        "citations": [
-          {
-            "text": "LiquidAI/LFM2.5-24B-A2B-GGUF on Hugging Face",
-            "url": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B-GGUF"
-          }
-        ]
-      },
-      {
-        "name": "TRELLIS.2",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by microsoft. Trending with 2,232 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "microsoft",
-        "size": "GRADIO Platform",
-        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/microsoft/TRELLIS.2",
-        "benchmarks": "Trending Score: 26, Community Likes: 2,232",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/spaces/microsoft/TRELLIS.2",
-        "citations": [
-          {
-            "text": "microsoft/TRELLIS.2 on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/microsoft/TRELLIS.2"
           }
         ]
       }

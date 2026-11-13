@@ -1,5 +1,80 @@
 [
   {
+    "name": "multimodal-knowledge-agent",
+    "type": "Dataset",
+    "summary": "Multimodal Knowledge Agent (MKA) — 10 Showcase Examples \t Multimodal Knowledge Agent (MKA) is a benchmark from Google DeepMind for evaluating autonomous AI agents on co (22 likes, 2,239 downloads).",
+    "task": "Computer Vision",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "google",
+    "size": "n<1K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"google/multimodal-knowledge-agent\")",
+    "benchmarks": "Trending Score: 19, Likes: 22, Downloads: 2,239",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/google/multimodal-knowledge-agent",
+    "citations": [
+      {
+        "text": "google/multimodal-knowledge-agent on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/google/multimodal-knowledge-agent"
+      }
+    ],
+    "created_at": "2026-11-13T15:01:40.930Z"
+  },
+  {
+    "name": "Krea2T-Revamped",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by waitinghere. Trending with 30 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "waitinghere",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/waitinghere/Krea2T-Revamped",
+    "benchmarks": "Trending Score: 27, Community Likes: 30",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/waitinghere/Krea2T-Revamped",
+    "citations": [
+      {
+        "text": "waitinghere/Krea2T-Revamped on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/waitinghere/Krea2T-Revamped"
+      }
+    ],
+    "created_at": "2026-11-13T15:01:40.930Z"
+  },
+  {
+    "name": "Inkling-2-Small",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by thinkingmachines, trending with over 190 community likes and 1,064 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "thinkingmachines",
+    "size": "Open Weights",
+    "architecture": "thinkingmachines image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"thinkingmachines/Inkling-2-Small\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"thinkingmachines/Inkling-2-Small\")",
+    "benchmarks": "Trending Score: 187, Likes: 190, Downloads: 1,064",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+    "citations": [
+      {
+        "text": "thinkingmachines/Inkling-2-Small on Hugging Face",
+        "url": "https://huggingface.co/thinkingmachines/Inkling-2-Small"
+      }
+    ],
+    "created_at": "2026-11-13T15:01:40.930Z"
+  },
+  {
     "name": "qwen35-3d-coder-studio",
     "type": "Platform",
     "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by akhaliq. Trending with 38 community stars.",
