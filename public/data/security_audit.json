@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-11-13T15:01:43.464Z",
+  "timestamp": "2026-11-13T22:20:21.116Z",
   "vulnerabilities": {
     "info": 0,
     "low": 0,
-    "moderate": 16,
+    "moderate": 15,
     "high": 26,
     "critical": 1,
-    "total": 43
+    "total": 42
   },
   "totalDependencies": 578
 }

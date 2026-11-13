@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-13T15:01:40.948Z",
+  "timestamp": "2026-11-13T22:20:20.341Z",
   "models": [
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 4877,
+      "likes": 5572,
       "downloads": 21586,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
@@ -12,7 +12,7 @@
     {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 963,
+      "likes": 999,
       "downloads": 437039,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
@@ -20,7 +20,7 @@
     {
       "id": "NousResearch/Arete-27B",
       "author": "NousResearch",
-      "likes": 519,
+      "likes": 540,
       "downloads": 5545,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/NousResearch/Arete-27B"
@@ -28,68 +28,68 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 11704,
+      "likes": 11766,
       "downloads": 2778909,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     },
     {
-      "id": "speridlabs/idol",
-      "author": "speridlabs",
-      "likes": 2261,
-      "downloads": 31367,
-      "pipeline_tag": "image-to-3d",
-      "url": "https://huggingface.co/speridlabs/idol"
-    },
-    {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 19815,
+      "likes": 19859,
       "downloads": 6960395,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
+    },
+    {
+      "id": "speridlabs/idol",
+      "author": "speridlabs",
+      "likes": 2286,
+      "downloads": 31367,
+      "pipeline_tag": "image-to-3d",
+      "url": "https://huggingface.co/speridlabs/idol"
     }
   ],
   "papers": [
     {
-      "title": "JustRUA: A Controlled Study of GPT-6 Robot-Use Agents",
-      "summary": "A simplified evaluation harness that keeps full episode history and stops motions early substantially improves robot-use agent scores on RoboDojo, with scene geometry providing the largest additional benefit.",
-      "upvotes": 1,
-      "arxiv_id": "2611.16009",
-      "url": "https://huggingface.co/papers/2611.16009",
-      "githubRepo": "https://github.com/ZefanW/JustRUA"
+      "title": "Consensus Capture in Reference-Based UAV Video Stabilization: A Benchmark on Dynamic Urban Scenes",
+      "summary": "Reference-frame stabilization registers every frame of a hovering-drone video onto one reference frame, keeping object positions comparable. The registration pi...",
+      "upvotes": 2,
+      "arxiv_id": "2611.17190",
+      "url": "https://huggingface.co/papers/2611.17190",
+      "githubRepo": "https://github.com/rfonod/stabilo-benchmark"
     },
     {
-      "title": "Open Vision Banana: A Fully Open Recipe for Generative Visual Perception",
-      "summary": "Recent work suggests that pretrained image generators encode real-world understanding beyond image synthesis. Vision Banana exploits this by framing vision task...",
-      "upvotes": 20,
-      "arxiv_id": "2611.15844",
-      "url": "https://huggingface.co/papers/2611.15844",
-      "githubRepo": "https://github.com/OpenVisionBanana/OpenVisionBanana"
-    },
-    {
-      "title": "A Cross-Scenario Survey and Analysis of Self-Evolving Multimodal Agents",
-      "summary": "A survey analyzes why self-improvement mechanisms for multimodal agents transfer unevenly across reasoning, generation, navigation, and manipulation scenarios, framing them as trade-offs over scarce factors and task-structural resources.",
-      "upvotes": 1,
-      "arxiv_id": "2611.14256",
-      "url": "https://huggingface.co/papers/2611.14256",
-      "githubRepo": "https://github.com/jingjing12110/SE-MMAgents"
-    },
-    {
-      "title": "Learning the Task or Learning the Verifier? Rethinking Criteria Exposure in Embodied Self-Improvement",
-      "summary": "Exposing benchmark success criteria to self-improving embodied coding agents can raise measured success under those criteria without improving instructed-task completion, and the advantage weakens under slight criteria changes and transfers poorly across tasks, while instruction-faithful criteria better reflect instructed-task performance.",
+      "title": "TurtLES: A Large-Scale Benchmark for Turbulent 3D Neural PDE Surrogates",
+      "summary": "Machine-learning surrogates are increasingly used to accelerate computational fluid dynamics, yet progress is limited by the lack of benchmarks capturing realis...",
       "upvotes": 3,
-      "arxiv_id": "2611.08318",
-      "url": "https://huggingface.co/papers/2611.08318",
-      "githubRepo": null
+      "arxiv_id": "2611.09567",
+      "url": "https://huggingface.co/papers/2611.09567",
+      "githubRepo": "https://github.com/itsakk/TurtLES"
     },
     {
-      "title": "DeepStress: Stress-Testing Deep Search Agents",
-      "summary": "A dynamic stress-testing framework shows that search agents often answer confidently despite unreliable retrieved evidence and may rely on memorized knowledge when documents are factually wrong.",
-      "upvotes": 3,
-      "arxiv_id": "2607.13920",
-      "url": "https://huggingface.co/papers/2607.13920",
-      "githubRepo": null
+      "title": "The Value of Thinking: Learning When to Reason in Hybrid Decision Models",
+      "summary": "A hybrid decision model routes between implicit single-forward-pass answering and full autoregressive reasoning via a self-routing block trained with calibrated decision policy optimization, reducing token and latency costs while preserving accuracy.",
+      "upvotes": 1,
+      "arxiv_id": "2611.16961",
+      "url": "https://huggingface.co/papers/2611.16961",
+      "githubRepo": "https://github.com/zhengxuyu/HDM-code"
+    },
+    {
+      "title": "The Narrative Gap: Can LLMs Help Us Navigate Diverse Narratives Across Languages?",
+      "summary": "A benchmark of news articles and queries shows that current large language models cannot reliably help users navigate diverse multilingual narratives, leaving gaps in exposure to competing accounts and risking echo chambers and information disparities.",
+      "upvotes": 0,
+      "arxiv_id": "2611.12750",
+      "url": "https://huggingface.co/papers/2611.12750",
+      "githubRepo": "https://github.com/isle-dev/Narrative-Bench-NeurIPS-2026"
+    },
+    {
+      "title": "A frontier machine intelligence for human neuroimaging",
+      "summary": "A vision-language model trained on nearly one million clinical neuroimaging studies interprets complete examinations, discusses findings in natural language, and outperforms existing general and medical models in diagnosis, localization, reporting, and progression assessment.",
+      "upvotes": 0,
+      "arxiv_id": "2611.15094",
+      "url": "https://huggingface.co/papers/2611.15094",
+      "githubRepo": "https://github.com/MLNeurosurg/neuro-vl"
     }
   ]
 }

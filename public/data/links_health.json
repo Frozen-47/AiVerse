@@ -1,33 +1,18 @@
 {
-  "timestamp": "2026-11-13T15:01:40.995Z",
+  "timestamp": "2026-11-13T22:20:20.439Z",
   "checked": 25,
-  "healthy": 20,
-  "broken": 5,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "GPT-3",
-      "url": "https://openai.com/research/language-models-are-few-shot-learners",
+      "name": "Perplexity AI",
+      "url": "https://www.perplexity.ai/",
       "status": 403
     },
     {
-      "name": "Claude",
-      "url": "https://claude.ai",
-      "status": 403
-    },
-    {
-      "name": "Canva AI",
-      "url": "https://www.canva.com/ai-image-generator",
-      "status": 403
-    },
-    {
-      "name": "o3",
-      "url": "https://openai.com",
-      "status": 403
-    },
-    {
-      "name": "GPT-6 Astra",
-      "url": "https://openai.com",
-      "status": 403
+      "name": "UltraFeedback",
+      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
+      "status": 401
     }
   ]
 }
