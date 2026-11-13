@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-12T23:56:34.151Z",
+  "timestamp": "2026-11-13T05:01:35.166Z",
   "models": [
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 4719,
+      "likes": 4764,
       "downloads": 18933,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
@@ -12,7 +12,7 @@
     {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 866,
+      "likes": 890,
       "downloads": 306718,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
@@ -20,7 +20,7 @@
     {
       "id": "NousResearch/Arete-27B",
       "author": "NousResearch",
-      "likes": 484,
+      "likes": 491,
       "downloads": 4669,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/NousResearch/Arete-27B"
@@ -28,7 +28,7 @@
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 2230,
+      "likes": 2239,
       "downloads": 29904,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -36,7 +36,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 11628,
+      "likes": 11646,
       "downloads": 2782513,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -44,7 +44,7 @@
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 19742,
+      "likes": 19758,
       "downloads": 7094218,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
@@ -52,44 +52,44 @@
   ],
   "papers": [
     {
-      "title": "Probing Transformer Representations Layer by Layer, Module by Module",
-      "summary": "Jointly selecting layers and modules in transformer foundation models yields better probing features than depth-only or final-layer approaches, and simple fixed strategies recover much of the gain.",
-      "upvotes": 0,
-      "arxiv_id": "2611.11531",
-      "url": "https://huggingface.co/papers/2611.11531",
-      "githubRepo": "https://github.com/ambroiseodt/waldo"
+      "title": "From Large Language Models to Efficient System One Models via Adaptive Computation",
+      "summary": "Transferring LLMs into System One decision models typically replaces the language modeling head with a decision head while retaining the full backbone, making e...",
+      "upvotes": 1,
+      "arxiv_id": "2611.16321",
+      "url": "https://huggingface.co/papers/2611.16321",
+      "githubRepo": "https://github.com/minhkks/NestOne"
     },
     {
-      "title": "ScrapeBench: Evaluating Legal Compliance of AI Agents in Website Scraping",
-      "summary": "AI agents deployed on the open web are becoming more capable of performing actions that may breach contractual provisions and violate computer security laws. In...",
-      "upvotes": 2,
-      "arxiv_id": "2611.11306",
-      "url": "https://huggingface.co/papers/2611.11306",
-      "githubRepo": "https://github.com/imperialite/scrapebench"
+      "title": "Duo: A Reciprocal World Model for Full-Duplex Interaction",
+      "summary": "A reciprocal world model enables real-time full-duplex audiovisual interaction by jointly modeling intent and realization using autoregressive reasoning, synchronized attention, and dual rollout distillation.",
+      "upvotes": 6,
+      "arxiv_id": "2611.15131",
+      "url": "https://huggingface.co/papers/2611.15131",
+      "githubRepo": null
     },
     {
-      "title": "FAME-QP: A GPU-Accelerated Quadratic-Programming Solver for Real-Time Model Predictive Control",
-      "summary": "We present FAME-QP, a GPU-accelerated solver for dense quadratic programs arising in linear model predictive control. FAME-QP combines constraint-dependent oper...",
-      "upvotes": 4,
-      "arxiv_id": "2611.13766",
-      "url": "https://huggingface.co/papers/2611.13766",
-      "githubRepo": "https://github.com/santoshrajkumar/fame-qp"
+      "title": "G-STAR: Group-Scaled Token Capacity for Deeply Compressed Autoregressive Generation",
+      "summary": "Discrete autoregressive models offer a scalable framework for image generation. However, they face a fundamental trade-off: long token sequences preserve repres...",
+      "upvotes": 6,
+      "arxiv_id": "2611.13004",
+      "url": "https://huggingface.co/papers/2611.13004",
+      "githubRepo": "https://github.com/DAGroup-PKU/G-STAR"
     },
     {
-      "title": "Evolving Infra: Agent-Adaptive LLM Serving at Scale",
-      "summary": "Agentic workloads are a major source of LLM inference demand. Existing prefill--decode (PD) disaggregated serving systems offer limited flexibility for runtime ...",
-      "upvotes": 11,
-      "arxiv_id": "2611.12304",
-      "url": "https://huggingface.co/papers/2611.12304",
-      "githubRepo": "https://github.com/mit-han-lab/EvolvingInfra"
+      "title": "BirdDreams: Joint Perspective and BEV Video Generation for a Plausible, Reactive Driving World Model",
+      "summary": "Driving world models aim to simulate how a scene unfolds under different ego actions. This requires plausible motion of surrounding vehicles as well as precise ...",
+      "upvotes": 18,
+      "arxiv_id": "2611.14815",
+      "url": "https://huggingface.co/papers/2611.14815",
+      "githubRepo": null
     },
     {
-      "title": "CARTBench: Rubric-Based Evaluation of Shopping Advice for Complex and Ambiguous Requests with Timelines",
-      "summary": "Large language model (LLM) shopping assistants now recommend products in multi-turn conversations. However, reliable evaluation faces Data scarcity and Difficul...",
-      "upvotes": 3,
-      "arxiv_id": "2611.05862",
-      "url": "https://huggingface.co/papers/2611.05862",
-      "githubRepo": "https://github.com/Da1yuqin/CARTBench"
+      "title": "On the Design of Hyper-Connections: Simplification, Stability, and Scalability",
+      "summary": "A systematic study of Hyper-Connections architectures identifies the simpler efficient design SimpleHC, which removes residual mixing and uses shared memory access to match mHC performance while adding minimal training overhead and improving stability.",
+      "upvotes": 13,
+      "arxiv_id": "2611.05984",
+      "url": "https://huggingface.co/papers/2611.05984",
+      "githubRepo": "https://github.com/aHapBean/SimpleHC"
     }
   ]
 }

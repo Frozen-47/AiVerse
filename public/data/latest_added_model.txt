@@ -1,1 +1,1 @@
-sam-3d-body-dinov3
+qwen35-3d-coder-studio

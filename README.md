@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-12)
+### ⚡ AiVerse AI Radar (2026-11-13)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **sam-3d-body-dinov3** (`Model`), **Omni-videos-custom** (`Platform`) |
-| 🌟 **Tool of the Day** | **Claude Opus 5.5 (max with fallback)** (Anthropic) — [Explore](https://artificialanalysis.ai/models/claude-opus-5-5) |
+| 📥 **Queued for Review** | **qwen35-3d-coder-studio** (`Platform`) |
+| 🌟 **Tool of the Day** | **Claude Opus 5.5 (xhigh with fallback)** (Anthropic) — [Explore](https://artificialanalysis.ai/models/claude-opus-5-5-xhigh) |
 | 🗄️ **Catalog Entries** | **448** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| 📜 **Top Daily Paper** | [Probing Transformer Representations Layer by Layer...](https://huggingface.co/papers/2611.11531) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Synchronized** | `Thu, 12 Nov 2026 23:57:16 GMT` |
+| 📜 **Top Daily Paper** | [From Large Language Models to Efficient System One...](https://huggingface.co/papers/2611.16321) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 13 Nov 2026 05:02:12 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

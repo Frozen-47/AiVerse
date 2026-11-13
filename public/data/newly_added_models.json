@@ -1,5 +1,35 @@
 [
   {
+    "date": "2026-11-13",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "qwen35-3d-coder-studio",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by akhaliq. Trending with 38 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "akhaliq",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/akhaliq/qwen35-3d-coder-studio",
+        "benchmarks": "Trending Score: 28, Community Likes: 38",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/akhaliq/qwen35-3d-coder-studio",
+        "citations": [
+          {
+            "text": "akhaliq/qwen35-3d-coder-studio on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/akhaliq/qwen35-3d-coder-studio"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-11-12",
     "status": "queued_in_review_list",
     "assets": [
@@ -5988,36 +6018,6 @@
           {
             "text": "microsoft/TRELLIS.2 on Hugging Face Spaces",
             "url": "https://huggingface.co/spaces/microsoft/TRELLIS.2"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-17",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "MOSS-Image-Base",
-        "type": "Model",
-        "summary": "High-performance Image Generation open-weights model by OpenMOSS-Team, trending with over 226 community likes and 958 downloads on Hugging Face.",
-        "task": "Image Generation",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "OpenMOSS-Team",
-        "size": "Open Weights",
-        "architecture": "OpenMOSS-Team text to image architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"OpenMOSS-Team/MOSS-Image-Base\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"OpenMOSS-Team/MOSS-Image-Base\")",
-        "benchmarks": "Trending Score: 218, Likes: 226, Downloads: 958",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base",
-        "citations": [
-          {
-            "text": "OpenMOSS-Team/MOSS-Image-Base on Hugging Face",
-            "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base"
           }
         ]
       }

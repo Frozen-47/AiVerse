@@ -1,5 +1,30 @@
 [
   {
+    "name": "qwen35-3d-coder-studio",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by akhaliq. Trending with 38 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "akhaliq",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/akhaliq/qwen35-3d-coder-studio",
+    "benchmarks": "Trending Score: 28, Community Likes: 38",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/akhaliq/qwen35-3d-coder-studio",
+    "citations": [
+      {
+        "text": "akhaliq/qwen35-3d-coder-studio on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/akhaliq/qwen35-3d-coder-studio"
+      }
+    ],
+    "created_at": "2026-11-13T05:01:35.149Z"
+  },
+  {
     "name": "Omni-videos-custom",
     "type": "Platform",
     "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by CumaSystem. Trending with 78 community stars.",
