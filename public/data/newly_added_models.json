@@ -1,5 +1,329 @@
 [
   {
+    "date": "2026-11-13",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "qwen35-3d-coder-studio",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by akhaliq. Trending with 38 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "akhaliq",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/akhaliq/qwen35-3d-coder-studio",
+        "benchmarks": "Trending Score: 28, Community Likes: 38",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/akhaliq/qwen35-3d-coder-studio",
+        "citations": [
+          {
+            "text": "akhaliq/qwen35-3d-coder-studio on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/akhaliq/qwen35-3d-coder-studio"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-12",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "sam-3d-body-dinov3",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by facebook, trending with over 1,077 community likes and 14,473 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "facebook",
+        "size": "Open Weights",
+        "architecture": "facebook transformer architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"facebook/sam-3d-body-dinov3\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"facebook/sam-3d-body-dinov3\")",
+        "benchmarks": "Trending Score: 159, Likes: 1,077, Downloads: 14,473",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/facebook/sam-3d-body-dinov3",
+        "citations": [
+          {
+            "text": "facebook/sam-3d-body-dinov3 on Hugging Face",
+            "url": "https://huggingface.co/facebook/sam-3d-body-dinov3"
+          }
+        ]
+      },
+      {
+        "name": "Omni-videos-custom",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by CumaSystem. Trending with 78 community stars.",
+        "task": "Image Generation",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "CumaSystem",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/CumaSystem/Omni-videos-custom",
+        "benchmarks": "Trending Score: 29, Community Likes: 78",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/CumaSystem/Omni-videos-custom",
+        "citations": [
+          {
+            "text": "CumaSystem/Omni-videos-custom on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/CumaSystem/Omni-videos-custom"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-12",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "dinov3-vitl16-pretrain-lvd1689m",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by facebook, trending with over 2,145 community likes and 703,532 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "facebook",
+        "size": "1689M params",
+        "architecture": "facebook image feature extraction architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"facebook/dinov3-vitl16-pretrain-lvd1689m\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"facebook/dinov3-vitl16-pretrain-lvd1689m\")",
+        "benchmarks": "Trending Score: 164, Likes: 2,145, Downloads: 703,532",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/facebook/dinov3-vitl16-pretrain-lvd1689m",
+        "citations": [
+          {
+            "text": "facebook/dinov3-vitl16-pretrain-lvd1689m on Hugging Face",
+            "url": "https://huggingface.co/facebook/dinov3-vitl16-pretrain-lvd1689m"
+          }
+        ]
+      },
+      {
+        "name": "free-youtube-transcript",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by fendouai. Trending with 104 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "fendouai",
+        "size": "STATIC Platform",
+        "architecture": "STATIC cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/fendouai/free-youtube-transcript",
+        "benchmarks": "Trending Score: 33, Community Likes: 104",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/fendouai/free-youtube-transcript",
+        "citations": [
+          {
+            "text": "fendouai/free-youtube-transcript on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/fendouai/free-youtube-transcript"
+          }
+        ]
+      },
+      {
+        "name": "physical-engineerings-last-exam",
+        "type": "Dataset",
+        "summary": "Physical-Engineering’s Last Exam (Dev Set) \t Physical-Engineering’s Last Exam (PLE) is a benchmark of long-horizon engineering tasks built by licensed practicing engine (33 likes, 41,085 downloads).",
+        "task": "NLP",
+        "license": "CC-BY-4.0",
+        "year": 2026,
+        "org": "google",
+        "size": "n<1K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"google/physical-engineerings-last-exam\")",
+        "benchmarks": "Trending Score: 17, Likes: 33, Downloads: 41,085",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/google/physical-engineerings-last-exam",
+        "citations": [
+          {
+            "text": "google/physical-engineerings-last-exam on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/google/physical-engineerings-last-exam"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-12",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "RelayVSR",
+        "type": "Model",
+        "summary": "High-performance Image Generation open-weights model by Comfy-Org, trending with over 186 community likes and 91,134 downloads on Hugging Face.",
+        "task": "Image Generation",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Comfy-Org",
+        "size": "Open Weights",
+        "architecture": "Comfy-Org unconditional image generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Comfy-Org/RelayVSR\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Comfy-Org/RelayVSR\")",
+        "benchmarks": "Trending Score: 168, Likes: 186, Downloads: 91,134",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/Comfy-Org/RelayVSR",
+        "citations": [
+          {
+            "text": "Comfy-Org/RelayVSR on Hugging Face",
+            "url": "https://huggingface.co/Comfy-Org/RelayVSR"
+          }
+        ]
+      },
+      {
+        "name": "Nemotron-Personas-Finance-Japan",
+        "type": "Dataset",
+        "summary": "Nemotron-Personas-Finance-Japan \t           現実世界の分布に基づいた金融に特化したペルソナ生成のための複合AIアプローチ    \t \t\t \t \t \t\tデータセット概要 (Dataset Overview): \t Nemotron-Personas-Finance-Japan は、日本における (19 likes, 1,732 downloads).",
+        "task": "Computer Vision",
+        "license": "CC-BY-4.0",
+        "year": 2026,
+        "org": "nvidia",
+        "size": "1M<n<10M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/Nemotron-Personas-Finance-Japan\")",
+        "benchmarks": "Trending Score: 18, Likes: 19, Downloads: 1,732",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Finance-Japan",
+        "citations": [
+          {
+            "text": "nvidia/Nemotron-Personas-Finance-Japan on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Finance-Japan"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-12",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "ZONOS3-Mini",
+        "type": "Model",
+        "summary": "High-performance Audio open-weights model by Zyphra, trending with over 174 community likes and 4,170 downloads on Hugging Face.",
+        "task": "Audio",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Zyphra",
+        "size": "Open Weights",
+        "architecture": "Zyphra text to speech architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Zyphra/ZONOS3-Mini\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Zyphra/ZONOS3-Mini\")",
+        "benchmarks": "Trending Score: 155, Likes: 174, Downloads: 4,170",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/Zyphra/ZONOS3-Mini",
+        "citations": [
+          {
+            "text": "Zyphra/ZONOS3-Mini on Hugging Face",
+            "url": "https://huggingface.co/Zyphra/ZONOS3-Mini"
+          }
+        ]
+      },
+      {
+        "name": "FlowHMR",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by fafsaf1. Trending with 45 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "fafsaf1",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/fafsaf1/FlowHMR",
+        "benchmarks": "Trending Score: 29, Community Likes: 45",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/fafsaf1/FlowHMR",
+        "citations": [
+          {
+            "text": "fafsaf1/FlowHMR on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/fafsaf1/FlowHMR"
+          }
+        ]
+      },
+      {
+        "name": "Open-HumanWAM-50K",
+        "type": "Dataset",
+        "summary": "Open-HumanWAM \t An Open Recipe for Scaling Human and Robot Experience for Embodied Foundation Models Report · Code · Project page · Models · HF Paper · Citation Open-Hu (20 likes, 1,015,003 downloads).",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "DAGroup-PKU",
+        "size": "10M<n<100M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"DAGroup-PKU/Open-HumanWAM-50K\")",
+        "benchmarks": "Trending Score: 18, Likes: 20, Downloads: 1,015,003",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/DAGroup-PKU/Open-HumanWAM-50K",
+        "citations": [
+          {
+            "text": "DAGroup-PKU/Open-HumanWAM-50K on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/DAGroup-PKU/Open-HumanWAM-50K"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-11",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "mirage",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by Cactus-Compute, trending with over 156 community likes and 14,615 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Cactus-Compute",
+        "size": "Open Weights",
+        "architecture": "Cactus-Compute image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Cactus-Compute/mirage\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Cactus-Compute/mirage\")",
+        "benchmarks": "Trending Score: 151, Likes: 156, Downloads: 14,615",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/Cactus-Compute/mirage",
+        "citations": [
+          {
+            "text": "Cactus-Compute/mirage on Hugging Face",
+            "url": "https://huggingface.co/Cactus-Compute/mirage"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-11-11",
     "status": "queued_in_review_list",
     "assets": [
@@ -5694,282 +6018,6 @@
           {
             "text": "microsoft/TRELLIS.2 on Hugging Face Spaces",
             "url": "https://huggingface.co/spaces/microsoft/TRELLIS.2"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-17",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "MOSS-Image-Base",
-        "type": "Model",
-        "summary": "High-performance Image Generation open-weights model by OpenMOSS-Team, trending with over 226 community likes and 958 downloads on Hugging Face.",
-        "task": "Image Generation",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "OpenMOSS-Team",
-        "size": "Open Weights",
-        "architecture": "OpenMOSS-Team text to image architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"OpenMOSS-Team/MOSS-Image-Base\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"OpenMOSS-Team/MOSS-Image-Base\")",
-        "benchmarks": "Trending Score: 218, Likes: 226, Downloads: 958",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base",
-        "citations": [
-          {
-            "text": "OpenMOSS-Team/MOSS-Image-Base on Hugging Face",
-            "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-17",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "d3",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by vllm-sr, trending with over 229 community likes and 4,263 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "vllm-sr",
-        "size": "Open Weights",
-        "architecture": "vllm-sr zero shot classification architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"vllm-sr/d3\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"vllm-sr/d3\")",
-        "benchmarks": "Trending Score: 212, Likes: 229, Downloads: 4,263",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/vllm-sr/d3",
-        "citations": [
-          {
-            "text": "vllm-sr/d3 on Hugging Face",
-            "url": "https://huggingface.co/vllm-sr/d3"
-          }
-        ]
-      },
-      {
-        "name": "ExeWorldBench",
-        "type": "Dataset",
-        "summary": "ExeWorldBench: Benchmarking Code-Based Executable 3D World Modeling \t 📄 Paper 🌐 Project Page \t \t\t \t \t \t\tOverview \t ExeWorldBench is a benchmark for evaluating world u (28 likes, 603 downloads).",
-        "task": "Computer Vision",
-        "license": "CC-BY-4.0",
-        "year": 2026,
-        "org": "HelenPeng",
-        "size": "1K<n<10K",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"HelenPeng/ExeWorldBench\")",
-        "benchmarks": "Trending Score: 18, Likes: 28, Downloads: 603",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/HelenPeng/ExeWorldBench",
-        "citations": [
-          {
-            "text": "HelenPeng/ExeWorldBench on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/HelenPeng/ExeWorldBench"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-17",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "MOSS-Image-SFT",
-        "type": "Model",
-        "summary": "High-performance Image Generation open-weights model by OpenMOSS-Team, trending with over 223 community likes and 1,036 downloads on Hugging Face.",
-        "task": "Image Generation",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "OpenMOSS-Team",
-        "size": "Open Weights",
-        "architecture": "OpenMOSS-Team text to image architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"OpenMOSS-Team/MOSS-Image-SFT\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"OpenMOSS-Team/MOSS-Image-SFT\")",
-        "benchmarks": "Trending Score: 215, Likes: 223, Downloads: 1,036",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT",
-        "citations": [
-          {
-            "text": "OpenMOSS-Team/MOSS-Image-SFT on Hugging Face",
-            "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
-          }
-        ]
-      },
-      {
-        "name": "Nemotron-Personas-Vietnam",
-        "type": "Dataset",
-        "summary": "Nemotron-Personas-Vietnam \t           Hệ thống AI kết hợp để tạo personas tổng hợp dựa trên phân bố thực tế của Việt Nam     A compound AI approach to personas grounded (103 likes, 1,788 downloads).",
-        "task": "Computer Vision",
-        "license": "CC-BY-4.0",
-        "year": 2026,
-        "org": "nvidia",
-        "size": "1M<n<10M",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/Nemotron-Personas-Vietnam\")",
-        "benchmarks": "Trending Score: 34, Likes: 103, Downloads: 1,788",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Vietnam",
-        "citations": [
-          {
-            "text": "nvidia/Nemotron-Personas-Vietnam on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Vietnam"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-17",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "sam3",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by facebook, trending with over 4,545 community likes and 2,013,498 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "facebook",
-        "size": "Open Weights",
-        "architecture": "facebook mask generation architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"facebook/sam3\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"facebook/sam3\")",
-        "benchmarks": "Trending Score: 224, Likes: 4,545, Downloads: 2,013,498",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/facebook/sam3",
-        "citations": [
-          {
-            "text": "facebook/sam3 on Hugging Face",
-            "url": "https://huggingface.co/facebook/sam3"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-17",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "DeepSeek-V4.1-Flash-1017",
-        "type": "Model",
-        "summary": "High-performance Multimodal open-weights model by DeepSeek, trending with over 393 community likes and 0 downloads on Hugging Face.",
-        "task": "Multimodal",
-        "license": "MIT",
-        "year": 2026,
-        "org": "DeepSeek",
-        "size": "Open Weights",
-        "architecture": "DeepSeek image text to text architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"deepseek-ai/DeepSeek-V4.1-Flash-1017\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"deepseek-ai/DeepSeek-V4.1-Flash-1017\")",
-        "benchmarks": "Trending Score: 391, Likes: 393, Downloads: 0",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
-        "citations": [
-          {
-            "text": "deepseek-ai/DeepSeek-V4.1-Flash-1017 on Hugging Face",
-            "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-17",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "MiniCPM-V-4.7-1B",
-        "type": "Model",
-        "summary": "High-performance Multimodal open-weights model by openbmb, trending with over 369 community likes and 8,822 downloads on Hugging Face.",
-        "task": "Multimodal",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "openbmb",
-        "size": "1B params",
-        "architecture": "openbmb image text to text architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"openbmb/MiniCPM-V-4.7-1B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"openbmb/MiniCPM-V-4.7-1B\")",
-        "benchmarks": "Trending Score: 275, Likes: 369, Downloads: 8,822",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-1B",
-        "citations": [
-          {
-            "text": "openbmb/MiniCPM-V-4.7-1B on Hugging Face",
-            "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-1B"
-          }
-        ]
-      },
-      {
-        "name": "MOSS-Image",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by OpenMOSS-Team. Trending with 34 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "OpenMOSS-Team",
-        "size": "GRADIO Platform",
-        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/OpenMOSS-Team/MOSS-Image",
-        "benchmarks": "Trending Score: 34, Community Likes: 34",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/spaces/OpenMOSS-Team/MOSS-Image",
-        "citations": [
-          {
-            "text": "OpenMOSS-Team/MOSS-Image on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/OpenMOSS-Team/MOSS-Image"
-          }
-        ]
-      },
-      {
-        "name": "BlenderWorld",
-        "type": "Dataset",
-        "summary": "BlenderWorld \t BlenderWorld is the first comprehensive benchmark dedicated to evaluating frontier models on realistic 3D creation tasks. BlenderWorld comprises 223 task (19 likes, 614 downloads).",
-        "task": "Multimodal",
-        "license": "MIT",
-        "year": 2026,
-        "org": "Qwen",
-        "size": "n<1K",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Qwen/BlenderWorld\")",
-        "benchmarks": "Trending Score: 19, Likes: 19, Downloads: 614",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/Qwen/BlenderWorld",
-        "citations": [
-          {
-            "text": "Qwen/BlenderWorld on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/Qwen/BlenderWorld"
           }
         ]
       }

@@ -1,5 +1,27 @@
--- Seed / Upsert all 447 AiVerse entries into Supabase
+-- Seed / Upsert all 448 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('AI Manga Translator (MangaTranslate)', 'Ficory LLC', 'Platform', 'Multimodal', 'Freemium', 2024, 'Cloud Platform & API', 'Enterprise-grade manga and comic translation platform by Ficory LLC featuring batch translation, speech-bubble OCR, AI in-painting, an online Photoshop-style studio editor, and developer REST APIs.', 'Cloud multimodal pipeline combining speech bubble segmentation, text in-painting, neural machine translation, and typography rendering with web studio and REST API.', 'curl -X POST https://api.mangatranslate.com/v1/translate \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -F "image=@comic_page.png" \
+  -F "target_lang=en"', 'Supports 30+ languages, batch image translation, style-preserving font matching, and daily free check-in credits.', 'Free tier has daily credit limits; Enterprise volume, advanced Studio editing features, and high-throughput API access require a paid subscription.', 'https://www.mangatranslate.com/ko/ai-manga-translator/', '[{"text":"AI Manga Translator - Official Overview","url":"https://www.mangatranslate.com/ko/ai-manga-translator/"},{"text":"MangaTranslate Pricing & Credits","url":"https://www.mangatranslate.com/ko/ai-manga-translator/pricing/"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('GPT-6 Astra', 'OpenAI', 'Model', 'AI Coding', 'Proprietary', 2026, 'Frontier Multimodal MoE', 'OpenAI''s frontier flagship model released in September 2026, marking a generational leap in autonomous computer use, deep reasoning, and complex multi-step workflow automation across enterprise environments.', 'Massive multimodal Mixture-of-Experts with reinforcement learning over deep thought chains, native OS-level computer use drivers, and dynamic tool orchestration.', 'from openai import OpenAI

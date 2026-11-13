@@ -1,95 +1,95 @@
 {
-  "timestamp": "2026-11-11T08:44:03.146Z",
+  "timestamp": "2026-11-13T05:01:35.166Z",
   "models": [
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 1274,
-      "downloads": 14378,
+      "likes": 4764,
+      "downloads": 18933,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
     },
     {
-      "id": "speridlabs/idol",
-      "author": "speridlabs",
-      "likes": 1908,
-      "downloads": 26470,
-      "pipeline_tag": "image-to-3d",
-      "url": "https://huggingface.co/speridlabs/idol"
-    },
-    {
-      "id": "moonshotai/Kimi-K3.1-Pro",
-      "author": "moonshotai",
-      "likes": 1887,
-      "downloads": 30721,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
-    },
-    {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 541,
-      "downloads": 667,
+      "likes": 890,
+      "downloads": 306718,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
     },
     {
-      "id": "ricursiveAI/Ripple-65B-Preview",
-      "author": "ricursiveAI",
-      "likes": 490,
-      "downloads": 6480,
-      "pipeline_tag": "general",
-      "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
-    },
-    {
       "id": "NousResearch/Arete-27B",
       "author": "NousResearch",
-      "likes": 416,
-      "downloads": 3431,
+      "likes": 491,
+      "downloads": 4669,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/NousResearch/Arete-27B"
+    },
+    {
+      "id": "speridlabs/idol",
+      "author": "speridlabs",
+      "likes": 2239,
+      "downloads": 29904,
+      "pipeline_tag": "image-to-3d",
+      "url": "https://huggingface.co/speridlabs/idol"
+    },
+    {
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 11646,
+      "downloads": 2782513,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5"
+    },
+    {
+      "id": "Qwen/Qwen3.8-27B",
+      "author": "Qwen",
+      "likes": 19758,
+      "downloads": 7094218,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
     }
   ],
   "papers": [
     {
-      "title": "FINCOSMOS: An Open-World Evaluation Paradigm for Agents in Finance",
-      "summary": "Language agents increasingly work for users on the open Web, and finance is where trusting them is hardest. The data must come from the Web, the strategy lives ...",
-      "upvotes": 3,
-      "arxiv_id": "2611.07464",
-      "url": "https://huggingface.co/papers/2611.07464",
+      "title": "From Large Language Models to Efficient System One Models via Adaptive Computation",
+      "summary": "Transferring LLMs into System One decision models typically replaces the language modeling head with a decision head while retaining the full backbone, making e...",
+      "upvotes": 1,
+      "arxiv_id": "2611.16321",
+      "url": "https://huggingface.co/papers/2611.16321",
+      "githubRepo": "https://github.com/minhkks/NestOne"
+    },
+    {
+      "title": "Duo: A Reciprocal World Model for Full-Duplex Interaction",
+      "summary": "A reciprocal world model enables real-time full-duplex audiovisual interaction by jointly modeling intent and realization using autoregressive reasoning, synchronized attention, and dual rollout distillation.",
+      "upvotes": 6,
+      "arxiv_id": "2611.15131",
+      "url": "https://huggingface.co/papers/2611.15131",
       "githubRepo": null
     },
     {
-      "title": "WaveGen: Truly End-to-End Waveform Generation via Internal Spectral Trajectory Learning",
-      "summary": "WaveGen is a fully end-to-end diffusion framework for text-to-waveform generation that jointly learns spectral and waveform trajectories via Spectral Forcing without external audio codecs, vocoders, latent models, alignment modules, or self-supervised representations, achieving state-of-the-art text-to-speech results.",
-      "upvotes": 2,
-      "arxiv_id": "2611.12527",
-      "url": "https://huggingface.co/papers/2611.12527",
-      "githubRepo": "https://github.com/sh-lee-prml/WaveGen"
+      "title": "G-STAR: Group-Scaled Token Capacity for Deeply Compressed Autoregressive Generation",
+      "summary": "Discrete autoregressive models offer a scalable framework for image generation. However, they face a fundamental trade-off: long token sequences preserve repres...",
+      "upvotes": 6,
+      "arxiv_id": "2611.13004",
+      "url": "https://huggingface.co/papers/2611.13004",
+      "githubRepo": "https://github.com/DAGroup-PKU/G-STAR"
     },
     {
-      "title": "EarthRecord: From Pixels to Land Change with Multimodal Agents over Four Decades of Satellite Imagery",
-      "summary": "While multimodal agents now carry out complex data analysis with tools, their ability to turn decades of satellite imagery into reliable land-change analysis, c...",
-      "upvotes": 4,
-      "arxiv_id": "2611.12934",
-      "url": "https://huggingface.co/papers/2611.12934",
-      "githubRepo": "https://github.com/ranranrannervous/EarthRecord"
-    },
-    {
-      "title": "Shortcuts and Boundaries: Verifiable RL Misalignment and Contextual Safety Learning",
-      "summary": "Reinforcement learning agents can exploit verifiable reward-context conflicts to earn higher rewards through noncompliant shortcuts, while contextual penalties and safety learning can improve compliance without sacrificing task capability.",
-      "upvotes": 3,
-      "arxiv_id": "2611.12865",
-      "url": "https://huggingface.co/papers/2611.12865",
+      "title": "BirdDreams: Joint Perspective and BEV Video Generation for a Plausible, Reactive Driving World Model",
+      "summary": "Driving world models aim to simulate how a scene unfolds under different ego actions. This requires plausible motion of surrounding vehicles as well as precise ...",
+      "upvotes": 18,
+      "arxiv_id": "2611.14815",
+      "url": "https://huggingface.co/papers/2611.14815",
       "githubRepo": null
     },
     {
-      "title": "Are Dense Rewards Worth Their Tokens in GRPO?",
-      "summary": "At matched compute, dense process rewards such as Monte-Carlo rewards underperform standard GRPO for language-model reasoning, while selecting prompts with predicted success near 1/2 yields small consistent accuracy gains.",
-      "upvotes": 3,
-      "arxiv_id": "2611.13560",
-      "url": "https://huggingface.co/papers/2611.13560",
-      "githubRepo": null
+      "title": "On the Design of Hyper-Connections: Simplification, Stability, and Scalability",
+      "summary": "A systematic study of Hyper-Connections architectures identifies the simpler efficient design SimpleHC, which removes residual mixing and uses shared memory access to match mHC performance while adding minimal training overhead and improving stability.",
+      "upvotes": 13,
+      "arxiv_id": "2611.05984",
+      "url": "https://huggingface.co/papers/2611.05984",
+      "githubRepo": "https://github.com/aHapBean/SimpleHC"
     }
   ]
 }

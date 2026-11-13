@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-11-11T08:44:03.143Z",
-  "totalEntries": 447,
+  "timestamp": "2026-11-13T05:01:35.161Z",
+  "totalEntries": 448,
   "popularEntries": 345,
   "totalUsers": 10,
   "averageRating": 4.38,
   "totalRatings": 8,
   "newEntriesCount": 207,
   "byType": {
+    "Platform": 70,
     "Model": 206,
     "Framework": 33,
-    "Platform": 69,
     "Dataset": 68,
     "AI": 71
   },
   "byTask": {
+    "Multimodal": 74,
     "AI Coding": 33,
-    "Multimodal": 73,
     "NLP": 196,
     "Research": 13,
     "Video Generation": 12,
@@ -27,6 +27,7 @@
     "Education": 4
   },
   "byLicense": {
+    "Freemium": 1,
     "Proprietary": 171,
     "Apache-2.0": 37,
     "MIT": 49,
@@ -85,28 +86,28 @@
     "Open": 14
   },
   "toolOfTheDay": {
-    "name": "Gemini 4 Carbon (high)",
+    "name": "Claude Opus 5.5 (xhigh with fallback)",
     "type": "Model",
-    "summary": "Google DeepMind's frontier research model featured on the Artificial Analysis leaderboard with an Intelligence Index of 59, Briefcase Elo of 1610, and a massive 1M context window.",
-    "task": "Research",
+    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 57, Briefcase Elo of 1761, and a massive 1M context window.",
+    "task": "NLP",
     "license": "Proprietary",
     "year": 2026,
-    "org": "Google DeepMind",
+    "org": "Anthropic",
     "size": "1M Context · Proprietary Model",
-    "architecture": "Proprietary frontier neural architecture developed by Google DeepMind, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (85 tok/s).",
-    "usage": "from google import genai\nclient = genai.Client()\nresponse = client.models.generate_content(\n  model=\"gemini-4-carbon-high\",\n  contents=\"Synthesize multimodal analysis over 1M context.\"\n)",
-    "benchmarks": "Intelligence Index: 59, Briefcase Elo: 1610, Accuracy: 58%, Non-Hallucination: 89%, FrontierCode: 41%, AutomationBench: 78%, TerminalBench 4: 65%, HLE Diamond: 69%, Speed: 85 tok/s, Context Window: 1M",
-    "limitations": "Proprietary cloud API access via Google DeepMind developer platform; subject to API rate limits and token pricing ($4/M in, $20/M out).",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (85 tok/s).",
+    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-opus-5-5-xhigh-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
+    "benchmarks": "Intelligence Index: 57, Briefcase Elo: 1761, Accuracy: 66%, Non-Hallucination: 35%, FrontierCode: 44%, AutomationBench: 65%, TerminalBench 4: 60%, HLE Diamond: 64%, Speed: 85 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($4/M in, $20/M out).",
     "popular": true,
-    "url": "https://artificialanalysis.ai/models/gemini-4-carbon",
+    "url": "https://artificialanalysis.ai/models/claude-opus-5-5-xhigh",
     "citations": [
       {
-        "text": "Gemini 4 Carbon (high) on Artificial Analysis Benchmark",
-        "url": "https://artificialanalysis.ai/models/gemini-4-carbon"
+        "text": "Claude Opus 5.5 (xhigh with fallback) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-opus-5-5-xhigh"
       },
       {
-        "text": "Gemini 4 Carbon (high) Inference Providers",
-        "url": "https://artificialanalysis.ai/models/gemini-4-carbon/providers"
+        "text": "Claude Opus 5.5 (xhigh with fallback) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-opus-5-5-xhigh/providers"
       }
     ]
   }
