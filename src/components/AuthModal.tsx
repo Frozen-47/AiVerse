@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { X, Loader2, Eye, EyeOff, ArrowRight } from 'lucide-react';
+import { X, Loader2, Eye, EyeOff, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useAuth } from './AuthContext';
 import { useTokens, useTheme } from '../lib/theme';
 import { supabase } from '../lib/supabase';
 import { TurnstileWidget } from './TurnstileWidget';
 import { isSessionHumanVerified } from '../lib/turnstile';
 
-
+type AuthViewMode = 'signin' | 'signup' | 'forgot' | 'reset';
 
 export const AuthModal: React.FC = () => {
   const { isAuthModalOpen, closeAuthModal, authMode, signInWithOAuth } = useAuth();
@@ -14,15 +14,18 @@ export const AuthModal: React.FC = () => {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === 'amoled';
 
-  const [isLogin, setIsLogin] = useState(authMode === 'signin');
+  const [mode, setMode] = useState<AuthViewMode>(authMode || 'signin');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [forgotEmailSent, setForgotEmailSent] = useState(false);
+  const [resetPasswordSuccess, setResetPasswordSuccess] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(() =>
     isSessionHumanVerified() ? 'session_verified' : null
   );
@@ -30,13 +33,16 @@ export const AuthModal: React.FC = () => {
   // Reset fields on open/close
   useEffect(() => {
     if (isAuthModalOpen) {
-      setIsLogin(authMode === 'signin');
+      setMode(authMode || 'signin');
       setError(null);
       setEmail('');
       setPassword('');
+      setConfirmPassword('');
       setFirstName('');
       setLastName('');
       setAgreeTerms(false);
+      setForgotEmailSent(false);
+      setResetPasswordSuccess(false);
       setTurnstileToken(isSessionHumanVerified() ? 'session_verified' : null);
     }
   }, [authMode, isAuthModalOpen]);
@@ -55,9 +61,11 @@ export const AuthModal: React.FC = () => {
 
   if (!isAuthModalOpen) return null;
 
-  const switchMode = (login: boolean) => {
-    setIsLogin(login);
+  const switchMode = (newMode: AuthViewMode) => {
+    setMode(newMode);
     setError(null);
+    setForgotEmailSent(false);
+    setResetPasswordSuccess(false);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -65,24 +73,24 @@ export const AuthModal: React.FC = () => {
     setLoading(true);
     setError(null);
 
-    if (!turnstileToken) {
+    if (mode !== 'reset' && !turnstileToken) {
       setError('Please complete the Cloudflare security verification.');
       setLoading(false);
       return;
     }
 
-    if (!isLogin && !agreeTerms) {
+    if (mode === 'signup' && !agreeTerms) {
       setError('Please agree to the Terms & Conditions to continue.');
       setLoading(false);
       return;
     }
 
     try {
-      if (isLogin) {
+      if (mode === 'signin') {
         const { error: err } = await supabase.auth.signInWithPassword({ email, password });
         if (err) throw err;
         closeAuthModal();
-      } else {
+      } else if (mode === 'signup') {
         const { error: err } = await supabase.auth.signUp({
           email,
           password,
@@ -90,6 +98,34 @@ export const AuthModal: React.FC = () => {
         });
         if (err) throw err;
         closeAuthModal();
+      } else if (mode === 'forgot') {
+        if (!email.trim()) {
+          setError('Please enter your email address.');
+          setLoading(false);
+          return;
+        }
+        const { error: err } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+          redirectTo: typeof window !== 'undefined' ? `${window.location.origin}/` : 'https://aiverse.frozenn.in/',
+        });
+        if (err) throw err;
+        setForgotEmailSent(true);
+      } else if (mode === 'reset') {
+        if (!password || password.length < 6) {
+          setError('Password must be at least 6 characters.');
+          setLoading(false);
+          return;
+        }
+        if (password !== confirmPassword) {
+          setError('Passwords do not match.');
+          setLoading(false);
+          return;
+        }
+        const { error: err } = await supabase.auth.updateUser({ password });
+        if (err) throw err;
+        setResetPasswordSuccess(true);
+        setTimeout(() => {
+          closeAuthModal();
+        }, 2500);
       }
     } catch (err: any) {
       setError(err.message || 'Something went wrong. Please try again.');
@@ -297,12 +333,12 @@ export const AuthModal: React.FC = () => {
         <div className="relative flex-1 overflow-hidden">
 
           {/* ── SIGN UP FORM ──────────────────────────────────── */}
-          <FormPanel visible={!isLogin} surface={surface} isDark={isDark}>
+          <FormPanel visible={mode === 'signup'} surface={surface} isDark={isDark}>
             <FormHeader
               title="Create account"
               sub="Already have one?"
               linkLabel="Sign in"
-              onLink={() => switchMode(true)}
+              onLink={() => switchMode('signin')}
               isDark={isDark}
             />
 
@@ -417,12 +453,12 @@ export const AuthModal: React.FC = () => {
           </FormPanel>
 
           {/* ── SIGN IN FORM ──────────────────────────────────── */}
-          <FormPanel visible={isLogin} surface={surface} isDark={isDark}>
+          <FormPanel visible={mode === 'signin'} surface={surface} isDark={isDark}>
             <FormHeader
               title="Welcome back"
               sub="No account yet?"
               linkLabel="Sign up"
-              onLink={() => switchMode(false)}
+              onLink={() => switchMode('signup')}
               isDark={isDark}
             />
 
@@ -446,6 +482,17 @@ export const AuthModal: React.FC = () => {
                 isDark={isDark}
               />
 
+              <div className="flex justify-end pt-0.5">
+                <button
+                  type="button"
+                  onClick={() => switchMode('forgot')}
+                  className="text-[12px] font-medium transition-colors hover:underline cursor-pointer"
+                  style={{ color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.55)' }}
+                >
+                  Forgot password?
+                </button>
+              </div>
+
               {!turnstileToken && (
                 <div className="py-1">
                   <TurnstileWidget
@@ -468,6 +515,138 @@ export const AuthModal: React.FC = () => {
 
             <Divider label="or sign in with" isDark={isDark} surface={surface} />
             <OAuthButtons onGoogle={() => handleOAuth('google')} onGitHub={() => handleOAuth('github')} cls={oauthBtnCls} loading={loading} />
+          </FormPanel>
+
+          {/* ── FORGOT PASSWORD FORM ───────────────────────────── */}
+          <FormPanel visible={mode === 'forgot'} surface={surface} isDark={isDark}>
+            <FormHeader
+              title="Reset password"
+              sub="Remembered your password?"
+              linkLabel="Sign in"
+              onLink={() => switchMode('signin')}
+              isDark={isDark}
+            />
+
+            {forgotEmailSent ? (
+              <div className="text-center py-6 space-y-4">
+                <div className="w-12 h-12 rounded-full mx-auto flex items-center justify-center bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                  <CheckCircle2 size={24} />
+                </div>
+                <div>
+                  <h3 className="text-[16px] font-bold mb-1" style={{ color: fg }}>Check your email</h3>
+                  <p className="text-[12px] leading-relaxed max-w-[280px] mx-auto" style={{ color: fgMid }}>
+                    We sent a password reset link to <strong style={{ color: fg }}>{email}</strong>. Click the link to choose a new password.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => switchMode('signin')}
+                  className={primaryBtnCls}
+                >
+                  Back to sign in
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <p className="text-[12px] leading-relaxed mb-2" style={{ color: fgMid }}>
+                  Enter your email address and we will send you a link to reset your password.
+                </p>
+
+                <input
+                  className={inputCls}
+                  type="email"
+                  placeholder="Email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  autoComplete="email"
+                />
+
+                {!turnstileToken && (
+                  <div className="py-1">
+                    <TurnstileWidget
+                      action="forgot_password"
+                      size="compact"
+                      onVerify={(token) => setTurnstileToken(token)}
+                      onExpire={() => setTurnstileToken(null)}
+                    />
+                  </div>
+                )}
+
+                <ErrorMsg msg={error} />
+
+                <button type="submit" disabled={loading || !turnstileToken} className={primaryBtnCls}>
+                  {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : (
+                    <><span>Send reset link</span><ArrowRight size={14} strokeWidth={2.5} /></>
+                  )}
+                </button>
+              </form>
+            )}
+          </FormPanel>
+
+          {/* ── SET NEW PASSWORD FORM (RECOVERY) ───────────────── */}
+          <FormPanel visible={mode === 'reset'} surface={surface} isDark={isDark}>
+            <div className="mb-6">
+              <h2 className="text-[24px] font-black tracking-tight mb-1" style={{ color: fg }}>
+                Set new password
+              </h2>
+              <p className="text-[12px] font-medium" style={{ color: fgMid }}>
+                Enter a new secure password for your AiVerse account.
+              </p>
+            </div>
+
+            {resetPasswordSuccess ? (
+              <div className="text-center py-6 space-y-4">
+                <div className="w-12 h-12 rounded-full mx-auto flex items-center justify-center bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  <CheckCircle2 size={24} />
+                </div>
+                <div>
+                  <h3 className="text-[16px] font-bold mb-1" style={{ color: fg }}>Password updated!</h3>
+                  <p className="text-[12px]" style={{ color: fgMid }}>
+                    Your password has been successfully updated.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => closeAuthModal()}
+                  className={primaryBtnCls}
+                >
+                  Done
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <PasswordField
+                  value={password}
+                  onChange={setPassword}
+                  show={showPassword}
+                  toggle={() => setShowPassword((v) => !v)}
+                  inputCls={inputCls}
+                  isDark={isDark}
+                  minLength={6}
+                />
+
+                <div className="relative">
+                  <input
+                    className={inputCls}
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="Confirm new password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                    minLength={6}
+                  />
+                </div>
+
+                <ErrorMsg msg={error} />
+
+                <button type="submit" disabled={loading} className={primaryBtnCls}>
+                  {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : (
+                    <><span>Update password</span><ArrowRight size={14} strokeWidth={2.5} /></>
+                  )}
+                </button>
+              </form>
+            )}
           </FormPanel>
         </div>
       </div>

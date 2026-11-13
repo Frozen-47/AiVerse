@@ -7,9 +7,9 @@ interface AuthContextType {
   session: Session | null;
   isLoaded: boolean;
   isAuthModalOpen: boolean;
-  openAuthModal: (mode?: "signin" | "signup") => void;
+  openAuthModal: (mode?: "signin" | "signup" | "forgot" | "reset") => void;
   closeAuthModal: () => void;
-  authMode: "signin" | "signup";
+  authMode: "signin" | "signup" | "forgot" | "reset";
   signOut: (redirectTo?: string) => Promise<void>;
   signInWithOAuth: (provider: "google" | "github") => Promise<void>;
 }
@@ -21,7 +21,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [session, setSession] = useState<Session | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [authMode, setAuthMode] = useState<"signin" | "signup">("signin");
+  const [authMode, setAuthMode] = useState<"signin" | "signup" | "forgot" | "reset">("signin");
 
   const syncOAuthAvatar = async (currentUser: User) => {
     try {
@@ -59,6 +59,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (session?.user) {
         syncOAuthAvatar(session.user);
       }
+      if (event === "PASSWORD_RECOVERY") {
+        setAuthMode("reset");
+        setIsAuthModalOpen(true);
+      }
       if (event === "SIGNED_IN" || event === "USER_UPDATED") {
         setIsAuthModalOpen(false);
       }
@@ -70,7 +74,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return () => subscription.unsubscribe();
   }, []);
 
-  const openAuthModal = (mode: "signin" | "signup" = "signin") => {
+  const openAuthModal = (mode: "signin" | "signup" | "forgot" | "reset" = "signin") => {
     setAuthMode(mode);
     setIsAuthModalOpen(true);
   };
