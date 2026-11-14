@@ -2,7 +2,7 @@
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sat, 14 Nov 2026 17:34:07 GMT`*
+*Last Synchronized: `Sat, 14 Nov 2026 22:50:34 GMT`*
 
 ---
 
@@ -10,12 +10,12 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Haru-4B** (`Model` • *higurashi-ai*)
-> High-performance Audio open-weights model by higurashi-ai, trending with over 217 community likes and 1,262 downloads on Hugging Face.
+### **Sophon-Realtime-v1** (`Model` • *adventists-ai*)
+> High-performance NLP open-weights model by adventists-ai, trending with over 261 community likes and 0 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Audio` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 203, Likes: 217, Downloads: 1,262`
-- 🔗 **Resource Link**: [https://huggingface.co/higurashi-ai/Haru-4B](https://huggingface.co/higurashi-ai/Haru-4B)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 203, Likes: 261, Downloads: 0`
+- 🔗 **Resource Link**: [https://huggingface.co/adventists-ai/Sophon-Realtime-v1](https://huggingface.co/adventists-ai/Sophon-Realtime-v1)
 
 ---
 
@@ -34,12 +34,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 7,313 | 📥 24,470 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| `MiniMaxAI/MiniMax-H3-Image` | text-to-image | ❤️ 1,098 | 📥 517,948 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 11,887 | 📥 2,777,667 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `Qwen/Qwen3.8-27B` | image-text-to-text | ❤️ 19,972 | 📥 6,757,964 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
-| `NousResearch/Arete-27B` | text-generation | ❤️ 585 | 📥 6,191 | [View](https://huggingface.co/NousResearch/Arete-27B) |
-| `DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF` | image-text-to-text | ❤️ 3,105 | 📥 1,657,783 | [View](https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF) |
+| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 7,346 | 📥 24,470 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
+| `MiniMaxAI/MiniMax-H3-Image` | text-to-image | ❤️ 1,113 | 📥 517,948 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
+| `Qwen/Qwen3.8-27B` | image-text-to-text | ❤️ 20,002 | 📥 6,757,964 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 11,920 | 📥 2,777,667 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF` | image-text-to-text | ❤️ 3,118 | 📥 1,657,783 | [View](https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF) |
+| `speridlabs/idol` | image-to-3d | ❤️ 2,339 | 📥 32,619 | [View](https://huggingface.co/speridlabs/idol) |
 
 
 ---
@@ -52,7 +52,7 @@
 | **Who Remembers What? Multi-Granularity Memory Extraction for Multi-User, Multi-Agent Interaction** | 👍 7 | MixUA distills lessons from independent user-agent trajectories and assigns them to appropriate scopes to balance cross-user and cross-agent learning with privacy, evaluated by CrossLearnBench. | [Read](https://huggingface.co/papers/2611.10439) |
 | **EgoX: Egocentric Cross-Embodiment Manipulation with Embodiment Dreaming** | 👍 1 | EgoX is an egocentric cross-embodiment learning framework that pretrains a modular Transformer with embodiment dreaming on heterogeneous human, robot, and simulated demonstrations, then fine-tunes it to improve manipulation task progress, especially under out-of-distribution conditions. | [Read](https://huggingface.co/papers/2611.16728) |
 | **Back to Pixels: Lifting Latent Video Diffusion into Pixel Space** | 👍 3 | Frontier video generation models work in a VAE latent space that compresses video in both space and time. This compression made training tractable, but now limi... | [Read](https://huggingface.co/papers/2611.17336) |
-| **Consensus Capture in Reference-Based UAV Video Stabilization: A Benchmark on Dynamic Urban Scenes** | 👍 3 | Reference-frame stabilization registers every frame of a hovering-drone video onto one reference frame, keeping object positions comparable. The registration pi... | [Read](https://huggingface.co/papers/2611.17190) |
+| **Consensus Capture in Reference-Based UAV Video Stabilization: A Benchmark on Dynamic Urban Scenes** | 👍 4 | Reference-frame stabilization registers every frame of a hovering-drone video onto one reference frame, keeping object positions comparable. The registration pi... | [Read](https://huggingface.co/papers/2611.17190) |
 | **TurtLES: A Large-Scale Benchmark for Turbulent 3D Neural PDE Surrogates** | 👍 4 | Machine-learning surrogates are increasingly used to accelerate computational fluid dynamics, yet progress is limited by the lack of benchmarks capturing realis... | [Read](https://huggingface.co/papers/2611.09567) |
 
 
@@ -66,7 +66,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
+- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
 - **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

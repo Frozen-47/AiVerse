@@ -1,17 +1,22 @@
 {
-  "timestamp": "2026-11-14T17:33:24.541Z",
+  "timestamp": "2026-11-14T22:50:07.661Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "wan555",
-      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
+      "name": "wan2-2-i2v-v3",
+      "url": "https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3",
       "status": 401
     },
     {
-      "name": "OpenAI Platform",
-      "url": "https://platform.openai.com",
+      "name": "Tome",
+      "url": "https://tome.app",
+      "status": 404
+    },
+    {
+      "name": "Phind",
+      "url": "https://www.phind.com",
       "status": 403
     }
   ]

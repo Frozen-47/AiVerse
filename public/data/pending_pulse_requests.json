@@ -1,5 +1,30 @@
 [
   {
+    "name": "Sophon-Realtime-v1",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by adventists-ai, trending with over 261 community likes and 0 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "adventists-ai",
+    "size": "Open Weights",
+    "architecture": "adventists-ai any to any architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"adventists-ai/Sophon-Realtime-v1\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"adventists-ai/Sophon-Realtime-v1\")",
+    "benchmarks": "Trending Score: 203, Likes: 261, Downloads: 0",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/adventists-ai/Sophon-Realtime-v1",
+    "citations": [
+      {
+        "text": "adventists-ai/Sophon-Realtime-v1 on Hugging Face",
+        "url": "https://huggingface.co/adventists-ai/Sophon-Realtime-v1"
+      }
+    ],
+    "created_at": "2026-11-14T22:50:07.544Z"
+  },
+  {
     "name": "Haru-4B",
     "type": "Model",
     "summary": "High-performance Audio open-weights model by higurashi-ai, trending with over 217 community likes and 1,262 downloads on Hugging Face.",
