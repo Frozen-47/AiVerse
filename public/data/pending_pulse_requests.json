@@ -1,5 +1,30 @@
 [
   {
+    "name": "Haru-4B",
+    "type": "Model",
+    "summary": "High-performance Audio open-weights model by higurashi-ai, trending with over 217 community likes and 1,262 downloads on Hugging Face.",
+    "task": "Audio",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "higurashi-ai",
+    "size": "4B params",
+    "architecture": "higurashi-ai audio to audio architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"higurashi-ai/Haru-4B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"higurashi-ai/Haru-4B\")",
+    "benchmarks": "Trending Score: 203, Likes: 217, Downloads: 1,262",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/higurashi-ai/Haru-4B",
+    "citations": [
+      {
+        "text": "higurashi-ai/Haru-4B on Hugging Face",
+        "url": "https://huggingface.co/higurashi-ai/Haru-4B"
+      }
+    ],
+    "created_at": "2026-11-14T17:33:24.485Z"
+  },
+  {
     "name": "laion-audio-xl",
     "type": "Dataset",
     "summary": "LAION-Audio-XL \t LAION-Audio-XL is the corpus of 366,007,518 audio clips of at most 30 s with captions that the LAION CLAP2 models were trained on. This repository hold (20 likes, 8,394 downloads).",

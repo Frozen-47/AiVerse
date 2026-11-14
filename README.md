@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-14)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Edge0-145B-NVFP4** (`Model`), **qwen-image-edit** (`Platform`), **laion-audio-xl** (`Dataset`) |
+| 📥 **Queued for Review** | **Haru-4B** (`Model`) |
 | 🌟 **Tool of the Day** | **GPT-6 Astra (max)** (OpenAI) — [Explore](https://artificialanalysis.ai/models/gpt-6-astra) |
 | 🗄️ **Catalog Entries** | **448** AI assets tracked (345 featured) |
 | 🔥 **Top Trending Model** | [xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
 | 📜 **Top Daily Paper** | [Who Remembers What? Multi-Granularity Memory Extra...](https://huggingface.co/papers/2611.10439) |
-| 🛡️ **Catalog Links Checked** | **20/25** operational |
-| 🕒 **Last Synchronized** | `Sat, 14 Nov 2026 11:53:55 GMT` |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Sat, 14 Nov 2026 17:34:07 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
