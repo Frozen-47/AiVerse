@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-11-13T22:20:20.341Z",
+  "timestamp": "2026-11-14T04:30:27.611Z",
   "models": [
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 5572,
+      "likes": 6399,
       "downloads": 21586,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
@@ -12,7 +12,7 @@
     {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 999,
+      "likes": 1033,
       "downloads": 437039,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
@@ -20,7 +20,7 @@
     {
       "id": "NousResearch/Arete-27B",
       "author": "NousResearch",
-      "likes": 540,
+      "likes": 561,
       "downloads": 5545,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/NousResearch/Arete-27B"
@@ -28,7 +28,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 11766,
+      "likes": 11804,
       "downloads": 2778909,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
@@ -36,7 +36,7 @@
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 19859,
+      "likes": 19900,
       "downloads": 6960395,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
@@ -44,7 +44,7 @@
     {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 2286,
+      "likes": 2305,
       "downloads": 31367,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
@@ -52,9 +52,33 @@
   ],
   "papers": [
     {
+      "title": "Who Remembers What? Multi-Granularity Memory Extraction for Multi-User, Multi-Agent Interaction",
+      "summary": "MixUA distills lessons from independent user-agent trajectories and assigns them to appropriate scopes to balance cross-user and cross-agent learning with privacy, evaluated by CrossLearnBench.",
+      "upvotes": 5,
+      "arxiv_id": "2611.10439",
+      "url": "https://huggingface.co/papers/2611.10439",
+      "githubRepo": null
+    },
+    {
+      "title": "EgoX: Egocentric Cross-Embodiment Manipulation with Embodiment Dreaming",
+      "summary": "EgoX is an egocentric cross-embodiment learning framework that pretrains a modular Transformer with embodiment dreaming on heterogeneous human, robot, and simulated demonstrations, then fine-tunes it to improve manipulation task progress, especially under out-of-distribution conditions.",
+      "upvotes": 1,
+      "arxiv_id": "2611.16728",
+      "url": "https://huggingface.co/papers/2611.16728",
+      "githubRepo": "https://github.com/egox-dream/egox"
+    },
+    {
+      "title": "Back to Pixels: Lifting Latent Video Diffusion into Pixel Space",
+      "summary": "Frontier video generation models work in a VAE latent space that compresses video in both space and time. This compression made training tractable, but now limi...",
+      "upvotes": 2,
+      "arxiv_id": "2611.17336",
+      "url": "https://huggingface.co/papers/2611.17336",
+      "githubRepo": null
+    },
+    {
       "title": "Consensus Capture in Reference-Based UAV Video Stabilization: A Benchmark on Dynamic Urban Scenes",
       "summary": "Reference-frame stabilization registers every frame of a hovering-drone video onto one reference frame, keeping object positions comparable. The registration pi...",
-      "upvotes": 2,
+      "upvotes": 3,
       "arxiv_id": "2611.17190",
       "url": "https://huggingface.co/papers/2611.17190",
       "githubRepo": "https://github.com/rfonod/stabilo-benchmark"
@@ -62,34 +86,10 @@
     {
       "title": "TurtLES: A Large-Scale Benchmark for Turbulent 3D Neural PDE Surrogates",
       "summary": "Machine-learning surrogates are increasingly used to accelerate computational fluid dynamics, yet progress is limited by the lack of benchmarks capturing realis...",
-      "upvotes": 3,
+      "upvotes": 4,
       "arxiv_id": "2611.09567",
       "url": "https://huggingface.co/papers/2611.09567",
       "githubRepo": "https://github.com/itsakk/TurtLES"
-    },
-    {
-      "title": "The Value of Thinking: Learning When to Reason in Hybrid Decision Models",
-      "summary": "A hybrid decision model routes between implicit single-forward-pass answering and full autoregressive reasoning via a self-routing block trained with calibrated decision policy optimization, reducing token and latency costs while preserving accuracy.",
-      "upvotes": 1,
-      "arxiv_id": "2611.16961",
-      "url": "https://huggingface.co/papers/2611.16961",
-      "githubRepo": "https://github.com/zhengxuyu/HDM-code"
-    },
-    {
-      "title": "The Narrative Gap: Can LLMs Help Us Navigate Diverse Narratives Across Languages?",
-      "summary": "A benchmark of news articles and queries shows that current large language models cannot reliably help users navigate diverse multilingual narratives, leaving gaps in exposure to competing accounts and risking echo chambers and information disparities.",
-      "upvotes": 0,
-      "arxiv_id": "2611.12750",
-      "url": "https://huggingface.co/papers/2611.12750",
-      "githubRepo": "https://github.com/isle-dev/Narrative-Bench-NeurIPS-2026"
-    },
-    {
-      "title": "A frontier machine intelligence for human neuroimaging",
-      "summary": "A vision-language model trained on nearly one million clinical neuroimaging studies interprets complete examinations, discusses findings in natural language, and outperforms existing general and medical models in diagnosis, localization, reporting, and progression assessment.",
-      "upvotes": 0,
-      "arxiv_id": "2611.15094",
-      "url": "https://huggingface.co/papers/2611.15094",
-      "githubRepo": "https://github.com/MLNeurosurg/neuro-vl"
     }
   ]
 }

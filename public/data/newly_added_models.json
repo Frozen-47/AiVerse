@@ -1,5 +1,59 @@
 [
   {
+    "date": "2026-11-14",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "Qwen-Image-2.1-Uncensored-Omni-Quantized",
+        "type": "Model",
+        "summary": "High-performance Image Generation open-weights model by chatrlabs, trending with over 242 community likes and 68,096 downloads on Hugging Face.",
+        "task": "Image Generation",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "chatrlabs",
+        "size": "Open Weights",
+        "architecture": "chatrlabs text to image architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"chatrlabs/Qwen-Image-2.1-Uncensored-Omni-Quantized\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"chatrlabs/Qwen-Image-2.1-Uncensored-Omni-Quantized\")",
+        "benchmarks": "Trending Score: 179, Likes: 242, Downloads: 68,096",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/chatrlabs/Qwen-Image-2.1-Uncensored-Omni-Quantized",
+        "citations": [
+          {
+            "text": "chatrlabs/Qwen-Image-2.1-Uncensored-Omni-Quantized on Hugging Face",
+            "url": "https://huggingface.co/chatrlabs/Qwen-Image-2.1-Uncensored-Omni-Quantized"
+          }
+        ]
+      },
+      {
+        "name": "mirage-vision",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 32 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "hugging-apps",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/mirage-vision",
+        "benchmarks": "Trending Score: 26, Community Likes: 32",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/hugging-apps/mirage-vision",
+        "citations": [
+          {
+            "text": "hugging-apps/mirage-vision on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/hugging-apps/mirage-vision"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-11-13",
     "status": "queued_in_review_list",
     "assets": [
@@ -6036,60 +6090,6 @@
           {
             "text": "ibm-granite/speech-to-decisions on Hugging Face Spaces",
             "url": "https://huggingface.co/spaces/ibm-granite/speech-to-decisions"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-18",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "MiniMax-H3-360-Orbit-LoRA",
-        "type": "Model",
-        "summary": "High-performance Multimodal open-weights model by pablodawson, trending with over 506 community likes and 25,366 downloads on Hugging Face.",
-        "task": "Multimodal",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "pablodawson",
-        "size": "Open Weights",
-        "architecture": "pablodawson image text to video architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"pablodawson/MiniMax-H3-360-Orbit-LoRA\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"pablodawson/MiniMax-H3-360-Orbit-LoRA\")",
-        "benchmarks": "Trending Score: 189, Likes: 506, Downloads: 25,366",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/pablodawson/MiniMax-H3-360-Orbit-LoRA",
-        "citations": [
-          {
-            "text": "pablodawson/MiniMax-H3-360-Orbit-LoRA on Hugging Face",
-            "url": "https://huggingface.co/pablodawson/MiniMax-H3-360-Orbit-LoRA"
-          }
-        ]
-      },
-      {
-        "name": "system-one-arcade",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by LiquidAI. Trending with 47 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "LiquidAI",
-        "size": "DOCKER Platform",
-        "architecture": "DOCKER cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/LiquidAI/system-one-arcade",
-        "benchmarks": "Trending Score: 25, Community Likes: 47",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/spaces/LiquidAI/system-one-arcade",
-        "citations": [
-          {
-            "text": "LiquidAI/system-one-arcade on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/LiquidAI/system-one-arcade"
           }
         ]
       }

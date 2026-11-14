@@ -1,1 +1,1 @@
-Huihui-Qwen3.8-27B-abliterated-GGUF
+Qwen-Image-2.1-Uncensored-Omni-Quantized

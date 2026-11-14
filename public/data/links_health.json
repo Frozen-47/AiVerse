@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-11-13T22:20:20.439Z",
+  "timestamp": "2026-11-14T04:30:27.705Z",
   "checked": 25,
   "healthy": 23,
   "broken": 2,
   "issues": [
     {
-      "name": "Perplexity AI",
-      "url": "https://www.perplexity.ai/",
-      "status": 403
-    },
-    {
       "name": "UltraFeedback",
       "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
       "status": 401
+    },
+    {
+      "name": "Leonardo.ai",
+      "url": "https://leonardo.ai",
+      "status": 403
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-13T22:20:20.337Z",
+  "timestamp": "2026-11-14T04:30:27.606Z",
   "totalEntries": 448,
   "popularEntries": 345,
   "totalUsers": 10,
@@ -86,28 +86,28 @@
     "Open": 14
   },
   "toolOfTheDay": {
-    "name": "Claude Opus 5.5 (xhigh with fallback)",
+    "name": "GPT-6 Astra (max)",
     "type": "Model",
-    "summary": "Anthropic's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 57, Briefcase Elo of 1761, and a massive 1M context window.",
+    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 57, Briefcase Elo of 1569, and a massive 1M context window.",
     "task": "NLP",
     "license": "Proprietary",
     "year": 2026,
-    "org": "Anthropic",
+    "org": "OpenAI",
     "size": "1M Context · Proprietary Model",
-    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (85 tok/s).",
-    "usage": "import anthropic\nclient = anthropic.Anthropic()\nmessage = client.messages.create(\n  model=\"claude-opus-5-5-xhigh-with-fallback\",\n  max_tokens=8192,\n  messages=[{\"role\": \"user\", \"content\": \"Solve multi-step frontier challenge with fallback.\"}]\n)",
-    "benchmarks": "Intelligence Index: 57, Briefcase Elo: 1761, Accuracy: 66%, Non-Hallucination: 35%, FrontierCode: 44%, AutomationBench: 65%, TerminalBench 4: 60%, HLE Diamond: 64%, Speed: 85 tok/s, Context Window: 1M",
-    "limitations": "Proprietary cloud API access via Anthropic developer platform; subject to API rate limits and token pricing ($4/M in, $20/M out).",
+    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (78 tok/s).",
+    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-astra-max\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
+    "benchmarks": "Intelligence Index: 57, Briefcase Elo: 1569, Accuracy: 62%, Non-Hallucination: 50%, FrontierCode: 42%, AutomationBench: 68%, TerminalBench 4: 59%, HLE Diamond: 64%, Speed: 78 tok/s, Context Window: 1M",
+    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($10/M in, $50/M out).",
     "popular": true,
-    "url": "https://artificialanalysis.ai/models/claude-opus-5-5-xhigh",
+    "url": "https://artificialanalysis.ai/models/gpt-6-astra",
     "citations": [
       {
-        "text": "Claude Opus 5.5 (xhigh with fallback) on Artificial Analysis Benchmark",
-        "url": "https://artificialanalysis.ai/models/claude-opus-5-5-xhigh"
+        "text": "GPT-6 Astra (max) on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-6-astra"
       },
       {
-        "text": "Claude Opus 5.5 (xhigh with fallback) Inference Providers",
-        "url": "https://artificialanalysis.ai/models/claude-opus-5-5-xhigh/providers"
+        "text": "GPT-6 Astra (max) Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-6-astra/providers"
       }
     ]
   }
