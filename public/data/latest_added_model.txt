@@ -1,1 +1,1 @@
-Qwen-Image-2.1-Uncensored-Omni-Quantized
+Edge0-145B-NVFP4

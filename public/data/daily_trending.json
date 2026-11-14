@@ -1,51 +1,51 @@
 {
-  "timestamp": "2026-11-14T04:30:27.611Z",
+  "timestamp": "2026-11-14T11:53:29.262Z",
   "models": [
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 6399,
-      "downloads": 21586,
+      "likes": 7233,
+      "downloads": 24470,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
     },
     {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 1033,
-      "downloads": 437039,
+      "likes": 1075,
+      "downloads": 517948,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
     },
     {
-      "id": "NousResearch/Arete-27B",
-      "author": "NousResearch",
-      "likes": 561,
-      "downloads": 5545,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/NousResearch/Arete-27B"
-    },
-    {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 11804,
-      "downloads": 2778909,
+      "likes": 11846,
+      "downloads": 2777667,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5"
     },
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 19900,
-      "downloads": 6960395,
+      "likes": 19934,
+      "downloads": 6757964,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
     },
     {
+      "id": "NousResearch/Arete-27B",
+      "author": "NousResearch",
+      "likes": 584,
+      "downloads": 6191,
+      "pipeline_tag": "text-generation",
+      "url": "https://huggingface.co/NousResearch/Arete-27B"
+    },
+    {
       "id": "speridlabs/idol",
       "author": "speridlabs",
-      "likes": 2305,
-      "downloads": 31367,
+      "likes": 2327,
+      "downloads": 32619,
       "pipeline_tag": "image-to-3d",
       "url": "https://huggingface.co/speridlabs/idol"
     }
@@ -70,7 +70,7 @@
     {
       "title": "Back to Pixels: Lifting Latent Video Diffusion into Pixel Space",
       "summary": "Frontier video generation models work in a VAE latent space that compresses video in both space and time. This compression made training tractable, but now limi...",
-      "upvotes": 2,
+      "upvotes": 3,
       "arxiv_id": "2611.17336",
       "url": "https://huggingface.co/papers/2611.17336",
       "githubRepo": null

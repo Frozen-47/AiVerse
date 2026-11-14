@@ -1,18 +1,33 @@
 {
-  "timestamp": "2026-11-14T04:30:27.705Z",
+  "timestamp": "2026-11-14T11:53:29.381Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 20,
+  "broken": 5,
   "issues": [
     {
-      "name": "UltraFeedback",
-      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
-      "status": 401
+      "name": "GPT-4.5",
+      "url": "https://openai.com",
+      "status": 403
     },
     {
-      "name": "Leonardo.ai",
-      "url": "https://leonardo.ai",
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
       "status": 403
+    },
+    {
+      "name": "o1 (OpenAI)",
+      "url": "https://openai.com/o1",
+      "status": 403
+    },
+    {
+      "name": "o3",
+      "url": "https://openai.com",
+      "status": 403
+    },
+    {
+      "name": "GPT-3.5 Turbo",
+      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
+      "status": 404
     }
   ]
 }
