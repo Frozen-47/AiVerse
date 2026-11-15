@@ -1,0 +1,58 @@
+name: Leaderboard Sync
+
+on:
+  schedule:
+    # Runs once daily at 04:00 UTC
+    - cron: '0 4 * * *'
+  workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync-leaderboard:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync Leaderboard Benchmarks
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: node scripts/sync_leaderboard.js
+
+      - name: Verify compilation
+        run: npx tsc -b
+
+      - name: Commit and push leaderboard benchmark updates
+        run: |
+          git config --local user.name "Sabareesh G"
+          git config --local user.email "sabareeshgm47@gmail.com"
+          export GIT_AUTHOR_NAME="Sabareesh G"
+          export GIT_AUTHOR_EMAIL="sabareeshgm47@gmail.com"
+          export GIT_COMMITTER_NAME="Sabareesh G"
+          export GIT_COMMITTER_EMAIL="sabareeshgm47@gmail.com"
+          git add src/data/leaderboardData.ts public/data/github_action_logs.json
+          if git diff --staged --quiet; then
+            echo "No leaderboard updates to commit."
+          else
+            git commit -m "chore(leaderboard): daily sync frontier benchmark metrics [skip ci]"
+            git pull --rebase origin ${GITHUB_REF#refs/heads/} || true
+            git push origin HEAD:${{ github.ref }}
+          fi

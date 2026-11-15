@@ -15,7 +15,7 @@ export const SpotlightGrid: React.FC<SpotlightGridProps> = ({
   setBrowseAll,
   setActiveView,
 }) => {
-  const spotlights = entries.filter((e) => e.popular).slice(0, 3);
+  const spotlights = entries.filter((e) => e.popular).slice(0, 6);
 
   return (
     <div id="spotlights" className="flex flex-col scroll-mt-24 text-left">
@@ -39,7 +39,7 @@ export const SpotlightGrid: React.FC<SpotlightGridProps> = ({
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6 gap-3.5">
         {spotlights.map((entry) => (
           <div
             key={entry.name}

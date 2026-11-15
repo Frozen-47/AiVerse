@@ -10136,6 +10136,700 @@ export const entries: Entry[] = [
         "url": "https://artificialanalysis.ai/models/llama-3-1-instruct-405b/providers"
       }
     ]
+  },
+  {
+    "name": "Pixtral 12B",
+    "org": "Mistral AI",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "Apache-2.0",
+    "year": 2024,
+    "size": "12B Parameters · 128k Context",
+    "summary": "Mistral AI's multimodal 12B frontier-class vision-language model trained natively with an integrated 400M parameter vision encoder and 12B decoder, supporting variable image resolutions and a 128k context window.",
+    "architecture": "Multimodal autoregressive decoder with a native 400M vision encoder directly ingesting arbitrary aspect ratio images without downsampling.",
+    "usage": "from vllm import LLM\n\nllm = LLM(model=\"mistralai/Pixtral-12B-2409\", max_model_len=8192)\noutputs = llm.generate([{\"prompt\": \"Describe this diagram in detail.\", \"multi_modal_data\": {\"image\": \"diagram.png\"}}])",
+    "benchmarks": "MMMU: 52.5%, DocVQA: 90.7%, MathVista: 58.0%, ChartQA: 81.8%, 128k context window",
+    "limitations": "Requires at least 24GB VRAM for unquantized local inference; sensitive to prompt formatting in complex multi-image reasoning.",
+    "popular": true,
+    "url": "https://mistral.ai/news/pixtral-12b/",
+    "citations": [
+      {
+        "text": "Mistral AI Pixtral 12B Release Announcement",
+        "url": "https://mistral.ai/news/pixtral-12b/"
+      },
+      {
+        "text": "Pixtral-12B-2409 on Hugging Face",
+        "url": "https://huggingface.co/mistralai/Pixtral-12B-2409"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "SmolLM2-1.7B",
+    "org": "Hugging Face",
+    "type": "Model",
+    "task": "NLP",
+    "license": "Apache-2.0",
+    "year": 2024,
+    "size": "1.7B Parameters · 8k Context",
+    "summary": "Hugging Face's compact small language model designed for efficient local on-device deployment, pre-trained on 11 trillion tokens including FineWeb-Edu, DCLM, and Stack-Edu, and fine-tuned with DPO.",
+    "architecture": "Transformer decoder optimized with grouped-query attention (GQA), rotary positional embeddings (RoPE), and SwiGLU activations for mobile and edge inference.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"HuggingFaceTB/SmolLM2-1.7B-Instruct\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"HuggingFaceTB/SmolLM2-1.7B-Instruct\")\n\ninputs = tokenizer(\"Explain quantum computing simply:\", return_tensors=\"pt\").to(model.device)\noutput = model.generate(**inputs, max_new_tokens=100)",
+    "benchmarks": "MMLU: 54.8%, GSM8k: 64.9%, HumanEval: 49.4%, IFEval: 62.4%",
+    "limitations": "Compact parameter capacity limits deep domain synthesis compared to 70B+ models; best suited for targeted agent loops, mobile, and on-device NLP.",
+    "popular": true,
+    "url": "https://huggingface.co/HuggingFaceTB/SmolLM2-1.7B-Instruct",
+    "citations": [
+      {
+        "text": "SmolLM2 Model Card and Technical Report on Hugging Face",
+        "url": "https://huggingface.co/HuggingFaceTB/SmolLM2-1.7B-Instruct"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "OLMo 2 13B",
+    "org": "Allen Institute for AI",
+    "type": "Model",
+    "task": "NLP",
+    "license": "Apache-2.0",
+    "year": 2024,
+    "size": "13B Parameters · 4k Context",
+    "summary": "Allen Institute for AI's completely open frontier language model, providing open weights, pretraining code, full dataset mixes (Dolma 1.7), and evaluation recipes for transparent scientific research.",
+    "architecture": "Non-gated SwiGLU transformer decoder with rotary position embeddings (RoPE) and RMSNorm, trained transparently on Ai2's Dolma corpus.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"allenai/OLMo-2-1124-13B-Instruct\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"allenai/OLMo-2-1124-13B-Instruct\")",
+    "benchmarks": "MMLU: 68.2%, GSM8k: 76.5%, HumanEval: 61.0%, ARC-Challenge: 86.4%",
+    "limitations": "Native pretraining context window of 4,096 tokens; requires context extension techniques for long-document tasks.",
+    "popular": true,
+    "url": "https://allenai.org/olmo",
+    "citations": [
+      {
+        "text": "Allen Institute for AI OLMo Research Platform",
+        "url": "https://allenai.org/olmo"
+      },
+      {
+        "text": "OLMo 2 13B Instruct on Hugging Face",
+        "url": "https://huggingface.co/allenai/OLMo-2-1124-13B-Instruct"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "PaliGemma 2",
+    "org": "Google",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "Gemma License",
+    "year": 2024,
+    "size": "3B / 10B / 28B Parameters",
+    "summary": "Google's open vision-language foundation model combining SigLIP-So400m vision encoder with Gemma 2 language models across 3B, 10B, and 28B parameter configurations for visual reasoning, captioning, and OCR.",
+    "architecture": "Dual-encoder cross-attention architecture uniting a SigLIP vision transformer with Gemma 2 autoregressive transformer decoder supporting high-resolution image tokens.",
+    "usage": "from transformers import PaliGemmaForConditionalGeneration, AutoProcessor\n\nmodel = PaliGemmaForConditionalGeneration.from_pretrained(\"google/paligemma2-10b-pt-448\", device_map=\"auto\")\nprocessor = AutoProcessor.from_pretrained(\"google/paligemma2-10b-pt-448\")",
+    "benchmarks": "DocVQA: 93.3%, TextVQA: 81.2%, ChartQA: 85.0%, ScienceQA: 96.1%",
+    "limitations": "Governed by Google Gemma Terms of Use; resolution tokens increase compute and memory overhead on 448x448 input variants.",
+    "popular": true,
+    "url": "https://github.com/google-research/big_vision",
+    "citations": [
+      {
+        "text": "Google Big Vision PaliGemma 2 Release",
+        "url": "https://github.com/google-research/big_vision"
+      },
+      {
+        "text": "PaliGemma 2 Collection on Hugging Face",
+        "url": "https://huggingface.co/collections/google/paligemma-2-release-675030252119420068352605"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "Granite 3.0 8B Instruct",
+    "org": "IBM",
+    "type": "Model",
+    "task": "NLP",
+    "license": "Apache-2.0",
+    "year": 2024,
+    "size": "8B Parameters · 128k Context",
+    "summary": "IBM's enterprise-grade open foundation model trained on over 12 trillion tokens across 12 languages and 116 programming languages, optimized for enterprise RAG, tool calling, and structured reasoning.",
+    "architecture": "Decoder-only dense transformer with grouped-query attention, RoPE positional embeddings, and instruction tuning over curated enterprise safety datasets.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ibm-granite/granite-3.0-8b-instruct\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ibm-granite/granite-3.0-8b-instruct\")",
+    "benchmarks": "MMLU: 67.5%, GSM8K: 77.0%, HumanEval: 62.2%, Berkeley Function Calling Leaderboard: 89.2%",
+    "limitations": "Primarily optimized for enterprise English and structured workflows; lower performance on niche low-resource multilingual natural dialogue.",
+    "popular": true,
+    "url": "https://www.ibm.com/granite",
+    "citations": [
+      {
+        "text": "IBM Granite 3.0 Technical Overview",
+        "url": "https://www.ibm.com/granite"
+      },
+      {
+        "text": "Granite 3.0 8B Instruct on Hugging Face",
+        "url": "https://huggingface.co/ibm-granite/granite-3.0-8b-instruct"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "Semantic Kernel",
+    "org": "Microsoft",
+    "type": "Framework",
+    "task": "AI Coding",
+    "license": "MIT",
+    "year": 2023,
+    "size": "N/A",
+    "summary": "Microsoft's open-source enterprise SDK that integrates conventional programming languages (C#, Python, Java) with large language models, agents, connectors, and semantic vector memory.",
+    "architecture": "Modular orchestration engine connecting LLM prompts, native code plugins, planner filters, and vector memory stores.",
+    "usage": "import semantic_kernel as sk\nfrom semantic_kernel.connectors.ai.open_ai import AzureChatCompletion\n\nkernel = sk.Kernel()\nkernel.add_service(AzureChatCompletion(service_id=\"chat\", deployment_name=\"gpt-4o\"))",
+    "benchmarks": "Official Microsoft enterprise framework powering Microsoft 365 Copilot extensibility, Azure OpenAI enterprise integrations, and multi-language agent pipelines.",
+    "limitations": "Feature parity between C# (lead language) and Python/Java SDKs can vary across major release transitions.",
+    "popular": true,
+    "url": "https://github.com/microsoft/semantic-kernel",
+    "citations": [
+      {
+        "text": "Semantic Kernel GitHub Repository",
+        "url": "https://github.com/microsoft/semantic-kernel"
+      },
+      {
+        "text": "Microsoft Learn Semantic Kernel Documentation",
+        "url": "https://learn.microsoft.com/en-us/semantic-kernel/overview/"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "torchtune",
+    "org": "PyTorch",
+    "type": "Framework",
+    "task": "MLOps",
+    "license": "BSD-3-Clause",
+    "year": 2024,
+    "size": "N/A",
+    "summary": "Native PyTorch library for easily authoring, fine-tuning, and experimenting with LLMs using composable, clean PyTorch building blocks without heavy abstractions.",
+    "architecture": "Composable PyTorch post-training architecture supporting LoRA, QLoRA, full finetuning, DPO, and distributed FSDP/deepspeed recipes.",
+    "usage": "tune run --nnodes 1 --nproc_per_node 4 lora_finetune_distributed --config llama3_2/3B_lora",
+    "benchmarks": "Native integration with torchao (quantization) and torchtitan (pretraining); achieves near peak-FLOPS utilization across single-GPU and multi-node FSDP2 setups.",
+    "limitations": "Focuses strictly on PyTorch 2.x native ecosystems; less out-of-the-box support for non-PyTorch runtimes like ONNX or TensorRT-LLM without conversion.",
+    "popular": true,
+    "url": "https://github.com/pytorch/torchtune",
+    "citations": [
+      {
+        "text": "PyTorch torchtune Repository",
+        "url": "https://github.com/pytorch/torchtune"
+      },
+      {
+        "text": "PyTorch Blog: Introducing torchtune",
+        "url": "https://pytorch.org/blog/torchtune-fine-tune-llms/"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "DeepSpeed",
+    "org": "Microsoft",
+    "type": "Framework",
+    "task": "MLOps",
+    "license": "Apache-2.0",
+    "year": 2020,
+    "size": "N/A",
+    "summary": "Microsoft's deep learning optimization library that makes distributed training, parameter offloading (ZeRO-1/2/3/Infinity), and high-throughput inference scalable and efficient on commodity and enterprise hardware.",
+    "architecture": "Distributed memory optimization engine featuring Zero Redundancy Optimizer (ZeRO), ZeRO-Offload, 3D parallelism (data, tensor, pipeline), and DeepSpeed-MoE.",
+    "usage": "deepspeed --num_gpus=8 train.py --deepspeed deepspeed_config.json",
+    "benchmarks": "Powers trillion-parameter distributed training runs (BLOOM, Megatron-Turing NLG); reduces memory footprint up to 10x via ZeRO-3.",
+    "limitations": "Configuration complexity with multi-node networking and custom CUDA kernel compilation requirements across varying driver environments.",
+    "popular": true,
+    "url": "https://github.com/microsoft/DeepSpeed",
+    "citations": [
+      {
+        "text": "Microsoft DeepSpeed GitHub Repository",
+        "url": "https://github.com/microsoft/DeepSpeed"
+      },
+      {
+        "text": "DeepSpeed Official Documentation",
+        "url": "https://www.deepspeed.ai/"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "Triton Inference Server",
+    "org": "NVIDIA",
+    "type": "Framework",
+    "task": "MLOps",
+    "license": "BSD-3-Clause",
+    "year": 2019,
+    "size": "N/A",
+    "summary": "NVIDIA's open-source multi-framework inference serving software engineered for high-throughput, low-latency GPU and CPU model deployment with dynamic batching and concurrent model execution.",
+    "architecture": "Multi-backend serving container supporting TensorRT, PyTorch TorchScript/LibTorch, ONNX Runtime, OpenVINO, and vLLM via C++ and gRPC/REST APIs.",
+    "usage": "tritonserver --model-repository=/models --http-port=8000 --grpc-port=8001",
+    "benchmarks": "Supports dynamic batching, concurrent model execution, model ensembles, and enterprise Kubernetes orchestration with automated Prometheus metrics.",
+    "limitations": "Model repository directory configuration requires rigid adherence to Triton config.pbtxt protobuf schemas and versioning structures.",
+    "popular": true,
+    "url": "https://github.com/triton-inference-server/server",
+    "citations": [
+      {
+        "text": "NVIDIA Triton Inference Server Repository",
+        "url": "https://github.com/triton-inference-server/server"
+      },
+      {
+        "text": "NVIDIA Developer Triton Inference Server Overview",
+        "url": "https://developer.nvidia.com/triton-inference-server"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "FastChat",
+    "org": "LMSYS Org",
+    "type": "Framework",
+    "task": "MLOps",
+    "license": "Apache-2.0",
+    "year": 2023,
+    "size": "N/A",
+    "summary": "LMSYS Org's open platform for training, serving, and evaluating LLM-based chatbots, powering the widely acclaimed LMSYS Chatbot Arena and Vicuna models.",
+    "architecture": "Distributed controller-worker serving architecture with OpenAI-compatible REST API endpoints, web UI, and Elo evaluation harnesses.",
+    "usage": "python3 -m fastchat.serve.controller\npython3 -m fastchat.serve.model_worker --model-path lmsys/vicuna-7b-v1.5\npython3 -m fastchat.serve.openai_api_server --host localhost --port 8000",
+    "benchmarks": "Powers LMSYS Chatbot Arena evaluating over 100+ frontier models; serves millions of evaluation prompts with distributed model worker pools.",
+    "limitations": "Built originally for research and benchmark serving; lacks advanced enterprise enterprise access control and billing features out-of-the-box.",
+    "popular": true,
+    "url": "https://github.com/lm-sys/FastChat",
+    "citations": [
+      {
+        "text": "LMSYS FastChat GitHub Repository",
+        "url": "https://github.com/lm-sys/FastChat"
+      },
+      {
+        "text": "LMSYS Chatbot Arena Platform",
+        "url": "https://chat.lmsys.org/"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "Supabase Vector",
+    "org": "Supabase",
+    "type": "Platform",
+    "task": "MLOps",
+    "license": "Apache-2.0",
+    "year": 2023,
+    "size": "Cloud Platform & Open Source Engine",
+    "summary": "Supabase's open-source vector database toolkit built on PostgreSQL and pgvector, enabling developers to store, index (HNSW / IVFFlat), and query high-dimensional embeddings directly within Postgres.",
+    "architecture": "PostgreSQL database engine extended with pgvector C extension, pg_ivm, Row Level Security (RLS), and unified TypeScript/Python SDK clients.",
+    "usage": "import { createClient } from '@supabase/supabase-js'\nconst supabase = createClient(SUPABASE_URL, SUPABASE_KEY)\n\nconst { data } = await supabase.rpc('match_documents', {\n  query_embedding: [0.1, -0.2, 0.5],\n  match_threshold: 0.78,\n  match_count: 5\n})",
+    "benchmarks": "Supports sub-10ms similarity searches on millions of vectors using HNSW indexing; fully integrates with relational tables, foreign keys, and ACID transactions.",
+    "limitations": "Vector index build times scale with Postgres RAM allocation; memory tuning required for multi-million vector datasets with high dimensionality.",
+    "popular": true,
+    "url": "https://supabase.com/docs/guides/database/extensions/pgvector",
+    "citations": [
+      {
+        "text": "Supabase Vector Official Documentation & Guide",
+        "url": "https://supabase.com/docs/guides/database/extensions/pgvector"
+      },
+      {
+        "text": "Supabase AI & Vector Overview",
+        "url": "https://supabase.com/modules/vector"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "Baseten",
+    "org": "Baseten",
+    "type": "Platform",
+    "task": "MLOps",
+    "license": "Proprietary",
+    "year": 2021,
+    "size": "Cloud Inference Platform",
+    "summary": "Scalable model inference and serving platform designed for deploying open-source and proprietary foundation models with automated cold-start mitigation, Truss packaging, and dedicated GPUs.",
+    "architecture": "High-performance Kubernetes model serving layer coupled with Truss open-source model packaging, fast model caching, and custom GPU autoscaling.",
+    "usage": "import baseten\nmodel = baseten.deployed_model_id(\"MODEL_ID\")\nresponse = model.predict({\"prompt\": \"Analyze this financial statement.\"})\nprint(response)",
+    "benchmarks": "Sub-second model cold starts via streaming weights from memory-mapped storage; supports Llama 3, DeepSeek, Whisper, and custom fine-tunes with zero-downtime rollouts.",
+    "limitations": "Dedicated GPU hours billed according to hardware tiers (NVIDIA A10G, A100, H100); requires enterprise tier for custom VPC peering.",
+    "popular": true,
+    "url": "https://www.baseten.co",
+    "citations": [
+      {
+        "text": "Baseten Official Platform",
+        "url": "https://www.baseten.co"
+      },
+      {
+        "text": "Truss Open Source Model Framework by Baseten",
+        "url": "https://github.com/basetenlabs/truss"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "fal.ai",
+    "org": "fal",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Proprietary",
+    "year": 2023,
+    "size": "Serverless GPU Inference Cloud",
+    "summary": "Real-time generative media cloud platform engineered for ultra-low latency inference across state-of-the-art image, audio, and video models with serverless GPU infrastructure.",
+    "architecture": "Serverless GPU orchestration engine with optimized custom inference engines for diffusion models, video generators, and speech synthesis pipelines.",
+    "usage": "import fal_client\n\nresult = fal_client.subscribe(\n    \"fal-ai/flux/dev\",\n    arguments={\"prompt\": \"A futuristic cityscape at sunset, cinematic lighting, 8k\"}\n)\nprint(result[\"images\"][0][\"url\"])",
+    "benchmarks": "Generates FLUX images in under 1 second; powers real-time WebSockets and streaming video/audio pipelines with global edge distribution.",
+    "limitations": "Pay-per-compute pricing model; enterprise rate limits apply to bursty parallel workloads unless reserved capacity is provisioned.",
+    "popular": true,
+    "url": "https://fal.ai",
+    "citations": [
+      {
+        "text": "fal.ai Official Developer Platform",
+        "url": "https://fal.ai"
+      },
+      {
+        "text": "fal.ai Model Registry and API Docs",
+        "url": "https://fal.ai/models"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "Anyscale",
+    "org": "Anyscale",
+    "type": "Platform",
+    "task": "MLOps",
+    "license": "Proprietary",
+    "year": 2019,
+    "size": "Enterprise Distributed AI Platform",
+    "summary": "Production distributed AI compute and model serving platform built by the creators of Ray, enabling scalable pretraining, fine-tuning, and ultra-high-throughput LLM inference across hybrid and multi-cloud infrastructure.",
+    "architecture": "Managed cloud compute control plane orchestrating Ray Core, Ray Train, Ray Serve, and vLLM clusters on AWS, GCP, and private Kubernetes.",
+    "usage": "import ray\nray.init(\"anyscale://cluster-name\")\n\n@ray.remote\ndef train_batch(data):\n    return model.forward(data)\n\nresults = ray.get([train_batch.remote(batch) for batch in batches])",
+    "benchmarks": "Powers large-scale AI production workloads at OpenAI, Uber, and Amazon; scales seamlessly to tens of thousands of heterogeneous GPU cores.",
+    "limitations": "Requires familiarity with Ray distributed computing abstractions; enterprise tiers required for advanced SSO and multi-tenant billing controls.",
+    "popular": true,
+    "url": "https://www.anyscale.com",
+    "citations": [
+      {
+        "text": "Anyscale Official Website",
+        "url": "https://www.anyscale.com"
+      },
+      {
+        "text": "Ray Open Source Project at Anyscale",
+        "url": "https://github.com/ray-project/ray"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "Qdrant",
+    "org": "Qdrant",
+    "type": "Platform",
+    "task": "MLOps",
+    "license": "Apache-2.0",
+    "year": 2021,
+    "size": "Rust Vector Database & Managed Cloud",
+    "summary": "Open-source vector similarity search engine and vector database written in Rust, delivering ultra-fast, memory-efficient vector search with rich payload filtering and distributed clustering.",
+    "architecture": "Rust-native vector indexing engine with HNSW graph indexing, quantization (scalar & product), disk-backed payloads, and Raft distributed consensus.",
+    "usage": "from qdrant_client import QdrantClient\nfrom qdrant_client.models import Distance, VectorParams\n\nclient = QdrantClient(\"localhost\", port=6333)\nclient.create_collection(\"ai_articles\", vectors_config=VectorParams(size=1536, distance=Distance.COSINE))",
+    "benchmarks": "Sub-millisecond P99 vector search latency; stores billions of vectors with scalar quantization reducing RAM consumption by up to 4x.",
+    "limitations": "Requires planning shard layouts and replication factors before scaling to high-concurrency multi-node clusters.",
+    "popular": true,
+    "url": "https://qdrant.tech",
+    "citations": [
+      {
+        "text": "Qdrant Vector Database GitHub Repository",
+        "url": "https://github.com/qdrant/qdrant"
+      },
+      {
+        "text": "Qdrant Official Documentation",
+        "url": "https://qdrant.tech/documentation/"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "MathVista",
+    "org": "UCLA & UW",
+    "type": "Dataset",
+    "task": "Research",
+    "license": "CC-BY-SA-4.0",
+    "year": 2023,
+    "size": "6,141 Multimodal Reasoning Tasks",
+    "summary": "Pioneering multimodal mathematical reasoning benchmark compiled by UCLA, University of Washington, and Microsoft, comprising 6,141 diverse tasks requiring fine-grained visual understanding and math logic.",
+    "architecture": "Structured multimodal benchmark aggregating 28 existing mathematical datasets alongside 3 newly created visual challenge subsets.",
+    "usage": "from datasets import load_dataset\nds = load_dataset(\"AI4Math/MathVista\", split=\"testmini\")\nprint(ds[0][\"question\"], ds[0][\"image\"])",
+    "benchmarks": "Standard evaluation benchmark for GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro, and open VLMs assessing visual chart, geometry, and arithmetic reasoning.",
+    "limitations": "Testmini split contains 1,000 problems, while full test set contains 5,141; evaluation requires OCR robustness and spatial diagram awareness.",
+    "popular": true,
+    "url": "https://mathvista.github.io",
+    "citations": [
+      {
+        "text": "MathVista Project Page & Leaderboard",
+        "url": "https://mathvista.github.io"
+      },
+      {
+        "text": "MathVista Dataset on Hugging Face",
+        "url": "https://huggingface.co/datasets/AI4Math/MathVista"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "DCLM-Baseline",
+    "org": "DataComp-LM Consortium",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "ODC-By 1.0",
+    "year": 2024,
+    "size": "3.8 Trillion Tokens · 240B Web Documents",
+    "summary": "3.8-trillion token open pretraining dataset produced by the DataComp for Language Models (DCLM) benchmark, demonstrating that systematic model-based data curation outperforms legacy web datasets like RefinedWeb.",
+    "architecture": "Common Crawl raw web extraction filtered through resampled fastText quality classifiers and page-level deduplication pipelines.",
+    "usage": "from datasets import load_dataset\nds = load_dataset(\"apple/DCLM-baseline\", streaming=True)\nsample = next(iter(ds[\"train\"]))\nprint(sample[\"text\"][:200])",
+    "benchmarks": "Models trained on DCLM-Baseline achieve 64.2% 5-shot MMLU at the 7B scale, setting state-of-the-art open pretraining data efficiency standards.",
+    "limitations": "Very large download volume (multi-terabyte compressed); streaming mode or high-bandwidth cluster storage required for consumption.",
+    "popular": true,
+    "url": "https://datacomp.ai/dclm",
+    "citations": [
+      {
+        "text": "DataComp for Language Models Official Website",
+        "url": "https://datacomp.ai/dclm"
+      },
+      {
+        "text": "DCLM-Baseline on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/apple/DCLM-baseline"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "BigCodeBench",
+    "org": "BigCode Project",
+    "type": "Dataset",
+    "task": "AI Coding",
+    "license": "Apache-2.0",
+    "year": 2024,
+    "size": "1,140 Python Programming Problems",
+    "summary": "Rigorous software engineering benchmark evaluating code generation across 1,140 challenging programming problems involving 139 diverse external Python libraries and automated unit testing.",
+    "architecture": "Structured programming benchmark suite with ground-truth unit test suites, execution sandbox harnesses, and library dependency isolation.",
+    "usage": "from datasets import load_dataset\nds = load_dataset(\"bigcode/bigcodebench\", split=\"v0.1.2\")\nprint(ds[0][\"task_id\"], ds[0][\"instruct_prompt\"])",
+    "benchmarks": "Evaluates pass@1 under instruction and completion modes across 100+ LLMs; uncovers true library-level software generation deficiencies missed by HumanEval.",
+    "limitations": "Requires isolated execution container due to untrusted model code execution spanning diverse external libraries.",
+    "popular": true,
+    "url": "https://bigcode-bench.github.io",
+    "citations": [
+      {
+        "text": "BigCodeBench Leaderboard & Documentation",
+        "url": "https://bigcode-bench.github.io"
+      },
+      {
+        "text": "BigCodeBench Dataset on Hugging Face",
+        "url": "https://huggingface.co/datasets/bigcode/bigcodebench"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "MMBench",
+    "org": "OpenDataLab",
+    "type": "Dataset",
+    "task": "Multimodal",
+    "license": "CC-BY-4.0",
+    "year": 2023,
+    "size": "3,000 Questions · 20 Capability Dimensions",
+    "summary": "Comprehensive bilingual vision-language benchmark developed by OpenDataLab, evaluating perception and reasoning across 20 distinct ability dimensions using CircularEval to neutralize position bias.",
+    "architecture": "Bilingual (English and Chinese) hierarchical evaluation dataset with CircularEval evaluation methodology testing option shuffling stability.",
+    "usage": "from datasets import load_dataset\nds = load_dataset(\"opencompass/MMBench\", \"en\", split=\"test\")\nprint(ds[0][\"question\"], ds[0][\"category\"])",
+    "benchmarks": "Standard benchmark on OpenCompass VLM leaderboard assessing object localization, attribute recognition, OCR, social relation, and visual logic.",
+    "limitations": "Multiple-choice evaluation format does not directly measure open-ended conversational fluency or multi-turn agent interaction.",
+    "popular": true,
+    "url": "https://mmbench.opencompass.org.cn",
+    "citations": [
+      {
+        "text": "MMBench Official Platform & Leaderboard",
+        "url": "https://mmbench.opencompass.org.cn"
+      },
+      {
+        "text": "MMBench on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/opencompass/MMBench"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "EvalPlus",
+    "org": "EvalPlus Community",
+    "type": "Dataset",
+    "task": "AI Coding",
+    "license": "Apache-2.0",
+    "year": 2023,
+    "size": "164 HumanEval+ & 378 MBPP+ Rigorous Tasks",
+    "summary": "Rigorous code evaluation suite augmenting HumanEval (HumanEval+) and MBPP (MBPP+) with automated LLM- and mutation-based test synthesis, boosting test-case coverage by up to 80x.",
+    "architecture": "Automated test-input synthesis pipeline combining differential testing, type-aware mutations, and constraint solving for strict semantic verification.",
+    "usage": "from evalplus.data import get_human_eval_plus\nevalplus_tasks = get_human_eval_plus()\nprint(len(evalplus_tasks), evalplus_tasks[\"HumanEval/0\"][\"entry_point\"])",
+    "benchmarks": "Exposes an average of 15% false passes in standard HumanEval benchmarks; recognized as standard rigor baseline on the EvalPlus leaderboard.",
+    "limitations": "Focuses on standalone algorithmic programming problems rather than full-repository multi-file architectures.",
+    "popular": true,
+    "url": "https://evalplus.github.io",
+    "citations": [
+      {
+        "text": "EvalPlus Leaderboard & Benchmark Suite",
+        "url": "https://evalplus.github.io"
+      },
+      {
+        "text": "EvalPlus GitHub Repository",
+        "url": "https://github.com/evalplus/evalplus"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "Google Antigravity",
+    "org": "Google DeepMind",
+    "type": "AI",
+    "task": "AI Coding",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "Agentic IDE & Multi-Agent Swarm Platform",
+    "summary": "Google DeepMind's agentic AI assistant and development environment designed for autonomous coding, multi-agent swarms, workspace orchestration, terminal execution, and verified artifact generation.",
+    "architecture": "Agentic orchestration framework integrating DeepMind reasoning models, background subagent delegation, sandboxed terminal execution, and reactive state machine messaging.",
+    "usage": "Launch Antigravity in your workspace. Use commands like /goal, /boost, or /plan to direct agentic swarms across multi-file refactoring and testing workflows.",
+    "benchmarks": "End-to-end task automation with zero-drift file modifications, native multi-agent swarm collaboration, and full TypeScript/Vite/Python development support.",
+    "limitations": "Proprietary Google platform; requires workspace filesystem permissions and authenticated API access for frontier reasoning models.",
+    "popular": true,
+    "url": "https://deepmind.google/technologies/antigravity",
+    "citations": [
+      {
+        "text": "Google DeepMind Research & Technologies",
+        "url": "https://deepmind.google"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "Cline",
+    "org": "Cline Bot Inc.",
+    "type": "AI",
+    "task": "AI Coding",
+    "license": "Apache-2.0",
+    "year": 2024,
+    "size": "VS Code Extension",
+    "summary": "Autonomous open-source AI coding assistant extension for VS Code that can create and edit files, execute terminal commands, analyze errors, and perform browser testing with user approval at each step.",
+    "architecture": "Agentic control loop integrating Model Context Protocol (MCP), terminal shell hooks, diff editor integration, and Puppeteer browser automation.",
+    "usage": "Install the Cline extension in VS Code. Configure your OpenRouter, Anthropic, or Ollama API key and prompt Cline in the sidebar: \"Refactor the auth middleware and run unit tests.\"",
+    "benchmarks": "Over 500,000 active VS Code installations; supports custom MCP servers, full codebase file trees, and human-in-the-loop permission checkpoints.",
+    "limitations": "Autonomous actions require careful user oversight when executing destructive terminal commands or large-scale file edits.",
+    "popular": true,
+    "url": "https://github.com/cline/cline",
+    "citations": [
+      {
+        "text": "Cline GitHub Repository",
+        "url": "https://github.com/cline/cline"
+      },
+      {
+        "text": "Cline on Visual Studio Marketplace",
+        "url": "https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "Aider",
+    "org": "Paul Gauthier",
+    "type": "AI",
+    "task": "AI Coding",
+    "license": "Apache-2.0",
+    "year": 2023,
+    "size": "Python CLI Application",
+    "summary": "Command-line AI pair programming tool that edits code directly in your local git repository, using repository tree-sitter map architectures to coordinate multi-file changes and automatically create clean git commits.",
+    "architecture": "Terminal REPL with tree-sitter based repo-map graph representations, git integration, and multi-file unified diff engines compatible with any LLM.",
+    "usage": "pip install aider-chat\naider --model claude-3-5-sonnet-20241022\n# Inside aider terminal:\n/add src/types.ts src/data.ts\nAdd a new entry for Pixtral 12B and update seed script.",
+    "benchmarks": "Ranks at the top of the Aider LLM Leaderboard for code editing; automatically generates semantic git commit messages with git diff verification.",
+    "limitations": "Command-line terminal interface; requires git repository initialization for version control features.",
+    "popular": true,
+    "url": "https://github.com/Aider-AI/aider",
+    "citations": [
+      {
+        "text": "Aider GitHub Repository",
+        "url": "https://github.com/Aider-AI/aider"
+      },
+      {
+        "text": "Aider Official Documentation & LLM Leaderboards",
+        "url": "https://aider.chat/"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "Continue",
+    "org": "Continue Dev, Inc.",
+    "type": "AI",
+    "task": "AI Coding",
+    "license": "Apache-2.0",
+    "year": 2023,
+    "size": "VS Code & JetBrains Extension",
+    "summary": "Open-source AI code assistant extension for VS Code and JetBrains, connecting any commercial or local model to your IDE for tab autocomplete, in-line code generation, and custom context providers.",
+    "architecture": "TypeScript/Python IDE extension supporting custom @-context providers, Model Context Protocol (MCP), and local inference engines (Ollama, LM Studio).",
+    "usage": "Install Continue from the VS Code Marketplace. Press Cmd/Ctrl+I for inline edits or Cmd/Ctrl+L to chat with your codebase using local Ollama or cloud models.",
+    "benchmarks": "Over 20,000 GitHub stars; supports fully offline air-gapped deployments with local LLMs and enterprise telemetry controls.",
+    "limitations": "Autocomplete speed depends heavily on local GPU hardware when running local models; custom slash commands require config.json setup.",
+    "popular": true,
+    "url": "https://github.com/continuedev/continue",
+    "citations": [
+      {
+        "text": "Continue GitHub Repository",
+        "url": "https://github.com/continuedev/continue"
+      },
+      {
+        "text": "Continue Official Documentation",
+        "url": "https://docs.continue.dev/"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "Sourcegraph Cody",
+    "org": "Sourcegraph",
+    "type": "AI",
+    "task": "AI Coding",
+    "license": "Apache-2.0",
+    "year": 2023,
+    "size": "IDE Extension & Enterprise Platform",
+    "summary": "Enterprise AI coding assistant powered by Sourcegraph's code graph and search engine, providing whole-codebase context awareness for code explanation, test generation, and multi-repo search.",
+    "architecture": "Client extension integrating with Sourcegraph Code Graph backend, embeddings search, and dynamic context retrieval algorithms across enterprise repositories.",
+    "usage": "Install Cody in VS Code or JetBrains. Sign in with Sourcegraph and run commands like /explain, /test, or /smell on any active file selection.",
+    "benchmarks": "Searches and indexes multi-gigabyte codebases across thousands of repositories; supports Claude 3.5 Sonnet, GPT-4o, and enterprise self-hosted models.",
+    "limitations": "Full cross-repository code graph context requires an active Sourcegraph Enterprise or Sourcegraph Cloud account.",
+    "popular": true,
+    "url": "https://sourcegraph.com/cody",
+    "citations": [
+      {
+        "text": "Sourcegraph Cody Product Overview",
+        "url": "https://sourcegraph.com/cody"
+      },
+      {
+        "text": "Sourcegraph Cody GitHub Repository",
+        "url": "https://github.com/sourcegraph/cody"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "name": "Gemini 4 Hydrogen",
+    "org": "Google DeepMind",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "1M Context · High-Throughput MoE",
+    "summary": "Google DeepMind's high-efficiency, low-latency foundation model in the Gemini 4 family, engineered for high-throughput agentic execution, everyday coding, real-time multimodal processing, and low-latency API workflows with a 1M token context window.",
+    "architecture": "Natively multimodal Mixture-of-Experts (MoE) optimized for low latency and high inference concurrency, supporting up to 1M token context windows, long decode continuation, and native tool-calling.",
+    "usage": "from google import genai\n\nclient = genai.Client()\nresponse = client.models.generate_content(\n  model=\"gemini-4-hydrogen\",\n  contents=\"Analyze this codebase dependency graph and suggest async refactoring opportunities.\"\n)\nprint(response.text)",
+    "benchmarks": "1M token unified context window; sub-150ms time-to-first-token (TTFT) streaming; high throughput across parallel subagent task trees and structured JSON schema generation.",
+    "limitations": "Proprietary cloud model accessible via Google AI Studio and the Gemini API; complex deep-theorem mathematical proofs better suited for Gemini 4 Argon.",
+    "popular": true,
+    "url": "https://deepmind.google/technologies/gemini/",
+    "citations": [
+      {
+        "text": "Google DeepMind Gemini 4 Architecture Overview",
+        "url": "https://deepmind.google/technologies/gemini/"
+      },
+      {
+        "text": "Gemini API Documentation on Google AI for Developers",
+        "url": "https://ai.google.dev/gemini-api/docs"
+      }
+    ],
+    "approved": true
   }
 ];
 

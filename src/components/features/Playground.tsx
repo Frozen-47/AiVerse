@@ -261,7 +261,7 @@ export const Playground: React.FC = () => {
         {/* Input Configuration & Execution Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Controls Column (Left) */}
-          <div className="lg:col-span-4 space-y-4 text-left">
+          <div className="lg:col-span-4 xl:col-span-3 space-y-4 text-left">
             {/* Model Selection Selector */}
             <div>
               <div className="flex items-center justify-between mb-2">
@@ -379,7 +379,7 @@ export const Playground: React.FC = () => {
           </div>
 
           {/* Results Comparison Grid (Right) */}
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-8 xl:col-span-9">
             {Object.keys(responses).length === 0 ? (
               /* Idle state (pre-run) */
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full min-h-64">

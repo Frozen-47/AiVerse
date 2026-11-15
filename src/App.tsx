@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useCallback, useRef, lazy, Suspense } from "react";
-import { Filter, X, Check, Sparkles, ArrowLeft, AlertTriangle, Building2, Box, ChevronLeft, ChevronRight, ArrowRight, ShieldAlert } from "lucide-react";
+import { Filter, X, Check, Sparkles, ArrowLeft, AlertTriangle, Building2, Box, ChevronLeft, ChevronRight, ArrowRight, ShieldAlert, RefreshCw } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
@@ -143,6 +143,7 @@ const Inner: React.FC = () => {
       setSelected(entry);
       if (entry) {
         navigate(route, { entry: entry.name });
+        window.scrollTo(0, 0);
       } else {
         navigate(route, { entry: null, replace: true });
       }
@@ -1006,43 +1007,78 @@ const Inner: React.FC = () => {
 
 
       <Navbar
+        currentRoute={route}
         onAddEntry={handleAddClick}
         onEditPreferences={handleEditPreferences}
         onViewProfile={(uname) => {
+          handleSelectEntry(null);
           navigate(`/user/${encodeURIComponent(profilePathSlug(uname))}`);
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.scrollTo(0, 0);
         }}
         onViewSaved={() => {
+          handleSelectEntry(null);
           navigate("/entries?tab=saved");
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.scrollTo(0, 0);
         }}
         onHomeClick={() => {
+          handleSelectEntry(null);
           navigate("/dashboard");
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.scrollTo(0, 0);
         }}
         onViewAdminDashboard={() => {
+          handleSelectEntry(null);
           navigate("/admin");
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.scrollTo(0, 0);
         }}
         entryCount={entries.length}
         ecosystemsCount={ecosystemsCount}
         onBrowseAll={() => {
+          handleSelectEntry(null);
           navigate("/entries");
           setCurrentPage(1);
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.scrollTo(0, 0);
         }}
         onViewEcosystems={() => {
+          handleSelectEntry(null);
           navigate("/entries?view=ecosystems");
           setCurrentPage(1);
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.scrollTo(0, 0);
         }}
         onViewLeaderboard={() => {
+          handleSelectEntry(null);
           navigate("/leaderboard");
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.scrollTo(0, 0);
         }}
         onViewChat={() => {
+          handleSelectEntry(null);
           navigate("/chat");
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.scrollTo(0, 0);
+        }}
+        onViewFeatures={(subpage) => {
+          handleSelectEntry(null);
+          if (subpage === "playground") {
+            navigate("/features/playground");
+          } else if (subpage === "compare") {
+            navigate("/features/compare");
+          } else if (subpage === "wizard") {
+            navigate("/features/wizard");
+          } else {
+            navigate("/features");
+          }
+          window.scrollTo(0, 0);
+        }}
+        onSearchClick={() => {
+          handleSelectEntry(null);
+          if (route.type !== "entries") {
+            navigate("/entries");
+          }
+          setTimeout(() => {
+            const input = document.querySelector('input[type="text"], input[type="search"]') as HTMLInputElement | null;
+            if (input) {
+              input.focus();
+              input.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+          }, 120);
         }}
         onboardingProfile={onboardingProfile}
         onSaveProfile={handleProfileComplete}
@@ -1096,6 +1132,36 @@ const Inner: React.FC = () => {
           navigate("/dashboard");
           window.scrollTo({ top: 0, behavior: "smooth" });
         }} />
+      ) : selected ? (
+        <Suspense
+          fallback={
+            <div className="flex-1 min-h-[60vh] flex items-center justify-center p-12">
+              <RefreshCw className="animate-spin text-[#1a73e8]" size={28} />
+            </div>
+          }
+        >
+          <DetailModal
+            entry={selected}
+            onClose={() => handleSelectEntry(null)}
+            onRatingSummaryChange={handleRatingSummaryChange}
+            relatedEntries={relatedForSelected}
+            onSelectRelated={(rel) => {
+              handleSelectEntry(rel);
+              window.scrollTo(0, 0);
+            }}
+            isBookmarked={bookmarks.includes(selected.name)}
+            onToggleBookmark={() => handleToggleBookmark(selected.name)}
+            compareCandidates={compareCandidatesForSelected}
+            onViewProfile={(uname) => {
+              navigate(`/user/${encodeURIComponent(profilePathSlug(uname))}`);
+            }}
+            onOpenPlayground={() => {
+              navigate("/features/playground");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            onViewEcosystem={handleViewEcosystem}
+          />
+        </Suspense>
       ) : isLeaderboard ? (
         <LeaderboardView
           onBackToHome={() => {
@@ -1675,10 +1741,8 @@ const Inner: React.FC = () => {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Systems Operational ({entries.length > 0 ? entries.length : staticEntries.length} Assets Verified)
             </div>
-            <span className="opacity-30 hidden sm:inline">•</span>
+            <span className="opacity-30 inline">•</span>
             <SiteSecurityBadge variant="inline" />
-            <span className="opacity-30 hidden sm:inline">•</span>
-            <span className="hidden sm:inline font-mono opacity-80">v2.4.0 Live</span>
           </div>
         </div>
 
@@ -2073,29 +2137,6 @@ const Inner: React.FC = () => {
           }}
         />
       </Suspense>
-
-      {selected && (
-        <Suspense fallback={null}>
-          <DetailModal
-            entry={selected}
-            onClose={() => handleSelectEntry(null)}
-            onRatingSummaryChange={handleRatingSummaryChange}
-            relatedEntries={relatedForSelected}
-            onSelectRelated={handleSelectEntry}
-            isBookmarked={bookmarks.includes(selected.name)}
-            onToggleBookmark={() => handleToggleBookmark(selected.name)}
-            compareCandidates={compareCandidatesForSelected}
-            onViewProfile={(uname) => {
-              navigate(`/user/${encodeURIComponent(profilePathSlug(uname))}`);
-            }}
-            onOpenPlayground={() => {
-              navigate("/features/playground");
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            onViewEcosystem={handleViewEcosystem}
-          />
-        </Suspense>
-      )}
 
       {/* Mobile Sidebar Overlay */}
       {showMobileSidebar && (

@@ -39,8 +39,9 @@ import {
   type UserRole,
 } from "../lib/onboarding";
 import { useTokens, useTheme } from "../lib/theme";
-import { getOAuthAvatarUrl, isAdminUser, supabase } from "../lib/supabase";
+import { getOAuthAvatarUrl, isAdminUser } from "../lib/supabase";
 import { navigateTo } from "../lib/router";
+import { AccountDeletionModal } from "./AccountDeletionModal";
 
 // Custom SVG Logos for platforms not in standard Lucide version
 const GithubLogo = ({ className }: { className?: string }) => (
@@ -144,6 +145,7 @@ interface UserProfileMenuProps {
   onEditPreferences?: (section?: "profile" | "preferences") => void;
   onClose?: () => void;
   onViewAdminDashboard?: () => void;
+  onRequestDeletion?: () => void;
 }
 
 export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
@@ -153,6 +155,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   onViewSaved,
   onClose,
   onViewAdminDashboard,
+  onRequestDeletion,
 }) => {
   const t = useTokens();
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -197,184 +200,20 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
       (user?.user_metadata as any)?.deletionRequested
     )
   );
-  const [deletionReason, setDeletionReason] = useState(() =>
-    (parsedMeta as any)?.deletionReason ||
-    (parsedMeta as any)?.deletion_reason ||
-    (user?.user_metadata as any)?.deletionReason ||
-    ""
-  );
-  const [isSubmittingDeletion, setIsSubmittingDeletion] = useState(false);
   const [deletionFeedback, setDeletionFeedback] = useState<{
     type: "success" | "error" | "info";
     message: string;
   } | null>(null);
-
   useEffect(() => {
-    if (parsedMeta) {
+    if (parsedMeta || user) {
       const isReq = Boolean(
         (parsedMeta as any)?.deletionRequested ||
         (parsedMeta as any)?.deletion_requested ||
         (user?.user_metadata as any)?.deletionRequested
       );
       setDeletionRequested(isReq);
-      if ((parsedMeta as any)?.deletionReason) {
-        setDeletionReason((parsedMeta as any).deletionReason);
-      }
     }
   }, [parsedMeta, user]);
-
-  const handleRequestDeletion = async () => {
-    if (!user) return;
-    setIsSubmittingDeletion(true);
-    setDeletionFeedback(null);
-    try {
-      const reasonTrimmed = deletionReason.trim();
-
-      // 1. Try calling the dedicated RPC
-      try {
-        await supabase.rpc("request_account_deletion", {
-          reason: reasonTrimmed,
-        });
-      } catch (e) {
-        console.warn("request_account_deletion RPC fallback:", e);
-      }
-
-      // 2. Persist to user_preferences
-      const userKey = user.id.startsWith("supabase_") ? user.id : `supabase_${user.id}`;
-      const { data: prefData } = await supabase
-        .from("user_preferences")
-        .select("referral_source")
-        .or(`user_key.eq.${userKey},user_key.eq.${user.id}`)
-        .maybeSingle();
-
-      let meta: any = {};
-      if (prefData?.referral_source) {
-        try {
-          meta = JSON.parse(prefData.referral_source);
-        } catch {
-          meta = { source: prefData.referral_source };
-        }
-      } else if (onboardingProfile?.referralSource) {
-        try {
-          meta = JSON.parse(onboardingProfile.referralSource);
-        } catch {}
-      }
-
-      meta.deletionRequested = true;
-      meta.deletionReason = reasonTrimmed;
-      meta.deletionRequestedAt = new Date().toISOString();
-
-      await supabase
-        .from("user_preferences")
-        .upsert(
-          {
-            user_key: userKey,
-            role: (onboardingProfile?.role as string) || "developer",
-            interests: onboardingProfile?.interests || [],
-            referral_source: JSON.stringify(meta),
-            updated_at: new Date().toISOString(),
-          },
-          { onConflict: "user_key" }
-        );
-
-      // 3. Persist to auth user_metadata
-      try {
-        await supabase.auth.updateUser({
-          data: {
-            ...user.user_metadata,
-            deletionRequested: true,
-            deletionReason: reasonTrimmed,
-            deletionRequestedAt: meta.deletionRequestedAt,
-          },
-        });
-      } catch {}
-
-      setDeletionRequested(true);
-      setShowDeletionModal(false);
-      setDeletionFeedback({
-        type: "success",
-        message: "Deletion request submitted. An administrator will review your request.",
-      });
-      setTimeout(() => setDeletionFeedback(null), 6000);
-    } catch (err: any) {
-      console.error("Account deletion request error:", err);
-      setDeletionFeedback({
-        type: "error",
-        message: err.message || "Failed to submit deletion request.",
-      });
-    } finally {
-      setIsSubmittingDeletion(false);
-    }
-  };
-
-  const handleCancelDeletionRequest = async () => {
-    if (!user) return;
-    setIsSubmittingDeletion(true);
-    setDeletionFeedback(null);
-    try {
-      try {
-        await supabase.rpc("cancel_account_deletion_request");
-      } catch (e) {
-        console.warn("cancel_account_deletion_request RPC fallback:", e);
-      }
-
-      const userKey = user.id.startsWith("supabase_") ? user.id : `supabase_${user.id}`;
-      const { data: prefData } = await supabase
-        .from("user_preferences")
-        .select("referral_source")
-        .or(`user_key.eq.${userKey},user_key.eq.${user.id}`)
-        .maybeSingle();
-
-      let meta: any = {};
-      if (prefData?.referral_source) {
-        try {
-          meta = JSON.parse(prefData.referral_source);
-        } catch {}
-      }
-
-      delete meta.deletionRequested;
-      delete meta.deletion_requested;
-      delete meta.deletionReason;
-      delete meta.deletion_reason;
-      delete meta.deletionRequestedAt;
-      delete meta.deletion_requested_at;
-
-      await supabase
-        .from("user_preferences")
-        .update({
-          referral_source: JSON.stringify(meta),
-          updated_at: new Date().toISOString(),
-        })
-        .or(`user_key.eq.${userKey},user_key.eq.${user.id}`);
-
-      try {
-        await supabase.auth.updateUser({
-          data: {
-            ...user.user_metadata,
-            deletionRequested: false,
-            deletionReason: "",
-            deletionRequestedAt: null,
-          },
-        });
-      } catch {}
-
-      setDeletionRequested(false);
-      setShowDeletionModal(false);
-      setDeletionFeedback({
-        type: "info",
-        message: "Account deletion request has been cancelled.",
-      });
-      setTimeout(() => setDeletionFeedback(null), 5000);
-    } catch (err: any) {
-      console.error("Cancel deletion request error:", err);
-      setDeletionFeedback({
-        type: "error",
-        message: err.message || "Failed to cancel request.",
-      });
-    } finally {
-      setIsSubmittingDeletion(false);
-    }
-  };
 
   const wrapperCls = (readOnly: boolean) => [
     "relative flex items-center rounded-xl border transition-all duration-200 w-full",
@@ -992,7 +831,13 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
 
         {deletionRequested && (
           <div
-            onClick={() => setShowDeletionModal(true)}
+            onClick={() => {
+              if (onRequestDeletion) {
+                onRequestDeletion();
+              } else {
+                setShowDeletionModal(true);
+              }
+            }}
             className="mb-2 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-[10.5px] font-medium flex items-center gap-1.5 cursor-pointer hover:bg-amber-500/15 transition-colors"
             title="Click to view or cancel deletion request"
           >
@@ -1159,7 +1004,13 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
           {deletionRequested ? (
             <button
               type="button"
-              onClick={() => setShowDeletionModal(true)}
+              onClick={() => {
+                if (onRequestDeletion) {
+                  onRequestDeletion();
+                } else {
+                  setShowDeletionModal(true);
+                }
+              }}
               className="text-amber-500 hover:text-amber-400 hover:underline cursor-pointer flex items-center gap-1 font-medium"
             >
               <Clock size={11} />
@@ -1168,7 +1019,13 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
           ) : (
             <button
               type="button"
-              onClick={() => setShowDeletionModal(true)}
+              onClick={() => {
+                if (onRequestDeletion) {
+                  onRequestDeletion();
+                } else {
+                  setShowDeletionModal(true);
+                }
+              }}
               className="hover:text-neutral-700 dark:hover:text-neutral-300 hover:underline cursor-pointer"
             >
               Request account deletion
@@ -1177,135 +1034,13 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
         </div>
       </div>
 
-      {/* ══════════ Account Deletion Request Modal (Admin Approval Required) ══════════ */}
-      {showDeletionModal && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 animate-[fadeIn_0.15s_ease-out]">
-          <div className={`relative w-full max-w-md p-6 rounded-2xl overflow-hidden shadow-2xl space-y-4 border ${
-            isDark ? "bg-[#1e1f20] border-[#3c4043] text-white" : "bg-white border-[#dadce0] text-neutral-900"
-          }`}>
-            <button
-              type="button"
-              onClick={() => setShowDeletionModal(false)}
-              className="absolute top-4 right-4 w-7 h-7 rounded-full flex items-center justify-center text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/10 transition-colors cursor-pointer"
-            >
-              <X size={15} />
-            </button>
-
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] flex items-center justify-center shrink-0 border border-[#1a73e8]/20">
-                <ShieldAlert size={20} className="stroke-[2.2px]" />
-              </div>
-              <div>
-                <h3 className="text-base font-bold tracking-tight">
-                  {deletionRequested ? "Account Deletion Request" : "Request Account Deletion"}
-                </h3>
-                <p className="text-[11px] text-neutral-500 dark:text-neutral-400">
-                  Platform Administrator Approval Required
-                </p>
-              </div>
-            </div>
-
-            <div className={`p-3.5 rounded-xl border text-xs space-y-1.5 ${
-              isDark ? "bg-[#131314] border-[#3c4043] text-neutral-300" : "bg-[#f8fafd] border-[#c2e7ff] text-[#001d35]"
-            }`}>
-              <div className="flex items-center gap-2 font-semibold">
-                <Shield size={14} className={isDark ? "text-[#a8c7fa]" : "text-[#1a73e8]"} />
-                <span>Security & Governance Policy</span>
-              </div>
-              <p className="text-[11.5px] leading-relaxed opacity-90 font-light">
-                Under platform security policy, regular users do not have permission to delete accounts directly. An account deletion request must be submitted for review and approval by a platform administrator.
-              </p>
-            </div>
-
-            {deletionRequested ? (
-              <div className="space-y-3 pt-1">
-                <div className="p-3 rounded-xl border border-amber-500/20 bg-amber-500/10 space-y-1.5">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-amber-600 dark:text-amber-400">
-                    <Clock size={13} />
-                    <span>Your deletion request is currently pending review</span>
-                  </div>
-                  {deletionReason && (
-                    <p className="text-[11.5px] text-neutral-600 dark:text-neutral-300 font-light italic">
-                      "{deletionReason}"
-                    </p>
-                  )}
-                  <p className="text-[10.5px] text-neutral-500 dark:text-neutral-400">
-                    Once approved by an administrator, your credentials, bookmarks, and preferences will be permanently expunged. You may withdraw this request at any time before it is approved.
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-end gap-2 pt-2">
-                  <button
-                    type="button"
-                    disabled={isSubmittingDeletion}
-                    onClick={() => setShowDeletionModal(false)}
-                    className="px-4 py-2 rounded-xl text-xs font-medium border border-neutral-300 dark:border-[#3c4043] hover:bg-neutral-100 dark:hover:bg-white/5 transition-colors cursor-pointer"
-                  >
-                    Close
-                  </button>
-                  <button
-                    type="button"
-                    disabled={isSubmittingDeletion}
-                    onClick={handleCancelDeletionRequest}
-                    className="px-4 py-2 rounded-xl text-xs font-semibold text-neutral-700 dark:text-neutral-200 border border-neutral-300 dark:border-[#3c4043] hover:bg-neutral-100 dark:hover:bg-white/10 transition-colors cursor-pointer disabled:opacity-50"
-                  >
-                    {isSubmittingDeletion ? "Cancelling..." : "Cancel Deletion Request"}
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <div className="space-y-3 pt-1">
-                <div className="space-y-1.5">
-                  <p className="text-xs text-neutral-600 dark:text-neutral-300 font-light">
-                    Upon administrator approval:
-                  </p>
-                  <ul className="text-[11.5px] text-neutral-500 dark:text-neutral-400 space-y-1 list-disc list-inside">
-                    <li>Your login credentials in <strong className="text-neutral-700 dark:text-neutral-200 font-medium">auth.users</strong> will be permanently purged.</li>
-                    <li>Saved bookmarks, ratings, and profile links will be wiped.</li>
-                    <li>This action cannot be undone once approved.</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-1.5 pt-1">
-                  <label className="text-[11px] font-semibold text-neutral-700 dark:text-neutral-300">
-                    Reason for deletion (optional)
-                  </label>
-                  <textarea
-                    rows={3}
-                    value={deletionReason}
-                    onChange={(e) => setDeletionReason(e.target.value)}
-                    placeholder="Tell the administrator why you are requesting account deletion..."
-                    className={`w-full p-2.5 rounded-xl border text-xs resize-none outline-none transition-all ${
-                      isDark
-                        ? "bg-[#131314] border-[#3c4043] text-white placeholder:text-neutral-500 focus:border-[#a8c7fa]"
-                        : "bg-white border-[#dadce0] text-neutral-900 placeholder:text-neutral-400 focus:border-[#1a73e8]"
-                    }`}
-                  />
-                </div>
-
-                <div className="flex items-center justify-end gap-2 pt-2">
-                  <button
-                    type="button"
-                    disabled={isSubmittingDeletion}
-                    onClick={() => setShowDeletionModal(false)}
-                    className="px-4 py-2 rounded-xl text-xs font-medium border border-neutral-300 dark:border-[#3c4043] hover:bg-neutral-100 dark:hover:bg-white/5 transition-colors cursor-pointer"
-                  >
-                    Keep Account
-                  </button>
-                  <button
-                    type="button"
-                    disabled={isSubmittingDeletion}
-                    onClick={handleRequestDeletion}
-                    className="px-4 py-2 rounded-xl text-xs font-bold bg-[#1a73e8] hover:bg-[#1557b0] text-white transition-colors cursor-pointer disabled:opacity-50 shadow-xs"
-                  >
-                    {isSubmittingDeletion ? "Submitting..." : "Submit Deletion Request"}
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+      {/* ══════════ Account Deletion Request Modal (Portaled) ══════════ */}
+      <AccountDeletionModal
+        isOpen={showDeletionModal}
+        onClose={() => setShowDeletionModal(false)}
+        onboardingProfile={onboardingProfile}
+        onStatusChange={(req) => setDeletionRequested(req)}
+      />
     </div>
   );
 };

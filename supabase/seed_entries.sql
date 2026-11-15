@@ -1,4 +1,4 @@
--- Seed / Upsert all 448 AiVerse entries into Supabase
+-- Seed / Upsert all 474 AiVerse entries into Supabase
 -- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
@@ -9597,6 +9597,573 @@ VALUES ('Llama 3.1 405B', 'Meta AI', 'Model', 'NLP', 'Open', 2024, '128k Context
 
 model = AutoModelForCausalLM.from_pretrained("Meta/llama-3-1-405b", device_map="auto")
 tokenizer = AutoTokenizer.from_pretrained("Meta/llama-3-1-405b")', 'Context Window: 128k', 'High memory requirements for local execution (128k context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.', 'https://artificialanalysis.ai/models/llama-3-1-instruct-405b', '[{"text":"Llama 3.1 405B on Artificial Analysis Benchmark","url":"https://artificialanalysis.ai/models/llama-3-1-instruct-405b"},{"text":"Llama 3.1 405B Inference Providers","url":"https://artificialanalysis.ai/models/llama-3-1-instruct-405b/providers"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Pixtral 12B', 'Mistral AI', 'Model', 'Multimodal', 'Apache-2.0', 2024, '12B Parameters · 128k Context', 'Mistral AI''s multimodal 12B frontier-class vision-language model trained natively with an integrated 400M parameter vision encoder and 12B decoder, supporting variable image resolutions and a 128k context window.', 'Multimodal autoregressive decoder with a native 400M vision encoder directly ingesting arbitrary aspect ratio images without downsampling.', 'from vllm import LLM
+
+llm = LLM(model="mistralai/Pixtral-12B-2409", max_model_len=8192)
+outputs = llm.generate([{"prompt": "Describe this diagram in detail.", "multi_modal_data": {"image": "diagram.png"}}])', 'MMMU: 52.5%, DocVQA: 90.7%, MathVista: 58.0%, ChartQA: 81.8%, 128k context window', 'Requires at least 24GB VRAM for unquantized local inference; sensitive to prompt formatting in complex multi-image reasoning.', 'https://mistral.ai/news/pixtral-12b/', '[{"text":"Mistral AI Pixtral 12B Release Announcement","url":"https://mistral.ai/news/pixtral-12b/"},{"text":"Pixtral-12B-2409 on Hugging Face","url":"https://huggingface.co/mistralai/Pixtral-12B-2409"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('SmolLM2-1.7B', 'Hugging Face', 'Model', 'NLP', 'Apache-2.0', 2024, '1.7B Parameters · 8k Context', 'Hugging Face''s compact small language model designed for efficient local on-device deployment, pre-trained on 11 trillion tokens including FineWeb-Edu, DCLM, and Stack-Edu, and fine-tuned with DPO.', 'Transformer decoder optimized with grouped-query attention (GQA), rotary positional embeddings (RoPE), and SwiGLU activations for mobile and edge inference.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("HuggingFaceTB/SmolLM2-1.7B-Instruct", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("HuggingFaceTB/SmolLM2-1.7B-Instruct")
+
+inputs = tokenizer("Explain quantum computing simply:", return_tensors="pt").to(model.device)
+output = model.generate(**inputs, max_new_tokens=100)', 'MMLU: 54.8%, GSM8k: 64.9%, HumanEval: 49.4%, IFEval: 62.4%', 'Compact parameter capacity limits deep domain synthesis compared to 70B+ models; best suited for targeted agent loops, mobile, and on-device NLP.', 'https://huggingface.co/HuggingFaceTB/SmolLM2-1.7B-Instruct', '[{"text":"SmolLM2 Model Card and Technical Report on Hugging Face","url":"https://huggingface.co/HuggingFaceTB/SmolLM2-1.7B-Instruct"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('OLMo 2 13B', 'Allen Institute for AI', 'Model', 'NLP', 'Apache-2.0', 2024, '13B Parameters · 4k Context', 'Allen Institute for AI''s completely open frontier language model, providing open weights, pretraining code, full dataset mixes (Dolma 1.7), and evaluation recipes for transparent scientific research.', 'Non-gated SwiGLU transformer decoder with rotary position embeddings (RoPE) and RMSNorm, trained transparently on Ai2''s Dolma corpus.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("allenai/OLMo-2-1124-13B-Instruct", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("allenai/OLMo-2-1124-13B-Instruct")', 'MMLU: 68.2%, GSM8k: 76.5%, HumanEval: 61.0%, ARC-Challenge: 86.4%', 'Native pretraining context window of 4,096 tokens; requires context extension techniques for long-document tasks.', 'https://allenai.org/olmo', '[{"text":"Allen Institute for AI OLMo Research Platform","url":"https://allenai.org/olmo"},{"text":"OLMo 2 13B Instruct on Hugging Face","url":"https://huggingface.co/allenai/OLMo-2-1124-13B-Instruct"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('PaliGemma 2', 'Google', 'Model', 'Multimodal', 'Gemma License', 2024, '3B / 10B / 28B Parameters', 'Google''s open vision-language foundation model combining SigLIP-So400m vision encoder with Gemma 2 language models across 3B, 10B, and 28B parameter configurations for visual reasoning, captioning, and OCR.', 'Dual-encoder cross-attention architecture uniting a SigLIP vision transformer with Gemma 2 autoregressive transformer decoder supporting high-resolution image tokens.', 'from transformers import PaliGemmaForConditionalGeneration, AutoProcessor
+
+model = PaliGemmaForConditionalGeneration.from_pretrained("google/paligemma2-10b-pt-448", device_map="auto")
+processor = AutoProcessor.from_pretrained("google/paligemma2-10b-pt-448")', 'DocVQA: 93.3%, TextVQA: 81.2%, ChartQA: 85.0%, ScienceQA: 96.1%', 'Governed by Google Gemma Terms of Use; resolution tokens increase compute and memory overhead on 448x448 input variants.', 'https://github.com/google-research/big_vision', '[{"text":"Google Big Vision PaliGemma 2 Release","url":"https://github.com/google-research/big_vision"},{"text":"PaliGemma 2 Collection on Hugging Face","url":"https://huggingface.co/collections/google/paligemma-2-release-675030252119420068352605"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Granite 3.0 8B Instruct', 'IBM', 'Model', 'NLP', 'Apache-2.0', 2024, '8B Parameters · 128k Context', 'IBM''s enterprise-grade open foundation model trained on over 12 trillion tokens across 12 languages and 116 programming languages, optimized for enterprise RAG, tool calling, and structured reasoning.', 'Decoder-only dense transformer with grouped-query attention, RoPE positional embeddings, and instruction tuning over curated enterprise safety datasets.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("ibm-granite/granite-3.0-8b-instruct", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("ibm-granite/granite-3.0-8b-instruct")', 'MMLU: 67.5%, GSM8K: 77.0%, HumanEval: 62.2%, Berkeley Function Calling Leaderboard: 89.2%', 'Primarily optimized for enterprise English and structured workflows; lower performance on niche low-resource multilingual natural dialogue.', 'https://www.ibm.com/granite', '[{"text":"IBM Granite 3.0 Technical Overview","url":"https://www.ibm.com/granite"},{"text":"Granite 3.0 8B Instruct on Hugging Face","url":"https://huggingface.co/ibm-granite/granite-3.0-8b-instruct"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Semantic Kernel', 'Microsoft', 'Framework', 'AI Coding', 'MIT', 2023, 'N/A', 'Microsoft''s open-source enterprise SDK that integrates conventional programming languages (C#, Python, Java) with large language models, agents, connectors, and semantic vector memory.', 'Modular orchestration engine connecting LLM prompts, native code plugins, planner filters, and vector memory stores.', 'import semantic_kernel as sk
+from semantic_kernel.connectors.ai.open_ai import AzureChatCompletion
+
+kernel = sk.Kernel()
+kernel.add_service(AzureChatCompletion(service_id="chat", deployment_name="gpt-4o"))', 'Official Microsoft enterprise framework powering Microsoft 365 Copilot extensibility, Azure OpenAI enterprise integrations, and multi-language agent pipelines.', 'Feature parity between C# (lead language) and Python/Java SDKs can vary across major release transitions.', 'https://github.com/microsoft/semantic-kernel', '[{"text":"Semantic Kernel GitHub Repository","url":"https://github.com/microsoft/semantic-kernel"},{"text":"Microsoft Learn Semantic Kernel Documentation","url":"https://learn.microsoft.com/en-us/semantic-kernel/overview/"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('torchtune', 'PyTorch', 'Framework', 'MLOps', 'BSD-3-Clause', 2024, 'N/A', 'Native PyTorch library for easily authoring, fine-tuning, and experimenting with LLMs using composable, clean PyTorch building blocks without heavy abstractions.', 'Composable PyTorch post-training architecture supporting LoRA, QLoRA, full finetuning, DPO, and distributed FSDP/deepspeed recipes.', 'tune run --nnodes 1 --nproc_per_node 4 lora_finetune_distributed --config llama3_2/3B_lora', 'Native integration with torchao (quantization) and torchtitan (pretraining); achieves near peak-FLOPS utilization across single-GPU and multi-node FSDP2 setups.', 'Focuses strictly on PyTorch 2.x native ecosystems; less out-of-the-box support for non-PyTorch runtimes like ONNX or TensorRT-LLM without conversion.', 'https://github.com/pytorch/torchtune', '[{"text":"PyTorch torchtune Repository","url":"https://github.com/pytorch/torchtune"},{"text":"PyTorch Blog: Introducing torchtune","url":"https://pytorch.org/blog/torchtune-fine-tune-llms/"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('DeepSpeed', 'Microsoft', 'Framework', 'MLOps', 'Apache-2.0', 2020, 'N/A', 'Microsoft''s deep learning optimization library that makes distributed training, parameter offloading (ZeRO-1/2/3/Infinity), and high-throughput inference scalable and efficient on commodity and enterprise hardware.', 'Distributed memory optimization engine featuring Zero Redundancy Optimizer (ZeRO), ZeRO-Offload, 3D parallelism (data, tensor, pipeline), and DeepSpeed-MoE.', 'deepspeed --num_gpus=8 train.py --deepspeed deepspeed_config.json', 'Powers trillion-parameter distributed training runs (BLOOM, Megatron-Turing NLG); reduces memory footprint up to 10x via ZeRO-3.', 'Configuration complexity with multi-node networking and custom CUDA kernel compilation requirements across varying driver environments.', 'https://github.com/microsoft/DeepSpeed', '[{"text":"Microsoft DeepSpeed GitHub Repository","url":"https://github.com/microsoft/DeepSpeed"},{"text":"DeepSpeed Official Documentation","url":"https://www.deepspeed.ai/"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Triton Inference Server', 'NVIDIA', 'Framework', 'MLOps', 'BSD-3-Clause', 2019, 'N/A', 'NVIDIA''s open-source multi-framework inference serving software engineered for high-throughput, low-latency GPU and CPU model deployment with dynamic batching and concurrent model execution.', 'Multi-backend serving container supporting TensorRT, PyTorch TorchScript/LibTorch, ONNX Runtime, OpenVINO, and vLLM via C++ and gRPC/REST APIs.', 'tritonserver --model-repository=/models --http-port=8000 --grpc-port=8001', 'Supports dynamic batching, concurrent model execution, model ensembles, and enterprise Kubernetes orchestration with automated Prometheus metrics.', 'Model repository directory configuration requires rigid adherence to Triton config.pbtxt protobuf schemas and versioning structures.', 'https://github.com/triton-inference-server/server', '[{"text":"NVIDIA Triton Inference Server Repository","url":"https://github.com/triton-inference-server/server"},{"text":"NVIDIA Developer Triton Inference Server Overview","url":"https://developer.nvidia.com/triton-inference-server"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('FastChat', 'LMSYS Org', 'Framework', 'MLOps', 'Apache-2.0', 2023, 'N/A', 'LMSYS Org''s open platform for training, serving, and evaluating LLM-based chatbots, powering the widely acclaimed LMSYS Chatbot Arena and Vicuna models.', 'Distributed controller-worker serving architecture with OpenAI-compatible REST API endpoints, web UI, and Elo evaluation harnesses.', 'python3 -m fastchat.serve.controller
+python3 -m fastchat.serve.model_worker --model-path lmsys/vicuna-7b-v1.5
+python3 -m fastchat.serve.openai_api_server --host localhost --port 8000', 'Powers LMSYS Chatbot Arena evaluating over 100+ frontier models; serves millions of evaluation prompts with distributed model worker pools.', 'Built originally for research and benchmark serving; lacks advanced enterprise enterprise access control and billing features out-of-the-box.', 'https://github.com/lm-sys/FastChat', '[{"text":"LMSYS FastChat GitHub Repository","url":"https://github.com/lm-sys/FastChat"},{"text":"LMSYS Chatbot Arena Platform","url":"https://chat.lmsys.org/"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Supabase Vector', 'Supabase', 'Platform', 'MLOps', 'Apache-2.0', 2023, 'Cloud Platform & Open Source Engine', 'Supabase''s open-source vector database toolkit built on PostgreSQL and pgvector, enabling developers to store, index (HNSW / IVFFlat), and query high-dimensional embeddings directly within Postgres.', 'PostgreSQL database engine extended with pgvector C extension, pg_ivm, Row Level Security (RLS), and unified TypeScript/Python SDK clients.', 'import { createClient } from ''@supabase/supabase-js''
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+const { data } = await supabase.rpc(''match_documents'', {
+  query_embedding: [0.1, -0.2, 0.5],
+  match_threshold: 0.78,
+  match_count: 5
+})', 'Supports sub-10ms similarity searches on millions of vectors using HNSW indexing; fully integrates with relational tables, foreign keys, and ACID transactions.', 'Vector index build times scale with Postgres RAM allocation; memory tuning required for multi-million vector datasets with high dimensionality.', 'https://supabase.com/docs/guides/database/extensions/pgvector', '[{"text":"Supabase Vector Official Documentation & Guide","url":"https://supabase.com/docs/guides/database/extensions/pgvector"},{"text":"Supabase AI & Vector Overview","url":"https://supabase.com/modules/vector"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Baseten', 'Baseten', 'Platform', 'MLOps', 'Proprietary', 2021, 'Cloud Inference Platform', 'Scalable model inference and serving platform designed for deploying open-source and proprietary foundation models with automated cold-start mitigation, Truss packaging, and dedicated GPUs.', 'High-performance Kubernetes model serving layer coupled with Truss open-source model packaging, fast model caching, and custom GPU autoscaling.', 'import baseten
+model = baseten.deployed_model_id("MODEL_ID")
+response = model.predict({"prompt": "Analyze this financial statement."})
+print(response)', 'Sub-second model cold starts via streaming weights from memory-mapped storage; supports Llama 3, DeepSeek, Whisper, and custom fine-tunes with zero-downtime rollouts.', 'Dedicated GPU hours billed according to hardware tiers (NVIDIA A10G, A100, H100); requires enterprise tier for custom VPC peering.', 'https://www.baseten.co', '[{"text":"Baseten Official Platform","url":"https://www.baseten.co"},{"text":"Truss Open Source Model Framework by Baseten","url":"https://github.com/basetenlabs/truss"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('fal.ai', 'fal', 'Platform', 'Multimodal', 'Proprietary', 2023, 'Serverless GPU Inference Cloud', 'Real-time generative media cloud platform engineered for ultra-low latency inference across state-of-the-art image, audio, and video models with serverless GPU infrastructure.', 'Serverless GPU orchestration engine with optimized custom inference engines for diffusion models, video generators, and speech synthesis pipelines.', 'import fal_client
+
+result = fal_client.subscribe(
+    "fal-ai/flux/dev",
+    arguments={"prompt": "A futuristic cityscape at sunset, cinematic lighting, 8k"}
+)
+print(result["images"][0]["url"])', 'Generates FLUX images in under 1 second; powers real-time WebSockets and streaming video/audio pipelines with global edge distribution.', 'Pay-per-compute pricing model; enterprise rate limits apply to bursty parallel workloads unless reserved capacity is provisioned.', 'https://fal.ai', '[{"text":"fal.ai Official Developer Platform","url":"https://fal.ai"},{"text":"fal.ai Model Registry and API Docs","url":"https://fal.ai/models"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Anyscale', 'Anyscale', 'Platform', 'MLOps', 'Proprietary', 2019, 'Enterprise Distributed AI Platform', 'Production distributed AI compute and model serving platform built by the creators of Ray, enabling scalable pretraining, fine-tuning, and ultra-high-throughput LLM inference across hybrid and multi-cloud infrastructure.', 'Managed cloud compute control plane orchestrating Ray Core, Ray Train, Ray Serve, and vLLM clusters on AWS, GCP, and private Kubernetes.', 'import ray
+ray.init("anyscale://cluster-name")
+
+@ray.remote
+def train_batch(data):
+    return model.forward(data)
+
+results = ray.get([train_batch.remote(batch) for batch in batches])', 'Powers large-scale AI production workloads at OpenAI, Uber, and Amazon; scales seamlessly to tens of thousands of heterogeneous GPU cores.', 'Requires familiarity with Ray distributed computing abstractions; enterprise tiers required for advanced SSO and multi-tenant billing controls.', 'https://www.anyscale.com', '[{"text":"Anyscale Official Website","url":"https://www.anyscale.com"},{"text":"Ray Open Source Project at Anyscale","url":"https://github.com/ray-project/ray"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qdrant', 'Qdrant', 'Platform', 'MLOps', 'Apache-2.0', 2021, 'Rust Vector Database & Managed Cloud', 'Open-source vector similarity search engine and vector database written in Rust, delivering ultra-fast, memory-efficient vector search with rich payload filtering and distributed clustering.', 'Rust-native vector indexing engine with HNSW graph indexing, quantization (scalar & product), disk-backed payloads, and Raft distributed consensus.', 'from qdrant_client import QdrantClient
+from qdrant_client.models import Distance, VectorParams
+
+client = QdrantClient("localhost", port=6333)
+client.create_collection("ai_articles", vectors_config=VectorParams(size=1536, distance=Distance.COSINE))', 'Sub-millisecond P99 vector search latency; stores billions of vectors with scalar quantization reducing RAM consumption by up to 4x.', 'Requires planning shard layouts and replication factors before scaling to high-concurrency multi-node clusters.', 'https://qdrant.tech', '[{"text":"Qdrant Vector Database GitHub Repository","url":"https://github.com/qdrant/qdrant"},{"text":"Qdrant Official Documentation","url":"https://qdrant.tech/documentation/"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MathVista', 'UCLA & UW', 'Dataset', 'Research', 'CC-BY-SA-4.0', 2023, '6,141 Multimodal Reasoning Tasks', 'Pioneering multimodal mathematical reasoning benchmark compiled by UCLA, University of Washington, and Microsoft, comprising 6,141 diverse tasks requiring fine-grained visual understanding and math logic.', 'Structured multimodal benchmark aggregating 28 existing mathematical datasets alongside 3 newly created visual challenge subsets.', 'from datasets import load_dataset
+ds = load_dataset("AI4Math/MathVista", split="testmini")
+print(ds[0]["question"], ds[0]["image"])', 'Standard evaluation benchmark for GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro, and open VLMs assessing visual chart, geometry, and arithmetic reasoning.', 'Testmini split contains 1,000 problems, while full test set contains 5,141; evaluation requires OCR robustness and spatial diagram awareness.', 'https://mathvista.github.io', '[{"text":"MathVista Project Page & Leaderboard","url":"https://mathvista.github.io"},{"text":"MathVista Dataset on Hugging Face","url":"https://huggingface.co/datasets/AI4Math/MathVista"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('DCLM-Baseline', 'DataComp-LM Consortium', 'Dataset', 'NLP', 'ODC-By 1.0', 2024, '3.8 Trillion Tokens · 240B Web Documents', '3.8-trillion token open pretraining dataset produced by the DataComp for Language Models (DCLM) benchmark, demonstrating that systematic model-based data curation outperforms legacy web datasets like RefinedWeb.', 'Common Crawl raw web extraction filtered through resampled fastText quality classifiers and page-level deduplication pipelines.', 'from datasets import load_dataset
+ds = load_dataset("apple/DCLM-baseline", streaming=True)
+sample = next(iter(ds["train"]))
+print(sample["text"][:200])', 'Models trained on DCLM-Baseline achieve 64.2% 5-shot MMLU at the 7B scale, setting state-of-the-art open pretraining data efficiency standards.', 'Very large download volume (multi-terabyte compressed); streaming mode or high-bandwidth cluster storage required for consumption.', 'https://datacomp.ai/dclm', '[{"text":"DataComp for Language Models Official Website","url":"https://datacomp.ai/dclm"},{"text":"DCLM-Baseline on Hugging Face Datasets","url":"https://huggingface.co/datasets/apple/DCLM-baseline"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('BigCodeBench', 'BigCode Project', 'Dataset', 'AI Coding', 'Apache-2.0', 2024, '1,140 Python Programming Problems', 'Rigorous software engineering benchmark evaluating code generation across 1,140 challenging programming problems involving 139 diverse external Python libraries and automated unit testing.', 'Structured programming benchmark suite with ground-truth unit test suites, execution sandbox harnesses, and library dependency isolation.', 'from datasets import load_dataset
+ds = load_dataset("bigcode/bigcodebench", split="v0.1.2")
+print(ds[0]["task_id"], ds[0]["instruct_prompt"])', 'Evaluates pass@1 under instruction and completion modes across 100+ LLMs; uncovers true library-level software generation deficiencies missed by HumanEval.', 'Requires isolated execution container due to untrusted model code execution spanning diverse external libraries.', 'https://bigcode-bench.github.io', '[{"text":"BigCodeBench Leaderboard & Documentation","url":"https://bigcode-bench.github.io"},{"text":"BigCodeBench Dataset on Hugging Face","url":"https://huggingface.co/datasets/bigcode/bigcodebench"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MMBench', 'OpenDataLab', 'Dataset', 'Multimodal', 'CC-BY-4.0', 2023, '3,000 Questions · 20 Capability Dimensions', 'Comprehensive bilingual vision-language benchmark developed by OpenDataLab, evaluating perception and reasoning across 20 distinct ability dimensions using CircularEval to neutralize position bias.', 'Bilingual (English and Chinese) hierarchical evaluation dataset with CircularEval evaluation methodology testing option shuffling stability.', 'from datasets import load_dataset
+ds = load_dataset("opencompass/MMBench", "en", split="test")
+print(ds[0]["question"], ds[0]["category"])', 'Standard benchmark on OpenCompass VLM leaderboard assessing object localization, attribute recognition, OCR, social relation, and visual logic.', 'Multiple-choice evaluation format does not directly measure open-ended conversational fluency or multi-turn agent interaction.', 'https://mmbench.opencompass.org.cn', '[{"text":"MMBench Official Platform & Leaderboard","url":"https://mmbench.opencompass.org.cn"},{"text":"MMBench on Hugging Face Datasets","url":"https://huggingface.co/datasets/opencompass/MMBench"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('EvalPlus', 'EvalPlus Community', 'Dataset', 'AI Coding', 'Apache-2.0', 2023, '164 HumanEval+ & 378 MBPP+ Rigorous Tasks', 'Rigorous code evaluation suite augmenting HumanEval (HumanEval+) and MBPP (MBPP+) with automated LLM- and mutation-based test synthesis, boosting test-case coverage by up to 80x.', 'Automated test-input synthesis pipeline combining differential testing, type-aware mutations, and constraint solving for strict semantic verification.', 'from evalplus.data import get_human_eval_plus
+evalplus_tasks = get_human_eval_plus()
+print(len(evalplus_tasks), evalplus_tasks["HumanEval/0"]["entry_point"])', 'Exposes an average of 15% false passes in standard HumanEval benchmarks; recognized as standard rigor baseline on the EvalPlus leaderboard.', 'Focuses on standalone algorithmic programming problems rather than full-repository multi-file architectures.', 'https://evalplus.github.io', '[{"text":"EvalPlus Leaderboard & Benchmark Suite","url":"https://evalplus.github.io"},{"text":"EvalPlus GitHub Repository","url":"https://github.com/evalplus/evalplus"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Google Antigravity', 'Google DeepMind', 'AI', 'AI Coding', 'Proprietary', 2026, 'Agentic IDE & Multi-Agent Swarm Platform', 'Google DeepMind''s agentic AI assistant and development environment designed for autonomous coding, multi-agent swarms, workspace orchestration, terminal execution, and verified artifact generation.', 'Agentic orchestration framework integrating DeepMind reasoning models, background subagent delegation, sandboxed terminal execution, and reactive state machine messaging.', 'Launch Antigravity in your workspace. Use commands like /goal, /boost, or /plan to direct agentic swarms across multi-file refactoring and testing workflows.', 'End-to-end task automation with zero-drift file modifications, native multi-agent swarm collaboration, and full TypeScript/Vite/Python development support.', 'Proprietary Google platform; requires workspace filesystem permissions and authenticated API access for frontier reasoning models.', 'https://deepmind.google/technologies/antigravity', '[{"text":"Google DeepMind Research & Technologies","url":"https://deepmind.google"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Cline', 'Cline Bot Inc.', 'AI', 'AI Coding', 'Apache-2.0', 2024, 'VS Code Extension', 'Autonomous open-source AI coding assistant extension for VS Code that can create and edit files, execute terminal commands, analyze errors, and perform browser testing with user approval at each step.', 'Agentic control loop integrating Model Context Protocol (MCP), terminal shell hooks, diff editor integration, and Puppeteer browser automation.', 'Install the Cline extension in VS Code. Configure your OpenRouter, Anthropic, or Ollama API key and prompt Cline in the sidebar: "Refactor the auth middleware and run unit tests."', 'Over 500,000 active VS Code installations; supports custom MCP servers, full codebase file trees, and human-in-the-loop permission checkpoints.', 'Autonomous actions require careful user oversight when executing destructive terminal commands or large-scale file edits.', 'https://github.com/cline/cline', '[{"text":"Cline GitHub Repository","url":"https://github.com/cline/cline"},{"text":"Cline on Visual Studio Marketplace","url":"https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Aider', 'Paul Gauthier', 'AI', 'AI Coding', 'Apache-2.0', 2023, 'Python CLI Application', 'Command-line AI pair programming tool that edits code directly in your local git repository, using repository tree-sitter map architectures to coordinate multi-file changes and automatically create clean git commits.', 'Terminal REPL with tree-sitter based repo-map graph representations, git integration, and multi-file unified diff engines compatible with any LLM.', 'pip install aider-chat
+aider --model claude-3-5-sonnet-20241022
+# Inside aider terminal:
+/add src/types.ts src/data.ts
+Add a new entry for Pixtral 12B and update seed script.', 'Ranks at the top of the Aider LLM Leaderboard for code editing; automatically generates semantic git commit messages with git diff verification.', 'Command-line terminal interface; requires git repository initialization for version control features.', 'https://github.com/Aider-AI/aider', '[{"text":"Aider GitHub Repository","url":"https://github.com/Aider-AI/aider"},{"text":"Aider Official Documentation & LLM Leaderboards","url":"https://aider.chat/"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Continue', 'Continue Dev, Inc.', 'AI', 'AI Coding', 'Apache-2.0', 2023, 'VS Code & JetBrains Extension', 'Open-source AI code assistant extension for VS Code and JetBrains, connecting any commercial or local model to your IDE for tab autocomplete, in-line code generation, and custom context providers.', 'TypeScript/Python IDE extension supporting custom @-context providers, Model Context Protocol (MCP), and local inference engines (Ollama, LM Studio).', 'Install Continue from the VS Code Marketplace. Press Cmd/Ctrl+I for inline edits or Cmd/Ctrl+L to chat with your codebase using local Ollama or cloud models.', 'Over 20,000 GitHub stars; supports fully offline air-gapped deployments with local LLMs and enterprise telemetry controls.', 'Autocomplete speed depends heavily on local GPU hardware when running local models; custom slash commands require config.json setup.', 'https://github.com/continuedev/continue', '[{"text":"Continue GitHub Repository","url":"https://github.com/continuedev/continue"},{"text":"Continue Official Documentation","url":"https://docs.continue.dev/"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Sourcegraph Cody', 'Sourcegraph', 'AI', 'AI Coding', 'Apache-2.0', 2023, 'IDE Extension & Enterprise Platform', 'Enterprise AI coding assistant powered by Sourcegraph''s code graph and search engine, providing whole-codebase context awareness for code explanation, test generation, and multi-repo search.', 'Client extension integrating with Sourcegraph Code Graph backend, embeddings search, and dynamic context retrieval algorithms across enterprise repositories.', 'Install Cody in VS Code or JetBrains. Sign in with Sourcegraph and run commands like /explain, /test, or /smell on any active file selection.', 'Searches and indexes multi-gigabyte codebases across thousands of repositories; supports Claude 3.5 Sonnet, GPT-4o, and enterprise self-hosted models.', 'Full cross-repository code graph context requires an active Sourcegraph Enterprise or Sourcegraph Cloud account.', 'https://sourcegraph.com/cody', '[{"text":"Sourcegraph Cody Product Overview","url":"https://sourcegraph.com/cody"},{"text":"Sourcegraph Cody GitHub Repository","url":"https://github.com/sourcegraph/cody"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Gemini 4 Hydrogen', 'Google DeepMind', 'Model', 'Multimodal', 'Proprietary', 2026, '1M Context · High-Throughput MoE', 'Google DeepMind''s high-efficiency, low-latency foundation model in the Gemini 4 family, engineered for high-throughput agentic execution, everyday coding, real-time multimodal processing, and low-latency API workflows with a 1M token context window.', 'Natively multimodal Mixture-of-Experts (MoE) optimized for low latency and high inference concurrency, supporting up to 1M token context windows, long decode continuation, and native tool-calling.', 'from google import genai
+
+client = genai.Client()
+response = client.models.generate_content(
+  model="gemini-4-hydrogen",
+  contents="Analyze this codebase dependency graph and suggest async refactoring opportunities."
+)
+print(response.text)', '1M token unified context window; sub-150ms time-to-first-token (TTFT) streaming; high throughput across parallel subagent task trees and structured JSON schema generation.', 'Proprietary cloud model accessible via Google AI Studio and the Gemini API; complex deep-theorem mathematical proofs better suited for Gemini 4 Argon.', 'https://deepmind.google/technologies/gemini/', '[{"text":"Google DeepMind Gemini 4 Architecture Overview","url":"https://deepmind.google/technologies/gemini/"},{"text":"Gemini API Documentation on Google AI for Developers","url":"https://ai.google.dev/gemini-api/docs"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,

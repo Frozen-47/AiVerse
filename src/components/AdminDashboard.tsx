@@ -31,6 +31,13 @@ import {
   MessageSquare,
   MessageSquareX,
   Activity,
+  Bot,
+  Zap,
+  Radio,
+  Copy,
+  Code,
+  CheckCircle2,
+  XCircle,
 } from "lucide-react";
 import { supabase, getOAuthAvatarUrl } from "../lib/supabase";
 import { useTokens, typeBadge, taskBadge, typeIcon, TYPE_GLYPH } from "../lib/theme";
@@ -96,6 +103,10 @@ export interface AuditLogItem {
   details: string;
   adminEmail: string;
   timestamp: string;
+  workflow?: string;
+  status?: "success" | "warning" | "error";
+  summary?: string;
+  metadata?: any;
 }
 
 interface EditingEntryState {
@@ -231,6 +242,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       return [];
     }
   });
+  const [auditFilter, setAuditFilter] = useState<"all" | "actions" | "radar" | "leaderboard" | "iam">("all");
+  const [auditSearchQuery, setAuditSearchQuery] = useState("");
+  const [inspectingLog, setInspectingLog] = useState<AuditLogItem | null>(null);
+  const [copiedLogJson, setCopiedLogJson] = useState(false);
 
   const showToast = (type: "success" | "error", message: string) => {
     setToast({ type, message });
@@ -471,29 +486,74 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         if (liveAnn) setAnnouncement(liveAnn);
       } catch {}
 
-      // 5. Fetch server-persisted audit logs
+      // 5. Fetch server-persisted audit logs & GitHub Action automation logs
       try {
-        const { data: serverLogs, error: logsErr } = await supabase
-          .from("admin_audit_logs")
-          .select("*")
-          .order("created_at", { ascending: false })
-          .limit(100);
+        let combinedLogs: AuditLogItem[] = [];
 
-        if (!logsErr && serverLogs && serverLogs.length > 0) {
-          const mappedLogs: AuditLogItem[] = serverLogs.map((log: any) => ({
-            id: log.id,
-            action: log.action,
-            details: log.details,
-            adminEmail: log.actor_email || "admin",
-            timestamp: log.created_at,
-          }));
-          setAuditLogs(mappedLogs);
+        // 5a. Fetch Supabase server audit logs
+        try {
+          const { data: serverLogs, error: logsErr } = await supabase
+            .from("admin_audit_logs")
+            .select("*")
+            .order("created_at", { ascending: false })
+            .limit(100);
+
+          if (!logsErr && serverLogs && serverLogs.length > 0) {
+            combinedLogs = serverLogs.map((log: any) => ({
+              id: log.id,
+              action: log.action,
+              details: log.details,
+              adminEmail: log.actor_email || "admin",
+              timestamp: log.created_at,
+              workflow: log.metadata?.workflow,
+              status: log.metadata?.status,
+              summary: log.metadata?.summary,
+              metadata: log.metadata,
+            }));
+          }
+        } catch (serverErr) {
+          console.warn("Server audit logs notice:", serverErr);
+        }
+
+        // 5b. Fetch static/recent GitHub Action execution logs from /data/github_action_logs.json
+        try {
+          const actionLogsRes = await fetch("/data/github_action_logs.json", { cache: "no-cache" });
+          if (actionLogsRes.ok) {
+            const actionLogs = await actionLogsRes.json();
+            if (Array.isArray(actionLogs)) {
+              const existingIds = new Set(combinedLogs.map((l) => l.id));
+              actionLogs.forEach((actLog: any) => {
+                if (!existingIds.has(actLog.id)) {
+                  combinedLogs.push({
+                    id: actLog.id,
+                    action: actLog.action,
+                    details: actLog.details,
+                    adminEmail: actLog.actor_email || "github-actions[bot]",
+                    timestamp: actLog.created_at || actLog.timestamp,
+                    workflow: actLog.workflow || actLog.metadata?.workflow,
+                    status: actLog.status || actLog.metadata?.status || "success",
+                    summary: actLog.summary,
+                    metadata: actLog.metadata,
+                  });
+                }
+              });
+            }
+          }
+        } catch (actionErr) {
+          console.warn("Action logs fetch notice:", actionErr);
+        }
+
+        // Sort descending by timestamp
+        combinedLogs.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+
+        if (combinedLogs.length > 0) {
+          setAuditLogs(combinedLogs);
           try {
-            localStorage.setItem("aiverse_admin_audit_logs", JSON.stringify(mappedLogs));
+            localStorage.setItem("aiverse_admin_audit_logs", JSON.stringify(combinedLogs));
           } catch {}
         }
       } catch (logErr) {
-        console.warn("Server audit logs notice (falling back to local cache):", logErr);
+        console.warn("Audit logs notice (falling back to local cache):", logErr);
       }
     } catch (err: any) {
       console.error("Admin dashboard load failed:", err);
@@ -1218,6 +1278,72 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
   const featuredCount = useMemo(() => approvedEntries.filter((e) => e.popular).length, [approvedEntries]);
 
+  const latestAiRadarRun = useMemo(() => {
+    return auditLogs.find(
+      (l) => l.action === "AI_RADAR_SYNC" || l.workflow?.includes("AI Radar")
+    );
+  }, [auditLogs]);
+
+  const latestLeaderboardRun = useMemo(() => {
+    return auditLogs.find(
+      (l) => l.action === "LEADERBOARD_SYNC" || l.workflow?.includes("Leaderboard")
+    );
+  }, [auditLogs]);
+
+  const pipelineLogCounts = useMemo(() => {
+    let actionCount = 0;
+    let radarCount = 0;
+    let leaderboardCount = 0;
+    let iamCount = 0;
+
+    auditLogs.forEach((l) => {
+      const isPipeline =
+        l.adminEmail.includes("github-actions") ||
+        l.action === "AI_RADAR_SYNC" ||
+        l.action === "LEADERBOARD_SYNC" ||
+        Boolean(l.workflow);
+
+      if (isPipeline) {
+        actionCount++;
+        if (l.action === "AI_RADAR_SYNC" || l.workflow?.includes("Radar")) radarCount++;
+        if (l.action === "LEADERBOARD_SYNC" || l.workflow?.includes("Leaderboard")) leaderboardCount++;
+      } else {
+        iamCount++;
+      }
+    });
+
+    return { actionCount, radarCount, leaderboardCount, iamCount };
+  }, [auditLogs]);
+
+  const filteredAuditLogs = useMemo(() => {
+    return auditLogs.filter((log) => {
+      // 1. Category filter
+      const isPipeline =
+        log.adminEmail.includes("github-actions") ||
+        log.action === "AI_RADAR_SYNC" ||
+        log.action === "LEADERBOARD_SYNC" ||
+        Boolean(log.workflow);
+
+      if (auditFilter === "actions" && !isPipeline) return false;
+      if (auditFilter === "radar" && log.action !== "AI_RADAR_SYNC" && !log.workflow?.includes("Radar")) return false;
+      if (auditFilter === "leaderboard" && log.action !== "LEADERBOARD_SYNC" && !log.workflow?.includes("Leaderboard")) return false;
+      if (auditFilter === "iam" && isPipeline) return false;
+
+      // 2. Search query filter
+      if (auditSearchQuery.trim()) {
+        const q = auditSearchQuery.toLowerCase();
+        const matchesAction = (log.action || "").toLowerCase().includes(q);
+        const matchesDetails = (log.details || "").toLowerCase().includes(q);
+        const matchesActor = (log.adminEmail || "").toLowerCase().includes(q);
+        const matchesWorkflow = (log.workflow || "").toLowerCase().includes(q);
+        const matchesSummary = (log.summary || "").toLowerCase().includes(q);
+        return matchesAction || matchesDetails || matchesActor || matchesWorkflow || matchesSummary;
+      }
+
+      return true;
+    });
+  }, [auditLogs, auditFilter, auditSearchQuery]);
+
   return (
     <div className="w-full min-h-[calc(100vh-4rem)] flex flex-col bg-[#f8f9fa] dark:bg-[#131314] text-[#202124] dark:text-[#e8eaed] text-left">
       {/* ── Google Cloud App Bar ────────────────────────────────────────────── */}
@@ -1468,11 +1594,18 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 >
                   <div className="flex items-center gap-2.5">
                     <History size={15} />
-                    <span>Audit Logs</span>
+                    <span>Audit & Pipeline Logs</span>
                   </div>
-                  <span className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] font-mono">
-                    {auditLogs.length}
-                  </span>
+                  <div className="flex items-center gap-1.5">
+                    {pipelineLogCounts.actionCount > 0 && (
+                      <span className="inline-flex items-center px-1.5 py-0.2 rounded text-[10px] font-mono bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8]">
+                        🤖 {pipelineLogCounts.actionCount}
+                      </span>
+                    )}
+                    <span className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] font-mono">
+                      {auditLogs.length}
+                    </span>
+                  </div>
                 </button>
               </nav>
             </div>
@@ -2444,70 +2577,367 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           )}
 
           {/* ════════════════════════════════════════════════════════════════════
-              SECTION 7: CLOUD AUDIT LOGS
+              SECTION 7: SYSTEM AUDIT & GITHUB ACTION PIPELINE LOGS
           ════════════════════════════════════════════════════════════════════ */}
           {activeNav === "audit" && (
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
+            <div className="space-y-5">
+              {/* Header */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                  <h2 className="text-lg font-medium text-[#202124] dark:text-[#e8eaed]">Cloud Security & Activity Audit Log</h2>
+                  <h2 className="text-lg font-medium text-[#202124] dark:text-[#e8eaed] flex items-center gap-2">
+                    <History size={20} className="text-[#1a73e8] dark:text-[#8ab4f8]" />
+                    <span>System Audit & CI/CD Pipeline Logs</span>
+                  </h2>
                   <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                    Chronological audit log of administrative approvals, IAM role changes, suspensions, and exports.
+                    Real-time execution log of automated GitHub Actions (AI Radar, Frontier Leaderboard) and platform administrative governance.
                   </p>
                 </div>
                 {auditLogs.length > 0 && (
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 shrink-0">
                     <button
-                      onClick={() => exportDataAsJson(auditLogs, "aiverse_audit_log")}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+                      onClick={() => exportDataAsJson(auditLogs, "aiverse_system_audit_logs")}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
                     >
-                      <Download size={12} />
-                      Export Log
+                      <Download size={13} />
+                      Export Logs
                     </button>
                     <button
                       onClick={clearAuditLogs}
-                      className="px-3 py-1.5 rounded text-xs font-medium text-[#d93025] border border-[#d93025]/30 hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] transition-colors cursor-pointer"
+                      className="px-3 py-1.5 rounded-lg text-xs font-medium text-[#d93025] border border-[#d93025]/30 hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] transition-colors cursor-pointer"
                     >
-                      Clear Log
+                      Clear Local View
                     </button>
                   </div>
                 )}
               </div>
 
-              {auditLogs.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-20 gap-3 text-center border border-dashed rounded-lg border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20]">
-                  <p className="text-sm font-medium text-[#202124] dark:text-[#e8eaed]">Audit trail is empty</p>
-                  <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                    Administrative operations performed in this console will be logged chronologically here.
+              {/* ── Top Automated Pipeline Health Cards ─────────────────────────── */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                {/* AI Radar Card */}
+                <div
+                  onClick={() => setAuditFilter(auditFilter === "radar" ? "all" : "radar")}
+                  className={`p-4 rounded-xl border transition-all cursor-pointer ${
+                    auditFilter === "radar"
+                      ? "border-[#1a73e8] ring-2 ring-[#1a73e8]/20 bg-[#e8f0fe]/30 dark:bg-[#1a2e4c]/20"
+                      : "border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] hover:border-[#1a73e8]/50"
+                  }`}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
+                        <Radio size={16} />
+                      </div>
+                      <div>
+                        <h3 className="text-xs font-semibold text-[#202124] dark:text-[#e8eaed]">AI Radar & Ecosystem Discovery</h3>
+                        <p className="text-[10px] text-[#5f6368] dark:text-[#9aa0a6]">Runs ~10x daily (every 2.4 hrs) via GitHub Actions</p>
+                      </div>
+                    </div>
+                    {latestAiRadarRun ? (
+                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium ${
+                        latestAiRadarRun.status === "error"
+                          ? "bg-[#fce8e6] text-[#c5221f] dark:bg-[#3c1716] dark:text-[#f28b82]"
+                          : "bg-[#e6f4ea] text-[#137333] dark:bg-[#133824] dark:text-[#81c995]"
+                      }`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${latestAiRadarRun.status === "error" ? "bg-[#d93025]" : "bg-[#1e8e3e] animate-pulse"}`} />
+                        {latestAiRadarRun.status === "error" ? "Failed" : "Operational"}
+                      </span>
+                    ) : (
+                      <span className="text-[10px] text-[#5f6368] dark:text-[#9aa0a6] bg-neutral-100 dark:bg-neutral-800 px-2 py-0.5 rounded">
+                        Scheduled
+                      </span>
+                    )}
+                  </div>
+                  <div className="mt-3 pt-2.5 border-t border-[#dadce0]/60 dark:border-[#3c4043]/60 text-xs">
+                    {latestAiRadarRun ? (
+                      <div className="space-y-1">
+                        <p className="text-[11px] font-medium text-[#202124] dark:text-[#e8eaed] truncate">
+                          {latestAiRadarRun.summary || latestAiRadarRun.details}
+                        </p>
+                        <div className="flex items-center justify-between text-[10px] text-[#5f6368] dark:text-[#9aa0a6]">
+                          <span>Last Run: {new Date(latestAiRadarRun.timestamp).toLocaleTimeString()} ({new Date(latestAiRadarRun.timestamp).toLocaleDateString()})</span>
+                          <span className="text-[#1a73e8] dark:text-[#8ab4f8] font-medium hover:underline">
+                            {auditFilter === "radar" ? "Showing Radar Logs" : `View ${pipelineLogCounts.radarCount} Runs →`}
+                          </span>
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6]">No execution history recorded in this session.</p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Frontier Leaderboard Sync Card */}
+                <div
+                  onClick={() => setAuditFilter(auditFilter === "leaderboard" ? "all" : "leaderboard")}
+                  className={`p-4 rounded-xl border transition-all cursor-pointer ${
+                    auditFilter === "leaderboard"
+                      ? "border-[#1a73e8] ring-2 ring-[#1a73e8]/20 bg-[#e8f0fe]/30 dark:bg-[#1a2e4c]/20"
+                      : "border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] hover:border-[#1a73e8]/50"
+                  }`}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-lg bg-cyan-50 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-800 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+                        <Zap size={16} />
+                      </div>
+                      <div>
+                        <h3 className="text-xs font-semibold text-[#202124] dark:text-[#e8eaed]">Frontier Leaderboard Sync</h3>
+                        <p className="text-[10px] text-[#5f6368] dark:text-[#9aa0a6]">Runs daily at 04:00 UTC via GitHub Actions</p>
+                      </div>
+                    </div>
+                    {latestLeaderboardRun ? (
+                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium ${
+                        latestLeaderboardRun.status === "error"
+                          ? "bg-[#fce8e6] text-[#c5221f] dark:bg-[#3c1716] dark:text-[#f28b82]"
+                          : "bg-[#e6f4ea] text-[#137333] dark:bg-[#133824] dark:text-[#81c995]"
+                      }`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${latestLeaderboardRun.status === "error" ? "bg-[#d93025]" : "bg-[#1e8e3e] animate-pulse"}`} />
+                        {latestLeaderboardRun.status === "error" ? "Failed" : "Operational"}
+                      </span>
+                    ) : (
+                      <span className="text-[10px] text-[#5f6368] dark:text-[#9aa0a6] bg-neutral-100 dark:bg-neutral-800 px-2 py-0.5 rounded">
+                        Scheduled
+                      </span>
+                    )}
+                  </div>
+                  <div className="mt-3 pt-2.5 border-t border-[#dadce0]/60 dark:border-[#3c4043]/60 text-xs">
+                    {latestLeaderboardRun ? (
+                      <div className="space-y-1">
+                        <p className="text-[11px] font-medium text-[#202124] dark:text-[#e8eaed] truncate">
+                          {latestLeaderboardRun.summary || latestLeaderboardRun.details}
+                        </p>
+                        <div className="flex items-center justify-between text-[10px] text-[#5f6368] dark:text-[#9aa0a6]">
+                          <span>Last Run: {new Date(latestLeaderboardRun.timestamp).toLocaleTimeString()} ({new Date(latestLeaderboardRun.timestamp).toLocaleDateString()})</span>
+                          <span className="text-[#1a73e8] dark:text-[#8ab4f8] font-medium hover:underline">
+                            {auditFilter === "leaderboard" ? "Showing Leaderboard Logs" : `View ${pipelineLogCounts.leaderboardCount} Runs →`}
+                          </span>
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6]">No execution history recorded in this session.</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* ── Filter Pills & Search Control ────────────────────────────── */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  {[
+                    { key: "all", label: "All Logs", count: auditLogs.length },
+                    { key: "actions", label: "🤖 CI/CD Pipelines", count: pipelineLogCounts.actionCount },
+                    { key: "radar", label: "📡 AI Radar", count: pipelineLogCounts.radarCount },
+                    { key: "leaderboard", label: "⚡ Leaderboard Sync", count: pipelineLogCounts.leaderboardCount },
+                    { key: "iam", label: "🛡️ Admin & Security", count: pipelineLogCounts.iamCount },
+                  ].map((tab) => (
+                    <button
+                      key={tab.key}
+                      onClick={() => setAuditFilter(tab.key as any)}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+                        auditFilter === tab.key
+                          ? "bg-[#1a73e8] text-white font-semibold shadow-xs"
+                          : "bg-white dark:bg-[#1e1f20] text-[#5f6368] dark:text-[#9aa0a6] border border-[#dadce0] dark:border-[#3c4043] hover:bg-neutral-50 dark:hover:bg-neutral-800"
+                      }`}
+                    >
+                      <span>{tab.label}</span>
+                      <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                        auditFilter === tab.key
+                          ? "bg-white/20 text-white"
+                          : "bg-neutral-100 dark:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]"
+                      }`}>
+                        {tab.count}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Search Box */}
+                <div className="relative min-w-[220px]">
+                  <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#5f6368] dark:text-[#9aa0a6]" />
+                  <input
+                    type="text"
+                    value={auditSearchQuery}
+                    onChange={(e) => setAuditSearchQuery(e.target.value)}
+                    placeholder="Search logs by action, details..."
+                    className="w-full pl-8 pr-7 py-1.5 text-xs rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e8eaed] placeholder-[#5f6368] focus:outline-none focus:border-[#1a73e8]"
+                  />
+                  {auditSearchQuery && (
+                    <button
+                      onClick={() => setAuditSearchQuery("")}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 text-[#5f6368] hover:text-[#202124] dark:hover:text-[#e8eaed]"
+                    >
+                      <X size={12} />
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* ── Rich Audit & Pipeline Logs Table ───────────────────────────── */}
+              {filteredAuditLogs.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-16 gap-3 text-center border border-dashed rounded-xl border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20]">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center bg-neutral-100 dark:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]">
+                    <History size={20} />
+                  </div>
+                  <p className="text-sm font-medium text-[#202124] dark:text-[#e8eaed]">No matching audit records</p>
+                  <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6] max-w-sm">
+                    {auditSearchQuery
+                      ? `Zero records match query "${auditSearchQuery}". Try clearing filters.`
+                      : "Logs from administrative actions and automated GitHub Actions will appear chronologically here."}
                   </p>
+                  {auditSearchQuery && (
+                    <button
+                      onClick={() => {
+                        setAuditSearchQuery("");
+                        setAuditFilter("all");
+                      }}
+                      className="mt-1 px-3 py-1 text-xs font-medium text-[#1a73e8] hover:underline cursor-pointer"
+                    >
+                      Reset All Filters
+                    </button>
+                  )}
                 </div>
               ) : (
-                <div className="rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] overflow-hidden">
+                <div className="rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] overflow-hidden shadow-xs">
                   <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                       <thead>
                         <tr className="border-b border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] text-[11px] font-semibold uppercase tracking-wider text-[#5f6368] dark:text-[#9aa0a6]">
-                          <th className="px-4 py-3">Action</th>
-                          <th className="px-4 py-3">Details</th>
+                          <th className="px-4 py-3">Status</th>
+                          <th className="px-4 py-3">Action / Pipeline</th>
+                          <th className="px-4 py-3">Execution Summary & Details</th>
                           <th className="px-4 py-3">Actor</th>
                           <th className="px-4 py-3 text-right">Timestamp</th>
+                          <th className="px-3 py-3 text-center">Inspect</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-[#dadce0]/60 dark:divide-[#3c4043]/60 text-xs">
-                        {auditLogs.map((log) => (
-                          <tr key={log.id} className="hover:bg-[#f8f9fa] dark:hover:bg-[#282a2d] transition-colors">
-                            <td className="px-4 py-3">
-                              <span className="inline-flex items-center text-[10px] font-medium px-2 py-0.5 rounded bg-[#e8f0fe] text-[#1967d2] dark:bg-[#1a2e4c] dark:text-[#a8c7fa]">
-                                {log.action}
-                              </span>
-                            </td>
-                            <td className="px-4 py-3 text-[#3c4043] dark:text-[#bdc1c6] font-medium">{log.details}</td>
-                            <td className="px-4 py-3 text-[#5f6368] dark:text-[#9aa0a6] font-mono text-[11px]">{log.adminEmail}</td>
-                            <td className="px-4 py-3 text-right font-mono text-[11px] text-[#5f6368] dark:text-[#9aa0a6]">
-                              {new Date(log.timestamp).toLocaleString()}
-                            </td>
-                          </tr>
-                        ))}
+                        {filteredAuditLogs.map((log) => {
+                          const isActionBot = log.adminEmail.includes("github-actions");
+                          const isRadar = log.action === "AI_RADAR_SYNC" || log.workflow?.includes("Radar");
+                          const isLeaderboard = log.action === "LEADERBOARD_SYNC" || log.workflow?.includes("Leaderboard");
+                          const isError = log.status === "error";
+
+                          return (
+                            <tr key={log.id} className="hover:bg-[#f8f9fa] dark:hover:bg-[#282a2d] transition-colors">
+                              {/* Status Badge */}
+                              <td className="px-4 py-3 align-top">
+                                {isError ? (
+                                  <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-[#fce8e6] text-[#c5221f] dark:bg-[#3c1716] dark:text-[#f28b82]">
+                                    <XCircle size={10} />
+                                    FAILED
+                                  </span>
+                                ) : isActionBot ? (
+                                  <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-[#e6f4ea] text-[#137333] dark:bg-[#133824] dark:text-[#81c995]">
+                                    <CheckCircle2 size={10} />
+                                    SUCCESS
+                                  </span>
+                                ) : (
+                                  <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-[#e8f0fe] text-[#1967d2] dark:bg-[#1a2e4c] dark:text-[#a8c7fa]">
+                                    <ShieldCheck size={10} />
+                                    ADMIN
+                                  </span>
+                                )}
+                              </td>
+
+                              {/* Action / Pipeline Pill */}
+                              <td className="px-4 py-3 align-top whitespace-nowrap">
+                                {isRadar ? (
+                                  <span className="inline-flex items-center gap-1 text-[11px] font-medium px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                                    <Radio size={11} />
+                                    AI Radar
+                                  </span>
+                                ) : isLeaderboard ? (
+                                  <span className="inline-flex items-center gap-1 text-[11px] font-medium px-2 py-0.5 rounded-md bg-cyan-50 text-cyan-700 dark:bg-cyan-950/60 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800">
+                                    <Zap size={11} />
+                                    Leaderboard
+                                  </span>
+                                ) : (
+                                  <span className="inline-flex items-center gap-1 text-[11px] font-medium px-2 py-0.5 rounded-md bg-neutral-100 text-[#3c4043] dark:bg-neutral-800 dark:text-[#bdc1c6] font-mono text-[10px]">
+                                    {log.action}
+                                  </span>
+                                )}
+                              </td>
+
+                              {/* Summary & Details */}
+                              <td className="px-4 py-3 align-top max-w-md">
+                                <div className="space-y-0.5">
+                                  {log.summary && (
+                                    <p className="text-xs font-semibold text-[#202124] dark:text-[#e8eaed]">
+                                      {log.summary}
+                                    </p>
+                                  )}
+                                  <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] leading-relaxed line-clamp-2">
+                                    {log.details}
+                                  </p>
+                                  {log.metadata && (
+                                    <div className="flex items-center gap-2 pt-1 flex-wrap text-[10px] text-[#5f6368] dark:text-[#9aa0a6] font-mono">
+                                      {log.metadata.runId && log.metadata.runId !== "local-manual-run" && (
+                                        <span className="bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.2 rounded">
+                                          Run #{log.metadata.runId}
+                                        </span>
+                                      )}
+                                      {log.metadata.sha && log.metadata.sha !== "local" && (
+                                        <span className="bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.2 rounded">
+                                          Commit {log.metadata.sha}
+                                        </span>
+                                      )}
+                                      {log.metadata.durationMs && (
+                                        <span className="bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.2 rounded">
+                                          ⏱️ {(log.metadata.durationMs / 1000).toFixed(1)}s
+                                        </span>
+                                      )}
+                                      {log.metadata.totalModels && (
+                                        <span className="bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.2 rounded">
+                                          📊 {log.metadata.totalModels} models
+                                        </span>
+                                      )}
+                                    </div>
+                                  )}
+                                </div>
+                              </td>
+
+                              {/* Actor */}
+                              <td className="px-4 py-3 align-top whitespace-nowrap">
+                                <div className="flex items-center gap-1.5 text-xs text-[#5f6368] dark:text-[#9aa0a6]">
+                                  {isActionBot ? (
+                                    <>
+                                      <Bot size={13} className="text-[#1a73e8]" />
+                                      <span className="font-mono text-[11px] font-medium text-[#202124] dark:text-[#e8eaed]">
+                                        github-actions[bot]
+                                      </span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <div className="w-4 h-4 rounded-full bg-[#1a73e8] text-white flex items-center justify-center text-[9px] font-bold">
+                                        {log.adminEmail[0].toUpperCase()}
+                                      </div>
+                                      <span className="font-mono text-[11px] truncate max-w-[120px]" title={log.adminEmail}>
+                                        {log.adminEmail}
+                                      </span>
+                                    </>
+                                  )}
+                                </div>
+                              </td>
+
+                              {/* Timestamp */}
+                              <td className="px-4 py-3 align-top text-right font-mono text-[11px] text-[#5f6368] dark:text-[#9aa0a6] whitespace-nowrap">
+                                <div>{new Date(log.timestamp).toLocaleTimeString()}</div>
+                                <div className="text-[10px] text-[#5f6368]/80">{new Date(log.timestamp).toLocaleDateString()}</div>
+                              </td>
+
+                              {/* Inspect Payload Button */}
+                              <td className="px-3 py-3 align-top text-center">
+                                <button
+                                  onClick={() => setInspectingLog(log)}
+                                  className="p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] hover:text-[#1a73e8] dark:hover:text-[#8ab4f8] transition-colors cursor-pointer"
+                                  title="Inspect JSON Payload & Metadata"
+                                >
+                                  <Code size={14} />
+                                </button>
+                              </td>
+                            </tr>
+                          );
+                        })}
                       </tbody>
                     </table>
                   </div>
@@ -3499,6 +3929,92 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 className="px-4 py-2 rounded text-xs font-medium bg-[#d93025] hover:bg-[#b31412] text-white cursor-pointer shadow-xs disabled:opacity-50"
               >
                 {actioningId === clearChatsConfirmUser.userKey ? "Clearing..." : "Clear Chats from Database"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Dialog: Inspect Execution Log JSON Payload ───────────────────────── */}
+      {inspectingLog && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
+          <div className="w-full max-w-2xl max-h-[85vh] rounded-2xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] shadow-2xl flex flex-col overflow-hidden animate-[scaleUp_0.15s_ease-out]">
+            {/* Modal Header */}
+            <div className="px-5 py-4 border-b border-[#dadce0] dark:border-[#3c4043] flex items-center justify-between shrink-0">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-[#e8f0fe] dark:bg-[#1a2e4c] text-[#1a73e8] dark:text-[#8ab4f8] flex items-center justify-center">
+                  <Code size={16} />
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-[#202124] dark:text-[#e8eaed]">
+                    {inspectingLog.workflow || inspectingLog.action}
+                  </h3>
+                  <p className="text-[11px] font-mono text-[#5f6368] dark:text-[#9aa0a6]">
+                    ID: {inspectingLog.id} • {new Date(inspectingLog.timestamp).toLocaleString()}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setInspectingLog(null)}
+                className="p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] transition-colors cursor-pointer"
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-5 flex-1 overflow-y-auto space-y-4 text-xs font-mono">
+              <div className="p-3 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#131314] space-y-1.5 font-sans">
+                <p className="text-xs font-semibold text-[#202124] dark:text-[#e8eaed]">
+                  {inspectingLog.summary || inspectingLog.action}
+                </p>
+                <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] leading-relaxed">
+                  {inspectingLog.details}
+                </p>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-1.5 font-sans">
+                  <span className="text-[11px] font-semibold text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider">
+                    Full Log Metadata & Context
+                  </span>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(JSON.stringify(inspectingLog, null, 2));
+                      setCopiedLogJson(true);
+                      setTimeout(() => setCopiedLogJson(false), 2000);
+                    }}
+                    className="inline-flex items-center gap-1 text-[11px] text-[#1a73e8] dark:text-[#8ab4f8] hover:underline cursor-pointer"
+                  >
+                    {copiedLogJson ? (
+                      <>
+                        <Check size={12} className="text-[#1e8e3e]" />
+                        <span>Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={12} />
+                        <span>Copy JSON</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+                <pre className="p-3.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#131314] text-[#202124] dark:text-[#e8eaed] text-[11px] leading-relaxed overflow-x-auto max-h-[45vh]">
+                  {JSON.stringify(inspectingLog, null, 2)}
+                </pre>
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="px-5 py-3 border-t border-[#dadce0] dark:border-[#3c4043] bg-neutral-50 dark:bg-[#18191a] flex items-center justify-between shrink-0 text-xs">
+              <span className="text-[#5f6368] dark:text-[#9aa0a6] font-mono text-[11px]">
+                Actor: {inspectingLog.adminEmail}
+              </span>
+              <button
+                onClick={() => setInspectingLog(null)}
+                className="px-4 py-1.5 rounded-lg text-xs font-medium bg-[#1a73e8] hover:bg-[#1557b0] text-white transition-colors cursor-pointer"
+              >
+                Close
               </button>
             </div>
           </div>

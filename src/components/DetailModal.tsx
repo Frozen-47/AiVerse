@@ -5,7 +5,6 @@ import {
   ExternalLink,
   Copy,
   Check,
-  Lock,
   Bookmark,
   ChevronDown,
   AlertTriangle,
@@ -479,18 +478,10 @@ export const DetailModal: React.FC<DetailModalProps> = ({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
-  // Lock background scroll when full-page view is active
-  useEffect(() => {
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = originalOverflow || "unset";
-    };
-  }, []);
-
   useEffect(() => {
     setCompareName("");
     setActiveTab("overview");
+    window.scrollTo(0, 0);
   }, [entry.name]);
 
   const handleCopyCode = () => {
@@ -507,25 +498,24 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
   return (
     <div
-      role="dialog"
-      aria-modal="true"
-      aria-label={`${entry.name} - Model Details`}
-      className="fixed inset-0 z-[70] flex flex-col overflow-y-auto overscroll-contain animate-[fadeIn_0.15s_ease-out] bg-[#f8f9fa] dark:bg-[#131314] text-[#202124] dark:text-[#e3e3e3] pb-safe"
+      aria-label={`${entry.name} - Technical Specs & Architecture Details`}
+      className="w-full flex-1 flex flex-col bg-[#f8f9fa] dark:bg-[#131314] text-[#202124] dark:text-[#e3e3e3] transition-colors animate-[fadeIn_0.2s_ease-out]"
     >
-      {/* 1. Google Cloud / Model Garden Header (Clean & Compact) */}
-      <header className="sticky top-0 z-40 px-3 sm:px-6 h-13 sm:h-14 border-b border-[#dadce0] dark:border-[#3c4043]/50 bg-white/95 dark:bg-[#131314]/95 backdrop-blur-md flex items-center justify-between gap-2 sm:gap-4 transition-colors">
+      {/* 1. Model Garden Breadcrumbs & Actions Sub-Header */}
+      <header className="sticky top-16 z-30 px-4 sm:px-6 xl:px-12 h-14 border-b border-[#dadce0] dark:border-[#3c4043]/50 bg-white/95 dark:bg-[#131314]/95 backdrop-blur-md flex items-center justify-between gap-2 sm:gap-4 transition-colors shadow-2xs">
         {/* Left: Back button & Breadcrumbs */}
         <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
           <button
             onClick={onClose}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#5f6368] dark:text-[#c4c7c5] hover:text-[#202124] dark:hover:text-white hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-colors cursor-pointer shrink-0"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#1a73e8] dark:text-[#a8c7fa] hover:bg-[#e8f0fe] dark:hover:bg-[#1a2e4c] transition-colors cursor-pointer shrink-0 shadow-2xs"
             title="Return to Catalog (Esc)"
           >
-            <ArrowLeft size={13} />
-            <span className="hidden sm:inline">Back</span>
+            <ArrowLeft size={14} />
+            <span className="hidden sm:inline">Back to Catalog</span>
+            <span className="sm:hidden">Back</span>
           </button>
 
-          <div className="h-3.5 w-px bg-[#dadce0] dark:bg-[#3c4043] hidden sm:block" />
+          <div className="h-4 w-px bg-[#dadce0] dark:bg-[#3c4043] hidden sm:block" />
 
           {/* Breadcrumb path */}
           <nav
@@ -535,7 +525,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="hidden sm:flex items-center gap-1 text-[#1a73e8] dark:text-[#a8c7fa] font-semibold shrink-0 hover:underline cursor-pointer"
+              className="hidden sm:flex items-center gap-1 text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#1a73e8] dark:hover:text-[#a8c7fa] shrink-0 hover:underline cursor-pointer"
               title="Return to Catalog"
             >
               <Sparkles size={12} /> Model Garden
@@ -543,7 +533,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             <span className="hidden sm:inline opacity-40">/</span>
             <span className="hidden md:inline truncate">{entry.type}</span>
             <span className="hidden md:inline opacity-40">/</span>
-            <span className="font-semibold text-[#202124] dark:text-[#e3e3e3] truncate max-w-[130px] sm:max-w-xs">
+            <span className="font-semibold text-[#202124] dark:text-[#e3e3e3] truncate max-w-[140px] sm:max-w-xs">
               {entry.name}
             </span>
           </nav>
@@ -567,7 +557,13 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
           {onOpenPlayground && (
             <button
-              onClick={() => onOpenPlayground(entry.name)}
+              onClick={() => {
+                if (!user) {
+                  openAuthModal("signin");
+                } else {
+                  onOpenPlayground(entry.name);
+                }
+              }}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] shadow-xs transition-all cursor-pointer"
               title="Test in Interactive Model Playground"
             >
@@ -591,7 +587,13 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
           {onToggleBookmark && (
             <button
-              onClick={onToggleBookmark}
+              onClick={() => {
+                if (!user) {
+                  openAuthModal("signin");
+                } else {
+                  onToggleBookmark();
+                }
+              }}
               title={isBookmarked ? "Remove bookmark" : "Bookmark this model"}
               className={`w-7 h-7 flex items-center justify-center rounded-full border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] transition-all cursor-pointer ${
                 isBookmarked
@@ -615,7 +617,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
       {/* 2. Hero Strip (Refined & Proportional) */}
       <div className="border-b border-[#dadce0] dark:border-[#3c4043]/40 bg-white dark:bg-[#1a1b1e]/60 transition-colors">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-7 lg:py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 sm:py-9">
           <div className="flex flex-col lg:flex-row items-start justify-between gap-6">
             <div className="flex items-start gap-4 sm:gap-5 flex-1 min-w-0">
               {/* Glyph Icon */}
@@ -734,9 +736,9 @@ export const DetailModal: React.FC<DetailModalProps> = ({
         </div>
       </div>
 
-      {/* 3. Google Material 3 Tabs Bar (Sticky) */}
-      <div className="sticky top-[52px] sm:top-[56px] z-30 border-b border-[#dadce0] dark:border-[#3c4043]/50 bg-white/95 dark:bg-[#131314]/95 backdrop-blur-md transition-colors">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 3. Google Material 3 Tabs Bar */}
+      <div className="border-b border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1a1b1e]/60 transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-1 sm:gap-2 overflow-x-auto scrollbar-none" role="tablist">
             {[
               { id: "overview", label: "Overview", icon: Sparkles },
@@ -767,45 +769,10 @@ export const DetailModal: React.FC<DetailModalProps> = ({
       </div>
 
       {/* 4. Responsive Body (Balanced 2-Column Grid) */}
-      <main className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        <div className="relative">
-          {/* Sign In prompt overlay for unauthenticated users */}
-          {!user && (
-            <div className="absolute inset-0 z-30 flex flex-col items-center justify-center p-6 text-center min-h-[380px] backdrop-blur-sm rounded-2xl bg-white/90 dark:bg-[#131314]/92 border border-[#dadce0] dark:border-[#3c4043]/60 transition-colors">
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3 shadow-md bg-[#1a73e8] dark:bg-[#a8c7fa] text-white dark:text-[#041e49]">
-                <Lock size={20} />
-              </div>
-              <h2 className="text-lg font-bold mb-1.5 tracking-tight text-[#202124] dark:text-[#e3e3e3]">
-                Sign in to Access Full Model Garden Specs
-              </h2>
-              <p className="text-xs mb-5 max-w-sm leading-relaxed mx-auto text-[#5f6368] dark:text-[#c4c7c5]">
-                Sign in to view technical architecture, copy SDK code snippets, compare benchmarks, and test this model in the Playground.
-              </p>
-              <div className="flex items-center gap-2.5">
-                <button
-                  onClick={() => openAuthModal("signin")}
-                  className="px-5 py-2 rounded-full font-medium text-xs border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-colors cursor-pointer"
-                >
-                  Sign In
-                </button>
-                <button
-                  onClick={() => openAuthModal("signup")}
-                  className="bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] font-semibold px-5 py-2 rounded-full text-xs shadow-xs transition-all cursor-pointer"
-                >
-                  Create Free Account
-                </button>
-              </div>
-            </div>
-          )}
-
-          <div
-            className={`grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 ${
-              !user ? "opacity-25 blur-[4px] pointer-events-none select-none max-h-[460px] overflow-hidden" : ""
-            }`}
-            {...(!user ? { inert: true } : {})}
-          >
-            {/* Left Main Content Column (8 cols on desktop) */}
-            <div className="lg:col-span-8 space-y-6">
+      <div className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+          {/* Left Main Content Column (8 cols on desktop) */}
+          <div className="lg:col-span-8 space-y-6">
               {/* TAB 1: OVERVIEW */}
               {activeTab === "overview" && (
                 <div className="space-y-6">
@@ -1143,6 +1110,39 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                   />
                 </section>
               )}
+
+              {/* Community Callout Banner for Unauthenticated Users */}
+              {!user && (
+                <div className="p-5 sm:p-6 rounded-2xl border border-blue-500/20 bg-gradient-to-r from-blue-500/10 via-purple-500/5 to-transparent flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-2xs">
+                  <div className="flex items-start sm:items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-xl bg-[#1a73e8] dark:bg-[#a8c7fa] text-white dark:text-[#041e49] flex items-center justify-center shrink-0 shadow-xs">
+                      <Sparkles size={18} />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-[#202124] dark:text-[#e3e3e3]">
+                        Join the AiVerse Community
+                      </h4>
+                      <p className="text-xs text-[#5f6368] dark:text-[#c4c7c5] mt-0.5">
+                        Sign in to test models in the Playground, submit peer reviews, and bookmark assets to your profile.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2.5 shrink-0 w-full sm:w-auto">
+                    <button
+                      onClick={() => openAuthModal("signin")}
+                      className="flex-1 sm:flex-initial px-4 py-2 rounded-full text-xs font-semibold border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-colors cursor-pointer"
+                    >
+                      Sign In
+                    </button>
+                    <button
+                      onClick={() => openAuthModal("signup")}
+                      className="flex-1 sm:flex-initial px-4 py-2 rounded-full text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] shadow-xs transition-colors cursor-pointer"
+                    >
+                      Create Free Account
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Right Sticky Sidebar (4 cols on desktop) */}
@@ -1282,7 +1282,6 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             </aside>
           </div>
         </div>
-      </main>
-    </div>
-  );
+      </div>
+    );
 };

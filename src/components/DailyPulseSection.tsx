@@ -10,6 +10,7 @@ interface TrendingModel {
   downloads: number;
   pipeline_tag: string;
   url: string;
+  source?: string;
 }
 
 interface TrendingPaper {
@@ -302,7 +303,7 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
                     </span>
                   </div>
                   <span className="flex items-center gap-1 font-medium text-neutral-700 dark:text-neutral-300 group-hover:gap-1.5 transition-all">
-                    HuggingFace <ExternalLink size={11} />
+                    {m.source || "Hugging Face"} <ExternalLink size={11} />
                   </span>
                 </div>
               </a>

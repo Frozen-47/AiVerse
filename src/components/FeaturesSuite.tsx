@@ -108,7 +108,7 @@ export const FeaturesSuite: React.FC<FeaturesSuiteProps> = (props) => {
   ] as const;
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 flex flex-col gap-6 text-left animate-[fadeUp_0.2s_ease-out]">
+    <div className="w-full max-w-[1880px] 2xl:max-w-[2040px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-6 sm:py-8 flex flex-col gap-6 text-left animate-[fadeUp_0.2s_ease-out]">
       <FeatureHeader onBackToHome={props.onBackToHome} />
 
       {/* Google Material 3 Segmented Tab Controller */}

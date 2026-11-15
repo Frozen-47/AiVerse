@@ -1,0 +1,94 @@
+[
+  {
+    "id": "action_1794737586912_y2qn1",
+    "created_at": "2026-11-15T10:13:06.912Z",
+    "timestamp": "2026-11-15T10:13:06.912Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 474 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Qwen3.5 Omni Plus, Google: Gemini 4 Hydrogen, Edge0-145B-NVFP4, Qwen-2.1-Turbo-Qwen-Face-Swap-MOSS-Image-Edit-Outpaint-Qwen-Detail-Enhancer, laion-audio-xl. Checked health for 25 links (8 broken). Trending items fetched: undefined. Security score: 100%. Duration: 26907ms.",
+    "metadata": {
+      "totalCatalogEntries": 474,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Qwen3.5 Omni Plus",
+          "type": "Model",
+          "org": "Alibaba"
+        },
+        {
+          "name": "Google: Gemini 4 Hydrogen",
+          "type": "Model",
+          "org": "google"
+        },
+        {
+          "name": "Edge0-145B-NVFP4",
+          "type": "Model",
+          "org": "Edge0"
+        },
+        {
+          "name": "Qwen-2.1-Turbo-Qwen-Face-Swap-MOSS-Image-Edit-Outpaint-Qwen-Detail-Enhancer",
+          "type": "Platform",
+          "org": "amisima"
+        },
+        {
+          "name": "laion-audio-xl",
+          "type": "Dataset",
+          "org": "laion"
+        }
+      ],
+      "brokenLinks": 8,
+      "securityScore": 100,
+      "durationMs": 26907,
+      "runId": "local-manual-run",
+      "runNumber": "1",
+      "sha": "local",
+      "ref": "local",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
+    "id": "action_1794737554033_yv6fs",
+    "created_at": "2026-11-15T10:12:34.032Z",
+    "timestamp": "2026-11-15T10:12:34.032Z",
+    "workflow": "Leaderboard Sync",
+    "action": "LEADERBOARD_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "Leaderboard Sync completed: 136 benchmarked frontier models active",
+    "details": "Ingested live data from Artificial Analysis (118 models updated) and OpenRouter (0 pricing metrics updated). Sorted and compiled into src/data/leaderboardData.ts in 689ms.",
+    "metadata": {
+      "totalModels": 136,
+      "liveScraped": 118,
+      "priceUpdates": 0,
+      "durationMs": 689,
+      "targetFile": "src/data/leaderboardData.ts",
+      "runId": "local-manual-run",
+      "runNumber": "1",
+      "sha": "local",
+      "ref": "local",
+      "workflow": "Leaderboard Sync"
+    }
+  },
+  {
+    "id": "action_1794737507812_y2k01",
+    "created_at": "2026-11-15T10:11:47.811Z",
+    "timestamp": "2026-11-15T10:11:47.811Z",
+    "workflow": "Leaderboard Sync",
+    "action": "LEADERBOARD_SYNC",
+    "status": "error",
+    "actor_email": "github-actions[bot]",
+    "summary": "Leaderboard Sync Failed: priceUpdates is not defined",
+    "details": "ReferenceError: priceUpdates is not defined\n    at main (file:///D:/Programming/AiVerse/scripts/sync_leaderboard.js:259:107)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)",
+    "metadata": {
+      "error": "priceUpdates is not defined",
+      "runId": "local-manual-run",
+      "runNumber": "1",
+      "sha": "local",
+      "ref": "local",
+      "workflow": "Leaderboard Sync"
+    }
+  }
+]
