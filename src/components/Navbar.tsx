@@ -214,9 +214,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, [isDropdownOpen]);
 
   return (
-    <nav className="sticky top-0 z-40 border-b backdrop-blur-xl bg-white/80 dark:bg-neutral-950/80 border-neutral-200/80 dark:border-white/[0.08]">
-      <div className="w-full px-4 sm:px-6 xl:px-12 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+    <nav className="sticky top-0 z-40 border-b backdrop-blur-xl bg-white/85 dark:bg-neutral-950/85 border-neutral-200/80 dark:border-white/[0.08] transition-colors">
+      <div className="w-full px-4 sm:px-6 xl:px-10 h-14 sm:h-15 flex items-center justify-between gap-3">
+        {/* Left Side: Brand Logo & Navigation Links */}
+        <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
           <a
             href="/dashboard"
             onClick={(e) => {
@@ -225,8 +226,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onHomeClick();
               }
             }}
-            className={`flex items-center ${t.textPrimary} hover:opacity-80 transition-opacity`}
-            style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "1.5rem", lineHeight: 1, letterSpacing: "-0.02em" }}
+            className={`flex items-center shrink-0 ${t.textPrimary} hover:opacity-85 transition-opacity`}
+            style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "1.35rem", lineHeight: 1, letterSpacing: "-0.02em" }}
           >
             <span
               className="inline-block transform rotate-180 relative"
@@ -253,12 +254,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="overflow-hidden transition-all duration-75" style={{ maxWidth: isScrolled ? "0px" : "20px", opacity: isScrolled ? 0 : 1, transitionDelay: isScrolled ? "0ms" : "300ms" }}>e</span>
             </span>
           </a>
-          <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] text-neutral-600 dark:text-neutral-300 border border-neutral-200/80 dark:border-white/[0.06] whitespace-nowrap">
+
+          <span className="hidden sm:inline-flex items-center gap-1.5 text-[10.5px] font-medium px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] text-neutral-500 dark:text-neutral-400 border border-neutral-200/70 dark:border-white/[0.06] whitespace-nowrap shrink-0">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span>{entryCount} assets</span>
           </span>
 
-          <div className="hidden lg:flex items-center gap-1 ml-2.5 pl-3 border-l border-neutral-200/80 dark:border-white/[0.08]">
+          {/* Central Nav Menu Items */}
+          <div className="hidden lg:flex items-center gap-1 ml-1.5 pl-3 border-l border-neutral-200/70 dark:border-white/[0.08]">
             {/* 1. Features Mega-Dropdown */}
             {onViewFeatures && (
               <div
@@ -272,8 +275,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => setIsFeaturesOpen((prev) => !prev)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                     isFeaturesActive || isFeaturesOpen
-                      ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
-                      : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
+                      ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs"
+                      : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100/80 dark:hover:bg-white/[0.06]"
                   }`}
                   aria-expanded={isFeaturesOpen}
                   aria-haspopup="true"
@@ -288,13 +291,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                 {isFeaturesOpen && (
                   <div
-                    className="absolute left-0 top-full mt-2 w-[400px] rounded-3xl p-3 z-50 border border-neutral-200/90 dark:border-white/10 bg-white/95 dark:bg-[#121316]/95 backdrop-blur-2xl shadow-2xl animate-[fadeIn_0.15s_ease-out]"
+                    className="absolute left-0 top-full mt-2 w-[390px] rounded-3xl p-3 z-50 border border-neutral-200/90 dark:border-white/10 bg-white/95 dark:bg-[#121316]/95 backdrop-blur-2xl shadow-2xl animate-[fadeIn_0.15s_ease-out]"
                     style={{
                       boxShadow: "0 20px 50px -10px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06)",
                     }}
                   >
                     <div className="px-3 py-1.5 border-b border-neutral-200/80 dark:border-white/[0.06] mb-1.5">
-                      <span className="text-[10.5px] font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
                         Platform Capabilities
                       </span>
                     </div>
@@ -313,8 +316,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                             : "hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
                         }`}
                       >
-                        <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform shadow-xs">
-                          <Terminal size={17} />
+                        <div className="w-8.5 h-8.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform shadow-xs">
+                          <Terminal size={16} />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
@@ -327,7 +330,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                             </span>
                           </div>
                           <p className="text-[11px] text-neutral-500 dark:text-neutral-400 leading-snug line-clamp-1 mt-0.5">
-                            Live prompt inference, streaming tokens, and temperature testing
+                            Live prompt inference, streaming tokens, and latency testing
                           </p>
                         </div>
                       </button>
@@ -345,8 +348,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                             : "hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
                         }`}
                       >
-                        <div className="w-9 h-9 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform shadow-xs">
-                          <Swords size={17} />
+                        <div className="w-8.5 h-8.5 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform shadow-xs">
+                          <Swords size={16} />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
@@ -376,8 +379,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                             : "hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
                         }`}
                       >
-                        <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform shadow-xs">
-                          <Wand2 size={17} />
+                        <div className="w-8.5 h-8.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform shadow-xs">
+                          <Wand2 size={16} />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
@@ -423,8 +426,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={onBrowseAll}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                   isAllEntriesActive
-                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
-                    : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
+                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs"
+                    : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100/80 dark:hover:bg-white/[0.06]"
                 }`}
                 title="View all verified entries in catalog"
               >
@@ -440,8 +443,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={onViewEcosystems}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                   isEcosystemsActive
-                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
-                    : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
+                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs"
+                    : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100/80 dark:hover:bg-white/[0.06]"
                 }`}
                 title="Explore AI Labs & Ecosystems"
               >
@@ -468,8 +471,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={onViewLeaderboard}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                   isLeaderboardActive
-                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
-                    : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
+                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs"
+                    : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100/80 dark:hover:bg-white/[0.06]"
                 }`}
                 title="Frontier AI Benchmarks & Performance Leaderboard"
               >
@@ -485,8 +488,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={onViewChat}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                   isChatActive
-                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
-                    : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
+                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs"
+                    : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100/80 dark:hover:bg-white/[0.06]"
                 }`}
                 title="Groq AI Chat & Intelligence"
               >
@@ -506,42 +509,53 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        {/* Right Side: Quick Search, Theme Toggle, Auth / User Actions */}
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           {onSearchClick && (
             <button
               type="button"
               onClick={onSearchClick}
-              className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200/80 dark:border-white/10 bg-neutral-100/70 dark:bg-white/[0.04] hover:bg-neutral-200/70 dark:hover:bg-white/[0.08] text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white text-xs transition-all cursor-pointer shadow-2xs group"
+              className="hidden md:flex items-center gap-2 h-8.5 px-3 rounded-full border border-neutral-200/80 dark:border-white/10 bg-neutral-100/70 dark:bg-white/[0.04] hover:bg-neutral-200/60 dark:hover:bg-white/[0.08] text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white text-xs transition-all cursor-pointer shadow-2xs group"
               title="Search models & assets (⌘K)"
             >
               <Search size={13} className="text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors" />
-              <span className="text-[11.5px] font-medium">Search models...</span>
-              <kbd className="text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded bg-white dark:bg-white/10 border border-neutral-200 dark:border-white/10 text-neutral-400 dark:text-neutral-400 shadow-2xs">
+              <span className="text-[11.5px] font-medium hidden sm:inline">Search models...</span>
+              <kbd className="text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded bg-white dark:bg-white/10 border border-neutral-200 dark:border-white/10 text-neutral-400 shadow-2xs">
                 ⌘K
               </kbd>
             </button>
           )}
 
+          {/* Theme Toggle - Unified for Both SignedIn and SignedOut */}
+          <button
+            onClick={() => setTheme(resolvedTheme === "amoled" ? "light" : "amoled")}
+            className="w-8.5 h-8.5 rounded-full flex items-center justify-center border border-neutral-200/80 dark:border-white/10 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer shrink-0"
+            aria-label="Toggle color theme"
+            title={resolvedTheme === "amoled" ? "Switch to Light Theme" : "Switch to Dark Theme"}
+          >
+            {resolvedTheme === "amoled" ? <Sun size={14} /> : <Moon size={14} />}
+          </button>
+
           <SignedIn>
             <button
               onClick={onAddEntry}
-              className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer"
+              className="inline-flex items-center gap-1.5 h-8.5 px-3 sm:px-3.5 rounded-full text-xs font-semibold border border-neutral-200/80 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer shadow-2xs shrink-0"
               title="Add new AI model or tool"
             >
               <Plus size={14} />
               <span className="hidden sm:inline">Add Entry</span>
             </button>
 
-            <div className="relative flex items-center ml-0.5 sm:ml-1 gap-2">
+            <div className="relative flex items-center shrink-0">
               {showGreeting && (
-                <span className="hidden md:inline text-xs font-medium text-neutral-600 dark:text-neutral-300 whitespace-nowrap">
+                <span className="hidden xl:inline text-xs font-medium text-neutral-500 dark:text-neutral-400 mr-2 whitespace-nowrap">
                   Hi, {greetingName}
                 </span>
               )}
               <button
                 ref={avatarButtonRef}
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="relative flex items-center justify-center w-8 h-8 rounded-full overflow-hidden border border-neutral-200 dark:border-white/10 transition-all focus:outline-hidden cursor-pointer"
+                className="relative flex items-center justify-center w-8.5 h-8.5 rounded-full overflow-hidden ring-1 ring-neutral-200 dark:ring-white/15 hover:ring-neutral-400 dark:hover:ring-white/30 transition-all focus:outline-hidden cursor-pointer shrink-0"
                 aria-label="User profile menu"
                 aria-expanded={isDropdownOpen}
               >
@@ -593,46 +607,30 @@ export const Navbar: React.FC<NavbarProps> = ({
           </SignedIn>
 
           <SignedOut>
-            <button
-              onClick={() => setTheme(resolvedTheme === "amoled" ? "light" : "amoled")}
-              className="p-2 rounded-full border border-neutral-200 dark:border-white/10 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer"
-              aria-label="Toggle theme"
-            >
-              {resolvedTheme === "amoled" ? <Sun size={15} /> : <Moon size={15} />}
-            </button>
-
-            <button
-              onClick={() => onEditPreferences("preferences")}
-              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-white/10 text-xs font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer"
-              title="Sign in for personal preferences"
-            >
-              <SlidersHorizontal size={13} />
-              <span>Preferences</span>
-            </button>
-            <div className="flex items-center gap-1.5 sm:gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
               <button
                 onClick={() => openAuthModal("signin")}
-                className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer"
+                className="inline-flex items-center h-8.5 px-3 sm:px-3.5 rounded-full text-xs font-semibold text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer"
               >
                 Sign In
               </button>
               <button
                 onClick={() => openAuthModal("signup")}
-                className="hidden xs:inline-flex sm:inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition-all shadow-xs cursor-pointer"
+                className="inline-flex items-center h-8.5 px-3.5 sm:px-4 rounded-full text-xs font-semibold bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 hover:opacity-90 transition-all shadow-2xs cursor-pointer shrink-0"
               >
                 <span>Get Started</span>
               </button>
             </div>
           </SignedOut>
 
-          {/* Mobile Navigation Toggle Button */}
+          {/* Mobile Navigation Toggle Button - visible up to lg screens */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-xl border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-colors cursor-pointer"
+            className="lg:hidden w-8.5 h-8.5 rounded-full flex items-center justify-center border border-neutral-200/80 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-colors cursor-pointer shrink-0"
             aria-label="Toggle mobile navigation menu"
             aria-expanded={isMobileMenuOpen}
           >
-            {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+            {isMobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
           </button>
         </div>
       </div>
