@@ -1012,7 +1012,7 @@ const Inner: React.FC = () => {
         onEditPreferences={handleEditPreferences}
         onViewProfile={(uname) => {
           handleSelectEntry(null);
-          navigate(`/user/${encodeURIComponent(profilePathSlug(uname))}`);
+          navigate(`/user/${profilePathSlug(uname)}`);
           window.scrollTo(0, 0);
         }}
         onViewSaved={() => {
@@ -1153,7 +1153,7 @@ const Inner: React.FC = () => {
             onToggleBookmark={() => handleToggleBookmark(selected.name)}
             compareCandidates={compareCandidatesForSelected}
             onViewProfile={(uname) => {
-              navigate(`/user/${encodeURIComponent(profilePathSlug(uname))}`);
+              navigate(`/user/${profilePathSlug(uname)}`);
             }}
             onOpenPlayground={() => {
               navigate("/features/playground");

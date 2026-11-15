@@ -42,6 +42,9 @@ describe('Entry & Profile URL Utilities (CAT-01, N-03)', () => {
       expect(parseProfileFromPathname('/user/@frozen')).toBe('@frozen');
       expect(parseProfileFromPathname('/user/builder_99')).toBe('@builder_99');
       expect(parseProfileFromPathname('/user/builder_99/')).toBe('@builder_99');
+      expect(parseProfileFromPathname('/user/%40grfrozen')).toBe('@grfrozen');
+      expect(parseProfileFromPathname('/user/@SabareeshG')).toBe('@sabareeshg');
+      expect(parseProfileFromPathname('/user/%40SabareeshG/')).toBe('@sabareeshg');
     });
 
     it('returns null for non-user paths', () => {

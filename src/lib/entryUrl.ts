@@ -31,7 +31,7 @@ export function shareUrlForEntry(name: string): string {
   return `${origin}${path}?entry=${encodeURIComponent(name)}`;
 }
 
-const PROFILE_PATH_RE = /\/user\/(@?[a-z0-9_-]+)\/?$/;
+const PROFILE_PATH_RE = /\/user\/(@?[a-zA-Z0-9_.-]+)\/?$/i;
 
 /** Username segment for `/user/{slug}` (includes leading @). */
 export function profilePathSlug(username: string): string {
@@ -45,7 +45,11 @@ export function profileHandleFromSlug(slug: string): string {
 }
 
 export function parseProfileFromPathname(pathname: string): string | null {
-  const match = pathname.match(PROFILE_PATH_RE);
+  let clean = pathname;
+  try {
+    clean = decodeURIComponent(pathname);
+  } catch {}
+  const match = clean.match(PROFILE_PATH_RE);
   return match ? profileHandleFromSlug(match[1]) : null;
 }
 

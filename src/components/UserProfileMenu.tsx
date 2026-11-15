@@ -850,10 +850,21 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
         <button
           type="button"
           onClick={() => {
-            if (username && onViewProfile) onViewProfile(username);
+            const targetUsername =
+              username ||
+              parsedMeta?.username ||
+              (user?.user_metadata?.username as string) ||
+              (user?.user_metadata?.user_name as string) ||
+              (user?.user_metadata?.preferred_username as string) ||
+              (email ? email.split("@")[0] : "") ||
+              "user";
+
+            if (onViewProfile) {
+              onViewProfile(targetUsername);
+            }
             if (onClose) onClose();
           }}
-          className="w-full py-1 px-3 rounded-full border border-neutral-300 dark:border-white/20 text-[11px] font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/5 transition-all text-center cursor-pointer shadow-2xs"
+          className="w-full py-1 px-3 rounded-full border border-neutral-300 dark:border-white/20 text-[11px] font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/5 transition-all text-center cursor-pointer shadow-2xs hover:border-[#1a73e8] dark:hover:border-[#a8c7fa] hover:text-[#1a73e8] dark:hover:text-[#a8c7fa]"
         >
           Manage your AiVerse Profile
         </button>

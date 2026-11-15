@@ -110,7 +110,7 @@ export interface PublicBuilderProfile {
 export async function fetchProfileByUsername(
   username: string,
 ): Promise<PublicBuilderProfile | null> {
-  const cleanUsername = username.startsWith("@") ? username : `@${username}`;
+  const targetHandle = username.replace(/^@/, "").toLowerCase();
 
   // Query user_preferences table
   const { data, error } = await supabase
@@ -126,10 +126,12 @@ export async function fetchProfileByUsername(
     if (!row.referral_source) continue;
     try {
       const parsed = JSON.parse(row.referral_source);
+      const rowHandle = (parsed?.username || "").replace(/^@/, "").toLowerCase();
       if (
         parsed &&
         typeof parsed === "object" &&
-        parsed.username?.toLowerCase() === cleanUsername.toLowerCase()
+        rowHandle &&
+        rowHandle === targetHandle
       ) {
         const rawAvatar = parsed.avatarUrl || parsed.avatar_url || "";
         const cleanAvatar = rawAvatar && !rawAvatar.includes("dicebear.com") ? rawAvatar : undefined;

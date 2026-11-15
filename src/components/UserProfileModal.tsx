@@ -162,8 +162,19 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   const [submitHistory, setSubmitHistory] = useState<Entry[]>([]);
   const [loadingEntryId, setLoadingEntryId] = useState<string | null>(null);
 
+  const cleanTargetHandle = username.replace(/^@/, "").toLowerCase();
+  const currentAuthHandle = (
+    user?.user_metadata?.username ||
+    user?.user_metadata?.user_name ||
+    user?.user_metadata?.preferred_username ||
+    user?.email?.split("@")[0] ||
+    ""
+  ).replace(/^@/, "").toLowerCase();
+
   const isOwnProfile =
-    user?.user_metadata?.username?.toLowerCase() === username.toLowerCase();
+    Boolean(user) &&
+    (currentAuthHandle === cleanTargetHandle ||
+      Boolean(profile?.userKey && user?.id && (profile.userKey === user.id || profile.userKey === `supabase_${user.id}`)));
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -193,12 +204,23 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
     const loadData = async () => {
       let resolvedProfile: PublicBuilderProfile | null = null;
 
-      if (isOwnProfile) {
-        const meta = user?.user_metadata;
-        const ownUserKey = user?.id ? (user.id.startsWith("supabase_") ? user.id : `supabase_${user.id}`) : "";
+      // 1. Try to fetch profile from DB first (has custom bio, socials, role)
+      try {
+        const data = await fetchProfileByUsername(username);
+        if (data) {
+          resolvedProfile = data;
+        }
+      } catch (e) {
+        console.warn("fetchProfileByUsername error:", e);
+      }
+
+      // 2. If not found in DB but it's the current authenticated user, synthesize fallback profile
+      if (!resolvedProfile && isOwnProfile && user) {
+        const meta = user.user_metadata;
+        const ownUserKey = user.id.startsWith("supabase_") ? user.id : `supabase_${user.id}`;
         resolvedProfile = {
           userKey: ownUserKey,
-          displayName: meta?.firstName || "Builder",
+          displayName: meta?.displayName || meta?.full_name || meta?.name || meta?.firstName || user.email?.split("@")[0] || "Builder",
           username: meta?.username || username,
           description: meta?.description || "",
           github: meta?.github || "",
@@ -210,17 +232,8 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
           interests: meta?.interests || [],
           avatarUrl: getOAuthAvatarUrl(user) || undefined,
         };
-      } else {
-        try {
-          const data = await fetchProfileByUsername(username);
-          if (data) {
-            resolvedProfile = data;
-          } else {
-            setError(`No profile found for ${username}`);
-          }
-        } catch {
-          setError("Could not load developer profile.");
-        }
+      } else if (!resolvedProfile) {
+        setError(`No profile found for ${username}`);
       }
 
       if (resolvedProfile && active) {
