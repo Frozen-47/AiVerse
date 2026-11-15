@@ -4,6 +4,88 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "JT-35B-Flash",
+        "type": "Model",
+        "summary": "Frontier NLP model by China Mobile benchmarked on Artificial Analysis and a verified 256k Context window.",
+        "task": "NLP",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "China Mobile",
+        "size": "256k Context · Proprietary Model",
+        "architecture": "Proprietary frontier neural architecture developed by China Mobile, featuring native 256k Context token window support and optimized reasoning chains.",
+        "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/jt-35b-flash",
+        "benchmarks": "Context Window: 256k Context, Benchmarked on Artificial Analysis Leaderboard",
+        "limitations": "Cloud API access subject to provider rate limits and compute quotas.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://artificialanalysis.ai/models/jt-35b-flash",
+        "citations": [
+          {
+            "text": "JT-35B-Flash on Artificial Analysis Benchmark",
+            "url": "https://artificialanalysis.ai/models/jt-35b-flash"
+          },
+          {
+            "text": "JT-35B-Flash Inference Providers",
+            "url": "https://artificialanalysis.ai/models/jt-35b-flash/providers"
+          }
+        ]
+      },
+      {
+        "name": "inclusionAI: Ling 3.2 Flash (free)",
+        "type": "Model",
+        "summary": "Ling 3.2 Flash is a hybrid reasoning model from inclusionAI that accepts text and image input, with a 1M-token context window and up to 200 images per request. Thinking can...",
+        "task": "Multimodal",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "inclusionai",
+        "size": "1049k Context · Available via API",
+        "architecture": "Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.",
+        "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"inclusionai/ling-3.2-flash:free\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+        "benchmarks": "Context Window: 1049k Context, Available across global OpenRouter inference nodes.",
+        "limitations": "Requires OpenRouter API key and token credits.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://openrouter.ai/inclusionai/ling-3.2-flash:free",
+        "citations": [
+          {
+            "text": "inclusionAI: Ling 3.2 Flash (free) on OpenRouter",
+            "url": "https://openrouter.ai/inclusionai/ling-3.2-flash:free"
+          }
+        ]
+      },
+      {
+        "name": "MiniMax-H3-Image-GGUF",
+        "type": "Model",
+        "summary": "High-performance Image Generation open-weights model by Abiray, trending with over 231 community likes and 127,803 downloads on Hugging Face.",
+        "task": "Image Generation",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "Abiray",
+        "size": "Open Weights",
+        "architecture": "Abiray text to image architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Abiray/MiniMax-H3-Image-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Abiray/MiniMax-H3-Image-GGUF\")",
+        "benchmarks": "Trending Score: 203, Likes: 231, Downloads: 127,803",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/Abiray/MiniMax-H3-Image-GGUF",
+        "citations": [
+          {
+            "text": "Abiray/MiniMax-H3-Image-GGUF on Hugging Face",
+            "url": "https://huggingface.co/Abiray/MiniMax-H3-Image-GGUF"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-15",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "LongCat-2.5",
         "type": "Model",
         "summary": "High-performance Multimodal open-weights model by meituan-longcat, trending with over 268 community likes and 1,573 downloads on Hugging Face.",
@@ -5916,84 +5998,6 @@
           {
             "text": "Edisoneh/InfiniSplat2 on Hugging Face Spaces",
             "url": "https://huggingface.co/spaces/Edisoneh/InfiniSplat2"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-19",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4",
-        "type": "Model",
-        "summary": "High-performance Multimodal open-weights model by nvidia, trending with over 170 community likes and 9,322 downloads on Hugging Face.",
-        "task": "Multimodal",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "nvidia",
-        "size": "120B params",
-        "architecture": "nvidia image text to text architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4\")",
-        "benchmarks": "Trending Score: 165, Likes: 170, Downloads: 9,322",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4",
-        "citations": [
-          {
-            "text": "nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4 on Hugging Face",
-            "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4"
-          }
-        ]
-      },
-      {
-        "name": "RL-Explorer",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by FineEnvs. Trending with 35 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "FineEnvs",
-        "size": "DOCKER Platform",
-        "architecture": "DOCKER cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/FineEnvs/RL-Explorer",
-        "benchmarks": "Trending Score: 21, Community Likes: 35",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/spaces/FineEnvs/RL-Explorer",
-        "citations": [
-          {
-            "text": "FineEnvs/RL-Explorer on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/FineEnvs/RL-Explorer"
-          }
-        ]
-      },
-      {
-        "name": "fineweb-edu",
-        "type": "Dataset",
-        "summary": "📚 FineWeb-Edu \t      1.3 trillion tokens of the finest educational data the 🌐 web has to offer Paper: https://arxiv.org/abs/2406.17557 \t \t\t \t \t \t\tWhat is it? \t 📚 Fin (1,361 likes, 429,596 downloads).",
-        "task": "NLP",
-        "license": "ODC-BY",
-        "year": 2026,
-        "org": "HuggingFaceFW",
-        "size": "1B<n<10B",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"HuggingFaceFW/fineweb-edu\")",
-        "benchmarks": "Trending Score: 17, Likes: 1,361, Downloads: 429,596",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu",
-        "citations": [
-          {
-            "text": "HuggingFaceFW/fineweb-edu on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu"
           }
         ]
       }

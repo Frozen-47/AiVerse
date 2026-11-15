@@ -1,53 +1,95 @@
 {
-  "timestamp": "2026-11-15T12:25:54.818Z",
+  "timestamp": "2026-11-15T19:31:12.152Z",
   "models": [
+    {
+      "id": "JT-35B-Flash",
+      "author": "China Mobile",
+      "likes": 95,
+      "downloads": 256000,
+      "pipeline_tag": "Frontier Leaderboard",
+      "url": "https://artificialanalysis.ai/models/jt-35b-flash",
+      "source": "Artificial Analysis"
+    },
+    {
+      "id": "Qwen3.5 Omni Plus",
+      "author": "Alibaba",
+      "likes": 95,
+      "downloads": 256000,
+      "pipeline_tag": "Frontier Leaderboard",
+      "url": "https://artificialanalysis.ai/models/qwen3-5-omni-plus",
+      "source": "Artificial Analysis"
+    },
+    {
+      "id": "Nova 2.0 Omni",
+      "author": "Amazon",
+      "likes": 95,
+      "downloads": 1000000,
+      "pipeline_tag": "Reasoning Frontier",
+      "url": "https://artificialanalysis.ai/models/nova-2-0-omni",
+      "source": "Artificial Analysis"
+    },
+    {
+      "id": "inclusionAI: Ling 3.2 Flash (free)",
+      "author": "inclusionai",
+      "likes": 120,
+      "downloads": 1048576,
+      "pipeline_tag": "Cloud Model API",
+      "url": "https://openrouter.ai/inclusionai/ling-3.2-flash:free",
+      "source": "OpenRouter"
+    },
+    {
+      "id": "Google: Gemini 4 Hydrogen",
+      "author": "google",
+      "likes": 120,
+      "downloads": 1048576,
+      "pipeline_tag": "Cloud Model API",
+      "url": "https://openrouter.ai/google/gemini-4-hydrogen",
+      "source": "OpenRouter"
+    },
+    {
+      "id": "Google: Gemini 4 Hydrogen (batch)",
+      "author": "google",
+      "likes": 120,
+      "downloads": 1048576,
+      "pipeline_tag": "Cloud Model API",
+      "url": "https://openrouter.ai/google/gemini-4-hydrogen:batch",
+      "source": "OpenRouter"
+    },
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 7447,
+      "likes": 7497,
       "downloads": 27037,
       "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
+      "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+      "source": "Hugging Face"
     },
     {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 1143,
+      "likes": 1171,
       "downloads": 571067,
       "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+      "source": "Hugging Face"
     },
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 20057,
+      "likes": 20093,
       "downloads": 6547772,
       "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
+      "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+      "source": "Hugging Face"
     },
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 11980,
+      "likes": 12032,
       "downloads": 2754355,
       "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5"
-    },
-    {
-      "id": "Comfy-Org/MiniMax-H3-Image",
-      "author": "Comfy-Org",
-      "likes": 396,
-      "downloads": 1973388,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/Comfy-Org/MiniMax-H3-Image"
-    },
-    {
-      "id": "DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF",
-      "author": "DavidAU",
-      "likes": 3140,
-      "downloads": 1708637,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF"
+      "url": "https://huggingface.co/Lightricks/LTX-2.5",
+      "source": "Hugging Face"
     }
   ],
   "papers": [
@@ -91,5 +133,10 @@
       "url": "https://huggingface.co/papers/2611.09567",
       "githubRepo": "https://github.com/itsakk/TurtLES"
     }
+  ],
+  "sources": [
+    "Artificial Analysis",
+    "OpenRouter",
+    "Hugging Face"
   ]
 }
