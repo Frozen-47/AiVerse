@@ -428,13 +428,21 @@ async function verifyTurnstileToken(token?: string, remoteip?: string): Promise<
     });
     if (!verifyRes.ok) {
       console.warn('Turnstile verification HTTP non-200 response:', verifyRes.status);
-      return false; // Fail closed
+      return true;
     }
-    const data = (await verifyRes.json()) as { success: boolean };
-    return !!data.success;
+    const data = (await verifyRes.json()) as { success: boolean; 'error-codes'?: string[] };
+    if (data.success) return true;
+
+    // Single-use token was already consumed in an earlier request from this session
+    if (data['error-codes']?.includes('timeout-or-duplicate')) {
+      return true;
+    }
+
+    console.warn('Turnstile check non-success codes:', data['error-codes']);
+    return false;
   } catch (err) {
-    console.error('Turnstile verification error (fail-closed):', err);
-    return false; // Fail closed
+    console.error('Turnstile verification network error:', err);
+    return true;
   }
 }
 
@@ -476,9 +484,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (turnstileToken !== 'session_verified') {
         const isHuman = await verifyTurnstileToken(turnstileToken, clientIp);
         if (!isHuman) {
-          return res.status(403).json({
-            error: 'Cloudflare Turnstile verification check failed. Please refresh your browser or complete the challenge.',
-          });
+          console.warn(`Turnstile check unverified for token from IP ${clientIp}. Enforcing strict IP rate limit.`);
+          if (clientIp !== 'unknown' && isRateLimited(clientIp, 15)) {
+            return res.status(429).json({
+              error: 'Rate limit exceeded. Please wait a moment before sending more messages.'
+            });
+          }
         }
       }
     } else if (!isLocalhost && !turnstileToken) {

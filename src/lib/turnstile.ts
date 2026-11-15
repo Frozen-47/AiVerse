@@ -85,12 +85,31 @@ export function setSessionHumanVerified(token?: string): void {
 }
 
 /**
- * Get active session Turnstile token if available.
+ * Clear stored single-use token or reset verification on error.
+ */
+export function clearSessionTurnstileToken(): void {
+  if (typeof window === 'undefined') return;
+  try {
+    sessionStorage.removeItem(TOKEN_STORAGE_KEY);
+  } catch {
+    // ignore
+  }
+}
+
+/**
+ * Get active session Turnstile token if available, consuming single-use tokens once read.
  */
 export function getSessionTurnstileToken(): string | null {
   if (typeof window === 'undefined') return null;
   try {
-    return sessionStorage.getItem(TOKEN_STORAGE_KEY) || (isSessionHumanVerified() ? 'session_verified' : null);
+    const rawToken = sessionStorage.getItem(TOKEN_STORAGE_KEY);
+    if (rawToken) {
+      // Consume the raw single-use token so subsequent requests in the session use session_verified
+      sessionStorage.removeItem(TOKEN_STORAGE_KEY);
+      sessionStorage.setItem(SESSION_STORAGE_KEY, 'true');
+      return rawToken;
+    }
+    return isSessionHumanVerified() ? 'session_verified' : null;
   } catch {
     return null;
   }
