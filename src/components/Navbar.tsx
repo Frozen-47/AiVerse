@@ -509,32 +509,23 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        {/* Right Side: Quick Search, Theme Toggle, Auth / User Actions */}
+        {/* Right Side: Quick Search Action & Auth / User Controls */}
         <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           {onSearchClick && (
             <button
               type="button"
               onClick={onSearchClick}
-              className="hidden md:flex items-center gap-2 h-8.5 px-3 rounded-full border border-neutral-200/80 dark:border-white/10 bg-neutral-100/70 dark:bg-white/[0.04] hover:bg-neutral-200/60 dark:hover:bg-white/[0.08] text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white text-xs transition-all cursor-pointer shadow-2xs group"
-              title="Search models & assets (⌘K)"
+              className="flex items-center gap-1.5 h-8.5 px-2.5 sm:px-3 rounded-full border border-neutral-200/80 dark:border-white/10 bg-neutral-100/70 dark:bg-white/[0.04] hover:bg-neutral-200/60 dark:hover:bg-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white text-xs transition-all cursor-pointer shadow-2xs group shrink-0"
+              title="Search Catalog Entries (⌘K)"
+              aria-label="Search Catalog"
             >
               <Search size={13} className="text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors" />
-              <span className="text-[11.5px] font-medium hidden sm:inline">Search models...</span>
-              <kbd className="text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded bg-white dark:bg-white/10 border border-neutral-200 dark:border-white/10 text-neutral-400 shadow-2xs">
+              <span className="text-xs font-medium">Search</span>
+              <kbd className="hidden sm:inline-block text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded bg-white dark:bg-white/10 border border-neutral-200 dark:border-white/10 text-neutral-400 shadow-2xs">
                 ⌘K
               </kbd>
             </button>
           )}
-
-          {/* Theme Toggle - Unified for Both SignedIn and SignedOut */}
-          <button
-            onClick={() => setTheme(resolvedTheme === "amoled" ? "light" : "amoled")}
-            className="w-8.5 h-8.5 rounded-full flex items-center justify-center border border-neutral-200/80 dark:border-white/10 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer shrink-0"
-            aria-label="Toggle color theme"
-            title={resolvedTheme === "amoled" ? "Switch to Light Theme" : "Switch to Dark Theme"}
-          >
-            {resolvedTheme === "amoled" ? <Sun size={14} /> : <Moon size={14} />}
-          </button>
 
           <SignedIn>
             <button
