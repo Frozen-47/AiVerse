@@ -1,5 +1,30 @@
 [
   {
+    "name": "LongCat-2.5",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by meituan-longcat, trending with over 268 community likes and 1,573 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "MIT",
+    "year": 2026,
+    "org": "meituan-longcat",
+    "size": "Open Weights",
+    "architecture": "meituan-longcat image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"meituan-longcat/LongCat-2.5\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"meituan-longcat/LongCat-2.5\")",
+    "benchmarks": "Trending Score: 203, Likes: 268, Downloads: 1,573",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+    "citations": [
+      {
+        "text": "meituan-longcat/LongCat-2.5 on Hugging Face",
+        "url": "https://huggingface.co/meituan-longcat/LongCat-2.5"
+      }
+    ],
+    "created_at": "2026-11-15T12:25:54.625Z"
+  },
+  {
     "name": "Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF",
     "type": "Model",
     "summary": "High-performance Multimodal open-weights model by DavidAU, trending with over 1,771 community likes and 2,139,868 downloads on Hugging Face.",
