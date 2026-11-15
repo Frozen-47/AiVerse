@@ -962,7 +962,12 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error ${response.status}`);
+        let errMessage = `HTTP error ${response.status}`;
+        try {
+          const errData = await response.json();
+          if (errData?.error) errMessage = errData.error;
+        } catch {}
+        throw new Error(errMessage);
       }
 
       const contentType = response.headers.get('content-type') || '';
@@ -1096,7 +1101,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
           if (lastIdx >= 0 && next[lastIdx].role === 'assistant') {
             next[lastIdx] = {
               role: 'error',
-              content: 'Unable to reach AI services. Please try again.',
+              content: error?.message || 'Unable to reach AI services. Please try again.',
               isStreaming: false,
             };
           }

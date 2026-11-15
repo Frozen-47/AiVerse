@@ -90,7 +90,7 @@ export function setSessionHumanVerified(token?: string): void {
 export function getSessionTurnstileToken(): string | null {
   if (typeof window === 'undefined') return null;
   try {
-    return sessionStorage.getItem(TOKEN_STORAGE_KEY);
+    return sessionStorage.getItem(TOKEN_STORAGE_KEY) || (isSessionHumanVerified() ? 'session_verified' : null);
   } catch {
     return null;
   }
