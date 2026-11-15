@@ -1,7 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import Groq from 'groq-sdk';
 import { createClient } from '@supabase/supabase-js';
-import { entries as staticEntries } from '../src/data';
 
 // Safe environment variable initializers
 const getGroqClient = () => {
@@ -285,16 +284,14 @@ async function getCatalogEntries(): Promise<any[]> {
 
   const mergedMap = new Map<string, any>();
 
-  // 1. Seed with all verified static catalog entries (240+ entries, including all newly added models and frameworks)
-  if (Array.isArray(staticEntries)) {
-    for (const e of staticEntries) {
-      if (e && e.name) {
-        mergedMap.set(e.name.toLowerCase().trim(), e);
-      }
+  // 1. Seed with verified flagship catalog entries (curated 2026 models and frameworks)
+  for (const e of FALLBACK_ENTRIES) {
+    if (e && e.name) {
+      mergedMap.set(e.name.toLowerCase().trim(), e);
     }
   }
 
-  // 2. Augment with live Supabase entries if available
+  // 2. Augment with live Supabase entries (575+ entries including all newly added models and frameworks)
   const supabase = getSupabaseClient();
   if (supabase) {
     try {
@@ -381,12 +378,12 @@ const rateLimitMap = new Map<string, number[]>();
 const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
 const MAX_REQUESTS_PER_WINDOW = 40;
 
-function isRateLimited(ip: string): boolean {
+function isRateLimited(ip: string, maxRequests: number = MAX_REQUESTS_PER_WINDOW): boolean {
   const now = Date.now();
   const timestamps = rateLimitMap.get(ip) || [];
   const validTimestamps = timestamps.filter(ts => now - ts < RATE_LIMIT_WINDOW_MS);
 
-  if (validTimestamps.length >= MAX_REQUESTS_PER_WINDOW) {
+  if (validTimestamps.length >= maxRequests) {
     rateLimitMap.set(ip, validTimestamps);
     return true;
   }
@@ -462,7 +459,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { messages, userName, model, turnstileToken } = req.body || {};
+    const { messages, userName, model, turnstileToken, stream = false } = req.body || {};
 
     const host = ((req.headers['x-forwarded-host'] || req.headers['host'] || '') as string).toLowerCase();
     const isLocalhost =
@@ -474,18 +471,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       process.env.NODE_ENV !== 'production' ||
       !process.env.VERCEL;
 
-    // Enforce Turnstile verification in production when secret key is present
-    if (!isLocalhost && process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY) {
-      if (!turnstileToken) {
-        return res.status(403).json({
-          error: 'Turnstile human verification token is required. Please verify with the Cloudflare badge or refresh the page.'
-        });
+    // Verify Turnstile when token is provided
+    if (turnstileToken && process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY) {
+      if (turnstileToken !== 'session_verified') {
+        const isHuman = await verifyTurnstileToken(turnstileToken, clientIp);
+        if (!isHuman) {
+          return res.status(403).json({
+            error: 'Cloudflare Turnstile verification check failed. Please refresh your browser or complete the challenge.',
+          });
+        }
       }
-      const isHuman = await verifyTurnstileToken(turnstileToken, clientIp);
-      if (!isHuman) {
-        return res.status(403).json({
-          error: 'Cloudflare Turnstile verification check failed. Please refresh your browser or complete the challenge.',
-        });
+    } else if (!isLocalhost && !turnstileToken) {
+      // If Turnstile token is omitted (e.g. ad blockers blocking challenges.cloudflare.com), apply a tighter IP rate limit
+      if (clientIp !== 'unknown' && isRateLimited(clientIp, 20)) {
+        return res.status(429).json({ error: 'Too many requests. Please wait a moment before sending more messages.' });
       }
     }
 
@@ -540,21 +539,24 @@ CRITICAL INSTRUCTIONS:
 
     // Priority list of verified, actively supported Groq models
     const FALLBACK_MODELS = [
+      'qwen/qwen3.8-27b',
+      'openai/gpt-oss-120b',
+      'openai/gpt-oss-20b',
+      'allam-2-7b',
       'llama-3.3-70b-versatile',
       'deepseek-r1-distill-llama-70b',
       'llama-3.1-8b-instant',
-      'gemma2-9b-it',
-      'llama-3.2-11b-vision-preview',
-      'llama-3.2-3b-preview',
-      'mixtral-8x7b-32768',
     ];
 
     const candidates = model && FALLBACK_MODELS.includes(model)
       ? [model, ...FALLBACK_MODELS.filter(m => m !== model)]
-      : FALLBACK_MODELS;
+      : (model ? [model, ...FALLBACK_MODELS] : FALLBACK_MODELS);
 
+    const wantsStream = Boolean(stream);
+    let streamEstablished = false;
     let responseContent: string | null = null;
     let lastError: any = null;
+    let successfulModel = '';
 
     for (const currentModel of candidates) {
       try {
@@ -574,23 +576,72 @@ CRITICAL INSTRUCTIONS:
           }
         }
 
-        const chatCompletion = await groq.chat.completions.create({
-          messages: finalMessages,
-          model: currentModel,
-          temperature: 0.5,
-          max_tokens: 1024,
-        });
+        if (wantsStream) {
+          const completionStream = await groq.chat.completions.create({
+            messages: finalMessages,
+            model: currentModel,
+            temperature: 0.5,
+            max_tokens: 800,
+            stream: true,
+          });
 
-        let rawContent = chatCompletion.choices[0]?.message?.content || "";
-        rawContent = rawContent.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
+          // Model accepted stream - send SSE headers
+          res.writeHead(200, {
+            'Content-Type': 'text/event-stream',
+            'Cache-Control': 'no-cache, no-transform',
+            'Connection': 'keep-alive',
+          });
+          streamEstablished = true;
+          successfulModel = currentModel;
 
-        if (rawContent) {
-          responseContent = rawContent;
-          break;
+          let insideThinkTag = false;
+          for await (const chunk of completionStream) {
+            const delta = chunk.choices[0]?.delta?.content || '';
+            if (delta) {
+              if (delta.includes('<think>')) {
+                insideThinkTag = true;
+                continue;
+              }
+              if (delta.includes('</think>')) {
+                insideThinkTag = false;
+                continue;
+              }
+              if (!insideThinkTag) {
+                res.write(`data: ${JSON.stringify({ text: delta, meta: { model: currentModel } })}\n\n`);
+              }
+            }
+          }
+
+          res.write('data: [DONE]\n\n');
+          res.end();
+          return;
+        } else {
+          const chatCompletion = await groq.chat.completions.create({
+            messages: finalMessages,
+            model: currentModel,
+            temperature: 0.5,
+            max_tokens: 800,
+          });
+
+          let rawContent = chatCompletion.choices[0]?.message?.content || "";
+          rawContent = rawContent.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
+
+          if (rawContent) {
+            responseContent = rawContent;
+            successfulModel = currentModel;
+            break;
+          }
         }
       } catch (err: any) {
         console.warn(`Groq model ${currentModel} failed:`, err.message);
         lastError = err;
+        if (streamEstablished) {
+          try {
+            res.write(`data: ${JSON.stringify({ error: 'Stream interrupted. Please retry.' })}\n\n`);
+            res.end();
+          } catch {}
+          return;
+        }
       }
     }
 
@@ -600,7 +651,7 @@ CRITICAL INSTRUCTIONS:
       });
     }
 
-    return res.status(200).json({ content: responseContent });
+    return res.status(200).json({ content: responseContent, modelUsed: successfulModel });
   } catch (error: any) {
     console.error("Groq API Error:", error);
     return res.status(200).json({ content: `**AI Service Error**: ${error.message}` });
