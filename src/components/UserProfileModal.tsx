@@ -1,3 +1,4 @@
+import React from "react";
 import { UserProfileView, type UserProfileViewProps } from "./UserProfileView";
 
 export { UserProfileView, type UserProfileViewProps };
@@ -7,8 +8,6 @@ export interface UserProfileModalProps {
   onClose: () => void;
   onViewEntry?: (entry: any) => void;
   onExploreCatalog?: () => void;
-  onAddEntry?: () => void;
-  onEditProfile?: () => void;
 }
 
 /**
@@ -19,8 +18,6 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   onClose,
   onViewEntry,
   onExploreCatalog,
-  onAddEntry,
-  onEditProfile,
 }) => {
   return (
     <UserProfileView
@@ -28,8 +25,6 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
       onBackToHome={onClose}
       onViewEntry={onViewEntry}
       onExploreCatalog={onExploreCatalog}
-      onAddEntry={onAddEntry}
-      onEditProfile={onEditProfile}
     />
   );
 };

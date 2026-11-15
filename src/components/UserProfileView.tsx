@@ -13,7 +13,6 @@ import {
   ShieldCheck,
   CheckCircle2,
   Edit3,
-  Plus,
   Loader2,
   BookOpen,
   Sparkles,
@@ -22,9 +21,18 @@ import {
   AlertCircle,
   FolderGit2,
   Award,
+  X,
+  User,
+  Lock,
 } from "lucide-react";
 import { supabase, fetchProfileByUsername, getOAuthAvatarUrl, type PublicBuilderProfile } from "../lib/supabase";
 import { fetchUserBookmarks } from "../lib/entryBookmarks";
+import {
+  persistOnboardingProfile,
+  type OnboardingProfile,
+  type OnboardingInterest,
+  type UserRole,
+} from "../lib/onboarding";
 import type { Entry } from "../types";
 import { useTheme } from "../lib/theme";
 import { useAuth } from "./AuthContext";
@@ -35,8 +43,7 @@ export interface UserProfileViewProps {
   onBackToHome: () => void;
   onViewEntry?: (entry: Entry) => void;
   onExploreCatalog?: () => void;
-  onAddEntry?: () => void;
-  onEditProfile?: () => void;
+  onProfileUpdated?: (profile: PublicBuilderProfile) => void;
 }
 
 type TabId = "submissions" | "bookmarks" | "about";
@@ -55,7 +62,7 @@ const getRoleConfig = (role: string, isDark: boolean) => {
       accentBg: "from-violet-600/20 via-purple-600/10 to-indigo-600/20",
     };
   }
-  if (r === "designer") {
+  if (r === "designer" || r === "product") {
     return {
       label: "AI Product Designer",
       icon: <Sparkles size={12} className="stroke-[2.5px]" />,
@@ -75,7 +82,7 @@ const getRoleConfig = (role: string, isDark: boolean) => {
       accentBg: "from-amber-600/20 via-orange-600/10 to-red-600/20",
     };
   }
-  if (r === "enthusiast") {
+  if (r === "enthusiast" || r === "hobbyist") {
     return {
       label: "AI Enthusiast",
       icon: <Globe size={12} className="stroke-[2.5px]" />,
@@ -95,6 +102,26 @@ const getRoleConfig = (role: string, isDark: boolean) => {
     accentBg: "from-sky-600/20 via-blue-600/10 to-indigo-600/20",
   };
 };
+
+const ROLE_OPTIONS: { id: UserRole; label: string }[] = [
+  { id: "developer", label: "Software Developer / Engineer" },
+  { id: "researcher", label: "AI Researcher / Academic" },
+  { id: "ml_engineer", label: "ML / MLOps Engineer" },
+  { id: "product", label: "Product Designer / Manager" },
+  { id: "hobbyist", label: "AI Enthusiast / Explorer" },
+  { id: "student", label: "Student / Learner" },
+];
+
+const INTEREST_OPTIONS: { id: OnboardingInterest; label: string }[] = [
+  { id: "models", label: "Frontier Models" },
+  { id: "frameworks", label: "Frameworks & Tooling" },
+  { id: "datasets", label: "Datasets & Evals" },
+  { id: "platforms", label: "Platforms & APIs" },
+  { id: "nlp", label: "NLP & Reasoning" },
+  { id: "vision", label: "Computer Vision" },
+  { id: "multimodal", label: "Multimodal AI" },
+  { id: "coding", label: "AI Code Synthesis" },
+];
 
 // Brand SVG Logos
 const GithubLogo = ({ className }: { className?: string }) => (
@@ -127,8 +154,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
   onBackToHome,
   onViewEntry,
   onExploreCatalog,
-  onAddEntry,
-  onEditProfile,
+  onProfileUpdated,
 }) => {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "amoled";
@@ -144,6 +170,20 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
   const [savedEntries, setSavedEntries] = useState<Entry[]>([]);
   const [submitHistory, setSubmitHistory] = useState<Entry[]>([]);
   const [loadingEntryId, setLoadingEntryId] = useState<string | null>(null);
+
+  // Profile Edit Modal States
+  const [isEditing, setIsEditing] = useState(false);
+  const [editName, setEditName] = useState("");
+  const [editBio, setEditBio] = useState("");
+  const [editRole, setEditRole] = useState<UserRole>("developer");
+  const [editInterests, setEditInterests] = useState<OnboardingInterest[]>([]);
+  const [editGithub, setEditGithub] = useState("");
+  const [editLinkedin, setEditLinkedin] = useState("");
+  const [editPortfolio, setEditPortfolio] = useState("");
+  const [editDevto, setEditDevto] = useState("");
+  const [editMedium, setEditMedium] = useState("");
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveSuccessToast, setSaveSuccessToast] = useState(false);
 
   const cleanTargetHandle = username.replace(/^@/, "").toLowerCase();
   const currentAuthHandle = (
@@ -162,11 +202,17 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
   // Escape key to navigate back
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onBackToHome();
+      if (e.key === "Escape") {
+        if (isEditing) {
+          setIsEditing(false);
+        } else {
+          onBackToHome();
+        }
+      }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [onBackToHome]);
+  }, [onBackToHome, isEditing]);
 
   // Load profile and bookmarks
   useEffect(() => {
@@ -292,6 +338,84 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
     }
   };
 
+  const openEditModal = () => {
+    if (!profile) return;
+    setEditName(profile.displayName || "");
+    setEditBio(profile.description || "");
+    setEditRole((profile.role as UserRole) || "developer");
+    setEditInterests((profile.interests as OnboardingInterest[]) || ["models", "frameworks"]);
+    setEditGithub(profile.github || "");
+    setEditLinkedin(profile.linkedin || "");
+    setEditPortfolio(profile.portfolio || "");
+    setEditDevto(profile.devto || "");
+    setEditMedium(profile.medium || "");
+    setIsEditing(true);
+  };
+
+  const toggleEditInterest = (interestId: OnboardingInterest) => {
+    setEditInterests((prev) =>
+      prev.includes(interestId) ? prev.filter((i) => i !== interestId) : [...prev, interestId]
+    );
+  };
+
+  const handleSaveProfile = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!profile || !editName.trim()) return;
+
+    setIsSaving(true);
+    try {
+      const updatedMeta = {
+        displayName: editName.trim(),
+        username: profile.username,
+        description: editBio.trim(),
+        github: editGithub.trim(),
+        linkedin: editLinkedin.trim(),
+        medium: editMedium.trim(),
+        devto: editDevto.trim(),
+        portfolio: editPortfolio.trim(),
+        avatarUrl: profile.avatarUrl,
+      };
+
+      const updatedOnboardingPayload: OnboardingProfile = {
+        interests: editInterests,
+        role: editRole,
+        referralSource: JSON.stringify(updatedMeta),
+        completedAt: new Date().toISOString(),
+      };
+
+      await persistOnboardingProfile(updatedOnboardingPayload, {
+        user: user ?? undefined,
+        isGuest: !user,
+        displayName: editName.trim(),
+        profileMeta: updatedMeta,
+      });
+
+      const updatedProfile: PublicBuilderProfile = {
+        ...profile,
+        displayName: editName.trim(),
+        description: editBio.trim(),
+        role: editRole,
+        interests: editInterests,
+        github: editGithub.trim(),
+        linkedin: editLinkedin.trim(),
+        medium: editMedium.trim(),
+        devto: editDevto.trim(),
+        portfolio: editPortfolio.trim(),
+      };
+
+      setProfile(updatedProfile);
+      onProfileUpdated?.(updatedProfile);
+
+      setIsEditing(false);
+      setSaveSuccessToast(true);
+      setTimeout(() => setSaveSuccessToast(false), 3500);
+    } catch (err) {
+      console.error("Failed to save profile:", err);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
   const socialLinks: { name: string; url: string; icon: React.ComponentType<{ className?: string }>; colorCls: string }[] = [
     ...(profile?.github ? [{ name: "GitHub", url: profile.github, icon: GithubLogo, colorCls: isDark ? "text-white bg-white/10" : "text-neutral-900 bg-neutral-100" }] : []),
     ...(profile?.linkedin ? [{ name: "LinkedIn", url: profile.linkedin, icon: LinkedinLogo, colorCls: "text-[#0a66c2] bg-[#0a66c2]/10" }] : []),
@@ -303,7 +427,15 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
   const roleStyle = profile ? getRoleConfig(profile.role, isDark) : getRoleConfig("developer", isDark);
 
   return (
-    <div className="w-full flex-1 flex flex-col bg-[#f8f9fa] dark:bg-[#131314] text-[#202124] dark:text-[#e3e3e3] transition-colors min-h-[calc(100vh-64px)] animate-fade-in">
+    <div className="w-full flex-1 flex flex-col bg-[#f8f9fa] dark:bg-[#131314] text-[#202124] dark:text-[#e3e3e3] transition-colors min-h-[calc(100vh-64px)] animate-fade-in relative">
+      {/* Success Toast */}
+      {saveSuccessToast && (
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-2xl bg-emerald-600 text-white shadow-xl text-xs font-semibold animate-fade-in">
+          <CheckCircle2 size={16} />
+          <span>Profile updated successfully!</span>
+        </div>
+      )}
+
       {/* ── 1. Top Breadcrumbs Sub-Header ─────────────────────────────── */}
       <header className="sticky top-14 sm:top-16 z-20 px-4 sm:px-6 xl:px-12 h-14 border-b border-[#dadce0] dark:border-[#3c4043]/50 bg-white/95 dark:bg-[#131314]/95 backdrop-blur-md flex items-center justify-between gap-3 shadow-2xs">
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
@@ -343,25 +475,14 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
             <span>{copiedLink ? "Link Copied!" : "Share Profile"}</span>
           </button>
 
-          {isOwnProfile && onEditProfile && (
+          {isOwnProfile && (
             <button
-              onClick={onEditProfile}
+              onClick={openEditModal}
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] text-white transition-all cursor-pointer shadow-xs"
-              title="Edit Profile & Preferences"
+              title="Edit Profile Details"
             >
               <Edit3 size={13} />
               <span>Edit Profile</span>
-            </button>
-          )}
-
-          {isOwnProfile && onAddEntry && (
-            <button
-              onClick={onAddEntry}
-              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 transition-all cursor-pointer shadow-2xs"
-              title="Submit a new tool or model to AiVerse"
-            >
-              <Plus size={13} />
-              <span>Submit Model</span>
             </button>
           )}
         </div>
@@ -642,9 +763,9 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                   ) : (
                     <div className="py-6 text-center rounded-xl border border-dashed border-neutral-200 dark:border-white/10 p-4">
                       <p className="text-xs font-medium text-neutral-600 dark:text-neutral-400">No public accounts linked yet</p>
-                      {isOwnProfile && onEditProfile && (
+                      {isOwnProfile && (
                         <button
-                          onClick={onEditProfile}
+                          onClick={openEditModal}
                           className="mt-3 text-xs font-semibold text-[#1a73e8] dark:text-[#8ab4f8] hover:underline cursor-pointer"
                         >
                           + Link GitHub or LinkedIn
@@ -791,8 +912,8 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                           This builder hasn't published any tools, foundational models, or benchmarks to the AiVerse directory yet.
                         </p>
 
-                        <div className="flex items-center justify-center gap-3 mt-6 flex-wrap">
-                          {onExploreCatalog && (
+                        {onExploreCatalog && (
+                          <div className="flex items-center justify-center gap-3 mt-6">
                             <button
                               onClick={onExploreCatalog}
                               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#1a73e8] text-white hover:bg-[#1557b0] transition-all cursor-pointer shadow-xs"
@@ -800,17 +921,8 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                               <Compass size={14} />
                               <span>Explore Directory Models</span>
                             </button>
-                          )}
-                          {isOwnProfile && onAddEntry && (
-                            <button
-                              onClick={onAddEntry}
-                              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold border border-neutral-300 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/5 text-neutral-800 dark:text-neutral-200 transition-all cursor-pointer"
-                            >
-                              <Plus size={14} />
-                              <span>Submit Your First Model</span>
-                            </button>
-                          )}
-                        </div>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
@@ -922,6 +1034,242 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
           </>
         )}
       </main>
+
+      {/* ── 5. Dedicated In-Profile Edit Profile Modal ────────────────────────── */}
+      {isEditing && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto animate-fade-in">
+          <div className="relative w-full max-w-lg rounded-3xl bg-white dark:bg-[#1e1f20] border border-neutral-200 dark:border-white/10 shadow-2xl overflow-hidden my-8">
+            {/* Modal Header */}
+            <div className="px-6 py-4 border-b border-neutral-200/80 dark:border-white/10 bg-neutral-50/80 dark:bg-white/[0.02] flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-blue-500/10 text-[#1a73e8] dark:text-[#8ab4f8] flex items-center justify-center">
+                  <Edit3 size={15} />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-neutral-900 dark:text-white leading-tight">
+                    Edit Builder Profile
+                  </h3>
+                  <p className="text-[11px] text-neutral-500 dark:text-neutral-400">
+                    Update your public builder bio, role, and connected links
+                  </p>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setIsEditing(false)}
+                className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-200/70 dark:hover:bg-white/10 text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-colors cursor-pointer"
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            {/* Modal Form */}
+            <form onSubmit={handleSaveProfile} className="p-6 space-y-4 max-h-[75vh] overflow-y-auto no-scrollbar">
+              {/* Display Name */}
+              <div className="space-y-1.5">
+                <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300">
+                  Display Name
+                </label>
+                <div className="relative flex items-center">
+                  <div className="absolute left-3.5 text-neutral-400">
+                    <User size={14} />
+                  </div>
+                  <input
+                    type="text"
+                    required
+                    value={editName}
+                    onChange={(e) => setEditName(e.target.value)}
+                    maxLength={50}
+                    placeholder="Your name or organization"
+                    className="w-full pl-9 pr-3.5 py-2.5 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8] focus:border-[#1a73e8]"
+                  />
+                </div>
+              </div>
+
+              {/* Username (Locked) */}
+              <div className="space-y-1.5">
+                <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300">
+                  Username Handle
+                </label>
+                <div className="relative flex items-center">
+                  <div className="absolute left-3.5 text-neutral-400">
+                    <Lock size={14} />
+                  </div>
+                  <input
+                    type="text"
+                    disabled
+                    readOnly
+                    value={profile?.username || username}
+                    className="w-full pl-9 pr-3.5 py-2.5 rounded-xl text-xs border border-neutral-200 dark:border-white/5 bg-neutral-100 dark:bg-white/[0.04] text-neutral-500 dark:text-neutral-400 cursor-not-allowed opacity-80"
+                  />
+                </div>
+                <p className="text-[10px] text-neutral-400">Handle is verified and tied to your account</p>
+              </div>
+
+              {/* Primary Role */}
+              <div className="space-y-1.5">
+                <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300">
+                  Primary Role
+                </label>
+                <select
+                  value={editRole}
+                  onChange={(e) => setEditRole(e.target.value as UserRole)}
+                  className="w-full px-3.5 py-2.5 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8] focus:border-[#1a73e8]"
+                >
+                  {ROLE_OPTIONS.map((r) => (
+                    <option key={r.id} value={r.id}>
+                      {r.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Bio Description */}
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300">
+                    Bio & Expertise
+                  </label>
+                  <span className={`text-[10px] tabular-nums font-semibold ${editBio.length > 140 ? "text-amber-500" : "text-neutral-400"}`}>
+                    {editBio.length}/160
+                  </span>
+                </div>
+                <textarea
+                  rows={3}
+                  value={editBio}
+                  onChange={(e) => setEditBio(e.target.value)}
+                  maxLength={160}
+                  placeholder="Tell other builders about your background, models you train, or frameworks you build..."
+                  className="w-full px-3.5 py-2.5 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8] focus:border-[#1a73e8] resize-none"
+                />
+              </div>
+
+              {/* Focus Areas / Interests */}
+              <div className="space-y-1.5 pt-1">
+                <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300">
+                  Focus Areas & Technologies
+                </label>
+                <div className="flex flex-wrap gap-1.5">
+                  {INTEREST_OPTIONS.map((opt) => {
+                    const isSelected = editInterests.includes(opt.id);
+                    return (
+                      <button
+                        type="button"
+                        key={opt.id}
+                        onClick={() => toggleEditInterest(opt.id)}
+                        className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition-all cursor-pointer ${
+                          isSelected
+                            ? "bg-blue-500 text-white border-blue-600 shadow-2xs font-semibold"
+                            : "border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-white/[0.03] text-neutral-700 dark:text-neutral-300 hover:border-blue-500/40"
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Connected Web Profiles */}
+              <div className="space-y-2.5 pt-2 border-t border-neutral-200/80 dark:border-white/10">
+                <span className="block text-xs font-bold text-neutral-700 dark:text-neutral-300">
+                  Connected Web Profiles
+                </span>
+
+                {/* GitHub */}
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-neutral-900 text-white flex items-center justify-center shrink-0">
+                    <GithubLogo className="w-4 h-4" />
+                  </div>
+                  <input
+                    type="url"
+                    value={editGithub}
+                    onChange={(e) => setEditGithub(e.target.value)}
+                    placeholder="https://github.com/your-username"
+                    className="flex-1 px-3 py-2 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8]"
+                  />
+                </div>
+
+                {/* LinkedIn */}
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-[#0a66c2] text-white flex items-center justify-center shrink-0">
+                    <LinkedinLogo className="w-4 h-4" />
+                  </div>
+                  <input
+                    type="url"
+                    value={editLinkedin}
+                    onChange={(e) => setEditLinkedin(e.target.value)}
+                    placeholder="https://linkedin.com/in/your-profile"
+                    className="flex-1 px-3 py-2 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8]"
+                  />
+                </div>
+
+                {/* Portfolio Website */}
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0">
+                    <Globe size={15} />
+                  </div>
+                  <input
+                    type="url"
+                    value={editPortfolio}
+                    onChange={(e) => setEditPortfolio(e.target.value)}
+                    placeholder="https://yourportfolio.dev"
+                    className="flex-1 px-3 py-2 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8]"
+                  />
+                </div>
+
+                {/* Dev.to */}
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-neutral-800 text-white flex items-center justify-center shrink-0">
+                    <DevToLogo className="w-4 h-4" />
+                  </div>
+                  <input
+                    type="url"
+                    value={editDevto}
+                    onChange={(e) => setEditDevto(e.target.value)}
+                    placeholder="https://dev.to/your-username"
+                    className="flex-1 px-3 py-2 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8]"
+                  />
+                </div>
+
+                {/* Medium */}
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-neutral-900 text-white flex items-center justify-center shrink-0">
+                    <MediumLogo className="w-4 h-4" />
+                  </div>
+                  <input
+                    type="url"
+                    value={editMedium}
+                    onChange={(e) => setEditMedium(e.target.value)}
+                    placeholder="https://medium.com/@your-username"
+                    className="flex-1 px-3 py-2 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8]"
+                  />
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex items-center justify-end gap-2.5 pt-4 border-t border-neutral-200/80 dark:border-white/10">
+                <button
+                  type="button"
+                  onClick={() => setIsEditing(false)}
+                  className="px-4 py-2 rounded-xl text-xs font-semibold border border-neutral-300 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/5 text-neutral-700 dark:text-neutral-300 transition-colors cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSaving || !editName.trim()}
+                  className="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] disabled:opacity-50 text-white transition-all cursor-pointer shadow-xs"
+                >
+                  {isSaving ? <Loader2 size={13} className="animate-spin" /> : <Check size={13} />}
+                  <span>{isSaving ? "Saving..." : "Save Changes"}</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

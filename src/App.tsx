@@ -1291,10 +1291,6 @@ const Inner: React.FC = () => {
             navigate("/entries");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          onAddEntry={handleAddClick}
-          onEditProfile={() => {
-            setShowOnboarding(true);
-          }}
         />
       ) : activeView === "landing" ? (
         <div className="w-full flex flex-col animate-[fadeUp_0.4s_ease-out]">
