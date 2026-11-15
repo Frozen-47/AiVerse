@@ -14,7 +14,7 @@ import { EntryCard } from "./components/EntryCard";
 import { EcosystemsSection } from "./components/EcosystemsSection";
 import { groupEntriesByEcosystem, getNormalizedOrgName } from "./lib/ecosystems";
 import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
-import { UserProfileModal } from "./components/UserProfileModal";
+import { UserProfileView } from "./components/UserProfileView";
 import { OverviewCards } from "./components/OverviewCards";
 import { DailyPulseSection } from "./components/DailyPulseSection";
 import { DashboardHero } from "./components/DashboardHero";
@@ -114,6 +114,7 @@ const Inner: React.FC = () => {
   const isWizard = route.type === "features" && route.subpage === "wizard";
   const isArena = route.type === "features" && route.subpage === "compare";
   const isPlayground = route.type === "features" && route.subpage === "playground";
+  const isProfile = route.type === "profile";
   const profileUsername = route.type === "profile" ? route.username : null;
   const isEntries = route.type === "entries";
   const activeView: "landing" | "catalog" = isEntries ? "catalog" : "landing";
@@ -1272,6 +1273,29 @@ const Inner: React.FC = () => {
             </div>
           </div>
         )
+      ) : isProfile && profileUsername ? (
+        <UserProfileView
+          username={profileUsername}
+          onBackToHome={() => {
+            if (window.history.length > 1) {
+              window.history.back();
+            } else {
+              navigate("/dashboard");
+            }
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          onViewEntry={(entry) => {
+            handleSelectEntry(entry);
+          }}
+          onExploreCatalog={() => {
+            navigate("/entries");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          onAddEntry={handleAddClick}
+          onEditProfile={() => {
+            setShowOnboarding(true);
+          }}
+        />
       ) : activeView === "landing" ? (
         <div className="w-full flex flex-col animate-[fadeUp_0.4s_ease-out]">
           {/* 1. Full-Bleed First Page Hero (Edge-to-Edge & 100vh fold) */}
@@ -2074,22 +2098,6 @@ const Inner: React.FC = () => {
 
       {isLoaded && user && showOnboarding && (
         <WelcomeOnboarding onComplete={handleProfileComplete} />
-      )}
-
-      {profileUsername && (
-        <UserProfileModal
-          username={profileUsername}
-          onClose={() => {
-            if (window.history.length > 1) {
-              window.history.back();
-            } else {
-              navigate("/dashboard");
-            }
-          }}
-          onViewEntry={(entry) => {
-            handleSelectEntry(entry);
-          }}
-        />
       )}
 
       {showLoginForPrefs && (
