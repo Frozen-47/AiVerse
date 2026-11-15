@@ -1,23 +1,38 @@
 {
-  "timestamp": "2026-11-14T22:50:07.661Z",
+  "timestamp": "2026-11-15T04:19:17.982Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 19,
+  "broken": 6,
   "issues": [
     {
-      "name": "wan2-2-i2v-v3",
-      "url": "https://huggingface.co/spaces/observantdistressed/wan2-2-i2v-v3",
+      "name": "o1 (OpenAI)",
+      "url": "https://openai.com/o1",
+      "status": 403
+    },
+    {
+      "name": "UltraFeedback",
+      "url": "https://huggingface.co/datasets/argilla/ultrafeedback",
       "status": 401
     },
     {
-      "name": "Tome",
-      "url": "https://tome.app",
+      "name": "Arena-Hard-Auto",
+      "url": "https://github.com/sunshanghai/arena-hard-auto",
       "status": 404
     },
     {
-      "name": "Phind",
-      "url": "https://www.phind.com",
+      "name": "Midjourney v6",
+      "url": "https://www.midjourney.com/",
       "status": 403
+    },
+    {
+      "name": "GPT-4o mini",
+      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+      "status": 403
+    },
+    {
+      "name": "ERNIE Bot",
+      "url": "https://yiyan.baidu.com",
+      "status": 404
     }
   ]
 }

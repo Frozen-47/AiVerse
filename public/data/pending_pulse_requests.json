@@ -1,5 +1,30 @@
 [
   {
+    "name": "Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by DavidAU, trending with over 1,771 community likes and 2,139,868 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "DavidAU",
+    "size": "9B params",
+    "architecture": "DavidAU image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF\")",
+    "benchmarks": "Trending Score: 203, Likes: 1,771, Downloads: 2,139,868",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF",
+    "citations": [
+      {
+        "text": "DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF on Hugging Face",
+        "url": "https://huggingface.co/DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF"
+      }
+    ],
+    "created_at": "2026-11-15T04:19:17.597Z"
+  },
+  {
     "name": "Sophon-Realtime-v1",
     "type": "Model",
     "summary": "High-performance NLP open-weights model by adventists-ai, trending with over 261 community likes and 0 downloads on Hugging Face.",

@@ -1,8 +1,8 @@
-# ⚡ AiVerse AI Radar (2026-11-14)
+# ⚡ AiVerse AI Radar (2026-11-15)
 
 > Continuous intelligence and ecosystem radar syncing top trending AI models, platforms, frameworks, research papers, catalog metrics, and repository health.
 
-*Last Synchronized: `Sat, 14 Nov 2026 22:50:34 GMT`*
+*Last Synchronized: `Sun, 15 Nov 2026 04:19:55 GMT`*
 
 ---
 
@@ -10,23 +10,23 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Sophon-Realtime-v1** (`Model` • *adventists-ai*)
-> High-performance NLP open-weights model by adventists-ai, trending with over 261 community likes and 0 downloads on Hugging Face.
+### **Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF** (`Model` • *DavidAU*)
+> High-performance Multimodal open-weights model by DavidAU, trending with over 1,771 community likes and 2,139,868 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 203, Likes: 261, Downloads: 0`
-- 🔗 **Resource Link**: [https://huggingface.co/adventists-ai/Sophon-Realtime-v1](https://huggingface.co/adventists-ai/Sophon-Realtime-v1)
+- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 203, Likes: 1,771, Downloads: 2,139,868`
+- 🔗 **Resource Link**: [https://huggingface.co/DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF](https://huggingface.co/DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **GPT-6 Astra (max)** (`Model` • *OpenAI*)
-> OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 57, Briefcase Elo of 1569, and a massive 1M context window.
+### **GPT-6 Astra (xhigh)** (`Model` • *OpenAI*)
+> OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 55, Briefcase Elo of 1544, and a massive 1M context window.
 
-- 🏛️ **Architecture**: Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (78 tok/s).
-- ⚡ **Benchmarks**: `Intelligence Index: 57, Briefcase Elo: 1569, Accuracy: 62%, Non-Hallucination: 50%, FrontierCode: 42%, AutomationBench: 68%, TerminalBench 4: 59%, HLE Diamond: 64%, Speed: 78 tok/s, Context Window: 1M`
+- 🏛️ **Architecture**: Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (66 tok/s).
+- ⚡ **Benchmarks**: `Intelligence Index: 55, Briefcase Elo: 1544, Accuracy: 61%, Non-Hallucination: 55%, FrontierCode: 41%, AutomationBench: 67%, TerminalBench 4: 60%, HLE Diamond: 62%, Speed: 66 tok/s, Context Window: 1M`
 - 🏷️ **Domain & License**: `NLP` • `Proprietary` (Released: 2026)
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/gpt-6-astra](https://artificialanalysis.ai/models/gpt-6-astra)
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/gpt-6-astra-xhigh](https://artificialanalysis.ai/models/gpt-6-astra-xhigh)
 
 ---
 ## 🔥 Today's Top Trending Open AI Models
@@ -34,12 +34,12 @@
 
 | Model | Pipeline | Likes | Downloads | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 7,346 | 📥 24,470 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| `MiniMaxAI/MiniMax-H3-Image` | text-to-image | ❤️ 1,113 | 📥 517,948 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
-| `Qwen/Qwen3.8-27B` | image-text-to-text | ❤️ 20,002 | 📥 6,757,964 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
-| `Lightricks/LTX-2.5` | image-to-video | ❤️ 11,920 | 📥 2,777,667 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| `DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF` | image-text-to-text | ❤️ 3,118 | 📥 1,657,783 | [View](https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF) |
-| `speridlabs/idol` | image-to-3d | ❤️ 2,339 | 📥 32,619 | [View](https://huggingface.co/speridlabs/idol) |
+| `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | text-generation | ❤️ 7,384 | 📥 24,470 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
+| `MiniMaxAI/MiniMax-H3-Image` | text-to-image | ❤️ 1,123 | 📥 517,948 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
+| `Qwen/Qwen3.8-27B` | image-text-to-text | ❤️ 20,024 | 📥 6,757,964 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
+| `Lightricks/LTX-2.5` | image-to-video | ❤️ 11,939 | 📥 2,777,667 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| `DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF` | image-text-to-text | ❤️ 3,127 | 📥 1,657,783 | [View](https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF) |
+| `Comfy-Org/MiniMax-H3-Image` | text-to-image | ❤️ 389 | 📥 1,615,613 | [View](https://huggingface.co/Comfy-Org/MiniMax-H3-Image) |
 
 
 ---
@@ -66,7 +66,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `19/25` healthy verified (`6` flagged / timed out)
 - **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---
