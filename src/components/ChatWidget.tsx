@@ -1155,7 +1155,12 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
               <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xs">
                 <Zap size={13} className="fill-white" />
               </div>
-              <span className="font-bold text-sm tracking-tight">Groq AI</span>
+              <div className="flex items-center gap-1.5">
+                <span className="font-bold text-sm tracking-tight">Vox</span>
+                <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 font-semibold border border-amber-500/20">
+                  Groq LPU
+                </span>
+              </div>
             </div>
 
             <button
@@ -1684,13 +1689,16 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
             setIsMiniOpen(true);
           }}
           className="group fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 px-3.5 py-2.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.18)] dark:shadow-[0_8px_30px_rgba(255,255,255,0.12)] bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 border border-neutral-800 dark:border-white/20 hover:border-neutral-700 dark:hover:border-white/40 transition-colors duration-150 cursor-pointer"
-          aria-label="Open Groq AI Assistant"
+          aria-label="Open Vox AI Assistant"
         >
           <div className="relative flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-tr from-amber-500 to-orange-500 text-white shadow-xs">
             <Zap size={13} className="fill-white" />
             <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#1a73e8] dark:bg-[#a8c7fa] ring-2 ring-neutral-900 dark:ring-white" />
           </div>
-          <span className="font-semibold text-xs tracking-tight">Groq AI</span>
+          <span className="font-semibold text-xs tracking-tight">Vox</span>
+          <span className="text-[10px] px-1.5 py-0.2 rounded-full font-bold bg-amber-500/15 text-amber-500 dark:text-amber-400 border border-amber-500/25">
+            Groq LPU
+          </span>
         </button>
       )}
 

@@ -481,7 +481,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             )}
 
-            {/* 5. Groq AI Assistant */}
+            {/* 5. Vox AI Assistant */}
             {onViewChat && (
               <button
                 type="button"
@@ -491,18 +491,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                     ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs"
                     : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100/80 dark:hover:bg-white/[0.06]"
                 }`}
-                title="Groq AI Chat & Intelligence"
+                title="Vox AI Assistant (Groq LPU)"
               >
                 <Zap size={13} className={isChatActive ? "" : "text-amber-500"} />
-                <span>AI Assistant</span>
+                <span>Vox</span>
                 <span
                   className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded-full border ${
                     isChatActive
                       ? "bg-white/20 text-white border-white/30"
-                      : "bg-gradient-to-r from-violet-500/15 to-fuchsia-500/15 text-violet-600 dark:text-violet-400 border-violet-500/25"
+                      : "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/25"
                   }`}
                 >
-                  AI
+                  Groq LPU
                 </span>
               </button>
             )}
@@ -807,7 +807,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   >
                     <div className="flex items-center gap-3">
                       <Zap size={17} className="text-amber-500" />
-                      <span className="font-semibold">Groq AI Assistant</span>
+                      <span className="font-semibold">Vox AI Assistant</span>
                     </div>
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.06] text-neutral-500">
                       /chat
