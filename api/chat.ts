@@ -1,6 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import Groq from 'groq-sdk';
 import { createClient } from '@supabase/supabase-js';
+import { entries as staticEntries } from '../src/data';
 
 // Safe environment variable initializers
 const getGroqClient = () => {
@@ -29,15 +30,48 @@ const getSupabaseClient = () => {
 // Curated flagship items for instant fallback if database is unreachable
 const FALLBACK_ENTRIES = [
   {
-    name: "Gemini 2.0 Flash",
+    name: "GPT-6 Astra",
+    type: "Model",
+    task: "AI Coding",
+    org: "OpenAI",
+    year: 2026,
+    summary: "OpenAI's frontier flagship model released in September 2026, marking a generational leap in autonomous computer use, deep reasoning, and complex multi-step workflow automation across enterprise environments.",
+    benchmarks: "SWE-bench Verified: 82.4%, AIME 2026: 92.1%, OSWorld: 72.3%, GPQA Diamond: 78.6%",
+    architecture: "Massive multimodal Mixture-of-Experts with reinforcement learning over deep thought chains, native OS-level computer use drivers, and dynamic tool orchestration.",
+    url: "https://openai.com"
+  },
+  {
+    name: "Claude Fable",
+    type: "Model",
+    task: "AI Coding",
+    org: "Anthropic",
+    year: 2026,
+    summary: "Anthropic's flagship Mythos-class generative AI model engineered for long-running agentic projects, multi-application computer use, and root-cause software engineering with frontier safety classifiers.",
+    benchmarks: "SWE-bench Verified: 84.1%, OSWorld: 74.8%, HumanEval Pro: 94.6%, GPQA Diamond: 79.2%",
+    architecture: "Mythos-class multimodal hybrid architecture featuring variable dynamic thought budgets, agentic tool execution sandboxes, and constitutional RL alignment.",
+    url: "https://www.anthropic.com"
+  },
+  {
+    name: "Gemini 2.5 Pro",
     type: "Model",
     task: "Multimodal",
     org: "Google DeepMind",
-    year: 2024,
-    summary: "Google's high-speed, agentic multimodal model delivering sub-second latency, native tool execution, and audio/video streaming at scale.",
-    benchmarks: "2x faster Time To First Token (TTFT) compared to Gemini 1.5 Flash, MMLU-Pro: 78.5%, MathVista: 68.3%",
-    architecture: "Natively Multimodal Mixture-of-Experts (MoE) with 1M token context window.",
+    year: 2025,
+    summary: "Google's premier thinking multimodal model delivering native audio, video, code, and 2M token context reasoning with breakthrough performance on complex coding and science benchmarks.",
+    benchmarks: "MMLU-Pro: 84.2%, HumanEval: 92.4%, MathVista: 74.1%",
+    architecture: "Natively Multimodal Mixture-of-Experts (MoE) with 2M token context window and integrated tool routing.",
     url: "https://deepmind.google/technologies/gemini/"
+  },
+  {
+    name: "DeepSeek-R1",
+    type: "Model",
+    task: "NLP",
+    org: "DeepSeek",
+    year: 2025,
+    summary: "Open-weights reasoning model trained via large-scale reinforcement learning without supervised fine-tuning, rivaling top proprietary reasoning models.",
+    benchmarks: "AIME 2024: 79.8%, MATH-500: 97.3%, Codeforces: 96.3 percentile",
+    architecture: "DeepSeek-V3 Base (671B MoE, 37B active) + Large-scale Multi-Stage RL with self-verification reasoning.",
+    url: "https://www.deepseek.com"
   },
   {
     name: "DeepSeek-V3",
@@ -51,15 +85,15 @@ const FALLBACK_ENTRIES = [
     url: "https://www.deepseek.com"
   },
   {
-    name: "DeepSeek-R1",
+    name: "Claude 3.7 Sonnet",
     type: "Model",
-    task: "NLP",
-    org: "DeepSeek",
+    task: "Multimodal",
+    org: "Anthropic",
     year: 2025,
-    summary: "Open-weights reasoning model trained via large-scale reinforcement learning without supervised fine-tuning, rivaling top proprietary reasoning models.",
-    benchmarks: "AIME 2024: 79.8%, MATH-500: 97.3%, Codeforces: 96.3 percentile",
-    architecture: "DeepSeek-V3 Base + Large-scale Multi-Stage RL with self-verification reasoning.",
-    url: "https://www.deepseek.com"
+    summary: "First hybrid reasoning model combining instant response generation with adjustable chain-of-thought thinking for complex tasks.",
+    benchmarks: "SWE-bench Verified: 70.3%, TAU-bench: 81.2%, GPQA Diamond: 68.2%",
+    architecture: "Hybrid Reasoning Transformer with dynamic thought budgets.",
+    url: "https://www.anthropic.com"
   },
   {
     name: "Llama 3.3 (70B)",
@@ -82,17 +116,6 @@ const FALLBACK_ENTRIES = [
     benchmarks: "MMLU: 88.6%, HumanEval: 89.0%, MATH: 73.8%",
     architecture: "Optimized transformer decoder trained on 15T tokens with 128K context.",
     url: "https://llama.meta.com/"
-  },
-  {
-    name: "Claude 3.7 Sonnet",
-    type: "Model",
-    task: "Multimodal",
-    org: "Anthropic",
-    year: 2025,
-    summary: "First hybrid reasoning model combining instant response generation with adjustable chain-of-thought thinking for complex tasks.",
-    benchmarks: "SWE-bench Verified: 70.3%, TAU-bench: 81.2%, GPQA Diamond: 68.2%",
-    architecture: "Hybrid Reasoning Transformer with dynamic thought budgets.",
-    url: "https://www.anthropic.com"
   },
   {
     name: "Qwen 2.5-Coder (32B)",
@@ -122,10 +145,76 @@ const FALLBACK_ENTRIES = [
     task: "MLOps",
     org: "LangChain",
     year: 2024,
-    summary: "Library for building stateful, multi-actor applications with LLMs using cyclical graph topologies.",
-    benchmarks: "Industry standard for resilient cyclical agent workflows and human-in-the-loop validation.",
-    architecture: "State graph execution engine with PostgreSQL and Redis state checkpointing.",
+    summary: "Library for building resilient, stateful, multi-actor agent workflows with LLMs using cyclical graph topologies and built-in human-in-the-loop validation.",
+    benchmarks: "De-facto industry standard for cyclical multi-agent workflows, checkpointing, and branch rollbacks.",
+    architecture: "State graph execution engine with PostgreSQL, SQLite, and Redis state checkpointing.",
     url: "https://github.com/langchain-ai/langgraph"
+  },
+  {
+    name: "CrewAI",
+    type: "Framework",
+    task: "MLOps",
+    org: "CrewAI Inc.",
+    year: 2024,
+    summary: "Framework for orchestrating role-playing autonomous AI agents that collaborate sequentially or hierarchically to tackle multi-stage enterprise tasks.",
+    benchmarks: "50,000+ GitHub stars; standardized multi-agent delegation, memory pooling, and deterministic tool access.",
+    architecture: "Task execution graph with role-defined agent prompts, shared memory buffers, and tool delegation protocols.",
+    url: "https://www.crewai.com"
+  },
+  {
+    name: "AutoGen 0.4",
+    type: "Framework",
+    task: "MLOps",
+    org: "Microsoft",
+    year: 2025,
+    summary: "Event-driven, asynchronous multi-agent framework re-architected in v0.4 for scalable distributed agent systems with gRPC and cloud-native workflows.",
+    benchmarks: "Major speedup in distributed execution and robust actor-model event routing.",
+    architecture: "Asynchronous actor model architecture with type-safe message queues and distributed agent worker nodes.",
+    url: "https://github.com/microsoft/autogen"
+  },
+  {
+    name: "Pydantic AI",
+    type: "Framework",
+    task: "AI Coding",
+    org: "Pydantic",
+    year: 2024,
+    summary: "Production-grade GenAI agent framework built by the Pydantic team, bringing type-safety, dependency injection, and schema validation to generative AI applications.",
+    benchmarks: "Zero runtime overhead validation, 100% type-checked outputs with static mypy/pyright conformance.",
+    architecture: "Model-agnostic agent runtime leveraging Pydantic v2 core with native support for OpenAI, Anthropic, Gemini, and Groq.",
+    url: "https://ai.pydantic.dev"
+  },
+  {
+    name: "Smolagents",
+    type: "Framework",
+    task: "AI Coding",
+    org: "Hugging Face",
+    year: 2025,
+    summary: "Lightweight, code-first agent library where agents write actions directly in Python code rather than parsing JSON strings, yielding faster execution and fewer token errors.",
+    benchmarks: "Significantly higher task completion rate on complex multi-step code execution benchmarks.",
+    architecture: "CodeAgent runtime with sandboxed Python AST interpreter and Hugging Face Hub integration.",
+    url: "https://github.com/huggingface/smolagents"
+  },
+  {
+    name: "vLLM",
+    type: "Framework",
+    task: "MLOps",
+    org: "vLLM Project",
+    year: 2024,
+    summary: "High-throughput and memory-efficient LLM serving engine featuring PagedAttention algorithm, achieving 2-4x higher throughput than Hugging Face TGI.",
+    benchmarks: "Industry standard for production LLM serving with near-zero memory waste in KV cache.",
+    architecture: "PagedAttention virtual memory manager + Continuous batching + Chunked prefill + Tensor parallel runtime.",
+    url: "https://github.com/vllm-project/vllm"
+  },
+  {
+    name: "SGLang",
+    type: "Framework",
+    task: "MLOps",
+    org: "LMSYS Org",
+    year: 2024,
+    summary: "Fast serving framework for large language and vision models, featuring RadixAttention for automatic KV cache reuse across multi-turn chats and complex prompts.",
+    benchmarks: "Up to 5x higher throughput in complex multi-turn and reasoning workloads compared to standard inference engines.",
+    architecture: "RadixAttention tree-based KV cache indexer with co-designed compiler for structured decoding.",
+    url: "https://github.com/sgl-project/sglang"
   },
   {
     name: "Unsloth",
@@ -134,9 +223,42 @@ const FALLBACK_ENTRIES = [
     org: "Unsloth AI",
     year: 2024,
     summary: "Ultra-fast open-source LLM fine-tuning library providing 2-5x faster training with up to 80% less VRAM consumption.",
-    benchmarks: "5x faster fine-tuning on Llama 3 and Mistral with 0% accuracy loss.",
+    benchmarks: "5x faster fine-tuning on Llama 3, DeepSeek, and Mistral with 0% accuracy loss.",
     architecture: "Custom Triton GPU kernels and manual backprop derivation for attention mechanisms.",
     url: "https://github.com/unslothai/unsloth"
+  },
+  {
+    name: "Ollama",
+    type: "Platform",
+    task: "General",
+    org: "Ollama",
+    year: 2024,
+    summary: "Local runtime and CLI tool that bundles model weights, configuration, and GPU acceleration into unified Modelfiles for effortless local deployment.",
+    benchmarks: "Runs Llama 3.3, DeepSeek-R1, and Mistral locally with native Apple Silicon Metal and NVIDIA CUDA acceleration.",
+    architecture: "Go-based daemon wrapping llama.cpp with unified REST API compatible with OpenAI endpoints.",
+    url: "https://ollama.com"
+  },
+  {
+    name: "Cursor",
+    type: "Platform",
+    task: "AI Coding",
+    org: "Anysphere",
+    year: 2024,
+    summary: "AI-first code editor fork of VS Code equipped with deep codebase indexing, Cursor Tab multi-line autocompletion, and multi-file Composer agents.",
+    benchmarks: "Widely adopted by thousands of engineering teams for multi-file codebase refactoring and autonomous debugging.",
+    architecture: "Custom editor shell with proprietary vector embeddings for codebase chunking and shadow-workspace diff generation.",
+    url: "https://www.cursor.com"
+  },
+  {
+    name: "Windsurf",
+    type: "Platform",
+    task: "AI Coding",
+    org: "Codeium",
+    year: 2024,
+    summary: "Next-generation agentic IDE powered by Cascade, enabling synchronized collaborative workflows between developer and agent across terminal, editor, and browser.",
+    benchmarks: "High developer task velocity with real-time Cascade context tracking.",
+    architecture: "Collaborative agentic workspace engine combining real-time file diffing and sandboxed terminal execution.",
+    url: "https://codeium.com/windsurf"
   },
   {
     name: "GroqCloud",
@@ -145,24 +267,13 @@ const FALLBACK_ENTRIES = [
     org: "Groq",
     year: 2024,
     summary: "Developer platform offering high-throughput serverless AI inference powered by custom LPU silicon delivering 500+ tokens/sec.",
-    benchmarks: "500+ tokens/sec on Llama 3 8B, 250+ tokens/sec on Llama 3 70B.",
-    architecture: "Tensor Streaming Processor (TSP) architecture with deterministic execution.",
+    benchmarks: "500+ tokens/sec on Llama 3 8B, 280+ tokens/sec on Llama 3.3 70B.",
+    architecture: "Tensor Streaming Processor (TSP) architecture with deterministic execution and SRAM bandwidth.",
     url: "https://groq.com"
-  },
-  {
-    name: "Gemma 2 (27B)",
-    type: "Model",
-    task: "NLP",
-    org: "Google DeepMind",
-    year: 2024,
-    summary: "Class-leading lightweight open model built on Gemini research, outperforming models twice its parameter size.",
-    benchmarks: "MMLU: 81.5%, HumanEval: 71.5%",
-    architecture: "Transformer decoder with sliding window attention and soft-capping.",
-    url: "https://ai.google.dev/gemma"
   }
 ];
 
-// In-memory catalog cache for Supabase entries
+// In-memory catalog cache for merged Supabase and static entries
 let cachedEntries: any[] | null = null;
 let cacheTimestamp = 0;
 const CACHE_TTL_MS = 5 * 60 * 1000;
@@ -172,6 +283,18 @@ async function getCatalogEntries(): Promise<any[]> {
     return cachedEntries;
   }
 
+  const mergedMap = new Map<string, any>();
+
+  // 1. Seed with all verified static catalog entries (240+ entries, including all newly added models and frameworks)
+  if (Array.isArray(staticEntries)) {
+    for (const e of staticEntries) {
+      if (e && e.name) {
+        mergedMap.set(e.name.toLowerCase().trim(), e);
+      }
+    }
+  }
+
+  // 2. Augment with live Supabase entries if available
   const supabase = getSupabaseClient();
   if (supabase) {
     try {
@@ -182,21 +305,26 @@ async function getCatalogEntries(): Promise<any[]> {
         .order('created_at', { ascending: false });
 
       if (!error && data && data.length > 0) {
-        cachedEntries = data;
-        cacheTimestamp = Date.now();
-        return data;
+        for (const e of data) {
+          if (e && e.name) {
+            mergedMap.set(e.name.toLowerCase().trim(), e);
+          }
+        }
       }
     } catch (err) {
       console.warn('Supabase fetch fallback to embedded catalog:', err);
     }
   }
 
-  return FALLBACK_ENTRIES;
+  const result = Array.from(mergedMap.values());
+  cachedEntries = result.length > 0 ? result : FALLBACK_ENTRIES;
+  cacheTimestamp = Date.now();
+  return cachedEntries;
 }
 
 function getRelevantCatalogContext(query: string, allEntries: any[]): string {
   const queryLower = (query || "").toLowerCase();
-  const queryWords = queryLower.split(/\s+/).filter((w) => w.length > 2);
+  const queryWords = queryLower.split(/[\s,./\\-_+:]+/).filter((w) => w.length >= 2);
 
   const scored = allEntries.map((e) => {
     let score = 0;
@@ -204,29 +332,42 @@ function getRelevantCatalogContext(query: string, allEntries: any[]): string {
     const taskLower = (e.task || "").toLowerCase();
     const orgLower = (e.org || "").toLowerCase();
     const summaryLower = (e.summary || "").toLowerCase();
+    const archLower = (e.architecture || "").toLowerCase();
+    const benchLower = (e.benchmarks || "").toLowerCase();
+    const typeLower = (e.type || "").toLowerCase();
 
-    if (queryLower.includes(nameLower)) score += 50;
+    // Exact name in query
+    if (nameLower && queryLower.includes(nameLower)) score += 60;
+    if (nameLower && nameLower.includes(queryLower)) score += 40;
 
     for (const w of queryWords) {
-      if (nameLower.includes(w)) score += 10;
-      if (taskLower.includes(w)) score += 4;
-      if (orgLower.includes(w)) score += 3;
-      if (summaryLower.includes(w)) score += 1;
+      if (nameLower.includes(w)) score += 15;
+      if (taskLower.includes(w)) score += 8;
+      if (orgLower.includes(w)) score += 6;
+      if (typeLower.includes(w)) score += 6;
+      if (archLower.includes(w)) score += 4;
+      if (benchLower.includes(w)) score += 3;
+      if (summaryLower.includes(w)) score += 2;
     }
+
+    // Boost popular / flagship technologies
+    if (e.popular) score += 3;
+
     return { entry: e, score };
   });
 
   scored.sort((a, b) => b.score - a.score);
 
-  const top = scored.filter((s) => s.score > 0).slice(0, 10).map((s) => s.entry);
-  const selected = top.length > 0 ? top : allEntries.slice(0, 6);
+  const top = scored.filter((s) => s.score > 0).slice(0, 12).map((s) => s.entry);
+  const selected = top.length > 0 ? top : allEntries.slice(0, 8);
 
   return selected
     .map((e) => {
       const parts = [
-        `- **${e.name}** [Type: ${e.type} | Task: ${e.task || 'General'}] (Org: ${e.org || 'Open Source'}, Year: ${e.year || 'Recent'})`,
+        `- **${e.name}** [Type: ${e.type} | Task: ${e.task || 'General'} | License: ${e.license || 'Open'}] (Org: ${e.org || 'Community'}, Year: ${e.year || '2025/2026'})`,
         `  Summary: ${e.summary}`,
       ];
+      if (e.size && e.size !== 'N/A') parts.push(`  Size / Parameters: ${e.size}`);
       if (e.benchmarks && e.benchmarks !== 'N/A') parts.push(`  Key Benchmarks: ${e.benchmarks}`);
       if (e.architecture && e.architecture !== 'N/A') parts.push(`  Architecture: ${e.architecture}`);
       if (e.url) parts.push(`  URL: ${e.url}`);
@@ -238,7 +379,7 @@ function getRelevantCatalogContext(query: string, allEntries: any[]): string {
 // In-memory rate limiting map (IP -> timestamps[])
 const rateLimitMap = new Map<string, number[]>();
 const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
-const MAX_REQUESTS_PER_WINDOW = 30;
+const MAX_REQUESTS_PER_WINDOW = 40;
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
@@ -365,25 +506,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       : '';
     const nameStr = safeUserName ? `The user's name is ${safeUserName}. Greet them or address them by this name occasionally to be polite and personal.` : '';
 
-    // Enforce trusted server-controlled system prompt (caller cannot override systemInstruction)
-    const systemPromptContent = `You are Vox, an AI assistant and expert encyclopedia curator strictly dedicated to the AiVerse platform. ${nameStr} You MUST REFUSE to answer any questions that are not related to Artificial Intelligence, machine learning, AI models, frameworks, platforms, datasets, or the AiVerse platform itself. If a user asks about off-topic subjects, politely decline and steer the conversation back to AI technologies.\n\nHere are relevant AI items from the AiVerse encyclopedia (${allEntries.length}+ total indexed entries):\n${catalogContext || 'No catalog items found'}\n\nUse these technical facts, architectures, and benchmarks to accurately answer questions and offer comparisons.\n\nCRITICAL INSTRUCTIONS:\n1. **ACCURACY & CATALOG GROUNDING**: Rely on facts, benchmarks, and architectures provided in the catalog.\n2. **ORGANIZE CLEARLY**: Provide clean, highly structured responses with bullet points and bold headers.\n3. **HIGHLIGHT ENTITY NAMES**: Use **bold text** for AI entity names (e.g. **DeepSeek-R1**, **Llama 3.3 (70B)**, **LangGraph**, **FLUX.1 Schnell**, **Cursor**).\n4. **INCLUDE LINKS**: If a URL is available in the catalog, format as [Official Website](URL) or [Documentation](URL).`;
+    // Enforce trusted server-controlled system prompt with updated 2026 intelligence context
+    const systemPromptContent = `You are Vox, the premier AI intelligence assistant and technical advisor for the AiVerse platform (indexed through 2026). ${nameStr} You possess deep architectural knowledge of frontier models (GPT-6 Astra, Claude Fable, Gemini 2.5, DeepSeek-R1, DeepSeek-V3, Claude 3.7 Sonnet, Llama 3.3, Grok 3), open-source agent frameworks (LangGraph, CrewAI, AutoGen 0.4, Pydantic AI, Smolagents), inference engines (vLLM, SGLang, Unsloth, TensorRT-LLM, Groq LPU), and developer IDEs (Cursor, Windsurf, Claude Code).
+
+You MUST REFUSE to answer any questions that are completely unrelated to Artificial Intelligence, machine learning, software engineering, AI models, frameworks, platforms, datasets, or the AiVerse platform itself. If a user asks about off-topic subjects, politely decline and steer the conversation back to AI technologies.
+
+Here is verified technical data extracted from the AiVerse directory (${allEntries.length}+ total indexed entries):\n${catalogContext || 'No catalog items found'}\n\nUse these technical facts, architectures, licenses, and benchmarks to accurately answer questions, analyze trade-offs, and offer comparisons.
+
+CRITICAL INSTRUCTIONS:
+1. **ACCURACY & CATALOG GROUNDING**: Rely strictly on facts, benchmarks, and architectures provided in the catalog.
+2. **ORGANIZE CLEARLY**: Provide clean, highly structured responses with bullet points, comparisons, and bold headers.
+3. **HIGHLIGHT ENTITY NAMES**: Use **bold text** for AI entity names (e.g. **DeepSeek-R1**, **Llama 3.3 (70B)**, **LangGraph**, **Pydantic AI**, **vLLM**, **Cursor**).
+4. **INCLUDE LINKS**: If a URL is available in the catalog, format as [Official Website](URL) or [Documentation](URL).`;
 
     const systemPrompt = {
       role: 'system',
       content: systemPromptContent,
     };
 
-    // Priority list of models to try
+    // Priority list of verified, actively supported Groq models
     const FALLBACK_MODELS = [
-      'qwen/qwen3.8-27b',
-      'qwen/qwen3.6-27b',
-      'groq/compound-mini',
-      'groq/compound',
       'llama-3.3-70b-versatile',
+      'deepseek-r1-distill-llama-70b',
       'llama-3.1-8b-instant',
-      'openai/gpt-oss-120b',
-      'openai/gpt-oss-20b',
-      'allam-2-7b'
+      'gemma2-9b-it',
+      'llama-3.2-11b-vision-preview',
+      'llama-3.2-3b-preview',
+      'mixtral-8x7b-32768',
     ];
 
     const candidates = model && FALLBACK_MODELS.includes(model)
