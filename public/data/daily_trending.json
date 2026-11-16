@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-15T19:31:12.152Z",
+  "timestamp": "2026-11-16T01:31:23.729Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,7 +58,7 @@
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 7497,
+      "likes": 7540,
       "downloads": 27037,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
@@ -67,7 +67,7 @@
     {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 1171,
+      "likes": 1187,
       "downloads": 571067,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
@@ -76,7 +76,7 @@
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 20093,
+      "likes": 20126,
       "downloads": 6547772,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
@@ -85,7 +85,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 12032,
+      "likes": 12065,
       "downloads": 2754355,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5",
@@ -96,7 +96,7 @@
     {
       "title": "Who Remembers What? Multi-Granularity Memory Extraction for Multi-User, Multi-Agent Interaction",
       "summary": "MixUA distills lessons from independent user-agent trajectories and assigns them to appropriate scopes to balance cross-user and cross-agent learning with privacy, evaluated by CrossLearnBench.",
-      "upvotes": 8,
+      "upvotes": 13,
       "arxiv_id": "2611.10439",
       "url": "https://huggingface.co/papers/2611.10439",
       "githubRepo": null

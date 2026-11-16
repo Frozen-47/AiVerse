@@ -1,5 +1,87 @@
 [
   {
+    "date": "2026-11-16",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "Qwen3.5 Omni Plus",
+        "type": "Model",
+        "summary": "Frontier Multimodal model by Alibaba benchmarked on Artificial Analysis and a verified 256k Context window.",
+        "task": "Multimodal",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "Alibaba",
+        "size": "256k Context · Proprietary Model",
+        "architecture": "Proprietary frontier neural architecture developed by Alibaba, featuring native 256k Context token window support and optimized reasoning chains.",
+        "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-5-omni-plus",
+        "benchmarks": "Context Window: 256k Context, Benchmarked on Artificial Analysis Leaderboard",
+        "limitations": "Cloud API access subject to provider rate limits and compute quotas.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://artificialanalysis.ai/models/qwen3-5-omni-plus",
+        "citations": [
+          {
+            "text": "Qwen3.5 Omni Plus on Artificial Analysis Benchmark",
+            "url": "https://artificialanalysis.ai/models/qwen3-5-omni-plus"
+          },
+          {
+            "text": "Qwen3.5 Omni Plus Inference Providers",
+            "url": "https://artificialanalysis.ai/models/qwen3-5-omni-plus/providers"
+          }
+        ]
+      },
+      {
+        "name": "Google: Gemini 4 Hydrogen",
+        "type": "Model",
+        "summary": "Gemini 4 Hydrogen is the high-efficiency workhorse model of the Gemini 4 family from Google, built for high-throughput agentic workflows, coding and multi-model routing at lower co",
+        "task": "AI Coding",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "google",
+        "size": "1049k Context · Available via API",
+        "architecture": "Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.",
+        "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"google/gemini-4-hydrogen\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+        "benchmarks": "Context Window: 1049k Context, Available across global OpenRouter inference nodes.",
+        "limitations": "Requires OpenRouter API key and token credits.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://openrouter.ai/google/gemini-4-hydrogen",
+        "citations": [
+          {
+            "text": "Google: Gemini 4 Hydrogen on OpenRouter",
+            "url": "https://openrouter.ai/google/gemini-4-hydrogen"
+          }
+        ]
+      },
+      {
+        "name": "qwen-concept-27b",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by ConceptCountry, trending with over 267 community likes and 63,964 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "ConceptCountry",
+        "size": "27B params",
+        "architecture": "ConceptCountry transformer architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ConceptCountry/qwen-concept-27b\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ConceptCountry/qwen-concept-27b\")",
+        "benchmarks": "Trending Score: 200, Likes: 267, Downloads: 63,964",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/ConceptCountry/qwen-concept-27b",
+        "citations": [
+          {
+            "text": "ConceptCountry/qwen-concept-27b on Hugging Face",
+            "url": "https://huggingface.co/ConceptCountry/qwen-concept-27b"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-11-15",
     "status": "queued_in_review_list",
     "assets": [
@@ -5944,60 +6026,6 @@
           {
             "text": "hongzhuyi/VDEBench on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/hongzhuyi/VDEBench"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-20",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "Beam-1.0-501B-A23B",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by reflection, trending with over 170 community likes and 2,097 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "reflection",
-        "size": "501B params",
-        "architecture": "reflection text generation architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"reflection/Beam-1.0-501B-A23B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"reflection/Beam-1.0-501B-A23B\")",
-        "benchmarks": "Trending Score: 168, Likes: 170, Downloads: 2,097",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
-        "citations": [
-          {
-            "text": "reflection/Beam-1.0-501B-A23B on Hugging Face",
-            "url": "https://huggingface.co/reflection/Beam-1.0-501B-A23B"
-          }
-        ]
-      },
-      {
-        "name": "InfiniSplat2",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Edisoneh. Trending with 25 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "Edisoneh",
-        "size": "GRADIO Platform",
-        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Edisoneh/InfiniSplat2",
-        "benchmarks": "Trending Score: 21, Community Likes: 25",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/spaces/Edisoneh/InfiniSplat2",
-        "citations": [
-          {
-            "text": "Edisoneh/InfiniSplat2 on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/Edisoneh/InfiniSplat2"
           }
         ]
       }

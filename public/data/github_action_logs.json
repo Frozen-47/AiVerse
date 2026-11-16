@@ -1,5 +1,48 @@
 [
   {
+    "id": "action_1794792726836_uwjpw",
+    "created_at": "2026-11-16T01:32:06.836Z",
+    "timestamp": "2026-11-16T01:32:06.836Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 474 entries audited, 3 new asset(s) queued",
+    "details": "Ingested 3 asset(s): Qwen3.5 Omni Plus, Google: Gemini 4 Hydrogen, qwen-concept-27b. Checked health for 25 links (3 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 44799ms.",
+    "metadata": {
+      "totalCatalogEntries": 474,
+      "newlyIngestedCount": 3,
+      "newlyIngested": [
+        {
+          "name": "Qwen3.5 Omni Plus",
+          "type": "Model",
+          "org": "Alibaba"
+        },
+        {
+          "name": "Google: Gemini 4 Hydrogen",
+          "type": "Model",
+          "org": "google"
+        },
+        {
+          "name": "qwen-concept-27b",
+          "type": "Model",
+          "org": "ConceptCountry"
+        }
+      ],
+      "brokenLinks": 3,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 44799,
+      "runId": "43786737495",
+      "runNumber": "125",
+      "sha": "e8f4579",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1794771118708_84g2r",
     "created_at": "2026-11-15T19:31:58.708Z",
     "timestamp": "2026-11-15T19:31:58.708Z",
