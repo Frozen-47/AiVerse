@@ -1,29 +1,30 @@
 {
   "date": "2026-11-16",
   "tool": {
-    "name": "GPT-6 Astra (high)",
+    "name": "Stable Diffusion",
     "type": "Model",
-    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 55, Briefcase Elo of 1505, and a massive 1M context window.",
-    "task": "NLP",
-    "license": "Proprietary",
-    "year": 2026,
-    "org": "OpenAI",
-    "size": "1M Context · Proprietary Model",
-    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (63 tok/s).",
-    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-astra-high\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
-    "benchmarks": "Intelligence Index: 55, Briefcase Elo: 1505, Accuracy: 61%, Non-Hallucination: 57%, FrontierCode: 40%, AutomationBench: 67%, TerminalBench 4: 54%, HLE Diamond: 59%, Speed: 63 tok/s, Context Window: 1M",
-    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($10/M in, $50/M out).",
+    "summary": "Stability AI's landmark open-weights latent diffusion model that democratized high-resolution text-to-image synthesis by operating in compressed latent space for consumer GPU training and inference, incorporating an architecture of latent diffusion model with CLIP text encoder and U-Net denoising network. The model demonstrates competitive performance across verified evaluations, including FID score competitive with DALL-E 2. With its 890M params design, it supports diverse local and enterprise deployment profiles under the CreativeML Open RAIL-M license.",
+    "task": "Computer Vision",
+    "license": "CreativeML Open RAIL-M",
+    "year": 2022,
+    "org": "Stability AI",
+    "size": "890M params",
+    "architecture": "Latent diffusion model with CLIP text encoder and U-Net denoising network.",
+    "usage": "from diffusers import StableDiffusionPipeline\npipe = StableDiffusionPipeline.from_pretrained(\"stabilityai/stable-diffusion-2\")\nimage = pipe(\"a photo of an astronaut on mars\").images[0]",
+    "benchmarks": "FID score competitive with DALL-E 2",
+    "limitations": "Can produce biased outputs, requires GPU for reasonable speed.",
     "popular": true,
-    "url": "https://artificialanalysis.ai/models/gpt-6-astra-high",
+    "url": "https://stability.ai/stable-diffusion",
     "citations": [
       {
-        "text": "GPT-6 Astra (high) on Artificial Analysis Benchmark",
-        "url": "https://artificialanalysis.ai/models/gpt-6-astra-high"
+        "text": "Rombach et al. (2022) - Latent Diffusion Paper",
+        "url": "https://arxiv.org/abs/2112.10752"
       },
       {
-        "text": "GPT-6 Astra (high) Inference Providers",
-        "url": "https://artificialanalysis.ai/models/gpt-6-astra-high/providers"
+        "text": "Stability AI Official Site",
+        "url": "https://stability.ai"
       }
-    ]
+    ],
+    "description": "Stability AI's landmark open-weights latent diffusion model that democratized high-resolution text-to-image synthesis by operating in compressed latent space for consumer GPU training and inference, incorporating an architecture of latent diffusion model with CLIP text encoder and U-Net denoising network. The model demonstrates competitive performance across verified evaluations, including FID score competitive with DALL-E 2. With its 890M params design, it supports diverse local and enterprise deployment profiles under the CreativeML Open RAIL-M license."
   }
 }

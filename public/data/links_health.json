@@ -1,28 +1,18 @@
 {
-  "timestamp": "2026-11-16T08:53:27.021Z",
+  "timestamp": "2026-11-16T19:57:49.856Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "GPT-4.5",
-      "url": "https://openai.com",
+      "name": "Midjourney v6",
+      "url": "https://www.midjourney.com/",
       "status": 403
     },
     {
-      "name": "o3",
-      "url": "https://openai.com",
+      "name": "Midjourney (Platform)",
+      "url": "https://www.midjourney.com/",
       "status": 403
-    },
-    {
-      "name": "o1 (OpenAI)",
-      "url": "https://openai.com/o1",
-      "status": 403
-    },
-    {
-      "name": "LMSYS Chatbot Arena Conversations",
-      "url": "https://chat.lmsys.org",
-      "status": "Network Error"
     }
   ]
 }

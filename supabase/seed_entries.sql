@@ -1,5 +1,5 @@
 -- Seed / Upsert all 575 AiVerse entries into Supabase
--- Run this script in the Supabase Dashboard -> SQL Editor
+-- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('3d-collection', 'scenario-labs', 'Dataset', 'Computer Vision', 'CC-BY-4.0', 2026, '1K<n<10K', 'High-fidelity 3D asset dataset curated by Scenario Labs, featuring thousands of game-ready 3D models with physically based rendering (PBR) textures, clean quad topology, and semantic category tags. Used for training next-generation text-to-3D and image-to-3D generative models.', 'Structured 3D asset dataset containing GLTF/FBX models, PBR texture maps (Albedo, Normal, Roughness, Metalness), and captions.', 'from datasets import load_dataset

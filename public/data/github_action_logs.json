@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1794859105786_uytm7",
+    "created_at": "2026-11-16T19:58:25.786Z",
+    "timestamp": "2026-11-16T19:58:25.786Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Qwen3.5 122B A10B, Tencent: Hy4 flash, PAN2, AI-Image-Upscaler, Ropedia-Xperience-2. Checked health for 25 links (2 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 37804ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Qwen3.5 122B A10B",
+          "type": "Model",
+          "org": "Alibaba"
+        },
+        {
+          "name": "Tencent: Hy4 flash",
+          "type": "Model",
+          "org": "tencent"
+        },
+        {
+          "name": "PAN2",
+          "type": "Model",
+          "org": "IFM"
+        },
+        {
+          "name": "AI-Image-Upscaler",
+          "type": "Platform",
+          "org": "MegaPotatoAI"
+        },
+        {
+          "name": "Ropedia-Xperience-2",
+          "type": "Dataset",
+          "org": "ropedia-ai"
+        }
+      ],
+      "brokenLinks": 2,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 37804,
+      "runId": "43944754982",
+      "runNumber": "127",
+      "sha": "c7ddb83",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1794831027753_7p46c",
     "created_at": "2026-11-16T12:10:27.753Z",
     "timestamp": "2026-11-16T12:10:27.753Z",

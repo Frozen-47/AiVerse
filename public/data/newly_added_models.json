@@ -4,6 +4,136 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Qwen3.5 122B A10B",
+        "type": "Model",
+        "summary": "Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.",
+        "task": "NLP",
+        "license": "Open Weights",
+        "year": 2026,
+        "org": "Alibaba",
+        "size": "262k Context · Open Model",
+        "architecture": "Open-weights frontier neural architecture developed by Alibaba, featuring native 262k Context token window support and optimized reasoning chains.",
+        "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-5-122b-a10b",
+        "benchmarks": "Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard",
+        "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://artificialanalysis.ai/models/qwen3-5-122b-a10b",
+        "citations": [
+          {
+            "text": "Qwen3.5 122B A10B on Artificial Analysis Benchmark",
+            "url": "https://artificialanalysis.ai/models/qwen3-5-122b-a10b"
+          },
+          {
+            "text": "Qwen3.5 122B A10B Inference Providers",
+            "url": "https://artificialanalysis.ai/models/qwen3-5-122b-a10b/providers"
+          }
+        ]
+      },
+      {
+        "name": "Tencent: Hy4 flash",
+        "type": "Model",
+        "summary": "Hy4 flash is a cost-efficient variant of [Hy4](https://openrouter.ai/tencent/hy4) from Tencent, served with roughly a quarter of the flagship's parameter count for lower latency an",
+        "task": "NLP",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "tencent",
+        "size": "1049k Context · Available via API",
+        "architecture": "Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.",
+        "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"tencent/hy4-flash\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+        "benchmarks": "Context Window: 1049k Context, Available across global OpenRouter inference nodes.",
+        "limitations": "Requires OpenRouter API key and token credits.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://openrouter.ai/tencent/hy4-flash",
+        "citations": [
+          {
+            "text": "Tencent: Hy4 flash on OpenRouter",
+            "url": "https://openrouter.ai/tencent/hy4-flash"
+          }
+        ]
+      },
+      {
+        "name": "PAN2",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by IFM, trending with over 180 community likes and 374 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "IFM",
+        "size": "Open Weights",
+        "architecture": "IFM image text to video architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"IFM/PAN2\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"IFM/PAN2\")",
+        "benchmarks": "Trending Score: 160, Likes: 180, Downloads: 374",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/IFM/PAN2",
+        "citations": [
+          {
+            "text": "IFM/PAN2 on Hugging Face",
+            "url": "https://huggingface.co/IFM/PAN2"
+          }
+        ]
+      },
+      {
+        "name": "AI-Image-Upscaler",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by MegaPotatoAI. Trending with 31 community stars.",
+        "task": "Image Generation",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "MegaPotatoAI",
+        "size": "STATIC Platform",
+        "architecture": "STATIC cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/MegaPotatoAI/AI-Image-Upscaler",
+        "benchmarks": "Trending Score: 24, Community Likes: 31",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/MegaPotatoAI/AI-Image-Upscaler",
+        "citations": [
+          {
+            "text": "MegaPotatoAI/AI-Image-Upscaler on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/MegaPotatoAI/AI-Image-Upscaler"
+          }
+        ]
+      },
+      {
+        "name": "Ropedia-Xperience-2",
+        "type": "Dataset",
+        "summary": "Ropedia Xperience 2 \t A Gold Standard for Scaling Physical AI Environments and Behaviors. 1,500+ scanned scenes and 4,000+ egocentric recordings, registered in one metr (18 likes, 6,562 downloads).",
+        "task": "Computer Vision",
+        "license": "CC-BY-NC-4.0",
+        "year": 2026,
+        "org": "ropedia-ai",
+        "size": "10K<n<100K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"ropedia-ai/Ropedia-Xperience-2\")",
+        "benchmarks": "Trending Score: 17, Likes: 18, Downloads: 6,562",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/ropedia-ai/Ropedia-Xperience-2",
+        "citations": [
+          {
+            "text": "ropedia-ai/Ropedia-Xperience-2 on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/ropedia-ai/Ropedia-Xperience-2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-16",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Nova 2.0 Omni",
         "type": "Model",
         "summary": "Frontier Multimodal model by Amazon benchmarked on Artificial Analysis and a verified 1000k Context window.",
@@ -5976,84 +6106,6 @@
           {
             "text": "bones-studio/seed on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/bones-studio/seed"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-20",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "MOSS-Image-SFT-8-steps-dmd",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by lodestones, trending with over 170 community likes and 54,814 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "lodestones",
-        "size": "Open Weights",
-        "architecture": "lodestones transformer architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"lodestones/MOSS-Image-SFT-8-steps-dmd\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"lodestones/MOSS-Image-SFT-8-steps-dmd\")",
-        "benchmarks": "Trending Score: 168, Likes: 170, Downloads: 54,814",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/lodestones/MOSS-Image-SFT-8-steps-dmd",
-        "citations": [
-          {
-            "text": "lodestones/MOSS-Image-SFT-8-steps-dmd on Hugging Face",
-            "url": "https://huggingface.co/lodestones/MOSS-Image-SFT-8-steps-dmd"
-          }
-        ]
-      },
-      {
-        "name": "uncensored-imageTOimage2Ref",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by fishpasters. Trending with 33 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "fishpasters",
-        "size": "GRADIO Platform",
-        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/fishpasters/uncensored-imageTOimage2Ref",
-        "benchmarks": "Trending Score: 24, Community Likes: 33",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/spaces/fishpasters/uncensored-imageTOimage2Ref",
-        "citations": [
-          {
-            "text": "fishpasters/uncensored-imageTOimage2Ref on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/fishpasters/uncensored-imageTOimage2Ref"
-          }
-        ]
-      },
-      {
-        "name": "SharpaDex-v1.0",
-        "type": "Dataset",
-        "summary": "SharpaDex v1.0   A multimodal dataset of real-world teleoperated demonstrations for bimanual dexterous manipulation.               Overview ·   Get Started ·   Tasks ·   Examples · (22 likes, 66,553 downloads).",
-        "task": "NLP",
-        "license": "CC-BY-NC-4.0",
-        "year": 2026,
-        "org": "Sharpa-Robotics",
-        "size": "100K<n<1M",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Sharpa-Robotics/SharpaDex-v1.0\")",
-        "benchmarks": "Trending Score: 19, Likes: 22, Downloads: 66,553",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/Sharpa-Robotics/SharpaDex-v1.0",
-        "citations": [
-          {
-            "text": "Sharpa-Robotics/SharpaDex-v1.0 on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/Sharpa-Robotics/SharpaDex-v1.0"
           }
         ]
       }
