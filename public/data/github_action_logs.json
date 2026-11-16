@@ -1,5 +1,28 @@
 [
   {
+    "id": "action_1794823515572_suyem",
+    "created_at": "2026-11-16T10:05:15.572Z",
+    "timestamp": "2026-11-16T10:05:15.572Z",
+    "workflow": "Leaderboard Sync",
+    "action": "LEADERBOARD_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "Leaderboard Sync completed: 137 benchmarked frontier models active",
+    "details": "Ingested live data from Artificial Analysis (118 models updated) and OpenRouter (1 pricing metrics updated). Sorted and compiled into src/data/leaderboardData.ts in 662ms.",
+    "metadata": {
+      "totalModels": 137,
+      "liveScraped": 118,
+      "priceUpdates": 1,
+      "durationMs": 662,
+      "targetFile": "src/data/leaderboardData.ts",
+      "runId": "43845470891",
+      "runNumber": "2",
+      "sha": "2c70f34",
+      "ref": "refs/heads/main",
+      "workflow": "Leaderboard Sync"
+    }
+  },
+  {
     "id": "action_1794819237321_hdf82",
     "created_at": "2026-11-16T08:53:57.321Z",
     "timestamp": "2026-11-16T08:53:57.321Z",
