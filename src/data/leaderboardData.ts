@@ -6,8 +6,8 @@ export interface LeaderboardModel {
   id: string;
   name: string;
   shortName?: string;
-  releaseSlug: string;
-  releaseName: string;
+  releaseSlug?: string;
+  releaseName?: string;
   suffix?: string;
   creator: string;
   creatorColor?: string;
