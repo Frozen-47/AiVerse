@@ -698,7 +698,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 </div>
 
                 <p className="text-[13.5px] sm:text-[14px] leading-relaxed text-[#3c4043] dark:text-[#c4c7c5] max-w-4xl pt-1">
-                  {entry.summary}
+                  {entry.description || entry.summary}
                 </p>
               </div>
             </div>

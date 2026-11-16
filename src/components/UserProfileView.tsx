@@ -884,8 +884,8 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                                 <h4 className="text-base font-bold text-neutral-900 dark:text-white group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors">
                                   {entry.name}
                                 </h4>
-                                <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2 mt-1.5 leading-relaxed">
-                                  {entry.summary}
+                                <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2 sm:line-clamp-3 mt-1.5 leading-relaxed">
+                                  {entry.description || entry.summary}
                                 </p>
                               </div>
 
@@ -951,8 +951,8 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                                 <h4 className="text-base font-bold text-neutral-900 dark:text-white group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors">
                                   {entry.name}
                                 </h4>
-                                <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2 mt-1.5 leading-relaxed">
-                                  {entry.summary}
+                                <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2 sm:line-clamp-3 mt-1.5 leading-relaxed">
+                                  {entry.description || entry.summary}
                                 </p>
                               </div>
 

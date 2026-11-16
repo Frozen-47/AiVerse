@@ -528,14 +528,50 @@ const Inner: React.FC = () => {
         (staticEntries || []).forEach(e => {
           if (e && e.name) mergedMap.set(e.name.toLowerCase().trim(), e);
         });
-        // 2. Supabase approved entries take precedence / filter out deleted entries
+        // 2. Supabase approved entries take precedence / filter out deleted entries,
+        // but always preserve the richer detailed descriptions, benchmarks, and architecture from staticEntries!
         remoteEntries.forEach(e => {
           if (!e || !e.name) return;
           const key = e.name.toLowerCase().trim();
           if (e.approved === false) {
             mergedMap.delete(key);
           } else {
-            mergedMap.set(key, e);
+            const existing = mergedMap.get(key);
+            if (existing) {
+              const existingSummaryLen = existing.summary?.length || 0;
+              const remoteSummaryLen = e.summary?.length || 0;
+              const bestSummary = existingSummaryLen >= remoteSummaryLen ? existing.summary : e.summary;
+              const bestDesc = (existing.description && existing.description.length >= (e.description?.length || 0))
+                ? existing.description
+                : (e.description || bestSummary);
+
+              const bestArch = (existing.architecture && existing.architecture !== "N/A" && (!e.architecture || e.architecture === "N/A" || existing.architecture.length >= e.architecture.length))
+                ? existing.architecture
+                : (e.architecture || existing.architecture);
+
+              const bestBench = (existing.benchmarks && existing.benchmarks !== "N/A" && (!e.benchmarks || e.benchmarks === "N/A" || existing.benchmarks.length >= e.benchmarks.length))
+                ? existing.benchmarks
+                : (e.benchmarks || existing.benchmarks);
+
+              const bestCitations = (existing.citations && existing.citations.length > 0 && (!e.citations || e.citations.length === 0))
+                ? existing.citations
+                : (e.citations || existing.citations);
+
+              mergedMap.set(key, {
+                ...existing,
+                ...e,
+                summary: bestSummary,
+                description: bestDesc,
+                architecture: bestArch,
+                benchmarks: bestBench,
+                citations: bestCitations,
+              });
+            } else {
+              mergedMap.set(key, {
+                ...e,
+                description: e.description || e.summary,
+              });
+            }
           }
         });
         const combined = Array.from(mergedMap.values());

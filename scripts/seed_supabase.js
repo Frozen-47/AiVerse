@@ -55,7 +55,11 @@ async function seed() {
 
   console.log(`Found ${entries.length} entries. Seeding to Supabase...`);
 
-  const entriesWithApproved = entries.map(e => ({ ...e, approved: true }));
+  const entriesWithApproved = entries.map(e => {
+    // Strip client-only or non-column fields like 'description'
+    const { description, ...rest } = e;
+    return { ...rest, approved: true };
+  });
 
   // Chunk in batches of 50
   const chunkSize = 50;

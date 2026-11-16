@@ -105,7 +105,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
         .replace(/[^\w\s]/g, "")
         .split(/\s+/)
         .filter(w => w.length > 2);
-      const text = `${entry.name} ${entry.task} ${entry.summary} ${entry.architecture}`.toLowerCase();
+      const text = `${entry.name} ${entry.task} ${entry.description || entry.summary} ${entry.architecture}`.toLowerCase();
       const matched = keywords.filter(kw => text.includes(kw));
       if (matched.length > 0) {
         insights.push(`Keyword match: ${matched.slice(0, 2).join(", ")}`);
@@ -719,7 +719,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                           </div>
 
                           <p className="text-xs leading-relaxed text-[#5f6368] dark:text-[#c4c7c5] line-clamp-3 mb-4">
-                            {entry.summary}
+                            {entry.description || entry.summary}
                           </p>
 
                           {/* Match Insights Google Callout */}
@@ -818,7 +818,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                             </span>
                           </div>
                           <p className="text-[11px] text-[#5f6368] dark:text-[#c4c7c5] line-clamp-2 leading-relaxed mb-3">
-                            {entry.summary}
+                            {entry.description || entry.summary}
                           </p>
                         </div>
 

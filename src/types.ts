@@ -14,6 +14,7 @@ export interface Entry {
   year: number;
   size: string;
   summary: string;
+  description?: string;
   architecture: string;
   usage?: string;
   benchmarks: string;

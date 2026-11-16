@@ -403,7 +403,7 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
               { label: "Key Benchmarks", a: entryA.benchmarks || "N/A", b: entryB.benchmarks || "N/A", full: true },
               { label: "Known Limitations", a: entryA.limitations || "None reported", b: entryB.limitations || "None reported", full: true, warning: true },
               { label: "Architecture", a: entryA.architecture, b: entryB.architecture },
-              { label: "Technical Summary", a: entryA.summary, b: entryB.summary, full: true },
+              { label: "Technical Summary", a: (entryA.description || entryA.summary), b: (entryB.description || entryB.summary), full: true },
             ].map((row, i) => {
               const differs = row.a !== row.b;
               return (

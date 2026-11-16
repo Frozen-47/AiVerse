@@ -1,9 +1,40 @@
-import React, { useState, useMemo, useEffect, useRef } from "react";
-import { RotateCcw, ChevronLeft, ChevronRight, List, LayoutGrid } from "lucide-react";
+import React, { useState, useMemo, useRef } from "react";
+import { 
+  RotateCcw, 
+  ChevronLeft, 
+  ChevronRight, 
+  List, 
+  LayoutGrid, 
+  Layers, 
+  Crown, 
+  Globe, 
+  Zap, 
+  Wrench, 
+  Palette, 
+  GraduationCap, 
+  ChevronsUpDown, 
+  ChevronDown, 
+  ChevronUp 
+} from "lucide-react";
 import type { Entry, EntryRatingSummary } from "../types";
-import { groupEntriesByEcosystem, type EcosystemGroup } from "../lib/ecosystems";
+import { 
+  groupEntriesByEcosystem, 
+  type EcosystemGroup, 
+  ECOSYSTEM_TIERS 
+} from "../lib/ecosystems";
 import { EcosystemCard } from "./EcosystemCard";
 import { EcosystemDeepDive } from "./EcosystemDeepDive";
+
+const TIER_ICONS: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+  Crown,
+  Globe,
+  Zap,
+  Wrench,
+  Palette,
+  GraduationCap,
+};
+
+type FilterFocusType = "All" | "Frontier" | "Open" | "Multi";
 
 interface EcosystemsSectionProps {
   entries: Entry[];
@@ -31,11 +62,16 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
   const [internalSearchQuery, setInternalSearchQuery] = useState("");
   const searchQuery = propSearchQuery !== undefined ? propSearchQuery : internalSearchQuery;
   const setSearchQuery = onSearchQueryChange || setInternalSearchQuery;
-  const [activeEcosystem, setActiveEcosystem] = useState<EcosystemGroup | null>(null);
-  const [filterFocus, setFilterFocus] = useState<"All" | "Frontier" | "Open" | "Multi">("All");
+  const [internalActiveEcosystem, setInternalActiveEcosystem] = useState<EcosystemGroup | null>(null);
+  const [filterFocus, setFilterFocus] = useState<FilterFocusType>("All");
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(12);
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [viewMode, setViewMode] = useState<"tiers" | "grid" | "list">("tiers");
+
+  // All tiers open and visible by default for a rich, browsable directory
+  const [expandedTiers, setExpandedTiers] = useState<Set<string>>(() => {
+    return new Set(ECOSYSTEM_TIERS.map((t) => t.id));
+  });
 
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -43,28 +79,29 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
     return groupEntriesByEcosystem(entries);
   }, [entries]);
 
-  // Automatically activate ecosystem when selectedEcosystemId is passed (e.g. from "View Ecosystem" button)
-  useEffect(() => {
+  // Derived active ecosystem from either user selection or selectedEcosystemId prop
+  const activeEcosystem = useMemo(() => {
+    if (internalActiveEcosystem) return internalActiveEcosystem;
     if (selectedEcosystemId) {
       const target = selectedEcosystemId.trim().toLowerCase();
       const targetSlug = target.replace(/[^a-z0-9]+/g, "-");
-      const match = allEcosystems.find(
-        (eco) =>
-          eco.id === targetSlug ||
-          eco.name.toLowerCase() === target ||
-          eco.normalizedOrg.toLowerCase() === target ||
-          eco.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") === targetSlug
+      return (
+        allEcosystems.find(
+          (eco) =>
+            eco.id === targetSlug ||
+            eco.name.toLowerCase() === target ||
+            eco.normalizedOrg.toLowerCase() === target ||
+            eco.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") === targetSlug
+        ) || null
       );
-      if (match) {
-        setActiveEcosystem(match);
-      }
     }
-  }, [selectedEcosystemId, allEcosystems]);
+    return null;
+  }, [internalActiveEcosystem, selectedEcosystemId, allEcosystems]);
 
-  // Reset to page 1 whenever search query or category filter changes
-  useEffect(() => {
+  const handleFilterFocus = (focus: FilterFocusType) => {
+    setFilterFocus(focus);
     setCurrentPage(1);
-  }, [searchQuery, filterFocus]);
+  };
 
   const filteredEcosystems = useMemo(() => {
     let result = allEcosystems;
@@ -98,9 +135,77 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
     return result;
   }, [allEcosystems, searchQuery, filterFocus]);
 
+  // Group filtered ecosystems into structured Tiers
+  const tieredEcosystems = useMemo(() => {
+    const assignedIds = new Set<string>();
+    const tiersWithLabs = ECOSYSTEM_TIERS.map((tier) => {
+      const matchingLabs = filteredEcosystems.filter((eco) => {
+        return tier.labs.some(
+          (labName) =>
+            eco.name.toLowerCase() === labName.toLowerCase() ||
+            eco.normalizedOrg.toLowerCase() === labName.toLowerCase() ||
+            eco.id === labName.toLowerCase().replace(/[^a-z0-9]+/g, "-")
+        );
+      });
+      matchingLabs.forEach((l) => assignedIds.add(l.id));
+      const totalAssets = matchingLabs.reduce((sum, l) => sum + l.totalCount, 0);
+      return {
+        ...tier,
+        ecosystems: matchingLabs,
+        totalAssets,
+      };
+    }).filter((tier) => tier.ecosystems.length > 0);
+
+    // Remaining labs not in a curated tier
+    const unassigned = filteredEcosystems.filter((eco) => !assignedIds.has(eco.id));
+    if (unassigned.length > 0) {
+      tiersWithLabs.push({
+        id: "other",
+        name: "Specialized & Emerging AI Laboratories",
+        shortTitle: "Specialized Labs",
+        description: "Innovative independent research teams, application builders, and niche foundation architectures.",
+        badge: "Specialized Labs",
+        iconName: "Zap",
+        labs: unassigned.map((e) => e.name),
+        ecosystems: unassigned,
+        totalAssets: unassigned.reduce((sum, l) => sum + l.totalCount, 0),
+      });
+    }
+
+    return tiersWithLabs;
+  }, [filteredEcosystems]);
+
+  // Determine if a tier is expanded (auto-expand during search, otherwise read user preference)
+  const isTierExpanded = (tierId: string) => {
+    if (searchQuery.trim().length > 0) return true;
+    return expandedTiers.has(tierId);
+  };
+
+  const allTiersExpanded = tieredEcosystems.length > 0 && tieredEcosystems.every((t) => isTierExpanded(t.id));
+
+  const toggleAllTiers = () => {
+    if (allTiersExpanded) {
+      setExpandedTiers(new Set());
+    } else {
+      setExpandedTiers(new Set(tieredEcosystems.map((t) => t.id)));
+    }
+  };
+
+  const toggleTier = (tierId: string) => {
+    setExpandedTiers((prev) => {
+      const next = new Set(prev);
+      if (next.has(tierId)) {
+        next.delete(tierId);
+      } else {
+        next.add(tierId);
+      }
+      return next;
+    });
+  };
+
   const totalPages = Math.max(1, Math.ceil(filteredEcosystems.length / pageSize));
 
-  // Current page items slice
+  // Current page items slice for Grid & List modes
   const paginatedEcosystems = useMemo(() => {
     const start = (currentPage - 1) * pageSize;
     return filteredEcosystems.slice(start, start + pageSize);
@@ -112,7 +217,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
     sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  // Helper for sliding pagination window (e.g. [1, 2, 3, 4, 5, '...', 19])
+  // Helper for sliding pagination window
   const getVisiblePages = (current: number, total: number) => {
     if (total <= 7) {
       return Array.from({ length: total }, (_, i) => i + 1);
@@ -134,7 +239,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
       <EcosystemDeepDive
         ecosystem={activeEcosystem}
         onBack={() => {
-          setActiveEcosystem(null);
+          setInternalActiveEcosystem(null);
           onClearSelectedEcosystem?.();
         }}
         onSelectEntry={(entryName) => {
@@ -150,21 +255,21 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
 
   return (
     <div ref={sectionRef} className="flex flex-col gap-6 w-full text-left animate-[fadeUp_0.3s_ease-out] scroll-mt-24">
-      {/* Ecosystem Search and Filter Controls - Unified sleek toolbar without duplicate title */}
+      {/* Ecosystem Search and Filter Controls */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3.5 pb-4 border-b border-neutral-200/80 dark:border-white/[0.08]">
         {/* Filter Quick Pills */}
         <div className="flex items-center gap-1.5 flex-wrap">
           {[
-            { id: "All", label: "All Labs" },
-            { id: "Frontier", label: "Frontier Giants (OpenAI, Google, Anthropic, xAI)" },
-            { id: "Open", label: "Open-Weights Champions (Meta, DeepSeek, Mistral, Qwen)" },
-            { id: "Multi", label: "Extensive Suites (5+ Assets)" },
+            { id: "All" as const, label: "All Labs" },
+            { id: "Frontier" as const, label: "Frontier Giants (OpenAI, Google, Anthropic, xAI)" },
+            { id: "Open" as const, label: "Open-Weights Champions (Meta, DeepSeek, Mistral, Qwen)" },
+            { id: "Multi" as const, label: "Extensive Suites (5+ Assets)" },
           ].map((pill) => {
             const isSelected = filterFocus === pill.id;
             return (
               <button
                 key={pill.id}
-                onClick={() => setFilterFocus(pill.id as any)}
+                onClick={() => handleFilterFocus(pill.id)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
                   isSelected
                     ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold shadow-xs"
@@ -177,16 +282,40 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
           })}
         </div>
 
-        {/* Count indicator & View Mode Toggle (Grid first, then Line by Line) */}
+        {/* View Mode Toggle & Expand All Button */}
         <div className="flex items-center justify-between sm:justify-end gap-3 w-full lg:w-auto">
-          <span className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400 whitespace-nowrap">
+          {viewMode === "tiers" && (
+            <button
+              type="button"
+              onClick={toggleAllTiers}
+              className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer shadow-xs"
+              title={allTiersExpanded ? "Collapse all tiers" : "Expand all tiers"}
+            >
+              <ChevronsUpDown size={12} className="opacity-70" />
+              <span>{allTiersExpanded ? "Collapse all" : "Expand all"}</span>
+            </button>
+          )}
+
+          <span className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400 whitespace-nowrap hidden sm:inline">
             {filteredEcosystems.length === allEcosystems.length
-              ? `Page ${currentPage} of ${totalPages} (${allEcosystems.length} labs)`
+              ? `${allEcosystems.length} AI Labs`
               : `${filteredEcosystems.length} of ${allEcosystems.length} labs`}
           </span>
 
-          {/* View Mode Toggle: Grid first, then Line by Line */}
+          {/* View Mode Toggle: Organized Tiers first, then Grid, then Line by Line */}
           <div className="flex items-center p-1 rounded-xl bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08] shrink-0">
+            <button
+              onClick={() => setViewMode("tiers")}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                viewMode === "tiers"
+                  ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-xs"
+                  : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
+              }`}
+              title="Organized by Tiers (Collapsible)"
+            >
+              <Layers size={13} />
+              <span className="hidden sm:inline">Organized</span>
+            </button>
             <button
               onClick={() => setViewMode("grid")}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
@@ -194,7 +323,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
                   ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-xs"
                   : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
               }`}
-              title="2-column grid view"
+              title="Grid view"
             >
               <LayoutGrid size={13} />
               <span className="hidden sm:inline">Grid</span>
@@ -209,13 +338,13 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
               title="Line-by-line list view"
             >
               <List size={13} />
-              <span className="hidden sm:inline">Line by Line</span>
+              <span className="hidden sm:inline">List</span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* List / Grid of Ecosystem Cards */}
+      {/* Empty State */}
       {filteredEcosystems.length === 0 ? (
         <div className="p-12 text-center rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/50 dark:bg-white/[0.01] flex flex-col items-center justify-center my-4">
           <p className="text-base font-semibold text-neutral-900 dark:text-white mb-2">
@@ -228,6 +357,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
             onClick={() => {
               setSearchQuery("");
               setFilterFocus("All");
+              setCurrentPage(1);
             }}
             className="px-4 py-2 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black shadow-xs cursor-pointer hover:opacity-90 transition-all flex items-center gap-1.5"
           >
@@ -235,20 +365,93 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
             Reset Filters
           </button>
         </div>
+      ) : viewMode === "tiers" ? (
+        /* ─── Mode 1: Organized by Tiers (Collapsible, Initially Closed) ─── */
+        <div className="flex flex-col gap-4 w-full">
+          {tieredEcosystems.map((tier) => {
+            const isExpanded = isTierExpanded(tier.id);
+            const Icon = TIER_ICONS[tier.iconName] || Zap;
+
+            return (
+              <div
+                key={tier.id}
+                className="rounded-2xl border border-neutral-200/90 dark:border-white/10 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl shadow-2xs overflow-hidden transition-all duration-200"
+              >
+                {/* Tier Header (Click to Expand / Collapse) */}
+                <button
+                  type="button"
+                  onClick={() => toggleTier(tier.id)}
+                  aria-expanded={isExpanded}
+                  className="w-full flex items-center justify-between p-4 sm:px-5 sm:py-4 hover:bg-neutral-50/80 dark:hover:bg-white/[0.03] transition-colors cursor-pointer text-left select-none"
+                >
+                  {/* Left: Icon + Tier Name + Badges + Subtitle */}
+                  <div className="flex items-center gap-3.5 min-w-0 flex-1">
+                    <div className="w-8 h-8 rounded-xl bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 border border-blue-500/20">
+                      <Icon size={16} />
+                    </div>
+
+                    <div className="flex items-center gap-2 flex-wrap min-w-0">
+                      <h3 className="font-bold text-sm sm:text-base text-neutral-900 dark:text-white tracking-tight">
+                        {tier.name}
+                      </h3>
+
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-neutral-100 dark:bg-white/[0.06] text-neutral-600 dark:text-neutral-300 border border-neutral-200/60 dark:border-white/[0.06] tabular-nums">
+                        {tier.ecosystems.length} {tier.ecosystems.length === 1 ? "Lab" : "Labs"} · {tier.totalAssets} Assets
+                      </span>
+
+                      <span className="text-xs text-neutral-500 dark:text-neutral-400 hidden lg:inline truncate max-w-md">
+                        · {tier.description}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Right: Expand / Collapse Indicator */}
+                  <div className="flex items-center gap-2 shrink-0 ml-2">
+                    <span className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 hidden sm:inline">
+                      {isExpanded ? "Collapse" : "Expand"}
+                    </span>
+                    {isExpanded ? (
+                      <ChevronUp size={16} className="text-neutral-700 dark:text-neutral-300" />
+                    ) : (
+                      <ChevronDown size={16} className="text-neutral-500 dark:text-neutral-400" />
+                    )}
+                  </div>
+                </button>
+
+                {/* Sub-Content: Ecosystem Cards in that Tier */}
+                {isExpanded && (
+                  <div className="p-4 sm:p-5 pt-2 border-t border-neutral-100 dark:border-white/[0.06] bg-neutral-50/40 dark:bg-black/20 animate-[fadeUp_0.2s_ease-out]">
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                      {tier.ecosystems.map((eco) => (
+                        <EcosystemCard
+                          key={eco.id}
+                          ecosystem={eco}
+                          onExplore={(selectedEco) => setInternalActiveEcosystem(selectedEco)}
+                          onSelectEntry={onSelectEntry}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       ) : (
+        /* ─── Mode 2 & 3: Flat Grid or Line-by-Line List ─── */
         <>
           <div className={viewMode === "list" ? "flex flex-col gap-3.5" : "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4.5"}>
             {paginatedEcosystems.map((eco) => (
               <EcosystemCard
                 key={eco.id}
                 ecosystem={eco}
-                onExplore={(selectedEco) => setActiveEcosystem(selectedEco)}
+                onExplore={(selectedEco) => setInternalActiveEcosystem(selectedEco)}
                 onSelectEntry={onSelectEntry}
               />
             ))}
           </div>
 
-          {/* Pagination Controls */}
+          {/* Pagination Controls for Grid / List modes */}
           {totalPages > 1 && (
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 mt-4 border-t border-neutral-200/80 dark:border-white/[0.08]">
               {/* Left: Summary and Page Size Selectors */}

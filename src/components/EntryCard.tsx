@@ -116,8 +116,8 @@ export const EntryCard = memo(function EntryCard({
       </h3>
 
       {/* ── 3. Snippet Description ── */}
-      <p className="text-xs sm:text-[13px] leading-relaxed text-[#4d5156] dark:text-[#bdc1c6] line-clamp-2 mb-3 flex-1 font-normal">
-        {entry.summary}
+      <p className="text-xs sm:text-[13px] leading-relaxed text-[#4d5156] dark:text-[#bdc1c6] line-clamp-2 sm:line-clamp-3 mb-3 flex-1 font-normal">
+        {entry.description || entry.summary}
       </p>
 
       {/* ── 4. Attribute Sitelinks / Chips ── */}

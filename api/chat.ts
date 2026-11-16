@@ -304,7 +304,14 @@ async function getCatalogEntries(): Promise<any[]> {
       if (!error && data && data.length > 0) {
         for (const e of data) {
           if (e && e.name) {
-            mergedMap.set(e.name.toLowerCase().trim(), e);
+            const key = e.name.toLowerCase().trim();
+            const existing = mergedMap.get(key);
+            if (existing) {
+              const bestSummary = (existing.summary?.length || 0) >= (e.summary?.length || 0) ? existing.summary : e.summary;
+              mergedMap.set(key, { ...existing, ...e, summary: bestSummary });
+            } else {
+              mergedMap.set(key, e);
+            }
           }
         }
       }

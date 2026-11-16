@@ -689,3 +689,445 @@ export function groupEntriesByEcosystem(entries: Entry[]): EcosystemGroup[] {
     return b.totalCount - a.totalCount;
   });
 }
+
+
+// ─── Lab Creator Accent Color Helper ───────────────────────────────────────────
+export function getCreatorColor(creator: string): string {
+  const c = (creator || "").toLowerCase();
+  if (c.includes("anthropic")) return "#cc785c";
+  if (c.includes("google") || c.includes("deepmind")) return "#4285F4";
+  if (c.includes("openai")) return "#10a37f";
+  if (c.includes("meta") || c.includes("facebook")) return "#0081FB";
+  if (c.includes("deepseek")) return "#0066FF";
+  if (c.includes("mistral")) return "#FA520F";
+  if (c.includes("xai") || c.includes("grok") || c.includes("spacex")) return "#736cd3";
+  if (c.includes("alibaba") || c.includes("qwen")) return "#8B5CF6";
+  if (c.includes("microsoft")) return "#00A4EF";
+  if (c.includes("nvidia")) return "#76B900";
+  if (c.includes("apple")) return "#A2AAAD";
+  if (c.includes("hugging")) return "#FFD21E";
+  if (c.includes("cohere")) return "#D946EF";
+  if (c.includes("stability")) return "#A855F7";
+  if (c.includes("midjourney")) return "#3B82F6";
+  if (c.includes("perplexity")) return "#14B8A6";
+  if (c.includes("runway")) return "#EC4899";
+  if (c.includes("together")) return "#2563EB";
+  if (c.includes("groq")) return "#EF4444";
+  if (c.includes("moonshot") || c.includes("kimi")) return "#3B82F6";
+  if (c.includes("minimax")) return "#06B6D4";
+  if (c.includes("stepfun")) return "#8B5CF6";
+  if (c.includes("zhipu") || c.includes("glm")) return "#3B82F6";
+  return "#6366F1";
+}
+
+// ─── Hierarchical Model Family / Series Definition ─────────────────────────────
+export interface ModelFamilyGroup {
+  id: string;
+  name: string;
+  subtitle?: string;
+  accentColor: string;
+  contextWindow?: string;
+  highlightMetric?: string;
+  entries: Entry[];
+  category: "model" | "framework" | "dataset" | "platform" | "app";
+}
+
+// Helper to extract a representative context window if present in entry architecture/summary/size
+function extractContextWindow(entries: Entry[]): string | undefined {
+  for (const e of entries) {
+    const text = `${e.name} ${e.size || ""} ${e.summary || ""} ${e.architecture || ""}`;
+    const m1 = text.match(/\b(1M|2M|10M|128k|200k|256k|512k|500k|984k|262k|524k|32k|64k|8k|16k)\b/i);
+    if (m1) return m1[1].toUpperCase();
+    const m2 = text.match(/([0-9]+[kKmM])\s*context/i);
+    if (m2) return m2[1].toUpperCase();
+  }
+  return undefined;
+}
+
+// Helper to extract a notable benchmark quote if present
+function extractHighlightMetric(entries: Entry[]): string | undefined {
+  for (const e of entries) {
+    if (e.benchmarks && e.benchmarks.trim()) {
+      const parts = e.benchmarks.split(/[,;·]/);
+      if (parts.length > 0 && parts[0].length < 35) {
+        return parts[0].trim();
+      }
+    }
+  }
+  return undefined;
+}
+
+/**
+ * Group an ecosystem's entries hierarchically into logical Model Families / Series.
+ * Matches the Artificial Analysis multi-tier structure:
+ * - Releases / Series at the top (e.g. Claude Fable 5.2, GPT-6 Astra, Gemini 4, Llama 3)
+ * - Individual model variants and checkpoints nested underneath
+ */
+export function groupEcosystemEntriesIntoFamilies(
+  entries: Entry[],
+  labName: string
+): ModelFamilyGroup[] {
+  const normLab = (labName || "").toLowerCase();
+  const assigned = new Set<string>();
+  const families: ModelFamilyGroup[] = [];
+  const labColor = getCreatorColor(labName);
+
+  function addFamily(
+    id: string,
+    name: string,
+    subtitle: string,
+    predicate: (e: Entry) => boolean,
+    category: "model" | "framework" | "dataset" | "platform" | "app" = "model"
+  ) {
+    const matching: Entry[] = [];
+    for (const e of entries) {
+      if (assigned.has(e.name)) continue;
+      if (predicate(e)) {
+        matching.push(e);
+        assigned.add(e.name);
+      }
+    }
+    if (matching.length > 0) {
+      // Sort matching entries: popular first, then by year desc
+      matching.sort((a, b) => {
+        if (a.popular && !b.popular) return -1;
+        if (!a.popular && b.popular) return 1;
+        return (b.year || 0) - (a.year || 0);
+      });
+
+      families.push({
+        id,
+        name,
+        subtitle,
+        accentColor: labColor,
+        contextWindow: extractContextWindow(matching),
+        highlightMetric: extractHighlightMetric(matching),
+        entries: matching,
+        category,
+      });
+    }
+  }
+
+  // 1. Anthropic Model Families
+  if (normLab.includes("anthropic")) {
+    addFamily("claude-fable-5-2", "Claude Fable 5.2 & 5.x Series", "Mythos-class reasoning & frontier agentic models",
+      e => /fable|5\.2|5\.1/i.test(e.name));
+    addFamily("claude-opus-5-5", "Claude Opus 5.5 Series", "Heavyweight frontier intelligence & deep STEM synthesis",
+      e => /opus\s*5\.5/i.test(e.name));
+    addFamily("claude-sonnet-5-5", "Claude Sonnet 5.5 Series", "Enterprise frontier coding & autonomous computer use",
+      e => /sonnet\s*5\.5/i.test(e.name));
+    addFamily("claude-haiku-5-5", "Claude Haiku 5.5 Series", "Ultra-fast high-efficiency frontier intelligence",
+      e => /haiku\s*5\.5/i.test(e.name));
+    addFamily("claude-3-7-3-5", "Claude 3.7 & 3.5 Generation", "Frontier coding, vision & agentic workflows",
+      e => /3\.7|3\.5/i.test(e.name));
+    addFamily("claude-3", "Claude 3 Foundation Series", "Multimodal Opus, Sonnet & Haiku foundation releases",
+      e => /claude[\s-]3\b/i.test(e.name) && !/3\.[57]/i.test(e.name));
+    addFamily("claude-legacy", "Claude 2 & Legacy Systems", "Constitutional AI foundation benchmarks",
+      e => /claude[\s-](2|instant)/i.test(e.name));
+    addFamily("anthropic-safety-tools", "Applications, Tooling & Safety Datasets", "RLHF benchmarks, constitutional alignment & platform",
+      e => e.type !== "Model" || /hh-rlhf|claude$/i.test(e.name), "platform");
+  }
+
+  // 2. OpenAI Model Families
+  else if (normLab.includes("openai")) {
+    addFamily("gpt-6-astra", "GPT-6 Astra Series", "Generational autonomous computer use & frontier MoE",
+      e => /gpt-?6.*astra|astra/i.test(e.name));
+    addFamily("gpt-6-sol", "GPT-6.1 Sol Series", "High-throughput frontier reasoning & agentic execution",
+      e => /gpt-?6\.1.*sol|sol/i.test(e.name));
+    addFamily("gpt-6-terra", "GPT-6.1 Terra Series", "Compact frontier reasoning & ultra-efficient reasoning",
+      e => /gpt-?6\.1.*terra|terra/i.test(e.name));
+    addFamily("gpt-6-luna", "GPT-6 Luna Series", "Extreme-speed micro reasoning & low-latency intelligence",
+      e => /gpt-?6.*luna|luna/i.test(e.name));
+    addFamily("gpt-6-frontier", "GPT-6 Frontier Foundation", "Frontier GPT-6 generation models",
+      e => /gpt-?6/i.test(e.name));
+    addFamily("o-series", "o-Series Deep Reasoning", "Reinforcement learning thought chains for STEM, code & math",
+      e => /^o[1-9]/i.test(e.name) || /\bo[1-9](-mini|-preview)?\b/i.test(e.name));
+    addFamily("gpt-4", "GPT-4 & GPT-4o Omnimodal Series", "Flagship multimodal systems & fast omni intelligence",
+      e => /gpt-?4(\.5|o)?/i.test(e.name));
+    addFamily("gpt-3", "GPT-3.5 & Foundational Transformers", "Pioneering generative pre-trained transformers",
+      e => /gpt-?3(\.5)?/i.test(e.name));
+    addFamily("openai-media", "Visual & Audio Intelligence", "State-of-the-art diffusion, video & speech recognition",
+      e => /dall-?e|sora|whisper|clip/i.test(e.name));
+    addFamily("openai-datasets", "Evaluation Benchmarks & Datasets", "Verified coding and mathematics benchmarks",
+      e => e.type === "Dataset" || /swe-bench|math-500|humaneval|gsm8k/i.test(e.name), "dataset");
+    addFamily("openai-tools", "Platform APIs & Developer Frameworks", "OpenAI Assistant runtime, Triton compiler & tools",
+      e => e.type !== "Model", "platform");
+  }
+
+  // 3. Google DeepMind Model Families
+  else if (normLab.includes("deepmind") || normLab.includes("google")) {
+    addFamily("gemini-4-carbon", "Gemini 4 Carbon Series", "Frontier heavy-reasoning flagship architecture",
+      e => /gemini.*carbon|carbon/i.test(e.name));
+    addFamily("gemini-4-hydrogen", "Gemini 4 Hydrogen Series", "High-efficiency frontier multimodal intelligence",
+      e => /gemini.*hydrogen|hydrogen/i.test(e.name));
+    addFamily("gemini-4-argon", "Gemini 4 Argon Series", "Fast frontier reasoning & multimodal synthesis",
+      e => /gemini.*argon|argon/i.test(e.name));
+    addFamily("gemini-4-general", "Gemini 4 Frontier Generation", "Next-generation Gemini 4 series releases",
+      e => /gemini[\s-]?4/i.test(e.name));
+    addFamily("gemini-2", "Gemini 2.0 & Thinking Series", "Real-time multimodal streaming & flash thinking",
+      e => /gemini[\s-]?2|project astra/i.test(e.name));
+    addFamily("gemini-1-5", "Gemini 1.5 Native Multimodal Series", "Million-token context window architectures",
+      e => /gemini[\s-]?1\.5/i.test(e.name));
+    addFamily("gemma", "Gemma Open Weights Family", "Lightweight, state-of-the-art open foundation models",
+      e => /gemma/i.test(e.name));
+    addFamily("google-foundations", "Foundational Transformers & LLMs", "Pioneering NLP, vision transformers & PaLM",
+      e => /bert|t5|palm|vit|gemini[\s-]?1\b/i.test(e.name));
+    addFamily("google-science", "Scientific & Biomedical Intelligence", "AlphaFold 3, AlphaProof, AlphaGeometry & GraphCast",
+      e => /alphafold|alphaproof|alphageometry|graphcast/i.test(e.name));
+    addFamily("google-frameworks", "Frameworks, Runtimes & Applications", "TensorFlow, JAX, Flax & NotebookLM",
+      e => e.type !== "Model", "framework");
+  }
+
+  // 4. Meta AI Model Families
+  else if (normLab.includes("meta") || normLab.includes("facebook")) {
+    addFamily("llama-3-3", "Llama 3.3 Multimodal Series", "Flagship 70B open intelligence rivaling frontier models",
+      e => /llama[\s-]?3\.3/i.test(e.name));
+    addFamily("llama-3-2", "Llama 3.2 Vision & Edge Series", "Multimodal vision models & compact on-device architectures",
+      e => /llama[\s-]?3\.2/i.test(e.name));
+    addFamily("llama-3-1", "Llama 3.1 Frontier Open Foundation", "405B flagship, 70B and 8B open-weights models",
+      e => /llama[\s-]?3\.1/i.test(e.name));
+    addFamily("llama-3", "Llama 3 Foundation Series", "Original Llama 3 70B and 8B releases",
+      e => /llama[\s-]?3\b/i.test(e.name));
+    addFamily("llama-2", "Llama 2 & Code Llama Series", "Seminal open-weights foundation models & code specialization",
+      e => /llama[\s-]?2|code[\s-]?llama/i.test(e.name));
+    addFamily("meta-vision-audio", "Computer Vision & Generative Audio", "Segment Anything 2, MusicGen & self-supervised vision",
+      e => /sam|segment|musicgen|roberta|dinov2/i.test(e.name));
+    addFamily("meta-tooling", "Frameworks, Runtimes & Datasets", "PyTorch, llama.cpp, TorchRec & GAIA benchmark",
+      e => e.type !== "Model" || /pytorch|llama\.cpp|gaia/i.test(e.name), "framework");
+  }
+
+  // 5. DeepSeek AI Model Families
+  else if (normLab.includes("deepseek")) {
+    addFamily("deepseek-v4", "DeepSeek V4 Generation", "Next-gen MoE reasoning & multimodal flash checkpoints",
+      e => /v4|v4\.1/i.test(e.name));
+    addFamily("deepseek-r1", "DeepSeek R1 Open Reasoning Series", "Revolutionary reinforcement learning reasoning models",
+      e => /r1|distill/i.test(e.name));
+    addFamily("deepseek-v3", "DeepSeek V3 & V2 MoE Series", "Ultra-efficient 671B MoE architectures with MLA",
+      e => /v3|v2\.5|v2\b/i.test(e.name));
+    addFamily("deepseek-coder-math", "Specialized Coding & Mathematics", "DeepSeek-Coder and DeepSeek-Math foundation checkpoints",
+      e => /coder|math/i.test(e.name));
+    addFamily("deepseek-apps", "Applications & Platforms", "DeepSeek Chat web application and developer APIs",
+      e => e.type !== "Model", "app");
+  }
+
+  // 6. Mistral AI Model Families
+  else if (normLab.includes("mistral")) {
+    addFamily("mistral-large-4", "Mistral Large 4 Series", "Frontier commercial multilingual reasoning architecture",
+      e => /mistral\s*large\s*4/i.test(e.name));
+    addFamily("mistral-large", "Mistral Large & Flagship Series", "Top-tier commercial enterprise models (Mistral Large 2)",
+      e => /mistral\s*large/i.test(e.name));
+    addFamily("pixtral", "Pixtral Multimodal Series", "Native multimodal vision understanding & document parsing",
+      e => /pixtral/i.test(e.name));
+    addFamily("codestral", "Codestral Developer Series", "22B code generation & Fill-in-the-Middle architectures",
+      e => /codestral/i.test(e.name));
+    addFamily("mixtral", "Mixtral Sparse MoE Family", "Pioneering 8x7B and 8x22B Mixture-of-Experts releases",
+      e => /mixtral/i.test(e.name));
+    addFamily("mistral-compact", "Compact & Open Weights Series", "Mistral 7B, Mistral NeMo & Mistral Small",
+      e => /mistral[\s-]?(7b|nemo|small)/i.test(e.name));
+    addFamily("mistral-apps", "Applications & Assistant Services", "Mistral Le Chat and enterprise platform runtimes",
+      e => e.type !== "Model", "app");
+  }
+
+  // 7. Alibaba (Qwen) Model Families
+  else if (normLab.includes("alibaba") || normLab.includes("qwen")) {
+    addFamily("qwen-2-5-max", "Qwen 2.5-Max & Flagships", "Alibaba's largest frontier reasoning model",
+      e => /2\.5-max|qwen4/i.test(e.name));
+    addFamily("qwen-2-5", "Qwen 2.5 General Foundation", "High-capability open-weights models (72B, 32B, 14B, 7B)",
+      e => /qwen[\s-]?2\.5\b/i.test(e.name) && !/coder|math|vl/i.test(e.name));
+    addFamily("qwen-reasoning", "QwQ Reasoning & Specialized", "QwQ-32B, Qwen-Coder and Qwen-Math releases",
+      e => /qwq|coder|math/i.test(e.name));
+    addFamily("qwen-vision-media", "Qwen Multimodal & Visual Media", "Wan 2.1 video generation, Qwen2-VL & image models",
+      e => /wan|vl|video|image|edit/i.test(e.name));
+    addFamily("qwen-next-gen", "Qwen Next-Gen & Quantized", "Qwen3.8 series and GGUF community checkpoints",
+      e => /qwen3\.8|gguf/i.test(e.name));
+  }
+
+  // 8. xAI Model Families
+  else if (normLab.includes("xai") || normLab.includes("grok")) {
+    addFamily("grok-4", "Grok 4.7 & Frontier Generation", "Next-gen real-time frontier reasoning & agentic execution",
+      e => /grok[\s-]?4/i.test(e.name));
+    addFamily("grok-3", "Grok 3 Series", "Massive supercomputer-trained reasoning & deep coding",
+      e => /grok[\s-]?3/i.test(e.name));
+    addFamily("grok-legacy", "Grok 2 & Grok 1 Series", "Real-time X knowledge synthesis and vision checkpoints",
+      e => /grok[\s-]?(2|1)/i.test(e.name));
+    addFamily("grok-apps", "Grok Applications & Services", "Conversational interface & platform tooling",
+      e => e.type !== "Model", "app");
+  }
+
+  // 9. Microsoft Model Families
+  else if (normLab.includes("microsoft")) {
+    addFamily("phi-4", "Phi-4 Small Language Models (SLMs)", "State-of-the-art compact reasoning & synthetic data",
+      e => /phi-?4/i.test(e.name));
+    addFamily("phi-3", "Phi-3 & Phi-3.5 Series", "Efficient edge models (Mini, Medium, Vision, MoE)",
+      e => /phi-?3/i.test(e.name));
+    addFamily("autogen-agents", "Autonomous Agent Frameworks", "AutoGen multi-agent orchestration runtime",
+      e => /autogen|semantic/i.test(e.name), "framework");
+    addFamily("ms-copilot", "AI Copilots & Enterprise Services", "GitHub Copilot and Microsoft Copilot platforms",
+      e => /copilot/i.test(e.name), "app");
+    addFamily("ms-research", "Research Foundation Models & Datasets", "ResNet, LLaVA, MS COCO and foundational vision",
+      e => e.type === "Dataset" || /resnet|llava|coco/i.test(e.name), "dataset");
+  }
+
+  // 10. Dynamic Fallback for remaining items or other labs
+  const remaining = entries.filter(e => !assigned.has(e.name));
+  if (remaining.length > 0) {
+    // Cluster remaining models by common brand / series prefix if 2+ share it
+    const prefixMap = new Map<string, Entry[]>();
+    for (const e of remaining) {
+      if (e.type === "Model") {
+        const words = e.name.trim().split(/[\s-_]+/);
+        const prefix = words[0];
+        if (!prefixMap.has(prefix)) prefixMap.set(prefix, []);
+        prefixMap.get(prefix)!.push(e);
+      }
+    }
+
+    for (const [prefix, list] of prefixMap.entries()) {
+      if (list.length >= 2) {
+        addFamily(
+          `prefix-${prefix.toLowerCase()}`,
+          `${prefix} Series`,
+          `Curated ${prefix} foundation models & variants`,
+          e => list.some(item => item.name === e.name),
+          "model"
+        );
+      }
+    }
+
+    // Now group any still unassigned entries by their primary Type
+    const stillUnassigned = entries.filter(e => !assigned.has(e.name));
+    if (stillUnassigned.length > 0) {
+      const models = stillUnassigned.filter(e => e.type === "Model");
+      const frameworks = stillUnassigned.filter(e => e.type === "Framework");
+      const datasets = stillUnassigned.filter(e => e.type === "Dataset");
+      const platforms = stillUnassigned.filter(e => e.type === "Platform");
+      const apps = stillUnassigned.filter(e => e.type === "AI");
+
+      if (models.length > 0) {
+        addFamily(
+          "models-foundation",
+          "Foundation & Specialized Models",
+          "Verified generative architectures, checkpoints & weights",
+          e => models.some(m => m.name === e.name),
+          "model"
+        );
+      }
+      if (frameworks.length > 0) {
+        addFamily(
+          "frameworks-tools",
+          "Frameworks, Libraries & Orchestration",
+          "Developer SDKs, fine-tuning runtimes and agent tools",
+          e => frameworks.some(f => f.name === e.name),
+          "framework"
+        );
+      }
+      if (datasets.length > 0) {
+        addFamily(
+          "datasets-corpora",
+          "Datasets, Corpora & Benchmarks",
+          "Evaluation benchmarks and pre-training datasets",
+          e => datasets.some(d => d.name === e.name),
+          "dataset"
+        );
+      }
+      if (platforms.length > 0) {
+        addFamily(
+          "platforms-apis",
+          "Platforms, APIs & Cloud Runtimes",
+          "Inference endpoints, hubs and developer environments",
+          e => platforms.some(p => p.name === e.name),
+          "platform"
+        );
+      }
+      if (apps.length > 0) {
+        addFamily(
+          "apps-assistants",
+          "AI Applications & Autonomous Agents",
+          "User-facing assistants and autonomous applications",
+          e => apps.some(a => a.name === e.name),
+          "app"
+        );
+      }
+    }
+  }
+
+  return families;
+}
+
+// ─── Ecosystem Tiers for Directory Organization ────────────────────────────────
+export interface EcosystemTier {
+  id: string;
+  name: string;
+  shortTitle: string;
+  description: string;
+  badge: string;
+  iconName: "Crown" | "Globe" | "Zap" | "Wrench" | "Palette" | "GraduationCap";
+  labs: string[];
+}
+
+export const ECOSYSTEM_TIERS: EcosystemTier[] = [
+  {
+    id: "frontier",
+    name: "Frontier Intelligence Giants",
+    shortTitle: "Frontier Labs",
+    description: "Global leaders driving frontier reasoning, trillion-token agentic architectures, and massive foundation scaling.",
+    badge: "Frontier Giants",
+    iconName: "Crown",
+    labs: ["OpenAI", "Google DeepMind", "Anthropic", "xAI"],
+  },
+  {
+    id: "open-weights",
+    name: "Open-Weights & Foundation Champions",
+    shortTitle: "Open Weights",
+    description: "Pioneers democratizing high-capability open weights, Mixture-of-Experts, and open-source foundation pipelines.",
+    badge: "Open Weights",
+    iconName: "Globe",
+    labs: ["Meta AI", "DeepSeek AI", "Mistral AI", "Alibaba (Qwen)", "Hugging Face"],
+  },
+  {
+    id: "innovators",
+    name: "Next-Gen AI Innovators & Emerging Leaders",
+    shortTitle: "Innovators",
+    description: "Rapidly innovating research laboratories advancing long context, distillation, and specialized foundation models.",
+    badge: "Innovators",
+    iconName: "Zap",
+    labs: [
+      "Zhipu AI (THUDM)", "Moonshot AI", "MiniMax", "StepFun", "Xiaomi (MiMo)", 
+      "Cohere", "Stability AI", "Black Forest Labs"
+    ],
+  },
+  {
+    id: "infrastructure",
+    name: "Enterprise Runtimes, Agents & Cloud Platforms",
+    shortTitle: "Infrastructure",
+    description: "Hyperscalers, inference accelerators, agent orchestrators, and developer platforms powering production AI.",
+    badge: "Infrastructure",
+    iconName: "Wrench",
+    labs: [
+      "Microsoft", "NVIDIA", "Amazon Web Services", "Apple", "Groq", 
+      "Together AI", "Perplexity", "Cursor (Anysphere)", "Cognition AI", 
+      "CrewAI", "Unsloth AI", "Ollama", "LangChain", "LMSYS Org", "OpenBMB"
+    ],
+  },
+  {
+    id: "creative",
+    name: "Creative Media, Visual & Audio Synthesis",
+    shortTitle: "Creative Media",
+    description: "Specialized generative computing studios delivering industry-standard video, voice cloning, and photorealism.",
+    badge: "Creative Media",
+    iconName: "Palette",
+    labs: ["Midjourney", "Runway", "ElevenLabs", "Krea AI", "Genmo", "Lightricks", "Hexgrad"],
+  },
+  {
+    id: "research",
+    name: "Academic Institutes & Open Consortia",
+    shortTitle: "Academic Research",
+    description: "Foundational universities and independent institutes publishing seminal benchmarks and peer-reviewed open architectures.",
+    badge: "Research & Universities",
+    iconName: "GraduationCap",
+    labs: [
+      "Stanford AI", "UC Berkeley (BAIR)", "Allen Institute for AI", 
+      "Technology Innovation Institute (TII)", "Cloudflare", "Vercel"
+    ],
+  },
+];

@@ -65,7 +65,7 @@ export const SpotlightGrid: React.FC<SpotlightGridProps> = ({
             </div>
 
             <p className="text-xs leading-relaxed mb-4 line-clamp-2 text-[#5f6368] dark:text-[#c4c7c5]">
-              {entry.summary}
+              {entry.description || entry.summary}
             </p>
 
             <div className="mt-auto pt-3 border-t border-[#dadce0]/80 dark:border-[#3c4043]/40 flex items-center justify-between">
