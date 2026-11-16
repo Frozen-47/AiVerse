@@ -1,23 +1,28 @@
 {
-  "timestamp": "2026-11-16T01:31:24.049Z",
+  "timestamp": "2026-11-16T08:53:27.021Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 21,
+  "broken": 4,
   "issues": [
     {
-      "name": "Meta AI",
-      "url": "https://www.meta.ai",
+      "name": "GPT-4.5",
+      "url": "https://openai.com",
       "status": 403
     },
     {
-      "name": "Tome",
-      "url": "https://tome.app",
-      "status": 404
+      "name": "o3",
+      "url": "https://openai.com",
+      "status": 403
     },
     {
-      "name": "Arena-Hard-Auto",
-      "url": "https://github.com/sunshanghai/arena-hard-auto",
-      "status": 404
+      "name": "o1 (OpenAI)",
+      "url": "https://openai.com/o1",
+      "status": 403
+    },
+    {
+      "name": "LMSYS Chatbot Arena Conversations",
+      "url": "https://chat.lmsys.org",
+      "status": "Network Error"
     }
   ]
 }

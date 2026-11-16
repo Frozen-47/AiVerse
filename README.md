@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-16)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Qwen3.5 Omni Plus** (`Model`), **Google: Gemini 4 Hydrogen** (`Model`), **qwen-concept-27b** (`Model`) |
+| 📥 **Queued for Review** | **Nova 2.0 Omni** (`Model`), **Qwen: Qwen4 Max** (`Model`), **speaker-diarization-community-1** (`Model`), **USDCraft-10K** (`Dataset`) |
 | 🌟 **Tool of the Day** | **GPT-6 Astra (high)** (OpenAI) — [Explore](https://artificialanalysis.ai/models/gpt-6-astra-high) |
 | 🗄️ **Catalog Entries** | **474** AI assets tracked (371 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [Who Remembers What? Multi-Granularity Memory Extra...](https://huggingface.co/papers/2611.10439) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 16 Nov 2026 01:32:06 GMT` |
+| 📜 **Top Daily Paper** | [VibePrevisBench: Evaluating Agentic Coding for 4D ...](https://huggingface.co/papers/2611.15789) |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Synchronized** | `Mon, 16 Nov 2026 08:53:57 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

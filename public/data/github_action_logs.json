@@ -1,5 +1,53 @@
 [
   {
+    "id": "action_1794819237321_hdf82",
+    "created_at": "2026-11-16T08:53:57.321Z",
+    "timestamp": "2026-11-16T08:53:57.321Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 474 entries audited, 4 new asset(s) queued",
+    "details": "Ingested 4 asset(s): Nova 2.0 Omni, Qwen: Qwen4 Max, speaker-diarization-community-1, USDCraft-10K. Checked health for 25 links (4 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 32140ms.",
+    "metadata": {
+      "totalCatalogEntries": 474,
+      "newlyIngestedCount": 4,
+      "newlyIngested": [
+        {
+          "name": "Nova 2.0 Omni",
+          "type": "Model",
+          "org": "Amazon"
+        },
+        {
+          "name": "Qwen: Qwen4 Max",
+          "type": "Model",
+          "org": "qwen"
+        },
+        {
+          "name": "speaker-diarization-community-1",
+          "type": "Model",
+          "org": "pyannote"
+        },
+        {
+          "name": "USDCraft-10K",
+          "type": "Dataset",
+          "org": "nvidia"
+        }
+      ],
+      "brokenLinks": 4,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 32140,
+      "runId": "43834900548",
+      "runNumber": "126",
+      "sha": "8855040",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1794792726836_uwjpw",
     "created_at": "2026-11-16T01:32:06.836Z",
     "timestamp": "2026-11-16T01:32:06.836Z",

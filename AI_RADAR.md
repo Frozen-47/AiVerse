@@ -2,34 +2,41 @@
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Mon, 16 Nov 2026 01:32:06 GMT`*
+*Last Synchronized: `Mon, 16 Nov 2026 08:53:57 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (3)
+## 📥 Newly Queued Assets for Review (4)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Qwen3.5 Omni Plus** (`Model` • *Alibaba*)
-> Frontier Multimodal model by Alibaba benchmarked on Artificial Analysis and a verified 256k Context window.
+### **Nova 2.0 Omni** (`Model` • *Amazon*)
+> Frontier Multimodal model by Amazon benchmarked on Artificial Analysis and a verified 1000k Context window.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 256k Context, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/qwen3-5-omni-plus](https://artificialanalysis.ai/models/qwen3-5-omni-plus)
+- ⚡ **Metrics**: `Context Window: 1000k Context, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/nova-2-0-omni](https://artificialanalysis.ai/models/nova-2-0-omni)
 
-### **Google: Gemini 4 Hydrogen** (`Model` • *google*)
-> Gemini 4 Hydrogen is the high-efficiency workhorse model of the Gemini 4 family from Google, built for high-throughput agentic workflows, coding and multi-model routing at lower co
+### **Qwen: Qwen4 Max** (`Model` • *qwen*)
+> Qwen4 Max is the flagship model in Alibaba's Qwen4 series. It accepts text, image, and video input and returns text, with a 1M-token context window and reasoning enabled by default
 
-- 🏷️ **Domain & License**: `AI Coding` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 1049k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/google/gemini-4-hydrogen](https://openrouter.ai/google/gemini-4-hydrogen)
+- 🏷️ **Domain & License**: `Multimodal` • `Proprietary` (2026)
+- ⚡ **Metrics**: `Context Window: 1000k Context, Available across global OpenRouter inference nodes.`
+- 🔗 **Resource Link**: [https://openrouter.ai/qwen/qwen4-max](https://openrouter.ai/qwen/qwen4-max)
 
-### **qwen-concept-27b** (`Model` • *ConceptCountry*)
-> High-performance NLP open-weights model by ConceptCountry, trending with over 267 community likes and 63,964 downloads on Hugging Face.
+### **speaker-diarization-community-1** (`Model` • *pyannote*)
+> High-performance Audio open-weights model by pyannote, trending with over 4,449 community likes and 4,871,288 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 200, Likes: 267, Downloads: 63,964`
-- 🔗 **Resource Link**: [https://huggingface.co/ConceptCountry/qwen-concept-27b](https://huggingface.co/ConceptCountry/qwen-concept-27b)
+- 🏷️ **Domain & License**: `Audio` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 194, Likes: 4,449, Downloads: 4,871,288`
+- 🔗 **Resource Link**: [https://huggingface.co/pyannote/speaker-diarization-community-1](https://huggingface.co/pyannote/speaker-diarization-community-1)
+
+### **USDCraft-10K** (`Dataset` • *nvidia*)
+> USDCraft-10K: Simulation-Ready Articulated 3D Assets in OpenUSD 	             USDCraft-10K is a dataset of simulation-ready rigid and articulated 3D assets in OpenUSD, (26 likes, 3,674 downloads).
+
+- 🏷️ **Domain & License**: `Computer Vision` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 21, Likes: 26, Downloads: 3,674`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/nvidia/USDCraft-10K](https://huggingface.co/datasets/nvidia/USDCraft-10K)
 
 ---
 
@@ -51,13 +58,13 @@
 | **JT-35B-Flash** | `Artificial Analysis` | China Mobile (Frontier Leaderboard) | ❤️ 95 · 📥 256,000 | [View](https://artificialanalysis.ai/models/jt-35b-flash) |
 | **Qwen3.5 Omni Plus** | `Artificial Analysis` | Alibaba (Frontier Leaderboard) | ❤️ 95 · 📥 256,000 | [View](https://artificialanalysis.ai/models/qwen3-5-omni-plus) |
 | **Nova 2.0 Omni** | `Artificial Analysis` | Amazon (Reasoning Frontier) | ❤️ 95 · 📥 1,000,000 | [View](https://artificialanalysis.ai/models/nova-2-0-omni) |
+| **Qwen: Qwen4 Max** | `OpenRouter` | qwen (Cloud Model API) | ❤️ 120 · 📥 1,000,000 | [View](https://openrouter.ai/qwen/qwen4-max) |
 | **inclusionAI: Ling 3.2 Flash (free)** | `OpenRouter` | inclusionai (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/inclusionai/ling-3.2-flash:free) |
 | **Google: Gemini 4 Hydrogen** | `OpenRouter` | google (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/google/gemini-4-hydrogen) |
-| **Google: Gemini 4 Hydrogen (batch)** | `OpenRouter` | google (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/google/gemini-4-hydrogen:batch) |
-| **xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic** | `Hugging Face` | xtools-at (text-generation) | ❤️ 7,540 · 📥 27,037 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| **MiniMaxAI/MiniMax-H3-Image** | `Hugging Face` | MiniMaxAI (text-to-image) | ❤️ 1,187 · 📥 571,067 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
-| **Qwen/Qwen3.8-27B** | `Hugging Face` | Qwen (image-text-to-text) | ❤️ 20,126 · 📥 6,547,772 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
-| **Lightricks/LTX-2.5** | `Hugging Face` | Lightricks (image-to-video) | ❤️ 12,065 · 📥 2,754,355 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| **xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic** | `Hugging Face` | xtools-at (text-generation) | ❤️ 7,611 · 📥 27,037 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
+| **MiniMaxAI/MiniMax-H3-Image** | `Hugging Face` | MiniMaxAI (text-to-image) | ❤️ 1,225 · 📥 571,067 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
+| **Qwen/Qwen3.8-27B** | `Hugging Face` | Qwen (image-text-to-text) | ❤️ 20,160 · 📥 6,547,772 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
+| **Lightricks/LTX-2.5** | `Hugging Face` | Lightricks (image-to-video) | ❤️ 12,114 · 📥 2,754,355 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
 
 
 ---
@@ -67,11 +74,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Who Remembers What? Multi-Granularity Memory Extraction for Multi-User, Multi-Agent Interaction** | 👍 13 | MixUA distills lessons from independent user-agent trajectories and assigns them to appropriate scopes to balance cross-user and cross-agent learning with privacy, evaluated by CrossLearnBench. | [Read](https://huggingface.co/papers/2611.10439) |
-| **EgoX: Egocentric Cross-Embodiment Manipulation with Embodiment Dreaming** | 👍 1 | EgoX is an egocentric cross-embodiment learning framework that pretrains a modular Transformer with embodiment dreaming on heterogeneous human, robot, and simulated demonstrations, then fine-tunes it to improve manipulation task progress, especially under out-of-distribution conditions. | [Read](https://huggingface.co/papers/2611.16728) |
-| **Back to Pixels: Lifting Latent Video Diffusion into Pixel Space** | 👍 5 | Frontier video generation models work in a VAE latent space that compresses video in both space and time. This compression made training tractable, but now limi... | [Read](https://huggingface.co/papers/2611.17336) |
-| **Consensus Capture in Reference-Based UAV Video Stabilization: A Benchmark on Dynamic Urban Scenes** | 👍 4 | Reference-frame stabilization registers every frame of a hovering-drone video onto one reference frame, keeping object positions comparable. The registration pi... | [Read](https://huggingface.co/papers/2611.17190) |
-| **TurtLES: A Large-Scale Benchmark for Turbulent 3D Neural PDE Surrogates** | 👍 4 | Machine-learning surrogates are increasingly used to accelerate computational fluid dynamics, yet progress is limited by the lack of benchmarks capturing realis... | [Read](https://huggingface.co/papers/2611.09567) |
+| **VibePrevisBench: Evaluating Agentic Coding for 4D Scene Generation in Blender** | 👍 21 | Controllable real-world video generation models can condition on a rendered graybox proxy video, which fixes layout, motion and camera. Coding agents can build ... | [Read](https://huggingface.co/papers/2611.15789) |
+| **Evidence-Governed Adoption of Self-Generated Updates in Autonomous AI Agents** | 👍 8 | A governance framework separates generation from adoption of self-modifying autonomous-agent changes, using fresh paired audits, non-inferiority checks, and calibrated statistical bounds to confirm improvements before bounded deployment. | [Read](https://huggingface.co/papers/2611.16378) |
+| **MMFlash: Faster Speculative Decoding for Vision-Language Models** | 👍 25 | MMFlash improves multimodal speculative decoding by adaptively upweighting visually dependent tokens and using sparse attention for long video, yielding up to 3.58× lossless speedup. | [Read](https://huggingface.co/papers/2611.18482) |
+| **JFinBench: A Continuously Refreshable Japanese Financial Benchmark from the Latest Certification Exams** | 👍 9 | Large language models (LLMs) are increasingly applied to finance, creating a need for benchmarks that evaluate their capabilities across financial systems with ... | [Read](https://huggingface.co/papers/2611.18130) |
+| **eDIAR: Training-Free Open-Speaker Streaming Diarization for Long Meetings and Large Archives via e-means** | 👍 8 | A streaming speaker-diarization method removes the fixed speaker-slot limit by clustering speaker embeddings within slots after all slots are used, allowing unlimited speakers and efficient large-scale linking. | [Read](https://huggingface.co/papers/2611.18529) |
 
 
 ---
@@ -84,7 +91,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
 - **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---
