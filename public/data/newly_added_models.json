@@ -4,6 +4,112 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Gemma 3 270M",
+        "type": "Model",
+        "summary": "Frontier NLP model by Google benchmarked on Artificial Analysis and a verified 32k Context window.",
+        "task": "NLP",
+        "license": "Open Weights",
+        "year": 2026,
+        "org": "Google",
+        "size": "32k Context · Open Model",
+        "architecture": "Open-weights frontier neural architecture developed by Google, featuring native 32k Context token window support and optimized reasoning chains.",
+        "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gemma-3-270m",
+        "benchmarks": "Context Window: 32k Context, Benchmarked on Artificial Analysis Leaderboard",
+        "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://artificialanalysis.ai/models/gemma-3-270m",
+        "citations": [
+          {
+            "text": "Gemma 3 270M on Artificial Analysis Benchmark",
+            "url": "https://artificialanalysis.ai/models/gemma-3-270m"
+          },
+          {
+            "text": "Gemma 3 270M Inference Providers",
+            "url": "https://artificialanalysis.ai/models/gemma-3-270m/providers"
+          }
+        ]
+      },
+      {
+        "name": "Baidu: ERNIE-5.5-Flash-Preview (free)",
+        "type": "Model",
+        "summary": "ERNIE 5.5 Flash Preview is the latest foundation model in the ERNIE family, with comprehensive improvements in coding, agentic capabilities, knowledge work, and deep research. It h",
+        "task": "AI Coding",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "baidu",
+        "size": "1024k Context · Available via API",
+        "architecture": "Modern foundation model hosted on OpenRouter with native 1024k Context support and structured output generation.",
+        "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"baidu/ernie-5.5-flash-preview:free\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+        "benchmarks": "Context Window: 1024k Context, Available across global OpenRouter inference nodes.",
+        "limitations": "Requires OpenRouter API key and token credits.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://openrouter.ai/baidu/ernie-5.5-flash-preview:free",
+        "citations": [
+          {
+            "text": "Baidu: ERNIE-5.5-Flash-Preview (free) on OpenRouter",
+            "url": "https://openrouter.ai/baidu/ernie-5.5-flash-preview:free"
+          }
+        ]
+      },
+      {
+        "name": "LongCat-Video-Avatar-1.6",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by meituan-longcat, trending with over 169 community likes and 489 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "MIT",
+        "year": 2026,
+        "org": "meituan-longcat",
+        "size": "Open Weights",
+        "architecture": "meituan-longcat transformer architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"meituan-longcat/LongCat-Video-Avatar-1.6\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"meituan-longcat/LongCat-Video-Avatar-1.6\")",
+        "benchmarks": "Trending Score: 125, Likes: 169, Downloads: 489",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.6",
+        "citations": [
+          {
+            "text": "meituan-longcat/LongCat-Video-Avatar-1.6 on Hugging Face",
+            "url": "https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.6"
+          }
+        ]
+      },
+      {
+        "name": "EVIDENT",
+        "type": "Dataset",
+        "summary": "EVIDENT: Task Metadata for Evidence-Grounded GUI Evaluation \t This release contains 220 GUI/web agent task records for evidence-grounded trajectory evaluation: 150 Kore (23 likes, 110 downloads).",
+        "task": "NLP",
+        "license": "Open Data",
+        "year": 2026,
+        "org": "KORMo-VL",
+        "size": "n<1K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"KORMo-VL/EVIDENT\")",
+        "benchmarks": "Trending Score: 22, Likes: 23, Downloads: 110",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/KORMo-VL/EVIDENT",
+        "citations": [
+          {
+            "text": "KORMo-VL/EVIDENT on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/KORMo-VL/EVIDENT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Gemma 4 12B",
         "type": "Model",
         "summary": "Frontier NLP model by Google benchmarked on Artificial Analysis and a verified 262k Context window.",
@@ -6080,60 +6186,6 @@
           {
             "text": "Anthropic/scorpion-toxin-binder-design on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/Anthropic/scorpion-toxin-binder-design"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-21",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "Kromoss",
-        "type": "Model",
-        "summary": "High-performance Image Generation open-weights model by lodestones, trending with over 171 community likes and 5,365 downloads on Hugging Face.",
-        "task": "Image Generation",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "lodestones",
-        "size": "Open Weights",
-        "architecture": "lodestones text to image architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"lodestones/Kromoss\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"lodestones/Kromoss\")",
-        "benchmarks": "Trending Score: 170, Likes: 171, Downloads: 5,365",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/lodestones/Kromoss",
-        "citations": [
-          {
-            "text": "lodestones/Kromoss on Hugging Face",
-            "url": "https://huggingface.co/lodestones/Kromoss"
-          }
-        ]
-      },
-      {
-        "name": "3dcodeverse",
-        "type": "Dataset",
-        "summary": "3DCodeVerse — Towards Building the Universe via Code \t 3DCodeVerse aims to gather any code that creates, renders, or governs 3D — every dialect, one corpus. Text / Imag (20 likes, 41,705 downloads).",
-        "task": "Computer Vision",
-        "license": "CC-BY-NC-SA-4.0",
-        "year": 2026,
-        "org": "ilabai",
-        "size": "1M<n<10M",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"ilabai/3dcodeverse\")",
-        "benchmarks": "Trending Score: 15, Likes: 20, Downloads: 41,705",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/ilabai/3dcodeverse",
-        "citations": [
-          {
-            "text": "ilabai/3dcodeverse on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/ilabai/3dcodeverse"
           }
         ]
       }

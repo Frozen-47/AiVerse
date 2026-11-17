@@ -1,5 +1,53 @@
 [
   {
+    "id": "action_1794924195711_lnhhg",
+    "created_at": "2026-11-17T14:03:15.711Z",
+    "timestamp": "2026-11-17T14:03:15.711Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 4 new asset(s) queued",
+    "details": "Ingested 4 asset(s): Gemma 3 270M, Baidu: ERNIE-5.5-Flash-Preview (free), LongCat-Video-Avatar-1.6, EVIDENT. Checked health for 25 links (1 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 53246ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 4,
+      "newlyIngested": [
+        {
+          "name": "Gemma 3 270M",
+          "type": "Model",
+          "org": "Google"
+        },
+        {
+          "name": "Baidu: ERNIE-5.5-Flash-Preview (free)",
+          "type": "Model",
+          "org": "baidu"
+        },
+        {
+          "name": "LongCat-Video-Avatar-1.6",
+          "type": "Model",
+          "org": "meituan-longcat"
+        },
+        {
+          "name": "EVIDENT",
+          "type": "Dataset",
+          "org": "KORMo-VL"
+        }
+      ],
+      "brokenLinks": 1,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 53246,
+      "runId": "44098760723",
+      "runNumber": "129",
+      "sha": "c7c21e8",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1794918967921_58efn",
     "created_at": "2026-11-17T12:36:07.921Z",
     "timestamp": "2026-11-17T12:36:07.921Z",

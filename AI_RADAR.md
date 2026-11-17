@@ -2,7 +2,7 @@
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Tue, 17 Nov 2026 04:18:00 GMT`*
+*Last Synchronized: `Tue, 17 Nov 2026 14:03:15 GMT`*
 
 ---
 
@@ -10,33 +10,33 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Gemma 4 12B** (`Model` • *Google*)
-> Frontier NLP model by Google benchmarked on Artificial Analysis and a verified 262k Context window.
+### **Gemma 3 270M** (`Model` • *Google*)
+> Frontier NLP model by Google benchmarked on Artificial Analysis and a verified 32k Context window.
 
 - 🏷️ **Domain & License**: `NLP` • `Open Weights` (2026)
-- ⚡ **Metrics**: `Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/gemma-4-12b](https://artificialanalysis.ai/models/gemma-4-12b)
+- ⚡ **Metrics**: `Context Window: 32k Context, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/gemma-3-270m](https://artificialanalysis.ai/models/gemma-3-270m)
 
-### **Google: Gemini 4 Hydrogen (batch)** (`Model` • *google*)
-> Gemini 4 Hydrogen is the high-efficiency workhorse model of the Gemini 4 family from Google, built for high-throughput agentic workflows, coding and multi-model routing at lower co
+### **Baidu: ERNIE-5.5-Flash-Preview (free)** (`Model` • *baidu*)
+> ERNIE 5.5 Flash Preview is the latest foundation model in the ERNIE family, with comprehensive improvements in coding, agentic capabilities, knowledge work, and deep research. It h
 
 - 🏷️ **Domain & License**: `AI Coding` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 1049k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/google/gemini-4-hydrogen:batch](https://openrouter.ai/google/gemini-4-hydrogen:batch)
+- ⚡ **Metrics**: `Context Window: 1024k Context, Available across global OpenRouter inference nodes.`
+- 🔗 **Resource Link**: [https://openrouter.ai/baidu/ernie-5.5-flash-preview:free](https://openrouter.ai/baidu/ernie-5.5-flash-preview:free)
 
-### **tiny-voca** (`Model` • *n4ze3m*)
-> High-performance Audio open-weights model by n4ze3m, trending with over 193 community likes and 860 downloads on Hugging Face.
+### **LongCat-Video-Avatar-1.6** (`Model` • *meituan-longcat*)
+> High-performance NLP open-weights model by meituan-longcat, trending with over 169 community likes and 489 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Audio` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 158, Likes: 193, Downloads: 860`
-- 🔗 **Resource Link**: [https://huggingface.co/n4ze3m/tiny-voca](https://huggingface.co/n4ze3m/tiny-voca)
+- 🏷️ **Domain & License**: `NLP` • `MIT` (2026)
+- ⚡ **Metrics**: `Trending Score: 125, Likes: 169, Downloads: 489`
+- 🔗 **Resource Link**: [https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.6](https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.6)
 
-### **HubEgo-100K** (`Dataset` • *HubLabs*)
-> HubEgo-100K 	 A 100,000-hour dataset of first-person video of skilled manual work, recorded by Hub contributors: building sites, workshops, salons, kitchens, shops, war (21 likes, 335 downloads).
+### **EVIDENT** (`Dataset` • *KORMo-VL*)
+> EVIDENT: Task Metadata for Evidence-Grounded GUI Evaluation 	 This release contains 220 GUI/web agent task records for evidence-grounded trajectory evaluation: 150 Kore (23 likes, 110 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `CC-BY-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 18, Likes: 21, Downloads: 335`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/HubLabs/HubEgo-100K](https://huggingface.co/datasets/HubLabs/HubEgo-100K)
+- 🏷️ **Domain & License**: `NLP` • `Open Data` (2026)
+- ⚡ **Metrics**: `Trending Score: 22, Likes: 23, Downloads: 110`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/KORMo-VL/EVIDENT](https://huggingface.co/datasets/KORMo-VL/EVIDENT)
 
 ---
 
@@ -61,10 +61,10 @@
 | **Tencent: Hy4 flash** | `OpenRouter` | tencent (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/tencent/hy4-flash) |
 | **Qwen: Qwen4 Max** | `OpenRouter` | qwen (Cloud Model API) | ❤️ 120 · 📥 1,000,000 | [View](https://openrouter.ai/qwen/qwen4-max) |
 | **inclusionAI: Ling 3.2 Flash (free)** | `OpenRouter` | inclusionai (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/inclusionai/ling-3.2-flash:free) |
-| **xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic** | `Hugging Face` | xtools-at (text-generation) | ❤️ 9,083 · 📥 29,567 | [View](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) |
-| **MiniMaxAI/MiniMax-H3-Image** | `Hugging Face` | MiniMaxAI (text-to-image) | ❤️ 1,331 · 📥 609,130 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
-| **Qwen/Qwen3.8-27B** | `Hugging Face` | Qwen (image-text-to-text) | ❤️ 20,285 · 📥 6,763,402 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
-| **Lightricks/LTX-2.5** | `Hugging Face` | Lightricks (image-to-video) | ❤️ 12,269 · 📥 2,789,021 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| **MiniMaxAI/MiniMax-H3-Image** | `Hugging Face` | MiniMaxAI (text-to-image) | ❤️ 1,378 · 📥 727,110 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
+| **Qwen/Qwen3.8-27B** | `Hugging Face` | Qwen (image-text-to-text) | ❤️ 20,347 · 📥 6,942,530 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
+| **Comfy-Org/MiniMax-H3-Image** | `Hugging Face` | Comfy-Org (text-to-image) | ❤️ 510 · 📥 2,660,341 | [View](https://huggingface.co/Comfy-Org/MiniMax-H3-Image) |
+| **Lightricks/LTX-2.5** | `Hugging Face` | Lightricks (image-to-video) | ❤️ 12,329 · 📥 2,828,071 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
 
 
 ---
@@ -74,11 +74,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Reducing Batch Makespan for LLM Agent Workloads through Inference-Environment Coordination** | 👍 1 | Efficient batch execution of agent tasks is critical to LLM training and development workflows, including benchmark evaluation, synthetic-data generation, and R... | [Read](https://huggingface.co/papers/2611.16661) |
-| **Iris-Z: Scaling One Generative Model Past Specialist Geometry Models** | 👍 2 | A unified generative backbone jointly models image appearance and depth, surpassing specialized depth models at scale while preserving general image generation. | [Read](https://huggingface.co/papers/2611.16010) |
-| **BrickFlow: Connectivity-Guided Brick Reconstruction** | 👍 2 | A set-conditioned SE(3) flow model pretrained on procedurally generated LEGO assemblies and finetuned with image conditioning, combined with analytic connectivity-field guidance, infers part poses to assemble objects from images. | [Read](https://huggingface.co/papers/2611.17321) |
-| **Restoring Diversity in Distilled Image and Video Generators by Probing Activations** | 👍 2 | Distilled few-step diffusion models exhibit diversity collapse because activation variance is concentrated into fewer directions in an intermediate block at the initial denoising step, and ReDiverse restores sample diversity by reintroducing teacher variance directions through adapter fine-tuning or training-free activation steering while preserving generation quality. | [Read](https://huggingface.co/papers/2611.18550) |
-| **Re-Search: Dissecting LLM Ideation Through a Two-Player Questioning Game** | 👍 6 | A Twenty Questions-style benchmark for research ideation shows that large language models make most progress early, can recognize good ideas or questions but often cannot generate them, and may benefit from externally sourced candidates in automated research systems. | [Read](https://huggingface.co/papers/2611.14487) |
+| **Zuse: A Decision Model for European Languages** | 👍 0 | Decision models read a document and return a probability for each of a fixed set of options instead of generating text. Several appeared in 2026, but none has p... | [Read](https://huggingface.co/papers/2611.06238) |
+| **LynnReal-Hand: Unlocking World Interaction with Hand Control** | 👍 1 | Interactive video world models enable exploration through text and camera controls, yet direct object interaction requires finer control. Hands provide a natura... | [Read](https://huggingface.co/papers/2611.21479) |
+| **Correcting Persistent Failures in Point-Cloud Grasping Policies using Human Demonstrations in Virtual Reality** | 👍 2 | A human-in-the-loop failure-mining pipeline turns persistently unsolved grasps of a reinforcement-learning point-cloud policy into virtual-reality human demonstrations, improving hard-case success without reducing generalization to unseen objects. | [Read](https://huggingface.co/papers/2611.18919) |
+| **Dataset Distillation via Drifting** | 👍 0 | A dataset distillation method learns synthetic samples that approximate per-class data distributions in a feature extractor's latent space, improving distribution coverage and classification training while supporting visualization and other modalities. | [Read](https://huggingface.co/papers/2611.16642) |
+| **A Reinforcement Learning Method to Navigate SMEFT Operator Space** | 👍 0 | A reinforcement learning agent with a lightweight actor-critic architecture explores the Standard Model Effective Field Theory operator space to discover diverse high-quality theory hypotheses and improve global fits. | [Read](https://huggingface.co/papers/2611.21439) |
 
 
 ---
@@ -91,7 +91,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
 - **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

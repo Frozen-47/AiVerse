@@ -1,23 +1,13 @@
 {
-  "timestamp": "2026-11-17T04:17:10.158Z",
+  "timestamp": "2026-11-17T14:02:23.943Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
-      "name": "Character.ai",
-      "url": "https://character.ai",
+      "name": "Midjourney v6",
+      "url": "https://www.midjourney.com/",
       "status": 403
-    },
-    {
-      "name": "Claude",
-      "url": "https://claude.ai",
-      "status": 403
-    },
-    {
-      "name": "Tabnine",
-      "url": "https://www.tabnine.com",
-      "status": "Network Error"
     }
   ]
 }

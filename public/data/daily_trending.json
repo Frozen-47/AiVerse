@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-17T04:17:09.947Z",
+  "timestamp": "2026-11-17T14:02:23.769Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -56,19 +56,10 @@
       "source": "OpenRouter"
     },
     {
-      "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
-      "author": "xtools-at",
-      "likes": 9083,
-      "downloads": 29567,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
-      "source": "Hugging Face"
-    },
-    {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 1331,
-      "downloads": 609130,
+      "likes": 1378,
+      "downloads": 727110,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
       "source": "Hugging Face"
@@ -76,17 +67,26 @@
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 20285,
-      "downloads": 6763402,
+      "likes": 20347,
+      "downloads": 6942530,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
       "source": "Hugging Face"
     },
     {
+      "id": "Comfy-Org/MiniMax-H3-Image",
+      "author": "Comfy-Org",
+      "likes": 510,
+      "downloads": 2660341,
+      "pipeline_tag": "text-to-image",
+      "url": "https://huggingface.co/Comfy-Org/MiniMax-H3-Image",
+      "source": "Hugging Face"
+    },
+    {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 12269,
-      "downloads": 2789021,
+      "likes": 12329,
+      "downloads": 2828071,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5",
       "source": "Hugging Face"
@@ -94,44 +94,44 @@
   ],
   "papers": [
     {
-      "title": "Reducing Batch Makespan for LLM Agent Workloads through Inference-Environment Coordination",
-      "summary": "Efficient batch execution of agent tasks is critical to LLM training and development workflows, including benchmark evaluation, synthetic-data generation, and R...",
+      "title": "Zuse: A Decision Model for European Languages",
+      "summary": "Decision models read a document and return a probability for each of a fixed set of options instead of generating text. Several appeared in 2026, but none has p...",
+      "upvotes": 0,
+      "arxiv_id": "2611.06238",
+      "url": "https://huggingface.co/papers/2611.06238",
+      "githubRepo": null
+    },
+    {
+      "title": "LynnReal-Hand: Unlocking World Interaction with Hand Control",
+      "summary": "Interactive video world models enable exploration through text and camera controls, yet direct object interaction requires finer control. Hands provide a natura...",
       "upvotes": 1,
-      "arxiv_id": "2611.16661",
-      "url": "https://huggingface.co/papers/2611.16661",
+      "arxiv_id": "2611.21479",
+      "url": "https://huggingface.co/papers/2611.21479",
+      "githubRepo": "https://github.com/LynnReal-AI/LynnReal"
+    },
+    {
+      "title": "Correcting Persistent Failures in Point-Cloud Grasping Policies using Human Demonstrations in Virtual Reality",
+      "summary": "A human-in-the-loop failure-mining pipeline turns persistently unsolved grasps of a reinforcement-learning point-cloud policy into virtual-reality human demonstrations, improving hard-case success without reducing generalization to unseen objects.",
+      "upvotes": 2,
+      "arxiv_id": "2611.18919",
+      "url": "https://huggingface.co/papers/2611.18919",
       "githubRepo": null
     },
     {
-      "title": "Iris-Z: Scaling One Generative Model Past Specialist Geometry Models",
-      "summary": "A unified generative backbone jointly models image appearance and depth, surpassing specialized depth models at scale while preserving general image generation.",
-      "upvotes": 2,
-      "arxiv_id": "2611.16010",
-      "url": "https://huggingface.co/papers/2611.16010",
+      "title": "Dataset Distillation via Drifting",
+      "summary": "A dataset distillation method learns synthetic samples that approximate per-class data distributions in a feature extractor's latent space, improving distribution coverage and classification training while supporting visualization and other modalities.",
+      "upvotes": 0,
+      "arxiv_id": "2611.16642",
+      "url": "https://huggingface.co/papers/2611.16642",
       "githubRepo": null
     },
     {
-      "title": "BrickFlow: Connectivity-Guided Brick Reconstruction",
-      "summary": "A set-conditioned SE(3) flow model pretrained on procedurally generated LEGO assemblies and finetuned with image conditioning, combined with analytic connectivity-field guidance, infers part poses to assemble objects from images.",
-      "upvotes": 2,
-      "arxiv_id": "2611.17321",
-      "url": "https://huggingface.co/papers/2611.17321",
-      "githubRepo": "https://github.com/kulits/BrickFlow"
-    },
-    {
-      "title": "Restoring Diversity in Distilled Image and Video Generators by Probing Activations",
-      "summary": "Distilled few-step diffusion models exhibit diversity collapse because activation variance is concentrated into fewer directions in an intermediate block at the initial denoising step, and ReDiverse restores sample diversity by reintroducing teacher variance directions through adapter fine-tuning or training-free activation steering while preserving generation quality.",
-      "upvotes": 2,
-      "arxiv_id": "2611.18550",
-      "url": "https://huggingface.co/papers/2611.18550",
-      "githubRepo": "https://github.com/H-furkan/rediverse"
-    },
-    {
-      "title": "Re-Search: Dissecting LLM Ideation Through a Two-Player Questioning Game",
-      "summary": "A Twenty Questions-style benchmark for research ideation shows that large language models make most progress early, can recognize good ideas or questions but often cannot generate them, and may benefit from externally sourced candidates in automated research systems.",
-      "upvotes": 6,
-      "arxiv_id": "2611.14487",
-      "url": "https://huggingface.co/papers/2611.14487",
-      "githubRepo": null
+      "title": "A Reinforcement Learning Method to Navigate SMEFT Operator Space",
+      "summary": "A reinforcement learning agent with a lightweight actor-critic architecture explores the Standard Model Effective Field Theory operator space to discover diverse high-quality theory hypotheses and improve global fits.",
+      "upvotes": 0,
+      "arxiv_id": "2611.21439",
+      "url": "https://huggingface.co/papers/2611.21439",
+      "githubRepo": "https://github.com/ReinforcePhysics/ReinforceSMEFT"
     }
   ],
   "sources": [

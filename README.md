@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-17)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Gemma 4 12B** (`Model`), **Google: Gemini 4 Hydrogen (batch)** (`Model`), **tiny-voca** (`Model`), **HubEgo-100K** (`Dataset`) |
+| 📥 **Queued for Review** | **Gemma 3 270M** (`Model`), **Baidu: ERNIE-5.5-Flash-Preview (free)** (`Model`), **LongCat-Video-Avatar-1.6** (`Model`), **EVIDENT** (`Dataset`) |
 | 🌟 **Tool of the Day** | **Stable Diffusion XL (SDXL)** (Stability AI) — [Explore](https://stability.ai/stable-image) |
 | 🗄️ **Catalog Entries** | **575** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [Reducing Batch Makespan for LLM Agent Workloads th...](https://huggingface.co/papers/2611.16661) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Tue, 17 Nov 2026 04:18:00 GMT` |
+| 📜 **Top Daily Paper** | [Zuse: A Decision Model for European Languages...](https://huggingface.co/papers/2611.06238) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Synchronized** | `Tue, 17 Nov 2026 14:03:15 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
