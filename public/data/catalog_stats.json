@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-16T19:57:49.586Z",
+  "timestamp": "2026-11-17T04:17:09.942Z",
   "totalEntries": 575,
   "popularEntries": 368,
   "totalUsers": 10,
@@ -90,30 +90,26 @@
     "Open Weights": 1
   },
   "toolOfTheDay": {
-    "name": "Stable Diffusion",
+    "name": "Stable Diffusion XL (SDXL)",
     "type": "Model",
-    "summary": "Stability AI's landmark open-weights latent diffusion model that democratized high-resolution text-to-image synthesis by operating in compressed latent space for consumer GPU training and inference, incorporating an architecture of latent diffusion model with CLIP text encoder and U-Net denoising network. The model demonstrates competitive performance across verified evaluations, including FID score competitive with DALL-E 2. With its 890M params design, it supports diverse local and enterprise deployment profiles under the CreativeML Open RAIL-M license.",
+    "summary": "An improved latent diffusion model with a larger UNet backbone and a refiner model, producing higher-resolution and more detailed images than SD 1.5/2.x, incorporating an architecture of dual text encoders (CLIP ViT-L + OpenCLIP ViT-bigG) with larger UNet backbone. The model demonstrates competitive performance across verified evaluations, including Significantly higher FID than SD 2.1, preferred in human evaluation. With its 3.5B params (base + refiner) design, it supports diverse local and enterprise deployment profiles under the CreativeML Open RAIL++-M license.",
     "task": "Computer Vision",
-    "license": "CreativeML Open RAIL-M",
-    "year": 2022,
+    "license": "CreativeML Open RAIL++-M",
+    "year": 2023,
     "org": "Stability AI",
-    "size": "890M params",
-    "architecture": "Latent diffusion model with CLIP text encoder and U-Net denoising network.",
-    "usage": "from diffusers import StableDiffusionPipeline\npipe = StableDiffusionPipeline.from_pretrained(\"stabilityai/stable-diffusion-2\")\nimage = pipe(\"a photo of an astronaut on mars\").images[0]",
-    "benchmarks": "FID score competitive with DALL-E 2",
-    "limitations": "Can produce biased outputs, requires GPU for reasonable speed.",
+    "size": "3.5B params (base + refiner)",
+    "architecture": "Dual text encoders (CLIP ViT-L + OpenCLIP ViT-bigG) with larger UNet backbone.",
+    "usage": "from diffusers import DiffusionPipeline\npipe = DiffusionPipeline.from_pretrained(\"stabilityai/stable-diffusion-xl-base-1.0\")\nimage = pipe(prompt=\"A majestic lion at sunset, 8K\").images[0]",
+    "benchmarks": "Significantly higher FID than SD 2.1, preferred in human evaluation",
+    "limitations": "Higher VRAM requirement (~12GB), slower than SD 1.5.",
     "popular": true,
-    "url": "https://stability.ai/stable-diffusion",
+    "url": "https://stability.ai/stable-image",
     "citations": [
       {
-        "text": "Rombach et al. (2022) - Latent Diffusion Paper",
-        "url": "https://arxiv.org/abs/2112.10752"
-      },
-      {
-        "text": "Stability AI Official Site",
-        "url": "https://stability.ai"
+        "text": "SDXL Paper",
+        "url": "https://arxiv.org/abs/2307.01952"
       }
     ],
-    "description": "Stability AI's landmark open-weights latent diffusion model that democratized high-resolution text-to-image synthesis by operating in compressed latent space for consumer GPU training and inference, incorporating an architecture of latent diffusion model with CLIP text encoder and U-Net denoising network. The model demonstrates competitive performance across verified evaluations, including FID score competitive with DALL-E 2. With its 890M params design, it supports diverse local and enterprise deployment profiles under the CreativeML Open RAIL-M license."
+    "description": "An improved latent diffusion model with a larger UNet backbone and a refiner model, producing higher-resolution and more detailed images than SD 1.5/2.x, incorporating an architecture of dual text encoders (CLIP ViT-L + OpenCLIP ViT-bigG) with larger UNet backbone. The model demonstrates competitive performance across verified evaluations, including Significantly higher FID than SD 2.1, preferred in human evaluation. With its 3.5B params (base + refiner) design, it supports diverse local and enterprise deployment profiles under the CreativeML Open RAIL++-M license."
   }
 }

@@ -1,5 +1,109 @@
 [
   {
+    "name": "HubEgo-100K",
+    "type": "Dataset",
+    "summary": "HubEgo-100K \t A 100,000-hour dataset of first-person video of skilled manual work, recorded by Hub contributors: building sites, workshops, salons, kitchens, shops, war (21 likes, 335 downloads).",
+    "task": "NLP",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "org": "HubLabs",
+    "size": "10K<n<100K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"HubLabs/HubEgo-100K\")",
+    "benchmarks": "Trending Score: 18, Likes: 21, Downloads: 335",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/HubLabs/HubEgo-100K",
+    "citations": [
+      {
+        "text": "HubLabs/HubEgo-100K on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/HubLabs/HubEgo-100K"
+      }
+    ],
+    "created_at": "2026-11-17T04:17:09.920Z"
+  },
+  {
+    "name": "tiny-voca",
+    "type": "Model",
+    "summary": "High-performance Audio open-weights model by n4ze3m, trending with over 193 community likes and 860 downloads on Hugging Face.",
+    "task": "Audio",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "n4ze3m",
+    "size": "Open Weights",
+    "architecture": "n4ze3m text to speech architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"n4ze3m/tiny-voca\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"n4ze3m/tiny-voca\")",
+    "benchmarks": "Trending Score: 158, Likes: 193, Downloads: 860",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/n4ze3m/tiny-voca",
+    "citations": [
+      {
+        "text": "n4ze3m/tiny-voca on Hugging Face",
+        "url": "https://huggingface.co/n4ze3m/tiny-voca"
+      }
+    ],
+    "created_at": "2026-11-17T04:17:09.920Z"
+  },
+  {
+    "name": "Google: Gemini 4 Hydrogen (batch)",
+    "type": "Model",
+    "summary": "Gemini 4 Hydrogen is the high-efficiency workhorse model of the Gemini 4 family from Google, built for high-throughput agentic workflows, coding and multi-model routing at lower co",
+    "task": "AI Coding",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "google",
+    "size": "1049k Context · Available via API",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"google/gemini-4-hydrogen:batch\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1049k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://openrouter.ai/google/gemini-4-hydrogen:batch",
+    "citations": [
+      {
+        "text": "Google: Gemini 4 Hydrogen (batch) on OpenRouter",
+        "url": "https://openrouter.ai/google/gemini-4-hydrogen:batch"
+      }
+    ],
+    "created_at": "2026-11-17T04:17:09.920Z"
+  },
+  {
+    "name": "Gemma 4 12B",
+    "type": "Model",
+    "summary": "Frontier NLP model by Google benchmarked on Artificial Analysis and a verified 262k Context window.",
+    "task": "NLP",
+    "license": "Open Weights",
+    "year": 2026,
+    "org": "Google",
+    "size": "262k Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by Google, featuring native 262k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gemma-4-12b",
+    "benchmarks": "Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://artificialanalysis.ai/models/gemma-4-12b",
+    "citations": [
+      {
+        "text": "Gemma 4 12B on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gemma-4-12b"
+      },
+      {
+        "text": "Gemma 4 12B Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gemma-4-12b/providers"
+      }
+    ],
+    "created_at": "2026-11-17T04:17:09.919Z"
+  },
+  {
     "name": "Ropedia-Xperience-2",
     "type": "Dataset",
     "summary": "Ropedia Xperience 2 \t A Gold Standard for Scaling Physical AI Environments and Behaviors. 1,500+ scanned scenes and 4,000+ egocentric recordings, registered in one metr (18 likes, 6,562 downloads).",

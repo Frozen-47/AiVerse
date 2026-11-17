@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-16T19:57:49.590Z",
+  "timestamp": "2026-11-17T04:17:09.947Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,7 +58,7 @@
     {
       "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
       "author": "xtools-at",
-      "likes": 8286,
+      "likes": 9083,
       "downloads": 29567,
       "pipeline_tag": "text-generation",
       "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
@@ -67,7 +67,7 @@
     {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 1290,
+      "likes": 1331,
       "downloads": 609130,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
@@ -76,7 +76,7 @@
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 20237,
+      "likes": 20285,
       "downloads": 6763402,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
@@ -85,7 +85,7 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 12190,
+      "likes": 12269,
       "downloads": 2789021,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5",
@@ -94,43 +94,43 @@
   ],
   "papers": [
     {
-      "title": "LuthorSQL: A One-Pass Text-to-SQL Model as System 1 for a Slower LLM Agent",
-      "summary": "Frontier LLM agents that query databases with tools are among the most accurate text-to-SQL systems, but per-query calls to a hosted model are slow, costly, and...",
+      "title": "Reducing Batch Makespan for LLM Agent Workloads through Inference-Environment Coordination",
+      "summary": "Efficient batch execution of agent tasks is critical to LLM training and development workflows, including benchmark evaluation, synthetic-data generation, and R...",
       "upvotes": 1,
-      "arxiv_id": "2611.17780",
-      "url": "https://huggingface.co/papers/2611.17780",
-      "githubRepo": "https://github.com/IAMIbrahimmemon/luthorsql"
-    },
-    {
-      "title": "Alloy: A Multi-Material Physics Engine for Robot Learning",
-      "summary": "Robots handle much more than rigid objects: towels, cables, water, sand. The simulators used to train robots at scale are strongest on rigid bodies, and adding ...",
-      "upvotes": 0,
-      "arxiv_id": "2611.16312",
-      "url": "https://huggingface.co/papers/2611.16312",
+      "arxiv_id": "2611.16661",
+      "url": "https://huggingface.co/papers/2611.16661",
       "githubRepo": null
     },
     {
-      "title": "Parsed, Plausible, Wrong: Output Format Controls Silent Errors in Small-Model Semantic Parsing",
-      "summary": "A small fine-tuned parser that emits a well-formed but wrong tree fails silently: nothing downstream can tell. We ask whether the output format, a free design c...",
+      "title": "Iris-Z: Scaling One Generative Model Past Specialist Geometry Models",
+      "summary": "A unified generative backbone jointly models image appearance and depth, surpassing specialized depth models at scale while preserving general image generation.",
       "upvotes": 2,
-      "arxiv_id": "2611.17169",
-      "url": "https://huggingface.co/papers/2611.17169",
-      "githubRepo": "https://github.com/UmarGit/coffee-llm"
+      "arxiv_id": "2611.16010",
+      "url": "https://huggingface.co/papers/2611.16010",
+      "githubRepo": null
     },
     {
-      "title": "MemInStream: Memorizing or Merely Recognizing? Rethinking Streaming Video Memory Evaluation",
-      "summary": "MemInStream is a benchmark that evaluates memory capabilities in streaming video understanding using evidence-controlled validation to separate memory limitations from visual understanding failures.",
-      "upvotes": 5,
-      "arxiv_id": "2611.15640",
-      "url": "https://huggingface.co/papers/2611.15640",
-      "githubRepo": "https://github.com/HKUST-LongGroup/MemInStream"
+      "title": "BrickFlow: Connectivity-Guided Brick Reconstruction",
+      "summary": "A set-conditioned SE(3) flow model pretrained on procedurally generated LEGO assemblies and finetuned with image conditioning, combined with analytic connectivity-field guidance, infers part poses to assemble objects from images.",
+      "upvotes": 2,
+      "arxiv_id": "2611.17321",
+      "url": "https://huggingface.co/papers/2611.17321",
+      "githubRepo": "https://github.com/kulits/BrickFlow"
     },
     {
-      "title": "OneSteer: Unlocking Steerable General Humanoid Motion Tracking via One-Step Diffusion Whole-Body Control",
-      "summary": "Deployment objectives often specify desired outcomes without providing revised trajectories, while parts of the original reference must still be followed. We pr...",
-      "upvotes": 12,
-      "arxiv_id": "2610.41354",
-      "url": "https://huggingface.co/papers/2610.41354",
+      "title": "Restoring Diversity in Distilled Image and Video Generators by Probing Activations",
+      "summary": "Distilled few-step diffusion models exhibit diversity collapse because activation variance is concentrated into fewer directions in an intermediate block at the initial denoising step, and ReDiverse restores sample diversity by reintroducing teacher variance directions through adapter fine-tuning or training-free activation steering while preserving generation quality.",
+      "upvotes": 2,
+      "arxiv_id": "2611.18550",
+      "url": "https://huggingface.co/papers/2611.18550",
+      "githubRepo": "https://github.com/H-furkan/rediverse"
+    },
+    {
+      "title": "Re-Search: Dissecting LLM Ideation Through a Two-Player Questioning Game",
+      "summary": "A Twenty Questions-style benchmark for research ideation shows that large language models make most progress early, can recognize good ideas or questions but often cannot generate them, and may benefit from externally sourced candidates in automated research systems.",
+      "upvotes": 6,
+      "arxiv_id": "2611.14487",
+      "url": "https://huggingface.co/papers/2611.14487",
       "githubRepo": null
     }
   ],

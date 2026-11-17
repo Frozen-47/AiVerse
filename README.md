@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-16)
+### ⚡ AiVerse AI Radar (2026-11-17)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Qwen3.5 122B A10B** (`Model`), **Tencent: Hy4 flash** (`Model`), **PAN2** (`Model`), **AI-Image-Upscaler** (`Platform`), **Ropedia-Xperience-2** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Stable Diffusion** (Stability AI) — [Explore](https://stability.ai/stable-diffusion) |
+| 📥 **Queued for Review** | **Gemma 4 12B** (`Model`), **Google: Gemini 4 Hydrogen (batch)** (`Model`), **tiny-voca** (`Model`), **HubEgo-100K** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Stable Diffusion XL (SDXL)** (Stability AI) — [Explore](https://stability.ai/stable-image) |
 | 🗄️ **Catalog Entries** | **575** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [LuthorSQL: A One-Pass Text-to-SQL Model as System ...](https://huggingface.co/papers/2611.17780) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 16 Nov 2026 19:58:25 GMT` |
+| 📜 **Top Daily Paper** | [Reducing Batch Makespan for LLM Agent Workloads th...](https://huggingface.co/papers/2611.16661) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Tue, 17 Nov 2026 04:18:00 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
