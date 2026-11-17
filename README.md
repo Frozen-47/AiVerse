@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-17)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Gemma 3 270M** (`Model`), **Baidu: ERNIE-5.5-Flash-Preview (free)** (`Model`), **LongCat-Video-Avatar-1.6** (`Model`), **EVIDENT** (`Dataset`) |
+| 📥 **Queued for Review** | **Apodex 1.1** (`Model`), **OpenAI: GPT-6.2 Astra Pro** (`Model`), **SenseNova-Loop-9B** (`Model`), **PyBot** (`Platform`), **Ko-Online-Mind2Web** (`Dataset`) |
 | 🌟 **Tool of the Day** | **Stable Diffusion XL (SDXL)** (Stability AI) — [Explore](https://stability.ai/stable-image) |
 | 🗄️ **Catalog Entries** | **575** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [Zuse: A Decision Model for European Languages...](https://huggingface.co/papers/2611.06238) |
-| 🛡️ **Catalog Links Checked** | **24/25** operational |
-| 🕒 **Last Synchronized** | `Tue, 17 Nov 2026 14:03:15 GMT` |
+| 📜 **Top Daily Paper** | [Energy-Based Reasoners: Your Recurrent Reasoner Sh...](https://huggingface.co/papers/2611.08977) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Tue, 17 Nov 2026 23:43:35 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

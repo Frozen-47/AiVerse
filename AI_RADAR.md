@@ -2,41 +2,48 @@
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Tue, 17 Nov 2026 14:03:15 GMT`*
+*Last Synchronized: `Tue, 17 Nov 2026 23:43:35 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (4)
+## 📥 Newly Queued Assets for Review (5)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Gemma 3 270M** (`Model` • *Google*)
-> Frontier NLP model by Google benchmarked on Artificial Analysis and a verified 32k Context window.
+### **Apodex 1.1** (`Model` • *Apodex*)
+> Frontier Research model by Apodex benchmarked on Artificial Analysis with an Intelligence Index of 13.6712884627289 and a verified 256k Context window.
 
-- 🏷️ **Domain & License**: `NLP` • `Open Weights` (2026)
-- ⚡ **Metrics**: `Context Window: 32k Context, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/gemma-3-270m](https://artificialanalysis.ai/models/gemma-3-270m)
+- 🏷️ **Domain & License**: `Research` • `Proprietary` (2026)
+- ⚡ **Metrics**: `Context Window: 256k Context, Intelligence Index: 13.6712884627289, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/apodex-1-1](https://artificialanalysis.ai/models/apodex-1-1)
 
-### **Baidu: ERNIE-5.5-Flash-Preview (free)** (`Model` • *baidu*)
-> ERNIE 5.5 Flash Preview is the latest foundation model in the ERNIE family, with comprehensive improvements in coding, agentic capabilities, knowledge work, and deep research. It h
+### **OpenAI: GPT-6.2 Astra Pro** (`Model` • *openai*)
+> GPT-6.2 Astra Pro is the same underlying model as [GPT-6.2 Astra](https://openrouter.ai/openai/gpt-6.2-astra), served with `reasoning.mode` set to `pro` for higher-quality response
 
-- 🏷️ **Domain & License**: `AI Coding` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 1024k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/baidu/ernie-5.5-flash-preview:free](https://openrouter.ai/baidu/ernie-5.5-flash-preview:free)
+- 🏷️ **Domain & License**: `NLP` • `Proprietary` (2026)
+- ⚡ **Metrics**: `Context Window: 1050k Context, Available across global OpenRouter inference nodes.`
+- 🔗 **Resource Link**: [https://openrouter.ai/openai/gpt-6.2-astra-pro](https://openrouter.ai/openai/gpt-6.2-astra-pro)
 
-### **LongCat-Video-Avatar-1.6** (`Model` • *meituan-longcat*)
-> High-performance NLP open-weights model by meituan-longcat, trending with over 169 community likes and 489 downloads on Hugging Face.
+### **SenseNova-Loop-9B** (`Model` • *sensenova*)
+> High-performance Multimodal open-weights model by sensenova, trending with over 175 community likes and 0 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `MIT` (2026)
-- ⚡ **Metrics**: `Trending Score: 125, Likes: 169, Downloads: 489`
-- 🔗 **Resource Link**: [https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.6](https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.6)
+- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 172, Likes: 175, Downloads: 0`
+- 🔗 **Resource Link**: [https://huggingface.co/sensenova/SenseNova-Loop-9B](https://huggingface.co/sensenova/SenseNova-Loop-9B)
 
-### **EVIDENT** (`Dataset` • *KORMo-VL*)
-> EVIDENT: Task Metadata for Evidence-Grounded GUI Evaluation 	 This release contains 220 GUI/web agent task records for evidence-grounded trajectory evaluation: 150 Kore (23 likes, 110 downloads).
+### **PyBot** (`Platform` • *HuggingFaceSwarms*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceSwarms. Trending with 23 community stars.
 
-- 🏷️ **Domain & License**: `NLP` • `Open Data` (2026)
-- ⚡ **Metrics**: `Trending Score: 22, Likes: 23, Downloads: 110`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/KORMo-VL/EVIDENT](https://huggingface.co/datasets/KORMo-VL/EVIDENT)
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 23, Community Likes: 23`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/HuggingFaceSwarms/PyBot](https://huggingface.co/spaces/HuggingFaceSwarms/PyBot)
+
+### **Ko-Online-Mind2Web** (`Dataset` • *KORMo-VL*)
+> 🇰🇷 Ko-Online-Mind2Web 	 A live Korean web-agent benchmark, built manually by native Korean annotators. 📋 312 tasks · 🌐 104 websites · ✍️ ~480 annotator-hours · 🔴 L (19 likes, 23 downloads).
+
+- 🏷️ **Domain & License**: `NLP` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 18, Likes: 19, Downloads: 23`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/KORMo-VL/Ko-Online-Mind2Web](https://huggingface.co/datasets/KORMo-VL/Ko-Online-Mind2Web)
 
 ---
 
@@ -58,13 +65,13 @@
 | **JT-35B-Flash** | `Artificial Analysis` | China Mobile (Frontier Leaderboard) | ❤️ 95 · 📥 256,000 | [View](https://artificialanalysis.ai/models/jt-35b-flash) |
 | **Qwen3.5 Omni Plus** | `Artificial Analysis` | Alibaba (Frontier Leaderboard) | ❤️ 95 · 📥 256,000 | [View](https://artificialanalysis.ai/models/qwen3-5-omni-plus) |
 | **Nova 2.0 Omni** | `Artificial Analysis` | Amazon (Reasoning Frontier) | ❤️ 95 · 📥 1,000,000 | [View](https://artificialanalysis.ai/models/nova-2-0-omni) |
-| **Tencent: Hy4 flash** | `OpenRouter` | tencent (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/tencent/hy4-flash) |
-| **Qwen: Qwen4 Max** | `OpenRouter` | qwen (Cloud Model API) | ❤️ 120 · 📥 1,000,000 | [View](https://openrouter.ai/qwen/qwen4-max) |
-| **inclusionAI: Ling 3.2 Flash (free)** | `OpenRouter` | inclusionai (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/inclusionai/ling-3.2-flash:free) |
-| **MiniMaxAI/MiniMax-H3-Image** | `Hugging Face` | MiniMaxAI (text-to-image) | ❤️ 1,378 · 📥 727,110 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
-| **Qwen/Qwen3.8-27B** | `Hugging Face` | Qwen (image-text-to-text) | ❤️ 20,347 · 📥 6,942,530 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
-| **Comfy-Org/MiniMax-H3-Image** | `Hugging Face` | Comfy-Org (text-to-image) | ❤️ 510 · 📥 2,660,341 | [View](https://huggingface.co/Comfy-Org/MiniMax-H3-Image) |
-| **Lightricks/LTX-2.5** | `Hugging Face` | Lightricks (image-to-video) | ❤️ 12,329 · 📥 2,828,071 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| **OpenAI: GPT-6.2 Astra Pro** | `OpenRouter` | openai (Cloud Model API) | ❤️ 120 · 📥 1,050,000 | [View](https://openrouter.ai/openai/gpt-6.2-astra-pro) |
+| **OpenAI: GPT-6.2 Astra Pro (batch)** | `OpenRouter` | openai (Cloud Model API) | ❤️ 120 · 📥 1,050,000 | [View](https://openrouter.ai/openai/gpt-6.2-astra-pro:batch) |
+| **OpenAI: GPT-6.2 Astra** | `OpenRouter` | openai (Cloud Model API) | ❤️ 120 · 📥 1,050,000 | [View](https://openrouter.ai/openai/gpt-6.2-astra) |
+| **MiniMaxAI/MiniMax-H3-Image** | `Hugging Face` | MiniMaxAI (text-to-image) | ❤️ 1,455 · 📥 727,110 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
+| **Qwen/Qwen3.8-27B** | `Hugging Face` | Qwen (image-text-to-text) | ❤️ 20,422 · 📥 6,942,530 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
+| **Lightricks/LTX-2.5** | `Hugging Face` | Lightricks (image-to-video) | ❤️ 12,400 · 📥 2,828,071 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| **higurashi-ai/Haru-4B** | `Hugging Face` | higurashi-ai (audio-to-audio) | ❤️ 498 · 📥 4,445 | [View](https://huggingface.co/higurashi-ai/Haru-4B) |
 
 
 ---
@@ -74,11 +81,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Zuse: A Decision Model for European Languages** | 👍 0 | Decision models read a document and return a probability for each of a fixed set of options instead of generating text. Several appeared in 2026, but none has p... | [Read](https://huggingface.co/papers/2611.06238) |
-| **LynnReal-Hand: Unlocking World Interaction with Hand Control** | 👍 1 | Interactive video world models enable exploration through text and camera controls, yet direct object interaction requires finer control. Hands provide a natura... | [Read](https://huggingface.co/papers/2611.21479) |
-| **Correcting Persistent Failures in Point-Cloud Grasping Policies using Human Demonstrations in Virtual Reality** | 👍 2 | A human-in-the-loop failure-mining pipeline turns persistently unsolved grasps of a reinforcement-learning point-cloud policy into virtual-reality human demonstrations, improving hard-case success without reducing generalization to unseen objects. | [Read](https://huggingface.co/papers/2611.18919) |
-| **Dataset Distillation via Drifting** | 👍 0 | A dataset distillation method learns synthetic samples that approximate per-class data distributions in a feature extractor's latent space, improving distribution coverage and classification training while supporting visualization and other modalities. | [Read](https://huggingface.co/papers/2611.16642) |
-| **A Reinforcement Learning Method to Navigate SMEFT Operator Space** | 👍 0 | A reinforcement learning agent with a lightweight actor-critic architecture explores the Standard Model Effective Field Theory operator space to discover diverse high-quality theory hypotheses and improve global fits. | [Read](https://huggingface.co/papers/2611.21439) |
+| **Energy-Based Reasoners: Your Recurrent Reasoner Should Be an Energy-Based Model** | 👍 4 | Energy-Based Reasoners guide looped latent reasoning by learning an energy function whose gradient refines states and signals when to stop, with exploration-based training improving performance and efficiency. | [Read](https://huggingface.co/papers/2611.08977) |
+| **Flexible Multi-Stack Super-Resolution of Clinical Brain MRI Using Hetero-Orientation Variational Encoding: Expert Reader Evaluation in a Nigerian Cohort** | 👍 0 | MS-HVED enables flexible super-resolution of partially overlapping brain MRI stacks by fusing independently encoded multi-scale Gaussian posteriors with a field-of-view-aware Product-of-Gaussians and physics-informed domain randomisation, improving reconstruction, tissue segmentation, and external clinical generalisation. | [Read](https://huggingface.co/papers/2611.21412) |
+| **More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs** | 👍 3 | Evaluations of multi-agent language models often compare communicating architectures against a single greedy pass. This practice confounds coordination with sam... | [Read](https://huggingface.co/papers/2611.17610) |
+| **Marimba: A System One Model for Speech** | 👍 4 | Marimba uses frozen Qwen3-ASR features and lightweight readouts to make lexical, turn-end, language, speaker-change, and personal-information decisions from speech, achieving strong detection and calibration on conversational and read-speech benchmarks. | [Read](https://huggingface.co/papers/2611.18330) |
+| **Invariant-Aware Harness Enforcement to Protect LLM Agents from Silent API Failures** | 👍 2 | LLM agents answer questions by calling APIs and trusting the results. An API can fail silently. It ignores part of a request, such as a misnamed filter, yet ret... | [Read](https://huggingface.co/papers/2611.20595) |
 
 
 ---
@@ -91,8 +98,8 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
-- **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
+- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Dependency Security**: `51` advisories flagged across `578` dependencies (`1` critical, `38` high)
 
 ---
 *Generated automatically by GitHub Actions AI Radar & Ecosystem Sync.*

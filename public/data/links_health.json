@@ -1,13 +1,23 @@
 {
-  "timestamp": "2026-11-17T14:02:23.943Z",
+  "timestamp": "2026-11-17T23:42:43.628Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "Midjourney v6",
-      "url": "https://www.midjourney.com/",
+      "name": "Claude",
+      "url": "https://claude.ai",
       "status": 403
+    },
+    {
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
+    },
+    {
+      "name": "Microsoft Copilot",
+      "url": "https://copilot.microsoft.com",
+      "status": 405
     }
   ]
 }

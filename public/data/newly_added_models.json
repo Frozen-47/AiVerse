@@ -4,6 +4,136 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Apodex 1.1",
+        "type": "Model",
+        "summary": "Frontier Research model by Apodex benchmarked on Artificial Analysis with an Intelligence Index of 13.6712884627289 and a verified 256k Context window.",
+        "task": "Research",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "Apodex",
+        "size": "256k Context · Proprietary Model",
+        "architecture": "Proprietary frontier neural architecture developed by Apodex, featuring native 256k Context token window support and optimized reasoning chains.",
+        "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/apodex-1-1",
+        "benchmarks": "Context Window: 256k Context, Intelligence Index: 13.6712884627289, Benchmarked on Artificial Analysis Leaderboard",
+        "limitations": "Cloud API access subject to provider rate limits and compute quotas.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://artificialanalysis.ai/models/apodex-1-1",
+        "citations": [
+          {
+            "text": "Apodex 1.1 on Artificial Analysis Benchmark",
+            "url": "https://artificialanalysis.ai/models/apodex-1-1"
+          },
+          {
+            "text": "Apodex 1.1 Inference Providers",
+            "url": "https://artificialanalysis.ai/models/apodex-1-1/providers"
+          }
+        ]
+      },
+      {
+        "name": "OpenAI: GPT-6.2 Astra Pro",
+        "type": "Model",
+        "summary": "GPT-6.2 Astra Pro is the same underlying model as [GPT-6.2 Astra](https://openrouter.ai/openai/gpt-6.2-astra), served with `reasoning.mode` set to `pro` for higher-quality response",
+        "task": "NLP",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "openai",
+        "size": "1050k Context · Available via API",
+        "architecture": "Modern foundation model hosted on OpenRouter with native 1050k Context support and structured output generation.",
+        "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"openai/gpt-6.2-astra-pro\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+        "benchmarks": "Context Window: 1050k Context, Available across global OpenRouter inference nodes.",
+        "limitations": "Requires OpenRouter API key and token credits.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://openrouter.ai/openai/gpt-6.2-astra-pro",
+        "citations": [
+          {
+            "text": "OpenAI: GPT-6.2 Astra Pro on OpenRouter",
+            "url": "https://openrouter.ai/openai/gpt-6.2-astra-pro"
+          }
+        ]
+      },
+      {
+        "name": "SenseNova-Loop-9B",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by sensenova, trending with over 175 community likes and 0 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "sensenova",
+        "size": "9B params",
+        "architecture": "sensenova image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"sensenova/SenseNova-Loop-9B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"sensenova/SenseNova-Loop-9B\")",
+        "benchmarks": "Trending Score: 172, Likes: 175, Downloads: 0",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/sensenova/SenseNova-Loop-9B",
+        "citations": [
+          {
+            "text": "sensenova/SenseNova-Loop-9B on Hugging Face",
+            "url": "https://huggingface.co/sensenova/SenseNova-Loop-9B"
+          }
+        ]
+      },
+      {
+        "name": "PyBot",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceSwarms. Trending with 23 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "HuggingFaceSwarms",
+        "size": "DOCKER Platform",
+        "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/HuggingFaceSwarms/PyBot",
+        "benchmarks": "Trending Score: 23, Community Likes: 23",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/HuggingFaceSwarms/PyBot",
+        "citations": [
+          {
+            "text": "HuggingFaceSwarms/PyBot on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/HuggingFaceSwarms/PyBot"
+          }
+        ]
+      },
+      {
+        "name": "Ko-Online-Mind2Web",
+        "type": "Dataset",
+        "summary": "🇰🇷 Ko-Online-Mind2Web \t A live Korean web-agent benchmark, built manually by native Korean annotators. 📋 312 tasks · 🌐 104 websites · ✍️ ~480 annotator-hours · 🔴 L (19 likes, 23 downloads).",
+        "task": "NLP",
+        "license": "CC-BY-4.0",
+        "year": 2026,
+        "org": "KORMo-VL",
+        "size": "n<1K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"KORMo-VL/Ko-Online-Mind2Web\")",
+        "benchmarks": "Trending Score: 18, Likes: 19, Downloads: 23",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/KORMo-VL/Ko-Online-Mind2Web",
+        "citations": [
+          {
+            "text": "KORMo-VL/Ko-Online-Mind2Web on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/KORMo-VL/Ko-Online-Mind2Web"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Gemma 3 270M",
         "type": "Model",
         "summary": "Frontier NLP model by Google benchmarked on Artificial Analysis and a verified 32k Context window.",
@@ -6108,84 +6238,6 @@
           {
             "text": "nvidia/Nemotron-Personas-Germany on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Germany"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-21",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by nvidia, trending with over 146 community likes and 2,480 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "nvidia",
-        "size": "4B params",
-        "architecture": "nvidia text generation architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16\")",
-        "benchmarks": "Trending Score: 145, Likes: 146, Downloads: 2,480",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
-        "citations": [
-          {
-            "text": "nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16 on Hugging Face",
-            "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16"
-          }
-        ]
-      },
-      {
-        "name": "Qwen3-TTS",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Qwen. Trending with 2,337 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "Qwen",
-        "size": "GRADIO Platform",
-        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Qwen/Qwen3-TTS",
-        "benchmarks": "Trending Score: 22, Community Likes: 2,337",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/spaces/Qwen/Qwen3-TTS",
-        "citations": [
-          {
-            "text": "Qwen/Qwen3-TTS on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/Qwen/Qwen3-TTS"
-          }
-        ]
-      },
-      {
-        "name": "scorpion-toxin-binder-design",
-        "type": "Dataset",
-        "summary": "Scorpion toxin binder design: data release \t Claude designed proteins de novo to bind five scorpion toxins: Cn2, Ts1, AaH II, AaH I, and LqhIII. Two contract research o (18 likes, 6 downloads).",
-        "task": "Computer Vision",
-        "license": "CC-BY-4.0",
-        "year": 2026,
-        "org": "Anthropic",
-        "size": "10K<n<100K",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Anthropic/scorpion-toxin-binder-design\")",
-        "benchmarks": "Trending Score: 18, Likes: 18, Downloads: 6",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/Anthropic/scorpion-toxin-binder-design",
-        "citations": [
-          {
-            "text": "Anthropic/scorpion-toxin-binder-design on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/Anthropic/scorpion-toxin-binder-design"
           }
         ]
       }

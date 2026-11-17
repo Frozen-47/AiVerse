@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-17T14:02:23.769Z",
+  "timestamp": "2026-11-17T23:42:43.369Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -29,36 +29,36 @@
       "source": "Artificial Analysis"
     },
     {
-      "id": "Tencent: Hy4 flash",
-      "author": "tencent",
+      "id": "OpenAI: GPT-6.2 Astra Pro",
+      "author": "openai",
       "likes": 120,
-      "downloads": 1048576,
+      "downloads": 1050000,
       "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/tencent/hy4-flash",
+      "url": "https://openrouter.ai/openai/gpt-6.2-astra-pro",
       "source": "OpenRouter"
     },
     {
-      "id": "Qwen: Qwen4 Max",
-      "author": "qwen",
+      "id": "OpenAI: GPT-6.2 Astra Pro (batch)",
+      "author": "openai",
       "likes": 120,
-      "downloads": 1000000,
+      "downloads": 1050000,
       "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/qwen/qwen4-max",
+      "url": "https://openrouter.ai/openai/gpt-6.2-astra-pro:batch",
       "source": "OpenRouter"
     },
     {
-      "id": "inclusionAI: Ling 3.2 Flash (free)",
-      "author": "inclusionai",
+      "id": "OpenAI: GPT-6.2 Astra",
+      "author": "openai",
       "likes": 120,
-      "downloads": 1048576,
+      "downloads": 1050000,
       "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/inclusionai/ling-3.2-flash:free",
+      "url": "https://openrouter.ai/openai/gpt-6.2-astra",
       "source": "OpenRouter"
     },
     {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 1378,
+      "likes": 1455,
       "downloads": 727110,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
@@ -67,71 +67,71 @@
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 20347,
+      "likes": 20422,
       "downloads": 6942530,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
       "source": "Hugging Face"
     },
     {
-      "id": "Comfy-Org/MiniMax-H3-Image",
-      "author": "Comfy-Org",
-      "likes": 510,
-      "downloads": 2660341,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/Comfy-Org/MiniMax-H3-Image",
-      "source": "Hugging Face"
-    },
-    {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 12329,
+      "likes": 12400,
       "downloads": 2828071,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "higurashi-ai/Haru-4B",
+      "author": "higurashi-ai",
+      "likes": 498,
+      "downloads": 4445,
+      "pipeline_tag": "audio-to-audio",
+      "url": "https://huggingface.co/higurashi-ai/Haru-4B",
       "source": "Hugging Face"
     }
   ],
   "papers": [
     {
-      "title": "Zuse: A Decision Model for European Languages",
-      "summary": "Decision models read a document and return a probability for each of a fixed set of options instead of generating text. Several appeared in 2026, but none has p...",
+      "title": "Energy-Based Reasoners: Your Recurrent Reasoner Should Be an Energy-Based Model",
+      "summary": "Energy-Based Reasoners guide looped latent reasoning by learning an energy function whose gradient refines states and signals when to stop, with exploration-based training improving performance and efficiency.",
+      "upvotes": 4,
+      "arxiv_id": "2611.08977",
+      "url": "https://huggingface.co/papers/2611.08977",
+      "githubRepo": "https://github.com/wwillchen/ebr"
+    },
+    {
+      "title": "Flexible Multi-Stack Super-Resolution of Clinical Brain MRI Using Hetero-Orientation Variational Encoding: Expert Reader Evaluation in a Nigerian Cohort",
+      "summary": "MS-HVED enables flexible super-resolution of partially overlapping brain MRI stacks by fusing independently encoded multi-scale Gaussian posteriors with a field-of-view-aware Product-of-Gaussians and physics-informed domain randomisation, improving reconstruction, tissue segmentation, and external clinical generalisation.",
       "upvotes": 0,
-      "arxiv_id": "2611.06238",
-      "url": "https://huggingface.co/papers/2611.06238",
-      "githubRepo": null
+      "arxiv_id": "2611.21412",
+      "url": "https://huggingface.co/papers/2611.21412",
+      "githubRepo": "https://github.com/cai4cai/ms-hved"
     },
     {
-      "title": "LynnReal-Hand: Unlocking World Interaction with Hand Control",
-      "summary": "Interactive video world models enable exploration through text and camera controls, yet direct object interaction requires finer control. Hands provide a natura...",
-      "upvotes": 1,
-      "arxiv_id": "2611.21479",
-      "url": "https://huggingface.co/papers/2611.21479",
-      "githubRepo": "https://github.com/LynnReal-AI/LynnReal"
+      "title": "More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs",
+      "summary": "Evaluations of multi-agent language models often compare communicating architectures against a single greedy pass. This practice confounds coordination with sam...",
+      "upvotes": 3,
+      "arxiv_id": "2611.17610",
+      "url": "https://huggingface.co/papers/2611.17610",
+      "githubRepo": "https://github.com/mahmoudsajjadi/pace"
     },
     {
-      "title": "Correcting Persistent Failures in Point-Cloud Grasping Policies using Human Demonstrations in Virtual Reality",
-      "summary": "A human-in-the-loop failure-mining pipeline turns persistently unsolved grasps of a reinforcement-learning point-cloud policy into virtual-reality human demonstrations, improving hard-case success without reducing generalization to unseen objects.",
+      "title": "Marimba: A System One Model for Speech",
+      "summary": "Marimba uses frozen Qwen3-ASR features and lightweight readouts to make lexical, turn-end, language, speaker-change, and personal-information decisions from speech, achieving strong detection and calibration on conversational and read-speech benchmarks.",
+      "upvotes": 4,
+      "arxiv_id": "2611.18330",
+      "url": "https://huggingface.co/papers/2611.18330",
+      "githubRepo": "https://github.com/Charcot-AI/marimba-api"
+    },
+    {
+      "title": "Invariant-Aware Harness Enforcement to Protect LLM Agents from Silent API Failures",
+      "summary": "LLM agents answer questions by calling APIs and trusting the results. An API can fail silently. It ignores part of a request, such as a misnamed filter, yet ret...",
       "upvotes": 2,
-      "arxiv_id": "2611.18919",
-      "url": "https://huggingface.co/papers/2611.18919",
-      "githubRepo": null
-    },
-    {
-      "title": "Dataset Distillation via Drifting",
-      "summary": "A dataset distillation method learns synthetic samples that approximate per-class data distributions in a feature extractor's latent space, improving distribution coverage and classification training while supporting visualization and other modalities.",
-      "upvotes": 0,
-      "arxiv_id": "2611.16642",
-      "url": "https://huggingface.co/papers/2611.16642",
-      "githubRepo": null
-    },
-    {
-      "title": "A Reinforcement Learning Method to Navigate SMEFT Operator Space",
-      "summary": "A reinforcement learning agent with a lightweight actor-critic architecture explores the Standard Model Effective Field Theory operator space to discover diverse high-quality theory hypotheses and improve global fits.",
-      "upvotes": 0,
-      "arxiv_id": "2611.21439",
-      "url": "https://huggingface.co/papers/2611.21439",
-      "githubRepo": "https://github.com/ReinforcePhysics/ReinforceSMEFT"
+      "arxiv_id": "2611.20595",
+      "url": "https://huggingface.co/papers/2611.20595",
+      "githubRepo": "https://github.com/Sajib-006/silentguard"
     }
   ],
   "sources": [

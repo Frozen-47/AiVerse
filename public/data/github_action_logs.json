@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1794959015282_57kxk",
+    "created_at": "2026-11-17T23:43:35.282Z",
+    "timestamp": "2026-11-17T23:43:35.282Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Apodex 1.1, OpenAI: GPT-6.2 Astra Pro, SenseNova-Loop-9B, PyBot, Ko-Online-Mind2Web. Checked health for 25 links (3 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 53523ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Apodex 1.1",
+          "type": "Model",
+          "org": "Apodex"
+        },
+        {
+          "name": "OpenAI: GPT-6.2 Astra Pro",
+          "type": "Model",
+          "org": "openai"
+        },
+        {
+          "name": "SenseNova-Loop-9B",
+          "type": "Model",
+          "org": "sensenova"
+        },
+        {
+          "name": "PyBot",
+          "type": "Platform",
+          "org": "HuggingFaceSwarms"
+        },
+        {
+          "name": "Ko-Online-Mind2Web",
+          "type": "Dataset",
+          "org": "KORMo-VL"
+        }
+      ],
+      "brokenLinks": 3,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 53523,
+      "runId": "44201713667",
+      "runNumber": "130",
+      "sha": "92e7a20",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1794924195711_lnhhg",
     "created_at": "2026-11-17T14:03:15.711Z",
     "timestamp": "2026-11-17T14:03:15.711Z",
