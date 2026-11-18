@@ -4,6 +4,136 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Qwen3 Omni 30B A3B Instruct",
+        "type": "Model",
+        "summary": "Frontier Multimodal model by Alibaba benchmarked on Artificial Analysis and a verified 66k Context window.",
+        "task": "Multimodal",
+        "license": "Open Weights",
+        "year": 2026,
+        "org": "Alibaba",
+        "size": "66k Context · Open Model",
+        "architecture": "Open-weights frontier neural architecture developed by Alibaba, featuring native 66k Context token window support and optimized reasoning chains.",
+        "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct",
+        "benchmarks": "Context Window: 66k Context, Benchmarked on Artificial Analysis Leaderboard",
+        "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct",
+        "citations": [
+          {
+            "text": "Qwen3 Omni 30B A3B Instruct on Artificial Analysis Benchmark",
+            "url": "https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct"
+          },
+          {
+            "text": "Qwen3 Omni 30B A3B Instruct Inference Providers",
+            "url": "https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct/providers"
+          }
+        ]
+      },
+      {
+        "name": "OpenAI: GPT-6.2 Astra",
+        "type": "Model",
+        "summary": "GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, professional work and scientific res",
+        "task": "NLP",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "openai",
+        "size": "1050k Context · Available via API",
+        "architecture": "Modern foundation model hosted on OpenRouter with native 1050k Context support and structured output generation.",
+        "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"openai/gpt-6.2-astra\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+        "benchmarks": "Context Window: 1050k Context, Available across global OpenRouter inference nodes.",
+        "limitations": "Requires OpenRouter API key and token credits.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://openrouter.ai/openai/gpt-6.2-astra",
+        "citations": [
+          {
+            "text": "OpenAI: GPT-6.2 Astra on OpenRouter",
+            "url": "https://openrouter.ai/openai/gpt-6.2-astra"
+          }
+        ]
+      },
+      {
+        "name": "Maxwell-V1-Flash",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by maxwell-model, trending with over 215 community likes and 1,052 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "maxwell-model",
+        "size": "Open Weights",
+        "architecture": "maxwell-model text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"maxwell-model/Maxwell-V1-Flash\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"maxwell-model/Maxwell-V1-Flash\")",
+        "benchmarks": "Trending Score: 173, Likes: 215, Downloads: 1,052",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/maxwell-model/Maxwell-V1-Flash",
+        "citations": [
+          {
+            "text": "maxwell-model/Maxwell-V1-Flash on Hugging Face",
+            "url": "https://huggingface.co/maxwell-model/Maxwell-V1-Flash"
+          }
+        ]
+      },
+      {
+        "name": "slack-moji",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by cfahlgren1. Trending with 44 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "cfahlgren1",
+        "size": "STATIC Platform",
+        "architecture": "STATIC cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/cfahlgren1/slack-moji",
+        "benchmarks": "Trending Score: 44, Community Likes: 44",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/cfahlgren1/slack-moji",
+        "citations": [
+          {
+            "text": "cfahlgren1/slack-moji on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/cfahlgren1/slack-moji"
+          }
+        ]
+      },
+      {
+        "name": "Ko-Screenspot",
+        "type": "Dataset",
+        "summary": "🇰🇷 Ko-Screenspot \t A Korean GUI grounding benchmark, built manually by native Korean annotators. 📋 3,319 samples · 🌐 142 websites · ✍️ ~480 annotator-hours · 🎯 GUI (21 likes, 67 downloads).",
+        "task": "Computer Vision",
+        "license": "CC-BY-4.0",
+        "year": 2026,
+        "org": "KORMo-VL",
+        "size": "n<1K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"KORMo-VL/Ko-Screenspot\")",
+        "benchmarks": "Trending Score: 19, Likes: 21, Downloads: 67",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/KORMo-VL/Ko-Screenspot",
+        "citations": [
+          {
+            "text": "KORMo-VL/Ko-Screenspot on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/KORMo-VL/Ko-Screenspot"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-18",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Qwen3.5 2B",
         "type": "Model",
         "summary": "Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.",
@@ -6236,84 +6366,6 @@
           {
             "text": "cais/hle on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/cais/hle"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-21",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "OrcaCyber-Nano-1.0",
-        "type": "Model",
-        "summary": "High-performance Multimodal open-weights model by orcarouter, trending with over 163 community likes and 19,697 downloads on Hugging Face.",
-        "task": "Multimodal",
-        "license": "OTHER",
-        "year": 2026,
-        "org": "orcarouter",
-        "size": "Open Weights",
-        "architecture": "orcarouter image text to text architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"orcarouter/OrcaCyber-Nano-1.0\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"orcarouter/OrcaCyber-Nano-1.0\")",
-        "benchmarks": "Trending Score: 154, Likes: 163, Downloads: 19,697",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/orcarouter/OrcaCyber-Nano-1.0",
-        "citations": [
-          {
-            "text": "orcarouter/OrcaCyber-Nano-1.0 on Hugging Face",
-            "url": "https://huggingface.co/orcarouter/OrcaCyber-Nano-1.0"
-          }
-        ]
-      },
-      {
-        "name": "nlp-before-llms",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by dlouapre. Trending with 27 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "dlouapre",
-        "size": "DOCKER Platform",
-        "architecture": "DOCKER cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/dlouapre/nlp-before-llms",
-        "benchmarks": "Trending Score: 26, Community Likes: 27",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/spaces/dlouapre/nlp-before-llms",
-        "citations": [
-          {
-            "text": "dlouapre/nlp-before-llms on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/dlouapre/nlp-before-llms"
-          }
-        ]
-      },
-      {
-        "name": "open-yap-1k",
-        "type": "Dataset",
-        "summary": "Open Yap 1K: 1,000 hours of full-duplex natural conversation, free for commercial use \t Today we're releasing Open Yap 1K: 1,000 hours of dual-channel English conversat (137 likes, 2,537 downloads).",
-        "task": "Audio",
-        "license": "CC-BY-4.0",
-        "year": 2026,
-        "org": "TheAgenticDataCompany",
-        "size": "n<1K",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"TheAgenticDataCompany/open-yap-1k\")",
-        "benchmarks": "Trending Score: 17, Likes: 137, Downloads: 2,537",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/TheAgenticDataCompany/open-yap-1k",
-        "citations": [
-          {
-            "text": "TheAgenticDataCompany/open-yap-1k on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/TheAgenticDataCompany/open-yap-1k"
           }
         ]
       }

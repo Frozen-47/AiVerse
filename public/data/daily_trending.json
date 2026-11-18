@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-18T05:31:42.029Z",
+  "timestamp": "2026-11-18T16:06:45.675Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -56,28 +56,10 @@
       "source": "OpenRouter"
     },
     {
-      "id": "MiniMaxAI/MiniMax-H3-Image",
-      "author": "MiniMaxAI",
-      "likes": 1501,
-      "downloads": 727110,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
-      "source": "Hugging Face"
-    },
-    {
-      "id": "Qwen/Qwen3.8-27B",
-      "author": "Qwen",
-      "likes": 20457,
-      "downloads": 6942530,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
-      "source": "Hugging Face"
-    },
-    {
       "id": "higurashi-ai/Haru-4B",
       "author": "higurashi-ai",
-      "likes": 528,
-      "downloads": 4445,
+      "likes": 619,
+      "downloads": 5314,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/higurashi-ai/Haru-4B",
       "source": "Hugging Face"
@@ -85,53 +67,71 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 12431,
-      "downloads": 2828071,
+      "likes": 12505,
+      "downloads": 2871190,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "thinkingmachines/Inkling-2-Small",
+      "author": "thinkingmachines",
+      "likes": 481,
+      "downloads": 30082,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "harness-hub/Qwen3.8-27B-pi-adapted",
+      "author": "harness-hub",
+      "likes": 332,
+      "downloads": 377,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
       "source": "Hugging Face"
     }
   ],
   "papers": [
     {
-      "title": "TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks",
-      "summary": "We present Xing 4, a series of large language models that extends the TeleChat lineage through coordinated advances in model architecture and training infrastru...",
-      "upvotes": 0,
-      "arxiv_id": "2611.22115",
-      "url": "https://huggingface.co/papers/2611.22115",
+      "title": "HubEgo-100K: In-the-Wild Egocentric Video of Skilled Work for Robot Learning",
+      "summary": "Robot policies trained by imitation generalize poorly outside the environments and objects seen in training. Published data-scaling studies find that generaliza...",
+      "upvotes": 3,
+      "arxiv_id": "2611.21938",
+      "url": "https://huggingface.co/papers/2611.21938",
       "githubRepo": null
     },
     {
-      "title": "FastFrames: Video Generation at Interactive Latency",
-      "summary": "Autoregressive video diffusion models generate frames based on new observations and inputs, making them a promising medium for interactive visual experiences. H...",
-      "upvotes": 6,
-      "arxiv_id": "2611.23226",
-      "url": "https://huggingface.co/papers/2611.23226",
-      "githubRepo": "https://github.com/apple-aiml-research/ml-fastframes"
-    },
-    {
-      "title": "Do LLM Agents Still Need to Be Told How to Self-Improve?",
-      "summary": "Capable frozen LLM agents can autonomously construct context-based self-learning algorithms from basic resources and a general goal, yielding text artifacts that transfer to new game and 3D navigation tasks.",
+      "title": "CADMAGEDDON: High-Fidelity CAD Reconstruction with Local Inference",
+      "summary": "CADMAGEDDON is an open-source agent that reconstructs editable CAD from meshes locally on single-GPU systems and laptops, using a mid-sized Qwen model and geometric tools to outperform prior systems.",
       "upvotes": 3,
-      "arxiv_id": "2611.23219",
-      "url": "https://huggingface.co/papers/2611.23219",
-      "githubRepo": "https://github.com/ssundaram21/self-org"
+      "arxiv_id": "2611.22563",
+      "url": "https://huggingface.co/papers/2611.22563",
+      "githubRepo": "https://github.com/kulibinai/cadmageddon"
     },
     {
-      "title": "TCP4D: A Unified Tool-Center-Point Tracking and Generation Model for Robot Manipulation",
-      "summary": "Robot manipulation videos provide a rich visual experience, yet recovering robot action and gripper-state annotations from RGB observations still remains challe...",
-      "upvotes": 13,
-      "arxiv_id": "2611.23143",
-      "url": "https://huggingface.co/papers/2611.23143",
-      "githubRepo": "https://github.com/Livioni/TCP4D"
+      "title": "MillBill: A Machining Agent with Geometric Feedback",
+      "summary": "Turning a CAD model into a machining program requires both process knowledge and geometric precision. Language models can generate such workflows by writing geo...",
+      "upvotes": 3,
+      "arxiv_id": "2611.22565",
+      "url": "https://huggingface.co/papers/2611.22565",
+      "githubRepo": "https://github.com/kulibinai/MillBill"
     },
     {
-      "title": "Heave-Ho: Decentralized Long-Horizon Multi-Humanoid Collaboration",
-      "summary": "A decentralized framework enables teams of humanoids to coordinate whole-body loco-manipulation over long horizons using low-level multi-agent post-training and a high-level vision-language planner with speech-based leader-follower synchronization.",
-      "upvotes": 7,
-      "arxiv_id": "2611.22275",
-      "url": "https://huggingface.co/papers/2611.22275",
-      "githubRepo": "https://github.com/heaveho-humanoid/Heave-Ho"
+      "title": "VisualArtifactSpec 1.0: Evaluating Visual Artifacts under Task Specifications",
+      "summary": "Visual artifact tasks test agents' ability to translate task specifications and source materials into outputs that meet practical needs. Evaluation across artif...",
+      "upvotes": 4,
+      "arxiv_id": "2611.21382",
+      "url": "https://huggingface.co/papers/2611.21382",
+      "githubRepo": "https://github.com/Accio-Lab/VisualArtifactSpec"
+    },
+    {
+      "title": "AuXSpec: Learning to Autoformalize Program Specifications via Executable Postconditions",
+      "summary": "Formal specifications define intended program behavior and underpin verification, but writing them in theorem provers such as Lean is slow and expertise-intensi...",
+      "upvotes": 1,
+      "arxiv_id": "2611.21421",
+      "url": "https://huggingface.co/papers/2611.21421",
+      "githubRepo": null
     }
   ],
   "sources": [

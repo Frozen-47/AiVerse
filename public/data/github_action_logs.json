@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1795018042330_koiil",
+    "created_at": "2026-11-18T16:07:22.330Z",
+    "timestamp": "2026-11-18T16:07:22.330Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Qwen3 Omni 30B A3B Instruct, OpenAI: GPT-6.2 Astra, Maxwell-V1-Flash, slack-moji, Ko-Screenspot. Checked health for 25 links (1 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 38118ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Qwen3 Omni 30B A3B Instruct",
+          "type": "Model",
+          "org": "Alibaba"
+        },
+        {
+          "name": "OpenAI: GPT-6.2 Astra",
+          "type": "Model",
+          "org": "openai"
+        },
+        {
+          "name": "Maxwell-V1-Flash",
+          "type": "Model",
+          "org": "maxwell-model"
+        },
+        {
+          "name": "slack-moji",
+          "type": "Platform",
+          "org": "cfahlgren1"
+        },
+        {
+          "name": "Ko-Screenspot",
+          "type": "Dataset",
+          "org": "KORMo-VL"
+        }
+      ],
+      "brokenLinks": 1,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 38118,
+      "runId": "44343312568",
+      "runNumber": "132",
+      "sha": "9783790",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795004691719_rbypk",
     "created_at": "2026-11-18T12:24:51.719Z",
     "timestamp": "2026-11-18T12:24:51.719Z",

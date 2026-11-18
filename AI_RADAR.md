@@ -2,7 +2,7 @@
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Wed, 18 Nov 2026 05:32:33 GMT`*
+*Last Synchronized: `Wed, 18 Nov 2026 16:07:22 GMT`*
 
 ---
 
@@ -10,40 +10,40 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Qwen3.5 2B** (`Model` • *Alibaba*)
-> Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.
+### **Qwen3 Omni 30B A3B Instruct** (`Model` • *Alibaba*)
+> Frontier Multimodal model by Alibaba benchmarked on Artificial Analysis and a verified 66k Context window.
 
-- 🏷️ **Domain & License**: `NLP` • `Open Weights` (2026)
-- ⚡ **Metrics**: `Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/qwen3-5-2b](https://artificialanalysis.ai/models/qwen3-5-2b)
+- 🏷️ **Domain & License**: `Multimodal` • `Open Weights` (2026)
+- ⚡ **Metrics**: `Context Window: 66k Context, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct](https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct)
 
-### **OpenAI: GPT-6.2 Astra Pro (batch)** (`Model` • *openai*)
-> GPT-6.2 Astra Pro is the same underlying model as [GPT-6.2 Astra](https://openrouter.ai/openai/gpt-6.2-astra), served with `reasoning.mode` set to `pro` for higher-quality response
+### **OpenAI: GPT-6.2 Astra** (`Model` • *openai*)
+> GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, professional work and scientific res
 
 - 🏷️ **Domain & License**: `NLP` • `Proprietary` (2026)
 - ⚡ **Metrics**: `Context Window: 1050k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/openai/gpt-6.2-astra-pro:batch](https://openrouter.ai/openai/gpt-6.2-astra-pro:batch)
+- 🔗 **Resource Link**: [https://openrouter.ai/openai/gpt-6.2-astra](https://openrouter.ai/openai/gpt-6.2-astra)
 
-### **Qwen3.8-27B-pi-adapted** (`Model` • *harness-hub*)
-> High-performance NLP open-weights model by harness-hub, trending with over 179 community likes and 0 downloads on Hugging Face.
-
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 178, Likes: 179, Downloads: 0`
-- 🔗 **Resource Link**: [https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted](https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted)
-
-### **tessera-pixel-studio** (`Platform` • *thejagstudio*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by thejagstudio. Trending with 28 community stars.
-
-- 🏷️ **Domain & License**: `Image Generation` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 22, Community Likes: 28`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/thejagstudio/tessera-pixel-studio](https://huggingface.co/spaces/thejagstudio/tessera-pixel-studio)
-
-### **ParseBench-2** (`Dataset` • *llamaindex*)
-> ParseBench-2 	 Quick links: [🌐 Website] [📜 Paper] [💻 Code] [📦 ParseBench-1] ParseBench-2 is a document parsing benchmark that combines broad coverage of real-world (20 likes, 30,698 downloads).
+### **Maxwell-V1-Flash** (`Model` • *maxwell-model*)
+> High-performance NLP open-weights model by maxwell-model, trending with over 215 community likes and 1,052 downloads on Hugging Face.
 
 - 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 18, Likes: 20, Downloads: 30,698`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/llamaindex/ParseBench-2](https://huggingface.co/datasets/llamaindex/ParseBench-2)
+- ⚡ **Metrics**: `Trending Score: 173, Likes: 215, Downloads: 1,052`
+- 🔗 **Resource Link**: [https://huggingface.co/maxwell-model/Maxwell-V1-Flash](https://huggingface.co/maxwell-model/Maxwell-V1-Flash)
+
+### **slack-moji** (`Platform` • *cfahlgren1*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by cfahlgren1. Trending with 44 community stars.
+
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 44, Community Likes: 44`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/cfahlgren1/slack-moji](https://huggingface.co/spaces/cfahlgren1/slack-moji)
+
+### **Ko-Screenspot** (`Dataset` • *KORMo-VL*)
+> 🇰🇷 Ko-Screenspot 	 A Korean GUI grounding benchmark, built manually by native Korean annotators. 📋 3,319 samples · 🌐 142 websites · ✍️ ~480 annotator-hours · 🎯 GUI (21 likes, 67 downloads).
+
+- 🏷️ **Domain & License**: `Computer Vision` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 19, Likes: 21, Downloads: 67`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/KORMo-VL/Ko-Screenspot](https://huggingface.co/datasets/KORMo-VL/Ko-Screenspot)
 
 ---
 
@@ -68,10 +68,10 @@
 | **OpenAI: GPT-6.2 Astra Pro** | `OpenRouter` | openai (Cloud Model API) | ❤️ 120 · 📥 1,050,000 | [View](https://openrouter.ai/openai/gpt-6.2-astra-pro) |
 | **OpenAI: GPT-6.2 Astra Pro (batch)** | `OpenRouter` | openai (Cloud Model API) | ❤️ 120 · 📥 1,050,000 | [View](https://openrouter.ai/openai/gpt-6.2-astra-pro:batch) |
 | **OpenAI: GPT-6.2 Astra** | `OpenRouter` | openai (Cloud Model API) | ❤️ 120 · 📥 1,050,000 | [View](https://openrouter.ai/openai/gpt-6.2-astra) |
-| **MiniMaxAI/MiniMax-H3-Image** | `Hugging Face` | MiniMaxAI (text-to-image) | ❤️ 1,501 · 📥 727,110 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
-| **Qwen/Qwen3.8-27B** | `Hugging Face` | Qwen (image-text-to-text) | ❤️ 20,457 · 📥 6,942,530 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
-| **higurashi-ai/Haru-4B** | `Hugging Face` | higurashi-ai (audio-to-audio) | ❤️ 528 · 📥 4,445 | [View](https://huggingface.co/higurashi-ai/Haru-4B) |
-| **Lightricks/LTX-2.5** | `Hugging Face` | Lightricks (image-to-video) | ❤️ 12,431 · 📥 2,828,071 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| **higurashi-ai/Haru-4B** | `Hugging Face` | higurashi-ai (audio-to-audio) | ❤️ 619 · 📥 5,314 | [View](https://huggingface.co/higurashi-ai/Haru-4B) |
+| **Lightricks/LTX-2.5** | `Hugging Face` | Lightricks (image-to-video) | ❤️ 12,505 · 📥 2,871,190 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
+| **thinkingmachines/Inkling-2-Small** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 481 · 📥 30,082 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Small) |
+| **harness-hub/Qwen3.8-27B-pi-adapted** | `Hugging Face` | harness-hub (image-text-to-text) | ❤️ 332 · 📥 377 | [View](https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted) |
 
 
 ---
@@ -81,11 +81,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks** | 👍 0 | We present Xing 4, a series of large language models that extends the TeleChat lineage through coordinated advances in model architecture and training infrastru... | [Read](https://huggingface.co/papers/2611.22115) |
-| **FastFrames: Video Generation at Interactive Latency** | 👍 6 | Autoregressive video diffusion models generate frames based on new observations and inputs, making them a promising medium for interactive visual experiences. H... | [Read](https://huggingface.co/papers/2611.23226) |
-| **Do LLM Agents Still Need to Be Told How to Self-Improve?** | 👍 3 | Capable frozen LLM agents can autonomously construct context-based self-learning algorithms from basic resources and a general goal, yielding text artifacts that transfer to new game and 3D navigation tasks. | [Read](https://huggingface.co/papers/2611.23219) |
-| **TCP4D: A Unified Tool-Center-Point Tracking and Generation Model for Robot Manipulation** | 👍 13 | Robot manipulation videos provide a rich visual experience, yet recovering robot action and gripper-state annotations from RGB observations still remains challe... | [Read](https://huggingface.co/papers/2611.23143) |
-| **Heave-Ho: Decentralized Long-Horizon Multi-Humanoid Collaboration** | 👍 7 | A decentralized framework enables teams of humanoids to coordinate whole-body loco-manipulation over long horizons using low-level multi-agent post-training and a high-level vision-language planner with speech-based leader-follower synchronization. | [Read](https://huggingface.co/papers/2611.22275) |
+| **HubEgo-100K: In-the-Wild Egocentric Video of Skilled Work for Robot Learning** | 👍 3 | Robot policies trained by imitation generalize poorly outside the environments and objects seen in training. Published data-scaling studies find that generaliza... | [Read](https://huggingface.co/papers/2611.21938) |
+| **CADMAGEDDON: High-Fidelity CAD Reconstruction with Local Inference** | 👍 3 | CADMAGEDDON is an open-source agent that reconstructs editable CAD from meshes locally on single-GPU systems and laptops, using a mid-sized Qwen model and geometric tools to outperform prior systems. | [Read](https://huggingface.co/papers/2611.22563) |
+| **MillBill: A Machining Agent with Geometric Feedback** | 👍 3 | Turning a CAD model into a machining program requires both process knowledge and geometric precision. Language models can generate such workflows by writing geo... | [Read](https://huggingface.co/papers/2611.22565) |
+| **VisualArtifactSpec 1.0: Evaluating Visual Artifacts under Task Specifications** | 👍 4 | Visual artifact tasks test agents' ability to translate task specifications and source materials into outputs that meet practical needs. Evaluation across artif... | [Read](https://huggingface.co/papers/2611.21382) |
+| **AuXSpec: Learning to Autoformalize Program Specifications via Executable Postconditions** | 👍 1 | Formal specifications define intended program behavior and underpin verification, but writing them in theorem provers such as Lean is slow and expertise-intensi... | [Read](https://huggingface.co/papers/2611.21421) |
 
 
 ---
@@ -98,7 +98,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
+- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
 - **Dependency Security**: `51` advisories flagged across `578` dependencies (`1` critical, `38` high)
 
 ---

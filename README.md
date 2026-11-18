@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-18)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Qwen3.5 2B** (`Model`), **OpenAI: GPT-6.2 Astra Pro (batch)** (`Model`), **Qwen3.8-27B-pi-adapted** (`Model`), **tessera-pixel-studio** (`Platform`), **ParseBench-2** (`Dataset`) |
+| 📥 **Queued for Review** | **Qwen3 Omni 30B A3B Instruct** (`Model`), **OpenAI: GPT-6.2 Astra** (`Model`), **Maxwell-V1-Flash** (`Model`), **slack-moji** (`Platform`), **Ko-Screenspot** (`Dataset`) |
 | 🌟 **Tool of the Day** | **StarCoder2** (Hugging Face) — [Explore](https://github.com/bigcode-project/starcoder2) |
 | 🗄️ **Catalog Entries** | **575** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [TeleChat to Xing4: Advancing Frontier Agentic Mode...](https://huggingface.co/papers/2611.22115) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Synchronized** | `Wed, 18 Nov 2026 05:32:33 GMT` |
+| 📜 **Top Daily Paper** | [HubEgo-100K: In-the-Wild Egocentric Video of Skill...](https://huggingface.co/papers/2611.21938) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Synchronized** | `Wed, 18 Nov 2026 16:07:22 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
