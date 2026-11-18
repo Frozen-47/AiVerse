@@ -1,1 +1,1 @@
-Apodex 1.1
+Qwen3.5 2B

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-17T23:42:43.363Z",
+  "timestamp": "2026-11-18T05:31:42.022Z",
   "totalEntries": 575,
   "popularEntries": 368,
   "totalUsers": 10,
@@ -90,26 +90,26 @@
     "Open Weights": 1
   },
   "toolOfTheDay": {
-    "name": "Stable Diffusion XL (SDXL)",
+    "name": "StarCoder2",
     "type": "Model",
-    "summary": "An improved latent diffusion model with a larger UNet backbone and a refiner model, producing higher-resolution and more detailed images than SD 1.5/2.x, incorporating an architecture of dual text encoders (CLIP ViT-L + OpenCLIP ViT-bigG) with larger UNet backbone. The model demonstrates competitive performance across verified evaluations, including Significantly higher FID than SD 2.1, preferred in human evaluation. With its 3.5B params (base + refiner) design, it supports diverse local and enterprise deployment profiles under the CreativeML Open RAIL++-M license.",
-    "task": "Computer Vision",
-    "license": "CreativeML Open RAIL++-M",
-    "year": 2023,
-    "org": "Stability AI",
-    "size": "3.5B params (base + refiner)",
-    "architecture": "Dual text encoders (CLIP ViT-L + OpenCLIP ViT-bigG) with larger UNet backbone.",
-    "usage": "from diffusers import DiffusionPipeline\npipe = DiffusionPipeline.from_pretrained(\"stabilityai/stable-diffusion-xl-base-1.0\")\nimage = pipe(prompt=\"A majestic lion at sunset, 8K\").images[0]",
-    "benchmarks": "Significantly higher FID than SD 2.1, preferred in human evaluation",
-    "limitations": "Higher VRAM requirement (~12GB), slower than SD 1.5.",
+    "summary": "BigCode's open state-of-the-art code model trained on 619 programming languages with permissive licensing, supporting infilling and 16K context, incorporating an architecture of transformer decoder with multi-query attention and Fill-in-the-Middle (FIM) training. The model demonstrates competitive performance across verified evaluations, including HumanEval: 46.3% (15B pass@1), best open model at time of release. With its 3B to 15B params design, it supports diverse local and enterprise deployment profiles under the BigCode OpenRAIL-M v1 license.",
+    "task": "NLP",
+    "license": "BigCode OpenRAIL-M v1",
+    "year": 2024,
+    "org": "Hugging Face",
+    "size": "3B to 15B params",
+    "architecture": "Transformer decoder with multi-query attention and Fill-in-the-Middle (FIM) training.",
+    "usage": "from transformers import AutoTokenizer, AutoModelForCausalLM\ntokenizer = AutoTokenizer.from_pretrained(\"bigcode/starcoder2-15b\")\nmodel = AutoModelForCausalLM.from_pretrained(\"bigcode/starcoder2-15b\")",
+    "benchmarks": "HumanEval: 46.3% (15B pass@1), best open model at time of release",
+    "limitations": "Not an instruction-tuned chat model by default, requires fine-tuning for dialogue.",
     "popular": true,
-    "url": "https://stability.ai/stable-image",
+    "url": "https://github.com/bigcode-project/starcoder2",
     "citations": [
       {
-        "text": "SDXL Paper",
-        "url": "https://arxiv.org/abs/2307.01952"
+        "text": "StarCoder2 Paper",
+        "url": "https://arxiv.org/abs/2402.19173"
       }
     ],
-    "description": "An improved latent diffusion model with a larger UNet backbone and a refiner model, producing higher-resolution and more detailed images than SD 1.5/2.x, incorporating an architecture of dual text encoders (CLIP ViT-L + OpenCLIP ViT-bigG) with larger UNet backbone. The model demonstrates competitive performance across verified evaluations, including Significantly higher FID than SD 2.1, preferred in human evaluation. With its 3.5B params (base + refiner) design, it supports diverse local and enterprise deployment profiles under the CreativeML Open RAIL++-M license."
+    "description": "BigCode's open state-of-the-art code model trained on 619 programming languages with permissive licensing, supporting infilling and 16K context, incorporating an architecture of transformer decoder with multi-query attention and Fill-in-the-Middle (FIM) training. The model demonstrates competitive performance across verified evaluations, including HumanEval: 46.3% (15B pass@1), best open model at time of release. With its 3B to 15B params design, it supports diverse local and enterprise deployment profiles under the BigCode OpenRAIL-M v1 license."
   }
 }

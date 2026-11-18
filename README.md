@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-17)
+### ⚡ AiVerse AI Radar (2026-11-18)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Apodex 1.1** (`Model`), **OpenAI: GPT-6.2 Astra Pro** (`Model`), **SenseNova-Loop-9B** (`Model`), **PyBot** (`Platform`), **Ko-Online-Mind2Web** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Stable Diffusion XL (SDXL)** (Stability AI) — [Explore](https://stability.ai/stable-image) |
+| 📥 **Queued for Review** | **Qwen3.5 2B** (`Model`), **OpenAI: GPT-6.2 Astra Pro (batch)** (`Model`), **Qwen3.8-27B-pi-adapted** (`Model`), **tessera-pixel-studio** (`Platform`), **ParseBench-2** (`Dataset`) |
+| 🌟 **Tool of the Day** | **StarCoder2** (Hugging Face) — [Explore](https://github.com/bigcode-project/starcoder2) |
 | 🗄️ **Catalog Entries** | **575** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [Energy-Based Reasoners: Your Recurrent Reasoner Sh...](https://huggingface.co/papers/2611.08977) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Tue, 17 Nov 2026 23:43:35 GMT` |
+| 📜 **Top Daily Paper** | [TeleChat to Xing4: Advancing Frontier Agentic Mode...](https://huggingface.co/papers/2611.22115) |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Synchronized** | `Wed, 18 Nov 2026 05:32:33 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

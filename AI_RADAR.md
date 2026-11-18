@@ -1,8 +1,8 @@
-# ⚡ AiVerse AI Radar (2026-11-17)
+# ⚡ AiVerse AI Radar (2026-11-18)
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Tue, 17 Nov 2026 23:43:35 GMT`*
+*Last Synchronized: `Wed, 18 Nov 2026 05:32:33 GMT`*
 
 ---
 
@@ -10,51 +10,51 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Apodex 1.1** (`Model` • *Apodex*)
-> Frontier Research model by Apodex benchmarked on Artificial Analysis with an Intelligence Index of 13.6712884627289 and a verified 256k Context window.
+### **Qwen3.5 2B** (`Model` • *Alibaba*)
+> Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.
 
-- 🏷️ **Domain & License**: `Research` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 256k Context, Intelligence Index: 13.6712884627289, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/apodex-1-1](https://artificialanalysis.ai/models/apodex-1-1)
+- 🏷️ **Domain & License**: `NLP` • `Open Weights` (2026)
+- ⚡ **Metrics**: `Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/qwen3-5-2b](https://artificialanalysis.ai/models/qwen3-5-2b)
 
-### **OpenAI: GPT-6.2 Astra Pro** (`Model` • *openai*)
+### **OpenAI: GPT-6.2 Astra Pro (batch)** (`Model` • *openai*)
 > GPT-6.2 Astra Pro is the same underlying model as [GPT-6.2 Astra](https://openrouter.ai/openai/gpt-6.2-astra), served with `reasoning.mode` set to `pro` for higher-quality response
 
 - 🏷️ **Domain & License**: `NLP` • `Proprietary` (2026)
 - ⚡ **Metrics**: `Context Window: 1050k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/openai/gpt-6.2-astra-pro](https://openrouter.ai/openai/gpt-6.2-astra-pro)
+- 🔗 **Resource Link**: [https://openrouter.ai/openai/gpt-6.2-astra-pro:batch](https://openrouter.ai/openai/gpt-6.2-astra-pro:batch)
 
-### **SenseNova-Loop-9B** (`Model` • *sensenova*)
-> High-performance Multimodal open-weights model by sensenova, trending with over 175 community likes and 0 downloads on Hugging Face.
+### **Qwen3.8-27B-pi-adapted** (`Model` • *harness-hub*)
+> High-performance NLP open-weights model by harness-hub, trending with over 179 community likes and 0 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 172, Likes: 175, Downloads: 0`
-- 🔗 **Resource Link**: [https://huggingface.co/sensenova/SenseNova-Loop-9B](https://huggingface.co/sensenova/SenseNova-Loop-9B)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 178, Likes: 179, Downloads: 0`
+- 🔗 **Resource Link**: [https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted](https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted)
 
-### **PyBot** (`Platform` • *HuggingFaceSwarms*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceSwarms. Trending with 23 community stars.
+### **tessera-pixel-studio** (`Platform` • *thejagstudio*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by thejagstudio. Trending with 28 community stars.
 
-- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 23, Community Likes: 23`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/HuggingFaceSwarms/PyBot](https://huggingface.co/spaces/HuggingFaceSwarms/PyBot)
+- 🏷️ **Domain & License**: `Image Generation` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 22, Community Likes: 28`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/thejagstudio/tessera-pixel-studio](https://huggingface.co/spaces/thejagstudio/tessera-pixel-studio)
 
-### **Ko-Online-Mind2Web** (`Dataset` • *KORMo-VL*)
-> 🇰🇷 Ko-Online-Mind2Web 	 A live Korean web-agent benchmark, built manually by native Korean annotators. 📋 312 tasks · 🌐 104 websites · ✍️ ~480 annotator-hours · 🔴 L (19 likes, 23 downloads).
+### **ParseBench-2** (`Dataset` • *llamaindex*)
+> ParseBench-2 	 Quick links: [🌐 Website] [📜 Paper] [💻 Code] [📦 ParseBench-1] ParseBench-2 is a document parsing benchmark that combines broad coverage of real-world (20 likes, 30,698 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `CC-BY-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 18, Likes: 19, Downloads: 23`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/KORMo-VL/Ko-Online-Mind2Web](https://huggingface.co/datasets/KORMo-VL/Ko-Online-Mind2Web)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 18, Likes: 20, Downloads: 30,698`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/llamaindex/ParseBench-2](https://huggingface.co/datasets/llamaindex/ParseBench-2)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **Stable Diffusion XL (SDXL)** (`Model` • *Stability AI*)
-> An improved latent diffusion model with a larger UNet backbone and a refiner model, producing higher-resolution and more detailed images than SD 1.5/2.x, incorporating an architecture of dual text encoders (CLIP ViT-L + OpenCLIP ViT-bigG) with larger UNet backbone. The model demonstrates competitive performance across verified evaluations, including Significantly higher FID than SD 2.1, preferred in human evaluation. With its 3.5B params (base + refiner) design, it supports diverse local and enterprise deployment profiles under the CreativeML Open RAIL++-M license.
+### **StarCoder2** (`Model` • *Hugging Face*)
+> BigCode's open state-of-the-art code model trained on 619 programming languages with permissive licensing, supporting infilling and 16K context, incorporating an architecture of transformer decoder with multi-query attention and Fill-in-the-Middle (FIM) training. The model demonstrates competitive performance across verified evaluations, including HumanEval: 46.3% (15B pass@1), best open model at time of release. With its 3B to 15B params design, it supports diverse local and enterprise deployment profiles under the BigCode OpenRAIL-M v1 license.
 
-- 🏛️ **Architecture**: Dual text encoders (CLIP ViT-L + OpenCLIP ViT-bigG) with larger UNet backbone.
-- ⚡ **Benchmarks**: `Significantly higher FID than SD 2.1, preferred in human evaluation`
-- 🏷️ **Domain & License**: `Computer Vision` • `CreativeML Open RAIL++-M` (Released: 2023)
-- 🔗 **Resource Link**: [https://stability.ai/stable-image](https://stability.ai/stable-image)
+- 🏛️ **Architecture**: Transformer decoder with multi-query attention and Fill-in-the-Middle (FIM) training.
+- ⚡ **Benchmarks**: `HumanEval: 46.3% (15B pass@1), best open model at time of release`
+- 🏷️ **Domain & License**: `NLP` • `BigCode OpenRAIL-M v1` (Released: 2024)
+- 🔗 **Resource Link**: [https://github.com/bigcode-project/starcoder2](https://github.com/bigcode-project/starcoder2)
 
 ---
 ## 🔥 Multi-Platform AI Model Radar
@@ -68,10 +68,10 @@
 | **OpenAI: GPT-6.2 Astra Pro** | `OpenRouter` | openai (Cloud Model API) | ❤️ 120 · 📥 1,050,000 | [View](https://openrouter.ai/openai/gpt-6.2-astra-pro) |
 | **OpenAI: GPT-6.2 Astra Pro (batch)** | `OpenRouter` | openai (Cloud Model API) | ❤️ 120 · 📥 1,050,000 | [View](https://openrouter.ai/openai/gpt-6.2-astra-pro:batch) |
 | **OpenAI: GPT-6.2 Astra** | `OpenRouter` | openai (Cloud Model API) | ❤️ 120 · 📥 1,050,000 | [View](https://openrouter.ai/openai/gpt-6.2-astra) |
-| **MiniMaxAI/MiniMax-H3-Image** | `Hugging Face` | MiniMaxAI (text-to-image) | ❤️ 1,455 · 📥 727,110 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
-| **Qwen/Qwen3.8-27B** | `Hugging Face` | Qwen (image-text-to-text) | ❤️ 20,422 · 📥 6,942,530 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
-| **Lightricks/LTX-2.5** | `Hugging Face` | Lightricks (image-to-video) | ❤️ 12,400 · 📥 2,828,071 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| **higurashi-ai/Haru-4B** | `Hugging Face` | higurashi-ai (audio-to-audio) | ❤️ 498 · 📥 4,445 | [View](https://huggingface.co/higurashi-ai/Haru-4B) |
+| **MiniMaxAI/MiniMax-H3-Image** | `Hugging Face` | MiniMaxAI (text-to-image) | ❤️ 1,501 · 📥 727,110 | [View](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) |
+| **Qwen/Qwen3.8-27B** | `Hugging Face` | Qwen (image-text-to-text) | ❤️ 20,457 · 📥 6,942,530 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
+| **higurashi-ai/Haru-4B** | `Hugging Face` | higurashi-ai (audio-to-audio) | ❤️ 528 · 📥 4,445 | [View](https://huggingface.co/higurashi-ai/Haru-4B) |
+| **Lightricks/LTX-2.5** | `Hugging Face` | Lightricks (image-to-video) | ❤️ 12,431 · 📥 2,828,071 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
 
 
 ---
@@ -81,11 +81,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Energy-Based Reasoners: Your Recurrent Reasoner Should Be an Energy-Based Model** | 👍 4 | Energy-Based Reasoners guide looped latent reasoning by learning an energy function whose gradient refines states and signals when to stop, with exploration-based training improving performance and efficiency. | [Read](https://huggingface.co/papers/2611.08977) |
-| **Flexible Multi-Stack Super-Resolution of Clinical Brain MRI Using Hetero-Orientation Variational Encoding: Expert Reader Evaluation in a Nigerian Cohort** | 👍 0 | MS-HVED enables flexible super-resolution of partially overlapping brain MRI stacks by fusing independently encoded multi-scale Gaussian posteriors with a field-of-view-aware Product-of-Gaussians and physics-informed domain randomisation, improving reconstruction, tissue segmentation, and external clinical generalisation. | [Read](https://huggingface.co/papers/2611.21412) |
-| **More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs** | 👍 3 | Evaluations of multi-agent language models often compare communicating architectures against a single greedy pass. This practice confounds coordination with sam... | [Read](https://huggingface.co/papers/2611.17610) |
-| **Marimba: A System One Model for Speech** | 👍 4 | Marimba uses frozen Qwen3-ASR features and lightweight readouts to make lexical, turn-end, language, speaker-change, and personal-information decisions from speech, achieving strong detection and calibration on conversational and read-speech benchmarks. | [Read](https://huggingface.co/papers/2611.18330) |
-| **Invariant-Aware Harness Enforcement to Protect LLM Agents from Silent API Failures** | 👍 2 | LLM agents answer questions by calling APIs and trusting the results. An API can fail silently. It ignores part of a request, such as a misnamed filter, yet ret... | [Read](https://huggingface.co/papers/2611.20595) |
+| **TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks** | 👍 0 | We present Xing 4, a series of large language models that extends the TeleChat lineage through coordinated advances in model architecture and training infrastru... | [Read](https://huggingface.co/papers/2611.22115) |
+| **FastFrames: Video Generation at Interactive Latency** | 👍 6 | Autoregressive video diffusion models generate frames based on new observations and inputs, making them a promising medium for interactive visual experiences. H... | [Read](https://huggingface.co/papers/2611.23226) |
+| **Do LLM Agents Still Need to Be Told How to Self-Improve?** | 👍 3 | Capable frozen LLM agents can autonomously construct context-based self-learning algorithms from basic resources and a general goal, yielding text artifacts that transfer to new game and 3D navigation tasks. | [Read](https://huggingface.co/papers/2611.23219) |
+| **TCP4D: A Unified Tool-Center-Point Tracking and Generation Model for Robot Manipulation** | 👍 13 | Robot manipulation videos provide a rich visual experience, yet recovering robot action and gripper-state annotations from RGB observations still remains challe... | [Read](https://huggingface.co/papers/2611.23143) |
+| **Heave-Ho: Decentralized Long-Horizon Multi-Humanoid Collaboration** | 👍 7 | A decentralized framework enables teams of humanoids to coordinate whole-body loco-manipulation over long horizons using low-level multi-agent post-training and a high-level vision-language planner with speech-based leader-follower synchronization. | [Read](https://huggingface.co/papers/2611.22275) |
 
 
 ---
@@ -98,7 +98,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
 - **Dependency Security**: `51` advisories flagged across `578` dependencies (`1` critical, `38` high)
 
 ---

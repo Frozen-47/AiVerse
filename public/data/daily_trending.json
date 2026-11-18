@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-17T23:42:43.369Z",
+  "timestamp": "2026-11-18T05:31:42.029Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,7 +58,7 @@
     {
       "id": "MiniMaxAI/MiniMax-H3-Image",
       "author": "MiniMaxAI",
-      "likes": 1455,
+      "likes": 1501,
       "downloads": 727110,
       "pipeline_tag": "text-to-image",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
@@ -67,71 +67,71 @@
     {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 20422,
+      "likes": 20457,
       "downloads": 6942530,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
       "source": "Hugging Face"
     },
     {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 12400,
-      "downloads": 2828071,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5",
-      "source": "Hugging Face"
-    },
-    {
       "id": "higurashi-ai/Haru-4B",
       "author": "higurashi-ai",
-      "likes": 498,
+      "likes": 528,
       "downloads": 4445,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/higurashi-ai/Haru-4B",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 12431,
+      "downloads": 2828071,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5",
       "source": "Hugging Face"
     }
   ],
   "papers": [
     {
-      "title": "Energy-Based Reasoners: Your Recurrent Reasoner Should Be an Energy-Based Model",
-      "summary": "Energy-Based Reasoners guide looped latent reasoning by learning an energy function whose gradient refines states and signals when to stop, with exploration-based training improving performance and efficiency.",
-      "upvotes": 4,
-      "arxiv_id": "2611.08977",
-      "url": "https://huggingface.co/papers/2611.08977",
-      "githubRepo": "https://github.com/wwillchen/ebr"
-    },
-    {
-      "title": "Flexible Multi-Stack Super-Resolution of Clinical Brain MRI Using Hetero-Orientation Variational Encoding: Expert Reader Evaluation in a Nigerian Cohort",
-      "summary": "MS-HVED enables flexible super-resolution of partially overlapping brain MRI stacks by fusing independently encoded multi-scale Gaussian posteriors with a field-of-view-aware Product-of-Gaussians and physics-informed domain randomisation, improving reconstruction, tissue segmentation, and external clinical generalisation.",
+      "title": "TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks",
+      "summary": "We present Xing 4, a series of large language models that extends the TeleChat lineage through coordinated advances in model architecture and training infrastru...",
       "upvotes": 0,
-      "arxiv_id": "2611.21412",
-      "url": "https://huggingface.co/papers/2611.21412",
-      "githubRepo": "https://github.com/cai4cai/ms-hved"
+      "arxiv_id": "2611.22115",
+      "url": "https://huggingface.co/papers/2611.22115",
+      "githubRepo": null
     },
     {
-      "title": "More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs",
-      "summary": "Evaluations of multi-agent language models often compare communicating architectures against a single greedy pass. This practice confounds coordination with sam...",
+      "title": "FastFrames: Video Generation at Interactive Latency",
+      "summary": "Autoregressive video diffusion models generate frames based on new observations and inputs, making them a promising medium for interactive visual experiences. H...",
+      "upvotes": 6,
+      "arxiv_id": "2611.23226",
+      "url": "https://huggingface.co/papers/2611.23226",
+      "githubRepo": "https://github.com/apple-aiml-research/ml-fastframes"
+    },
+    {
+      "title": "Do LLM Agents Still Need to Be Told How to Self-Improve?",
+      "summary": "Capable frozen LLM agents can autonomously construct context-based self-learning algorithms from basic resources and a general goal, yielding text artifacts that transfer to new game and 3D navigation tasks.",
       "upvotes": 3,
-      "arxiv_id": "2611.17610",
-      "url": "https://huggingface.co/papers/2611.17610",
-      "githubRepo": "https://github.com/mahmoudsajjadi/pace"
+      "arxiv_id": "2611.23219",
+      "url": "https://huggingface.co/papers/2611.23219",
+      "githubRepo": "https://github.com/ssundaram21/self-org"
     },
     {
-      "title": "Marimba: A System One Model for Speech",
-      "summary": "Marimba uses frozen Qwen3-ASR features and lightweight readouts to make lexical, turn-end, language, speaker-change, and personal-information decisions from speech, achieving strong detection and calibration on conversational and read-speech benchmarks.",
-      "upvotes": 4,
-      "arxiv_id": "2611.18330",
-      "url": "https://huggingface.co/papers/2611.18330",
-      "githubRepo": "https://github.com/Charcot-AI/marimba-api"
+      "title": "TCP4D: A Unified Tool-Center-Point Tracking and Generation Model for Robot Manipulation",
+      "summary": "Robot manipulation videos provide a rich visual experience, yet recovering robot action and gripper-state annotations from RGB observations still remains challe...",
+      "upvotes": 13,
+      "arxiv_id": "2611.23143",
+      "url": "https://huggingface.co/papers/2611.23143",
+      "githubRepo": "https://github.com/Livioni/TCP4D"
     },
     {
-      "title": "Invariant-Aware Harness Enforcement to Protect LLM Agents from Silent API Failures",
-      "summary": "LLM agents answer questions by calling APIs and trusting the results. An API can fail silently. It ignores part of a request, such as a misnamed filter, yet ret...",
-      "upvotes": 2,
-      "arxiv_id": "2611.20595",
-      "url": "https://huggingface.co/papers/2611.20595",
-      "githubRepo": "https://github.com/Sajib-006/silentguard"
+      "title": "Heave-Ho: Decentralized Long-Horizon Multi-Humanoid Collaboration",
+      "summary": "A decentralized framework enables teams of humanoids to coordinate whole-body loco-manipulation over long horizons using low-level multi-agent post-training and a high-level vision-language planner with speech-based leader-follower synchronization.",
+      "upvotes": 7,
+      "arxiv_id": "2611.22275",
+      "url": "https://huggingface.co/papers/2611.22275",
+      "githubRepo": "https://github.com/heaveho-humanoid/Heave-Ho"
     }
   ],
   "sources": [
