@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-18T16:06:45.675Z",
+  "timestamp": "2026-11-18T23:14:59.546Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -29,6 +29,24 @@
       "source": "Artificial Analysis"
     },
     {
+      "id": "Google: Gemini 4 Neon",
+      "author": "google",
+      "likes": 120,
+      "downloads": 1048576,
+      "pipeline_tag": "Cloud Model API",
+      "url": "https://openrouter.ai/google/gemini-4-neon",
+      "source": "OpenRouter"
+    },
+    {
+      "id": "Google: Gemini 4 Neon (batch)",
+      "author": "google",
+      "likes": 120,
+      "downloads": 1048576,
+      "pipeline_tag": "Cloud Model API",
+      "url": "https://openrouter.ai/google/gemini-4-neon:batch",
+      "source": "OpenRouter"
+    },
+    {
       "id": "OpenAI: GPT-6.2 Astra Pro",
       "author": "openai",
       "likes": 120,
@@ -38,27 +56,9 @@
       "source": "OpenRouter"
     },
     {
-      "id": "OpenAI: GPT-6.2 Astra Pro (batch)",
-      "author": "openai",
-      "likes": 120,
-      "downloads": 1050000,
-      "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/openai/gpt-6.2-astra-pro:batch",
-      "source": "OpenRouter"
-    },
-    {
-      "id": "OpenAI: GPT-6.2 Astra",
-      "author": "openai",
-      "likes": 120,
-      "downloads": 1050000,
-      "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/openai/gpt-6.2-astra",
-      "source": "OpenRouter"
-    },
-    {
       "id": "higurashi-ai/Haru-4B",
       "author": "higurashi-ai",
-      "likes": 619,
+      "likes": 663,
       "downloads": 5314,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/higurashi-ai/Haru-4B",
@@ -67,71 +67,71 @@
     {
       "id": "Lightricks/LTX-2.5",
       "author": "Lightricks",
-      "likes": 12505,
+      "likes": 12550,
       "downloads": 2871190,
       "pipeline_tag": "image-to-video",
       "url": "https://huggingface.co/Lightricks/LTX-2.5",
       "source": "Hugging Face"
     },
     {
-      "id": "thinkingmachines/Inkling-2-Small",
-      "author": "thinkingmachines",
-      "likes": 481,
-      "downloads": 30082,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
-      "source": "Hugging Face"
-    },
-    {
       "id": "harness-hub/Qwen3.8-27B-pi-adapted",
       "author": "harness-hub",
-      "likes": 332,
+      "likes": 393,
       "downloads": 377,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "thinkingmachines/Inkling-2-Small",
+      "author": "thinkingmachines",
+      "likes": 491,
+      "downloads": 30082,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
       "source": "Hugging Face"
     }
   ],
   "papers": [
     {
-      "title": "HubEgo-100K: In-the-Wild Egocentric Video of Skilled Work for Robot Learning",
-      "summary": "Robot policies trained by imitation generalize poorly outside the environments and objects seen in training. Published data-scaling studies find that generaliza...",
-      "upvotes": 3,
-      "arxiv_id": "2611.21938",
-      "url": "https://huggingface.co/papers/2611.21938",
-      "githubRepo": null
-    },
-    {
-      "title": "CADMAGEDDON: High-Fidelity CAD Reconstruction with Local Inference",
-      "summary": "CADMAGEDDON is an open-source agent that reconstructs editable CAD from meshes locally on single-GPU systems and laptops, using a mid-sized Qwen model and geometric tools to outperform prior systems.",
-      "upvotes": 3,
-      "arxiv_id": "2611.22563",
-      "url": "https://huggingface.co/papers/2611.22563",
-      "githubRepo": "https://github.com/kulibinai/cadmageddon"
-    },
-    {
-      "title": "MillBill: A Machining Agent with Geometric Feedback",
-      "summary": "Turning a CAD model into a machining program requires both process knowledge and geometric precision. Language models can generate such workflows by writing geo...",
-      "upvotes": 3,
-      "arxiv_id": "2611.22565",
-      "url": "https://huggingface.co/papers/2611.22565",
-      "githubRepo": "https://github.com/kulibinai/MillBill"
-    },
-    {
-      "title": "VisualArtifactSpec 1.0: Evaluating Visual Artifacts under Task Specifications",
-      "summary": "Visual artifact tasks test agents' ability to translate task specifications and source materials into outputs that meet practical needs. Evaluation across artif...",
-      "upvotes": 4,
-      "arxiv_id": "2611.21382",
-      "url": "https://huggingface.co/papers/2611.21382",
-      "githubRepo": "https://github.com/Accio-Lab/VisualArtifactSpec"
-    },
-    {
-      "title": "AuXSpec: Learning to Autoformalize Program Specifications via Executable Postconditions",
-      "summary": "Formal specifications define intended program behavior and underpin verification, but writing them in theorem provers such as Lean is slow and expertise-intensi...",
+      "title": "CONGA: Compiling Gaussian Fiber Geometry for Structured Bayesian Inference",
+      "summary": "In structured Bayesian models, a large latent block is often Gaussian conditional on a smaller set of parameters, yet generic inference methods relearn this geo...",
       "upvotes": 1,
-      "arxiv_id": "2611.21421",
-      "url": "https://huggingface.co/papers/2611.21421",
-      "githubRepo": null
+      "arxiv_id": "2611.20995",
+      "url": "https://huggingface.co/papers/2611.20995",
+      "githubRepo": "https://github.com/vicgalle/conga"
+    },
+    {
+      "title": "The novelty exposed: ablation, reproducibility and transparency in 40 technical reports of open-weight large language models (LLMs)",
+      "summary": "In 2025 alone, 48 new large language model (LLM) architectures were added to the Hugging Face transformers library, and many of them arrive with a technical rep...",
+      "upvotes": 1,
+      "arxiv_id": "2611.20003",
+      "url": "https://huggingface.co/papers/2611.20003",
+      "githubRepo": "https://github.com/bturkoglu/llm-novelty-exposed"
+    },
+    {
+      "title": "WeightBench: Evaluating Language Models as Weight-Space Programmers",
+      "summary": "The WEIGHTBENCH benchmark evaluates the capacity of large language models to perform Weight-Space Programming tasks, which involve reading, modifying, and generating the weights of various neural network architectures.",
+      "upvotes": 2,
+      "arxiv_id": "2611.18553",
+      "url": "https://huggingface.co/papers/2611.18553",
+      "githubRepo": "https://github.com/Aayush-Marasini/WeightBench"
+    },
+    {
+      "title": "Unreasonable Confidence from Simulator Misspecification: Directional Robustness on the SPEED+ Sim-to-Real Benchmark",
+      "summary": "A simple monocular pose estimator trained on synthetic spacecraft images shows poor real-world transfer, with overconfident pose errors and uneven gains from backbone adaptation and photometric augmentation under different lighting.",
+      "upvotes": 1,
+      "arxiv_id": "2611.20321",
+      "url": "https://huggingface.co/papers/2611.20321",
+      "githubRepo": "https://github.com/lokindoo/spacecraft-pose-estimation"
+    },
+    {
+      "title": "GameRealm: Grounding Visual Learning in Interactive Games",
+      "summary": "GameRealm is a large-scale multimodal gameplay dataset with synchronized depth, camera, audio, control, and 3D trajectory annotations that improves visual foundation models for generation and geometric learning.",
+      "upvotes": 1,
+      "arxiv_id": "2611.23140",
+      "url": "https://huggingface.co/papers/2611.23140",
+      "githubRepo": "https://github.com/weiguangzhao/GameRealm"
     }
   ],
   "sources": [

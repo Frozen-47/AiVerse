@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-18)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Qwen3 Omni 30B A3B Instruct** (`Model`), **OpenAI: GPT-6.2 Astra** (`Model`), **Maxwell-V1-Flash** (`Model`), **slack-moji** (`Platform`), **Ko-Screenspot** (`Dataset`) |
+| 📥 **Queued for Review** | **Gemini 4 Neon** (`Model`), **Google: Gemini 4 Neon** (`Model`), **Hy4-flash** (`Model`), **pi-H3** (`Platform`), **Ko-MultimodalMind2Web** (`Dataset`) |
 | 🌟 **Tool of the Day** | **StarCoder2** (Hugging Face) — [Explore](https://github.com/bigcode-project/starcoder2) |
 | 🗄️ **Catalog Entries** | **575** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [HubEgo-100K: In-the-Wild Egocentric Video of Skill...](https://huggingface.co/papers/2611.21938) |
-| 🛡️ **Catalog Links Checked** | **24/25** operational |
-| 🕒 **Last Synchronized** | `Wed, 18 Nov 2026 16:07:22 GMT` |
+| 📜 **Top Daily Paper** | [CONGA: Compiling Gaussian Fiber Geometry for Struc...](https://huggingface.co/papers/2611.20995) |
+| 🛡️ **Catalog Links Checked** | **25/25** operational |
+| 🕒 **Last Synchronized** | `Wed, 18 Nov 2026 23:15:49 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

@@ -4,6 +4,136 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Gemini 4 Neon",
+        "type": "Model",
+        "summary": "Frontier Research model by Google benchmarked on Artificial Analysis with an Intelligence Index of 44.0831506204565 and a verified 1000k Context window.",
+        "task": "Research",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "Google",
+        "size": "1000k Context · Proprietary Model",
+        "architecture": "Proprietary frontier neural architecture developed by Google, featuring native 1000k Context token window support and optimized reasoning chains.",
+        "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gemini-4-neon",
+        "benchmarks": "Context Window: 1000k Context, Intelligence Index: 44.0831506204565, Benchmarked on Artificial Analysis Leaderboard",
+        "limitations": "Cloud API access subject to provider rate limits and compute quotas.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://artificialanalysis.ai/models/gemini-4-neon",
+        "citations": [
+          {
+            "text": "Gemini 4 Neon on Artificial Analysis Benchmark",
+            "url": "https://artificialanalysis.ai/models/gemini-4-neon"
+          },
+          {
+            "text": "Gemini 4 Neon Inference Providers",
+            "url": "https://artificialanalysis.ai/models/gemini-4-neon/providers"
+          }
+        ]
+      },
+      {
+        "name": "Google: Gemini 4 Neon",
+        "type": "Model",
+        "summary": "Gemini 4 Neon is a fast, mid-priced model in the Gemini 4 family from Google, built for coding and agentic work. It is suited for repository and terminal coding, web...",
+        "task": "AI Coding",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "google",
+        "size": "1049k Context · Available via API",
+        "architecture": "Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.",
+        "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"google/gemini-4-neon\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+        "benchmarks": "Context Window: 1049k Context, Available across global OpenRouter inference nodes.",
+        "limitations": "Requires OpenRouter API key and token credits.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://openrouter.ai/google/gemini-4-neon",
+        "citations": [
+          {
+            "text": "Google: Gemini 4 Neon on OpenRouter",
+            "url": "https://openrouter.ai/google/gemini-4-neon"
+          }
+        ]
+      },
+      {
+        "name": "Hy4-flash",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by tencent, trending with over 228 community likes and 159 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "OTHER",
+        "year": 2026,
+        "org": "tencent",
+        "size": "Open Weights",
+        "architecture": "tencent image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"tencent/Hy4-flash\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"tencent/Hy4-flash\")",
+        "benchmarks": "Trending Score: 207, Likes: 228, Downloads: 159",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/tencent/Hy4-flash",
+        "citations": [
+          {
+            "text": "tencent/Hy4-flash on Hugging Face",
+            "url": "https://huggingface.co/tencent/Hy4-flash"
+          }
+        ]
+      },
+      {
+        "name": "pi-H3",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Lakonik. Trending with 33 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "Lakonik",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Lakonik/pi-H3",
+        "benchmarks": "Trending Score: 20, Community Likes: 33",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/Lakonik/pi-H3",
+        "citations": [
+          {
+            "text": "Lakonik/pi-H3 on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/Lakonik/pi-H3"
+          }
+        ]
+      },
+      {
+        "name": "Ko-MultimodalMind2Web",
+        "type": "Dataset",
+        "summary": "🇰🇷 Ko-MultimodalMind2Web \t An offline Korean web-agent benchmark, built manually by native Korean annotators. 📋 549 tasks · 🖼️ 12,905 scored steps · 🌐 144 websites (24 likes, 70 downloads).",
+        "task": "Computer Vision",
+        "license": "CC-BY-4.0",
+        "year": 2026,
+        "org": "KORMo-VL",
+        "size": "n<1K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"KORMo-VL/Ko-MultimodalMind2Web\")",
+        "benchmarks": "Trending Score: 18, Likes: 24, Downloads: 70",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/KORMo-VL/Ko-MultimodalMind2Web",
+        "citations": [
+          {
+            "text": "KORMo-VL/Ko-MultimodalMind2Web on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/KORMo-VL/Ko-MultimodalMind2Web"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-18",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Qwen3 Omni 30B A3B Instruct",
         "type": "Model",
         "summary": "Frontier Multimodal model by Alibaba benchmarked on Artificial Analysis and a verified 66k Context window.",
@@ -6312,60 +6442,6 @@
           {
             "text": "XHToken/Spark-X2.6-4B on Hugging Face",
             "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-21",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "flint",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by RecursiveSI, trending with over 200 community likes and 0 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "RecursiveSI",
-        "size": "Open Weights",
-        "architecture": "RecursiveSI text generation architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"RecursiveSI/flint\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"RecursiveSI/flint\")",
-        "benchmarks": "Trending Score: 199, Likes: 200, Downloads: 0",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/RecursiveSI/flint",
-        "citations": [
-          {
-            "text": "RecursiveSI/flint on Hugging Face",
-            "url": "https://huggingface.co/RecursiveSI/flint"
-          }
-        ]
-      },
-      {
-        "name": "hle",
-        "type": "Dataset",
-        "summary": "[!NOTE] IMPORTANT: Please help us protect the integrity of this benchmark by not publicly sharing, re-uploading, or distributing the dataset. \t \t\t \t \t \t\tHumanity's Last Exam \t 🌐 (1,036 likes, 28,753 downloads).",
-        "task": "Computer Vision",
-        "license": "MIT",
-        "year": 2026,
-        "org": "cais",
-        "size": "1K<n<10K",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"cais/hle\")",
-        "benchmarks": "Trending Score: 15, Likes: 1,036, Downloads: 28,753",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/cais/hle",
-        "citations": [
-          {
-            "text": "cais/hle on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/cais/hle"
           }
         ]
       }

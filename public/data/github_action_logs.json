@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1795043749840_pwlnv",
+    "created_at": "2026-11-18T23:15:49.840Z",
+    "timestamp": "2026-11-18T23:15:49.840Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Gemini 4 Neon, Google: Gemini 4 Neon, Hy4-flash, pi-H3, Ko-MultimodalMind2Web. Checked health for 25 links (0 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 51730ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Gemini 4 Neon",
+          "type": "Model",
+          "org": "Google"
+        },
+        {
+          "name": "Google: Gemini 4 Neon",
+          "type": "Model",
+          "org": "google"
+        },
+        {
+          "name": "Hy4-flash",
+          "type": "Model",
+          "org": "tencent"
+        },
+        {
+          "name": "pi-H3",
+          "type": "Platform",
+          "org": "Lakonik"
+        },
+        {
+          "name": "Ko-MultimodalMind2Web",
+          "type": "Dataset",
+          "org": "KORMo-VL"
+        }
+      ],
+      "brokenLinks": 0,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 51730,
+      "runId": "44419046126",
+      "runNumber": "133",
+      "sha": "1939a5d",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795018042330_koiil",
     "created_at": "2026-11-18T16:07:22.330Z",
     "timestamp": "2026-11-18T16:07:22.330Z",

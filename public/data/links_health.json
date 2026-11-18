@@ -1,13 +1,7 @@
 {
-  "timestamp": "2026-11-18T16:06:45.984Z",
+  "timestamp": "2026-11-18T23:14:59.833Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
-  "issues": [
-    {
-      "name": "Tome",
-      "url": "https://tome.app",
-      "status": 404
-    }
-  ]
+  "healthy": 25,
+  "broken": 0,
+  "issues": []
 }
