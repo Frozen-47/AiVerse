@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1795104892371_jnrzf",
+    "created_at": "2026-11-19T16:14:52.371Z",
+    "timestamp": "2026-11-19T16:14:52.371Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Claude Fable 5.2, OpenAI: GPT-6.2 Astra (batch), voice-isolator, P-Image-OSS, qwen4-max-reasoning-250x. Checked health for 25 links (2 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 42694ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Claude Fable 5.2",
+          "type": "Model",
+          "org": "Anthropic"
+        },
+        {
+          "name": "OpenAI: GPT-6.2 Astra (batch)",
+          "type": "Model",
+          "org": "openai"
+        },
+        {
+          "name": "voice-isolator",
+          "type": "Model",
+          "org": "inworld"
+        },
+        {
+          "name": "P-Image-OSS",
+          "type": "Platform",
+          "org": "PrunaAI"
+        },
+        {
+          "name": "qwen4-max-reasoning-250x",
+          "type": "Dataset",
+          "org": "AJ-Gonzalez"
+        }
+      ],
+      "brokenLinks": 2,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 42694,
+      "runId": "44563737665",
+      "runNumber": "135",
+      "sha": "5830353",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795090748460_7svr1",
     "created_at": "2026-11-19T12:19:08.460Z",
     "timestamp": "2026-11-19T12:19:08.460Z",

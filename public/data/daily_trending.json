@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-19T05:29:24.921Z",
+  "timestamp": "2026-11-19T16:14:11.108Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -56,82 +56,82 @@
       "source": "OpenRouter"
     },
     {
-      "id": "harness-hub/Qwen3.8-27B-pi-adapted",
-      "author": "harness-hub",
-      "likes": 579,
-      "downloads": 377,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
-      "source": "Hugging Face"
-    },
-    {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 12586,
-      "downloads": 2871190,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5",
-      "source": "Hugging Face"
-    },
-    {
-      "id": "thinkingmachines/Inkling-2-Small",
-      "author": "thinkingmachines",
-      "likes": 501,
-      "downloads": 30082,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
-      "source": "Hugging Face"
-    },
-    {
       "id": "higurashi-ai/Haru-4B",
       "author": "higurashi-ai",
-      "likes": 811,
-      "downloads": 5314,
+      "likes": 2731,
+      "downloads": 6266,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/higurashi-ai/Haru-4B",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "tencent/Hy4-flash",
+      "author": "tencent",
+      "likes": 303,
+      "downloads": 2053,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/tencent/Hy4-flash",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "Qwen/Qwen3.8-27B",
+      "author": "Qwen",
+      "likes": 20630,
+      "downloads": 6647301,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "apple/FastFrames-L",
+      "author": "apple",
+      "likes": 274,
+      "downloads": 0,
+      "pipeline_tag": "text-to-video",
+      "url": "https://huggingface.co/apple/FastFrames-L",
       "source": "Hugging Face"
     }
   ],
   "papers": [
     {
-      "title": "Late Entry in Looped Language Models",
-      "summary": "Looped language models deepen reasoning at a compact parameter count by iterating a shared layer stack T times per token, turning recurrence depth directly into...",
-      "upvotes": 1,
-      "arxiv_id": "2611.24576",
-      "url": "https://huggingface.co/papers/2611.24576",
-      "githubRepo": "https://github.com/Xalp/LateComer"
+      "title": "Kezek: Splitting Mono Two-Person Conversations into Per-Speaker Tracks for Full-Duplex Dialogue Data",
+      "summary": "Kezek separates a mono two-speaker conversation into per-speaker tracks while preserving timing and short replies, using a phase-insensitive speaker-fingerprint-guided two-voice activity model followed by a conditioned time-domain separator, and it improves short-reply retention, leakage, channel-swap, and runtime metrics over an open baseline.",
+      "upvotes": 3,
+      "arxiv_id": "2611.16933",
+      "url": "https://huggingface.co/papers/2611.16933",
+      "githubRepo": "https://github.com/Manifestro/kezek"
     },
     {
-      "title": "RoughCut-Bench: A Benchmark for Automatic Video Rough-Cut with Large Vision-Language Models",
-      "summary": "A new benchmark and agentic workflows assess vision-language models for automatic video rough-cut, revealing current models struggle to match expert cut plans.",
-      "upvotes": 2,
-      "arxiv_id": "2611.24098",
-      "url": "https://huggingface.co/papers/2611.24098",
-      "githubRepo": "https://github.com/Whalesong-zrs/RoughCut-Bench"
+      "title": "StatePortal: Agentic Checkpoint Synthesis for Testing Deep States in Interactive Software",
+      "summary": "Large language models have reduced the effort to generate code for interactive software with graphical user interfaces (GUIs). For such software, a key testing ...",
+      "upvotes": 6,
+      "arxiv_id": "2611.23257",
+      "url": "https://huggingface.co/papers/2611.23257",
+      "githubRepo": "https://github.com/pzy2000/State_Portal"
     },
     {
-      "title": "Out of Sight, Still in Mind: Token Compression for Omni-LLMs",
-      "summary": "ReMo, a training-free method, reduces inference input token cost for omni-modal large language models by compressing redundant visual tokens through cross-modal alignment and replacing object-level visual tokens with compact text descriptions, achieving comparable accuracy on audio-visual tasks.",
-      "upvotes": 1,
-      "arxiv_id": "2607.21179",
-      "url": "https://huggingface.co/papers/2607.21179",
-      "githubRepo": "https://github.com/suho-yoo/ReMo"
-    },
-    {
-      "title": "DrawScore: Evaluating Generated CAD Models against Engineering Drawings",
-      "summary": "A new metric for automatic CAD generation evaluates models through engineering-drawing projections with a saturating penalty along curves, exposing small local errors that volume- or surface-based metrics miss and enabling use as a reinforcement learning reward or test-time verifier.",
-      "upvotes": 2,
-      "arxiv_id": "2611.24681",
-      "url": "https://huggingface.co/papers/2611.24681",
-      "githubRepo": "https://github.com/UESTC-Simon/DrawScore"
-    },
-    {
-      "title": "Evidence-Based Credit Assignment for Search-Augmented Language Models",
-      "summary": "Reinforcement learning from terminal answer rewards enables search-augmented language models to interleave reasoning and retrieval without step-level annotation...",
-      "upvotes": 2,
-      "arxiv_id": "2611.23824",
-      "url": "https://huggingface.co/papers/2611.23824",
+      "title": "WaveView: The Novel View Is in the Noise",
+      "summary": "Generative novel view synthesis (NVS) employs a diffusion model to render a static or dynamic scene from a target camera view. Explicit warp methods complete a ...",
+      "upvotes": 7,
+      "arxiv_id": "2611.23994",
+      "url": "https://huggingface.co/papers/2611.23994",
       "githubRepo": null
+    },
+    {
+      "title": "StrideWorld: Benchmarking Scene Rigidity and Action Consistency in Interactive Video World Model",
+      "summary": "StrideWorld is a benchmark that fixes references before motion to detect scene deformation and action inconsistency in interactive video world models, showing that most models deform scenes and only depth-scaled command models preserve composed routes.",
+      "upvotes": 11,
+      "arxiv_id": "2611.24408",
+      "url": "https://huggingface.co/papers/2611.24408",
+      "githubRepo": "https://github.com/chuangwang123/strideworld"
+    },
+    {
+      "title": "AVTR: Adaptive Multimodal Reasoning with Visual Imagination",
+      "summary": "Adaptive Visual-Textual Reasoning combines generative visual reflection with textual reasoning and learns to route between them per input, improving multimodal task accuracy while reducing inference latency.",
+      "upvotes": 2,
+      "arxiv_id": "2611.24161",
+      "url": "https://huggingface.co/papers/2611.24161",
+      "githubRepo": "https://github.com/xiaoqian-shen/AVTR"
     }
   ],
   "sources": [

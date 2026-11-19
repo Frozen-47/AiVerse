@@ -2,7 +2,7 @@
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Thu, 19 Nov 2026 05:30:06 GMT`*
+*Last Synchronized: `Thu, 19 Nov 2026 16:14:52 GMT`*
 
 ---
 
@@ -10,40 +10,40 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Granite 4.2 3B** (`Model` • *IBM*)
-> Frontier Research model by IBM benchmarked on Artificial Analysis with an Intelligence Index of 4.72268717901823 and a verified 131k Context window.
+### **Claude Fable 5.2** (`Model` • *Anthropic*)
+> Frontier Research model by Anthropic benchmarked on Artificial Analysis with an Intelligence Index of 56.4083157101519 and a verified 1000k Context window.
 
-- 🏷️ **Domain & License**: `Research` • `Open Weights` (2026)
-- ⚡ **Metrics**: `Context Window: 131k Context, Intelligence Index: 4.72268717901823, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/granite-4-2-3b](https://artificialanalysis.ai/models/granite-4-2-3b)
+- 🏷️ **Domain & License**: `Research` • `Proprietary` (2026)
+- ⚡ **Metrics**: `Context Window: 1000k Context, Intelligence Index: 56.4083157101519, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/claude-fable-5-2](https://artificialanalysis.ai/models/claude-fable-5-2)
 
-### **Google: Gemini 4 Neon (batch)** (`Model` • *google*)
-> Gemini 4 Neon is a fast, mid-priced model in the Gemini 4 family from Google, built for coding and agentic work. It is suited for repository and terminal coding, web...
+### **OpenAI: GPT-6.2 Astra (batch)** (`Model` • *openai*)
+> GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, professional work and scientific res
 
-- 🏷️ **Domain & License**: `AI Coding` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 1049k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/google/gemini-4-neon:batch](https://openrouter.ai/google/gemini-4-neon:batch)
+- 🏷️ **Domain & License**: `NLP` • `Proprietary` (2026)
+- ⚡ **Metrics**: `Context Window: 1050k Context, Available across global OpenRouter inference nodes.`
+- 🔗 **Resource Link**: [https://openrouter.ai/openai/gpt-6.2-astra:batch](https://openrouter.ai/openai/gpt-6.2-astra:batch)
 
-### **FastFrames-L** (`Model` • *apple*)
-> High-performance Video Generation open-weights model by apple, trending with over 228 community likes and 0 downloads on Hugging Face.
+### **voice-isolator** (`Model` • *inworld*)
+> High-performance Audio open-weights model by inworld, trending with over 187 community likes and 0 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Video Generation` • `APPLE-AMLR` (2026)
-- ⚡ **Metrics**: `Trending Score: 210, Likes: 228, Downloads: 0`
-- 🔗 **Resource Link**: [https://huggingface.co/apple/FastFrames-L](https://huggingface.co/apple/FastFrames-L)
+- 🏷️ **Domain & License**: `Audio` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 171, Likes: 187, Downloads: 0`
+- 🔗 **Resource Link**: [https://huggingface.co/inworld/voice-isolator](https://huggingface.co/inworld/voice-isolator)
 
-### **UGI-Leaderboard** (`Platform` • *DontPlanToEnd*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by DontPlanToEnd. Trending with 2,221 community stars.
+### **P-Image-OSS** (`Platform` • *PrunaAI*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by PrunaAI. Trending with 185 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 19, Community Likes: 2,221`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/DontPlanToEnd/UGI-Leaderboard](https://huggingface.co/spaces/DontPlanToEnd/UGI-Leaderboard)
+- ⚡ **Metrics**: `Trending Score: 54, Community Likes: 185`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/PrunaAI/P-Image-OSS](https://huggingface.co/spaces/PrunaAI/P-Image-OSS)
 
-### **uzbek-language-corpus** (`Dataset` • *Digitaluz*)
-> Uzbek Language Corpus 	 	 		 	 	 		Dataset Summary 	 A cleaned Uzbek language corpus for language-model pretraining: 5,638,325 documents, 6,072,581,063 words, in Latin (24 likes, 0 downloads).
+### **qwen4-max-reasoning-250x** (`Dataset` • *AJ-Gonzalez*)
+> Qwen4 Max Reasoning Traces — 250x 	 250 prompts from the MiMo-2.6-Pro 250x prompt set, answered by qwen/qwen4-max (OpenRouter, canonical qwen/qwen4-max-20261115) on 202 (19 likes, 192 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `ODC-BY` (2026)
-- ⚡ **Metrics**: `Trending Score: 21, Likes: 24, Downloads: 0`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus](https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus)
+- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 17, Likes: 19, Downloads: 192`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/AJ-Gonzalez/qwen4-max-reasoning-250x](https://huggingface.co/datasets/AJ-Gonzalez/qwen4-max-reasoning-250x)
 
 ---
 
@@ -68,10 +68,10 @@
 | **Google: Gemini 4 Neon** | `OpenRouter` | google (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/google/gemini-4-neon) |
 | **Google: Gemini 4 Neon (batch)** | `OpenRouter` | google (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/google/gemini-4-neon:batch) |
 | **OpenAI: GPT-6.2 Astra Pro** | `OpenRouter` | openai (Cloud Model API) | ❤️ 120 · 📥 1,050,000 | [View](https://openrouter.ai/openai/gpt-6.2-astra-pro) |
-| **harness-hub/Qwen3.8-27B-pi-adapted** | `Hugging Face` | harness-hub (image-text-to-text) | ❤️ 579 · 📥 377 | [View](https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted) |
-| **Lightricks/LTX-2.5** | `Hugging Face` | Lightricks (image-to-video) | ❤️ 12,586 · 📥 2,871,190 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
-| **thinkingmachines/Inkling-2-Small** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 501 · 📥 30,082 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Small) |
-| **higurashi-ai/Haru-4B** | `Hugging Face` | higurashi-ai (audio-to-audio) | ❤️ 811 · 📥 5,314 | [View](https://huggingface.co/higurashi-ai/Haru-4B) |
+| **higurashi-ai/Haru-4B** | `Hugging Face` | higurashi-ai (audio-to-audio) | ❤️ 2,731 · 📥 6,266 | [View](https://huggingface.co/higurashi-ai/Haru-4B) |
+| **tencent/Hy4-flash** | `Hugging Face` | tencent (image-text-to-text) | ❤️ 303 · 📥 2,053 | [View](https://huggingface.co/tencent/Hy4-flash) |
+| **Qwen/Qwen3.8-27B** | `Hugging Face` | Qwen (image-text-to-text) | ❤️ 20,630 · 📥 6,647,301 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
+| **apple/FastFrames-L** | `Hugging Face` | apple (text-to-video) | ❤️ 274 · 📥 0 | [View](https://huggingface.co/apple/FastFrames-L) |
 
 
 ---
@@ -81,11 +81,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Late Entry in Looped Language Models** | 👍 1 | Looped language models deepen reasoning at a compact parameter count by iterating a shared layer stack T times per token, turning recurrence depth directly into... | [Read](https://huggingface.co/papers/2611.24576) |
-| **RoughCut-Bench: A Benchmark for Automatic Video Rough-Cut with Large Vision-Language Models** | 👍 2 | A new benchmark and agentic workflows assess vision-language models for automatic video rough-cut, revealing current models struggle to match expert cut plans. | [Read](https://huggingface.co/papers/2611.24098) |
-| **Out of Sight, Still in Mind: Token Compression for Omni-LLMs** | 👍 1 | ReMo, a training-free method, reduces inference input token cost for omni-modal large language models by compressing redundant visual tokens through cross-modal alignment and replacing object-level visual tokens with compact text descriptions, achieving comparable accuracy on audio-visual tasks. | [Read](https://huggingface.co/papers/2607.21179) |
-| **DrawScore: Evaluating Generated CAD Models against Engineering Drawings** | 👍 2 | A new metric for automatic CAD generation evaluates models through engineering-drawing projections with a saturating penalty along curves, exposing small local errors that volume- or surface-based metrics miss and enabling use as a reinforcement learning reward or test-time verifier. | [Read](https://huggingface.co/papers/2611.24681) |
-| **Evidence-Based Credit Assignment for Search-Augmented Language Models** | 👍 2 | Reinforcement learning from terminal answer rewards enables search-augmented language models to interleave reasoning and retrieval without step-level annotation... | [Read](https://huggingface.co/papers/2611.23824) |
+| **Kezek: Splitting Mono Two-Person Conversations into Per-Speaker Tracks for Full-Duplex Dialogue Data** | 👍 3 | Kezek separates a mono two-speaker conversation into per-speaker tracks while preserving timing and short replies, using a phase-insensitive speaker-fingerprint-guided two-voice activity model followed by a conditioned time-domain separator, and it improves short-reply retention, leakage, channel-swap, and runtime metrics over an open baseline. | [Read](https://huggingface.co/papers/2611.16933) |
+| **StatePortal: Agentic Checkpoint Synthesis for Testing Deep States in Interactive Software** | 👍 6 | Large language models have reduced the effort to generate code for interactive software with graphical user interfaces (GUIs). For such software, a key testing ... | [Read](https://huggingface.co/papers/2611.23257) |
+| **WaveView: The Novel View Is in the Noise** | 👍 7 | Generative novel view synthesis (NVS) employs a diffusion model to render a static or dynamic scene from a target camera view. Explicit warp methods complete a ... | [Read](https://huggingface.co/papers/2611.23994) |
+| **StrideWorld: Benchmarking Scene Rigidity and Action Consistency in Interactive Video World Model** | 👍 11 | StrideWorld is a benchmark that fixes references before motion to detect scene deformation and action inconsistency in interactive video world models, showing that most models deform scenes and only depth-scaled command models preserve composed routes. | [Read](https://huggingface.co/papers/2611.24408) |
+| **AVTR: Adaptive Multimodal Reasoning with Visual Imagination** | 👍 2 | Adaptive Visual-Textual Reasoning combines generative visual reflection with textual reasoning and learns to route between them per input, improving multimodal task accuracy while reducing inference latency. | [Read](https://huggingface.co/papers/2611.24161) |
 
 
 ---
@@ -98,7 +98,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `21/25` healthy verified (`4` flagged / timed out)
+- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
 - **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

@@ -1,5 +1,134 @@
 [
   {
+    "name": "qwen4-max-reasoning-250x",
+    "type": "Dataset",
+    "summary": "Qwen4 Max Reasoning Traces — 250x \t 250 prompts from the MiMo-2.6-Pro 250x prompt set, answered by qwen/qwen4-max (OpenRouter, canonical qwen/qwen4-max-20261115) on 202 (19 likes, 192 downloads).",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "AJ-Gonzalez",
+    "size": "n<1K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"AJ-Gonzalez/qwen4-max-reasoning-250x\")",
+    "benchmarks": "Trending Score: 17, Likes: 19, Downloads: 192",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/AJ-Gonzalez/qwen4-max-reasoning-250x",
+    "citations": [
+      {
+        "text": "AJ-Gonzalez/qwen4-max-reasoning-250x on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/AJ-Gonzalez/qwen4-max-reasoning-250x"
+      }
+    ],
+    "created_at": "2026-11-19T16:14:11.086Z"
+  },
+  {
+    "name": "P-Image-OSS",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by PrunaAI. Trending with 185 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "PrunaAI",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/PrunaAI/P-Image-OSS",
+    "benchmarks": "Trending Score: 54, Community Likes: 185",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/PrunaAI/P-Image-OSS",
+    "citations": [
+      {
+        "text": "PrunaAI/P-Image-OSS on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/PrunaAI/P-Image-OSS"
+      }
+    ],
+    "created_at": "2026-11-19T16:14:11.086Z"
+  },
+  {
+    "name": "voice-isolator",
+    "type": "Model",
+    "summary": "High-performance Audio open-weights model by inworld, trending with over 187 community likes and 0 downloads on Hugging Face.",
+    "task": "Audio",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "inworld",
+    "size": "Open Weights",
+    "architecture": "inworld audio to audio architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"inworld/voice-isolator\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"inworld/voice-isolator\")",
+    "benchmarks": "Trending Score: 171, Likes: 187, Downloads: 0",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/inworld/voice-isolator",
+    "citations": [
+      {
+        "text": "inworld/voice-isolator on Hugging Face",
+        "url": "https://huggingface.co/inworld/voice-isolator"
+      }
+    ],
+    "created_at": "2026-11-19T16:14:11.086Z"
+  },
+  {
+    "name": "OpenAI: GPT-6.2 Astra (batch)",
+    "type": "Model",
+    "summary": "GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, professional work and scientific res",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "openai",
+    "size": "1050k Context · Available via API",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1050k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"openai/gpt-6.2-astra:batch\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1050k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://openrouter.ai/openai/gpt-6.2-astra:batch",
+    "citations": [
+      {
+        "text": "OpenAI: GPT-6.2 Astra (batch) on OpenRouter",
+        "url": "https://openrouter.ai/openai/gpt-6.2-astra:batch"
+      }
+    ],
+    "created_at": "2026-11-19T16:14:11.085Z"
+  },
+  {
+    "name": "Claude Fable 5.2",
+    "type": "Model",
+    "summary": "Frontier Research model by Anthropic benchmarked on Artificial Analysis with an Intelligence Index of 56.4083157101519 and a verified 1000k Context window.",
+    "task": "Research",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "Anthropic",
+    "size": "1000k Context · Proprietary Model",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1000k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/claude-fable-5-2",
+    "benchmarks": "Context Window: 1000k Context, Intelligence Index: 56.4083157101519, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Cloud API access subject to provider rate limits and compute quotas.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://artificialanalysis.ai/models/claude-fable-5-2",
+    "citations": [
+      {
+        "text": "Claude Fable 5.2 on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-2"
+      },
+      {
+        "text": "Claude Fable 5.2 Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-2/providers"
+      }
+    ],
+    "created_at": "2026-11-19T16:14:11.085Z"
+  },
+  {
     "name": "uzbek-language-corpus",
     "type": "Dataset",
     "summary": "Uzbek Language Corpus \t \t \t\t \t \t \t\tDataset Summary \t A cleaned Uzbek language corpus for language-model pretraining: 5,638,325 documents, 6,072,581,063 words, in Latin (24 likes, 0 downloads).",

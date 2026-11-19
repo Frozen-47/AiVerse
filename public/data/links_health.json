@@ -1,28 +1,18 @@
 {
-  "timestamp": "2026-11-19T05:29:25.179Z",
+  "timestamp": "2026-11-19T16:14:11.291Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "NightCafe",
-      "url": "https://creator.nightcafe.studio",
-      "status": 403
-    },
-    {
-      "name": "LTX-2.3-10Eros",
-      "url": "https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros",
+      "name": "wan555",
+      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
       "status": 401
     },
     {
       "name": "Microsoft Copilot",
       "url": "https://copilot.microsoft.com",
       "status": 405
-    },
-    {
-      "name": "Play.ht",
-      "url": "https://play.ht",
-      "status": "Network Error"
     }
   ]
 }
