@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-18)
+### ⚡ AiVerse AI Radar (2026-11-19)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Gemini 4 Neon** (`Model`), **Google: Gemini 4 Neon** (`Model`), **Hy4-flash** (`Model`), **pi-H3** (`Platform`), **Ko-MultimodalMind2Web** (`Dataset`) |
-| 🌟 **Tool of the Day** | **StarCoder2** (Hugging Face) — [Explore](https://github.com/bigcode-project/starcoder2) |
+| 📥 **Queued for Review** | **Granite 4.2 3B** (`Model`), **Google: Gemini 4 Neon (batch)** (`Model`), **FastFrames-L** (`Model`), **UGI-Leaderboard** (`Platform`), **uzbek-language-corpus** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Suno** (Suno Inc.) — [Explore](https://suno.com) |
 | 🗄️ **Catalog Entries** | **575** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [CONGA: Compiling Gaussian Fiber Geometry for Struc...](https://huggingface.co/papers/2611.20995) |
-| 🛡️ **Catalog Links Checked** | **25/25** operational |
-| 🕒 **Last Synchronized** | `Wed, 18 Nov 2026 23:15:49 GMT` |
+| 📜 **Top Daily Paper** | [Late Entry in Looped Language Models...](https://huggingface.co/papers/2611.24576) |
+| 🛡️ **Catalog Links Checked** | **21/25** operational |
+| 🕒 **Last Synchronized** | `Thu, 19 Nov 2026 05:30:06 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

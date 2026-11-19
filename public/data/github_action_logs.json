@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1795066206352_mq25a",
+    "created_at": "2026-11-19T05:30:06.352Z",
+    "timestamp": "2026-11-19T05:30:06.352Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Granite 4.2 3B, Google: Gemini 4 Neon (batch), FastFrames-L, UGI-Leaderboard, uzbek-language-corpus. Checked health for 25 links (4 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 42956ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Granite 4.2 3B",
+          "type": "Model",
+          "org": "IBM"
+        },
+        {
+          "name": "Google: Gemini 4 Neon (batch)",
+          "type": "Model",
+          "org": "google"
+        },
+        {
+          "name": "FastFrames-L",
+          "type": "Model",
+          "org": "apple"
+        },
+        {
+          "name": "UGI-Leaderboard",
+          "type": "Platform",
+          "org": "DontPlanToEnd"
+        },
+        {
+          "name": "uzbek-language-corpus",
+          "type": "Dataset",
+          "org": "Digitaluz"
+        }
+      ],
+      "brokenLinks": 4,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 42956,
+      "runId": "44465491535",
+      "runNumber": "134",
+      "sha": "b514f93",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795043749840_pwlnv",
     "created_at": "2026-11-18T23:15:49.840Z",
     "timestamp": "2026-11-18T23:15:49.840Z",

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-18T23:14:59.546Z",
+  "timestamp": "2026-11-19T05:29:24.921Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -56,82 +56,82 @@
       "source": "OpenRouter"
     },
     {
-      "id": "higurashi-ai/Haru-4B",
-      "author": "higurashi-ai",
-      "likes": 663,
-      "downloads": 5314,
-      "pipeline_tag": "audio-to-audio",
-      "url": "https://huggingface.co/higurashi-ai/Haru-4B",
-      "source": "Hugging Face"
-    },
-    {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 12550,
-      "downloads": 2871190,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5",
-      "source": "Hugging Face"
-    },
-    {
       "id": "harness-hub/Qwen3.8-27B-pi-adapted",
       "author": "harness-hub",
-      "likes": 393,
+      "likes": 579,
       "downloads": 377,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
       "source": "Hugging Face"
     },
     {
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 12586,
+      "downloads": 2871190,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5",
+      "source": "Hugging Face"
+    },
+    {
       "id": "thinkingmachines/Inkling-2-Small",
       "author": "thinkingmachines",
-      "likes": 491,
+      "likes": 501,
       "downloads": 30082,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "higurashi-ai/Haru-4B",
+      "author": "higurashi-ai",
+      "likes": 811,
+      "downloads": 5314,
+      "pipeline_tag": "audio-to-audio",
+      "url": "https://huggingface.co/higurashi-ai/Haru-4B",
       "source": "Hugging Face"
     }
   ],
   "papers": [
     {
-      "title": "CONGA: Compiling Gaussian Fiber Geometry for Structured Bayesian Inference",
-      "summary": "In structured Bayesian models, a large latent block is often Gaussian conditional on a smaller set of parameters, yet generic inference methods relearn this geo...",
+      "title": "Late Entry in Looped Language Models",
+      "summary": "Looped language models deepen reasoning at a compact parameter count by iterating a shared layer stack T times per token, turning recurrence depth directly into...",
       "upvotes": 1,
-      "arxiv_id": "2611.20995",
-      "url": "https://huggingface.co/papers/2611.20995",
-      "githubRepo": "https://github.com/vicgalle/conga"
+      "arxiv_id": "2611.24576",
+      "url": "https://huggingface.co/papers/2611.24576",
+      "githubRepo": "https://github.com/Xalp/LateComer"
     },
     {
-      "title": "The novelty exposed: ablation, reproducibility and transparency in 40 technical reports of open-weight large language models (LLMs)",
-      "summary": "In 2025 alone, 48 new large language model (LLM) architectures were added to the Hugging Face transformers library, and many of them arrive with a technical rep...",
-      "upvotes": 1,
-      "arxiv_id": "2611.20003",
-      "url": "https://huggingface.co/papers/2611.20003",
-      "githubRepo": "https://github.com/bturkoglu/llm-novelty-exposed"
-    },
-    {
-      "title": "WeightBench: Evaluating Language Models as Weight-Space Programmers",
-      "summary": "The WEIGHTBENCH benchmark evaluates the capacity of large language models to perform Weight-Space Programming tasks, which involve reading, modifying, and generating the weights of various neural network architectures.",
+      "title": "RoughCut-Bench: A Benchmark for Automatic Video Rough-Cut with Large Vision-Language Models",
+      "summary": "A new benchmark and agentic workflows assess vision-language models for automatic video rough-cut, revealing current models struggle to match expert cut plans.",
       "upvotes": 2,
-      "arxiv_id": "2611.18553",
-      "url": "https://huggingface.co/papers/2611.18553",
-      "githubRepo": "https://github.com/Aayush-Marasini/WeightBench"
+      "arxiv_id": "2611.24098",
+      "url": "https://huggingface.co/papers/2611.24098",
+      "githubRepo": "https://github.com/Whalesong-zrs/RoughCut-Bench"
     },
     {
-      "title": "Unreasonable Confidence from Simulator Misspecification: Directional Robustness on the SPEED+ Sim-to-Real Benchmark",
-      "summary": "A simple monocular pose estimator trained on synthetic spacecraft images shows poor real-world transfer, with overconfident pose errors and uneven gains from backbone adaptation and photometric augmentation under different lighting.",
+      "title": "Out of Sight, Still in Mind: Token Compression for Omni-LLMs",
+      "summary": "ReMo, a training-free method, reduces inference input token cost for omni-modal large language models by compressing redundant visual tokens through cross-modal alignment and replacing object-level visual tokens with compact text descriptions, achieving comparable accuracy on audio-visual tasks.",
       "upvotes": 1,
-      "arxiv_id": "2611.20321",
-      "url": "https://huggingface.co/papers/2611.20321",
-      "githubRepo": "https://github.com/lokindoo/spacecraft-pose-estimation"
+      "arxiv_id": "2607.21179",
+      "url": "https://huggingface.co/papers/2607.21179",
+      "githubRepo": "https://github.com/suho-yoo/ReMo"
     },
     {
-      "title": "GameRealm: Grounding Visual Learning in Interactive Games",
-      "summary": "GameRealm is a large-scale multimodal gameplay dataset with synchronized depth, camera, audio, control, and 3D trajectory annotations that improves visual foundation models for generation and geometric learning.",
-      "upvotes": 1,
-      "arxiv_id": "2611.23140",
-      "url": "https://huggingface.co/papers/2611.23140",
-      "githubRepo": "https://github.com/weiguangzhao/GameRealm"
+      "title": "DrawScore: Evaluating Generated CAD Models against Engineering Drawings",
+      "summary": "A new metric for automatic CAD generation evaluates models through engineering-drawing projections with a saturating penalty along curves, exposing small local errors that volume- or surface-based metrics miss and enabling use as a reinforcement learning reward or test-time verifier.",
+      "upvotes": 2,
+      "arxiv_id": "2611.24681",
+      "url": "https://huggingface.co/papers/2611.24681",
+      "githubRepo": "https://github.com/UESTC-Simon/DrawScore"
+    },
+    {
+      "title": "Evidence-Based Credit Assignment for Search-Augmented Language Models",
+      "summary": "Reinforcement learning from terminal answer rewards enables search-augmented language models to interleave reasoning and retrieval without step-level annotation...",
+      "upvotes": 2,
+      "arxiv_id": "2611.23824",
+      "url": "https://huggingface.co/papers/2611.23824",
+      "githubRepo": null
     }
   ],
   "sources": [

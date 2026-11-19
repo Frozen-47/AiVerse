@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-18T23:14:59.540Z",
+  "timestamp": "2026-11-19T05:29:24.916Z",
   "totalEntries": 575,
   "popularEntries": 368,
   "totalUsers": 10,
@@ -90,26 +90,26 @@
     "Open Weights": 1
   },
   "toolOfTheDay": {
-    "name": "StarCoder2",
-    "type": "Model",
-    "summary": "BigCode's open state-of-the-art code model trained on 619 programming languages with permissive licensing, supporting infilling and 16K context, incorporating an architecture of transformer decoder with multi-query attention and Fill-in-the-Middle (FIM) training. The model demonstrates competitive performance across verified evaluations, including HumanEval: 46.3% (15B pass@1), best open model at time of release. With its 3B to 15B params design, it supports diverse local and enterprise deployment profiles under the BigCode OpenRAIL-M v1 license.",
-    "task": "NLP",
-    "license": "BigCode OpenRAIL-M v1",
-    "year": 2024,
-    "org": "Hugging Face",
-    "size": "3B to 15B params",
-    "architecture": "Transformer decoder with multi-query attention and Fill-in-the-Middle (FIM) training.",
-    "usage": "from transformers import AutoTokenizer, AutoModelForCausalLM\ntokenizer = AutoTokenizer.from_pretrained(\"bigcode/starcoder2-15b\")\nmodel = AutoModelForCausalLM.from_pretrained(\"bigcode/starcoder2-15b\")",
-    "benchmarks": "HumanEval: 46.3% (15B pass@1), best open model at time of release",
-    "limitations": "Not an instruction-tuned chat model by default, requires fine-tuning for dialogue.",
+    "name": "Suno",
+    "type": "AI",
+    "summary": "An AI music generation platform that creates full songs with vocals, instrumentation, and lyrics from a simple text prompt in seconds. The application is powered by advanced foundation models utilizing web Application (Proprietary audio diffusion and language model pipeline). It features an intuitive interface designed to streamline complex audio workflows and maximize end-user productivity. Available under a Proprietary model for commercial and personal productivity.",
+    "task": "Audio",
+    "license": "Proprietary",
+    "year": 2023,
+    "org": "Suno Inc.",
+    "size": "N/A",
+    "architecture": "Web Application (Proprietary audio diffusion and language model pipeline)",
+    "usage": "Visit suno.com and type a prompt describing the style or lyrics to generate a full song.",
+    "benchmarks": "N/A",
+    "limitations": "Limited control over fine-grained musical elements; commercial use requires a paid plan.",
     "popular": true,
-    "url": "https://github.com/bigcode-project/starcoder2",
+    "url": "https://suno.com",
     "citations": [
       {
-        "text": "StarCoder2 Paper",
-        "url": "https://arxiv.org/abs/2402.19173"
+        "text": "Suno AI",
+        "url": "https://suno.com"
       }
     ],
-    "description": "BigCode's open state-of-the-art code model trained on 619 programming languages with permissive licensing, supporting infilling and 16K context, incorporating an architecture of transformer decoder with multi-query attention and Fill-in-the-Middle (FIM) training. The model demonstrates competitive performance across verified evaluations, including HumanEval: 46.3% (15B pass@1), best open model at time of release. With its 3B to 15B params design, it supports diverse local and enterprise deployment profiles under the BigCode OpenRAIL-M v1 license."
+    "description": "An AI music generation platform that creates full songs with vocals, instrumentation, and lyrics from a simple text prompt in seconds. The application is powered by advanced foundation models utilizing web Application (Proprietary audio diffusion and language model pipeline). It features an intuitive interface designed to streamline complex audio workflows and maximize end-user productivity. Available under a Proprietary model for commercial and personal productivity."
   }
 }

@@ -1,5 +1,135 @@
 [
   {
+    "date": "2026-11-19",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "Granite 4.2 3B",
+        "type": "Model",
+        "summary": "Frontier Research model by IBM benchmarked on Artificial Analysis with an Intelligence Index of 4.72268717901823 and a verified 131k Context window.",
+        "task": "Research",
+        "license": "Open Weights",
+        "year": 2026,
+        "org": "IBM",
+        "size": "131k Context · Open Model",
+        "architecture": "Open-weights frontier neural architecture developed by IBM, featuring native 131k Context token window support and optimized reasoning chains.",
+        "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/granite-4-2-3b",
+        "benchmarks": "Context Window: 131k Context, Intelligence Index: 4.72268717901823, Benchmarked on Artificial Analysis Leaderboard",
+        "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://artificialanalysis.ai/models/granite-4-2-3b",
+        "citations": [
+          {
+            "text": "Granite 4.2 3B on Artificial Analysis Benchmark",
+            "url": "https://artificialanalysis.ai/models/granite-4-2-3b"
+          },
+          {
+            "text": "Granite 4.2 3B Inference Providers",
+            "url": "https://artificialanalysis.ai/models/granite-4-2-3b/providers"
+          }
+        ]
+      },
+      {
+        "name": "Google: Gemini 4 Neon (batch)",
+        "type": "Model",
+        "summary": "Gemini 4 Neon is a fast, mid-priced model in the Gemini 4 family from Google, built for coding and agentic work. It is suited for repository and terminal coding, web...",
+        "task": "AI Coding",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "google",
+        "size": "1049k Context · Available via API",
+        "architecture": "Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.",
+        "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"google/gemini-4-neon:batch\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+        "benchmarks": "Context Window: 1049k Context, Available across global OpenRouter inference nodes.",
+        "limitations": "Requires OpenRouter API key and token credits.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://openrouter.ai/google/gemini-4-neon:batch",
+        "citations": [
+          {
+            "text": "Google: Gemini 4 Neon (batch) on OpenRouter",
+            "url": "https://openrouter.ai/google/gemini-4-neon:batch"
+          }
+        ]
+      },
+      {
+        "name": "FastFrames-L",
+        "type": "Model",
+        "summary": "High-performance Video Generation open-weights model by apple, trending with over 228 community likes and 0 downloads on Hugging Face.",
+        "task": "Video Generation",
+        "license": "APPLE-AMLR",
+        "year": 2026,
+        "org": "apple",
+        "size": "Open Weights",
+        "architecture": "apple text to video architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"apple/FastFrames-L\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"apple/FastFrames-L\")",
+        "benchmarks": "Trending Score: 210, Likes: 228, Downloads: 0",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/apple/FastFrames-L",
+        "citations": [
+          {
+            "text": "apple/FastFrames-L on Hugging Face",
+            "url": "https://huggingface.co/apple/FastFrames-L"
+          }
+        ]
+      },
+      {
+        "name": "UGI-Leaderboard",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by DontPlanToEnd. Trending with 2,221 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "DontPlanToEnd",
+        "size": "DOCKER Platform",
+        "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/DontPlanToEnd/UGI-Leaderboard",
+        "benchmarks": "Trending Score: 19, Community Likes: 2,221",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/DontPlanToEnd/UGI-Leaderboard",
+        "citations": [
+          {
+            "text": "DontPlanToEnd/UGI-Leaderboard on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/DontPlanToEnd/UGI-Leaderboard"
+          }
+        ]
+      },
+      {
+        "name": "uzbek-language-corpus",
+        "type": "Dataset",
+        "summary": "Uzbek Language Corpus \t \t \t\t \t \t \t\tDataset Summary \t A cleaned Uzbek language corpus for language-model pretraining: 5,638,325 documents, 6,072,581,063 words, in Latin (24 likes, 0 downloads).",
+        "task": "NLP",
+        "license": "ODC-BY",
+        "year": 2026,
+        "org": "Digitaluz",
+        "size": "1M<n<10M",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Digitaluz/uzbek-language-corpus\")",
+        "benchmarks": "Trending Score: 21, Likes: 24, Downloads: 0",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus",
+        "citations": [
+          {
+            "text": "Digitaluz/uzbek-language-corpus on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-11-18",
     "status": "queued_in_review_list",
     "assets": [
@@ -6412,36 +6542,6 @@
           {
             "text": "daimonrobotics/Daimon-Infinity on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/daimonrobotics/Daimon-Infinity"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-22",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "Spark-X2.6-4B",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by XHToken, trending with over 183 community likes and 85 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "XHToken",
-        "size": "4B params",
-        "architecture": "XHToken text generation architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"XHToken/Spark-X2.6-4B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"XHToken/Spark-X2.6-4B\")",
-        "benchmarks": "Trending Score: 171, Likes: 183, Downloads: 85",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/XHToken/Spark-X2.6-4B",
-        "citations": [
-          {
-            "text": "XHToken/Spark-X2.6-4B on Hugging Face",
-            "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
           }
         ]
       }
