@@ -4,6 +4,136 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Nova 2.0 Pro Preview",
+        "type": "Model",
+        "summary": "Frontier Research model by Amazon benchmarked on Artificial Analysis and a verified 256k Context window.",
+        "task": "Research",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "Amazon",
+        "size": "256k Context · Proprietary Model",
+        "architecture": "Proprietary frontier neural architecture developed by Amazon, featuring native 256k Context token window support and optimized reasoning chains.",
+        "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/nova-2-0-pro-preview",
+        "benchmarks": "Context Window: 256k Context, Benchmarked on Artificial Analysis Leaderboard",
+        "limitations": "Cloud API access subject to provider rate limits and compute quotas.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://artificialanalysis.ai/models/nova-2-0-pro-preview",
+        "citations": [
+          {
+            "text": "Nova 2.0 Pro Preview on Artificial Analysis Benchmark",
+            "url": "https://artificialanalysis.ai/models/nova-2-0-pro-preview"
+          },
+          {
+            "text": "Nova 2.0 Pro Preview Inference Providers",
+            "url": "https://artificialanalysis.ai/models/nova-2-0-pro-preview/providers"
+          }
+        ]
+      },
+      {
+        "name": "OpenAI: GPT-6.2 Sol Pro",
+        "type": "Model",
+        "summary": "GPT-6.2 Sol Pro is the same underlying model as [GPT-6.2 Sol](https://openrouter.ai/openai/gpt-6.2-sol), served with `reasoning.mode` set to `pro` for higher-quality responses on c",
+        "task": "NLP",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "openai",
+        "size": "1050k Context · Available via API",
+        "architecture": "Modern foundation model hosted on OpenRouter with native 1050k Context support and structured output generation.",
+        "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"openai/gpt-6.2-sol-pro\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+        "benchmarks": "Context Window: 1050k Context, Available across global OpenRouter inference nodes.",
+        "limitations": "Requires OpenRouter API key and token credits.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://openrouter.ai/openai/gpt-6.2-sol-pro",
+        "citations": [
+          {
+            "text": "OpenAI: GPT-6.2 Sol Pro on OpenRouter",
+            "url": "https://openrouter.ai/openai/gpt-6.2-sol-pro"
+          }
+        ]
+      },
+      {
+        "name": "Rumble-2-Flash",
+        "type": "Model",
+        "summary": "High-performance Audio open-weights model by Reson8, trending with over 165 community likes and 929 downloads on Hugging Face.",
+        "task": "Audio",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Reson8",
+        "size": "Open Weights",
+        "architecture": "Reson8 automatic speech recognition architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Reson8/Rumble-2-Flash\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Reson8/Rumble-2-Flash\")",
+        "benchmarks": "Trending Score: 112, Likes: 165, Downloads: 929",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/Reson8/Rumble-2-Flash",
+        "citations": [
+          {
+            "text": "Reson8/Rumble-2-Flash on Hugging Face",
+            "url": "https://huggingface.co/Reson8/Rumble-2-Flash"
+          }
+        ]
+      },
+      {
+        "name": "SplatAnything",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by ritianyu. Trending with 36 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "ritianyu",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/ritianyu/SplatAnything",
+        "benchmarks": "Trending Score: 23, Community Likes: 36",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/ritianyu/SplatAnything",
+        "citations": [
+          {
+            "text": "ritianyu/SplatAnything on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/ritianyu/SplatAnything"
+          }
+        ]
+      },
+      {
+        "name": "duplex-pre-training-yodas3-mimi",
+        "type": "Dataset",
+        "summary": "YODAS3 tokenized speech-to-speech pre-training dataset \t [!TIP] For speech separation and audio annotation services, contact voice@trelis.com. A filtered and tokenized (28 likes, 1,601 downloads).",
+        "task": "NLP",
+        "license": "CC-BY-3.0",
+        "year": 2026,
+        "org": "Trelis",
+        "size": "1K<n<10K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Trelis/duplex-pre-training-yodas3-mimi\")",
+        "benchmarks": "Trending Score: 8, Likes: 28, Downloads: 1,601",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/Trelis/duplex-pre-training-yodas3-mimi",
+        "citations": [
+          {
+            "text": "Trelis/duplex-pre-training-yodas3-mimi on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/Trelis/duplex-pre-training-yodas3-mimi"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-19",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Claude Fable 5.2",
         "type": "Model",
         "summary": "Frontier Research model by Anthropic benchmarked on Artificial Analysis with an Intelligence Index of 56.4083157101519 and a verified 1000k Context window.",
@@ -6588,36 +6718,6 @@
           {
             "text": "nvidia/simready-assets on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/nvidia/simready-assets"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-23",
-    "status": "queued_in_review_list",
-    "assets": [
-      {
-        "name": "flint-GGUF",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by unsloth, trending with over 150 community likes and 7,401 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "unsloth",
-        "size": "Open Weights",
-        "architecture": "unsloth text generation architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"unsloth/flint-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"unsloth/flint-GGUF\")",
-        "benchmarks": "Trending Score: 149, Likes: 150, Downloads: 7,401",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/unsloth/flint-GGUF",
-        "citations": [
-          {
-            "text": "unsloth/flint-GGUF on Hugging Face",
-            "url": "https://huggingface.co/unsloth/flint-GGUF"
           }
         ]
       }

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-19T16:14:11.108Z",
+  "timestamp": "2026-11-19T23:22:40.654Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,7 +58,7 @@
     {
       "id": "higurashi-ai/Haru-4B",
       "author": "higurashi-ai",
-      "likes": 2731,
+      "likes": 3625,
       "downloads": 6266,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/higurashi-ai/Haru-4B",
@@ -67,71 +67,71 @@
     {
       "id": "tencent/Hy4-flash",
       "author": "tencent",
-      "likes": 303,
+      "likes": 341,
       "downloads": 2053,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/tencent/Hy4-flash",
       "source": "Hugging Face"
     },
     {
-      "id": "Qwen/Qwen3.8-27B",
-      "author": "Qwen",
-      "likes": 20630,
-      "downloads": 6647301,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
-      "source": "Hugging Face"
-    },
-    {
       "id": "apple/FastFrames-L",
       "author": "apple",
-      "likes": 274,
+      "likes": 327,
       "downloads": 0,
       "pipeline_tag": "text-to-video",
       "url": "https://huggingface.co/apple/FastFrames-L",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "harness-hub/Qwen3.8-27B-pi-adapted",
+      "author": "harness-hub",
+      "likes": 733,
+      "downloads": 1320,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
       "source": "Hugging Face"
     }
   ],
   "papers": [
     {
-      "title": "Kezek: Splitting Mono Two-Person Conversations into Per-Speaker Tracks for Full-Duplex Dialogue Data",
-      "summary": "Kezek separates a mono two-speaker conversation into per-speaker tracks while preserving timing and short replies, using a phase-insensitive speaker-fingerprint-guided two-voice activity model followed by a conditioned time-domain separator, and it improves short-reply retention, leakage, channel-swap, and runtime metrics over an open baseline.",
-      "upvotes": 3,
-      "arxiv_id": "2611.16933",
-      "url": "https://huggingface.co/papers/2611.16933",
-      "githubRepo": "https://github.com/Manifestro/kezek"
+      "title": "General progress substitutes for specific training data in language models",
+      "summary": "Withholding training data delays but does not prevent language models from acquiring skills, and models can regain withheld capabilities with less data as they improve.",
+      "upvotes": 1,
+      "arxiv_id": "2611.24844",
+      "url": "https://huggingface.co/papers/2611.24844",
+      "githubRepo": "https://github.com/Mapika/progress-substitutes-data"
     },
     {
-      "title": "StatePortal: Agentic Checkpoint Synthesis for Testing Deep States in Interactive Software",
-      "summary": "Large language models have reduced the effort to generate code for interactive software with graphical user interfaces (GUIs). For such software, a key testing ...",
-      "upvotes": 6,
-      "arxiv_id": "2611.23257",
-      "url": "https://huggingface.co/papers/2611.23257",
-      "githubRepo": "https://github.com/pzy2000/State_Portal"
-    },
-    {
-      "title": "WaveView: The Novel View Is in the Noise",
-      "summary": "Generative novel view synthesis (NVS) employs a diffusion model to render a static or dynamic scene from a target camera view. Explicit warp methods complete a ...",
-      "upvotes": 7,
-      "arxiv_id": "2611.23994",
-      "url": "https://huggingface.co/papers/2611.23994",
+      "title": "Replay, Don't Resample: Off-Policy Consolidation of Long-Horizon RL Experts",
+      "summary": "Frontier post-training follows a common recipe: train one expert per domain with reinforcement learning (RL), then consolidate the experts into one model via mu...",
+      "upvotes": 2,
+      "arxiv_id": "2611.24059",
+      "url": "https://huggingface.co/papers/2611.24059",
       "githubRepo": null
     },
     {
-      "title": "StrideWorld: Benchmarking Scene Rigidity and Action Consistency in Interactive Video World Model",
-      "summary": "StrideWorld is a benchmark that fixes references before motion to detect scene deformation and action inconsistency in interactive video world models, showing that most models deform scenes and only depth-scaled command models preserve composed routes.",
-      "upvotes": 11,
-      "arxiv_id": "2611.24408",
-      "url": "https://huggingface.co/papers/2611.24408",
-      "githubRepo": "https://github.com/chuangwang123/strideworld"
+      "title": "Unified Law for Visual Tasks (The Four Laws of Computer Vision)",
+      "summary": "A unified framework, World Snapshot Models, is proposed to train and perform nearly all visual tasks by reformulating them as generation tasks, validated across over 1,000 visual tasks.",
+      "upvotes": 0,
+      "arxiv_id": "2611.24917",
+      "url": "https://huggingface.co/papers/2611.24917",
+      "githubRepo": "https://github.com/World-Snapshot/WSMs"
     },
     {
-      "title": "AVTR: Adaptive Multimodal Reasoning with Visual Imagination",
-      "summary": "Adaptive Visual-Textual Reasoning combines generative visual reflection with textual reasoning and learns to route between them per input, improving multimodal task accuracy while reducing inference latency.",
+      "title": "Choosing Quantized Code LLMs by File Size and Energy per Solved Task",
+      "summary": "A developer running a code assistant on a laptop downloads one model file, and local inference moves the energy of every request onto that machine. A common rul...",
       "upvotes": 2,
-      "arxiv_id": "2611.24161",
-      "url": "https://huggingface.co/papers/2611.24161",
-      "githubRepo": "https://github.com/xiaoqian-shen/AVTR"
+      "arxiv_id": "2611.17605",
+      "url": "https://huggingface.co/papers/2611.17605",
+      "githubRepo": null
+    },
+    {
+      "title": "TabBioMed: A Large-Scale Benchmark for Biomedical Tabular Learning",
+      "summary": "A large-scale benchmark of 94 curated biomedical tabular datasets standardizes evaluation across classification, regression, and multi-target tasks and finds that foundation models lead overall while tree-based models and tuned multilayer perceptrons remain competitive under cost constraints.",
+      "upvotes": 6,
+      "arxiv_id": "2611.23779",
+      "url": "https://huggingface.co/papers/2611.23779",
+      "githubRepo": "https://github.com/AI-sandbox/TabBioMed"
     }
   ],
   "sources": [

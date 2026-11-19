@@ -17,13 +17,13 @@
 ### ⚡ AiVerse AI Radar (2026-11-19)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Claude Fable 5.2** (`Model`), **OpenAI: GPT-6.2 Astra (batch)** (`Model`), **voice-isolator** (`Model`), **P-Image-OSS** (`Platform`), **qwen4-max-reasoning-250x** (`Dataset`) |
+| 📥 **Queued for Review** | **Nova 2.0 Pro Preview** (`Model`), **OpenAI: GPT-6.2 Sol Pro** (`Model`), **Rumble-2-Flash** (`Model`), **SplatAnything** (`Platform`), **duplex-pre-training-yodas3-mimi** (`Dataset`) |
 | 🌟 **Tool of the Day** | **Suno** (Suno Inc.) — [Explore](https://suno.com) |
 | 🗄️ **Catalog Entries** | **575** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [Kezek: Splitting Mono Two-Person Conversations int...](https://huggingface.co/papers/2611.16933) |
+| 📜 **Top Daily Paper** | [General progress substitutes for specific training...](https://huggingface.co/papers/2611.24844) |
 | 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Thu, 19 Nov 2026 16:14:52 GMT` |
+| 🕒 **Last Synchronized** | `Thu, 19 Nov 2026 23:23:14 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

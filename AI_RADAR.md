@@ -2,7 +2,7 @@
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Thu, 19 Nov 2026 16:14:52 GMT`*
+*Last Synchronized: `Thu, 19 Nov 2026 23:23:14 GMT`*
 
 ---
 
@@ -10,40 +10,40 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Claude Fable 5.2** (`Model` • *Anthropic*)
-> Frontier Research model by Anthropic benchmarked on Artificial Analysis with an Intelligence Index of 56.4083157101519 and a verified 1000k Context window.
+### **Nova 2.0 Pro Preview** (`Model` • *Amazon*)
+> Frontier Research model by Amazon benchmarked on Artificial Analysis and a verified 256k Context window.
 
 - 🏷️ **Domain & License**: `Research` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 1000k Context, Intelligence Index: 56.4083157101519, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/claude-fable-5-2](https://artificialanalysis.ai/models/claude-fable-5-2)
+- ⚡ **Metrics**: `Context Window: 256k Context, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/nova-2-0-pro-preview](https://artificialanalysis.ai/models/nova-2-0-pro-preview)
 
-### **OpenAI: GPT-6.2 Astra (batch)** (`Model` • *openai*)
-> GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, professional work and scientific res
+### **OpenAI: GPT-6.2 Sol Pro** (`Model` • *openai*)
+> GPT-6.2 Sol Pro is the same underlying model as [GPT-6.2 Sol](https://openrouter.ai/openai/gpt-6.2-sol), served with `reasoning.mode` set to `pro` for higher-quality responses on c
 
 - 🏷️ **Domain & License**: `NLP` • `Proprietary` (2026)
 - ⚡ **Metrics**: `Context Window: 1050k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/openai/gpt-6.2-astra:batch](https://openrouter.ai/openai/gpt-6.2-astra:batch)
+- 🔗 **Resource Link**: [https://openrouter.ai/openai/gpt-6.2-sol-pro](https://openrouter.ai/openai/gpt-6.2-sol-pro)
 
-### **voice-isolator** (`Model` • *inworld*)
-> High-performance Audio open-weights model by inworld, trending with over 187 community likes and 0 downloads on Hugging Face.
+### **Rumble-2-Flash** (`Model` • *Reson8*)
+> High-performance Audio open-weights model by Reson8, trending with over 165 community likes and 929 downloads on Hugging Face.
 
 - 🏷️ **Domain & License**: `Audio` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 171, Likes: 187, Downloads: 0`
-- 🔗 **Resource Link**: [https://huggingface.co/inworld/voice-isolator](https://huggingface.co/inworld/voice-isolator)
+- ⚡ **Metrics**: `Trending Score: 112, Likes: 165, Downloads: 929`
+- 🔗 **Resource Link**: [https://huggingface.co/Reson8/Rumble-2-Flash](https://huggingface.co/Reson8/Rumble-2-Flash)
 
-### **P-Image-OSS** (`Platform` • *PrunaAI*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by PrunaAI. Trending with 185 community stars.
+### **SplatAnything** (`Platform` • *ritianyu*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by ritianyu. Trending with 36 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 54, Community Likes: 185`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/PrunaAI/P-Image-OSS](https://huggingface.co/spaces/PrunaAI/P-Image-OSS)
+- ⚡ **Metrics**: `Trending Score: 23, Community Likes: 36`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/ritianyu/SplatAnything](https://huggingface.co/spaces/ritianyu/SplatAnything)
 
-### **qwen4-max-reasoning-250x** (`Dataset` • *AJ-Gonzalez*)
-> Qwen4 Max Reasoning Traces — 250x 	 250 prompts from the MiMo-2.6-Pro 250x prompt set, answered by qwen/qwen4-max (OpenRouter, canonical qwen/qwen4-max-20261115) on 202 (19 likes, 192 downloads).
+### **duplex-pre-training-yodas3-mimi** (`Dataset` • *Trelis*)
+> YODAS3 tokenized speech-to-speech pre-training dataset 	 [!TIP] For speech separation and audio annotation services, contact voice@trelis.com. A filtered and tokenized (28 likes, 1,601 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 17, Likes: 19, Downloads: 192`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/AJ-Gonzalez/qwen4-max-reasoning-250x](https://huggingface.co/datasets/AJ-Gonzalez/qwen4-max-reasoning-250x)
+- 🏷️ **Domain & License**: `NLP` • `CC-BY-3.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 8, Likes: 28, Downloads: 1,601`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/Trelis/duplex-pre-training-yodas3-mimi](https://huggingface.co/datasets/Trelis/duplex-pre-training-yodas3-mimi)
 
 ---
 
@@ -68,10 +68,10 @@
 | **Google: Gemini 4 Neon** | `OpenRouter` | google (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/google/gemini-4-neon) |
 | **Google: Gemini 4 Neon (batch)** | `OpenRouter` | google (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/google/gemini-4-neon:batch) |
 | **OpenAI: GPT-6.2 Astra Pro** | `OpenRouter` | openai (Cloud Model API) | ❤️ 120 · 📥 1,050,000 | [View](https://openrouter.ai/openai/gpt-6.2-astra-pro) |
-| **higurashi-ai/Haru-4B** | `Hugging Face` | higurashi-ai (audio-to-audio) | ❤️ 2,731 · 📥 6,266 | [View](https://huggingface.co/higurashi-ai/Haru-4B) |
-| **tencent/Hy4-flash** | `Hugging Face` | tencent (image-text-to-text) | ❤️ 303 · 📥 2,053 | [View](https://huggingface.co/tencent/Hy4-flash) |
-| **Qwen/Qwen3.8-27B** | `Hugging Face` | Qwen (image-text-to-text) | ❤️ 20,630 · 📥 6,647,301 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
-| **apple/FastFrames-L** | `Hugging Face` | apple (text-to-video) | ❤️ 274 · 📥 0 | [View](https://huggingface.co/apple/FastFrames-L) |
+| **higurashi-ai/Haru-4B** | `Hugging Face` | higurashi-ai (audio-to-audio) | ❤️ 3,625 · 📥 6,266 | [View](https://huggingface.co/higurashi-ai/Haru-4B) |
+| **tencent/Hy4-flash** | `Hugging Face` | tencent (image-text-to-text) | ❤️ 341 · 📥 2,053 | [View](https://huggingface.co/tencent/Hy4-flash) |
+| **apple/FastFrames-L** | `Hugging Face` | apple (text-to-video) | ❤️ 327 · 📥 0 | [View](https://huggingface.co/apple/FastFrames-L) |
+| **harness-hub/Qwen3.8-27B-pi-adapted** | `Hugging Face` | harness-hub (image-text-to-text) | ❤️ 733 · 📥 1,320 | [View](https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted) |
 
 
 ---
@@ -81,11 +81,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Kezek: Splitting Mono Two-Person Conversations into Per-Speaker Tracks for Full-Duplex Dialogue Data** | 👍 3 | Kezek separates a mono two-speaker conversation into per-speaker tracks while preserving timing and short replies, using a phase-insensitive speaker-fingerprint-guided two-voice activity model followed by a conditioned time-domain separator, and it improves short-reply retention, leakage, channel-swap, and runtime metrics over an open baseline. | [Read](https://huggingface.co/papers/2611.16933) |
-| **StatePortal: Agentic Checkpoint Synthesis for Testing Deep States in Interactive Software** | 👍 6 | Large language models have reduced the effort to generate code for interactive software with graphical user interfaces (GUIs). For such software, a key testing ... | [Read](https://huggingface.co/papers/2611.23257) |
-| **WaveView: The Novel View Is in the Noise** | 👍 7 | Generative novel view synthesis (NVS) employs a diffusion model to render a static or dynamic scene from a target camera view. Explicit warp methods complete a ... | [Read](https://huggingface.co/papers/2611.23994) |
-| **StrideWorld: Benchmarking Scene Rigidity and Action Consistency in Interactive Video World Model** | 👍 11 | StrideWorld is a benchmark that fixes references before motion to detect scene deformation and action inconsistency in interactive video world models, showing that most models deform scenes and only depth-scaled command models preserve composed routes. | [Read](https://huggingface.co/papers/2611.24408) |
-| **AVTR: Adaptive Multimodal Reasoning with Visual Imagination** | 👍 2 | Adaptive Visual-Textual Reasoning combines generative visual reflection with textual reasoning and learns to route between them per input, improving multimodal task accuracy while reducing inference latency. | [Read](https://huggingface.co/papers/2611.24161) |
+| **General progress substitutes for specific training data in language models** | 👍 1 | Withholding training data delays but does not prevent language models from acquiring skills, and models can regain withheld capabilities with less data as they improve. | [Read](https://huggingface.co/papers/2611.24844) |
+| **Replay, Don't Resample: Off-Policy Consolidation of Long-Horizon RL Experts** | 👍 2 | Frontier post-training follows a common recipe: train one expert per domain with reinforcement learning (RL), then consolidate the experts into one model via mu... | [Read](https://huggingface.co/papers/2611.24059) |
+| **Unified Law for Visual Tasks (The Four Laws of Computer Vision)** | 👍 0 | A unified framework, World Snapshot Models, is proposed to train and perform nearly all visual tasks by reformulating them as generation tasks, validated across over 1,000 visual tasks. | [Read](https://huggingface.co/papers/2611.24917) |
+| **Choosing Quantized Code LLMs by File Size and Energy per Solved Task** | 👍 2 | A developer running a code assistant on a laptop downloads one model file, and local inference moves the energy of every request onto that machine. A common rul... | [Read](https://huggingface.co/papers/2611.17605) |
+| **TabBioMed: A Large-Scale Benchmark for Biomedical Tabular Learning** | 👍 6 | A large-scale benchmark of 94 curated biomedical tabular datasets standardizes evaluation across classification, regression, and multi-target tasks and finds that foundation models lead overall while tree-based models and tuned multilayer perceptrons remain competitive under cost constraints. | [Read](https://huggingface.co/papers/2611.23779) |
 
 
 ---
