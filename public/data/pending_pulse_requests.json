@@ -1,5 +1,109 @@
 [
   {
+    "name": "clairic",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 23 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "hugging-apps",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/clairic",
+    "benchmarks": "Trending Score: 23, Community Likes: 23",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/hugging-apps/clairic",
+    "citations": [
+      {
+        "text": "hugging-apps/clairic on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/hugging-apps/clairic"
+      }
+    ],
+    "created_at": "2026-11-20T05:17:23.440Z"
+  },
+  {
+    "name": "DaisyRose-27B",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by RadixArk, trending with over 193 community likes and 166 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "RadixArk",
+    "size": "27B params",
+    "architecture": "RadixArk image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"RadixArk/DaisyRose-27B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"RadixArk/DaisyRose-27B\")",
+    "benchmarks": "Trending Score: 136, Likes: 193, Downloads: 166",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/RadixArk/DaisyRose-27B",
+    "citations": [
+      {
+        "text": "RadixArk/DaisyRose-27B on Hugging Face",
+        "url": "https://huggingface.co/RadixArk/DaisyRose-27B"
+      }
+    ],
+    "created_at": "2026-11-20T05:17:23.440Z"
+  },
+  {
+    "name": "Mistral: Pixtral Large 2502",
+    "type": "Model",
+    "summary": "Pixtral Large 2502 is the February 2025 version of Mistral AI's large multimodal model, following [Pixtral Large 2411](https://openrouter.ai/mistralai/pixtral-large-2411). It accep",
+    "task": "Multimodal",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "mistralai",
+    "size": "128k Context · Available via API",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 128k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"mistralai/pixtral-large-2502\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 128k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://openrouter.ai/mistralai/pixtral-large-2502",
+    "citations": [
+      {
+        "text": "Mistral: Pixtral Large 2502 on OpenRouter",
+        "url": "https://openrouter.ai/mistralai/pixtral-large-2502"
+      }
+    ],
+    "created_at": "2026-11-20T05:17:23.440Z"
+  },
+  {
+    "name": "Inkling",
+    "type": "Model",
+    "summary": "Frontier Research model by Thinking Machines benchmarked on Artificial Analysis with an Intelligence Index of 12.4781698715401 and a verified 1000k Context window.",
+    "task": "Research",
+    "license": "Open Weights",
+    "year": 2026,
+    "org": "Thinking Machines",
+    "size": "1000k Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by Thinking Machines, featuring native 1000k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/inkling",
+    "benchmarks": "Context Window: 1000k Context, Intelligence Index: 12.4781698715401, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://artificialanalysis.ai/models/inkling",
+    "citations": [
+      {
+        "text": "Inkling on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/inkling"
+      },
+      {
+        "text": "Inkling Inference Providers",
+        "url": "https://artificialanalysis.ai/models/inkling/providers"
+      }
+    ],
+    "created_at": "2026-11-20T05:17:23.440Z"
+  },
+  {
     "name": "duplex-pre-training-yodas3-mimi",
     "type": "Dataset",
     "summary": "YODAS3 tokenized speech-to-speech pre-training dataset \t [!TIP] For speech separation and audio annotation services, contact voice@trelis.com. A filtered and tokenized (28 likes, 1,601 downloads).",

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-19T23:22:40.654Z",
+  "timestamp": "2026-11-20T05:17:23.471Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -29,6 +29,15 @@
       "source": "Artificial Analysis"
     },
     {
+      "id": "Mistral: Pixtral Large 2502",
+      "author": "mistralai",
+      "likes": 120,
+      "downloads": 128000,
+      "pipeline_tag": "Cloud Model API",
+      "url": "https://openrouter.ai/mistralai/pixtral-large-2502",
+      "source": "OpenRouter"
+    },
+    {
       "id": "Google: Gemini 4 Neon",
       "author": "google",
       "likes": 120,
@@ -47,18 +56,9 @@
       "source": "OpenRouter"
     },
     {
-      "id": "OpenAI: GPT-6.2 Astra Pro",
-      "author": "openai",
-      "likes": 120,
-      "downloads": 1050000,
-      "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/openai/gpt-6.2-astra-pro",
-      "source": "OpenRouter"
-    },
-    {
       "id": "higurashi-ai/Haru-4B",
       "author": "higurashi-ai",
-      "likes": 3625,
+      "likes": 3662,
       "downloads": 6266,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/higurashi-ai/Haru-4B",
@@ -67,7 +67,7 @@
     {
       "id": "tencent/Hy4-flash",
       "author": "tencent",
-      "likes": 341,
+      "likes": 360,
       "downloads": 2053,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/tencent/Hy4-flash",
@@ -76,7 +76,7 @@
     {
       "id": "apple/FastFrames-L",
       "author": "apple",
-      "likes": 327,
+      "likes": 348,
       "downloads": 0,
       "pipeline_tag": "text-to-video",
       "url": "https://huggingface.co/apple/FastFrames-L",
@@ -85,7 +85,7 @@
     {
       "id": "harness-hub/Qwen3.8-27B-pi-adapted",
       "author": "harness-hub",
-      "likes": 733,
+      "likes": 750,
       "downloads": 1320,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
@@ -94,44 +94,44 @@
   ],
   "papers": [
     {
-      "title": "General progress substitutes for specific training data in language models",
-      "summary": "Withholding training data delays but does not prevent language models from acquiring skills, and models can regain withheld capabilities with less data as they improve.",
-      "upvotes": 1,
-      "arxiv_id": "2611.24844",
-      "url": "https://huggingface.co/papers/2611.24844",
-      "githubRepo": "https://github.com/Mapika/progress-substitutes-data"
+      "title": "WM^MLLM: Turning MLLMs into World Models",
+      "summary": "WM^MLLM uses multimodal large language models to maintain an external panorama state with revision history, enabling persistent, editable world generation from a single image with exact revisits and local edits.",
+      "upvotes": 3,
+      "arxiv_id": "2611.24193",
+      "url": "https://huggingface.co/papers/2611.24193",
+      "githubRepo": "https://github.com/ztMotaLee/WM_mllm"
     },
     {
-      "title": "Replay, Don't Resample: Off-Policy Consolidation of Long-Horizon RL Experts",
-      "summary": "Frontier post-training follows a common recipe: train one expert per domain with reinforcement learning (RL), then consolidate the experts into one model via mu...",
-      "upvotes": 2,
-      "arxiv_id": "2611.24059",
-      "url": "https://huggingface.co/papers/2611.24059",
-      "githubRepo": null
-    },
-    {
-      "title": "Unified Law for Visual Tasks (The Four Laws of Computer Vision)",
-      "summary": "A unified framework, World Snapshot Models, is proposed to train and perform nearly all visual tasks by reformulating them as generation tasks, validated across over 1,000 visual tasks.",
+      "title": "Depth Pro 2: Sharp and Temporally Consistent Metric Monocular Depth",
+      "summary": "A single scalable network estimates dense metric depth for images and video at native resolution, jointly improving metric accuracy, boundary sharpness, and temporal consistency.",
       "upvotes": 0,
-      "arxiv_id": "2611.24917",
-      "url": "https://huggingface.co/papers/2611.24917",
-      "githubRepo": "https://github.com/World-Snapshot/WSMs"
+      "arxiv_id": "2611.26603",
+      "url": "https://huggingface.co/papers/2611.26603",
+      "githubRepo": "https://github.com/apple-aiml-research/ml-depth-pro-2"
     },
     {
-      "title": "Choosing Quantized Code LLMs by File Size and Energy per Solved Task",
-      "summary": "A developer running a code assistant on a laptop downloads one model file, and local inference moves the energy of every request onto that machine. A common rul...",
-      "upvotes": 2,
-      "arxiv_id": "2611.17605",
-      "url": "https://huggingface.co/papers/2611.17605",
-      "githubRepo": null
+      "title": "TuringSpace: Grounding Spatial Intelligence in Action with Interactive CAPTCHAs",
+      "summary": "Humans act in the visual world by inferring the 3D layout behind a 2D view, predicting how an action changes it, and correcting themselves after seeing the resu...",
+      "upvotes": 11,
+      "arxiv_id": "2611.25387",
+      "url": "https://huggingface.co/papers/2611.25387",
+      "githubRepo": "https://github.com/os-cua-framework/TuringSpace"
     },
     {
-      "title": "TabBioMed: A Large-Scale Benchmark for Biomedical Tabular Learning",
-      "summary": "A large-scale benchmark of 94 curated biomedical tabular datasets standardizes evaluation across classification, regression, and multi-target tasks and finds that foundation models lead overall while tree-based models and tuned multilayer perceptrons remain competitive under cost constraints.",
+      "title": "WeMM-Video: Pushing the Frontiers of Open-Source Omni-Modal Video Understanding",
+      "summary": "WeMM-Video is a family of Chinese-English bilingual omni-modal foundation models that unify text, image, audio, and video processing for joint audio-visual perception and reasoning, using hybrid thinking modes and large-scale training to achieve strong open-source video understanding results.",
       "upvotes": 6,
-      "arxiv_id": "2611.23779",
-      "url": "https://huggingface.co/papers/2611.23779",
-      "githubRepo": "https://github.com/AI-sandbox/TabBioMed"
+      "arxiv_id": "2611.26409",
+      "url": "https://huggingface.co/papers/2611.26409",
+      "githubRepo": "https://github.com/Tencent/WeMM-Video"
+    },
+    {
+      "title": "The Mask Is Not the Object: Volumetric Supervision for 3D Gaussian Segmentation",
+      "summary": "A plug-and-play objective, VODA, groups per-pixel contributors by local depth to supervise all Gaussians in selected depth clusters, improving volumetric segmentation and enabling evaluation via Removal-3D and Removal Depth Error.",
+      "upvotes": 1,
+      "arxiv_id": "2611.21383",
+      "url": "https://huggingface.co/papers/2611.21383",
+      "githubRepo": "https://github.com/jhxcho/voda"
     }
   ],
   "sources": [

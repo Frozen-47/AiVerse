@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-19T23:22:40.575Z",
+  "timestamp": "2026-11-20T05:17:23.462Z",
   "totalEntries": 575,
   "popularEntries": 368,
   "totalUsers": 10,
@@ -90,26 +90,26 @@
     "Open Weights": 1
   },
   "toolOfTheDay": {
-    "name": "Suno",
-    "type": "AI",
-    "summary": "An AI music generation platform that creates full songs with vocals, instrumentation, and lyrics from a simple text prompt in seconds. The application is powered by advanced foundation models utilizing web Application (Proprietary audio diffusion and language model pipeline). It features an intuitive interface designed to streamline complex audio workflows and maximize end-user productivity. Available under a Proprietary model for commercial and personal productivity.",
+    "name": "Suno v3.5",
+    "type": "Model",
+    "summary": "State-of-the-art AI music generation model capable of creating full, radio-quality songs with vocals and instrumentation from simple text prompts, incorporating an architecture of proprietary audio generation architecture. The model demonstrates competitive performance across verified evaluations, including High subjective quality for coherent musical structure and intelligible vocals. Distributed under the Proprietary license, it serves as a foundational intelligence asset in the modern audio ecosystem.",
     "task": "Audio",
     "license": "Proprietary",
-    "year": 2023,
-    "org": "Suno Inc.",
-    "size": "N/A",
-    "architecture": "Web Application (Proprietary audio diffusion and language model pipeline)",
-    "usage": "Visit suno.com and type a prompt describing the style or lyrics to generate a full song.",
-    "benchmarks": "N/A",
-    "limitations": "Limited control over fine-grained musical elements; commercial use requires a paid plan.",
+    "year": 2024,
+    "org": "Suno",
+    "size": "Unknown",
+    "architecture": "Proprietary audio generation architecture.",
+    "usage": "# Accessed via Suno web platform or API\n# Prompt: \"An upbeat pop song about coding late at night\"",
+    "benchmarks": "High subjective quality for coherent musical structure and intelligible vocals.",
+    "limitations": "Proprietary, max song length limits, potential copyright concerns regarding training data.",
     "popular": true,
-    "url": "https://suno.com",
+    "url": "https://suno.com/",
     "citations": [
       {
-        "text": "Suno AI",
-        "url": "https://suno.com"
+        "text": "Suno v3.5 Announcement",
+        "url": "https://suno.com/blog/v3-5"
       }
     ],
-    "description": "An AI music generation platform that creates full songs with vocals, instrumentation, and lyrics from a simple text prompt in seconds. The application is powered by advanced foundation models utilizing web Application (Proprietary audio diffusion and language model pipeline). It features an intuitive interface designed to streamline complex audio workflows and maximize end-user productivity. Available under a Proprietary model for commercial and personal productivity."
+    "description": "State-of-the-art AI music generation model capable of creating full, radio-quality songs with vocals and instrumentation from simple text prompts, incorporating an architecture of proprietary audio generation architecture. The model demonstrates competitive performance across verified evaluations, including High subjective quality for coherent musical structure and intelligible vocals. Distributed under the Proprietary license, it serves as a foundational intelligence asset in the modern audio ecosystem."
   }
 }
