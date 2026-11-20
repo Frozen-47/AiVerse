@@ -2388,6 +2388,31 @@ const App: React.FC = () => {
     return () => mq.removeEventListener("change", handler);
   }, [theme]);
 
+  // Dynamically synchronize favicon and theme-color with active resolvedTheme
+  useEffect(() => {
+    const isDark = resolvedTheme === "amoled";
+    const iconPath = isDark ? "/icond.png" : "/iconl.png";
+
+    const iconLinks = document.querySelectorAll<HTMLLinkElement>("link[rel*='icon']");
+    if (iconLinks.length > 0) {
+      iconLinks.forEach((link) => {
+        link.removeAttribute("media");
+        link.href = iconPath;
+      });
+    } else {
+      const link = document.createElement("link");
+      link.rel = "icon";
+      link.type = "image/png";
+      link.href = iconPath;
+      document.head.appendChild(link);
+    }
+
+    const metaThemeColor = document.querySelector<HTMLMetaElement>("meta[name='theme-color']");
+    if (metaThemeColor) {
+      metaThemeColor.content = isDark ? "#000000" : "#ffffff";
+    }
+  }, [resolvedTheme]);
+
   const setTheme = (t: Theme) => {
     document.documentElement.classList.add("no-transitions");
     setThemeState(t);

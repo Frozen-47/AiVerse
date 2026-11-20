@@ -13635,6 +13635,4638 @@ export const entries: Entry[] = [
       }
     ],
     "description": "A Fully Open and Extremely Efficient Foundation Model for Math and Agentic Search Zhongguancun Academy · Zhongguancun Institute of Artificial Intelligence 📄 Tech Report · 🤗 Mode (36 likes, 16,585 downloads). The corpus spans 1B<n<10B of verified and structured training and evaluation samples. It serves as an authoritative benchmark for evaluating Trending Score: 33, Likes: 36, Downloads: 16,585. Released under the OTHER license for open evaluation and research reproducibility."
+  },
+  {
+    "name": "clairic",
+    "org": "hugging-apps",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 23 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/clairic",
+    "benchmarks": "Trending Score: 23, Community Likes: 23",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/hugging-apps/clairic",
+    "citations": [
+      {
+        "text": "hugging-apps/clairic on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/hugging-apps/clairic"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 23 community stars."
+  },
+  {
+    "name": "DaisyRose-27B",
+    "org": "RadixArk",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "27B params",
+    "summary": "High-performance Multimodal open-weights model by RadixArk, trending with over 193 community likes and 166 downloads on Hugging Face.",
+    "architecture": "RadixArk image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"RadixArk/DaisyRose-27B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"RadixArk/DaisyRose-27B\")",
+    "benchmarks": "Trending Score: 136, Likes: 193, Downloads: 166",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/RadixArk/DaisyRose-27B",
+    "citations": [
+      {
+        "text": "RadixArk/DaisyRose-27B on Hugging Face",
+        "url": "https://huggingface.co/RadixArk/DaisyRose-27B"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by RadixArk, trending with over 193 community likes and 166 downloads on Hugging Face."
+  },
+  {
+    "name": "Mistral: Pixtral Large 2502",
+    "org": "mistralai",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "128k Context · Available via API",
+    "summary": "Pixtral Large 2502 is the February 2025 version of Mistral AI's large multimodal model, following [Pixtral Large 2411](https://openrouter.ai/mistralai/pixtral-large-2411). It accep",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 128k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"mistralai/pixtral-large-2502\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 128k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "url": "https://openrouter.ai/mistralai/pixtral-large-2502",
+    "citations": [
+      {
+        "text": "Mistral: Pixtral Large 2502 on OpenRouter",
+        "url": "https://openrouter.ai/mistralai/pixtral-large-2502"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Pixtral Large 2502 is the February 2025 version of Mistral AI's large multimodal model, following [Pixtral Large 2411](https://openrouter.ai/mistralai/pixtral-large-2411). It accep"
+  },
+  {
+    "name": "Inkling",
+    "org": "Thinking Machines",
+    "type": "Model",
+    "task": "Research",
+    "license": "Open Weights",
+    "year": 2026,
+    "size": "1000k Context · Open Model",
+    "summary": "Frontier Research model by Thinking Machines benchmarked on Artificial Analysis with an Intelligence Index of 12.4781698715401 and a verified 1000k Context window.",
+    "architecture": "Open-weights frontier neural architecture developed by Thinking Machines, featuring native 1000k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/inkling",
+    "benchmarks": "Context Window: 1000k Context, Intelligence Index: 12.4781698715401, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "url": "https://artificialanalysis.ai/models/inkling",
+    "citations": [
+      {
+        "text": "Inkling on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/inkling"
+      },
+      {
+        "text": "Inkling Inference Providers",
+        "url": "https://artificialanalysis.ai/models/inkling/providers"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Frontier Research model by Thinking Machines benchmarked on Artificial Analysis with an Intelligence Index of 12.4781698715401 and a verified 1000k Context window."
+  },
+  {
+    "name": "duplex-pre-training-yodas3-mimi",
+    "org": "Trelis",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "CC-BY-3.0",
+    "year": 2026,
+    "size": "1K<n<10K",
+    "summary": "YODAS3 tokenized speech-to-speech pre-training dataset \t [!TIP] For speech separation and audio annotation services, contact voice@trelis.com. A filtered and tokenized (28 likes, 1,601 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Trelis/duplex-pre-training-yodas3-mimi\")",
+    "benchmarks": "Trending Score: 8, Likes: 28, Downloads: 1,601",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/Trelis/duplex-pre-training-yodas3-mimi",
+    "citations": [
+      {
+        "text": "Trelis/duplex-pre-training-yodas3-mimi on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Trelis/duplex-pre-training-yodas3-mimi"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "YODAS3 tokenized speech-to-speech pre-training dataset \t [!TIP] For speech separation and audio annotation services, contact voice@trelis.com. A filtered and tokenized (28 likes, 1,601 downloads)."
+  },
+  {
+    "name": "SplatAnything",
+    "org": "ritianyu",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by ritianyu. Trending with 36 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/ritianyu/SplatAnything",
+    "benchmarks": "Trending Score: 23, Community Likes: 36",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/ritianyu/SplatAnything",
+    "citations": [
+      {
+        "text": "ritianyu/SplatAnything on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/ritianyu/SplatAnything"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by ritianyu. Trending with 36 community stars."
+  },
+  {
+    "name": "Rumble-2-Flash",
+    "org": "Reson8",
+    "type": "Model",
+    "task": "Audio",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Audio open-weights model by Reson8, trending with over 165 community likes and 929 downloads on Hugging Face.",
+    "architecture": "Reson8 automatic speech recognition architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Reson8/Rumble-2-Flash\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Reson8/Rumble-2-Flash\")",
+    "benchmarks": "Trending Score: 112, Likes: 165, Downloads: 929",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/Reson8/Rumble-2-Flash",
+    "citations": [
+      {
+        "text": "Reson8/Rumble-2-Flash on Hugging Face",
+        "url": "https://huggingface.co/Reson8/Rumble-2-Flash"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Audio open-weights model by Reson8, trending with over 165 community likes and 929 downloads on Hugging Face."
+  },
+  {
+    "name": "OpenAI: GPT-6.2 Sol Pro",
+    "org": "openai",
+    "type": "Model",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "1050k Context · Available via API",
+    "summary": "GPT-6.2 Sol Pro is the same underlying model as [GPT-6.2 Sol](https://openrouter.ai/openai/gpt-6.2-sol), served with `reasoning.mode` set to `pro` for higher-quality responses on c",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1050k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"openai/gpt-6.2-sol-pro\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1050k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "url": "https://openrouter.ai/openai/gpt-6.2-sol-pro",
+    "citations": [
+      {
+        "text": "OpenAI: GPT-6.2 Sol Pro on OpenRouter",
+        "url": "https://openrouter.ai/openai/gpt-6.2-sol-pro"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "GPT-6.2 Sol Pro is the same underlying model as [GPT-6.2 Sol](https://openrouter.ai/openai/gpt-6.2-sol), served with `reasoning.mode` set to `pro` for higher-quality responses on c"
+  },
+  {
+    "name": "Nova 2.0 Pro Preview",
+    "org": "Amazon",
+    "type": "Model",
+    "task": "Research",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "256k Context · Proprietary Model",
+    "summary": "Frontier Research model by Amazon benchmarked on Artificial Analysis and a verified 256k Context window.",
+    "architecture": "Proprietary frontier neural architecture developed by Amazon, featuring native 256k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/nova-2-0-pro-preview",
+    "benchmarks": "Context Window: 256k Context, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Cloud API access subject to provider rate limits and compute quotas.",
+    "url": "https://artificialanalysis.ai/models/nova-2-0-pro-preview",
+    "citations": [
+      {
+        "text": "Nova 2.0 Pro Preview on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/nova-2-0-pro-preview"
+      },
+      {
+        "text": "Nova 2.0 Pro Preview Inference Providers",
+        "url": "https://artificialanalysis.ai/models/nova-2-0-pro-preview/providers"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Frontier Research model by Amazon benchmarked on Artificial Analysis and a verified 256k Context window."
+  },
+  {
+    "name": "qwen4-max-reasoning-250x",
+    "org": "AJ-Gonzalez",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "n<1K",
+    "summary": "Qwen4 Max Reasoning Traces — 250x \t 250 prompts from the MiMo-2.6-Pro 250x prompt set, answered by qwen/qwen4-max (OpenRouter, canonical qwen/qwen4-max-20261115) on 202 (19 likes, 192 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"AJ-Gonzalez/qwen4-max-reasoning-250x\")",
+    "benchmarks": "Trending Score: 17, Likes: 19, Downloads: 192",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/AJ-Gonzalez/qwen4-max-reasoning-250x",
+    "citations": [
+      {
+        "text": "AJ-Gonzalez/qwen4-max-reasoning-250x on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/AJ-Gonzalez/qwen4-max-reasoning-250x"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Qwen4 Max Reasoning Traces — 250x \t 250 prompts from the MiMo-2.6-Pro 250x prompt set, answered by qwen/qwen4-max (OpenRouter, canonical qwen/qwen4-max-20261115) on 202 (19 likes, 192 downloads)."
+  },
+  {
+    "name": "P-Image-OSS",
+    "org": "PrunaAI",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by PrunaAI. Trending with 185 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/PrunaAI/P-Image-OSS",
+    "benchmarks": "Trending Score: 54, Community Likes: 185",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/PrunaAI/P-Image-OSS",
+    "citations": [
+      {
+        "text": "PrunaAI/P-Image-OSS on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/PrunaAI/P-Image-OSS"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by PrunaAI. Trending with 185 community stars."
+  },
+  {
+    "name": "voice-isolator",
+    "org": "inworld",
+    "type": "Model",
+    "task": "Audio",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Audio open-weights model by inworld, trending with over 187 community likes and 0 downloads on Hugging Face.",
+    "architecture": "inworld audio to audio architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"inworld/voice-isolator\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"inworld/voice-isolator\")",
+    "benchmarks": "Trending Score: 171, Likes: 187, Downloads: 0",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/inworld/voice-isolator",
+    "citations": [
+      {
+        "text": "inworld/voice-isolator on Hugging Face",
+        "url": "https://huggingface.co/inworld/voice-isolator"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Audio open-weights model by inworld, trending with over 187 community likes and 0 downloads on Hugging Face."
+  },
+  {
+    "name": "OpenAI: GPT-6.2 Astra (batch)",
+    "org": "openai",
+    "type": "Model",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "1050k Context · Available via API",
+    "summary": "GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, professional work and scientific res",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1050k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"openai/gpt-6.2-astra:batch\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1050k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "url": "https://openrouter.ai/openai/gpt-6.2-astra:batch",
+    "citations": [
+      {
+        "text": "OpenAI: GPT-6.2 Astra (batch) on OpenRouter",
+        "url": "https://openrouter.ai/openai/gpt-6.2-astra:batch"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, professional work and scientific res"
+  },
+  {
+    "name": "Claude Fable 5.2",
+    "org": "Anthropic",
+    "type": "Model",
+    "task": "Research",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "1000k Context · Proprietary Model",
+    "summary": "Frontier Research model by Anthropic benchmarked on Artificial Analysis with an Intelligence Index of 56.4083157101519 and a verified 1000k Context window.",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1000k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/claude-fable-5-2",
+    "benchmarks": "Context Window: 1000k Context, Intelligence Index: 56.4083157101519, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Cloud API access subject to provider rate limits and compute quotas.",
+    "url": "https://artificialanalysis.ai/models/claude-fable-5-2",
+    "citations": [
+      {
+        "text": "Claude Fable 5.2 on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-2"
+      },
+      {
+        "text": "Claude Fable 5.2 Inference Providers",
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-2/providers"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Frontier Research model by Anthropic benchmarked on Artificial Analysis with an Intelligence Index of 56.4083157101519 and a verified 1000k Context window."
+  },
+  {
+    "name": "uzbek-language-corpus",
+    "org": "Digitaluz",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "ODC-BY",
+    "year": 2026,
+    "size": "1M<n<10M",
+    "summary": "Uzbek Language Corpus \t \t \t\t \t \t \t\tDataset Summary \t A cleaned Uzbek language corpus for language-model pretraining: 5,638,325 documents, 6,072,581,063 words, in Latin (24 likes, 0 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Digitaluz/uzbek-language-corpus\")",
+    "benchmarks": "Trending Score: 21, Likes: 24, Downloads: 0",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus",
+    "citations": [
+      {
+        "text": "Digitaluz/uzbek-language-corpus on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Uzbek Language Corpus \t \t \t\t \t \t \t\tDataset Summary \t A cleaned Uzbek language corpus for language-model pretraining: 5,638,325 documents, 6,072,581,063 words, in Latin (24 likes, 0 downloads)."
+  },
+  {
+    "name": "UGI-Leaderboard",
+    "org": "DontPlanToEnd",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "DOCKER Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by DontPlanToEnd. Trending with 2,221 community stars.",
+    "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/DontPlanToEnd/UGI-Leaderboard",
+    "benchmarks": "Trending Score: 19, Community Likes: 2,221",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/DontPlanToEnd/UGI-Leaderboard",
+    "citations": [
+      {
+        "text": "DontPlanToEnd/UGI-Leaderboard on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/DontPlanToEnd/UGI-Leaderboard"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by DontPlanToEnd. Trending with 2,221 community stars."
+  },
+  {
+    "name": "FastFrames-L",
+    "org": "apple",
+    "type": "Model",
+    "task": "Video Generation",
+    "license": "APPLE-AMLR",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Video Generation open-weights model by apple, trending with over 228 community likes and 0 downloads on Hugging Face.",
+    "architecture": "apple text to video architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"apple/FastFrames-L\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"apple/FastFrames-L\")",
+    "benchmarks": "Trending Score: 210, Likes: 228, Downloads: 0",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/apple/FastFrames-L",
+    "citations": [
+      {
+        "text": "apple/FastFrames-L on Hugging Face",
+        "url": "https://huggingface.co/apple/FastFrames-L"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Video Generation open-weights model by apple, trending with over 228 community likes and 0 downloads on Hugging Face."
+  },
+  {
+    "name": "Google: Gemini 4 Neon (batch)",
+    "org": "google",
+    "type": "Model",
+    "task": "AI Coding",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "1049k Context · Available via API",
+    "summary": "Gemini 4 Neon is a fast, mid-priced model in the Gemini 4 family from Google, built for coding and agentic work. It is suited for repository and terminal coding, web...",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"google/gemini-4-neon:batch\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1049k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "url": "https://openrouter.ai/google/gemini-4-neon:batch",
+    "citations": [
+      {
+        "text": "Google: Gemini 4 Neon (batch) on OpenRouter",
+        "url": "https://openrouter.ai/google/gemini-4-neon:batch"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Gemini 4 Neon is a fast, mid-priced model in the Gemini 4 family from Google, built for coding and agentic work. It is suited for repository and terminal coding, web..."
+  },
+  {
+    "name": "Granite 4.2 3B",
+    "org": "IBM",
+    "type": "Model",
+    "task": "Research",
+    "license": "Open Weights",
+    "year": 2026,
+    "size": "131k Context · Open Model",
+    "summary": "Frontier Research model by IBM benchmarked on Artificial Analysis with an Intelligence Index of 4.72268717901823 and a verified 131k Context window.",
+    "architecture": "Open-weights frontier neural architecture developed by IBM, featuring native 131k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/granite-4-2-3b",
+    "benchmarks": "Context Window: 131k Context, Intelligence Index: 4.72268717901823, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "url": "https://artificialanalysis.ai/models/granite-4-2-3b",
+    "citations": [
+      {
+        "text": "Granite 4.2 3B on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/granite-4-2-3b"
+      },
+      {
+        "text": "Granite 4.2 3B Inference Providers",
+        "url": "https://artificialanalysis.ai/models/granite-4-2-3b/providers"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Frontier Research model by IBM benchmarked on Artificial Analysis with an Intelligence Index of 4.72268717901823 and a verified 131k Context window."
+  },
+  {
+    "name": "Ko-MultimodalMind2Web",
+    "org": "KORMo-VL",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "size": "n<1K",
+    "summary": "🇰🇷 Ko-MultimodalMind2Web \t An offline Korean web-agent benchmark, built manually by native Korean annotators. 📋 549 tasks · 🖼️ 12,905 scored steps · 🌐 144 websites (24 likes, 70 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"KORMo-VL/Ko-MultimodalMind2Web\")",
+    "benchmarks": "Trending Score: 18, Likes: 24, Downloads: 70",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/KORMo-VL/Ko-MultimodalMind2Web",
+    "citations": [
+      {
+        "text": "KORMo-VL/Ko-MultimodalMind2Web on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/KORMo-VL/Ko-MultimodalMind2Web"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "🇰🇷 Ko-MultimodalMind2Web \t An offline Korean web-agent benchmark, built manually by native Korean annotators. 📋 549 tasks · 🖼️ 12,905 scored steps · 🌐 144 websites (24 likes, 70 downloads)."
+  },
+  {
+    "name": "pi-H3",
+    "org": "Lakonik",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Lakonik. Trending with 33 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Lakonik/pi-H3",
+    "benchmarks": "Trending Score: 20, Community Likes: 33",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/Lakonik/pi-H3",
+    "citations": [
+      {
+        "text": "Lakonik/pi-H3 on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/Lakonik/pi-H3"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Lakonik. Trending with 33 community stars."
+  },
+  {
+    "name": "Hy4-flash",
+    "org": "tencent",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Multimodal open-weights model by tencent, trending with over 228 community likes and 159 downloads on Hugging Face.",
+    "architecture": "tencent image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"tencent/Hy4-flash\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"tencent/Hy4-flash\")",
+    "benchmarks": "Trending Score: 207, Likes: 228, Downloads: 159",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/tencent/Hy4-flash",
+    "citations": [
+      {
+        "text": "tencent/Hy4-flash on Hugging Face",
+        "url": "https://huggingface.co/tencent/Hy4-flash"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by tencent, trending with over 228 community likes and 159 downloads on Hugging Face."
+  },
+  {
+    "name": "Google: Gemini 4 Neon",
+    "org": "google",
+    "type": "Model",
+    "task": "AI Coding",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "1049k Context · Available via API",
+    "summary": "Gemini 4 Neon is a fast, mid-priced model in the Gemini 4 family from Google, built for coding and agentic work. It is suited for repository and terminal coding, web...",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"google/gemini-4-neon\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1049k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "url": "https://openrouter.ai/google/gemini-4-neon",
+    "citations": [
+      {
+        "text": "Google: Gemini 4 Neon on OpenRouter",
+        "url": "https://openrouter.ai/google/gemini-4-neon"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Gemini 4 Neon is a fast, mid-priced model in the Gemini 4 family from Google, built for coding and agentic work. It is suited for repository and terminal coding, web..."
+  },
+  {
+    "name": "Gemini 4 Neon",
+    "org": "Google",
+    "type": "Model",
+    "task": "Research",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "1000k Context · Proprietary Model",
+    "summary": "Frontier Research model by Google benchmarked on Artificial Analysis with an Intelligence Index of 44.0831506204565 and a verified 1000k Context window.",
+    "architecture": "Proprietary frontier neural architecture developed by Google, featuring native 1000k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gemini-4-neon",
+    "benchmarks": "Context Window: 1000k Context, Intelligence Index: 44.0831506204565, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Cloud API access subject to provider rate limits and compute quotas.",
+    "url": "https://artificialanalysis.ai/models/gemini-4-neon",
+    "citations": [
+      {
+        "text": "Gemini 4 Neon on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gemini-4-neon"
+      },
+      {
+        "text": "Gemini 4 Neon Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gemini-4-neon/providers"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Frontier Research model by Google benchmarked on Artificial Analysis with an Intelligence Index of 44.0831506204565 and a verified 1000k Context window."
+  },
+  {
+    "name": "Ko-Screenspot",
+    "org": "KORMo-VL",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "size": "n<1K",
+    "summary": "🇰🇷 Ko-Screenspot \t A Korean GUI grounding benchmark, built manually by native Korean annotators. 📋 3,319 samples · 🌐 142 websites · ✍️ ~480 annotator-hours · 🎯 GUI (21 likes, 67 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"KORMo-VL/Ko-Screenspot\")",
+    "benchmarks": "Trending Score: 19, Likes: 21, Downloads: 67",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/KORMo-VL/Ko-Screenspot",
+    "citations": [
+      {
+        "text": "KORMo-VL/Ko-Screenspot on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/KORMo-VL/Ko-Screenspot"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "🇰🇷 Ko-Screenspot \t A Korean GUI grounding benchmark, built manually by native Korean annotators. 📋 3,319 samples · 🌐 142 websites · ✍️ ~480 annotator-hours · 🎯 GUI (21 likes, 67 downloads)."
+  },
+  {
+    "name": "slack-moji",
+    "org": "cfahlgren1",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "STATIC Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by cfahlgren1. Trending with 44 community stars.",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/cfahlgren1/slack-moji",
+    "benchmarks": "Trending Score: 44, Community Likes: 44",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/cfahlgren1/slack-moji",
+    "citations": [
+      {
+        "text": "cfahlgren1/slack-moji on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/cfahlgren1/slack-moji"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by cfahlgren1. Trending with 44 community stars."
+  },
+  {
+    "name": "Maxwell-V1-Flash",
+    "org": "maxwell-model",
+    "type": "Model",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance NLP open-weights model by maxwell-model, trending with over 215 community likes and 1,052 downloads on Hugging Face.",
+    "architecture": "maxwell-model text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"maxwell-model/Maxwell-V1-Flash\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"maxwell-model/Maxwell-V1-Flash\")",
+    "benchmarks": "Trending Score: 173, Likes: 215, Downloads: 1,052",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/maxwell-model/Maxwell-V1-Flash",
+    "citations": [
+      {
+        "text": "maxwell-model/Maxwell-V1-Flash on Hugging Face",
+        "url": "https://huggingface.co/maxwell-model/Maxwell-V1-Flash"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by maxwell-model, trending with over 215 community likes and 1,052 downloads on Hugging Face."
+  },
+  {
+    "name": "OpenAI: GPT-6.2 Astra",
+    "org": "openai",
+    "type": "Model",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "1050k Context · Available via API",
+    "summary": "GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, professional work and scientific res",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1050k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"openai/gpt-6.2-astra\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1050k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "url": "https://openrouter.ai/openai/gpt-6.2-astra",
+    "citations": [
+      {
+        "text": "OpenAI: GPT-6.2 Astra on OpenRouter",
+        "url": "https://openrouter.ai/openai/gpt-6.2-astra"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, professional work and scientific res"
+  },
+  {
+    "name": "Qwen3 Omni 30B A3B Instruct",
+    "org": "Alibaba",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "Open Weights",
+    "year": 2026,
+    "size": "66k Context · Open Model",
+    "summary": "Frontier Multimodal model by Alibaba benchmarked on Artificial Analysis and a verified 66k Context window.",
+    "architecture": "Open-weights frontier neural architecture developed by Alibaba, featuring native 66k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct",
+    "benchmarks": "Context Window: 66k Context, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "url": "https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct",
+    "citations": [
+      {
+        "text": "Qwen3 Omni 30B A3B Instruct on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct"
+      },
+      {
+        "text": "Qwen3 Omni 30B A3B Instruct Inference Providers",
+        "url": "https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct/providers"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Frontier Multimodal model by Alibaba benchmarked on Artificial Analysis and a verified 66k Context window."
+  },
+  {
+    "name": "ParseBench-2",
+    "org": "llamaindex",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "1K<n<10K",
+    "summary": "ParseBench-2 \t Quick links: [🌐 Website] [📜 Paper] [💻 Code] [📦 ParseBench-1] ParseBench-2 is a document parsing benchmark that combines broad coverage of real-world (20 likes, 30,698 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"llamaindex/ParseBench-2\")",
+    "benchmarks": "Trending Score: 18, Likes: 20, Downloads: 30,698",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/llamaindex/ParseBench-2",
+    "citations": [
+      {
+        "text": "llamaindex/ParseBench-2 on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/llamaindex/ParseBench-2"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "ParseBench-2 \t Quick links: [🌐 Website] [📜 Paper] [💻 Code] [📦 ParseBench-1] ParseBench-2 is a document parsing benchmark that combines broad coverage of real-world (20 likes, 30,698 downloads)."
+  },
+  {
+    "name": "tessera-pixel-studio",
+    "org": "thejagstudio",
+    "type": "Platform",
+    "task": "Image Generation",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by thejagstudio. Trending with 28 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/thejagstudio/tessera-pixel-studio",
+    "benchmarks": "Trending Score: 22, Community Likes: 28",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/thejagstudio/tessera-pixel-studio",
+    "citations": [
+      {
+        "text": "thejagstudio/tessera-pixel-studio on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/thejagstudio/tessera-pixel-studio"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by thejagstudio. Trending with 28 community stars."
+  },
+  {
+    "name": "Qwen3.8-27B-pi-adapted",
+    "org": "harness-hub",
+    "type": "Model",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "27B params",
+    "summary": "High-performance NLP open-weights model by harness-hub, trending with over 179 community likes and 0 downloads on Hugging Face.",
+    "architecture": "harness-hub transformer architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"harness-hub/Qwen3.8-27B-pi-adapted\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"harness-hub/Qwen3.8-27B-pi-adapted\")",
+    "benchmarks": "Trending Score: 178, Likes: 179, Downloads: 0",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
+    "citations": [
+      {
+        "text": "harness-hub/Qwen3.8-27B-pi-adapted on Hugging Face",
+        "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by harness-hub, trending with over 179 community likes and 0 downloads on Hugging Face."
+  },
+  {
+    "name": "OpenAI: GPT-6.2 Astra Pro (batch)",
+    "org": "openai",
+    "type": "Model",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "1050k Context · Available via API",
+    "summary": "GPT-6.2 Astra Pro is the same underlying model as [GPT-6.2 Astra](https://openrouter.ai/openai/gpt-6.2-astra), served with `reasoning.mode` set to `pro` for higher-quality response",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1050k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"openai/gpt-6.2-astra-pro:batch\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1050k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "url": "https://openrouter.ai/openai/gpt-6.2-astra-pro:batch",
+    "citations": [
+      {
+        "text": "OpenAI: GPT-6.2 Astra Pro (batch) on OpenRouter",
+        "url": "https://openrouter.ai/openai/gpt-6.2-astra-pro:batch"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "GPT-6.2 Astra Pro is the same underlying model as [GPT-6.2 Astra](https://openrouter.ai/openai/gpt-6.2-astra), served with `reasoning.mode` set to `pro` for higher-quality response"
+  },
+  {
+    "name": "Qwen3.5 2B",
+    "org": "Alibaba",
+    "type": "Model",
+    "task": "NLP",
+    "license": "Open Weights",
+    "year": 2026,
+    "size": "262k Context · Open Model",
+    "summary": "Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.",
+    "architecture": "Open-weights frontier neural architecture developed by Alibaba, featuring native 262k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-5-2b",
+    "benchmarks": "Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "url": "https://artificialanalysis.ai/models/qwen3-5-2b",
+    "citations": [
+      {
+        "text": "Qwen3.5 2B on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/qwen3-5-2b"
+      },
+      {
+        "text": "Qwen3.5 2B Inference Providers",
+        "url": "https://artificialanalysis.ai/models/qwen3-5-2b/providers"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window."
+  },
+  {
+    "name": "Ko-Online-Mind2Web",
+    "org": "KORMo-VL",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "size": "n<1K",
+    "summary": "🇰🇷 Ko-Online-Mind2Web \t A live Korean web-agent benchmark, built manually by native Korean annotators. 📋 312 tasks · 🌐 104 websites · ✍️ ~480 annotator-hours · 🔴 L (19 likes, 23 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"KORMo-VL/Ko-Online-Mind2Web\")",
+    "benchmarks": "Trending Score: 18, Likes: 19, Downloads: 23",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/KORMo-VL/Ko-Online-Mind2Web",
+    "citations": [
+      {
+        "text": "KORMo-VL/Ko-Online-Mind2Web on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/KORMo-VL/Ko-Online-Mind2Web"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "🇰🇷 Ko-Online-Mind2Web \t A live Korean web-agent benchmark, built manually by native Korean annotators. 📋 312 tasks · 🌐 104 websites · ✍️ ~480 annotator-hours · 🔴 L (19 likes, 23 downloads)."
+  },
+  {
+    "name": "PyBot",
+    "org": "HuggingFaceSwarms",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "DOCKER Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceSwarms. Trending with 23 community stars.",
+    "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/HuggingFaceSwarms/PyBot",
+    "benchmarks": "Trending Score: 23, Community Likes: 23",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/HuggingFaceSwarms/PyBot",
+    "citations": [
+      {
+        "text": "HuggingFaceSwarms/PyBot on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/HuggingFaceSwarms/PyBot"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceSwarms. Trending with 23 community stars."
+  },
+  {
+    "name": "SenseNova-Loop-9B",
+    "org": "sensenova",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "9B params",
+    "summary": "High-performance Multimodal open-weights model by sensenova, trending with over 175 community likes and 0 downloads on Hugging Face.",
+    "architecture": "sensenova image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"sensenova/SenseNova-Loop-9B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"sensenova/SenseNova-Loop-9B\")",
+    "benchmarks": "Trending Score: 172, Likes: 175, Downloads: 0",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/sensenova/SenseNova-Loop-9B",
+    "citations": [
+      {
+        "text": "sensenova/SenseNova-Loop-9B on Hugging Face",
+        "url": "https://huggingface.co/sensenova/SenseNova-Loop-9B"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by sensenova, trending with over 175 community likes and 0 downloads on Hugging Face."
+  },
+  {
+    "name": "OpenAI: GPT-6.2 Astra Pro",
+    "org": "openai",
+    "type": "Model",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "1050k Context · Available via API",
+    "summary": "GPT-6.2 Astra Pro is the same underlying model as [GPT-6.2 Astra](https://openrouter.ai/openai/gpt-6.2-astra), served with `reasoning.mode` set to `pro` for higher-quality response",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1050k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"openai/gpt-6.2-astra-pro\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1050k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "url": "https://openrouter.ai/openai/gpt-6.2-astra-pro",
+    "citations": [
+      {
+        "text": "OpenAI: GPT-6.2 Astra Pro on OpenRouter",
+        "url": "https://openrouter.ai/openai/gpt-6.2-astra-pro"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "GPT-6.2 Astra Pro is the same underlying model as [GPT-6.2 Astra](https://openrouter.ai/openai/gpt-6.2-astra), served with `reasoning.mode` set to `pro` for higher-quality response"
+  },
+  {
+    "name": "Apodex 1.1",
+    "org": "Apodex",
+    "type": "Model",
+    "task": "Research",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "256k Context · Proprietary Model",
+    "summary": "Frontier Research model by Apodex benchmarked on Artificial Analysis with an Intelligence Index of 13.6712884627289 and a verified 256k Context window.",
+    "architecture": "Proprietary frontier neural architecture developed by Apodex, featuring native 256k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/apodex-1-1",
+    "benchmarks": "Context Window: 256k Context, Intelligence Index: 13.6712884627289, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Cloud API access subject to provider rate limits and compute quotas.",
+    "url": "https://artificialanalysis.ai/models/apodex-1-1",
+    "citations": [
+      {
+        "text": "Apodex 1.1 on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/apodex-1-1"
+      },
+      {
+        "text": "Apodex 1.1 Inference Providers",
+        "url": "https://artificialanalysis.ai/models/apodex-1-1/providers"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Frontier Research model by Apodex benchmarked on Artificial Analysis with an Intelligence Index of 13.6712884627289 and a verified 256k Context window."
+  },
+  {
+    "name": "EVIDENT",
+    "org": "KORMo-VL",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "Open Data",
+    "year": 2026,
+    "size": "n<1K",
+    "summary": "EVIDENT: Task Metadata for Evidence-Grounded GUI Evaluation \t This release contains 220 GUI/web agent task records for evidence-grounded trajectory evaluation: 150 Kore (23 likes, 110 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"KORMo-VL/EVIDENT\")",
+    "benchmarks": "Trending Score: 22, Likes: 23, Downloads: 110",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/KORMo-VL/EVIDENT",
+    "citations": [
+      {
+        "text": "KORMo-VL/EVIDENT on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/KORMo-VL/EVIDENT"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "EVIDENT: Task Metadata for Evidence-Grounded GUI Evaluation \t This release contains 220 GUI/web agent task records for evidence-grounded trajectory evaluation: 150 Kore (23 likes, 110 downloads)."
+  },
+  {
+    "name": "LongCat-Video-Avatar-1.6",
+    "org": "meituan-longcat",
+    "type": "Model",
+    "task": "NLP",
+    "license": "MIT",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance NLP open-weights model by meituan-longcat, trending with over 169 community likes and 489 downloads on Hugging Face.",
+    "architecture": "meituan-longcat transformer architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"meituan-longcat/LongCat-Video-Avatar-1.6\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"meituan-longcat/LongCat-Video-Avatar-1.6\")",
+    "benchmarks": "Trending Score: 125, Likes: 169, Downloads: 489",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.6",
+    "citations": [
+      {
+        "text": "meituan-longcat/LongCat-Video-Avatar-1.6 on Hugging Face",
+        "url": "https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.6"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by meituan-longcat, trending with over 169 community likes and 489 downloads on Hugging Face."
+  },
+  {
+    "name": "Baidu: ERNIE-5.5-Flash-Preview (free)",
+    "org": "baidu",
+    "type": "Model",
+    "task": "AI Coding",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "1024k Context · Available via API",
+    "summary": "ERNIE 5.5 Flash Preview is the latest foundation model in the ERNIE family, with comprehensive improvements in coding, agentic capabilities, knowledge work, and deep research. It h",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1024k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"baidu/ernie-5.5-flash-preview:free\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1024k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "url": "https://openrouter.ai/baidu/ernie-5.5-flash-preview:free",
+    "citations": [
+      {
+        "text": "Baidu: ERNIE-5.5-Flash-Preview (free) on OpenRouter",
+        "url": "https://openrouter.ai/baidu/ernie-5.5-flash-preview:free"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "ERNIE 5.5 Flash Preview is the latest foundation model in the ERNIE family, with comprehensive improvements in coding, agentic capabilities, knowledge work, and deep research. It h"
+  },
+  {
+    "name": "Gemma 3 270M",
+    "org": "Google",
+    "type": "Model",
+    "task": "NLP",
+    "license": "Open Weights",
+    "year": 2026,
+    "size": "32k Context · Open Model",
+    "summary": "Frontier NLP model by Google benchmarked on Artificial Analysis and a verified 32k Context window.",
+    "architecture": "Open-weights frontier neural architecture developed by Google, featuring native 32k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gemma-3-270m",
+    "benchmarks": "Context Window: 32k Context, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "url": "https://artificialanalysis.ai/models/gemma-3-270m",
+    "citations": [
+      {
+        "text": "Gemma 3 270M on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gemma-3-270m"
+      },
+      {
+        "text": "Gemma 3 270M Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gemma-3-270m/providers"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Frontier NLP model by Google benchmarked on Artificial Analysis and a verified 32k Context window."
+  },
+  {
+    "name": "HubEgo-100K",
+    "org": "HubLabs",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "size": "10K<n<100K",
+    "summary": "HubEgo-100K \t A 100,000-hour dataset of first-person video of skilled manual work, recorded by Hub contributors: building sites, workshops, salons, kitchens, shops, war (21 likes, 335 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"HubLabs/HubEgo-100K\")",
+    "benchmarks": "Trending Score: 18, Likes: 21, Downloads: 335",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/HubLabs/HubEgo-100K",
+    "citations": [
+      {
+        "text": "HubLabs/HubEgo-100K on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/HubLabs/HubEgo-100K"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "HubEgo-100K \t A 100,000-hour dataset of first-person video of skilled manual work, recorded by Hub contributors: building sites, workshops, salons, kitchens, shops, war (21 likes, 335 downloads)."
+  },
+  {
+    "name": "tiny-voca",
+    "org": "n4ze3m",
+    "type": "Model",
+    "task": "Audio",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Audio open-weights model by n4ze3m, trending with over 193 community likes and 860 downloads on Hugging Face.",
+    "architecture": "n4ze3m text to speech architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"n4ze3m/tiny-voca\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"n4ze3m/tiny-voca\")",
+    "benchmarks": "Trending Score: 158, Likes: 193, Downloads: 860",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/n4ze3m/tiny-voca",
+    "citations": [
+      {
+        "text": "n4ze3m/tiny-voca on Hugging Face",
+        "url": "https://huggingface.co/n4ze3m/tiny-voca"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Audio open-weights model by n4ze3m, trending with over 193 community likes and 860 downloads on Hugging Face."
+  },
+  {
+    "name": "Google: Gemini 4 Hydrogen (batch)",
+    "org": "google",
+    "type": "Model",
+    "task": "AI Coding",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "1049k Context · Available via API",
+    "summary": "Gemini 4 Hydrogen is the high-efficiency workhorse model of the Gemini 4 family from Google, built for high-throughput agentic workflows, coding and multi-model routing at lower co",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"google/gemini-4-hydrogen:batch\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1049k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "url": "https://openrouter.ai/google/gemini-4-hydrogen:batch",
+    "citations": [
+      {
+        "text": "Google: Gemini 4 Hydrogen (batch) on OpenRouter",
+        "url": "https://openrouter.ai/google/gemini-4-hydrogen:batch"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Gemini 4 Hydrogen is the high-efficiency workhorse model of the Gemini 4 family from Google, built for high-throughput agentic workflows, coding and multi-model routing at lower co"
+  },
+  {
+    "name": "Gemma 4 12B",
+    "org": "Google",
+    "type": "Model",
+    "task": "NLP",
+    "license": "Open Weights",
+    "year": 2026,
+    "size": "262k Context · Open Model",
+    "summary": "Frontier NLP model by Google benchmarked on Artificial Analysis and a verified 262k Context window.",
+    "architecture": "Open-weights frontier neural architecture developed by Google, featuring native 262k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gemma-4-12b",
+    "benchmarks": "Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "url": "https://artificialanalysis.ai/models/gemma-4-12b",
+    "citations": [
+      {
+        "text": "Gemma 4 12B on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gemma-4-12b"
+      },
+      {
+        "text": "Gemma 4 12B Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gemma-4-12b/providers"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Frontier NLP model by Google benchmarked on Artificial Analysis and a verified 262k Context window."
+  },
+  {
+    "name": "Ropedia-Xperience-2",
+    "org": "ropedia-ai",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "CC-BY-NC-4.0",
+    "year": 2026,
+    "size": "10K<n<100K",
+    "summary": "Ropedia Xperience 2 \t A Gold Standard for Scaling Physical AI Environments and Behaviors. 1,500+ scanned scenes and 4,000+ egocentric recordings, registered in one metr (18 likes, 6,562 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"ropedia-ai/Ropedia-Xperience-2\")",
+    "benchmarks": "Trending Score: 17, Likes: 18, Downloads: 6,562",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/ropedia-ai/Ropedia-Xperience-2",
+    "citations": [
+      {
+        "text": "ropedia-ai/Ropedia-Xperience-2 on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/ropedia-ai/Ropedia-Xperience-2"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Ropedia Xperience 2 \t A Gold Standard for Scaling Physical AI Environments and Behaviors. 1,500+ scanned scenes and 4,000+ egocentric recordings, registered in one metr (18 likes, 6,562 downloads)."
+  },
+  {
+    "name": "AI-Image-Upscaler",
+    "org": "MegaPotatoAI",
+    "type": "Platform",
+    "task": "Image Generation",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "STATIC Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by MegaPotatoAI. Trending with 31 community stars.",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/MegaPotatoAI/AI-Image-Upscaler",
+    "benchmarks": "Trending Score: 24, Community Likes: 31",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/MegaPotatoAI/AI-Image-Upscaler",
+    "citations": [
+      {
+        "text": "MegaPotatoAI/AI-Image-Upscaler on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/MegaPotatoAI/AI-Image-Upscaler"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by MegaPotatoAI. Trending with 31 community stars."
+  },
+  {
+    "name": "PAN2",
+    "org": "IFM",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Multimodal open-weights model by IFM, trending with over 180 community likes and 374 downloads on Hugging Face.",
+    "architecture": "IFM image text to video architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"IFM/PAN2\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"IFM/PAN2\")",
+    "benchmarks": "Trending Score: 160, Likes: 180, Downloads: 374",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/IFM/PAN2",
+    "citations": [
+      {
+        "text": "IFM/PAN2 on Hugging Face",
+        "url": "https://huggingface.co/IFM/PAN2"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by IFM, trending with over 180 community likes and 374 downloads on Hugging Face."
+  },
+  {
+    "name": "Tencent: Hy4 flash",
+    "org": "tencent",
+    "type": "Model",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "1049k Context · Available via API",
+    "summary": "Hy4 flash is a cost-efficient variant of [Hy4](https://openrouter.ai/tencent/hy4) from Tencent, served with roughly a quarter of the flagship's parameter count for lower latency an",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"tencent/hy4-flash\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1049k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "url": "https://openrouter.ai/tencent/hy4-flash",
+    "citations": [
+      {
+        "text": "Tencent: Hy4 flash on OpenRouter",
+        "url": "https://openrouter.ai/tencent/hy4-flash"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Hy4 flash is a cost-efficient variant of [Hy4](https://openrouter.ai/tencent/hy4) from Tencent, served with roughly a quarter of the flagship's parameter count for lower latency an"
+  },
+  {
+    "name": "Qwen3.5 122B A10B",
+    "org": "Alibaba",
+    "type": "Model",
+    "task": "NLP",
+    "license": "Open Weights",
+    "year": 2026,
+    "size": "262k Context · Open Model",
+    "summary": "Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.",
+    "architecture": "Open-weights frontier neural architecture developed by Alibaba, featuring native 262k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-5-122b-a10b",
+    "benchmarks": "Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "url": "https://artificialanalysis.ai/models/qwen3-5-122b-a10b",
+    "citations": [
+      {
+        "text": "Qwen3.5 122B A10B on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/qwen3-5-122b-a10b"
+      },
+      {
+        "text": "Qwen3.5 122B A10B Inference Providers",
+        "url": "https://artificialanalysis.ai/models/qwen3-5-122b-a10b/providers"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window."
+  },
+  {
+    "name": "USDCraft-10K",
+    "org": "nvidia",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "10K<n<100K",
+    "summary": "USDCraft-10K: Simulation-Ready Articulated 3D Assets in OpenUSD \t             USDCraft-10K is a dataset of simulation-ready rigid and articulated 3D assets in OpenUSD, (26 likes, 3,674 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/USDCraft-10K\")",
+    "benchmarks": "Trending Score: 21, Likes: 26, Downloads: 3,674",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/nvidia/USDCraft-10K",
+    "citations": [
+      {
+        "text": "nvidia/USDCraft-10K on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/nvidia/USDCraft-10K"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "USDCraft-10K: Simulation-Ready Articulated 3D Assets in OpenUSD \t             USDCraft-10K is a dataset of simulation-ready rigid and articulated 3D assets in OpenUSD, (26 likes, 3,674 downloads)."
+  },
+  {
+    "name": "speaker-diarization-community-1",
+    "org": "pyannote",
+    "type": "Model",
+    "task": "Audio",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Audio open-weights model by pyannote, trending with over 4,449 community likes and 4,871,288 downloads on Hugging Face.",
+    "architecture": "pyannote automatic speech recognition architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"pyannote/speaker-diarization-community-1\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"pyannote/speaker-diarization-community-1\")",
+    "benchmarks": "Trending Score: 194, Likes: 4,449, Downloads: 4,871,288",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/pyannote/speaker-diarization-community-1",
+    "citations": [
+      {
+        "text": "pyannote/speaker-diarization-community-1 on Hugging Face",
+        "url": "https://huggingface.co/pyannote/speaker-diarization-community-1"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Audio open-weights model by pyannote, trending with over 4,449 community likes and 4,871,288 downloads on Hugging Face."
+  },
+  {
+    "name": "Qwen: Qwen4 Max",
+    "org": "qwen",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "1000k Context · Available via API",
+    "summary": "Qwen4 Max is the flagship model in Alibaba's Qwen4 series. It accepts text, image, and video input and returns text, with a 1M-token context window and reasoning enabled by default",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1000k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"qwen/qwen4-max\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1000k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "url": "https://openrouter.ai/qwen/qwen4-max",
+    "citations": [
+      {
+        "text": "Qwen: Qwen4 Max on OpenRouter",
+        "url": "https://openrouter.ai/qwen/qwen4-max"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Qwen4 Max is the flagship model in Alibaba's Qwen4 series. It accepts text, image, and video input and returns text, with a 1M-token context window and reasoning enabled by default"
+  },
+  {
+    "name": "Nova 2.0 Omni",
+    "org": "Amazon",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "Proprietary",
+    "year": 2026,
+    "size": "1000k Context · Proprietary Model",
+    "summary": "Frontier Multimodal model by Amazon benchmarked on Artificial Analysis and a verified 1000k Context window.",
+    "architecture": "Proprietary frontier neural architecture developed by Amazon, featuring native 1000k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/nova-2-0-omni",
+    "benchmarks": "Context Window: 1000k Context, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Cloud API access subject to provider rate limits and compute quotas.",
+    "url": "https://artificialanalysis.ai/models/nova-2-0-omni",
+    "citations": [
+      {
+        "text": "Nova 2.0 Omni on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/nova-2-0-omni"
+      },
+      {
+        "text": "Nova 2.0 Omni Inference Providers",
+        "url": "https://artificialanalysis.ai/models/nova-2-0-omni/providers"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Frontier Multimodal model by Amazon benchmarked on Artificial Analysis and a verified 1000k Context window."
+  },
+  {
+    "name": "qwen-concept-27b",
+    "org": "ConceptCountry",
+    "type": "Model",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "27B params",
+    "summary": "High-performance NLP open-weights model by ConceptCountry, trending with over 267 community likes and 63,964 downloads on Hugging Face.",
+    "architecture": "ConceptCountry transformer architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ConceptCountry/qwen-concept-27b\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ConceptCountry/qwen-concept-27b\")",
+    "benchmarks": "Trending Score: 200, Likes: 267, Downloads: 63,964",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/ConceptCountry/qwen-concept-27b",
+    "citations": [
+      {
+        "text": "ConceptCountry/qwen-concept-27b on Hugging Face",
+        "url": "https://huggingface.co/ConceptCountry/qwen-concept-27b"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by ConceptCountry, trending with over 267 community likes and 63,964 downloads on Hugging Face."
+  },
+  {
+    "name": "MiniMax-H3-Image-GGUF",
+    "org": "Abiray",
+    "type": "Model",
+    "task": "Image Generation",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Image Generation open-weights model by Abiray, trending with over 231 community likes and 127,803 downloads on Hugging Face.",
+    "architecture": "Abiray text to image architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Abiray/MiniMax-H3-Image-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Abiray/MiniMax-H3-Image-GGUF\")",
+    "benchmarks": "Trending Score: 203, Likes: 231, Downloads: 127,803",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/Abiray/MiniMax-H3-Image-GGUF",
+    "citations": [
+      {
+        "text": "Abiray/MiniMax-H3-Image-GGUF on Hugging Face",
+        "url": "https://huggingface.co/Abiray/MiniMax-H3-Image-GGUF"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Image Generation open-weights model by Abiray, trending with over 231 community likes and 127,803 downloads on Hugging Face."
+  },
+  {
+    "name": "LongCat-2.5",
+    "org": "meituan-longcat",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "MIT",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Multimodal open-weights model by meituan-longcat, trending with over 268 community likes and 1,573 downloads on Hugging Face.",
+    "architecture": "meituan-longcat image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"meituan-longcat/LongCat-2.5\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"meituan-longcat/LongCat-2.5\")",
+    "benchmarks": "Trending Score: 203, Likes: 268, Downloads: 1,573",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+    "citations": [
+      {
+        "text": "meituan-longcat/LongCat-2.5 on Hugging Face",
+        "url": "https://huggingface.co/meituan-longcat/LongCat-2.5"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by meituan-longcat, trending with over 268 community likes and 1,573 downloads on Hugging Face."
+  },
+  {
+    "name": "Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF",
+    "org": "DavidAU",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "9B params",
+    "summary": "High-performance Multimodal open-weights model by DavidAU, trending with over 1,771 community likes and 2,139,868 downloads on Hugging Face.",
+    "architecture": "DavidAU image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF\")",
+    "benchmarks": "Trending Score: 203, Likes: 1,771, Downloads: 2,139,868",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF",
+    "citations": [
+      {
+        "text": "DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF on Hugging Face",
+        "url": "https://huggingface.co/DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by DavidAU, trending with over 1,771 community likes and 2,139,868 downloads on Hugging Face."
+  },
+  {
+    "name": "Sophon-Realtime-v1",
+    "org": "adventists-ai",
+    "type": "Model",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance NLP open-weights model by adventists-ai, trending with over 261 community likes and 0 downloads on Hugging Face.",
+    "architecture": "adventists-ai any to any architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"adventists-ai/Sophon-Realtime-v1\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"adventists-ai/Sophon-Realtime-v1\")",
+    "benchmarks": "Trending Score: 203, Likes: 261, Downloads: 0",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/adventists-ai/Sophon-Realtime-v1",
+    "citations": [
+      {
+        "text": "adventists-ai/Sophon-Realtime-v1 on Hugging Face",
+        "url": "https://huggingface.co/adventists-ai/Sophon-Realtime-v1"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by adventists-ai, trending with over 261 community likes and 0 downloads on Hugging Face."
+  },
+  {
+    "name": "Haru-4B",
+    "org": "higurashi-ai",
+    "type": "Model",
+    "task": "Audio",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "4B params",
+    "summary": "High-performance Audio open-weights model by higurashi-ai, trending with over 217 community likes and 1,262 downloads on Hugging Face.",
+    "architecture": "higurashi-ai audio to audio architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"higurashi-ai/Haru-4B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"higurashi-ai/Haru-4B\")",
+    "benchmarks": "Trending Score: 203, Likes: 217, Downloads: 1,262",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/higurashi-ai/Haru-4B",
+    "citations": [
+      {
+        "text": "higurashi-ai/Haru-4B on Hugging Face",
+        "url": "https://huggingface.co/higurashi-ai/Haru-4B"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Audio open-weights model by higurashi-ai, trending with over 217 community likes and 1,262 downloads on Hugging Face."
+  },
+  {
+    "name": "mirage-vision",
+    "org": "hugging-apps",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 32 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/mirage-vision",
+    "benchmarks": "Trending Score: 26, Community Likes: 32",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/hugging-apps/mirage-vision",
+    "citations": [
+      {
+        "text": "hugging-apps/mirage-vision on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/hugging-apps/mirage-vision"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 32 community stars."
+  },
+  {
+    "name": "Qwen-Image-2.1-Uncensored-Omni-Quantized",
+    "org": "chatrlabs",
+    "type": "Model",
+    "task": "Image Generation",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Image Generation open-weights model by chatrlabs, trending with over 242 community likes and 68,096 downloads on Hugging Face.",
+    "architecture": "chatrlabs text to image architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"chatrlabs/Qwen-Image-2.1-Uncensored-Omni-Quantized\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"chatrlabs/Qwen-Image-2.1-Uncensored-Omni-Quantized\")",
+    "benchmarks": "Trending Score: 179, Likes: 242, Downloads: 68,096",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/chatrlabs/Qwen-Image-2.1-Uncensored-Omni-Quantized",
+    "citations": [
+      {
+        "text": "chatrlabs/Qwen-Image-2.1-Uncensored-Omni-Quantized on Hugging Face",
+        "url": "https://huggingface.co/chatrlabs/Qwen-Image-2.1-Uncensored-Omni-Quantized"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Image Generation open-weights model by chatrlabs, trending with over 242 community likes and 68,096 downloads on Hugging Face."
+  },
+  {
+    "name": "PhysicalAI-Autonomous-Vehicles",
+    "org": "nvidia",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Curated Dataset",
+    "summary": "PHYSICAL AI AUTONOMOUS VEHICLES \t The PhysicalAI-Autonomous-Vehicles dataset provides one of the largest, geographically diverse collections of multi-sensor data empowe (1,206 likes, 265,315 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/PhysicalAI-Autonomous-Vehicles\")",
+    "benchmarks": "Trending Score: 18, Likes: 1,206, Downloads: 265,315",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles",
+    "citations": [
+      {
+        "text": "nvidia/PhysicalAI-Autonomous-Vehicles on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "PHYSICAL AI AUTONOMOUS VEHICLES \t The PhysicalAI-Autonomous-Vehicles dataset provides one of the largest, geographically diverse collections of multi-sensor data empowe (1,206 likes, 265,315 downloads)."
+  },
+  {
+    "name": "Huihui-Qwen3.8-27B-abliterated-GGUF",
+    "org": "huihui-ai",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "27B params",
+    "summary": "High-performance Multimodal open-weights model by huihui-ai, trending with over 2,075 community likes and 4,051,917 downloads on Hugging Face.",
+    "architecture": "huihui-ai image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"huihui-ai/Huihui-Qwen3.8-27B-abliterated-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"huihui-ai/Huihui-Qwen3.8-27B-abliterated-GGUF\")",
+    "benchmarks": "Trending Score: 166, Likes: 2,075, Downloads: 4,051,917",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-abliterated-GGUF",
+    "citations": [
+      {
+        "text": "huihui-ai/Huihui-Qwen3.8-27B-abliterated-GGUF on Hugging Face",
+        "url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-abliterated-GGUF"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by huihui-ai, trending with over 2,075 community likes and 4,051,917 downloads on Hugging Face."
+  },
+  {
+    "name": "Krea2T-Revamped",
+    "org": "waitinghere",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by waitinghere. Trending with 30 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/waitinghere/Krea2T-Revamped",
+    "benchmarks": "Trending Score: 27, Community Likes: 30",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/waitinghere/Krea2T-Revamped",
+    "citations": [
+      {
+        "text": "waitinghere/Krea2T-Revamped on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/waitinghere/Krea2T-Revamped"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by waitinghere. Trending with 30 community stars."
+  },
+  {
+    "name": "qwen35-3d-coder-studio",
+    "org": "akhaliq",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by akhaliq. Trending with 38 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/akhaliq/qwen35-3d-coder-studio",
+    "benchmarks": "Trending Score: 28, Community Likes: 38",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/akhaliq/qwen35-3d-coder-studio",
+    "citations": [
+      {
+        "text": "akhaliq/qwen35-3d-coder-studio on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/akhaliq/qwen35-3d-coder-studio"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by akhaliq. Trending with 38 community stars."
+  },
+  {
+    "name": "Omni-videos-custom",
+    "org": "CumaSystem",
+    "type": "Platform",
+    "task": "Image Generation",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by CumaSystem. Trending with 78 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/CumaSystem/Omni-videos-custom",
+    "benchmarks": "Trending Score: 29, Community Likes: 78",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/CumaSystem/Omni-videos-custom",
+    "citations": [
+      {
+        "text": "CumaSystem/Omni-videos-custom on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/CumaSystem/Omni-videos-custom"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by CumaSystem. Trending with 78 community stars."
+  },
+  {
+    "name": "sam-3d-body-dinov3",
+    "org": "facebook",
+    "type": "Model",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance NLP open-weights model by facebook, trending with over 1,077 community likes and 14,473 downloads on Hugging Face.",
+    "architecture": "facebook transformer architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"facebook/sam-3d-body-dinov3\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"facebook/sam-3d-body-dinov3\")",
+    "benchmarks": "Trending Score: 159, Likes: 1,077, Downloads: 14,473",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/facebook/sam-3d-body-dinov3",
+    "citations": [
+      {
+        "text": "facebook/sam-3d-body-dinov3 on Hugging Face",
+        "url": "https://huggingface.co/facebook/sam-3d-body-dinov3"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by facebook, trending with over 1,077 community likes and 14,473 downloads on Hugging Face."
+  },
+  {
+    "name": "physical-engineerings-last-exam",
+    "org": "google",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "size": "n<1K",
+    "summary": "Physical-Engineering’s Last Exam (Dev Set) \t Physical-Engineering’s Last Exam (PLE) is a benchmark of long-horizon engineering tasks built by licensed practicing engine (33 likes, 41,085 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"google/physical-engineerings-last-exam\")",
+    "benchmarks": "Trending Score: 17, Likes: 33, Downloads: 41,085",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/google/physical-engineerings-last-exam",
+    "citations": [
+      {
+        "text": "google/physical-engineerings-last-exam on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/google/physical-engineerings-last-exam"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Physical-Engineering’s Last Exam (Dev Set) \t Physical-Engineering’s Last Exam (PLE) is a benchmark of long-horizon engineering tasks built by licensed practicing engine (33 likes, 41,085 downloads)."
+  },
+  {
+    "name": "free-youtube-transcript",
+    "org": "fendouai",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "STATIC Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by fendouai. Trending with 104 community stars.",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/fendouai/free-youtube-transcript",
+    "benchmarks": "Trending Score: 33, Community Likes: 104",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/fendouai/free-youtube-transcript",
+    "citations": [
+      {
+        "text": "fendouai/free-youtube-transcript on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/fendouai/free-youtube-transcript"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by fendouai. Trending with 104 community stars."
+  },
+  {
+    "name": "dinov3-vitl16-pretrain-lvd1689m",
+    "org": "facebook",
+    "type": "Model",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "1689M params",
+    "summary": "High-performance NLP open-weights model by facebook, trending with over 2,145 community likes and 703,532 downloads on Hugging Face.",
+    "architecture": "facebook image feature extraction architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"facebook/dinov3-vitl16-pretrain-lvd1689m\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"facebook/dinov3-vitl16-pretrain-lvd1689m\")",
+    "benchmarks": "Trending Score: 164, Likes: 2,145, Downloads: 703,532",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/facebook/dinov3-vitl16-pretrain-lvd1689m",
+    "citations": [
+      {
+        "text": "facebook/dinov3-vitl16-pretrain-lvd1689m on Hugging Face",
+        "url": "https://huggingface.co/facebook/dinov3-vitl16-pretrain-lvd1689m"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by facebook, trending with over 2,145 community likes and 703,532 downloads on Hugging Face."
+  },
+  {
+    "name": "Nemotron-Personas-Finance-Japan",
+    "org": "nvidia",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "size": "1M<n<10M",
+    "summary": "Nemotron-Personas-Finance-Japan \t           現実世界の分布に基づいた金融に特化したペルソナ生成のための複合AIアプローチ    \t \t\t \t \t \t\tデータセット概要 (Dataset Overview): \t Nemotron-Personas-Finance-Japan は、日本における (19 likes, 1,732 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/Nemotron-Personas-Finance-Japan\")",
+    "benchmarks": "Trending Score: 18, Likes: 19, Downloads: 1,732",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Finance-Japan",
+    "citations": [
+      {
+        "text": "nvidia/Nemotron-Personas-Finance-Japan on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Finance-Japan"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Nemotron-Personas-Finance-Japan \t           現実世界の分布に基づいた金融に特化したペルソナ生成のための複合AIアプローチ    \t \t\t \t \t \t\tデータセット概要 (Dataset Overview): \t Nemotron-Personas-Finance-Japan は、日本における (19 likes, 1,732 downloads)."
+  },
+  {
+    "name": "RelayVSR",
+    "org": "Comfy-Org",
+    "type": "Model",
+    "task": "Image Generation",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Image Generation open-weights model by Comfy-Org, trending with over 186 community likes and 91,134 downloads on Hugging Face.",
+    "architecture": "Comfy-Org unconditional image generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Comfy-Org/RelayVSR\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Comfy-Org/RelayVSR\")",
+    "benchmarks": "Trending Score: 168, Likes: 186, Downloads: 91,134",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/Comfy-Org/RelayVSR",
+    "citations": [
+      {
+        "text": "Comfy-Org/RelayVSR on Hugging Face",
+        "url": "https://huggingface.co/Comfy-Org/RelayVSR"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Image Generation open-weights model by Comfy-Org, trending with over 186 community likes and 91,134 downloads on Hugging Face."
+  },
+  {
+    "name": "Open-HumanWAM-50K",
+    "org": "DAGroup-PKU",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "10M<n<100M",
+    "summary": "Open-HumanWAM \t An Open Recipe for Scaling Human and Robot Experience for Embodied Foundation Models Report · Code · Project page · Models · HF Paper · Citation Open-Hu (20 likes, 1,015,003 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"DAGroup-PKU/Open-HumanWAM-50K\")",
+    "benchmarks": "Trending Score: 18, Likes: 20, Downloads: 1,015,003",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/DAGroup-PKU/Open-HumanWAM-50K",
+    "citations": [
+      {
+        "text": "DAGroup-PKU/Open-HumanWAM-50K on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/DAGroup-PKU/Open-HumanWAM-50K"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Open-HumanWAM \t An Open Recipe for Scaling Human and Robot Experience for Embodied Foundation Models Report · Code · Project page · Models · HF Paper · Citation Open-Hu (20 likes, 1,015,003 downloads)."
+  },
+  {
+    "name": "FlowHMR",
+    "org": "fafsaf1",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by fafsaf1. Trending with 45 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/fafsaf1/FlowHMR",
+    "benchmarks": "Trending Score: 29, Community Likes: 45",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/fafsaf1/FlowHMR",
+    "citations": [
+      {
+        "text": "fafsaf1/FlowHMR on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/fafsaf1/FlowHMR"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by fafsaf1. Trending with 45 community stars."
+  },
+  {
+    "name": "ZONOS3-Mini",
+    "org": "Zyphra",
+    "type": "Model",
+    "task": "Audio",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Audio open-weights model by Zyphra, trending with over 174 community likes and 4,170 downloads on Hugging Face.",
+    "architecture": "Zyphra text to speech architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Zyphra/ZONOS3-Mini\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Zyphra/ZONOS3-Mini\")",
+    "benchmarks": "Trending Score: 155, Likes: 174, Downloads: 4,170",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/Zyphra/ZONOS3-Mini",
+    "citations": [
+      {
+        "text": "Zyphra/ZONOS3-Mini on Hugging Face",
+        "url": "https://huggingface.co/Zyphra/ZONOS3-Mini"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Audio open-weights model by Zyphra, trending with over 174 community likes and 4,170 downloads on Hugging Face."
+  },
+  {
+    "name": "mirage",
+    "org": "Cactus-Compute",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Multimodal open-weights model by Cactus-Compute, trending with over 156 community likes and 14,615 downloads on Hugging Face.",
+    "architecture": "Cactus-Compute image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Cactus-Compute/mirage\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Cactus-Compute/mirage\")",
+    "benchmarks": "Trending Score: 151, Likes: 156, Downloads: 14,615",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/Cactus-Compute/mirage",
+    "citations": [
+      {
+        "text": "Cactus-Compute/mirage on Hugging Face",
+        "url": "https://huggingface.co/Cactus-Compute/mirage"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by Cactus-Compute, trending with over 156 community likes and 14,615 downloads on Hugging Face."
+  },
+  {
+    "name": "asset-index",
+    "org": "codepawl",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "10K<n<100K",
+    "summary": "Asset Index \t 37,668 3D assets from 6 libraries in one table. An AI agent, a model or an animator can ask for \"a wooden crate, 0.5 m, game tier\" and get the right file. (21 likes, 454 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"codepawl/asset-index\")",
+    "benchmarks": "Trending Score: 20, Likes: 21, Downloads: 454",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/codepawl/asset-index",
+    "citations": [
+      {
+        "text": "codepawl/asset-index on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/codepawl/asset-index"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Asset Index \t 37,668 3D assets from 6 libraries in one table. An AI agent, a model or an animator can ask for \"a wooden crate, 0.5 m, game tier\" and get the right file. (21 likes, 454 downloads)."
+  },
+  {
+    "name": "Underdog-Woof",
+    "org": "ConwayResearch",
+    "type": "Model",
+    "task": "Audio",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Audio open-weights model by ConwayResearch, trending with over 152 community likes and 10 downloads on Hugging Face.",
+    "architecture": "ConwayResearch text to speech architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ConwayResearch/Underdog-Woof\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ConwayResearch/Underdog-Woof\")",
+    "benchmarks": "Trending Score: 148, Likes: 152, Downloads: 10",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/ConwayResearch/Underdog-Woof",
+    "citations": [
+      {
+        "text": "ConwayResearch/Underdog-Woof on Hugging Face",
+        "url": "https://huggingface.co/ConwayResearch/Underdog-Woof"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Audio open-weights model by ConwayResearch, trending with over 152 community likes and 10 downloads on Hugging Face."
+  },
+  {
+    "name": "hyperflow-h3-flash",
+    "org": "VideoRebirthAI",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Multimodal open-weights model by VideoRebirthAI, trending with over 175 community likes and 110,752 downloads on Hugging Face.",
+    "architecture": "VideoRebirthAI image text to video architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"VideoRebirthAI/hyperflow-h3-flash\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"VideoRebirthAI/hyperflow-h3-flash\")",
+    "benchmarks": "Trending Score: 167, Likes: 175, Downloads: 110,752",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash",
+    "citations": [
+      {
+        "text": "VideoRebirthAI/hyperflow-h3-flash on Hugging Face",
+        "url": "https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by VideoRebirthAI, trending with over 175 community likes and 110,752 downloads on Hugging Face."
+  },
+  {
+    "name": "arc-art",
+    "org": "arc4g",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "CC-BY-NC-4.0",
+    "year": 2026,
+    "size": "n<1K",
+    "summary": "ARC art \t Blender projects and artwork videos by ARC (Abdullah Rashed AlSahli), made 2019-2024. The Blender files and videos behind 154 of my artworks. Use them for any (28 likes, 733 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"arc4g/arc-art\")",
+    "benchmarks": "Trending Score: 24, Likes: 28, Downloads: 733",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/arc4g/arc-art",
+    "citations": [
+      {
+        "text": "arc4g/arc-art on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/arc4g/arc-art"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "ARC art \t Blender projects and artwork videos by ARC (Abdullah Rashed AlSahli), made 2019-2024. The Blender files and videos behind 154 of my artworks. Use them for any (28 likes, 733 downloads)."
+  },
+  {
+    "name": "pixel-search",
+    "org": "cfahlgren1",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "STATIC Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by cfahlgren1. Trending with 33 community stars.",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/cfahlgren1/pixel-search",
+    "benchmarks": "Trending Score: 29, Community Likes: 33",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/cfahlgren1/pixel-search",
+    "citations": [
+      {
+        "text": "cfahlgren1/pixel-search on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/cfahlgren1/pixel-search"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by cfahlgren1. Trending with 33 community stars."
+  },
+  {
+    "name": "MiniMax-H3-Image",
+    "org": "MiniMaxAI",
+    "type": "Model",
+    "task": "Image Generation",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Image Generation open-weights model by MiniMaxAI, trending with over 308 community likes and 667 downloads on Hugging Face.",
+    "architecture": "MiniMaxAI text to image architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"MiniMaxAI/MiniMax-H3-Image\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"MiniMaxAI/MiniMax-H3-Image\")",
+    "benchmarks": "Trending Score: 307, Likes: 308, Downloads: 667",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+    "citations": [
+      {
+        "text": "MiniMaxAI/MiniMax-H3-Image on Hugging Face",
+        "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Image Generation open-weights model by MiniMaxAI, trending with over 308 community likes and 667 downloads on Hugging Face."
+  },
+  {
+    "name": "pixel-atlas-glb",
+    "org": "codepawl",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "CC0-1.0",
+    "year": 2026,
+    "size": "1K<n<10K",
+    "summary": "Pixel Art Atlas 3D GLB \t 6,194 Low-Poly 3D Pixel game objects built from the 6,194 subjects of Pixel Art Atlas (1.4M 16x16 sprites by Angais, CC0). Each subject is buil (22 likes, 1,403 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"codepawl/pixel-atlas-glb\")",
+    "benchmarks": "Trending Score: 22, Likes: 22, Downloads: 1,403",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/codepawl/pixel-atlas-glb",
+    "citations": [
+      {
+        "text": "codepawl/pixel-atlas-glb on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/codepawl/pixel-atlas-glb"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Pixel Art Atlas 3D GLB \t 6,194 Low-Poly 3D Pixel game objects built from the 6,194 subjects of Pixel Art Atlas (1.4M 16x16 sprites by Angais, CC0). Each subject is buil (22 likes, 1,403 downloads)."
+  },
+  {
+    "name": "smol-training-playbook",
+    "org": "HuggingFaceTB",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "DOCKER Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceTB. Trending with 3,372 community stars.",
+    "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook",
+    "benchmarks": "Trending Score: 26, Community Likes: 3,372",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook",
+    "citations": [
+      {
+        "text": "HuggingFaceTB/smol-training-playbook on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceTB. Trending with 3,372 community stars."
+  },
+  {
+    "name": "gemma-4-31B-it-ARA-heretic-GGUF",
+    "org": "mradermacher",
+    "type": "Model",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "31B params",
+    "summary": "High-performance NLP open-weights model by mradermacher, trending with over 160 community likes and 42,215 downloads on Hugging Face.",
+    "architecture": "mradermacher transformer architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"mradermacher/gemma-4-31B-it-ARA-heretic-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"mradermacher/gemma-4-31B-it-ARA-heretic-GGUF\")",
+    "benchmarks": "Trending Score: 148, Likes: 160, Downloads: 42,215",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/mradermacher/gemma-4-31B-it-ARA-heretic-GGUF",
+    "citations": [
+      {
+        "text": "mradermacher/gemma-4-31B-it-ARA-heretic-GGUF on Hugging Face",
+        "url": "https://huggingface.co/mradermacher/gemma-4-31B-it-ARA-heretic-GGUF"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by mradermacher, trending with over 160 community likes and 42,215 downloads on Hugging Face."
+  },
+  {
+    "name": "PhysicalAI-Human-1M-100K",
+    "org": "nvidia",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "size": "n<1K",
+    "summary": "Across AI, a common route to scale is distilling human experience into models: what people write, see, and create. The physical AI analogue is sensorized human data—egocentric vid (18 likes, 162 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/PhysicalAI-Human-1M-100K\")",
+    "benchmarks": "Trending Score: 18, Likes: 18, Downloads: 162",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-Human-1M-100K",
+    "citations": [
+      {
+        "text": "nvidia/PhysicalAI-Human-1M-100K on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-Human-1M-100K"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Across AI, a common route to scale is distilling human experience into models: what people write, see, and create. The physical AI analogue is sensorized human data—egocentric vid (18 likes, 162 downloads)."
+  },
+  {
+    "name": "Qwen3.8-27B-DSpine-b16",
+    "org": "tencent",
+    "type": "Model",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "27B params",
+    "summary": "High-performance NLP open-weights model by tencent, trending with over 150 community likes and 1,464 downloads on Hugging Face.",
+    "architecture": "tencent text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"tencent/Qwen3.8-27B-DSpine-b16\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"tencent/Qwen3.8-27B-DSpine-b16\")",
+    "benchmarks": "Trending Score: 146, Likes: 150, Downloads: 1,464",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16",
+    "citations": [
+      {
+        "text": "tencent/Qwen3.8-27B-DSpine-b16 on Hugging Face",
+        "url": "https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by tencent, trending with over 150 community likes and 1,464 downloads on Hugging Face."
+  },
+  {
+    "name": "image-to-video",
+    "org": "thea2026",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by thea2026. Trending with 55 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/thea2026/image-to-video",
+    "benchmarks": "Trending Score: 38, Community Likes: 55",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/thea2026/image-to-video",
+    "citations": [
+      {
+        "text": "thea2026/image-to-video on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/thea2026/image-to-video"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by thea2026. Trending with 55 community stars."
+  },
+  {
+    "name": "Qwen3.8-Flash-Next-E384-FP4-V2",
+    "org": "autotrust",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Multimodal open-weights model by autotrust, trending with over 2,373 community likes and 46,017 downloads on Hugging Face.",
+    "architecture": "autotrust image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"autotrust/Qwen3.8-Flash-Next-E384-FP4-V2\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"autotrust/Qwen3.8-Flash-Next-E384-FP4-V2\")",
+    "benchmarks": "Trending Score: 148, Likes: 2,373, Downloads: 46,017",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/autotrust/Qwen3.8-Flash-Next-E384-FP4-V2",
+    "citations": [
+      {
+        "text": "autotrust/Qwen3.8-Flash-Next-E384-FP4-V2 on Hugging Face",
+        "url": "https://huggingface.co/autotrust/Qwen3.8-Flash-Next-E384-FP4-V2"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by autotrust, trending with over 2,373 community likes and 46,017 downloads on Hugging Face."
+  },
+  {
+    "name": "codex-tool-use-trajectories",
+    "org": "israellaguan",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "MIT",
+    "year": 2026,
+    "size": "1K<n<10K",
+    "summary": "Codex Tool-Use Trajectories \t Multi-step tool-use trajectories from a coding agent (OpenAI Codex Desktop) working in a local Windows workspace, cleaned and redacted fro (22 likes, 0 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"israellaguan/codex-tool-use-trajectories\")",
+    "benchmarks": "Trending Score: 20, Likes: 22, Downloads: 0",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/israellaguan/codex-tool-use-trajectories",
+    "citations": [
+      {
+        "text": "israellaguan/codex-tool-use-trajectories on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/israellaguan/codex-tool-use-trajectories"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Codex Tool-Use Trajectories \t Multi-step tool-use trajectories from a coding agent (OpenAI Codex Desktop) working in a local Windows workspace, cleaned and redacted fro (22 likes, 0 downloads)."
+  },
+  {
+    "name": "RFD4-Proteina",
+    "org": "nvidia",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "size": "10M<n<100M",
+    "summary": "The structures behind biomolecular design.Indexed molecular records, sampling metadata, and traceable source inventories. Project page · Model · Inventory · Training guide (26 likes, 61,125 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/RFD4-Proteina\")",
+    "benchmarks": "Trending Score: 19, Likes: 26, Downloads: 61,125",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/nvidia/RFD4-Proteina",
+    "citations": [
+      {
+        "text": "nvidia/RFD4-Proteina on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/nvidia/RFD4-Proteina"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "The structures behind biomolecular design.Indexed molecular records, sampling metadata, and traceable source inventories. Project page · Model · Inventory · Training guide (26 likes, 61,125 downloads)."
+  },
+  {
+    "name": "GLM-5.3-SLIM-GGUF",
+    "org": "Scantist",
+    "type": "Model",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance NLP open-weights model by Scantist, trending with over 1,290 community likes and 4,938 downloads on Hugging Face.",
+    "architecture": "Scantist text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Scantist/GLM-5.3-SLIM-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Scantist/GLM-5.3-SLIM-GGUF\")",
+    "benchmarks": "Trending Score: 182, Likes: 1,290, Downloads: 4,938",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/Scantist/GLM-5.3-SLIM-GGUF",
+    "citations": [
+      {
+        "text": "Scantist/GLM-5.3-SLIM-GGUF on Hugging Face",
+        "url": "https://huggingface.co/Scantist/GLM-5.3-SLIM-GGUF"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by Scantist, trending with over 1,290 community likes and 4,938 downloads on Hugging Face."
+  },
+  {
+    "name": "Qwen3.8-Flash-Next-GSQ-RCO-abliterated-GGUF",
+    "org": "SC117",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Multimodal open-weights model by SC117, trending with over 785 community likes and 4,210,046 downloads on Hugging Face.",
+    "architecture": "SC117 image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"SC117/Qwen3.8-Flash-Next-GSQ-RCO-abliterated-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"SC117/Qwen3.8-Flash-Next-GSQ-RCO-abliterated-GGUF\")",
+    "benchmarks": "Trending Score: 149, Likes: 785, Downloads: 4,210,046",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/SC117/Qwen3.8-Flash-Next-GSQ-RCO-abliterated-GGUF",
+    "citations": [
+      {
+        "text": "SC117/Qwen3.8-Flash-Next-GSQ-RCO-abliterated-GGUF on Hugging Face",
+        "url": "https://huggingface.co/SC117/Qwen3.8-Flash-Next-GSQ-RCO-abliterated-GGUF"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by SC117, trending with over 785 community likes and 4,210,046 downloads on Hugging Face."
+  },
+  {
+    "name": "ThreeJS-3D-GLB-Assets",
+    "org": "ccore",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "MIT",
+    "year": 2026,
+    "size": "10K<n<100K",
+    "summary": "CCORE Three.js 3D GLB Assets \t 3,918 examples across 40 domains, with complete conversations, thinking traces, HTML/JavaScript responses, and a rendered reference for e (18 likes, 1,688 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"ccore/ThreeJS-3D-GLB-Assets\")",
+    "benchmarks": "Trending Score: 18, Likes: 18, Downloads: 1,688",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/ccore/ThreeJS-3D-GLB-Assets",
+    "citations": [
+      {
+        "text": "ccore/ThreeJS-3D-GLB-Assets on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/ccore/ThreeJS-3D-GLB-Assets"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "CCORE Three.js 3D GLB Assets \t 3,918 examples across 40 domains, with complete conversations, thinking traces, HTML/JavaScript responses, and a rendered reference for e (18 likes, 1,688 downloads)."
+  },
+  {
+    "name": "MatterSeek-Enables.Inverse.Design.of.Novel.Material",
+    "org": "YuyaoTechnology",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "STATIC Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by YuyaoTechnology. Trending with 3,155 community stars.",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/YuyaoTechnology/MatterSeek-Enables.Inverse.Design.of.Novel.Material",
+    "benchmarks": "Trending Score: 78, Community Likes: 3,155",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/YuyaoTechnology/MatterSeek-Enables.Inverse.Design.of.Novel.Material",
+    "citations": [
+      {
+        "text": "YuyaoTechnology/MatterSeek-Enables.Inverse.Design.of.Novel.Material on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/YuyaoTechnology/MatterSeek-Enables.Inverse.Design.of.Novel.Material"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by YuyaoTechnology. Trending with 3,155 community stars."
+  },
+  {
+    "name": "DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic-i1-GGUF",
+    "org": "mradermacher",
+    "type": "Model",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "9B params",
+    "summary": "High-performance NLP open-weights model by mradermacher, trending with over 176 community likes and 136,706 downloads on Hugging Face.",
+    "architecture": "mradermacher transformer architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"mradermacher/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic-i1-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"mradermacher/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic-i1-GGUF\")",
+    "benchmarks": "Trending Score: 156, Likes: 176, Downloads: 136,706",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/mradermacher/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic-i1-GGUF",
+    "citations": [
+      {
+        "text": "mradermacher/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic-i1-GGUF on Hugging Face",
+        "url": "https://huggingface.co/mradermacher/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic-i1-GGUF"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by mradermacher, trending with over 176 community likes and 136,706 downloads on Hugging Face."
+  },
+  {
+    "name": "plateau-city-glb",
+    "org": "codepawl",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "size": "n<1K",
+    "summary": "PLATEAU Japan City Tiles as GLB \t Japan's government 3D city models (MLIT Project PLATEAU) cut into streamable 1 km tiles: all of Tokyo's 23 wards plus central Osaka, Y (24 likes, 111 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"codepawl/plateau-city-glb\")",
+    "benchmarks": "Trending Score: 22, Likes: 24, Downloads: 111",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/codepawl/plateau-city-glb",
+    "citations": [
+      {
+        "text": "codepawl/plateau-city-glb on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/codepawl/plateau-city-glb"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "PLATEAU Japan City Tiles as GLB \t Japan's government 3D city models (MLIT Project PLATEAU) cut into streamable 1 km tiles: all of Tokyo's 23 wards plus central Osaka, Y (24 likes, 111 downloads)."
+  },
+  {
+    "name": "pixel-art-atlas-1.4m",
+    "org": "Angais",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "CC0-1.0",
+    "year": 2026,
+    "size": "1M<n<10M",
+    "summary": "Pixel Art Atlas · 1.4M Synthetic Sprites \t 1,409,404 synthetic game sprites with English captions, covering 6,194 training subjects. Each sprite is a native 16×16 image (20 likes, 1,050 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Angais/pixel-art-atlas-1.4m\")",
+    "benchmarks": "Trending Score: 19, Likes: 20, Downloads: 1,050",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/Angais/pixel-art-atlas-1.4m",
+    "citations": [
+      {
+        "text": "Angais/pixel-art-atlas-1.4m on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Angais/pixel-art-atlas-1.4m"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Pixel Art Atlas · 1.4M Synthetic Sprites \t 1,409,404 synthetic game sprites with English captions, covering 6,194 training subjects. Each sprite is a native 16×16 image (20 likes, 1,050 downloads)."
+  },
+  {
+    "name": "Viggle-Remake",
+    "org": "Viggle",
+    "type": "Model",
+    "task": "Video Generation",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Video Generation open-weights model by Viggle, trending with over 164 community likes and 64,942 downloads on Hugging Face.",
+    "architecture": "Viggle video to video architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Viggle/Viggle-Remake\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Viggle/Viggle-Remake\")",
+    "benchmarks": "Trending Score: 160, Likes: 164, Downloads: 64,942",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/Viggle/Viggle-Remake",
+    "citations": [
+      {
+        "text": "Viggle/Viggle-Remake on Hugging Face",
+        "url": "https://huggingface.co/Viggle/Viggle-Remake"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Video Generation open-weights model by Viggle, trending with over 164 community likes and 64,942 downloads on Hugging Face."
+  },
+  {
+    "name": "Propaganda_Eval",
+    "org": "NousResearch",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "MIT",
+    "year": 2026,
+    "size": "n<1K",
+    "summary": "Censorship & Propaganda Eval \t 803 prompts about topics that the People's Republic of China censors or presents through an official narrative. Each prompt comes with 2– (27 likes, 212 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"NousResearch/Propaganda_Eval\")",
+    "benchmarks": "Trending Score: 26, Likes: 27, Downloads: 212",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/NousResearch/Propaganda_Eval",
+    "citations": [
+      {
+        "text": "NousResearch/Propaganda_Eval on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/NousResearch/Propaganda_Eval"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Censorship & Propaganda Eval \t 803 prompts about topics that the People's Republic of China censors or presents through an official narrative. Each prompt comes with 2– (27 likes, 212 downloads)."
+  },
+  {
+    "name": "Arete-27B",
+    "org": "NousResearch",
+    "type": "Model",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "27B params",
+    "summary": "High-performance NLP open-weights model by NousResearch, trending with over 187 community likes and 989 downloads on Hugging Face.",
+    "architecture": "NousResearch text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"NousResearch/Arete-27B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"NousResearch/Arete-27B\")",
+    "benchmarks": "Trending Score: 182, Likes: 187, Downloads: 989",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/NousResearch/Arete-27B",
+    "citations": [
+      {
+        "text": "NousResearch/Arete-27B on Hugging Face",
+        "url": "https://huggingface.co/NousResearch/Arete-27B"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by NousResearch, trending with over 187 community likes and 989 downloads on Hugging Face."
+  },
+  {
+    "name": "arete-data-pairs",
+    "org": "NousResearch",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "Open Data",
+    "year": 2026,
+    "size": "10K<n<100K",
+    "summary": "Arete data pairs — v1.0.0 \t Prompt–response pairs for seven values topics, each prompt answered by both the Inkling teacher (thinkingmachines/inkling) and the Qwen 3.8- (23 likes, 244 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"NousResearch/arete-data-pairs\")",
+    "benchmarks": "Trending Score: 23, Likes: 23, Downloads: 244",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/NousResearch/arete-data-pairs",
+    "citations": [
+      {
+        "text": "NousResearch/arete-data-pairs on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/NousResearch/arete-data-pairs"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Arete data pairs — v1.0.0 \t Prompt–response pairs for seven values topics, each prompt answered by both the Inkling teacher (thinkingmachines/inkling) and the Qwen 3.8- (23 likes, 244 downloads)."
+  },
+  {
+    "name": "ERNIE-5.5-Flash-Base",
+    "org": "baidu",
+    "type": "Model",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance NLP open-weights model by baidu, trending with over 217 community likes and 971 downloads on Hugging Face.",
+    "architecture": "baidu text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"baidu/ERNIE-5.5-Flash-Base\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"baidu/ERNIE-5.5-Flash-Base\")",
+    "benchmarks": "Trending Score: 156, Likes: 217, Downloads: 971",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Base",
+    "citations": [
+      {
+        "text": "baidu/ERNIE-5.5-Flash-Base on Hugging Face",
+        "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Base"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by baidu, trending with over 217 community likes and 971 downloads on Hugging Face."
+  },
+  {
+    "name": "chess-position-evaluations",
+    "org": "Lichess",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "CC0-1.0",
+    "year": 2026,
+    "size": "1B<n<10B",
+    "summary": "Dataset Card for the Lichess Evaluations dataset \t \t \t\t \t \t \t\tDataset Description \t 416,442,401 chess positions evaluated with Stockfish at various depths and node coun (55 likes, 5,114 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Lichess/chess-position-evaluations\")",
+    "benchmarks": "Trending Score: 16, Likes: 55, Downloads: 5,114",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/Lichess/chess-position-evaluations",
+    "citations": [
+      {
+        "text": "Lichess/chess-position-evaluations on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Lichess/chess-position-evaluations"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Dataset Card for the Lichess Evaluations dataset \t \t \t\t \t \t \t\tDataset Description \t 416,442,401 chess positions evaluated with Stockfish at various depths and node coun (55 likes, 5,114 downloads)."
+  },
+  {
+    "name": "DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+    "org": "xtools-at",
+    "type": "Model",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "9B params",
+    "summary": "High-performance NLP open-weights model by xtools-at, trending with over 177 community likes and 772 downloads on Hugging Face.",
+    "architecture": "xtools-at text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic\")",
+    "benchmarks": "Trending Score: 164, Likes: 177, Downloads: 772",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+    "citations": [
+      {
+        "text": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic on Hugging Face",
+        "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by xtools-at, trending with over 177 community likes and 772 downloads on Hugging Face."
+  },
+  {
+    "name": "sand3d-objaverse",
+    "org": "Sandflow",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "size": "10K<n<100K",
+    "summary": "sand3d-objaverse \t 66 887 3D objects written as code. Each object is a short Python program in sand3d, the OpenUSD file that program exports, and a render of it. Everyd (17 likes, 21,981 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Sandflow/sand3d-objaverse\")",
+    "benchmarks": "Trending Score: 17, Likes: 17, Downloads: 21,981",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/Sandflow/sand3d-objaverse",
+    "citations": [
+      {
+        "text": "Sandflow/sand3d-objaverse on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Sandflow/sand3d-objaverse"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "sand3d-objaverse \t 66 887 3D objects written as code. Each object is a short Python program in sand3d, the OpenUSD file that program exports, and a render of it. Everyd (17 likes, 21,981 downloads)."
+  },
+  {
+    "name": "Qwen3.8-Flash-Next-GGUF",
+    "org": "unsloth",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Multimodal open-weights model by unsloth, trending with over 1,465 community likes and 1,309,045 downloads on Hugging Face.",
+    "architecture": "unsloth image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"unsloth/Qwen3.8-Flash-Next-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"unsloth/Qwen3.8-Flash-Next-GGUF\")",
+    "benchmarks": "Trending Score: 172, Likes: 1,465, Downloads: 1,309,045",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF",
+    "citations": [
+      {
+        "text": "unsloth/Qwen3.8-Flash-Next-GGUF on Hugging Face",
+        "url": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by unsloth, trending with over 1,465 community likes and 1,309,045 downloads on Hugging Face."
+  },
+  {
+    "name": "llm-course-final-2026",
+    "org": "bumbuboon",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "CC-BY-SA-4.0",
+    "year": 2026,
+    "size": "Curated Dataset",
+    "summary": "LLM course final RAG participant dataset \t LLM講座の最終コンペで使用する、日本語Wikipediaを用いたRAG（検索拡張生成）用データセットです。約100万件の文章チャンクと検索用インデックスを収録しています。 (19 likes, 4,415 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"bumbuboon/llm-course-final-2026\")",
+    "benchmarks": "Trending Score: 18, Likes: 19, Downloads: 4,415",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/bumbuboon/llm-course-final-2026",
+    "citations": [
+      {
+        "text": "bumbuboon/llm-course-final-2026 on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/bumbuboon/llm-course-final-2026"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "LLM course final RAG participant dataset \t LLM講座の最終コンペで使用する、日本語Wikipediaを用いたRAG（検索拡張生成）用データセットです。約100万件の文章チャンクと検索用インデックスを収録しています。 (19 likes, 4,415 downloads)."
+  },
+  {
+    "name": "TwIL-8B",
+    "org": "webAI-Official",
+    "type": "Model",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "8B params",
+    "summary": "High-performance NLP open-weights model by webAI-Official, trending with over 170 community likes and 8,209 downloads on Hugging Face.",
+    "architecture": "webAI-Official text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"webAI-Official/TwIL-8B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"webAI-Official/TwIL-8B\")",
+    "benchmarks": "Trending Score: 168, Likes: 170, Downloads: 8,209",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/webAI-Official/TwIL-8B",
+    "citations": [
+      {
+        "text": "webAI-Official/TwIL-8B on Hugging Face",
+        "url": "https://huggingface.co/webAI-Official/TwIL-8B"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by webAI-Official, trending with over 170 community likes and 8,209 downloads on Hugging Face."
+  },
+  {
+    "name": "gigaspeech3",
+    "org": "speechcolab",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "10M<n<100M",
+    "summary": "GigaSpeech 3 \t Scaling Multi-Dialect Arabic Speech Recognition with Weakly Labeled Data GigaSpeech 3 is a large-scale Arabic speech recognition corpus containing approx (19 likes, 7,022 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"speechcolab/gigaspeech3\")",
+    "benchmarks": "Trending Score: 19, Likes: 19, Downloads: 7,022",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/speechcolab/gigaspeech3",
+    "citations": [
+      {
+        "text": "speechcolab/gigaspeech3 on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/speechcolab/gigaspeech3"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "GigaSpeech 3 \t Scaling Multi-Dialect Arabic Speech Recognition with Weakly Labeled Data GigaSpeech 3 is a large-scale Arabic speech recognition corpus containing approx (19 likes, 7,022 downloads)."
+  },
+  {
+    "name": "harness-leaderboard",
+    "org": "joelniklaus",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "DOCKER Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by joelniklaus. Trending with 39 community stars.",
+    "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/joelniklaus/harness-leaderboard",
+    "benchmarks": "Trending Score: 35, Community Likes: 39",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/joelniklaus/harness-leaderboard",
+    "citations": [
+      {
+        "text": "joelniklaus/harness-leaderboard on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/joelniklaus/harness-leaderboard"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by joelniklaus. Trending with 39 community stars."
+  },
+  {
+    "name": "DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF",
+    "org": "ISTA-DASLab",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "MIT",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Multimodal open-weights model by ISTA-DASLab, trending with over 175 community likes and 222,222 downloads on Hugging Face.",
+    "architecture": "ISTA-DASLab image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF\")",
+    "benchmarks": "Trending Score: 156, Likes: 175, Downloads: 222,222",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF",
+    "citations": [
+      {
+        "text": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF on Hugging Face",
+        "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by ISTA-DASLab, trending with over 175 community likes and 222,222 downloads on Hugging Face."
+  },
+  {
+    "name": "TailorRig",
+    "org": "tencent",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "10K<n<100K",
+    "summary": "TailorRig \t Human character rigging dataset: 39,073 humanoid meshes with skeletons and skinning weights, stored as .npz files and packed into four source-based subset a (21 likes, 10 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"tencent/TailorRig\")",
+    "benchmarks": "Trending Score: 20, Likes: 21, Downloads: 10",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/tencent/TailorRig",
+    "citations": [
+      {
+        "text": "tencent/TailorRig on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/tencent/TailorRig"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "TailorRig \t Human character rigging dataset: 39,073 humanoid meshes with skeletons and skinning weights, stored as .npz files and packed into four source-based subset a (21 likes, 10 downloads)."
+  },
+  {
+    "name": "MatterSeek",
+    "org": "YuyaoTechnology",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "STATIC Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by YuyaoTechnology. Trending with 1,675 community stars.",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/YuyaoTechnology/MatterSeek",
+    "benchmarks": "Trending Score: 45, Community Likes: 1,675",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/YuyaoTechnology/MatterSeek",
+    "citations": [
+      {
+        "text": "YuyaoTechnology/MatterSeek on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/YuyaoTechnology/MatterSeek"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by YuyaoTechnology. Trending with 1,675 community stars."
+  },
+  {
+    "name": "Qwen3.5-4B-GLB-3D-Coder",
+    "org": "ccore",
+    "type": "Model",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "4B params",
+    "summary": "High-performance NLP open-weights model by ccore, trending with over 191 community likes and 12,206 downloads on Hugging Face.",
+    "architecture": "ccore text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ccore/Qwen3.5-4B-GLB-3D-Coder\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ccore/Qwen3.5-4B-GLB-3D-Coder\")",
+    "benchmarks": "Trending Score: 170, Likes: 191, Downloads: 12,206",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/ccore/Qwen3.5-4B-GLB-3D-Coder",
+    "citations": [
+      {
+        "text": "ccore/Qwen3.5-4B-GLB-3D-Coder on Hugging Face",
+        "url": "https://huggingface.co/ccore/Qwen3.5-4B-GLB-3D-Coder"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by ccore, trending with over 191 community likes and 12,206 downloads on Hugging Face."
+  },
+  {
+    "name": "TacVerse",
+    "org": "TacVerse",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "CC-BY-SA-4.0",
+    "year": 2026,
+    "size": "100M<n<1B",
+    "summary": "Language: English (current) · 中文 \t \t\t \t \t \t\tTacVerse: A Multi-scene Bimanual Visuo-Tactile Dataset \t TacVerse is a large-scale bimanual manipulation dataset in which every frame ca (21 likes, 1,637 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"TacVerse/TacVerse\")",
+    "benchmarks": "Trending Score: 16, Likes: 21, Downloads: 1,637",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/TacVerse/TacVerse",
+    "citations": [
+      {
+        "text": "TacVerse/TacVerse on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/TacVerse/TacVerse"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Language: English (current) · 中文 \t \t\t \t \t \t\tTacVerse: A Multi-scene Bimanual Visuo-Tactile Dataset \t TacVerse is a large-scale bimanual manipulation dataset in which every frame ca (21 likes, 1,637 downloads)."
+  },
+  {
+    "name": "moe-blogpost",
+    "org": "huggingface",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "DOCKER Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by huggingface. Trending with 55 community stars.",
+    "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/huggingface/moe-blogpost",
+    "benchmarks": "Trending Score: 55, Community Likes: 55",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/huggingface/moe-blogpost",
+    "citations": [
+      {
+        "text": "huggingface/moe-blogpost on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/huggingface/moe-blogpost"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by huggingface. Trending with 55 community stars."
+  },
+  {
+    "name": "P-H3-Image-Comfy",
+    "org": "PrunaAI",
+    "type": "Model",
+    "task": "Image Generation",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Image Generation open-weights model by PrunaAI, trending with over 198 community likes and 218,534 downloads on Hugging Face.",
+    "architecture": "PrunaAI text to image architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"PrunaAI/P-H3-Image-Comfy\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"PrunaAI/P-H3-Image-Comfy\")",
+    "benchmarks": "Trending Score: 171, Likes: 198, Downloads: 218,534",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/PrunaAI/P-H3-Image-Comfy",
+    "citations": [
+      {
+        "text": "PrunaAI/P-H3-Image-Comfy on Hugging Face",
+        "url": "https://huggingface.co/PrunaAI/P-H3-Image-Comfy"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Image Generation open-weights model by PrunaAI, trending with over 198 community likes and 218,534 downloads on Hugging Face."
+  },
+  {
+    "name": "axion-training-data",
+    "org": "Axion1-0",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "10K<n<100K",
+    "summary": "Axion 1.0 Training Data   Scientific reasoning and tool use for open agent foundation models.   Project Page ·   Paper (Hugging Face) ·   Paper (PDF) ·   Code          Axion 1. (18 likes, 1,061 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Axion1-0/axion-training-data\")",
+    "benchmarks": "Trending Score: 18, Likes: 18, Downloads: 1,061",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/Axion1-0/axion-training-data",
+    "citations": [
+      {
+        "text": "Axion1-0/axion-training-data on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Axion1-0/axion-training-data"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Axion 1.0 Training Data   Scientific reasoning and tool use for open agent foundation models.   Project Page ·   Paper (Hugging Face) ·   Paper (PDF) ·   Code          Axion 1. (18 likes, 1,061 downloads)."
+  },
+  {
+    "name": "Ripple-65B-Preview",
+    "org": "ricursiveAI",
+    "type": "Model",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "65B params",
+    "summary": "High-performance NLP open-weights model by ricursiveAI, trending with over 222 community likes and 939 downloads on Hugging Face.",
+    "architecture": "ricursiveAI transformer architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ricursiveAI/Ripple-65B-Preview\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ricursiveAI/Ripple-65B-Preview\")",
+    "benchmarks": "Trending Score: 216, Likes: 222, Downloads: 939",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview",
+    "citations": [
+      {
+        "text": "ricursiveAI/Ripple-65B-Preview on Hugging Face",
+        "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by ricursiveAI, trending with over 222 community likes and 939 downloads on Hugging Face."
+  },
+  {
+    "name": "abo-glb",
+    "org": "codepawl",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "size": "1K<n<10K",
+    "summary": "Amazon Berkeley Objects GLB \t The 7,953 3D models of Amazon Berkeley Objects (ABO), made small enough to load in a browser. Each product is one .glb with its full PBR m (22 likes, 0 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"codepawl/abo-glb\")",
+    "benchmarks": "Trending Score: 21, Likes: 22, Downloads: 0",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/codepawl/abo-glb",
+    "citations": [
+      {
+        "text": "codepawl/abo-glb on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/codepawl/abo-glb"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Amazon Berkeley Objects GLB \t The 7,953 3D models of Amazon Berkeley Objects (ABO), made small enough to load in a browser. Each product is one .glb with its full PBR m (22 likes, 0 downloads)."
+  },
+  {
+    "name": "Mage-VL-Cowork",
+    "org": "Microsoft",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Multimodal open-weights model by Microsoft, trending with over 183 community likes and 1,973 downloads on Hugging Face.",
+    "architecture": "Microsoft image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"microsoft/Mage-VL-Cowork\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"microsoft/Mage-VL-Cowork\")",
+    "benchmarks": "Trending Score: 166, Likes: 183, Downloads: 1,973",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/microsoft/Mage-VL-Cowork",
+    "citations": [
+      {
+        "text": "microsoft/Mage-VL-Cowork on Hugging Face",
+        "url": "https://huggingface.co/microsoft/Mage-VL-Cowork"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by Microsoft, trending with over 183 community likes and 1,973 downloads on Hugging Face."
+  },
+  {
+    "name": "GAIA",
+    "org": "gaia-benchmark",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "Open Data",
+    "year": 2026,
+    "size": "n<1K",
+    "summary": "GAIA dataset \t GAIA is a benchmark which aims at evaluating next-generation LLMs (LLMs with augmented capabilities due to added tooling, efficient prompting, access to (936 likes, 10,974 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"gaia-benchmark/GAIA\")",
+    "benchmarks": "Trending Score: 15, Likes: 936, Downloads: 10,974",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/gaia-benchmark/GAIA",
+    "citations": [
+      {
+        "text": "gaia-benchmark/GAIA on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/gaia-benchmark/GAIA"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "GAIA dataset \t GAIA is a benchmark which aims at evaluating next-generation LLMs (LLMs with augmented capabilities due to added tooling, efficient prompting, access to (936 likes, 10,974 downloads)."
+  },
+  {
+    "name": "DeepSeek-V4.1-Flash-1017-GGUF",
+    "org": "unsloth",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "MIT",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Multimodal open-weights model by unsloth, trending with over 344 community likes and 690,137 downloads on Hugging Face.",
+    "architecture": "unsloth image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"unsloth/DeepSeek-V4.1-Flash-1017-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"unsloth/DeepSeek-V4.1-Flash-1017-GGUF\")",
+    "benchmarks": "Trending Score: 164, Likes: 344, Downloads: 690,137",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/unsloth/DeepSeek-V4.1-Flash-1017-GGUF",
+    "citations": [
+      {
+        "text": "unsloth/DeepSeek-V4.1-Flash-1017-GGUF on Hugging Face",
+        "url": "https://huggingface.co/unsloth/DeepSeek-V4.1-Flash-1017-GGUF"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by unsloth, trending with over 344 community likes and 690,137 downloads on Hugging Face."
+  },
+  {
+    "name": "scanned-objects-glb",
+    "org": "codepawl",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "size": "1K<n<10K",
+    "summary": "Scanned Objects GLB \t Web-ready glTF binary (.glb) copies of the 1,033 household products in Google Scanned Objects, taken from the official copies on Gazebo Fuel. Each (20 likes, 60 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"codepawl/scanned-objects-glb\")",
+    "benchmarks": "Trending Score: 20, Likes: 20, Downloads: 60",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/codepawl/scanned-objects-glb",
+    "citations": [
+      {
+        "text": "codepawl/scanned-objects-glb on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/codepawl/scanned-objects-glb"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Scanned Objects GLB \t Web-ready glTF binary (.glb) copies of the 1,033 household products in Google Scanned Objects, taken from the official copies on Gazebo Fuel. Each (20 likes, 60 downloads)."
+  },
+  {
+    "name": "P-H3-Image",
+    "org": "PrunaAI",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by PrunaAI. Trending with 26 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/PrunaAI/P-H3-Image",
+    "benchmarks": "Trending Score: 25, Community Likes: 26",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/PrunaAI/P-H3-Image",
+    "citations": [
+      {
+        "text": "PrunaAI/P-H3-Image on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/PrunaAI/P-H3-Image"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by PrunaAI. Trending with 26 community stars."
+  },
+  {
+    "name": "Kimi-K3.1-Pro",
+    "org": "moonshotai",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Multimodal open-weights model by moonshotai, trending with over 287 community likes and 797 downloads on Hugging Face.",
+    "architecture": "moonshotai image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"moonshotai/Kimi-K3.1-Pro\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"moonshotai/Kimi-K3.1-Pro\")",
+    "benchmarks": "Trending Score: 284, Likes: 287, Downloads: 797",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+    "citations": [
+      {
+        "text": "moonshotai/Kimi-K3.1-Pro on Hugging Face",
+        "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by moonshotai, trending with over 287 community likes and 797 downloads on Hugging Face."
+  },
+  {
+    "name": "ChartNet",
+    "org": "ibm-granite",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "CDLA-PERMISSIVE-2.0",
+    "year": 2026,
+    "size": "10M<n<100M",
+    "summary": "ChartNet: A Million-Scale Multimodal Dataset for Chart Understanding \t 🌐 Homepage | 📖 arXiv \t \t\t \t \t \t\t📰 Latest Update — October 2026 \t \t \t\t \t \t \t\tChartNet introduce (68 likes, 18,197 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"ibm-granite/ChartNet\")",
+    "benchmarks": "Trending Score: 17, Likes: 68, Downloads: 18,197",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/ibm-granite/ChartNet",
+    "citations": [
+      {
+        "text": "ibm-granite/ChartNet on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/ibm-granite/ChartNet"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "ChartNet: A Million-Scale Multimodal Dataset for Chart Understanding \t 🌐 Homepage | 📖 arXiv \t \t\t \t \t \t\t📰 Latest Update — October 2026 \t \t \t\t \t \t \t\tChartNet introduce (68 likes, 18,197 downloads)."
+  },
+  {
+    "name": "motionbricks-playground",
+    "org": "townbox",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "STATIC Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by townbox. Trending with 25 community stars.",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/townbox/motionbricks-playground",
+    "benchmarks": "Trending Score: 23, Community Likes: 25",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/townbox/motionbricks-playground",
+    "citations": [
+      {
+        "text": "townbox/motionbricks-playground on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/townbox/motionbricks-playground"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by townbox. Trending with 25 community stars."
+  },
+  {
+    "name": "Xiaomi-OCR-0",
+    "org": "xiaomi-research",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Multimodal open-weights model by xiaomi-research, trending with over 264 community likes and 20,802 downloads on Hugging Face.",
+    "architecture": "xiaomi-research image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"xiaomi-research/Xiaomi-OCR-0\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"xiaomi-research/Xiaomi-OCR-0\")",
+    "benchmarks": "Trending Score: 193, Likes: 264, Downloads: 20,802",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/xiaomi-research/Xiaomi-OCR-0",
+    "citations": [
+      {
+        "text": "xiaomi-research/Xiaomi-OCR-0 on Hugging Face",
+        "url": "https://huggingface.co/xiaomi-research/Xiaomi-OCR-0"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by xiaomi-research, trending with over 264 community likes and 20,802 downloads on Hugging Face."
+  },
+  {
+    "name": "Qwen-Image-2.1-Turbo-Quantized",
+    "org": "abenzerps",
+    "type": "Model",
+    "task": "Image Generation",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Image Generation open-weights model by abenzerps, trending with over 5,623 community likes and 2,508,590 downloads on Hugging Face.",
+    "architecture": "abenzerps text to image architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"abenzerps/Qwen-Image-2.1-Turbo-Quantized\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"abenzerps/Qwen-Image-2.1-Turbo-Quantized\")",
+    "benchmarks": "Trending Score: 286, Likes: 5,623, Downloads: 2,508,590",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Turbo-Quantized",
+    "citations": [
+      {
+        "text": "abenzerps/Qwen-Image-2.1-Turbo-Quantized on Hugging Face",
+        "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Turbo-Quantized"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Image Generation open-weights model by abenzerps, trending with over 5,623 community likes and 2,508,590 downloads on Hugging Face."
+  },
+  {
+    "name": "OffsecCyber",
+    "org": "PentesterFlow",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "10K<n<100K",
+    "summary": "Security Vulnerability Instruction Dataset \t An English-language dataset of security-focused assistant conversations about software vulnerabilities. Examples cover vuln (35 likes, 0 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"PentesterFlow/OffsecCyber\")",
+    "benchmarks": "Trending Score: 34, Likes: 35, Downloads: 0",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/PentesterFlow/OffsecCyber",
+    "citations": [
+      {
+        "text": "PentesterFlow/OffsecCyber on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/PentesterFlow/OffsecCyber"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Security Vulnerability Instruction Dataset \t An English-language dataset of security-focused assistant conversations about software vulnerabilities. Examples cover vuln (35 likes, 0 downloads)."
+  },
+  {
+    "name": "SenseNova-Loop-9B-Preview",
+    "org": "sensenova",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "9B params",
+    "summary": "High-performance Multimodal open-weights model by sensenova, trending with over 205 community likes and 2,221 downloads on Hugging Face.",
+    "architecture": "sensenova image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"sensenova/SenseNova-Loop-9B-Preview\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"sensenova/SenseNova-Loop-9B-Preview\")",
+    "benchmarks": "Trending Score: 202, Likes: 205, Downloads: 2,221",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview",
+    "citations": [
+      {
+        "text": "sensenova/SenseNova-Loop-9B-Preview on Hugging Face",
+        "url": "https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by sensenova, trending with over 205 community likes and 2,221 downloads on Hugging Face."
+  },
+  {
+    "name": "MOSS-Image-Character-Catalog",
+    "org": "hide1",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "STATIC Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hide1. Trending with 28 community stars.",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hide1/MOSS-Image-Character-Catalog",
+    "benchmarks": "Trending Score: 27, Community Likes: 28",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/hide1/MOSS-Image-Character-Catalog",
+    "citations": [
+      {
+        "text": "hide1/MOSS-Image-Character-Catalog on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/hide1/MOSS-Image-Character-Catalog"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hide1. Trending with 28 community stars."
+  },
+  {
+    "name": "DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF",
+    "org": "AtomicChat",
+    "type": "Model",
+    "task": "NLP",
+    "license": "MIT",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance NLP open-weights model by AtomicChat, trending with over 235 community likes and 53,913 downloads on Hugging Face.",
+    "architecture": "AtomicChat text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"AtomicChat/DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"AtomicChat/DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF\")",
+    "benchmarks": "Trending Score: 209, Likes: 235, Downloads: 53,913",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/AtomicChat/DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF",
+    "citations": [
+      {
+        "text": "AtomicChat/DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF on Hugging Face",
+        "url": "https://huggingface.co/AtomicChat/DeepSeek-V4.1-Flash-1017-Uncensored-GSQ-RCO-GGUF"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by AtomicChat, trending with over 235 community likes and 53,913 downloads on Hugging Face."
+  },
+  {
+    "name": "nemotron-transcribe",
+    "org": "nvidia",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "DOCKER Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by nvidia. Trending with 30 community stars.",
+    "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/nvidia/nemotron-transcribe",
+    "benchmarks": "Trending Score: 30, Community Likes: 30",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/nvidia/nemotron-transcribe",
+    "citations": [
+      {
+        "text": "nvidia/nemotron-transcribe on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/nvidia/nemotron-transcribe"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by nvidia. Trending with 30 community stars."
+  },
+  {
+    "name": "Sulphur-3",
+    "org": "FusionCow",
+    "type": "Model",
+    "task": "NLP",
+    "license": "Open Weights",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance NLP open-weights model by FusionCow, trending with over 266 community likes and 195 downloads on Hugging Face.",
+    "architecture": "FusionCow transformer architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"FusionCow/Sulphur-3\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"FusionCow/Sulphur-3\")",
+    "benchmarks": "Trending Score: 222, Likes: 266, Downloads: 195",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/FusionCow/Sulphur-3",
+    "citations": [
+      {
+        "text": "FusionCow/Sulphur-3 on Hugging Face",
+        "url": "https://huggingface.co/FusionCow/Sulphur-3"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by FusionCow, trending with over 266 community likes and 195 downloads on Hugging Face."
+  },
+  {
+    "name": "darbuka_arabic_tts_dataset",
+    "org": "bitmanagerai-speech-lab",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Curated Dataset",
+    "summary": "Darbuka Arabic \t Darbuka Arabic brings together Arabic speech, automatic transcripts, and audio-quality measurements for speech recognition and text-to-speech research, (22 likes, 1,160 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"bitmanagerai-speech-lab/darbuka_arabic_tts_dataset\")",
+    "benchmarks": "Trending Score: 20, Likes: 22, Downloads: 1,160",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/bitmanagerai-speech-lab/darbuka_arabic_tts_dataset",
+    "citations": [
+      {
+        "text": "bitmanagerai-speech-lab/darbuka_arabic_tts_dataset on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/bitmanagerai-speech-lab/darbuka_arabic_tts_dataset"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Darbuka Arabic \t Darbuka Arabic brings together Arabic speech, automatic transcripts, and audio-quality measurements for speech recognition and text-to-speech research, (22 likes, 1,160 downloads)."
+  },
+  {
+    "name": "ava",
+    "org": "townbox",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "STATIC Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by townbox. Trending with 30 community stars.",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/townbox/ava",
+    "benchmarks": "Trending Score: 30, Community Likes: 30",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/townbox/ava",
+    "citations": [
+      {
+        "text": "townbox/ava on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/townbox/ava"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by townbox. Trending with 30 community stars."
+  },
+  {
+    "name": "Audio8-TTS-Realistic-Air",
+    "org": "Edge0",
+    "type": "Model",
+    "task": "Audio",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Audio open-weights model by Edge0, trending with over 241 community likes and 7,259 downloads on Hugging Face.",
+    "architecture": "Edge0 text to speech architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Edge0/Audio8-TTS-Realistic-Air\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Edge0/Audio8-TTS-Realistic-Air\")",
+    "benchmarks": "Trending Score: 223, Likes: 241, Downloads: 7,259",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/Edge0/Audio8-TTS-Realistic-Air",
+    "citations": [
+      {
+        "text": "Edge0/Audio8-TTS-Realistic-Air on Hugging Face",
+        "url": "https://huggingface.co/Edge0/Audio8-TTS-Realistic-Air"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Audio open-weights model by Edge0, trending with over 241 community likes and 7,259 downloads on Hugging Face."
+  },
+  {
+    "name": "hacker-news",
+    "org": "open-index",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "ODC-BY",
+    "year": 2026,
+    "size": "10M<n<100M",
+    "summary": "Hacker News - Complete Archive \t Every Hacker News item since 2006, live-updated every 5 minutes \t \t\t \t \t \t\tWhat is it? \t This dataset contains the complete Hacker News (379 likes, 434,325 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"open-index/hacker-news\")",
+    "benchmarks": "Trending Score: 24, Likes: 379, Downloads: 434,325",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/open-index/hacker-news",
+    "citations": [
+      {
+        "text": "open-index/hacker-news on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/open-index/hacker-news"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Hacker News - Complete Archive \t Every Hacker News item since 2006, live-updated every 5 minutes \t \t\t \t \t \t\tWhat is it? \t This dataset contains the complete Hacker News (379 likes, 434,325 downloads)."
+  },
+  {
+    "name": "harness-lens",
+    "org": "harness-hub",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "DOCKER Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by harness-hub. Trending with 56 community stars.",
+    "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/harness-hub/harness-lens",
+    "benchmarks": "Trending Score: 28, Community Likes: 56",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/harness-hub/harness-lens",
+    "citations": [
+      {
+        "text": "harness-hub/harness-lens on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/harness-hub/harness-lens"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by harness-hub. Trending with 56 community stars."
+  },
+  {
+    "name": "DeepSeek-V4.1-Flash-1017-obliterated",
+    "org": "OBLITERATUS",
+    "type": "Model",
+    "task": "NLP",
+    "license": "MIT",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance NLP open-weights model by OBLITERATUS, trending with over 188 community likes and 520 downloads on Hugging Face.",
+    "architecture": "OBLITERATUS text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"OBLITERATUS/DeepSeek-V4.1-Flash-1017-obliterated\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"OBLITERATUS/DeepSeek-V4.1-Flash-1017-obliterated\")",
+    "benchmarks": "Trending Score: 167, Likes: 188, Downloads: 520",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/OBLITERATUS/DeepSeek-V4.1-Flash-1017-obliterated",
+    "citations": [
+      {
+        "text": "OBLITERATUS/DeepSeek-V4.1-Flash-1017-obliterated on Hugging Face",
+        "url": "https://huggingface.co/OBLITERATUS/DeepSeek-V4.1-Flash-1017-obliterated"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by OBLITERATUS, trending with over 188 community likes and 520 downloads on Hugging Face."
+  },
+  {
+    "name": "FineDNA",
+    "org": "HuggingFaceBio",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "100M<n<1B",
+    "summary": "FineDNA \t FineDNA is the training data of Carbon-X, the model that taught Qwen3-14B to read DNA, for all three of its training stages. Each stage is a group of configs: (23 likes, 72 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"HuggingFaceBio/FineDNA\")",
+    "benchmarks": "Trending Score: 22, Likes: 23, Downloads: 72",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/HuggingFaceBio/FineDNA",
+    "citations": [
+      {
+        "text": "HuggingFaceBio/FineDNA on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/HuggingFaceBio/FineDNA"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "FineDNA \t FineDNA is the training data of Carbon-X, the model that taught Qwen3-14B to read DNA, for all three of its training stages. Each stage is a group of configs: (23 likes, 72 downloads)."
+  },
+  {
+    "name": "LFM3-1.7B-GGUF",
+    "org": "LiquidAI",
+    "type": "Model",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "1.7B params",
+    "summary": "High-performance NLP open-weights model by LiquidAI, trending with over 172 community likes and 150,260 downloads on Hugging Face.",
+    "architecture": "LiquidAI text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"LiquidAI/LFM3-1.7B-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"LiquidAI/LFM3-1.7B-GGUF\")",
+    "benchmarks": "Trending Score: 165, Likes: 172, Downloads: 150,260",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/LiquidAI/LFM3-1.7B-GGUF",
+    "citations": [
+      {
+        "text": "LiquidAI/LFM3-1.7B-GGUF on Hugging Face",
+        "url": "https://huggingface.co/LiquidAI/LFM3-1.7B-GGUF"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by LiquidAI, trending with over 172 community likes and 150,260 downloads on Hugging Face."
+  },
+  {
+    "name": "FineART",
+    "org": "lerobot",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "size": "100M<n<1B",
+    "summary": "FineART: Fine-Grained Annotated Robotic Trajectory Dataset \t FineART is co-released by Scale AI and Hugging Face LeRobot. The data was collected and annotated by the Ph (32 likes, 481,434 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"lerobot/FineART\")",
+    "benchmarks": "Trending Score: 18, Likes: 32, Downloads: 481,434",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/lerobot/FineART",
+    "citations": [
+      {
+        "text": "lerobot/FineART on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/lerobot/FineART"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "FineART: Fine-Grained Annotated Robotic Trajectory Dataset \t FineART is co-released by Scale AI and Hugging Face LeRobot. The data was collected and annotated by the Ph (32 likes, 481,434 downloads)."
+  },
+  {
+    "name": "numbat",
+    "org": "burner22",
+    "type": "Model",
+    "task": "NLP",
+    "license": "Open Weights",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance NLP open-weights model by burner22, trending with over 178 community likes and 5,846 downloads on Hugging Face.",
+    "architecture": "burner22 transformer architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"burner22/numbat\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"burner22/numbat\")",
+    "benchmarks": "Trending Score: 170, Likes: 178, Downloads: 5,846",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/burner22/numbat",
+    "citations": [
+      {
+        "text": "burner22/numbat on Hugging Face",
+        "url": "https://huggingface.co/burner22/numbat"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by burner22, trending with over 178 community likes and 5,846 downloads on Hugging Face."
+  },
+  {
+    "name": "hi3dv1",
+    "org": "hugging-apps",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 33 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/hi3dv1",
+    "benchmarks": "Trending Score: 27, Community Likes: 33",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/hugging-apps/hi3dv1",
+    "citations": [
+      {
+        "text": "hugging-apps/hi3dv1 on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/hugging-apps/hi3dv1"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 33 community stars."
+  },
+  {
+    "name": "LFM3-1.7B-Uncensored-GGUF",
+    "org": "AtomicChat",
+    "type": "Model",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "1.7B params",
+    "summary": "High-performance NLP open-weights model by AtomicChat, trending with over 171 community likes and 46,155 downloads on Hugging Face.",
+    "architecture": "AtomicChat text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"AtomicChat/LFM3-1.7B-Uncensored-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"AtomicChat/LFM3-1.7B-Uncensored-GGUF\")",
+    "benchmarks": "Trending Score: 161, Likes: 171, Downloads: 46,155",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/AtomicChat/LFM3-1.7B-Uncensored-GGUF",
+    "citations": [
+      {
+        "text": "AtomicChat/LFM3-1.7B-Uncensored-GGUF on Hugging Face",
+        "url": "https://huggingface.co/AtomicChat/LFM3-1.7B-Uncensored-GGUF"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by AtomicChat, trending with over 171 community likes and 46,155 downloads on Hugging Face."
+  },
+  {
+    "name": "prompts.chat",
+    "org": "fka",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "CC0-1.0",
+    "year": 2026,
+    "size": "1K<n<10K",
+    "summary": "a.k.a. Awesome ChatGPT Prompts This is a Dataset Repository mirror of prompts.chat — a social platform for AI prompts. \t \t\t \t \t \t\t📢 Notice \t This Hugging Face dataset is (9,926 likes, 27,184 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"fka/prompts.chat\")",
+    "benchmarks": "Trending Score: 15, Likes: 9,926, Downloads: 27,184",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/fka/prompts.chat",
+    "citations": [
+      {
+        "text": "fka/prompts.chat on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/fka/prompts.chat"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "a.k.a. Awesome ChatGPT Prompts This is a Dataset Repository mirror of prompts.chat — a social platform for AI prompts. \t \t\t \t \t \t\t📢 Notice \t This Hugging Face dataset is (9,926 likes, 27,184 downloads)."
+  },
+  {
+    "name": "Audio8-TTS-Realistic-0.6b",
+    "org": "Edge0",
+    "type": "Model",
+    "task": "Audio",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "0.6B params",
+    "summary": "High-performance Audio open-weights model by Edge0, trending with over 174 community likes and 2,755 downloads on Hugging Face.",
+    "architecture": "Edge0 text to speech architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Edge0/Audio8-TTS-Realistic-0.6b\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Edge0/Audio8-TTS-Realistic-0.6b\")",
+    "benchmarks": "Trending Score: 171, Likes: 174, Downloads: 2,755",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/Edge0/Audio8-TTS-Realistic-0.6b",
+    "citations": [
+      {
+        "text": "Edge0/Audio8-TTS-Realistic-0.6b on Hugging Face",
+        "url": "https://huggingface.co/Edge0/Audio8-TTS-Realistic-0.6b"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Audio open-weights model by Edge0, trending with over 174 community likes and 2,755 downloads on Hugging Face."
+  },
+  {
+    "name": "MarathonDocBench",
+    "org": "baidu",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "10K<n<100K",
+    "summary": "MarathonDocBench                                                 A New Benchmark for Ultra-Long Document Parsing: Targeting Hundred-Page-Scale Documents. MarathonDocBench is the f (17 likes, 5,071 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"baidu/MarathonDocBench\")",
+    "benchmarks": "Trending Score: 16, Likes: 17, Downloads: 5,071",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/baidu/MarathonDocBench",
+    "citations": [
+      {
+        "text": "baidu/MarathonDocBench on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/baidu/MarathonDocBench"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "MarathonDocBench                                                 A New Benchmark for Ultra-Long Document Parsing: Targeting Hundred-Page-Scale Documents. MarathonDocBench is the f (17 likes, 5,071 downloads)."
+  },
+  {
+    "name": "LFM3-Audio-2B",
+    "org": "LiquidAI",
+    "type": "Model",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "2B params",
+    "summary": "High-performance NLP open-weights model by LiquidAI, trending with over 165 community likes and 4,790 downloads on Hugging Face.",
+    "architecture": "LiquidAI any to any architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"LiquidAI/LFM3-Audio-2B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"LiquidAI/LFM3-Audio-2B\")",
+    "benchmarks": "Trending Score: 164, Likes: 165, Downloads: 4,790",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/LiquidAI/LFM3-Audio-2B",
+    "citations": [
+      {
+        "text": "LiquidAI/LFM3-Audio-2B on Hugging Face",
+        "url": "https://huggingface.co/LiquidAI/LFM3-Audio-2B"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by LiquidAI, trending with over 165 community likes and 4,790 downloads on Hugging Face."
+  },
+  {
+    "name": "DataWorld-Train-2k-part2",
+    "org": "Zhanli-Li",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "1K<n<10K",
+    "summary": "Scaling Data Environments from Scratch   Specify the world behind the files. Generate the data. Ground the supervision.                           \t \t\t \t \t \t\tDataWorld-Train-2 (20 likes, 3,834 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Zhanli-Li/DataWorld-Train-2k-part2\")",
+    "benchmarks": "Trending Score: 16, Likes: 20, Downloads: 3,834",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part2",
+    "citations": [
+      {
+        "text": "Zhanli-Li/DataWorld-Train-2k-part2 on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part2"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Scaling Data Environments from Scratch   Specify the world behind the files. Generate the data. Ground the supervision.                           \t \t\t \t \t \t\tDataWorld-Train-2 (20 likes, 3,834 downloads)."
+  },
+  {
+    "name": "convfill-speech-demo",
+    "org": "smolagents",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "DOCKER Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by smolagents. Trending with 27 community stars.",
+    "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/smolagents/convfill-speech-demo",
+    "benchmarks": "Trending Score: 27, Community Likes: 27",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/smolagents/convfill-speech-demo",
+    "citations": [
+      {
+        "text": "smolagents/convfill-speech-demo on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/smolagents/convfill-speech-demo"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by smolagents. Trending with 27 community stars."
+  },
+  {
+    "name": "ThreeJS-3D-Scenes",
+    "org": "ccore",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "MIT",
+    "year": 2026,
+    "size": "1K<n<10K",
+    "summary": "CCORE Three.js 3D Scenes \t 4,146 high-quality 3D scene examples with prompts, full thinking traces, and complete HTML/JavaScript responses. The scene code and thinking (19 likes, 1,296 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"ccore/ThreeJS-3D-Scenes\")",
+    "benchmarks": "Trending Score: 19, Likes: 19, Downloads: 1,296",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/ccore/ThreeJS-3D-Scenes",
+    "citations": [
+      {
+        "text": "ccore/ThreeJS-3D-Scenes on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/ccore/ThreeJS-3D-Scenes"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "CCORE Three.js 3D Scenes \t 4,146 high-quality 3D scene examples with prompts, full thinking traces, and complete HTML/JavaScript responses. The scene code and thinking (19 likes, 1,296 downloads)."
+  },
+  {
+    "name": "pornflux-i2v-6e9et",
+    "org": "Tanyakhan",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "STATIC Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Tanyakhan. Trending with 62 community stars.",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Tanyakhan/pornflux-i2v-6e9et",
+    "benchmarks": "Trending Score: 27, Community Likes: 62",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/Tanyakhan/pornflux-i2v-6e9et",
+    "citations": [
+      {
+        "text": "Tanyakhan/pornflux-i2v-6e9et on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/Tanyakhan/pornflux-i2v-6e9et"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Tanyakhan. Trending with 62 community stars."
+  },
+  {
+    "name": "Clover-35B-A3B-Preview",
+    "org": "Diffuspace",
+    "type": "Model",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "35B params",
+    "summary": "High-performance NLP open-weights model by Diffuspace, trending with over 184 community likes and 2,021 downloads on Hugging Face.",
+    "architecture": "Diffuspace text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Diffuspace/Clover-35B-A3B-Preview\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Diffuspace/Clover-35B-A3B-Preview\")",
+    "benchmarks": "Trending Score: 181, Likes: 184, Downloads: 2,021",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/Diffuspace/Clover-35B-A3B-Preview",
+    "citations": [
+      {
+        "text": "Diffuspace/Clover-35B-A3B-Preview on Hugging Face",
+        "url": "https://huggingface.co/Diffuspace/Clover-35B-A3B-Preview"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by Diffuspace, trending with over 184 community likes and 2,021 downloads on Hugging Face."
+  },
+  {
+    "name": "HolyCyber",
+    "org": "Reizxn",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "10K<n<100K",
+    "summary": "HolyCyber — defensive cybersecurity instruction dataset \t A long-form, fully grounded instruction dataset for a defensive cybersecurity assistant. Every row is a self-c (17 likes, 214 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Reizxn/HolyCyber\")",
+    "benchmarks": "Trending Score: 17, Likes: 17, Downloads: 214",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/Reizxn/HolyCyber",
+    "citations": [
+      {
+        "text": "Reizxn/HolyCyber on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Reizxn/HolyCyber"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "HolyCyber — defensive cybersecurity instruction dataset \t A long-form, fully grounded instruction dataset for a defensive cybersecurity assistant. Every row is a self-c (17 likes, 214 downloads)."
+  },
+  {
+    "name": "LFM3-Omni-2B-WebGPU",
+    "org": "LiquidAI",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "STATIC Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by LiquidAI. Trending with 29 community stars.",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/LiquidAI/LFM3-Omni-2B-WebGPU",
+    "benchmarks": "Trending Score: 29, Community Likes: 29",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/LiquidAI/LFM3-Omni-2B-WebGPU",
+    "citations": [
+      {
+        "text": "LiquidAI/LFM3-Omni-2B-WebGPU on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/LiquidAI/LFM3-Omni-2B-WebGPU"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by LiquidAI. Trending with 29 community stars."
+  },
+  {
+    "name": "LFM3-VL-2B",
+    "org": "LiquidAI",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "2B params",
+    "summary": "High-performance Multimodal open-weights model by LiquidAI, trending with over 182 community likes and 8,091 downloads on Hugging Face.",
+    "architecture": "LiquidAI image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"LiquidAI/LFM3-VL-2B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"LiquidAI/LFM3-VL-2B\")",
+    "benchmarks": "Trending Score: 180, Likes: 182, Downloads: 8,091",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/LiquidAI/LFM3-VL-2B",
+    "citations": [
+      {
+        "text": "LiquidAI/LFM3-VL-2B on Hugging Face",
+        "url": "https://huggingface.co/LiquidAI/LFM3-VL-2B"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by LiquidAI, trending with over 182 community likes and 8,091 downloads on Hugging Face."
+  },
+  {
+    "name": "DataWorld-Bench",
+    "org": "Zhanli-Li",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "n<1K",
+    "summary": "Scaling Data Environments from Scratch   Specify the world behind the files. Generate the data. Ground the supervision.                           \t \t\t \t \t \t\tDataWorld-Bench (20 likes, 2,996 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Zhanli-Li/DataWorld-Bench\")",
+    "benchmarks": "Trending Score: 16, Likes: 20, Downloads: 2,996",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/Zhanli-Li/DataWorld-Bench",
+    "citations": [
+      {
+        "text": "Zhanli-Li/DataWorld-Bench on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Zhanli-Li/DataWorld-Bench"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Scaling Data Environments from Scratch   Specify the world behind the files. Generate the data. Ground the supervision.                           \t \t\t \t \t \t\tDataWorld-Bench (20 likes, 2,996 downloads)."
+  },
+  {
+    "name": "idol",
+    "org": "speridlabs",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by speridlabs. Trending with 29 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/speridlabs/idol",
+    "benchmarks": "Trending Score: 29, Community Likes: 29",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/speridlabs/idol",
+    "citations": [
+      {
+        "text": "speridlabs/idol on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/speridlabs/idol"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by speridlabs. Trending with 29 community stars."
+  },
+  {
+    "name": "Pika-H3-Flex",
+    "org": "Pika-Labs",
+    "type": "Model",
+    "task": "Video Generation",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Video Generation open-weights model by Pika-Labs, trending with over 201 community likes and 87 downloads on Hugging Face.",
+    "architecture": "Pika-Labs image to video architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"Pika-Labs/Pika-H3-Flex\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"Pika-Labs/Pika-H3-Flex\")",
+    "benchmarks": "Trending Score: 198, Likes: 201, Downloads: 87",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/Pika-Labs/Pika-H3-Flex",
+    "citations": [
+      {
+        "text": "Pika-Labs/Pika-H3-Flex on Hugging Face",
+        "url": "https://huggingface.co/Pika-Labs/Pika-H3-Flex"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Video Generation open-weights model by Pika-Labs, trending with over 201 community likes and 87 downloads on Hugging Face."
+  },
+  {
+    "name": "neuron-studio",
+    "org": "webml-community",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "STATIC Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by webml-community. Trending with 28 community stars.",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/webml-community/neuron-studio",
+    "benchmarks": "Trending Score: 28, Community Likes: 28",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/webml-community/neuron-studio",
+    "citations": [
+      {
+        "text": "webml-community/neuron-studio on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/webml-community/neuron-studio"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by webml-community. Trending with 28 community stars."
+  },
+  {
+    "name": "MiniCPM-OCR-1.0",
+    "org": "openbmb",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Multimodal open-weights model by openbmb, trending with over 363 community likes and 2,413 downloads on Hugging Face.",
+    "architecture": "openbmb image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"openbmb/MiniCPM-OCR-1.0\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"openbmb/MiniCPM-OCR-1.0\")",
+    "benchmarks": "Trending Score: 200, Likes: 363, Downloads: 2,413",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/openbmb/MiniCPM-OCR-1.0",
+    "citations": [
+      {
+        "text": "openbmb/MiniCPM-OCR-1.0 on Hugging Face",
+        "url": "https://huggingface.co/openbmb/MiniCPM-OCR-1.0"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by openbmb, trending with over 363 community likes and 2,413 downloads on Hugging Face."
+  },
+  {
+    "name": "simready-glb",
+    "org": "codepawl",
+    "type": "Dataset",
+    "task": "Computer Vision",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "size": "1K<n<10K",
+    "summary": "SimReady GLB \t Open the 3D viewer to search all 2,595 models and orbit any of them in the browser. Web-ready glTF binary (.glb) copies of the 3D models in nvidia/simrea (17 likes, 1,761 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"codepawl/simready-glb\")",
+    "benchmarks": "Trending Score: 17, Likes: 17, Downloads: 1,761",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/codepawl/simready-glb",
+    "citations": [
+      {
+        "text": "codepawl/simready-glb on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/codepawl/simready-glb"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "SimReady GLB \t Open the 3D viewer to search all 2,595 models and orbit any of them in the browser. Web-ready glTF binary (.glb) copies of the 3D models in nvidia/simrea (17 likes, 1,761 downloads)."
+  },
+  {
+    "name": "H3EROS",
+    "org": "Daankular",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Daankular. Trending with 70 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Daankular/H3EROS",
+    "benchmarks": "Trending Score: 30, Community Likes: 70",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/Daankular/H3EROS",
+    "citations": [
+      {
+        "text": "Daankular/H3EROS on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/Daankular/H3EROS"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Daankular. Trending with 70 community stars."
+  },
+  {
+    "name": "LFM3-Omni-2B",
+    "org": "LiquidAI",
+    "type": "Model",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "2B params",
+    "summary": "High-performance NLP open-weights model by LiquidAI, trending with over 221 community likes and 3,080 downloads on Hugging Face.",
+    "architecture": "LiquidAI any to any architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"LiquidAI/LFM3-Omni-2B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"LiquidAI/LFM3-Omni-2B\")",
+    "benchmarks": "Trending Score: 216, Likes: 221, Downloads: 3,080",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/LiquidAI/LFM3-Omni-2B",
+    "citations": [
+      {
+        "text": "LiquidAI/LFM3-Omni-2B on Hugging Face",
+        "url": "https://huggingface.co/LiquidAI/LFM3-Omni-2B"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by LiquidAI, trending with over 221 community likes and 3,080 downloads on Hugging Face."
+  },
+  {
+    "name": "DataWorld-Train-2k-part1",
+    "org": "Zhanli-Li",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "1K<n<10K",
+    "summary": "Scaling Data Environments from Scratch   Specify the world behind the files. Generate the data. Ground the supervision.                           \t \t\t \t \t \t\tDataWorld-Train-2 (21 likes, 29,323 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Zhanli-Li/DataWorld-Train-2k-part1\")",
+    "benchmarks": "Trending Score: 17, Likes: 21, Downloads: 29,323",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part1",
+    "citations": [
+      {
+        "text": "Zhanli-Li/DataWorld-Train-2k-part1 on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part1"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Scaling Data Environments from Scratch   Specify the world behind the files. Generate the data. Ground the supervision.                           \t \t\t \t \t \t\tDataWorld-Train-2 (21 likes, 29,323 downloads)."
+  },
+  {
+    "name": "minimax-h3-flashgen-4step",
+    "org": "hugging-apps",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 159 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hugging-apps/minimax-h3-flashgen-4step",
+    "benchmarks": "Trending Score: 28, Community Likes: 159",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/hugging-apps/minimax-h3-flashgen-4step",
+    "citations": [
+      {
+        "text": "hugging-apps/minimax-h3-flashgen-4step on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/hugging-apps/minimax-h3-flashgen-4step"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 159 community stars."
+  },
+  {
+    "name": "NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
+    "org": "nvidia",
+    "type": "Model",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "4B params",
+    "summary": "High-performance NLP open-weights model by nvidia, trending with over 267 community likes and 64,263 downloads on Hugging Face.",
+    "architecture": "nvidia text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB\")",
+    "benchmarks": "Trending Score: 248, Likes: 267, Downloads: 64,263",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
+    "citations": [
+      {
+        "text": "nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB on Hugging Face",
+        "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by nvidia, trending with over 267 community likes and 64,263 downloads on Hugging Face."
+  },
+  {
+    "name": "GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset",
+    "org": "Manusagents",
+    "type": "Dataset",
+    "task": "AI Coding",
+    "license": "MIT",
+    "year": 2026,
+    "size": "10M<n<100M",
+    "summary": "📖 The Open Distillation Codex \t \t \t\t \t \t \t\t🌌 The Ultimate Open-Source Distillation Dataset — No Skip, Full, with Attack & Defense 🌌 \t Where 73 open-source minds conv (256 likes, 13,074 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset\")",
+    "benchmarks": "Trending Score: 21, Likes: 256, Downloads: 13,074",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset",
+    "citations": [
+      {
+        "text": "Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "📖 The Open Distillation Codex \t \t \t\t \t \t \t\t🌌 The Ultimate Open-Source Distillation Dataset — No Skip, Full, with Attack & Defense 🌌 \t Where 73 open-source minds conv (256 likes, 13,074 downloads)."
+  },
+  {
+    "name": "Qwen3.5-4B-3D-Coder",
+    "org": "ccore",
+    "type": "Model",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "4B params",
+    "summary": "High-performance NLP open-weights model by ccore, trending with over 287 community likes and 12,237 downloads on Hugging Face.",
+    "architecture": "ccore transformer architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ccore/Qwen3.5-4B-3D-Coder\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ccore/Qwen3.5-4B-3D-Coder\")",
+    "benchmarks": "Trending Score: 271, Likes: 287, Downloads: 12,237",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder",
+    "citations": [
+      {
+        "text": "ccore/Qwen3.5-4B-3D-Coder on Hugging Face",
+        "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by ccore, trending with over 287 community likes and 12,237 downloads on Hugging Face."
+  },
+  {
+    "name": "Granary-v2",
+    "org": "nvidia",
+    "type": "Dataset",
+    "task": "Audio",
+    "license": "OPENMDW-1.1",
+    "year": 2026,
+    "size": "Curated Dataset",
+    "summary": "Granary-v2: Multilingual Speech Recognition, Translation and Instruction Data \t                                                        Granary-v2 is NVIDIA's second rel (23 likes, 1,074 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/Granary-v2\")",
+    "benchmarks": "Trending Score: 23, Likes: 23, Downloads: 1,074",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/nvidia/Granary-v2",
+    "citations": [
+      {
+        "text": "nvidia/Granary-v2 on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/nvidia/Granary-v2"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Granary-v2: Multilingual Speech Recognition, Translation and Instruction Data \t                                                        Granary-v2 is NVIDIA's second rel (23 likes, 1,074 downloads)."
+  },
+  {
+    "name": "Mistral-Large-4-1T-A52B",
+    "org": "Mistral AI",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "52B params",
+    "summary": "High-performance Multimodal open-weights model by Mistral AI, trending with over 1,204 community likes and 278 downloads on Hugging Face.",
+    "architecture": "Mistral AI image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"mistralai/Mistral-Large-4-1T-A52B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"mistralai/Mistral-Large-4-1T-A52B\")",
+    "benchmarks": "Trending Score: 285, Likes: 1,204, Downloads: 278",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B",
+    "citations": [
+      {
+        "text": "mistralai/Mistral-Large-4-1T-A52B on Hugging Face",
+        "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by Mistral AI, trending with over 1,204 community likes and 278 downloads on Hugging Face."
+  },
+  {
+    "name": "PhysicalAI-Autonomous-Vehicles-Foundation4D",
+    "org": "nvidia",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "Curated Dataset",
+    "summary": "PhysicalAI Autonomous Vehicles - Foundation4D \t \t \t\t \t \t \t\tDataset Description: \t This release extends NVIDIA’s existing public PhysicalAI-Autonomous-Vehicles dataset w (28 likes, 1,496 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D\")",
+    "benchmarks": "Trending Score: 22, Likes: 28, Downloads: 1,496",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D",
+    "citations": [
+      {
+        "text": "nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "PhysicalAI Autonomous Vehicles - Foundation4D \t \t \t\t \t \t \t\tDataset Description: \t This release extends NVIDIA’s existing public PhysicalAI-Autonomous-Vehicles dataset w (28 likes, 1,496 downloads)."
+  },
+  {
+    "name": "FastH3-Omni",
+    "org": "FastVideo",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by FastVideo. Trending with 58 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/FastVideo/FastH3-Omni",
+    "benchmarks": "Trending Score: 40, Community Likes: 58",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/FastVideo/FastH3-Omni",
+    "citations": [
+      {
+        "text": "FastVideo/FastH3-Omni on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/FastVideo/FastH3-Omni"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by FastVideo. Trending with 58 community stars."
+  },
+  {
+    "name": "qwen-image-2-1-realtime",
+    "org": "linoyts",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by linoyts. Trending with 54 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/linoyts/qwen-image-2-1-realtime",
+    "benchmarks": "Trending Score: 45, Community Likes: 54",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/linoyts/qwen-image-2-1-realtime",
+    "citations": [
+      {
+        "text": "linoyts/qwen-image-2-1-realtime on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/linoyts/qwen-image-2-1-realtime"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by linoyts. Trending with 54 community stars."
+  },
+  {
+    "name": "NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+    "org": "nvidia",
+    "type": "Model",
+    "task": "Audio",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "30B params",
+    "summary": "High-performance Audio open-weights model by nvidia, trending with over 314 community likes and 4,276 downloads on Hugging Face.",
+    "architecture": "nvidia automatic speech recognition architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B\")",
+    "benchmarks": "Trending Score: 306, Likes: 314, Downloads: 4,276",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+    "citations": [
+      {
+        "text": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B on Hugging Face",
+        "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Audio open-weights model by nvidia, trending with over 314 community likes and 4,276 downloads on Hugging Face."
+  },
+  {
+    "name": "Unlimited-OCR-2",
+    "org": "baidu",
+    "type": "Model",
+    "task": "Multimodal",
+    "license": "MIT",
+    "year": 2026,
+    "size": "Open Weights",
+    "summary": "High-performance Multimodal open-weights model by baidu, trending with over 341 community likes and 8,357 downloads on Hugging Face.",
+    "architecture": "baidu image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"baidu/Unlimited-OCR-2\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"baidu/Unlimited-OCR-2\")",
+    "benchmarks": "Trending Score: 326, Likes: 341, Downloads: 8,357",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/baidu/Unlimited-OCR-2",
+    "citations": [
+      {
+        "text": "baidu/Unlimited-OCR-2 on Hugging Face",
+        "url": "https://huggingface.co/baidu/Unlimited-OCR-2"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance Multimodal open-weights model by baidu, trending with over 341 community likes and 8,357 downloads on Hugging Face."
+  },
+  {
+    "name": "phonon",
+    "org": "gradium",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "STATIC Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by gradium. Trending with 69 community stars.",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/gradium/phonon",
+    "benchmarks": "Trending Score: 47, Community Likes: 69",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/gradium/phonon",
+    "citations": [
+      {
+        "text": "gradium/phonon on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/gradium/phonon"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by gradium. Trending with 69 community stars."
+  },
+  {
+    "name": "Hy-SimulMT-30B-A3B-FP8",
+    "org": "tencent",
+    "type": "Model",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "30B params",
+    "summary": "High-performance NLP open-weights model by tencent, trending with over 338 community likes and 165 downloads on Hugging Face.",
+    "architecture": "tencent translation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"tencent/Hy-SimulMT-30B-A3B-FP8\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"tencent/Hy-SimulMT-30B-A3B-FP8\")",
+    "benchmarks": "Trending Score: 333, Likes: 338, Downloads: 165",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/tencent/Hy-SimulMT-30B-A3B-FP8",
+    "citations": [
+      {
+        "text": "tencent/Hy-SimulMT-30B-A3B-FP8 on Hugging Face",
+        "url": "https://huggingface.co/tencent/Hy-SimulMT-30B-A3B-FP8"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by tencent, trending with over 338 community likes and 165 downloads on Hugging Face."
+  },
+  {
+    "name": "qwen-image-2.1-uncensored-aio-loras-2",
+    "org": "wank3r",
+    "type": "Platform",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "GRADIO Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by wank3r. Trending with 61 community stars.",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/wank3r/qwen-image-2.1-uncensored-aio-loras-2",
+    "benchmarks": "Trending Score: 47, Community Likes: 61",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/wank3r/qwen-image-2.1-uncensored-aio-loras-2",
+    "citations": [
+      {
+        "text": "wank3r/qwen-image-2.1-uncensored-aio-loras-2 on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/wank3r/qwen-image-2.1-uncensored-aio-loras-2"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by wank3r. Trending with 61 community stars."
+  },
+  {
+    "name": "LFM3-1.7B",
+    "org": "LiquidAI",
+    "type": "Model",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "size": "1.7B params",
+    "summary": "High-performance NLP open-weights model by LiquidAI, trending with over 344 community likes and 8,892 downloads on Hugging Face.",
+    "architecture": "LiquidAI text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"LiquidAI/LFM3-1.7B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"LiquidAI/LFM3-1.7B\")",
+    "benchmarks": "Trending Score: 341, Likes: 344, Downloads: 8,892",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/LiquidAI/LFM3-1.7B",
+    "citations": [
+      {
+        "text": "LiquidAI/LFM3-1.7B on Hugging Face",
+        "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "High-performance NLP open-weights model by LiquidAI, trending with over 344 community likes and 8,892 downloads on Hugging Face."
+  },
+  {
+    "name": "GEAR",
+    "org": "WizardTY",
+    "type": "Platform",
+    "task": "NLP",
+    "license": "Community Hosted",
+    "year": 2026,
+    "size": "STATIC Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by WizardTY. Trending with 58 community stars.",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/WizardTY/GEAR",
+    "benchmarks": "Trending Score: 46, Community Likes: 58",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "url": "https://huggingface.co/spaces/WizardTY/GEAR",
+    "citations": [
+      {
+        "text": "WizardTY/GEAR on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/WizardTY/GEAR"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by WizardTY. Trending with 58 community stars."
+  },
+  {
+    "name": "simready-central-library",
+    "org": "nvidia",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "size": "Curated Dataset",
+    "summary": "Welcome to SimReady Central \t SimReady Central is in Alpha. We are accepting contributors through the Community tab. SimReady Central connects creators and users of sim (50 likes, 155 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/simready-central-library\")",
+    "benchmarks": "Trending Score: 34, Likes: 50, Downloads: 155",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/nvidia/simready-central-library",
+    "citations": [
+      {
+        "text": "nvidia/simready-central-library on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/nvidia/simready-central-library"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Welcome to SimReady Central \t SimReady Central is in Alpha. We are accepting contributors through the Community tab. SimReady Central connects creators and users of sim (50 likes, 155 downloads)."
+  },
+  {
+    "name": "10-2026-qwen-investigation-traces",
+    "org": "CohereLabs",
+    "type": "Dataset",
+    "task": "NLP",
+    "license": "Open Data",
+    "year": 2026,
+    "size": "n<1K",
+    "summary": "Qwen 3.8 Flash Next Investigation \t This dataset contains the model trace and corresponding raw token IDs from the behaviour observed in https://cohere.com/blog/concern (49 likes, 0 downloads).",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"CohereLabs/10-2026-qwen-investigation-traces\")",
+    "benchmarks": "Trending Score: 48, Likes: 49, Downloads: 0",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "url": "https://huggingface.co/datasets/CohereLabs/10-2026-qwen-investigation-traces",
+    "citations": [
+      {
+        "text": "CohereLabs/10-2026-qwen-investigation-traces on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/CohereLabs/10-2026-qwen-investigation-traces"
+      }
+    ],
+    "popular": false,
+    "approved": true,
+    "description": "Qwen 3.8 Flash Next Investigation \t This dataset contains the model trace and corresponding raw token IDs from the behaviour observed in https://cohere.com/blog/concern (49 likes, 0 downloads)."
   }
 ];
 

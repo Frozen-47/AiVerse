@@ -13,6 +13,7 @@
     "preview": "vite preview",
     "ai-radar": "node scripts/ai_radar.js",
     "daily-pulse": "node scripts/ai_radar.js",
+    "approve:pending": "node scripts/approve_pending.js",
     "sync:leaderboard": "node scripts/sync_leaderboard.js"
   },
   "engines": {

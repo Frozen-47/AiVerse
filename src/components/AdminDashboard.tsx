@@ -38,6 +38,16 @@ import {
   Code,
   CheckCircle2,
   XCircle,
+  LayoutGrid,
+  List,
+  Terminal,
+  CheckSquare,
+  Square,
+  Undo2,
+  ChevronDown,
+  ChevronUp,
+  Layers,
+  Eye,
 } from "lucide-react";
 import { supabase, getOAuthAvatarUrl } from "../lib/supabase";
 import { useTokens, typeBadge, taskBadge, typeIcon, TYPE_GLYPH } from "../lib/theme";
@@ -192,7 +202,15 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [actioningId, setActioningId] = useState<string | null>(null);
   const [deleteConfirmEntry, setDeleteConfirmEntry] = useState<string | null>(null);
   const [batchConfirm, setBatchConfirm] = useState<"approve" | "reject" | null>(null);
-  const [toast, setToast] = useState<{ type: "success" | "error"; message: string } | null>(null);
+  const [toast, setToast] = useState<{ type: "success" | "error"; message: string; onUndo?: () => void } | null>(null);
+
+  // Modern UI & Optimistic Batch Controls
+  const [selectedSubmissions, setSelectedSubmissions] = useState<Set<string>>(new Set());
+  const [catalogViewMode, setCatalogViewMode] = useState<"table" | "grid">("table");
+  const [codebaseSyncModalOpen, setCodebaseSyncModalOpen] = useState(false);
+  const [expandedSubmissionName, setExpandedSubmissionName] = useState<string | null>(null);
+  const [copiedCodeKey, setCopiedCodeKey] = useState<string | null>(null);
+  const [copiedSyncCmd, setCopiedSyncCmd] = useState(false);
 
   // Modals (Google Admin: Admins NEVER edit user profiles, only manage IAM Roles, access, or purge)
   const [inspectingUser, setInspectingUser] = useState<UserProfile | null>(null);
@@ -247,13 +265,13 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [inspectingLog, setInspectingLog] = useState<AuditLogItem | null>(null);
   const [copiedLogJson, setCopiedLogJson] = useState(false);
 
-  const showToast = (type: "success" | "error", message: string) => {
-    setToast({ type, message });
+  const showToast = (type: "success" | "error", message: string, onUndo?: () => void) => {
+    setToast({ type, message, onUndo });
   };
 
   useEffect(() => {
     if (toast) {
-      const timer = setTimeout(() => setToast(null), 4000);
+      const timer = setTimeout(() => setToast(null), toast.onUndo ? 7000 : 4000);
       return () => clearTimeout(timer);
     }
   }, [toast]);
@@ -570,21 +588,99 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
   // ── Actions: Entry Management ─────────────────────────────────────────────
 
+  // Helper to sanitize entry payload strictly for Supabase entries table schema
+  const sanitizeEntryForCatalogDb = (entry: Partial<Entry>) => ({
+    name: String(entry.name || "").trim(),
+    org: entry.org ? String(entry.org).trim() : null,
+    type: String(entry.type || "Model").trim(),
+    task: String(entry.task || "NLP").trim(),
+    license: entry.license ? String(entry.license).trim() : null,
+    year: typeof entry.year === "number" ? entry.year : (entry.year ? parseInt(String(entry.year), 10) || new Date().getFullYear() : new Date().getFullYear()),
+    size: entry.size ? String(entry.size).trim() : null,
+    summary: String(entry.summary || "").trim(),
+    architecture: entry.architecture ? String(entry.architecture).trim() : null,
+    usage: entry.usage ? String(entry.usage).trim() : null,
+    benchmarks: entry.benchmarks ? String(entry.benchmarks).trim() : null,
+    limitations: entry.limitations ? String(entry.limitations).trim() : null,
+    url: entry.url ? String(entry.url).trim() : null,
+    citations: Array.isArray(entry.citations) ? entry.citations : [],
+    popular: Boolean(entry.popular),
+    approved: true,
+    submitted_by: entry.submitted_by || null,
+  });
+
+  // ── Multi-select batch helpers ──────────────────────────────────────────
+  const toggleSelectAllSubmissions = () => {
+    if (selectedSubmissions.size === filteredSubmissions.length && filteredSubmissions.length > 0) {
+      setSelectedSubmissions(new Set());
+    } else {
+      setSelectedSubmissions(new Set(filteredSubmissions.map((e) => e.name)));
+    }
+  };
+
+  const toggleSelectSubmission = (name: string) => {
+    setSelectedSubmissions((prev) => {
+      const next = new Set(prev);
+      if (next.has(name)) {
+        next.delete(name);
+      } else {
+        next.add(name);
+      }
+      return next;
+    });
+  };
+
+  // ── Optimistic Action: Single Approve with 0ms UI update, Undo, and Rollback ─
   const handleApprove = async (entry: Entry) => {
+    // 0ms Optimistic Update: Immediately reflect approval in UI
+    const prevPending = [...pendingEntries];
+    const prevApproved = [...approvedEntries];
+
+    setPendingEntries((prev) => prev.filter((e) => e.name !== entry.name));
+    setApprovedEntries((prev) => [{ ...entry, approved: true }, ...prev]);
+    setSelectedSubmissions((prev) => {
+      const next = new Set(prev);
+      next.delete(entry.name);
+      return next;
+    });
+    if (reviewingEntry?.name === entry.name) setReviewingEntry(null);
+    if (expandedSubmissionName === entry.name) setExpandedSubmissionName(null);
+
+    // Provide immediate undo capability with 7-second grace window
+    showToast("success", `"${entry.name}" approved and published to catalog.`, async () => {
+      setPendingEntries(prevPending);
+      setApprovedEntries(prevApproved);
+      try {
+        await supabase
+          .from("entries")
+          .update({ approved: false })
+          .eq("name", entry.name);
+        logAudit("Undo Approval", `Reverted approval for "${entry.name}"`);
+      } catch (err) {
+        console.warn("Failed to revert approval in DB:", err);
+      }
+    });
+
+    logAudit("Approve Asset", `Approved and published "${entry.name}" to directory`);
+
+    // Asynchronous background database persistence
     setActioningId(entry.name);
     try {
-      const { data: updated, error: err } = await supabase
+      const dbPayload = sanitizeEntryForCatalogDb(entry);
+
+      // Attempt 1: update existing record if already in DB
+      const { data: updated, error: updateErr } = await supabase
         .from("entries")
         .update({ approved: true })
         .eq("name", entry.name)
         .select();
 
-      if (err || !updated || updated.length === 0) {
-        // Fallback: upsert into Supabase catalog as approved
+      if (updateErr || !updated || updated.length === 0) {
+        // Fallback: upsert with explicit onConflict on "name"
         const { error: upsertErr } = await supabase
           .from("entries")
-          .upsert([{ ...entry, approved: true, popular: entry.popular || false }]);
-        if (upsertErr && err) throw err;
+          .upsert([dbPayload], { onConflict: "name" });
+        if (upsertErr) throw upsertErr;
       }
 
       // Persist to local approved pulse tracking
@@ -605,43 +701,92 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           localStorage.setItem("aiverse_dismissed_pulse_requests", JSON.stringify(filtered));
         }
       } catch {}
-
-      setPendingEntries((prev) => prev.filter((e) => e.name !== entry.name));
-      setApprovedEntries((prev) => [{ ...entry, approved: true }, ...prev]);
-      if (reviewingEntry?.name === entry.name) setReviewingEntry(null);
-      showToast("success", `"${entry.name}" approved and published to catalog.`);
-      logAudit("Approve Asset", `Approved and published "${entry.name}" to directory`);
     } catch (err: any) {
-      showToast("error", `Failed to approve "${entry.name}": ${err.message}`);
+      // Automatic rollback on DB failure
+      setPendingEntries(prevPending);
+      setApprovedEntries(prevApproved);
+      showToast("error", `Database sync failed for "${entry.name}". Rolled back: ${err.message || err.details || "Database error"}`);
     } finally {
       setActioningId(null);
     }
   };
 
-  const handleBatchApproveAll = async () => {
-    if (pendingEntries.length === 0) return;
+  // ── Optimistic Action: Batch Approve (Selection or All) with 0ms UI update, Undo, and Chunked Upsert ─
+  const handleBatchApprove = async (specificNames?: string[]) => {
+    const targetNames = specificNames && specificNames.length > 0
+      ? new Set(specificNames)
+      : selectedSubmissions.size > 0
+      ? new Set(selectedSubmissions)
+      : new Set(pendingEntries.map((e) => e.name));
+
+    if (targetNames.size === 0) return;
+
+    const targets = pendingEntries.filter((e) => targetNames.has(e.name));
+    const targetNamesList = targets.map((e) => e.name);
+    const count = targets.length;
+
+    // 0ms Optimistic UI updates
+    const prevPending = [...pendingEntries];
+    const prevApproved = [...approvedEntries];
+
+    setPendingEntries((prev) => prev.filter((e) => !targetNames.has(e.name)));
+    setApprovedEntries((prev) => [
+      ...targets.map((e) => ({ ...e, approved: true })),
+      ...prev,
+    ]);
+    setSelectedSubmissions((prev) => {
+      const next = new Set(prev);
+      targetNamesList.forEach((n) => next.delete(n));
+      return next;
+    });
+    setBatchConfirm(null);
+
+    // Provide instant undo
+    showToast("success", `Approved ${count} submissions to catalog.`, async () => {
+      setPendingEntries(prevPending);
+      setApprovedEntries(prevApproved);
+      try {
+        await supabase
+          .from("entries")
+          .update({ approved: false })
+          .in("name", targetNamesList);
+        logAudit("Undo Batch Approval", `Reverted approval for ${count} submissions`);
+      } catch (err) {
+        console.warn("Failed to revert batch approval in DB:", err);
+      }
+    });
+
+    logAudit("Batch Approve", `Approved ${count} pending submissions at once`);
+
+    // Background chunked upsert to Supabase
     setActioningId("batch_approve");
     try {
-      const names = pendingEntries.map((e) => e.name);
-      await supabase
+      // 1. Update any entries already present in DB
+      const { error: updateErr } = await supabase
         .from("entries")
         .update({ approved: true })
-        .in("name", names);
+        .in("name", targetNamesList);
+      if (updateErr) {
+        console.warn("[Admin] Batch update warning:", updateErr.message);
+      }
 
-      // Also ensure batch upsert for items originating from local request list
-      const payload = pendingEntries.map((e) => ({ ...e, approved: true }));
-      await supabase
-        .from("entries")
-        .upsert(payload, { onConflict: "name" });
-
-      const count = pendingEntries.length;
+      // 2. Batch upsert in chunks of 25 with cleaned payload & explicit onConflict: "name"
+      const cleaned = targets.map(sanitizeEntryForCatalogDb);
+      const chunkSize = 25;
+      for (let i = 0; i < cleaned.length; i += chunkSize) {
+        const chunk = cleaned.slice(i, i + chunkSize);
+        const { error: upsertErr } = await supabase
+          .from("entries")
+          .upsert(chunk, { onConflict: "name" });
+        if (upsertErr) throw upsertErr;
+      }
 
       // Persist all approved names to local tracking
       try {
         const stored = localStorage.getItem("aiverse_approved_pulse_requests");
         const list: string[] = stored ? JSON.parse(stored) : [];
         const set = new Set(list.map((n) => n.toLowerCase().trim()));
-        names.forEach((n) => set.add(n.toLowerCase().trim()));
+        targetNamesList.forEach((n) => set.add(n.toLowerCase().trim()));
         localStorage.setItem("aiverse_approved_pulse_requests", JSON.stringify(Array.from(set)));
       } catch {}
 
@@ -650,73 +795,147 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         const stored = localStorage.getItem("aiverse_dismissed_pulse_requests");
         if (stored) {
           const list: string[] = JSON.parse(stored);
-          const nameSet = new Set(names.map((n) => n.toLowerCase().trim()));
+          const nameSet = new Set(targetNamesList.map((n) => n.toLowerCase().trim()));
           const filtered = list.filter((n) => !nameSet.has(n.toLowerCase().trim()));
           localStorage.setItem("aiverse_dismissed_pulse_requests", JSON.stringify(filtered));
         }
       } catch {}
-
-      setApprovedEntries((prev) => [
-        ...pendingEntries.map((e) => ({ ...e, approved: true })),
-        ...prev,
-      ]);
-      setPendingEntries([]);
-      setBatchConfirm(null);
-      showToast("success", `Approved and published all ${count} submissions.`);
-      logAudit("Batch Approve", `Approved all ${count} pending submissions at once`);
     } catch (err: any) {
-      showToast("error", `Batch approve failed: ${err.message}`);
+      // Rollback on DB error
+      setPendingEntries(prevPending);
+      setApprovedEntries(prevApproved);
+      showToast("error", `Batch approve database sync failed. Rolled back: ${err.message || err.details || "Database error"}`);
     } finally {
       setActioningId(null);
     }
   };
 
-  const handleBatchRejectAll = async () => {
-    if (pendingEntries.length === 0) return;
-    setActioningId("batch_reject");
+  const handleBatchApproveAll = async () => {
+    return handleBatchApprove();
+  };
+
+  // ── Optimistic Action: Single Reject with 0ms UI update and Undo ──────────
+  const handleReject = async (entryName: string) => {
+    const prevPending = [...pendingEntries];
+    const target = pendingEntries.find((e) => e.name === entryName);
+    if (!target) return;
+
+    // 0ms Optimistic Update
+    setPendingEntries((prev) => prev.filter((e) => e.name !== entryName));
+    setSelectedSubmissions((prev) => {
+      const next = new Set(prev);
+      next.delete(entryName);
+      return next;
+    });
+    if (reviewingEntry?.name === entryName) setReviewingEntry(null);
+    if (expandedSubmissionName === entryName) setExpandedSubmissionName(null);
+    setDeleteConfirmEntry(null);
+
+    showToast("success", `Rejected "${entryName}" from review queue.`, () => {
+      setPendingEntries(prevPending);
+      logAudit("Undo Reject", `Restored "${entryName}" to review queue`);
+    });
+
+    logAudit("Reject Asset", `Rejected "${entryName}" from review queue`);
+
+    // Background deletion
+    setActioningId(entryName);
     try {
-      const names = pendingEntries.map((e) => e.name);
       const { error: err } = await supabase
         .from("entries")
         .delete()
-        .in("name", names);
-
+        .eq("name", entryName);
       if (err) throw err;
 
-      const count = pendingEntries.length;
+      // Track as dismissed pulse
+      try {
+        const stored = localStorage.getItem("aiverse_dismissed_pulse_requests");
+        const list: string[] = stored ? JSON.parse(stored) : [];
+        const set = new Set(list.map((n) => n.toLowerCase().trim()));
+        set.add(entryName.toLowerCase().trim());
+        localStorage.setItem("aiverse_dismissed_pulse_requests", JSON.stringify(Array.from(set)));
+      } catch {}
+    } catch (err: any) {
+      setPendingEntries(prevPending);
+      showToast("error", `Failed to reject "${entryName}". Rolled back: ${err.message || "Database error"}`);
+    } finally {
+      setActioningId(null);
+    }
+  };
+
+  // ── Optimistic Action: Batch Reject (Selection or All) ────────────────────
+  const handleBatchReject = async (specificNames?: string[]) => {
+    const targetNames = specificNames && specificNames.length > 0
+      ? new Set(specificNames)
+      : selectedSubmissions.size > 0
+      ? new Set(selectedSubmissions)
+      : new Set(pendingEntries.map((e) => e.name));
+
+    if (targetNames.size === 0) return;
+
+    const targetNamesList = Array.from(targetNames);
+    const count = targetNamesList.length;
+    const prevPending = [...pendingEntries];
+
+    // 0ms Optimistic Update
+    setPendingEntries((prev) => prev.filter((e) => !targetNames.has(e.name)));
+    setSelectedSubmissions(new Set());
+    setBatchConfirm(null);
+
+    showToast("success", `Purged ${count} submissions from queue.`, () => {
+      setPendingEntries(prevPending);
+      logAudit("Undo Batch Reject", `Restored ${count} submissions to queue`);
+    });
+
+    logAudit("Batch Reject", `Purged ${count} pending submissions from queue`);
+
+    setActioningId("batch_reject");
+    try {
+      const { error: err } = await supabase
+        .from("entries")
+        .delete()
+        .in("name", targetNamesList);
+      if (err) throw err;
 
       // Persist rejected names to local dismissed tracking
       try {
         const stored = localStorage.getItem("aiverse_dismissed_pulse_requests");
         const list: string[] = stored ? JSON.parse(stored) : [];
         const set = new Set(list.map((n) => n.toLowerCase().trim()));
-        names.forEach((n) => set.add(n.toLowerCase().trim()));
+        targetNamesList.forEach((n) => set.add(n.toLowerCase().trim()));
         localStorage.setItem("aiverse_dismissed_pulse_requests", JSON.stringify(Array.from(set)));
       } catch {}
-
-      // Clean from approved tracking if present
-      try {
-        const stored = localStorage.getItem("aiverse_approved_pulse_requests");
-        if (stored) {
-          const list: string[] = JSON.parse(stored);
-          const nameSet = new Set(names.map((n) => n.toLowerCase().trim()));
-          const filtered = list.filter((n) => !nameSet.has(n.toLowerCase().trim()));
-          localStorage.setItem("aiverse_approved_pulse_requests", JSON.stringify(filtered));
-        }
-      } catch {}
-
-      setPendingEntries([]);
-      setBatchConfirm(null);
-      showToast("success", `Purged all ${count} submissions.`);
-      logAudit("Batch Reject", `Discarded all ${count} pending submissions from queue`);
     } catch (err: any) {
-      showToast("error", `Batch reject failed: ${err.message}`);
+      setPendingEntries(prevPending);
+      showToast("error", `Batch reject failed. Rolled back: ${err.message || "Database error"}`);
     } finally {
       setActioningId(null);
     }
   };
 
+  const handleBatchRejectAll = async () => {
+    return handleBatchReject();
+  };
+
+  // ── Optimistic Action: Delete from Active Catalog with Rollback and Undo ──
   const executeDelete = async (entryName: string) => {
+    const prevPending = [...pendingEntries];
+    const prevApproved = [...approvedEntries];
+
+    // 0ms Optimistic UI update
+    setPendingEntries((prev) => prev.filter((e) => e.name !== entryName));
+    setApprovedEntries((prev) => prev.filter((e) => e.name !== entryName));
+    if (reviewingEntry?.name === entryName) setReviewingEntry(null);
+    setDeleteConfirmEntry(null);
+
+    showToast("success", `"${entryName}" has been deleted from catalog.`, () => {
+      setPendingEntries(prevPending);
+      setApprovedEntries(prevApproved);
+      logAudit("Undo Delete", `Restored "${entryName}" to catalog`);
+    });
+
+    logAudit("Delete Asset", `Deleted "${entryName}" from catalog`);
+
     setActioningId(entryName);
     try {
       const { error: err } = await supabase
@@ -749,22 +968,27 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           localStorage.setItem("aiverse_approved_pulse_requests", JSON.stringify(filtered));
         }
       } catch {}
-
-      setPendingEntries((prev) => prev.filter((e) => e.name !== entryName));
-      setApprovedEntries((prev) => prev.filter((e) => e.name !== entryName));
-      if (reviewingEntry?.name === entryName) setReviewingEntry(null);
-      showToast("success", `"${entryName}" has been deleted from catalog.`);
-      logAudit("Delete Asset", `Deleted "${entryName}" from catalog`);
     } catch (err: any) {
-      showToast("error", `Failed to delete "${entryName}": ${err.message}`);
+      setPendingEntries(prevPending);
+      setApprovedEntries(prevApproved);
+      showToast("error", `Failed to delete "${entryName}". Rolled back: ${err.message || "Database error"}`);
     } finally {
       setActioningId(null);
-      setDeleteConfirmEntry(null);
     }
   };
 
+  // ── Optimistic Action: Star / Featured Toggle ─────────────────────────────
   const handleTogglePopular = async (entry: Entry) => {
     const newPopular = !entry.popular;
+    const prevApproved = [...approvedEntries];
+
+    // 0ms Optimistic UI update
+    setApprovedEntries((prev) =>
+      prev.map((e) => (e.name === entry.name ? { ...e, popular: newPopular } : e))
+    );
+    showToast("success", `"${entry.name}" marked as ${newPopular ? "Featured ⭐" : "Standard"}.`);
+    logAudit("Toggle Featured", `Updated "${entry.name}" featured status to ${newPopular}`);
+
     setActioningId(entry.name);
     try {
       const { error: err } = await supabase
@@ -773,14 +997,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         .eq("name", entry.name);
 
       if (err) throw err;
-
-      setApprovedEntries((prev) =>
-        prev.map((e) => (e.name === entry.name ? { ...e, popular: newPopular } : e))
-      );
-      showToast("success", `"${entry.name}" marked as ${newPopular ? "Featured ⭐" : "Standard"}.`);
-      logAudit("Toggle Featured", `Updated "${entry.name}" featured status to ${newPopular}`);
     } catch (err: any) {
-      showToast("error", `Failed to update featured state: ${err.message}`);
+      setApprovedEntries(prevApproved);
+      showToast("error", `Failed to update featured state: ${err.message || "Database error"}`);
     } finally {
       setActioningId(null);
     }
@@ -1377,11 +1596,37 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               <span className="w-1.5 h-1.5 rounded-full bg-[#1e8e3e]" />
               Production
             </span>
+
+            {/* Live Telemetry Status Pills */}
+            <span className="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8]">
+              <Layers size={12} />
+              {approvedEntries.length} Live Assets
+            </span>
+            {pendingEntries.length > 0 ? (
+              <span className="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#fef7e0] text-[#7c4a03] dark:bg-[#332a00] dark:text-[#fdd663]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#f9ab00] animate-pulse" />
+                {pendingEntries.length} In Review
+              </span>
+            ) : (
+              <span className="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#e6f4ea] text-[#137333] dark:bg-[#0d3419] dark:text-[#81c995]">
+                <Check size={11} className="stroke-[2.5px]" />
+                Queue Pristine
+              </span>
+            )}
           </div>
         </div>
 
         {/* Global Toolbar Actions */}
         <div className="flex items-center gap-2">
+          <button
+            onClick={() => setCodebaseSyncModalOpen(true)}
+            title="Codebase & Supabase Sync status and seed scripts"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs font-medium border border-[#dadce0] dark:border-[#3c4043] bg-neutral-50 dark:bg-neutral-800/60 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#3c4043] dark:text-[#e8eaed] transition-colors cursor-pointer"
+          >
+            <Terminal size={13} className="text-[#1a73e8] dark:text-[#8ab4f8]" />
+            <span className="hidden md:inline">Codebase Sync</span>
+          </button>
+
           <button
             onClick={() => {
               setEditingEntry({
@@ -1933,44 +2178,102 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           {/* ════════════════════════════════════════════════════════════════════
               SECTION 3: REVIEW QUEUE (PENDING SUBMISSIONS)
           ════════════════════════════════════════════════════════════════════ */}
+          {/* ════════════════════════════════════════════════════════════════════
+              SECTION 3: REVIEW QUEUE (PENDING SUBMISSIONS) - OPTIMISTIC & MODERN
+          ════════════════════════════════════════════════════════════════════ */}
           {activeNav === "submissions" && (
             <div className="space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                  <h2 className="text-lg font-medium text-[#202124] dark:text-[#e8eaed]">Review Queue</h2>
+                  <div className="flex items-center gap-2">
+                    <h2 className="text-lg font-medium text-[#202124] dark:text-[#e8eaed]">Review Queue</h2>
+                    {pendingEntries.length > 0 && (
+                      <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-[#fef7e0] text-[#7c4a03] dark:bg-[#332a00] dark:text-[#fdd663] border border-[#f9ab00]/30">
+                        {pendingEntries.length} awaiting audit
+                      </span>
+                    )}
+                  </div>
                   <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                    Audit and approve community-submitted models, frameworks, datasets, and platforms.
+                    Audit and approve community-submitted models, frameworks, datasets, and platforms with 0ms optimistic publishing.
                   </p>
                 </div>
                 {pendingEntries.length > 0 && (
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
                     <button
-                      onClick={() => setBatchConfirm("approve")}
-                      className="px-3 py-1.5 rounded text-xs font-medium text-white bg-[#1a73e8] hover:bg-[#1557b0] cursor-pointer shadow-xs transition-colors flex items-center gap-1"
+                      onClick={() => setCodebaseSyncModalOpen(true)}
+                      className="px-3 py-1.5 rounded-lg text-xs font-medium border border-[#dadce0] dark:border-[#3c4043] hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#3c4043] dark:text-[#e8eaed] cursor-pointer transition-colors flex items-center gap-1.5"
                     >
-                      <CheckCheck size={13} />
-                      Approve All ({pendingEntries.length})
+                      <Terminal size={13} className="text-[#1a73e8] dark:text-[#8ab4f8]" />
+                      Codebase Sync
                     </button>
                     <button
-                      onClick={() => setBatchConfirm("reject")}
-                      className="px-3 py-1.5 rounded text-xs font-medium text-[#d93025] border border-[#d93025]/30 hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] cursor-pointer transition-colors"
+                      onClick={() => exportDataAsJson(pendingEntries, "aiverse_pending_queue")}
+                      className="px-3 py-1.5 rounded-lg text-xs font-medium text-[#5f6368] dark:text-[#9aa0a6] border border-[#dadce0] dark:border-[#3c4043] hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer transition-colors flex items-center gap-1"
+                      title="Download JSON of pending entries"
                     >
-                      Purge All
+                      <Download size={13} />
+                      Export JSON
+                    </button>
+                    <button
+                      onClick={() => {
+                        if (selectedSubmissions.size > 0) {
+                          handleBatchApprove(Array.from(selectedSubmissions));
+                        } else {
+                          setBatchConfirm("approve");
+                        }
+                      }}
+                      className="px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] cursor-pointer shadow-xs transition-colors flex items-center gap-1.5"
+                    >
+                      <CheckCheck size={14} />
+                      {selectedSubmissions.size > 0
+                        ? `Approve Selected (${selectedSubmissions.size})`
+                        : `Approve All (${pendingEntries.length})`}
+                    </button>
+                    <button
+                      onClick={() => {
+                        if (selectedSubmissions.size > 0) {
+                          handleBatchReject(Array.from(selectedSubmissions));
+                        } else {
+                          setBatchConfirm("reject");
+                        }
+                      }}
+                      className="px-3 py-1.5 rounded-lg text-xs font-medium text-[#d93025] border border-[#d93025]/30 hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] cursor-pointer transition-colors"
+                    >
+                      {selectedSubmissions.size > 0 ? `Purge Selected (${selectedSubmissions.size})` : "Purge All"}
                     </button>
                   </div>
                 )}
               </div>
 
+              {pendingEntries.length > 0 && (
+                <div className="p-3.5 rounded-xl border border-[#1a73e8]/25 bg-[#e8f0fe] dark:bg-[#1a2e4c] text-xs text-[#174ea6] dark:text-[#8ab4f8] flex items-start justify-between gap-3">
+                  <div className="flex items-start gap-2.5">
+                    <Info size={16} className="shrink-0 mt-0.5" />
+                    <div className="leading-relaxed">
+                      <span>
+                        <strong>Optimistic Publishing Active:</strong> Clicking Approve immediately publishes the asset with instant zero-latency UI response and an undo toast. To sync local repository static files (<code>src/data.ts</code>), run <code>npm run approve:pending</code>.
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setCodebaseSyncModalOpen(true)}
+                    className="shrink-0 px-2 py-1 rounded bg-white/60 dark:bg-black/20 hover:bg-white dark:hover:bg-black/40 text-[11px] font-semibold text-[#1a73e8] dark:text-[#8ab4f8] transition-colors cursor-pointer"
+                  >
+                    Details &rarr;
+                  </button>
+                </div>
+              )}
+
               {/* Filter and Search Bar for Submissions */}
               {pendingEntries.length > 0 && (
-                <div className="p-3 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="p-3.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] flex flex-col sm:flex-row items-center justify-between gap-3">
                   <div className="relative flex-1 max-w-sm w-full">
                     <input
                       type="text"
                       value={submissionsSearch}
                       onChange={(e) => setSubmissionsSearch(e.target.value)}
                       placeholder="Search queue by asset or organization..."
-                      className="w-full pl-8 pr-3 py-1.5 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-[#f1f3f4] dark:bg-[#202124] focus:bg-white dark:focus:bg-[#1e1f20] text-xs outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
+                      className="w-full pl-8 pr-3 py-1.5 rounded-lg border border-[#dadce0] dark:border-[#5f6368] bg-[#f1f3f4] dark:bg-[#202124] focus:bg-white dark:focus:bg-[#1e1f20] text-xs outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
                     />
                     <Search className="absolute left-2.5 top-2 text-[#5f6368] dark:text-[#9aa0a6]" size={13} />
                   </div>
@@ -1979,7 +2282,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     <select
                       value={submissionsTypeFilter}
                       onChange={(e) => setSubmissionsTypeFilter(e.target.value)}
-                      className="px-3 py-1.5 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs outline-none cursor-pointer"
+                      className="px-3 py-1.5 rounded-lg border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs outline-none cursor-pointer"
                     >
                       <option value="All">All Categories ({pendingEntries.length})</option>
                       <option value="Model">Models</option>
@@ -1997,22 +2300,63 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               )}
 
               {filteredSubmissions.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-20 gap-3 text-center border border-dashed rounded-lg border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20]">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#e6f4ea] text-[#137333] dark:bg-[#0d3419] dark:text-[#81c995] mb-1">
-                    <Check size={22} className="stroke-[2.5px]" />
+                <div className="flex flex-col items-center justify-center py-16 px-4 gap-4 text-center border border-dashed rounded-2xl border-[#dadce0] dark:border-[#3c4043] bg-gradient-to-b from-white to-[#f8f9fa] dark:from-[#1e1f20] dark:to-[#171718] shadow-xs">
+                  <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-gradient-to-tr from-[#e6f4ea] to-[#ceead6] dark:from-[#0d3419] dark:to-[#137333]/30 text-[#137333] dark:text-[#81c995] shadow-inner mb-1">
+                    <Sparkles size={28} className="stroke-[2px]" />
                   </div>
-                  <p className="text-sm font-medium text-[#202124] dark:text-[#e8eaed]">Review queue is clean</p>
-                  <p className="text-xs max-w-sm text-[#5f6368] dark:text-[#9aa0a6]">
-                    All submissions have been audited and published to the live directory.
-                  </p>
+                  <div className="space-y-1">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#e6f4ea] text-[#137333] dark:bg-[#0d3419] dark:text-[#81c995] mb-1">
+                      <CheckCircle2 size={12} /> 100% Up to Date
+                    </div>
+                    <h3 className="text-lg font-semibold text-[#202124] dark:text-[#e8eaed]">
+                      Review queue is pristine
+                    </h3>
+                    <p className="text-xs max-w-md text-[#5f6368] dark:text-[#9aa0a6] leading-relaxed">
+                      All community submissions, Daily Pulse discoveries, and AI assets have been audited and deployed to the active catalog.
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2 pt-2">
+                    <button
+                      onClick={() => handleNavSelect("directory")}
+                      className="px-4 py-2 rounded-lg text-xs font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#8ab4f8] dark:text-[#202124] shadow-xs transition-colors cursor-pointer flex items-center gap-1.5"
+                    >
+                      <Layers size={14} />
+                      Browse Catalog ({approvedEntries.length})
+                    </button>
+                    <button
+                      onClick={() => setCodebaseSyncModalOpen(true)}
+                      className="px-4 py-2 rounded-lg text-xs font-medium border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] hover:bg-neutral-50 dark:hover:bg-neutral-800 text-[#3c4043] dark:text-[#e8eaed] transition-colors cursor-pointer flex items-center gap-1.5"
+                    >
+                      <Terminal size={14} className="text-[#1a73e8] dark:text-[#8ab4f8]" />
+                      Codebase Sync
+                    </button>
+                  </div>
                 </div>
               ) : (
-                <div className="rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] overflow-hidden">
+                <div className="rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] overflow-hidden shadow-xs">
                   <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                       <thead>
                         <tr className="border-b border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] text-[11px] font-semibold uppercase tracking-wider text-[#5f6368] dark:text-[#9aa0a6]">
-                          <th className="px-4 py-3">Asset</th>
+                          <th className="w-10 px-3 py-3 text-center">
+                            <button
+                              type="button"
+                              onClick={toggleSelectAllSubmissions}
+                              title={selectedSubmissions.size === filteredSubmissions.length ? "Deselect All" : "Select All"}
+                              className="text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#1a73e8] cursor-pointer"
+                            >
+                              {selectedSubmissions.size > 0 && selectedSubmissions.size === filteredSubmissions.length ? (
+                                <CheckSquare size={15} className="text-[#1a73e8] dark:text-[#8ab4f8]" />
+                              ) : selectedSubmissions.size > 0 ? (
+                                <div className="w-3.5 h-3.5 rounded-xs border-2 border-[#1a73e8] flex items-center justify-center">
+                                  <div className="w-2 h-1 bg-[#1a73e8]" />
+                                </div>
+                              ) : (
+                                <Square size={15} />
+                              )}
+                            </button>
+                          </th>
+                          <th className="px-3 py-3">Asset</th>
                           <th className="px-3 py-3">Organization</th>
                           <th className="px-3 py-3">Category</th>
                           <th className="px-3 py-3">Task Domain</th>
@@ -2025,32 +2369,62 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                         {filteredSubmissions.map((entry) => {
                           const submitter = users.find((u) => u.userKey === entry.submitted_by);
                           const isNew = isNewSubmission(entry.created_at);
+                          const isSelected = selectedSubmissions.has(entry.name);
+                          const isExpanded = expandedSubmissionName === entry.name;
 
                           return (
-                            <tr key={entry.name} className="hover:bg-[#f8f9fa] dark:hover:bg-[#282a2d] transition-colors">
-                              <td className="px-4 py-3">
-                                <div className="flex items-center gap-2">
+                            <React.Fragment key={entry.name}>
+                              <tr
+                                className={`transition-colors ${
+                                  isSelected
+                                    ? "bg-[#e8f0fe]/50 dark:bg-[#1a2e4c]/30"
+                                    : "hover:bg-[#f8f9fa] dark:hover:bg-[#282a2d]"
+                                }`}
+                              >
+                                <td className="w-10 px-3 py-3 text-center">
                                   <button
-                                    onClick={() => setReviewingEntry(entry)}
-                                    className="font-medium text-[#1a73e8] dark:text-[#8ab4f8] hover:underline cursor-pointer text-left"
+                                    type="button"
+                                    onClick={() => toggleSelectSubmission(entry.name)}
+                                    className="text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#1a73e8] cursor-pointer"
                                   >
-                                    {entry.name}
+                                    {isSelected ? (
+                                      <CheckSquare size={15} className="text-[#1a73e8] dark:text-[#8ab4f8]" />
+                                    ) : (
+                                      <Square size={15} />
+                                    )}
                                   </button>
-                                  {isNew && (
-                                    <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-[#e8f0fe] text-[#1967d2] dark:bg-[#1a2e4c] dark:text-[#a8c7fa]">
-                                      NEW
-                                    </span>
-                                  )}
-                                </div>
-                              </td>
-                              <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.org || "Independent"}</td>
-                              <td className="px-3 py-3">
-                                <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${typeBadge(entry.type, t)}`}>
-                                  {entry.type}
-                                </span>
-                              </td>
-                              <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.task}</td>
-                              <td className="px-3 py-3">
+                                </td>
+                                <td className="px-3 py-3">
+                                  <div className="flex items-center gap-2">
+                                    <button
+                                      type="button"
+                                      onClick={() => setExpandedSubmissionName(isExpanded ? null : entry.name)}
+                                      className="p-1 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-[#5f6368] dark:text-[#9aa0a6] cursor-pointer transition-colors"
+                                      title={isExpanded ? "Collapse inline specs" : "Expand inline specs"}
+                                    >
+                                      {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                                    </button>
+                                    <button
+                                      onClick={() => setReviewingEntry(entry)}
+                                      className="font-medium text-[#1a73e8] dark:text-[#8ab4f8] hover:underline cursor-pointer text-left"
+                                    >
+                                      {entry.name}
+                                    </button>
+                                    {isNew && (
+                                      <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-[#e8f0fe] text-[#1967d2] dark:bg-[#1a2e4c] dark:text-[#a8c7fa]">
+                                        NEW
+                                      </span>
+                                    )}
+                                  </div>
+                                </td>
+                                <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.org || "Independent"}</td>
+                                <td className="px-3 py-3">
+                                  <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${typeBadge(entry.type, t)}`}>
+                                    {entry.type}
+                                  </span>
+                                </td>
+                                <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.task}</td>
+                                <td className="px-3 py-3">
                                   {entry.submitted_by === "daily-pulse-bot" ? (
                                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#e8f0fe] text-[#1967d2] dark:bg-[#1a2e4c] dark:text-[#a8c7fa] border border-[#1967d2]/20">
                                       <Sparkles size={11} className="text-[#1967d2] dark:text-[#a8c7fa]" />
@@ -2070,39 +2444,141 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                       </span>
                                     </div>
                                   )}
-                              </td>
-                              <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">
-                                {entry.license} · {entry.size}
-                              </td>
-                              <td className="px-4 py-3 text-right">
-                                <div className="flex items-center justify-end gap-1.5">
-                                  <button
-                                    type="button"
-                                    onClick={() => setReviewingEntry(entry)}
-                                    className="px-2.5 py-1 rounded text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#1a73e8] dark:text-[#8ab4f8] hover:bg-[#e8f0fe] dark:hover:bg-[#1a2e4c] transition-colors cursor-pointer"
-                                  >
-                                    Inspect Specs
-                                  </button>
-                                  <button
-                                    type="button"
-                                    onClick={() => handleApprove(entry)}
-                                    disabled={actioningId === entry.name}
-                                    className="px-2.5 py-1 rounded text-xs font-medium bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#8ab4f8] dark:text-[#202124] text-white transition-colors cursor-pointer disabled:opacity-50"
-                                  >
-                                    {actioningId === entry.name ? "..." : "Approve"}
-                                  </button>
-                                  <button
-                                    type="button"
-                                    onClick={() => setDeleteConfirmEntry(entry.name)}
-                                    disabled={actioningId === entry.name}
-                                    className="p-1 rounded text-[#d93025] dark:text-[#f28b82] hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] transition-colors cursor-pointer disabled:opacity-50"
-                                    title="Reject"
-                                  >
-                                    <Trash2 size={13} />
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
+                                </td>
+                                <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">
+                                  {entry.license} · {entry.size}
+                                </td>
+                                <td className="px-4 py-3 text-right">
+                                  <div className="flex items-center justify-end gap-1.5">
+                                    <button
+                                      type="button"
+                                      onClick={() => setReviewingEntry(entry)}
+                                      className="px-2.5 py-1 rounded-lg text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#1a73e8] dark:text-[#8ab4f8] hover:bg-[#e8f0fe] dark:hover:bg-[#1a2e4c] transition-colors cursor-pointer"
+                                    >
+                                      Inspect Specs
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() => handleApprove(entry)}
+                                      disabled={actioningId === entry.name}
+                                      className="px-2.5 py-1 rounded-lg text-xs font-medium bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#8ab4f8] dark:text-[#202124] text-white transition-colors cursor-pointer disabled:opacity-50"
+                                      title="Instantly approve and publish"
+                                    >
+                                      {actioningId === entry.name ? "..." : "Approve"}
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() => handleReject(entry.name)}
+                                      disabled={actioningId === entry.name}
+                                      className="p-1.5 rounded-lg text-[#d93025] dark:text-[#f28b82] hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] transition-colors cursor-pointer disabled:opacity-50"
+                                      title="Reject submission"
+                                    >
+                                      <Trash2 size={13} />
+                                    </button>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              {/* Inline Quick-Specs Drawer */}
+                              {isExpanded && (
+                                <tr className="bg-[#f8f9fa]/80 dark:bg-[#18191a]/80">
+                                  <td colSpan={8} className="px-6 py-4 border-b border-[#dadce0] dark:border-[#3c4043]">
+                                    <div className="space-y-3 max-w-4xl">
+                                      <div>
+                                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#5f6368] dark:text-[#9aa0a6]">
+                                          Summary
+                                        </span>
+                                        <p className="mt-0.5 text-xs text-[#202124] dark:text-[#e8eaed] leading-relaxed">
+                                          {entry.summary || "No summary description provided."}
+                                        </p>
+                                      </div>
+
+                                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs pt-1">
+                                        <div className="p-2.5 rounded-lg bg-white dark:bg-[#202124] border border-[#dadce0] dark:border-[#3c4043]">
+                                          <span className="text-[10px] text-[#5f6368] dark:text-[#9aa0a6] block">Architecture</span>
+                                          <span className="font-semibold text-[#202124] dark:text-[#e8eaed]">{entry.architecture || "Standard"}</span>
+                                        </div>
+                                        <div className="p-2.5 rounded-lg bg-white dark:bg-[#202124] border border-[#dadce0] dark:border-[#3c4043]">
+                                          <span className="text-[10px] text-[#5f6368] dark:text-[#9aa0a6] block">Benchmarks</span>
+                                          <span className="font-semibold text-[#202124] dark:text-[#e8eaed]">{entry.benchmarks || "N/A"}</span>
+                                        </div>
+                                        <div className="p-2.5 rounded-lg bg-white dark:bg-[#202124] border border-[#dadce0] dark:border-[#3c4043]">
+                                          <span className="text-[10px] text-[#5f6368] dark:text-[#9aa0a6] block">Parameters / Size</span>
+                                          <span className="font-semibold text-[#202124] dark:text-[#e8eaed]">{entry.size || "Unknown"}</span>
+                                        </div>
+                                        <div className="p-2.5 rounded-lg bg-white dark:bg-[#202124] border border-[#dadce0] dark:border-[#3c4043]">
+                                          <span className="text-[10px] text-[#5f6368] dark:text-[#9aa0a6] block">Documentation</span>
+                                          {entry.url ? (
+                                            <a
+                                              href={entry.url}
+                                              target="_blank"
+                                              rel="noopener noreferrer"
+                                              className="font-semibold text-[#1a73e8] dark:text-[#8ab4f8] hover:underline flex items-center gap-1"
+                                            >
+                                              Open URL <ExternalLink size={11} />
+                                            </a>
+                                          ) : (
+                                            <span className="text-[#5f6368] dark:text-[#9aa0a6]">None</span>
+                                          )}
+                                        </div>
+                                      </div>
+
+                                      {entry.usage && (
+                                        <div className="pt-1">
+                                          <div className="flex items-center justify-between mb-1">
+                                            <span className="text-[10px] font-bold uppercase tracking-wider text-[#5f6368] dark:text-[#9aa0a6]">
+                                              Quickstart / Usage Code
+                                            </span>
+                                            <button
+                                              type="button"
+                                              onClick={() => {
+                                                navigator.clipboard.writeText(entry.usage || "");
+                                                setCopiedCodeKey(entry.name);
+                                                setTimeout(() => setCopiedCodeKey(null), 2000);
+                                              }}
+                                              className="inline-flex items-center gap-1 text-[11px] text-[#1a73e8] dark:text-[#8ab4f8] hover:underline cursor-pointer"
+                                            >
+                                              {copiedCodeKey === entry.name ? (
+                                                <>
+                                                  <Check size={12} className="text-[#1e8e3e]" />
+                                                  <span>Copied!</span>
+                                                </>
+                                              ) : (
+                                                <>
+                                                  <Copy size={12} />
+                                                  <span>Copy Snippet</span>
+                                                </>
+                                              )}
+                                            </button>
+                                          </div>
+                                          <pre className="p-3 rounded-lg bg-[#202124] text-white font-mono text-[11px] leading-relaxed overflow-x-auto max-h-36">
+                                            {entry.usage}
+                                          </pre>
+                                        </div>
+                                      )}
+
+                                      <div className="flex items-center justify-end gap-2 pt-2">
+                                        <button
+                                          type="button"
+                                          onClick={() => handleReject(entry.name)}
+                                          className="px-3 py-1.5 rounded-lg text-xs font-medium text-[#d93025] hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] transition-colors cursor-pointer"
+                                        >
+                                          Reject Submission
+                                        </button>
+                                        <button
+                                          type="button"
+                                          onClick={() => handleApprove(entry)}
+                                          className="px-4 py-1.5 rounded-lg text-xs font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] transition-colors cursor-pointer flex items-center gap-1.5 shadow-xs"
+                                        >
+                                          <Check size={13} />
+                                          Approve Immediately
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              )}
+                            </React.Fragment>
                           );
                         })}
                       </tbody>
@@ -2110,11 +2586,58 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                   </div>
                 </div>
               )}
+
+              {/* Floating Batch Action Bar when items selected */}
+              {selectedSubmissions.size > 0 && (
+                <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-[#202124]/95 dark:bg-white/95 text-white dark:text-[#202124] px-5 py-3 rounded-2xl shadow-2xl border border-neutral-700/80 dark:border-neutral-200/80 flex items-center gap-4 backdrop-blur-md animate-[fadeUp_0.2s_ease-out]">
+                  <div className="flex items-center gap-2 font-medium text-xs">
+                    <span className="w-5 h-5 rounded-full bg-[#1a73e8] text-white flex items-center justify-center text-[10px] font-bold">
+                      {selectedSubmissions.size}
+                    </span>
+                    <span>selected</span>
+                  </div>
+                  <div className="h-4 w-px bg-white/20 dark:bg-black/20" />
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => handleBatchApprove(Array.from(selectedSubmissions))}
+                      disabled={actioningId === "batch_approve"}
+                      className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] text-white transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm"
+                    >
+                      <CheckCheck size={14} />
+                      Approve Selected ({selectedSubmissions.size})
+                    </button>
+                    <button
+                      onClick={() => handleBatchReject(Array.from(selectedSubmissions))}
+                      disabled={actioningId === "batch_reject"}
+                      className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#d93025]/90 hover:bg-[#d93025] text-white transition-colors cursor-pointer flex items-center gap-1.5"
+                    >
+                      <Trash2 size={13} />
+                      Reject Selected
+                    </button>
+                    <button
+                      onClick={() => {
+                        const selectedEntries = pendingEntries.filter((e) => selectedSubmissions.has(e.name));
+                        exportDataAsJson(selectedEntries, `aiverse_selected_submissions_${selectedSubmissions.size}`);
+                      }}
+                      className="px-2.5 py-1.5 rounded-lg text-xs font-medium border border-white/20 dark:border-black/20 hover:bg-white/10 dark:hover:bg-black/5 transition-colors cursor-pointer flex items-center gap-1"
+                    >
+                      <Download size={13} />
+                      Export
+                    </button>
+                    <button
+                      onClick={() => setSelectedSubmissions(new Set())}
+                      className="px-2 py-1 text-xs opacity-70 hover:opacity-100 cursor-pointer transition-opacity"
+                    >
+                      Deselect
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
           {/* ════════════════════════════════════════════════════════════════════
-              SECTION 4: CATALOG DIRECTORY (LIVE APPROVED ASSETS)
+              SECTION 4: CATALOG DIRECTORY (LIVE APPROVED ASSETS) - TABLE & GRID
           ════════════════════════════════════════════════════════════════════ */}
           {activeNav === "directory" && (
             <div className="space-y-4">
@@ -2125,17 +2648,45 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     All {approvedEntries.length} verified and published models, tools, and platforms in the live registry.
                   </p>
                 </div>
-                <button
-                  onClick={() => exportDataAsJson(approvedEntries, "aiverse_catalog")}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] hover:bg-neutral-50 dark:hover:bg-neutral-800 text-[#3c4043] dark:text-[#e8eaed] cursor-pointer transition-colors"
-                >
-                  <Download size={13} />
-                  Export Catalog
-                </button>
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center border border-[#dadce0] dark:border-[#3c4043] rounded-lg p-0.5 bg-neutral-100 dark:bg-neutral-800">
+                    <button
+                      onClick={() => setCatalogViewMode("table")}
+                      className={`px-2.5 py-1 rounded text-xs font-medium flex items-center gap-1 cursor-pointer transition-colors ${
+                        catalogViewMode === "table"
+                          ? "bg-white dark:bg-[#1e1f20] text-[#1a73e8] dark:text-[#8ab4f8] shadow-xs"
+                          : "text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#202124] dark:hover:text-[#e8eaed]"
+                      }`}
+                      title="Table View"
+                    >
+                      <List size={13} />
+                      <span className="hidden sm:inline">Table</span>
+                    </button>
+                    <button
+                      onClick={() => setCatalogViewMode("grid")}
+                      className={`px-2.5 py-1 rounded text-xs font-medium flex items-center gap-1 cursor-pointer transition-colors ${
+                        catalogViewMode === "grid"
+                          ? "bg-white dark:bg-[#1e1f20] text-[#1a73e8] dark:text-[#8ab4f8] shadow-xs"
+                          : "text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#202124] dark:hover:text-[#e8eaed]"
+                      }`}
+                      title="Grid View"
+                    >
+                      <LayoutGrid size={13} />
+                      <span className="hidden sm:inline">Grid</span>
+                    </button>
+                  </div>
+                  <button
+                    onClick={() => exportDataAsJson(approvedEntries, "aiverse_catalog")}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] hover:bg-neutral-50 dark:hover:bg-neutral-800 text-[#3c4043] dark:text-[#e8eaed] cursor-pointer transition-colors"
+                  >
+                    <Download size={13} />
+                    Export Catalog
+                  </button>
+                </div>
               </div>
 
               {/* Search and Filters Bar */}
-              <div className="p-3.5 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] space-y-3">
+              <div className="p-3.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] space-y-3 shadow-xs">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="relative flex-1 max-w-md w-full">
                     <input
@@ -2146,7 +2697,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                         setDirectoryPage(1);
                       }}
                       placeholder="Search active catalog by name, org, or task..."
-                      className="w-full pl-8 pr-3 py-1.5 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-[#f1f3f4] dark:bg-[#202124] focus:bg-white dark:focus:bg-[#1e1f20] text-xs outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
+                      className="w-full pl-8 pr-3 py-1.5 rounded-lg border border-[#dadce0] dark:border-[#5f6368] bg-[#f1f3f4] dark:bg-[#202124] focus:bg-white dark:focus:bg-[#1e1f20] text-xs outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]"
                     />
                     <Search className="absolute left-2.5 top-2 text-[#5f6368] dark:text-[#9aa0a6]" size={13} />
                   </div>
@@ -2158,7 +2709,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                         setDirectoryTaskFilter(e.target.value);
                         setDirectoryPage(1);
                       }}
-                      className="px-3 py-1.5 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs outline-none cursor-pointer"
+                      className="px-3 py-1.5 rounded-lg border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#202124] text-xs outline-none cursor-pointer"
                     >
                       <option value="All Tasks">All Tasks</option>
                       {taskCounts.map(([taskName]) => (
@@ -2171,7 +2722,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                         setDirectoryFeaturedOnly((f) => !f);
                         setDirectoryPage(1);
                       }}
-                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium border transition-colors cursor-pointer ${
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors cursor-pointer ${
                         directoryFeaturedOnly
                           ? "bg-[#fef7e0] border-[#f9ab00] text-[#7c4a03] dark:bg-[#332a00] dark:text-[#fdd663]"
                           : "border-[#dadce0] dark:border-[#5f6368] text-[#5f6368] dark:text-[#9aa0a6] hover:bg-neutral-50 dark:hover:bg-neutral-800"
@@ -2214,141 +2765,289 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 </div>
               </div>
 
-              {/* Data Table */}
-              <div className="rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] overflow-hidden">
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left border-collapse">
-                    <thead>
-                      <tr className="border-b border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] text-[11px] font-semibold uppercase tracking-wider text-[#5f6368] dark:text-[#9aa0a6]">
-                        <th className="px-4 py-3">Asset</th>
-                        <th className="px-3 py-3">Organization</th>
-                        <th className="px-3 py-3">Category</th>
-                        <th className="px-3 py-3">Task Domain</th>
-                        <th className="px-3 py-3">License</th>
-                        <th className="px-3 py-3">Year</th>
-                        <th className="px-3 py-3 text-center">Featured</th>
-                        <th className="px-4 py-3 text-right">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-[#dadce0]/60 dark:divide-[#3c4043]/60 text-xs">
-                      {paginatedApproved.map((entry) => (
-                        <tr key={entry.name} className="hover:bg-[#f8f9fa] dark:hover:bg-[#282a2d] transition-colors">
-                          <td className="px-4 py-3 font-medium">
-                            <button
-                              onClick={() => onViewEntry?.(entry)}
-                              className="text-[#1a73e8] dark:text-[#8ab4f8] hover:underline cursor-pointer text-left"
-                            >
-                              {entry.name}
-                            </button>
-                          </td>
-                          <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.org || "—"}</td>
-                          <td className="px-3 py-3">
-                            <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${typeBadge(entry.type, t)}`}>
-                              {entry.type}
-                            </span>
-                          </td>
-                          <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.task}</td>
-                          <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.license || "—"}</td>
-                          <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.year}</td>
-                          <td className="px-3 py-3 text-center">
+              {/* View 1: Card Grid Mode */}
+              {catalogViewMode === "grid" ? (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                    {paginatedApproved.map((entry) => (
+                      <div
+                        key={entry.name}
+                        className="p-4 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] hover:shadow-md transition-all flex flex-col justify-between space-y-3"
+                      >
+                        <div>
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                              <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${typeBadge(entry.type, t)}`}>
+                                {entry.type}
+                              </span>
+                              <span className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] truncate max-w-[140px]">
+                                {entry.org || "Independent"}
+                              </span>
+                            </div>
                             <button
                               onClick={() => handleTogglePopular(entry)}
-                              disabled={actioningId === entry.name}
                               className="p-1 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
                               title={entry.popular ? "Featured (click to unfeature)" : "Click to feature"}
                             >
                               <Star
-                                size={14}
+                                size={15}
                                 className={entry.popular ? "fill-[#f9ab00] text-[#f9ab00]" : "text-[#5f6368] dark:text-[#9aa0a6]"}
                               />
                             </button>
-                          </td>
-                          <td className="px-4 py-3 text-right">
-                            <div className="flex items-center justify-end gap-1">
-                              <button
-                                onClick={() => {
-                                  setEditingEntry({
-                                    isNew: false,
-                                    name: entry.name,
-                                    org: entry.org || "",
-                                    type: entry.type,
-                                    task: entry.task || "NLP",
-                                    license: entry.license || "MIT",
-                                    year: entry.year || new Date().getFullYear(),
-                                    size: entry.size || "Unknown",
-                                    summary: entry.summary || "",
-                                    architecture: entry.architecture || "",
-                                    usage: entry.usage || "",
-                                    benchmarks: entry.benchmarks || "",
-                                    limitations: entry.limitations || "",
-                                    url: entry.url || "",
-                                    popular: !!entry.popular,
-                                  });
-                                }}
-                                className="p-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#1a73e8] dark:text-[#8ab4f8] transition-colors cursor-pointer"
-                                title="Edit specs"
-                              >
-                                <Edit size={13} />
-                              </button>
-                              <button
-                                type="button"
-                                onClick={() => setDeleteConfirmEntry(entry.name)}
-                                disabled={actioningId === entry.name}
-                                className="p-1.5 rounded hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] text-[#d93025] dark:text-[#f28b82] transition-colors cursor-pointer disabled:opacity-50"
-                                title="Delete asset"
-                              >
-                                <Trash2 size={13} />
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                          </div>
+                          <button
+                            onClick={() => onViewEntry?.(entry)}
+                            className="mt-1 font-semibold text-sm text-[#1a73e8] dark:text-[#8ab4f8] hover:underline cursor-pointer text-left line-clamp-1"
+                          >
+                            {entry.name}
+                          </button>
+                          <p className="mt-1 text-xs text-[#5f6368] dark:text-[#9aa0a6] line-clamp-2 leading-relaxed">
+                            {entry.summary || "No summary description provided."}
+                          </p>
+                        </div>
 
-                {/* Pagination Footer */}
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-4 py-3 border-t border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                  <div className="flex items-center gap-2">
-                    <span>Rows per page:</span>
-                    <select
-                      value={directoryPageSize}
-                      onChange={(e) => {
-                        setDirectoryPageSize(Number(e.target.value));
-                        setDirectoryPage(1);
-                      }}
-                      className="px-2 py-1 rounded border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#1e1f20] text-xs text-[#202124] dark:text-[#e8eaed] outline-none"
-                    >
-                      <option value={15}>15</option>
-                      <option value={20}>20</option>
-                      <option value={50}>50</option>
-                    </select>
+                        <div className="pt-2 border-t border-[#dadce0]/60 dark:border-[#3c4043]/60 flex items-center justify-between text-xs text-[#5f6368] dark:text-[#9aa0a6]">
+                          <div className="flex items-center gap-2">
+                            <span>{entry.task}</span>
+                            <span>·</span>
+                            <span>{entry.license || "Open"}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <button
+                              onClick={() => onViewEntry?.(entry)}
+                              className="p-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#1a73e8] cursor-pointer"
+                              title="View asset details"
+                            >
+                              <Eye size={13} />
+                            </button>
+                            {entry.url && (
+                              <a
+                                href={entry.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#1a73e8]"
+                                title="Open documentation"
+                              >
+                                <ExternalLink size={13} />
+                              </a>
+                            )}
+                            <button
+                              onClick={() => {
+                                setEditingEntry({
+                                  isNew: false,
+                                  name: entry.name,
+                                  org: entry.org || "",
+                                  type: entry.type,
+                                  task: entry.task || "NLP",
+                                  license: entry.license || "MIT",
+                                  year: entry.year || new Date().getFullYear(),
+                                  size: entry.size || "Unknown",
+                                  summary: entry.summary || "",
+                                  architecture: entry.architecture || "",
+                                  usage: entry.usage || "",
+                                  benchmarks: entry.benchmarks || "",
+                                  limitations: entry.limitations || "",
+                                  url: entry.url || "",
+                                  popular: !!entry.popular,
+                                });
+                              }}
+                              className="p-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#1a73e8] cursor-pointer"
+                              title="Edit specs"
+                            >
+                              <Edit size={13} />
+                            </button>
+                            <button
+                              onClick={() => setDeleteConfirmEntry(entry.name)}
+                              className="p-1.5 rounded hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] text-[#d93025] dark:text-[#f28b82] cursor-pointer"
+                              title="Delete from catalog"
+                            >
+                              <Trash2 size={13} />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
 
-                  <div className="flex items-center gap-3">
-                    <span>
-                      {Math.min((directoryPage - 1) * directoryPageSize + 1, filteredApproved.length)}–
-                      {Math.min(directoryPage * directoryPageSize, filteredApproved.length)} of {filteredApproved.length}
-                    </span>
-                    <div className="flex items-center gap-1">
-                      <button
-                        onClick={() => setDirectoryPage((p) => Math.max(1, p - 1))}
-                        disabled={directoryPage === 1}
-                        className="p-1 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                  {/* Pagination Footer for Grid */}
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-xs text-[#5f6368] dark:text-[#9aa0a6]">
+                    <div className="flex items-center gap-2">
+                      <span>Cards per page:</span>
+                      <select
+                        value={directoryPageSize}
+                        onChange={(e) => {
+                          setDirectoryPageSize(Number(e.target.value));
+                          setDirectoryPage(1);
+                        }}
+                        className="px-2 py-1 rounded border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#1e1f20] text-xs text-[#202124] dark:text-[#e8eaed] outline-none"
                       >
-                        <ChevronLeft size={16} />
-                      </button>
-                      <button
-                        onClick={() => setDirectoryPage((p) => Math.min(totalPages, p + 1))}
-                        disabled={directoryPage >= totalPages}
-                        className="p-1 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
-                      >
-                        <ChevronRight size={16} />
-                      </button>
+                        <option value={15}>15</option>
+                        <option value={20}>20</option>
+                        <option value={50}>50</option>
+                      </select>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <span>
+                        {Math.min((directoryPage - 1) * directoryPageSize + 1, filteredApproved.length)}–
+                        {Math.min(directoryPage * directoryPageSize, filteredApproved.length)} of {filteredApproved.length}
+                      </span>
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={() => setDirectoryPage((p) => Math.max(1, p - 1))}
+                          disabled={directoryPage === 1}
+                          className="p-1 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                        >
+                          <ChevronLeft size={16} />
+                        </button>
+                        <button
+                          onClick={() => setDirectoryPage((p) => Math.min(totalPages, p + 1))}
+                          disabled={directoryPage >= totalPages}
+                          className="p-1 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                        >
+                          <ChevronRight size={16} />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                /* View 2: Data Table Mode */
+                <div className="rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] overflow-hidden shadow-xs">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
+                        <tr className="border-b border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] text-[11px] font-semibold uppercase tracking-wider text-[#5f6368] dark:text-[#9aa0a6]">
+                          <th className="px-4 py-3">Asset</th>
+                          <th className="px-3 py-3">Organization</th>
+                          <th className="px-3 py-3">Category</th>
+                          <th className="px-3 py-3">Task Domain</th>
+                          <th className="px-3 py-3">License</th>
+                          <th className="px-3 py-3">Year</th>
+                          <th className="px-3 py-3 text-center">Featured</th>
+                          <th className="px-4 py-3 text-right">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-[#dadce0]/60 dark:divide-[#3c4043]/60 text-xs">
+                        {paginatedApproved.map((entry) => (
+                          <tr key={entry.name} className="hover:bg-[#f8f9fa] dark:hover:bg-[#282a2d] transition-colors">
+                            <td className="px-4 py-3 font-medium">
+                              <button
+                                onClick={() => onViewEntry?.(entry)}
+                                className="text-[#1a73e8] dark:text-[#8ab4f8] hover:underline cursor-pointer text-left"
+                              >
+                                {entry.name}
+                              </button>
+                            </td>
+                            <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.org || "—"}</td>
+                            <td className="px-3 py-3">
+                              <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${typeBadge(entry.type, t)}`}>
+                                {entry.type}
+                              </span>
+                            </td>
+                            <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.task}</td>
+                            <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.license || "—"}</td>
+                            <td className="px-3 py-3 text-[#5f6368] dark:text-[#9aa0a6]">{entry.year}</td>
+                            <td className="px-3 py-3 text-center">
+                              <button
+                                onClick={() => handleTogglePopular(entry)}
+                                disabled={actioningId === entry.name}
+                                className="p-1 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+                                title={entry.popular ? "Featured (click to unfeature)" : "Click to feature"}
+                              >
+                                <Star
+                                  size={14}
+                                  className={entry.popular ? "fill-[#f9ab00] text-[#f9ab00]" : "text-[#5f6368] dark:text-[#9aa0a6]"}
+                                />
+                              </button>
+                            </td>
+                            <td className="px-4 py-3 text-right">
+                              <div className="flex items-center justify-end gap-1">
+                                <button
+                                  onClick={() => {
+                                    setEditingEntry({
+                                      isNew: false,
+                                      name: entry.name,
+                                      org: entry.org || "",
+                                      type: entry.type,
+                                      task: entry.task || "NLP",
+                                      license: entry.license || "MIT",
+                                      year: entry.year || new Date().getFullYear(),
+                                      size: entry.size || "Unknown",
+                                      summary: entry.summary || "",
+                                      architecture: entry.architecture || "",
+                                      usage: entry.usage || "",
+                                      benchmarks: entry.benchmarks || "",
+                                      limitations: entry.limitations || "",
+                                      url: entry.url || "",
+                                      popular: !!entry.popular,
+                                    });
+                                  }}
+                                  className="p-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#1a73e8] dark:text-[#8ab4f8] transition-colors cursor-pointer"
+                                  title="Edit specs"
+                                >
+                                  <Edit size={13} />
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => setDeleteConfirmEntry(entry.name)}
+                                  disabled={actioningId === entry.name}
+                                  className="p-1.5 rounded hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] text-[#d93025] dark:text-[#f28b82] transition-colors cursor-pointer disabled:opacity-50"
+                                  title="Delete asset"
+                                >
+                                  <Trash2 size={13} />
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {/* Pagination Footer for Table */}
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-4 py-3 border-t border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] text-xs text-[#5f6368] dark:text-[#9aa0a6]">
+                    <div className="flex items-center gap-2">
+                      <span>Rows per page:</span>
+                      <select
+                        value={directoryPageSize}
+                        onChange={(e) => {
+                          setDirectoryPageSize(Number(e.target.value));
+                          setDirectoryPage(1);
+                        }}
+                        className="px-2 py-1 rounded border border-[#dadce0] dark:border-[#5f6368] bg-white dark:bg-[#1e1f20] text-xs text-[#202124] dark:text-[#e8eaed] outline-none"
+                      >
+                        <option value={15}>15</option>
+                        <option value={20}>20</option>
+                        <option value={50}>50</option>
+                      </select>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <span>
+                        {Math.min((directoryPage - 1) * directoryPageSize + 1, filteredApproved.length)}–
+                        {Math.min(directoryPage * directoryPageSize, filteredApproved.length)} of {filteredApproved.length}
+                      </span>
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={() => setDirectoryPage((p) => Math.max(1, p - 1))}
+                          disabled={directoryPage === 1}
+                          className="p-1 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                        >
+                          <ChevronLeft size={16} />
+                        </button>
+                        <button
+                          onClick={() => setDirectoryPage((p) => Math.min(totalPages, p + 1))}
+                          disabled={directoryPage >= totalPages}
+                          className="p-1 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                        >
+                          <ChevronRight size={16} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -4021,14 +4720,139 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         </div>
       )}
 
-      {/* ── Google Toast Notification (Anchored at Bottom-Left) ──────────────── */}
+      {/* ── Modal: Codebase & Supabase Sync Center ───────────────────────────── */}
+      {codebaseSyncModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
+          <div className="relative w-full max-w-2xl p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] shadow-2xl space-y-5 max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setCodebaseSyncModalOpen(false)}
+              className="absolute top-4 right-4 p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6] cursor-pointer"
+            >
+              <X size={16} />
+            </button>
+
+            {/* Header */}
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 rounded-xl bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#8ab4f8]">
+                <Terminal size={22} />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-[#202124] dark:text-[#e8eaed]">
+                  Codebase & Supabase Sync Center
+                </h3>
+                <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
+                  Synchronize live Supabase catalog rows with the local static repository files.
+                </p>
+              </div>
+            </div>
+
+            {/* Architecture Explainer Pill */}
+            <div className="p-3.5 rounded-xl bg-[#e8f0fe] dark:bg-[#1a2e4c] border border-[#1a73e8]/25 text-xs text-[#174ea6] dark:text-[#8ab4f8] space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold">
+                <Info size={14} />
+                <span>Zero-Latency Hybrid Architecture</span>
+              </div>
+              <p className="leading-relaxed">
+                AiVerse bundles verified entries statically in <code>src/data.ts</code> for instant 0ms first-contentful paint across all clients. Dynamic community submissions and reviews are persisted to Supabase and seamlessly merged at runtime.
+              </p>
+            </div>
+
+            {/* Status Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div className="p-3.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] space-y-1">
+                <span className="text-[11px] font-semibold text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider">
+                  Live Active Directory
+                </span>
+                <p className="text-lg font-bold text-[#202124] dark:text-[#e8eaed]">
+                  {approvedEntries.length} Assets
+                </p>
+                <p className="text-[11px] text-[#137333] dark:text-[#81c995] flex items-center gap-1">
+                  <CheckCircle2 size={12} /> Supabase RLS policies active
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] space-y-1">
+                <span className="text-[11px] font-semibold text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider">
+                  Static Bundle (`src/data.ts`)
+                </span>
+                <p className="text-lg font-bold text-[#202124] dark:text-[#e8eaed]">
+                  {defaultEntries.length} Assets
+                </p>
+                <p className="text-[11px] text-[#1a73e8] dark:text-[#8ab4f8] flex items-center gap-1">
+                  <Sparkles size={12} /> Pre-compiled for instant paint
+                </p>
+              </div>
+            </div>
+
+            {/* Sync Command Snippet */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-[#202124] dark:text-[#e8eaed]">
+                  1. Synchronize Pending Queue to Repository Codebase
+                </span>
+                <span className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6]">Run in terminal</span>
+              </div>
+              <div className="flex items-center justify-between p-3 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-[#202124] text-white font-mono text-xs">
+                <span>npm run approve:pending</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigator.clipboard.writeText("npm run approve:pending");
+                    setCopiedSyncCmd(true);
+                    setTimeout(() => setCopiedSyncCmd(false), 2000);
+                  }}
+                  className="px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 transition-colors flex items-center gap-1 cursor-pointer text-xs"
+                >
+                  {copiedSyncCmd ? <Check size={12} className="text-[#81c995]" /> : <Copy size={12} />}
+                  <span>{copiedSyncCmd ? "Copied!" : "Copy"}</span>
+                </button>
+              </div>
+              <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6]">
+                This script updates <code>src/data.ts</code>, clears <code>pending_pulse_requests.json</code>, and maintains catalog sync without manual editing.
+              </p>
+            </div>
+
+            {/* Supabase SQL Editor Limit Guidance */}
+            <div className="p-3.5 rounded-xl border border-[#f9ab00]/30 bg-[#fef7e0] dark:bg-[#332a00]/40 text-xs text-[#7c4a03] dark:text-[#fdd663] space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold">
+                <AlertTriangle size={14} className="shrink-0" />
+                <span>Supabase SQL Editor 1 MB Limit Solution</span>
+              </div>
+              <p className="leading-relaxed">
+                If Supabase returns <em>"Query is too large to be run via the SQL Editor"</em> on <code>seed_entries.sql</code> (1.3 MB), run the lightweight incremental script <code>supabase/seed_missing_191.sql</code> (273 KB) or execute split chunks <code>seed_part1.sql</code> and <code>seed_part2.sql</code>.
+              </p>
+            </div>
+
+            {/* Actions Footer */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-[#dadce0] dark:border-[#3c4043]">
+              <button
+                type="button"
+                onClick={() => exportDataAsJson(approvedEntries, "aiverse_catalog_full")}
+                className="w-full sm:w-auto px-4 py-2 rounded-lg text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] hover:bg-neutral-50 dark:hover:bg-neutral-800 text-[#3c4043] dark:text-[#e8eaed] transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+              >
+                <Download size={13} />
+                Export Full Catalog JSON
+              </button>
+              <button
+                type="button"
+                onClick={() => setCodebaseSyncModalOpen(false)}
+                className="w-full sm:w-auto px-5 py-2 rounded-lg text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] text-white transition-colors cursor-pointer"
+              >
+                Done
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Google Toast Notification (Anchored at Bottom-Left with Instant Undo) ── */}
       {toast && (
         <div className="fixed bottom-5 left-5 z-50 animate-[fadeUp_0.2s_ease-out]">
           <div
-            className={`px-4 py-3 rounded-lg border flex items-center gap-2.5 text-xs font-medium shadow-lg ${
+            className={`px-4 py-3 rounded-xl border flex items-center gap-3 text-xs font-medium shadow-xl backdrop-blur-md ${
               toast.type === "success"
-                ? "bg-[#202124] text-white border-neutral-700 dark:bg-white dark:text-[#202124] dark:border-neutral-200"
-                : "bg-[#d93025] text-white border-[#b31412]"
+                ? "bg-[#202124]/95 text-white border-neutral-700/80 dark:bg-white/95 dark:text-[#202124] dark:border-neutral-200/80"
+                : "bg-[#d93025]/95 text-white border-[#b31412]"
             }`}
           >
             {toast.type === "success" ? (
@@ -4036,7 +4860,20 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             ) : (
               <Info size={16} className="shrink-0 text-white" />
             )}
-            <span>{toast.message}</span>
+            <span className="leading-snug">{toast.message}</span>
+            {toast.onUndo && (
+              <button
+                type="button"
+                onClick={() => {
+                  toast.onUndo?.();
+                  setToast(null);
+                }}
+                className="ml-2 pl-3 border-l border-white/25 dark:border-black/25 text-[#8ab4f8] dark:text-[#1a73e8] hover:underline font-semibold flex items-center gap-1 cursor-pointer shrink-0 transition-opacity hover:opacity-90"
+              >
+                <Undo2 size={13} />
+                Undo
+              </button>
+            )}
           </div>
         </div>
       )}

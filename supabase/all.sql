@@ -185,7 +185,7 @@ SECURITY INVOKER
 SET search_path = ''
 AS $$
   SELECT 
-    auth.jwt() ->> 'email' = 'frozennheart47@gmail.com' 
+    auth.jwt() ->> 'email' IN ('frozennheart47@gmail.com', 'sabareeshgm47@gmail.com')
     OR auth.jwt() ->> 'sub' = '20f48b0a-737d-4b78-9098-847a8ba450e8'
     OR auth.jwt() -> 'app_metadata' ->> 'role' = 'admin';
 $$;
@@ -453,7 +453,7 @@ BEGIN
       pg_catalog.jsonb_build_object(
         'source', 'direct',
         'deletionRequested', true,
-        'deletionReason', pg_catalog.coalesce(reason, ''),
+        'deletionReason', COALESCE(reason, ''),
         'deletionRequestedAt', pg_catalog.now()::text
       )::text,
       pg_catalog.now()
@@ -462,12 +462,12 @@ BEGIN
     BEGIN
       meta := current_pref.referral_source::jsonb;
     EXCEPTION WHEN OTHERS THEN
-      meta := pg_catalog.jsonb_build_object('source', pg_catalog.coalesce(current_pref.referral_source, 'direct'));
+      meta := pg_catalog.jsonb_build_object('source', COALESCE(current_pref.referral_source, 'direct'));
     END;
 
     meta := meta || pg_catalog.jsonb_build_object(
       'deletionRequested', true,
-      'deletionReason', pg_catalog.coalesce(reason, ''),
+      'deletionReason', COALESCE(reason, ''),
       'deletionRequestedAt', pg_catalog.now()::text
     );
 
@@ -613,7 +613,7 @@ BEGIN
   caller_role := auth.jwt() -> 'app_metadata' ->> 'role';
 
   IF NOT (
-    caller_email = 'frozennheart47@gmail.com'
+    caller_email IN ('frozennheart47@gmail.com', 'sabareeshgm47@gmail.com')
     OR caller_sub = '20f48b0a-737d-4b78-9098-847a8ba450e8'
     OR caller_role = 'admin'
     OR private.is_admin()
@@ -682,17 +682,17 @@ BEGIN
       u.id::text AS user_id,
       'supabase_' || u.id::text AS user_key,
       u.email,
-      pg_catalog.coalesce(
+      COALESCE(
         p.referral_source,
         pg_catalog.jsonb_build_object(
-          'displayName', pg_catalog.coalesce(u.raw_user_meta_data->>'full_name', u.raw_user_meta_data->>'name', pg_catalog.split_part(u.email, '@', 1)),
-          'avatarUrl', pg_catalog.coalesce(u.raw_user_meta_data->>'avatar_url', u.raw_user_meta_data->>'picture'),
+          'displayName', COALESCE(u.raw_user_meta_data->>'full_name', u.raw_user_meta_data->>'name', pg_catalog.split_part(u.email, '@', 1)),
+          'avatarUrl', COALESCE(u.raw_user_meta_data->>'avatar_url', u.raw_user_meta_data->>'picture'),
           'source', 'direct'
         )::text
       ) AS referral_source,
-      pg_catalog.coalesce(p.role, 'developer') AS role,
-      pg_catalog.coalesce(p.interests, '{}'::text[]) AS interests,
-      pg_catalog.coalesce(p.updated_at, u.created_at) AS updated_at,
+      COALESCE(p.role, 'developer') AS role,
+      COALESCE(p.interests, '{}'::text[]) AS interests,
+      COALESCE(p.updated_at, u.created_at) AS updated_at,
       u.created_at,
       u.last_sign_in_at
     FROM auth.users u
@@ -701,7 +701,7 @@ BEGIN
     ORDER BY u.created_at DESC
   ) u_row;
 
-  RETURN pg_catalog.coalesce(result, '[]'::jsonb);
+  RETURN COALESCE(result, '[]'::jsonb);
 END;
 $$;
 
@@ -737,8 +737,8 @@ BEGIN
     entry_data->>'benchmarks',
     entry_data->>'limitations',
     entry_data->>'url',
-    pg_catalog.coalesce(entry_data->'citations', '[]'::jsonb),
-    pg_catalog.coalesce((entry_data->>'popular')::boolean, false),
+    COALESCE(entry_data->'citations', '[]'::jsonb),
+    COALESCE((entry_data->>'popular')::boolean, false),
     true
   )
   ON CONFLICT (name) DO UPDATE SET

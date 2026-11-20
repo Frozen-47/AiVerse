@@ -1,13 +1,11 @@
 {
-  "$schema": "https://agenticresourcediscovery.org/schema/v1/ard.json",
+  "$schema": "https://raw.githubusercontent.com/ards-project/ard-spec/main/spec/schemas/ai-catalog.schema.json",
   "specVersion": "1.0",
-  "name": "AiVerse",
-  "description": "Comprehensive, citation-backed AI Knowledge Encyclopedia and Directory.",
-  "url": "https://aiverse.frozenn.in",
   "host": {
     "displayName": "AiVerse",
     "identifier": "urn:air:aiverse.frozenn.in:host:root",
-    "url": "https://aiverse.frozenn.in"
+    "documentationUrl": "https://aiverse.frozenn.in",
+    "logoUrl": "https://aiverse.frozenn.in/icon.png"
   },
   "entries": [
     {

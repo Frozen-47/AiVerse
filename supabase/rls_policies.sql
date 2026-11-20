@@ -53,7 +53,7 @@ SECURITY INVOKER
 SET search_path = ''
 AS $$
   SELECT 
-    auth.jwt() ->> 'email' = 'frozennheart47@gmail.com' 
+    auth.jwt() ->> 'email' IN ('frozennheart47@gmail.com', 'sabareeshgm47@gmail.com')
     OR auth.jwt() -> 'app_metadata' ->> 'role' = 'admin';
 $$;
 

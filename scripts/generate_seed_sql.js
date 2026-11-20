@@ -29,8 +29,25 @@ async function main() {
 
   console.log(`Generating SQL for ${entries.length} entries...`);
 
-  let sql = `-- Seed / Upsert all ${entries.length} AiVerse entries into Supabase\n`;
-  sql += `-- Run this script in the Supabase Dashboard -> SQL Editor\n\n`;
+  let sql = `-- =============================================================================\n`;
+  sql += `-- AiVerse: Complete Catalog Seed & Admin Policy Migration\n`;
+  sql += `-- Run this entire script in Supabase Dashboard -> SQL Editor\n`;
+  sql += `-- =============================================================================\n\n`;
+  sql += `-- 1. Ensure platform administrator authorization includes both platform owner emails\n`;
+  sql += `CREATE OR REPLACE FUNCTION private.is_admin()\n`;
+  sql += `RETURNS boolean\n`;
+  sql += `LANGUAGE sql\n`;
+  sql += `STABLE\n`;
+  sql += `SECURITY INVOKER\n`;
+  sql += `SET search_path = ''\n`;
+  sql += `AS $$\n`;
+  sql += `  SELECT \n`;
+  sql += `    auth.jwt() ->> 'email' IN ('frozennheart47@gmail.com', 'sabareeshgm47@gmail.com')\n`;
+  sql += `    OR auth.jwt() ->> 'sub' = '20f48b0a-737d-4b78-9098-847a8ba450e8'\n`;
+  sql += `    OR auth.jwt() -> 'app_metadata' ->> 'role' = 'admin';\n`;
+  sql += `$$;\n\n`;
+  sql += `GRANT EXECUTE ON FUNCTION private.is_admin() TO anon, authenticated;\n\n`;
+  sql += `-- 2. Upsert all ${entries.length} entries into public.entries\n\n`;
 
   for (const e of entries) {
     const name = escapeSql(e.name);

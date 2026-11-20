@@ -2,7 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/icon.png" />
+    <!-- Dynamic Theme-Aware Favicons -->
+    <link id="favicon-dark" rel="icon" type="image/png" href="/icond.png" media="(prefers-color-scheme: dark)" />
+    <link id="favicon-light" rel="icon" type="image/png" href="/iconl.png" media="(prefers-color-scheme: light)" />
+    <link id="favicon-default" rel="icon" type="image/png" href="/iconl.png" />
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem("aiverse_theme");
+          var isDark = saved === "amoled" || (!saved || saved === "system") && window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var href = isDark ? "/icond.png" : "/iconl.png";
+          var links = document.querySelectorAll("link[rel*='icon']");
+          links.forEach(function(l) {
+            l.removeAttribute("media");
+            l.href = href;
+          });
+        } catch (e) {}
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#ffffff" />
     
