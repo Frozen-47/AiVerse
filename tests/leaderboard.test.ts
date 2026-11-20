@@ -16,8 +16,8 @@ describe("AI Frontier Benchmark Leaderboard Data & Hierarchy", () => {
     expect(maxVariant).toBeDefined();
     expect(maxVariant?.intelligenceIndex).toBe(65);
     expect(maxVariant?.costPerTask).toBe(26.54);
-    expect(maxVariant?.timePerTaskMinutes).toBe(41.8);
-    expect(maxVariant?.timeToFirstAnswerToken).toBeCloseTo(238.16, 1);
+    expect(maxVariant?.timePerTaskMinutes).toBe(41.6);
+    expect(maxVariant?.timeToFirstAnswerToken).toBeCloseTo(221.54, 1);
   });
 
   it("should verify Gemini 4 Carbon release and variants match benchmark flight data", () => {
@@ -29,9 +29,9 @@ describe("AI Frontier Benchmark Leaderboard Data & Hierarchy", () => {
     const highVariant = carbonVariants.find((m) => m.suffix === "High");
     expect(highVariant).toBeDefined();
     expect(highVariant?.intelligenceIndex).toBe(60);
-    expect(highVariant?.costPerTask).toBe(5.48);
-    expect(highVariant?.timePerTaskMinutes).toBe(32.1);
-    expect(highVariant?.timeToFirstAnswerToken).toBeCloseTo(73.97, 1);
+    expect(highVariant?.costPerTask).toBe(7.76);
+    expect(highVariant?.timePerTaskMinutes).toBe(36.6);
+    expect(highVariant?.timeToFirstAnswerToken).toBeCloseTo(72.86, 1);
   });
 
   it("should verify top releases order matching leaderboard screenshot", () => {
@@ -54,12 +54,14 @@ describe("AI Frontier Benchmark Leaderboard Data & Hierarchy", () => {
 
     // Verify top 5 release slugs
     expect(groups[0].slug).toBe("claude-fable-5-2");
-    expect(groups[1].slug).toBe("gemini-4-carbon");
-    expect(groups[2].slug).toBe("claude-opus-5-5");
-    expect(groups[3].slug).toBe("gpt-6-astra");
+    expect(groups[1].slug).toBe("gpt-6-2-astra");
+    expect(groups[2].slug).toBe("gemini-4-neon");
+    expect(groups[3].slug).toBe("gemini-4-carbon");
+    expect(groups[4].slug).toBe("claude-opus-5-5");
     expect(groups[0].best.intelligenceIndex).toBe(65);
-    expect(groups[1].best.intelligenceIndex).toBe(60);
-    expect(groups[2].best.intelligenceIndex).toBe(59);
-    expect(groups[3].best.intelligenceIndex).toBe(57);
+    expect(groups[1].best.intelligenceIndex).toBe(62);
+    expect(groups[2].best.intelligenceIndex).toBe(61);
+    expect(groups[3].best.intelligenceIndex).toBe(60);
+    expect(groups[4].best.intelligenceIndex).toBe(59);
   });
 });
