@@ -14,9 +14,6 @@ interface DashboardHeroProps {
   onSelectDisplayMode?: (mode: "assets" | "ecosystems") => void;
 }
 
-const LINE_1 = "Discover the Frontier".split(" ");
-const LINE_2 = "and Map the AI Universe.".split(" ");
-
 // Text wordmarks standing in for logos; each gets its own typographic voice
 const ECOSYSTEMS = [
   "DeepSeek|font-semibold tracking-tight",
@@ -40,26 +37,17 @@ const EDGE = "linear-gradient(to right, transparent, #000 12%, #000 88%, transpa
 
 const CSS = `
 .dh-nav{animation:dh-drop .5s cubic-bezier(.2,.7,.2,1) .05s both}
-.dh-fade{animation:dh-fade .6s ease-out both}
-.dh-word{display:inline-block;animation:dh-word .45s cubic-bezier(.2,.7,.2,1) both;will-change:transform,opacity}
+.dh-fade{animation:dh-fade .4s ease-out both}
 .dh-marquee{animation:dh-marquee 50s linear infinite}
 .dh-marquee:hover{animation-play-state:paused}
 .dh-btn::after{content:"";position:absolute;inset:auto 14% -2px;height:3px;border-radius:9px;background:linear-gradient(90deg,#8b5cf6,#3b82f6,#10b981,#facc15,#f43f5e,#8b5cf6);background-size:200% 100%;filter:blur(2.5px);animation:dh-slide 5s linear infinite;transition:inset .3s,filter .3s}
 .dh-btn:hover::after{inset:auto 6% -3px;filter:blur(5px)}
 @keyframes dh-drop{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
-@keyframes dh-fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-@keyframes dh-word{from{opacity:0;transform:translateY(.3em)}to{opacity:1;transform:none}}
+@keyframes dh-fade{from{opacity:0.6;transform:translateY(4px)}to{opacity:1;transform:none}}
 @keyframes dh-marquee{to{transform:translateX(-50%)}}
 @keyframes dh-slide{to{background-position:200% 0}}
 @media (prefers-reduced-motion:reduce){.dh-hero *,.dh-hero *::after{animation:none!important}}
 `;
-
-const words = (list: string[], offset: number) =>
-  list.map((w, i) => (
-    <React.Fragment key={w + i}>
-      <span className="dh-word" style={{ animationDelay: `${0.04 + (offset + i) * 0.03}s` }}>{w}</span>{" "}
-    </React.Fragment>
-  ));
 
 /* Artistic Halftone Field: cosmic soliton waves, galactic spiral curvature, and magnetic lens ripples */
 const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
@@ -317,18 +305,9 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
 };
 
 const useCountUp = (to: number) => {
-  const [v, setV] = React.useState(0);
+  const [v, setV] = React.useState(to);
   React.useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setV(to); return; }
-    let raf = 0;
-    const t0 = performance.now() + 1200; // starts as the line fades in
-    const tick = (n: number) => {
-      const p = Math.min(1, Math.max(0, (n - t0) / 1400));
-      setV(Math.round(to * (1 - (1 - p) ** 3)));
-      if (p < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    setV(to);
   }, [to]);
   return v;
 };
@@ -354,8 +333,8 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
 
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-14 text-center">
         <h1 className="max-w-4xl text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.12] sm:leading-[1.05] tracking-[-0.035em]">
-          <span className="block text-neutral-600 dark:text-neutral-300">{words(LINE_1, 0)}</span>
-          <span className="block">{words(LINE_2, LINE_1.length)}</span>
+          <span className="block text-neutral-600 dark:text-neutral-300">Discover the Frontier</span>
+          <span className="block">and Map the AI Universe.</span>
         </h1>
 
         <p className="dh-fade mt-6 max-w-md text-sm leading-relaxed text-neutral-600 sm:text-base dark:text-neutral-300" style={{ animationDelay: "0.25s" }}>

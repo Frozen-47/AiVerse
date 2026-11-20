@@ -257,10 +257,21 @@ const Inner: React.FC = () => {
   });
 
   useEffect(() => {
-    // Fetch live global broadcast announcement from Supabase for all visitors
-    fetchSiteAnnouncement().then((ann) => {
-      if (ann) setAnnouncement(ann);
-    });
+    // Fetch live global broadcast announcement on idle to keep initial paint fast
+    let idleId: number | undefined;
+    let timerId: ReturnType<typeof setTimeout> | undefined;
+
+    const syncAnnouncement = () => {
+      fetchSiteAnnouncement().then((ann) => {
+        if (ann) setAnnouncement(ann);
+      });
+    };
+
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      idleId = (window as any).requestIdleCallback(syncAnnouncement, { timeout: 2500 });
+    } else {
+      timerId = setTimeout(syncAnnouncement, 1500);
+    }
 
     const handleAnnouncementChange = () => {
       try {
@@ -279,8 +290,17 @@ const Inner: React.FC = () => {
         setAnnouncement(null);
       } catch {}
     };
+
     window.addEventListener("announcement_updated", handleAnnouncementChange);
-    return () => window.removeEventListener("announcement_updated", handleAnnouncementChange);
+    return () => {
+      if (idleId !== undefined && typeof window !== "undefined" && "cancelIdleCallback" in window) {
+        (window as any).cancelIdleCallback(idleId);
+      }
+      if (timerId !== undefined) {
+        clearTimeout(timerId);
+      }
+      window.removeEventListener("announcement_updated", handleAnnouncementChange);
+    };
   }, []);
 
   const typeCounts = useMemo(() => {
@@ -532,75 +552,87 @@ const Inner: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchEntries()
-      .then(data => {
-        const remoteEntries = data || [];
-        const mergedMap = new Map<string, Entry>();
-        // 1. Static entries first (ensures newly ingested models/platforms in data.ts are immediately present)
-        (staticEntries || []).forEach(e => {
-          if (e && e.name) mergedMap.set(e.name.toLowerCase().trim(), e);
-        });
-        // 2. Supabase approved entries take precedence / filter out deleted entries,
-        // but always preserve the richer detailed descriptions, benchmarks, and architecture from staticEntries!
-        remoteEntries.forEach(e => {
-          if (!e || !e.name) return;
-          const key = e.name.toLowerCase().trim();
-          if (e.approved === false) {
-            mergedMap.delete(key);
-          } else {
-            const existing = mergedMap.get(key);
-            if (existing) {
-              const existingSummaryLen = existing.summary?.length || 0;
-              const remoteSummaryLen = e.summary?.length || 0;
-              const bestSummary = existingSummaryLen >= remoteSummaryLen ? existing.summary : e.summary;
-              const bestDesc = (existing.description && existing.description.length >= (e.description?.length || 0))
-                ? existing.description
-                : (e.description || bestSummary);
-
-              const bestArch = (existing.architecture && existing.architecture !== "N/A" && (!e.architecture || e.architecture === "N/A" || existing.architecture.length >= e.architecture.length))
-                ? existing.architecture
-                : (e.architecture || existing.architecture);
-
-              const bestBench = (existing.benchmarks && existing.benchmarks !== "N/A" && (!e.benchmarks || e.benchmarks === "N/A" || existing.benchmarks.length >= e.benchmarks.length))
-                ? existing.benchmarks
-                : (e.benchmarks || existing.benchmarks);
-
-              const bestCitations = (existing.citations && existing.citations.length > 0 && (!e.citations || e.citations.length === 0))
-                ? existing.citations
-                : (e.citations || existing.citations);
-
-              mergedMap.set(key, {
-                ...existing,
-                ...e,
-                summary: bestSummary,
-                description: bestDesc,
-                architecture: bestArch,
-                benchmarks: bestBench,
-                citations: bestCitations,
-              });
+    // Background catalog & rating synchronization: deferred to idle callback so
+    // initial render paints instantly from pre-bundled staticEntries without network contention
+    const syncRemoteCatalog = () => {
+      fetchEntries()
+        .then(data => {
+          const remoteEntries = data || [];
+          const mergedMap = new Map<string, Entry>();
+          // 1. Static entries first (ensures newly ingested models/platforms in data.ts are immediately present)
+          (staticEntries || []).forEach(e => {
+            if (e && e.name) mergedMap.set(e.name.toLowerCase().trim(), e);
+          });
+          // 2. Supabase approved entries take precedence / filter out deleted entries,
+          // but always preserve the richer detailed descriptions, benchmarks, and architecture from staticEntries!
+          remoteEntries.forEach(e => {
+            if (!e || !e.name) return;
+            const key = e.name.toLowerCase().trim();
+            if (e.approved === false) {
+              mergedMap.delete(key);
             } else {
-              mergedMap.set(key, {
-                ...e,
-                description: e.description || e.summary,
-              });
-            }
-          }
-        });
-        const combined = Array.from(mergedMap.values());
-        setEntries(combined);
-        setTypeFilters(staticTypeFilters || ["All"]);
-        setTaskFilters(staticTaskFilters || ["All Tasks"]);
-        setIsLoading(false);
-      })
-      .catch(err => {
-        console.error("Failed to load catalog from Supabase, falling back to static entries", err);
-        setEntries(staticEntries || []);
-        setTypeFilters(staticTypeFilters || ["All"]);
-        setTaskFilters(staticTaskFilters || ["All Tasks"]);
-        setIsLoading(false);
-      });
+              const existing = mergedMap.get(key);
+              if (existing) {
+                const existingSummaryLen = existing.summary?.length || 0;
+                const remoteSummaryLen = e.summary?.length || 0;
+                const bestSummary = existingSummaryLen >= remoteSummaryLen ? existing.summary : e.summary;
+                const bestDesc = (existing.description && existing.description.length >= (e.description?.length || 0))
+                  ? existing.description
+                  : (e.description || bestSummary);
 
-    fetchRatingSummaries().then(setRatingSummaries).catch(() => {});
+                const bestArch = (existing.architecture && existing.architecture !== "N/A" && (!e.architecture || e.architecture === "N/A" || existing.architecture.length >= e.architecture.length))
+                  ? existing.architecture
+                  : (e.architecture || existing.architecture);
+
+                const bestBench = (existing.benchmarks && existing.benchmarks !== "N/A" && (!e.benchmarks || e.benchmarks === "N/A" || existing.benchmarks.length >= e.benchmarks.length))
+                  ? existing.benchmarks
+                  : (e.benchmarks || existing.benchmarks);
+
+                const bestCitations = (existing.citations && existing.citations.length > 0 && (!e.citations || e.citations.length === 0))
+                  ? existing.citations
+                  : (e.citations || existing.citations);
+
+                mergedMap.set(key, {
+                  ...existing,
+                  ...e,
+                  summary: bestSummary,
+                  description: bestDesc,
+                  architecture: bestArch,
+                  benchmarks: bestBench,
+                  citations: bestCitations,
+                });
+              } else {
+                mergedMap.set(key, {
+                  ...e,
+                  description: e.description || e.summary,
+                });
+              }
+            }
+          });
+          const combined = Array.from(mergedMap.values());
+          setEntries(combined);
+          setTypeFilters(staticTypeFilters || ["All"]);
+          setTaskFilters(staticTaskFilters || ["All Tasks"]);
+          setIsLoading(false);
+        })
+        .catch(err => {
+          console.error("Failed to load catalog from Supabase, falling back to static entries", err);
+          setEntries(staticEntries || []);
+          setTypeFilters(staticTypeFilters || ["All"]);
+          setTaskFilters(staticTaskFilters || ["All Tasks"]);
+          setIsLoading(false);
+        });
+
+      fetchRatingSummaries().then(setRatingSummaries).catch(() => {});
+    };
+
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      const id = (window as any).requestIdleCallback(syncRemoteCatalog, { timeout: 2000 });
+      return () => (window as any).cancelIdleCallback(id);
+    } else {
+      const timer = setTimeout(syncRemoteCatalog, 1200);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   const handleRatingSummaryChange = useCallback(

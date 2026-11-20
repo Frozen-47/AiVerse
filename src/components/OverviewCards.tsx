@@ -31,15 +31,28 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
 
   useEffect(() => {
     let isMounted = true;
-    (async () => {
-      const data = await fetchDashboardStats();
-      if (isMounted) {
-        setStats(data);
-      }
-    })();
-    return () => {
-      isMounted = false;
+    const loadStats = () => {
+      (async () => {
+        const data = await fetchDashboardStats();
+        if (isMounted) {
+          setStats(data);
+        }
+      })();
     };
+
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      const id = (window as any).requestIdleCallback(loadStats, { timeout: 3000 });
+      return () => {
+        isMounted = false;
+        (window as any).cancelIdleCallback(id);
+      };
+    } else {
+      const timer = setTimeout(loadStats, 1500);
+      return () => {
+        isMounted = false;
+        clearTimeout(timer);
+      };
+    }
   }, []);
 
   // 1. Registered Entries: Real catalog count
