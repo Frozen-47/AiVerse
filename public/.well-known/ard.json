@@ -1,31 +1,48 @@
 {
   "$schema": "https://agenticresourcediscovery.org/schema/v1/ard.json",
-  "version": "1.0",
+  "specVersion": "1.0",
   "name": "AiVerse",
   "description": "Comprehensive, citation-backed AI Knowledge Encyclopedia and Directory.",
   "url": "https://aiverse.frozenn.in",
-  "provider": {
-    "name": "AiVerse",
+  "host": {
+    "displayName": "AiVerse",
+    "identifier": "urn:air:aiverse.frozenn.in:host:root",
     "url": "https://aiverse.frozenn.in"
   },
-  "resources": [
+  "entries": [
     {
-      "type": "catalog",
-      "name": "AI Asset Directory",
+      "identifier": "urn:air:aiverse.frozenn.in:catalog:ai-assets",
+      "displayName": "AI Asset Directory",
+      "type": "text/html",
+      "url": "https://aiverse.frozenn.in/entries",
       "description": "Index of 570+ verified foundation models, datasets, frameworks, and AI platforms.",
-      "url": "https://aiverse.frozenn.in/entries"
+      "tags": ["ai", "models", "benchmarks", "catalog"],
+      "representativeQueries": [
+        "Find reasoning models and benchmark comparisons",
+        "Explore open source machine learning frameworks"
+      ]
     },
     {
-      "type": "api",
-      "name": "Catalog JSON Feed",
-      "description": "Structured JSON database of verified AI entries.",
-      "url": "https://aiverse.frozenn.in/data/data.json"
+      "identifier": "urn:air:aiverse.frozenn.in:api:catalog-feed",
+      "displayName": "Catalog JSON Feed",
+      "type": "application/json",
+      "url": "https://aiverse.frozenn.in/data/data.json",
+      "description": "Structured JSON database of verified AI entries with benchmark metrics and citations.",
+      "tags": ["api", "json", "data-feed"],
+      "representativeQueries": [
+        "Download verified AI models dataset in JSON format"
+      ]
     },
     {
-      "type": "documentation",
-      "name": "LLMs Navigation Guide",
-      "description": "Agent-oriented navigation index.",
-      "url": "https://aiverse.frozenn.in/llms.txt"
+      "identifier": "urn:air:aiverse.frozenn.in:doc:llms-navigation",
+      "displayName": "LLMs Navigation Guide",
+      "type": "text/markdown",
+      "url": "https://aiverse.frozenn.in/llms.txt",
+      "description": "Agent-oriented navigation index adhering to llmstxt.org specification.",
+      "tags": ["documentation", "llms-txt", "agentic"],
+      "representativeQueries": [
+        "Read agent navigation instructions and sitemap"
+      ]
     }
   ]
 }

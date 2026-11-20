@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useCallback, useRef, lazy, Suspense } from "react";
-import { Filter, X, Check, Sparkles, ArrowLeft, AlertTriangle, Building2, Box, ChevronLeft, ChevronRight, ArrowRight, ShieldAlert, RefreshCw } from "lucide-react";
+import { Filter, X, Check, Sparkles, ArrowLeft, AlertTriangle, Building2, Box, ChevronLeft, ChevronRight, ArrowRight, ShieldAlert, RefreshCw, Zap } from "lucide-react";
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
@@ -131,6 +131,18 @@ const Inner: React.FC = () => {
   const isEntries = route.type === "entries";
   const activeView: "landing" | "catalog" = isEntries ? "catalog" : "landing";
   const [adminDashboardKey, setAdminDashboardKey] = useState(0);
+  const [hasChatLoaded, setHasChatLoaded] = useState(false);
+
+  useEffect(() => {
+    if (isChat) {
+      setHasChatLoaded(true);
+      return;
+    }
+    const timer = setTimeout(() => {
+      setHasChatLoaded(true);
+    }, 4500);
+    return () => clearTimeout(timer);
+  }, [isChat]);
 
   // Synchronize entries tab with catalog display mode & saved filter
   useEffect(() => {
@@ -2219,20 +2231,40 @@ const Inner: React.FC = () => {
         </div>
       )}
 
-      <Suspense fallback={null}>
-        <ChatWidget
-          entryNames={entryNames}
-          onEntrySelect={selectEntryByName}
-          entries={entries}
-          isChatRoute={isChat}
-          onNavigateToChat={() => {
-            navigate("/chat");
+      {!hasChatLoaded && !isChat ? (
+        <button
+          type="button"
+          onClick={() => {
+            setHasChatLoaded(true);
           }}
-          onExitChatRoute={() => {
-            navigate("/dashboard");
-          }}
-        />
-      </Suspense>
+          className="group fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 px-3.5 py-2.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.18)] dark:shadow-[0_8px_30px_rgba(255,255,255,0.12)] bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 border border-neutral-800 dark:border-white/20 hover:border-neutral-700 dark:hover:border-white/40 transition-colors duration-150 cursor-pointer"
+          aria-label="Open Vox AI Assistant"
+        >
+          <div className="relative flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-tr from-amber-500 to-orange-500 text-white shadow-xs">
+            <Zap size={13} className="fill-white" />
+            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#1a73e8] dark:bg-[#a8c7fa] ring-2 ring-neutral-900 dark:ring-white" />
+          </div>
+          <span className="text-xs font-semibold tracking-wide">Ask Vox</span>
+          <span className="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 dark:text-amber-500 border border-amber-500/30">
+            Groq LPU
+          </span>
+        </button>
+      ) : (
+        <Suspense fallback={null}>
+          <ChatWidget
+            entryNames={entryNames}
+            onEntrySelect={selectEntryByName}
+            entries={entries}
+            isChatRoute={isChat}
+            onNavigateToChat={() => {
+              navigate("/chat");
+            }}
+            onExitChatRoute={() => {
+              navigate("/dashboard");
+            }}
+          />
+        </Suspense>
+      )}
 
       {/* Mobile Sidebar Overlay */}
       {showMobileSidebar && (
