@@ -2,7 +2,7 @@
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Fri, 20 Nov 2026 15:53:06 GMT`*
+*Last Synchronized: `Fri, 20 Nov 2026 22:55:57 GMT`*
 
 ---
 
@@ -10,40 +10,40 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Qwen3.5 397B A17B** (`Model` • *Alibaba*)
-> Frontier Research model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.
+### **Granite 4.2 30B** (`Model` • *IBM*)
+> Frontier Research model by IBM benchmarked on Artificial Analysis with an Intelligence Index of 5.53591398205629 and a verified 131k Context window.
 
 - 🏷️ **Domain & License**: `Research` • `Open Weights` (2026)
-- ⚡ **Metrics**: `Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/qwen3-5-397b-a17b](https://artificialanalysis.ai/models/qwen3-5-397b-a17b)
+- ⚡ **Metrics**: `Context Window: 131k Context, Intelligence Index: 5.53591398205629, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/granite-4-2-30b](https://artificialanalysis.ai/models/granite-4-2-30b)
 
-### **OpenAI: GPT-6.2 Sol Pro (batch)** (`Model` • *openai*)
-> GPT-6.2 Sol Pro is the same underlying model as [GPT-6.2 Sol](https://openrouter.ai/openai/gpt-6.2-sol), served with `reasoning.mode` set to `pro` for higher-quality responses on c
+### **OpenAI: GPT-6.2 Sol** (`Model` • *openai*)
+> GPT-6.2 Sol is an upgrade to GPT-6.1 Sol from OpenAI, positioned below the flagship GPT-6.2 Astra in the GPT-6.2 series. It is an efficient, versatile model for everyday work, suit
 
 - 🏷️ **Domain & License**: `NLP` • `Proprietary` (2026)
 - ⚡ **Metrics**: `Context Window: 1050k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/openai/gpt-6.2-sol-pro:batch](https://openrouter.ai/openai/gpt-6.2-sol-pro:batch)
+- 🔗 **Resource Link**: [https://openrouter.ai/openai/gpt-6.2-sol](https://openrouter.ai/openai/gpt-6.2-sol)
 
-### **SmolVLM2-256M-Video-Instruct** (`Model` • *HuggingFaceTB*)
-> High-performance Multimodal open-weights model by HuggingFaceTB, trending with over 298 community likes and 45,338 downloads on Hugging Face.
+### **Inkling-2-Mini** (`Model` • *thinkingmachines*)
+> High-performance Multimodal open-weights model by thinkingmachines, trending with over 288 community likes and 136 downloads on Hugging Face.
 
 - 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 124, Likes: 298, Downloads: 45,338`
-- 🔗 **Resource Link**: [https://huggingface.co/HuggingFaceTB/SmolVLM2-256M-Video-Instruct](https://huggingface.co/HuggingFaceTB/SmolVLM2-256M-Video-Instruct)
+- ⚡ **Metrics**: `Trending Score: 279, Likes: 288, Downloads: 136`
+- 🔗 **Resource Link**: [https://huggingface.co/thinkingmachines/Inkling-2-Mini](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
 
-### **leaderboard** (`Platform` • *agent-memory-leaderboard*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by agent-memory-leaderboard. Trending with 931 community stars.
+### **PhysicalAI-Human-1M-Explorer** (`Platform` • *nvidia*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by nvidia. Trending with 49 community stars.
 
-- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 42, Community Likes: 931`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/agent-memory-leaderboard/leaderboard](https://huggingface.co/spaces/agent-memory-leaderboard/leaderboard)
+- 🏷️ **Domain & License**: `Video Generation` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 23, Community Likes: 49`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/nvidia/PhysicalAI-Human-1M-Explorer](https://huggingface.co/spaces/nvidia/PhysicalAI-Human-1M-Explorer)
 
-### **cmu-mocap-glb** (`Dataset` • *codepawl*)
-> CMU Motion Capture Database as GLB 	 2426 motion capture clips from CMU Graphics Lab Motion Capture Database: 6 categories, 2,276,379 frames (10.5 hours) at 60 fps. Eve (18 likes, 1,862 downloads).
+### **JML-fon-speech-v1** (`Dataset` • *JaimeMaLangue*)
+> J'aime Ma Langue — Fongbe speech corpus v1 	 Fongbe speech from many voices, with tonal transcriptions reviewed and validated by linguists, and recordings not yet trans (39 likes, 293 downloads).
 
-- 🏷️ **Domain & License**: `Computer Vision` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 15, Likes: 18, Downloads: 1,862`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/codepawl/cmu-mocap-glb](https://huggingface.co/datasets/codepawl/cmu-mocap-glb)
+- 🏷️ **Domain & License**: `Audio` • `CC-BY-SA-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 8, Likes: 39, Downloads: 293`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/JaimeMaLangue/JML-fon-speech-v1](https://huggingface.co/datasets/JaimeMaLangue/JML-fon-speech-v1)
 
 ---
 
@@ -68,10 +68,10 @@
 | **Mistral: Pixtral Large 2502** | `OpenRouter` | mistralai (Cloud Model API) | ❤️ 120 · 📥 128,000 | [View](https://openrouter.ai/mistralai/pixtral-large-2502) |
 | **Google: Gemini 4 Neon** | `OpenRouter` | google (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/google/gemini-4-neon) |
 | **Google: Gemini 4 Neon (batch)** | `OpenRouter` | google (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/google/gemini-4-neon:batch) |
-| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 386 · 📥 0 | [View](https://huggingface.co/inworld/voice-isolator) |
-| **higurashi-ai/Haru-4B** | `Hugging Face` | higurashi-ai (audio-to-audio) | ❤️ 4,327 · 📥 7,323 | [View](https://huggingface.co/higurashi-ai/Haru-4B) |
-| **harness-hub/Qwen3.8-27B-pi-adapted** | `Hugging Face` | harness-hub (image-text-to-text) | ❤️ 817 · 📥 1,874 | [View](https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted) |
-| **Qwen/Qwen3.8-27B** | `Hugging Face` | Qwen (image-text-to-text) | ❤️ 20,754 · 📥 6,454,419 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
+| **higurashi-ai/Haru-4B** | `Hugging Face` | higurashi-ai (audio-to-audio) | ❤️ 5,257 · 📥 7,323 | [View](https://huggingface.co/higurashi-ai/Haru-4B) |
+| **harness-hub/Qwen3.8-27B-pi-adapted** | `Hugging Face` | harness-hub (image-text-to-text) | ❤️ 858 · 📥 1,874 | [View](https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted) |
+| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 288 · 📥 136 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
+| **Qwen/Qwen3.8-27B** | `Hugging Face` | Qwen (image-text-to-text) | ❤️ 20,796 · 📥 6,454,419 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
 
 
 ---
@@ -81,11 +81,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **System 1 agents: a method for local, reliable and fast agentic AI** | 👍 0 | A local System 1 agent framework compiles tool schemas and requests into multiple-choice questions answered by a one-pass decision model, enabling accurate biomedical tool calls without text generation or invented content. | [Read](https://huggingface.co/papers/2611.21053) |
-| **Online Mistake Detection in Instruction-Conditioned Procedural Video** | 👍 5 | An assistant monitoring a person performing a procedure is most useful when it can detect mistakes while there is still time to recover. This requires judging a... | [Read](https://huggingface.co/papers/2611.25567) |
-| **AURA: AUdio-dRiven streaming Avatar** | 👍 1 | AURA enables low-latency, causal video generation for streaming applications by utilizing a rolling KV cache and a two-stage distillation pipeline to significantly reduce the required diffusion steps. | [Read](https://huggingface.co/papers/2611.26540) |
-| **SpecWM: Turning Verification into Refinement for Streaming World Models** | 👍 1 | SpecWM is a training-free inference framework for streaming video world models that verifies draft chunks using the target model's latent velocity field and applies reusable corrections via threshold-based accept/refine/reject decisions to improve visual quality, control, and speed. | [Read](https://huggingface.co/papers/2611.26211) |
-| **Direct3D-V3: Latent-Free Diffusion Transformers in the Native Voxel Domain** | 👍 2 | Native 3D generation has largely been built around latent diffusion, with recent advances concentrating on stronger variational autoencoders (VAE) and increasin... | [Read](https://huggingface.co/papers/2611.26511) |
+| **Lang-SVG: Hierarchical Image Vectorization with Language Priors** | 👍 1 | Image vectorization reconstructs raster images as compact scalable vector graph- ics (SVG), providing a structured and editable code representation of images. H... | [Read](https://huggingface.co/papers/2611.15941) |
+| **Squoosh Bench: Evaluating UX-1 on 318 Historical Website A/B Tests** | 👍 1 | Experimentation teams must decide which proposed website changes to test with live traffic. We evaluated whether forecasts from simulated shoppers could inform ... | [Read](https://huggingface.co/papers/2611.25200) |
+| **RL Post-Training in Diffusion Transformers Is Activation Steering** | 👍 14 | A fixed set of steering vectors added to a frozen diffusion transformer recovers most of the quality gains from reinforcement learning post-training, indicating that much of the improvement comes from a constant shift rather than prompt-specific transformations. | [Read](https://huggingface.co/papers/2611.26627) |
+| **In Situ Training of Optical Neural Networks by Coding Agents** | 👍 2 | A coding agent trains an optical neural network from measurements alone by reparametrizing it with interpretable optical elements, achieving better classification and image encoding than gradient-free methods and approaching backpropagation through a calibrated model at lower cost. | [Read](https://huggingface.co/papers/2611.23875) |
+| **Language Models Can Rewrite Their Own Weights** | 👍 4 | Language models are trained once, frozen and deployed: improving one again takes another training run, and a prompt, a scaffold or extra computation at inferenc... | [Read](https://huggingface.co/papers/2611.21885) |
 
 
 ---
@@ -98,7 +98,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
+- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
 - **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

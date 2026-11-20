@@ -1,1 +1,1 @@
-Qwen3.5 397B A17B
+Granite 4.2 30B

@@ -1,18 +1,23 @@
 {
-  "timestamp": "2026-11-20T15:52:17.028Z",
+  "timestamp": "2026-11-20T22:55:06.459Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "o3-mini",
-      "url": "https://openai.com",
-      "status": 403
+      "name": "LTX-2.3-10Eros",
+      "url": "https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros",
+      "status": 401
     },
     {
-      "name": "DeepSeek Chat",
-      "url": "https://chat.deepseek.com",
-      "status": 403
+      "name": "Microsoft Copilot",
+      "url": "https://copilot.microsoft.com",
+      "status": 405
+    },
+    {
+      "name": "LMSYS Chatbot Arena Conversations",
+      "url": "https://chat.lmsys.org",
+      "status": "Network Error"
     }
   ]
 }

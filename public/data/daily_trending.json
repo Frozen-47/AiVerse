@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-20T15:52:16.870Z",
+  "timestamp": "2026-11-20T22:55:06.187Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -56,18 +56,9 @@
       "source": "OpenRouter"
     },
     {
-      "id": "inworld/voice-isolator",
-      "author": "inworld",
-      "likes": 386,
-      "downloads": 0,
-      "pipeline_tag": "audio-to-audio",
-      "url": "https://huggingface.co/inworld/voice-isolator",
-      "source": "Hugging Face"
-    },
-    {
       "id": "higurashi-ai/Haru-4B",
       "author": "higurashi-ai",
-      "likes": 4327,
+      "likes": 5257,
       "downloads": 7323,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/higurashi-ai/Haru-4B",
@@ -76,16 +67,25 @@
     {
       "id": "harness-hub/Qwen3.8-27B-pi-adapted",
       "author": "harness-hub",
-      "likes": 817,
+      "likes": 858,
       "downloads": 1874,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
       "source": "Hugging Face"
     },
     {
+      "id": "thinkingmachines/Inkling-2-Mini",
+      "author": "thinkingmachines",
+      "likes": 288,
+      "downloads": 136,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+      "source": "Hugging Face"
+    },
+    {
       "id": "Qwen/Qwen3.8-27B",
       "author": "Qwen",
-      "likes": 20754,
+      "likes": 20796,
       "downloads": 6454419,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
@@ -94,44 +94,44 @@
   ],
   "papers": [
     {
-      "title": "System 1 agents: a method for local, reliable and fast agentic AI",
-      "summary": "A local System 1 agent framework compiles tool schemas and requests into multiple-choice questions answered by a one-pass decision model, enabling accurate biomedical tool calls without text generation or invented content.",
-      "upvotes": 0,
-      "arxiv_id": "2611.21053",
-      "url": "https://huggingface.co/papers/2611.21053",
-      "githubRepo": "https://github.com/eltzanis/SystemOneAgents"
-    },
-    {
-      "title": "Online Mistake Detection in Instruction-Conditioned Procedural Video",
-      "summary": "An assistant monitoring a person performing a procedure is most useful when it can detect mistakes while there is still time to recover. This requires judging a...",
-      "upvotes": 5,
-      "arxiv_id": "2611.25567",
-      "url": "https://huggingface.co/papers/2611.25567",
+      "title": "Lang-SVG: Hierarchical Image Vectorization with Language Priors",
+      "summary": "Image vectorization reconstructs raster images as compact scalable vector graph- ics (SVG), providing a structured and editable code representation of images. H...",
+      "upvotes": 1,
+      "arxiv_id": "2611.15941",
+      "url": "https://huggingface.co/papers/2611.15941",
       "githubRepo": null
     },
     {
-      "title": "AURA: AUdio-dRiven streaming Avatar",
-      "summary": "AURA enables low-latency, causal video generation for streaming applications by utilizing a rolling KV cache and a two-stage distillation pipeline to significantly reduce the required diffusion steps.",
+      "title": "Squoosh Bench: Evaluating UX-1 on 318 Historical Website A/B Tests",
+      "summary": "Experimentation teams must decide which proposed website changes to test with live traffic. We evaluated whether forecasts from simulated shoppers could inform ...",
       "upvotes": 1,
-      "arxiv_id": "2611.26540",
-      "url": "https://huggingface.co/papers/2611.26540",
-      "githubRepo": "https://github.com/kyutai-labs/aura"
-    },
-    {
-      "title": "SpecWM: Turning Verification into Refinement for Streaming World Models",
-      "summary": "SpecWM is a training-free inference framework for streaming video world models that verifies draft chunks using the target model's latent velocity field and applies reusable corrections via threshold-based accept/refine/reject decisions to improve visual quality, control, and speed.",
-      "upvotes": 1,
-      "arxiv_id": "2611.26211",
-      "url": "https://huggingface.co/papers/2611.26211",
+      "arxiv_id": "2611.25200",
+      "url": "https://huggingface.co/papers/2611.25200",
       "githubRepo": null
     },
     {
-      "title": "Direct3D-V3: Latent-Free Diffusion Transformers in the Native Voxel Domain",
-      "summary": "Native 3D generation has largely been built around latent diffusion, with recent advances concentrating on stronger variational autoencoders (VAE) and increasin...",
+      "title": "RL Post-Training in Diffusion Transformers Is Activation Steering",
+      "summary": "A fixed set of steering vectors added to a frozen diffusion transformer recovers most of the quality gains from reinforcement learning post-training, indicating that much of the improvement comes from a constant shift rather than prompt-specific transformations.",
+      "upvotes": 14,
+      "arxiv_id": "2611.26627",
+      "url": "https://huggingface.co/papers/2611.26627",
+      "githubRepo": null
+    },
+    {
+      "title": "In Situ Training of Optical Neural Networks by Coding Agents",
+      "summary": "A coding agent trains an optical neural network from measurements alone by reparametrizing it with interpretable optical elements, achieving better classification and image encoding than gradient-free methods and approaching backpropagation through a calibrated model at lower cost.",
       "upvotes": 2,
-      "arxiv_id": "2611.26511",
-      "url": "https://huggingface.co/papers/2611.26511",
-      "githubRepo": "https://github.com/DreamTechAI/Direct3D-V3"
+      "arxiv_id": "2611.23875",
+      "url": "https://huggingface.co/papers/2611.23875",
+      "githubRepo": null
+    },
+    {
+      "title": "Language Models Can Rewrite Their Own Weights",
+      "summary": "Language models are trained once, frozen and deployed: improving one again takes another training run, and a prompt, a scaffold or extra computation at inferenc...",
+      "upvotes": 4,
+      "arxiv_id": "2611.21885",
+      "url": "https://huggingface.co/papers/2611.21885",
+      "githubRepo": null
     }
   ],
   "sources": [

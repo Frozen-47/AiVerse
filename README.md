@@ -54,13 +54,13 @@ The artificial intelligence landscape moves at breakneck speed. Generic link dir
 ### ⚡ AiVerse AI Radar (2026-11-20)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Qwen3.5 397B A17B** (`Model`), **OpenAI: GPT-6.2 Sol Pro (batch)** (`Model`), **SmolVLM2-256M-Video-Instruct** (`Model`), **leaderboard** (`Platform`), **cmu-mocap-glb** (`Dataset`) |
+| 📥 **Queued for Review** | **Granite 4.2 30B** (`Model`), **OpenAI: GPT-6.2 Sol** (`Model`), **Inkling-2-Mini** (`Model`), **PhysicalAI-Human-1M-Explorer** (`Platform`), **JML-fon-speech-v1** (`Dataset`) |
 | 🌟 **Tool of the Day** | **Suno v3.5** (Suno) — [Explore](https://suno.com/) |
 | 🗄️ **Catalog Entries** | **766** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [System 1 agents: a method for local, reliable and ...](https://huggingface.co/papers/2611.21053) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 20 Nov 2026 15:53:06 GMT` |
+| 📜 **Top Daily Paper** | [Lang-SVG: Hierarchical Image Vectorization with La...](https://huggingface.co/papers/2611.15941) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 20 Nov 2026 22:55:57 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

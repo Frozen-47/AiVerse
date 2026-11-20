@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1795215357976_t23m3",
+    "created_at": "2026-11-20T22:55:57.976Z",
+    "timestamp": "2026-11-20T22:55:57.976Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Granite 4.2 30B, OpenAI: GPT-6.2 Sol, Inkling-2-Mini, PhysicalAI-Human-1M-Explorer, JML-fon-speech-v1. Checked health for 25 links (3 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 53141ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Granite 4.2 30B",
+          "type": "Model",
+          "org": "IBM"
+        },
+        {
+          "name": "OpenAI: GPT-6.2 Sol",
+          "type": "Model",
+          "org": "openai"
+        },
+        {
+          "name": "Inkling-2-Mini",
+          "type": "Model",
+          "org": "thinkingmachines"
+        },
+        {
+          "name": "PhysicalAI-Human-1M-Explorer",
+          "type": "Platform",
+          "org": "nvidia"
+        },
+        {
+          "name": "JML-fon-speech-v1",
+          "type": "Dataset",
+          "org": "JaimeMaLangue"
+        }
+      ],
+      "brokenLinks": 3,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 53141,
+      "runId": "44832779462",
+      "runNumber": "139",
+      "sha": "32a3c83",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795189986982_i3930",
     "created_at": "2026-11-20T15:53:06.982Z",
     "timestamp": "2026-11-20T15:53:06.982Z",
