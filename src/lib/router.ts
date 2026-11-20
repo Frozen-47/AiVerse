@@ -391,7 +391,7 @@ export function getRouteSeo(route: AppRoute, entryName?: string | null) {
       title = "AiVerse — Universal AI Knowledge Directory & Model Ecosystem";
       desc =
         "Explore verified AI models, architectures, benchmark evaluations, licenses, and ecosystem telemetry on AiVerse.";
-      path = "/";
+      path = typeof window !== "undefined" && window.location.pathname.startsWith("/dashboard") ? "/dashboard" : "/";
       break;
 
     case "entries":

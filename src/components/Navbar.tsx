@@ -255,7 +255,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </span>
           </a>
 
-          <span className="hidden sm:inline-flex items-center gap-1.5 text-[10.5px] font-medium px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] text-neutral-500 dark:text-neutral-400 border border-neutral-200/70 dark:border-white/[0.06] whitespace-nowrap shrink-0">
+          <span className="hidden sm:inline-flex items-center gap-1.5 text-[10.5px] font-semibold px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] text-neutral-700 dark:text-neutral-300 border border-neutral-200/70 dark:border-white/[0.06] whitespace-nowrap shrink-0">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span>{entryCount} assets</span>
           </span>
@@ -387,7 +387,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                             <span className="text-xs font-bold text-neutral-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                               Discovery Wizard
                             </span>
-                            <span className="text-[9px] font-bold uppercase px-1.5 py-0.2 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/25">
+                            <span className="text-[9px] font-bold uppercase px-1.5 py-0.2 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-400 border border-amber-500/25">
                               ADVISOR
                             </span>
                           </div>
@@ -499,7 +499,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded-full border ${
                     isChatActive
                       ? "bg-white/20 text-white border-white/30"
-                      : "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/25"
+                      : "bg-amber-500/10 text-amber-800 dark:text-amber-400 border-amber-500/25"
                   }`}
                 >
                   Groq LPU
@@ -515,13 +515,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={onSearchClick}
-              className="flex items-center gap-1.5 h-8.5 px-2.5 sm:px-3 rounded-full border border-neutral-200/80 dark:border-white/10 bg-neutral-100/70 dark:bg-white/[0.04] hover:bg-neutral-200/60 dark:hover:bg-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white text-xs transition-all cursor-pointer shadow-2xs group shrink-0"
+              className="flex items-center gap-1.5 h-8.5 px-2.5 sm:px-3 rounded-full border border-neutral-200/80 dark:border-white/10 bg-neutral-100/70 dark:bg-white/[0.04] hover:bg-neutral-200/60 dark:hover:bg-white/[0.08] text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white text-xs transition-all cursor-pointer shadow-2xs group shrink-0"
               title="Search Catalog Entries (⌘K)"
               aria-label="Search Catalog"
             >
-              <Search size={13} className="text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors" />
-              <span className="text-xs font-medium">Search</span>
-              <kbd className="hidden sm:inline-block text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded bg-white dark:bg-white/10 border border-neutral-200 dark:border-white/10 text-neutral-400 shadow-2xs">
+              <Search size={13} className="text-neutral-500 group-hover:text-neutral-800 dark:group-hover:text-neutral-200 transition-colors" />
+              <span className="text-xs font-semibold">Search</span>
+              <kbd className="hidden sm:inline-block text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-white dark:bg-white/10 border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 shadow-2xs">
                 ⌘K
               </kbd>
             </button>
@@ -720,7 +720,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <Trophy size={17} className="text-amber-500" />
                       <span className="font-semibold">Frontier Leaderboard</span>
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/25">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-400 border border-amber-500/25">
                       Benchmarks
                     </span>
                   </button>
@@ -776,7 +776,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         <Wand2 size={17} className="text-amber-500" />
                         <span className="font-semibold">Discovery Wizard</span>
                       </div>
-                      <span className="text-[9px] font-bold uppercase px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/25">
+                      <span className="text-[9px] font-bold uppercase px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-400 border border-amber-500/25">
                         ADVISOR
                       </span>
                     </button>

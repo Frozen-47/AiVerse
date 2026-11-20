@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agenticresourcediscovery.org/schema/v1/ard.json",
+  "version": "1.0",
+  "name": "AiVerse",
+  "description": "Comprehensive, citation-backed AI Knowledge Encyclopedia and Directory.",
+  "url": "https://aiverse.frozenn.in",
+  "provider": {
+    "name": "AiVerse",
+    "url": "https://aiverse.frozenn.in"
+  },
+  "resources": [
+    {
+      "type": "catalog",
+      "name": "AI Asset Directory",
+      "description": "Index of 570+ verified foundation models, datasets, frameworks, and AI platforms.",
+      "url": "https://aiverse.frozenn.in/entries"
+    },
+    {
+      "type": "api",
+      "name": "Catalog JSON Feed",
+      "description": "Structured JSON database of verified AI entries.",
+      "url": "https://aiverse.frozenn.in/data/data.json"
+    },
+    {
+      "type": "documentation",
+      "name": "LLMs Navigation Guide",
+      "description": "Agent-oriented navigation index.",
+      "url": "https://aiverse.frozenn.in/llms.txt"
+    }
+  ]
+}

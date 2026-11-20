@@ -705,7 +705,9 @@ const Inner: React.FC = () => {
       canonical.setAttribute("rel", "canonical");
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute("href", `https://aiverse.frozenn.in${seo.path}`);
+    const currentLoc = typeof window !== "undefined" ? window.location.pathname : "";
+    const canonicalPath = currentLoc.startsWith("/dashboard") ? "/dashboard" : seo.path;
+    canonical.setAttribute("href", `https://aiverse.frozenn.in${canonicalPath}`);
   }, [route, selected?.name]);
 
   useEffect(() => {

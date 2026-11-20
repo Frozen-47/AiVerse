@@ -1,0 +1,22 @@
+# AiVerse
+
+> The citation-backed AI Knowledge Encyclopedia. An authoritative directory of foundation models, machine learning frameworks, open datasets, and AI platforms.
+
+## Core Resources
+
+- [Dashboard](https://aiverse.frozenn.in/dashboard): Live ecosystem telemetry, trending foundation models, and tool of the day.
+- [AI Asset Catalog](https://aiverse.frozenn.in/entries): Comprehensive database of 570+ verified artificial intelligence models, benchmarks, and licenses.
+- [AI Ecosystems](https://aiverse.frozenn.in/entries?view=ecosystems): Curated family trees and provenances across leading labs (OpenAI, Anthropic, Google DeepMind, Meta, Mistral, and more).
+- [Leaderboard](https://aiverse.frozenn.in/leaderboard): Independent evaluations and benchmark matrices including MMLU, SWE-bench, and HumanEval.
+- [Compare Arena](https://aiverse.frozenn.in/features/compare): Side-by-side technical comparison of reasoning models and coding architectures.
+- [Model Playground](https://aiverse.frozenn.in/features/playground): Interactive testing and token streaming sandbox.
+
+## Data Feeds & APIs
+
+- [Catalog Dataset Feed](https://aiverse.frozenn.in/data/data.json): Complete machine-readable JSON catalog of verified AI models and platforms.
+- [ARD Manifest](https://aiverse.frozenn.in/.well-known/ard.json): Machine-readable Agentic Resource Discovery manifest.
+- [Sitemap](https://aiverse.frozenn.in/sitemap.xml): Search engine and crawler XML sitemap index.
+
+## Project & Community
+
+- [GitHub Repository](https://github.com/Frozen-47/AiVerse): Open-source codebase, technical issue tracker, and contribution guide.
