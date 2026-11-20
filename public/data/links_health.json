@@ -1,28 +1,13 @@
 {
-  "timestamp": "2026-11-16T08:53:27.021Z",
+  "timestamp": "2026-11-20T05:17:23.793Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
-      "name": "GPT-4.5",
-      "url": "https://openai.com",
+      "name": "Gamma",
+      "url": "https://gamma.app",
       "status": 403
-    },
-    {
-      "name": "o3",
-      "url": "https://openai.com",
-      "status": 403
-    },
-    {
-      "name": "o1 (OpenAI)",
-      "url": "https://openai.com/o1",
-      "status": 403
-    },
-    {
-      "name": "LMSYS Chatbot Arena Conversations",
-      "url": "https://chat.lmsys.org",
-      "status": "Network Error"
     }
   ]
 }

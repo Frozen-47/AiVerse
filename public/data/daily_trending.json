@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-16T08:53:26.713Z",
+  "timestamp": "2026-11-20T05:17:23.471Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -29,109 +29,109 @@
       "source": "Artificial Analysis"
     },
     {
-      "id": "Qwen: Qwen4 Max",
-      "author": "qwen",
+      "id": "Mistral: Pixtral Large 2502",
+      "author": "mistralai",
       "likes": 120,
-      "downloads": 1000000,
+      "downloads": 128000,
       "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/qwen/qwen4-max",
+      "url": "https://openrouter.ai/mistralai/pixtral-large-2502",
       "source": "OpenRouter"
     },
     {
-      "id": "inclusionAI: Ling 3.2 Flash (free)",
-      "author": "inclusionai",
-      "likes": 120,
-      "downloads": 1048576,
-      "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/inclusionai/ling-3.2-flash:free",
-      "source": "OpenRouter"
-    },
-    {
-      "id": "Google: Gemini 4 Hydrogen",
+      "id": "Google: Gemini 4 Neon",
       "author": "google",
       "likes": 120,
       "downloads": 1048576,
       "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/google/gemini-4-hydrogen",
+      "url": "https://openrouter.ai/google/gemini-4-neon",
       "source": "OpenRouter"
     },
     {
-      "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
-      "author": "xtools-at",
-      "likes": 7611,
-      "downloads": 27037,
-      "pipeline_tag": "text-generation",
-      "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+      "id": "Google: Gemini 4 Neon (batch)",
+      "author": "google",
+      "likes": 120,
+      "downloads": 1048576,
+      "pipeline_tag": "Cloud Model API",
+      "url": "https://openrouter.ai/google/gemini-4-neon:batch",
+      "source": "OpenRouter"
+    },
+    {
+      "id": "higurashi-ai/Haru-4B",
+      "author": "higurashi-ai",
+      "likes": 3662,
+      "downloads": 6266,
+      "pipeline_tag": "audio-to-audio",
+      "url": "https://huggingface.co/higurashi-ai/Haru-4B",
       "source": "Hugging Face"
     },
     {
-      "id": "MiniMaxAI/MiniMax-H3-Image",
-      "author": "MiniMaxAI",
-      "likes": 1225,
-      "downloads": 571067,
-      "pipeline_tag": "text-to-image",
-      "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
-      "source": "Hugging Face"
-    },
-    {
-      "id": "Qwen/Qwen3.8-27B",
-      "author": "Qwen",
-      "likes": 20160,
-      "downloads": 6547772,
+      "id": "tencent/Hy4-flash",
+      "author": "tencent",
+      "likes": 360,
+      "downloads": 2053,
       "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+      "url": "https://huggingface.co/tencent/Hy4-flash",
       "source": "Hugging Face"
     },
     {
-      "id": "Lightricks/LTX-2.5",
-      "author": "Lightricks",
-      "likes": 12114,
-      "downloads": 2754355,
-      "pipeline_tag": "image-to-video",
-      "url": "https://huggingface.co/Lightricks/LTX-2.5",
+      "id": "apple/FastFrames-L",
+      "author": "apple",
+      "likes": 348,
+      "downloads": 0,
+      "pipeline_tag": "text-to-video",
+      "url": "https://huggingface.co/apple/FastFrames-L",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "harness-hub/Qwen3.8-27B-pi-adapted",
+      "author": "harness-hub",
+      "likes": 750,
+      "downloads": 1320,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
       "source": "Hugging Face"
     }
   ],
   "papers": [
     {
-      "title": "VibePrevisBench: Evaluating Agentic Coding for 4D Scene Generation in Blender",
-      "summary": "Controllable real-world video generation models can condition on a rendered graybox proxy video, which fixes layout, motion and camera. Coding agents can build ...",
-      "upvotes": 21,
-      "arxiv_id": "2611.15789",
-      "url": "https://huggingface.co/papers/2611.15789",
-      "githubRepo": "https://github.com/vibeprevisbench/vibeprevisbench"
+      "title": "WM^MLLM: Turning MLLMs into World Models",
+      "summary": "WM^MLLM uses multimodal large language models to maintain an external panorama state with revision history, enabling persistent, editable world generation from a single image with exact revisits and local edits.",
+      "upvotes": 3,
+      "arxiv_id": "2611.24193",
+      "url": "https://huggingface.co/papers/2611.24193",
+      "githubRepo": "https://github.com/ztMotaLee/WM_mllm"
     },
     {
-      "title": "Evidence-Governed Adoption of Self-Generated Updates in Autonomous AI Agents",
-      "summary": "A governance framework separates generation from adoption of self-modifying autonomous-agent changes, using fresh paired audits, non-inferiority checks, and calibrated statistical bounds to confirm improvements before bounded deployment.",
-      "upvotes": 8,
-      "arxiv_id": "2611.16378",
-      "url": "https://huggingface.co/papers/2611.16378",
-      "githubRepo": null
+      "title": "Depth Pro 2: Sharp and Temporally Consistent Metric Monocular Depth",
+      "summary": "A single scalable network estimates dense metric depth for images and video at native resolution, jointly improving metric accuracy, boundary sharpness, and temporal consistency.",
+      "upvotes": 0,
+      "arxiv_id": "2611.26603",
+      "url": "https://huggingface.co/papers/2611.26603",
+      "githubRepo": "https://github.com/apple-aiml-research/ml-depth-pro-2"
     },
     {
-      "title": "MMFlash: Faster Speculative Decoding for Vision-Language Models",
-      "summary": "MMFlash improves multimodal speculative decoding by adaptively upweighting visually dependent tokens and using sparse attention for long video, yielding up to 3.58× lossless speedup.",
-      "upvotes": 25,
-      "arxiv_id": "2611.18482",
-      "url": "https://huggingface.co/papers/2611.18482",
-      "githubRepo": "https://github.com/fscdc/MMFlash"
+      "title": "TuringSpace: Grounding Spatial Intelligence in Action with Interactive CAPTCHAs",
+      "summary": "Humans act in the visual world by inferring the 3D layout behind a 2D view, predicting how an action changes it, and correcting themselves after seeing the resu...",
+      "upvotes": 11,
+      "arxiv_id": "2611.25387",
+      "url": "https://huggingface.co/papers/2611.25387",
+      "githubRepo": "https://github.com/os-cua-framework/TuringSpace"
     },
     {
-      "title": "JFinBench: A Continuously Refreshable Japanese Financial Benchmark from the Latest Certification Exams",
-      "summary": "Large language models (LLMs) are increasingly applied to finance, creating a need for benchmarks that evaluate their capabilities across financial systems with ...",
-      "upvotes": 9,
-      "arxiv_id": "2611.18130",
-      "url": "https://huggingface.co/papers/2611.18130",
-      "githubRepo": "https://github.com/SakanaAI/JFinBench"
+      "title": "WeMM-Video: Pushing the Frontiers of Open-Source Omni-Modal Video Understanding",
+      "summary": "WeMM-Video is a family of Chinese-English bilingual omni-modal foundation models that unify text, image, audio, and video processing for joint audio-visual perception and reasoning, using hybrid thinking modes and large-scale training to achieve strong open-source video understanding results.",
+      "upvotes": 6,
+      "arxiv_id": "2611.26409",
+      "url": "https://huggingface.co/papers/2611.26409",
+      "githubRepo": "https://github.com/Tencent/WeMM-Video"
     },
     {
-      "title": "eDIAR: Training-Free Open-Speaker Streaming Diarization for Long Meetings and Large Archives via e-means",
-      "summary": "A streaming speaker-diarization method removes the fixed speaker-slot limit by clustering speaker embeddings within slots after all slots are used, allowing unlimited speakers and efficient large-scale linking.",
-      "upvotes": 8,
-      "arxiv_id": "2611.18529",
-      "url": "https://huggingface.co/papers/2611.18529",
-      "githubRepo": null
+      "title": "The Mask Is Not the Object: Volumetric Supervision for 3D Gaussian Segmentation",
+      "summary": "A plug-and-play objective, VODA, groups per-pixel contributors by local depth to supervise all Gaussians in selected depth clusters, improving volumetric segmentation and enabling evaluation via Removal-3D and Removal Depth Error.",
+      "upvotes": 1,
+      "arxiv_id": "2611.21383",
+      "url": "https://huggingface.co/papers/2611.21383",
+      "githubRepo": "https://github.com/jhxcho/voda"
     }
   ],
   "sources": [

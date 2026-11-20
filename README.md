@@ -14,16 +14,16 @@
 ## ✨ Features
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-16)
+### ⚡ AiVerse AI Radar (2026-11-20)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Nova 2.0 Omni** (`Model`), **Qwen: Qwen4 Max** (`Model`), **speaker-diarization-community-1** (`Model`), **USDCraft-10K** (`Dataset`) |
-| 🌟 **Tool of the Day** | **GPT-6 Astra (high)** (OpenAI) — [Explore](https://artificialanalysis.ai/models/gpt-6-astra-high) |
-| 🗄️ **Catalog Entries** | **474** AI assets tracked (371 featured) |
+| 📥 **Queued for Review** | **Inkling** (`Model`), **Mistral: Pixtral Large 2502** (`Model`), **DaisyRose-27B** (`Model`), **clairic** (`Platform`) |
+| 🌟 **Tool of the Day** | **Suno v3.5** (Suno) — [Explore](https://suno.com/) |
+| 🗄️ **Catalog Entries** | **575** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [VibePrevisBench: Evaluating Agentic Coding for 4D ...](https://huggingface.co/papers/2611.15789) |
-| 🛡️ **Catalog Links Checked** | **21/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 16 Nov 2026 08:53:57 GMT` |
+| 📜 **Top Daily Paper** | [WM^MLLM: Turning MLLMs into World Models...](https://huggingface.co/papers/2611.24193) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 20 Nov 2026 05:18:14 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

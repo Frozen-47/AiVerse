@@ -1,5 +1,636 @@
 [
   {
+    "id": "action_1795151894356_c1je7",
+    "created_at": "2026-11-20T05:18:14.356Z",
+    "timestamp": "2026-11-20T05:18:14.356Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 4 new asset(s) queued",
+    "details": "Ingested 4 asset(s): Inkling, Mistral: Pixtral Large 2502, DaisyRose-27B, clairic. Checked health for 25 links (1 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 52594ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 4,
+      "newlyIngested": [
+        {
+          "name": "Inkling",
+          "type": "Model",
+          "org": "Thinking Machines"
+        },
+        {
+          "name": "Mistral: Pixtral Large 2502",
+          "type": "Model",
+          "org": "mistralai"
+        },
+        {
+          "name": "DaisyRose-27B",
+          "type": "Model",
+          "org": "RadixArk"
+        },
+        {
+          "name": "clairic",
+          "type": "Platform",
+          "org": "hugging-apps"
+        }
+      ],
+      "brokenLinks": 1,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 52594,
+      "runId": "44680013263",
+      "runNumber": "137",
+      "sha": "53b6d9d",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
+    "id": "action_1795130594047_6t4vv",
+    "created_at": "2026-11-19T23:23:14.047Z",
+    "timestamp": "2026-11-19T23:23:14.047Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Nova 2.0 Pro Preview, OpenAI: GPT-6.2 Sol Pro, Rumble-2-Flash, SplatAnything, duplex-pre-training-yodas3-mimi. Checked health for 25 links (2 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 35104ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Nova 2.0 Pro Preview",
+          "type": "Model",
+          "org": "Amazon"
+        },
+        {
+          "name": "OpenAI: GPT-6.2 Sol Pro",
+          "type": "Model",
+          "org": "openai"
+        },
+        {
+          "name": "Rumble-2-Flash",
+          "type": "Model",
+          "org": "Reson8"
+        },
+        {
+          "name": "SplatAnything",
+          "type": "Platform",
+          "org": "ritianyu"
+        },
+        {
+          "name": "duplex-pre-training-yodas3-mimi",
+          "type": "Dataset",
+          "org": "Trelis"
+        }
+      ],
+      "brokenLinks": 2,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 35104,
+      "runId": "44637110483",
+      "runNumber": "136",
+      "sha": "fabe4f9",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
+    "id": "action_1795104892371_jnrzf",
+    "created_at": "2026-11-19T16:14:52.371Z",
+    "timestamp": "2026-11-19T16:14:52.371Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Claude Fable 5.2, OpenAI: GPT-6.2 Astra (batch), voice-isolator, P-Image-OSS, qwen4-max-reasoning-250x. Checked health for 25 links (2 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 42694ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Claude Fable 5.2",
+          "type": "Model",
+          "org": "Anthropic"
+        },
+        {
+          "name": "OpenAI: GPT-6.2 Astra (batch)",
+          "type": "Model",
+          "org": "openai"
+        },
+        {
+          "name": "voice-isolator",
+          "type": "Model",
+          "org": "inworld"
+        },
+        {
+          "name": "P-Image-OSS",
+          "type": "Platform",
+          "org": "PrunaAI"
+        },
+        {
+          "name": "qwen4-max-reasoning-250x",
+          "type": "Dataset",
+          "org": "AJ-Gonzalez"
+        }
+      ],
+      "brokenLinks": 2,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 42694,
+      "runId": "44563737665",
+      "runNumber": "135",
+      "sha": "5830353",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
+    "id": "action_1795090748460_7svr1",
+    "created_at": "2026-11-19T12:19:08.460Z",
+    "timestamp": "2026-11-19T12:19:08.460Z",
+    "workflow": "Leaderboard Sync",
+    "action": "LEADERBOARD_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "Leaderboard Sync completed: 287 benchmarked frontier models active",
+    "details": "Ingested live flight data from Artificial Analysis and OpenRouter. Compiled into src/data/leaderboardData.ts in 392ms.",
+    "metadata": {
+      "totalModels": 287,
+      "durationMs": 392,
+      "targetFile": "src/data/leaderboardData.ts",
+      "runId": "44522586527",
+      "runNumber": "6",
+      "sha": "ff93169",
+      "ref": "refs/heads/main",
+      "workflow": "Leaderboard Sync"
+    }
+  },
+  {
+    "id": "action_1795066206352_mq25a",
+    "created_at": "2026-11-19T05:30:06.352Z",
+    "timestamp": "2026-11-19T05:30:06.352Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Granite 4.2 3B, Google: Gemini 4 Neon (batch), FastFrames-L, UGI-Leaderboard, uzbek-language-corpus. Checked health for 25 links (4 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 42956ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Granite 4.2 3B",
+          "type": "Model",
+          "org": "IBM"
+        },
+        {
+          "name": "Google: Gemini 4 Neon (batch)",
+          "type": "Model",
+          "org": "google"
+        },
+        {
+          "name": "FastFrames-L",
+          "type": "Model",
+          "org": "apple"
+        },
+        {
+          "name": "UGI-Leaderboard",
+          "type": "Platform",
+          "org": "DontPlanToEnd"
+        },
+        {
+          "name": "uzbek-language-corpus",
+          "type": "Dataset",
+          "org": "Digitaluz"
+        }
+      ],
+      "brokenLinks": 4,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 42956,
+      "runId": "44465491535",
+      "runNumber": "134",
+      "sha": "b514f93",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
+    "id": "action_1795043749840_pwlnv",
+    "created_at": "2026-11-18T23:15:49.840Z",
+    "timestamp": "2026-11-18T23:15:49.840Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Gemini 4 Neon, Google: Gemini 4 Neon, Hy4-flash, pi-H3, Ko-MultimodalMind2Web. Checked health for 25 links (0 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 51730ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Gemini 4 Neon",
+          "type": "Model",
+          "org": "Google"
+        },
+        {
+          "name": "Google: Gemini 4 Neon",
+          "type": "Model",
+          "org": "google"
+        },
+        {
+          "name": "Hy4-flash",
+          "type": "Model",
+          "org": "tencent"
+        },
+        {
+          "name": "pi-H3",
+          "type": "Platform",
+          "org": "Lakonik"
+        },
+        {
+          "name": "Ko-MultimodalMind2Web",
+          "type": "Dataset",
+          "org": "KORMo-VL"
+        }
+      ],
+      "brokenLinks": 0,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 51730,
+      "runId": "44419046126",
+      "runNumber": "133",
+      "sha": "1939a5d",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
+    "id": "action_1795018042330_koiil",
+    "created_at": "2026-11-18T16:07:22.330Z",
+    "timestamp": "2026-11-18T16:07:22.330Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Qwen3 Omni 30B A3B Instruct, OpenAI: GPT-6.2 Astra, Maxwell-V1-Flash, slack-moji, Ko-Screenspot. Checked health for 25 links (1 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 38118ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Qwen3 Omni 30B A3B Instruct",
+          "type": "Model",
+          "org": "Alibaba"
+        },
+        {
+          "name": "OpenAI: GPT-6.2 Astra",
+          "type": "Model",
+          "org": "openai"
+        },
+        {
+          "name": "Maxwell-V1-Flash",
+          "type": "Model",
+          "org": "maxwell-model"
+        },
+        {
+          "name": "slack-moji",
+          "type": "Platform",
+          "org": "cfahlgren1"
+        },
+        {
+          "name": "Ko-Screenspot",
+          "type": "Dataset",
+          "org": "KORMo-VL"
+        }
+      ],
+      "brokenLinks": 1,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 38118,
+      "runId": "44343312568",
+      "runNumber": "132",
+      "sha": "9783790",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
+    "id": "action_1795004691719_rbypk",
+    "created_at": "2026-11-18T12:24:51.719Z",
+    "timestamp": "2026-11-18T12:24:51.719Z",
+    "workflow": "Leaderboard Sync",
+    "action": "LEADERBOARD_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "Leaderboard Sync completed: 283 benchmarked frontier models active",
+    "details": "Ingested live flight data from Artificial Analysis and OpenRouter. Compiled into src/data/leaderboardData.ts in 451ms.",
+    "metadata": {
+      "totalModels": 283,
+      "durationMs": 451,
+      "targetFile": "src/data/leaderboardData.ts",
+      "runId": "44303497744",
+      "runNumber": "5",
+      "sha": "305ca89",
+      "ref": "refs/heads/main",
+      "workflow": "Leaderboard Sync"
+    }
+  },
+  {
+    "id": "action_1794979953010_0d6o5",
+    "created_at": "2026-11-18T05:32:33.010Z",
+    "timestamp": "2026-11-18T05:32:33.010Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Qwen3.5 2B, OpenAI: GPT-6.2 Astra Pro (batch), Qwen3.8-27B-pi-adapted, tessera-pixel-studio, ParseBench-2. Checked health for 25 links (4 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 52406ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Qwen3.5 2B",
+          "type": "Model",
+          "org": "Alibaba"
+        },
+        {
+          "name": "OpenAI: GPT-6.2 Astra Pro (batch)",
+          "type": "Model",
+          "org": "openai"
+        },
+        {
+          "name": "Qwen3.8-27B-pi-adapted",
+          "type": "Model",
+          "org": "harness-hub"
+        },
+        {
+          "name": "tessera-pixel-studio",
+          "type": "Platform",
+          "org": "thejagstudio"
+        },
+        {
+          "name": "ParseBench-2",
+          "type": "Dataset",
+          "org": "llamaindex"
+        }
+      ],
+      "brokenLinks": 4,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 52406,
+      "runId": "44244847549",
+      "runNumber": "131",
+      "sha": "e2fa0c1",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
+    "id": "action_1794959015282_57kxk",
+    "created_at": "2026-11-17T23:43:35.282Z",
+    "timestamp": "2026-11-17T23:43:35.282Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Apodex 1.1, OpenAI: GPT-6.2 Astra Pro, SenseNova-Loop-9B, PyBot, Ko-Online-Mind2Web. Checked health for 25 links (3 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 53523ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Apodex 1.1",
+          "type": "Model",
+          "org": "Apodex"
+        },
+        {
+          "name": "OpenAI: GPT-6.2 Astra Pro",
+          "type": "Model",
+          "org": "openai"
+        },
+        {
+          "name": "SenseNova-Loop-9B",
+          "type": "Model",
+          "org": "sensenova"
+        },
+        {
+          "name": "PyBot",
+          "type": "Platform",
+          "org": "HuggingFaceSwarms"
+        },
+        {
+          "name": "Ko-Online-Mind2Web",
+          "type": "Dataset",
+          "org": "KORMo-VL"
+        }
+      ],
+      "brokenLinks": 3,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 53523,
+      "runId": "44201713667",
+      "runNumber": "130",
+      "sha": "92e7a20",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
+    "id": "action_1794924195711_lnhhg",
+    "created_at": "2026-11-17T14:03:15.711Z",
+    "timestamp": "2026-11-17T14:03:15.711Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 4 new asset(s) queued",
+    "details": "Ingested 4 asset(s): Gemma 3 270M, Baidu: ERNIE-5.5-Flash-Preview (free), LongCat-Video-Avatar-1.6, EVIDENT. Checked health for 25 links (1 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 53246ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 4,
+      "newlyIngested": [
+        {
+          "name": "Gemma 3 270M",
+          "type": "Model",
+          "org": "Google"
+        },
+        {
+          "name": "Baidu: ERNIE-5.5-Flash-Preview (free)",
+          "type": "Model",
+          "org": "baidu"
+        },
+        {
+          "name": "LongCat-Video-Avatar-1.6",
+          "type": "Model",
+          "org": "meituan-longcat"
+        },
+        {
+          "name": "EVIDENT",
+          "type": "Dataset",
+          "org": "KORMo-VL"
+        }
+      ],
+      "brokenLinks": 1,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 53246,
+      "runId": "44098760723",
+      "runNumber": "129",
+      "sha": "c7c21e8",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
+    "id": "action_1794918967921_58efn",
+    "created_at": "2026-11-17T12:36:07.921Z",
+    "timestamp": "2026-11-17T12:36:07.921Z",
+    "workflow": "Leaderboard Sync",
+    "action": "LEADERBOARD_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "Leaderboard Sync completed: 277 benchmarked frontier models active",
+    "details": "Ingested live flight data from Artificial Analysis and OpenRouter. Compiled into src/data/leaderboardData.ts in 426ms.",
+    "metadata": {
+      "totalModels": 277,
+      "durationMs": 426,
+      "targetFile": "src/data/leaderboardData.ts",
+      "runId": "44084504522",
+      "runNumber": "4",
+      "sha": "b8dd89f",
+      "ref": "refs/heads/main",
+      "workflow": "Leaderboard Sync"
+    }
+  },
+  {
+    "id": "action_1794889080827_pceqc",
+    "created_at": "2026-11-17T04:18:00.827Z",
+    "timestamp": "2026-11-17T04:18:00.827Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 4 new asset(s) queued",
+    "details": "Ingested 4 asset(s): Gemma 4 12B, Google: Gemini 4 Hydrogen (batch), tiny-voca, HubEgo-100K. Checked health for 25 links (3 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 52193ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 4,
+      "newlyIngested": [
+        {
+          "name": "Gemma 4 12B",
+          "type": "Model",
+          "org": "Google"
+        },
+        {
+          "name": "Google: Gemini 4 Hydrogen (batch)",
+          "type": "Model",
+          "org": "google"
+        },
+        {
+          "name": "tiny-voca",
+          "type": "Model",
+          "org": "n4ze3m"
+        },
+        {
+          "name": "HubEgo-100K",
+          "type": "Dataset",
+          "org": "HubLabs"
+        }
+      ],
+      "brokenLinks": 3,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 52193,
+      "runId": "44016090802",
+      "runNumber": "128",
+      "sha": "607da40",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
+    "id": "action_1794859105786_uytm7",
+    "created_at": "2026-11-16T19:58:25.786Z",
+    "timestamp": "2026-11-16T19:58:25.786Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 575 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Qwen3.5 122B A10B, Tencent: Hy4 flash, PAN2, AI-Image-Upscaler, Ropedia-Xperience-2. Checked health for 25 links (2 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 37804ms.",
+    "metadata": {
+      "totalCatalogEntries": 575,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Qwen3.5 122B A10B",
+          "type": "Model",
+          "org": "Alibaba"
+        },
+        {
+          "name": "Tencent: Hy4 flash",
+          "type": "Model",
+          "org": "tencent"
+        },
+        {
+          "name": "PAN2",
+          "type": "Model",
+          "org": "IFM"
+        },
+        {
+          "name": "AI-Image-Upscaler",
+          "type": "Platform",
+          "org": "MegaPotatoAI"
+        },
+        {
+          "name": "Ropedia-Xperience-2",
+          "type": "Dataset",
+          "org": "ropedia-ai"
+        }
+      ],
+      "brokenLinks": 2,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 37804,
+      "runId": "43944754982",
+      "runNumber": "127",
+      "sha": "c7ddb83",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1794831027753_7p46c",
     "created_at": "2026-11-16T12:10:27.753Z",
     "timestamp": "2026-11-16T12:10:27.753Z",

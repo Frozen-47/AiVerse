@@ -1,29 +1,26 @@
 {
-  "date": "2026-11-16",
+  "date": "2026-11-20",
   "tool": {
-    "name": "GPT-6 Astra (high)",
+    "name": "Suno v3.5",
     "type": "Model",
-    "summary": "OpenAI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 55, Briefcase Elo of 1505, and a massive 1M context window.",
-    "task": "NLP",
+    "summary": "State-of-the-art AI music generation model capable of creating full, radio-quality songs with vocals and instrumentation from simple text prompts, incorporating an architecture of proprietary audio generation architecture. The model demonstrates competitive performance across verified evaluations, including High subjective quality for coherent musical structure and intelligible vocals. Distributed under the Proprietary license, it serves as a foundational intelligence asset in the modern audio ecosystem.",
+    "task": "Audio",
     "license": "Proprietary",
-    "year": 2026,
-    "org": "OpenAI",
-    "size": "1M Context · Proprietary Model",
-    "architecture": "Proprietary frontier neural architecture developed by OpenAI, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (63 tok/s).",
-    "usage": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n  model=\"gpt-6-astra-high\",\n  messages=[{\"role\": \"user\", \"content\": \"Execute frontier reasoning workflow.\"}]\n)",
-    "benchmarks": "Intelligence Index: 55, Briefcase Elo: 1505, Accuracy: 61%, Non-Hallucination: 57%, FrontierCode: 40%, AutomationBench: 67%, TerminalBench 4: 54%, HLE Diamond: 59%, Speed: 63 tok/s, Context Window: 1M",
-    "limitations": "Proprietary cloud API access via OpenAI developer platform; subject to API rate limits and token pricing ($10/M in, $50/M out).",
+    "year": 2024,
+    "org": "Suno",
+    "size": "Unknown",
+    "architecture": "Proprietary audio generation architecture.",
+    "usage": "# Accessed via Suno web platform or API\n# Prompt: \"An upbeat pop song about coding late at night\"",
+    "benchmarks": "High subjective quality for coherent musical structure and intelligible vocals.",
+    "limitations": "Proprietary, max song length limits, potential copyright concerns regarding training data.",
     "popular": true,
-    "url": "https://artificialanalysis.ai/models/gpt-6-astra-high",
+    "url": "https://suno.com/",
     "citations": [
       {
-        "text": "GPT-6 Astra (high) on Artificial Analysis Benchmark",
-        "url": "https://artificialanalysis.ai/models/gpt-6-astra-high"
-      },
-      {
-        "text": "GPT-6 Astra (high) Inference Providers",
-        "url": "https://artificialanalysis.ai/models/gpt-6-astra-high/providers"
+        "text": "Suno v3.5 Announcement",
+        "url": "https://suno.com/blog/v3-5"
       }
-    ]
+    ],
+    "description": "State-of-the-art AI music generation model capable of creating full, radio-quality songs with vocals and instrumentation from simple text prompts, incorporating an architecture of proprietary audio generation architecture. The model demonstrates competitive performance across verified evaluations, including High subjective quality for coherent musical structure and intelligible vocals. Distributed under the Proprietary license, it serves as a foundational intelligence asset in the modern audio ecosystem."
   }
 }
