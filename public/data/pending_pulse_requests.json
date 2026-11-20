@@ -1,1 +1,131 @@
-[]
+[
+  {
+    "name": "cmu-mocap-glb",
+    "type": "Dataset",
+    "summary": "CMU Motion Capture Database as GLB \t 2426 motion capture clips from CMU Graphics Lab Motion Capture Database: 6 categories, 2,276,379 frames (10.5 hours) at 60 fps. Eve (18 likes, 1,862 downloads).",
+    "task": "Computer Vision",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "codepawl",
+    "size": "1K<n<10K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"codepawl/cmu-mocap-glb\")",
+    "benchmarks": "Trending Score: 15, Likes: 18, Downloads: 1,862",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/codepawl/cmu-mocap-glb",
+    "citations": [
+      {
+        "text": "codepawl/cmu-mocap-glb on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/codepawl/cmu-mocap-glb"
+      }
+    ],
+    "created_at": "2026-11-20T15:52:16.837Z"
+  },
+  {
+    "name": "leaderboard",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by agent-memory-leaderboard. Trending with 931 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "agent-memory-leaderboard",
+    "size": "STATIC Platform",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/agent-memory-leaderboard/leaderboard",
+    "benchmarks": "Trending Score: 42, Community Likes: 931",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/agent-memory-leaderboard/leaderboard",
+    "citations": [
+      {
+        "text": "agent-memory-leaderboard/leaderboard on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/agent-memory-leaderboard/leaderboard"
+      }
+    ],
+    "created_at": "2026-11-20T15:52:16.837Z"
+  },
+  {
+    "name": "SmolVLM2-256M-Video-Instruct",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by HuggingFaceTB, trending with over 298 community likes and 45,338 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "HuggingFaceTB",
+    "size": "256M params",
+    "architecture": "HuggingFaceTB image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"HuggingFaceTB/SmolVLM2-256M-Video-Instruct\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"HuggingFaceTB/SmolVLM2-256M-Video-Instruct\")",
+    "benchmarks": "Trending Score: 124, Likes: 298, Downloads: 45,338",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/HuggingFaceTB/SmolVLM2-256M-Video-Instruct",
+    "citations": [
+      {
+        "text": "HuggingFaceTB/SmolVLM2-256M-Video-Instruct on Hugging Face",
+        "url": "https://huggingface.co/HuggingFaceTB/SmolVLM2-256M-Video-Instruct"
+      }
+    ],
+    "created_at": "2026-11-20T15:52:16.837Z"
+  },
+  {
+    "name": "OpenAI: GPT-6.2 Sol Pro (batch)",
+    "type": "Model",
+    "summary": "GPT-6.2 Sol Pro is the same underlying model as [GPT-6.2 Sol](https://openrouter.ai/openai/gpt-6.2-sol), served with `reasoning.mode` set to `pro` for higher-quality responses on c",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "openai",
+    "size": "1050k Context · Available via API",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1050k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"openai/gpt-6.2-sol-pro:batch\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1050k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://openrouter.ai/openai/gpt-6.2-sol-pro:batch",
+    "citations": [
+      {
+        "text": "OpenAI: GPT-6.2 Sol Pro (batch) on OpenRouter",
+        "url": "https://openrouter.ai/openai/gpt-6.2-sol-pro:batch"
+      }
+    ],
+    "created_at": "2026-11-20T15:52:16.837Z"
+  },
+  {
+    "name": "Qwen3.5 397B A17B",
+    "type": "Model",
+    "summary": "Frontier Research model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.",
+    "task": "Research",
+    "license": "Open Weights",
+    "year": 2026,
+    "org": "Alibaba",
+    "size": "262k Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by Alibaba, featuring native 262k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-5-397b-a17b",
+    "benchmarks": "Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://artificialanalysis.ai/models/qwen3-5-397b-a17b",
+    "citations": [
+      {
+        "text": "Qwen3.5 397B A17B on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/qwen3-5-397b-a17b"
+      },
+      {
+        "text": "Qwen3.5 397B A17B Inference Providers",
+        "url": "https://artificialanalysis.ai/models/qwen3-5-397b-a17b/providers"
+      }
+    ],
+    "created_at": "2026-11-20T15:52:16.837Z"
+  }
+]

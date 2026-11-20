@@ -1,12 +1,17 @@
 {
-  "timestamp": "2026-11-20T05:17:23.793Z",
+  "timestamp": "2026-11-20T15:52:17.028Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "Gamma",
-      "url": "https://gamma.app",
+      "name": "o3-mini",
+      "url": "https://openai.com",
+      "status": 403
+    },
+    {
+      "name": "DeepSeek Chat",
+      "url": "https://chat.deepseek.com",
       "status": 403
     }
   ]

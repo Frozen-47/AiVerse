@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-20T05:17:23.471Z",
+  "timestamp": "2026-11-20T15:52:16.870Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -56,82 +56,82 @@
       "source": "OpenRouter"
     },
     {
+      "id": "inworld/voice-isolator",
+      "author": "inworld",
+      "likes": 386,
+      "downloads": 0,
+      "pipeline_tag": "audio-to-audio",
+      "url": "https://huggingface.co/inworld/voice-isolator",
+      "source": "Hugging Face"
+    },
+    {
       "id": "higurashi-ai/Haru-4B",
       "author": "higurashi-ai",
-      "likes": 3662,
-      "downloads": 6266,
+      "likes": 4327,
+      "downloads": 7323,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/higurashi-ai/Haru-4B",
       "source": "Hugging Face"
     },
     {
-      "id": "tencent/Hy4-flash",
-      "author": "tencent",
-      "likes": 360,
-      "downloads": 2053,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/tencent/Hy4-flash",
-      "source": "Hugging Face"
-    },
-    {
-      "id": "apple/FastFrames-L",
-      "author": "apple",
-      "likes": 348,
-      "downloads": 0,
-      "pipeline_tag": "text-to-video",
-      "url": "https://huggingface.co/apple/FastFrames-L",
-      "source": "Hugging Face"
-    },
-    {
       "id": "harness-hub/Qwen3.8-27B-pi-adapted",
       "author": "harness-hub",
-      "likes": 750,
-      "downloads": 1320,
+      "likes": 817,
+      "downloads": 1874,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "Qwen/Qwen3.8-27B",
+      "author": "Qwen",
+      "likes": 20754,
+      "downloads": 6454419,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
       "source": "Hugging Face"
     }
   ],
   "papers": [
     {
-      "title": "WM^MLLM: Turning MLLMs into World Models",
-      "summary": "WM^MLLM uses multimodal large language models to maintain an external panorama state with revision history, enabling persistent, editable world generation from a single image with exact revisits and local edits.",
-      "upvotes": 3,
-      "arxiv_id": "2611.24193",
-      "url": "https://huggingface.co/papers/2611.24193",
-      "githubRepo": "https://github.com/ztMotaLee/WM_mllm"
-    },
-    {
-      "title": "Depth Pro 2: Sharp and Temporally Consistent Metric Monocular Depth",
-      "summary": "A single scalable network estimates dense metric depth for images and video at native resolution, jointly improving metric accuracy, boundary sharpness, and temporal consistency.",
+      "title": "System 1 agents: a method for local, reliable and fast agentic AI",
+      "summary": "A local System 1 agent framework compiles tool schemas and requests into multiple-choice questions answered by a one-pass decision model, enabling accurate biomedical tool calls without text generation or invented content.",
       "upvotes": 0,
-      "arxiv_id": "2611.26603",
-      "url": "https://huggingface.co/papers/2611.26603",
-      "githubRepo": "https://github.com/apple-aiml-research/ml-depth-pro-2"
+      "arxiv_id": "2611.21053",
+      "url": "https://huggingface.co/papers/2611.21053",
+      "githubRepo": "https://github.com/eltzanis/SystemOneAgents"
     },
     {
-      "title": "TuringSpace: Grounding Spatial Intelligence in Action with Interactive CAPTCHAs",
-      "summary": "Humans act in the visual world by inferring the 3D layout behind a 2D view, predicting how an action changes it, and correcting themselves after seeing the resu...",
-      "upvotes": 11,
-      "arxiv_id": "2611.25387",
-      "url": "https://huggingface.co/papers/2611.25387",
-      "githubRepo": "https://github.com/os-cua-framework/TuringSpace"
+      "title": "Online Mistake Detection in Instruction-Conditioned Procedural Video",
+      "summary": "An assistant monitoring a person performing a procedure is most useful when it can detect mistakes while there is still time to recover. This requires judging a...",
+      "upvotes": 5,
+      "arxiv_id": "2611.25567",
+      "url": "https://huggingface.co/papers/2611.25567",
+      "githubRepo": null
     },
     {
-      "title": "WeMM-Video: Pushing the Frontiers of Open-Source Omni-Modal Video Understanding",
-      "summary": "WeMM-Video is a family of Chinese-English bilingual omni-modal foundation models that unify text, image, audio, and video processing for joint audio-visual perception and reasoning, using hybrid thinking modes and large-scale training to achieve strong open-source video understanding results.",
-      "upvotes": 6,
-      "arxiv_id": "2611.26409",
-      "url": "https://huggingface.co/papers/2611.26409",
-      "githubRepo": "https://github.com/Tencent/WeMM-Video"
-    },
-    {
-      "title": "The Mask Is Not the Object: Volumetric Supervision for 3D Gaussian Segmentation",
-      "summary": "A plug-and-play objective, VODA, groups per-pixel contributors by local depth to supervise all Gaussians in selected depth clusters, improving volumetric segmentation and enabling evaluation via Removal-3D and Removal Depth Error.",
+      "title": "AURA: AUdio-dRiven streaming Avatar",
+      "summary": "AURA enables low-latency, causal video generation for streaming applications by utilizing a rolling KV cache and a two-stage distillation pipeline to significantly reduce the required diffusion steps.",
       "upvotes": 1,
-      "arxiv_id": "2611.21383",
-      "url": "https://huggingface.co/papers/2611.21383",
-      "githubRepo": "https://github.com/jhxcho/voda"
+      "arxiv_id": "2611.26540",
+      "url": "https://huggingface.co/papers/2611.26540",
+      "githubRepo": "https://github.com/kyutai-labs/aura"
+    },
+    {
+      "title": "SpecWM: Turning Verification into Refinement for Streaming World Models",
+      "summary": "SpecWM is a training-free inference framework for streaming video world models that verifies draft chunks using the target model's latent velocity field and applies reusable corrections via threshold-based accept/refine/reject decisions to improve visual quality, control, and speed.",
+      "upvotes": 1,
+      "arxiv_id": "2611.26211",
+      "url": "https://huggingface.co/papers/2611.26211",
+      "githubRepo": null
+    },
+    {
+      "title": "Direct3D-V3: Latent-Free Diffusion Transformers in the Native Voxel Domain",
+      "summary": "Native 3D generation has largely been built around latent diffusion, with recent advances concentrating on stronger variational autoencoders (VAE) and increasin...",
+      "upvotes": 2,
+      "arxiv_id": "2611.26511",
+      "url": "https://huggingface.co/papers/2611.26511",
+      "githubRepo": "https://github.com/DreamTechAI/Direct3D-V3"
     }
   ],
   "sources": [

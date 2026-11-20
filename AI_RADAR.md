@@ -2,41 +2,48 @@
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Fri, 20 Nov 2026 05:18:14 GMT`*
+*Last Synchronized: `Fri, 20 Nov 2026 15:53:06 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (4)
+## 📥 Newly Queued Assets for Review (5)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Inkling** (`Model` • *Thinking Machines*)
-> Frontier Research model by Thinking Machines benchmarked on Artificial Analysis with an Intelligence Index of 12.4781698715401 and a verified 1000k Context window.
+### **Qwen3.5 397B A17B** (`Model` • *Alibaba*)
+> Frontier Research model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.
 
 - 🏷️ **Domain & License**: `Research` • `Open Weights` (2026)
-- ⚡ **Metrics**: `Context Window: 1000k Context, Intelligence Index: 12.4781698715401, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/inkling](https://artificialanalysis.ai/models/inkling)
+- ⚡ **Metrics**: `Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/qwen3-5-397b-a17b](https://artificialanalysis.ai/models/qwen3-5-397b-a17b)
 
-### **Mistral: Pixtral Large 2502** (`Model` • *mistralai*)
-> Pixtral Large 2502 is the February 2025 version of Mistral AI's large multimodal model, following [Pixtral Large 2411](https://openrouter.ai/mistralai/pixtral-large-2411). It accep
+### **OpenAI: GPT-6.2 Sol Pro (batch)** (`Model` • *openai*)
+> GPT-6.2 Sol Pro is the same underlying model as [GPT-6.2 Sol](https://openrouter.ai/openai/gpt-6.2-sol), served with `reasoning.mode` set to `pro` for higher-quality responses on c
 
-- 🏷️ **Domain & License**: `Multimodal` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 128k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/mistralai/pixtral-large-2502](https://openrouter.ai/mistralai/pixtral-large-2502)
+- 🏷️ **Domain & License**: `NLP` • `Proprietary` (2026)
+- ⚡ **Metrics**: `Context Window: 1050k Context, Available across global OpenRouter inference nodes.`
+- 🔗 **Resource Link**: [https://openrouter.ai/openai/gpt-6.2-sol-pro:batch](https://openrouter.ai/openai/gpt-6.2-sol-pro:batch)
 
-### **DaisyRose-27B** (`Model` • *RadixArk*)
-> High-performance Multimodal open-weights model by RadixArk, trending with over 193 community likes and 166 downloads on Hugging Face.
+### **SmolVLM2-256M-Video-Instruct** (`Model` • *HuggingFaceTB*)
+> High-performance Multimodal open-weights model by HuggingFaceTB, trending with over 298 community likes and 45,338 downloads on Hugging Face.
 
 - 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 136, Likes: 193, Downloads: 166`
-- 🔗 **Resource Link**: [https://huggingface.co/RadixArk/DaisyRose-27B](https://huggingface.co/RadixArk/DaisyRose-27B)
+- ⚡ **Metrics**: `Trending Score: 124, Likes: 298, Downloads: 45,338`
+- 🔗 **Resource Link**: [https://huggingface.co/HuggingFaceTB/SmolVLM2-256M-Video-Instruct](https://huggingface.co/HuggingFaceTB/SmolVLM2-256M-Video-Instruct)
 
-### **clairic** (`Platform` • *hugging-apps*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hugging-apps. Trending with 23 community stars.
+### **leaderboard** (`Platform` • *agent-memory-leaderboard*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by agent-memory-leaderboard. Trending with 931 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 23, Community Likes: 23`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/hugging-apps/clairic](https://huggingface.co/spaces/hugging-apps/clairic)
+- ⚡ **Metrics**: `Trending Score: 42, Community Likes: 931`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/agent-memory-leaderboard/leaderboard](https://huggingface.co/spaces/agent-memory-leaderboard/leaderboard)
+
+### **cmu-mocap-glb** (`Dataset` • *codepawl*)
+> CMU Motion Capture Database as GLB 	 2426 motion capture clips from CMU Graphics Lab Motion Capture Database: 6 categories, 2,276,379 frames (10.5 hours) at 60 fps. Eve (18 likes, 1,862 downloads).
+
+- 🏷️ **Domain & License**: `Computer Vision` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 15, Likes: 18, Downloads: 1,862`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/codepawl/cmu-mocap-glb](https://huggingface.co/datasets/codepawl/cmu-mocap-glb)
 
 ---
 
@@ -61,10 +68,10 @@
 | **Mistral: Pixtral Large 2502** | `OpenRouter` | mistralai (Cloud Model API) | ❤️ 120 · 📥 128,000 | [View](https://openrouter.ai/mistralai/pixtral-large-2502) |
 | **Google: Gemini 4 Neon** | `OpenRouter` | google (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/google/gemini-4-neon) |
 | **Google: Gemini 4 Neon (batch)** | `OpenRouter` | google (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/google/gemini-4-neon:batch) |
-| **higurashi-ai/Haru-4B** | `Hugging Face` | higurashi-ai (audio-to-audio) | ❤️ 3,662 · 📥 6,266 | [View](https://huggingface.co/higurashi-ai/Haru-4B) |
-| **tencent/Hy4-flash** | `Hugging Face` | tencent (image-text-to-text) | ❤️ 360 · 📥 2,053 | [View](https://huggingface.co/tencent/Hy4-flash) |
-| **apple/FastFrames-L** | `Hugging Face` | apple (text-to-video) | ❤️ 348 · 📥 0 | [View](https://huggingface.co/apple/FastFrames-L) |
-| **harness-hub/Qwen3.8-27B-pi-adapted** | `Hugging Face` | harness-hub (image-text-to-text) | ❤️ 750 · 📥 1,320 | [View](https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted) |
+| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 386 · 📥 0 | [View](https://huggingface.co/inworld/voice-isolator) |
+| **higurashi-ai/Haru-4B** | `Hugging Face` | higurashi-ai (audio-to-audio) | ❤️ 4,327 · 📥 7,323 | [View](https://huggingface.co/higurashi-ai/Haru-4B) |
+| **harness-hub/Qwen3.8-27B-pi-adapted** | `Hugging Face` | harness-hub (image-text-to-text) | ❤️ 817 · 📥 1,874 | [View](https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted) |
+| **Qwen/Qwen3.8-27B** | `Hugging Face` | Qwen (image-text-to-text) | ❤️ 20,754 · 📥 6,454,419 | [View](https://huggingface.co/Qwen/Qwen3.8-27B) |
 
 
 ---
@@ -74,24 +81,24 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **WM^MLLM: Turning MLLMs into World Models** | 👍 3 | WM^MLLM uses multimodal large language models to maintain an external panorama state with revision history, enabling persistent, editable world generation from a single image with exact revisits and local edits. | [Read](https://huggingface.co/papers/2611.24193) |
-| **Depth Pro 2: Sharp and Temporally Consistent Metric Monocular Depth** | 👍 0 | A single scalable network estimates dense metric depth for images and video at native resolution, jointly improving metric accuracy, boundary sharpness, and temporal consistency. | [Read](https://huggingface.co/papers/2611.26603) |
-| **TuringSpace: Grounding Spatial Intelligence in Action with Interactive CAPTCHAs** | 👍 11 | Humans act in the visual world by inferring the 3D layout behind a 2D view, predicting how an action changes it, and correcting themselves after seeing the resu... | [Read](https://huggingface.co/papers/2611.25387) |
-| **WeMM-Video: Pushing the Frontiers of Open-Source Omni-Modal Video Understanding** | 👍 6 | WeMM-Video is a family of Chinese-English bilingual omni-modal foundation models that unify text, image, audio, and video processing for joint audio-visual perception and reasoning, using hybrid thinking modes and large-scale training to achieve strong open-source video understanding results. | [Read](https://huggingface.co/papers/2611.26409) |
-| **The Mask Is Not the Object: Volumetric Supervision for 3D Gaussian Segmentation** | 👍 1 | A plug-and-play objective, VODA, groups per-pixel contributors by local depth to supervise all Gaussians in selected depth clusters, improving volumetric segmentation and enabling evaluation via Removal-3D and Removal Depth Error. | [Read](https://huggingface.co/papers/2611.21383) |
+| **System 1 agents: a method for local, reliable and fast agentic AI** | 👍 0 | A local System 1 agent framework compiles tool schemas and requests into multiple-choice questions answered by a one-pass decision model, enabling accurate biomedical tool calls without text generation or invented content. | [Read](https://huggingface.co/papers/2611.21053) |
+| **Online Mistake Detection in Instruction-Conditioned Procedural Video** | 👍 5 | An assistant monitoring a person performing a procedure is most useful when it can detect mistakes while there is still time to recover. This requires judging a... | [Read](https://huggingface.co/papers/2611.25567) |
+| **AURA: AUdio-dRiven streaming Avatar** | 👍 1 | AURA enables low-latency, causal video generation for streaming applications by utilizing a rolling KV cache and a two-stage distillation pipeline to significantly reduce the required diffusion steps. | [Read](https://huggingface.co/papers/2611.26540) |
+| **SpecWM: Turning Verification into Refinement for Streaming World Models** | 👍 1 | SpecWM is a training-free inference framework for streaming video world models that verifies draft chunks using the target model's latent velocity field and applies reusable corrections via threshold-based accept/refine/reject decisions to improve visual quality, control, and speed. | [Read](https://huggingface.co/papers/2611.26211) |
+| **Direct3D-V3: Latent-Free Diffusion Transformers in the Native Voxel Domain** | 👍 2 | Native 3D generation has largely been built around latent diffusion, with recent advances concentrating on stronger variational autoencoders (VAE) and increasin... | [Read](https://huggingface.co/papers/2611.26511) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `575`
+- **Total Registered Assets**: `766`
 - **Featured / Starred Tools**: `368`
-- **Asset Breakdown**: **Datasets**: 103 • **AIs**: 73 • **Frameworks**: 38 • **Platforms**: 103 • **Models**: 258
+- **Asset Breakdown**: **Datasets**: 158 • **AIs**: 73 • **Frameworks**: 38 • **Platforms**: 144 • **Models**: 353
 
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
+- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
 - **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

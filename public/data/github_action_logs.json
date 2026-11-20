@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1795189986982_i3930",
+    "created_at": "2026-11-20T15:53:06.982Z",
+    "timestamp": "2026-11-20T15:53:06.982Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Qwen3.5 397B A17B, OpenAI: GPT-6.2 Sol Pro (batch), SmolVLM2-256M-Video-Instruct, leaderboard, cmu-mocap-glb. Checked health for 25 links (2 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 51630ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Qwen3.5 397B A17B",
+          "type": "Model",
+          "org": "Alibaba"
+        },
+        {
+          "name": "OpenAI: GPT-6.2 Sol Pro (batch)",
+          "type": "Model",
+          "org": "openai"
+        },
+        {
+          "name": "SmolVLM2-256M-Video-Instruct",
+          "type": "Model",
+          "org": "HuggingFaceTB"
+        },
+        {
+          "name": "leaderboard",
+          "type": "Platform",
+          "org": "agent-memory-leaderboard"
+        },
+        {
+          "name": "cmu-mocap-glb",
+          "type": "Dataset",
+          "org": "codepawl"
+        }
+      ],
+      "brokenLinks": 2,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 51630,
+      "runId": "44767570975",
+      "runNumber": "138",
+      "sha": "f642a96",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795177129676_nd7gc",
     "created_at": "2026-11-20T12:18:49.676Z",
     "timestamp": "2026-11-20T12:18:49.676Z",

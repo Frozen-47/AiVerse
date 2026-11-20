@@ -1,25 +1,5 @@
--- =============================================================================
--- AiVerse: Complete Catalog Seed & Admin Policy Migration
--- Run this entire script in Supabase Dashboard -> SQL Editor
--- =============================================================================
-
--- 1. Ensure platform administrator authorization includes both platform owner emails
-CREATE OR REPLACE FUNCTION private.is_admin()
-RETURNS boolean
-LANGUAGE sql
-STABLE
-SECURITY INVOKER
-SET search_path = ''
-AS $$
-  SELECT 
-    auth.jwt() ->> 'email' IN ('frozennheart47@gmail.com', 'sabareeshgm47@gmail.com')
-    OR auth.jwt() ->> 'sub' = '20f48b0a-737d-4b78-9098-847a8ba450e8'
-    OR auth.jwt() -> 'app_metadata' ->> 'role' = 'admin';
-$$;
-
-GRANT EXECUTE ON FUNCTION private.is_admin() TO anon, authenticated;
-
--- 2. Upsert all 766 entries into public.entries
+-- Seed / Upsert all 766 AiVerse entries into Supabase
+-- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('3d-collection', 'scenario-labs', 'Dataset', 'Computer Vision', 'CC-BY-4.0', 2026, '1K<n<10K', 'High-fidelity 3D asset dataset curated by Scenario Labs, featuring thousands of game-ready 3D models with physically based rendering (PBR) textures, clean quad topology, and semantic category tags. Used for training next-generation text-to-3D and image-to-3D generative models.', 'Structured 3D asset dataset containing GLTF/FBX models, PBR texture maps (Albedo, Normal, Roughness, Metalness), and captions.', 'from datasets import load_dataset
