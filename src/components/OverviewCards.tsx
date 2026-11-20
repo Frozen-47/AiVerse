@@ -135,7 +135,7 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
             Platform Telemetry & Verified Intelligence
           </h3>
         </div>
-        <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+        <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
           Live Network Sync
         </span>

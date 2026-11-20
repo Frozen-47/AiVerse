@@ -1,37 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import { entries } from './src/data'
-
-function injectSeoContent() {
-  return {
-    name: 'inject-seo-content',
-    transformIndexHtml(html: string) {
-      const seoContent = entries.map(e => `
-        <article>
-          <h2>${e.name} (${e.type})</h2>
-          <p><strong>Summary:</strong> ${e.summary}</p>
-          <p><strong>Organization:</strong> ${e.org} | <strong>Year:</strong> ${e.year} | <strong>Task:</strong> ${e.task}</p>
-          <p><strong>License:</strong> ${e.license} | <strong>Size:</strong> ${e.size}</p>
-          <p><strong>Architecture:</strong> ${e.architecture}</p>
-          <p><strong>Benchmarks:</strong> ${e.benchmarks}</p>
-          <p><strong>Limitations:</strong> ${e.limitations}</p>
-          ${e.url ? `<p><strong>URL:</strong> <a href="${e.url}">${e.url}</a></p>` : ''}
-          ${e.usage ? `<div><strong>Usage:</strong><pre>${e.usage}</pre></div>` : ''}
-          ${e.citations && e.citations.length > 0 ? `<div><strong>Citations:</strong><ul>${e.citations.map(c => `<li><a href="${c.url}">${c.text}</a></li>`).join('')}</ul></div>` : ''}
-        </article>
-      `).join('\n');
-      
-      const hiddenContent = `<div id="crawler-content" style="display:none; visibility:hidden;">
-        <h1>AiVerse - AI Knowledge Encyclopedia</h1>
-        <p>A comprehensive database of Artificial Intelligence models, frameworks, datasets, and platforms.</p>
-        ${seoContent}
-      </div>`;
-      
-      return html.replace('<div id="root"></div>', `<div id="root">${hiddenContent}</div>`);
-    }
-  }
-}
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -46,7 +15,6 @@ export default defineConfig(({ mode }) => {
     plugins: [
       react(),
       tailwindcss(),
-      injectSeoContent(),
       {
         name: 'api-dev-middleware',
         configureServer(server) {
@@ -80,7 +48,7 @@ export default defineConfig(({ mode }) => {
                     res.statusCode = code;
                     return this;
                   },
-                  json(data: any) {
+                  json(data: unknown) {
                     res.setHeader('Content-Type', 'application/json');
                     res.end(JSON.stringify(data));
                     return this;
@@ -88,11 +56,12 @@ export default defineConfig(({ mode }) => {
                 });
 
                 await handler(vercelReq, vercelRes);
-              } catch (err: any) {
+              } catch (err: unknown) {
                 console.error('Vite API Dev Middleware Error:', err);
                 res.statusCode = 500;
                 res.setHeader('Content-Type', 'application/json');
-                res.end(JSON.stringify({ error: err.message || 'API Handler Error' }));
+                const message = err instanceof Error ? err.message : 'API Handler Error';
+                res.end(JSON.stringify({ error: message }));
               }
             } else {
               next();
@@ -101,5 +70,31 @@ export default defineConfig(({ mode }) => {
         }
       }
     ],
+    build: {
+      chunkSizeWarningLimit: 1200,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('react') || id.includes('react-dom')) {
+                return 'vendor-react';
+              }
+              if (id.includes('@supabase')) {
+                return 'vendor-supabase';
+              }
+              if (id.includes('lucide-react')) {
+                return 'vendor-lucide';
+              }
+              if (id.includes('react-markdown') || id.includes('remark-gfm')) {
+                return 'vendor-markdown';
+              }
+            }
+            if (id.includes('src/data.ts') || id.includes('src/data/')) {
+              return 'catalog-data';
+            }
+          }
+        }
+      }
+    }
   };
 })

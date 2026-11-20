@@ -324,7 +324,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                             <span className="text-xs font-bold text-neutral-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                               Model Playground
                             </span>
-                            <span className="text-[9px] font-black uppercase px-1.5 py-0.2 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25 flex items-center gap-1">
+                            <span className="text-[9px] font-black uppercase px-1.5 py-0.2 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/25 flex items-center gap-1">
                               <span className="w-1 h-1 rounded-full bg-emerald-500 animate-ping" />
                               LIVE
                             </span>
@@ -744,7 +744,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         <Terminal size={17} className="text-blue-500" />
                         <span className="font-semibold">Model Playground</span>
                       </div>
-                      <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25">
+                      <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/25">
                         LIVE
                       </span>
                     </button>

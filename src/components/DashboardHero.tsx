@@ -39,16 +39,16 @@ const ECOSYSTEMS = [
 const EDGE = "linear-gradient(to right, transparent, #000 12%, #000 88%, transparent)";
 
 const CSS = `
-.dh-nav{animation:dh-drop .9s cubic-bezier(.2,.7,.2,1) .1s both}
-.dh-fade{animation:dh-fade 1s ease-out both}
-.dh-word{display:inline-block;animation:dh-word .95s cubic-bezier(.2,.7,.2,1) both}
+.dh-nav{animation:dh-drop .5s cubic-bezier(.2,.7,.2,1) .05s both}
+.dh-fade{animation:dh-fade .6s ease-out both}
+.dh-word{display:inline-block;animation:dh-word .45s cubic-bezier(.2,.7,.2,1) both;will-change:transform,opacity}
 .dh-marquee{animation:dh-marquee 50s linear infinite}
 .dh-marquee:hover{animation-play-state:paused}
 .dh-btn::after{content:"";position:absolute;inset:auto 14% -2px;height:3px;border-radius:9px;background:linear-gradient(90deg,#8b5cf6,#3b82f6,#10b981,#facc15,#f43f5e,#8b5cf6);background-size:200% 100%;filter:blur(2.5px);animation:dh-slide 5s linear infinite;transition:inset .3s,filter .3s}
 .dh-btn:hover::after{inset:auto 6% -3px;filter:blur(5px)}
-@keyframes dh-drop{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
-@keyframes dh-fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@keyframes dh-word{from{opacity:0;transform:translateY(.55em);filter:blur(10px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes dh-drop{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes dh-fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes dh-word{from{opacity:0;transform:translateY(.3em)}to{opacity:1;transform:none}}
 @keyframes dh-marquee{to{transform:translateX(-50%)}}
 @keyframes dh-slide{to{background-position:200% 0}}
 @media (prefers-reduced-motion:reduce){.dh-hero *,.dh-hero *::after{animation:none!important}}
@@ -57,7 +57,7 @@ const CSS = `
 const words = (list: string[], offset: number) =>
   list.map((w, i) => (
     <React.Fragment key={w + i}>
-      <span className="dh-word" style={{ animationDelay: `${0.3 + (offset + i) * 0.07}s` }}>{w}</span>{" "}
+      <span className="dh-word" style={{ animationDelay: `${0.04 + (offset + i) * 0.03}s` }}>{w}</span>{" "}
     </React.Fragment>
   ));
 
@@ -118,13 +118,16 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
     const fit = () => {
       cvRect = cv.getBoundingClientRect();
       const d = Math.min(window.devicePixelRatio || 1, 2);
-      w = Math.max(cv.clientWidth || 0, Math.round(cvRect.width) || 0);
-      h = Math.max(cv.clientHeight || 0, Math.round(cvRect.height) || 0);
-      if (w === 0 || h === 0) return;
+      const newW = Math.max(cv.clientWidth || 0, Math.round(cvRect.width) || 0);
+      const newH = Math.max(cv.clientHeight || 0, Math.round(cvRect.height) || 0);
+      if (newW === 0 || newH === 0) return;
+      // Read boxes before modifying canvas dimensions to eliminate forced layout thrashing
+      measureBoxes();
+      w = newW;
+      h = newH;
       cv.width = w * d;
       cv.height = h * d;
       ctx.setTransform(d, 0, 0, d, 0, 0);
-      measureBoxes();
     };
 
     const draw = (ms: number) => {
@@ -351,11 +354,11 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
 
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-14 text-center">
         <h1 className="max-w-4xl text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.12] sm:leading-[1.05] tracking-[-0.035em]">
-          <span className="block text-neutral-500">{words(LINE_1, 0)}</span>
+          <span className="block text-neutral-600 dark:text-neutral-300">{words(LINE_1, 0)}</span>
           <span className="block">{words(LINE_2, LINE_1.length)}</span>
         </h1>
 
-        <p className="dh-fade mt-6 max-w-md text-sm leading-relaxed text-neutral-500 sm:text-base dark:text-neutral-400" style={{ animationDelay: "1s" }}>
+        <p className="dh-fade mt-6 max-w-md text-sm leading-relaxed text-neutral-600 sm:text-base dark:text-neutral-300" style={{ animationDelay: "0.25s" }}>
           The citation-backed open compendium. Verified architectures, benchmark telemetry, and ecosystem provenance.
         </p>
 
@@ -363,16 +366,16 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
           type="button"
           onClick={onScrollToCatalog}
           className="dh-btn dh-fade group relative mt-9 inline-flex cursor-pointer items-center gap-2 rounded-full bg-neutral-950 px-6 py-2.5 text-sm font-medium text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500 dark:bg-white dark:text-neutral-950"
-          style={{ animationDelay: "1.15s" }}
+          style={{ animationDelay: "0.35s" }}
         >
           Explore the catalog
           <ChevronDown size={16} className="transition-transform group-hover:translate-y-0.5" />
         </button>
 
-        <p className="dh-fade mt-6 flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400" style={{ animationDelay: "1.2s" }}>
+        <p className="dh-fade mt-6 flex items-center gap-2 text-xs text-neutral-600 dark:text-neutral-400" style={{ animationDelay: "0.45s" }}>
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
           <span>
-            <span className="font-medium tabular-nums text-neutral-900 dark:text-white">{shown}</span> verified AI assets
+            <span className="font-semibold tabular-nums text-neutral-900 dark:text-white">{shown}</span> verified AI assets
           </span>
         </p>
       </div>

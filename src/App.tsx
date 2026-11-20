@@ -3,10 +3,6 @@ import { Filter, X, Check, Sparkles, ArrowLeft, AlertTriangle, Building2, Box, C
 import { ThemeContext, useTheme } from "./lib/theme";
 import { useTokens } from "./lib/theme";
 import { Navbar } from "./components/Navbar";
-import { PrivacyPolicy } from "./components/PrivacyPolicy";
-import { TermsOfService } from "./components/TermsOfService";
-import { FeaturesSuite } from "./components/FeaturesSuite";
-import { LeaderboardView } from "./components/LeaderboardView";
 import { FrontierShowcase } from "./components/FrontierShowcase";
 import { Sidebar } from "./components/Sidebar";
 import { SearchBar } from "./components/SearchBar";
@@ -14,7 +10,6 @@ import { EntryCard } from "./components/EntryCard";
 import { EcosystemsSection } from "./components/EcosystemsSection";
 import { groupEntriesByEcosystem, getNormalizedOrgName } from "./lib/ecosystems";
 import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
-import { UserProfileView } from "./components/UserProfileView";
 import { OverviewCards } from "./components/OverviewCards";
 import { DailyPulseSection } from "./components/DailyPulseSection";
 import { DashboardHero } from "./components/DashboardHero";
@@ -22,7 +17,6 @@ import { PreferencesLoginPrompt } from "./components/PreferencesLoginPrompt";
 import { AuthProvider, useAuth } from "./components/AuthContext";
 import { AuthModal } from "./components/AuthModal";
 import { SiteSecurityBadge } from "./components/SiteSecurityBadge";
-import { AdminDashboard } from "./components/AdminDashboard";
 import { useDebouncedValue } from "./lib/useDebouncedValue";
 import { clearLocalBookmarks, loadBookmarks } from "./lib/bookmarks";
 import {
@@ -47,6 +41,24 @@ const AddModal = lazy(() =>
 );
 const ChatWidget = lazy(() =>
   import("./components/ChatWidget").then((m) => ({ default: m.ChatWidget })),
+);
+const PrivacyPolicy = lazy(() =>
+  import("./components/PrivacyPolicy").then((m) => ({ default: m.PrivacyPolicy })),
+);
+const TermsOfService = lazy(() =>
+  import("./components/TermsOfService").then((m) => ({ default: m.TermsOfService })),
+);
+const FeaturesSuite = lazy(() =>
+  import("./components/FeaturesSuite").then((m) => ({ default: m.FeaturesSuite })),
+);
+const LeaderboardView = lazy(() =>
+  import("./components/LeaderboardView").then((m) => ({ default: m.LeaderboardView })),
+);
+const UserProfileView = lazy(() =>
+  import("./components/UserProfileView").then((m) => ({ default: m.UserProfileView })),
+);
+const AdminDashboard = lazy(() =>
+  import("./components/AdminDashboard").then((m) => ({ default: m.AdminDashboard })),
 );
 import type { Entry, EntryRatingSummary, Theme, TypeFilter, TaskFilter } from "./types";
 import { fetchRatingSummaries } from "./lib/entryFeedback";
@@ -76,7 +88,7 @@ function checkBlockStatus(profile: OnboardingProfile | null) {
         return { isBlocked: true }; // Permanent block
       }
     }
-  } catch (e) {
+  } catch {
     // Ignore
   }
   return null;
@@ -87,11 +99,11 @@ const Inner: React.FC = () => {
   const t = useTokens();
   const { resolvedTheme, setTheme } = useTheme();
   const { user, isLoaded } = useAuth();
-  const [entries, setEntries] = useState<Entry[]>([]);
+  const [entries, setEntries] = useState<Entry[]>(() => staticEntries || []);
   const [blockedStatus, setBlockedStatus] = useState<{ isBlocked: boolean; blockedUntil?: string } | null>(null);
-  const [typeFilters, setTypeFilters] = useState<string[]>([]);
-  const [taskFilters, setTaskFilters] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [typeFilters, setTypeFilters] = useState<string[]>(() => staticTypeFilters || ["All"]);
+  const [taskFilters, setTaskFilters] = useState<string[]>(() => staticTaskFilters || ["All Tasks"]);
+  const [isLoading, setIsLoading] = useState(false);
   
   const [searchInput, setSearchInput] = useState("");
   const debouncedSearch = useDebouncedValue(searchInput, 220);
@@ -1159,6 +1171,14 @@ const Inner: React.FC = () => {
         </div>
       )}
 
+      <main id="main-content" className="flex-1 flex flex-col">
+        <Suspense
+          fallback={
+            <div className="flex-1 min-h-[60vh] flex items-center justify-center p-12">
+              <RefreshCw className="animate-spin text-neutral-400" size={28} />
+            </div>
+          }
+        >
       {isPrivacy ? (
         <PrivacyPolicy onBackToHome={() => {
           navigate("/dashboard");
@@ -1774,6 +1794,8 @@ const Inner: React.FC = () => {
           </div>
         </div>
       )}
+        </Suspense>
+      </main>
 
       {/* ─── Global Footer ─── */}
       <footer className={`relative z-10 border-t ${
@@ -1793,7 +1815,7 @@ const Inner: React.FC = () => {
             <span>Worldwide index of AI foundation models, frameworks & tooling</span>
           </div>
           <div className="flex items-center gap-4 text-[11px]">
-            <div className="flex items-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400">
+            <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-400">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Systems Operational ({entries.length > 0 ? entries.length : staticEntries.length} Assets Verified)
             </div>
@@ -2031,10 +2053,10 @@ const Inner: React.FC = () => {
             ? 'border-white/10 bg-[#121212]' 
             : 'border-neutral-200 bg-[#f2f2f2]'
         }`}>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-neutral-500 dark:text-neutral-400">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-neutral-700 dark:text-neutral-300">
             {/* Left: Google-style Copyright & Core Links */}
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-6 gap-y-2">
-              <span className="text-neutral-700 dark:text-neutral-300 font-medium">
+              <span className="text-neutral-800 dark:text-neutral-200 font-medium">
                 © {new Date().getFullYear()} AiVerse
               </span>
               <button
@@ -2042,13 +2064,13 @@ const Inner: React.FC = () => {
                   navigate("/features");
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors"
+                className="hover:underline text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors"
               >
                 About
               </button>
               <button
                 onClick={() => setIsAdding(true)}
-                className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors"
+                className="hover:underline text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors"
               >
                 Submit Tool
               </button>
@@ -2056,13 +2078,13 @@ const Inner: React.FC = () => {
                 href="https://github.com/Frozen-47/AiVerse"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:underline hover:text-neutral-900 dark:hover:text-white transition-colors"
+                className="hover:underline text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
               >
                 GitHub
               </a>
               <a
                 href="mailto:frozennheart47@gmail.com"
-                className="hover:underline hover:text-neutral-900 dark:hover:text-white transition-colors"
+                className="hover:underline text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
               >
                 Contact
               </a>
@@ -2075,7 +2097,7 @@ const Inner: React.FC = () => {
                   navigate("/privacy");
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors"
+                className="hover:underline text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors"
               >
                 Privacy
               </button>
@@ -2084,7 +2106,7 @@ const Inner: React.FC = () => {
                   navigate("/terms");
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors"
+                className="hover:underline text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors"
               >
                 Terms
               </button>
@@ -2092,7 +2114,7 @@ const Inner: React.FC = () => {
                 onClick={() => {
                   setTheme(resolvedTheme === "amoled" ? "light" : "amoled");
                 }}
-                className="hover:underline hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors flex items-center gap-1.5"
+                className="hover:underline text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white cursor-pointer transition-colors flex items-center gap-1.5"
                 title="Toggle Light/Dark Theme"
               >
                 <span>Theme: {resolvedTheme === "amoled" ? "Dark" : "Light"}</span>

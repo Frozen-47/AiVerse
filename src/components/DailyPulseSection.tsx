@@ -82,7 +82,7 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
         <div>
           <div className="flex items-center gap-2 mb-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
+            <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-400">
               Live AI Radar
             </span>
           </div>
@@ -107,7 +107,7 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
                 ? isAmoled
                   ? "bg-neutral-800 text-white shadow-xs font-semibold"
                   : "bg-white text-neutral-900 shadow-xs font-semibold"
-                : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                : "text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white"
             }`}
           >
             <Sparkles size={13} />
@@ -120,7 +120,7 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
                 ? isAmoled
                   ? "bg-neutral-800 text-white shadow-xs font-semibold"
                   : "bg-white text-neutral-900 shadow-xs font-semibold"
-                : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                : "text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white"
             }`}
           >
             <Flame size={13} />
@@ -133,7 +133,7 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
                 ? isAmoled
                   ? "bg-neutral-800 text-white shadow-xs font-semibold"
                   : "bg-white text-neutral-900 shadow-xs font-semibold"
-                : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                : "text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white"
             }`}
           >
             <FileText size={13} />
@@ -173,7 +173,7 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
                 }`}>
                   {spotlight.task}
                 </span>
-                <span className="text-xs text-neutral-400 dark:text-neutral-500">
+                <span className="text-xs text-neutral-600 dark:text-neutral-400">
                   by <span className="text-neutral-900 dark:text-white font-medium">{spotlight.org}</span>
                 </span>
               </div>
@@ -196,7 +196,7 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
                   }`}>
                     <Cpu size={16} className="text-neutral-500 dark:text-neutral-400 shrink-0 mt-0.5" />
                     <div>
-                      <span className="block text-[10px] uppercase font-medium tracking-wider text-neutral-400 dark:text-neutral-400">
+                      <span className="block text-[10px] uppercase font-semibold tracking-wider text-neutral-600 dark:text-neutral-300">
                         Architecture Specs
                       </span>
                       <span className="text-xs font-medium text-neutral-900 dark:text-white line-clamp-2 mt-0.5">
@@ -213,7 +213,7 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
                   }`}>
                     <Layers size={16} className="text-neutral-500 dark:text-neutral-400 shrink-0 mt-0.5" />
                     <div>
-                      <span className="block text-[10px] uppercase font-medium tracking-wider text-neutral-400 dark:text-neutral-400">
+                      <span className="block text-[10px] uppercase font-semibold tracking-wider text-neutral-600 dark:text-neutral-300">
                         Verified Benchmarks
                       </span>
                       <span className="text-xs font-medium text-neutral-900 dark:text-white line-clamp-2 mt-0.5">
