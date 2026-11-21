@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-20T22:55:06.187Z",
+  "timestamp": "2026-11-21T05:09:51.801Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -29,6 +29,24 @@
       "source": "Artificial Analysis"
     },
     {
+      "id": "Thinking Machines: Inkling 2 Mini",
+      "author": "thinkingmachines",
+      "likes": 120,
+      "downloads": 1048576,
+      "pipeline_tag": "Cloud Model API",
+      "url": "https://openrouter.ai/thinkingmachines/inkling-2-mini",
+      "source": "OpenRouter"
+    },
+    {
+      "id": "RadixArk: DaisyRose 27B",
+      "author": "radixark",
+      "likes": 120,
+      "downloads": 262144,
+      "pipeline_tag": "Cloud Model API",
+      "url": "https://openrouter.ai/radixark/daisyrose-27b",
+      "source": "OpenRouter"
+    },
+    {
       "id": "Mistral: Pixtral Large 2502",
       "author": "mistralai",
       "likes": 120,
@@ -38,61 +56,67 @@
       "source": "OpenRouter"
     },
     {
-      "id": "Google: Gemini 4 Neon",
-      "author": "google",
-      "likes": 120,
-      "downloads": 1048576,
-      "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/google/gemini-4-neon",
-      "source": "OpenRouter"
-    },
-    {
-      "id": "Google: Gemini 4 Neon (batch)",
-      "author": "google",
-      "likes": 120,
-      "downloads": 1048576,
-      "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/google/gemini-4-neon:batch",
-      "source": "OpenRouter"
-    },
-    {
-      "id": "higurashi-ai/Haru-4B",
-      "author": "higurashi-ai",
-      "likes": 5257,
-      "downloads": 7323,
-      "pipeline_tag": "audio-to-audio",
-      "url": "https://huggingface.co/higurashi-ai/Haru-4B",
-      "source": "Hugging Face"
-    },
-    {
-      "id": "harness-hub/Qwen3.8-27B-pi-adapted",
-      "author": "harness-hub",
-      "likes": 858,
-      "downloads": 1874,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
-      "source": "Hugging Face"
-    },
-    {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "thinkingmachines",
-      "likes": 288,
+      "likes": 841,
       "downloads": 136,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
       "source": "Hugging Face"
     },
     {
-      "id": "Qwen/Qwen3.8-27B",
-      "author": "Qwen",
-      "likes": 20796,
-      "downloads": 6454419,
+      "id": "higurashi-ai/Haru-4B",
+      "author": "higurashi-ai",
+      "likes": 5698,
+      "downloads": 7323,
+      "pipeline_tag": "audio-to-audio",
+      "url": "https://huggingface.co/higurashi-ai/Haru-4B",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "Sentinel7/h3",
+      "author": "Sentinel7",
+      "likes": 391,
+      "downloads": 0,
+      "pipeline_tag": "open-weights",
+      "url": "https://huggingface.co/Sentinel7/h3",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "harness-hub/Qwen3.8-27B-pi-adapted",
+      "author": "harness-hub",
+      "likes": 869,
+      "downloads": 1874,
       "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+      "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
       "source": "Hugging Face"
     }
   ],
   "papers": [
+    {
+      "title": "Time Series Structure Learning with Local Causal Parent Discovery",
+      "summary": "Learning and inference on time series can pose significant statistical challenges, including autocorrelated observations, distribution shift over time, and the ...",
+      "upvotes": 1,
+      "arxiv_id": "2611.26232",
+      "url": "https://huggingface.co/papers/2611.26232",
+      "githubRepo": "https://github.com/jmaasch/itpd"
+    },
+    {
+      "title": "Teaching Vision-Language-Action Models to Stop Safely",
+      "summary": "Vision-language-action (VLA) models enable robots to perform diverse tasks from visual observations and language instructions. While prior work has explored tas...",
+      "upvotes": 3,
+      "arxiv_id": "2611.26239",
+      "url": "https://huggingface.co/papers/2611.26239",
+      "githubRepo": "https://github.com/franciscoliu/SAFI"
+    },
+    {
+      "title": "PAD: Policy-Aware Data Valuation for Autonomous Driving",
+      "summary": "End-to-end autonomous driving increasingly depends on scaling training demonstrations, yet data growth does not guarantee proportional gains. However, additiona...",
+      "upvotes": 2,
+      "arxiv_id": "2611.25604",
+      "url": "https://huggingface.co/papers/2611.25604",
+      "githubRepo": "https://github.com/PerfectXu88/PAD"
+    },
     {
       "title": "Lang-SVG: Hierarchical Image Vectorization with Language Priors",
       "summary": "Image vectorization reconstructs raster images as compact scalable vector graph- ics (SVG), providing a structured and editable code representation of images. H...",
@@ -104,33 +128,9 @@
     {
       "title": "Squoosh Bench: Evaluating UX-1 on 318 Historical Website A/B Tests",
       "summary": "Experimentation teams must decide which proposed website changes to test with live traffic. We evaluated whether forecasts from simulated shoppers could inform ...",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2611.25200",
       "url": "https://huggingface.co/papers/2611.25200",
-      "githubRepo": null
-    },
-    {
-      "title": "RL Post-Training in Diffusion Transformers Is Activation Steering",
-      "summary": "A fixed set of steering vectors added to a frozen diffusion transformer recovers most of the quality gains from reinforcement learning post-training, indicating that much of the improvement comes from a constant shift rather than prompt-specific transformations.",
-      "upvotes": 14,
-      "arxiv_id": "2611.26627",
-      "url": "https://huggingface.co/papers/2611.26627",
-      "githubRepo": null
-    },
-    {
-      "title": "In Situ Training of Optical Neural Networks by Coding Agents",
-      "summary": "A coding agent trains an optical neural network from measurements alone by reparametrizing it with interpretable optical elements, achieving better classification and image encoding than gradient-free methods and approaching backpropagation through a calibrated model at lower cost.",
-      "upvotes": 2,
-      "arxiv_id": "2611.23875",
-      "url": "https://huggingface.co/papers/2611.23875",
-      "githubRepo": null
-    },
-    {
-      "title": "Language Models Can Rewrite Their Own Weights",
-      "summary": "Language models are trained once, frozen and deployed: improving one again takes another training run, and a prompt, a scaffold or extra computation at inferenc...",
-      "upvotes": 4,
-      "arxiv_id": "2611.21885",
-      "url": "https://huggingface.co/papers/2611.21885",
       "githubRepo": null
     }
   ],

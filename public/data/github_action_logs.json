@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1795237843027_c2wx8",
+    "created_at": "2026-11-21T05:10:43.027Z",
+    "timestamp": "2026-11-21T05:10:43.027Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): K2 Horizon 7B, Thinking Machines: Inkling 2 Mini, h3, enterpriseops-gym-v1.1, pixelart-172k. Checked health for 25 links (1 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 52406ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "K2 Horizon 7B",
+          "type": "Model",
+          "org": "Institute of Foundation Models"
+        },
+        {
+          "name": "Thinking Machines: Inkling 2 Mini",
+          "type": "Model",
+          "org": "thinkingmachines"
+        },
+        {
+          "name": "h3",
+          "type": "Model",
+          "org": "Sentinel7"
+        },
+        {
+          "name": "enterpriseops-gym-v1.1",
+          "type": "Platform",
+          "org": "ServiceNow-AI"
+        },
+        {
+          "name": "pixelart-172k",
+          "type": "Dataset",
+          "org": "azyg0s"
+        }
+      ],
+      "brokenLinks": 1,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 52406,
+      "runId": "44869549178",
+      "runNumber": "140",
+      "sha": "5e8a158",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795215357976_t23m3",
     "created_at": "2026-11-20T22:55:57.976Z",
     "timestamp": "2026-11-20T22:55:57.976Z",

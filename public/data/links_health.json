@@ -1,23 +1,13 @@
 {
-  "timestamp": "2026-11-20T22:55:06.459Z",
+  "timestamp": "2026-11-21T05:09:51.980Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
       "name": "LTX-2.3-10Eros",
       "url": "https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros",
       "status": 401
-    },
-    {
-      "name": "Microsoft Copilot",
-      "url": "https://copilot.microsoft.com",
-      "status": 405
-    },
-    {
-      "name": "LMSYS Chatbot Arena Conversations",
-      "url": "https://chat.lmsys.org",
-      "status": "Network Error"
     }
   ]
 }
