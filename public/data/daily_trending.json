@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-21T15:02:06.999Z",
+  "timestamp": "2026-11-21T21:58:33.606Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,25 +58,16 @@
     {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "thinkingmachines",
-      "likes": 1308,
+      "likes": 2408,
       "downloads": 7944,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
       "source": "Hugging Face"
     },
     {
-      "id": "harness-hub/Qwen3.8-27B-pi-adapted",
-      "author": "harness-hub",
-      "likes": 817,
-      "downloads": 2383,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
-      "source": "Hugging Face"
-    },
-    {
       "id": "unsloth/Inkling-2-Mini-GGUF",
       "author": "unsloth",
-      "likes": 443,
+      "likes": 580,
       "downloads": 238152,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
@@ -85,10 +76,19 @@
     {
       "id": "tencent/Hy4-flash",
       "author": "tencent",
-      "likes": 502,
+      "likes": 535,
       "downloads": 5588,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/tencent/Hy4-flash",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "inworld/voice-isolator",
+      "author": "inworld",
+      "likes": 497,
+      "downloads": 0,
+      "pipeline_tag": "audio-to-audio",
+      "url": "https://huggingface.co/inworld/voice-isolator",
       "source": "Hugging Face"
     }
   ],
@@ -96,7 +96,7 @@
     {
       "title": "Time Series Structure Learning with Local Causal Parent Discovery",
       "summary": "Learning and inference on time series can pose significant statistical challenges, including autocorrelated observations, distribution shift over time, and the ...",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2611.26232",
       "url": "https://huggingface.co/papers/2611.26232",
       "githubRepo": "https://github.com/jmaasch/itpd"
@@ -104,7 +104,7 @@
     {
       "title": "Teaching Vision-Language-Action Models to Stop Safely",
       "summary": "Vision-language-action (VLA) models enable robots to perform diverse tasks from visual observations and language instructions. While prior work has explored tas...",
-      "upvotes": 4,
+      "upvotes": 5,
       "arxiv_id": "2611.26239",
       "url": "https://huggingface.co/papers/2611.26239",
       "githubRepo": "https://github.com/franciscoliu/SAFI"
@@ -128,7 +128,7 @@
     {
       "title": "Squoosh Bench: Evaluating UX-1 on 318 Historical Website A/B Tests",
       "summary": "Experimentation teams must decide which proposed website changes to test with live traffic. We evaluated whether forecasts from simulated shoppers could inform ...",
-      "upvotes": 2,
+      "upvotes": 3,
       "arxiv_id": "2611.25200",
       "url": "https://huggingface.co/papers/2611.25200",
       "githubRepo": null

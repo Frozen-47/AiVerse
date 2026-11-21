@@ -1,28 +1,13 @@
 {
-  "timestamp": "2026-11-21T15:02:07.229Z",
+  "timestamp": "2026-11-21T21:58:33.922Z",
   "checked": 25,
-  "healthy": 21,
-  "broken": 4,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
-      "name": "GPT-3.5 Turbo",
-      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
-      "status": 404
-    },
-    {
-      "name": "Play.ht",
-      "url": "https://play.ht",
-      "status": "Network Error"
-    },
-    {
-      "name": "GPT-3",
-      "url": "https://openai.com/research/language-models-are-few-shot-learners",
-      "status": 404
-    },
-    {
-      "name": "GPT-4o",
-      "url": "https://openai.com/chatgpt",
-      "status": 404
+      "name": "Grammarly",
+      "url": "https://www.grammarly.com",
+      "status": 405
     }
   ]
 }

@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1795298357305_8efqk",
+    "created_at": "2026-11-21T21:59:17.305Z",
+    "timestamp": "2026-11-21T21:59:17.305Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Mistral Small 4, OpenAI: GPT-6.2 Sol (batch), DepthPro2, Qwen-Image-2.1-Studio, AgentAlphaXiv. Checked health for 25 links (1 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 45201ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Mistral Small 4",
+          "type": "Model",
+          "org": "Mistral"
+        },
+        {
+          "name": "OpenAI: GPT-6.2 Sol (batch)",
+          "type": "Model",
+          "org": "openai"
+        },
+        {
+          "name": "DepthPro2",
+          "type": "Model",
+          "org": "apple"
+        },
+        {
+          "name": "Qwen-Image-2.1-Studio",
+          "type": "Platform",
+          "org": "xyzanonimous5"
+        },
+        {
+          "name": "AgentAlphaXiv",
+          "type": "Dataset",
+          "org": "alphaXiv"
+        }
+      ],
+      "brokenLinks": 1,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 45201,
+      "runId": "44954263573",
+      "runNumber": "142",
+      "sha": "66c61fa",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795273377946_wzhks",
     "created_at": "2026-11-21T15:02:57.946Z",
     "timestamp": "2026-11-21T15:02:57.946Z",
