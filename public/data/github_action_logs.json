@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1795273377946_wzhks",
+    "created_at": "2026-11-21T15:02:57.946Z",
+    "timestamp": "2026-11-21T15:02:57.946Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): MiMo-V2.6-Flash, RadixArk: DaisyRose 27B, Inkling-2-Mini-GGUF, open_tts_leaderboard, ThreeJS-3D-Scenes-v2. Checked health for 25 links (4 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 52368ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "MiMo-V2.6-Flash",
+          "type": "Model",
+          "org": "Xiaomi"
+        },
+        {
+          "name": "RadixArk: DaisyRose 27B",
+          "type": "Model",
+          "org": "radixark"
+        },
+        {
+          "name": "Inkling-2-Mini-GGUF",
+          "type": "Model",
+          "org": "unsloth"
+        },
+        {
+          "name": "open_tts_leaderboard",
+          "type": "Platform",
+          "org": "hf-audio"
+        },
+        {
+          "name": "ThreeJS-3D-Scenes-v2",
+          "type": "Dataset",
+          "org": "ccore"
+        }
+      ],
+      "brokenLinks": 4,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 52368,
+      "runId": "44916986469",
+      "runNumber": "141",
+      "sha": "f121d55",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795262009071_zmzu8",
     "created_at": "2026-11-21T11:53:29.071Z",
     "timestamp": "2026-11-21T11:53:29.071Z",

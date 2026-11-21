@@ -1,13 +1,28 @@
 {
-  "timestamp": "2026-11-21T05:09:51.980Z",
+  "timestamp": "2026-11-21T15:02:07.229Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 21,
+  "broken": 4,
   "issues": [
     {
-      "name": "LTX-2.3-10Eros",
-      "url": "https://huggingface.co/spaces/00000tt/LTX-2.3-10Eros",
-      "status": 401
+      "name": "GPT-3.5 Turbo",
+      "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
+      "status": 404
+    },
+    {
+      "name": "Play.ht",
+      "url": "https://play.ht",
+      "status": "Network Error"
+    },
+    {
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
+      "status": 404
+    },
+    {
+      "name": "GPT-4o",
+      "url": "https://openai.com/chatgpt",
+      "status": 404
     }
   ]
 }

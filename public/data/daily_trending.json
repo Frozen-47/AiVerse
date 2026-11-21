@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-21T05:09:51.801Z",
+  "timestamp": "2026-11-21T15:02:06.999Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,37 +58,37 @@
     {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "thinkingmachines",
-      "likes": 841,
-      "downloads": 136,
+      "likes": 1308,
+      "downloads": 7944,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
       "source": "Hugging Face"
     },
     {
-      "id": "higurashi-ai/Haru-4B",
-      "author": "higurashi-ai",
-      "likes": 5698,
-      "downloads": 7323,
-      "pipeline_tag": "audio-to-audio",
-      "url": "https://huggingface.co/higurashi-ai/Haru-4B",
-      "source": "Hugging Face"
-    },
-    {
-      "id": "Sentinel7/h3",
-      "author": "Sentinel7",
-      "likes": 391,
-      "downloads": 0,
-      "pipeline_tag": "open-weights",
-      "url": "https://huggingface.co/Sentinel7/h3",
-      "source": "Hugging Face"
-    },
-    {
       "id": "harness-hub/Qwen3.8-27B-pi-adapted",
       "author": "harness-hub",
-      "likes": 869,
-      "downloads": 1874,
+      "likes": 817,
+      "downloads": 2383,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "unsloth/Inkling-2-Mini-GGUF",
+      "author": "unsloth",
+      "likes": 443,
+      "downloads": 238152,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "tencent/Hy4-flash",
+      "author": "tencent",
+      "likes": 502,
+      "downloads": 5588,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/tencent/Hy4-flash",
       "source": "Hugging Face"
     }
   ],
@@ -104,7 +104,7 @@
     {
       "title": "Teaching Vision-Language-Action Models to Stop Safely",
       "summary": "Vision-language-action (VLA) models enable robots to perform diverse tasks from visual observations and language instructions. While prior work has explored tas...",
-      "upvotes": 3,
+      "upvotes": 4,
       "arxiv_id": "2611.26239",
       "url": "https://huggingface.co/papers/2611.26239",
       "githubRepo": "https://github.com/franciscoliu/SAFI"
@@ -112,7 +112,7 @@
     {
       "title": "PAD: Policy-Aware Data Valuation for Autonomous Driving",
       "summary": "End-to-end autonomous driving increasingly depends on scaling training demonstrations, yet data growth does not guarantee proportional gains. However, additiona...",
-      "upvotes": 2,
+      "upvotes": 4,
       "arxiv_id": "2611.25604",
       "url": "https://huggingface.co/papers/2611.25604",
       "githubRepo": "https://github.com/PerfectXu88/PAD"

@@ -4,6 +4,136 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "MiMo-V2.6-Flash",
+        "type": "Model",
+        "summary": "Frontier Research model by Xiaomi benchmarked on Artificial Analysis with an Intelligence Index of 26.7276981444568 and a verified 1000k Context window.",
+        "task": "Research",
+        "license": "Open Weights",
+        "year": 2026,
+        "org": "Xiaomi",
+        "size": "1000k Context · Open Model",
+        "architecture": "Open-weights frontier neural architecture developed by Xiaomi, featuring native 1000k Context token window support and optimized reasoning chains.",
+        "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/mimo-v2-6-flash",
+        "benchmarks": "Context Window: 1000k Context, Intelligence Index: 26.7276981444568, Benchmarked on Artificial Analysis Leaderboard",
+        "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://artificialanalysis.ai/models/mimo-v2-6-flash",
+        "citations": [
+          {
+            "text": "MiMo-V2.6-Flash on Artificial Analysis Benchmark",
+            "url": "https://artificialanalysis.ai/models/mimo-v2-6-flash"
+          },
+          {
+            "text": "MiMo-V2.6-Flash Inference Providers",
+            "url": "https://artificialanalysis.ai/models/mimo-v2-6-flash/providers"
+          }
+        ]
+      },
+      {
+        "name": "RadixArk: DaisyRose 27B",
+        "type": "Model",
+        "summary": "DaisyRose 27B is an open-weight multimodal reasoning model from RadixArk, trained from [Qwen3.8 27B](https://openrouter.ai/qwen/qwen3.8-27b) using reinforcement learning only on lo",
+        "task": "Multimodal",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "radixark",
+        "size": "262k Context · Available via API",
+        "architecture": "Modern foundation model hosted on OpenRouter with native 262k Context support and structured output generation.",
+        "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"radixark/daisyrose-27b\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+        "benchmarks": "Context Window: 262k Context, Available across global OpenRouter inference nodes.",
+        "limitations": "Requires OpenRouter API key and token credits.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://openrouter.ai/radixark/daisyrose-27b",
+        "citations": [
+          {
+            "text": "RadixArk: DaisyRose 27B on OpenRouter",
+            "url": "https://openrouter.ai/radixark/daisyrose-27b"
+          }
+        ]
+      },
+      {
+        "name": "Inkling-2-Mini-GGUF",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by unsloth, trending with over 443 community likes and 238,152 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "unsloth",
+        "size": "Open Weights",
+        "architecture": "unsloth image text to text architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"unsloth/Inkling-2-Mini-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"unsloth/Inkling-2-Mini-GGUF\")",
+        "benchmarks": "Trending Score: 423, Likes: 443, Downloads: 238,152",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
+        "citations": [
+          {
+            "text": "unsloth/Inkling-2-Mini-GGUF on Hugging Face",
+            "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF"
+          }
+        ]
+      },
+      {
+        "name": "open_tts_leaderboard",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by hf-audio. Trending with 111 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "hf-audio",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/hf-audio/open_tts_leaderboard",
+        "benchmarks": "Trending Score: 19, Community Likes: 111",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/hf-audio/open_tts_leaderboard",
+        "citations": [
+          {
+            "text": "hf-audio/open_tts_leaderboard on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/hf-audio/open_tts_leaderboard"
+          }
+        ]
+      },
+      {
+        "name": "ThreeJS-3D-Scenes-v2",
+        "type": "Dataset",
+        "summary": "CCORE Three.js 3D Scenes v2 \t 3,445 curated scene examples across 50 domains, including 1,431 voxel scenes, with scene prompts, curated reasoning traces, HTML/JavaScrip (29 likes, 1,497 downloads).",
+        "task": "Computer Vision",
+        "license": "MIT",
+        "year": 2026,
+        "org": "ccore",
+        "size": "1K<n<10K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"ccore/ThreeJS-3D-Scenes-v2\")",
+        "benchmarks": "Trending Score: 9, Likes: 29, Downloads: 1,497",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/ccore/ThreeJS-3D-Scenes-v2",
+        "citations": [
+          {
+            "text": "ccore/ThreeJS-3D-Scenes-v2 on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/ccore/ThreeJS-3D-Scenes-v2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-21",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "K2 Horizon 7B",
         "type": "Model",
         "summary": "Frontier Research model by Institute of Foundation Models benchmarked on Artificial Analysis with an Intelligence Index of 10.5630231522891 and a verified 524k Context window.",
@@ -6944,36 +7074,6 @@
           {
             "text": "ornith-ai/Ornith-1.5-122B on Hugging Face",
             "url": "https://huggingface.co/ornith-ai/Ornith-1.5-122B"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-24",
-    "status": "approved_in_catalog",
-    "assets": [
-      {
-        "name": "text-to-3d-with-llm-code",
-        "type": "Dataset",
-        "summary": "Rapidata Text-to-3D with LLM code Benchmark \t Built by Rapidata, collected with the Rapidata Python SDK. To evaluate your own models and create a leaderboard, check out (22 likes, 430 downloads).",
-        "task": "Computer Vision",
-        "license": "CC-BY-4.0",
-        "year": 2026,
-        "org": "Rapidata",
-        "size": "10K<n<100K",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Rapidata/text-to-3d-with-llm-code\")",
-        "benchmarks": "Trending Score: 21, Likes: 22, Downloads: 430",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/Rapidata/text-to-3d-with-llm-code",
-        "citations": [
-          {
-            "text": "Rapidata/text-to-3d-with-llm-code on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/Rapidata/text-to-3d-with-llm-code"
           }
         ]
       }
