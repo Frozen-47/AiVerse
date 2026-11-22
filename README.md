@@ -51,16 +51,16 @@ The artificial intelligence landscape moves at breakneck speed. Generic link dir
 ## ⚡ AiVerse Daily AI Radar
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-21)
+### ⚡ AiVerse AI Radar (2026-11-22)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Mistral Small 4** (`Model`), **OpenAI: GPT-6.2 Sol (batch)** (`Model`), **DepthPro2** (`Model`), **Qwen-Image-2.1-Studio** (`Platform`), **AgentAlphaXiv** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Supabase Vector** (Supabase) — [Explore](https://supabase.com/docs/guides/database/extensions/pgvector) |
+| 📥 **Queued for Review** | **Solar Pro 4** (`Model`), **Baidu: ERNIE-Light-DT-1.0** (`Model`), **Inkling-2-Mini-Uncensored-GGUF** (`Model`), **StepAudio-3-Music** (`Platform`) |
+| 🌟 **Tool of the Day** | **SWE-bench Verified** (OpenAI) — [Explore](https://www.swebench.com) |
 | 🗄️ **Catalog Entries** | **766** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
 | 📜 **Top Daily Paper** | [Time Series Structure Learning with Local Causal P...](https://huggingface.co/papers/2611.26232) |
-| 🛡️ **Catalog Links Checked** | **24/25** operational |
-| 🕒 **Last Synchronized** | `Sat, 21 Nov 2026 21:59:17 GMT` |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Sun, 22 Nov 2026 01:58:08 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

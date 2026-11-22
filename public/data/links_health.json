@@ -1,13 +1,18 @@
 {
-  "timestamp": "2026-11-21T21:58:33.922Z",
+  "timestamp": "2026-11-22T01:57:17.436Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "Grammarly",
-      "url": "https://www.grammarly.com",
-      "status": 405
+      "name": "GPT-4o",
+      "url": "https://openai.com/chatgpt",
+      "status": 404
+    },
+    {
+      "name": "Google Gemini",
+      "url": "https://gemini.google.com",
+      "status": "Network Error"
     }
   ]
 }

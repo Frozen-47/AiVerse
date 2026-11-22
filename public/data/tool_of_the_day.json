@@ -1,31 +1,26 @@
 {
-  "date": "2026-11-21",
+  "date": "2026-11-22",
   "tool": {
-    "name": "Supabase Vector",
-    "org": "Supabase",
-    "type": "Platform",
-    "task": "MLOps",
-    "license": "Apache-2.0",
-    "year": 2023,
-    "size": "Cloud Platform & Open Source Engine",
-    "summary": "Supabase's open-source vector database toolkit built on PostgreSQL and pgvector, enabling developers to store, index (HNSW / IVFFlat), and query high-dimensional embeddings directly within Postgres. Its cloud and infrastructure runtime provides postgreSQL database engine extended with pgvector C extension, pg_ivm, Row Level Security (RLS), and unified TypeScript/Python SDK clients. Core platform telemetry and performance features include: Supports sub-10ms similarity searches on millions of vectors using HNSW indexing; fully integrates with relational tables, foreign keys, and ACID transactions. Accessible under a Apache-2.0 tier, it empowers teams to build, serve, and monitor AI workloads at scale.",
-    "architecture": "PostgreSQL database engine extended with pgvector C extension, pg_ivm, Row Level Security (RLS), and unified TypeScript/Python SDK clients.",
-    "usage": "import { createClient } from '@supabase/supabase-js'\nconst supabase = createClient(SUPABASE_URL, SUPABASE_KEY)\n\nconst { data } = await supabase.rpc('match_documents', {\n  query_embedding: [0.1, -0.2, 0.5],\n  match_threshold: 0.78,\n  match_count: 5\n})",
-    "benchmarks": "Supports sub-10ms similarity searches on millions of vectors using HNSW indexing; fully integrates with relational tables, foreign keys, and ACID transactions.",
-    "limitations": "Vector index build times scale with Postgres RAM allocation; memory tuning required for multi-million vector datasets with high dimensionality.",
+    "name": "SWE-bench Verified",
+    "type": "Dataset",
+    "summary": "Human-verified subset of 500 real-world GitHub issues and unit test pull requests used to evaluate autonomous software engineering AI agents. The corpus spans 500 verified GitHub issues of verified and structured training and evaluation samples. It serves as an authoritative benchmark for evaluating The global gold standard benchmark for Devin, Claude 3.7 Sonnet, and autonomous coding agents. Released under the MIT license for open evaluation and research reproducibility.",
+    "task": "AI Coding",
+    "license": "MIT",
+    "year": 2024,
+    "org": "OpenAI",
+    "size": "500 verified GitHub issues",
+    "architecture": "Dockerized reproducible environment harness across 12 major Python repositories.",
+    "usage": "from datasets import load_dataset\nds = load_dataset(\"princeton-nlp/SWE-bench_Verified\", split=\"test\")",
+    "benchmarks": "The global gold standard benchmark for Devin, Claude 3.7 Sonnet, and autonomous coding agents.",
+    "limitations": "Requires Dockerized test harness execution for each evaluated issue.",
     "popular": true,
-    "url": "https://supabase.com/docs/guides/database/extensions/pgvector",
+    "url": "https://www.swebench.com",
     "citations": [
       {
-        "text": "Supabase Vector Official Documentation & Guide",
-        "url": "https://supabase.com/docs/guides/database/extensions/pgvector"
-      },
-      {
-        "text": "Supabase AI & Vector Overview",
-        "url": "https://supabase.com/modules/vector"
+        "text": "SWE-bench Verified",
+        "url": "https://openai.com/index/introducing-swe-bench-verified/"
       }
     ],
-    "approved": true,
-    "description": "Supabase's open-source vector database toolkit built on PostgreSQL and pgvector, enabling developers to store, index (HNSW / IVFFlat), and query high-dimensional embeddings directly within Postgres. Its cloud and infrastructure runtime provides postgreSQL database engine extended with pgvector C extension, pg_ivm, Row Level Security (RLS), and unified TypeScript/Python SDK clients. Core platform telemetry and performance features include: Supports sub-10ms similarity searches on millions of vectors using HNSW indexing; fully integrates with relational tables, foreign keys, and ACID transactions. Accessible under a Apache-2.0 tier, it empowers teams to build, serve, and monitor AI workloads at scale."
+    "description": "Human-verified subset of 500 real-world GitHub issues and unit test pull requests used to evaluate autonomous software engineering AI agents. The corpus spans 500 verified GitHub issues of verified and structured training and evaluation samples. It serves as an authoritative benchmark for evaluating The global gold standard benchmark for Devin, Claude 3.7 Sonnet, and autonomous coding agents. Released under the MIT license for open evaluation and research reproducibility."
   }
 }

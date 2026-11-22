@@ -1,60 +1,53 @@
-# ⚡ AiVerse AI Radar (2026-11-21)
+# ⚡ AiVerse AI Radar (2026-11-22)
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Sat, 21 Nov 2026 21:59:17 GMT`*
+*Last Synchronized: `Sun, 22 Nov 2026 01:58:08 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (5)
+## 📥 Newly Queued Assets for Review (4)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Mistral Small 4** (`Model` • *Mistral*)
-> Frontier NLP model by Mistral benchmarked on Artificial Analysis and a verified 256k Context window.
+### **Solar Pro 4** (`Model` • *Upstage*)
+> Frontier Research model by Upstage benchmarked on Artificial Analysis with an Intelligence Index of 14.1589437644357 and a verified 512k Context window.
 
-- 🏷️ **Domain & License**: `NLP` • `Open Weights` (2026)
-- ⚡ **Metrics**: `Context Window: 256k Context, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/mistral-small-4](https://artificialanalysis.ai/models/mistral-small-4)
+- 🏷️ **Domain & License**: `Research` • `Proprietary` (2026)
+- ⚡ **Metrics**: `Context Window: 512k Context, Intelligence Index: 14.1589437644357, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/solar-pro-4](https://artificialanalysis.ai/models/solar-pro-4)
 
-### **OpenAI: GPT-6.2 Sol (batch)** (`Model` • *openai*)
-> GPT-6.2 Sol is an upgrade to GPT-6.1 Sol from OpenAI, positioned below the flagship GPT-6.2 Astra in the GPT-6.2 series. It is an efficient, versatile model for everyday work, suit
+### **Baidu: ERNIE-Light-DT-1.0** (`Model` • *baidu*)
+> ERNIE-Light-DT-1.0 is based on open-source GLM models and includes research findings from Baidu Search's Lightning large model. It features Baidu Sparse Attention (BSA), a unique s
 
 - 🏷️ **Domain & License**: `NLP` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 1050k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/openai/gpt-6.2-sol:batch](https://openrouter.ai/openai/gpt-6.2-sol:batch)
+- ⚡ **Metrics**: `Context Window: 1024k Context, Available across global OpenRouter inference nodes.`
+- 🔗 **Resource Link**: [https://openrouter.ai/baidu/ernie-light-dt-1.0-intl](https://openrouter.ai/baidu/ernie-light-dt-1.0-intl)
 
-### **DepthPro2** (`Model` • *apple*)
-> High-performance NLP open-weights model by apple, trending with over 191 community likes and 0 downloads on Hugging Face.
+### **Inkling-2-Mini-Uncensored-GGUF** (`Model` • *AtomicChat*)
+> High-performance Multimodal open-weights model by AtomicChat, trending with over 253 community likes and 9,540 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 165, Likes: 191, Downloads: 0`
-- 🔗 **Resource Link**: [https://huggingface.co/apple/DepthPro2](https://huggingface.co/apple/DepthPro2)
+- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 153, Likes: 253, Downloads: 9,540`
+- 🔗 **Resource Link**: [https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF)
 
-### **Qwen-Image-2.1-Studio** (`Platform` • *xyzanonimous5*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by xyzanonimous5. Trending with 25 community stars.
+### **StepAudio-3-Music** (`Platform` • *stepfun-ai*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by stepfun-ai. Trending with 304 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 20, Community Likes: 25`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/xyzanonimous5/Qwen-Image-2.1-Studio](https://huggingface.co/spaces/xyzanonimous5/Qwen-Image-2.1-Studio)
-
-### **AgentAlphaXiv** (`Dataset` • *alphaXiv*)
-> AgentAlphaXiv 	 Everything that autonomous research agents wrote and said on a shared preprint server over twelve weeks in 2026: 916 studies with their papers, code and (39 likes, 745 downloads).
-
-- 🏷️ **Domain & License**: `NLP` • `CC-BY-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 8, Likes: 39, Downloads: 745`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/alphaXiv/AgentAlphaXiv](https://huggingface.co/datasets/alphaXiv/AgentAlphaXiv)
+- ⚡ **Metrics**: `Trending Score: 20, Community Likes: 304`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/stepfun-ai/StepAudio-3-Music](https://huggingface.co/spaces/stepfun-ai/StepAudio-3-Music)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **Supabase Vector** (`Platform` • *Supabase*)
-> Supabase's open-source vector database toolkit built on PostgreSQL and pgvector, enabling developers to store, index (HNSW / IVFFlat), and query high-dimensional embeddings directly within Postgres. Its cloud and infrastructure runtime provides postgreSQL database engine extended with pgvector C extension, pg_ivm, Row Level Security (RLS), and unified TypeScript/Python SDK clients. Core platform telemetry and performance features include: Supports sub-10ms similarity searches on millions of vectors using HNSW indexing; fully integrates with relational tables, foreign keys, and ACID transactions. Accessible under a Apache-2.0 tier, it empowers teams to build, serve, and monitor AI workloads at scale.
+### **SWE-bench Verified** (`Dataset` • *OpenAI*)
+> Human-verified subset of 500 real-world GitHub issues and unit test pull requests used to evaluate autonomous software engineering AI agents. The corpus spans 500 verified GitHub issues of verified and structured training and evaluation samples. It serves as an authoritative benchmark for evaluating The global gold standard benchmark for Devin, Claude 3.7 Sonnet, and autonomous coding agents. Released under the MIT license for open evaluation and research reproducibility.
 
-- 🏛️ **Architecture**: PostgreSQL database engine extended with pgvector C extension, pg_ivm, Row Level Security (RLS), and unified TypeScript/Python SDK clients.
-- ⚡ **Benchmarks**: `Supports sub-10ms similarity searches on millions of vectors using HNSW indexing; fully integrates with relational tables, foreign keys, and ACID transactions.`
-- 🏷️ **Domain & License**: `MLOps` • `Apache-2.0` (Released: 2023)
-- 🔗 **Resource Link**: [https://supabase.com/docs/guides/database/extensions/pgvector](https://supabase.com/docs/guides/database/extensions/pgvector)
+- 🏛️ **Architecture**: Dockerized reproducible environment harness across 12 major Python repositories.
+- ⚡ **Benchmarks**: `The global gold standard benchmark for Devin, Claude 3.7 Sonnet, and autonomous coding agents.`
+- 🏷️ **Domain & License**: `AI Coding` • `MIT` (Released: 2024)
+- 🔗 **Resource Link**: [https://www.swebench.com](https://www.swebench.com)
 
 ---
 ## 🔥 Multi-Platform AI Model Radar
@@ -68,10 +61,10 @@
 | **Thinking Machines: Inkling 2 Mini** | `OpenRouter` | thinkingmachines (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/thinkingmachines/inkling-2-mini) |
 | **RadixArk: DaisyRose 27B** | `OpenRouter` | radixark (Cloud Model API) | ❤️ 120 · 📥 262,144 | [View](https://openrouter.ai/radixark/daisyrose-27b) |
 | **Mistral: Pixtral Large 2502** | `OpenRouter` | mistralai (Cloud Model API) | ❤️ 120 · 📥 128,000 | [View](https://openrouter.ai/mistralai/pixtral-large-2502) |
-| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 2,408 · 📥 7,944 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
-| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 580 · 📥 238,152 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
-| **tencent/Hy4-flash** | `Hugging Face` | tencent (image-text-to-text) | ❤️ 535 · 📥 5,588 | [View](https://huggingface.co/tencent/Hy4-flash) |
-| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 497 · 📥 0 | [View](https://huggingface.co/inworld/voice-isolator) |
+| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 3,003 · 📥 7,944 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
+| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 627 · 📥 238,152 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
+| **tencent/Hy4-flash** | `Hugging Face` | tencent (image-text-to-text) | ❤️ 547 · 📥 5,588 | [View](https://huggingface.co/tencent/Hy4-flash) |
+| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 520 · 📥 0 | [View](https://huggingface.co/inworld/voice-isolator) |
 
 
 ---
@@ -82,7 +75,7 @@
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
 | **Time Series Structure Learning with Local Causal Parent Discovery** | 👍 2 | Learning and inference on time series can pose significant statistical challenges, including autocorrelated observations, distribution shift over time, and the ... | [Read](https://huggingface.co/papers/2611.26232) |
-| **Teaching Vision-Language-Action Models to Stop Safely** | 👍 5 | Vision-language-action (VLA) models enable robots to perform diverse tasks from visual observations and language instructions. While prior work has explored tas... | [Read](https://huggingface.co/papers/2611.26239) |
+| **Teaching Vision-Language-Action Models to Stop Safely** | 👍 7 | Vision-language-action (VLA) models enable robots to perform diverse tasks from visual observations and language instructions. While prior work has explored tas... | [Read](https://huggingface.co/papers/2611.26239) |
 | **PAD: Policy-Aware Data Valuation for Autonomous Driving** | 👍 4 | End-to-end autonomous driving increasingly depends on scaling training demonstrations, yet data growth does not guarantee proportional gains. However, additiona... | [Read](https://huggingface.co/papers/2611.25604) |
 | **Lang-SVG: Hierarchical Image Vectorization with Language Priors** | 👍 1 | Image vectorization reconstructs raster images as compact scalable vector graph- ics (SVG), providing a structured and editable code representation of images. H... | [Read](https://huggingface.co/papers/2611.15941) |
 | **Squoosh Bench: Evaluating UX-1 on 318 Historical Website A/B Tests** | 👍 3 | Experimentation teams must decide which proposed website changes to test with live traffic. We evaluated whether forecasts from simulated shoppers could inform ... | [Read](https://huggingface.co/papers/2611.25200) |
@@ -98,7 +91,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
+- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
 - **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---
