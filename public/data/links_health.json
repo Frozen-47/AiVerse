@@ -1,18 +1,13 @@
 {
-  "timestamp": "2026-11-22T01:57:17.436Z",
+  "timestamp": "2026-11-22T09:25:05.122Z",
   "checked": 25,
-  "healthy": 23,
-  "broken": 2,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
-      "name": "GPT-4o",
-      "url": "https://openai.com/chatgpt",
-      "status": 404
-    },
-    {
-      "name": "Google Gemini",
-      "url": "https://gemini.google.com",
-      "status": "Network Error"
+      "name": "Perplexity AI",
+      "url": "https://www.perplexity.ai/",
+      "status": 403
     }
   ]
 }

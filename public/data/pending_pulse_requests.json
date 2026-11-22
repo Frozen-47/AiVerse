@@ -1,5 +1,84 @@
 [
   {
+    "name": "sand3d-explorer",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Sandflow. Trending with 56 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "Sandflow",
+    "size": "DOCKER Platform",
+    "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Sandflow/sand3d-explorer",
+    "benchmarks": "Trending Score: 21, Community Likes: 56",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/Sandflow/sand3d-explorer",
+    "citations": [
+      {
+        "text": "Sandflow/sand3d-explorer on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/Sandflow/sand3d-explorer"
+      }
+    ],
+    "created_at": "2026-11-22T09:25:04.621Z"
+  },
+  {
+    "name": "Google: Gemini 4 Carbon",
+    "type": "Model",
+    "summary": "Gemini 4 Carbon is a frontier Gemini 4 model from Google for coding, agentic and complex reasoning work. It takes text, image, audio, video and file input, supports long decode...",
+    "task": "AI Coding",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "google",
+    "size": "1049k Context · Available via API",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"google/gemini-4-carbon\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1049k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://openrouter.ai/google/gemini-4-carbon",
+    "citations": [
+      {
+        "text": "Google: Gemini 4 Carbon on OpenRouter",
+        "url": "https://openrouter.ai/google/gemini-4-carbon"
+      }
+    ],
+    "created_at": "2026-11-22T09:25:04.621Z"
+  },
+  {
+    "name": "gpt-oss-20b",
+    "type": "Model",
+    "summary": "Frontier Research model by OpenAI benchmarked on Artificial Analysis and a verified 131k Context window.",
+    "task": "Research",
+    "license": "Open Weights",
+    "year": 2026,
+    "org": "OpenAI",
+    "size": "131k Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by OpenAI, featuring native 131k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gpt-oss-20b",
+    "benchmarks": "Context Window: 131k Context, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://artificialanalysis.ai/models/gpt-oss-20b",
+    "citations": [
+      {
+        "text": "gpt-oss-20b on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/gpt-oss-20b"
+      },
+      {
+        "text": "gpt-oss-20b Inference Providers",
+        "url": "https://artificialanalysis.ai/models/gpt-oss-20b/providers"
+      }
+    ],
+    "created_at": "2026-11-22T09:25:04.621Z"
+  },
+  {
     "name": "StepAudio-3-Music",
     "type": "Platform",
     "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by stepfun-ai. Trending with 304 community stars.",

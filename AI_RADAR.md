@@ -2,41 +2,34 @@
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Sun, 22 Nov 2026 01:58:08 GMT`*
+*Last Synchronized: `Sun, 22 Nov 2026 09:25:48 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (4)
+## 📥 Newly Queued Assets for Review (3)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Solar Pro 4** (`Model` • *Upstage*)
-> Frontier Research model by Upstage benchmarked on Artificial Analysis with an Intelligence Index of 14.1589437644357 and a verified 512k Context window.
+### **gpt-oss-20b** (`Model` • *OpenAI*)
+> Frontier Research model by OpenAI benchmarked on Artificial Analysis and a verified 131k Context window.
 
-- 🏷️ **Domain & License**: `Research` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 512k Context, Intelligence Index: 14.1589437644357, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/solar-pro-4](https://artificialanalysis.ai/models/solar-pro-4)
+- 🏷️ **Domain & License**: `Research` • `Open Weights` (2026)
+- ⚡ **Metrics**: `Context Window: 131k Context, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/gpt-oss-20b](https://artificialanalysis.ai/models/gpt-oss-20b)
 
-### **Baidu: ERNIE-Light-DT-1.0** (`Model` • *baidu*)
-> ERNIE-Light-DT-1.0 is based on open-source GLM models and includes research findings from Baidu Search's Lightning large model. It features Baidu Sparse Attention (BSA), a unique s
+### **Google: Gemini 4 Carbon** (`Model` • *google*)
+> Gemini 4 Carbon is a frontier Gemini 4 model from Google for coding, agentic and complex reasoning work. It takes text, image, audio, video and file input, supports long decode...
 
-- 🏷️ **Domain & License**: `NLP` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 1024k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/baidu/ernie-light-dt-1.0-intl](https://openrouter.ai/baidu/ernie-light-dt-1.0-intl)
+- 🏷️ **Domain & License**: `AI Coding` • `Proprietary` (2026)
+- ⚡ **Metrics**: `Context Window: 1049k Context, Available across global OpenRouter inference nodes.`
+- 🔗 **Resource Link**: [https://openrouter.ai/google/gemini-4-carbon](https://openrouter.ai/google/gemini-4-carbon)
 
-### **Inkling-2-Mini-Uncensored-GGUF** (`Model` • *AtomicChat*)
-> High-performance Multimodal open-weights model by AtomicChat, trending with over 253 community likes and 9,540 downloads on Hugging Face.
-
-- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 153, Likes: 253, Downloads: 9,540`
-- 🔗 **Resource Link**: [https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF)
-
-### **StepAudio-3-Music** (`Platform` • *stepfun-ai*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by stepfun-ai. Trending with 304 community stars.
+### **sand3d-explorer** (`Platform` • *Sandflow*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by Sandflow. Trending with 56 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 20, Community Likes: 304`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/stepfun-ai/StepAudio-3-Music](https://huggingface.co/spaces/stepfun-ai/StepAudio-3-Music)
+- ⚡ **Metrics**: `Trending Score: 21, Community Likes: 56`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/Sandflow/sand3d-explorer](https://huggingface.co/spaces/Sandflow/sand3d-explorer)
 
 ---
 
@@ -61,10 +54,10 @@
 | **Thinking Machines: Inkling 2 Mini** | `OpenRouter` | thinkingmachines (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/thinkingmachines/inkling-2-mini) |
 | **RadixArk: DaisyRose 27B** | `OpenRouter` | radixark (Cloud Model API) | ❤️ 120 · 📥 262,144 | [View](https://openrouter.ai/radixark/daisyrose-27b) |
 | **Mistral: Pixtral Large 2502** | `OpenRouter` | mistralai (Cloud Model API) | ❤️ 120 · 📥 128,000 | [View](https://openrouter.ai/mistralai/pixtral-large-2502) |
-| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 3,003 · 📥 7,944 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
-| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 627 · 📥 238,152 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
-| **tencent/Hy4-flash** | `Hugging Face` | tencent (image-text-to-text) | ❤️ 547 · 📥 5,588 | [View](https://huggingface.co/tencent/Hy4-flash) |
-| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 520 · 📥 0 | [View](https://huggingface.co/inworld/voice-isolator) |
+| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 3,477 · 📥 7,944 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
+| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 714 · 📥 238,152 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
+| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 550 · 📥 0 | [View](https://huggingface.co/inworld/voice-isolator) |
+| **tencent/Hy4-flash** | `Hugging Face` | tencent (image-text-to-text) | ❤️ 567 · 📥 5,588 | [View](https://huggingface.co/tencent/Hy4-flash) |
 
 
 ---
@@ -91,7 +84,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
+- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
 - **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

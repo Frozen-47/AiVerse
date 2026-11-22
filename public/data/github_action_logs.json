@@ -1,5 +1,48 @@
 [
   {
+    "id": "action_1795339548996_6d10k",
+    "created_at": "2026-11-22T09:25:48.996Z",
+    "timestamp": "2026-11-22T09:25:48.996Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 3 new asset(s) queued",
+    "details": "Ingested 3 asset(s): gpt-oss-20b, Google: Gemini 4 Carbon, sand3d-explorer. Checked health for 25 links (1 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 45679ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 3,
+      "newlyIngested": [
+        {
+          "name": "gpt-oss-20b",
+          "type": "Model",
+          "org": "OpenAI"
+        },
+        {
+          "name": "Google: Gemini 4 Carbon",
+          "type": "Model",
+          "org": "google"
+        },
+        {
+          "name": "sand3d-explorer",
+          "type": "Platform",
+          "org": "Sandflow"
+        }
+      ],
+      "brokenLinks": 1,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 45679,
+      "runId": "45007430577",
+      "runNumber": "144",
+      "sha": "4639957",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795312688703_h2js0",
     "created_at": "2026-11-22T01:58:08.703Z",
     "timestamp": "2026-11-22T01:58:08.703Z",

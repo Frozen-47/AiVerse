@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-22T01:57:17.086Z",
+  "timestamp": "2026-11-22T09:25:04.790Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,7 +58,7 @@
     {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "thinkingmachines",
-      "likes": 3003,
+      "likes": 3477,
       "downloads": 7944,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
@@ -67,28 +67,28 @@
     {
       "id": "unsloth/Inkling-2-Mini-GGUF",
       "author": "unsloth",
-      "likes": 627,
+      "likes": 714,
       "downloads": 238152,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
       "source": "Hugging Face"
     },
     {
-      "id": "tencent/Hy4-flash",
-      "author": "tencent",
-      "likes": 547,
-      "downloads": 5588,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/tencent/Hy4-flash",
-      "source": "Hugging Face"
-    },
-    {
       "id": "inworld/voice-isolator",
       "author": "inworld",
-      "likes": 520,
+      "likes": 550,
       "downloads": 0,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/inworld/voice-isolator",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "tencent/Hy4-flash",
+      "author": "tencent",
+      "likes": 567,
+      "downloads": 5588,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/tencent/Hy4-flash",
       "source": "Hugging Face"
     }
   ],
