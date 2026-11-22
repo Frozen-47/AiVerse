@@ -1,23 +1,7 @@
 {
-  "timestamp": "2026-11-22T17:33:11.101Z",
+  "timestamp": "2026-11-22T23:57:34.219Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
-  "issues": [
-    {
-      "name": "Canva AI",
-      "url": "https://www.canva.com/ai-image-generator",
-      "status": 403
-    },
-    {
-      "name": "LMSYS Chatbot Arena Conversations",
-      "url": "https://chat.lmsys.org",
-      "status": "Network Error"
-    },
-    {
-      "name": "GPT-3",
-      "url": "https://openai.com/research/language-models-are-few-shot-learners",
-      "status": 404
-    }
-  ]
+  "healthy": 25,
+  "broken": 0,
+  "issues": []
 }

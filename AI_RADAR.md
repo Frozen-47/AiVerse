@@ -2,7 +2,7 @@
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Sun, 22 Nov 2026 17:33:52 GMT`*
+*Last Synchronized: `Sun, 22 Nov 2026 23:58:16 GMT`*
 
 ---
 
@@ -10,26 +10,26 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **K-EXAONE 2.0** (`Model` • *LG AI Research*)
-> Frontier Research model by LG AI Research benchmarked on Artificial Analysis with an Intelligence Index of 7.56357436827474 and a verified 262k Context window.
+### **North Mini Code** (`Model` • *Cohere*)
+> Frontier AI Coding model by Cohere benchmarked on Artificial Analysis with an Intelligence Index of 3.42470262148493 and a verified 256k Context window.
 
-- 🏷️ **Domain & License**: `Research` • `Open Weights` (2026)
-- ⚡ **Metrics**: `Context Window: 262k Context, Intelligence Index: 7.56357436827474, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/k-exaone-2-0](https://artificialanalysis.ai/models/k-exaone-2-0)
+- 🏷️ **Domain & License**: `AI Coding` • `Open Weights` (2026)
+- ⚡ **Metrics**: `Context Window: 256k Context, Intelligence Index: 3.42470262148493, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/north-mini-code](https://artificialanalysis.ai/models/north-mini-code)
 
-### **Google: Gemini 4 Carbon (batch)** (`Model` • *google*)
-> Gemini 4 Carbon is a frontier Gemini 4 model from Google for coding, agentic and complex reasoning work. It takes text, image, audio, video and file input, supports long decode...
+### **Nex AGI: Nex-N2.6** (`Model` • *nex-agi*)
+> Nex-N2.6 is an agentic model from Nex AGI, built on [GLM-5.3-Flash](https://huggingface.co/zai-org/GLM-5.3-Flash-BF16) with about 321B parameters. It is suited for computer use, co
 
 - 🏷️ **Domain & License**: `AI Coding` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 1049k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/google/gemini-4-carbon:batch](https://openrouter.ai/google/gemini-4-carbon:batch)
+- ⚡ **Metrics**: `Context Window: 262k Context, Available across global OpenRouter inference nodes.`
+- 🔗 **Resource Link**: [https://openrouter.ai/nex-agi/nex-n2.6](https://openrouter.ai/nex-agi/nex-n2.6)
 
-### **Reverb-TTS-runntime** (`Platform` • *software-mansion*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by software-mansion. Trending with 24 community stars.
+### **minimax-h3-turbo** (`Platform` • *observantdistressed*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by observantdistressed. Trending with 109 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 23, Community Likes: 24`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/software-mansion/Reverb-TTS-runntime](https://huggingface.co/spaces/software-mansion/Reverb-TTS-runntime)
+- ⚡ **Metrics**: `Trending Score: 20, Community Likes: 109`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/observantdistressed/minimax-h3-turbo](https://huggingface.co/spaces/observantdistressed/minimax-h3-turbo)
 
 ---
 
@@ -54,10 +54,10 @@
 | **Thinking Machines: Inkling 2 Mini** | `OpenRouter` | thinkingmachines (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/thinkingmachines/inkling-2-mini) |
 | **RadixArk: DaisyRose 27B** | `OpenRouter` | radixark (Cloud Model API) | ❤️ 120 · 📥 262,144 | [View](https://openrouter.ai/radixark/daisyrose-27b) |
 | **Mistral: Pixtral Large 2502** | `OpenRouter` | mistralai (Cloud Model API) | ❤️ 120 · 📥 128,000 | [View](https://openrouter.ai/mistralai/pixtral-large-2502) |
-| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 4,477 · 📥 23,543 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
-| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 812 · 📥 805,993 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
-| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 593 · 📥 0 | [View](https://huggingface.co/inworld/voice-isolator) |
-| **tencent/Hy4-flash** | `Hugging Face` | tencent (image-text-to-text) | ❤️ 593 · 📥 6,617 | [View](https://huggingface.co/tencent/Hy4-flash) |
+| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 4,953 · 📥 23,543 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
+| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 874 · 📥 805,993 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
+| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 633 · 📥 0 | [View](https://huggingface.co/inworld/voice-isolator) |
+| **tencent/Hy4-flash** | `Hugging Face` | tencent (image-text-to-text) | ❤️ 620 · 📥 6,617 | [View](https://huggingface.co/tencent/Hy4-flash) |
 
 
 ---
@@ -68,7 +68,7 @@
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
 | **Time Series Structure Learning with Local Causal Parent Discovery** | 👍 2 | Learning and inference on time series can pose significant statistical challenges, including autocorrelated observations, distribution shift over time, and the ... | [Read](https://huggingface.co/papers/2611.26232) |
-| **Teaching Vision-Language-Action Models to Stop Safely** | 👍 8 | Vision-language-action (VLA) models enable robots to perform diverse tasks from visual observations and language instructions. While prior work has explored tas... | [Read](https://huggingface.co/papers/2611.26239) |
+| **Teaching Vision-Language-Action Models to Stop Safely** | 👍 9 | Vision-language-action (VLA) models enable robots to perform diverse tasks from visual observations and language instructions. While prior work has explored tas... | [Read](https://huggingface.co/papers/2611.26239) |
 | **PAD: Policy-Aware Data Valuation for Autonomous Driving** | 👍 4 | End-to-end autonomous driving increasingly depends on scaling training demonstrations, yet data growth does not guarantee proportional gains. However, additiona... | [Read](https://huggingface.co/papers/2611.25604) |
 | **Lang-SVG: Hierarchical Image Vectorization with Language Priors** | 👍 1 | Image vectorization reconstructs raster images as compact scalable vector graph- ics (SVG), providing a structured and editable code representation of images. H... | [Read](https://huggingface.co/papers/2611.15941) |
 | **Squoosh Bench: Evaluating UX-1 on 318 Historical Website A/B Tests** | 👍 3 | Experimentation teams must decide which proposed website changes to test with live traffic. We evaluated whether forecasts from simulated shoppers could inform ... | [Read](https://huggingface.co/papers/2611.25200) |
@@ -84,7 +84,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `25/25` healthy verified (`0` flagged / timed out)
 - **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

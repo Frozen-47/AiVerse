@@ -1,5 +1,48 @@
 [
   {
+    "id": "action_1795391896638_7n3nh",
+    "created_at": "2026-11-22T23:58:16.638Z",
+    "timestamp": "2026-11-22T23:58:16.638Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 3 new asset(s) queued",
+    "details": "Ingested 3 asset(s): North Mini Code, Nex AGI: Nex-N2.6, minimax-h3-turbo. Checked health for 25 links (0 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 43967ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 3,
+      "newlyIngested": [
+        {
+          "name": "North Mini Code",
+          "type": "Model",
+          "org": "Cohere"
+        },
+        {
+          "name": "Nex AGI: Nex-N2.6",
+          "type": "Model",
+          "org": "nex-agi"
+        },
+        {
+          "name": "minimax-h3-turbo",
+          "type": "Platform",
+          "org": "observantdistressed"
+        }
+      ],
+      "brokenLinks": 0,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 43967,
+      "runId": "45085995019",
+      "runNumber": "146",
+      "sha": "320421a",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795368832819_e45i6",
     "created_at": "2026-11-22T17:33:52.819Z",
     "timestamp": "2026-11-22T17:33:52.819Z",

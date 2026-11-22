@@ -54,13 +54,13 @@ The artificial intelligence landscape moves at breakneck speed. Generic link dir
 ### ⚡ AiVerse AI Radar (2026-11-22)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **K-EXAONE 2.0** (`Model`), **Google: Gemini 4 Carbon (batch)** (`Model`), **Reverb-TTS-runntime** (`Platform`) |
+| 📥 **Queued for Review** | **North Mini Code** (`Model`), **Nex AGI: Nex-N2.6** (`Model`), **minimax-h3-turbo** (`Platform`) |
 | 🌟 **Tool of the Day** | **SWE-bench Verified** (OpenAI) — [Explore](https://www.swebench.com) |
 | 🗄️ **Catalog Entries** | **766** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
 | 📜 **Top Daily Paper** | [Time Series Structure Learning with Local Causal P...](https://huggingface.co/papers/2611.26232) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Sun, 22 Nov 2026 17:33:52 GMT` |
+| 🛡️ **Catalog Links Checked** | **25/25** operational |
+| 🕒 **Last Synchronized** | `Sun, 22 Nov 2026 23:58:16 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
