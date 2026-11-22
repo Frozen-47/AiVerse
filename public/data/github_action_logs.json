@@ -1,5 +1,48 @@
 [
   {
+    "id": "action_1795368832819_e45i6",
+    "created_at": "2026-11-22T17:33:52.819Z",
+    "timestamp": "2026-11-22T17:33:52.819Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 3 new asset(s) queued",
+    "details": "Ingested 3 asset(s): K-EXAONE 2.0, Google: Gemini 4 Carbon (batch), Reverb-TTS-runntime. Checked health for 25 links (3 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 43567ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 3,
+      "newlyIngested": [
+        {
+          "name": "K-EXAONE 2.0",
+          "type": "Model",
+          "org": "LG AI Research"
+        },
+        {
+          "name": "Google: Gemini 4 Carbon (batch)",
+          "type": "Model",
+          "org": "google"
+        },
+        {
+          "name": "Reverb-TTS-runntime",
+          "type": "Platform",
+          "org": "software-mansion"
+        }
+      ],
+      "brokenLinks": 3,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 43567,
+      "runId": "45050069145",
+      "runNumber": "145",
+      "sha": "433e97b",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795349208803_e6ne5",
     "created_at": "2026-11-22T12:06:48.803Z",
     "timestamp": "2026-11-22T12:06:48.803Z",

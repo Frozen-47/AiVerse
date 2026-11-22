@@ -1,13 +1,23 @@
 {
-  "timestamp": "2026-11-22T09:25:05.122Z",
+  "timestamp": "2026-11-22T17:33:11.101Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
+  "healthy": 22,
+  "broken": 3,
   "issues": [
     {
-      "name": "Perplexity AI",
-      "url": "https://www.perplexity.ai/",
+      "name": "Canva AI",
+      "url": "https://www.canva.com/ai-image-generator",
       "status": 403
+    },
+    {
+      "name": "LMSYS Chatbot Arena Conversations",
+      "url": "https://chat.lmsys.org",
+      "status": "Network Error"
+    },
+    {
+      "name": "GPT-3",
+      "url": "https://openai.com/research/language-models-are-few-shot-learners",
+      "status": 404
     }
   ]
 }

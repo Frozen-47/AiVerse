@@ -1,1 +1,1 @@
-gpt-oss-20b
+K-EXAONE 2.0

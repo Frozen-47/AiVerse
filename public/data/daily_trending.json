@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-22T09:25:04.790Z",
+  "timestamp": "2026-11-22T17:33:10.778Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,8 +58,8 @@
     {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "thinkingmachines",
-      "likes": 3477,
-      "downloads": 7944,
+      "likes": 4477,
+      "downloads": 23543,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
       "source": "Hugging Face"
@@ -67,8 +67,8 @@
     {
       "id": "unsloth/Inkling-2-Mini-GGUF",
       "author": "unsloth",
-      "likes": 714,
-      "downloads": 238152,
+      "likes": 812,
+      "downloads": 805993,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
       "source": "Hugging Face"
@@ -76,7 +76,7 @@
     {
       "id": "inworld/voice-isolator",
       "author": "inworld",
-      "likes": 550,
+      "likes": 593,
       "downloads": 0,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/inworld/voice-isolator",
@@ -85,8 +85,8 @@
     {
       "id": "tencent/Hy4-flash",
       "author": "tencent",
-      "likes": 567,
-      "downloads": 5588,
+      "likes": 593,
+      "downloads": 6617,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/tencent/Hy4-flash",
       "source": "Hugging Face"
@@ -104,7 +104,7 @@
     {
       "title": "Teaching Vision-Language-Action Models to Stop Safely",
       "summary": "Vision-language-action (VLA) models enable robots to perform diverse tasks from visual observations and language instructions. While prior work has explored tas...",
-      "upvotes": 7,
+      "upvotes": 8,
       "arxiv_id": "2611.26239",
       "url": "https://huggingface.co/papers/2611.26239",
       "githubRepo": "https://github.com/franciscoliu/SAFI"
