@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-23T06:04:06.867Z",
+  "timestamp": "2026-11-23T18:55:26.322Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,8 +58,8 @@
     {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "thinkingmachines",
-      "likes": 5106,
-      "downloads": 23543,
+      "likes": 5394,
+      "downloads": 41888,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
       "source": "Hugging Face"
@@ -67,8 +67,8 @@
     {
       "id": "unsloth/Inkling-2-Mini-GGUF",
       "author": "unsloth",
-      "likes": 927,
-      "downloads": 805993,
+      "likes": 1054,
+      "downloads": 1292888,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
       "source": "Hugging Face"
@@ -76,62 +76,62 @@
     {
       "id": "inworld/voice-isolator",
       "author": "inworld",
-      "likes": 653,
+      "likes": 713,
       "downloads": 0,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/inworld/voice-isolator",
       "source": "Hugging Face"
     },
     {
-      "id": "tencent/Hy4-flash",
-      "author": "tencent",
-      "likes": 626,
-      "downloads": 6617,
+      "id": "AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
+      "author": "AtomicChat",
+      "likes": 616,
+      "downloads": 329497,
       "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/tencent/Hy4-flash",
+      "url": "https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
       "source": "Hugging Face"
     }
   ],
   "papers": [
     {
-      "title": "MemOnce: A Scalable Memory Architecture for Large Language Models",
-      "summary": "Deploying large language models (LLMs) in long-horizon and continual interactions requires maintaining reusable memory states for future inference, posing chall...",
-      "upvotes": 6,
-      "arxiv_id": "2611.27973",
-      "url": "https://huggingface.co/papers/2611.27973",
-      "githubRepo": "https://github.com/Clare-Nie/MemOnce"
-    },
-    {
-      "title": "AgentRoboCritic: Understanding the Capability of Frontier Agents on Direct Robot Control",
-      "summary": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions wit...",
+      "title": "Learning Video Foresight Reasoning from Unlabeled Videos via On-Policy Self-Distillation",
+      "summary": "Future-OPSD trains vision-language models via on-policy self-distillation and a contrastive privilege advantage derived from a foresight score, improving video foresight prediction and planning without extra annotations or LLM supervision.",
       "upvotes": 3,
-      "arxiv_id": "2611.26613",
-      "url": "https://huggingface.co/papers/2611.26613",
-      "githubRepo": "https://github.com/cxcscmu/AgentRoboCritic"
+      "arxiv_id": "2611.26954",
+      "url": "https://huggingface.co/papers/2611.26954",
+      "githubRepo": "https://github.com/Jingchensun/future-opsd"
     },
     {
-      "title": "Non-penetrating World Models",
-      "summary": "A benchmark and lightweight framework leverage hidden states from frozen diffusion transformers to detect and prevent object penetration in interactive video world models, reducing physical violations and generalizing zero-shot.",
-      "upvotes": 26,
-      "arxiv_id": "2611.27963",
-      "url": "https://huggingface.co/papers/2611.27963",
-      "githubRepo": "https://github.com/yuhangdai427/NoPeWorld"
-    },
-    {
-      "title": "cmHC: Balancing Stream Mixing in Hyper-Connections via Geometric Contraction",
-      "summary": "Constraining residual stream mixing within the Birkhoff polytope via geometric contraction improves stability and scalability of hyper-connections in large-scale dense and mixture-of-experts model pretraining.",
-      "upvotes": 35,
-      "arxiv_id": "2611.27193",
-      "url": "https://huggingface.co/papers/2611.27193",
-      "githubRepo": "https://github.com/Newiz430/cmHC"
-    },
-    {
-      "title": "Explicit Style Extraction for Personalized Long-Form Text Generation",
-      "summary": "A method that explicitly extracts a user's stylistic profile and uses it to guide drafting and revision improves personalized long-form text generation over retrieval-augmented baselines.",
-      "upvotes": 1,
-      "arxiv_id": "2611.27211",
-      "url": "https://huggingface.co/papers/2611.27211",
+      "title": "Autoregressive View Model",
+      "summary": "We present the Autoregressive View Model (AVM), which generates a scene as a stream of views without constructing an explicit 3D representation. Through a unifi...",
+      "upvotes": 0,
+      "arxiv_id": "2611.23417",
+      "url": "https://huggingface.co/papers/2611.23417",
       "githubRepo": null
+    },
+    {
+      "title": "Search From the Start: Search-Native Pretraining for Language Models",
+      "summary": "Modern language models (LMs) are increasingly deployed with access to search tools at inference. Yet pretraining remains predominantly focused on predicting sta...",
+      "upvotes": 2,
+      "arxiv_id": "2611.26809",
+      "url": "https://huggingface.co/papers/2611.26809",
+      "githubRepo": null
+    },
+    {
+      "title": "Taking Apart and Putting Together: Tracking Objects Through Physical Transformations",
+      "summary": "A training-free framework tracks objects through physical assemblies and disassemblies by generating and evaluating split/merge proposals and querying a multimodal large language model for verification and labeling, achieving state-of-the-art accuracy and faster performance on a new benchmark.",
+      "upvotes": 2,
+      "arxiv_id": "2611.27398",
+      "url": "https://huggingface.co/papers/2611.27398",
+      "githubRepo": null
+    },
+    {
+      "title": "Exploited Before It Was Fixed? Vulnerability Timelines from Open, Machine-Readable Evidence",
+      "summary": "-05-X-03), Known Exploited Vulnerabilities (KEV) catalogs, and exploitation sightings.\n  We introduce an evidence model implemented in Vulnerability-Lookup that...",
+      "upvotes": 3,
+      "arxiv_id": "2611.22479",
+      "url": "https://huggingface.co/papers/2611.22479",
+      "githubRepo": "https://github.com/vulnerability-lookup/exploitation-patch-timeline-paper"
     }
   ],
   "sources": [

@@ -2,41 +2,48 @@
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Mon, 23 Nov 2026 06:04:40 GMT`*
+*Last Synchronized: `Mon, 23 Nov 2026 18:56:19 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (4)
+## 📥 Newly Queued Assets for Review (5)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Granite 4.0 Micro** (`Model` • *IBM*)
-> Frontier NLP model by IBM benchmarked on Artificial Analysis and a verified 128k Context window.
+### **Qwen3.5 9B** (`Model` • *Alibaba*)
+> Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.
 
 - 🏷️ **Domain & License**: `NLP` • `Open Weights` (2026)
-- ⚡ **Metrics**: `Context Window: 128k Context, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/granite-4-0-micro](https://artificialanalysis.ai/models/granite-4-0-micro)
+- ⚡ **Metrics**: `Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/qwen3-5-9b](https://artificialanalysis.ai/models/qwen3-5-9b)
 
-### **Thinking Machines: Inkling 2 Small** (`Model` • *thinkingmachines*)
-> Inkling 2 Small is an open-weight multimodal mixture-of-experts reasoning model from Thinking Machines Lab, with 17B active parameters out of 594B total. It is the first model in t
+### **Anthropic: Claude Fable 5.2** (`Model` • *anthropic*)
+> Claude Fable 5.2 is Anthropic's most capable model for the most demanding technical work, with gains over Fable 5.1 in coding, reasoning, and vision. In prerelease testing it compl
 
-- 🏷️ **Domain & License**: `Multimodal` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 1049k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/thinkingmachines/inkling-2-small](https://openrouter.ai/thinkingmachines/inkling-2-small)
+- 🏷️ **Domain & License**: `AI Coding` • `Proprietary` (2026)
+- ⚡ **Metrics**: `Context Window: 1000k Context, Available across global OpenRouter inference nodes.`
+- 🔗 **Resource Link**: [https://openrouter.ai/anthropic/claude-fable-5.2](https://openrouter.ai/anthropic/claude-fable-5.2)
 
-### **RMBG-3.0** (`Model` • *briaai*)
-> High-performance NLP open-weights model by briaai, trending with over 337 community likes and 225 downloads on Hugging Face.
+### **LingSante-3.1-flash** (`Model` • *inclusionAI*)
+> High-performance NLP open-weights model by inclusionAI, trending with over 99 community likes and 397 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 78, Likes: 337, Downloads: 225`
-- 🔗 **Resource Link**: [https://huggingface.co/briaai/RMBG-3.0](https://huggingface.co/briaai/RMBG-3.0)
+- 🏷️ **Domain & License**: `NLP` • `MIT` (2026)
+- ⚡ **Metrics**: `Trending Score: 90, Likes: 99, Downloads: 397`
+- 🔗 **Resource Link**: [https://huggingface.co/inclusionAI/LingSante-3.1-flash](https://huggingface.co/inclusionAI/LingSante-3.1-flash)
 
-### **from-llms-to-swarms** (`Platform` • *lewtun*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by lewtun. Trending with 22 community stars.
+### **Jeveration** (`Platform` • *linlinlinlinsdada*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by linlinlinlinsdada. Trending with 22 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 22, Community Likes: 22`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/lewtun/from-llms-to-swarms](https://huggingface.co/spaces/lewtun/from-llms-to-swarms)
+- ⚡ **Metrics**: `Trending Score: 21, Community Likes: 22`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/linlinlinlinsdada/Jeveration](https://huggingface.co/spaces/linlinlinlinsdada/Jeveration)
+
+### **SynthDCB** (`Dataset` • *X-LANCE*)
+> SynthDCB: World Distillation for Scalable Device Control Benchmarking 🌍 World Distillation An automated harness that distills device knowledge into executable worlds and verified (12 likes, 1,575 downloads).
+
+- 🏷️ **Domain & License**: `NLP` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 9, Likes: 12, Downloads: 1,575`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/X-LANCE/SynthDCB](https://huggingface.co/datasets/X-LANCE/SynthDCB)
 
 ---
 
@@ -61,10 +68,10 @@
 | **Thinking Machines: Inkling 2 Mini** | `OpenRouter` | thinkingmachines (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/thinkingmachines/inkling-2-mini) |
 | **RadixArk: DaisyRose 27B** | `OpenRouter` | radixark (Cloud Model API) | ❤️ 120 · 📥 262,144 | [View](https://openrouter.ai/radixark/daisyrose-27b) |
 | **Mistral: Pixtral Large 2502** | `OpenRouter` | mistralai (Cloud Model API) | ❤️ 120 · 📥 128,000 | [View](https://openrouter.ai/mistralai/pixtral-large-2502) |
-| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 5,106 · 📥 23,543 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
-| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 927 · 📥 805,993 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
-| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 653 · 📥 0 | [View](https://huggingface.co/inworld/voice-isolator) |
-| **tencent/Hy4-flash** | `Hugging Face` | tencent (image-text-to-text) | ❤️ 626 · 📥 6,617 | [View](https://huggingface.co/tencent/Hy4-flash) |
+| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 5,394 · 📥 41,888 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
+| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 1,054 · 📥 1,292,888 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
+| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 713 · 📥 0 | [View](https://huggingface.co/inworld/voice-isolator) |
+| **AtomicChat/Inkling-2-Mini-Uncensored-GGUF** | `Hugging Face` | AtomicChat (image-text-to-text) | ❤️ 616 · 📥 329,497 | [View](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) |
 
 
 ---
@@ -74,11 +81,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **MemOnce: A Scalable Memory Architecture for Large Language Models** | 👍 6 | Deploying large language models (LLMs) in long-horizon and continual interactions requires maintaining reusable memory states for future inference, posing chall... | [Read](https://huggingface.co/papers/2611.27973) |
-| **AgentRoboCritic: Understanding the Capability of Frontier Agents on Direct Robot Control** | 👍 3 | Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions wit... | [Read](https://huggingface.co/papers/2611.26613) |
-| **Non-penetrating World Models** | 👍 26 | A benchmark and lightweight framework leverage hidden states from frozen diffusion transformers to detect and prevent object penetration in interactive video world models, reducing physical violations and generalizing zero-shot. | [Read](https://huggingface.co/papers/2611.27963) |
-| **cmHC: Balancing Stream Mixing in Hyper-Connections via Geometric Contraction** | 👍 35 | Constraining residual stream mixing within the Birkhoff polytope via geometric contraction improves stability and scalability of hyper-connections in large-scale dense and mixture-of-experts model pretraining. | [Read](https://huggingface.co/papers/2611.27193) |
-| **Explicit Style Extraction for Personalized Long-Form Text Generation** | 👍 1 | A method that explicitly extracts a user's stylistic profile and uses it to guide drafting and revision improves personalized long-form text generation over retrieval-augmented baselines. | [Read](https://huggingface.co/papers/2611.27211) |
+| **Learning Video Foresight Reasoning from Unlabeled Videos via On-Policy Self-Distillation** | 👍 3 | Future-OPSD trains vision-language models via on-policy self-distillation and a contrastive privilege advantage derived from a foresight score, improving video foresight prediction and planning without extra annotations or LLM supervision. | [Read](https://huggingface.co/papers/2611.26954) |
+| **Autoregressive View Model** | 👍 0 | We present the Autoregressive View Model (AVM), which generates a scene as a stream of views without constructing an explicit 3D representation. Through a unifi... | [Read](https://huggingface.co/papers/2611.23417) |
+| **Search From the Start: Search-Native Pretraining for Language Models** | 👍 2 | Modern language models (LMs) are increasingly deployed with access to search tools at inference. Yet pretraining remains predominantly focused on predicting sta... | [Read](https://huggingface.co/papers/2611.26809) |
+| **Taking Apart and Putting Together: Tracking Objects Through Physical Transformations** | 👍 2 | A training-free framework tracks objects through physical assemblies and disassemblies by generating and evaluating split/merge proposals and querying a multimodal large language model for verification and labeling, achieving state-of-the-art accuracy and faster performance on a new benchmark. | [Read](https://huggingface.co/papers/2611.27398) |
+| **Exploited Before It Was Fixed? Vulnerability Timelines from Open, Machine-Readable Evidence** | 👍 3 | -05-X-03), Known Exploited Vulnerabilities (KEV) catalogs, and exploitation sightings.   We introduce an evidence model implemented in Vulnerability-Lookup that... | [Read](https://huggingface.co/papers/2611.22479) |
 
 
 ---
@@ -91,7 +98,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `22/25` healthy verified (`3` flagged / timed out)
+- **Sample Link Health Check**: `23/25` healthy verified (`2` flagged / timed out)
 - **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

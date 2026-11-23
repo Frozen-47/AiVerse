@@ -54,13 +54,13 @@ The artificial intelligence landscape moves at breakneck speed. Generic link dir
 ### ⚡ AiVerse AI Radar (2026-11-23)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Granite 4.0 Micro** (`Model`), **Thinking Machines: Inkling 2 Small** (`Model`), **RMBG-3.0** (`Model`), **from-llms-to-swarms** (`Platform`) |
+| 📥 **Queued for Review** | **Qwen3.5 9B** (`Model`), **Anthropic: Claude Fable 5.2** (`Model`), **LingSante-3.1-flash** (`Model`), **Jeveration** (`Platform`), **SynthDCB** (`Dataset`) |
 | 🌟 **Tool of the Day** | **Swift-Qwen3.8-27b** (Alibaba (Qwen)) — [Explore](https://huggingface.co/ukisai/Swift-Qwen3.8-27b) |
 | 🗄️ **Catalog Entries** | **766** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [MemOnce: A Scalable Memory Architecture for Large ...](https://huggingface.co/papers/2611.27973) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 23 Nov 2026 06:04:40 GMT` |
+| 📜 **Top Daily Paper** | [Learning Video Foresight Reasoning from Unlabeled ...](https://huggingface.co/papers/2611.26954) |
+| 🛡️ **Catalog Links Checked** | **23/25** operational |
+| 🕒 **Last Synchronized** | `Mon, 23 Nov 2026 18:56:19 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

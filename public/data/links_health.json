@@ -1,22 +1,17 @@
 {
-  "timestamp": "2026-11-23T06:04:07.109Z",
+  "timestamp": "2026-11-23T18:55:26.629Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 23,
+  "broken": 2,
   "issues": [
     {
-      "name": "NightCafe",
-      "url": "https://creator.nightcafe.studio",
+      "name": "Claude",
+      "url": "https://claude.ai",
       "status": 403
     },
     {
-      "name": "Meta AI",
-      "url": "https://www.meta.ai",
-      "status": 403
-    },
-    {
-      "name": "Midjourney (Platform)",
-      "url": "https://www.midjourney.com/",
+      "name": "Mistral Le Chat",
+      "url": "https://chat.mistral.ai",
       "status": 403
     }
   ]
