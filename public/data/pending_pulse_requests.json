@@ -1,5 +1,109 @@
 [
   {
+    "name": "from-llms-to-swarms",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by lewtun. Trending with 22 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "lewtun",
+    "size": "STATIC Platform",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/lewtun/from-llms-to-swarms",
+    "benchmarks": "Trending Score: 22, Community Likes: 22",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/lewtun/from-llms-to-swarms",
+    "citations": [
+      {
+        "text": "lewtun/from-llms-to-swarms on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/lewtun/from-llms-to-swarms"
+      }
+    ],
+    "created_at": "2026-11-23T06:04:06.845Z"
+  },
+  {
+    "name": "RMBG-3.0",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by briaai, trending with over 337 community likes and 225 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "briaai",
+    "size": "Open Weights",
+    "architecture": "briaai image segmentation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"briaai/RMBG-3.0\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"briaai/RMBG-3.0\")",
+    "benchmarks": "Trending Score: 78, Likes: 337, Downloads: 225",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/briaai/RMBG-3.0",
+    "citations": [
+      {
+        "text": "briaai/RMBG-3.0 on Hugging Face",
+        "url": "https://huggingface.co/briaai/RMBG-3.0"
+      }
+    ],
+    "created_at": "2026-11-23T06:04:06.845Z"
+  },
+  {
+    "name": "Thinking Machines: Inkling 2 Small",
+    "type": "Model",
+    "summary": "Inkling 2 Small is an open-weight multimodal mixture-of-experts reasoning model from Thinking Machines Lab, with 17B active parameters out of 594B total. It is the first model in t",
+    "task": "Multimodal",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "thinkingmachines",
+    "size": "1049k Context · Available via API",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"thinkingmachines/inkling-2-small\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1049k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://openrouter.ai/thinkingmachines/inkling-2-small",
+    "citations": [
+      {
+        "text": "Thinking Machines: Inkling 2 Small on OpenRouter",
+        "url": "https://openrouter.ai/thinkingmachines/inkling-2-small"
+      }
+    ],
+    "created_at": "2026-11-23T06:04:06.845Z"
+  },
+  {
+    "name": "Granite 4.0 Micro",
+    "type": "Model",
+    "summary": "Frontier NLP model by IBM benchmarked on Artificial Analysis and a verified 128k Context window.",
+    "task": "NLP",
+    "license": "Open Weights",
+    "year": 2026,
+    "org": "IBM",
+    "size": "128k Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by IBM, featuring native 128k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/granite-4-0-micro",
+    "benchmarks": "Context Window: 128k Context, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://artificialanalysis.ai/models/granite-4-0-micro",
+    "citations": [
+      {
+        "text": "Granite 4.0 Micro on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/granite-4-0-micro"
+      },
+      {
+        "text": "Granite 4.0 Micro Inference Providers",
+        "url": "https://artificialanalysis.ai/models/granite-4-0-micro/providers"
+      }
+    ],
+    "created_at": "2026-11-23T06:04:06.845Z"
+  },
+  {
     "name": "minimax-h3-turbo",
     "type": "Platform",
     "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by observantdistressed. Trending with 109 community stars.",

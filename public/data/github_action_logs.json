@@ -1,5 +1,53 @@
 [
   {
+    "id": "action_1795413880292_j7dnl",
+    "created_at": "2026-11-23T06:04:40.292Z",
+    "timestamp": "2026-11-23T06:04:40.292Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 4 new asset(s) queued",
+    "details": "Ingested 4 asset(s): Granite 4.0 Micro, Thinking Machines: Inkling 2 Small, RMBG-3.0, from-llms-to-swarms. Checked health for 25 links (3 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 36845ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 4,
+      "newlyIngested": [
+        {
+          "name": "Granite 4.0 Micro",
+          "type": "Model",
+          "org": "IBM"
+        },
+        {
+          "name": "Thinking Machines: Inkling 2 Small",
+          "type": "Model",
+          "org": "thinkingmachines"
+        },
+        {
+          "name": "RMBG-3.0",
+          "type": "Model",
+          "org": "briaai"
+        },
+        {
+          "name": "from-llms-to-swarms",
+          "type": "Platform",
+          "org": "lewtun"
+        }
+      ],
+      "brokenLinks": 3,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 36845,
+      "runId": "45121652527",
+      "runNumber": "147",
+      "sha": "27be268",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795391896638_7n3nh",
     "created_at": "2026-11-22T23:58:16.638Z",
     "timestamp": "2026-11-22T23:58:16.638Z",

@@ -51,16 +51,16 @@ The artificial intelligence landscape moves at breakneck speed. Generic link dir
 ## ⚡ AiVerse Daily AI Radar
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-22)
+### ⚡ AiVerse AI Radar (2026-11-23)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **North Mini Code** (`Model`), **Nex AGI: Nex-N2.6** (`Model`), **minimax-h3-turbo** (`Platform`) |
-| 🌟 **Tool of the Day** | **SWE-bench Verified** (OpenAI) — [Explore](https://www.swebench.com) |
+| 📥 **Queued for Review** | **Granite 4.0 Micro** (`Model`), **Thinking Machines: Inkling 2 Small** (`Model`), **RMBG-3.0** (`Model`), **from-llms-to-swarms** (`Platform`) |
+| 🌟 **Tool of the Day** | **Swift-Qwen3.8-27b** (Alibaba (Qwen)) — [Explore](https://huggingface.co/ukisai/Swift-Qwen3.8-27b) |
 | 🗄️ **Catalog Entries** | **766** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [Time Series Structure Learning with Local Causal P...](https://huggingface.co/papers/2611.26232) |
-| 🛡️ **Catalog Links Checked** | **25/25** operational |
-| 🕒 **Last Synchronized** | `Sun, 22 Nov 2026 23:58:16 GMT` |
+| 📜 **Top Daily Paper** | [MemOnce: A Scalable Memory Architecture for Large ...](https://huggingface.co/papers/2611.27973) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Mon, 23 Nov 2026 06:04:40 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
