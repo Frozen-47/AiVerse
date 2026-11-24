@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1795493430140_ltz4g",
+    "created_at": "2026-11-24T04:10:30.140Z",
+    "timestamp": "2026-11-24T04:10:30.140Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Hermes 4 - Llama-3.1 70B, Anthropic: Claude Fable 5.2 (batch), Ling-3.2-air, MINIMAX-H3-Ref2VA-Revamped, DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill. Checked health for 25 links (2 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 38946ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Hermes 4 - Llama-3.1 70B",
+          "type": "Model",
+          "org": "Nous Research"
+        },
+        {
+          "name": "Anthropic: Claude Fable 5.2 (batch)",
+          "type": "Model",
+          "org": "anthropic"
+        },
+        {
+          "name": "Ling-3.2-air",
+          "type": "Model",
+          "org": "inclusionAI"
+        },
+        {
+          "name": "MINIMAX-H3-Ref2VA-Revamped",
+          "type": "Platform",
+          "org": "waitinghere"
+        },
+        {
+          "name": "DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill",
+          "type": "Dataset",
+          "org": "Jackrong"
+        }
+      ],
+      "brokenLinks": 2,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 38946,
+      "runId": "45324425038",
+      "runNumber": "149",
+      "sha": "dd34d1d",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795460179286_4buqx",
     "created_at": "2026-11-23T18:56:19.286Z",
     "timestamp": "2026-11-23T18:56:19.286Z",

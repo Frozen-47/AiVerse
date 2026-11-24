@@ -1,5 +1,134 @@
 [
   {
+    "name": "DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill",
+    "type": "Dataset",
+    "summary": "🐳 DeepSeek-V4.1-Flash Nemotron Competitive Coding Distill \t    \t \t\t \t \t \t\tDataset Summary \t DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill is a supervised fin (45 likes, 126 downloads).",
+    "task": "AI Coding",
+    "license": "CC-BY-SA-4.0",
+    "year": 2026,
+    "org": "Jackrong",
+    "size": "1K<n<10K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill\")",
+    "benchmarks": "Trending Score: 8, Likes: 45, Downloads: 126",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill",
+    "citations": [
+      {
+        "text": "Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill"
+      }
+    ],
+    "created_at": "2026-11-24T04:09:52.586Z"
+  },
+  {
+    "name": "MINIMAX-H3-Ref2VA-Revamped",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by waitinghere. Trending with 30 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "waitinghere",
+    "size": "GRADIO Platform",
+    "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/waitinghere/MINIMAX-H3-Ref2VA-Revamped",
+    "benchmarks": "Trending Score: 23, Community Likes: 30",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/waitinghere/MINIMAX-H3-Ref2VA-Revamped",
+    "citations": [
+      {
+        "text": "waitinghere/MINIMAX-H3-Ref2VA-Revamped on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/waitinghere/MINIMAX-H3-Ref2VA-Revamped"
+      }
+    ],
+    "created_at": "2026-11-24T04:09:52.586Z"
+  },
+  {
+    "name": "Ling-3.2-air",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by inclusionAI, trending with over 115 community likes and 0 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "MIT",
+    "year": 2026,
+    "org": "inclusionAI",
+    "size": "Open Weights",
+    "architecture": "inclusionAI transformer architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"inclusionAI/Ling-3.2-air\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"inclusionAI/Ling-3.2-air\")",
+    "benchmarks": "Trending Score: 103, Likes: 115, Downloads: 0",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/inclusionAI/Ling-3.2-air",
+    "citations": [
+      {
+        "text": "inclusionAI/Ling-3.2-air on Hugging Face",
+        "url": "https://huggingface.co/inclusionAI/Ling-3.2-air"
+      }
+    ],
+    "created_at": "2026-11-24T04:09:52.586Z"
+  },
+  {
+    "name": "Anthropic: Claude Fable 5.2 (batch)",
+    "type": "Model",
+    "summary": "Claude Fable 5.2 is Anthropic's most capable model for the most demanding technical work, with gains over Fable 5.1 in coding, reasoning, and vision. In prerelease testing it compl",
+    "task": "AI Coding",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "anthropic",
+    "size": "1000k Context · Available via API",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 1000k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"anthropic/claude-fable-5.2:batch\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 1000k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://openrouter.ai/anthropic/claude-fable-5.2:batch",
+    "citations": [
+      {
+        "text": "Anthropic: Claude Fable 5.2 (batch) on OpenRouter",
+        "url": "https://openrouter.ai/anthropic/claude-fable-5.2:batch"
+      }
+    ],
+    "created_at": "2026-11-24T04:09:52.586Z"
+  },
+  {
+    "name": "Hermes 4 - Llama-3.1 70B",
+    "type": "Model",
+    "summary": "Frontier NLP model by Nous Research benchmarked on Artificial Analysis and a verified 128k Context window.",
+    "task": "NLP",
+    "license": "Open Weights",
+    "year": 2026,
+    "org": "Nous Research",
+    "size": "128k Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by Nous Research, featuring native 128k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/hermes-4-llama-3-1-70b",
+    "benchmarks": "Context Window: 128k Context, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://artificialanalysis.ai/models/hermes-4-llama-3-1-70b",
+    "citations": [
+      {
+        "text": "Hermes 4 - Llama-3.1 70B on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/hermes-4-llama-3-1-70b"
+      },
+      {
+        "text": "Hermes 4 - Llama-3.1 70B Inference Providers",
+        "url": "https://artificialanalysis.ai/models/hermes-4-llama-3-1-70b/providers"
+      }
+    ],
+    "created_at": "2026-11-24T04:09:52.585Z"
+  },
+  {
     "name": "SynthDCB",
     "type": "Dataset",
     "summary": "SynthDCB: World Distillation for Scalable Device Control Benchmarking 🌍 World Distillation An automated harness that distills device knowledge into executable worlds and verified (12 likes, 1,575 downloads).",

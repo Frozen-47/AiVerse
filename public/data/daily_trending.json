@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-23T18:55:26.322Z",
+  "timestamp": "2026-11-24T04:09:52.612Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,7 +58,7 @@
     {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "thinkingmachines",
-      "likes": 5394,
+      "likes": 5526,
       "downloads": 41888,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
@@ -67,7 +67,7 @@
     {
       "id": "unsloth/Inkling-2-Mini-GGUF",
       "author": "unsloth",
-      "likes": 1054,
+      "likes": 1132,
       "downloads": 1292888,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
@@ -76,7 +76,7 @@
     {
       "id": "inworld/voice-isolator",
       "author": "inworld",
-      "likes": 713,
+      "likes": 744,
       "downloads": 0,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/inworld/voice-isolator",
@@ -85,7 +85,7 @@
     {
       "id": "AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
       "author": "AtomicChat",
-      "likes": 616,
+      "likes": 666,
       "downloads": 329497,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
@@ -94,44 +94,44 @@
   ],
   "papers": [
     {
-      "title": "Learning Video Foresight Reasoning from Unlabeled Videos via On-Policy Self-Distillation",
-      "summary": "Future-OPSD trains vision-language models via on-policy self-distillation and a contrastive privilege advantage derived from a foresight score, improving video foresight prediction and planning without extra annotations or LLM supervision.",
+      "title": "GameAnything: From Any Inspirations to Playable Game Worlds",
+      "summary": "An open-source agentic platform and benchmark enable iterative transformation of multimodal inspirations into playable game extensions, revealing that coding agents can adapt reference content but still struggle with playable interactions and precise modifications.",
       "upvotes": 3,
-      "arxiv_id": "2611.26954",
-      "url": "https://huggingface.co/papers/2611.26954",
-      "githubRepo": "https://github.com/Jingchensun/future-opsd"
+      "arxiv_id": "2611.29238",
+      "url": "https://huggingface.co/papers/2611.29238",
+      "githubRepo": "https://github.com/AetherLabsAI/GameAnything"
     },
     {
-      "title": "Autoregressive View Model",
-      "summary": "We present the Autoregressive View Model (AVM), which generates a scene as a stream of views without constructing an explicit 3D representation. Through a unifi...",
-      "upvotes": 0,
-      "arxiv_id": "2611.23417",
-      "url": "https://huggingface.co/papers/2611.23417",
+      "title": "A Glimpse of Training VLMs as Foundation Models for Robotic Manipulation",
+      "summary": "nanoAstra combines semantic action modeling with capability-preserving supervised fine-tuning to train vision-language models for generalizable robot manipulation, achieving strong zero-shot success and faster streaming execution.",
+      "upvotes": 10,
+      "arxiv_id": "2611.29338",
+      "url": "https://huggingface.co/papers/2611.29338",
       "githubRepo": null
     },
     {
-      "title": "Search From the Start: Search-Native Pretraining for Language Models",
-      "summary": "Modern language models (LMs) are increasingly deployed with access to search tools at inference. Yet pretraining remains predominantly focused on predicting sta...",
-      "upvotes": 2,
-      "arxiv_id": "2611.26809",
-      "url": "https://huggingface.co/papers/2611.26809",
+      "title": "AutoPILOT: A Visual Agent Harness for Real-Time Gameplay",
+      "summary": "A harness that lets multimodal foundation models emit primitive actions, open-loop macros, or closed-loop controllers improves real-time game performance and reduces API cost.",
+      "upvotes": 18,
+      "arxiv_id": "2611.28202",
+      "url": "https://huggingface.co/papers/2611.28202",
       "githubRepo": null
     },
     {
-      "title": "Taking Apart and Putting Together: Tracking Objects Through Physical Transformations",
-      "summary": "A training-free framework tracks objects through physical assemblies and disassemblies by generating and evaluating split/merge proposals and querying a multimodal large language model for verification and labeling, achieving state-of-the-art accuracy and faster performance on a new benchmark.",
-      "upvotes": 2,
-      "arxiv_id": "2611.27398",
-      "url": "https://huggingface.co/papers/2611.27398",
+      "title": "Self-WSP: Can Language Models Improve Themselves Through Weight-Space Programming?",
+      "summary": "Language models can edit their own neural network weights to improve task performance, though the resulting gains are poorly understood and sometimes matched by random search.",
+      "upvotes": 7,
+      "arxiv_id": "2611.28833",
+      "url": "https://huggingface.co/papers/2611.28833",
       "githubRepo": null
     },
     {
-      "title": "Exploited Before It Was Fixed? Vulnerability Timelines from Open, Machine-Readable Evidence",
-      "summary": "-05-X-03), Known Exploited Vulnerabilities (KEV) catalogs, and exploitation sightings.\n  We introduce an evidence model implemented in Vulnerability-Lookup that...",
-      "upvotes": 3,
-      "arxiv_id": "2611.22479",
-      "url": "https://huggingface.co/papers/2611.22479",
-      "githubRepo": "https://github.com/vulnerability-lookup/exploitation-patch-timeline-paper"
+      "title": "WeightCode: Installing New Capabilities into Neural Networks via Weight-Space Programming",
+      "summary": "Neural networks encode learned capabilities in their weights, yet extending those capabilities with explicit task knowledge remains a fundamental challenge. Her...",
+      "upvotes": 6,
+      "arxiv_id": "2611.25476",
+      "url": "https://huggingface.co/papers/2611.25476",
+      "githubRepo": "https://github.com/Gen-Verse/WeightCode"
     }
   ],
   "sources": [

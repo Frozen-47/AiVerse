@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-11-23T18:55:26.629Z",
+  "timestamp": "2026-11-24T04:09:52.937Z",
   "checked": 25,
   "healthy": 23,
   "broken": 2,
   "issues": [
     {
-      "name": "Claude",
-      "url": "https://claude.ai",
-      "status": 403
+      "name": "Tabnine",
+      "url": "https://www.tabnine.com",
+      "status": "Network Error"
     },
     {
-      "name": "Mistral Le Chat",
-      "url": "https://chat.mistral.ai",
-      "status": 403
+      "name": "ERNIE Bot",
+      "url": "https://yiyan.baidu.com",
+      "status": 404
     }
   ]
 }

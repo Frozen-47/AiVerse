@@ -1,26 +1,26 @@
 {
-  "date": "2026-11-23",
+  "date": "2026-11-24",
   "tool": {
-    "name": "Swift-Qwen3.8-27b",
-    "type": "Model",
-    "summary": "High-performance Multimodal open-weights model by ukisai, trending with over 396 community likes and 3,221 downloads on Hugging Face, incorporating an architecture of ukisai image text to text architecture with community-tuned weights. The model demonstrates competitive performance across verified evaluations, including Trending Score: 380, Likes: 396, Downloads: 3,221. With its 27B params design, it supports diverse local and enterprise deployment profiles under the OTHER license.",
-    "task": "Multimodal",
-    "license": "OTHER",
-    "year": 2026,
-    "org": "Alibaba (Qwen)",
-    "size": "27B params",
-    "architecture": "ukisai image text to text architecture with community-tuned weights.",
-    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ukisai/Swift-Qwen3.8-27b\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ukisai/Swift-Qwen3.8-27b\")",
-    "benchmarks": "Trending Score: 380, Likes: 396, Downloads: 3,221",
-    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "name": "Synthesia",
+    "type": "AI",
+    "summary": "An AI video generation platform that creates professional videos with realistic AI avatars speaking from a script, used widely for corporate training and marketing. The application is powered by advanced foundation models utilizing web Application (Proprietary talking-head video synthesis model). It features an intuitive interface designed to streamline complex video generation workflows and maximize end-user productivity. Available under a Proprietary model for commercial and personal productivity.",
+    "task": "Video Generation",
+    "license": "Proprietary",
+    "year": 2017,
+    "org": "Synthesia",
+    "size": "N/A",
+    "architecture": "Web Application (Proprietary talking-head video synthesis model)",
+    "usage": "Visit synthesia.io, write a script, choose an AI avatar, and generate a video in minutes.",
+    "benchmarks": "N/A",
+    "limitations": "Limited avatar customization on lower-tier plans; video style can feel corporate.",
     "popular": true,
-    "url": "https://huggingface.co/ukisai/Swift-Qwen3.8-27b",
+    "url": "https://www.synthesia.io",
     "citations": [
       {
-        "text": "ukisai/Swift-Qwen3.8-27b on Hugging Face",
-        "url": "https://huggingface.co/ukisai/Swift-Qwen3.8-27b"
+        "text": "Synthesia",
+        "url": "https://www.synthesia.io"
       }
     ],
-    "description": "High-performance Multimodal open-weights model by ukisai, trending with over 396 community likes and 3,221 downloads on Hugging Face, incorporating an architecture of ukisai image text to text architecture with community-tuned weights. The model demonstrates competitive performance across verified evaluations, including Trending Score: 380, Likes: 396, Downloads: 3,221. With its 27B params design, it supports diverse local and enterprise deployment profiles under the OTHER license."
+    "description": "An AI video generation platform that creates professional videos with realistic AI avatars speaking from a script, used widely for corporate training and marketing. The application is powered by advanced foundation models utilizing web Application (Proprietary talking-head video synthesis model). It features an intuitive interface designed to streamline complex video generation workflows and maximize end-user productivity. Available under a Proprietary model for commercial and personal productivity."
   }
 }

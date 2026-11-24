@@ -51,16 +51,16 @@ The artificial intelligence landscape moves at breakneck speed. Generic link dir
 ## ⚡ AiVerse Daily AI Radar
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-23)
+### ⚡ AiVerse AI Radar (2026-11-24)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Qwen3.5 9B** (`Model`), **Anthropic: Claude Fable 5.2** (`Model`), **LingSante-3.1-flash** (`Model`), **Jeveration** (`Platform`), **SynthDCB** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Swift-Qwen3.8-27b** (Alibaba (Qwen)) — [Explore](https://huggingface.co/ukisai/Swift-Qwen3.8-27b) |
+| 📥 **Queued for Review** | **Hermes 4 - Llama-3.1 70B** (`Model`), **Anthropic: Claude Fable 5.2 (batch)** (`Model`), **Ling-3.2-air** (`Model`), **MINIMAX-H3-Ref2VA-Revamped** (`Platform`), **DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill** (`Dataset`) |
+| 🌟 **Tool of the Day** | **Synthesia** (Synthesia) — [Explore](https://www.synthesia.io) |
 | 🗄️ **Catalog Entries** | **766** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [Learning Video Foresight Reasoning from Unlabeled ...](https://huggingface.co/papers/2611.26954) |
+| 📜 **Top Daily Paper** | [GameAnything: From Any Inspirations to Playable Ga...](https://huggingface.co/papers/2611.29238) |
 | 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Mon, 23 Nov 2026 18:56:19 GMT` |
+| 🕒 **Last Synchronized** | `Tue, 24 Nov 2026 04:10:30 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
