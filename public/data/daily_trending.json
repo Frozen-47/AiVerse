@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-24T04:09:52.612Z",
+  "timestamp": "2026-11-24T15:27:56.331Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,8 +58,8 @@
     {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "thinkingmachines",
-      "likes": 5526,
-      "downloads": 41888,
+      "likes": 5674,
+      "downloads": 69042,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
       "source": "Hugging Face"
@@ -67,8 +67,8 @@
     {
       "id": "unsloth/Inkling-2-Mini-GGUF",
       "author": "unsloth",
-      "likes": 1132,
-      "downloads": 1292888,
+      "likes": 1201,
+      "downloads": 1913407,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
       "source": "Hugging Face"
@@ -76,62 +76,62 @@
     {
       "id": "inworld/voice-isolator",
       "author": "inworld",
-      "likes": 744,
-      "downloads": 0,
+      "likes": 779,
+      "downloads": 12733,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/inworld/voice-isolator",
       "source": "Hugging Face"
     },
     {
-      "id": "AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
-      "author": "AtomicChat",
-      "likes": 666,
-      "downloads": 329497,
+      "id": "tencent/Hy4-flash",
+      "author": "tencent",
+      "likes": 667,
+      "downloads": 9167,
       "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
+      "url": "https://huggingface.co/tencent/Hy4-flash",
       "source": "Hugging Face"
     }
   ],
   "papers": [
     {
-      "title": "GameAnything: From Any Inspirations to Playable Game Worlds",
-      "summary": "An open-source agentic platform and benchmark enable iterative transformation of multimodal inspirations into playable game extensions, revealing that coding agents can adapt reference content but still struggle with playable interactions and precise modifications.",
-      "upvotes": 3,
-      "arxiv_id": "2611.29238",
-      "url": "https://huggingface.co/papers/2611.29238",
-      "githubRepo": "https://github.com/AetherLabsAI/GameAnything"
-    },
-    {
-      "title": "A Glimpse of Training VLMs as Foundation Models for Robotic Manipulation",
-      "summary": "nanoAstra combines semantic action modeling with capability-preserving supervised fine-tuning to train vision-language models for generalizable robot manipulation, achieving strong zero-shot success and faster streaming execution.",
-      "upvotes": 10,
-      "arxiv_id": "2611.29338",
-      "url": "https://huggingface.co/papers/2611.29338",
+      "title": "Can Latent Reasoning Drive LLM Outputs Without a Trace?",
+      "summary": "Models can use deep latent reasoning to pursue hidden objectives while generating chain-of-thought explanations that appear task-appropriate and evade output-based monitoring.",
+      "upvotes": 1,
+      "arxiv_id": "2611.31015",
+      "url": "https://huggingface.co/papers/2611.31015",
       "githubRepo": null
     },
     {
-      "title": "AutoPILOT: A Visual Agent Harness for Real-Time Gameplay",
-      "summary": "A harness that lets multimodal foundation models emit primitive actions, open-loop macros, or closed-loop controllers improves real-time game performance and reduces API cost.",
-      "upvotes": 18,
-      "arxiv_id": "2611.28202",
-      "url": "https://huggingface.co/papers/2611.28202",
+      "title": "Single-Transformer Latent Diffusion",
+      "summary": "A single diffusion transformer can unify encoding, generation, and decoding by treating them as position-aligned sequence maps distinguished by a mode token and timestep, improving image generation quality and efficiency.",
+      "upvotes": 1,
+      "arxiv_id": "2611.29064",
+      "url": "https://huggingface.co/papers/2611.29064",
+      "githubRepo": "https://github.com/haoyuhsu/Unified-LDM"
+    },
+    {
+      "title": "ApexID: Hierarchical Learning for Multi-Species Animal Re-Identification",
+      "summary": "ApexID, a hierarchical SphereFace2-based loss combining global identity discrimination with balanced category supervision, improves animal re-identification and transfer to unseen datasets and species, though performance varies by backbone and open-set evaluation remains challenging.",
+      "upvotes": 0,
+      "arxiv_id": "2611.29723",
+      "url": "https://huggingface.co/papers/2611.29723",
+      "githubRepo": "https://github.com/MIA-AI-Team/ApexID-Hierarchical-Learning-for-Multi-Species-Animal-Re-Identification-Official-Repo"
+    },
+    {
+      "title": "LLMs Memorize Their Own Hallucinations During Post-Training",
+      "summary": "Adopting reasoning-oriented post-training recipes for knowledge tasks leads models to memorize self-generated hallucinations, especially on difficult questions, and makes them less likely to abstain from those false facts later.",
+      "upvotes": 0,
+      "arxiv_id": "2611.26863",
+      "url": "https://huggingface.co/papers/2611.26863",
       "githubRepo": null
     },
     {
-      "title": "Self-WSP: Can Language Models Improve Themselves Through Weight-Space Programming?",
-      "summary": "Language models can edit their own neural network weights to improve task performance, though the resulting gains are poorly understood and sometimes matched by random search.",
-      "upvotes": 7,
-      "arxiv_id": "2611.28833",
-      "url": "https://huggingface.co/papers/2611.28833",
-      "githubRepo": null
-    },
-    {
-      "title": "WeightCode: Installing New Capabilities into Neural Networks via Weight-Space Programming",
-      "summary": "Neural networks encode learned capabilities in their weights, yet extending those capabilities with explicit task knowledge remains a fundamental challenge. Her...",
-      "upvotes": 6,
-      "arxiv_id": "2611.25476",
-      "url": "https://huggingface.co/papers/2611.25476",
-      "githubRepo": "https://github.com/Gen-Verse/WeightCode"
+      "title": "ToolSmith: An Automatic Tool-Generation Framework for Multimodal Search Agents",
+      "summary": "Recent multimodal search agents use reasoning, vision, and live web search across many turns to answer questions beyond parametric knowledge by orchestrating a ...",
+      "upvotes": 4,
+      "arxiv_id": "2611.31198",
+      "url": "https://huggingface.co/papers/2611.31198",
+      "githubRepo": "https://github.com/uclanlp/OpenVLHarness"
     }
   ],
   "sources": [

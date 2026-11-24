@@ -54,13 +54,13 @@ The artificial intelligence landscape moves at breakneck speed. Generic link dir
 ### ⚡ AiVerse AI Radar (2026-11-24)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Hermes 4 - Llama-3.1 70B** (`Model`), **Anthropic: Claude Fable 5.2 (batch)** (`Model`), **Ling-3.2-air** (`Model`), **MINIMAX-H3-Ref2VA-Revamped** (`Platform`), **DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill** (`Dataset`) |
+| 📥 **Queued for Review** | **NVIDIA Nemotron 3 Nano 30B A3B** (`Model`), **Meta: Muse Ember** (`Model`), **OCRia-nano-1** (`Model`), **wan222** (`Platform`), **brazilian-portuguese-medicine-corpus** (`Dataset`) |
 | 🌟 **Tool of the Day** | **Synthesia** (Synthesia) — [Explore](https://www.synthesia.io) |
 | 🗄️ **Catalog Entries** | **766** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [GameAnything: From Any Inspirations to Playable Ga...](https://huggingface.co/papers/2611.29238) |
-| 🛡️ **Catalog Links Checked** | **23/25** operational |
-| 🕒 **Last Synchronized** | `Tue, 24 Nov 2026 04:10:30 GMT` |
+| 📜 **Top Daily Paper** | [Can Latent Reasoning Drive LLM Outputs Without a T...](https://huggingface.co/papers/2611.31015) |
+| 🛡️ **Catalog Links Checked** | **22/25** operational |
+| 🕒 **Last Synchronized** | `Tue, 24 Nov 2026 15:28:48 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
