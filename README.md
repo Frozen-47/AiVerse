@@ -54,13 +54,13 @@ The artificial intelligence landscape moves at breakneck speed. Generic link dir
 ### ⚡ AiVerse AI Radar (2026-11-25)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **MiniMax-M3** (`Model`), **Upstage: Solar Pro 4 Contributor** (`Model`), **Ternary-Bonsai-2.5-27B-GGUF** (`Model`), **wan2-2-fp8da-aoti-preview** (`Platform`), **LingSante-MedGuard** (`Dataset`) |
+| 📥 **Queued for Review** | **GPT-6.2 Sol** (`Model`), **Xiaomi: MiMo-V2.6-Flash-MOPD** (`Model`), **Kolibri-1.1** (`Model`), **BRIA-RMBG-3.0** (`Platform`), **RoboWild** (`Dataset`) |
 | 🌟 **Tool of the Day** | **T5** (Google DeepMind) — [Explore](https://github.com/google-research/text-to-text-transfer-transformer) |
 | 🗄️ **Catalog Entries** | **766** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [InstructReplay: Replaying Assistant Turns to Prese...](https://huggingface.co/papers/2611.32918) |
-| 🛡️ **Catalog Links Checked** | **25/25** operational |
-| 🕒 **Last Synchronized** | `Wed, 25 Nov 2026 10:47:28 GMT` |
+| 📜 **Top Daily Paper** | [Fractal Neural Synthesis: Constant-Storage Procedu...](https://huggingface.co/papers/2611.32393) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Synchronized** | `Wed, 25 Nov 2026 20:57:06 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

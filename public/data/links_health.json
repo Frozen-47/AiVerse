@@ -1,7 +1,13 @@
 {
-  "timestamp": "2026-11-25T10:46:34.799Z",
+  "timestamp": "2026-11-25T20:56:16.370Z",
   "checked": 25,
-  "healthy": 25,
-  "broken": 0,
-  "issues": []
+  "healthy": 24,
+  "broken": 1,
+  "issues": [
+    {
+      "name": "MarathonDocBench",
+      "url": "https://huggingface.co/datasets/baidu/MarathonDocBench",
+      "status": 401
+    }
+  ]
 }

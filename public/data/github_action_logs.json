@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1795640226457_30k0q",
+    "created_at": "2026-11-25T20:57:06.457Z",
+    "timestamp": "2026-11-25T20:57:06.457Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): GPT-6.2 Sol, Xiaomi: MiMo-V2.6-Flash-MOPD, Kolibri-1.1, BRIA-RMBG-3.0, RoboWild. Checked health for 25 links (1 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 51720ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "GPT-6.2 Sol",
+          "type": "Model",
+          "org": "OpenAI"
+        },
+        {
+          "name": "Xiaomi: MiMo-V2.6-Flash-MOPD",
+          "type": "Model",
+          "org": "xiaomi"
+        },
+        {
+          "name": "Kolibri-1.1",
+          "type": "Model",
+          "org": "Aleph-Alpha"
+        },
+        {
+          "name": "BRIA-RMBG-3.0",
+          "type": "Platform",
+          "org": "briaai"
+        },
+        {
+          "name": "RoboWild",
+          "type": "Dataset",
+          "org": "xlangai"
+        }
+      ],
+      "brokenLinks": 1,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 51720,
+      "runId": "45699643829",
+      "runNumber": "153",
+      "sha": "bf2d06c",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795614113995_w9ptd",
     "created_at": "2026-11-25T13:41:53.995Z",
     "timestamp": "2026-11-25T13:41:53.995Z",

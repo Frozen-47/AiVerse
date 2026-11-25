@@ -2,7 +2,7 @@
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Wed, 25 Nov 2026 10:47:28 GMT`*
+*Last Synchronized: `Wed, 25 Nov 2026 20:57:06 GMT`*
 
 ---
 
@@ -10,40 +10,40 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **MiniMax-M3** (`Model` • *MiniMax*)
-> Frontier Research model by MiniMax benchmarked on Artificial Analysis with an Intelligence Index of 19.0483629313801 and a verified 1000k Context window.
+### **GPT-6.2 Sol** (`Model` • *OpenAI*)
+> Frontier Research model by OpenAI benchmarked on Artificial Analysis with an Intelligence Index of 55.6340966236337 and a verified 1000k Context window.
 
-- 🏷️ **Domain & License**: `Research` • `Open Weights` (2026)
-- ⚡ **Metrics**: `Context Window: 1000k Context, Intelligence Index: 19.0483629313801, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/minimax-m3](https://artificialanalysis.ai/models/minimax-m3)
+- 🏷️ **Domain & License**: `Research` • `Proprietary` (2026)
+- ⚡ **Metrics**: `Context Window: 1000k Context, Intelligence Index: 55.6340966236337, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/gpt-6-2-sol](https://artificialanalysis.ai/models/gpt-6-2-sol)
 
-### **Upstage: Solar Pro 4 Contributor** (`Model` • *upstage*)
-> Solar Pro 4 Contributor is the same Solar Pro 4 model from Upstage, offered at a lower rate in exchange for allowing Upstage to use interaction data to improve its...
+### **Xiaomi: MiMo-V2.6-Flash-MOPD** (`Model` • *xiaomi*)
+> MiMo-V2.6-Flash-MOPD is an updated checkpoint of Xiaomi's MiMo-V2.6-Flash, a Mixture-of-Experts model with 309B total and 15B active parameters, a 1M-token context window, and nati
 
-- 🏷️ **Domain & License**: `NLP` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 524k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/upstage/solar-pro-4-contributor](https://openrouter.ai/upstage/solar-pro-4-contributor)
+- 🏷️ **Domain & License**: `Multimodal` • `Proprietary` (2026)
+- ⚡ **Metrics**: `Context Window: 1049k Context, Available across global OpenRouter inference nodes.`
+- 🔗 **Resource Link**: [https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd](https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd)
 
-### **Ternary-Bonsai-2.5-27B-GGUF** (`Model` • *prism-ml*)
-> High-performance NLP open-weights model by prism-ml, trending with over 201 community likes and 0 downloads on Hugging Face.
+### **Kolibri-1.1** (`Model` • *Aleph-Alpha*)
+> High-performance NLP open-weights model by Aleph-Alpha, trending with over 153 community likes and 837 downloads on Hugging Face.
 
 - 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 191, Likes: 201, Downloads: 0`
-- 🔗 **Resource Link**: [https://huggingface.co/prism-ml/Ternary-Bonsai-2.5-27B-GGUF](https://huggingface.co/prism-ml/Ternary-Bonsai-2.5-27B-GGUF)
+- ⚡ **Metrics**: `Trending Score: 115, Likes: 153, Downloads: 837`
+- 🔗 **Resource Link**: [https://huggingface.co/Aleph-Alpha/Kolibri-1.1](https://huggingface.co/Aleph-Alpha/Kolibri-1.1)
 
-### **wan2-2-fp8da-aoti-preview** (`Platform` • *r3gm*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by r3gm. Trending with 3,347 community stars.
+### **BRIA-RMBG-3.0** (`Platform` • *briaai*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by briaai. Trending with 39 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 22, Community Likes: 3,347`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/r3gm/wan2-2-fp8da-aoti-preview](https://huggingface.co/spaces/r3gm/wan2-2-fp8da-aoti-preview)
+- ⚡ **Metrics**: `Trending Score: 24, Community Likes: 39`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/briaai/BRIA-RMBG-3.0](https://huggingface.co/spaces/briaai/BRIA-RMBG-3.0)
 
-### **LingSante-MedGuard** (`Dataset` • *inclusionAI*)
-> LingSante MedGuardBench 	 English | 中文 Technical Report · PDF · Data Files · Quick Start · Citation LingSante MedGuardBench evaluates medical AI responses for safety, c (34 likes, 159 downloads).
+### **RoboWild** (`Dataset` • *xlangai*)
+> RoboWild 	 🏠 Homepage · 📄 Paper · 📊 Slides · 💻 Code RoboWild agents use robots to carry out tasks across 38 simulated environments. This dataset contains the OpenUS (75 likes, 8,861 downloads).
 
-- 🏷️ **Domain & License**: `Computer Vision` • `Open Data` (2026)
-- ⚡ **Metrics**: `Trending Score: 11, Likes: 34, Downloads: 159`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/inclusionAI/LingSante-MedGuard](https://huggingface.co/datasets/inclusionAI/LingSante-MedGuard)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 7, Likes: 75, Downloads: 8,861`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/xlangai/RoboWild](https://huggingface.co/datasets/xlangai/RoboWild)
 
 ---
 
@@ -68,10 +68,10 @@
 | **Upstage: Solar Mini 4.5 (Preview)** | `OpenRouter` | upstage (Cloud Model API) | ❤️ 120 · 📥 524,288 | [View](https://openrouter.ai/upstage/solar-mini-4-5) |
 | **Upstage: Solar Pro 4 Contributor** | `OpenRouter` | upstage (Cloud Model API) | ❤️ 120 · 📥 524,288 | [View](https://openrouter.ai/upstage/solar-pro-4-contributor) |
 | **Xiaomi: MiMo-V2.6-Flash-MOPD** | `OpenRouter` | xiaomi (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd) |
-| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 5,874 · 📥 69,042 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
-| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 1,295 · 📥 1,913,407 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
-| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 844 · 📥 12,733 | [View](https://huggingface.co/inworld/voice-isolator) |
-| **AtomicChat/Inkling-2-Mini-Uncensored-GGUF** | `Hugging Face` | AtomicChat (image-text-to-text) | ❤️ 783 · 📥 573,775 | [View](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) |
+| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 5,991 · 📥 96,527 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
+| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 1,361 · 📥 2,445,633 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
+| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 889 · 📥 15,244 | [View](https://huggingface.co/inworld/voice-isolator) |
+| **AtomicChat/Inkling-2-Mini-Uncensored-GGUF** | `Hugging Face` | AtomicChat (image-text-to-text) | ❤️ 832 · 📥 762,491 | [View](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) |
 
 
 ---
@@ -81,11 +81,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **InstructReplay: Replaying Assistant Turns to Preserve General Behavior During Factual Fine-Tuning** | 👍 1 | InstructReplay preserves an instruction-tuned language model's general abilities during fact fine-tuning by keeping its responses close to the initial model's answers on general instructions, reducing benchmark decline while still learning new facts. | [Read](https://huggingface.co/papers/2611.32918) |
-| **RECAP: Training Long-horizon LLM Agents with Context Compaction** | 👍 0 | A reinforcement learning framework, RECAP, optimizes context compaction by aligning compressed-context behavior with original-history behavior, improving long-horizon agent performance. | [Read](https://huggingface.co/papers/2611.31258) |
-| **Foresight Forcing: Learning Spatial Foresight for Robotic Manipulation** | 👍 2 | Foresight Forcing distills geometry-aware spatial transition queries from a frozen 3D foundation model to improve robotic manipulation action prediction without requiring future observations at deployment. | [Read](https://huggingface.co/papers/2611.30963) |
-| **CoT-Proxy: Cross-Format Transfer for Distilling Long-Horizon Policies** | 👍 1 | Reasoning models become long-horizon agents through reinforcement learning or, more cheaply, through fine-tuning on a stronger teacher's trajectories, which con... | [Read](https://huggingface.co/papers/2611.33148) |
-| **Small Learned Projections for Semantic-Reversal-Aware Retrieval with Spectral Acceleration: A Four-Domain Empirical Study** | 👍 1 | Dense-embedding retrievers can fail adversarially: when a query is answered by a document A and reversed by a near-copy B that differs from A by a small meaning... | [Read](https://huggingface.co/papers/2611.31442) |
+| **Fractal Neural Synthesis: Constant-Storage Procedural Weight Derivation via Complex Quadratic Boundary Dynamics** | 👍 1 | Conventional neural networks store synaptic parameters as explicit tensors whose persistent Flash footprint scales linearly (O(W)) with parameter count, constra... | [Read](https://huggingface.co/papers/2611.32393) |
+| **Point Dynamics as Proxy for Robotic World Models** | 👍 1 | Separating dynamics prediction from visual rendering using 3D point dynamics as an intermediate representation improves object motion accuracy in robotic video world models without sacrificing image quality. | [Read](https://huggingface.co/papers/2611.25946) |
+| **Degradation of Language Models under Controlled Load: Synchronization, Rule Execution and Misfires on the Background** | 👍 0 | A method separates a language model's quality decline under controlled load into synchronization, rule execution, and misfires, then derives load-dependent laws that characterize each model. | [Read](https://huggingface.co/papers/2611.27404) |
+| **OWE-Bench: A long-horizon benchmark for measuring real-world engineering** | 👍 1 | We present OWE-Bench (OpenWorldEngineer-Bench), a benchmark of 26 long-horizon engineering tasks written by domain experts in software engineering, physical eng... | [Read](https://huggingface.co/papers/2611.30017) |
+| **SpatialArena: Where Do Geometric Foundation Models Stand?** | 👍 3 | SpatialArena is an open benchmark that evaluates geometric models across five 3D perception tasks using uniform metrics and robust alignment, revealing that single-image depth is near saturation on public benchmarks but progress now depends on cross-frame and cross-view consistency. | [Read](https://huggingface.co/papers/2611.32816) |
 
 
 ---
@@ -98,7 +98,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `25/25` healthy verified (`0` flagged / timed out)
+- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
 - **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---
