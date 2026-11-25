@@ -1,13 +1,7 @@
 {
-  "timestamp": "2026-11-25T01:13:53.068Z",
+  "timestamp": "2026-11-25T10:46:34.799Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
-  "issues": [
-    {
-      "name": "OpenWebText",
-      "url": "https://huggingface.co/datasets/openwebtext",
-      "status": 404
-    }
-  ]
+  "healthy": 25,
+  "broken": 0,
+  "issues": []
 }

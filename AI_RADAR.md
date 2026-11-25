@@ -2,41 +2,48 @@
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Wed, 25 Nov 2026 01:14:44 GMT`*
+*Last Synchronized: `Wed, 25 Nov 2026 10:47:28 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (4)
+## 📥 Newly Queued Assets for Review (5)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Qwen3 Next 80B A3B Instruct** (`Model` • *Alibaba*)
-> Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.
+### **MiniMax-M3** (`Model` • *MiniMax*)
+> Frontier Research model by MiniMax benchmarked on Artificial Analysis with an Intelligence Index of 19.0483629313801 and a verified 1000k Context window.
 
-- 🏷️ **Domain & License**: `NLP` • `Open Weights` (2026)
-- ⚡ **Metrics**: `Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/qwen3-next-80b-a3b-instruct](https://artificialanalysis.ai/models/qwen3-next-80b-a3b-instruct)
+- 🏷️ **Domain & License**: `Research` • `Open Weights` (2026)
+- ⚡ **Metrics**: `Context Window: 1000k Context, Intelligence Index: 19.0483629313801, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/minimax-m3](https://artificialanalysis.ai/models/minimax-m3)
 
-### **Upstage: Solar Mini 4.5 (Preview)** (`Model` • *upstage*)
-> Solar Mini 4.5 is Upstage's compact language model, built on a proprietary mixture-of-experts architecture with 35B total and 3B active parameters and a 524K context window. It is 
+### **Upstage: Solar Pro 4 Contributor** (`Model` • *upstage*)
+> Solar Pro 4 Contributor is the same Solar Pro 4 model from Upstage, offered at a lower rate in exchange for allowing Upstage to use interaction data to improve its...
 
 - 🏷️ **Domain & License**: `NLP` • `Proprietary` (2026)
 - ⚡ **Metrics**: `Context Window: 524k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/upstage/solar-mini-4-5](https://openrouter.ai/upstage/solar-mini-4-5)
+- 🔗 **Resource Link**: [https://openrouter.ai/upstage/solar-pro-4-contributor](https://openrouter.ai/upstage/solar-pro-4-contributor)
 
-### **Qwen3.8-27B-NariQ-GGUF** (`Model` • *nari-labs*)
-> High-performance Multimodal open-weights model by nari-labs, trending with over 113 community likes and 8,795 downloads on Hugging Face.
+### **Ternary-Bonsai-2.5-27B-GGUF** (`Model` • *prism-ml*)
+> High-performance NLP open-weights model by prism-ml, trending with over 201 community likes and 0 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 106, Likes: 113, Downloads: 8,795`
-- 🔗 **Resource Link**: [https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF](https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 191, Likes: 201, Downloads: 0`
+- 🔗 **Resource Link**: [https://huggingface.co/prism-ml/Ternary-Bonsai-2.5-27B-GGUF](https://huggingface.co/prism-ml/Ternary-Bonsai-2.5-27B-GGUF)
 
-### **sam-3d-body-dataset** (`Dataset` • *facebook*)
-> SAM-3D-Body Data 	 This repository provides the annotations used in SAM 3D Body. 	 		 	 	 		Datasets 	 3DPW AI Challenger COCO EgoExo4D EgoHumans Harmony4D MPII SA1B (183 likes, 1,447 downloads).
+### **wan2-2-fp8da-aoti-preview** (`Platform` • *r3gm*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by r3gm. Trending with 3,347 community stars.
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 7, Likes: 183, Downloads: 1,447`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/facebook/sam-3d-body-dataset](https://huggingface.co/datasets/facebook/sam-3d-body-dataset)
+- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
+- ⚡ **Metrics**: `Trending Score: 22, Community Likes: 3,347`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/r3gm/wan2-2-fp8da-aoti-preview](https://huggingface.co/spaces/r3gm/wan2-2-fp8da-aoti-preview)
+
+### **LingSante-MedGuard** (`Dataset` • *inclusionAI*)
+> LingSante MedGuardBench 	 English | 中文 Technical Report · PDF · Data Files · Quick Start · Citation LingSante MedGuardBench evaluates medical AI responses for safety, c (34 likes, 159 downloads).
+
+- 🏷️ **Domain & License**: `Computer Vision` • `Open Data` (2026)
+- ⚡ **Metrics**: `Trending Score: 11, Likes: 34, Downloads: 159`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/inclusionAI/LingSante-MedGuard](https://huggingface.co/datasets/inclusionAI/LingSante-MedGuard)
 
 ---
 
@@ -61,10 +68,10 @@
 | **Upstage: Solar Mini 4.5 (Preview)** | `OpenRouter` | upstage (Cloud Model API) | ❤️ 120 · 📥 524,288 | [View](https://openrouter.ai/upstage/solar-mini-4-5) |
 | **Upstage: Solar Pro 4 Contributor** | `OpenRouter` | upstage (Cloud Model API) | ❤️ 120 · 📥 524,288 | [View](https://openrouter.ai/upstage/solar-pro-4-contributor) |
 | **Xiaomi: MiMo-V2.6-Flash-MOPD** | `OpenRouter` | xiaomi (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd) |
-| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 5,785 · 📥 69,042 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
-| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 1,255 · 📥 1,913,407 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
-| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 818 · 📥 12,733 | [View](https://huggingface.co/inworld/voice-isolator) |
-| **AtomicChat/Inkling-2-Mini-Uncensored-GGUF** | `Hugging Face` | AtomicChat (image-text-to-text) | ❤️ 755 · 📥 573,775 | [View](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) |
+| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 5,874 · 📥 69,042 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
+| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 1,295 · 📥 1,913,407 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
+| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 844 · 📥 12,733 | [View](https://huggingface.co/inworld/voice-isolator) |
+| **AtomicChat/Inkling-2-Mini-Uncensored-GGUF** | `Hugging Face` | AtomicChat (image-text-to-text) | ❤️ 783 · 📥 573,775 | [View](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) |
 
 
 ---
@@ -74,11 +81,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Let Vision-Language Models Generate Images through Their Representations** | 👍 1 | Integral converts a pretrained vision-language model into a unified multimodal model by constructing a shared visual representation space, preserving understanding while enabling strong visual generation. | [Read](https://huggingface.co/papers/2611.31237) |
-| **PixelOne: From Options to Pixels in a Single Forward for GUI Grounding** | 👍 1 | PixelOne transfers spatial knowledge from a search teacher to a student to predict GUI clicks at native resolution in one forward pass, achieving high accuracy and low latency. | [Read](https://huggingface.co/papers/2611.30235) |
-| **VideoJSON: A Minimal Harness Beats Purpose-Built Memory for Ultra-Long Video Understanding** | 👍 2 | Answering questions over days or weeks of video requires searching for scattered clues across long timelines. Existing video agents rely on complex memory graph... | [Read](https://huggingface.co/papers/2611.28167) |
-| **GlanceNav: Efficient Vision-and-Language Navigation with Streaming Memory and Counterfactual Rewind** | 👍 3 | GlanceNav is a streaming multimodal navigator that maintains constant per-step memory through recurrent and attention mechanisms and uses a reinforcement learning correction method to improve vision-and-language navigation. | [Read](https://huggingface.co/papers/2611.30900) |
-| **Frontier models need only one text to unmask its human or AI author** | 👍 1 | Frontier models can identify whether text was written by an AI or human, often which lab or exact author, threatening anonymity for prolific online writers. | [Read](https://huggingface.co/papers/2611.26216) |
+| **InstructReplay: Replaying Assistant Turns to Preserve General Behavior During Factual Fine-Tuning** | 👍 1 | InstructReplay preserves an instruction-tuned language model's general abilities during fact fine-tuning by keeping its responses close to the initial model's answers on general instructions, reducing benchmark decline while still learning new facts. | [Read](https://huggingface.co/papers/2611.32918) |
+| **RECAP: Training Long-horizon LLM Agents with Context Compaction** | 👍 0 | A reinforcement learning framework, RECAP, optimizes context compaction by aligning compressed-context behavior with original-history behavior, improving long-horizon agent performance. | [Read](https://huggingface.co/papers/2611.31258) |
+| **Foresight Forcing: Learning Spatial Foresight for Robotic Manipulation** | 👍 2 | Foresight Forcing distills geometry-aware spatial transition queries from a frozen 3D foundation model to improve robotic manipulation action prediction without requiring future observations at deployment. | [Read](https://huggingface.co/papers/2611.30963) |
+| **CoT-Proxy: Cross-Format Transfer for Distilling Long-Horizon Policies** | 👍 1 | Reasoning models become long-horizon agents through reinforcement learning or, more cheaply, through fine-tuning on a stronger teacher's trajectories, which con... | [Read](https://huggingface.co/papers/2611.33148) |
+| **Small Learned Projections for Semantic-Reversal-Aware Retrieval with Spectral Acceleration: A Four-Domain Empirical Study** | 👍 1 | Dense-embedding retrievers can fail adversarially: when a query is answered by a document A and reversed by a near-copy B that differs from A by a small meaning... | [Read](https://huggingface.co/papers/2611.31442) |
 
 
 ---
@@ -91,7 +98,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
+- **Sample Link Health Check**: `25/25` healthy verified (`0` flagged / timed out)
 - **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

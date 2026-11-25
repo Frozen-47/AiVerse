@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1795603648245_76mrc",
+    "created_at": "2026-11-25T10:47:28.245Z",
+    "timestamp": "2026-11-25T10:47:28.245Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): MiniMax-M3, Upstage: Solar Pro 4 Contributor, Ternary-Bonsai-2.5-27B-GGUF, wan2-2-fp8da-aoti-preview, LingSante-MedGuard. Checked health for 25 links (0 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 58459ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "MiniMax-M3",
+          "type": "Model",
+          "org": "MiniMax"
+        },
+        {
+          "name": "Upstage: Solar Pro 4 Contributor",
+          "type": "Model",
+          "org": "upstage"
+        },
+        {
+          "name": "Ternary-Bonsai-2.5-27B-GGUF",
+          "type": "Model",
+          "org": "prism-ml"
+        },
+        {
+          "name": "wan2-2-fp8da-aoti-preview",
+          "type": "Platform",
+          "org": "r3gm"
+        },
+        {
+          "name": "LingSante-MedGuard",
+          "type": "Dataset",
+          "org": "inclusionAI"
+        }
+      ],
+      "brokenLinks": 0,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 58459,
+      "runId": "45598152101",
+      "runNumber": "152",
+      "sha": "1d4bf0c",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795569284111_i29cr",
     "created_at": "2026-11-25T01:14:44.111Z",
     "timestamp": "2026-11-25T01:14:44.111Z",

@@ -4,6 +4,136 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "MiniMax-M3",
+        "type": "Model",
+        "summary": "Frontier Research model by MiniMax benchmarked on Artificial Analysis with an Intelligence Index of 19.0483629313801 and a verified 1000k Context window.",
+        "task": "Research",
+        "license": "Open Weights",
+        "year": 2026,
+        "org": "MiniMax",
+        "size": "1000k Context · Open Model",
+        "architecture": "Open-weights frontier neural architecture developed by MiniMax, featuring native 1000k Context token window support and optimized reasoning chains.",
+        "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/minimax-m3",
+        "benchmarks": "Context Window: 1000k Context, Intelligence Index: 19.0483629313801, Benchmarked on Artificial Analysis Leaderboard",
+        "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://artificialanalysis.ai/models/minimax-m3",
+        "citations": [
+          {
+            "text": "MiniMax-M3 on Artificial Analysis Benchmark",
+            "url": "https://artificialanalysis.ai/models/minimax-m3"
+          },
+          {
+            "text": "MiniMax-M3 Inference Providers",
+            "url": "https://artificialanalysis.ai/models/minimax-m3/providers"
+          }
+        ]
+      },
+      {
+        "name": "Upstage: Solar Pro 4 Contributor",
+        "type": "Model",
+        "summary": "Solar Pro 4 Contributor is the same Solar Pro 4 model from Upstage, offered at a lower rate in exchange for allowing Upstage to use interaction data to improve its...",
+        "task": "NLP",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "upstage",
+        "size": "524k Context · Available via API",
+        "architecture": "Modern foundation model hosted on OpenRouter with native 524k Context support and structured output generation.",
+        "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"upstage/solar-pro-4-contributor\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+        "benchmarks": "Context Window: 524k Context, Available across global OpenRouter inference nodes.",
+        "limitations": "Requires OpenRouter API key and token credits.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://openrouter.ai/upstage/solar-pro-4-contributor",
+        "citations": [
+          {
+            "text": "Upstage: Solar Pro 4 Contributor on OpenRouter",
+            "url": "https://openrouter.ai/upstage/solar-pro-4-contributor"
+          }
+        ]
+      },
+      {
+        "name": "Ternary-Bonsai-2.5-27B-GGUF",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by prism-ml, trending with over 201 community likes and 0 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "prism-ml",
+        "size": "27B params",
+        "architecture": "prism-ml text generation architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"prism-ml/Ternary-Bonsai-2.5-27B-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"prism-ml/Ternary-Bonsai-2.5-27B-GGUF\")",
+        "benchmarks": "Trending Score: 191, Likes: 201, Downloads: 0",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2.5-27B-GGUF",
+        "citations": [
+          {
+            "text": "prism-ml/Ternary-Bonsai-2.5-27B-GGUF on Hugging Face",
+            "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2.5-27B-GGUF"
+          }
+        ]
+      },
+      {
+        "name": "wan2-2-fp8da-aoti-preview",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by r3gm. Trending with 3,347 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "r3gm",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/r3gm/wan2-2-fp8da-aoti-preview",
+        "benchmarks": "Trending Score: 22, Community Likes: 3,347",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/r3gm/wan2-2-fp8da-aoti-preview",
+        "citations": [
+          {
+            "text": "r3gm/wan2-2-fp8da-aoti-preview on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/r3gm/wan2-2-fp8da-aoti-preview"
+          }
+        ]
+      },
+      {
+        "name": "LingSante-MedGuard",
+        "type": "Dataset",
+        "summary": "LingSante MedGuardBench \t English | 中文 Technical Report · PDF · Data Files · Quick Start · Citation LingSante MedGuardBench evaluates medical AI responses for safety, c (34 likes, 159 downloads).",
+        "task": "Computer Vision",
+        "license": "Open Data",
+        "year": 2026,
+        "org": "inclusionAI",
+        "size": "10K<n<100K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"inclusionAI/LingSante-MedGuard\")",
+        "benchmarks": "Trending Score: 11, Likes: 34, Downloads: 159",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/inclusionAI/LingSante-MedGuard",
+        "citations": [
+          {
+            "text": "inclusionAI/LingSante-MedGuard on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/inclusionAI/LingSante-MedGuard"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-25",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "Qwen3 Next 80B A3B Instruct",
         "type": "Model",
         "summary": "Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.",
@@ -7708,84 +7838,6 @@
           {
             "text": "Vyber07/cyber-security on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/Vyber07/cyber-security"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-26",
-    "status": "approved_in_catalog",
-    "assets": [
-      {
-        "name": "flint",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by RecursiveSI, trending with over 901 community likes and 8,470 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "RecursiveSI",
-        "size": "Open Weights",
-        "architecture": "RecursiveSI text generation architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"RecursiveSI/flint\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"RecursiveSI/flint\")",
-        "benchmarks": "Trending Score: 865, Likes: 901, Downloads: 8,470",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/RecursiveSI/flint",
-        "citations": [
-          {
-            "text": "RecursiveSI/flint on Hugging Face",
-            "url": "https://huggingface.co/RecursiveSI/flint"
-          }
-        ]
-      },
-      {
-        "name": "uncensored-imageTOimage2Ref",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by fishpasters. Trending with 241 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "fishpasters",
-        "size": "GRADIO Platform",
-        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/fishpasters/uncensored-imageTOimage2Ref",
-        "benchmarks": "Trending Score: 169, Community Likes: 241",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/spaces/fishpasters/uncensored-imageTOimage2Ref",
-        "citations": [
-          {
-            "text": "fishpasters/uncensored-imageTOimage2Ref on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/fishpasters/uncensored-imageTOimage2Ref"
-          }
-        ]
-      },
-      {
-        "name": "3d-collection",
-        "type": "Dataset",
-        "summary": "Scenario 3D Collection \t 1,342 selected AI-generated 3D examples, with all 1,500 output files downloaded. About 39 GB including previews and available source inputs. An (258 likes, 20,299 downloads).",
-        "task": "Computer Vision",
-        "license": "CC-BY-4.0",
-        "year": 2026,
-        "org": "scenario-labs",
-        "size": "1K<n<10K",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"scenario-labs/3d-collection\")",
-        "benchmarks": "Trending Score: 240, Likes: 258, Downloads: 20,299",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/scenario-labs/3d-collection",
-        "citations": [
-          {
-            "text": "scenario-labs/3d-collection on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/scenario-labs/3d-collection"
           }
         ]
       }

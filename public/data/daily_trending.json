@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-25T01:13:52.868Z",
+  "timestamp": "2026-11-25T10:46:34.292Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,7 +58,7 @@
     {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "thinkingmachines",
-      "likes": 5785,
+      "likes": 5874,
       "downloads": 69042,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
@@ -67,7 +67,7 @@
     {
       "id": "unsloth/Inkling-2-Mini-GGUF",
       "author": "unsloth",
-      "likes": 1255,
+      "likes": 1295,
       "downloads": 1913407,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
@@ -76,7 +76,7 @@
     {
       "id": "inworld/voice-isolator",
       "author": "inworld",
-      "likes": 818,
+      "likes": 844,
       "downloads": 12733,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/inworld/voice-isolator",
@@ -85,7 +85,7 @@
     {
       "id": "AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
       "author": "AtomicChat",
-      "likes": 755,
+      "likes": 783,
       "downloads": 573775,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
@@ -94,44 +94,44 @@
   ],
   "papers": [
     {
-      "title": "Let Vision-Language Models Generate Images through Their Representations",
-      "summary": "Integral converts a pretrained vision-language model into a unified multimodal model by constructing a shared visual representation space, preserving understanding while enabling strong visual generation.",
+      "title": "InstructReplay: Replaying Assistant Turns to Preserve General Behavior During Factual Fine-Tuning",
+      "summary": "InstructReplay preserves an instruction-tuned language model's general abilities during fact fine-tuning by keeping its responses close to the initial model's answers on general instructions, reducing benchmark decline while still learning new facts.",
       "upvotes": 1,
-      "arxiv_id": "2611.31237",
-      "url": "https://huggingface.co/papers/2611.31237",
-      "githubRepo": "https://github.com/the-jb/integral"
+      "arxiv_id": "2611.32918",
+      "url": "https://huggingface.co/papers/2611.32918",
+      "githubRepo": "https://github.com/xiaofengShi/InstructReplay"
     },
     {
-      "title": "PixelOne: From Options to Pixels in a Single Forward for GUI Grounding",
-      "summary": "PixelOne transfers spatial knowledge from a search teacher to a student to predict GUI clicks at native resolution in one forward pass, achieving high accuracy and low latency.",
-      "upvotes": 1,
-      "arxiv_id": "2611.30235",
-      "url": "https://huggingface.co/papers/2611.30235",
-      "githubRepo": "https://github.com/tiankanghui/PixelOne"
+      "title": "RECAP: Training Long-horizon LLM Agents with Context Compaction",
+      "summary": "A reinforcement learning framework, RECAP, optimizes context compaction by aligning compressed-context behavior with original-history behavior, improving long-horizon agent performance.",
+      "upvotes": 0,
+      "arxiv_id": "2611.31258",
+      "url": "https://huggingface.co/papers/2611.31258",
+      "githubRepo": "https://github.com/eth-medical-ai-lab/recap"
     },
     {
-      "title": "VideoJSON: A Minimal Harness Beats Purpose-Built Memory for Ultra-Long Video Understanding",
-      "summary": "Answering questions over days or weeks of video requires searching for scattered clues across long timelines. Existing video agents rely on complex memory graph...",
+      "title": "Foresight Forcing: Learning Spatial Foresight for Robotic Manipulation",
+      "summary": "Foresight Forcing distills geometry-aware spatial transition queries from a frozen 3D foundation model to improve robotic manipulation action prediction without requiring future observations at deployment.",
       "upvotes": 2,
-      "arxiv_id": "2611.28167",
-      "url": "https://huggingface.co/papers/2611.28167",
-      "githubRepo": "https://github.com/weathon/videojson_release"
+      "arxiv_id": "2611.30963",
+      "url": "https://huggingface.co/papers/2611.30963",
+      "githubRepo": "https://github.com/anson2333/ForesightForcing"
     },
     {
-      "title": "GlanceNav: Efficient Vision-and-Language Navigation with Streaming Memory and Counterfactual Rewind",
-      "summary": "GlanceNav is a streaming multimodal navigator that maintains constant per-step memory through recurrent and attention mechanisms and uses a reinforcement learning correction method to improve vision-and-language navigation.",
-      "upvotes": 3,
-      "arxiv_id": "2611.30900",
-      "url": "https://huggingface.co/papers/2611.30900",
-      "githubRepo": "https://github.com/GlanceNav/GlanceNav"
-    },
-    {
-      "title": "Frontier models need only one text to unmask its human or AI author",
-      "summary": "Frontier models can identify whether text was written by an AI or human, often which lab or exact author, threatening anonymity for prolific online writers.",
+      "title": "CoT-Proxy: Cross-Format Transfer for Distilling Long-Horizon Policies",
+      "summary": "Reasoning models become long-horizon agents through reinforcement learning or, more cheaply, through fine-tuning on a stronger teacher's trajectories, which con...",
       "upvotes": 1,
-      "arxiv_id": "2611.26216",
-      "url": "https://huggingface.co/papers/2611.26216",
-      "githubRepo": "https://github.com/denizbt/unmasking_authors"
+      "arxiv_id": "2611.33148",
+      "url": "https://huggingface.co/papers/2611.33148",
+      "githubRepo": null
+    },
+    {
+      "title": "Small Learned Projections for Semantic-Reversal-Aware Retrieval with Spectral Acceleration: A Four-Domain Empirical Study",
+      "summary": "Dense-embedding retrievers can fail adversarially: when a query is answered by a document A and reversed by a near-copy B that differs from A by a small meaning...",
+      "upvotes": 1,
+      "arxiv_id": "2611.31442",
+      "url": "https://huggingface.co/papers/2611.31442",
+      "githubRepo": "https://github.com/pelloran-inc/pelloran-safety-lens"
     }
   ],
   "sources": [
