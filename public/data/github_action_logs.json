@@ -1,5 +1,26 @@
 [
   {
+    "id": "action_1795614113995_w9ptd",
+    "created_at": "2026-11-25T13:41:53.995Z",
+    "timestamp": "2026-11-25T13:41:53.995Z",
+    "workflow": "Leaderboard Sync",
+    "action": "LEADERBOARD_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "Leaderboard Sync completed: 290 benchmarked frontier models active",
+    "details": "Ingested live flight data from Artificial Analysis and OpenRouter. Compiled into src/data/leaderboardData.ts in 454ms.",
+    "metadata": {
+      "totalModels": 290,
+      "durationMs": 454,
+      "targetFile": "src/data/leaderboardData.ts",
+      "runId": "45626044830",
+      "runNumber": "12",
+      "sha": "74c1f56",
+      "ref": "refs/heads/main",
+      "workflow": "Leaderboard Sync"
+    }
+  },
+  {
     "id": "action_1795603648245_76mrc",
     "created_at": "2026-11-25T10:47:28.245Z",
     "timestamp": "2026-11-25T10:47:28.245Z",
