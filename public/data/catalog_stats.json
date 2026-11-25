@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-24T15:27:56.323Z",
+  "timestamp": "2026-11-25T01:13:52.861Z",
   "totalEntries": 766,
   "popularEntries": 368,
   "totalUsers": 10,
@@ -92,26 +92,26 @@
     "CDLA-PERMISSIVE-2.0": 1
   },
   "toolOfTheDay": {
-    "name": "Synthesia",
-    "type": "AI",
-    "summary": "An AI video generation platform that creates professional videos with realistic AI avatars speaking from a script, used widely for corporate training and marketing. The application is powered by advanced foundation models utilizing web Application (Proprietary talking-head video synthesis model). It features an intuitive interface designed to streamline complex video generation workflows and maximize end-user productivity. Available under a Proprietary model for commercial and personal productivity.",
-    "task": "Video Generation",
-    "license": "Proprietary",
-    "year": 2017,
-    "org": "Synthesia",
-    "size": "N/A",
-    "architecture": "Web Application (Proprietary talking-head video synthesis model)",
-    "usage": "Visit synthesia.io, write a script, choose an AI avatar, and generate a video in minutes.",
-    "benchmarks": "N/A",
-    "limitations": "Limited avatar customization on lower-tier plans; video style can feel corporate.",
+    "name": "T5",
+    "type": "Model",
+    "summary": "Text-To-Text Transfer Transformer — Google's unified framework that converts every NLP task into a text-to-text format, incorporating an architecture of encoder-decoder transformer trained with a span-corruption pre-training objective. The model demonstrates competitive performance across verified evaluations, including SuperGLUE: 88.9 (11B), GLUE: 90.3 (11B). With its Small (60M) to 11B params design, it supports diverse local and enterprise deployment profiles under the Apache-2.0 license.",
+    "task": "NLP",
+    "license": "Apache-2.0",
+    "year": 2019,
+    "org": "Google DeepMind",
+    "size": "Small (60M) to 11B params",
+    "architecture": "Encoder-decoder transformer trained with a span-corruption pre-training objective.",
+    "usage": "from transformers import T5Tokenizer, T5ForConditionalGeneration\ntokenizer = T5Tokenizer.from_pretrained(\"t5-base\")\nmodel = T5ForConditionalGeneration.from_pretrained(\"t5-base\")\ninput_ids = tokenizer(\"translate English to French: Hello world\", return_tensors=\"pt\").input_ids",
+    "benchmarks": "SuperGLUE: 88.9 (11B), GLUE: 90.3 (11B)",
+    "limitations": "Encoder-decoder architecture slower than decoder-only for generation tasks.",
     "popular": true,
-    "url": "https://www.synthesia.io",
+    "url": "https://github.com/google-research/text-to-text-transfer-transformer",
     "citations": [
       {
-        "text": "Synthesia",
-        "url": "https://www.synthesia.io"
+        "text": "Raffel et al. (2019) - T5 Paper",
+        "url": "https://arxiv.org/abs/1910.10683"
       }
     ],
-    "description": "An AI video generation platform that creates professional videos with realistic AI avatars speaking from a script, used widely for corporate training and marketing. The application is powered by advanced foundation models utilizing web Application (Proprietary talking-head video synthesis model). It features an intuitive interface designed to streamline complex video generation workflows and maximize end-user productivity. Available under a Proprietary model for commercial and personal productivity."
+    "description": "Text-To-Text Transfer Transformer — Google's unified framework that converts every NLP task into a text-to-text format, incorporating an architecture of encoder-decoder transformer trained with a span-corruption pre-training objective. The model demonstrates competitive performance across verified evaluations, including SuperGLUE: 88.9 (11B), GLUE: 90.3 (11B). With its Small (60M) to 11B params design, it supports diverse local and enterprise deployment profiles under the Apache-2.0 license."
   }
 }

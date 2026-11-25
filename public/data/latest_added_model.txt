@@ -1,1 +1,1 @@
-NVIDIA Nemotron 3 Nano 30B A3B
+Qwen3 Next 80B A3B Instruct

@@ -1,5 +1,109 @@
 [
   {
+    "name": "sam-3d-body-dataset",
+    "type": "Dataset",
+    "summary": "SAM-3D-Body Data \t This repository provides the annotations used in SAM 3D Body. \t \t\t \t \t \t\tDatasets \t 3DPW AI Challenger COCO EgoExo4D EgoHumans Harmony4D MPII SA1B (183 likes, 1,447 downloads).",
+    "task": "NLP",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "facebook",
+    "size": "1M<n<10M",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"facebook/sam-3d-body-dataset\")",
+    "benchmarks": "Trending Score: 7, Likes: 183, Downloads: 1,447",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/facebook/sam-3d-body-dataset",
+    "citations": [
+      {
+        "text": "facebook/sam-3d-body-dataset on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/facebook/sam-3d-body-dataset"
+      }
+    ],
+    "created_at": "2026-11-25T01:13:52.833Z"
+  },
+  {
+    "name": "Qwen3.8-27B-NariQ-GGUF",
+    "type": "Model",
+    "summary": "High-performance Multimodal open-weights model by nari-labs, trending with over 113 community likes and 8,795 downloads on Hugging Face.",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "nari-labs",
+    "size": "27B params",
+    "architecture": "nari-labs image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"nari-labs/Qwen3.8-27B-NariQ-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"nari-labs/Qwen3.8-27B-NariQ-GGUF\")",
+    "benchmarks": "Trending Score: 106, Likes: 113, Downloads: 8,795",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF",
+    "citations": [
+      {
+        "text": "nari-labs/Qwen3.8-27B-NariQ-GGUF on Hugging Face",
+        "url": "https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF"
+      }
+    ],
+    "created_at": "2026-11-25T01:13:52.832Z"
+  },
+  {
+    "name": "Upstage: Solar Mini 4.5 (Preview)",
+    "type": "Model",
+    "summary": "Solar Mini 4.5 is Upstage's compact language model, built on a proprietary mixture-of-experts architecture with 35B total and 3B active parameters and a 524K context window. It is ",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "upstage",
+    "size": "524k Context · Available via API",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 524k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"upstage/solar-mini-4-5\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 524k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://openrouter.ai/upstage/solar-mini-4-5",
+    "citations": [
+      {
+        "text": "Upstage: Solar Mini 4.5 (Preview) on OpenRouter",
+        "url": "https://openrouter.ai/upstage/solar-mini-4-5"
+      }
+    ],
+    "created_at": "2026-11-25T01:13:52.832Z"
+  },
+  {
+    "name": "Qwen3 Next 80B A3B Instruct",
+    "type": "Model",
+    "summary": "Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.",
+    "task": "NLP",
+    "license": "Open Weights",
+    "year": 2026,
+    "org": "Alibaba",
+    "size": "262k Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by Alibaba, featuring native 262k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-next-80b-a3b-instruct",
+    "benchmarks": "Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://artificialanalysis.ai/models/qwen3-next-80b-a3b-instruct",
+    "citations": [
+      {
+        "text": "Qwen3 Next 80B A3B Instruct on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/qwen3-next-80b-a3b-instruct"
+      },
+      {
+        "text": "Qwen3 Next 80B A3B Instruct Inference Providers",
+        "url": "https://artificialanalysis.ai/models/qwen3-next-80b-a3b-instruct/providers"
+      }
+    ],
+    "created_at": "2026-11-25T01:13:52.832Z"
+  },
+  {
     "name": "brazilian-portuguese-medicine-corpus",
     "type": "Dataset",
     "summary": "Treinar um modelo com este corpus ›Filtrar outra categoria › \t \t\t \t \t \t\tBrazilian Portuguese Medicine & Health Corpus \t 75.778 documentos de texto em português brasileiro sobre med (44 likes, 219 downloads).",

@@ -1,5 +1,53 @@
 [
   {
+    "id": "action_1795569284111_i29cr",
+    "created_at": "2026-11-25T01:14:44.111Z",
+    "timestamp": "2026-11-25T01:14:44.111Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 4 new asset(s) queued",
+    "details": "Ingested 4 asset(s): Qwen3 Next 80B A3B Instruct, Upstage: Solar Mini 4.5 (Preview), Qwen3.8-27B-NariQ-GGUF, sam-3d-body-dataset. Checked health for 25 links (1 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 52512ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 4,
+      "newlyIngested": [
+        {
+          "name": "Qwen3 Next 80B A3B Instruct",
+          "type": "Model",
+          "org": "Alibaba"
+        },
+        {
+          "name": "Upstage: Solar Mini 4.5 (Preview)",
+          "type": "Model",
+          "org": "upstage"
+        },
+        {
+          "name": "Qwen3.8-27B-NariQ-GGUF",
+          "type": "Model",
+          "org": "nari-labs"
+        },
+        {
+          "name": "sam-3d-body-dataset",
+          "type": "Dataset",
+          "org": "facebook"
+        }
+      ],
+      "brokenLinks": 1,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 52512,
+      "runId": "45524146763",
+      "runNumber": "151",
+      "sha": "9caafb5",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795534128095_d7lel",
     "created_at": "2026-11-24T15:28:48.095Z",
     "timestamp": "2026-11-24T15:28:48.095Z",

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-24T15:27:56.331Z",
+  "timestamp": "2026-11-25T01:13:52.868Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -29,36 +29,36 @@
       "source": "Artificial Analysis"
     },
     {
-      "id": "Thinking Machines: Inkling 2 Mini",
-      "author": "thinkingmachines",
+      "id": "Upstage: Solar Mini 4.5 (Preview)",
+      "author": "upstage",
+      "likes": 120,
+      "downloads": 524288,
+      "pipeline_tag": "Cloud Model API",
+      "url": "https://openrouter.ai/upstage/solar-mini-4-5",
+      "source": "OpenRouter"
+    },
+    {
+      "id": "Upstage: Solar Pro 4 Contributor",
+      "author": "upstage",
+      "likes": 120,
+      "downloads": 524288,
+      "pipeline_tag": "Cloud Model API",
+      "url": "https://openrouter.ai/upstage/solar-pro-4-contributor",
+      "source": "OpenRouter"
+    },
+    {
+      "id": "Xiaomi: MiMo-V2.6-Flash-MOPD",
+      "author": "xiaomi",
       "likes": 120,
       "downloads": 1048576,
       "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/thinkingmachines/inkling-2-mini",
-      "source": "OpenRouter"
-    },
-    {
-      "id": "RadixArk: DaisyRose 27B",
-      "author": "radixark",
-      "likes": 120,
-      "downloads": 262144,
-      "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/radixark/daisyrose-27b",
-      "source": "OpenRouter"
-    },
-    {
-      "id": "Mistral: Pixtral Large 2502",
-      "author": "mistralai",
-      "likes": 120,
-      "downloads": 128000,
-      "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/mistralai/pixtral-large-2502",
+      "url": "https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd",
       "source": "OpenRouter"
     },
     {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "thinkingmachines",
-      "likes": 5674,
+      "likes": 5785,
       "downloads": 69042,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
@@ -67,7 +67,7 @@
     {
       "id": "unsloth/Inkling-2-Mini-GGUF",
       "author": "unsloth",
-      "likes": 1201,
+      "likes": 1255,
       "downloads": 1913407,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
@@ -76,62 +76,62 @@
     {
       "id": "inworld/voice-isolator",
       "author": "inworld",
-      "likes": 779,
+      "likes": 818,
       "downloads": 12733,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/inworld/voice-isolator",
       "source": "Hugging Face"
     },
     {
-      "id": "tencent/Hy4-flash",
-      "author": "tencent",
-      "likes": 667,
-      "downloads": 9167,
+      "id": "AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
+      "author": "AtomicChat",
+      "likes": 755,
+      "downloads": 573775,
       "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/tencent/Hy4-flash",
+      "url": "https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
       "source": "Hugging Face"
     }
   ],
   "papers": [
     {
-      "title": "Can Latent Reasoning Drive LLM Outputs Without a Trace?",
-      "summary": "Models can use deep latent reasoning to pursue hidden objectives while generating chain-of-thought explanations that appear task-appropriate and evade output-based monitoring.",
+      "title": "Let Vision-Language Models Generate Images through Their Representations",
+      "summary": "Integral converts a pretrained vision-language model into a unified multimodal model by constructing a shared visual representation space, preserving understanding while enabling strong visual generation.",
       "upvotes": 1,
-      "arxiv_id": "2611.31015",
-      "url": "https://huggingface.co/papers/2611.31015",
-      "githubRepo": null
+      "arxiv_id": "2611.31237",
+      "url": "https://huggingface.co/papers/2611.31237",
+      "githubRepo": "https://github.com/the-jb/integral"
     },
     {
-      "title": "Single-Transformer Latent Diffusion",
-      "summary": "A single diffusion transformer can unify encoding, generation, and decoding by treating them as position-aligned sequence maps distinguished by a mode token and timestep, improving image generation quality and efficiency.",
+      "title": "PixelOne: From Options to Pixels in a Single Forward for GUI Grounding",
+      "summary": "PixelOne transfers spatial knowledge from a search teacher to a student to predict GUI clicks at native resolution in one forward pass, achieving high accuracy and low latency.",
       "upvotes": 1,
-      "arxiv_id": "2611.29064",
-      "url": "https://huggingface.co/papers/2611.29064",
-      "githubRepo": "https://github.com/haoyuhsu/Unified-LDM"
+      "arxiv_id": "2611.30235",
+      "url": "https://huggingface.co/papers/2611.30235",
+      "githubRepo": "https://github.com/tiankanghui/PixelOne"
     },
     {
-      "title": "ApexID: Hierarchical Learning for Multi-Species Animal Re-Identification",
-      "summary": "ApexID, a hierarchical SphereFace2-based loss combining global identity discrimination with balanced category supervision, improves animal re-identification and transfer to unseen datasets and species, though performance varies by backbone and open-set evaluation remains challenging.",
-      "upvotes": 0,
-      "arxiv_id": "2611.29723",
-      "url": "https://huggingface.co/papers/2611.29723",
-      "githubRepo": "https://github.com/MIA-AI-Team/ApexID-Hierarchical-Learning-for-Multi-Species-Animal-Re-Identification-Official-Repo"
+      "title": "VideoJSON: A Minimal Harness Beats Purpose-Built Memory for Ultra-Long Video Understanding",
+      "summary": "Answering questions over days or weeks of video requires searching for scattered clues across long timelines. Existing video agents rely on complex memory graph...",
+      "upvotes": 2,
+      "arxiv_id": "2611.28167",
+      "url": "https://huggingface.co/papers/2611.28167",
+      "githubRepo": "https://github.com/weathon/videojson_release"
     },
     {
-      "title": "LLMs Memorize Their Own Hallucinations During Post-Training",
-      "summary": "Adopting reasoning-oriented post-training recipes for knowledge tasks leads models to memorize self-generated hallucinations, especially on difficult questions, and makes them less likely to abstain from those false facts later.",
-      "upvotes": 0,
-      "arxiv_id": "2611.26863",
-      "url": "https://huggingface.co/papers/2611.26863",
-      "githubRepo": null
+      "title": "GlanceNav: Efficient Vision-and-Language Navigation with Streaming Memory and Counterfactual Rewind",
+      "summary": "GlanceNav is a streaming multimodal navigator that maintains constant per-step memory through recurrent and attention mechanisms and uses a reinforcement learning correction method to improve vision-and-language navigation.",
+      "upvotes": 3,
+      "arxiv_id": "2611.30900",
+      "url": "https://huggingface.co/papers/2611.30900",
+      "githubRepo": "https://github.com/GlanceNav/GlanceNav"
     },
     {
-      "title": "ToolSmith: An Automatic Tool-Generation Framework for Multimodal Search Agents",
-      "summary": "Recent multimodal search agents use reasoning, vision, and live web search across many turns to answer questions beyond parametric knowledge by orchestrating a ...",
-      "upvotes": 4,
-      "arxiv_id": "2611.31198",
-      "url": "https://huggingface.co/papers/2611.31198",
-      "githubRepo": "https://github.com/uclanlp/OpenVLHarness"
+      "title": "Frontier models need only one text to unmask its human or AI author",
+      "summary": "Frontier models can identify whether text was written by an AI or human, often which lab or exact author, threatening anonymity for prolific online writers.",
+      "upvotes": 1,
+      "arxiv_id": "2611.26216",
+      "url": "https://huggingface.co/papers/2611.26216",
+      "githubRepo": "https://github.com/denizbt/unmasking_authors"
     }
   ],
   "sources": [

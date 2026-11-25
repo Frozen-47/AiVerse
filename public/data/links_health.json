@@ -1,23 +1,13 @@
 {
-  "timestamp": "2026-11-24T15:27:56.491Z",
+  "timestamp": "2026-11-25T01:13:53.068Z",
   "checked": 25,
-  "healthy": 22,
-  "broken": 3,
+  "healthy": 24,
+  "broken": 1,
   "issues": [
     {
       "name": "OpenWebText",
       "url": "https://huggingface.co/datasets/openwebtext",
       "status": 404
-    },
-    {
-      "name": "Microsoft Copilot",
-      "url": "https://copilot.microsoft.com",
-      "status": 405
-    },
-    {
-      "name": "Mistral Le Chat",
-      "url": "https://chat.mistral.ai",
-      "status": 403
     }
   ]
 }

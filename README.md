@@ -51,16 +51,16 @@ The artificial intelligence landscape moves at breakneck speed. Generic link dir
 ## ⚡ AiVerse Daily AI Radar
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-24)
+### ⚡ AiVerse AI Radar (2026-11-25)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **NVIDIA Nemotron 3 Nano 30B A3B** (`Model`), **Meta: Muse Ember** (`Model`), **OCRia-nano-1** (`Model`), **wan222** (`Platform`), **brazilian-portuguese-medicine-corpus** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Synthesia** (Synthesia) — [Explore](https://www.synthesia.io) |
+| 📥 **Queued for Review** | **Qwen3 Next 80B A3B Instruct** (`Model`), **Upstage: Solar Mini 4.5 (Preview)** (`Model`), **Qwen3.8-27B-NariQ-GGUF** (`Model`), **sam-3d-body-dataset** (`Dataset`) |
+| 🌟 **Tool of the Day** | **T5** (Google DeepMind) — [Explore](https://github.com/google-research/text-to-text-transfer-transformer) |
 | 🗄️ **Catalog Entries** | **766** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [Can Latent Reasoning Drive LLM Outputs Without a T...](https://huggingface.co/papers/2611.31015) |
-| 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Tue, 24 Nov 2026 15:28:48 GMT` |
+| 📜 **Top Daily Paper** | [Let Vision-Language Models Generate Images through...](https://huggingface.co/papers/2611.31237) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Synchronized** | `Wed, 25 Nov 2026 01:14:44 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
