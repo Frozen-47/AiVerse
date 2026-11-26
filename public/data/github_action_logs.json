@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1795703967301_dljgz",
+    "created_at": "2026-11-26T14:39:27.301Z",
+    "timestamp": "2026-11-26T14:39:27.301Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Phi-4 Multimodal Instruct, LiquidAI: LFM3-1.7B (free), Inkling-2-Mini-Strata, looped-transformers, EgoUseBench. Checked health for 25 links (0 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 54056ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Phi-4 Multimodal Instruct",
+          "type": "Model",
+          "org": "Microsoft"
+        },
+        {
+          "name": "LiquidAI: LFM3-1.7B (free)",
+          "type": "Model",
+          "org": "liquid"
+        },
+        {
+          "name": "Inkling-2-Mini-Strata",
+          "type": "Model",
+          "org": "strata-engine"
+        },
+        {
+          "name": "looped-transformers",
+          "type": "Platform",
+          "org": "dlouapre"
+        },
+        {
+          "name": "EgoUseBench",
+          "type": "Dataset",
+          "org": "yurun-chen"
+        }
+      ],
+      "brokenLinks": 0,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 54056,
+      "runId": "45841040611",
+      "runNumber": "155",
+      "sha": "4753402",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795699173257_6yg3w",
     "created_at": "2026-11-26T13:19:33.257Z",
     "timestamp": "2026-11-26T13:19:33.257Z",

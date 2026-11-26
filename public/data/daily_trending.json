@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-26T03:53:25.265Z",
+  "timestamp": "2026-11-26T14:38:34.958Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,7 +58,7 @@
     {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "thinkingmachines",
-      "likes": 6058,
+      "likes": 6148,
       "downloads": 96527,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
@@ -67,7 +67,7 @@
     {
       "id": "unsloth/Inkling-2-Mini-GGUF",
       "author": "unsloth",
-      "likes": 1382,
+      "likes": 1425,
       "downloads": 2445633,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
@@ -76,7 +76,7 @@
     {
       "id": "inworld/voice-isolator",
       "author": "inworld",
-      "likes": 900,
+      "likes": 927,
       "downloads": 15244,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/inworld/voice-isolator",
@@ -85,7 +85,7 @@
     {
       "id": "AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
       "author": "AtomicChat",
-      "likes": 846,
+      "likes": 879,
       "downloads": 762491,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
@@ -94,43 +94,43 @@
   ],
   "papers": [
     {
-      "title": "CONCOR: Benchmarking Contrastive Decoding for Visual Hallucination Mitigation Beyond Final-Output Performance",
-      "summary": "A controlled benchmark directly evaluates contrastive corrections in multimodal large language models to better understand and mitigate object hallucination beyond final task scores.",
+      "title": "When Does Reasoning Help Entity Disambiguation? Small LLMs In-Domain and Under Shift",
+      "summary": "Reasoning-based candidate selection in small language models for entity disambiguation yields negligible in-domain gains but becomes decisive under true zero-shot domain shift, with reranker uncertainty and shift explaining when the paradigms disagree.",
       "upvotes": 1,
-      "arxiv_id": "2611.30460",
-      "url": "https://huggingface.co/papers/2611.30460",
+      "arxiv_id": "2611.30334",
+      "url": "https://huggingface.co/papers/2611.30334",
+      "githubRepo": "https://github.com/samyhaff/ed-study"
+    },
+    {
+      "title": "GOLD-SLAM: Gaussian-splatting Omnidirectional LiDAR-Depth SLAM",
+      "summary": "GOLD-SLAM integrates panoramic Gaussian splatting with LiDAR depth priors for omnidirectional SLAM, improving pose estimation and geometric reconstruction while maintaining competitive rendering quality.",
+      "upvotes": 0,
+      "arxiv_id": "2611.32335",
+      "url": "https://huggingface.co/papers/2611.32335",
+      "githubRepo": "https://github.com/InSAI-Lab/GOLD-SLAM"
+    },
+    {
+      "title": "Demystifying the Autoresearch Harness: How Context and Skills Shape Self-Evolving Agents",
+      "summary": "A systematic study of harness design for long-horizon self-evolving autoresearch agents finds that context folding and selective skill deletion improve performance, enabling MLEvolver to achieve strong results on MLE-Bench Lite and KernelBench Level 3.",
+      "upvotes": 3,
+      "arxiv_id": "2611.28244",
+      "url": "https://huggingface.co/papers/2611.28244",
       "githubRepo": null
     },
     {
-      "title": "Target-Part Preference Optimization for Part-Aware 3D Generation",
-      "summary": "Preference fine-tuning based on Direct Preference Optimization adapts a pretrained part-aware 3D generator with limited part annotations, yielding the best multi-part results at medium scale but less consistent gains under distribution shift.",
-      "upvotes": 7,
-      "arxiv_id": "2611.30472",
-      "url": "https://huggingface.co/papers/2611.30472",
+      "title": "Efficient Video Retrieval Augmented Generation via Token Allocation",
+      "summary": "Lembas treats video retrieval-augmented generation as a token allocation problem over frames and subtitles under a shared budget, using an iterative water-filling algorithm and attention reuse to improve long-video and multi-turn understanding with fewer tokens and less compute.",
+      "upvotes": 2,
+      "arxiv_id": "2611.32938",
+      "url": "https://huggingface.co/papers/2611.32938",
       "githubRepo": null
     },
     {
-      "title": "SEEK: Self-Evolution through Execution Knowledge for Agentic Robot Manipulation",
-      "summary": "SEEK retains executable manipulation procedures and measured action effects across attempts, enabling fixed foundation-model robots to improve without retraining.",
+      "title": "Evaluation-Free Recursive Self-Improvement for Coding Agents",
+      "summary": "ELITE enables coding agents to self-improve by integrating complementary implementation mechanisms from independently generated improvements without using downstream task evaluations in the evolution loop, achieving strong SWE-bench performance and transfer.",
       "upvotes": 1,
-      "arxiv_id": "2611.33915",
-      "url": "https://huggingface.co/papers/2611.33915",
-      "githubRepo": "https://github.com/ZeyangGuan/SEEK-Agentic-Robot-Manipulation"
-    },
-    {
-      "title": "ROAM-Bench: Evaluating Embodied Active Spatial Intelligence through Evidence Verification",
-      "summary": "Embodied spatial intelligence requires agents to gather information through exploration and interaction, then use it to reason and act. Existing benchmarks insu...",
-      "upvotes": 8,
-      "arxiv_id": "2611.33143",
-      "url": "https://huggingface.co/papers/2611.33143",
-      "githubRepo": "https://github.com/rxjfighting/ROAM-Bench"
-    },
-    {
-      "title": "PyRUA-Dex: Learning Programmatic Policies for Dexterous Bimanual Manipulation with Coding Agents",
-      "summary": "A framework enables coding agents to develop dexterous manipulation policies without demonstrations by exploring and distilling successful attempts into a program, then refining it for strong simulated and real-world results.",
-      "upvotes": 13,
-      "arxiv_id": "2611.33144",
-      "url": "https://huggingface.co/papers/2611.33144",
+      "arxiv_id": "2611.21056",
+      "url": "https://huggingface.co/papers/2611.21056",
       "githubRepo": null
     }
   ],
