@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-25T20:56:16.184Z",
+  "timestamp": "2026-11-26T03:53:25.265Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,7 +58,7 @@
     {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "thinkingmachines",
-      "likes": 5991,
+      "likes": 6058,
       "downloads": 96527,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
@@ -67,7 +67,7 @@
     {
       "id": "unsloth/Inkling-2-Mini-GGUF",
       "author": "unsloth",
-      "likes": 1361,
+      "likes": 1382,
       "downloads": 2445633,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
@@ -76,7 +76,7 @@
     {
       "id": "inworld/voice-isolator",
       "author": "inworld",
-      "likes": 889,
+      "likes": 900,
       "downloads": 15244,
       "pipeline_tag": "audio-to-audio",
       "url": "https://huggingface.co/inworld/voice-isolator",
@@ -85,7 +85,7 @@
     {
       "id": "AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
       "author": "AtomicChat",
-      "likes": 832,
+      "likes": 846,
       "downloads": 762491,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
@@ -94,44 +94,44 @@
   ],
   "papers": [
     {
-      "title": "Fractal Neural Synthesis: Constant-Storage Procedural Weight Derivation via Complex Quadratic Boundary Dynamics",
-      "summary": "Conventional neural networks store synaptic parameters as explicit tensors whose persistent Flash footprint scales linearly (O(W)) with parameter count, constra...",
+      "title": "CONCOR: Benchmarking Contrastive Decoding for Visual Hallucination Mitigation Beyond Final-Output Performance",
+      "summary": "A controlled benchmark directly evaluates contrastive corrections in multimodal large language models to better understand and mitigate object hallucination beyond final task scores.",
       "upvotes": 1,
-      "arxiv_id": "2611.32393",
-      "url": "https://huggingface.co/papers/2611.32393",
-      "githubRepo": "https://github.com/pCwOrM/fractal-neural-synthesis"
-    },
-    {
-      "title": "Point Dynamics as Proxy for Robotic World Models",
-      "summary": "Separating dynamics prediction from visual rendering using 3D point dynamics as an intermediate representation improves object motion accuracy in robotic video world models without sacrificing image quality.",
-      "upvotes": 1,
-      "arxiv_id": "2611.25946",
-      "url": "https://huggingface.co/papers/2611.25946",
+      "arxiv_id": "2611.30460",
+      "url": "https://huggingface.co/papers/2611.30460",
       "githubRepo": null
     },
     {
-      "title": "Degradation of Language Models under Controlled Load: Synchronization, Rule Execution and Misfires on the Background",
-      "summary": "A method separates a language model's quality decline under controlled load into synchronization, rule execution, and misfires, then derives load-dependent laws that characterize each model.",
-      "upvotes": 0,
-      "arxiv_id": "2611.27404",
-      "url": "https://huggingface.co/papers/2611.27404",
+      "title": "Target-Part Preference Optimization for Part-Aware 3D Generation",
+      "summary": "Preference fine-tuning based on Direct Preference Optimization adapts a pretrained part-aware 3D generator with limited part annotations, yielding the best multi-part results at medium scale but less consistent gains under distribution shift.",
+      "upvotes": 7,
+      "arxiv_id": "2611.30472",
+      "url": "https://huggingface.co/papers/2611.30472",
       "githubRepo": null
     },
     {
-      "title": "OWE-Bench: A long-horizon benchmark for measuring real-world engineering",
-      "summary": "We present OWE-Bench (OpenWorldEngineer-Bench), a benchmark of 26 long-horizon engineering tasks written by domain experts in software engineering, physical eng...",
+      "title": "SEEK: Self-Evolution through Execution Knowledge for Agentic Robot Manipulation",
+      "summary": "SEEK retains executable manipulation procedures and measured action effects across attempts, enabling fixed foundation-model robots to improve without retraining.",
       "upvotes": 1,
-      "arxiv_id": "2611.30017",
-      "url": "https://huggingface.co/papers/2611.30017",
-      "githubRepo": null
+      "arxiv_id": "2611.33915",
+      "url": "https://huggingface.co/papers/2611.33915",
+      "githubRepo": "https://github.com/ZeyangGuan/SEEK-Agentic-Robot-Manipulation"
     },
     {
-      "title": "SpatialArena: Where Do Geometric Foundation Models Stand?",
-      "summary": "SpatialArena is an open benchmark that evaluates geometric models across five 3D perception tasks using uniform metrics and robust alignment, revealing that single-image depth is near saturation on public benchmarks but progress now depends on cross-frame and cross-view consistency.",
-      "upvotes": 3,
-      "arxiv_id": "2611.32816",
-      "url": "https://huggingface.co/papers/2611.32816",
-      "githubRepo": "https://github.com/mvp-ai-lab/SpatialArena"
+      "title": "ROAM-Bench: Evaluating Embodied Active Spatial Intelligence through Evidence Verification",
+      "summary": "Embodied spatial intelligence requires agents to gather information through exploration and interaction, then use it to reason and act. Existing benchmarks insu...",
+      "upvotes": 8,
+      "arxiv_id": "2611.33143",
+      "url": "https://huggingface.co/papers/2611.33143",
+      "githubRepo": "https://github.com/rxjfighting/ROAM-Bench"
+    },
+    {
+      "title": "PyRUA-Dex: Learning Programmatic Policies for Dexterous Bimanual Manipulation with Coding Agents",
+      "summary": "A framework enables coding agents to develop dexterous manipulation policies without demonstrations by exploring and distilling successful attempts into a program, then refining it for strong simulated and real-world results.",
+      "upvotes": 13,
+      "arxiv_id": "2611.33144",
+      "url": "https://huggingface.co/papers/2611.33144",
+      "githubRepo": null
     }
   ],
   "sources": [

@@ -1,5 +1,134 @@
 [
   {
+    "name": "multilingual-tts-ad-human-preferences-270k",
+    "type": "Dataset",
+    "summary": "Ad voiceover human preferences: 270K votes across 10 TTS models in 8 languages \t This dataset contains the complete voting record behind the Datapoint Ad Voiceover Benc (44 likes, 354 downloads).",
+    "task": "Audio",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "org": "datapointai",
+    "size": "100K<n<1M",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"datapointai/multilingual-tts-ad-human-preferences-270k\")",
+    "benchmarks": "Trending Score: 7, Likes: 44, Downloads: 354",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/datapointai/multilingual-tts-ad-human-preferences-270k",
+    "citations": [
+      {
+        "text": "datapointai/multilingual-tts-ad-human-preferences-270k on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/datapointai/multilingual-tts-ad-human-preferences-270k"
+      }
+    ],
+    "created_at": "2026-11-26T03:53:25.230Z"
+  },
+  {
+    "name": "scaling-swarms",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceSwarms. Trending with 24 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "HuggingFaceSwarms",
+    "size": "DOCKER Platform",
+    "architecture": "DOCKER cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/HuggingFaceSwarms/scaling-swarms",
+    "benchmarks": "Trending Score: 24, Community Likes: 24",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/HuggingFaceSwarms/scaling-swarms",
+    "citations": [
+      {
+        "text": "HuggingFaceSwarms/scaling-swarms on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/HuggingFaceSwarms/scaling-swarms"
+      }
+    ],
+    "created_at": "2026-11-26T03:53:25.230Z"
+  },
+  {
+    "name": "Nemotron-Labs-Image-30B-A3B",
+    "type": "Model",
+    "summary": "High-performance Image Generation open-weights model by nvidia, trending with over 176 community likes and 218 downloads on Hugging Face.",
+    "task": "Image Generation",
+    "license": "OTHER",
+    "year": 2026,
+    "org": "nvidia",
+    "size": "30B params",
+    "architecture": "nvidia text to image architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"nvidia/Nemotron-Labs-Image-30B-A3B\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"nvidia/Nemotron-Labs-Image-30B-A3B\")",
+    "benchmarks": "Trending Score: 146, Likes: 176, Downloads: 218",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/nvidia/Nemotron-Labs-Image-30B-A3B",
+    "citations": [
+      {
+        "text": "nvidia/Nemotron-Labs-Image-30B-A3B on Hugging Face",
+        "url": "https://huggingface.co/nvidia/Nemotron-Labs-Image-30B-A3B"
+      }
+    ],
+    "created_at": "2026-11-26T03:53:25.230Z"
+  },
+  {
+    "name": "LiquidAI: LFM3-1.7B",
+    "type": "Model",
+    "summary": "A compact 1.7B-parameter text model with a 256K-token context, post-trained for agents, tool calling, and structured outputs. It reasons before it answers. Prompts and outputs may ",
+    "task": "NLP",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "liquid",
+    "size": "262k Context · Available via API",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 262k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"liquid/lfm-3-1.7b\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 262k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://openrouter.ai/liquid/lfm-3-1.7b",
+    "citations": [
+      {
+        "text": "LiquidAI: LFM3-1.7B on OpenRouter",
+        "url": "https://openrouter.ai/liquid/lfm-3-1.7b"
+      }
+    ],
+    "created_at": "2026-11-26T03:53:25.230Z"
+  },
+  {
+    "name": "Nemotron 3.5 Lightning",
+    "type": "Model",
+    "summary": "Frontier Research model by NVIDIA benchmarked on Artificial Analysis with an Intelligence Index of 5.5346663903388 and a verified 1000k Context window.",
+    "task": "Research",
+    "license": "Open Weights",
+    "year": 2026,
+    "org": "NVIDIA",
+    "size": "1000k Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by NVIDIA, featuring native 1000k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/nemotron-3-5-lightning",
+    "benchmarks": "Context Window: 1000k Context, Intelligence Index: 5.5346663903388, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://artificialanalysis.ai/models/nemotron-3-5-lightning",
+    "citations": [
+      {
+        "text": "Nemotron 3.5 Lightning on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/nemotron-3-5-lightning"
+      },
+      {
+        "text": "Nemotron 3.5 Lightning Inference Providers",
+        "url": "https://artificialanalysis.ai/models/nemotron-3-5-lightning/providers"
+      }
+    ],
+    "created_at": "2026-11-26T03:53:25.230Z"
+  },
+  {
     "name": "RoboWild",
     "type": "Dataset",
     "summary": "RoboWild \t 🏠 Homepage · 📄 Paper · 📊 Slides · 💻 Code RoboWild agents use robots to carry out tasks across 38 simulated environments. This dataset contains the OpenUS (75 likes, 8,861 downloads).",

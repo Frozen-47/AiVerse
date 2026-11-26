@@ -1,8 +1,8 @@
-# ⚡ AiVerse AI Radar (2026-11-25)
+# ⚡ AiVerse AI Radar (2026-11-26)
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Wed, 25 Nov 2026 20:57:06 GMT`*
+*Last Synchronized: `Thu, 26 Nov 2026 03:54:18 GMT`*
 
 ---
 
@@ -10,51 +10,51 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **GPT-6.2 Sol** (`Model` • *OpenAI*)
-> Frontier Research model by OpenAI benchmarked on Artificial Analysis with an Intelligence Index of 55.6340966236337 and a verified 1000k Context window.
+### **Nemotron 3.5 Lightning** (`Model` • *NVIDIA*)
+> Frontier Research model by NVIDIA benchmarked on Artificial Analysis with an Intelligence Index of 5.5346663903388 and a verified 1000k Context window.
 
-- 🏷️ **Domain & License**: `Research` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 1000k Context, Intelligence Index: 55.6340966236337, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/gpt-6-2-sol](https://artificialanalysis.ai/models/gpt-6-2-sol)
+- 🏷️ **Domain & License**: `Research` • `Open Weights` (2026)
+- ⚡ **Metrics**: `Context Window: 1000k Context, Intelligence Index: 5.5346663903388, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/nemotron-3-5-lightning](https://artificialanalysis.ai/models/nemotron-3-5-lightning)
 
-### **Xiaomi: MiMo-V2.6-Flash-MOPD** (`Model` • *xiaomi*)
-> MiMo-V2.6-Flash-MOPD is an updated checkpoint of Xiaomi's MiMo-V2.6-Flash, a Mixture-of-Experts model with 309B total and 15B active parameters, a 1M-token context window, and nati
+### **LiquidAI: LFM3-1.7B** (`Model` • *liquid*)
+> A compact 1.7B-parameter text model with a 256K-token context, post-trained for agents, tool calling, and structured outputs. It reasons before it answers. Prompts and outputs may 
 
-- 🏷️ **Domain & License**: `Multimodal` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 1049k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd](https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd)
+- 🏷️ **Domain & License**: `NLP` • `Proprietary` (2026)
+- ⚡ **Metrics**: `Context Window: 262k Context, Available across global OpenRouter inference nodes.`
+- 🔗 **Resource Link**: [https://openrouter.ai/liquid/lfm-3-1.7b](https://openrouter.ai/liquid/lfm-3-1.7b)
 
-### **Kolibri-1.1** (`Model` • *Aleph-Alpha*)
-> High-performance NLP open-weights model by Aleph-Alpha, trending with over 153 community likes and 837 downloads on Hugging Face.
+### **Nemotron-Labs-Image-30B-A3B** (`Model` • *nvidia*)
+> High-performance Image Generation open-weights model by nvidia, trending with over 176 community likes and 218 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 115, Likes: 153, Downloads: 837`
-- 🔗 **Resource Link**: [https://huggingface.co/Aleph-Alpha/Kolibri-1.1](https://huggingface.co/Aleph-Alpha/Kolibri-1.1)
+- 🏷️ **Domain & License**: `Image Generation` • `OTHER` (2026)
+- ⚡ **Metrics**: `Trending Score: 146, Likes: 176, Downloads: 218`
+- 🔗 **Resource Link**: [https://huggingface.co/nvidia/Nemotron-Labs-Image-30B-A3B](https://huggingface.co/nvidia/Nemotron-Labs-Image-30B-A3B)
 
-### **BRIA-RMBG-3.0** (`Platform` • *briaai*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by briaai. Trending with 39 community stars.
+### **scaling-swarms** (`Platform` • *HuggingFaceSwarms*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceSwarms. Trending with 24 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 24, Community Likes: 39`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/briaai/BRIA-RMBG-3.0](https://huggingface.co/spaces/briaai/BRIA-RMBG-3.0)
+- ⚡ **Metrics**: `Trending Score: 24, Community Likes: 24`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/HuggingFaceSwarms/scaling-swarms](https://huggingface.co/spaces/HuggingFaceSwarms/scaling-swarms)
 
-### **RoboWild** (`Dataset` • *xlangai*)
-> RoboWild 	 🏠 Homepage · 📄 Paper · 📊 Slides · 💻 Code RoboWild agents use robots to carry out tasks across 38 simulated environments. This dataset contains the OpenUS (75 likes, 8,861 downloads).
+### **multilingual-tts-ad-human-preferences-270k** (`Dataset` • *datapointai*)
+> Ad voiceover human preferences: 270K votes across 10 TTS models in 8 languages 	 This dataset contains the complete voting record behind the Datapoint Ad Voiceover Benc (44 likes, 354 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 7, Likes: 75, Downloads: 8,861`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/xlangai/RoboWild](https://huggingface.co/datasets/xlangai/RoboWild)
+- 🏷️ **Domain & License**: `Audio` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 7, Likes: 44, Downloads: 354`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/datapointai/multilingual-tts-ad-human-preferences-270k](https://huggingface.co/datasets/datapointai/multilingual-tts-ad-human-preferences-270k)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **T5** (`Model` • *Google DeepMind*)
-> Text-To-Text Transfer Transformer — Google's unified framework that converts every NLP task into a text-to-text format, incorporating an architecture of encoder-decoder transformer trained with a span-corruption pre-training objective. The model demonstrates competitive performance across verified evaluations, including SuperGLUE: 88.9 (11B), GLUE: 90.3 (11B). With its Small (60M) to 11B params design, it supports diverse local and enterprise deployment profiles under the Apache-2.0 license.
+### **TeleOCR** (`Model` • *XingChen-AGI*)
+> High-performance Multimodal open-weights model by XingChen-AGI, trending with over 809 community likes and 27,904 downloads on Hugging Face, incorporating an architecture of xingChen-AGI image text to text architecture with community-tuned weights. The model demonstrates competitive performance across verified evaluations, including Trending Score: 697, Likes: 809, Downloads: 27,904. With its Open Weights design, it supports diverse local and enterprise deployment profiles under the Apache-2.0 license.
 
-- 🏛️ **Architecture**: Encoder-decoder transformer trained with a span-corruption pre-training objective.
-- ⚡ **Benchmarks**: `SuperGLUE: 88.9 (11B), GLUE: 90.3 (11B)`
-- 🏷️ **Domain & License**: `NLP` • `Apache-2.0` (Released: 2019)
-- 🔗 **Resource Link**: [https://github.com/google-research/text-to-text-transfer-transformer](https://github.com/google-research/text-to-text-transfer-transformer)
+- 🏛️ **Architecture**: XingChen-AGI image text to text architecture with community-tuned weights.
+- ⚡ **Benchmarks**: `Trending Score: 697, Likes: 809, Downloads: 27,904`
+- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (Released: 2026)
+- 🔗 **Resource Link**: [https://huggingface.co/XingChen-AGI/TeleOCR](https://huggingface.co/XingChen-AGI/TeleOCR)
 
 ---
 ## 🔥 Multi-Platform AI Model Radar
@@ -68,10 +68,10 @@
 | **Upstage: Solar Mini 4.5 (Preview)** | `OpenRouter` | upstage (Cloud Model API) | ❤️ 120 · 📥 524,288 | [View](https://openrouter.ai/upstage/solar-mini-4-5) |
 | **Upstage: Solar Pro 4 Contributor** | `OpenRouter` | upstage (Cloud Model API) | ❤️ 120 · 📥 524,288 | [View](https://openrouter.ai/upstage/solar-pro-4-contributor) |
 | **Xiaomi: MiMo-V2.6-Flash-MOPD** | `OpenRouter` | xiaomi (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd) |
-| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 5,991 · 📥 96,527 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
-| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 1,361 · 📥 2,445,633 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
-| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 889 · 📥 15,244 | [View](https://huggingface.co/inworld/voice-isolator) |
-| **AtomicChat/Inkling-2-Mini-Uncensored-GGUF** | `Hugging Face` | AtomicChat (image-text-to-text) | ❤️ 832 · 📥 762,491 | [View](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) |
+| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 6,058 · 📥 96,527 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
+| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 1,382 · 📥 2,445,633 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
+| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 900 · 📥 15,244 | [View](https://huggingface.co/inworld/voice-isolator) |
+| **AtomicChat/Inkling-2-Mini-Uncensored-GGUF** | `Hugging Face` | AtomicChat (image-text-to-text) | ❤️ 846 · 📥 762,491 | [View](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) |
 
 
 ---
@@ -81,11 +81,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **Fractal Neural Synthesis: Constant-Storage Procedural Weight Derivation via Complex Quadratic Boundary Dynamics** | 👍 1 | Conventional neural networks store synaptic parameters as explicit tensors whose persistent Flash footprint scales linearly (O(W)) with parameter count, constra... | [Read](https://huggingface.co/papers/2611.32393) |
-| **Point Dynamics as Proxy for Robotic World Models** | 👍 1 | Separating dynamics prediction from visual rendering using 3D point dynamics as an intermediate representation improves object motion accuracy in robotic video world models without sacrificing image quality. | [Read](https://huggingface.co/papers/2611.25946) |
-| **Degradation of Language Models under Controlled Load: Synchronization, Rule Execution and Misfires on the Background** | 👍 0 | A method separates a language model's quality decline under controlled load into synchronization, rule execution, and misfires, then derives load-dependent laws that characterize each model. | [Read](https://huggingface.co/papers/2611.27404) |
-| **OWE-Bench: A long-horizon benchmark for measuring real-world engineering** | 👍 1 | We present OWE-Bench (OpenWorldEngineer-Bench), a benchmark of 26 long-horizon engineering tasks written by domain experts in software engineering, physical eng... | [Read](https://huggingface.co/papers/2611.30017) |
-| **SpatialArena: Where Do Geometric Foundation Models Stand?** | 👍 3 | SpatialArena is an open benchmark that evaluates geometric models across five 3D perception tasks using uniform metrics and robust alignment, revealing that single-image depth is near saturation on public benchmarks but progress now depends on cross-frame and cross-view consistency. | [Read](https://huggingface.co/papers/2611.32816) |
+| **CONCOR: Benchmarking Contrastive Decoding for Visual Hallucination Mitigation Beyond Final-Output Performance** | 👍 1 | A controlled benchmark directly evaluates contrastive corrections in multimodal large language models to better understand and mitigate object hallucination beyond final task scores. | [Read](https://huggingface.co/papers/2611.30460) |
+| **Target-Part Preference Optimization for Part-Aware 3D Generation** | 👍 7 | Preference fine-tuning based on Direct Preference Optimization adapts a pretrained part-aware 3D generator with limited part annotations, yielding the best multi-part results at medium scale but less consistent gains under distribution shift. | [Read](https://huggingface.co/papers/2611.30472) |
+| **SEEK: Self-Evolution through Execution Knowledge for Agentic Robot Manipulation** | 👍 1 | SEEK retains executable manipulation procedures and measured action effects across attempts, enabling fixed foundation-model robots to improve without retraining. | [Read](https://huggingface.co/papers/2611.33915) |
+| **ROAM-Bench: Evaluating Embodied Active Spatial Intelligence through Evidence Verification** | 👍 8 | Embodied spatial intelligence requires agents to gather information through exploration and interaction, then use it to reason and act. Existing benchmarks insu... | [Read](https://huggingface.co/papers/2611.33143) |
+| **PyRUA-Dex: Learning Programmatic Policies for Dexterous Bimanual Manipulation with Coding Agents** | 👍 13 | A framework enables coding agents to develop dexterous manipulation policies without demonstrations by exploring and distilling successful attempts into a program, then refining it for strong simulated and real-world results. | [Read](https://huggingface.co/papers/2611.33144) |
 
 
 ---
@@ -98,7 +98,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
+- **Sample Link Health Check**: `25/25` healthy verified (`0` flagged / timed out)
 - **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

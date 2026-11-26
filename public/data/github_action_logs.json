@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1795665258569_m2rof",
+    "created_at": "2026-11-26T03:54:18.569Z",
+    "timestamp": "2026-11-26T03:54:18.569Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Nemotron 3.5 Lightning, LiquidAI: LFM3-1.7B, Nemotron-Labs-Image-30B-A3B, scaling-swarms, multilingual-tts-ad-human-preferences-270k. Checked health for 25 links (0 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 54840ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Nemotron 3.5 Lightning",
+          "type": "Model",
+          "org": "NVIDIA"
+        },
+        {
+          "name": "LiquidAI: LFM3-1.7B",
+          "type": "Model",
+          "org": "liquid"
+        },
+        {
+          "name": "Nemotron-Labs-Image-30B-A3B",
+          "type": "Model",
+          "org": "nvidia"
+        },
+        {
+          "name": "scaling-swarms",
+          "type": "Platform",
+          "org": "HuggingFaceSwarms"
+        },
+        {
+          "name": "multilingual-tts-ad-human-preferences-270k",
+          "type": "Dataset",
+          "org": "datapointai"
+        }
+      ],
+      "brokenLinks": 0,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 54840,
+      "runId": "45751719668",
+      "runNumber": "154",
+      "sha": "4ffa204",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795640226457_30k0q",
     "created_at": "2026-11-25T20:57:06.457Z",
     "timestamp": "2026-11-25T20:57:06.457Z",

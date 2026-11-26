@@ -1,26 +1,26 @@
 {
-  "date": "2026-11-25",
+  "date": "2026-11-26",
   "tool": {
-    "name": "T5",
+    "name": "TeleOCR",
     "type": "Model",
-    "summary": "Text-To-Text Transfer Transformer — Google's unified framework that converts every NLP task into a text-to-text format, incorporating an architecture of encoder-decoder transformer trained with a span-corruption pre-training objective. The model demonstrates competitive performance across verified evaluations, including SuperGLUE: 88.9 (11B), GLUE: 90.3 (11B). With its Small (60M) to 11B params design, it supports diverse local and enterprise deployment profiles under the Apache-2.0 license.",
-    "task": "NLP",
-    "license": "Apache-2.0",
-    "year": 2019,
-    "org": "Google DeepMind",
-    "size": "Small (60M) to 11B params",
-    "architecture": "Encoder-decoder transformer trained with a span-corruption pre-training objective.",
-    "usage": "from transformers import T5Tokenizer, T5ForConditionalGeneration\ntokenizer = T5Tokenizer.from_pretrained(\"t5-base\")\nmodel = T5ForConditionalGeneration.from_pretrained(\"t5-base\")\ninput_ids = tokenizer(\"translate English to French: Hello world\", return_tensors=\"pt\").input_ids",
-    "benchmarks": "SuperGLUE: 88.9 (11B), GLUE: 90.3 (11B)",
-    "limitations": "Encoder-decoder architecture slower than decoder-only for generation tasks.",
+    "summary": "High-performance Multimodal open-weights model by XingChen-AGI, trending with over 809 community likes and 27,904 downloads on Hugging Face, incorporating an architecture of xingChen-AGI image text to text architecture with community-tuned weights. The model demonstrates competitive performance across verified evaluations, including Trending Score: 697, Likes: 809, Downloads: 27,904. With its Open Weights design, it supports diverse local and enterprise deployment profiles under the Apache-2.0 license.",
+    "task": "Multimodal",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "XingChen-AGI",
+    "size": "Open Weights",
+    "architecture": "XingChen-AGI image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"XingChen-AGI/TeleOCR\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"XingChen-AGI/TeleOCR\")",
+    "benchmarks": "Trending Score: 697, Likes: 809, Downloads: 27,904",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
     "popular": true,
-    "url": "https://github.com/google-research/text-to-text-transfer-transformer",
+    "url": "https://huggingface.co/XingChen-AGI/TeleOCR",
     "citations": [
       {
-        "text": "Raffel et al. (2019) - T5 Paper",
-        "url": "https://arxiv.org/abs/1910.10683"
+        "text": "XingChen-AGI/TeleOCR on Hugging Face",
+        "url": "https://huggingface.co/XingChen-AGI/TeleOCR"
       }
     ],
-    "description": "Text-To-Text Transfer Transformer — Google's unified framework that converts every NLP task into a text-to-text format, incorporating an architecture of encoder-decoder transformer trained with a span-corruption pre-training objective. The model demonstrates competitive performance across verified evaluations, including SuperGLUE: 88.9 (11B), GLUE: 90.3 (11B). With its Small (60M) to 11B params design, it supports diverse local and enterprise deployment profiles under the Apache-2.0 license."
+    "description": "High-performance Multimodal open-weights model by XingChen-AGI, trending with over 809 community likes and 27,904 downloads on Hugging Face, incorporating an architecture of xingChen-AGI image text to text architecture with community-tuned weights. The model demonstrates competitive performance across verified evaluations, including Trending Score: 697, Likes: 809, Downloads: 27,904. With its Open Weights design, it supports diverse local and enterprise deployment profiles under the Apache-2.0 license."
   }
 }
