@@ -4,6 +4,136 @@
     "status": "queued_in_review_list",
     "assets": [
       {
+        "name": "Quasar 1.2 358B",
+        "type": "Model",
+        "summary": "Frontier Research model by Multiverse Computing benchmarked on Artificial Analysis with an Intelligence Index of 23.0788933047591 and a verified 1000k Context window.",
+        "task": "Research",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "Multiverse Computing",
+        "size": "1000k Context · Proprietary Model",
+        "architecture": "Proprietary frontier neural architecture developed by Multiverse Computing, featuring native 1000k Context token window support and optimized reasoning chains.",
+        "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/quasar-1-2-358b",
+        "benchmarks": "Context Window: 1000k Context, Intelligence Index: 23.0788933047591, Benchmarked on Artificial Analysis Leaderboard",
+        "limitations": "Cloud API access subject to provider rate limits and compute quotas.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://artificialanalysis.ai/models/quasar-1-2-358b",
+        "citations": [
+          {
+            "text": "Quasar 1.2 358B on Artificial Analysis Benchmark",
+            "url": "https://artificialanalysis.ai/models/quasar-1-2-358b"
+          },
+          {
+            "text": "Quasar 1.2 358B Inference Providers",
+            "url": "https://artificialanalysis.ai/models/quasar-1-2-358b/providers"
+          }
+        ]
+      },
+      {
+        "name": "inclusionAI: Ling 3.2 Flash",
+        "type": "Model",
+        "summary": "Ling 3.2 Flash is a hybrid reasoning model from inclusionAI that accepts text and image input, with a 1M-token context window and up to 200 images per request. Thinking can...",
+        "task": "Multimodal",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "inclusionai",
+        "size": "1049k Context · Available via API",
+        "architecture": "Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.",
+        "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"inclusionai/ling-3.2-flash\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+        "benchmarks": "Context Window: 1049k Context, Available across global OpenRouter inference nodes.",
+        "limitations": "Requires OpenRouter API key and token credits.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://openrouter.ai/inclusionai/ling-3.2-flash",
+        "citations": [
+          {
+            "text": "inclusionAI: Ling 3.2 Flash on OpenRouter",
+            "url": "https://openrouter.ai/inclusionai/ling-3.2-flash"
+          }
+        ]
+      },
+      {
+        "name": "Kandinsky-ImageSR-2.0",
+        "type": "Model",
+        "summary": "High-performance NLP open-weights model by kandinskylab, trending with over 186 community likes and 582 downloads on Hugging Face.",
+        "task": "NLP",
+        "license": "MIT",
+        "year": 2026,
+        "org": "kandinskylab",
+        "size": "Open Weights",
+        "architecture": "kandinskylab image to image architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"kandinskylab/Kandinsky-ImageSR-2.0\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"kandinskylab/Kandinsky-ImageSR-2.0\")",
+        "benchmarks": "Trending Score: 141, Likes: 186, Downloads: 582",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/kandinskylab/Kandinsky-ImageSR-2.0",
+        "citations": [
+          {
+            "text": "kandinskylab/Kandinsky-ImageSR-2.0 on Hugging Face",
+            "url": "https://huggingface.co/kandinskylab/Kandinsky-ImageSR-2.0"
+          }
+        ]
+      },
+      {
+        "name": "Qwen-4-27B-Preview",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by SUGE212. Trending with 36 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "SUGE212",
+        "size": "STATIC Platform",
+        "architecture": "STATIC cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/SUGE212/Qwen-4-27B-Preview",
+        "benchmarks": "Trending Score: 22, Community Likes: 36",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/SUGE212/Qwen-4-27B-Preview",
+        "citations": [
+          {
+            "text": "SUGE212/Qwen-4-27B-Preview on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/SUGE212/Qwen-4-27B-Preview"
+          }
+        ]
+      },
+      {
+        "name": "Qwen3.8-2.4T-A95B-Distill",
+        "type": "Dataset",
+        "summary": "🌐 Qwen3.8-2.4T-A95B-Distill \t Qwen3.8-2.4T-A95B-Distill is a high-quality supervised fine-tuning and reasoning distillation dataset generated by the flagship teacher m (109 likes, 240 downloads).",
+        "task": "AI Coding",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "Jackrong",
+        "size": "10K<n<100K",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Jackrong/Qwen3.8-2.4T-A95B-Distill\")",
+        "benchmarks": "Trending Score: 7, Likes: 109, Downloads: 240",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/Jackrong/Qwen3.8-2.4T-A95B-Distill",
+        "citations": [
+          {
+            "text": "Jackrong/Qwen3.8-2.4T-A95B-Distill on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/Jackrong/Qwen3.8-2.4T-A95B-Distill"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-27",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
         "name": "ERNIE 5.5 Flash Preview",
         "type": "Model",
         "summary": "Frontier Research model by Baidu benchmarked on Artificial Analysis with an Intelligence Index of 31.2872256906399 and a verified 1024k Context window.",
@@ -7996,84 +8126,6 @@
           {
             "text": "Rapidata/text-to-3d-with-llm-code on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/Rapidata/text-to-3d-with-llm-code"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-28",
-    "status": "approved_in_catalog",
-    "assets": [
-      {
-        "name": "Sage-A1.5",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by InternScience, trending with over 347 community likes and 6,613 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "InternScience",
-        "size": "Open Weights",
-        "architecture": "InternScience text generation architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"InternScience/Sage-A1.5\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"InternScience/Sage-A1.5\")",
-        "benchmarks": "Trending Score: 334, Likes: 347, Downloads: 6,613",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/InternScience/Sage-A1.5",
-        "citations": [
-          {
-            "text": "InternScience/Sage-A1.5 on Hugging Face",
-            "url": "https://huggingface.co/InternScience/Sage-A1.5"
-          }
-        ]
-      },
-      {
-        "name": "Carbon-X-Release",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by HuggingFaceBio. Trending with 66 community stars.",
-        "task": "Multimodal",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "HuggingFaceBio",
-        "size": "STATIC Platform",
-        "architecture": "STATIC cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/HuggingFaceBio/Carbon-X-Release",
-        "benchmarks": "Trending Score: 58, Community Likes: 66",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/spaces/HuggingFaceBio/Carbon-X-Release",
-        "citations": [
-          {
-            "text": "HuggingFaceBio/Carbon-X-Release on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/HuggingFaceBio/Carbon-X-Release"
-          }
-        ]
-      },
-      {
-        "name": "simready-central-library",
-        "type": "Dataset",
-        "summary": "Welcome to SimReady Central \t SimReady Central is in Alpha. We are accepting contributors through the Community tab. SimReady Central connects creators and users of sim (50 likes, 155 downloads).",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "nvidia",
-        "size": "Curated Dataset",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"nvidia/simready-central-library\")",
-        "benchmarks": "Trending Score: 34, Likes: 50, Downloads: 155",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/nvidia/simready-central-library",
-        "citations": [
-          {
-            "text": "nvidia/simready-central-library on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/nvidia/simready-central-library"
           }
         ]
       }

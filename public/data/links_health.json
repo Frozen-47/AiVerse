@@ -1,13 +1,7 @@
 {
-  "timestamp": "2026-11-27T10:25:00.756Z",
+  "timestamp": "2026-11-27T20:33:45.235Z",
   "checked": 25,
-  "healthy": 24,
-  "broken": 1,
-  "issues": [
-    {
-      "name": "Leonardo.ai",
-      "url": "https://leonardo.ai",
-      "status": 403
-    }
-  ]
+  "healthy": 25,
+  "broken": 0,
+  "issues": []
 }

@@ -54,13 +54,13 @@ The artificial intelligence landscape moves at breakneck speed. Generic link dir
 ### ⚡ AiVerse AI Radar (2026-11-27)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **ERNIE 5.5 Flash Preview** (`Model`), **Google: Gemini Omni 1.2 Flash** (`Model`), **Inkling-2-Mini-GSQ-RCO-GGUF** (`Model`), **youtube** (`Dataset`) |
+| 📥 **Queued for Review** | **Quasar 1.2 358B** (`Model`), **inclusionAI: Ling 3.2 Flash** (`Model`), **Kandinsky-ImageSR-2.0** (`Model`), **Qwen-4-27B-Preview** (`Platform`), **Qwen3.8-2.4T-A95B-Distill** (`Dataset`) |
 | 🌟 **Tool of the Day** | **TensorFlow** (Google DeepMind) — [Explore](https://www.tensorflow.org) |
 | 🗄️ **Catalog Entries** | **766** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [InitFree-SfM: When Initialization-Free Bundle Adju...](https://huggingface.co/papers/2611.31516) |
-| 🛡️ **Catalog Links Checked** | **24/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 27 Nov 2026 10:25:39 GMT` |
+| 📜 **Top Daily Paper** | [Damped Atomic Wave Integration Neurons (DAWIN): A ...](https://huggingface.co/papers/2611.30025) |
+| 🛡️ **Catalog Links Checked** | **25/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 27 Nov 2026 20:34:35 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->
