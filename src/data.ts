@@ -11939,6 +11939,28 @@ export const entries: Entry[] = [
     "description": "StepFun's frontier multi-step reasoning architecture, utilizing deep chain-of-thought reinforcement learning for intricate mathematical problem-solving and logic puzzles across 1M tokens, incorporating an architecture of open-weights frontier neural architecture developed by StepFun, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (165 tok/s). The model demonstrates competitive performance across verified evaluations, including Intelligence Index: 29, Briefcase Elo: 1425, Accuracy: 36%, Non-Hallucination: 69%, FrontierCode: 12%, AutomationBench: 51%, TerminalBench 4: 33%, HLE Diamond: 24%, Speed: 165 tok/s, Context Window: 1M. With its 1M Context · Open Model design, it supports diverse local and enterprise deployment profiles under the Open license."
   },
   {
+    "name": "StudyArena",
+    "type": "AI",
+    "summary": "Study tool that shows three AI answers to the same question side by side, with model names hidden until the student votes.",
+    "task": "Education",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "A1Base Inc.",
+    "size": "N/A",
+    "architecture": "Web application that sends a study question to multiple AI models.",
+    "usage": "Create a free account to compare three answers, vote, reveal the models, and save your history.",
+    "benchmarks": "N/A",
+    "limitations": "An account is required. Choosing the models or comparing six answers requires Supporter.",
+    "popular": false,
+    "url": "https://studyarena.com",
+    "citations": [
+      {
+        "text": "StudyArena official site",
+        "url": "https://studyarena.com"
+      }
+    ]
+  },
+  {
     "name": "Suno",
     "type": "AI",
     "summary": "An AI music generation platform that creates full songs with vocals, instrumentation, and lyrics from a simple text prompt in seconds. The application is powered by advanced foundation models utilizing web Application (Proprietary audio diffusion and language model pipeline). It features an intuitive interface designed to streamline complex audio workflows and maximize end-user productivity. Available under a Proprietary model for commercial and personal productivity.",
