@@ -1,26 +1,30 @@
 {
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "tool": {
-    "name": "TeleOCR",
-    "type": "Model",
-    "summary": "High-performance Multimodal open-weights model by XingChen-AGI, trending with over 809 community likes and 27,904 downloads on Hugging Face, incorporating an architecture of xingChen-AGI image text to text architecture with community-tuned weights. The model demonstrates competitive performance across verified evaluations, including Trending Score: 697, Likes: 809, Downloads: 27,904. With its Open Weights design, it supports diverse local and enterprise deployment profiles under the Apache-2.0 license.",
-    "task": "Multimodal",
-    "license": "APACHE-2.0",
-    "year": 2026,
-    "org": "XingChen-AGI",
-    "size": "Open Weights",
-    "architecture": "XingChen-AGI image text to text architecture with community-tuned weights.",
-    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"XingChen-AGI/TeleOCR\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"XingChen-AGI/TeleOCR\")",
-    "benchmarks": "Trending Score: 697, Likes: 809, Downloads: 27,904",
-    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "name": "TensorFlow",
+    "type": "Framework",
+    "summary": "Google's end-to-end open-source ML platform, widely used in production for its robust serving infrastructure and mobile deployment via TensorFlow Lite. Under the hood, it incorporates graph-based computation framework with eager execution support, Keras high-level API. Key technical highlights include: Dominant framework for production ML deployments. Licensed under the Apache-2.0 license, it integrates seamlessly into contemporary AI engineering toolchains.",
+    "task": "MLOps",
+    "license": "Apache-2.0",
+    "year": 2015,
+    "org": "Google DeepMind",
+    "size": "N/A",
+    "architecture": "Graph-based computation framework with eager execution support, Keras high-level API.",
+    "usage": "import tensorflow as tf\nmodel = tf.keras.Sequential([\n  tf.keras.layers.Dense(64, activation='relu'),\n  tf.keras.layers.Dense(10, activation='softmax')\n])\nmodel.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])",
+    "benchmarks": "Dominant framework for production ML deployments",
+    "limitations": "More complex debugging than PyTorch, less dominant in research community.",
     "popular": true,
-    "url": "https://huggingface.co/XingChen-AGI/TeleOCR",
+    "url": "https://www.tensorflow.org",
     "citations": [
       {
-        "text": "XingChen-AGI/TeleOCR on Hugging Face",
-        "url": "https://huggingface.co/XingChen-AGI/TeleOCR"
+        "text": "TensorFlow Official Site",
+        "url": "https://www.tensorflow.org"
+      },
+      {
+        "text": "GitHub Repository",
+        "url": "https://github.com/tensorflow/tensorflow"
       }
     ],
-    "description": "High-performance Multimodal open-weights model by XingChen-AGI, trending with over 809 community likes and 27,904 downloads on Hugging Face, incorporating an architecture of xingChen-AGI image text to text architecture with community-tuned weights. The model demonstrates competitive performance across verified evaluations, including Trending Score: 697, Likes: 809, Downloads: 27,904. With its Open Weights design, it supports diverse local and enterprise deployment profiles under the Apache-2.0 license."
+    "description": "Google's end-to-end open-source ML platform, widely used in production for its robust serving infrastructure and mobile deployment via TensorFlow Lite. Under the hood, it incorporates graph-based computation framework with eager execution support, Keras high-level API. Key technical highlights include: Dominant framework for production ML deployments. Licensed under the Apache-2.0 license, it integrates seamlessly into contemporary AI engineering toolchains."
   }
 }

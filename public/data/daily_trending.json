@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-26T14:38:34.958Z",
+  "timestamp": "2026-11-27T00:54:50.006Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -29,6 +29,15 @@
       "source": "Artificial Analysis"
     },
     {
+      "id": "inclusionAI: LingSante 3.1 Air VL",
+      "author": "inclusionai",
+      "likes": 120,
+      "downloads": 131072,
+      "pipeline_tag": "Cloud Model API",
+      "url": "https://openrouter.ai/inclusionai/lingsante-3.1-air-vl",
+      "source": "OpenRouter"
+    },
+    {
       "id": "Upstage: Solar Mini 4.5 (Preview)",
       "author": "upstage",
       "likes": 120,
@@ -47,18 +56,9 @@
       "source": "OpenRouter"
     },
     {
-      "id": "Xiaomi: MiMo-V2.6-Flash-MOPD",
-      "author": "xiaomi",
-      "likes": 120,
-      "downloads": 1048576,
-      "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd",
-      "source": "OpenRouter"
-    },
-    {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "thinkingmachines",
-      "likes": 6148,
+      "likes": 6254,
       "downloads": 96527,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
@@ -67,70 +67,70 @@
     {
       "id": "unsloth/Inkling-2-Mini-GGUF",
       "author": "unsloth",
-      "likes": 1425,
+      "likes": 1494,
       "downloads": 2445633,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
       "source": "Hugging Face"
     },
     {
-      "id": "inworld/voice-isolator",
-      "author": "inworld",
-      "likes": 927,
-      "downloads": 15244,
-      "pipeline_tag": "audio-to-audio",
-      "url": "https://huggingface.co/inworld/voice-isolator",
-      "source": "Hugging Face"
-    },
-    {
       "id": "AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
       "author": "AtomicChat",
-      "likes": 879,
+      "likes": 933,
       "downloads": 762491,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "inworld/voice-isolator",
+      "author": "inworld",
+      "likes": 962,
+      "downloads": 15244,
+      "pipeline_tag": "audio-to-audio",
+      "url": "https://huggingface.co/inworld/voice-isolator",
       "source": "Hugging Face"
     }
   ],
   "papers": [
     {
-      "title": "When Does Reasoning Help Entity Disambiguation? Small LLMs In-Domain and Under Shift",
-      "summary": "Reasoning-based candidate selection in small language models for entity disambiguation yields negligible in-domain gains but becomes decisive under true zero-shot domain shift, with reranker uncertainty and shift explaining when the paradigms disagree.",
-      "upvotes": 1,
-      "arxiv_id": "2611.30334",
-      "url": "https://huggingface.co/papers/2611.30334",
-      "githubRepo": "https://github.com/samyhaff/ed-study"
-    },
-    {
-      "title": "GOLD-SLAM: Gaussian-splatting Omnidirectional LiDAR-Depth SLAM",
-      "summary": "GOLD-SLAM integrates panoramic Gaussian splatting with LiDAR depth priors for omnidirectional SLAM, improving pose estimation and geometric reconstruction while maintaining competitive rendering quality.",
+      "title": "CARE-3D: Reinforcement Learning for Evidence Grounded Agentic Reasoning in Situated 3D Scenes",
+      "summary": "CARE-3D is a reinforcement post-training framework that combines supervised fine-tuning, Group Relative Policy Optimization, counterfactual evidence attribution, and group coverage sampling to improve adaptive grounded 3D reasoning and tool use.",
       "upvotes": 0,
-      "arxiv_id": "2611.32335",
-      "url": "https://huggingface.co/papers/2611.32335",
-      "githubRepo": "https://github.com/InSAI-Lab/GOLD-SLAM"
+      "arxiv_id": "2611.29969",
+      "url": "https://huggingface.co/papers/2611.29969",
+      "githubRepo": "https://github.com/xiaoqian-UQ/CARE-3D"
     },
     {
-      "title": "Demystifying the Autoresearch Harness: How Context and Skills Shape Self-Evolving Agents",
-      "summary": "A systematic study of harness design for long-horizon self-evolving autoresearch agents finds that context folding and selective skill deletion improve performance, enabling MLEvolver to achieve strong results on MLE-Bench Lite and KernelBench Level 3.",
-      "upvotes": 3,
-      "arxiv_id": "2611.28244",
-      "url": "https://huggingface.co/papers/2611.28244",
-      "githubRepo": null
-    },
-    {
-      "title": "Efficient Video Retrieval Augmented Generation via Token Allocation",
-      "summary": "Lembas treats video retrieval-augmented generation as a token allocation problem over frames and subtitles under a shared budget, using an iterative water-filling algorithm and attention reuse to improve long-video and multi-turn understanding with fewer tokens and less compute.",
+      "title": "Evaluating Memanto on DolphinBench for AI Agents",
+      "summary": "Memanto, a memory agent using information-theoretic relevance scoring, completes more simulated workplace tasks at lower cost and latency than the strongest reported Mem0 configuration.",
       "upvotes": 2,
-      "arxiv_id": "2611.32938",
-      "url": "https://huggingface.co/papers/2611.32938",
-      "githubRepo": null
+      "arxiv_id": "2611.28231",
+      "url": "https://huggingface.co/papers/2611.28231",
+      "githubRepo": "https://github.com/moorcheh-ai/memanto-benchmark"
     },
     {
-      "title": "Evaluation-Free Recursive Self-Improvement for Coding Agents",
-      "summary": "ELITE enables coding agents to self-improve by integrating complementary implementation mechanisms from independently generated improvements without using downstream task evaluations in the evolution loop, achieving strong SWE-bench performance and transfer.",
-      "upvotes": 1,
-      "arxiv_id": "2611.21056",
-      "url": "https://huggingface.co/papers/2611.21056",
+      "title": "Look Back: Reinforcement Learning with Counterfactual World Models",
+      "summary": "Counterfactual world models that predict alternative outcomes from observed trajectories under the same environmental randomness enable a policy gradient estimator using counterfactual returns as baselines, improving policy learning when environmental dynamics are harder to predict than action effects.",
+      "upvotes": 0,
+      "arxiv_id": "2611.29259",
+      "url": "https://huggingface.co/papers/2611.29259",
+      "githubRepo": "https://github.com/ToghrulAbbasov19/look-back"
+    },
+    {
+      "title": "Single-Database Rewards Are Hackable: Counterfactual Execution for Trustworthy Text-to-SQL RL",
+      "summary": "A counterfactual-database reward for reinforcement learning text-to-SQL agents reduces full payment to buggy queries and reward hacks, though training with its mean form did not improve in-domain accuracy in a controlled GRPO comparison.",
+      "upvotes": 4,
+      "arxiv_id": "2611.34363",
+      "url": "https://huggingface.co/papers/2611.34363",
+      "githubRepo": "https://github.com/RishiiGamer2201/counterfactual-sql-rewards"
+    },
+    {
+      "title": "Entangle: Scaling Human-Video In-Context World-Action Models across Unseen Tasks and Contexts",
+      "summary": "In-context learning (ICL) enables foundation models to perform unseen tasks from context without parameter updates. In robotic manipulation, a human video provi...",
+      "upvotes": 3,
+      "arxiv_id": "2611.28732",
+      "url": "https://huggingface.co/papers/2611.28732",
       "githubRepo": null
     }
   ],

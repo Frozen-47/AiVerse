@@ -51,16 +51,16 @@ The artificial intelligence landscape moves at breakneck speed. Generic link dir
 ## ⚡ AiVerse Daily AI Radar
 
 <!-- AI_RADAR:START -->
-### ⚡ AiVerse AI Radar (2026-11-26)
+### ⚡ AiVerse AI Radar (2026-11-27)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Phi-4 Multimodal Instruct** (`Model`), **LiquidAI: LFM3-1.7B (free)** (`Model`), **Inkling-2-Mini-Strata** (`Model`), **looped-transformers** (`Platform`), **EgoUseBench** (`Dataset`) |
-| 🌟 **Tool of the Day** | **TeleOCR** (XingChen-AGI) — [Explore](https://huggingface.co/XingChen-AGI/TeleOCR) |
+| 📥 **Queued for Review** | **NVIDIA Nemotron Nano 9B V2** (`Model`), **inclusionAI: LingSante 3.1 Air VL** (`Model`), **Inkling-2-Mini-abliterated-GGUF** (`Model`), **imagine** (`Platform`), **tesla-fsd-drive-5min** (`Dataset`) |
+| 🌟 **Tool of the Day** | **TensorFlow** (Google DeepMind) — [Explore](https://www.tensorflow.org) |
 | 🗄️ **Catalog Entries** | **766** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [When Does Reasoning Help Entity Disambiguation? Sm...](https://huggingface.co/papers/2611.30334) |
-| 🛡️ **Catalog Links Checked** | **25/25** operational |
-| 🕒 **Last Synchronized** | `Thu, 26 Nov 2026 14:39:27 GMT` |
+| 📜 **Top Daily Paper** | [CARE-3D: Reinforcement Learning for Evidence Groun...](https://huggingface.co/papers/2611.29969) |
+| 🛡️ **Catalog Links Checked** | **24/25** operational |
+| 🕒 **Last Synchronized** | `Fri, 27 Nov 2026 00:55:23 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

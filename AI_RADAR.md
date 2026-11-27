@@ -1,8 +1,8 @@
-# ⚡ AiVerse AI Radar (2026-11-26)
+# ⚡ AiVerse AI Radar (2026-11-27)
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Thu, 26 Nov 2026 14:39:27 GMT`*
+*Last Synchronized: `Fri, 27 Nov 2026 00:55:23 GMT`*
 
 ---
 
@@ -10,51 +10,51 @@
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Phi-4 Multimodal Instruct** (`Model` • *Microsoft*)
-> Frontier NLP model by Microsoft benchmarked on Artificial Analysis and a verified 128k Context window.
+### **NVIDIA Nemotron Nano 9B V2** (`Model` • *NVIDIA*)
+> Frontier NLP model by NVIDIA benchmarked on Artificial Analysis and a verified 131k Context window.
 
 - 🏷️ **Domain & License**: `NLP` • `Open Weights` (2026)
-- ⚡ **Metrics**: `Context Window: 128k Context, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/phi-4-multimodal](https://artificialanalysis.ai/models/phi-4-multimodal)
+- ⚡ **Metrics**: `Context Window: 131k Context, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2](https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2)
 
-### **LiquidAI: LFM3-1.7B (free)** (`Model` • *liquid*)
-> A compact 1.7B-parameter text model with a 256K-token context, post-trained for agents, tool calling, and structured outputs. It reasons before it answers. Prompts and outputs may 
+### **inclusionAI: LingSante 3.1 Air VL** (`Model` • *inclusionai*)
+> LingSante 3.1 Air VL is inclusionAI's medical vision-language model, a 124B total / 5.5B active MoE. It takes text and up to 16 images (scans, skin and meal photos, lab...
 
-- 🏷️ **Domain & License**: `NLP` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 262k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/liquid/lfm-3-1.7b:free](https://openrouter.ai/liquid/lfm-3-1.7b:free)
+- 🏷️ **Domain & License**: `Multimodal` • `Proprietary` (2026)
+- ⚡ **Metrics**: `Context Window: 131k Context, Available across global OpenRouter inference nodes.`
+- 🔗 **Resource Link**: [https://openrouter.ai/inclusionai/lingsante-3.1-air-vl](https://openrouter.ai/inclusionai/lingsante-3.1-air-vl)
 
-### **Inkling-2-Mini-Strata** (`Model` • *strata-engine*)
-> High-performance Multimodal open-weights model by strata-engine, trending with over 176 community likes and 2,965 downloads on Hugging Face.
+### **Inkling-2-Mini-abliterated-GGUF** (`Model` • *orcarouter*)
+> High-performance NLP open-weights model by orcarouter, trending with over 292 community likes and 12,157 downloads on Hugging Face.
 
-- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 132, Likes: 176, Downloads: 2,965`
-- 🔗 **Resource Link**: [https://huggingface.co/strata-engine/Inkling-2-Mini-Strata](https://huggingface.co/strata-engine/Inkling-2-Mini-Strata)
+- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 132, Likes: 292, Downloads: 12,157`
+- 🔗 **Resource Link**: [https://huggingface.co/orcarouter/Inkling-2-Mini-abliterated-GGUF](https://huggingface.co/orcarouter/Inkling-2-Mini-abliterated-GGUF)
 
-### **looped-transformers** (`Platform` • *dlouapre*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by dlouapre. Trending with 23 community stars.
+### **imagine** (`Platform` • *cfahlgren1*)
+> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by cfahlgren1. Trending with 22 community stars.
 
 - 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 23, Community Likes: 23`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/dlouapre/looped-transformers](https://huggingface.co/spaces/dlouapre/looped-transformers)
+- ⚡ **Metrics**: `Trending Score: 21, Community Likes: 22`
+- 🔗 **Resource Link**: [https://huggingface.co/spaces/cfahlgren1/imagine](https://huggingface.co/spaces/cfahlgren1/imagine)
 
-### **EgoUseBench** (`Dataset` • *yurun-chen*)
-> EgoUseBench 	 This repository contains the task definitions and sampled first-person frames for EgoUseBench: Benchmarking Computer-Use Agents under Evolving First-Perso (16 likes, 0 downloads).
+### **tesla-fsd-drive-5min** (`Dataset` • *cfahlgren1*)
+> Tesla FSD Drive 	 Five continuous minutes · six cameras · per-frame telemetry Top: left pillar · front · right pillarBottom: left repeater · rear · right repeater (76 likes, 2,232 downloads).
 
-- 🏷️ **Domain & License**: `NLP` • `OTHER` (2026)
-- ⚡ **Metrics**: `Trending Score: 15, Likes: 16, Downloads: 0`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/yurun-chen/EgoUseBench](https://huggingface.co/datasets/yurun-chen/EgoUseBench)
+- 🏷️ **Domain & License**: `NLP` • `CC-BY-4.0` (2026)
+- ⚡ **Metrics**: `Trending Score: 7, Likes: 76, Downloads: 2,232`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/cfahlgren1/tesla-fsd-drive-5min](https://huggingface.co/datasets/cfahlgren1/tesla-fsd-drive-5min)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **TeleOCR** (`Model` • *XingChen-AGI*)
-> High-performance Multimodal open-weights model by XingChen-AGI, trending with over 809 community likes and 27,904 downloads on Hugging Face, incorporating an architecture of xingChen-AGI image text to text architecture with community-tuned weights. The model demonstrates competitive performance across verified evaluations, including Trending Score: 697, Likes: 809, Downloads: 27,904. With its Open Weights design, it supports diverse local and enterprise deployment profiles under the Apache-2.0 license.
+### **TensorFlow** (`Framework` • *Google DeepMind*)
+> Google's end-to-end open-source ML platform, widely used in production for its robust serving infrastructure and mobile deployment via TensorFlow Lite. Under the hood, it incorporates graph-based computation framework with eager execution support, Keras high-level API. Key technical highlights include: Dominant framework for production ML deployments. Licensed under the Apache-2.0 license, it integrates seamlessly into contemporary AI engineering toolchains.
 
-- 🏛️ **Architecture**: XingChen-AGI image text to text architecture with community-tuned weights.
-- ⚡ **Benchmarks**: `Trending Score: 697, Likes: 809, Downloads: 27,904`
-- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (Released: 2026)
-- 🔗 **Resource Link**: [https://huggingface.co/XingChen-AGI/TeleOCR](https://huggingface.co/XingChen-AGI/TeleOCR)
+- 🏛️ **Architecture**: Graph-based computation framework with eager execution support, Keras high-level API.
+- ⚡ **Benchmarks**: `Dominant framework for production ML deployments`
+- 🏷️ **Domain & License**: `MLOps` • `Apache-2.0` (Released: 2015)
+- 🔗 **Resource Link**: [https://www.tensorflow.org](https://www.tensorflow.org)
 
 ---
 ## 🔥 Multi-Platform AI Model Radar
@@ -65,13 +65,13 @@
 | **JT-35B-Flash** | `Artificial Analysis` | China Mobile (Frontier Leaderboard) | ❤️ 95 · 📥 256,000 | [View](https://artificialanalysis.ai/models/jt-35b-flash) |
 | **Qwen3.5 Omni Plus** | `Artificial Analysis` | Alibaba (Frontier Leaderboard) | ❤️ 95 · 📥 256,000 | [View](https://artificialanalysis.ai/models/qwen3-5-omni-plus) |
 | **Nova 2.0 Omni** | `Artificial Analysis` | Amazon (Reasoning Frontier) | ❤️ 95 · 📥 1,000,000 | [View](https://artificialanalysis.ai/models/nova-2-0-omni) |
+| **inclusionAI: LingSante 3.1 Air VL** | `OpenRouter` | inclusionai (Cloud Model API) | ❤️ 120 · 📥 131,072 | [View](https://openrouter.ai/inclusionai/lingsante-3.1-air-vl) |
 | **Upstage: Solar Mini 4.5 (Preview)** | `OpenRouter` | upstage (Cloud Model API) | ❤️ 120 · 📥 524,288 | [View](https://openrouter.ai/upstage/solar-mini-4-5) |
 | **Upstage: Solar Pro 4 Contributor** | `OpenRouter` | upstage (Cloud Model API) | ❤️ 120 · 📥 524,288 | [View](https://openrouter.ai/upstage/solar-pro-4-contributor) |
-| **Xiaomi: MiMo-V2.6-Flash-MOPD** | `OpenRouter` | xiaomi (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd) |
-| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 6,148 · 📥 96,527 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
-| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 1,425 · 📥 2,445,633 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
-| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 927 · 📥 15,244 | [View](https://huggingface.co/inworld/voice-isolator) |
-| **AtomicChat/Inkling-2-Mini-Uncensored-GGUF** | `Hugging Face` | AtomicChat (image-text-to-text) | ❤️ 879 · 📥 762,491 | [View](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) |
+| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 6,254 · 📥 96,527 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
+| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 1,494 · 📥 2,445,633 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
+| **AtomicChat/Inkling-2-Mini-Uncensored-GGUF** | `Hugging Face` | AtomicChat (image-text-to-text) | ❤️ 933 · 📥 762,491 | [View](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) |
+| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 962 · 📥 15,244 | [View](https://huggingface.co/inworld/voice-isolator) |
 
 
 ---
@@ -81,11 +81,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **When Does Reasoning Help Entity Disambiguation? Small LLMs In-Domain and Under Shift** | 👍 1 | Reasoning-based candidate selection in small language models for entity disambiguation yields negligible in-domain gains but becomes decisive under true zero-shot domain shift, with reranker uncertainty and shift explaining when the paradigms disagree. | [Read](https://huggingface.co/papers/2611.30334) |
-| **GOLD-SLAM: Gaussian-splatting Omnidirectional LiDAR-Depth SLAM** | 👍 0 | GOLD-SLAM integrates panoramic Gaussian splatting with LiDAR depth priors for omnidirectional SLAM, improving pose estimation and geometric reconstruction while maintaining competitive rendering quality. | [Read](https://huggingface.co/papers/2611.32335) |
-| **Demystifying the Autoresearch Harness: How Context and Skills Shape Self-Evolving Agents** | 👍 3 | A systematic study of harness design for long-horizon self-evolving autoresearch agents finds that context folding and selective skill deletion improve performance, enabling MLEvolver to achieve strong results on MLE-Bench Lite and KernelBench Level 3. | [Read](https://huggingface.co/papers/2611.28244) |
-| **Efficient Video Retrieval Augmented Generation via Token Allocation** | 👍 2 | Lembas treats video retrieval-augmented generation as a token allocation problem over frames and subtitles under a shared budget, using an iterative water-filling algorithm and attention reuse to improve long-video and multi-turn understanding with fewer tokens and less compute. | [Read](https://huggingface.co/papers/2611.32938) |
-| **Evaluation-Free Recursive Self-Improvement for Coding Agents** | 👍 1 | ELITE enables coding agents to self-improve by integrating complementary implementation mechanisms from independently generated improvements without using downstream task evaluations in the evolution loop, achieving strong SWE-bench performance and transfer. | [Read](https://huggingface.co/papers/2611.21056) |
+| **CARE-3D: Reinforcement Learning for Evidence Grounded Agentic Reasoning in Situated 3D Scenes** | 👍 0 | CARE-3D is a reinforcement post-training framework that combines supervised fine-tuning, Group Relative Policy Optimization, counterfactual evidence attribution, and group coverage sampling to improve adaptive grounded 3D reasoning and tool use. | [Read](https://huggingface.co/papers/2611.29969) |
+| **Evaluating Memanto on DolphinBench for AI Agents** | 👍 2 | Memanto, a memory agent using information-theoretic relevance scoring, completes more simulated workplace tasks at lower cost and latency than the strongest reported Mem0 configuration. | [Read](https://huggingface.co/papers/2611.28231) |
+| **Look Back: Reinforcement Learning with Counterfactual World Models** | 👍 0 | Counterfactual world models that predict alternative outcomes from observed trajectories under the same environmental randomness enable a policy gradient estimator using counterfactual returns as baselines, improving policy learning when environmental dynamics are harder to predict than action effects. | [Read](https://huggingface.co/papers/2611.29259) |
+| **Single-Database Rewards Are Hackable: Counterfactual Execution for Trustworthy Text-to-SQL RL** | 👍 4 | A counterfactual-database reward for reinforcement learning text-to-SQL agents reduces full payment to buggy queries and reward hacks, though training with its mean form did not improve in-domain accuracy in a controlled GRPO comparison. | [Read](https://huggingface.co/papers/2611.34363) |
+| **Entangle: Scaling Human-Video In-Context World-Action Models across Unseen Tasks and Contexts** | 👍 3 | In-context learning (ICL) enables foundation models to perform unseen tasks from context without parameter updates. In robotic manipulation, a human video provi... | [Read](https://huggingface.co/papers/2611.28732) |
 
 
 ---
@@ -98,7 +98,7 @@
 ---
 
 ## 🛡️ System & Ecosystem Health
-- **Sample Link Health Check**: `25/25` healthy verified (`0` flagged / timed out)
+- **Sample Link Health Check**: `24/25` healthy verified (`1` flagged / timed out)
 - **Dependency Security**: `42` advisories flagged across `578` dependencies (`1` critical, `26` high)
 
 ---

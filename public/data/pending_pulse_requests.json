@@ -1,5 +1,134 @@
 [
   {
+    "name": "tesla-fsd-drive-5min",
+    "type": "Dataset",
+    "summary": "Tesla FSD Drive \t Five continuous minutes · six cameras · per-frame telemetry Top: left pillar · front · right pillarBottom: left repeater · rear · right repeater (76 likes, 2,232 downloads).",
+    "task": "NLP",
+    "license": "CC-BY-4.0",
+    "year": 2026,
+    "org": "cfahlgren1",
+    "size": "n<1K",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"cfahlgren1/tesla-fsd-drive-5min\")",
+    "benchmarks": "Trending Score: 7, Likes: 76, Downloads: 2,232",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/cfahlgren1/tesla-fsd-drive-5min",
+    "citations": [
+      {
+        "text": "cfahlgren1/tesla-fsd-drive-5min on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/cfahlgren1/tesla-fsd-drive-5min"
+      }
+    ],
+    "created_at": "2026-11-27T00:54:49.985Z"
+  },
+  {
+    "name": "imagine",
+    "type": "Platform",
+    "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by cfahlgren1. Trending with 22 community stars.",
+    "task": "Multimodal",
+    "license": "Community Hosted",
+    "year": 2026,
+    "org": "cfahlgren1",
+    "size": "STATIC Platform",
+    "architecture": "STATIC cloud runtime container with interactive browser interface.",
+    "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/cfahlgren1/imagine",
+    "benchmarks": "Trending Score: 21, Community Likes: 22",
+    "limitations": "Cloud container subject to community traffic quotas and queue times.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/spaces/cfahlgren1/imagine",
+    "citations": [
+      {
+        "text": "cfahlgren1/imagine on Hugging Face Spaces",
+        "url": "https://huggingface.co/spaces/cfahlgren1/imagine"
+      }
+    ],
+    "created_at": "2026-11-27T00:54:49.985Z"
+  },
+  {
+    "name": "Inkling-2-Mini-abliterated-GGUF",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by orcarouter, trending with over 292 community likes and 12,157 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "orcarouter",
+    "size": "Open Weights",
+    "architecture": "orcarouter text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"orcarouter/Inkling-2-Mini-abliterated-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"orcarouter/Inkling-2-Mini-abliterated-GGUF\")",
+    "benchmarks": "Trending Score: 132, Likes: 292, Downloads: 12,157",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/orcarouter/Inkling-2-Mini-abliterated-GGUF",
+    "citations": [
+      {
+        "text": "orcarouter/Inkling-2-Mini-abliterated-GGUF on Hugging Face",
+        "url": "https://huggingface.co/orcarouter/Inkling-2-Mini-abliterated-GGUF"
+      }
+    ],
+    "created_at": "2026-11-27T00:54:49.985Z"
+  },
+  {
+    "name": "inclusionAI: LingSante 3.1 Air VL",
+    "type": "Model",
+    "summary": "LingSante 3.1 Air VL is inclusionAI's medical vision-language model, a 124B total / 5.5B active MoE. It takes text and up to 16 images (scans, skin and meal photos, lab...",
+    "task": "Multimodal",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "inclusionai",
+    "size": "131k Context · Available via API",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 131k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"inclusionai/lingsante-3.1-air-vl\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 131k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://openrouter.ai/inclusionai/lingsante-3.1-air-vl",
+    "citations": [
+      {
+        "text": "inclusionAI: LingSante 3.1 Air VL on OpenRouter",
+        "url": "https://openrouter.ai/inclusionai/lingsante-3.1-air-vl"
+      }
+    ],
+    "created_at": "2026-11-27T00:54:49.985Z"
+  },
+  {
+    "name": "NVIDIA Nemotron Nano 9B V2",
+    "type": "Model",
+    "summary": "Frontier NLP model by NVIDIA benchmarked on Artificial Analysis and a verified 131k Context window.",
+    "task": "NLP",
+    "license": "Open Weights",
+    "year": 2026,
+    "org": "NVIDIA",
+    "size": "131k Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by NVIDIA, featuring native 131k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2",
+    "benchmarks": "Context Window: 131k Context, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2",
+    "citations": [
+      {
+        "text": "NVIDIA Nemotron Nano 9B V2 on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2"
+      },
+      {
+        "text": "NVIDIA Nemotron Nano 9B V2 Inference Providers",
+        "url": "https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2/providers"
+      }
+    ],
+    "created_at": "2026-11-27T00:54:49.985Z"
+  },
+  {
     "name": "EgoUseBench",
     "type": "Dataset",
     "summary": "EgoUseBench \t This repository contains the task definitions and sampled first-person frames for EgoUseBench: Benchmarking Computer-Use Agents under Evolving First-Perso (16 likes, 0 downloads).",
