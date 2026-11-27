@@ -1,5 +1,109 @@
 [
   {
+    "name": "youtube",
+    "type": "Dataset",
+    "summary": "Creative Commons YouTube \t \t \t\t \t \t \t\tDescription \t YouTube is large-scale video-sharing platform where users have the option of uploading content under a CC BY license (99 likes, 1,435 downloads).",
+    "task": "NLP",
+    "license": "Open Data",
+    "year": 2026,
+    "org": "common-pile",
+    "size": "1M<n<10M",
+    "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+    "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"common-pile/youtube\")",
+    "benchmarks": "Trending Score: 6, Likes: 99, Downloads: 1,435",
+    "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/datasets/common-pile/youtube",
+    "citations": [
+      {
+        "text": "common-pile/youtube on Hugging Face Datasets",
+        "url": "https://huggingface.co/datasets/common-pile/youtube"
+      }
+    ],
+    "created_at": "2026-11-27T10:25:00.601Z"
+  },
+  {
+    "name": "Inkling-2-Mini-GSQ-RCO-GGUF",
+    "type": "Model",
+    "summary": "High-performance NLP open-weights model by ISTA-DASLab, trending with over 171 community likes and 0 downloads on Hugging Face.",
+    "task": "NLP",
+    "license": "APACHE-2.0",
+    "year": 2026,
+    "org": "ISTA-DASLab",
+    "size": "Open Weights",
+    "architecture": "ISTA-DASLab text generation architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"ISTA-DASLab/Inkling-2-Mini-GSQ-RCO-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"ISTA-DASLab/Inkling-2-Mini-GSQ-RCO-GGUF\")",
+    "benchmarks": "Trending Score: 140, Likes: 171, Downloads: 0",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://huggingface.co/ISTA-DASLab/Inkling-2-Mini-GSQ-RCO-GGUF",
+    "citations": [
+      {
+        "text": "ISTA-DASLab/Inkling-2-Mini-GSQ-RCO-GGUF on Hugging Face",
+        "url": "https://huggingface.co/ISTA-DASLab/Inkling-2-Mini-GSQ-RCO-GGUF"
+      }
+    ],
+    "created_at": "2026-11-27T10:25:00.601Z"
+  },
+  {
+    "name": "Google: Gemini Omni 1.2 Flash",
+    "type": "Model",
+    "summary": "Gemini Omni 1.2 Flash is Google's native multimodal video generation and editing model, the successor to Gemini Omni 1.1 Flash. It generates clips up to 15 seconds long with native",
+    "task": "Multimodal",
+    "license": "Proprietary",
+    "year": 2026,
+    "org": "google",
+    "size": "131k Context · Available via API",
+    "architecture": "Modern foundation model hosted on OpenRouter with native 131k Context support and structured output generation.",
+    "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"google/gemini-omni-1.2-flash\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+    "benchmarks": "Context Window: 131k Context, Available across global OpenRouter inference nodes.",
+    "limitations": "Requires OpenRouter API key and token credits.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://openrouter.ai/google/gemini-omni-1.2-flash",
+    "citations": [
+      {
+        "text": "Google: Gemini Omni 1.2 Flash on OpenRouter",
+        "url": "https://openrouter.ai/google/gemini-omni-1.2-flash"
+      }
+    ],
+    "created_at": "2026-11-27T10:25:00.601Z"
+  },
+  {
+    "name": "ERNIE 5.5 Flash Preview",
+    "type": "Model",
+    "summary": "Frontier Research model by Baidu benchmarked on Artificial Analysis with an Intelligence Index of 31.2872256906399 and a verified 1024k Context window.",
+    "task": "Research",
+    "license": "Open Weights",
+    "year": 2026,
+    "org": "Baidu",
+    "size": "1024k Context · Open Model",
+    "architecture": "Open-weights frontier neural architecture developed by Baidu, featuring native 1024k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/ernie-5-5-flash",
+    "benchmarks": "Context Window: 1024k Context, Intelligence Index: 31.2872256906399, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+    "popular": false,
+    "approved": false,
+    "submitted_by": "daily-pulse-bot",
+    "url": "https://artificialanalysis.ai/models/ernie-5-5-flash",
+    "citations": [
+      {
+        "text": "ERNIE 5.5 Flash Preview on Artificial Analysis Benchmark",
+        "url": "https://artificialanalysis.ai/models/ernie-5-5-flash"
+      },
+      {
+        "text": "ERNIE 5.5 Flash Preview Inference Providers",
+        "url": "https://artificialanalysis.ai/models/ernie-5-5-flash/providers"
+      }
+    ],
+    "created_at": "2026-11-27T10:25:00.601Z"
+  },
+  {
     "name": "tesla-fsd-drive-5min",
     "type": "Dataset",
     "summary": "Tesla FSD Drive \t Five continuous minutes · six cameras · per-frame telemetry Top: left pillar · front · right pillarBottom: left repeater · rear · right repeater (76 likes, 2,232 downloads).",

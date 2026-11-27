@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-27T00:54:50.006Z",
+  "timestamp": "2026-11-27T10:25:00.629Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,7 +58,7 @@
     {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "thinkingmachines",
-      "likes": 6254,
+      "likes": 6352,
       "downloads": 96527,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
@@ -67,71 +67,71 @@
     {
       "id": "unsloth/Inkling-2-Mini-GGUF",
       "author": "unsloth",
-      "likes": 1494,
+      "likes": 1529,
       "downloads": 2445633,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
       "source": "Hugging Face"
     },
     {
-      "id": "AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
-      "author": "AtomicChat",
-      "likes": 933,
-      "downloads": 762491,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
+      "id": "SulphurAI/Sulphur-3",
+      "author": "SulphurAI",
+      "likes": 1282,
+      "downloads": 189735,
+      "pipeline_tag": "open-weights",
+      "url": "https://huggingface.co/SulphurAI/Sulphur-3",
       "source": "Hugging Face"
     },
     {
-      "id": "inworld/voice-isolator",
-      "author": "inworld",
-      "likes": 962,
-      "downloads": 15244,
-      "pipeline_tag": "audio-to-audio",
-      "url": "https://huggingface.co/inworld/voice-isolator",
+      "id": "AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
+      "author": "AtomicChat",
+      "likes": 964,
+      "downloads": 762491,
+      "pipeline_tag": "image-text-to-text",
+      "url": "https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
       "source": "Hugging Face"
     }
   ],
   "papers": [
     {
-      "title": "CARE-3D: Reinforcement Learning for Evidence Grounded Agentic Reasoning in Situated 3D Scenes",
-      "summary": "CARE-3D is a reinforcement post-training framework that combines supervised fine-tuning, Group Relative Policy Optimization, counterfactual evidence attribution, and group coverage sampling to improve adaptive grounded 3D reasoning and tool use.",
+      "title": "InitFree-SfM: When Initialization-Free Bundle Adjustment meets Learned Structure-from-Motion",
+      "summary": "Initialization-free bundle adjustment (InitFree BA) aims to jointly recover camera poses and scene structure without requiring an initial global estimate. It is...",
+      "upvotes": 1,
+      "arxiv_id": "2611.31516",
+      "url": "https://huggingface.co/papers/2611.31516",
+      "githubRepo": "https://github.com/simonwebertum/initfree-sfm"
+    },
+    {
+      "title": "So Many Ways to Multiply 3times3 Matrices: A Large Dataset of Rank-23 Schemes",
+      "summary": "A publicly available dataset of 62029 rank-23 schemes for 3times3 matrix multiplication is presented. Every scheme in it has its own rank pattern, an invariant ...",
       "upvotes": 0,
-      "arxiv_id": "2611.29969",
-      "url": "https://huggingface.co/papers/2611.29969",
-      "githubRepo": "https://github.com/xiaoqian-UQ/CARE-3D"
+      "arxiv_id": "2611.31155",
+      "url": "https://huggingface.co/papers/2611.31155",
+      "githubRepo": "https://github.com/dronperminov/rank23_3x3_dataset"
     },
     {
-      "title": "Evaluating Memanto on DolphinBench for AI Agents",
-      "summary": "Memanto, a memory agent using information-theoretic relevance scoring, completes more simulated workplace tasks at lower cost and latency than the strongest reported Mem0 configuration.",
-      "upvotes": 2,
-      "arxiv_id": "2611.28231",
-      "url": "https://huggingface.co/papers/2611.28231",
-      "githubRepo": "https://github.com/moorcheh-ai/memanto-benchmark"
-    },
-    {
-      "title": "Look Back: Reinforcement Learning with Counterfactual World Models",
-      "summary": "Counterfactual world models that predict alternative outcomes from observed trajectories under the same environmental randomness enable a policy gradient estimator using counterfactual returns as baselines, improving policy learning when environmental dynamics are harder to predict than action effects.",
+      "title": "Pretrained Tabular Features and the Measurement of Financial Proximity",
+      "summary": "Using frozen internal representations of tabular foundation models as financial dissimilarity measures in a spatial asset-pricing model yields positive estimated gains over direct disclosure distance once broad SEC filing data are included.",
       "upvotes": 0,
-      "arxiv_id": "2611.29259",
-      "url": "https://huggingface.co/papers/2611.29259",
-      "githubRepo": "https://github.com/ToghrulAbbasov19/look-back"
+      "arxiv_id": "2611.31491",
+      "url": "https://huggingface.co/papers/2611.31491",
+      "githubRepo": "https://github.com/marcusinthesky/free-foundations"
     },
     {
-      "title": "Single-Database Rewards Are Hackable: Counterfactual Execution for Trustworthy Text-to-SQL RL",
-      "summary": "A counterfactual-database reward for reinforcement learning text-to-SQL agents reduces full payment to buggy queries and reward hacks, though training with its mean form did not improve in-domain accuracy in a controlled GRPO comparison.",
-      "upvotes": 4,
-      "arxiv_id": "2611.34363",
-      "url": "https://huggingface.co/papers/2611.34363",
-      "githubRepo": "https://github.com/RishiiGamer2201/counterfactual-sql-rewards"
-    },
-    {
-      "title": "Entangle: Scaling Human-Video In-Context World-Action Models across Unseen Tasks and Contexts",
-      "summary": "In-context learning (ICL) enables foundation models to perform unseen tasks from context without parameter updates. In robotic manipulation, a human video provi...",
-      "upvotes": 3,
-      "arxiv_id": "2611.28732",
-      "url": "https://huggingface.co/papers/2611.28732",
+      "title": "Guarding with Judgment: Learning to Intervene for Multimodal Safety",
+      "summary": "When visual context makes an ordinary request unsafe to answer as asked, a blanket refusal may leave the user's need unresolved. Choosing how to help requires d...",
+      "upvotes": 1,
+      "arxiv_id": "2611.28849",
+      "url": "https://huggingface.co/papers/2611.28849",
       "githubRepo": null
+    },
+    {
+      "title": "What a Forecasting Leaderboard Can Establish: Resolution Reporting for Zero-Shot Time-Series Models",
+      "summary": "A tool called Vernier measures the smallest score difference a time-series forecasting leaderboard can distinguish, showing that most boards cannot separate top entries and that ranking order can change with pool composition.",
+      "upvotes": 35,
+      "arxiv_id": "2611.31619",
+      "url": "https://huggingface.co/papers/2611.31619",
+      "githubRepo": "https://github.com/therealram18/vernier"
     }
   ],
   "sources": [

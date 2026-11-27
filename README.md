@@ -54,13 +54,13 @@ The artificial intelligence landscape moves at breakneck speed. Generic link dir
 ### ⚡ AiVerse AI Radar (2026-11-27)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **NVIDIA Nemotron Nano 9B V2** (`Model`), **inclusionAI: LingSante 3.1 Air VL** (`Model`), **Inkling-2-Mini-abliterated-GGUF** (`Model`), **imagine** (`Platform`), **tesla-fsd-drive-5min** (`Dataset`) |
+| 📥 **Queued for Review** | **ERNIE 5.5 Flash Preview** (`Model`), **Google: Gemini Omni 1.2 Flash** (`Model`), **Inkling-2-Mini-GSQ-RCO-GGUF** (`Model`), **youtube** (`Dataset`) |
 | 🌟 **Tool of the Day** | **TensorFlow** (Google DeepMind) — [Explore](https://www.tensorflow.org) |
 | 🗄️ **Catalog Entries** | **766** AI assets tracked (368 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
-| 📜 **Top Daily Paper** | [CARE-3D: Reinforcement Learning for Evidence Groun...](https://huggingface.co/papers/2611.29969) |
+| 📜 **Top Daily Paper** | [InitFree-SfM: When Initialization-Free Bundle Adju...](https://huggingface.co/papers/2611.31516) |
 | 🛡️ **Catalog Links Checked** | **24/25** operational |
-| 🕒 **Last Synchronized** | `Fri, 27 Nov 2026 00:55:23 GMT` |
+| 🕒 **Last Synchronized** | `Fri, 27 Nov 2026 10:25:39 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

@@ -1,5 +1,53 @@
 [
   {
+    "id": "action_1795775139075_6phfh",
+    "created_at": "2026-11-27T10:25:39.075Z",
+    "timestamp": "2026-11-27T10:25:39.075Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 4 new asset(s) queued",
+    "details": "Ingested 4 asset(s): ERNIE 5.5 Flash Preview, Google: Gemini Omni 1.2 Flash, Inkling-2-Mini-GSQ-RCO-GGUF, youtube. Checked health for 25 links (1 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 39713ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 4,
+      "newlyIngested": [
+        {
+          "name": "ERNIE 5.5 Flash Preview",
+          "type": "Model",
+          "org": "Baidu"
+        },
+        {
+          "name": "Google: Gemini Omni 1.2 Flash",
+          "type": "Model",
+          "org": "google"
+        },
+        {
+          "name": "Inkling-2-Mini-GSQ-RCO-GGUF",
+          "type": "Model",
+          "org": "ISTA-DASLab"
+        },
+        {
+          "name": "youtube",
+          "type": "Dataset",
+          "org": "common-pile"
+        }
+      ],
+      "brokenLinks": 1,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 39713,
+      "runId": "45981879294",
+      "runNumber": "157",
+      "sha": "17e80d9",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795740923905_omid1",
     "created_at": "2026-11-27T00:55:23.905Z",
     "timestamp": "2026-11-27T00:55:23.905Z",

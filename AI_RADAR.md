@@ -2,48 +2,41 @@
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Fri, 27 Nov 2026 00:55:23 GMT`*
+*Last Synchronized: `Fri, 27 Nov 2026 10:25:39 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (5)
+## 📥 Newly Queued Assets for Review (4)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **NVIDIA Nemotron Nano 9B V2** (`Model` • *NVIDIA*)
-> Frontier NLP model by NVIDIA benchmarked on Artificial Analysis and a verified 131k Context window.
+### **ERNIE 5.5 Flash Preview** (`Model` • *Baidu*)
+> Frontier Research model by Baidu benchmarked on Artificial Analysis with an Intelligence Index of 31.2872256906399 and a verified 1024k Context window.
 
-- 🏷️ **Domain & License**: `NLP` • `Open Weights` (2026)
-- ⚡ **Metrics**: `Context Window: 131k Context, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2](https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2)
+- 🏷️ **Domain & License**: `Research` • `Open Weights` (2026)
+- ⚡ **Metrics**: `Context Window: 1024k Context, Intelligence Index: 31.2872256906399, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/ernie-5-5-flash](https://artificialanalysis.ai/models/ernie-5-5-flash)
 
-### **inclusionAI: LingSante 3.1 Air VL** (`Model` • *inclusionai*)
-> LingSante 3.1 Air VL is inclusionAI's medical vision-language model, a 124B total / 5.5B active MoE. It takes text and up to 16 images (scans, skin and meal photos, lab...
+### **Google: Gemini Omni 1.2 Flash** (`Model` • *google*)
+> Gemini Omni 1.2 Flash is Google's native multimodal video generation and editing model, the successor to Gemini Omni 1.1 Flash. It generates clips up to 15 seconds long with native
 
 - 🏷️ **Domain & License**: `Multimodal` • `Proprietary` (2026)
 - ⚡ **Metrics**: `Context Window: 131k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/inclusionai/lingsante-3.1-air-vl](https://openrouter.ai/inclusionai/lingsante-3.1-air-vl)
+- 🔗 **Resource Link**: [https://openrouter.ai/google/gemini-omni-1.2-flash](https://openrouter.ai/google/gemini-omni-1.2-flash)
 
-### **Inkling-2-Mini-abliterated-GGUF** (`Model` • *orcarouter*)
-> High-performance NLP open-weights model by orcarouter, trending with over 292 community likes and 12,157 downloads on Hugging Face.
+### **Inkling-2-Mini-GSQ-RCO-GGUF** (`Model` • *ISTA-DASLab*)
+> High-performance NLP open-weights model by ISTA-DASLab, trending with over 171 community likes and 0 downloads on Hugging Face.
 
 - 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 132, Likes: 292, Downloads: 12,157`
-- 🔗 **Resource Link**: [https://huggingface.co/orcarouter/Inkling-2-Mini-abliterated-GGUF](https://huggingface.co/orcarouter/Inkling-2-Mini-abliterated-GGUF)
+- ⚡ **Metrics**: `Trending Score: 140, Likes: 171, Downloads: 0`
+- 🔗 **Resource Link**: [https://huggingface.co/ISTA-DASLab/Inkling-2-Mini-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Inkling-2-Mini-GSQ-RCO-GGUF)
 
-### **imagine** (`Platform` • *cfahlgren1*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by cfahlgren1. Trending with 22 community stars.
+### **youtube** (`Dataset` • *common-pile*)
+> Creative Commons YouTube 	 	 		 	 	 		Description 	 YouTube is large-scale video-sharing platform where users have the option of uploading content under a CC BY license (99 likes, 1,435 downloads).
 
-- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 21, Community Likes: 22`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/cfahlgren1/imagine](https://huggingface.co/spaces/cfahlgren1/imagine)
-
-### **tesla-fsd-drive-5min** (`Dataset` • *cfahlgren1*)
-> Tesla FSD Drive 	 Five continuous minutes · six cameras · per-frame telemetry Top: left pillar · front · right pillarBottom: left repeater · rear · right repeater (76 likes, 2,232 downloads).
-
-- 🏷️ **Domain & License**: `NLP` • `CC-BY-4.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 7, Likes: 76, Downloads: 2,232`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/cfahlgren1/tesla-fsd-drive-5min](https://huggingface.co/datasets/cfahlgren1/tesla-fsd-drive-5min)
+- 🏷️ **Domain & License**: `NLP` • `Open Data` (2026)
+- ⚡ **Metrics**: `Trending Score: 6, Likes: 99, Downloads: 1,435`
+- 🔗 **Resource Link**: [https://huggingface.co/datasets/common-pile/youtube](https://huggingface.co/datasets/common-pile/youtube)
 
 ---
 
@@ -68,10 +61,10 @@
 | **inclusionAI: LingSante 3.1 Air VL** | `OpenRouter` | inclusionai (Cloud Model API) | ❤️ 120 · 📥 131,072 | [View](https://openrouter.ai/inclusionai/lingsante-3.1-air-vl) |
 | **Upstage: Solar Mini 4.5 (Preview)** | `OpenRouter` | upstage (Cloud Model API) | ❤️ 120 · 📥 524,288 | [View](https://openrouter.ai/upstage/solar-mini-4-5) |
 | **Upstage: Solar Pro 4 Contributor** | `OpenRouter` | upstage (Cloud Model API) | ❤️ 120 · 📥 524,288 | [View](https://openrouter.ai/upstage/solar-pro-4-contributor) |
-| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 6,254 · 📥 96,527 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
-| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 1,494 · 📥 2,445,633 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
-| **AtomicChat/Inkling-2-Mini-Uncensored-GGUF** | `Hugging Face` | AtomicChat (image-text-to-text) | ❤️ 933 · 📥 762,491 | [View](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) |
-| **inworld/voice-isolator** | `Hugging Face` | inworld (audio-to-audio) | ❤️ 962 · 📥 15,244 | [View](https://huggingface.co/inworld/voice-isolator) |
+| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 6,352 · 📥 96,527 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
+| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 1,529 · 📥 2,445,633 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
+| **SulphurAI/Sulphur-3** | `Hugging Face` | SulphurAI (open-weights) | ❤️ 1,282 · 📥 189,735 | [View](https://huggingface.co/SulphurAI/Sulphur-3) |
+| **AtomicChat/Inkling-2-Mini-Uncensored-GGUF** | `Hugging Face` | AtomicChat (image-text-to-text) | ❤️ 964 · 📥 762,491 | [View](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) |
 
 
 ---
@@ -81,11 +74,11 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **CARE-3D: Reinforcement Learning for Evidence Grounded Agentic Reasoning in Situated 3D Scenes** | 👍 0 | CARE-3D is a reinforcement post-training framework that combines supervised fine-tuning, Group Relative Policy Optimization, counterfactual evidence attribution, and group coverage sampling to improve adaptive grounded 3D reasoning and tool use. | [Read](https://huggingface.co/papers/2611.29969) |
-| **Evaluating Memanto on DolphinBench for AI Agents** | 👍 2 | Memanto, a memory agent using information-theoretic relevance scoring, completes more simulated workplace tasks at lower cost and latency than the strongest reported Mem0 configuration. | [Read](https://huggingface.co/papers/2611.28231) |
-| **Look Back: Reinforcement Learning with Counterfactual World Models** | 👍 0 | Counterfactual world models that predict alternative outcomes from observed trajectories under the same environmental randomness enable a policy gradient estimator using counterfactual returns as baselines, improving policy learning when environmental dynamics are harder to predict than action effects. | [Read](https://huggingface.co/papers/2611.29259) |
-| **Single-Database Rewards Are Hackable: Counterfactual Execution for Trustworthy Text-to-SQL RL** | 👍 4 | A counterfactual-database reward for reinforcement learning text-to-SQL agents reduces full payment to buggy queries and reward hacks, though training with its mean form did not improve in-domain accuracy in a controlled GRPO comparison. | [Read](https://huggingface.co/papers/2611.34363) |
-| **Entangle: Scaling Human-Video In-Context World-Action Models across Unseen Tasks and Contexts** | 👍 3 | In-context learning (ICL) enables foundation models to perform unseen tasks from context without parameter updates. In robotic manipulation, a human video provi... | [Read](https://huggingface.co/papers/2611.28732) |
+| **InitFree-SfM: When Initialization-Free Bundle Adjustment meets Learned Structure-from-Motion** | 👍 1 | Initialization-free bundle adjustment (InitFree BA) aims to jointly recover camera poses and scene structure without requiring an initial global estimate. It is... | [Read](https://huggingface.co/papers/2611.31516) |
+| **So Many Ways to Multiply 3times3 Matrices: A Large Dataset of Rank-23 Schemes** | 👍 0 | A publicly available dataset of 62029 rank-23 schemes for 3times3 matrix multiplication is presented. Every scheme in it has its own rank pattern, an invariant ... | [Read](https://huggingface.co/papers/2611.31155) |
+| **Pretrained Tabular Features and the Measurement of Financial Proximity** | 👍 0 | Using frozen internal representations of tabular foundation models as financial dissimilarity measures in a spatial asset-pricing model yields positive estimated gains over direct disclosure distance once broad SEC filing data are included. | [Read](https://huggingface.co/papers/2611.31491) |
+| **Guarding with Judgment: Learning to Intervene for Multimodal Safety** | 👍 1 | When visual context makes an ordinary request unsafe to answer as asked, a blanket refusal may leave the user's need unresolved. Choosing how to help requires d... | [Read](https://huggingface.co/papers/2611.28849) |
+| **What a Forecasting Leaderboard Can Establish: Resolution Reporting for Zero-Shot Time-Series Models** | 👍 35 | A tool called Vernier measures the smallest score difference a time-series forecasting leaderboard can distinguish, showing that most boards cannot separate top entries and that ranking order can change with pool composition. | [Read](https://huggingface.co/papers/2611.31619) |
 
 
 ---
