@@ -3,6 +3,15 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { logActionExecution } from './logger.js';
+import {
+  canonicalEntryKey,
+  cleanEntryDisplayName,
+  cleanEntryText,
+  isUnnecessaryOrSpamEntry,
+  normalizeLicense,
+  normalizeOrgName,
+  sanitizeEntryRecord,
+} from '../src/lib/catalogCleanupCore.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -271,6 +280,7 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
   const added = [];
   const existingEntries = readRawEntries();
   const existingNames = new Set(existingEntries.map(e => (e.name || '').toLowerCase().trim()));
+  const existingCanonicalKeys = new Set(existingEntries.map(e => canonicalEntryKey(e.name || '')).filter(Boolean));
   const existingUrls = new Set(existingEntries.map(e => (e.url || '').toLowerCase().trim()));
 
   // Fetch Supabase approved entries so we never duplicate or re-queue approved models
@@ -279,14 +289,17 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
     try {
       const cleanUrl = supabaseUrl.replace(/\/+$/, '');
       const sRes = await fetch(`${cleanUrl}/rest/v1/entries?select=name,url,approved`, {
-        headers: { apikey: anonKey, Authorization: `Bearer ${anonKey}` }
+        headers: { apikey: keyToUse, Authorization: `Bearer ${keyToUse}` }
       });
       if (sRes.ok) {
         const dbEntries = await sRes.json();
         if (Array.isArray(dbEntries)) {
           dbEntries.forEach(e => {
             if (e.approved !== false) {
-              if (e.name) existingNames.add(e.name.toLowerCase().trim());
+              if (e.name) {
+                existingNames.add(e.name.toLowerCase().trim());
+                existingCanonicalKeys.add(canonicalEntryKey(e.name));
+              }
               if (e.url) existingUrls.add(e.url.toLowerCase().trim());
             }
           });
@@ -297,20 +310,27 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
     }
   }
 
-  // Prune items already approved in catalog or Supabase from pending_pulse_requests.json
+  // Prune items already approved in catalog or Supabase or invalid/spam from pending_pulse_requests.json
   const pendingFile = path.join(publicDataDir, 'pending_pulse_requests.json');
   if (fs.existsSync(pendingFile)) {
     try {
       let pendingList = JSON.parse(fs.readFileSync(pendingFile, 'utf-8'));
       if (Array.isArray(pendingList)) {
         const originalLen = pendingList.length;
-        const unapprovedPending = pendingList.filter(p => !existingNames.has((p.name || '').toLowerCase().trim()));
+        const unapprovedPending = pendingList.filter(p => {
+          if (!p || !p.name || isUnnecessaryOrSpamEntry(p)) return false;
+          const canon = canonicalEntryKey(p.name);
+          return !existingNames.has(p.name.toLowerCase().trim()) && !existingCanonicalKeys.has(canon);
+        });
         if (unapprovedPending.length !== originalLen) {
-          console.log(`[Ingest] Pruned ${originalLen - unapprovedPending.length} already-approved entries from pending_pulse_requests.json.`);
+          console.log(`[Ingest] Pruned ${originalLen - unapprovedPending.length} already-approved or invalid entries from pending_pulse_requests.json.`);
           fs.writeFileSync(pendingFile, JSON.stringify(unapprovedPending, null, 2), 'utf-8');
         }
         unapprovedPending.forEach(p => {
-          if (p.name) existingNames.add(p.name.toLowerCase().trim());
+          if (p.name) {
+            existingNames.add(p.name.toLowerCase().trim());
+            existingCanonicalKeys.add(canonicalEntryKey(p.name));
+          }
           if (p.url) existingUrls.add(p.url.toLowerCase().trim());
         });
       }
@@ -318,7 +338,23 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
   }
 
   const isAlreadyPresent = (name, url) => {
-    return existingNames.has((name || '').toLowerCase().trim()) || existingUrls.has((url || '').toLowerCase().trim());
+    const cleanName = cleanEntryDisplayName(name || '');
+    const canonKey = canonicalEntryKey(cleanName);
+    return (
+      existingNames.has((name || '').toLowerCase().trim()) ||
+      existingNames.has(cleanName.toLowerCase()) ||
+      (canonKey && existingCanonicalKeys.has(canonKey)) ||
+      existingUrls.has((url || '').toLowerCase().trim())
+    );
+  };
+
+  const markSeen = (name, url) => {
+    if (name) {
+      existingNames.add(name.toLowerCase().trim());
+      const canon = canonicalEntryKey(name);
+      if (canon) existingCanonicalKeys.add(canon);
+    }
+    if (url) existingUrls.add(url.toLowerCase().trim());
   };
 
   const headers = { 'User-Agent': 'AiVerse-PulseBot/2.0' };
@@ -329,45 +365,48 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
     let aaCount = 0;
     for (const m of aaModels) {
       if (aaCount >= maxModels) break;
-      if (isAlreadyPresent(m.name, m.url)) continue;
+      const cleanName = cleanEntryDisplayName(m.name);
+      const canonicalOrg = normalizeOrgName(m.org);
+      const draft = { name: m.name, org: canonicalOrg, url: m.url };
+      if (isUnnecessaryOrSpamEntry(draft) || isAlreadyPresent(cleanName, m.url)) continue;
 
       let task = "NLP";
-      const lower = m.name.toLowerCase();
+      const lower = cleanName.toLowerCase();
       if (lower.includes('code') || lower.includes('coder')) task = "AI Coding";
       else if (lower.includes('vision') || lower.includes('vl') || lower.includes('omni') || lower.includes('image')) task = "Multimodal";
       else if (m.isReasoning) task = "Research";
 
       const contextStr = m.context ? `${Math.round(m.context / 1000)}k Context` : '128k Context';
       const license = m.isOpenWeights ? "Open Weights" : "Proprietary";
+      const intelRounded = m.intelligence ? Math.round(m.intelligence * 10) / 10 : null;
 
-      const entry = {
-        name: m.name,
+      const entry = sanitizeEntryRecord({
+        name: cleanName,
         type: "Model",
-        summary: `Frontier ${task} model by ${m.org} benchmarked on Artificial Analysis${m.intelligence ? ' with an Intelligence Index of ' + m.intelligence : ''} and a verified ${contextStr} window.`,
+        summary: `Frontier ${task} model by ${canonicalOrg} benchmarked on Artificial Analysis${intelRounded ? ' with an Intelligence Index of ' + intelRounded : ''} and a verified ${contextStr} window.`,
         task,
         license,
         year: new Date().getFullYear(),
-        org: m.org,
+        org: canonicalOrg,
         size: `${contextStr} · ${m.isOpenWeights ? 'Open Model' : 'Proprietary Model'}`,
-        architecture: `${m.isOpenWeights ? 'Open-weights' : 'Proprietary'} frontier neural architecture developed by ${m.org}, featuring native ${contextStr} token window support and optimized reasoning chains.`,
+        architecture: `${m.isOpenWeights ? 'Open-weights' : 'Proprietary'} frontier neural architecture developed by ${canonicalOrg}, featuring native ${contextStr} token window support and optimized reasoning chains.`,
         usage: `Explore benchmarks and inference providers directly on Artificial Analysis: ${m.url}`,
-        benchmarks: `Context Window: ${contextStr}${m.intelligence ? ', Intelligence Index: ' + m.intelligence : ''}, Benchmarked on Artificial Analysis Leaderboard`,
+        benchmarks: `Context Window: ${contextStr}${intelRounded ? ', Intelligence Index: ' + intelRounded : ''}, Benchmarked on Artificial Analysis Leaderboard`,
         limitations: m.isOpenWeights ? 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.' : 'Cloud API access subject to provider rate limits and compute quotas.',
         popular: false,
         approved: false,
         submitted_by: 'daily-pulse-bot',
         url: m.url,
         citations: [
-          { text: `${m.name} on Artificial Analysis Benchmark`, url: m.url },
-          { text: `${m.name} Inference Providers`, url: `${m.url}/providers` }
+          { text: `${cleanName} on Artificial Analysis Benchmark`, url: m.url },
+          { text: `${cleanName} Inference Providers`, url: `${m.url}/providers` }
         ]
-      };
+      });
 
       added.push(entry);
-      existingNames.add(m.name.toLowerCase());
-      existingUrls.add(m.url.toLowerCase());
+      markSeen(entry.name, m.url);
       aaCount++;
-      console.log(`[Ingest] Discovered new model via Artificial Analysis: ${m.name} (${m.org})`);
+      console.log(`[Ingest] Discovered new model via Artificial Analysis: ${entry.name} (${entry.org})`);
     }
   } catch (err) {
     console.warn('[Ingest] Artificial Analysis model ingestion warning:', err.message);
@@ -379,25 +418,31 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
     let orCount = 0;
     for (const om of orModels) {
       if (orCount >= maxModels) break;
-      if (isAlreadyPresent(om.name, om.url)) continue;
+      const cleanName = cleanEntryDisplayName(om.name);
+      const canonicalOrg = normalizeOrgName(om.org);
+      const draft = { name: om.name, org: canonicalOrg, url: om.url, summary: om.description };
+      if (isUnnecessaryOrSpamEntry(draft) || isAlreadyPresent(cleanName, om.url)) continue;
 
       let task = "NLP";
       const desc = (om.description || '').toLowerCase();
-      const nameLower = om.name.toLowerCase();
+      const nameLower = cleanName.toLowerCase();
       if (nameLower.includes('code') || desc.includes('coding')) task = "AI Coding";
       else if (nameLower.includes('vision') || desc.includes('multimodal') || desc.includes('image')) task = "Multimodal";
 
       const contextStr = om.context_length ? `${Math.round(om.context_length / 1000)}k Context` : '128k Context';
       const license = desc.includes('open-weights') || desc.includes('apache') || desc.includes('mit') ? 'Open Weights' : 'Proprietary';
+      const cleanedOrDesc = cleanEntryText(om.description);
 
-      const entry = {
-        name: om.name,
+      const entry = sanitizeEntryRecord({
+        name: cleanName,
         type: "Model",
-        summary: om.description ? om.description.slice(0, 180) : `High-performance ${task} foundation model by ${om.org} available on OpenRouter.`,
+        summary: cleanedOrDesc && cleanedOrDesc.length >= 30
+          ? cleanedOrDesc
+          : `${task} foundation model by ${canonicalOrg} available via OpenRouter API with a ${contextStr} window.`,
         task,
         license,
         year: new Date().getFullYear(),
-        org: om.org,
+        org: canonicalOrg,
         size: `${contextStr} · Available via API`,
         architecture: `Modern foundation model hosted on OpenRouter with native ${contextStr} support and structured output generation.`,
         usage: `import OpenAI from "openai";\nconst openai = new OpenAI({\n  baseURL: "https://openrouter.ai/api/v1",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: "${om.id}",\n  messages: [{ role: "user", content: "Hello!" }]\n});`,
@@ -408,15 +453,14 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
         submitted_by: 'daily-pulse-bot',
         url: om.url,
         citations: [
-          { text: `${om.name} on OpenRouter`, url: om.url }
+          { text: `${cleanName} on OpenRouter`, url: om.url }
         ]
-      };
+      });
 
       added.push(entry);
-      existingNames.add(om.name.toLowerCase());
-      existingUrls.add(om.url.toLowerCase());
+      markSeen(entry.name, om.url);
       orCount++;
-      console.log(`[Ingest] Discovered new model via OpenRouter: ${om.name} (${om.org})`);
+      console.log(`[Ingest] Discovered new model via OpenRouter: ${entry.name} (${entry.org})`);
     }
   } catch (err) {
     console.warn('[Ingest] OpenRouter model ingestion warning:', err.message);
@@ -432,60 +476,51 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
         if (modelCount >= maxModels) break;
         const modelName = m.id.includes('/') ? m.id.split('/')[1] : m.id;
         const modelUrl = `https://huggingface.co/${m.id}`;
+        const rawAuthor = m.author || (m.id.includes('/') ? m.id.split('/')[0] : 'Open Source');
+        const org = normalizeOrgName(rawAuthor);
 
+        if (isUnnecessaryOrSpamEntry({ name: modelName, org, url: modelUrl })) continue;
         if (isAlreadyPresent(modelName, modelUrl)) continue;
-        if ((m.likes || 0) < 25 && (m.downloads || 0) < 250) continue;
+        if ((m.likes || 0) < 50 || (m.downloads || 0) < 500) continue;
 
         let task = "NLP";
         const p = m.pipeline_tag || "";
         if (p.includes("image-text") || p.includes("multimodal")) task = "Multimodal";
         else if (p.includes("text-to-image") || p.includes("image-generation")) task = "Image Generation";
         else if (p.includes("text-to-video") || p.includes("video")) task = "Video Generation";
-        else if (p.includes("audio") || p.includes("speech") || p.includes("voice")) task = "Audio";
+        else if (p.includes("audio") || p.includes("speech") || p.includes("voice") || p.includes("automatic-speech-recognition")) task = "Audio";
         else if (p.includes("code")) task = "AI Coding";
-        else if (p.includes("vision")) task = "Computer Vision";
+        else if (p.includes("vision") || p.includes("depth") || p.includes("segmentation") || p.includes("detection")) task = "Computer Vision";
 
-        let license = "Open Weights";
         const tags = m.tags || [];
         const licTag = tags.find(t => t.startsWith("license:"));
-        if (licTag) license = licTag.replace("license:", "").toUpperCase();
+        const license = normalizeLicense(licTag ? licTag.replace("license:", "") : "Open Weights", "Model");
 
         const sizeMatch = modelName.match(/(\d+(\.\d+)?[BMKbmk]|\d+x\d+[BMKbmk])/);
         const size = sizeMatch ? `${sizeMatch[0].toUpperCase()} params` : "Open Weights";
 
-        const rawAuthor = m.author || (m.id.includes('/') ? m.id.split('/')[0] : 'Open Source');
-        let org = rawAuthor;
-        if (rawAuthor.toLowerCase() === 'deepseek-ai') org = 'DeepSeek';
-        else if (rawAuthor.toLowerCase() === 'qwen') org = 'Alibaba (Qwen)';
-        else if (rawAuthor.toLowerCase() === 'meta-llama') org = 'Meta AI';
-        else if (rawAuthor.toLowerCase() === 'mistralai') org = 'Mistral AI';
-        else if (rawAuthor.toLowerCase() === 'microsoft') org = 'Microsoft';
-        else if (rawAuthor.toLowerCase() === 'google') org = 'Google';
-        else if (rawAuthor.toLowerCase() === 'zai-org') org = 'Zhipu AI';
-
-        const entry = {
+        const entry = sanitizeEntryRecord({
           name: modelName,
           type: "Model",
-          summary: `High-performance ${task} open-weights model by ${org}, trending with over ${(m.likes || 0).toLocaleString()} community likes and ${(m.downloads || 0).toLocaleString()} downloads on Hugging Face.`,
+          summary: `Open-weights ${task} model developed by ${org}${size !== "Open Weights" ? ` (${size})` : ""}.`,
           task,
           license,
           year: new Date().getFullYear(),
           org,
           size,
-          architecture: `${org} ${p ? p.replace(/-/g, ' ') : 'transformer'} architecture with community-tuned weights.`,
+          architecture: `${org} ${p ? p.replace(/-/g, ' ') : 'transformer'} architecture with open weights.`,
           usage: `from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained("${m.id}", device_map="auto")\ntokenizer = AutoTokenizer.from_pretrained("${m.id}")`,
-          benchmarks: `Trending Score: ${Math.round(m.trendingScore || 0)}, Likes: ${(m.likes || 0).toLocaleString()}, Downloads: ${(m.downloads || 0).toLocaleString()}`,
+          benchmarks: `Hugging Face Likes: ${(m.likes || 0).toLocaleString()}, Downloads: ${(m.downloads || 0).toLocaleString()}`,
           limitations: `Requires GPU VRAM or quantization for efficient local deployment.`,
           popular: false,
           approved: false,
           submitted_by: 'daily-pulse-bot',
           url: modelUrl,
           citations: [{ text: `${m.id} on Hugging Face`, url: modelUrl }]
-        };
+        });
 
         added.push(entry);
-        existingNames.add(modelName.toLowerCase());
-        existingUrls.add(modelUrl.toLowerCase());
+        markSeen(entry.name, modelUrl);
         modelCount++;
       }
     }
@@ -503,13 +538,14 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
         if (platformCount >= maxPlatforms) break;
         const spaceName = s.id.includes('/') ? s.id.split('/')[1] : s.id;
         const spaceUrl = `https://huggingface.co/spaces/${s.id}`;
+        const rawOrg = s.author || (s.id.includes('/') ? s.id.split('/')[0] : 'Community');
+        const org = normalizeOrgName(rawOrg);
 
+        if (isUnnecessaryOrSpamEntry({ name: spaceName, org, url: spaceUrl })) continue;
         if (isAlreadyPresent(spaceName, spaceUrl)) continue;
-        if ((s.likes || 0) < 20) continue;
+        if ((s.likes || 0) < 50) continue;
 
-        const org = s.author || (s.id.includes('/') ? s.id.split('/')[0] : 'Community');
         const tags = s.tags || [];
-        
         let task = "Multimodal";
         const tagString = tags.join(' ').toLowerCase();
         if (tagString.includes('image') || tagString.includes('diffusion')) task = "Image Generation";
@@ -520,10 +556,10 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
 
         const sdk = s.sdk ? s.sdk.toUpperCase() : 'Web / Cloud';
 
-        const entry = {
+        const entry = sanitizeEntryRecord({
           name: spaceName,
           type: "Platform",
-          summary: `Interactive AI web platform and demonstration hosted on Hugging Face Spaces by ${org}. Trending with ${(s.likes || 0).toLocaleString()} community stars.`,
+          summary: `Interactive ${task.toLowerCase()} showcase hosted by ${org} on Hugging Face Spaces.`,
           task,
           license: "Community Hosted",
           year: new Date().getFullYear(),
@@ -531,18 +567,17 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
           size: `${sdk} Platform`,
           architecture: `${sdk} cloud runtime container with interactive browser interface.`,
           usage: `Launch and explore the platform directly in your browser: ${spaceUrl}`,
-          benchmarks: `Trending Score: ${Math.round(s.trendingScore || 0)}, Community Likes: ${(s.likes || 0).toLocaleString()}`,
+          benchmarks: `Hugging Face Space Likes: ${(s.likes || 0).toLocaleString()}`,
           limitations: `Cloud container subject to community traffic quotas and queue times.`,
           popular: false,
           approved: false,
           submitted_by: 'daily-pulse-bot',
           url: spaceUrl,
           citations: [{ text: `${s.id} on Hugging Face Spaces`, url: spaceUrl }]
-        };
+        });
 
         added.push(entry);
-        existingNames.add(spaceName.toLowerCase());
-        existingUrls.add(spaceUrl.toLowerCase());
+        markSeen(entry.name, spaceUrl);
         platformCount++;
       }
     }
@@ -561,12 +596,13 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
         if (fwCount >= maxFrameworks) break;
         const name = repo.name;
         const url = repo.html_url;
+        const org = normalizeOrgName(repo.owner ? repo.owner.login : 'Open Source');
 
+        if (isUnnecessaryOrSpamEntry({ name, org, url })) continue;
         if (isAlreadyPresent(name, url)) continue;
-        if ((repo.stargazers_count || 0) < 300) continue;
+        if ((repo.stargazers_count || 0) < 500) continue;
 
-        const org = repo.owner ? repo.owner.login : 'Open Source';
-        const license = repo.license?.spdx_id || 'Open Source';
+        const license = normalizeLicense(repo.license?.spdx_id || 'Open Source', 'Framework');
         const topics = (repo.topics || []).join(' ').toLowerCase();
 
         let task = "MLOps";
@@ -575,10 +611,14 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
         else if (topics.includes('code')) task = "AI Coding";
         else if (topics.includes('audio')) task = "Audio";
 
-        const entry = {
+        const cleanedRepoDesc = cleanEntryText(repo.description || '');
+
+        const entry = sanitizeEntryRecord({
           name,
           type: "Framework",
-          summary: repo.description ? repo.description.slice(0, 200) : `Open-source AI framework by ${org} for extensible machine learning pipelines.`,
+          summary: cleanedRepoDesc && cleanedRepoDesc.length >= 25
+            ? cleanedRepoDesc
+            : `Open-source AI framework by ${org} for extensible machine learning pipelines.`,
           task,
           license,
           year: new Date().getFullYear(),
@@ -593,11 +633,10 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
           submitted_by: 'daily-pulse-bot',
           url,
           citations: [{ text: `${repo.full_name} on GitHub`, url }]
-        };
+        });
 
         added.push(entry);
-        existingNames.add(name.toLowerCase());
-        existingUrls.add(url.toLowerCase());
+        markSeen(entry.name, url);
         fwCount++;
       }
     }
@@ -615,14 +654,16 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
         if (dsCount >= maxDatasets) break;
         const dsName = d.id.includes('/') ? d.id.split('/')[1] : d.id;
         const dsUrl = `https://huggingface.co/datasets/${d.id}`;
+        const rawOrg = d.author || (d.id.includes('/') ? d.id.split('/')[0] : 'Research Community');
+        const org = normalizeOrgName(rawOrg);
 
+        if (isUnnecessaryOrSpamEntry({ name: dsName, org, url: dsUrl })) continue;
         if (isAlreadyPresent(dsName, dsUrl)) continue;
-        if ((d.likes || 0) < 15 && (d.downloads || 0) < 150) continue;
+        if ((d.likes || 0) < 25 || (d.downloads || 0) < 250) continue;
 
-        const org = d.author || (d.id.includes('/') ? d.id.split('/')[0] : 'Research Community');
         const tags = d.tags || [];
         const licTag = tags.find(t => t.startsWith("license:"));
-        const license = licTag ? licTag.replace("license:", "").toUpperCase() : "Open Data";
+        const license = normalizeLicense(licTag ? licTag.replace("license:", "") : "Open Data", "Dataset");
 
         let task = "NLP";
         const tagStr = tags.join(' ').toLowerCase();
@@ -634,14 +675,15 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
         const sizeTag = tags.find(t => t.startsWith("size_categories:"));
         const size = sizeTag ? sizeTag.replace("size_categories:", "") : "Curated Dataset";
 
-        const cleanDesc = d.description
-          ? d.description.replace(/[\r\n]+/g, ' ').replace(/[#*`]/g, '').slice(0, 180).trim()
-          : `High-quality ${task} dataset by ${org} for benchmarking and foundation model training.`;
+        const cleanDesc = cleanEntryText(d.description || '');
+        const summary = cleanDesc && cleanDesc.length >= 30
+          ? cleanDesc
+          : `${task} dataset curated by ${org} for benchmarking and foundation model training.`;
 
-        const entry = {
+        const entry = sanitizeEntryRecord({
           name: dsName,
           type: "Dataset",
-          summary: `${cleanDesc} (${(d.likes || 0).toLocaleString()} likes, ${(d.downloads || 0).toLocaleString()} downloads).`,
+          summary,
           task,
           license,
           year: new Date().getFullYear(),
@@ -649,18 +691,17 @@ async function ingestNewAssets({ maxModels = 1, maxPlatforms = 1, maxFrameworks 
           size,
           architecture: `Parquet / Arrow structured tabular & tokenized dataset.`,
           usage: `from datasets import load_dataset\n\ndataset = load_dataset("${d.id}")`,
-          benchmarks: `Trending Score: ${Math.round(d.trendingScore || 0)}, Likes: ${(d.likes || 0).toLocaleString()}, Downloads: ${(d.downloads || 0).toLocaleString()}`,
+          benchmarks: `Hugging Face Likes: ${(d.likes || 0).toLocaleString()}, Downloads: ${(d.downloads || 0).toLocaleString()}`,
           limitations: `Subject to licensing compliance and dataset-specific terms of use.`,
           popular: false,
           approved: false,
           submitted_by: 'daily-pulse-bot',
           url: dsUrl,
           citations: [{ text: `${d.id} on Hugging Face Datasets`, url: dsUrl }]
-        };
+        });
 
         added.push(entry);
-        existingNames.add(dsName.toLowerCase());
-        existingUrls.add(dsUrl.toLowerCase());
+        markSeen(entry.name, dsUrl);
         dsCount++;
       }
     }
@@ -724,7 +765,7 @@ async function getCatalogStats() {
     for (const e of entries) {
       byType[e.type] = (byType[e.type] || 0) + 1;
       byTask[e.task] = (byTask[e.task] || 0) + 1;
-      const lic = e.license || 'Unknown';
+      const lic = normalizeLicense(e.license, e.type);
       byLicense[lic] = (byLicense[lic] || 0) + 1;
       if (e.popular) popularCount++;
       if (e.url && typeof e.url === 'string' && e.url.startsWith('http')) {
@@ -817,19 +858,26 @@ async function fetchTrendingAI() {
   // 2a. Artificial Analysis Benchmark Leaders
   try {
     const aaModels = await fetchArtificialAnalysisModels();
-    const topAA = aaModels.slice(0, 3);
-    for (const m of topAA) {
+    const seenAA = new Set();
+    let countAA = 0;
+    for (const m of aaModels) {
+      if (countAA >= 3) break;
+      const cleanName = cleanEntryDisplayName(m.name);
+      const key = canonicalEntryKey(cleanName);
+      if (isUnnecessaryOrSpamEntry({ name: m.name, org: m.org, url: m.url }) || seenAA.has(key)) continue;
+      seenAA.add(key);
       result.models.push({
-        id: m.name,
-        author: m.org,
+        id: cleanName,
+        author: normalizeOrgName(m.org),
         likes: m.intelligence ? Math.round(m.intelligence * 10) : 95,
         downloads: m.context || 128000,
         pipeline_tag: m.isReasoning ? 'Reasoning Frontier' : 'Frontier Leaderboard',
         url: m.url,
         source: 'Artificial Analysis'
       });
+      countAA++;
     }
-    console.log(`[Trending] Loaded ${topAA.length} models from Artificial Analysis.`);
+    console.log(`[Trending] Loaded ${countAA} models from Artificial Analysis.`);
   } catch (e) {
     console.warn('[Trending] Failed to fetch Artificial Analysis models:', e.message);
   }
@@ -837,38 +885,51 @@ async function fetchTrendingAI() {
   // 2b. OpenRouter Active APIs
   try {
     const orModels = await fetchOpenRouterModels();
-    const topOR = orModels.slice(0, 3);
-    for (const om of topOR) {
+    const seenOR = new Set();
+    let countOR = 0;
+    for (const om of orModels) {
+      if (countOR >= 3) break;
+      const cleanName = cleanEntryDisplayName(om.name);
+      const key = canonicalEntryKey(cleanName);
+      if (isUnnecessaryOrSpamEntry({ name: om.name, org: om.org, url: om.url, summary: om.description }) || seenOR.has(key)) continue;
+      seenOR.add(key);
       result.models.push({
-        id: om.name,
-        author: om.org,
+        id: cleanName,
+        author: normalizeOrgName(om.org),
         likes: 120,
         downloads: om.context_length || 128000,
         pipeline_tag: 'Cloud Model API',
         url: om.url,
         source: 'OpenRouter'
       });
+      countOR++;
     }
-    console.log(`[Trending] Loaded ${topOR.length} models from OpenRouter.`);
+    console.log(`[Trending] Loaded ${countOR} models from OpenRouter.`);
   } catch (e) {
     console.warn('[Trending] Failed to fetch OpenRouter models:', e.message);
   }
 
   // 2c. Hugging Face Open-Weights Models
   try {
-    const res = await fetch('https://huggingface.co/api/models?sort=trendingScore&direction=-1&limit=4', { headers });
+    const res = await fetch('https://huggingface.co/api/models?sort=trendingScore&direction=-1&limit=16', { headers });
     if (res.ok) {
       const data = await res.json();
+      let countHF = 0;
       for (const m of data) {
+        if (countHF >= 4) break;
+        const shortName = m.id.includes('/') ? m.id.split('/')[1] : m.id;
+        const rawAuthor = m.author || m.id.split('/')[0];
+        if (isUnnecessaryOrSpamEntry({ name: shortName, org: rawAuthor, url: `https://huggingface.co/${m.id}` })) continue;
         result.models.push({
           id: m.id,
-          author: m.author || m.id.split('/')[0],
+          author: normalizeOrgName(rawAuthor),
           likes: m.likes || 0,
           downloads: m.downloads || 0,
           pipeline_tag: m.pipeline_tag || 'open-weights',
           url: `https://huggingface.co/${m.id}`,
           source: 'Hugging Face'
         });
+        countHF++;
       }
     }
   } catch (e) {

@@ -12,7 +12,7 @@
     },
     {
       "id": "Qwen3.5 Omni Plus",
-      "author": "Alibaba",
+      "author": "Alibaba (Qwen)",
       "likes": 95,
       "downloads": 256000,
       "pipeline_tag": "Frontier Leaderboard",
@@ -21,7 +21,7 @@
     },
     {
       "id": "Nova 2.0 Omni",
-      "author": "Amazon",
+      "author": "Amazon Web Services",
       "likes": 95,
       "downloads": 1000000,
       "pipeline_tag": "Reasoning Frontier",
@@ -29,8 +29,8 @@
       "source": "Artificial Analysis"
     },
     {
-      "id": "inclusionAI: LingSante 3.1 Air VL",
-      "author": "inclusionai",
+      "id": "LingSante 3.1 Air VL",
+      "author": "InclusionAI",
       "likes": 120,
       "downloads": 131072,
       "pipeline_tag": "Cloud Model API",
@@ -38,8 +38,8 @@
       "source": "OpenRouter"
     },
     {
-      "id": "Upstage: Solar Mini 4.5 (Preview)",
-      "author": "upstage",
+      "id": "Solar Mini 4.5 (Preview)",
+      "author": "Upstage",
       "likes": 120,
       "downloads": 524288,
       "pipeline_tag": "Cloud Model API",
@@ -47,8 +47,8 @@
       "source": "OpenRouter"
     },
     {
-      "id": "Upstage: Solar Pro 4 Contributor",
-      "author": "upstage",
+      "id": "Solar Pro 4 Contributor",
+      "author": "Upstage",
       "likes": 120,
       "downloads": 524288,
       "pipeline_tag": "Cloud Model API",
@@ -57,20 +57,11 @@
     },
     {
       "id": "thinkingmachines/Inkling-2-Mini",
-      "author": "thinkingmachines",
+      "author": "Thinking Machines",
       "likes": 6479,
       "downloads": 155741,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
-      "source": "Hugging Face"
-    },
-    {
-      "id": "unsloth/Inkling-2-Mini-GGUF",
-      "author": "unsloth",
-      "likes": 1617,
-      "downloads": 3302340,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
       "source": "Hugging Face"
     },
     {
@@ -80,15 +71,6 @@
       "downloads": 539421,
       "pipeline_tag": "open-weights",
       "url": "https://huggingface.co/SulphurAI/Sulphur-3",
-      "source": "Hugging Face"
-    },
-    {
-      "id": "AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
-      "author": "AtomicChat",
-      "likes": 1045,
-      "downloads": 1059763,
-      "pipeline_tag": "image-text-to-text",
-      "url": "https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
       "source": "Hugging Face"
     }
   ],
@@ -103,7 +85,7 @@
     },
     {
       "title": "Damped Atomic Wave Integration Neurons (DAWIN): A Universal Primitive for Continuous-Time Spatiotemporal Learning",
-      "summary": "Conventional artificial neurons separate spatial feature aggregation from continuous physical time, limiting their ability to model irregular observations. We i...",
+      "summary": "Conventional artificial neurons separate spatial feature aggregation from continuous physical time, limiting their ability to model irregular observations.",
       "upvotes": 2,
       "arxiv_id": "2611.30025",
       "url": "https://huggingface.co/papers/2611.30025",
@@ -111,7 +93,7 @@
     },
     {
       "title": "BiSAT: Bidirectionally Aligned Semantic-Acoustic Tokenization for Speech Language Models",
-      "summary": "Speech language models (LMs) generate speech as sequences of discrete tokens. Their tokenizer must therefore preserve both acoustic detail and linguistic conten...",
+      "summary": "Speech language models (LMs) generate speech as sequences of discrete tokens.",
       "upvotes": 2,
       "arxiv_id": "2611.30723",
       "url": "https://huggingface.co/papers/2611.30723",
@@ -119,7 +101,7 @@
     },
     {
       "title": "Markdown Is Not a Firewall: four coding agents, one rules file, four boundaries",
-      "summary": "Teams put a one-page rules file in a repository and call it a control on coding agents. A registered study found agents rarely look up a repository's contributi...",
+      "summary": "Teams put a one-page rules file in a repository and call it a control on coding agents.",
       "upvotes": 0,
       "arxiv_id": "2611.27112",
       "url": "https://huggingface.co/papers/2611.27112",
@@ -127,7 +109,7 @@
     },
     {
       "title": "Revisiting LLMs as Context Engineers",
-      "summary": "As large language models (LLMs) are used in more and more new tasks, context engineering becomes a fundamental method to efficiently steer LLMs by constructing ...",
+      "summary": "As large language models (LLMs) are used in more and more new tasks, context engineering becomes a fundamental method to efficiently steer LLMs by constructing.",
       "upvotes": 4,
       "arxiv_id": "2611.30494",
       "url": "https://huggingface.co/papers/2611.30494",

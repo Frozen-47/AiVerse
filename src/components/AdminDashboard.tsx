@@ -22,6 +22,12 @@ import {
 } from "lucide-react";
 import { getOAuthAvatarUrl, supabase } from "../lib/supabase";
 import {
+  canonicalEntryKey,
+  isUnnecessaryOrSpamEntry,
+  sanitizeAndDeduplicateCatalog,
+  sanitizeEntryRecord,
+} from "../lib/catalogCleanup";
+import {
   createAuditLogId,
   filterAndSortEntries,
   filterAndSortUsers,
@@ -135,7 +141,7 @@ function loadInitialAnnouncement(): SiteAnnouncement {
     const stored = localStorage.getItem("aiverse_site_announcement");
     if (stored) {
       const parsed = JSON.parse(stored) as SiteAnnouncement;
-      const count = defaultEntries.length || 242;
+      const count = defaultEntries.length || 538;
       if (
         parsed?.message &&
         (parsed.message.includes("228+") || parsed.message.includes("238+"))
@@ -354,20 +360,28 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       const mergedMap = new Map<string, Entry>();
       defaultEntries.forEach((e) => {
         if (e && e.name) {
-          mergedMap.set(e.name.toLowerCase().trim(), { ...e, approved: true });
+          const clean = sanitizeEntryRecord(e);
+          mergedMap.set(canonicalEntryKey(clean.name), { ...clean, approved: true });
         }
       });
       loadedApproved.forEach((e) => {
-        if (e && e.name) {
-          mergedMap.set(e.name.toLowerCase().trim(), e);
+        if (e && e.name && !isUnnecessaryOrSpamEntry(e)) {
+          const clean = sanitizeEntryRecord(e);
+          const key = canonicalEntryKey(clean.name);
+          if (key && !mergedMap.has(key)) {
+            mergedMap.set(key, clean);
+          }
         }
       });
-      const approvedEntriesList = Array.from(mergedMap.values());
+      const approvedEntriesList = sanitizeAndDeduplicateCatalog(Array.from(mergedMap.values()));
       setApprovedEntries(approvedEntriesList);
 
       const approvedNamesSet = new Set<string>();
       approvedEntriesList.forEach((e) => {
-        if (e && e.name) approvedNamesSet.add(e.name.toLowerCase().trim());
+        if (e && e.name) {
+          approvedNamesSet.add(e.name.toLowerCase().trim());
+          approvedNamesSet.add(canonicalEntryKey(e.name));
+        }
       });
 
       const localApprovedPulse = new Set<string>();
@@ -397,15 +411,22 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       }
 
       const loadedPending: Entry[] = loadedPendingRaw.filter((p) => {
-        if (!p || !p.name) return false;
+        if (!p || !p.name || isUnnecessaryOrSpamEntry(p)) return false;
         const normName = p.name.toLowerCase().trim();
+        const canonName = canonicalEntryKey(p.name);
         if (
           p.summary === "[Deleted from Directory]" ||
           p.summary?.startsWith("[Deleted")
         ) {
           return false;
         }
-        if (approvedNamesSet.has(normName) || localApprovedPulse.has(normName)) return false;
+        if (
+          approvedNamesSet.has(normName) ||
+          approvedNamesSet.has(canonName) ||
+          localApprovedPulse.has(normName)
+        ) {
+          return false;
+        }
         if (localDismissedPulse.has(normName)) return false;
         return true;
       });
@@ -416,20 +437,24 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           const pulseItems = (await pulseRes.json()) as unknown;
           if (Array.isArray(pulseItems)) {
             const pendingNames = new Set(
-              loadedPending.map((p) => (p.name || "").toLowerCase().trim()),
+              loadedPending.map((p) => canonicalEntryKey(p.name || "")),
             );
             (pulseItems as Entry[]).forEach((item) => {
-              if (item && item.name) {
-                const normName = item.name.toLowerCase().trim();
+              if (item && item.name && !isUnnecessaryOrSpamEntry(item)) {
+                const cleanItem = sanitizeEntryRecord(item);
+                const normName = cleanItem.name.toLowerCase().trim();
+                const canonName = canonicalEntryKey(cleanItem.name);
                 if (
-                  !pendingNames.has(normName) &&
+                  !pendingNames.has(canonName) &&
                   !approvedNamesSet.has(normName) &&
+                  !approvedNamesSet.has(canonName) &&
                   !localApprovedPulse.has(normName) &&
                   !localDismissedPulse.has(normName) &&
-                  item.summary !== "[Deleted from Directory]"
+                  cleanItem.summary !== "[Deleted from Directory]"
                 ) {
+                  pendingNames.add(canonName);
                   loadedPending.push({
-                    ...item,
+                    ...cleanItem,
                     approved: false,
                     submitted_by: item.submitted_by || "daily-pulse-bot",
                   });

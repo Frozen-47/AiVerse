@@ -1,26 +1,31 @@
 {
   "date": "2026-11-28",
   "tool": {
-    "name": "Ternary-Bonsai-2-27B-gguf",
+    "name": "Claude Fable 5.2",
+    "org": "Anthropic",
     "type": "Model",
-    "summary": "High-performance NLP open-weights model by prism-ml, trending with over 945 community likes and 405,609 downloads on Hugging Face, incorporating an architecture of prism-ml text generation architecture with community-tuned weights. The model demonstrates competitive performance across verified evaluations, including Trending Score: 898, Likes: 945, Downloads: 405,609. With its 27B params design, it supports diverse local and enterprise deployment profiles under the Apache-2.0 license.",
-    "task": "NLP",
-    "license": "APACHE-2.0",
+    "task": "Research",
+    "license": "Proprietary",
     "year": 2026,
-    "org": "prism-ml",
-    "size": "27B params",
-    "architecture": "prism-ml text generation architecture with community-tuned weights.",
-    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"prism-ml/Ternary-Bonsai-2-27B-gguf\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"prism-ml/Ternary-Bonsai-2-27B-gguf\")",
-    "benchmarks": "Trending Score: 898, Likes: 945, Downloads: 405,609",
-    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-    "popular": true,
-    "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf",
+    "size": "1000k Context · Proprietary Model",
+    "summary": "Claude Fable 5.2 is Anthropic's most capable model for the most demanding technical work, with gains over Fable 5.1 in coding, reasoning, and vision. In prerelease testing it compl.",
+    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1000k Context token window support and optimized reasoning chains.",
+    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/claude-fable-5-2",
+    "benchmarks": "Context Window: 1000k Context, Intelligence Index: 56.4, Benchmarked on Artificial Analysis Leaderboard",
+    "limitations": "Cloud API access subject to provider rate limits and compute quotas.",
+    "url": "https://artificialanalysis.ai/models/claude-fable-5-2",
     "citations": [
       {
-        "text": "prism-ml/Ternary-Bonsai-2-27B-gguf on Hugging Face",
-        "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf"
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-2",
+        "text": "Claude Fable 5.2 on Artificial Analysis Benchmark"
+      },
+      {
+        "url": "https://artificialanalysis.ai/models/claude-fable-5-2/providers",
+        "text": "Claude Fable 5.2 Inference Providers"
       }
     ],
-    "description": "High-performance NLP open-weights model by prism-ml, trending with over 945 community likes and 405,609 downloads on Hugging Face, incorporating an architecture of prism-ml text generation architecture with community-tuned weights. The model demonstrates competitive performance across verified evaluations, including Trending Score: 898, Likes: 945, Downloads: 405,609. With its 27B params design, it supports diverse local and enterprise deployment profiles under the Apache-2.0 license."
+    "popular": false,
+    "approved": true,
+    "description": "Claude Fable 5.2 is Anthropic's most capable model for the most demanding technical work, with gains over Fable 5.1 in coding, reasoning, and vision. In prerelease testing it compl."
   }
 }

@@ -51,10 +51,10 @@ export const CompareArena: React.FC<CompareArenaProps> = ({
   const entryB = entries.find((e) => e.name === compareToolB) || entries[1] || entries[0];
 
   const presets = [
-    { label: "Llama 3.3 vs Mistral", a: "Llama 3.3 70B", b: "Mistral Large 2" },
+    { label: "Llama 3.3 vs Mistral", a: "Llama 3.3 (70B)", b: "Mistral Large 2 (123B)" },
     { label: "GPT-4o vs Claude 3.5", a: "GPT-4o", b: "Claude 3.5 Sonnet" },
     { label: "PyTorch vs TensorFlow", a: "PyTorch", b: "TensorFlow" },
-    { label: "DeepSeek R1 vs Qwen 2.5", a: "DeepSeek R1", b: "Qwen 2.5 Coder 32B" },
+    { label: "DeepSeek R1 vs Qwen 2.5", a: "DeepSeek-R1", b: "Qwen 2.5-Coder (32B)" },
   ];
 
   const ratingA = ratingSummaries[entryA?.name]?.average || 0;

@@ -9,6 +9,12 @@ import { SearchBar } from "./components/SearchBar";
 import { EntryCard } from "./components/EntryCard";
 import { EcosystemsSection } from "./components/EcosystemsSection";
 import { groupEntriesByEcosystem, getNormalizedOrgName } from "./lib/ecosystems";
+import {
+  sanitizeAndDeduplicateCatalog,
+  sanitizeEntryRecord,
+  canonicalEntryKey,
+  isUnnecessaryOrSpamEntry,
+} from "./lib/catalogCleanup";
 import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
 import { OverviewCards } from "./components/OverviewCards";
 import { DailyPulseSection } from "./components/DailyPulseSection";
@@ -602,57 +608,64 @@ const Inner: React.FC = () => {
         .then(data => {
           const remoteEntries = data || [];
           const mergedMap = new Map<string, Entry>();
-          // 1. Static entries first (ensures newly ingested models/platforms in data.ts are immediately present)
+          // 1. Curated & cleaned static entries first
           (staticEntries || []).forEach(e => {
-            if (e && e.name) mergedMap.set(e.name.toLowerCase().trim(), e);
-          });
-          // 2. Supabase approved entries take precedence / filter out deleted entries,
-          // but always preserve the richer detailed descriptions, benchmarks, and architecture from staticEntries!
-          remoteEntries.forEach(e => {
-            if (!e || !e.name) return;
-            const key = e.name.toLowerCase().trim();
-            if (e.approved === false) {
-              mergedMap.delete(key);
-            } else {
-              const existing = mergedMap.get(key);
-              if (existing) {
-                const existingSummaryLen = existing.summary?.length || 0;
-                const remoteSummaryLen = e.summary?.length || 0;
-                const bestSummary = existingSummaryLen >= remoteSummaryLen ? existing.summary : e.summary;
-                const bestDesc = (existing.description && existing.description.length >= (e.description?.length || 0))
-                  ? existing.description
-                  : (e.description || bestSummary);
-
-                const bestArch = (existing.architecture && existing.architecture !== "N/A" && (!e.architecture || e.architecture === "N/A" || existing.architecture.length >= e.architecture.length))
-                  ? existing.architecture
-                  : (e.architecture || existing.architecture);
-
-                const bestBench = (existing.benchmarks && existing.benchmarks !== "N/A" && (!e.benchmarks || e.benchmarks === "N/A" || existing.benchmarks.length >= e.benchmarks.length))
-                  ? existing.benchmarks
-                  : (e.benchmarks || existing.benchmarks);
-
-                const bestCitations = (existing.citations && existing.citations.length > 0 && (!e.citations || e.citations.length === 0))
-                  ? existing.citations
-                  : (e.citations || existing.citations);
-
-                mergedMap.set(key, {
-                  ...existing,
-                  ...e,
-                  summary: bestSummary,
-                  description: bestDesc,
-                  architecture: bestArch,
-                  benchmarks: bestBench,
-                  citations: bestCitations,
-                });
-              } else {
-                mergedMap.set(key, {
-                  ...e,
-                  description: e.description || e.summary,
-                });
-              }
+            if (e && e.name) {
+              const clean = sanitizeEntryRecord(e);
+              mergedMap.set(canonicalEntryKey(clean.name), clean);
             }
           });
-          const combined = Array.from(mergedMap.values());
+          // 2. Merge Supabase approved entries while rejecting spam/GGUF/variant duplicates
+          remoteEntries.forEach(e => {
+            if (!e || !e.name) return;
+            const rawCanonicalKey = canonicalEntryKey(e.name);
+            if (e.approved === false) {
+              mergedMap.delete(rawCanonicalKey);
+              return;
+            }
+            if (isUnnecessaryOrSpamEntry(e)) return;
+
+            const cleanRemote = sanitizeEntryRecord(e);
+            const key = canonicalEntryKey(cleanRemote.name);
+            if (!key) return;
+
+            const existing = mergedMap.get(key);
+            if (existing) {
+              const existingSummaryLen = existing.summary?.length || 0;
+              const remoteSummaryLen = cleanRemote.summary?.length || 0;
+              const bestSummary = existingSummaryLen >= remoteSummaryLen ? existing.summary : cleanRemote.summary;
+              const bestDesc = (existing.description && existing.description.length >= (cleanRemote.description?.length || 0))
+                ? existing.description
+                : (cleanRemote.description || bestSummary);
+
+              const bestArch = (existing.architecture && existing.architecture !== "N/A" && (!cleanRemote.architecture || cleanRemote.architecture === "N/A" || existing.architecture.length >= cleanRemote.architecture.length))
+                ? existing.architecture
+                : (cleanRemote.architecture || existing.architecture);
+
+              const bestBench = (existing.benchmarks && existing.benchmarks !== "N/A" && (!cleanRemote.benchmarks || cleanRemote.benchmarks === "N/A" || existing.benchmarks.length >= cleanRemote.benchmarks.length))
+                ? existing.benchmarks
+                : (cleanRemote.benchmarks || existing.benchmarks);
+
+              const bestCitations = (existing.citations && existing.citations.length > 0 && (!cleanRemote.citations || cleanRemote.citations.length === 0))
+                ? existing.citations
+                : (cleanRemote.citations || existing.citations);
+
+              mergedMap.set(key, {
+                ...cleanRemote,
+                ...existing,
+                popular: Boolean(existing.popular || cleanRemote.popular),
+                year: Math.max(existing.year || 0, cleanRemote.year || 0) || existing.year,
+                summary: bestSummary,
+                description: bestDesc,
+                architecture: bestArch,
+                benchmarks: bestBench,
+                citations: bestCitations,
+              });
+            } else {
+              mergedMap.set(key, cleanRemote);
+            }
+          });
+          const combined = sanitizeAndDeduplicateCatalog(Array.from(mergedMap.values()));
           setEntries(combined);
           setTypeFilters(staticTypeFilters || ["All"]);
           setTaskFilters(staticTaskFilters || ["All Tasks"]);
@@ -1213,8 +1226,8 @@ const Inner: React.FC = () => {
             <Sparkles size={14} className="shrink-0" />
             <span>
               {announcement.message
-                .replace(/\b(228|238)\+\b/g, `${entries.length > 0 ? entries.length : 242}+`)
-                .replace(/compare \d+\+ open/g, `compare ${entries.length > 0 ? entries.length : 242}+ open`)}
+                .replace(/\b(228|238)\+\b/g, `${entries.length > 0 ? entries.length : staticEntries.length}+`)
+                .replace(/compare \d+\+ open/g, `compare ${entries.length > 0 ? entries.length : staticEntries.length}+ open`)}
             </span>
             {announcement.linkUrl && (
               <a
@@ -1765,7 +1778,7 @@ const Inner: React.FC = () => {
                           </span>
                         </div>
                         <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-0.5">
-                          Discover foundation models and tools grouped by OpenAI, Google DeepMind, Anthropic, Meta, DeepSeek, Mistral &amp; 200+ more.
+                          Discover foundation models and tools grouped by OpenAI, Google DeepMind, Anthropic, Meta, DeepSeek, Mistral &amp; {Math.max(1, ecosystemsCount - 6)}+ more.
                         </p>
                       </div>
                     </div>

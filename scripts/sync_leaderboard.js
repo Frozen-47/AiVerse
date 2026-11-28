@@ -130,17 +130,28 @@ async function main() {
       }
     }
 
+    const elo = scores['aa-briefcase'] ? Math.round(scores['aa-briefcase']) : null;
+    const creatorName = raw.modelCreatorName || 'AI Lab';
+    const displayName = raw.name || releaseName;
+    const metricParts = [];
+    if (intel !== null && intel !== undefined) metricParts.push(`an Intelligence Index of ${intel}`);
+    if (elo !== null && elo !== undefined) metricParts.push(`a Briefcase Elo of ${elo}`);
+    metricParts.push(`a ${parseTokens(contextTokens)} context window`);
+    const metricsText = metricParts.length > 1
+      ? `${metricParts.slice(0, -1).join(', ')}, and ${metricParts[metricParts.length - 1]}`
+      : metricParts[0];
+
     processedList.push({
       id: finalId,
-      name: raw.name || releaseName,
-      shortName: raw.shortName || raw.name || releaseName,
+      name: displayName,
+      shortName: raw.shortName || displayName,
       releaseSlug: slug,
       releaseName: releaseName,
       suffix: raw.suffix || '',
-      creator: raw.modelCreatorName || 'AI Lab',
+      creator: creatorName,
       creatorColor: raw.modelCreatorColor || '#6b7280',
       creatorLogo: raw.modelCreatorLogo || null,
-      description: `${raw.modelCreatorName || 'AI Lab'}'s ${Boolean(raw.isReasoning) ? 'frontier reasoning' : 'frontier foundation'} model (${raw.name || releaseName}) evaluated on the Artificial Analysis benchmark index with an Intelligence Index of ${intel ?? 'frontier'}, Briefcase Elo of ${scores.briefcaseElo ? Math.round(scores.briefcaseElo) : '--'}, and a ${parseTokens(contextTokens)} context window.`,
+      description: `${creatorName}'s ${Boolean(raw.isReasoning) ? 'frontier reasoning' : 'frontier foundation'} model (${displayName}) evaluated on the Artificial Analysis benchmark index with ${metricsText}.`,
       license: isOpenWeights ? "Open" : "Proprietary",
       isReasoning: Boolean(raw.isReasoning),
       paramClass: raw.paramClass || null,
@@ -150,7 +161,7 @@ async function main() {
       contextTokens: contextTokens,
       intelligenceIndex: intel,
       omniscienceNet: raw.omniscience ? Math.round(raw.omniscience) : null,
-      briefcaseElo: scores['aa-briefcase'] ? Math.round(scores['aa-briefcase']) : null,
+      briefcaseElo: elo,
       accuracy: scores['omniscience-accuracy'] ? Math.round(scores['omniscience-accuracy'] * 100) : null,
       nonHallucination: scores['omniscience-non-hallucination'] ? Math.round(scores['omniscience-non-hallucination'] * 100) : null,
       automationBench: scores['automationbench-aa'] ? Math.round(scores['automationbench-aa'] * 100) : null,

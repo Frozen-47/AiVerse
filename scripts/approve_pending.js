@@ -2,6 +2,13 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createClient } from '@supabase/supabase-js';
+import {
+  canonicalEntryKey,
+  isUnnecessaryOrSpamEntry,
+  normalizeLicense,
+  sanitizeAndDeduplicateCatalog,
+  sanitizeEntryRecord,
+} from '../src/lib/catalogCleanupCore.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -39,24 +46,28 @@ function escapeJson(obj) {
 }
 
 function sanitizeEntry(entry) {
-  return {
+  const cleaned = sanitizeEntryRecord({
+    ...entry,
     name: String(entry.name || '').trim(),
-    org: entry.org ? String(entry.org).trim() : null,
+    org: entry.org ? String(entry.org).trim() : 'Independent',
     type: String(entry.type || 'Model').trim(),
     task: String(entry.task || 'NLP').trim(),
     license: entry.license ? String(entry.license).trim() : 'Community',
     year: typeof entry.year === 'number' ? entry.year : (entry.year ? parseInt(String(entry.year), 10) || new Date().getFullYear() : new Date().getFullYear()),
-    size: entry.size ? String(entry.size).trim() : null,
+    size: entry.size ? String(entry.size).trim() : 'N/A',
     summary: String(entry.summary || '').trim(),
-    architecture: entry.architecture ? String(entry.architecture).trim() : null,
-    usage: entry.usage ? String(entry.usage).trim() : null,
-    benchmarks: entry.benchmarks ? String(entry.benchmarks).trim() : null,
-    limitations: entry.limitations ? String(entry.limitations).trim() : null,
-    url: entry.url ? String(entry.url).trim() : null,
+    architecture: entry.architecture ? String(entry.architecture).trim() : 'N/A',
+    usage: entry.usage ? String(entry.usage).trim() : undefined,
+    benchmarks: entry.benchmarks ? String(entry.benchmarks).trim() : 'N/A',
+    limitations: entry.limitations ? String(entry.limitations).trim() : 'N/A',
+    url: entry.url ? String(entry.url).trim() : undefined,
     citations: Array.isArray(entry.citations) ? entry.citations : [],
     popular: Boolean(entry.popular),
+  });
+  return {
+    ...cleaned,
     approved: true,
-    description: entry.description || entry.summary || ''
+    description: cleaned.summary,
   };
 }
 
@@ -105,16 +116,17 @@ async function main() {
 
   console.log(`Current static catalog entries in src/data.ts: ${existingEntries.length}`);
 
-  const existingNames = new Set(existingEntries.map(e => (e.name || '').toLowerCase().trim()));
+  const existingKeys = new Set(existingEntries.map(e => canonicalEntryKey(e.name || '')));
 
-  // 3. Filter items to approve that are not yet in src/data.ts
+  // 3. Filter items to approve that are valid, non-spam, and not yet in src/data.ts
   const newlyApproved = [];
   for (const item of pendingList) {
-    if (!item || !item.name) continue;
-    const norm = item.name.toLowerCase().trim();
-    if (!existingNames.has(norm)) {
-      newlyApproved.push(sanitizeEntry(item));
-      existingNames.add(norm);
+    if (!item || !item.name || isUnnecessaryOrSpamEntry(item)) continue;
+    const cleanItem = sanitizeEntry(item);
+    const key = canonicalEntryKey(cleanItem.name);
+    if (key && !existingKeys.has(key)) {
+      newlyApproved.push(cleanItem);
+      existingKeys.add(key);
     }
   }
 
@@ -128,8 +140,11 @@ async function main() {
     return;
   }
 
-  // 4. Merge into final entries array
-  const updatedEntries = [...existingEntries, ...newlyApproved];
+  // 4. Merge & enforce catalog invariants
+  const updatedEntries = sanitizeAndDeduplicateCatalog([...existingEntries, ...newlyApproved]).map(e => ({
+    ...e,
+    approved: true,
+  }));
   console.log(`Updated catalog total: ${updatedEntries.length} entries.`);
 
   // 5. Write updated src/data.ts
@@ -189,28 +204,37 @@ export const taskFilters = [
     } catch {}
   }
 
-  // 9. Update public/data/catalog_stats.json
+  // 9. Update public/data/catalog_stats.json preserving full Dashboard stats schema
   const statsPath = path.join(rootDir, 'public', 'data', 'catalog_stats.json');
   try {
+    let existingStats = {};
+    if (fs.existsSync(statsPath)) {
+      try { existingStats = JSON.parse(fs.readFileSync(statsPath, 'utf-8')); } catch {}
+    }
     const byType = {};
     const byTask = {};
     const byLicense = {};
     updatedEntries.forEach(e => {
       byType[e.type] = (byType[e.type] || 0) + 1;
       byTask[e.task] = (byTask[e.task] || 0) + 1;
-      const lic = e.license || 'Community';
+      const lic = normalizeLicense(e.license, e.type);
       byLicense[lic] = (byLicense[lic] || 0) + 1;
     });
 
     const stats = {
-      total: updatedEntries.length,
+      timestamp: new Date().toISOString(),
+      totalEntries: updatedEntries.length,
+      popularEntries: updatedEntries.filter(e => e.popular).length,
+      totalUsers: existingStats.totalUsers ?? 10,
+      averageRating: existingStats.averageRating ?? 4.38,
+      totalRatings: existingStats.totalRatings ?? 8,
+      newEntriesCount: updatedEntries.filter(e => (e.year || 0) >= new Date().getFullYear() - 1).length,
       byType,
       byTask,
       byLicense,
-      featuredCount: updatedEntries.filter(e => e.popular).length,
-      lastUpdated: new Date().toISOString()
+      toolOfTheDay: existingStats.toolOfTheDay || updatedEntries.find(e => e.popular) || updatedEntries[0],
     };
-    fs.writeFileSync(statsPath, JSON.stringify(stats, null, 2), 'utf-8');
+    fs.writeFileSync(statsPath, JSON.stringify(stats, null, 2) + '\n', 'utf-8');
     console.log('✓ Updated public/data/catalog_stats.json.');
   } catch {}
 

@@ -22,7 +22,7 @@ interface OverviewCardsProps {
 
 export const OverviewCards: React.FC<OverviewCardsProps> = ({
   totalEntriesCount,
-  ecosystemsCount = 200,
+  ecosystemsCount = 227,
   entries = [],
   ratingSummaries,
   onViewAllEntries,
@@ -33,13 +33,13 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
   const isAmoled = resolvedTheme === "amoled";
 
   const [stats, setStats] = useState<DashboardStats>({
-    totalEntries: entries.length || 766,
+    totalEntries: entries.length || 538,
     totalUsers: 10,
     averageRating: 4.38,
     totalRatings: 8,
     activeToday: 0,
     activeThisWeek: 2,
-    newEntriesCount: 504,
+    newEntriesCount: 298,
   });
 
   const [radarBundle, setRadarBundle] = useState<DashboardRadarBundle | null>(null);
@@ -95,11 +95,11 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
     if (entries.length > 0) {
       return entries.filter((e) => e.popular).length;
     }
-    return radarBundle?.catalogStats?.popularEntries ?? 368;
+    return radarBundle?.catalogStats?.popularEntries ?? 284;
   }, [entries, radarBundle]);
 
   const openShare = useMemo(() => {
-    if (entries.length === 0) return { pct: 64, count: 490 };
+    if (entries.length === 0) return { pct: 58, count: 312 };
     const mix = computeLicenseMix(entries);
     const openCount =
       (mix.find((m) => m.id === "open_source")?.count ?? 0) +

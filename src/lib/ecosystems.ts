@@ -1,4 +1,5 @@
 import type { Entry } from "../types";
+import { normalizeOrgName } from "./catalogCleanup";
 
 export interface EcosystemGroup {
   id: string;
@@ -23,93 +24,6 @@ export interface EcosystemGroup {
   latestYear: number;
   licenses: string[];
 }
-
-// Known mappings to unify naming variations
-const ORG_NORMALIZATION: Record<string, string> = {
-  "Google": "Google DeepMind",
-  "Google DeepMind": "Google DeepMind",
-  "Google Brain": "Google DeepMind",
-  "Google Cloud": "Google DeepMind",
-  "DeepSeek": "DeepSeek AI",
-  "DeepSeek AI": "DeepSeek AI",
-  "Meta AI": "Meta AI",
-  "Meta": "Meta AI",
-  "Facebook AI Research": "Meta AI",
-  "Alibaba Cloud": "Alibaba (Qwen)",
-  "Alibaba (Qwen)": "Alibaba (Qwen)",
-  "Mistral": "Mistral AI",
-  "Mistral AI": "Mistral AI",
-  "Hugging Face": "Hugging Face",
-  "Hugging Face Inc.": "Hugging Face",
-  "Microsoft": "Microsoft",
-  "Microsoft Research": "Microsoft",
-  "microsoft": "Microsoft",
-  "Amazon Web Services": "Amazon Web Services",
-  "AWS": "Amazon Web Services",
-  "nvidia": "NVIDIA",
-  "NVIDIA": "NVIDIA",
-  "Perplexity": "Perplexity",
-  "Perplexity AI": "Perplexity",
-  "Midjourney": "Midjourney",
-  "Midjourney Inc.": "Midjourney",
-  "Midjourney, Inc.": "Midjourney",
-  "Stability AI": "Stability AI",
-  "Stanford NLP": "Stanford AI",
-  "Stanford CRFM": "Stanford AI",
-  "Stanford": "Stanford AI",
-  "UC Berkeley": "UC Berkeley (BAIR)",
-  "BAIR": "UC Berkeley (BAIR)",
-  "CrewAI Inc.": "CrewAI",
-  "CrewAI": "CrewAI",
-  "Unsloth AI": "Unsloth AI",
-  "unsloth": "Unsloth AI",
-  "openbmb": "OpenBMB",
-  "OpenBMB": "OpenBMB",
-  "THUDM / Zhipu AI": "Zhipu AI (THUDM)",
-  "THUDM": "Zhipu AI (THUDM)",
-  "Zhipu AI": "Zhipu AI (THUDM)",
-  "Anysphere": "Cursor (Anysphere)",
-  "Cursor": "Cursor (Anysphere)",
-  "LMSYS": "LMSYS Org",
-  "Apple": "Apple",
-  "Apple Inc.": "Apple",
-  "ByteDance": "ByteDance",
-  "bytedance": "ByteDance",
-  "Baidu": "Baidu",
-  "Tencent": "Tencent",
-  "Moonshot AI": "Moonshot AI",
-  "Moonshot": "Moonshot AI",
-  "Cognition AI": "Cognition AI",
-  "Cognition": "Cognition AI",
-  "Genmo": "Genmo",
-  "Lightricks": "Lightricks",
-  "Hexgrad": "Hexgrad",
-  "Allen Institute for AI": "Allen Institute for AI",
-  "AI2": "Allen Institute for AI",
-  "AI2 (Allen Institute for AI)": "Allen Institute for AI",
-  "Technology Innovation Institute (TII)": "Technology Innovation Institute (TII)",
-  "TII": "Technology Innovation Institute (TII)",
-  "Cloudflare": "Cloudflare",
-  "Vercel": "Vercel",
-  "Krea AI": "Krea AI",
-  "Krea": "Krea AI",
-  "Xiaomi (MiMo)": "Xiaomi (MiMo)",
-  "Xiaomi": "Xiaomi (MiMo)",
-  "XiaomiMiMo": "Xiaomi (MiMo)",
-  "MiniMax": "MiniMax",
-    "MiniMax AI": "MiniMax",
-  "Alibaba": "Alibaba (Qwen)",
-  "Qwen": "Alibaba (Qwen)",
-  "SpaceXAI": "xAI",
-  "Grok": "xAI",
-  "Z AI": "Zhipu AI (THUDM)",
-  "Zhipu": "Zhipu AI (THUDM)",
-  "Kimi": "Moonshot AI",
-  "Kimi AI": "Moonshot AI",
-  "StepFun": "StepFun",
-  "StepFun AI": "StepFun",
-  "Step-Fun": "StepFun",
-};
 
 interface LabMetadata {
   description: string;
@@ -214,7 +128,7 @@ const KNOWN_LABS: Record<string, LabMetadata> = {
     },
   },
   "xAI": {
-    description: "Elon Musk's AI research lab developing the Groq/Grok series with real-time world knowledge synthesis and deep coding.",
+    description: "Elon Musk's AI research lab developing the Grok model series with real-time world knowledge synthesis and deep coding.",
     domain: "Real-time Knowledge · Grok · Frontier",
     website: "https://x.ai",
     colorScheme: {
@@ -603,11 +517,260 @@ const KNOWN_LABS: Record<string, LabMetadata> = {
       tagBg: "bg-violet-500/5",
     },
   },
+  "InclusionAI": {
+    description: "Ant Group's AI research lab building the Ling and Ming open multimodal Mixture-of-Experts foundation models.",
+    domain: "Open MoE · Ling Series · Multimodal",
+    website: "https://github.com/inclusionAI",
+    colorScheme: {
+      badge: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+      accent: "text-emerald-500",
+      tagBg: "bg-emerald-500/5",
+    },
+  },
+  "Liquid AI": {
+    description: "MIT spinout developing Liquid Foundation Models (LFM) for ultra-efficient edge, audio, vision, and multimodal deployment.",
+    domain: "Liquid Neural Networks · LFM · Edge AI",
+    website: "https://liquid.ai",
+    colorScheme: {
+      badge: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20",
+      accent: "text-cyan-500",
+      tagBg: "bg-cyan-500/5",
+    },
+  },
+  "Thinking Machines": {
+    description: "Frontier AI research lab founded by Mira Murati advancing collaborative intelligence and next-generation foundation models.",
+    domain: "Frontier Research · Foundation Models",
+    website: "https://thinkingmachines.ai",
+    colorScheme: {
+      badge: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
+      accent: "text-indigo-500",
+      tagBg: "bg-indigo-500/5",
+    },
+  },
+  "Upstage": {
+    description: "Enterprise AI lab creating high-efficiency Solar language models and leading document intelligence systems.",
+    domain: "Solar LLMs · Document AI · Enterprise",
+    website: "https://upstage.ai",
+    colorScheme: {
+      badge: "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20",
+      accent: "text-violet-500",
+      tagBg: "bg-violet-500/5",
+    },
+  },
+  "Nous Research": {
+    description: "Open-source AI research lab behind the Hermes model family, advancing instruction following, synthetic data, and tool use.",
+    domain: "Open Weights · Hermes Series · Fine-Tuning",
+    website: "https://nousresearch.com",
+    colorScheme: {
+      badge: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
+      accent: "text-amber-500",
+      tagBg: "bg-amber-500/5",
+    },
+  },
+  "IBM": {
+    description: "Enterprise AI research organization developing the open-weights Granite language, code, and guardian model families.",
+    domain: "Granite Series · Enterprise AI · Open Weights",
+    website: "https://ibm.com/granite",
+    colorScheme: {
+      badge: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+      accent: "text-blue-500",
+      tagBg: "bg-blue-500/5",
+    },
+  },
+  "LG AI Research": {
+    description: "AI research division developing the EXAONE multimodal foundation model family for scientific and enterprise reasoning.",
+    domain: "EXAONE · Enterprise & Scientific AI",
+    website: "https://lgresearch.ai",
+    colorScheme: {
+      badge: "bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20",
+      accent: "text-rose-500",
+      tagBg: "bg-rose-500/5",
+    },
+  },
+  "Bria AI": {
+    description: "Commercial-licensed visual generative AI platform building FIBO and RMBG foundation models trained exclusively on licensed data.",
+    domain: "Licensed Visual AI · FIBO · Background Removal",
+    website: "https://bria.ai",
+    colorScheme: {
+      badge: "bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 border-fuchsia-500/20",
+      accent: "text-fuchsia-500",
+      tagBg: "bg-fuchsia-500/5",
+    },
+  },
+  "Pruna AI": {
+    description: "AI efficiency and optimization lab compressing and accelerating image, video, and language foundation models.",
+    domain: "Model Compression · Fast Inference · P-Image",
+    website: "https://pruna.ai",
+    colorScheme: {
+      badge: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
+      accent: "text-purple-500",
+      tagBg: "bg-purple-500/5",
+    },
+  },
+  "Nex AGI": {
+    description: "Open-weights reasoning research group building the Nex-N2 agentic and mathematical reasoning foundation series.",
+    domain: "Agentic Reasoning · Open Weights · Nex-N2",
+    website: "https://github.com/nex-agi",
+    colorScheme: {
+      badge: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
+      accent: "text-indigo-500",
+      tagBg: "bg-indigo-500/5",
+    },
+  },
+  "RadixArk": {
+    description: "Research collective publishing quantized and reinforcement-tuned open-weight models including Nemotron-Super variants.",
+    domain: "Quantized Inference · RL · Open Weights",
+    website: "https://huggingface.co/RadixArk",
+    colorScheme: {
+      badge: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20",
+      accent: "text-sky-500",
+      tagBg: "bg-sky-500/5",
+    },
+  },
+  "KT": {
+    description: "Korean telecom AI division building the Mi:dm sovereign Korean-English enterprise language model family.",
+    domain: "Sovereign AI · Mi:dm · Korean-English LLM",
+    website: "https://kt.com",
+    colorScheme: {
+      badge: "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20",
+      accent: "text-red-500",
+      tagBg: "bg-red-500/5",
+    },
+  },
+  "OpenMOSS": {
+    description: "Fudan University's open-source NLP team creating MOSS conversational, speech, and visual synthesis systems.",
+    domain: "Academic Open AI · MOSS · Multimodal",
+    website: "https://github.com/OpenMOSS",
+    colorScheme: {
+      badge: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+      accent: "text-emerald-500",
+      tagBg: "bg-emerald-500/5",
+    },
+  },
+  "Meituan (LongCat)": {
+    description: "Meituan's LongCat AI research group developing long-context language and interactive video avatar foundation models.",
+    domain: "LongCat · Video Avatars · Multimodal",
+    website: "https://meituan.com",
+    colorScheme: {
+      badge: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20",
+      accent: "text-yellow-500",
+      tagBg: "bg-yellow-500/5",
+    },
+  },
+  "ServiceNow": {
+    description: "Enterprise workflow automation leader co-creating StarCoder and open research initiatives for enterprise coding and agents.",
+    domain: "Enterprise Workflows · Open Coding AI",
+    website: "https://servicenow.com",
+    colorScheme: {
+      badge: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+      accent: "text-emerald-500",
+      tagBg: "bg-emerald-500/5",
+    },
+  },
+  "Suno": {
+    description: "Generative audio and music studio transforming text prompts into full studio-quality songs and vocals.",
+    domain: "Generative Music · Audio Synthesis",
+    website: "https://suno.com",
+    colorScheme: {
+      badge: "bg-pink-500/10 text-pink-600 dark:text-pink-400 border-pink-500/20",
+      accent: "text-pink-500",
+      tagBg: "bg-pink-500/5",
+    },
+  },
+  "Pika Labs": {
+    description: "AI video creation platform enabling controllable scene generation, motion editing, and visual effects.",
+    domain: "AI Video Generation · Creative Effects",
+    website: "https://pika.art",
+    colorScheme: {
+      badge: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
+      accent: "text-purple-500",
+      tagBg: "bg-purple-500/5",
+    },
+  },
+  "Adobe": {
+    description: "Creator of Firefly commercially safe generative media models integrated across Photoshop, Illustrator, and Premiere.",
+    domain: "Firefly · Creative Suite · Generative Design",
+    website: "https://adobe.com",
+    colorScheme: {
+      badge: "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20",
+      accent: "text-red-500",
+      tagBg: "bg-red-500/5",
+    },
+  },
+  "Weights & Biases": {
+    description: "Developer platform for ML experiment tracking, model evaluation, and LLM observability via W&B Weave.",
+    domain: "MLOps · Evals · Experiment Tracking",
+    website: "https://wandb.ai",
+    colorScheme: {
+      badge: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
+      accent: "text-amber-500",
+      tagBg: "bg-amber-500/5",
+    },
+  },
+  "LlamaIndex": {
+    description: "Leading data framework and workflow orchestration platform for building enterprise RAG and document agents.",
+    domain: "RAG Frameworks · Document Agents",
+    website: "https://llamaindex.ai",
+    colorScheme: {
+      badge: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
+      accent: "text-indigo-500",
+      tagBg: "bg-indigo-500/5",
+    },
+  },
+  "EleutherAI": {
+    description: "Non-profit decentralized AI research lab behind Pythia, GPT-NeoX, The Pile, and lm-evaluation-harness.",
+    domain: "Open Science · Evals · Pretraining",
+    website: "https://eleuther.ai",
+    colorScheme: {
+      badge: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20",
+      accent: "text-sky-500",
+      tagBg: "bg-sky-500/5",
+    },
+  },
+  "LAION": {
+    description: "Non-profit open AI network building large-scale multimodal datasets and open alignment initiatives.",
+    domain: "Open Datasets · Multimodal Research",
+    website: "https://laion.ai",
+    colorScheme: {
+      badge: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+      accent: "text-blue-500",
+      tagBg: "bg-blue-500/5",
+    },
+  },
+  "Aleph Alpha": {
+    description: "European sovereign enterprise AI company building Pharia and explainable multimodal foundation systems.",
+    domain: "Sovereign Enterprise AI · Explainability",
+    website: "https://aleph-alpha.com",
+    colorScheme: {
+      badge: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20",
+      accent: "text-cyan-500",
+      tagBg: "bg-cyan-500/5",
+    },
+  },
+  "Multiverse Computing": {
+    description: "AI compression pioneers shrinking billion-parameter foundation models with quantum-inspired tensor networks.",
+    domain: "Model Compression · CompactifAI",
+    website: "https://multiversecomputing.com",
+    colorScheme: {
+      badge: "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20",
+      accent: "text-violet-500",
+      tagBg: "bg-violet-500/5",
+    },
+  },
+  "Zyphra": {
+    description: "Open research lab innovating hybrid state-space language models (Zamba) and expressive neural voice synthesis (Zonos).",
+    domain: "Hybrid SSMs · Neural Speech · Open Weights",
+    website: "https://zyphra.com",
+    colorScheme: {
+      badge: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20",
+      accent: "text-teal-500",
+      tagBg: "bg-teal-500/5",
+    },
+  },
 };
 
 export function getNormalizedOrgName(rawOrg: string): string {
-  const trimmed = (rawOrg || "").trim();
-  return ORG_NORMALIZATION[trimmed] || trimmed || "Independent";
+  return normalizeOrgName(rawOrg);
 }
 
 export function groupEntriesByEcosystem(entries: Entry[]): EcosystemGroup[] {
@@ -654,13 +817,29 @@ export function groupEntriesByEcosystem(entries: Entry[]): EcosystemGroup[] {
 
     const id = orgName.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
+    const countParts: string[] = [];
+    if (modelsCount > 0) countParts.push(`${modelsCount} ${modelsCount === 1 ? "Model" : "Models"}`);
+    if (frameworksCount > 0) countParts.push(`${frameworksCount} ${frameworksCount === 1 ? "Framework" : "Frameworks"}`);
+    if (datasetsCount > 0) countParts.push(`${datasetsCount} ${datasetsCount === 1 ? "Dataset" : "Datasets"}`);
+    if (platformsCount > 0) countParts.push(`${platformsCount} ${platformsCount === 1 ? "Platform" : "Platforms"}`);
+    if (appsCount > 0) countParts.push(`${appsCount} ${appsCount === 1 ? "AI App" : "AI Apps"}`);
+
+    const primaryEntry = sorted[0];
+    const leadSentence = primaryEntry?.summary
+      ? primaryEntry.summary.split(/(?<=[.!?])\s+/)[0]
+      : "";
+    const fallbackDesc =
+      sorted.length === 1 && leadSentence
+        ? leadSentence
+        : `${orgName} develops ${sorted.map((e) => e.name).slice(0, 3).join(", ")}${sorted.length > 3 ? `, and ${sorted.length - 3} more` : ""} for ${(primaryEntry?.task || "AI research").toLowerCase()}.`;
+
     ecosystems.push({
       id,
       name: orgName,
       normalizedOrg: orgName,
-      description: known?.description || `Explore ${sorted.length} curated artificial intelligence models, tools, and technical architectures developed by ${orgName}.`,
-      domain: known?.domain || `${sorted[0]?.task || "AI Research"} · ${modelsCount} Models`,
-      website: known?.website || sorted[0]?.url,
+      description: known?.description || fallbackDesc,
+      domain: known?.domain || `${primaryEntry?.task || "AI Research"} · ${countParts.join(" · ") || "1 Asset"}`,
+      website: known?.website || primaryEntry?.url,
       colorScheme: known?.colorScheme || {
         badge: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
         accent: "text-blue-500",
@@ -717,6 +896,16 @@ export function getCreatorColor(creator: string): string {
   if (c.includes("minimax")) return "#06B6D4";
   if (c.includes("stepfun")) return "#8B5CF6";
   if (c.includes("zhipu") || c.includes("glm")) return "#3B82F6";
+  if (c.includes("baidu")) return "#2932E1";
+  if (c.includes("tencent")) return "#0052D9";
+  if (c.includes("bytedance")) return "#38BDF8";
+  if (c.includes("liquid")) return "#06B6D4";
+  if (c.includes("inclusion")) return "#10B981";
+  if (c.includes("upstage")) return "#8B5CF6";
+  if (c.includes("ibm")) return "#0F62FE";
+  if (c.includes("bria")) return "#D946EF";
+  if (c.includes("pruna")) return "#A855F7";
+  if (c.includes("nous")) return "#F59E0B";
   return "#6366F1";
 }
 
@@ -1073,7 +1262,7 @@ export const ECOSYSTEM_TIERS: EcosystemTier[] = [
     description: "Global leaders driving frontier reasoning, trillion-token agentic architectures, and massive foundation scaling.",
     badge: "Frontier Giants",
     iconName: "Crown",
-    labs: ["OpenAI", "Google DeepMind", "Anthropic", "xAI"],
+    labs: ["OpenAI", "Google DeepMind", "Anthropic", "xAI", "Thinking Machines"],
   },
   {
     id: "open-weights",
@@ -1082,7 +1271,7 @@ export const ECOSYSTEM_TIERS: EcosystemTier[] = [
     description: "Pioneers democratizing high-capability open weights, Mixture-of-Experts, and open-source foundation pipelines.",
     badge: "Open Weights",
     iconName: "Globe",
-    labs: ["Meta AI", "DeepSeek AI", "Mistral AI", "Alibaba (Qwen)", "Hugging Face"],
+    labs: ["Meta AI", "DeepSeek AI", "Mistral AI", "Alibaba (Qwen)", "Hugging Face", "Liquid AI", "InclusionAI", "Nous Research", "Zyphra"],
   },
   {
     id: "innovators",
@@ -1092,8 +1281,9 @@ export const ECOSYSTEM_TIERS: EcosystemTier[] = [
     badge: "Innovators",
     iconName: "Zap",
     labs: [
-      "Zhipu AI (THUDM)", "Moonshot AI", "MiniMax", "StepFun", "Xiaomi (MiMo)", 
-      "Cohere", "Stability AI", "Black Forest Labs"
+      "Zhipu AI (THUDM)", "Moonshot AI", "MiniMax", "StepFun", "Xiaomi (MiMo)",
+      "Baidu", "Tencent", "ByteDance", "Cohere", "Stability AI", "Black Forest Labs",
+      "Upstage", "LG AI Research", "KT", "Nex AGI", "RadixArk", "Meituan (LongCat)", "Aleph Alpha"
     ],
   },
   {
@@ -1104,9 +1294,10 @@ export const ECOSYSTEM_TIERS: EcosystemTier[] = [
     badge: "Infrastructure",
     iconName: "Wrench",
     labs: [
-      "Microsoft", "NVIDIA", "Amazon Web Services", "Apple", "Groq", 
-      "Together AI", "Perplexity", "Cursor (Anysphere)", "Cognition AI", 
-      "CrewAI", "Unsloth AI", "Ollama", "LangChain", "LMSYS Org", "OpenBMB"
+      "Microsoft", "NVIDIA", "Amazon Web Services", "Apple", "IBM", "ServiceNow", "Groq",
+      "Together AI", "Perplexity", "Cursor (Anysphere)", "Cognition AI", "Pruna AI",
+      "CrewAI", "Unsloth AI", "Ollama", "LangChain", "LlamaIndex", "Weights & Biases",
+      "LMSYS Org", "OpenBMB", "Multiverse Computing"
     ],
   },
   {
@@ -1116,7 +1307,7 @@ export const ECOSYSTEM_TIERS: EcosystemTier[] = [
     description: "Specialized generative computing studios delivering industry-standard video, voice cloning, and photorealism.",
     badge: "Creative Media",
     iconName: "Palette",
-    labs: ["Midjourney", "Runway", "ElevenLabs", "Krea AI", "Genmo", "Lightricks", "Hexgrad"],
+    labs: ["Midjourney", "Runway", "ElevenLabs", "Suno", "Adobe", "Bria AI", "Pika Labs", "Krea AI", "Genmo", "Lightricks", "Hexgrad"],
   },
   {
     id: "research",
@@ -1126,8 +1317,9 @@ export const ECOSYSTEM_TIERS: EcosystemTier[] = [
     badge: "Research & Universities",
     iconName: "GraduationCap",
     labs: [
-      "Stanford AI", "UC Berkeley (BAIR)", "Allen Institute for AI", 
-      "Technology Innovation Institute (TII)", "Cloudflare", "Vercel"
+      "Stanford AI", "UC Berkeley (BAIR)", "Allen Institute for AI",
+      "Technology Innovation Institute (TII)", "OpenMOSS", "EleutherAI", "LAION",
+      "Cloudflare", "Vercel"
     ],
   },
 ];

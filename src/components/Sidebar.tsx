@@ -48,7 +48,7 @@ export const Sidebar = memo(function Sidebar({
   onResetFilters,
   catalogDisplayMode = "assets",
   onSelectDisplayMode,
-  ecosystemsCount = 217,
+  ecosystemsCount = 227,
 }: SidebarProps) {
   const { typeCounts, taskCounts, popularCount } = useMemo(() => {
     const byType: Record<string, number> = {};
@@ -150,7 +150,7 @@ export const Sidebar = memo(function Sidebar({
               <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.5 rounded-full ${
                 catalogDisplayMode === "ecosystems" ? "bg-white/20 dark:bg-indigo-500/20 text-white dark:text-indigo-200" : "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20"
               }`}>
-                {ecosystemsCount ?? 217}
+                {ecosystemsCount ?? 227}
               </span>
             </button>
           </div>

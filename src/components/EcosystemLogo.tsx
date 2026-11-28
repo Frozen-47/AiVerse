@@ -83,6 +83,52 @@ const KNOWN_DOMAINS: Record<string, string> = {
   "mit": "mit.edu",
   "xiaomi": "mi.com",
   "xiaomimimo": "mi.com",
+  "xiaomi (mimo)": "mi.com",
+  "liquid": "liquid.ai",
+  "liquidai": "liquid.ai",
+  "liquid ai": "liquid.ai",
+  "inclusionai": "antgroup.com",
+  "thinkingmachines": "thinkingmachines.ai",
+  "thinking machines": "thinkingmachines.ai",
+  "upstage": "upstage.ai",
+  "lg ai research": "lgresearch.ai",
+  "nousresearch": "nousresearch.com",
+  "nous research": "nousresearch.com",
+  "briaai": "bria.ai",
+  "bria ai": "bria.ai",
+  "prunaai": "pruna.ai",
+  "pruna ai": "pruna.ai",
+  "suno": "suno.com",
+  "pika labs": "pika.art",
+  "moonshot ai": "moonshot.cn",
+  "minimax": "minimax.io",
+  "stepfun": "stepfun.com",
+  "kt": "kt.com",
+  "aleph alpha": "aleph-alpha.com",
+  "servicenow": "servicenow.com",
+  "meituan (longcat)": "meituan.com",
+  "zyphra": "zyphra.com",
+  "multiverse computing": "multiversecomputing.com",
+  "stanford ai": "stanford.edu",
+  "uc berkeley (bair)": "berkeley.edu",
+  "allen institute for ai": "allenai.org",
+  "technology innovation institute (tii)": "tii.ae",
+  "cloudflare": "cloudflare.com",
+  "cognition ai": "cognition.ai",
+  "cursor (anysphere)": "cursor.com",
+  "zhipu ai (thudm)": "zhipuai.cn",
+  "lmsys org": "lmsys.org",
+  "krea ai": "krea.ai",
+  "hexgrad": "hexgrad.com",
+  "openrouter": "openrouter.ai",
+  "modal labs": "modal.com",
+  "anyscale": "anyscale.com",
+  "fireworks ai": "fireworks.ai",
+  "cerebras systems": "cerebras.ai",
+  "heygen": "heygen.com",
+  "synthesia": "synthesia.io",
+  "luma ai": "lumalabs.ai",
+  "ideogram": "ideogram.ai",
 };
 
 export const EcosystemLogo: React.FC<EcosystemLogoProps> = ({
@@ -712,7 +758,7 @@ export const EcosystemLogo: React.FC<EcosystemLogoProps> = ({
         if (parts.length > 0 && !["topics", "explore", "trending", "features", "marketplace"].includes(parts[0].toLowerCase())) {
           githubOrg = parts[0];
         }
-      } else if (!targetDomain && !["huggingface.co", "arxiv.org", "gitlab.com", "medium.com", "substack.com"].includes(host)) {
+      } else if (!targetDomain && !["huggingface.co", "arxiv.org", "gitlab.com", "medium.com", "substack.com", "openrouter.ai", "artificialanalysis.ai"].includes(host)) {
         targetDomain = host;
       }
     } catch {
