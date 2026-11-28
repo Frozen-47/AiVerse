@@ -54,13 +54,13 @@ The artificial intelligence landscape moves at breakneck speed. Generic link dir
 ### ⚡ AiVerse AI Radar (2026-11-28)
 | Metric | Status / Count |
 | :--- | :--- |
-| 📥 **Queued for Review** | **Command A+** (`Model`), **KT: Mi:dm K 3.0 Pro** (`Model`), **MAGI-2-preview** (`Model`), **Wan_2.2_I2V_14B_Custom_Lora** (`Platform`), **fineweb-2** (`Dataset`) |
-| 🌟 **Tool of the Day** | **Ternary-Bonsai-2-27B-gguf** (prism-ml) — [Explore](https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf) |
-| 🗄️ **Catalog Entries** | **766** AI assets tracked (368 featured) |
+| 📥 **Queued for Review** | **G9v3-3B** (`Model`), **Gemini Omni 1.1 Flash** (`Model`), **Sulphur-3** (`Model`) |
+| 🌟 **Tool of the Day** | **DeepSeek-V4.1-Flash-1017** (DeepSeek AI) — [Explore](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
+| 🗄️ **Catalog Entries** | **538** AI assets tracked (284 featured) |
 | 🔥 **Top Trending Model** | [JT-35B-Flash](https://artificialanalysis.ai/models/jt-35b-flash) |
 | 📜 **Top Daily Paper** | [LayoutRecall: Preserving Appearance in Multi-Round...](https://huggingface.co/papers/2611.33885) |
 | 🛡️ **Catalog Links Checked** | **22/25** operational |
-| 🕒 **Last Synchronized** | `Sat, 28 Nov 2026 03:41:12 GMT` |
+| 🕒 **Last Synchronized** | `Sat, 28 Nov 2026 13:49:20 GMT` |
 
 *Full intelligence metrics and paper summaries available in [AI_RADAR.md](AI_RADAR.md).*
 <!-- AI_RADAR:END -->

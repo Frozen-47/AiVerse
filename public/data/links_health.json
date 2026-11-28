@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-11-28T03:40:34.975Z",
+  "timestamp": "2026-11-28T13:48:35.429Z",
   "checked": 25,
   "healthy": 22,
   "broken": 3,
   "issues": [
-    {
-      "name": "Midjourney (Platform)",
-      "url": "https://www.midjourney.com/",
-      "status": 403
-    },
     {
       "name": "DeepSeek Chat",
       "url": "https://chat.deepseek.com",
       "status": 403
     },
     {
-      "name": "Tabnine",
-      "url": "https://www.tabnine.com",
+      "name": "Meta AI",
+      "url": "https://www.meta.ai",
+      "status": 403
+    },
+    {
+      "name": "LMSYS Chatbot Arena Conversations",
+      "url": "https://chat.lmsys.org",
       "status": "Network Error"
     }
   ]

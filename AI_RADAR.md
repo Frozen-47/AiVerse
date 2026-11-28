@@ -2,59 +2,45 @@
 
 > Continuous multi-platform intelligence and ecosystem radar syncing top models, platforms, frameworks, research papers, catalog metrics, and repository health across Artificial Analysis, OpenRouter, Hugging Face, and GitHub.
 
-*Last Synchronized: `Sat, 28 Nov 2026 03:41:12 GMT`*
+*Last Synchronized: `Sat, 28 Nov 2026 13:49:20 GMT`*
 
 ---
 
-## 📥 Newly Queued Assets for Review (5)
+## 📥 Newly Queued Assets for Review (3)
 
 > Discovered automatically by Daily Pulse and queued in the Request List for manual administrator verification before public release.
 
-### **Command A+** (`Model` • *Cohere*)
-> Frontier Research model by Cohere benchmarked on Artificial Analysis with an Intelligence Index of 6.24120025576958 and a verified 192k Context window.
+### **G9v3-3B** (`Model` • *AI9Stars*)
+> Frontier Research model by AI9Stars benchmarked on Artificial Analysis and a verified 131k Context window.
 
 - 🏷️ **Domain & License**: `Research` • `Open Weights` (2026)
-- ⚡ **Metrics**: `Context Window: 192k Context, Intelligence Index: 6.24120025576958, Benchmarked on Artificial Analysis Leaderboard`
-- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/command-a-plus](https://artificialanalysis.ai/models/command-a-plus)
+- ⚡ **Metrics**: `Context Window: 131k Context, Benchmarked on Artificial Analysis Leaderboard`
+- 🔗 **Resource Link**: [https://artificialanalysis.ai/models/g9v3-3b](https://artificialanalysis.ai/models/g9v3-3b)
 
-### **KT: Mi:dm K 3.0 Pro** (`Model` • *kt*)
-> Mi:dm K 3.0 Pro is a Mixture-of-Experts reasoning model from KT, with 120B total and 12B active parameters. It uses a hybrid architecture that mixes Mamba, MoE and attention layers
+### **Gemini Omni 1.1 Flash** (`Model` • *Google DeepMind*)
+> Gemini Omni 1.1 Flash is Google's native multimodal video generation and editing model, the generally available successor to Gemini Omni Flash Preview.
 
-- 🏷️ **Domain & License**: `NLP` • `Proprietary` (2026)
-- ⚡ **Metrics**: `Context Window: 262k Context, Available across global OpenRouter inference nodes.`
-- 🔗 **Resource Link**: [https://openrouter.ai/kt/midm-k-3.0-pro](https://openrouter.ai/kt/midm-k-3.0-pro)
+- 🏷️ **Domain & License**: `Multimodal` • `Proprietary` (2026)
+- ⚡ **Metrics**: `Context Window: 131k Context, Available across global OpenRouter inference nodes.`
+- 🔗 **Resource Link**: [https://openrouter.ai/google/gemini-omni-1.1-flash](https://openrouter.ai/google/gemini-omni-1.1-flash)
 
-### **MAGI-2-preview** (`Model` • *sand-ai*)
-> High-performance Multimodal open-weights model by sand-ai, trending with over 361 community likes and 0 downloads on Hugging Face.
+### **Sulphur-3** (`Model` • *SulphurAI*)
+> Open-weights NLP model developed by SulphurAI.
 
-- 🏷️ **Domain & License**: `Multimodal` • `APACHE-2.0` (2026)
-- ⚡ **Metrics**: `Trending Score: 163, Likes: 361, Downloads: 0`
-- 🔗 **Resource Link**: [https://huggingface.co/sand-ai/MAGI-2-preview](https://huggingface.co/sand-ai/MAGI-2-preview)
-
-### **Wan_2.2_I2V_14B_Custom_Lora** (`Platform` • *traderharikrishna*)
-> Interactive AI web platform and demonstration hosted on Hugging Face Spaces by traderharikrishna. Trending with 62 community stars.
-
-- 🏷️ **Domain & License**: `Multimodal` • `Community Hosted` (2026)
-- ⚡ **Metrics**: `Trending Score: 22, Community Likes: 62`
-- 🔗 **Resource Link**: [https://huggingface.co/spaces/traderharikrishna/Wan_2.2_I2V_14B_Custom_Lora](https://huggingface.co/spaces/traderharikrishna/Wan_2.2_I2V_14B_Custom_Lora)
-
-### **fineweb-2** (`Dataset` • *HuggingFaceFW*)
-> 🥂 FineWeb2 	      A sparkling update with 1000s of languages 	 		 	 	 		What is it? 	 This is the second iteration of the popular 🍷 FineWeb dataset, bringing high qua (1,036 likes, 234,335 downloads).
-
-- 🏷️ **Domain & License**: `NLP` • `ODC-BY` (2026)
-- ⚡ **Metrics**: `Trending Score: 6, Likes: 1,036, Downloads: 234,335`
-- 🔗 **Resource Link**: [https://huggingface.co/datasets/HuggingFaceFW/fineweb-2](https://huggingface.co/datasets/HuggingFaceFW/fineweb-2)
+- 🏷️ **Domain & License**: `NLP` • `Open Weights` (2026)
+- ⚡ **Metrics**: `Hugging Face Likes: 1,403, Downloads: 759,937`
+- 🔗 **Resource Link**: [https://huggingface.co/SulphurAI/Sulphur-3](https://huggingface.co/SulphurAI/Sulphur-3)
 
 ---
 
 ## 🌟 Featured AI Tool of the Day
-### **Ternary-Bonsai-2-27B-gguf** (`Model` • *prism-ml*)
-> High-performance NLP open-weights model by prism-ml, trending with over 945 community likes and 405,609 downloads on Hugging Face, incorporating an architecture of prism-ml text generation architecture with community-tuned weights. The model demonstrates competitive performance across verified evaluations, including Trending Score: 898, Likes: 945, Downloads: 405,609. With its 27B params design, it supports diverse local and enterprise deployment profiles under the Apache-2.0 license.
+### **DeepSeek-V4.1-Flash-1017** (`Model` • *DeepSeek AI*)
+> DeepSeek AI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 32, Briefcase Elo of 1570, and a massive 1M context window.
 
-- 🏛️ **Architecture**: prism-ml text generation architecture with community-tuned weights.
-- ⚡ **Benchmarks**: `Trending Score: 898, Likes: 945, Downloads: 405,609`
-- 🏷️ **Domain & License**: `NLP` • `APACHE-2.0` (Released: 2026)
-- 🔗 **Resource Link**: [https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf](https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf)
+- 🏛️ **Architecture**: DeepSeek image text to text architecture with community-tuned weights.
+- ⚡ **Benchmarks**: `Intelligence Index: 32, Briefcase Elo: 1570, Accuracy: 40%, Non-Hallucination: 36%, FrontierCode: 28%, AutomationBench: 67%, TerminalBench 4: 34%, HLE Diamond: 25%, Speed: 175 tok/s, Context Window: 1M`
+- 🏷️ **Domain & License**: `Multimodal` • `MIT` (Released: 2026)
+- 🔗 **Resource Link**: [https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
 
 ---
 ## 🔥 Multi-Platform AI Model Radar
@@ -63,15 +49,15 @@
 | Model | Platform | Creator / Pipeline | Signals / Context | Link |
 | :--- | :--- | :--- | :--- | :--- |
 | **JT-35B-Flash** | `Artificial Analysis` | China Mobile (Frontier Leaderboard) | ❤️ 95 · 📥 256,000 | [View](https://artificialanalysis.ai/models/jt-35b-flash) |
-| **Qwen3.5 Omni Plus** | `Artificial Analysis` | Alibaba (Frontier Leaderboard) | ❤️ 95 · 📥 256,000 | [View](https://artificialanalysis.ai/models/qwen3-5-omni-plus) |
-| **Nova 2.0 Omni** | `Artificial Analysis` | Amazon (Reasoning Frontier) | ❤️ 95 · 📥 1,000,000 | [View](https://artificialanalysis.ai/models/nova-2-0-omni) |
-| **inclusionAI: LingSante 3.1 Air VL** | `OpenRouter` | inclusionai (Cloud Model API) | ❤️ 120 · 📥 131,072 | [View](https://openrouter.ai/inclusionai/lingsante-3.1-air-vl) |
-| **Upstage: Solar Mini 4.5 (Preview)** | `OpenRouter` | upstage (Cloud Model API) | ❤️ 120 · 📥 524,288 | [View](https://openrouter.ai/upstage/solar-mini-4-5) |
-| **Upstage: Solar Pro 4 Contributor** | `OpenRouter` | upstage (Cloud Model API) | ❤️ 120 · 📥 524,288 | [View](https://openrouter.ai/upstage/solar-pro-4-contributor) |
-| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | thinkingmachines (image-text-to-text) | ❤️ 6,479 · 📥 155,741 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
-| **unsloth/Inkling-2-Mini-GGUF** | `Hugging Face` | unsloth (image-text-to-text) | ❤️ 1,617 · 📥 3,302,340 | [View](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) |
-| **SulphurAI/Sulphur-3** | `Hugging Face` | SulphurAI (open-weights) | ❤️ 1,374 · 📥 539,421 | [View](https://huggingface.co/SulphurAI/Sulphur-3) |
-| **AtomicChat/Inkling-2-Mini-Uncensored-GGUF** | `Hugging Face` | AtomicChat (image-text-to-text) | ❤️ 1,045 · 📥 1,059,763 | [View](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) |
+| **Qwen3.5 Omni Plus** | `Artificial Analysis` | Alibaba (Qwen) (Frontier Leaderboard) | ❤️ 95 · 📥 256,000 | [View](https://artificialanalysis.ai/models/qwen3-5-omni-plus) |
+| **Nova 2.0 Omni** | `Artificial Analysis` | Amazon Web Services (Reasoning Frontier) | ❤️ 95 · 📥 1,000,000 | [View](https://artificialanalysis.ai/models/nova-2-0-omni) |
+| **LingSante 3.1 Air VL** | `OpenRouter` | InclusionAI (Cloud Model API) | ❤️ 120 · 📥 131,072 | [View](https://openrouter.ai/inclusionai/lingsante-3.1-air-vl) |
+| **Solar Mini 4.5 (Preview)** | `OpenRouter` | Upstage (Cloud Model API) | ❤️ 120 · 📥 524,288 | [View](https://openrouter.ai/upstage/solar-mini-4-5) |
+| **MiMo-V2.6-Flash-MOPD** | `OpenRouter` | Xiaomi (MiMo) (Cloud Model API) | ❤️ 120 · 📥 1,048,576 | [View](https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd) |
+| **thinkingmachines/Inkling-2-Mini** | `Hugging Face` | Thinking Machines (image-text-to-text) | ❤️ 6,536 · 📥 177,012 | [View](https://huggingface.co/thinkingmachines/Inkling-2-Mini) |
+| **SulphurAI/Sulphur-3** | `Hugging Face` | SulphurAI (open-weights) | ❤️ 1,403 · 📥 759,937 | [View](https://huggingface.co/SulphurAI/Sulphur-3) |
+| **inworld/voice-isolator** | `Hugging Face` | Inworld AI (audio-to-audio) | ❤️ 1,021 · 📥 22,810 | [View](https://huggingface.co/inworld/voice-isolator) |
+| **Lightricks/LTX-2.5** | `Hugging Face` | Lightricks (image-to-video) | ❤️ 13,781 · 📥 3,088,512 | [View](https://huggingface.co/Lightricks/LTX-2.5) |
 
 
 ---
@@ -81,19 +67,19 @@
 
 | Paper | Upvotes | Summary | Link |
 | :--- | :--- | :--- | :--- |
-| **LayoutRecall: Preserving Appearance in Multi-Round 3D Layout-Controlled Image Editing** | 👍 0 | LayoutRecall is a multi-round 3D layout-controlled image editor that preserves object appearance across edits by storing and retrieving latents in 3D box coordinate systems and conditioning a FLUX.2 editor with geometry-aligned memory. | [Read](https://huggingface.co/papers/2611.33885) |
+| **LayoutRecall: Preserving Appearance in Multi-Round 3D Layout-Controlled Image Editing** | 👍 4 | LayoutRecall is a multi-round 3D layout-controlled image editor that preserves object appearance across edits by storing and retrieving latents in 3D box coordinate systems and conditioning a FLUX.2 editor with geometry-aligned memory. | [Read](https://huggingface.co/papers/2611.33885) |
 | **Damped Atomic Wave Integration Neurons (DAWIN): A Universal Primitive for Continuous-Time Spatiotemporal Learning** | 👍 2 | Conventional artificial neurons separate spatial feature aggregation from continuous physical time, limiting their ability to model irregular observations. We i... | [Read](https://huggingface.co/papers/2611.30025) |
 | **BiSAT: Bidirectionally Aligned Semantic-Acoustic Tokenization for Speech Language Models** | 👍 2 | Speech language models (LMs) generate speech as sequences of discrete tokens. Their tokenizer must therefore preserve both acoustic detail and linguistic conten... | [Read](https://huggingface.co/papers/2611.30723) |
-| **Markdown Is Not a Firewall: four coding agents, one rules file, four boundaries** | 👍 0 | Teams put a one-page rules file in a repository and call it a control on coding agents. A registered study found agents rarely look up a repository's contributi... | [Read](https://huggingface.co/papers/2611.27112) |
-| **Revisiting LLMs as Context Engineers** | 👍 4 | As large language models (LLMs) are used in more and more new tasks, context engineering becomes a fundamental method to efficiently steer LLMs by constructing ... | [Read](https://huggingface.co/papers/2611.30494) |
+| **Markdown Is Not a Firewall: four coding agents, one rules file, four boundaries** | 👍 1 | Teams put a one-page rules file in a repository and call it a control on coding agents. A registered study found agents rarely look up a repository's contributi... | [Read](https://huggingface.co/papers/2611.27112) |
+| **Revisiting LLMs as Context Engineers** | 👍 5 | As large language models (LLMs) are used in more and more new tasks, context engineering becomes a fundamental method to efficiently steer LLMs by constructing ... | [Read](https://huggingface.co/papers/2611.30494) |
 
 
 ---
 
 ## 📊 AiVerse Catalog Overview
-- **Total Registered Assets**: `766`
-- **Featured / Starred Tools**: `368`
-- **Asset Breakdown**: **Datasets**: 158 • **AIs**: 73 • **Frameworks**: 38 • **Platforms**: 144 • **Models**: 353
+- **Total Registered Assets**: `538`
+- **Featured / Starred Tools**: `284`
+- **Asset Breakdown**: **Datasets**: 95 • **AIs**: 77 • **Frameworks**: 38 • **Platforms**: 40 • **Models**: 288
 
 ---
 

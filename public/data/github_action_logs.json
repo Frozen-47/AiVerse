@@ -1,5 +1,48 @@
 [
   {
+    "id": "action_1795873760216_4p6hk",
+    "created_at": "2026-11-28T13:49:20.216Z",
+    "timestamp": "2026-11-28T13:49:20.216Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 538 entries audited, 3 new asset(s) queued",
+    "details": "Ingested 3 asset(s): G9v3-3B, Gemini Omni 1.1 Flash, Sulphur-3. Checked health for 25 links (3 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 46503ms.",
+    "metadata": {
+      "totalCatalogEntries": 538,
+      "newlyIngestedCount": 3,
+      "newlyIngested": [
+        {
+          "name": "G9v3-3B",
+          "type": "Model",
+          "org": "AI9Stars"
+        },
+        {
+          "name": "Gemini Omni 1.1 Flash",
+          "type": "Model",
+          "org": "Google DeepMind"
+        },
+        {
+          "name": "Sulphur-3",
+          "type": "Model",
+          "org": "SulphurAI"
+        }
+      ],
+      "brokenLinks": 3,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 46503,
+      "runId": "46151437944",
+      "runNumber": "160",
+      "sha": "8756e97",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795869157615_l2hsx",
     "created_at": "2026-11-28T12:32:37.615Z",
     "timestamp": "2026-11-28T12:32:37.615Z",

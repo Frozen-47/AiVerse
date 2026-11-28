@@ -1,26 +1,5 @@
--- Seed / Upsert all 538 curated AiVerse entries into Supabase
--- Cleaned and deduplicated across 227 canonical AI labs
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('10-2026-qwen-investigation-traces', 'Cohere', 'Dataset', 'NLP', 'Open Data', 2026, 'n<1K', 'Diagnostic reasoning traces and raw token ID dataset investigating sampling behavior in Qwen3.8 Flash.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("CohereLabs/10-2026-qwen-investigation-traces")', 'Trending Score: 48, Likes: 49, Downloads: 0', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/CohereLabs/10-2026-qwen-investigation-traces', '[{"url":"https://huggingface.co/datasets/CohereLabs/10-2026-qwen-investigation-traces","text":"CohereLabs/10-2026-qwen-investigation-traces on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
+-- Seed / Upsert all 538 AiVerse entries into Supabase
+-- Generated automatically by daily pulse
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('3d-collection', 'Scenario Labs', 'Dataset', 'Computer Vision', 'CC-BY-4.0', 2026, '1K<n<10K', 'Curated dataset of 1,342 AI-generated 3D assets by Scenario Labs with multi-format meshes and PBR textures.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
@@ -106,27 +85,6 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('agency', 'Operand', 'Framework', 'NLP', 'MIT', 2026, '3MB Repo', 'A fast and minimal framework for building agentic systems.', 'Modular AI codebase with native Python/C++ bindings and distributed workflow support.', 'git clone https://github.com/operand/agency
 cd agency
 pip install -e .', 'GitHub Stars: 490, Forks: 29', 'Requires local Python environment and dependency configuration.', 'https://github.com/operand/agency', '[{"url":"https://github.com/operand/agency","text":"operand/agency on GitHub"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('AgentAlphaXiv', 'alphaXiv', 'Dataset', 'Research', 'CC-BY-4.0', 2026, '10K<n<100K', 'Twelve-week research archive from alphaXiv capturing 916 studies, code repositories, and autonomous agent preprints.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("alphaXiv/AgentAlphaXiv")', 'Trending Score: 8, Likes: 39, Downloads: 745', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/alphaXiv/AgentAlphaXiv', '[{"url":"https://huggingface.co/datasets/alphaXiv/AgentAlphaXiv","text":"alphaXiv/AgentAlphaXiv on Hugging Face Datasets"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -300,69 +258,7 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Apodex 1.1', 'Apodex', 'Model', 'Research', 'Proprietary', 2026, '256k Context · Proprietary Model', 'Frontier Research model by Apodex benchmarked on Artificial Analysis with an Intelligence Index of 13.7 and a verified 256k Context window.', 'Proprietary frontier neural architecture developed by Apodex, featuring native 256k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/apodex-1-1', 'Context Window: 256k Context, Intelligence Index: 13.7, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/apodex-1-1', '[{"url":"https://artificialanalysis.ai/models/apodex-1-1","text":"Apodex 1.1 on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/apodex-1-1/providers","text":"Apodex 1.1 Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Arena-Hard-Auto', 'LMSYS Org', 'Dataset', 'Research', 'Apache-2.0', 2024, '500 complex prompts', 'Benchmark of 500 challenging, hard-to-distinguish real-world queries evaluated automatically using LLM-as-a-judge with high correlation to human Chatbot Arena rank.', 'Hard prompt filtering pipeline with GPT-4-Judge pairwise win rate calculations.', 'python -m arena_hard.eval --model-answers answers.jsonl', '98% rank correlation with human Chatbot Arena ELO at a fraction of human testing cost.', 'Susceptible to LLM judge biases such as length and formatting preference.', 'https://github.com/sunshanghai/arena-hard-auto', '[{"url":"https://lmsys.org/blog/2024-04-19-arena-hard/","text":"Arena-Hard-Auto Release"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Arete-27B', 'Nous Research', 'Model', 'NLP', 'Apache-2.0', 2026, '27B params', 'Open-weights NLP model developed by Nous Research.', 'NousResearch text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("NousResearch/Arete-27B", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("NousResearch/Arete-27B")', 'Trending Score: 182, Likes: 187, Downloads: 989', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/NousResearch/Arete-27B', '[{"url":"https://huggingface.co/NousResearch/Arete-27B","text":"NousResearch/Arete-27B on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('arete-data-pairs', 'Nous Research', 'Dataset', 'NLP', 'Open Data', 2026, '10K<n<100K', 'Arete data pairs — v1.0.0 Prompt–response pairs for seven values topics, each prompt answered by both the Inkling teacher (thinkingmachines/inkling) and the Qwen 3.8-.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("NousResearch/arete-data-pairs")', 'Trending Score: 23, Likes: 23, Downloads: 244', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/NousResearch/arete-data-pairs', '[{"url":"https://huggingface.co/datasets/NousResearch/arete-data-pairs","text":"NousResearch/arete-data-pairs on Hugging Face Datasets"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -385,50 +281,6 @@ VALUES ('Audio8-ASR-Infinite', 'Edge0', 'Model', 'Audio', 'Apache-2.0', 2026, 'O
 
 model = AutoModelForCausalLM.from_pretrained("Edge0/Audio8-ASR-Infinite", device_map="auto")
 tokenizer = AutoTokenizer.from_pretrained("Edge0/Audio8-ASR-Infinite")', 'Trending Score: 541, Likes: 605, Downloads: 2,853', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Edge0/Audio8-ASR-Infinite', '[{"url":"https://huggingface.co/Edge0/Audio8-ASR-Infinite","text":"Edge0/Audio8-ASR-Infinite on Hugging Face"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Audio8-TTS-Realistic-0.6b', 'Edge0', 'Model', 'Audio', 'Apache-2.0', 2026, '0.6B params', 'Open-weights Audio model developed by Edge0.', 'Edge0 text to speech architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("Edge0/Audio8-TTS-Realistic-0.6b", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("Edge0/Audio8-TTS-Realistic-0.6b")', 'Trending Score: 171, Likes: 174, Downloads: 2,755', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Edge0/Audio8-TTS-Realistic-0.6b', '[{"url":"https://huggingface.co/Edge0/Audio8-TTS-Realistic-0.6b","text":"Edge0/Audio8-TTS-Realistic-0.6b on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Audio8-TTS-Realistic-Air', 'Edge0', 'Model', 'Audio', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Audio model developed by Edge0.', 'Edge0 text to speech architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("Edge0/Audio8-TTS-Realistic-Air", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("Edge0/Audio8-TTS-Realistic-Air")', 'Trending Score: 223, Likes: 241, Downloads: 7,259', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Edge0/Audio8-TTS-Realistic-Air', '[{"url":"https://huggingface.co/Edge0/Audio8-TTS-Realistic-Air","text":"Edge0/Audio8-TTS-Realistic-Air on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -737,49 +589,7 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('ChartNet', 'IBM', 'Dataset', 'Computer Vision', 'CDLA-Permissive-2.0', 2026, '10M<n<100M', 'ChartNet: A Million-Scale Multimodal Dataset for Chart Understanding ChartNet introduce.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("ibm-granite/ChartNet")', 'Trending Score: 17, Likes: 68, Downloads: 18,197', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/ibm-granite/ChartNet', '[{"url":"https://huggingface.co/datasets/ibm-granite/ChartNet","text":"ibm-granite/ChartNet on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('ChatGPT', 'OpenAI', 'AI', 'NLP', 'Proprietary', 2022, 'N/A', 'An advanced AI assistant by OpenAI, utilizing the GPT-4 family of models to converse, write code, and assist with a wide range of tasks.', 'Web Application / Conversational Agent (Powered by GPT-4/GPT-4o)', 'Visit chatgpt.com to interact via the web interface.', 'N/A (See underlying models like GPT-4o)', 'May hallucinate, knowledge cutoff depends on the model version.', 'https://chatgpt.com', '[{"url":"https://openai.com/blog/chatgpt","text":"ChatGPT Announcement"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('chess-position-evaluations', 'Lichess', 'Dataset', 'Research', 'CC0-1.0', 2026, '1B<n<10B', 'Open dataset of millions of chess board positions annotated with deep Stockfish engine evaluations by Lichess.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("Lichess/chess-position-evaluations")', 'Trending Score: 16, Likes: 55, Downloads: 5,114', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/Lichess/chess-position-evaluations', '[{"url":"https://huggingface.co/datasets/Lichess/chess-position-evaluations","text":"Lichess/chess-position-evaluations on Hugging Face Datasets"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -1024,25 +834,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Claude Fable 5.2', 'Anthropic', 'Model', 'Research', 'Proprietary', 2026, '1000k Context · Proprietary Model', 'Claude Fable 5.2 is Anthropic''s most capable model for the most demanding technical work, with gains over Fable 5.1 in coding, reasoning, and vision. In prerelease testing it compl.', 'Proprietary frontier neural architecture developed by Anthropic, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/claude-fable-5-2', 'Context Window: 1000k Context, Intelligence Index: 56.4, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/claude-fable-5-2', '[{"url":"https://artificialanalysis.ai/models/claude-fable-5-2","text":"Claude Fable 5.2 on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/claude-fable-5-2/providers","text":"Claude Fable 5.2 Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Claude Haiku 5.5', 'Anthropic', 'Model', 'NLP', 'Proprietary', 2026, '1M Context · Proprietary Model', 'Anthropic''s frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 30, Briefcase Elo of 1441, and a massive 1M context window.', 'Proprietary frontier neural architecture developed by Anthropic, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (173 tok/s).', 'import anthropic
 client = anthropic.Anthropic()
 message = client.messages.create(
@@ -1225,28 +1016,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Clover-35B-A3B-Preview', 'Diffuspace', 'Model', 'NLP', 'Apache-2.0', 2026, '35B params', 'Open-weights NLP model developed by Diffuspace.', 'Diffuspace text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("Diffuspace/Clover-35B-A3B-Preview", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("Diffuspace/Clover-35B-A3B-Preview")', 'Trending Score: 181, Likes: 184, Downloads: 2,021', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Diffuspace/Clover-35B-A3B-Preview', '[{"url":"https://huggingface.co/Diffuspace/Clover-35B-A3B-Preview","text":"Diffuspace/Clover-35B-A3B-Preview on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Code Llama', 'Meta AI', 'Model', 'AI Coding', 'Llama 2 Community License', 2023, '7B to 70B params', 'Meta''s family of open-source code-specialized models (7B–70B) built on Llama 2, supporting code generation, infilling, and instruction-following for 100+ programming languages.', 'Llama 2 fine-tuned on 500B code tokens, with infilling and long-context capability.', 'from transformers import AutoTokenizer, AutoModelForCausalLM
 tokenizer = AutoTokenizer.from_pretrained("meta-llama/CodeLlama-34b-Instruct-hf")
 model = AutoModelForCausalLM.from_pretrained("meta-llama/CodeLlama-34b-Instruct-hf")', 'HumanEval: 53.7% (34B), pass@1', 'Commercial use constraints from Llama 2 license.', 'https://ai.meta.com/blog/code-llama-large-language-model-coding/', '[{"url":"https://arxiv.org/abs/2308.12950","text":"Code Llama Paper"}]'::jsonb, true, true)
@@ -1383,25 +1152,6 @@ ON CONFLICT (name) DO UPDATE SET
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Cohere Coral', 'Cohere', 'AI', 'NLP', 'Proprietary', 2023, 'N/A', 'An enterprise-focused conversational AI assistant by Cohere, designed for business use cases like search, summarization, and knowledge retrieval.', 'Web Application / Conversational Agent (Powered by Command R+ models)', 'Visit coral.cohere.com to interact via the web interface.', 'N/A', 'Primarily optimized for enterprise workflows; less suited for casual general-purpose use.', 'https://coral.cohere.com', '[{"url":"https://coral.cohere.com","text":"Cohere Coral"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Command A+', 'Cohere', 'Model', 'Research', 'Open Weights', 2026, '192k Context · Open Model', 'Frontier Research model by Cohere benchmarked on Artificial Analysis with an Intelligence Index of 6.2 and a verified 192k Context window.', 'Open-weights frontier neural architecture developed by Cohere, featuring native 192k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/command-a-plus', 'Context Window: 192k Context, Intelligence Index: 6.2, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/command-a-plus', '[{"url":"https://artificialanalysis.ai/models/command-a-plus","text":"Command A+ on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/command-a-plus/providers","text":"Command A+ Inference Providers"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -1670,28 +1420,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('DaisyRose-27B', 'RadixArk', 'Model', 'Multimodal', 'Apache-2.0', 2026, '27B params', 'DaisyRose 27B is an open-weight multimodal reasoning model from RadixArk, trained from Qwen3.8 27B using reinforcement learning only on lo.', 'RadixArk image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("RadixArk/DaisyRose-27B", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("RadixArk/DaisyRose-27B")', 'Context Window: 262k Context, Available across global OpenRouter inference nodes.', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/RadixArk/DaisyRose-27B', '[{"url":"https://huggingface.co/RadixArk/DaisyRose-27B","text":"RadixArk/DaisyRose-27B on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('DALL-E 2', 'OpenAI', 'Model', 'Image Generation', 'Proprietary', 2022, 'Unknown (3.5B params)', 'OpenAI''s second-generation image model introducing inpainting, outpainting, and variations from text and image inputs.', 'CLIP-guided hierarchical diffusion model with GLIDE as prior.', 'from openai import OpenAI
 client = OpenAI()
 response = client.images.generate(
@@ -1812,6 +1540,28 @@ response = requests.post(
   "https://api.deepseekai.com/v1/chat/completions",
   json={"model": "deepseek-v4-flash-vision-max", "messages": [{"role": "user", "content": "Benchmark query"}]}
 )', 'Briefcase Elo: 1420, AutomationBench: 47%, TerminalBench 4: 12%, HLE Diamond: 21%, Speed: 40 tok/s, Context Window: 1M', 'Proprietary cloud API access via DeepSeek AI developer platform; subject to API rate limits and token pricing ($1.32/M in, $0.01/M out).', 'https://artificialanalysis.ai/models/deepseek-v4-flash-vision', '[{"url":"https://artificialanalysis.ai/models/deepseek-v4-flash-vision","text":"DeepSeek V4 Flash Vision (max) on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/deepseek-v4-flash-vision/providers","text":"DeepSeek V4 Flash Vision (max) Inference Providers"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('DeepSeek-V4.1-Flash-1017', 'DeepSeek AI', 'Model', 'Multimodal', 'MIT', 2026, 'Open Weights', 'DeepSeek AI''s frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 32, Briefcase Elo of 1570, and a massive 1M context window.', 'DeepSeek image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("deepseek-ai/DeepSeek-V4.1-Flash-1017", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/DeepSeek-V4.1-Flash-1017")', 'Intelligence Index: 32, Briefcase Elo: 1570, Accuracy: 40%, Non-Hallucination: 36%, FrontierCode: 28%, AutomationBench: 67%, TerminalBench 4: 34%, HLE Diamond: 25%, Speed: 175 tok/s, Context Window: 1M', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017', '[{"url":"https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017","text":"deepseek-ai/DeepSeek-V4.1-Flash-1017 on Hugging Face"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -2005,51 +1755,7 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('DeepSeek-V4.1-Flash-1017', 'DeepSeek AI', 'Model', 'Multimodal', 'MIT', 2026, 'Open Weights', 'DeepSeek AI''s frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 32, Briefcase Elo of 1570, and a massive 1M context window.', 'DeepSeek image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("deepseek-ai/DeepSeek-V4.1-Flash-1017", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/DeepSeek-V4.1-Flash-1017")', 'Intelligence Index: 32, Briefcase Elo: 1570, Accuracy: 40%, Non-Hallucination: 36%, FrontierCode: 28%, AutomationBench: 67%, TerminalBench 4: 34%, HLE Diamond: 25%, Speed: 175 tok/s, Context Window: 1M', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017', '[{"url":"https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017","text":"deepseek-ai/DeepSeek-V4.1-Flash-1017 on Hugging Face"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('DeepSpeed', 'Microsoft', 'Framework', 'MLOps', 'Apache-2.0', 2020, 'N/A', 'Microsoft''s deep learning optimization library that makes distributed training, parameter offloading (ZeRO-1/2/3/Infinity), and high-throughput inference scalable and efficient on commodity and enterprise hardware.', 'Distributed memory optimization engine featuring Zero Redundancy Optimizer (ZeRO), ZeRO-Offload, 3D parallelism (data, tensor, pipeline), and DeepSpeed-MoE.', 'deepspeed --num_gpus=8 train.py --deepspeed deepspeed_config.json', 'Powers trillion-parameter distributed training runs (BLOOM, Megatron-Turing NLG); reduces memory footprint up to 10x via ZeRO-3.', 'Configuration complexity with multi-node networking and custom CUDA kernel compilation requirements across varying driver environments.', 'https://github.com/microsoft/DeepSpeed', '[{"url":"https://github.com/microsoft/DeepSpeed","text":"Microsoft DeepSpeed GitHub Repository"},{"url":"https://www.deepspeed.ai/","text":"DeepSpeed Official Documentation"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('DepthPro2', 'Apple', 'Model', 'Computer Vision', 'Open Weights', 2026, 'Open Weights', 'Zero-shot metric monocular depth estimation model developed by Apple for sharp, high-resolution geometric depth prediction.', 'apple depth estimation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("apple/DepthPro2", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("apple/DepthPro2")', 'Trending Score: 165, Likes: 191, Downloads: 0', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/apple/DepthPro2', '[{"url":"https://huggingface.co/apple/DepthPro2","text":"apple/DepthPro2 on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -2109,28 +1815,6 @@ ON CONFLICT (name) DO UPDATE SET
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Devin', 'Cognition AI', 'AI', 'AI Coding', 'Proprietary', 2024, 'N/A', 'The first autonomous AI software engineer, equipped with its own sandboxed shell, code editor, and browser to solve end-to-end engineering tasks independently.', 'Autonomous multi-step agent architecture with sandboxed compute environment.', 'Assign a GitHub issue or feature ticket to Devin via the Cognition dashboard or Slack integration.', '13.86% resolved on SWE-bench at launch; over 45% on modern benchmarks.', 'Requires human verification for large architectural migrations and security critical code.', 'https://cognition.ai', '[{"url":"https://cognition.ai/blog/introducing-devin","text":"Devin Announcement"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('dinov3-vitl16-pretrain-lvd1689m', 'Meta AI', 'Model', 'Computer Vision', 'Open Weights', 2026, '1689M params', 'Self-supervised DINOv3 Vision Transformer (ViT-L/16) pretrained on 1.689B curated visual samples by Meta AI.', 'facebook image feature extraction architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("facebook/dinov3-vitl16-pretrain-lvd1689m", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("facebook/dinov3-vitl16-pretrain-lvd1689m")', 'Trending Score: 164, Likes: 2,145, Downloads: 703,532', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/facebook/dinov3-vitl16-pretrain-lvd1689m', '[{"url":"https://huggingface.co/facebook/dinov3-vitl16-pretrain-lvd1689m","text":"facebook/dinov3-vitl16-pretrain-lvd1689m on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -2400,94 +2084,7 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('enterpriseops-gym-v1.1', 'ServiceNow', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'STATIC Platform', 'Interactive multimodal showcase hosted by ServiceNow on Hugging Face Spaces.', 'STATIC cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/ServiceNow-AI/enterpriseops-gym-v1.1', 'Trending Score: 20, Community Likes: 21', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/ServiceNow-AI/enterpriseops-gym-v1.1', '[{"url":"https://huggingface.co/spaces/ServiceNow-AI/enterpriseops-gym-v1.1","text":"ServiceNow-AI/enterpriseops-gym-v1.1 on Hugging Face Spaces"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('ERNIE 5.5 Flash Preview', 'Baidu', 'Model', 'Research', 'Open Weights', 2026, '1024k Context · Open Model', 'Frontier Research model by Baidu benchmarked on Artificial Analysis with an Intelligence Index of 31.3 and a verified 1024k Context window.', 'Open-weights frontier neural architecture developed by Baidu, featuring native 1024k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/ernie-5-5-flash', 'Context Window: 1024k Context, Intelligence Index: 31.3, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/ernie-5-5-flash', '[{"url":"https://artificialanalysis.ai/models/ernie-5-5-flash","text":"ERNIE 5.5 Flash Preview on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/ernie-5-5-flash/providers","text":"ERNIE 5.5 Flash Preview Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('ERNIE Bot', 'Baidu', 'AI', 'NLP', 'Proprietary', 2023, 'N/A', 'Baidu''s conversational AI assistant powered by the ERNIE large language model, strong in Chinese language tasks and integrated with Baidu Search.', 'Web Application / Conversational Agent (Powered by ERNIE 4.0)', 'Visit yiyan.baidu.com to interact; primarily available in China.', 'N/A', 'Primarily optimized for Chinese language; access outside China may be restricted.', 'https://yiyan.baidu.com', '[{"url":"https://yiyan.baidu.com","text":"ERNIE Bot"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('ERNIE-5.5-Flash-Base', 'Baidu', 'Model', 'NLP', 'Open Weights', 2026, 'Open Weights', 'Open-weights NLP model developed by Baidu.', 'baidu text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("baidu/ERNIE-5.5-Flash-Base", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("baidu/ERNIE-5.5-Flash-Base")', 'Trending Score: 156, Likes: 217, Downloads: 971', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/baidu/ERNIE-5.5-Flash-Base', '[{"url":"https://huggingface.co/baidu/ERNIE-5.5-Flash-Base","text":"baidu/ERNIE-5.5-Flash-Base on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('ERNIE-Light-DT-1.0', 'Baidu', 'Model', 'NLP', 'Proprietary', 2026, '1024k Context · Available via API', 'ERNIE-Light-DT-1.0 is based on open-source GLM models and includes research findings from Baidu Search''s Lightning large model. It features Baidu Sparse Attention (BSA), a unique s.', 'Modern foundation model hosted on OpenRouter with native 1024k Context support and structured output generation.', 'import OpenAI from "openai";
-const openai = new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY
-});
-const response = await openai.chat.completions.create({
-  model: "baidu/ernie-light-dt-1.0-intl",
-  messages: [{ role: "user", content: "Hello!" }]
-});', 'Context Window: 1024k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/baidu/ernie-light-dt-1.0-intl', '[{"url":"https://openrouter.ai/baidu/ernie-light-dt-1.0-intl","text":"Baidu: ERNIE-Light-DT-1.0 on OpenRouter"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -2509,27 +2106,6 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('EvalPlus', 'EvalPlus', 'Dataset', 'AI Coding', 'Apache-2.0', 2023, '164 HumanEval+ & 378 MBPP+ Rigorous Tasks', 'Rigorous code evaluation suite augmenting HumanEval (HumanEval+) and MBPP (MBPP+) with automated LLM- and mutation-based test synthesis, boosting test-case coverage by up to 80x.', 'Automated test-input synthesis pipeline combining differential testing, type-aware mutations, and constraint solving for strict semantic verification.', 'from evalplus.data import get_human_eval_plus
 evalplus_tasks = get_human_eval_plus()
 print(len(evalplus_tasks), evalplus_tasks["HumanEval/0"]["entry_point"])', 'Exposes an average of 15% false passes in standard HumanEval benchmarks; recognized as standard rigor baseline on the EvalPlus leaderboard.', 'Focuses on standalone algorithmic programming problems rather than full-repository multi-file architectures.', 'https://evalplus.github.io', '[{"url":"https://evalplus.github.io","text":"EvalPlus Leaderboard & Benchmark Suite"},{"url":"https://github.com/evalplus/evalplus","text":"EvalPlus GitHub Repository"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('EVIDENT', 'KORMo-VL', 'Dataset', 'NLP', 'Open Data', 2026, 'n<1K', 'EVIDENT: Task Metadata for Evidence-Grounded GUI Evaluation This release contains 220 GUI/web agent task records for evidence-grounded trajectory evaluation: 150 Kore.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("KORMo-VL/EVIDENT")', 'Trending Score: 22, Likes: 23, Downloads: 110', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/KORMo-VL/EVIDENT', '[{"url":"https://huggingface.co/datasets/KORMo-VL/EVIDENT","text":"KORMo-VL/EVIDENT on Hugging Face Datasets"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -2615,47 +2191,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('FastFrames-L', 'Apple', 'Model', 'Video Generation', 'Apple AMLR', 2026, 'Open Weights', 'Open-weights Video Generation model developed by Apple.', 'apple text to video architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("apple/FastFrames-L", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("apple/FastFrames-L")', 'Trending Score: 210, Likes: 228, Downloads: 0', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/apple/FastFrames-L', '[{"url":"https://huggingface.co/apple/FastFrames-L","text":"apple/FastFrames-L on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('FastH3-Omni', 'FastVideo', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'High-throughput multimodal inference showcase powered by FastVideo''s diffusion and sequence acceleration stack.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/FastVideo/FastH3-Omni', 'Trending Score: 40, Community Likes: 58', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/FastVideo/FastH3-Omni', '[{"url":"https://huggingface.co/spaces/FastVideo/FastH3-Omni","text":"FastVideo/FastH3-Omni on Hugging Face Spaces"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('FDE-Gym', 'DeepLethe', 'Dataset', 'NLP', 'Open Data', 2026, 'n<1K', 'FDE-Gym: The Last Mile of AI Delivery FDE-Gym tests whether an agent can do the work of a forward-deployed engineer: enter a customer''s running environment, find out.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("DeepLethe/FDE-Gym")', 'Trending Score: 43, Likes: 80, Downloads: 64', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/DeepLethe/FDE-Gym', '[{"url":"https://huggingface.co/datasets/DeepLethe/FDE-Gym","text":"DeepLethe/FDE-Gym on Hugging Face Datasets"}]'::jsonb, false, true)
@@ -2699,71 +2234,8 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('FineART', 'LeRobot', 'Dataset', 'Computer Vision', 'CC-BY-4.0', 2026, '100M<n<1B', 'FineART: Fine-Grained Annotated Robotic Trajectory Dataset FineART is co-released by Scale AI and Hugging Face LeRobot. The data was collected and annotated by the Ph.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("lerobot/FineART")', 'Trending Score: 18, Likes: 32, Downloads: 481,434', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/lerobot/FineART', '[{"url":"https://huggingface.co/datasets/lerobot/FineART","text":"lerobot/FineART on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('FineDNA', 'Hugging Face', 'Dataset', 'NLP', 'Apache-2.0', 2026, '100M<n<1B', 'FineDNA is the training data of Carbon-X, the model that taught Qwen3-14B to read DNA, for all three of its training stages. Each stage is a group of configs:.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("HuggingFaceBio/FineDNA")', 'Trending Score: 22, Likes: 23, Downloads: 72', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/HuggingFaceBio/FineDNA', '[{"url":"https://huggingface.co/datasets/HuggingFaceBio/FineDNA","text":"HuggingFaceBio/FineDNA on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('FineWeb & FineWeb-Edu', 'Hugging Face', 'Dataset', 'NLP', 'ODC-By 1.0', 2024, '15 Trillion tokens (44 TB)', '15-trillion token open web pretraining dataset from Hugging Face, including FineWeb-Edu filtered with automated AI educational quality scoring.', 'Curated dataset derived from 96 Common Crawl dumps with MinHash deduplication.', 'from datasets import load_dataset
 ds = load_dataset("HuggingFaceFW/fineweb-edu", name="sample-100BT", split="train", streaming=True)', 'Pretraining on FineWeb-Edu yields higher MMLU per token than Meta Llama 3 web filtering.', 'Massive multi-terabyte download requirement for full uncompressed sets.', 'https://huggingface.co/datasets/HuggingFaceFW/fineweb', '[{"url":"https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-details","text":"FineWeb Announcement"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('fineweb-2', 'Hugging Face', 'Dataset', 'NLP', 'ODC-By 1.0', 2026, '1B<n<10B', 'Second major release of Hugging Face''s FineWeb corpus scaling filtered multilingual web text across 1,000+ languages.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("HuggingFaceFW/fineweb-2")', 'Trending Score: 6, Likes: 1,036, Downloads: 234,335', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/HuggingFaceFW/fineweb-2', '[{"url":"https://huggingface.co/datasets/HuggingFaceFW/fineweb-2","text":"HuggingFaceFW/fineweb-2 on Hugging Face Datasets"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -3211,114 +2683,9 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Gemini 4 Neon', 'Google DeepMind', 'Model', 'Research', 'Proprietary', 2026, '1000k Context · Proprietary Model', 'Frontier Research model by Google benchmarked on Artificial Analysis with an Intelligence Index of 44.1 and a verified 1000k Context window.', 'Proprietary frontier neural architecture developed by Google, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gemini-4-neon', 'Context Window: 1000k Context, Intelligence Index: 44.1, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/gemini-4-neon', '[{"url":"https://artificialanalysis.ai/models/gemini-4-neon","text":"Gemini 4 Neon on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/gemini-4-neon/providers","text":"Gemini 4 Neon Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Gemini Omni 1.2 Flash', 'Google DeepMind', 'Model', 'Multimodal', 'Proprietary', 2026, '131k Context · Available via API', 'Gemini Omni 1.2 Flash is Google''s native multimodal video generation and editing model, the successor to Gemini Omni 1.1 Flash. It generates clips up to 15 seconds long with native.', 'Modern foundation model hosted on OpenRouter with native 131k Context support and structured output generation.', 'import OpenAI from "openai";
-const openai = new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY
-});
-const response = await openai.chat.completions.create({
-  model: "google/gemini-omni-1.2-flash",
-  messages: [{ role: "user", content: "Hello!" }]
-});', 'Context Window: 131k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/google/gemini-omni-1.2-flash', '[{"url":"https://openrouter.ai/google/gemini-omni-1.2-flash","text":"Google: Gemini Omni 1.2 Flash on OpenRouter"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Gemma 2 (27B)', 'Google DeepMind', 'Model', 'NLP', 'Gemma License', 2024, '27B params', 'Google''s open-weights model built from the same research and technology as the Gemini models, offering class-leading performance for its size.', 'Transformer decoder with sliding window attention and soft-capping.', 'from transformers import AutoTokenizer, AutoModelForCausalLM
 tokenizer = AutoTokenizer.from_pretrained("google/gemma-2-27b-it")
 model = AutoModelForCausalLM.from_pretrained("google/gemma-2-27b-it")', 'MMLU: 81.5%, HumanEval: 71.5%', 'Commercial use permitted but subject to the Gemma license terms.', 'https://ai.google.dev/gemma', '[{"url":"https://blog.google/technology/developers/google-gemma-2/","text":"Gemma 2 Announcement"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Gemma 3 270M', 'Google DeepMind', 'Model', 'NLP', 'Open Weights', 2026, '32k Context · Open Model', 'Frontier NLP model by Google benchmarked on Artificial Analysis and a verified 32k Context window.', 'Open-weights frontier neural architecture developed by Google, featuring native 32k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gemma-3-270m', 'Context Window: 32k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/gemma-3-270m', '[{"url":"https://artificialanalysis.ai/models/gemma-3-270m","text":"Gemma 3 270M on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/gemma-3-270m/providers","text":"Gemma 3 270M Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Gemma 4 12B', 'Google DeepMind', 'Model', 'NLP', 'Open Weights', 2026, '262k Context · Open Model', 'Frontier NLP model by Google benchmarked on Artificial Analysis and a verified 262k Context window.', 'Open-weights frontier neural architecture developed by Google, featuring native 262k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gemma-4-12b', 'Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/gemma-4-12b', '[{"url":"https://artificialanalysis.ai/models/gemma-4-12b","text":"Gemma 4 12B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/gemma-4-12b/providers","text":"Gemma 4 12B Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('gigaspeech3', 'SpeechColab', 'Dataset', 'Audio', 'Open Data', 2026, '10M<n<100M', 'GigaSpeech 3 Scaling Multi-Dialect Arabic Speech Recognition with Weakly Labeled Data GigaSpeech 3 is a large-scale Arabic speech recognition corpus containing approx.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("speechcolab/gigaspeech3")', 'Trending Score: 19, Likes: 19, Downloads: 7,022', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/speechcolab/gigaspeech3', '[{"url":"https://huggingface.co/datasets/speechcolab/gigaspeech3","text":"speechcolab/gigaspeech3 on Hugging Face Datasets"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -3741,93 +3108,7 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('GPT-6.2 Astra', 'OpenAI', 'Model', 'NLP', 'Proprietary', 2026, '1050k Context · Available via API', 'GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, professional work and scientific res.', 'Modern foundation model hosted on OpenRouter with native 1050k Context support and structured output generation.', 'import OpenAI from "openai";
-const openai = new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY
-});
-const response = await openai.chat.completions.create({
-  model: "openai/gpt-6.2-astra",
-  messages: [{ role: "user", content: "Hello!" }]
-});', 'Context Window: 1050k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/openai/gpt-6.2-astra', '[{"url":"https://openrouter.ai/openai/gpt-6.2-astra","text":"OpenAI: GPT-6.2 Astra on OpenRouter"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('GPT-6.2 Sol', 'OpenAI', 'Model', 'Research', 'Proprietary', 2026, '1000k Context · Proprietary Model', 'GPT-6.2 Sol is an upgrade to GPT-6.1 Sol from OpenAI, positioned below the flagship GPT-6.2 Astra in the GPT-6.2 series. It is an efficient, versatile model for everyday work, suit.', 'Proprietary frontier neural architecture developed by OpenAI, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gpt-6-2-sol', 'Context Window: 1000k Context, Intelligence Index: 55.6, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/gpt-6-2-sol', '[{"url":"https://artificialanalysis.ai/models/gpt-6-2-sol","text":"GPT-6.2 Sol on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/gpt-6-2-sol/providers","text":"GPT-6.2 Sol Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('gpt-oss-20b', 'OpenAI', 'Model', 'Research', 'Open Weights', 2026, '131k Context · Open Model', 'Frontier Research model by OpenAI benchmarked on Artificial Analysis and a verified 131k Context window.', 'Open-weights frontier neural architecture developed by OpenAI, featuring native 131k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gpt-oss-20b', 'Context Window: 131k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/gpt-oss-20b', '[{"url":"https://artificialanalysis.ai/models/gpt-oss-20b","text":"gpt-oss-20b on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/gpt-oss-20b/providers","text":"gpt-oss-20b Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Grammarly', 'Grammarly', 'AI', 'Productivity', 'Proprietary', 2009, 'N/A', 'An AI-powered writing assistant that checks grammar, spelling, tone, clarity, and style in real-time across browsers, documents, and email clients.', 'Browser Extension / SaaS (Proprietary NLP models + generative AI layer)', 'Install the Grammarly browser extension from grammarly.com or use the desktop app.', 'N/A', 'Premium plan required for advanced suggestions; can occasionally suggest unnatural rephrasing.', 'https://www.grammarly.com', '[{"url":"https://www.grammarly.com","text":"Grammarly"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Granary-v2', 'NVIDIA', 'Dataset', 'Audio', 'OpenMDW-1.1', 2026, 'Curated Dataset', 'Granary-v2: Multilingual Speech Recognition, Translation and Instruction Data Granary-v2 is NVIDIA''s second rel.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("nvidia/Granary-v2")', 'Trending Score: 23, Likes: 23, Downloads: 1,074', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nvidia/Granary-v2', '[{"url":"https://huggingface.co/datasets/nvidia/Granary-v2","text":"nvidia/Granary-v2 on Hugging Face Datasets"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -3850,63 +3131,6 @@ VALUES ('Granite 3.0 8B Instruct', 'IBM', 'Model', 'NLP', 'Apache-2.0', 2024, '8
 
 model = AutoModelForCausalLM.from_pretrained("ibm-granite/granite-3.0-8b-instruct", device_map="auto")
 tokenizer = AutoTokenizer.from_pretrained("ibm-granite/granite-3.0-8b-instruct")', 'MMLU: 67.5%, GSM8K: 77.0%, HumanEval: 62.2%, Berkeley Function Calling Leaderboard: 89.2%', 'Primarily optimized for enterprise English and structured workflows; lower performance on niche low-resource multilingual natural dialogue.', 'https://www.ibm.com/granite', '[{"url":"https://www.ibm.com/granite","text":"IBM Granite 3.0 Technical Overview"},{"url":"https://huggingface.co/ibm-granite/granite-3.0-8b-instruct","text":"Granite 3.0 8B Instruct on Hugging Face"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Granite 4.0 Micro', 'IBM', 'Model', 'NLP', 'Open Weights', 2026, '128k Context · Open Model', 'Frontier NLP model by IBM benchmarked on Artificial Analysis and a verified 128k Context window.', 'Open-weights frontier neural architecture developed by IBM, featuring native 128k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/granite-4-0-micro', 'Context Window: 128k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/granite-4-0-micro', '[{"url":"https://artificialanalysis.ai/models/granite-4-0-micro","text":"Granite 4.0 Micro on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/granite-4-0-micro/providers","text":"Granite 4.0 Micro Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Granite 4.2 30B', 'IBM', 'Model', 'Research', 'Open Weights', 2026, '131k Context · Open Model', 'Frontier Research model by IBM benchmarked on Artificial Analysis with an Intelligence Index of 5.5 and a verified 131k Context window.', 'Open-weights frontier neural architecture developed by IBM, featuring native 131k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/granite-4-2-30b', 'Context Window: 131k Context, Intelligence Index: 5.5, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/granite-4-2-30b', '[{"url":"https://artificialanalysis.ai/models/granite-4-2-30b","text":"Granite 4.2 30B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/granite-4-2-30b/providers","text":"Granite 4.2 30B Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Granite 4.2 3B', 'IBM', 'Model', 'Research', 'Open Weights', 2026, '131k Context · Open Model', 'Frontier Research model by IBM benchmarked on Artificial Analysis with an Intelligence Index of 4.7 and a verified 131k Context window.', 'Open-weights frontier neural architecture developed by IBM, featuring native 131k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/granite-4-2-3b', 'Context Window: 131k Context, Intelligence Index: 4.7, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/granite-4-2-3b', '[{"url":"https://artificialanalysis.ai/models/granite-4-2-3b","text":"Granite 4.2 3B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/granite-4-2-3b/providers","text":"Granite 4.2 3B Inference Providers"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -4101,28 +3325,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Haru-4B', 'Higurashi AI', 'Model', 'Audio', 'Apache-2.0', 2026, '4B params', 'Open-weights Audio model developed by Higurashi AI.', 'higurashi-ai audio to audio architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("higurashi-ai/Haru-4B", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("higurashi-ai/Haru-4B")', 'Trending Score: 203, Likes: 217, Downloads: 1,262', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/higurashi-ai/Haru-4B', '[{"url":"https://huggingface.co/higurashi-ai/Haru-4B","text":"higurashi-ai/Haru-4B on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Helicone', 'Helicone', 'Platform', 'MLOps', 'Apache-2.0 / Cloud', 2023, 'N/A', 'Open-source LLM observability, smart proxy caching, rate limiting, and cost tracking platform designed for production AI teams.', 'Edge reverse proxy with low-latency async logging and response caching.', 'from openai import OpenAI
 client = OpenAI(base_url="https://oai.helicone.ai/v1", default_headers={"Helicone-Auth": "Bearer HELICONE_API_KEY"})', 'Caches repeated semantic queries reducing API bills by up to 40%.', 'Requires routing OpenAI SDK traffic through Helicone proxy URL.', 'https://www.helicone.ai', '[{"url":"https://docs.helicone.ai","text":"Helicone Documentation"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
@@ -4147,25 +3349,6 @@ VALUES ('Hemmingway-1', 'Altworld', 'Model', 'NLP', 'CC-BY-NC-4.0', 2026, 'Open 
 
 model = AutoModelForCausalLM.from_pretrained("Altworld/Hemmingway-1", device_map="auto")
 tokenizer = AutoTokenizer.from_pretrained("Altworld/Hemmingway-1")', 'Trending Score: 565, Likes: 579, Downloads: 3,787', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Altworld/Hemmingway-1', '[{"url":"https://huggingface.co/Altworld/Hemmingway-1","text":"Altworld/Hemmingway-1 on Hugging Face"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Hermes 4 - Llama-3.1 70B', 'Nous Research', 'Model', 'NLP', 'Open Weights', 2026, '128k Context · Open Model', 'Frontier NLP model by Nous Research benchmarked on Artificial Analysis and a verified 128k Context window.', 'Open-weights frontier neural architecture developed by Nous Research, featuring native 128k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/hermes-4-llama-3-1-70b', 'Context Window: 128k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/hermes-4-llama-3-1-70b', '[{"url":"https://artificialanalysis.ai/models/hermes-4-llama-3-1-70b","text":"Hermes 4 - Llama-3.1 70B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/hermes-4-llama-3-1-70b/providers","text":"Hermes 4 - Llama-3.1 70B Inference Providers"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -4391,73 +3574,7 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Hy-SimulMT-30B-A3B-FP8', 'Tencent', 'Model', 'NLP', 'Apache-2.0', 2026, '30B params', 'Open-weights NLP model developed by Tencent.', 'tencent translation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("tencent/Hy-SimulMT-30B-A3B-FP8", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("tencent/Hy-SimulMT-30B-A3B-FP8")', 'Trending Score: 333, Likes: 338, Downloads: 165', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/tencent/Hy-SimulMT-30B-A3B-FP8', '[{"url":"https://huggingface.co/tencent/Hy-SimulMT-30B-A3B-FP8","text":"tencent/Hy-SimulMT-30B-A3B-FP8 on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Hy4-flash', 'Tencent', 'Model', 'NLP', 'Open Weights', 2026, 'Open Weights', 'Cost-efficient variant of Tencent''s Hy4 foundation model engineered for low-latency and high-throughput generation.', 'tencent image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("tencent/Hy4-flash", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("tencent/Hy4-flash")', 'Context Window: 1049k Context, Available across global OpenRouter inference nodes.', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/tencent/Hy4-flash', '[{"url":"https://huggingface.co/tencent/Hy4-flash","text":"tencent/Hy4-flash on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('HyperCLOVA X', 'Naver', 'AI', 'NLP', 'Proprietary', 2023, 'N/A', 'Naver''s large-scale Korean-English bilingual AI assistant, fine-tuned for Korean cultural context and integrated into Naver''s search and services.', 'Web Application / Conversational Agent (Powered by HyperCLOVA X model)', 'Access via clova.ai or integrated directly into Naver Search and other Naver services.', 'N/A', 'Primarily focused on Korean and English; limited global availability.', 'https://clova.ai', '[{"url":"https://clova.ai","text":"HyperCLOVA X"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('hyperflow-h3-flash', 'VideoRebirth AI', 'Model', 'Multimodal', 'Open Weights', 2026, 'Open Weights', 'Open-weights Multimodal model developed by VideoRebirth AI.', 'VideoRebirthAI image text to video architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("VideoRebirthAI/hyperflow-h3-flash", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("VideoRebirthAI/hyperflow-h3-flash")', 'Trending Score: 167, Likes: 175, Downloads: 110,752', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash', '[{"url":"https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash","text":"VideoRebirthAI/hyperflow-h3-flash on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -4540,47 +3657,6 @@ VALUES ('indra-ocr', 'DataLab', 'Model', 'Computer Vision', 'OpenRAIL', 2026, 'O
 
 model = AutoModelForCausalLM.from_pretrained("datalab-to/indra-ocr", device_map="auto")
 tokenizer = AutoTokenizer.from_pretrained("datalab-to/indra-ocr")', 'Trending Score: 190, Likes: 192, Downloads: 1,811', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/datalab-to/indra-ocr', '[{"url":"https://huggingface.co/datalab-to/indra-ocr","text":"datalab-to/indra-ocr on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Inkling', 'Thinking Machines', 'Model', 'Research', 'Open Weights', 2026, '1000k Context · Open Model', 'Frontier Research model by Thinking Machines benchmarked on Artificial Analysis with an Intelligence Index of 12.5 and a verified 1000k Context window.', 'Open-weights frontier neural architecture developed by Thinking Machines, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/inkling', 'Context Window: 1000k Context, Intelligence Index: 12.5, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/inkling', '[{"url":"https://artificialanalysis.ai/models/inkling","text":"Inkling on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/inkling/providers","text":"Inkling Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Inkling-2-Mini', 'Thinking Machines', 'Model', 'Multimodal', 'Apache-2.0', 2026, 'Open Weights', 'Inkling 2 Mini is an open-weight multimodal looped transformer from Thinking Machines Lab, with 3.4B active parameters out of 26.4B total (MoE). Its middle layers run three times w.', 'thinkingmachines image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("thinkingmachines/Inkling-2-Mini", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("thinkingmachines/Inkling-2-Mini")', 'Context Window: 1049k Context, Available across global OpenRouter inference nodes.', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/thinkingmachines/Inkling-2-Mini', '[{"url":"https://huggingface.co/thinkingmachines/Inkling-2-Mini","text":"thinkingmachines/Inkling-2-Mini on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -4739,66 +3815,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('K-EXAONE 2.0', 'LG AI Research', 'Model', 'Research', 'Open Weights', 2026, '262k Context · Open Model', 'Frontier Research model by LG AI Research benchmarked on Artificial Analysis with an Intelligence Index of 7.6 and a verified 262k Context window.', 'Open-weights frontier neural architecture developed by LG AI Research, featuring native 262k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/k-exaone-2-0', 'Context Window: 262k Context, Intelligence Index: 7.6, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/k-exaone-2-0', '[{"url":"https://artificialanalysis.ai/models/k-exaone-2-0","text":"K-EXAONE 2.0 on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/k-exaone-2-0/providers","text":"K-EXAONE 2.0 Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('K2 Horizon 7B', 'Institute of Foundation Models', 'Model', 'Research', 'Open Weights', 2026, '524k Context · Open Model', 'Frontier Research model by Institute of Foundation Models benchmarked on Artificial Analysis with an Intelligence Index of 10.6 and a verified 524k Context window.', 'Open-weights frontier neural architecture developed by Institute of Foundation Models, featuring native 524k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/k2-horizon-7b', 'Context Window: 524k Context, Intelligence Index: 10.6, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/k2-horizon-7b', '[{"url":"https://artificialanalysis.ai/models/k2-horizon-7b","text":"K2 Horizon 7B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/k2-horizon-7b/providers","text":"K2 Horizon 7B Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Kandinsky-ImageSR-2.0', 'Kandinsky Lab', 'Model', 'Image Generation', 'MIT', 2026, 'Open Weights', 'High-fidelity generative image super-resolution model developed by Kandinsky Lab.', 'kandinskylab image to image architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("kandinskylab/Kandinsky-ImageSR-2.0", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("kandinskylab/Kandinsky-ImageSR-2.0")', 'Trending Score: 141, Likes: 186, Downloads: 582', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/kandinskylab/Kandinsky-ImageSR-2.0', '[{"url":"https://huggingface.co/kandinskylab/Kandinsky-ImageSR-2.0","text":"kandinskylab/Kandinsky-ImageSR-2.0 on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Keras', 'Google DeepMind', 'Framework', 'MLOps', 'Apache-2.0', 2015, 'N/A', 'A high-level deep learning API that runs on top of TensorFlow, JAX, or PyTorch, designed for fast experimentation with a human-centric design philosophy.', 'Multi-backend deep learning API (TF/JAX/PyTorch) with layer, model, and optimizer abstractions.', 'import keras
 model = keras.Sequential([
   keras.layers.Dense(64, activation=''relu''),
@@ -4910,69 +3926,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Ko-MultimodalMind2Web', 'KORMo-VL', 'Dataset', 'Computer Vision', 'CC-BY-4.0', 2026, 'n<1K', '🇰🇷 Ko-MultimodalMind2Web An offline Korean web-agent benchmark, built manually by native Korean annotators. 549 tasks · ️ 12,905 scored steps · 144 websites.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("KORMo-VL/Ko-MultimodalMind2Web")', 'Trending Score: 18, Likes: 24, Downloads: 70', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/KORMo-VL/Ko-MultimodalMind2Web', '[{"url":"https://huggingface.co/datasets/KORMo-VL/Ko-MultimodalMind2Web","text":"KORMo-VL/Ko-MultimodalMind2Web on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Ko-Online-Mind2Web', 'KORMo-VL', 'Dataset', 'NLP', 'CC-BY-4.0', 2026, 'n<1K', '🇰🇷 Ko-Online-Mind2Web A live Korean web-agent benchmark, built manually by native Korean annotators. 312 tasks · 104 websites · ️ ~480 annotator-hours · L.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("KORMo-VL/Ko-Online-Mind2Web")', 'Trending Score: 18, Likes: 19, Downloads: 23', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/KORMo-VL/Ko-Online-Mind2Web', '[{"url":"https://huggingface.co/datasets/KORMo-VL/Ko-Online-Mind2Web","text":"KORMo-VL/Ko-Online-Mind2Web on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Ko-Screenspot', 'KORMo-VL', 'Dataset', 'Computer Vision', 'CC-BY-4.0', 2026, 'n<1K', '🇰🇷 Ko-Screenspot A Korean GUI grounding benchmark, built manually by native Korean annotators. 3,319 samples · 142 websites · ️ ~480 annotator-hours · GUI.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("KORMo-VL/Ko-Screenspot")', 'Trending Score: 19, Likes: 21, Downloads: 67', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/KORMo-VL/Ko-Screenspot', '[{"url":"https://huggingface.co/datasets/KORMo-VL/Ko-Screenspot","text":"KORMo-VL/Ko-Screenspot on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Kokoro-82M', 'Hexgrad', 'Model', 'Audio', 'Apache-2.0', 2025, '82M params', 'Hexgrad''s open-weights 82M parameter text-to-speech model producing studio-quality English and multilingual voice audio in real time on CPUs.', 'StyleTTS 2 architecture with ISTFT vocoder.', 'from kokoro import KPipeline
 pipeline = KPipeline(lang_code=''a'')
 generator = pipeline("Hello, welcome to AiVerse!", voice=''af_heart'', speed=1.0)', 'Real-time factor < 0.1 on modern consumer CPUs; highly ranked on TTS Arena.', 'Trained primarily on English and select Romance languages.', 'https://huggingface.co/hexgrad/Kokoro-82M', '[{"url":"https://huggingface.co/hexgrad/Kokoro-82M","text":"Kokoro Model Card"}]'::jsonb, true, true)
@@ -4998,28 +3951,6 @@ VALUES ('Kolibri-1', 'Aleph Alpha', 'Model', 'NLP', 'Apache-2.0', 2026, 'Open We
 
 model = AutoModelForCausalLM.from_pretrained("Aleph-Alpha/Kolibri-1", device_map="auto")
 tokenizer = AutoTokenizer.from_pretrained("Aleph-Alpha/Kolibri-1")', 'Trending Score: 398, Likes: 407, Downloads: 1,135', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Aleph-Alpha/Kolibri-1', '[{"url":"https://huggingface.co/Aleph-Alpha/Kolibri-1","text":"Aleph-Alpha/Kolibri-1 on Hugging Face"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Kolibri-1.1', 'Aleph Alpha', 'Model', 'NLP', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights NLP model developed by Aleph Alpha.', 'Aleph-Alpha text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("Aleph-Alpha/Kolibri-1.1", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("Aleph-Alpha/Kolibri-1.1")', 'Trending Score: 115, Likes: 153, Downloads: 837', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Aleph-Alpha/Kolibri-1.1', '[{"url":"https://huggingface.co/Aleph-Alpha/Kolibri-1.1","text":"Aleph-Alpha/Kolibri-1.1 on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -5252,214 +4183,7 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('LFM3-1.7B', 'Liquid AI', 'Model', 'NLP', 'Open Weights', 2026, '1.7B params', 'A compact 1.7B-parameter text model with a 256K-token context, post-trained for agents, tool calling, and structured outputs. It reasons before it answers. Prompts and outputs may.', 'LiquidAI text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("LiquidAI/LFM3-1.7B", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("LiquidAI/LFM3-1.7B")', 'Context Window: 262k Context, Available across global OpenRouter inference nodes.', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/LiquidAI/LFM3-1.7B', '[{"url":"https://huggingface.co/LiquidAI/LFM3-1.7B","text":"LiquidAI/LFM3-1.7B on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('LFM3-Audio-2B', 'Liquid AI', 'Model', 'Audio', 'Open Weights', 2026, '2B params', 'Open-weights Audio model developed by Liquid AI.', 'LiquidAI any to any architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("LiquidAI/LFM3-Audio-2B", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("LiquidAI/LFM3-Audio-2B")', 'Trending Score: 164, Likes: 165, Downloads: 4,790', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/LiquidAI/LFM3-Audio-2B', '[{"url":"https://huggingface.co/LiquidAI/LFM3-Audio-2B","text":"LiquidAI/LFM3-Audio-2B on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('LFM3-Omni-2B', 'Liquid AI', 'Model', 'Multimodal', 'Open Weights', 2026, '2B params', 'Open-weights Multimodal model developed by Liquid AI.', 'LiquidAI any to any architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("LiquidAI/LFM3-Omni-2B", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("LiquidAI/LFM3-Omni-2B")', 'Trending Score: 216, Likes: 221, Downloads: 3,080', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/LiquidAI/LFM3-Omni-2B', '[{"url":"https://huggingface.co/LiquidAI/LFM3-Omni-2B","text":"LiquidAI/LFM3-Omni-2B on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('LFM3-VL-2B', 'Liquid AI', 'Model', 'Multimodal', 'Open Weights', 2026, '2B params', 'Open-weights Multimodal model developed by Liquid AI.', 'LiquidAI image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("LiquidAI/LFM3-VL-2B", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("LiquidAI/LFM3-VL-2B")', 'Trending Score: 180, Likes: 182, Downloads: 8,091', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/LiquidAI/LFM3-VL-2B', '[{"url":"https://huggingface.co/LiquidAI/LFM3-VL-2B","text":"LiquidAI/LFM3-VL-2B on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('LightOnOCR-3-Demo', 'LightOn AI', 'Platform', 'Computer Vision', 'Community Hosted', 2026, 'GRADIO Platform', 'Interactive document optical character recognition demonstration showcasing LightOn AI''s LightOnOCR-3 model.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo', 'Trending Score: 43, Community Likes: 45', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo', '[{"url":"https://huggingface.co/spaces/lightonai/LightOnOCR-3-Demo","text":"lightonai/LightOnOCR-3-Demo on Hugging Face Spaces"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Ling 3.2 Flash', 'InclusionAI', 'Model', 'Multimodal', 'Proprietary', 2026, '1049k Context · Available via API', 'Hybrid reasoning multimodal model from InclusionAI supporting text and up to 200 images across a 1M-token context window.', 'Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.', 'import OpenAI from "openai";
-const openai = new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY
-});
-const response = await openai.chat.completions.create({
-  model: "inclusionai/ling-3.2-flash",
-  messages: [{ role: "user", content: "Hello!" }]
-});', 'Context Window: 1049k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/inclusionai/ling-3.2-flash', '[{"url":"https://openrouter.ai/inclusionai/ling-3.2-flash","text":"inclusionAI: Ling 3.2 Flash on OpenRouter"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Ling-3.2-air', 'InclusionAI', 'Model', 'NLP', 'MIT', 2026, 'Open Weights', 'Open-weights NLP model developed by InclusionAI.', 'inclusionAI transformer architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("inclusionAI/Ling-3.2-air", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("inclusionAI/Ling-3.2-air")', 'Trending Score: 103, Likes: 115, Downloads: 0', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/inclusionAI/Ling-3.2-air', '[{"url":"https://huggingface.co/inclusionAI/Ling-3.2-air","text":"inclusionAI/Ling-3.2-air on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('LingSante 3.1 Air VL', 'InclusionAI', 'Model', 'Multimodal', 'Proprietary', 2026, '131k Context · Available via API', 'LingSante 3.1 Air VL is inclusionAI''s medical vision-language model, a 124B total / 5.5B active MoE.', 'Modern foundation model hosted on OpenRouter with native 131k Context support and structured output generation.', 'import OpenAI from "openai";
-const openai = new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY
-});
-const response = await openai.chat.completions.create({
-  model: "inclusionai/lingsante-3.1-air-vl",
-  messages: [{ role: "user", content: "Hello!" }]
-});', 'Context Window: 131k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/inclusionai/lingsante-3.1-air-vl', '[{"url":"https://openrouter.ai/inclusionai/lingsante-3.1-air-vl","text":"inclusionAI: LingSante 3.1 Air VL on OpenRouter"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('LingSante-3.1-flash', 'InclusionAI', 'Model', 'NLP', 'MIT', 2026, 'Open Weights', 'Open-weights NLP model developed by InclusionAI.', 'inclusionAI text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("inclusionAI/LingSante-3.1-flash", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("inclusionAI/LingSante-3.1-flash")', 'Trending Score: 90, Likes: 99, Downloads: 397', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/inclusionAI/LingSante-3.1-flash', '[{"url":"https://huggingface.co/inclusionAI/LingSante-3.1-flash","text":"inclusionAI/LingSante-3.1-flash on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('LingSante-MedGuard', 'InclusionAI', 'Dataset', 'Computer Vision', 'Open Data', 2026, '10K<n<100K', 'LingSante MedGuardBench English | 中文 Technical Report · PDF · Data Files · Quick Start · Citation LingSante MedGuardBench evaluates medical AI responses for safety, c.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("inclusionAI/LingSante-MedGuard")', 'Trending Score: 11, Likes: 34, Downloads: 159', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/inclusionAI/LingSante-MedGuard', '[{"url":"https://huggingface.co/datasets/inclusionAI/LingSante-MedGuard","text":"inclusionAI/LingSante-MedGuard on Hugging Face Datasets"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -5834,50 +4558,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('LongCat-2.5', 'Meituan (LongCat)', 'Model', 'Multimodal', 'MIT', 2026, 'Open Weights', 'Open-weights Multimodal model developed by Meituan (LongCat).', 'meituan-longcat image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("meituan-longcat/LongCat-2.5", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("meituan-longcat/LongCat-2.5")', 'Trending Score: 203, Likes: 268, Downloads: 1,573', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/meituan-longcat/LongCat-2.5', '[{"url":"https://huggingface.co/meituan-longcat/LongCat-2.5","text":"meituan-longcat/LongCat-2.5 on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('LongCat-Video-Avatar-1.6', 'Meituan (LongCat)', 'Model', 'Video Generation', 'MIT', 2026, 'Open Weights', 'Expressive talking-head and full-body video avatar synthesis model developed by Meituan (LongCat).', 'meituan-longcat transformer architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("meituan-longcat/LongCat-Video-Avatar-1.6", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("meituan-longcat/LongCat-Video-Avatar-1.6")', 'Trending Score: 125, Likes: 169, Downloads: 489', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.6', '[{"url":"https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.6","text":"meituan-longcat/LongCat-Video-Avatar-1.6 on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Lovable.dev', 'Lovable', 'AI', 'AI Coding', 'Proprietary', 2024, 'N/A', 'Full-stack autonomous AI web application builder that generates complete web apps, database schemas via Supabase, user auth, and deploys live in minutes.', 'Full-stack AI code synthesizer with live Supabase database & GitHub synchronization.', 'Go to lovable.dev, type your app idea (e.g. "Airbnb for pet boarding"), customize components interactively, and deploy live.', 'Generates functional full-stack web applications with database persistence in under 3 minutes.', 'Complex enterprise microservice architectures require manual code export and expansion.', 'https://lovable.dev', '[{"url":"https://lovable.dev","text":"Lovable.dev"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
@@ -5979,71 +4659,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Mage-VL-Cowork', 'Microsoft', 'Model', 'Multimodal', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Multimodal model developed by Microsoft.', 'Microsoft image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("microsoft/Mage-VL-Cowork", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("microsoft/Mage-VL-Cowork")', 'Trending Score: 166, Likes: 183, Downloads: 1,973', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/microsoft/Mage-VL-Cowork', '[{"url":"https://huggingface.co/microsoft/Mage-VL-Cowork","text":"microsoft/Mage-VL-Cowork on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('MAGI-2-preview', 'Sand AI', 'Model', 'Multimodal', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Multimodal model developed by Sand AI.', 'sand-ai image text to video architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("sand-ai/MAGI-2-preview", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("sand-ai/MAGI-2-preview")', 'Trending Score: 163, Likes: 361, Downloads: 0', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/sand-ai/MAGI-2-preview', '[{"url":"https://huggingface.co/sand-ai/MAGI-2-preview","text":"sand-ai/MAGI-2-preview on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('MarathonDocBench', 'Baidu', 'Dataset', 'Computer Vision', 'Apache-2.0', 2026, '10K<n<100K', 'MarathonDocBench A New Benchmark for Ultra-Long Document Parsing: Targeting Hundred-Page-Scale Documents. MarathonDocBench is the f.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("baidu/MarathonDocBench")', 'Trending Score: 16, Likes: 17, Downloads: 5,071', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/baidu/MarathonDocBench', '[{"url":"https://huggingface.co/datasets/baidu/MarathonDocBench","text":"baidu/MarathonDocBench on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('MATH-500', 'OpenAI', 'Dataset', 'Research', 'MIT', 2024, '500 competition problems', 'Standardized 500-problem evaluation benchmark subset of the original MATH competition dataset used to measure multi-step mathematical reasoning in frontier models.', 'Challenging math competition problems spanning algebra, geometry, number theory, and calculus.', 'from datasets import load_dataset
 ds = load_dataset("HuggingFaceH4/MATH-500", split="test")', 'Primary benchmark for OpenAI o1, o3-mini, and DeepSeek-R1 reasoning comparisons.', 'Static problem set creates potential risk of training data contamination over time.', 'https://huggingface.co/datasets/HuggingFaceH4/MATH-500', '[{"url":"https://arxiv.org/abs/2103.03874","text":"MATH Benchmark Paper"}]'::jsonb, true, true)
 ON CONFLICT (name) DO UPDATE SET
@@ -6085,56 +4700,7 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Maxwell-V1-Flash', 'Maxwell', 'Model', 'NLP', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights NLP model developed by Maxwell.', 'maxwell-model text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("maxwell-model/Maxwell-V1-Flash", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("maxwell-model/Maxwell-V1-Flash")', 'Trending Score: 173, Likes: 215, Downloads: 1,052', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/maxwell-model/Maxwell-V1-Flash', '[{"url":"https://huggingface.co/maxwell-model/Maxwell-V1-Flash","text":"maxwell-model/Maxwell-V1-Flash on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Meta AI', 'Meta AI', 'AI', 'NLP', 'Proprietary', 2023, 'N/A', 'Meta''s smart assistant integrated into WhatsApp, Instagram, Facebook, and Messenger, capable of answering questions and generating images.', 'Chatbot Integration (Powered by Llama 3 models)', 'Use it directly inside Meta''s messaging apps or at meta.ai.', 'N/A', 'Feature availability varies by country and platform.', 'https://www.meta.ai', '[{"url":"https://about.fb.com/news/2023/09/introducing-ai-experiences-across-our-family-of-apps-and-devices/","text":"Meta AI Announcement"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Mi:dm K 3.0 Pro', 'KT', 'Model', 'NLP', 'Proprietary', 2026, '262k Context · Available via API', 'Mi:dm K 3.0 Pro is a Mixture-of-Experts reasoning model from KT, with 120B total and 12B active parameters. It uses a hybrid architecture that mixes Mamba, MoE and attention layers.', 'Modern foundation model hosted on OpenRouter with native 262k Context support and structured output generation.', 'import OpenAI from "openai";
-const openai = new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY
-});
-const response = await openai.chat.completions.create({
-  model: "kt/midm-k-3.0-pro",
-  messages: [{ role: "user", content: "Hello!" }]
-});', 'Context Window: 262k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/kt/midm-k-3.0-pro', '[{"url":"https://openrouter.ai/kt/midm-k-3.0-pro","text":"KT: Mi:dm K 3.0 Pro on OpenRouter"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -6272,52 +4838,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('MiMo-V2.6-Flash', 'Xiaomi (MiMo)', 'Model', 'Research', 'Open Weights', 2026, '1000k Context · Open Model', 'Frontier Research model by Xiaomi benchmarked on Artificial Analysis with an Intelligence Index of 26.7 and a verified 1000k Context window.', 'Open-weights frontier neural architecture developed by Xiaomi, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/mimo-v2-6-flash', 'Context Window: 1000k Context, Intelligence Index: 26.7, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/mimo-v2-6-flash', '[{"url":"https://artificialanalysis.ai/models/mimo-v2-6-flash","text":"MiMo-V2.6-Flash on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/mimo-v2-6-flash/providers","text":"MiMo-V2.6-Flash Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('MiMo-V2.6-Flash-MOPD', 'Xiaomi (MiMo)', 'Model', 'Multimodal', 'Proprietary', 2026, '1049k Context · Available via API', 'MiMo-V2.6-Flash-MOPD is an updated checkpoint of Xiaomi''s MiMo-V2.6-Flash, a Mixture-of-Experts model with 309B total and 15B active parameters, a 1M-token context window, and nati.', 'Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.', 'import OpenAI from "openai";
-const openai = new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY
-});
-const response = await openai.chat.completions.create({
-  model: "xiaomi/mimo-v2.6-flash-mopd",
-  messages: [{ role: "user", content: "Hello!" }]
-});', 'Context Window: 1049k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd', '[{"url":"https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd","text":"Xiaomi: MiMo-V2.6-Flash-MOPD on OpenRouter"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('MiMo-V2.6-Pro', 'Xiaomi (MiMo)', 'Model', 'NLP', 'Open Weights', 2026, '1M Context · Open Model', 'Xiaomi (MiMo)''s frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 30, Briefcase Elo of 1512, and a massive 1M context window.', 'Open-weights frontier neural architecture developed by Xiaomi (MiMo), featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (49 tok/s).', 'from transformers import AutoModelForCausalLM, AutoTokenizer
 
 model = AutoModelForCausalLM.from_pretrained("Xiaomi/mimo-v2-6-pro", device_map="auto")
@@ -6365,28 +4885,6 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('MiMo-V2.6-RL-oss', 'Xiaomi (MiMo)', 'Dataset', 'AI Coding', 'Apache-2.0', 2026, '1K<n<10K', 'Agentic RL Environments RL training environments for LLM agents. Domain Task Family Verifier Code Software engineering Executable tests Cyber Vulnerability re.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
 
 dataset = load_dataset("XiaomiMiMo/MiMo-V2.6-RL-oss")', 'Trending Score: 320, Likes: 324, Downloads: 973', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/XiaomiMiMo/MiMo-V2.6-RL-oss', '[{"url":"https://huggingface.co/datasets/XiaomiMiMo/MiMo-V2.6-RL-oss","text":"XiaomiMiMo/MiMo-V2.6-RL-oss on Hugging Face Datasets"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('MiniCPM-OCR-1.0', 'OpenBMB', 'Model', 'Multimodal', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Multimodal model developed by OpenBMB.', 'openbmb image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("openbmb/MiniCPM-OCR-1.0", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("openbmb/MiniCPM-OCR-1.0")', 'Trending Score: 200, Likes: 363, Downloads: 2,413', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/openbmb/MiniCPM-OCR-1.0', '[{"url":"https://huggingface.co/openbmb/MiniCPM-OCR-1.0","text":"openbmb/MiniCPM-OCR-1.0 on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -6471,73 +4969,10 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('MiniMax-H3-Image', 'MiniMax', 'Model', 'Image Generation', 'Open Weights', 2026, 'Open Weights', 'Open-weights Image Generation model developed by MiniMax.', 'MiniMaxAI text to image architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("MiniMaxAI/MiniMax-H3-Image", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("MiniMaxAI/MiniMax-H3-Image")', 'Trending Score: 307, Likes: 308, Downloads: 667', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/MiniMaxAI/MiniMax-H3-Image', '[{"url":"https://huggingface.co/MiniMaxAI/MiniMax-H3-Image","text":"MiniMaxAI/MiniMax-H3-Image on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('MiniMax-M3', 'MiniMax', 'Model', 'Research', 'Open Weights', 2026, '1000k Context · Open Model', 'Frontier Research model by MiniMax benchmarked on Artificial Analysis with an Intelligence Index of 19.0 and a verified 1000k Context window.', 'Open-weights frontier neural architecture developed by MiniMax, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/minimax-m3', 'Context Window: 1000k Context, Intelligence Index: 19.0, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/minimax-m3', '[{"url":"https://artificialanalysis.ai/models/minimax-m3","text":"MiniMax-M3 on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/minimax-m3/providers","text":"MiniMax-M3 Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('MiniMax-M3.1-Flash', 'MiniMax', 'Model', 'NLP', 'Open Weights', 2026, '1M Context · Open Model', 'MiniMax''s frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 29, Briefcase Elo of 1475, and a massive 1M context window.', 'Open-weights frontier neural architecture developed by MiniMax, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (119 tok/s).', 'from transformers import AutoModelForCausalLM, AutoTokenizer
 
 model = AutoModelForCausalLM.from_pretrained("MiniMax/minimax-m3-1-flash", device_map="auto")
 tokenizer = AutoTokenizer.from_pretrained("MiniMax/minimax-m3-1-flash")', 'Intelligence Index: 29, Briefcase Elo: 1475, Accuracy: 45%, Non-Hallucination: 6%, FrontierCode: 21%, AutomationBench: 73%, TerminalBench 4: 26%, HLE Diamond: 28%, Speed: 119 tok/s, Context Window: 1M', 'High memory requirements for local execution (1M context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.', 'https://artificialanalysis.ai/models/minimax-m3-1-flash', '[{"url":"https://artificialanalysis.ai/models/minimax-m3-1-flash","text":"MiniMax-M3.1-Flash on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/minimax-m3-1-flash/providers","text":"MiniMax-M3.1-Flash Inference Providers"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('mirage', 'Cactus Compute', 'Model', 'Multimodal', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Multimodal model developed by Cactus Compute.', 'Cactus-Compute image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("Cactus-Compute/mirage", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("Cactus-Compute/mirage")', 'Trending Score: 151, Likes: 156, Downloads: 14,615', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Cactus-Compute/mirage', '[{"url":"https://huggingface.co/Cactus-Compute/mirage","text":"Cactus-Compute/mirage on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -6648,47 +5083,6 @@ ON CONFLICT (name) DO UPDATE SET
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Mistral Le Chat', 'Mistral AI', 'AI', 'NLP', 'Proprietary', 2024, 'N/A', 'A fast and capable conversational AI assistant by Mistral AI, built on their own open-weight models with a focus on efficiency.', 'Web Application / Conversational Agent (Powered by Mistral Large / Mistral Small)', 'Visit chat.mistral.ai to interact via the web interface.', 'N/A', 'Smaller ecosystem compared to OpenAI or Google; some advanced features require a paid plan.', 'https://chat.mistral.ai', '[{"url":"https://chat.mistral.ai","text":"Mistral Le Chat"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Mistral Small 4', 'Mistral AI', 'Model', 'NLP', 'Open Weights', 2026, '256k Context · Open Model', 'Frontier NLP model by Mistral benchmarked on Artificial Analysis and a verified 256k Context window.', 'Open-weights frontier neural architecture developed by Mistral, featuring native 256k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/mistral-small-4', 'Context Window: 256k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/mistral-small-4', '[{"url":"https://artificialanalysis.ai/models/mistral-small-4","text":"Mistral Small 4 on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/mistral-small-4/providers","text":"Mistral Small 4 Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Mistral-Large-4-1T-A52B', 'Mistral AI', 'Model', 'Multimodal', 'Open Weights', 2026, '52B params', 'Open-weights Multimodal model developed by Mistral AI.', 'Mistral AI image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-Large-4-1T-A52B", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-Large-4-1T-A52B")', 'Trending Score: 285, Likes: 1,204, Downloads: 278', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B', '[{"url":"https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B","text":"mistralai/Mistral-Large-4-1T-A52B on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -6960,33 +5354,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Muse Ember', 'Meta AI', 'Model', 'AI Coding', 'Proprietary', 2026, '1049k Context · Available via API', 'Muse Ember is the smallest and most efficient model from Meta that’s designed for complex reasoning execution and the work agents repeat all day: tool calls, coding agent subtasks,.', 'Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.', 'import OpenAI from "openai";
-const openai = new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY
-});
-const response = await openai.chat.completions.create({
-  model: "meta/muse-ember",
-  messages: [{ role: "user", content: "Hello!" }]
-});', 'Context Window: 1049k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/meta/muse-ember', '[{"url":"https://openrouter.ai/meta/muse-ember","text":"Meta: Muse Ember on OpenRouter"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Muse Wonder', 'Meta AI', 'Model', 'Multimodal', 'Proprietary', 2026, '1.05M Context · Proprietary Model', 'Meta AI''s frontier multimodal model featured on the Artificial Analysis leaderboard with an Intelligence Index of 43, Briefcase Elo of 1659, and a massive 1.05M context window.', 'Proprietary frontier neural architecture developed by Meta AI, featuring native 1.05M token window support, optimized reasoning chains, and low-latency inference throughput (143 tok/s).', 'import requests
 
 response = requests.post(
@@ -7123,25 +5490,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Nemotron 3.5 Lightning', 'NVIDIA', 'Model', 'Research', 'Open Weights', 2026, '1000k Context · Open Model', 'Frontier Research model by NVIDIA benchmarked on Artificial Analysis with an Intelligence Index of 5.5 and a verified 1000k Context window.', 'Open-weights frontier neural architecture developed by NVIDIA, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/nemotron-3-5-lightning', 'Context Window: 1000k Context, Intelligence Index: 5.5, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/nemotron-3-5-lightning', '[{"url":"https://artificialanalysis.ai/models/nemotron-3-5-lightning","text":"Nemotron 3.5 Lightning on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/nemotron-3-5-lightning/providers","text":"Nemotron 3.5 Lightning Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Nemotron 3.5 Super VL', 'NVIDIA', 'Model', 'Multimodal', 'Open Weights', 2026, '1M Context · Open Model', 'NVIDIA''s frontier multimodal model featured on the Artificial Analysis leaderboard with an Intelligence Index of 14, Briefcase Elo of 999, and a massive 1M context window.', 'Open-weights frontier neural architecture developed by NVIDIA, featuring native 1M token window support, optimized reasoning chains, and low-latency inference throughput (474 tok/s).', 'from transformers import AutoModelForCausalLM, AutoTokenizer
 
 model = AutoModelForCausalLM.from_pretrained("NVIDIA/nemotron-3-5-super-vl", device_map="auto")
@@ -7168,49 +5516,6 @@ VALUES ('Nemotron-3-Diarization', 'NVIDIA', 'Model', 'Audio', 'OpenMDW-1.1', 202
 
 model = AutoModelForCausalLM.from_pretrained("nvidia/Nemotron-3-Diarization", device_map="auto")
 tokenizer = AutoTokenizer.from_pretrained("nvidia/Nemotron-3-Diarization")', 'Trending Score: 398, Likes: 565, Downloads: 36,386', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/nvidia/Nemotron-3-Diarization', '[{"url":"https://huggingface.co/nvidia/Nemotron-3-Diarization","text":"nvidia/Nemotron-3-Diarization on Hugging Face"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Nemotron-Labs-Image-30B-A3B', 'NVIDIA', 'Model', 'Image Generation', 'Open Weights', 2026, '30B params', 'Open-weights Image Generation model developed by NVIDIA.', 'nvidia text to image architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("nvidia/Nemotron-Labs-Image-30B-A3B", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("nvidia/Nemotron-Labs-Image-30B-A3B")', 'Trending Score: 146, Likes: 176, Downloads: 218', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/nvidia/Nemotron-Labs-Image-30B-A3B', '[{"url":"https://huggingface.co/nvidia/Nemotron-Labs-Image-30B-A3B","text":"nvidia/Nemotron-Labs-Image-30B-A3B on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Nemotron-Personas-Finance-Japan', 'NVIDIA', 'Dataset', 'NLP', 'CC-BY-4.0', 2026, '1M<n<10M', 'Nemotron-Personas-Finance-Japan 現実世界の分布に基づいた金融に特化したペルソナ生成のための複合AIアプローチ データセット概要 (Dataset Overview): Nemotron-Personas-Finance-Japan は、日本における.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("nvidia/Nemotron-Personas-Finance-Japan")', 'Trending Score: 18, Likes: 19, Downloads: 1,732', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nvidia/Nemotron-Personas-Finance-Japan', '[{"url":"https://huggingface.co/datasets/nvidia/Nemotron-Personas-Finance-Japan","text":"nvidia/Nemotron-Personas-Finance-Japan on Hugging Face Datasets"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -7379,53 +5684,7 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Nex-N2.6', 'Nex AGI', 'Model', 'AI Coding', 'Proprietary', 2026, '262k Context · Available via API', 'Nex-N2.6 is an agentic model from Nex AGI, built on GLM-5.3-Flash with about 321B parameters. It is suited for computer use, co.', 'Modern foundation model hosted on OpenRouter with native 262k Context support and structured output generation.', 'import OpenAI from "openai";
-const openai = new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY
-});
-const response = await openai.chat.completions.create({
-  model: "nex-agi/nex-n2.6",
-  messages: [{ role: "user", content: "Hello!" }]
-});', 'Context Window: 262k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/nex-agi/nex-n2.6', '[{"url":"https://openrouter.ai/nex-agi/nex-n2.6","text":"Nex AGI: Nex-N2.6 on OpenRouter"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('NightCafe', 'NightCafe Studio', 'AI', 'Image Generation', 'Proprietary', 2019, 'N/A', 'An AI art generator and social community platform with multiple generation algorithms, daily free credits, and art challenges for creators.', 'Web Application (Supports Stable Diffusion, DALL·E, and other generation backends)', 'Visit creator.nightcafe.studio to generate images and participate in the community.', 'N/A', 'Limited free credits; best results often require purchased credit packs.', 'https://creator.nightcafe.studio', '[{"url":"https://creator.nightcafe.studio","text":"NightCafe Creator"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('North Mini Code', 'Cohere', 'Model', 'AI Coding', 'Open Weights', 2026, '256k Context · Open Model', 'Frontier AI Coding model by Cohere benchmarked on Artificial Analysis with an Intelligence Index of 3.4 and a verified 256k Context window.', 'Open-weights frontier neural architecture developed by Cohere, featuring native 256k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/north-mini-code', 'Context Window: 256k Context, Intelligence Index: 3.4, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/north-mini-code', '[{"url":"https://artificialanalysis.ai/models/north-mini-code","text":"North Mini Code on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/north-mini-code/providers","text":"North Mini Code Inference Providers"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -7482,128 +5741,8 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Nova 2.0 Omni', 'Amazon Web Services', 'Model', 'Multimodal', 'Proprietary', 2026, '1000k Context · Proprietary Model', 'Frontier Multimodal model by Amazon benchmarked on Artificial Analysis and a verified 1000k Context window.', 'Proprietary frontier neural architecture developed by Amazon, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/nova-2-0-omni', 'Context Window: 1000k Context, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/nova-2-0-omni', '[{"url":"https://artificialanalysis.ai/models/nova-2-0-omni","text":"Nova 2.0 Omni on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/nova-2-0-omni/providers","text":"Nova 2.0 Omni Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Nova 2.0 Pro Preview', 'Amazon Web Services', 'Model', 'Research', 'Proprietary', 2026, '256k Context · Proprietary Model', 'Frontier Research model by Amazon benchmarked on Artificial Analysis and a verified 256k Context window.', 'Proprietary frontier neural architecture developed by Amazon, featuring native 256k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/nova-2-0-pro-preview', 'Context Window: 256k Context, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/nova-2-0-pro-preview', '[{"url":"https://artificialanalysis.ai/models/nova-2-0-pro-preview","text":"Nova 2.0 Pro Preview on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/nova-2-0-pro-preview/providers","text":"Nova 2.0 Pro Preview Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('NVIDIA Cosmos', 'NVIDIA', 'Model', 'Computer Vision', 'Custom', 2025, 'Physical AI Suite', 'NVIDIA''s flagship physical AI and world foundation models designed to simulate physical dynamics, predict camera trajectories, and accelerate robotics and autonomous vehicle simulation.', 'Continuous and Discrete Video Autoencoders with physical dynamics conditioning and diffusion generation on NVIDIA Blackwell architecture.', 'from cosmos_tokenize import VideoTokenizer
 tokenizer = VideoTokenizer.from_pretrained("nvidia/Cosmos-1.0-Tokenizer-CV8x8x8")', 'Physical Simulation Realism: 92.4%, Robotics Trajectory Prediction: 88.1%', 'Optimized specifically for NVIDIA GPU hardware and Omniverse / robotics simulation workflows.', 'https://developer.nvidia.com/cosmos', '[{"url":"https://developer.nvidia.com/cosmos","text":"NVIDIA Cosmos World Foundation Models"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('NVIDIA Nemotron 3 Nano 30B A3B', 'NVIDIA', 'Model', 'NLP', 'Open Weights', 2026, '1000k Context · Open Model', 'Frontier NLP model by NVIDIA benchmarked on Artificial Analysis and a verified 1000k Context window.', 'Open-weights frontier neural architecture developed by NVIDIA, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/nvidia-nemotron-3-nano-30b-a3b', 'Context Window: 1000k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/nvidia-nemotron-3-nano-30b-a3b', '[{"url":"https://artificialanalysis.ai/models/nvidia-nemotron-3-nano-30b-a3b","text":"NVIDIA Nemotron 3 Nano 30B A3B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/nvidia-nemotron-3-nano-30b-a3b/providers","text":"NVIDIA Nemotron 3 Nano 30B A3B Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('NVIDIA Nemotron Nano 9B V2', 'NVIDIA', 'Model', 'NLP', 'Open Weights', 2026, '131k Context · Open Model', 'Frontier NLP model by NVIDIA benchmarked on Artificial Analysis and a verified 131k Context window.', 'Open-weights frontier neural architecture developed by NVIDIA, featuring native 131k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2', 'Context Window: 131k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2', '[{"url":"https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2","text":"NVIDIA Nemotron Nano 9B V2 on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2/providers","text":"NVIDIA Nemotron Nano 9B V2 Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('NVIDIA-Nemotron-3.5-Bolt-E4B-4GB', 'NVIDIA', 'Model', 'NLP', 'Open Weights', 2026, '4B params', 'Open-weights NLP model developed by NVIDIA.', 'nvidia text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB")', 'Trending Score: 248, Likes: 267, Downloads: 64,263', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB', '[{"url":"https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB","text":"nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('NVIDIA-Nemotron-3.5-Transcribe-30B-A4B', 'NVIDIA', 'Model', 'Audio', 'Open Weights', 2026, '30B params', 'Open-weights Audio model developed by NVIDIA.', 'nvidia automatic speech recognition architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B")', 'Trending Score: 306, Likes: 314, Downloads: 4,276', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B', '[{"url":"https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B","text":"nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -7700,28 +5839,6 @@ response = client.chat.completions.create(
   reasoning_effort="medium",
   messages=[{"role": "user", "content": "Design an optimal LRU cache in Rust."}]
 )', 'AIME 2024: 87.3%, Codeforces Rating: 2088, GPQA: 79.7%', 'Text only (no image modality input); reasoning adds latency.', 'https://openai.com', '[{"url":"https://openai.com/index/openai-o3-mini/","text":"OpenAI o3-mini Announcement"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('OCRia-nano-1', 'LlamaIndex', 'Model', 'Computer Vision', 'Open Weights', 2026, 'Open Weights', 'Compact open-weights document OCR and structured text extraction model developed by LlamaIndex.', 'llamaindex image to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("llamaindex/OCRia-nano-1", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("llamaindex/OCRia-nano-1")', 'Trending Score: 99, Likes: 107, Downloads: 0', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/llamaindex/OCRia-nano-1', '[{"url":"https://huggingface.co/llamaindex/OCRia-nano-1","text":"llamaindex/OCRia-nano-1 on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -7982,25 +6099,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('P-Image-OSS', 'Pruna AI', 'Platform', 'Image Generation', 'Community Hosted', 2026, 'GRADIO Platform', 'Accelerated open-source visual synthesis studio by Pruna AI delivering sub-second diffusion inference.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/PrunaAI/P-Image-OSS', 'Trending Score: 54, Community Likes: 185', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/PrunaAI/P-Image-OSS', '[{"url":"https://huggingface.co/spaces/PrunaAI/P-Image-OSS","text":"PrunaAI/P-Image-OSS on Hugging Face Spaces"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('PaliGemma 2', 'Google DeepMind', 'Model', 'Multimodal', 'Gemma License', 2024, '3B / 10B / 28B Parameters', 'Google''s open vision-language foundation model combining SigLIP-So400m vision encoder with Gemma 2 language models across 3B, 10B, and 28B parameter configurations for visual reasoning, captioning, and OCR.', 'Dual-encoder cross-attention architecture uniting a SigLIP vision transformer with Gemma 2 autoregressive transformer decoder supporting high-resolution image tokens.', 'from transformers import PaliGemmaForConditionalGeneration, AutoProcessor
 
 model = PaliGemmaForConditionalGeneration.from_pretrained("google/paligemma2-10b-pt-448", device_map="auto")
@@ -8029,49 +6127,6 @@ from vertexai.language_models import TextGenerationModel
 vertexai.init(project="YOUR_PROJECT", location="us-central1")
 model = TextGenerationModel.from_pretrained("text-bison@002")
 response = model.predict("Write a poem about AI.")', 'MMLU: 78.3%, multilingual reasoning leader in 2023', 'Superseded by Gemini, proprietary API.', 'https://ai.google/discover/palm2', '[{"url":"https://arxiv.org/abs/2305.10403","text":"PaLM 2 Technical Report"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('PAN2', 'Institute of Foundation Models', 'Model', 'Multimodal', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Multimodal model developed by Institute of Foundation Models.', 'IFM image text to video architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("IFM/PAN2", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("IFM/PAN2")', 'Trending Score: 160, Likes: 180, Downloads: 374', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/IFM/PAN2', '[{"url":"https://huggingface.co/IFM/PAN2","text":"IFM/PAN2 on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('ParseBench-2', 'LlamaIndex', 'Dataset', 'NLP', 'Apache-2.0', 2026, '1K<n<10K', 'ParseBench-2 is a document parsing benchmark that combines broad coverage of real-world.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("llamaindex/ParseBench-2")', 'Trending Score: 18, Likes: 20, Downloads: 30,698', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/llamaindex/ParseBench-2', '[{"url":"https://huggingface.co/datasets/llamaindex/ParseBench-2","text":"llamaindex/ParseBench-2 on Hugging Face Datasets"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -8170,129 +6225,7 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Phi-4 Multimodal Instruct', 'Microsoft', 'Model', 'NLP', 'Open Weights', 2026, '128k Context · Open Model', 'Frontier NLP model by Microsoft benchmarked on Artificial Analysis and a verified 128k Context window.', 'Open-weights frontier neural architecture developed by Microsoft, featuring native 128k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/phi-4-multimodal', 'Context Window: 128k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/phi-4-multimodal', '[{"url":"https://artificialanalysis.ai/models/phi-4-multimodal","text":"Phi-4 Multimodal Instruct on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/phi-4-multimodal/providers","text":"Phi-4 Multimodal Instruct Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Phind', 'Phind', 'AI', 'AI Coding', 'Proprietary', 2023, 'N/A', 'AI search engine and pair programmer tailored specifically for developers, providing cited code snippets, documentation references, and terminal debugging.', 'Custom 70B MoE search model paired with live web and documentation scraping index.', 'Visit phind.com and query "How to configure SSL in NGINX reverse proxy with Certbot in Docker".', 'High developer satisfaction for complex programming queries and library documentation search.', 'Focused on technical and developer search queries.', 'https://www.phind.com', '[{"url":"https://www.phind.com","text":"Phind"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('phonon', 'Gradium', 'Platform', 'Audio', 'Community Hosted', 2026, 'STATIC Platform', 'Low-latency interactive speech and audio synthesis model showcase by Gradium.', 'STATIC cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/gradium/phonon', 'Trending Score: 47, Community Likes: 69', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/gradium/phonon', '[{"url":"https://huggingface.co/spaces/gradium/phonon","text":"gradium/phonon on Hugging Face Spaces"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('physical-engineerings-last-exam', 'Google DeepMind', 'Dataset', 'NLP', 'CC-BY-4.0', 2026, 'n<1K', 'Physical-Engineering’s Last Exam (Dev Set) Physical-Engineering’s Last Exam (PLE) is a benchmark of long-horizon engineering tasks built by licensed practicing engine.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("google/physical-engineerings-last-exam")', 'Trending Score: 17, Likes: 33, Downloads: 41,085', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/google/physical-engineerings-last-exam', '[{"url":"https://huggingface.co/datasets/google/physical-engineerings-last-exam","text":"google/physical-engineerings-last-exam on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('PhysicalAI-Autonomous-Vehicles', 'NVIDIA', 'Dataset', 'NLP', 'Open Data', 2026, 'Curated Dataset', 'PHYSICAL AI AUTONOMOUS VEHICLES The PhysicalAI-Autonomous-Vehicles dataset provides one of the largest, geographically diverse collections of multi-sensor data empowe.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("nvidia/PhysicalAI-Autonomous-Vehicles")', 'Trending Score: 18, Likes: 1,206, Downloads: 265,315', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles', '[{"url":"https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles","text":"nvidia/PhysicalAI-Autonomous-Vehicles on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('PhysicalAI-Autonomous-Vehicles-Foundation4D', 'NVIDIA', 'Dataset', 'NLP', 'Open Data', 2026, 'Curated Dataset', 'PhysicalAI Autonomous Vehicles - Foundation4D Dataset Description: This release extends NVIDIA’s existing public PhysicalAI-Autonomous-Vehicles dataset w.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D")', 'Trending Score: 22, Likes: 28, Downloads: 1,496', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D', '[{"url":"https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D","text":"nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('PhysicalAI-Human-1M-100K', 'NVIDIA', 'Dataset', 'Computer Vision', 'CC-BY-4.0', 2026, 'n<1K', 'Across AI, a common route to scale is distilling human experience into models: what people write, see, and create. The physical AI analogue is sensorized human data—egocentric vid.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("nvidia/PhysicalAI-Human-1M-100K")', 'Trending Score: 18, Likes: 18, Downloads: 162', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nvidia/PhysicalAI-Human-1M-100K', '[{"url":"https://huggingface.co/datasets/nvidia/PhysicalAI-Human-1M-100K","text":"nvidia/PhysicalAI-Human-1M-100K on Hugging Face Datasets"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -8349,28 +6282,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Pika-H3-Flex', 'Pika Labs', 'Model', 'Video Generation', 'Open Weights', 2026, 'Open Weights', 'Open-weights Video Generation model developed by Pika Labs.', 'Pika-Labs image to video architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("Pika-Labs/Pika-H3-Flex", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("Pika-Labs/Pika-H3-Flex")', 'Trending Score: 198, Likes: 201, Downloads: 87', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Pika-Labs/Pika-H3-Flex', '[{"url":"https://huggingface.co/Pika-Labs/Pika-H3-Flex","text":"Pika-Labs/Pika-H3-Flex on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Pinecone', 'Pinecone', 'Platform', 'MLOps', 'Proprietary', 2019, 'N/A', 'A managed vector database purpose-built for AI applications, enabling fast similarity search at scale for RAG, semantic search, and recommendation systems.', 'Managed ANNS (Approximate Nearest Neighbor Search) vector store with hybrid search support.', 'from pinecone import Pinecone, ServerlessSpec
 pc = Pinecone(api_key="YOUR_API_KEY")
 pc.create_index("my-index", dimension=1536, metric="cosine", spec=ServerlessSpec(cloud=''aws'', region=''us-east-1''))
@@ -8398,33 +6309,6 @@ VALUES ('Pixtral 12B', 'Mistral AI', 'Model', 'Multimodal', 'Apache-2.0', 2024, 
 
 llm = LLM(model="mistralai/Pixtral-12B-2409", max_model_len=8192)
 outputs = llm.generate([{"prompt": "Describe this diagram in detail.", "multi_modal_data": {"image": "diagram.png"}}])', 'MMMU: 52.5%, DocVQA: 90.7%, MathVista: 58.0%, ChartQA: 81.8%, 128k context window', 'Requires at least 24GB VRAM for unquantized local inference; sensitive to prompt formatting in complex multi-image reasoning.', 'https://mistral.ai/news/pixtral-12b/', '[{"url":"https://mistral.ai/news/pixtral-12b/","text":"Mistral AI Pixtral 12B Release Announcement"},{"url":"https://huggingface.co/mistralai/Pixtral-12B-2409","text":"Pixtral-12B-2409 on Hugging Face"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Pixtral Large 2502', 'Mistral AI', 'Model', 'Multimodal', 'Proprietary', 2026, '128k Context · Available via API', 'Pixtral Large 2502 is the February 2025 version of Mistral AI''s large multimodal model, following Pixtral Large 2411. It accep.', 'Modern foundation model hosted on OpenRouter with native 128k Context support and structured output generation.', 'import OpenAI from "openai";
-const openai = new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY
-});
-const response = await openai.chat.completions.create({
-  model: "mistralai/pixtral-large-2502",
-  messages: [{ role: "user", content: "Hello!" }]
-});', 'Context Window: 128k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/mistralai/pixtral-large-2502', '[{"url":"https://openrouter.ai/mistralai/pixtral-large-2502","text":"Mistral: Pixtral Large 2502 on OpenRouter"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -8546,27 +6430,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Propaganda_Eval', 'Nous Research', 'Dataset', 'NLP', 'MIT', 2026, 'n<1K', 'Censorship & Propaganda Eval 803 prompts about topics that the People''s Republic of China censors or presents through an official narrative. Each prompt comes with 2–.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("NousResearch/Propaganda_Eval")', 'Trending Score: 26, Likes: 27, Downloads: 212', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/NousResearch/Propaganda_Eval', '[{"url":"https://huggingface.co/datasets/NousResearch/Propaganda_Eval","text":"NousResearch/Propaganda_Eval on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('psi', 'Microsoft', 'Framework', 'MLOps', 'Open Source', 2026, '38MB Repo', 'Platform for Situated Intelligence.', 'Modular AI codebase with native Python/C++ bindings and distributed workflow support.', 'git clone https://github.com/microsoft/psi
 cd psi
 pip install -e .', 'GitHub Stars: 572, Forks: 104', 'Requires local Python environment and dependency configuration.', 'https://github.com/microsoft/psi', '[{"url":"https://github.com/microsoft/psi","text":"microsoft/psi on GitHub"}]'::jsonb, true, true)
@@ -8639,25 +6502,6 @@ from qdrant_client.models import Distance, VectorParams
 
 client = QdrantClient("localhost", port=6333)
 client.create_collection("ai_articles", vectors_config=VectorParams(size=1536, distance=Distance.COSINE))', 'Sub-millisecond P99 vector search latency; stores billions of vectors with scalar quantization reducing RAM consumption by up to 4x.', 'Requires planning shard layouts and replication factors before scaling to high-concurrency multi-node clusters.', 'https://qdrant.tech', '[{"url":"https://github.com/qdrant/qdrant","text":"Qdrant Vector Database GitHub Repository"},{"url":"https://qdrant.tech/documentation/","text":"Qdrant Official Documentation"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Quasar 1.2 358B', 'Multiverse Computing', 'Model', 'Research', 'Proprietary', 2026, '1000k Context · Proprietary Model', 'Frontier Research model by Multiverse Computing benchmarked on Artificial Analysis with an Intelligence Index of 23.1 and a verified 1000k Context window.', 'Proprietary frontier neural architecture developed by Multiverse Computing, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/quasar-1-2-358b', 'Context Window: 1000k Context, Intelligence Index: 23.1, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/quasar-1-2-358b', '[{"url":"https://artificialanalysis.ai/models/quasar-1-2-358b","text":"Quasar 1.2 358B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/quasar-1-2-358b/providers","text":"Quasar 1.2 358B Inference Providers"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -8864,121 +6708,7 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Qwen3 Next 80B A3B Instruct', 'Alibaba (Qwen)', 'Model', 'NLP', 'Open Weights', 2026, '262k Context · Open Model', 'Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.', 'Open-weights frontier neural architecture developed by Alibaba, featuring native 262k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-next-80b-a3b-instruct', 'Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/qwen3-next-80b-a3b-instruct', '[{"url":"https://artificialanalysis.ai/models/qwen3-next-80b-a3b-instruct","text":"Qwen3 Next 80B A3B Instruct on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/qwen3-next-80b-a3b-instruct/providers","text":"Qwen3 Next 80B A3B Instruct Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Qwen3 Omni 30B A3B Instruct', 'Alibaba (Qwen)', 'Model', 'Multimodal', 'Open Weights', 2026, '66k Context · Open Model', 'Frontier Multimodal model by Alibaba benchmarked on Artificial Analysis and a verified 66k Context window.', 'Open-weights frontier neural architecture developed by Alibaba, featuring native 66k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct', 'Context Window: 66k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct', '[{"url":"https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct","text":"Qwen3 Omni 30B A3B Instruct on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct/providers","text":"Qwen3 Omni 30B A3B Instruct Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Qwen3-TTS', 'Alibaba (Qwen)', 'Platform', 'Audio', 'Community Hosted', 2026, 'GRADIO Platform', 'Expressive multilingual text-to-speech showcase for Alibaba Qwen''s neural speech synthesis family.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/Qwen/Qwen3-TTS', 'Trending Score: 22, Community Likes: 2,337', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/Qwen/Qwen3-TTS', '[{"url":"https://huggingface.co/spaces/Qwen/Qwen3-TTS","text":"Qwen/Qwen3-TTS on Hugging Face Spaces"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Qwen3.5 122B A10B', 'Alibaba (Qwen)', 'Model', 'NLP', 'Open Weights', 2026, '262k Context · Open Model', 'Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.', 'Open-weights frontier neural architecture developed by Alibaba, featuring native 262k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-5-122b-a10b', 'Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/qwen3-5-122b-a10b', '[{"url":"https://artificialanalysis.ai/models/qwen3-5-122b-a10b","text":"Qwen3.5 122B A10B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/qwen3-5-122b-a10b/providers","text":"Qwen3.5 122B A10B Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Qwen3.5 2B', 'Alibaba (Qwen)', 'Model', 'NLP', 'Open Weights', 2026, '262k Context · Open Model', 'Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.', 'Open-weights frontier neural architecture developed by Alibaba, featuring native 262k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-5-2b', 'Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/qwen3-5-2b', '[{"url":"https://artificialanalysis.ai/models/qwen3-5-2b","text":"Qwen3.5 2B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/qwen3-5-2b/providers","text":"Qwen3.5 2B Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Qwen3.5 397B A17B', 'Alibaba (Qwen)', 'Model', 'Research', 'Open Weights', 2026, '262k Context · Open Model', 'Frontier Research model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.', 'Open-weights frontier neural architecture developed by Alibaba, featuring native 262k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-5-397b-a17b', 'Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/qwen3-5-397b-a17b', '[{"url":"https://artificialanalysis.ai/models/qwen3-5-397b-a17b","text":"Qwen3.5 397B A17B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/qwen3-5-397b-a17b/providers","text":"Qwen3.5 397B A17B Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Qwen3.5 9B', 'Alibaba (Qwen)', 'Model', 'NLP', 'Open Weights', 2026, '262k Context · Open Model', 'Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.', 'Open-weights frontier neural architecture developed by Alibaba, featuring native 262k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-5-9b', 'Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/qwen3-5-9b', '[{"url":"https://artificialanalysis.ai/models/qwen3-5-9b","text":"Qwen3.5 9B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/qwen3-5-9b/providers","text":"Qwen3.5 9B Inference Providers"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -9038,6 +6768,28 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen3.8-27B', 'Alibaba (Qwen)', 'Model', 'Multimodal', 'Apache-2.0', 2026, '27B params', 'Alibaba (Qwen)''s frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 20, Briefcase Elo of 1393, and a massive 256k context window.', 'Alibaba (Qwen) image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen3.8-27B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3.8-27B")', 'Intelligence Index: 20, Briefcase Elo: 1393, Accuracy: 17%, Non-Hallucination: 71%, FrontierCode: 15%, AutomationBench: 48%, TerminalBench 4: 6%, HLE Diamond: 15%, Speed: 38 tok/s, Context Window: 256k', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Qwen/Qwen3.8-27B', '[{"url":"https://huggingface.co/Qwen/Qwen3.8-27B","text":"Qwen/Qwen3.8-27B on Hugging Face"}]'::jsonb, true, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Qwen3.8 Max (0902)', 'Alibaba (Qwen)', 'Model', 'NLP', 'Proprietary', 2026, '984k Context · Proprietary Model', 'Alibaba (Qwen)''s frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 34, Briefcase Elo of 1608, and a massive 984k context window.', 'Proprietary frontier neural architecture developed by Alibaba (Qwen), featuring native 984k token window support, optimized reasoning chains, and low-latency inference throughput (40 tok/s).', 'import requests
 
 response = requests.post(
@@ -9062,59 +6814,10 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Qwen3.8-27B', 'Alibaba (Qwen)', 'Model', 'Multimodal', 'Apache-2.0', 2026, '27B params', 'Alibaba (Qwen)''s frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 20, Briefcase Elo of 1393, and a massive 256k context window.', 'Alibaba (Qwen) image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen3.8-27B", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3.8-27B")', 'Intelligence Index: 20, Briefcase Elo: 1393, Accuracy: 17%, Non-Hallucination: 71%, FrontierCode: 15%, AutomationBench: 48%, TerminalBench 4: 6%, HLE Diamond: 15%, Speed: 38 tok/s, Context Window: 256k', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Qwen/Qwen3.8-27B', '[{"url":"https://huggingface.co/Qwen/Qwen3.8-27B","text":"Qwen/Qwen3.8-27B on Hugging Face"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Qwen3.8-Flash-Next', 'Alibaba (Qwen)', 'Model', 'Multimodal', 'Open Weights', 2026, 'Open Weights', 'Open-weights Multimodal model developed by Alibaba (Qwen).', 'Alibaba (Qwen) image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
 
 model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen3.8-Flash-Next", device_map="auto")
 tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3.8-Flash-Next")', 'Trending Score: 449, Likes: 4,929, Downloads: 432,966', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Qwen/Qwen3.8-Flash-Next', '[{"url":"https://huggingface.co/Qwen/Qwen3.8-Flash-Next","text":"Qwen/Qwen3.8-Flash-Next on Hugging Face"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Qwen4 Max', 'Alibaba (Qwen)', 'Model', 'Multimodal', 'Proprietary', 2026, '1000k Context · Available via API', 'Qwen4 Max is the flagship model in Alibaba''s Qwen4 series. It accepts text, image, and video input and returns text, with a 1M-token context window and reasoning enabled by default.', 'Modern foundation model hosted on OpenRouter with native 1000k Context support and structured output generation.', 'import OpenAI from "openai";
-const openai = new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY
-});
-const response = await openai.chat.completions.create({
-  model: "qwen/qwen4-max",
-  messages: [{ role: "user", content: "Hello!" }]
-});', 'Context Window: 1000k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/qwen/qwen4-max', '[{"url":"https://openrouter.ai/qwen/qwen4-max","text":"Qwen: Qwen4 Max on OpenRouter"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -9217,28 +6920,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('RelayVSR', 'Comfy-Org', 'Model', 'Image Generation', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Image Generation model developed by Comfy-Org.', 'Comfy-Org unconditional image generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("Comfy-Org/RelayVSR", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("Comfy-Org/RelayVSR")', 'Trending Score: 168, Likes: 186, Downloads: 91,134', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Comfy-Org/RelayVSR', '[{"url":"https://huggingface.co/Comfy-Org/RelayVSR","text":"Comfy-Org/RelayVSR on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Replicate', 'Replicate', 'Platform', 'MLOps', 'Proprietary', 2019, 'N/A', 'A cloud platform for running machine learning models via API, making it easy to deploy open-source models like Llama, Stable Diffusion, and Whisper at scale.', 'Containerized model deployment with Cog packaging and pay-per-prediction pricing.', 'import replicate
 output = replicate.run(
   "meta/meta-llama-3-70b-instruct",
@@ -9322,117 +7003,9 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('RFD4-Proteina', 'NVIDIA', 'Dataset', 'NLP', 'CC-BY-4.0', 2026, '10M<n<100M', 'The structures behind biomolecular design.Indexed molecular records, sampling metadata, and traceable source inventories. Project page · Model · Inventory · Training guide.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("nvidia/RFD4-Proteina")', 'Trending Score: 19, Likes: 26, Downloads: 61,125', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nvidia/RFD4-Proteina', '[{"url":"https://huggingface.co/datasets/nvidia/RFD4-Proteina","text":"nvidia/RFD4-Proteina on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Ripple-65B-Preview', 'Ricursive AI', 'Model', 'NLP', 'Apache-2.0', 2026, '65B params', 'Open-weights NLP model developed by Ricursive AI.', 'ricursiveAI transformer architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("ricursiveAI/Ripple-65B-Preview", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("ricursiveAI/Ripple-65B-Preview")', 'Trending Score: 216, Likes: 222, Downloads: 939', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/ricursiveAI/Ripple-65B-Preview', '[{"url":"https://huggingface.co/ricursiveAI/Ripple-65B-Preview","text":"ricursiveAI/Ripple-65B-Preview on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('RMBG-3.0', 'Bria AI', 'Model', 'Computer Vision', 'Open Weights', 2026, 'Open Weights', 'Commercial-licensed high-precision background removal and foreground matting model developed by Bria AI.', 'briaai image segmentation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("briaai/RMBG-3.0", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("briaai/RMBG-3.0")', 'Trending Score: 78, Likes: 337, Downloads: 225', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/briaai/RMBG-3.0', '[{"url":"https://huggingface.co/briaai/RMBG-3.0","text":"briaai/RMBG-3.0 on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('RoBERTa', 'Meta AI', 'Model', 'NLP', 'MIT', 2019, 'Base: 125M params, Large: 355M params', 'A robustly optimized BERT pretraining approach that surpassed BERT by training longer with more data and removing next-sentence prediction.', 'Transformer encoder, same as BERT but with dynamic masking and longer training.', 'from transformers import RobertaTokenizer, RobertaModel
 tokenizer = RobertaTokenizer.from_pretrained(''roberta-base'')
 model = RobertaModel.from_pretrained(''roberta-base'')', 'GLUE: 88.5 (large), SQuAD 2.0: 89.4 F1', 'Still limited to 512 tokens, encoder-only not generative.', 'https://github.com/facebookresearch/fairseq/tree/main/examples/roberta', '[{"url":"https://arxiv.org/abs/1907.11692","text":"Liu et al. (2019) - RoBERTa Paper"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('RoboWild', 'XLang AI', 'Dataset', 'Multimodal', 'Apache-2.0', 2026, 'Curated Dataset', 'RoboWild Homepage · Paper · Slides · Code RoboWild agents use robots to carry out tasks across 38 simulated environments. This dataset contains the OpenUS.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("xlangai/RoboWild")', 'Trending Score: 7, Likes: 75, Downloads: 8,861', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/xlangai/RoboWild', '[{"url":"https://huggingface.co/datasets/xlangai/RoboWild","text":"xlangai/RoboWild on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Rumble-2-Flash', 'Reson8', 'Model', 'Audio', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Audio model developed by Reson8.', 'Reson8 automatic speech recognition architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("Reson8/Rumble-2-Flash", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("Reson8/Rumble-2-Flash")', 'Trending Score: 112, Likes: 165, Downloads: 929', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Reson8/Rumble-2-Flash', '[{"url":"https://huggingface.co/Reson8/Rumble-2-Flash","text":"Reson8/Rumble-2-Flash on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -9540,49 +7113,6 @@ sam = sam_model_registry["vit_h"](checkpoint="sam_vit_h.pth")
 predictor = SamPredictor(sam)
 predictor.set_image(image)
 masks, scores, logits = predictor.predict(point_coords=input_point, point_labels=input_label)', 'Zero-shot COCO AP: 46.5% (SAM ViT-H)', 'Does not track objects across frames, not designed for semantic labeling.', 'https://segment-anything.com/', '[{"url":"https://arxiv.org/abs/2304.02643","text":"Kirillov et al. (2023) - SAM Paper"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('sam-3d-body-dataset', 'Meta AI', 'Dataset', 'Computer Vision', 'Open Data', 2026, '1M<n<10M', 'Large-scale 3D human pose and body mesh dataset published by Meta AI for training spatial vision models.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("facebook/sam-3d-body-dataset")', 'Trending Score: 7, Likes: 183, Downloads: 1,447', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/facebook/sam-3d-body-dataset', '[{"url":"https://huggingface.co/datasets/facebook/sam-3d-body-dataset","text":"facebook/sam-3d-body-dataset on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('sam-3d-body-dinov3', 'Meta AI', 'Model', 'Computer Vision', 'Open Weights', 2026, 'Open Weights', '3D human body reconstruction and mesh estimation foundation model powered by Meta AI''s DINOv3 visual backbone.', 'facebook transformer architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("facebook/sam-3d-body-dinov3", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("facebook/sam-3d-body-dinov3")', 'Trending Score: 159, Likes: 1,077, Downloads: 14,473', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/facebook/sam-3d-body-dinov3', '[{"url":"https://huggingface.co/facebook/sam-3d-body-dinov3","text":"facebook/sam-3d-body-dinov3 on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -9711,50 +7241,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('SenseNova-Loop-9B', 'SenseNova', 'Model', 'Multimodal', 'Apache-2.0', 2026, '9B params', 'Open-weights Multimodal model developed by SenseNova.', 'sensenova image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("sensenova/SenseNova-Loop-9B", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("sensenova/SenseNova-Loop-9B")', 'Trending Score: 172, Likes: 175, Downloads: 0', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/sensenova/SenseNova-Loop-9B', '[{"url":"https://huggingface.co/sensenova/SenseNova-Loop-9B","text":"sensenova/SenseNova-Loop-9B on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('SenseNova-Loop-9B-Preview', 'SenseNova', 'Model', 'Multimodal', 'Apache-2.0', 2026, '9B params', 'Open-weights Multimodal model developed by SenseNova.', 'sensenova image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("sensenova/SenseNova-Loop-9B-Preview", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("sensenova/SenseNova-Loop-9B-Preview")', 'Trending Score: 202, Likes: 205, Downloads: 2,221', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview', '[{"url":"https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview","text":"sensenova/SenseNova-Loop-9B-Preview on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('SerpentAI', 'SerpentAI', 'Framework', 'Computer Vision', 'MIT', 2026, '4MB Repo', 'Game Agent Framework. Helping you create AIs / Bots that learn to play any game you own!', 'Modular AI codebase with native Python/C++ bindings and distributed workflow support.', 'git clone https://github.com/SerpentAI/SerpentAI
 cd SerpentAI
 pip install -e .', 'GitHub Stars: 6,990, Forks: 798', 'Requires local Python environment and dependency configuration.', 'https://github.com/SerpentAI/SerpentAI', '[{"url":"https://github.com/SerpentAI/SerpentAI","text":"SerpentAI/SerpentAI on GitHub"}]'::jsonb, true, true)
@@ -9841,25 +7327,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('smol-training-playbook', 'Hugging Face', 'Platform', 'Research', 'Community Hosted', 2026, 'DOCKER Platform', 'Interactive open-science playbook from Hugging Face detailing pretraining, scaling laws, and architecture recipes for small language models.', 'DOCKER cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook', 'Trending Score: 26, Community Likes: 3,372', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook', '[{"url":"https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook","text":"HuggingFaceTB/smol-training-playbook on Hugging Face Spaces"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Smolagents', 'Hugging Face', 'Framework', 'AI Coding', 'Apache-2.0', 2025, '~1,000 LOC', 'Hugging Face''s lightweight Python-first agent library where agents write executable Python code directly instead of parsing JSON action strings.', 'CodeAgent execution loop running in a secure Python sandbox.', 'from smolagents import CodeAgent, HfApiModel, DuckDuckGoSearchTool
 agent = CodeAgent(tools=[DuckDuckGoSearchTool()], model=HfApiModel())
 agent.run("What is the latest score of the Mars Rover mission?")', '30% fewer token overhead and higher tool success rate on GAIA benchmarks.', 'Code execution requires sandbox container isolation for untrusted user inputs.', 'https://github.com/huggingface/smolagents', '[{"url":"https://huggingface.co/blog/smolagents","text":"Smolagents Launch"}]'::jsonb, true, true)
@@ -9906,75 +7373,7 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('SmolVLM2-256M-Video-Instruct', 'Hugging Face', 'Model', 'Multimodal', 'Apache-2.0', 2026, '256M params', 'Open-weights Multimodal model developed by Hugging Face.', 'HuggingFaceTB image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("HuggingFaceTB/SmolVLM2-256M-Video-Instruct", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("HuggingFaceTB/SmolVLM2-256M-Video-Instruct")', 'Trending Score: 124, Likes: 298, Downloads: 45,338', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/HuggingFaceTB/SmolVLM2-256M-Video-Instruct', '[{"url":"https://huggingface.co/HuggingFaceTB/SmolVLM2-256M-Video-Instruct","text":"HuggingFaceTB/SmolVLM2-256M-Video-Instruct on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Socratic by Google', 'Google DeepMind', 'AI', 'Education', 'Proprietary', 2017, 'N/A', 'A Google AI-powered learning app that helps students understand homework questions by providing explanations, videos, and step-by-step breakdowns from a photo scan.', 'Mobile Application (Powered by Google Lens OCR + Google Search + LLM explanations)', 'Download the Socratic app on iOS or Android and take a photo of any homework question.', 'N/A', 'Works best for standard K-12 subjects; may struggle with highly specialized or advanced topics.', 'https://socratic.org', '[{"url":"https://socratic.org","text":"Socratic by Google"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Solar Mini 4.5 (Preview)', 'Upstage', 'Model', 'NLP', 'Proprietary', 2026, '524k Context · Available via API', 'Compact Mixture-of-Experts model by Upstage featuring 35B total (3B active) parameters and a 524K context window.', 'Modern foundation model hosted on OpenRouter with native 524k Context support and structured output generation.', 'import OpenAI from "openai";
-const openai = new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY
-});
-const response = await openai.chat.completions.create({
-  model: "upstage/solar-mini-4-5",
-  messages: [{ role: "user", content: "Hello!" }]
-});', 'Context Window: 524k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/upstage/solar-mini-4-5', '[{"url":"https://openrouter.ai/upstage/solar-mini-4-5","text":"Upstage: Solar Mini 4.5 (Preview) on OpenRouter"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Solar Pro 4', 'Upstage', 'Model', 'Research', 'Proprietary', 2026, '512k Context · Proprietary Model', 'Frontier Research model by Upstage benchmarked on Artificial Analysis with an Intelligence Index of 14.2 and a verified 512k Context window.', 'Proprietary frontier neural architecture developed by Upstage, featuring native 512k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/solar-pro-4', 'Context Window: 512k Context, Intelligence Index: 14.2, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/solar-pro-4', '[{"url":"https://artificialanalysis.ai/models/solar-pro-4","text":"Solar Pro 4 on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/solar-pro-4/providers","text":"Solar Pro 4 Inference Providers"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -10061,28 +7460,6 @@ VALUES ('Spark-X2.6-4B', 'XHToken', 'Model', 'NLP', 'Apache-2.0', 2026, '4B para
 
 model = AutoModelForCausalLM.from_pretrained("XHToken/Spark-X2.6-4B", device_map="auto")
 tokenizer = AutoTokenizer.from_pretrained("XHToken/Spark-X2.6-4B")', 'Trending Score: 171, Likes: 183, Downloads: 85', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/XHToken/Spark-X2.6-4B', '[{"url":"https://huggingface.co/XHToken/Spark-X2.6-4B","text":"XHToken/Spark-X2.6-4B on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('speaker-diarization-community-1', 'pyannote', 'Model', 'Audio', 'CC-BY-4.0', 2026, 'Open Weights', 'Open-weights Audio model developed by pyannote.', 'pyannote automatic speech recognition architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("pyannote/speaker-diarization-community-1", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("pyannote/speaker-diarization-community-1")', 'Trending Score: 194, Likes: 4,449, Downloads: 4,871,288', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/pyannote/speaker-diarization-community-1', '[{"url":"https://huggingface.co/pyannote/speaker-diarization-community-1","text":"pyannote/speaker-diarization-community-1 on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -10210,25 +7587,6 @@ VALUES ('Step 5 Preview', 'StepFun', 'Model', 'NLP', 'Open Weights', 2026, '1M C
 
 model = AutoModelForCausalLM.from_pretrained("StepFun/step-5-preview", device_map="auto")
 tokenizer = AutoTokenizer.from_pretrained("StepFun/step-5-preview")', 'Intelligence Index: 29, Briefcase Elo: 1425, Accuracy: 36%, Non-Hallucination: 69%, FrontierCode: 12%, AutomationBench: 51%, TerminalBench 4: 33%, HLE Diamond: 24%, Speed: 165 tok/s, Context Window: 1M', 'High memory requirements for local execution (1M context); recommended deployment on multi-GPU tensor-parallel nodes or vLLM clusters.', 'https://artificialanalysis.ai/models/step-5', '[{"url":"https://artificialanalysis.ai/models/step-5","text":"Step 5 Preview on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/step-5/providers","text":"Step 5 Preview Inference Providers"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('StepAudio-3-Music', 'StepFun', 'Platform', 'Audio', 'Community Hosted', 2026, 'GRADIO Platform', 'Generative music and vocal synthesis model by StepFun creating controllable multi-track audio compositions.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/stepfun-ai/StepAudio-3-Music', 'Trending Score: 20, Community Likes: 304', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/stepfun-ai/StepAudio-3-Music', '[{"url":"https://huggingface.co/spaces/stepfun-ai/StepAudio-3-Music","text":"stepfun-ai/StepAudio-3-Music on Hugging Face Spaces"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -10411,48 +7769,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('TacVerse', 'TacVerse', 'Dataset', 'Multimodal', 'CC-BY-SA-4.0', 2026, '100M<n<1B', 'Multi-scene bimanual robotics dataset synchronizing visual frames with dense tactile sensor measurements.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("TacVerse/TacVerse")', 'Trending Score: 16, Likes: 21, Downloads: 1,637', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/TacVerse/TacVerse', '[{"url":"https://huggingface.co/datasets/TacVerse/TacVerse","text":"TacVerse/TacVerse on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('TailorRig', 'Tencent', 'Dataset', 'Computer Vision', 'Open Data', 2026, '10K<n<100K', 'Human character rigging dataset containing 39,073 humanoid 3D meshes with skeletons and skinning weights stored across structured anatomical subsets.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("tencent/TailorRig")', 'Trending Score: 20, Likes: 21, Downloads: 10', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/tencent/TailorRig', '[{"url":"https://huggingface.co/datasets/tencent/TailorRig","text":"tencent/TailorRig on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('TeleOCR', 'XingChen-AGI', 'Model', 'Computer Vision', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Computer Vision model developed by XingChen-AGI.', 'XingChen-AGI image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
 
 model = AutoModelForCausalLM.from_pretrained("XingChen-AGI/TeleOCR", device_map="auto")
@@ -10527,25 +7843,6 @@ INSERT INTO entries (name, org, type, task, license, year, size, summary, archit
 VALUES ('The Pile', 'EleutherAI', 'Dataset', 'NLP', 'MIT', 2020, '825GB, ~300B tokens', 'EleutherAI''s 825GB open-source diverse text dataset designed for training large language models, combining 22 high-quality data sources.', '22 data sources including Books3, GitHub, Wikipedia, PubMed, arXiv, and more.', '# Available on HuggingFace
 from datasets import load_dataset
 dataset = load_dataset("EleutherAI/pile", split="train", streaming=True)', 'Used to train GPT-NeoX, GPT-J, and other EleutherAI models', 'Some components have license restrictions (Books3 removed after legal challenges).', 'https://pile.eleuther.ai/', '[{"url":"https://arxiv.org/abs/2101.00027","text":"Gao et al. (2020) - The Pile Paper"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Therefor', 'Mariano Rodriguez', 'AI', 'Audio', 'Freemium', 2026, 'Web App', 'AI remembrance and conversational memorial web app by Mariano Rodriguez enabling private audio-grounded memory conversations.', 'N/A', NULL, 'N/A', 'N/A', 'https://therefor.us/', '[]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -10711,28 +8008,6 @@ ON CONFLICT (name) DO UPDATE SET
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Triton Inference Server', 'NVIDIA', 'Framework', 'MLOps', 'BSD-3-Clause', 2019, 'N/A', 'NVIDIA''s open-source multi-framework inference serving software engineered for high-throughput, low-latency GPU and CPU model deployment with dynamic batching and concurrent model execution.', 'Multi-backend serving container supporting TensorRT, PyTorch TorchScript/LibTorch, ONNX Runtime, OpenVINO, and vLLM via C++ and gRPC/REST APIs.', 'tritonserver --model-repository=/models --http-port=8000 --grpc-port=8001', 'Supports dynamic batching, concurrent model execution, model ensembles, and enterprise Kubernetes orchestration with automated Prometheus metrics.', 'Model repository directory configuration requires rigid adherence to Triton config.pbtxt protobuf schemas and versioning structures.', 'https://github.com/triton-inference-server/server', '[{"url":"https://github.com/triton-inference-server/server","text":"NVIDIA Triton Inference Server Repository"},{"url":"https://developer.nvidia.com/triton-inference-server","text":"NVIDIA Developer Triton Inference Server Overview"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('TwIL-8B', 'webAI', 'Model', 'NLP', 'Open Weights', 2026, '8B params', 'Open-weights NLP model developed by webAI.', 'webAI-Official text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("webAI-Official/TwIL-8B", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("webAI-Official/TwIL-8B")', 'Trending Score: 168, Likes: 170, Downloads: 8,209', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/webAI-Official/TwIL-8B', '[{"url":"https://huggingface.co/webAI-Official/TwIL-8B","text":"webAI-Official/TwIL-8B on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -10939,55 +8214,12 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Unlimited-OCR-2', 'Baidu', 'Model', 'Computer Vision', 'MIT', 2026, 'Open Weights', 'Open-weights Computer Vision model developed by Baidu.', 'baidu image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("baidu/Unlimited-OCR-2", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("baidu/Unlimited-OCR-2")', 'Trending Score: 326, Likes: 341, Downloads: 8,357', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/baidu/Unlimited-OCR-2', '[{"url":"https://huggingface.co/baidu/Unlimited-OCR-2","text":"baidu/Unlimited-OCR-2 on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Unsloth', 'Unsloth AI', 'Framework', 'MLOps', 'Apache-2.0', 2024, 'N/A', 'Ultra-fast open-source fine-tuning framework providing 2x-5x faster training speeds and up to 80% lower VRAM memory usage for Llama, Mistral, Qwen, and DeepSeek.', 'Custom OpenAI Triton manual backpropagation GPU kernels.', 'from unsloth import FastLanguageModel
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name="unsloth/Llama-3.3-70B-Instruct-bnb-4bit",
     max_seq_length=2048,
     load_in_4bit=True
 )', '5x faster training, 0% accuracy loss compared to standard Hugging Face Trainer.', 'Exclusively tailored for NVIDIA GPUs (Compute Capability 7.0+).', 'https://github.com/unslothai/unsloth', '[{"url":"https://docs.unsloth.ai","text":"Unsloth Documentation"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('USDCraft-10K', 'NVIDIA', 'Dataset', 'Computer Vision', 'Apache-2.0', 2026, '10K<n<100K', 'USDCraft-10K: Simulation-Ready Articulated 3D Assets in OpenUSD USDCraft-10K is a dataset of simulation-ready rigid and articulated 3D assets in OpenUSD,.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("nvidia/USDCraft-10K")', 'Trending Score: 21, Likes: 26, Downloads: 3,674', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nvidia/USDCraft-10K', '[{"url":"https://huggingface.co/datasets/nvidia/USDCraft-10K","text":"nvidia/USDCraft-10K on Hugging Face Datasets"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -11095,28 +8327,6 @@ VALUES ('vLLM', 'UC Berkeley (BAIR)', 'Framework', 'MLOps', 'Apache-2.0', 2023, 
 llm = LLM(model="meta-llama/Meta-Llama-3-8B-Instruct")
 params = SamplingParams(temperature=0.8, top_p=0.95)
 outputs = llm.generate(["Tell me a fun fact about space."], params)', 'Up to 24x higher throughput than HuggingFace Transformers', 'Primarily optimized for NVIDIA GPUs, less support for AMD/Apple Silicon.', 'https://github.com/vllm-project/vllm', '[{"url":"https://arxiv.org/abs/2309.06180","text":"Kwon et al. (2023) - vLLM Paper"}]'::jsonb, true, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('voice-isolator', 'Inworld AI', 'Model', 'Audio', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Audio model developed by Inworld AI.', 'inworld audio to audio architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("inworld/voice-isolator", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("inworld/voice-isolator")', 'Trending Score: 171, Likes: 187, Downloads: 0', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/inworld/voice-isolator', '[{"url":"https://huggingface.co/inworld/voice-isolator","text":"inworld/voice-isolator on Hugging Face"}]'::jsonb, false, true)
 ON CONFLICT (name) DO UPDATE SET
   org = EXCLUDED.org,
   type = EXCLUDED.type,
@@ -11327,28 +8537,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('Xiaomi-OCR-0', 'Xiaomi (MiMo)', 'Model', 'Computer Vision', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Computer Vision model developed by Xiaomi (MiMo).', 'xiaomi-research image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("xiaomi-research/Xiaomi-OCR-0", device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained("xiaomi-research/Xiaomi-OCR-0")', 'Trending Score: 193, Likes: 264, Downloads: 20,802', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/xiaomi-research/Xiaomi-OCR-0', '[{"url":"https://huggingface.co/xiaomi-research/Xiaomi-OCR-0","text":"xiaomi-research/Xiaomi-OCR-0 on Hugging Face"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('Xing4.0-29B-A4B', 'XingChen-AGI', 'Model', 'NLP', 'Apache-2.0', 2026, '29B params', 'Open-weights NLP model developed by XingChen-AGI.', 'XingChen-AGI text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
 
 model = AutoModelForCausalLM.from_pretrained("XingChen-AGI/Xing4.0-29B-A4B", device_map="auto")
@@ -11433,27 +8621,6 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
-VALUES ('youtube', 'Common Pile', 'Dataset', 'NLP', 'Open Data', 2026, '1M<n<10M', 'Creative Commons YouTube Description YouTube is large-scale video-sharing platform where users have the option of uploading content under a CC BY license.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
-
-dataset = load_dataset("common-pile/youtube")', 'Trending Score: 6, Likes: 99, Downloads: 1,435', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/common-pile/youtube', '[{"url":"https://huggingface.co/datasets/common-pile/youtube","text":"common-pile/youtube on Hugging Face Datasets"}]'::jsonb, false, true)
-ON CONFLICT (name) DO UPDATE SET
-  org = EXCLUDED.org,
-  type = EXCLUDED.type,
-  task = EXCLUDED.task,
-  license = EXCLUDED.license,
-  year = EXCLUDED.year,
-  size = EXCLUDED.size,
-  summary = EXCLUDED.summary,
-  architecture = EXCLUDED.architecture,
-  usage = EXCLUDED.usage,
-  benchmarks = EXCLUDED.benchmarks,
-  limitations = EXCLUDED.limitations,
-  url = EXCLUDED.url,
-  citations = EXCLUDED.citations,
-  popular = EXCLUDED.popular,
-  approved = true;
-
-INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('YuE2-3B', 'M-A-P', 'Model', 'Audio', 'CC-BY-NC-4.0', 2026, '3B params', 'Open-weights Audio model developed by M-A-P.', 'm-a-p text to audio architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
 
 model = AutoModelForCausalLM.from_pretrained("m-a-p/YuE2-3B", device_map="auto")
@@ -11519,6 +8686,853 @@ ON CONFLICT (name) DO UPDATE SET
   approved = true;
 
 INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('DaisyRose-27B', 'RadixArk', 'Model', 'Multimodal', 'Apache-2.0', 2026, '27B params', 'DaisyRose 27B is an open-weight multimodal reasoning model from RadixArk, trained from Qwen3.8 27B using reinforcement learning only on lo.', 'RadixArk image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("RadixArk/DaisyRose-27B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("RadixArk/DaisyRose-27B")', 'Context Window: 262k Context, Available across global OpenRouter inference nodes.', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/RadixArk/DaisyRose-27B', '[{"url":"https://huggingface.co/RadixArk/DaisyRose-27B","text":"RadixArk/DaisyRose-27B on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Pixtral Large 2502', 'Mistral AI', 'Model', 'Multimodal', 'Proprietary', 2026, '128k Context · Available via API', 'Pixtral Large 2502 is the February 2025 version of Mistral AI''s large multimodal model, following Pixtral Large 2411. It accep.', 'Modern foundation model hosted on OpenRouter with native 128k Context support and structured output generation.', 'import OpenAI from "openai";
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY
+});
+const response = await openai.chat.completions.create({
+  model: "mistralai/pixtral-large-2502",
+  messages: [{ role: "user", content: "Hello!" }]
+});', 'Context Window: 128k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/mistralai/pixtral-large-2502', '[{"url":"https://openrouter.ai/mistralai/pixtral-large-2502","text":"Mistral: Pixtral Large 2502 on OpenRouter"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Inkling', 'Thinking Machines', 'Model', 'Research', 'Open Weights', 2026, '1000k Context · Open Model', 'Frontier Research model by Thinking Machines benchmarked on Artificial Analysis with an Intelligence Index of 12.5 and a verified 1000k Context window.', 'Open-weights frontier neural architecture developed by Thinking Machines, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/inkling', 'Context Window: 1000k Context, Intelligence Index: 12.5, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/inkling', '[{"url":"https://artificialanalysis.ai/models/inkling","text":"Inkling on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/inkling/providers","text":"Inkling Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Rumble-2-Flash', 'Reson8', 'Model', 'Audio', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Audio model developed by Reson8.', 'Reson8 automatic speech recognition architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Reson8/Rumble-2-Flash", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Reson8/Rumble-2-Flash")', 'Trending Score: 112, Likes: 165, Downloads: 929', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Reson8/Rumble-2-Flash', '[{"url":"https://huggingface.co/Reson8/Rumble-2-Flash","text":"Reson8/Rumble-2-Flash on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Nova 2.0 Pro Preview', 'Amazon Web Services', 'Model', 'Research', 'Proprietary', 2026, '256k Context · Proprietary Model', 'Frontier Research model by Amazon benchmarked on Artificial Analysis and a verified 256k Context window.', 'Proprietary frontier neural architecture developed by Amazon, featuring native 256k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/nova-2-0-pro-preview', 'Context Window: 256k Context, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/nova-2-0-pro-preview', '[{"url":"https://artificialanalysis.ai/models/nova-2-0-pro-preview","text":"Nova 2.0 Pro Preview on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/nova-2-0-pro-preview/providers","text":"Nova 2.0 Pro Preview Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('P-Image-OSS', 'Pruna AI', 'Platform', 'Image Generation', 'Community Hosted', 2026, 'GRADIO Platform', 'Accelerated open-source visual synthesis studio by Pruna AI delivering sub-second diffusion inference.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/PrunaAI/P-Image-OSS', 'Trending Score: 54, Community Likes: 185', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/PrunaAI/P-Image-OSS', '[{"url":"https://huggingface.co/spaces/PrunaAI/P-Image-OSS","text":"PrunaAI/P-Image-OSS on Hugging Face Spaces"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('voice-isolator', 'Inworld AI', 'Model', 'Audio', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Audio model developed by Inworld AI.', 'inworld audio to audio architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("inworld/voice-isolator", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("inworld/voice-isolator")', 'Trending Score: 171, Likes: 187, Downloads: 0', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/inworld/voice-isolator', '[{"url":"https://huggingface.co/inworld/voice-isolator","text":"inworld/voice-isolator on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Claude Fable 5.2', 'Anthropic', 'Model', 'Research', 'Proprietary', 2026, '1000k Context · Proprietary Model', 'Claude Fable 5.2 is Anthropic''s most capable model for the most demanding technical work, with gains over Fable 5.1 in coding, reasoning, and vision. In prerelease testing it compl.', 'Proprietary frontier neural architecture developed by Anthropic, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/claude-fable-5-2', 'Context Window: 1000k Context, Intelligence Index: 56.4, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/claude-fable-5-2', '[{"url":"https://artificialanalysis.ai/models/claude-fable-5-2","text":"Claude Fable 5.2 on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/claude-fable-5-2/providers","text":"Claude Fable 5.2 Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('FastFrames-L', 'Apple', 'Model', 'Video Generation', 'Apple AMLR', 2026, 'Open Weights', 'Open-weights Video Generation model developed by Apple.', 'apple text to video architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("apple/FastFrames-L", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("apple/FastFrames-L")', 'Trending Score: 210, Likes: 228, Downloads: 0', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/apple/FastFrames-L', '[{"url":"https://huggingface.co/apple/FastFrames-L","text":"apple/FastFrames-L on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Granite 4.2 3B', 'IBM', 'Model', 'Research', 'Open Weights', 2026, '131k Context · Open Model', 'Frontier Research model by IBM benchmarked on Artificial Analysis with an Intelligence Index of 4.7 and a verified 131k Context window.', 'Open-weights frontier neural architecture developed by IBM, featuring native 131k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/granite-4-2-3b', 'Context Window: 131k Context, Intelligence Index: 4.7, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/granite-4-2-3b', '[{"url":"https://artificialanalysis.ai/models/granite-4-2-3b","text":"Granite 4.2 3B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/granite-4-2-3b/providers","text":"Granite 4.2 3B Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Ko-MultimodalMind2Web', 'KORMo-VL', 'Dataset', 'Computer Vision', 'CC-BY-4.0', 2026, 'n<1K', '🇰🇷 Ko-MultimodalMind2Web An offline Korean web-agent benchmark, built manually by native Korean annotators. 549 tasks · ️ 12,905 scored steps · 144 websites.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("KORMo-VL/Ko-MultimodalMind2Web")', 'Trending Score: 18, Likes: 24, Downloads: 70', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/KORMo-VL/Ko-MultimodalMind2Web', '[{"url":"https://huggingface.co/datasets/KORMo-VL/Ko-MultimodalMind2Web","text":"KORMo-VL/Ko-MultimodalMind2Web on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Hy4-flash', 'Tencent', 'Model', 'NLP', 'Open Weights', 2026, 'Open Weights', 'Cost-efficient variant of Tencent''s Hy4 foundation model engineered for low-latency and high-throughput generation.', 'tencent image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("tencent/Hy4-flash", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("tencent/Hy4-flash")', 'Context Window: 1049k Context, Available across global OpenRouter inference nodes.', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/tencent/Hy4-flash', '[{"url":"https://huggingface.co/tencent/Hy4-flash","text":"tencent/Hy4-flash on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Gemini 4 Neon', 'Google DeepMind', 'Model', 'Research', 'Proprietary', 2026, '1000k Context · Proprietary Model', 'Frontier Research model by Google benchmarked on Artificial Analysis with an Intelligence Index of 44.1 and a verified 1000k Context window.', 'Proprietary frontier neural architecture developed by Google, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gemini-4-neon', 'Context Window: 1000k Context, Intelligence Index: 44.1, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/gemini-4-neon', '[{"url":"https://artificialanalysis.ai/models/gemini-4-neon","text":"Gemini 4 Neon on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/gemini-4-neon/providers","text":"Gemini 4 Neon Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Ko-Screenspot', 'KORMo-VL', 'Dataset', 'Computer Vision', 'CC-BY-4.0', 2026, 'n<1K', '🇰🇷 Ko-Screenspot A Korean GUI grounding benchmark, built manually by native Korean annotators. 3,319 samples · 142 websites · ️ ~480 annotator-hours · GUI.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("KORMo-VL/Ko-Screenspot")', 'Trending Score: 19, Likes: 21, Downloads: 67', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/KORMo-VL/Ko-Screenspot', '[{"url":"https://huggingface.co/datasets/KORMo-VL/Ko-Screenspot","text":"KORMo-VL/Ko-Screenspot on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Maxwell-V1-Flash', 'Maxwell', 'Model', 'NLP', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights NLP model developed by Maxwell.', 'maxwell-model text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("maxwell-model/Maxwell-V1-Flash", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("maxwell-model/Maxwell-V1-Flash")', 'Trending Score: 173, Likes: 215, Downloads: 1,052', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/maxwell-model/Maxwell-V1-Flash', '[{"url":"https://huggingface.co/maxwell-model/Maxwell-V1-Flash","text":"maxwell-model/Maxwell-V1-Flash on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('GPT-6.2 Astra', 'OpenAI', 'Model', 'NLP', 'Proprietary', 2026, '1050k Context · Available via API', 'GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, professional work and scientific res.', 'Modern foundation model hosted on OpenRouter with native 1050k Context support and structured output generation.', 'import OpenAI from "openai";
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY
+});
+const response = await openai.chat.completions.create({
+  model: "openai/gpt-6.2-astra",
+  messages: [{ role: "user", content: "Hello!" }]
+});', 'Context Window: 1050k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/openai/gpt-6.2-astra', '[{"url":"https://openrouter.ai/openai/gpt-6.2-astra","text":"OpenAI: GPT-6.2 Astra on OpenRouter"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen3 Omni 30B A3B Instruct', 'Alibaba (Qwen)', 'Model', 'Multimodal', 'Open Weights', 2026, '66k Context · Open Model', 'Frontier Multimodal model by Alibaba benchmarked on Artificial Analysis and a verified 66k Context window.', 'Open-weights frontier neural architecture developed by Alibaba, featuring native 66k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct', 'Context Window: 66k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct', '[{"url":"https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct","text":"Qwen3 Omni 30B A3B Instruct on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/qwen3-omni-30b-a3b-instruct/providers","text":"Qwen3 Omni 30B A3B Instruct Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('ParseBench-2', 'LlamaIndex', 'Dataset', 'NLP', 'Apache-2.0', 2026, '1K<n<10K', 'ParseBench-2 is a document parsing benchmark that combines broad coverage of real-world.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("llamaindex/ParseBench-2")', 'Trending Score: 18, Likes: 20, Downloads: 30,698', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/llamaindex/ParseBench-2', '[{"url":"https://huggingface.co/datasets/llamaindex/ParseBench-2","text":"llamaindex/ParseBench-2 on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen3.5 2B', 'Alibaba (Qwen)', 'Model', 'NLP', 'Open Weights', 2026, '262k Context · Open Model', 'Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.', 'Open-weights frontier neural architecture developed by Alibaba, featuring native 262k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-5-2b', 'Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/qwen3-5-2b', '[{"url":"https://artificialanalysis.ai/models/qwen3-5-2b","text":"Qwen3.5 2B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/qwen3-5-2b/providers","text":"Qwen3.5 2B Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Ko-Online-Mind2Web', 'KORMo-VL', 'Dataset', 'NLP', 'CC-BY-4.0', 2026, 'n<1K', '🇰🇷 Ko-Online-Mind2Web A live Korean web-agent benchmark, built manually by native Korean annotators. 312 tasks · 104 websites · ️ ~480 annotator-hours · L.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("KORMo-VL/Ko-Online-Mind2Web")', 'Trending Score: 18, Likes: 19, Downloads: 23', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/KORMo-VL/Ko-Online-Mind2Web', '[{"url":"https://huggingface.co/datasets/KORMo-VL/Ko-Online-Mind2Web","text":"KORMo-VL/Ko-Online-Mind2Web on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('SenseNova-Loop-9B', 'SenseNova', 'Model', 'Multimodal', 'Apache-2.0', 2026, '9B params', 'Open-weights Multimodal model developed by SenseNova.', 'sensenova image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("sensenova/SenseNova-Loop-9B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("sensenova/SenseNova-Loop-9B")', 'Trending Score: 172, Likes: 175, Downloads: 0', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/sensenova/SenseNova-Loop-9B', '[{"url":"https://huggingface.co/sensenova/SenseNova-Loop-9B","text":"sensenova/SenseNova-Loop-9B on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Apodex 1.1', 'Apodex', 'Model', 'Research', 'Proprietary', 2026, '256k Context · Proprietary Model', 'Frontier Research model by Apodex benchmarked on Artificial Analysis with an Intelligence Index of 13.7 and a verified 256k Context window.', 'Proprietary frontier neural architecture developed by Apodex, featuring native 256k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/apodex-1-1', 'Context Window: 256k Context, Intelligence Index: 13.7, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/apodex-1-1', '[{"url":"https://artificialanalysis.ai/models/apodex-1-1","text":"Apodex 1.1 on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/apodex-1-1/providers","text":"Apodex 1.1 Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('EVIDENT', 'KORMo-VL', 'Dataset', 'NLP', 'Open Data', 2026, 'n<1K', 'EVIDENT: Task Metadata for Evidence-Grounded GUI Evaluation This release contains 220 GUI/web agent task records for evidence-grounded trajectory evaluation: 150 Kore.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("KORMo-VL/EVIDENT")', 'Trending Score: 22, Likes: 23, Downloads: 110', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/KORMo-VL/EVIDENT', '[{"url":"https://huggingface.co/datasets/KORMo-VL/EVIDENT","text":"KORMo-VL/EVIDENT on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('LongCat-Video-Avatar-1.6', 'Meituan (LongCat)', 'Model', 'Video Generation', 'MIT', 2026, 'Open Weights', 'Expressive talking-head and full-body video avatar synthesis model developed by Meituan (LongCat).', 'meituan-longcat transformer architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("meituan-longcat/LongCat-Video-Avatar-1.6", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("meituan-longcat/LongCat-Video-Avatar-1.6")', 'Trending Score: 125, Likes: 169, Downloads: 489', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.6', '[{"url":"https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.6","text":"meituan-longcat/LongCat-Video-Avatar-1.6 on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Gemma 3 270M', 'Google DeepMind', 'Model', 'NLP', 'Open Weights', 2026, '32k Context · Open Model', 'Frontier NLP model by Google benchmarked on Artificial Analysis and a verified 32k Context window.', 'Open-weights frontier neural architecture developed by Google, featuring native 32k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gemma-3-270m', 'Context Window: 32k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/gemma-3-270m', '[{"url":"https://artificialanalysis.ai/models/gemma-3-270m","text":"Gemma 3 270M on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/gemma-3-270m/providers","text":"Gemma 3 270M Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Gemma 4 12B', 'Google DeepMind', 'Model', 'NLP', 'Open Weights', 2026, '262k Context · Open Model', 'Frontier NLP model by Google benchmarked on Artificial Analysis and a verified 262k Context window.', 'Open-weights frontier neural architecture developed by Google, featuring native 262k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gemma-4-12b', 'Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/gemma-4-12b', '[{"url":"https://artificialanalysis.ai/models/gemma-4-12b","text":"Gemma 4 12B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/gemma-4-12b/providers","text":"Gemma 4 12B Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('PAN2', 'Institute of Foundation Models', 'Model', 'Multimodal', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Multimodal model developed by Institute of Foundation Models.', 'IFM image text to video architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("IFM/PAN2", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("IFM/PAN2")', 'Trending Score: 160, Likes: 180, Downloads: 374', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/IFM/PAN2', '[{"url":"https://huggingface.co/IFM/PAN2","text":"IFM/PAN2 on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen3.5 122B A10B', 'Alibaba (Qwen)', 'Model', 'NLP', 'Open Weights', 2026, '262k Context · Open Model', 'Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.', 'Open-weights frontier neural architecture developed by Alibaba, featuring native 262k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-5-122b-a10b', 'Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/qwen3-5-122b-a10b', '[{"url":"https://artificialanalysis.ai/models/qwen3-5-122b-a10b","text":"Qwen3.5 122B A10B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/qwen3-5-122b-a10b/providers","text":"Qwen3.5 122B A10B Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('USDCraft-10K', 'NVIDIA', 'Dataset', 'Computer Vision', 'Apache-2.0', 2026, '10K<n<100K', 'USDCraft-10K: Simulation-Ready Articulated 3D Assets in OpenUSD USDCraft-10K is a dataset of simulation-ready rigid and articulated 3D assets in OpenUSD,.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("nvidia/USDCraft-10K")', 'Trending Score: 21, Likes: 26, Downloads: 3,674', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nvidia/USDCraft-10K', '[{"url":"https://huggingface.co/datasets/nvidia/USDCraft-10K","text":"nvidia/USDCraft-10K on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('speaker-diarization-community-1', 'pyannote', 'Model', 'Audio', 'CC-BY-4.0', 2026, 'Open Weights', 'Open-weights Audio model developed by pyannote.', 'pyannote automatic speech recognition architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("pyannote/speaker-diarization-community-1", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("pyannote/speaker-diarization-community-1")', 'Trending Score: 194, Likes: 4,449, Downloads: 4,871,288', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/pyannote/speaker-diarization-community-1', '[{"url":"https://huggingface.co/pyannote/speaker-diarization-community-1","text":"pyannote/speaker-diarization-community-1 on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen4 Max', 'Alibaba (Qwen)', 'Model', 'Multimodal', 'Proprietary', 2026, '1000k Context · Available via API', 'Qwen4 Max is the flagship model in Alibaba''s Qwen4 series. It accepts text, image, and video input and returns text, with a 1M-token context window and reasoning enabled by default.', 'Modern foundation model hosted on OpenRouter with native 1000k Context support and structured output generation.', 'import OpenAI from "openai";
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY
+});
+const response = await openai.chat.completions.create({
+  model: "qwen/qwen4-max",
+  messages: [{ role: "user", content: "Hello!" }]
+});', 'Context Window: 1000k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/qwen/qwen4-max', '[{"url":"https://openrouter.ai/qwen/qwen4-max","text":"Qwen: Qwen4 Max on OpenRouter"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Nova 2.0 Omni', 'Amazon Web Services', 'Model', 'Multimodal', 'Proprietary', 2026, '1000k Context · Proprietary Model', 'Frontier Multimodal model by Amazon benchmarked on Artificial Analysis and a verified 1000k Context window.', 'Proprietary frontier neural architecture developed by Amazon, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/nova-2-0-omni', 'Context Window: 1000k Context, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/nova-2-0-omni', '[{"url":"https://artificialanalysis.ai/models/nova-2-0-omni","text":"Nova 2.0 Omni on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/nova-2-0-omni/providers","text":"Nova 2.0 Omni Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('LongCat-2.5', 'Meituan (LongCat)', 'Model', 'Multimodal', 'MIT', 2026, 'Open Weights', 'Open-weights Multimodal model developed by Meituan (LongCat).', 'meituan-longcat image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("meituan-longcat/LongCat-2.5", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("meituan-longcat/LongCat-2.5")', 'Trending Score: 203, Likes: 268, Downloads: 1,573', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/meituan-longcat/LongCat-2.5', '[{"url":"https://huggingface.co/meituan-longcat/LongCat-2.5","text":"meituan-longcat/LongCat-2.5 on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Haru-4B', 'Higurashi AI', 'Model', 'Audio', 'Apache-2.0', 2026, '4B params', 'Open-weights Audio model developed by Higurashi AI.', 'higurashi-ai audio to audio architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("higurashi-ai/Haru-4B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("higurashi-ai/Haru-4B")', 'Trending Score: 203, Likes: 217, Downloads: 1,262', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/higurashi-ai/Haru-4B', '[{"url":"https://huggingface.co/higurashi-ai/Haru-4B","text":"higurashi-ai/Haru-4B on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('PhysicalAI-Autonomous-Vehicles', 'NVIDIA', 'Dataset', 'NLP', 'Open Data', 2026, 'Curated Dataset', 'PHYSICAL AI AUTONOMOUS VEHICLES The PhysicalAI-Autonomous-Vehicles dataset provides one of the largest, geographically diverse collections of multi-sensor data empowe.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("nvidia/PhysicalAI-Autonomous-Vehicles")', 'Trending Score: 18, Likes: 1,206, Downloads: 265,315', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles', '[{"url":"https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles","text":"nvidia/PhysicalAI-Autonomous-Vehicles on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('sam-3d-body-dinov3', 'Meta AI', 'Model', 'Computer Vision', 'Open Weights', 2026, 'Open Weights', '3D human body reconstruction and mesh estimation foundation model powered by Meta AI''s DINOv3 visual backbone.', 'facebook transformer architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("facebook/sam-3d-body-dinov3", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("facebook/sam-3d-body-dinov3")', 'Trending Score: 159, Likes: 1,077, Downloads: 14,473', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/facebook/sam-3d-body-dinov3', '[{"url":"https://huggingface.co/facebook/sam-3d-body-dinov3","text":"facebook/sam-3d-body-dinov3 on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('physical-engineerings-last-exam', 'Google DeepMind', 'Dataset', 'NLP', 'CC-BY-4.0', 2026, 'n<1K', 'Physical-Engineering’s Last Exam (Dev Set) Physical-Engineering’s Last Exam (PLE) is a benchmark of long-horizon engineering tasks built by licensed practicing engine.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("google/physical-engineerings-last-exam")', 'Trending Score: 17, Likes: 33, Downloads: 41,085', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/google/physical-engineerings-last-exam', '[{"url":"https://huggingface.co/datasets/google/physical-engineerings-last-exam","text":"google/physical-engineerings-last-exam on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('dinov3-vitl16-pretrain-lvd1689m', 'Meta AI', 'Model', 'Computer Vision', 'Open Weights', 2026, '1689M params', 'Self-supervised DINOv3 Vision Transformer (ViT-L/16) pretrained on 1.689B curated visual samples by Meta AI.', 'facebook image feature extraction architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("facebook/dinov3-vitl16-pretrain-lvd1689m", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("facebook/dinov3-vitl16-pretrain-lvd1689m")', 'Trending Score: 164, Likes: 2,145, Downloads: 703,532', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/facebook/dinov3-vitl16-pretrain-lvd1689m', '[{"url":"https://huggingface.co/facebook/dinov3-vitl16-pretrain-lvd1689m","text":"facebook/dinov3-vitl16-pretrain-lvd1689m on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Nemotron-Personas-Finance-Japan', 'NVIDIA', 'Dataset', 'NLP', 'CC-BY-4.0', 2026, '1M<n<10M', 'Nemotron-Personas-Finance-Japan 現実世界の分布に基づいた金融に特化したペルソナ生成のための複合AIアプローチ データセット概要 (Dataset Overview): Nemotron-Personas-Finance-Japan は、日本における.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("nvidia/Nemotron-Personas-Finance-Japan")', 'Trending Score: 18, Likes: 19, Downloads: 1,732', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nvidia/Nemotron-Personas-Finance-Japan', '[{"url":"https://huggingface.co/datasets/nvidia/Nemotron-Personas-Finance-Japan","text":"nvidia/Nemotron-Personas-Finance-Japan on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('RelayVSR', 'Comfy-Org', 'Model', 'Image Generation', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Image Generation model developed by Comfy-Org.', 'Comfy-Org unconditional image generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Comfy-Org/RelayVSR", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Comfy-Org/RelayVSR")', 'Trending Score: 168, Likes: 186, Downloads: 91,134', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Comfy-Org/RelayVSR', '[{"url":"https://huggingface.co/Comfy-Org/RelayVSR","text":"Comfy-Org/RelayVSR on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
 VALUES ('ZONOS3-Mini', 'Zyphra', 'Model', 'Audio', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Audio model developed by Zyphra.', 'Zyphra text to speech architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
 
 model = AutoModelForCausalLM.from_pretrained("Zyphra/ZONOS3-Mini", device_map="auto")
@@ -11539,3 +9553,1990 @@ ON CONFLICT (name) DO UPDATE SET
   citations = EXCLUDED.citations,
   popular = EXCLUDED.popular,
   approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('mirage', 'Cactus Compute', 'Model', 'Multimodal', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Multimodal model developed by Cactus Compute.', 'Cactus-Compute image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Cactus-Compute/mirage", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Cactus-Compute/mirage")', 'Trending Score: 151, Likes: 156, Downloads: 14,615', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Cactus-Compute/mirage', '[{"url":"https://huggingface.co/Cactus-Compute/mirage","text":"Cactus-Compute/mirage on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('hyperflow-h3-flash', 'VideoRebirth AI', 'Model', 'Multimodal', 'Open Weights', 2026, 'Open Weights', 'Open-weights Multimodal model developed by VideoRebirth AI.', 'VideoRebirthAI image text to video architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("VideoRebirthAI/hyperflow-h3-flash", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("VideoRebirthAI/hyperflow-h3-flash")', 'Trending Score: 167, Likes: 175, Downloads: 110,752', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash', '[{"url":"https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash","text":"VideoRebirthAI/hyperflow-h3-flash on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MiniMax-H3-Image', 'MiniMax', 'Model', 'Image Generation', 'Open Weights', 2026, 'Open Weights', 'Open-weights Image Generation model developed by MiniMax.', 'MiniMaxAI text to image architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("MiniMaxAI/MiniMax-H3-Image", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("MiniMaxAI/MiniMax-H3-Image")', 'Trending Score: 307, Likes: 308, Downloads: 667', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/MiniMaxAI/MiniMax-H3-Image', '[{"url":"https://huggingface.co/MiniMaxAI/MiniMax-H3-Image","text":"MiniMaxAI/MiniMax-H3-Image on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('smol-training-playbook', 'Hugging Face', 'Platform', 'Research', 'Community Hosted', 2026, 'DOCKER Platform', 'Interactive open-science playbook from Hugging Face detailing pretraining, scaling laws, and architecture recipes for small language models.', 'DOCKER cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook', 'Trending Score: 26, Community Likes: 3,372', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook', '[{"url":"https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook","text":"HuggingFaceTB/smol-training-playbook on Hugging Face Spaces"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('PhysicalAI-Human-1M-100K', 'NVIDIA', 'Dataset', 'Computer Vision', 'CC-BY-4.0', 2026, 'n<1K', 'Across AI, a common route to scale is distilling human experience into models: what people write, see, and create. The physical AI analogue is sensorized human data—egocentric vid.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("nvidia/PhysicalAI-Human-1M-100K")', 'Trending Score: 18, Likes: 18, Downloads: 162', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nvidia/PhysicalAI-Human-1M-100K', '[{"url":"https://huggingface.co/datasets/nvidia/PhysicalAI-Human-1M-100K","text":"nvidia/PhysicalAI-Human-1M-100K on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('RFD4-Proteina', 'NVIDIA', 'Dataset', 'NLP', 'CC-BY-4.0', 2026, '10M<n<100M', 'The structures behind biomolecular design.Indexed molecular records, sampling metadata, and traceable source inventories. Project page · Model · Inventory · Training guide.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("nvidia/RFD4-Proteina")', 'Trending Score: 19, Likes: 26, Downloads: 61,125', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nvidia/RFD4-Proteina', '[{"url":"https://huggingface.co/datasets/nvidia/RFD4-Proteina","text":"nvidia/RFD4-Proteina on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Propaganda_Eval', 'Nous Research', 'Dataset', 'NLP', 'MIT', 2026, 'n<1K', 'Censorship & Propaganda Eval 803 prompts about topics that the People''s Republic of China censors or presents through an official narrative. Each prompt comes with 2–.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("NousResearch/Propaganda_Eval")', 'Trending Score: 26, Likes: 27, Downloads: 212', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/NousResearch/Propaganda_Eval', '[{"url":"https://huggingface.co/datasets/NousResearch/Propaganda_Eval","text":"NousResearch/Propaganda_Eval on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Arete-27B', 'Nous Research', 'Model', 'NLP', 'Apache-2.0', 2026, '27B params', 'Open-weights NLP model developed by Nous Research.', 'NousResearch text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("NousResearch/Arete-27B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("NousResearch/Arete-27B")', 'Trending Score: 182, Likes: 187, Downloads: 989', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/NousResearch/Arete-27B', '[{"url":"https://huggingface.co/NousResearch/Arete-27B","text":"NousResearch/Arete-27B on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('arete-data-pairs', 'Nous Research', 'Dataset', 'NLP', 'Open Data', 2026, '10K<n<100K', 'Arete data pairs — v1.0.0 Prompt–response pairs for seven values topics, each prompt answered by both the Inkling teacher (thinkingmachines/inkling) and the Qwen 3.8-.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("NousResearch/arete-data-pairs")', 'Trending Score: 23, Likes: 23, Downloads: 244', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/NousResearch/arete-data-pairs', '[{"url":"https://huggingface.co/datasets/NousResearch/arete-data-pairs","text":"NousResearch/arete-data-pairs on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('ERNIE-5.5-Flash-Base', 'Baidu', 'Model', 'NLP', 'Open Weights', 2026, 'Open Weights', 'Open-weights NLP model developed by Baidu.', 'baidu text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("baidu/ERNIE-5.5-Flash-Base", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("baidu/ERNIE-5.5-Flash-Base")', 'Trending Score: 156, Likes: 217, Downloads: 971', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/baidu/ERNIE-5.5-Flash-Base', '[{"url":"https://huggingface.co/baidu/ERNIE-5.5-Flash-Base","text":"baidu/ERNIE-5.5-Flash-Base on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('chess-position-evaluations', 'Lichess', 'Dataset', 'Research', 'CC0-1.0', 2026, '1B<n<10B', 'Open dataset of millions of chess board positions annotated with deep Stockfish engine evaluations by Lichess.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("Lichess/chess-position-evaluations")', 'Trending Score: 16, Likes: 55, Downloads: 5,114', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/Lichess/chess-position-evaluations', '[{"url":"https://huggingface.co/datasets/Lichess/chess-position-evaluations","text":"Lichess/chess-position-evaluations on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('TwIL-8B', 'webAI', 'Model', 'NLP', 'Open Weights', 2026, '8B params', 'Open-weights NLP model developed by webAI.', 'webAI-Official text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("webAI-Official/TwIL-8B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("webAI-Official/TwIL-8B")', 'Trending Score: 168, Likes: 170, Downloads: 8,209', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/webAI-Official/TwIL-8B', '[{"url":"https://huggingface.co/webAI-Official/TwIL-8B","text":"webAI-Official/TwIL-8B on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('gigaspeech3', 'SpeechColab', 'Dataset', 'Audio', 'Open Data', 2026, '10M<n<100M', 'GigaSpeech 3 Scaling Multi-Dialect Arabic Speech Recognition with Weakly Labeled Data GigaSpeech 3 is a large-scale Arabic speech recognition corpus containing approx.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("speechcolab/gigaspeech3")', 'Trending Score: 19, Likes: 19, Downloads: 7,022', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/speechcolab/gigaspeech3', '[{"url":"https://huggingface.co/datasets/speechcolab/gigaspeech3","text":"speechcolab/gigaspeech3 on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('TailorRig', 'Tencent', 'Dataset', 'Computer Vision', 'Open Data', 2026, '10K<n<100K', 'Human character rigging dataset containing 39,073 humanoid 3D meshes with skeletons and skinning weights stored across structured anatomical subsets.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("tencent/TailorRig")', 'Trending Score: 20, Likes: 21, Downloads: 10', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/tencent/TailorRig', '[{"url":"https://huggingface.co/datasets/tencent/TailorRig","text":"tencent/TailorRig on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('TacVerse', 'TacVerse', 'Dataset', 'Multimodal', 'CC-BY-SA-4.0', 2026, '100M<n<1B', 'Multi-scene bimanual robotics dataset synchronizing visual frames with dense tactile sensor measurements.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("TacVerse/TacVerse")', 'Trending Score: 16, Likes: 21, Downloads: 1,637', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/TacVerse/TacVerse', '[{"url":"https://huggingface.co/datasets/TacVerse/TacVerse","text":"TacVerse/TacVerse on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Ripple-65B-Preview', 'Ricursive AI', 'Model', 'NLP', 'Apache-2.0', 2026, '65B params', 'Open-weights NLP model developed by Ricursive AI.', 'ricursiveAI transformer architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("ricursiveAI/Ripple-65B-Preview", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("ricursiveAI/Ripple-65B-Preview")', 'Trending Score: 216, Likes: 222, Downloads: 939', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/ricursiveAI/Ripple-65B-Preview', '[{"url":"https://huggingface.co/ricursiveAI/Ripple-65B-Preview","text":"ricursiveAI/Ripple-65B-Preview on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Mage-VL-Cowork', 'Microsoft', 'Model', 'Multimodal', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Multimodal model developed by Microsoft.', 'Microsoft image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("microsoft/Mage-VL-Cowork", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("microsoft/Mage-VL-Cowork")', 'Trending Score: 166, Likes: 183, Downloads: 1,973', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/microsoft/Mage-VL-Cowork', '[{"url":"https://huggingface.co/microsoft/Mage-VL-Cowork","text":"microsoft/Mage-VL-Cowork on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('ChartNet', 'IBM', 'Dataset', 'Computer Vision', 'CDLA-Permissive-2.0', 2026, '10M<n<100M', 'ChartNet: A Million-Scale Multimodal Dataset for Chart Understanding ChartNet introduce.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("ibm-granite/ChartNet")', 'Trending Score: 17, Likes: 68, Downloads: 18,197', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/ibm-granite/ChartNet', '[{"url":"https://huggingface.co/datasets/ibm-granite/ChartNet","text":"ibm-granite/ChartNet on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Xiaomi-OCR-0', 'Xiaomi (MiMo)', 'Model', 'Computer Vision', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Computer Vision model developed by Xiaomi (MiMo).', 'xiaomi-research image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("xiaomi-research/Xiaomi-OCR-0", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("xiaomi-research/Xiaomi-OCR-0")', 'Trending Score: 193, Likes: 264, Downloads: 20,802', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/xiaomi-research/Xiaomi-OCR-0', '[{"url":"https://huggingface.co/xiaomi-research/Xiaomi-OCR-0","text":"xiaomi-research/Xiaomi-OCR-0 on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('SenseNova-Loop-9B-Preview', 'SenseNova', 'Model', 'Multimodal', 'Apache-2.0', 2026, '9B params', 'Open-weights Multimodal model developed by SenseNova.', 'sensenova image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("sensenova/SenseNova-Loop-9B-Preview", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("sensenova/SenseNova-Loop-9B-Preview")', 'Trending Score: 202, Likes: 205, Downloads: 2,221', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview', '[{"url":"https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview","text":"sensenova/SenseNova-Loop-9B-Preview on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Audio8-TTS-Realistic-Air', 'Edge0', 'Model', 'Audio', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Audio model developed by Edge0.', 'Edge0 text to speech architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Edge0/Audio8-TTS-Realistic-Air", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Edge0/Audio8-TTS-Realistic-Air")', 'Trending Score: 223, Likes: 241, Downloads: 7,259', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Edge0/Audio8-TTS-Realistic-Air', '[{"url":"https://huggingface.co/Edge0/Audio8-TTS-Realistic-Air","text":"Edge0/Audio8-TTS-Realistic-Air on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('FineDNA', 'Hugging Face', 'Dataset', 'NLP', 'Apache-2.0', 2026, '100M<n<1B', 'FineDNA is the training data of Carbon-X, the model that taught Qwen3-14B to read DNA, for all three of its training stages. Each stage is a group of configs:.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("HuggingFaceBio/FineDNA")', 'Trending Score: 22, Likes: 23, Downloads: 72', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/HuggingFaceBio/FineDNA', '[{"url":"https://huggingface.co/datasets/HuggingFaceBio/FineDNA","text":"HuggingFaceBio/FineDNA on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('FineART', 'LeRobot', 'Dataset', 'Computer Vision', 'CC-BY-4.0', 2026, '100M<n<1B', 'FineART: Fine-Grained Annotated Robotic Trajectory Dataset FineART is co-released by Scale AI and Hugging Face LeRobot. The data was collected and annotated by the Ph.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("lerobot/FineART")', 'Trending Score: 18, Likes: 32, Downloads: 481,434', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/lerobot/FineART', '[{"url":"https://huggingface.co/datasets/lerobot/FineART","text":"lerobot/FineART on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Audio8-TTS-Realistic-0.6b', 'Edge0', 'Model', 'Audio', 'Apache-2.0', 2026, '0.6B params', 'Open-weights Audio model developed by Edge0.', 'Edge0 text to speech architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Edge0/Audio8-TTS-Realistic-0.6b", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Edge0/Audio8-TTS-Realistic-0.6b")', 'Trending Score: 171, Likes: 174, Downloads: 2,755', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Edge0/Audio8-TTS-Realistic-0.6b', '[{"url":"https://huggingface.co/Edge0/Audio8-TTS-Realistic-0.6b","text":"Edge0/Audio8-TTS-Realistic-0.6b on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MarathonDocBench', 'Baidu', 'Dataset', 'Computer Vision', 'Apache-2.0', 2026, '10K<n<100K', 'MarathonDocBench A New Benchmark for Ultra-Long Document Parsing: Targeting Hundred-Page-Scale Documents. MarathonDocBench is the f.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("baidu/MarathonDocBench")', 'Trending Score: 16, Likes: 17, Downloads: 5,071', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/baidu/MarathonDocBench', '[{"url":"https://huggingface.co/datasets/baidu/MarathonDocBench","text":"baidu/MarathonDocBench on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('LFM3-Audio-2B', 'Liquid AI', 'Model', 'Audio', 'Open Weights', 2026, '2B params', 'Open-weights Audio model developed by Liquid AI.', 'LiquidAI any to any architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("LiquidAI/LFM3-Audio-2B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("LiquidAI/LFM3-Audio-2B")', 'Trending Score: 164, Likes: 165, Downloads: 4,790', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/LiquidAI/LFM3-Audio-2B', '[{"url":"https://huggingface.co/LiquidAI/LFM3-Audio-2B","text":"LiquidAI/LFM3-Audio-2B on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Clover-35B-A3B-Preview', 'Diffuspace', 'Model', 'NLP', 'Apache-2.0', 2026, '35B params', 'Open-weights NLP model developed by Diffuspace.', 'Diffuspace text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Diffuspace/Clover-35B-A3B-Preview", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Diffuspace/Clover-35B-A3B-Preview")', 'Trending Score: 181, Likes: 184, Downloads: 2,021', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Diffuspace/Clover-35B-A3B-Preview', '[{"url":"https://huggingface.co/Diffuspace/Clover-35B-A3B-Preview","text":"Diffuspace/Clover-35B-A3B-Preview on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('LFM3-VL-2B', 'Liquid AI', 'Model', 'Multimodal', 'Open Weights', 2026, '2B params', 'Open-weights Multimodal model developed by Liquid AI.', 'LiquidAI image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("LiquidAI/LFM3-VL-2B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("LiquidAI/LFM3-VL-2B")', 'Trending Score: 180, Likes: 182, Downloads: 8,091', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/LiquidAI/LFM3-VL-2B', '[{"url":"https://huggingface.co/LiquidAI/LFM3-VL-2B","text":"LiquidAI/LFM3-VL-2B on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Pika-H3-Flex', 'Pika Labs', 'Model', 'Video Generation', 'Open Weights', 2026, 'Open Weights', 'Open-weights Video Generation model developed by Pika Labs.', 'Pika-Labs image to video architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Pika-Labs/Pika-H3-Flex", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Pika-Labs/Pika-H3-Flex")', 'Trending Score: 198, Likes: 201, Downloads: 87', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Pika-Labs/Pika-H3-Flex', '[{"url":"https://huggingface.co/Pika-Labs/Pika-H3-Flex","text":"Pika-Labs/Pika-H3-Flex on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MiniCPM-OCR-1.0', 'OpenBMB', 'Model', 'Multimodal', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Multimodal model developed by OpenBMB.', 'openbmb image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("openbmb/MiniCPM-OCR-1.0", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("openbmb/MiniCPM-OCR-1.0")', 'Trending Score: 200, Likes: 363, Downloads: 2,413', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/openbmb/MiniCPM-OCR-1.0', '[{"url":"https://huggingface.co/openbmb/MiniCPM-OCR-1.0","text":"openbmb/MiniCPM-OCR-1.0 on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('LFM3-Omni-2B', 'Liquid AI', 'Model', 'Multimodal', 'Open Weights', 2026, '2B params', 'Open-weights Multimodal model developed by Liquid AI.', 'LiquidAI any to any architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("LiquidAI/LFM3-Omni-2B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("LiquidAI/LFM3-Omni-2B")', 'Trending Score: 216, Likes: 221, Downloads: 3,080', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/LiquidAI/LFM3-Omni-2B', '[{"url":"https://huggingface.co/LiquidAI/LFM3-Omni-2B","text":"LiquidAI/LFM3-Omni-2B on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('NVIDIA-Nemotron-3.5-Bolt-E4B-4GB', 'NVIDIA', 'Model', 'NLP', 'Open Weights', 2026, '4B params', 'Open-weights NLP model developed by NVIDIA.', 'nvidia text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB")', 'Trending Score: 248, Likes: 267, Downloads: 64,263', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB', '[{"url":"https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB","text":"nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Granary-v2', 'NVIDIA', 'Dataset', 'Audio', 'OpenMDW-1.1', 2026, 'Curated Dataset', 'Granary-v2: Multilingual Speech Recognition, Translation and Instruction Data Granary-v2 is NVIDIA''s second rel.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("nvidia/Granary-v2")', 'Trending Score: 23, Likes: 23, Downloads: 1,074', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nvidia/Granary-v2', '[{"url":"https://huggingface.co/datasets/nvidia/Granary-v2","text":"nvidia/Granary-v2 on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Mistral-Large-4-1T-A52B', 'Mistral AI', 'Model', 'Multimodal', 'Open Weights', 2026, '52B params', 'Open-weights Multimodal model developed by Mistral AI.', 'Mistral AI image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-Large-4-1T-A52B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-Large-4-1T-A52B")', 'Trending Score: 285, Likes: 1,204, Downloads: 278', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B', '[{"url":"https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B","text":"mistralai/Mistral-Large-4-1T-A52B on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('PhysicalAI-Autonomous-Vehicles-Foundation4D', 'NVIDIA', 'Dataset', 'NLP', 'Open Data', 2026, 'Curated Dataset', 'PhysicalAI Autonomous Vehicles - Foundation4D Dataset Description: This release extends NVIDIA’s existing public PhysicalAI-Autonomous-Vehicles dataset w.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D")', 'Trending Score: 22, Likes: 28, Downloads: 1,496', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D', '[{"url":"https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D","text":"nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('FastH3-Omni', 'FastVideo', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'GRADIO Platform', 'High-throughput multimodal inference showcase powered by FastVideo''s diffusion and sequence acceleration stack.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/FastVideo/FastH3-Omni', 'Trending Score: 40, Community Likes: 58', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/FastVideo/FastH3-Omni', '[{"url":"https://huggingface.co/spaces/FastVideo/FastH3-Omni","text":"FastVideo/FastH3-Omni on Hugging Face Spaces"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('NVIDIA-Nemotron-3.5-Transcribe-30B-A4B', 'NVIDIA', 'Model', 'Audio', 'Open Weights', 2026, '30B params', 'Open-weights Audio model developed by NVIDIA.', 'nvidia automatic speech recognition architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B")', 'Trending Score: 306, Likes: 314, Downloads: 4,276', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B', '[{"url":"https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B","text":"nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Unlimited-OCR-2', 'Baidu', 'Model', 'Computer Vision', 'MIT', 2026, 'Open Weights', 'Open-weights Computer Vision model developed by Baidu.', 'baidu image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("baidu/Unlimited-OCR-2", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("baidu/Unlimited-OCR-2")', 'Trending Score: 326, Likes: 341, Downloads: 8,357', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/baidu/Unlimited-OCR-2', '[{"url":"https://huggingface.co/baidu/Unlimited-OCR-2","text":"baidu/Unlimited-OCR-2 on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('phonon', 'Gradium', 'Platform', 'Audio', 'Community Hosted', 2026, 'STATIC Platform', 'Low-latency interactive speech and audio synthesis model showcase by Gradium.', 'STATIC cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/gradium/phonon', 'Trending Score: 47, Community Likes: 69', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/gradium/phonon', '[{"url":"https://huggingface.co/spaces/gradium/phonon","text":"gradium/phonon on Hugging Face Spaces"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Hy-SimulMT-30B-A3B-FP8', 'Tencent', 'Model', 'NLP', 'Apache-2.0', 2026, '30B params', 'Open-weights NLP model developed by Tencent.', 'tencent translation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("tencent/Hy-SimulMT-30B-A3B-FP8", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("tencent/Hy-SimulMT-30B-A3B-FP8")', 'Trending Score: 333, Likes: 338, Downloads: 165', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/tencent/Hy-SimulMT-30B-A3B-FP8', '[{"url":"https://huggingface.co/tencent/Hy-SimulMT-30B-A3B-FP8","text":"tencent/Hy-SimulMT-30B-A3B-FP8 on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('LFM3-1.7B', 'Liquid AI', 'Model', 'NLP', 'Open Weights', 2026, '1.7B params', 'A compact 1.7B-parameter text model with a 256K-token context, post-trained for agents, tool calling, and structured outputs. It reasons before it answers. Prompts and outputs may.', 'LiquidAI text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("LiquidAI/LFM3-1.7B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("LiquidAI/LFM3-1.7B")', 'Context Window: 262k Context, Available across global OpenRouter inference nodes.', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/LiquidAI/LFM3-1.7B', '[{"url":"https://huggingface.co/LiquidAI/LFM3-1.7B","text":"LiquidAI/LFM3-1.7B on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('10-2026-qwen-investigation-traces', 'Cohere', 'Dataset', 'NLP', 'Open Data', 2026, 'n<1K', 'Diagnostic reasoning traces and raw token ID dataset investigating sampling behavior in Qwen3.8 Flash.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("CohereLabs/10-2026-qwen-investigation-traces")', 'Trending Score: 48, Likes: 49, Downloads: 0', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/CohereLabs/10-2026-qwen-investigation-traces', '[{"url":"https://huggingface.co/datasets/CohereLabs/10-2026-qwen-investigation-traces","text":"CohereLabs/10-2026-qwen-investigation-traces on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('SmolVLM2-256M-Video-Instruct', 'Hugging Face', 'Model', 'Multimodal', 'Apache-2.0', 2026, '256M params', 'Open-weights Multimodal model developed by Hugging Face.', 'HuggingFaceTB image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("HuggingFaceTB/SmolVLM2-256M-Video-Instruct", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("HuggingFaceTB/SmolVLM2-256M-Video-Instruct")', 'Trending Score: 124, Likes: 298, Downloads: 45,338', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/HuggingFaceTB/SmolVLM2-256M-Video-Instruct', '[{"url":"https://huggingface.co/HuggingFaceTB/SmolVLM2-256M-Video-Instruct","text":"HuggingFaceTB/SmolVLM2-256M-Video-Instruct on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen3.5 397B A17B', 'Alibaba (Qwen)', 'Model', 'Research', 'Open Weights', 2026, '262k Context · Open Model', 'Frontier Research model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.', 'Open-weights frontier neural architecture developed by Alibaba, featuring native 262k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-5-397b-a17b', 'Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/qwen3-5-397b-a17b', '[{"url":"https://artificialanalysis.ai/models/qwen3-5-397b-a17b","text":"Qwen3.5 397B A17B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/qwen3-5-397b-a17b/providers","text":"Qwen3.5 397B A17B Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Therefor', 'Mariano Rodriguez', 'AI', 'Audio', 'Freemium', 2026, 'Web App', 'AI remembrance and conversational memorial web app by Mariano Rodriguez enabling private audio-grounded memory conversations.', 'N/A', NULL, 'N/A', 'N/A', 'https://therefor.us/', '[]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('fineweb-2', 'Hugging Face', 'Dataset', 'NLP', 'ODC-By 1.0', 2026, '1B<n<10B', 'Second major release of Hugging Face''s FineWeb corpus scaling filtered multilingual web text across 1,000+ languages.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("HuggingFaceFW/fineweb-2")', 'Trending Score: 6, Likes: 1,036, Downloads: 234,335', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/HuggingFaceFW/fineweb-2', '[{"url":"https://huggingface.co/datasets/HuggingFaceFW/fineweb-2","text":"HuggingFaceFW/fineweb-2 on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MAGI-2-preview', 'Sand AI', 'Model', 'Multimodal', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights Multimodal model developed by Sand AI.', 'sand-ai image text to video architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("sand-ai/MAGI-2-preview", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("sand-ai/MAGI-2-preview")', 'Trending Score: 163, Likes: 361, Downloads: 0', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/sand-ai/MAGI-2-preview', '[{"url":"https://huggingface.co/sand-ai/MAGI-2-preview","text":"sand-ai/MAGI-2-preview on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Mi:dm K 3.0 Pro', 'KT', 'Model', 'NLP', 'Proprietary', 2026, '262k Context · Available via API', 'Mi:dm K 3.0 Pro is a Mixture-of-Experts reasoning model from KT, with 120B total and 12B active parameters. It uses a hybrid architecture that mixes Mamba, MoE and attention layers.', 'Modern foundation model hosted on OpenRouter with native 262k Context support and structured output generation.', 'import OpenAI from "openai";
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY
+});
+const response = await openai.chat.completions.create({
+  model: "kt/midm-k-3.0-pro",
+  messages: [{ role: "user", content: "Hello!" }]
+});', 'Context Window: 262k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/kt/midm-k-3.0-pro', '[{"url":"https://openrouter.ai/kt/midm-k-3.0-pro","text":"KT: Mi:dm K 3.0 Pro on OpenRouter"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Command A+', 'Cohere', 'Model', 'Research', 'Open Weights', 2026, '192k Context · Open Model', 'Frontier Research model by Cohere benchmarked on Artificial Analysis with an Intelligence Index of 6.2 and a verified 192k Context window.', 'Open-weights frontier neural architecture developed by Cohere, featuring native 192k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/command-a-plus', 'Context Window: 192k Context, Intelligence Index: 6.2, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/command-a-plus', '[{"url":"https://artificialanalysis.ai/models/command-a-plus","text":"Command A+ on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/command-a-plus/providers","text":"Command A+ Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Kandinsky-ImageSR-2.0', 'Kandinsky Lab', 'Model', 'Image Generation', 'MIT', 2026, 'Open Weights', 'High-fidelity generative image super-resolution model developed by Kandinsky Lab.', 'kandinskylab image to image architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("kandinskylab/Kandinsky-ImageSR-2.0", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("kandinskylab/Kandinsky-ImageSR-2.0")', 'Trending Score: 141, Likes: 186, Downloads: 582', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/kandinskylab/Kandinsky-ImageSR-2.0', '[{"url":"https://huggingface.co/kandinskylab/Kandinsky-ImageSR-2.0","text":"kandinskylab/Kandinsky-ImageSR-2.0 on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Ling 3.2 Flash', 'InclusionAI', 'Model', 'Multimodal', 'Proprietary', 2026, '1049k Context · Available via API', 'Hybrid reasoning multimodal model from InclusionAI supporting text and up to 200 images across a 1M-token context window.', 'Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.', 'import OpenAI from "openai";
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY
+});
+const response = await openai.chat.completions.create({
+  model: "inclusionai/ling-3.2-flash",
+  messages: [{ role: "user", content: "Hello!" }]
+});', 'Context Window: 1049k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/inclusionai/ling-3.2-flash', '[{"url":"https://openrouter.ai/inclusionai/ling-3.2-flash","text":"inclusionAI: Ling 3.2 Flash on OpenRouter"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Quasar 1.2 358B', 'Multiverse Computing', 'Model', 'Research', 'Proprietary', 2026, '1000k Context · Proprietary Model', 'Frontier Research model by Multiverse Computing benchmarked on Artificial Analysis with an Intelligence Index of 23.1 and a verified 1000k Context window.', 'Proprietary frontier neural architecture developed by Multiverse Computing, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/quasar-1-2-358b', 'Context Window: 1000k Context, Intelligence Index: 23.1, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/quasar-1-2-358b', '[{"url":"https://artificialanalysis.ai/models/quasar-1-2-358b","text":"Quasar 1.2 358B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/quasar-1-2-358b/providers","text":"Quasar 1.2 358B Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('youtube', 'Common Pile', 'Dataset', 'NLP', 'Open Data', 2026, '1M<n<10M', 'Creative Commons YouTube Description YouTube is large-scale video-sharing platform where users have the option of uploading content under a CC BY license.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("common-pile/youtube")', 'Trending Score: 6, Likes: 99, Downloads: 1,435', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/common-pile/youtube', '[{"url":"https://huggingface.co/datasets/common-pile/youtube","text":"common-pile/youtube on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Gemini Omni 1.2 Flash', 'Google DeepMind', 'Model', 'Multimodal', 'Proprietary', 2026, '131k Context · Available via API', 'Gemini Omni 1.2 Flash is Google''s native multimodal video generation and editing model, the successor to Gemini Omni 1.1 Flash. It generates clips up to 15 seconds long with native.', 'Modern foundation model hosted on OpenRouter with native 131k Context support and structured output generation.', 'import OpenAI from "openai";
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY
+});
+const response = await openai.chat.completions.create({
+  model: "google/gemini-omni-1.2-flash",
+  messages: [{ role: "user", content: "Hello!" }]
+});', 'Context Window: 131k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/google/gemini-omni-1.2-flash', '[{"url":"https://openrouter.ai/google/gemini-omni-1.2-flash","text":"Google: Gemini Omni 1.2 Flash on OpenRouter"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('ERNIE 5.5 Flash Preview', 'Baidu', 'Model', 'Research', 'Open Weights', 2026, '1024k Context · Open Model', 'Frontier Research model by Baidu benchmarked on Artificial Analysis with an Intelligence Index of 31.3 and a verified 1024k Context window.', 'Open-weights frontier neural architecture developed by Baidu, featuring native 1024k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/ernie-5-5-flash', 'Context Window: 1024k Context, Intelligence Index: 31.3, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/ernie-5-5-flash', '[{"url":"https://artificialanalysis.ai/models/ernie-5-5-flash","text":"ERNIE 5.5 Flash Preview on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/ernie-5-5-flash/providers","text":"ERNIE 5.5 Flash Preview Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('LingSante 3.1 Air VL', 'InclusionAI', 'Model', 'Multimodal', 'Proprietary', 2026, '131k Context · Available via API', 'LingSante 3.1 Air VL is inclusionAI''s medical vision-language model, a 124B total / 5.5B active MoE.', 'Modern foundation model hosted on OpenRouter with native 131k Context support and structured output generation.', 'import OpenAI from "openai";
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY
+});
+const response = await openai.chat.completions.create({
+  model: "inclusionai/lingsante-3.1-air-vl",
+  messages: [{ role: "user", content: "Hello!" }]
+});', 'Context Window: 131k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/inclusionai/lingsante-3.1-air-vl', '[{"url":"https://openrouter.ai/inclusionai/lingsante-3.1-air-vl","text":"inclusionAI: LingSante 3.1 Air VL on OpenRouter"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('NVIDIA Nemotron Nano 9B V2', 'NVIDIA', 'Model', 'NLP', 'Open Weights', 2026, '131k Context · Open Model', 'Frontier NLP model by NVIDIA benchmarked on Artificial Analysis and a verified 131k Context window.', 'Open-weights frontier neural architecture developed by NVIDIA, featuring native 131k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2', 'Context Window: 131k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2', '[{"url":"https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2","text":"NVIDIA Nemotron Nano 9B V2 on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/nvidia-nemotron-nano-9b-v2/providers","text":"NVIDIA Nemotron Nano 9B V2 Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Phi-4 Multimodal Instruct', 'Microsoft', 'Model', 'NLP', 'Open Weights', 2026, '128k Context · Open Model', 'Frontier NLP model by Microsoft benchmarked on Artificial Analysis and a verified 128k Context window.', 'Open-weights frontier neural architecture developed by Microsoft, featuring native 128k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/phi-4-multimodal', 'Context Window: 128k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/phi-4-multimodal', '[{"url":"https://artificialanalysis.ai/models/phi-4-multimodal","text":"Phi-4 Multimodal Instruct on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/phi-4-multimodal/providers","text":"Phi-4 Multimodal Instruct Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Ling-3.2-air', 'InclusionAI', 'Model', 'NLP', 'MIT', 2026, 'Open Weights', 'Open-weights NLP model developed by InclusionAI.', 'inclusionAI transformer architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("inclusionAI/Ling-3.2-air", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("inclusionAI/Ling-3.2-air")', 'Trending Score: 103, Likes: 115, Downloads: 0', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/inclusionAI/Ling-3.2-air', '[{"url":"https://huggingface.co/inclusionAI/Ling-3.2-air","text":"inclusionAI/Ling-3.2-air on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Hermes 4 - Llama-3.1 70B', 'Nous Research', 'Model', 'NLP', 'Open Weights', 2026, '128k Context · Open Model', 'Frontier NLP model by Nous Research benchmarked on Artificial Analysis and a verified 128k Context window.', 'Open-weights frontier neural architecture developed by Nous Research, featuring native 128k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/hermes-4-llama-3-1-70b', 'Context Window: 128k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/hermes-4-llama-3-1-70b', '[{"url":"https://artificialanalysis.ai/models/hermes-4-llama-3-1-70b","text":"Hermes 4 - Llama-3.1 70B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/hermes-4-llama-3-1-70b/providers","text":"Hermes 4 - Llama-3.1 70B Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('LingSante-3.1-flash', 'InclusionAI', 'Model', 'NLP', 'MIT', 2026, 'Open Weights', 'Open-weights NLP model developed by InclusionAI.', 'inclusionAI text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("inclusionAI/LingSante-3.1-flash", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("inclusionAI/LingSante-3.1-flash")', 'Trending Score: 90, Likes: 99, Downloads: 397', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/inclusionAI/LingSante-3.1-flash', '[{"url":"https://huggingface.co/inclusionAI/LingSante-3.1-flash","text":"inclusionAI/LingSante-3.1-flash on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Nemotron-Labs-Image-30B-A3B', 'NVIDIA', 'Model', 'Image Generation', 'Open Weights', 2026, '30B params', 'Open-weights Image Generation model developed by NVIDIA.', 'nvidia text to image architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("nvidia/Nemotron-Labs-Image-30B-A3B", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("nvidia/Nemotron-Labs-Image-30B-A3B")', 'Trending Score: 146, Likes: 176, Downloads: 218', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/nvidia/Nemotron-Labs-Image-30B-A3B', '[{"url":"https://huggingface.co/nvidia/Nemotron-Labs-Image-30B-A3B","text":"nvidia/Nemotron-Labs-Image-30B-A3B on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Nemotron 3.5 Lightning', 'NVIDIA', 'Model', 'Research', 'Open Weights', 2026, '1000k Context · Open Model', 'Frontier Research model by NVIDIA benchmarked on Artificial Analysis with an Intelligence Index of 5.5 and a verified 1000k Context window.', 'Open-weights frontier neural architecture developed by NVIDIA, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/nemotron-3-5-lightning', 'Context Window: 1000k Context, Intelligence Index: 5.5, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/nemotron-3-5-lightning', '[{"url":"https://artificialanalysis.ai/models/nemotron-3-5-lightning","text":"Nemotron 3.5 Lightning on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/nemotron-3-5-lightning/providers","text":"Nemotron 3.5 Lightning Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('RoboWild', 'XLang AI', 'Dataset', 'Multimodal', 'Apache-2.0', 2026, 'Curated Dataset', 'RoboWild Homepage · Paper · Slides · Code RoboWild agents use robots to carry out tasks across 38 simulated environments. This dataset contains the OpenUS.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("xlangai/RoboWild")', 'Trending Score: 7, Likes: 75, Downloads: 8,861', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/xlangai/RoboWild', '[{"url":"https://huggingface.co/datasets/xlangai/RoboWild","text":"xlangai/RoboWild on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Kolibri-1.1', 'Aleph Alpha', 'Model', 'NLP', 'Apache-2.0', 2026, 'Open Weights', 'Open-weights NLP model developed by Aleph Alpha.', 'Aleph-Alpha text generation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Aleph-Alpha/Kolibri-1.1", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Aleph-Alpha/Kolibri-1.1")', 'Trending Score: 115, Likes: 153, Downloads: 837', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/Aleph-Alpha/Kolibri-1.1', '[{"url":"https://huggingface.co/Aleph-Alpha/Kolibri-1.1","text":"Aleph-Alpha/Kolibri-1.1 on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MiMo-V2.6-Flash-MOPD', 'Xiaomi (MiMo)', 'Model', 'Multimodal', 'Proprietary', 2026, '1049k Context · Available via API', 'MiMo-V2.6-Flash-MOPD is an updated checkpoint of Xiaomi''s MiMo-V2.6-Flash, a Mixture-of-Experts model with 309B total and 15B active parameters, a 1M-token context window, and nati.', 'Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.', 'import OpenAI from "openai";
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY
+});
+const response = await openai.chat.completions.create({
+  model: "xiaomi/mimo-v2.6-flash-mopd",
+  messages: [{ role: "user", content: "Hello!" }]
+});', 'Context Window: 1049k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd', '[{"url":"https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd","text":"Xiaomi: MiMo-V2.6-Flash-MOPD on OpenRouter"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('GPT-6.2 Sol', 'OpenAI', 'Model', 'Research', 'Proprietary', 2026, '1000k Context · Proprietary Model', 'GPT-6.2 Sol is an upgrade to GPT-6.1 Sol from OpenAI, positioned below the flagship GPT-6.2 Astra in the GPT-6.2 series. It is an efficient, versatile model for everyday work, suit.', 'Proprietary frontier neural architecture developed by OpenAI, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gpt-6-2-sol', 'Context Window: 1000k Context, Intelligence Index: 55.6, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/gpt-6-2-sol', '[{"url":"https://artificialanalysis.ai/models/gpt-6-2-sol","text":"GPT-6.2 Sol on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/gpt-6-2-sol/providers","text":"GPT-6.2 Sol Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('LingSante-MedGuard', 'InclusionAI', 'Dataset', 'Computer Vision', 'Open Data', 2026, '10K<n<100K', 'LingSante MedGuardBench English | 中文 Technical Report · PDF · Data Files · Quick Start · Citation LingSante MedGuardBench evaluates medical AI responses for safety, c.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("inclusionAI/LingSante-MedGuard")', 'Trending Score: 11, Likes: 34, Downloads: 159', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/inclusionAI/LingSante-MedGuard', '[{"url":"https://huggingface.co/datasets/inclusionAI/LingSante-MedGuard","text":"inclusionAI/LingSante-MedGuard on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MiniMax-M3', 'MiniMax', 'Model', 'Research', 'Open Weights', 2026, '1000k Context · Open Model', 'Frontier Research model by MiniMax benchmarked on Artificial Analysis with an Intelligence Index of 19.0 and a verified 1000k Context window.', 'Open-weights frontier neural architecture developed by MiniMax, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/minimax-m3', 'Context Window: 1000k Context, Intelligence Index: 19.0, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/minimax-m3', '[{"url":"https://artificialanalysis.ai/models/minimax-m3","text":"MiniMax-M3 on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/minimax-m3/providers","text":"MiniMax-M3 Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('sam-3d-body-dataset', 'Meta AI', 'Dataset', 'Computer Vision', 'Open Data', 2026, '1M<n<10M', 'Large-scale 3D human pose and body mesh dataset published by Meta AI for training spatial vision models.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("facebook/sam-3d-body-dataset")', 'Trending Score: 7, Likes: 183, Downloads: 1,447', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/facebook/sam-3d-body-dataset', '[{"url":"https://huggingface.co/datasets/facebook/sam-3d-body-dataset","text":"facebook/sam-3d-body-dataset on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Solar Mini 4.5 (Preview)', 'Upstage', 'Model', 'NLP', 'Proprietary', 2026, '524k Context · Available via API', 'Compact Mixture-of-Experts model by Upstage featuring 35B total (3B active) parameters and a 524K context window.', 'Modern foundation model hosted on OpenRouter with native 524k Context support and structured output generation.', 'import OpenAI from "openai";
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY
+});
+const response = await openai.chat.completions.create({
+  model: "upstage/solar-mini-4-5",
+  messages: [{ role: "user", content: "Hello!" }]
+});', 'Context Window: 524k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/upstage/solar-mini-4-5', '[{"url":"https://openrouter.ai/upstage/solar-mini-4-5","text":"Upstage: Solar Mini 4.5 (Preview) on OpenRouter"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen3 Next 80B A3B Instruct', 'Alibaba (Qwen)', 'Model', 'NLP', 'Open Weights', 2026, '262k Context · Open Model', 'Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.', 'Open-weights frontier neural architecture developed by Alibaba, featuring native 262k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-next-80b-a3b-instruct', 'Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/qwen3-next-80b-a3b-instruct', '[{"url":"https://artificialanalysis.ai/models/qwen3-next-80b-a3b-instruct","text":"Qwen3 Next 80B A3B Instruct on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/qwen3-next-80b-a3b-instruct/providers","text":"Qwen3 Next 80B A3B Instruct Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('OCRia-nano-1', 'LlamaIndex', 'Model', 'Computer Vision', 'Open Weights', 2026, 'Open Weights', 'Compact open-weights document OCR and structured text extraction model developed by LlamaIndex.', 'llamaindex image to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("llamaindex/OCRia-nano-1", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("llamaindex/OCRia-nano-1")', 'Trending Score: 99, Likes: 107, Downloads: 0', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/llamaindex/OCRia-nano-1', '[{"url":"https://huggingface.co/llamaindex/OCRia-nano-1","text":"llamaindex/OCRia-nano-1 on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Muse Ember', 'Meta AI', 'Model', 'AI Coding', 'Proprietary', 2026, '1049k Context · Available via API', 'Muse Ember is the smallest and most efficient model from Meta that’s designed for complex reasoning execution and the work agents repeat all day: tool calls, coding agent subtasks,.', 'Modern foundation model hosted on OpenRouter with native 1049k Context support and structured output generation.', 'import OpenAI from "openai";
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY
+});
+const response = await openai.chat.completions.create({
+  model: "meta/muse-ember",
+  messages: [{ role: "user", content: "Hello!" }]
+});', 'Context Window: 1049k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/meta/muse-ember', '[{"url":"https://openrouter.ai/meta/muse-ember","text":"Meta: Muse Ember on OpenRouter"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('NVIDIA Nemotron 3 Nano 30B A3B', 'NVIDIA', 'Model', 'NLP', 'Open Weights', 2026, '1000k Context · Open Model', 'Frontier NLP model by NVIDIA benchmarked on Artificial Analysis and a verified 1000k Context window.', 'Open-weights frontier neural architecture developed by NVIDIA, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/nvidia-nemotron-3-nano-30b-a3b', 'Context Window: 1000k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/nvidia-nemotron-3-nano-30b-a3b', '[{"url":"https://artificialanalysis.ai/models/nvidia-nemotron-3-nano-30b-a3b","text":"NVIDIA Nemotron 3 Nano 30B A3B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/nvidia-nemotron-3-nano-30b-a3b/providers","text":"NVIDIA Nemotron 3 Nano 30B A3B Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('AgentAlphaXiv', 'alphaXiv', 'Dataset', 'Research', 'CC-BY-4.0', 2026, '10K<n<100K', 'Twelve-week research archive from alphaXiv capturing 916 studies, code repositories, and autonomous agent preprints.', 'Parquet / Arrow structured tabular & tokenized dataset.', 'from datasets import load_dataset
+
+dataset = load_dataset("alphaXiv/AgentAlphaXiv")', 'Trending Score: 8, Likes: 39, Downloads: 745', 'Subject to licensing compliance and dataset-specific terms of use.', 'https://huggingface.co/datasets/alphaXiv/AgentAlphaXiv', '[{"url":"https://huggingface.co/datasets/alphaXiv/AgentAlphaXiv","text":"alphaXiv/AgentAlphaXiv on Hugging Face Datasets"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Qwen3.5 9B', 'Alibaba (Qwen)', 'Model', 'NLP', 'Open Weights', 2026, '262k Context · Open Model', 'Frontier NLP model by Alibaba benchmarked on Artificial Analysis and a verified 262k Context window.', 'Open-weights frontier neural architecture developed by Alibaba, featuring native 262k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/qwen3-5-9b', 'Context Window: 262k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/qwen3-5-9b', '[{"url":"https://artificialanalysis.ai/models/qwen3-5-9b","text":"Qwen3.5 9B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/qwen3-5-9b/providers","text":"Qwen3.5 9B Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('RMBG-3.0', 'Bria AI', 'Model', 'Computer Vision', 'Open Weights', 2026, 'Open Weights', 'Commercial-licensed high-precision background removal and foreground matting model developed by Bria AI.', 'briaai image segmentation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("briaai/RMBG-3.0", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("briaai/RMBG-3.0")', 'Trending Score: 78, Likes: 337, Downloads: 225', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/briaai/RMBG-3.0', '[{"url":"https://huggingface.co/briaai/RMBG-3.0","text":"briaai/RMBG-3.0 on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Granite 4.0 Micro', 'IBM', 'Model', 'NLP', 'Open Weights', 2026, '128k Context · Open Model', 'Frontier NLP model by IBM benchmarked on Artificial Analysis and a verified 128k Context window.', 'Open-weights frontier neural architecture developed by IBM, featuring native 128k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/granite-4-0-micro', 'Context Window: 128k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/granite-4-0-micro', '[{"url":"https://artificialanalysis.ai/models/granite-4-0-micro","text":"Granite 4.0 Micro on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/granite-4-0-micro/providers","text":"Granite 4.0 Micro Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Nex-N2.6', 'Nex AGI', 'Model', 'AI Coding', 'Proprietary', 2026, '262k Context · Available via API', 'Nex-N2.6 is an agentic model from Nex AGI, built on GLM-5.3-Flash with about 321B parameters. It is suited for computer use, co.', 'Modern foundation model hosted on OpenRouter with native 262k Context support and structured output generation.', 'import OpenAI from "openai";
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY
+});
+const response = await openai.chat.completions.create({
+  model: "nex-agi/nex-n2.6",
+  messages: [{ role: "user", content: "Hello!" }]
+});', 'Context Window: 262k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/nex-agi/nex-n2.6', '[{"url":"https://openrouter.ai/nex-agi/nex-n2.6","text":"Nex AGI: Nex-N2.6 on OpenRouter"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('North Mini Code', 'Cohere', 'Model', 'AI Coding', 'Open Weights', 2026, '256k Context · Open Model', 'Frontier AI Coding model by Cohere benchmarked on Artificial Analysis with an Intelligence Index of 3.4 and a verified 256k Context window.', 'Open-weights frontier neural architecture developed by Cohere, featuring native 256k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/north-mini-code', 'Context Window: 256k Context, Intelligence Index: 3.4, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/north-mini-code', '[{"url":"https://artificialanalysis.ai/models/north-mini-code","text":"North Mini Code on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/north-mini-code/providers","text":"North Mini Code Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('K-EXAONE 2.0', 'LG AI Research', 'Model', 'Research', 'Open Weights', 2026, '262k Context · Open Model', 'Frontier Research model by LG AI Research benchmarked on Artificial Analysis with an Intelligence Index of 7.6 and a verified 262k Context window.', 'Open-weights frontier neural architecture developed by LG AI Research, featuring native 262k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/k-exaone-2-0', 'Context Window: 262k Context, Intelligence Index: 7.6, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/k-exaone-2-0', '[{"url":"https://artificialanalysis.ai/models/k-exaone-2-0","text":"K-EXAONE 2.0 on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/k-exaone-2-0/providers","text":"K-EXAONE 2.0 Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('gpt-oss-20b', 'OpenAI', 'Model', 'Research', 'Open Weights', 2026, '131k Context · Open Model', 'Frontier Research model by OpenAI benchmarked on Artificial Analysis and a verified 131k Context window.', 'Open-weights frontier neural architecture developed by OpenAI, featuring native 131k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/gpt-oss-20b', 'Context Window: 131k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/gpt-oss-20b', '[{"url":"https://artificialanalysis.ai/models/gpt-oss-20b","text":"gpt-oss-20b on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/gpt-oss-20b/providers","text":"gpt-oss-20b Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('StepAudio-3-Music', 'StepFun', 'Platform', 'Audio', 'Community Hosted', 2026, 'GRADIO Platform', 'Generative music and vocal synthesis model by StepFun creating controllable multi-track audio compositions.', 'GRADIO cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/stepfun-ai/StepAudio-3-Music', 'Trending Score: 20, Community Likes: 304', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/stepfun-ai/StepAudio-3-Music', '[{"url":"https://huggingface.co/spaces/stepfun-ai/StepAudio-3-Music","text":"stepfun-ai/StepAudio-3-Music on Hugging Face Spaces"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('ERNIE-Light-DT-1.0', 'Baidu', 'Model', 'NLP', 'Proprietary', 2026, '1024k Context · Available via API', 'ERNIE-Light-DT-1.0 is based on open-source GLM models and includes research findings from Baidu Search''s Lightning large model. It features Baidu Sparse Attention (BSA), a unique s.', 'Modern foundation model hosted on OpenRouter with native 1024k Context support and structured output generation.', 'import OpenAI from "openai";
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY
+});
+const response = await openai.chat.completions.create({
+  model: "baidu/ernie-light-dt-1.0-intl",
+  messages: [{ role: "user", content: "Hello!" }]
+});', 'Context Window: 1024k Context, Available across global OpenRouter inference nodes.', 'Requires OpenRouter API key and token credits.', 'https://openrouter.ai/baidu/ernie-light-dt-1.0-intl', '[{"url":"https://openrouter.ai/baidu/ernie-light-dt-1.0-intl","text":"Baidu: ERNIE-Light-DT-1.0 on OpenRouter"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Solar Pro 4', 'Upstage', 'Model', 'Research', 'Proprietary', 2026, '512k Context · Proprietary Model', 'Frontier Research model by Upstage benchmarked on Artificial Analysis with an Intelligence Index of 14.2 and a verified 512k Context window.', 'Proprietary frontier neural architecture developed by Upstage, featuring native 512k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/solar-pro-4', 'Context Window: 512k Context, Intelligence Index: 14.2, Benchmarked on Artificial Analysis Leaderboard', 'Cloud API access subject to provider rate limits and compute quotas.', 'https://artificialanalysis.ai/models/solar-pro-4', '[{"url":"https://artificialanalysis.ai/models/solar-pro-4","text":"Solar Pro 4 on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/solar-pro-4/providers","text":"Solar Pro 4 Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('DepthPro2', 'Apple', 'Model', 'Computer Vision', 'Open Weights', 2026, 'Open Weights', 'Zero-shot metric monocular depth estimation model developed by Apple for sharp, high-resolution geometric depth prediction.', 'apple depth estimation architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("apple/DepthPro2", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("apple/DepthPro2")', 'Trending Score: 165, Likes: 191, Downloads: 0', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/apple/DepthPro2', '[{"url":"https://huggingface.co/apple/DepthPro2","text":"apple/DepthPro2 on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Mistral Small 4', 'Mistral AI', 'Model', 'NLP', 'Open Weights', 2026, '256k Context · Open Model', 'Frontier NLP model by Mistral benchmarked on Artificial Analysis and a verified 256k Context window.', 'Open-weights frontier neural architecture developed by Mistral, featuring native 256k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/mistral-small-4', 'Context Window: 256k Context, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/mistral-small-4', '[{"url":"https://artificialanalysis.ai/models/mistral-small-4","text":"Mistral Small 4 on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/mistral-small-4/providers","text":"Mistral Small 4 Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('MiMo-V2.6-Flash', 'Xiaomi (MiMo)', 'Model', 'Research', 'Open Weights', 2026, '1000k Context · Open Model', 'Frontier Research model by Xiaomi benchmarked on Artificial Analysis with an Intelligence Index of 26.7 and a verified 1000k Context window.', 'Open-weights frontier neural architecture developed by Xiaomi, featuring native 1000k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/mimo-v2-6-flash', 'Context Window: 1000k Context, Intelligence Index: 26.7, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/mimo-v2-6-flash', '[{"url":"https://artificialanalysis.ai/models/mimo-v2-6-flash","text":"MiMo-V2.6-Flash on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/mimo-v2-6-flash/providers","text":"MiMo-V2.6-Flash Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('enterpriseops-gym-v1.1', 'ServiceNow', 'Platform', 'Multimodal', 'Community Hosted', 2026, 'STATIC Platform', 'Interactive multimodal showcase hosted by ServiceNow on Hugging Face Spaces.', 'STATIC cloud runtime container with interactive browser interface.', 'Launch and explore the platform directly in your browser: https://huggingface.co/spaces/ServiceNow-AI/enterpriseops-gym-v1.1', 'Trending Score: 20, Community Likes: 21', 'Cloud container subject to community traffic quotas and queue times.', 'https://huggingface.co/spaces/ServiceNow-AI/enterpriseops-gym-v1.1', '[{"url":"https://huggingface.co/spaces/ServiceNow-AI/enterpriseops-gym-v1.1","text":"ServiceNow-AI/enterpriseops-gym-v1.1 on Hugging Face Spaces"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Inkling-2-Mini', 'Thinking Machines', 'Model', 'Multimodal', 'Apache-2.0', 2026, 'Open Weights', 'Inkling 2 Mini is an open-weight multimodal looped transformer from Thinking Machines Lab, with 3.4B active parameters out of 26.4B total (MoE). Its middle layers run three times w.', 'thinkingmachines image text to text architecture with community-tuned weights.', 'from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("thinkingmachines/Inkling-2-Mini", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("thinkingmachines/Inkling-2-Mini")', 'Context Window: 1049k Context, Available across global OpenRouter inference nodes.', 'Requires GPU VRAM or quantization for efficient local deployment.', 'https://huggingface.co/thinkingmachines/Inkling-2-Mini', '[{"url":"https://huggingface.co/thinkingmachines/Inkling-2-Mini","text":"thinkingmachines/Inkling-2-Mini on Hugging Face"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('K2 Horizon 7B', 'Institute of Foundation Models', 'Model', 'Research', 'Open Weights', 2026, '524k Context · Open Model', 'Frontier Research model by Institute of Foundation Models benchmarked on Artificial Analysis with an Intelligence Index of 10.6 and a verified 524k Context window.', 'Open-weights frontier neural architecture developed by Institute of Foundation Models, featuring native 524k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/k2-horizon-7b', 'Context Window: 524k Context, Intelligence Index: 10.6, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/k2-horizon-7b', '[{"url":"https://artificialanalysis.ai/models/k2-horizon-7b","text":"K2 Horizon 7B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/k2-horizon-7b/providers","text":"K2 Horizon 7B Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+
+INSERT INTO entries (name, org, type, task, license, year, size, summary, architecture, usage, benchmarks, limitations, url, citations, popular, approved)
+VALUES ('Granite 4.2 30B', 'IBM', 'Model', 'Research', 'Open Weights', 2026, '131k Context · Open Model', 'Frontier Research model by IBM benchmarked on Artificial Analysis with an Intelligence Index of 5.5 and a verified 131k Context window.', 'Open-weights frontier neural architecture developed by IBM, featuring native 131k Context token window support and optimized reasoning chains.', 'Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/granite-4-2-30b', 'Context Window: 131k Context, Intelligence Index: 5.5, Benchmarked on Artificial Analysis Leaderboard', 'Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.', 'https://artificialanalysis.ai/models/granite-4-2-30b', '[{"url":"https://artificialanalysis.ai/models/granite-4-2-30b","text":"Granite 4.2 30B on Artificial Analysis Benchmark"},{"url":"https://artificialanalysis.ai/models/granite-4-2-30b/providers","text":"Granite 4.2 30B Inference Providers"}]'::jsonb, false, true)
+ON CONFLICT (name) DO UPDATE SET
+  org = EXCLUDED.org,
+  type = EXCLUDED.type,
+  task = EXCLUDED.task,
+  license = EXCLUDED.license,
+  year = EXCLUDED.year,
+  size = EXCLUDED.size,
+  summary = EXCLUDED.summary,
+  architecture = EXCLUDED.architecture,
+  usage = EXCLUDED.usage,
+  benchmarks = EXCLUDED.benchmarks,
+  limitations = EXCLUDED.limitations,
+  url = EXCLUDED.url,
+  citations = EXCLUDED.citations,
+  popular = EXCLUDED.popular,
+  approved = true;
+

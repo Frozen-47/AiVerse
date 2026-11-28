@@ -1,31 +1,27 @@
 {
   "date": "2026-11-28",
   "tool": {
-    "name": "Claude Fable 5.2",
-    "org": "Anthropic",
+    "name": "DeepSeek-V4.1-Flash-1017",
+    "org": "DeepSeek AI",
     "type": "Model",
-    "task": "Research",
-    "license": "Proprietary",
+    "task": "Multimodal",
+    "license": "MIT",
     "year": 2026,
-    "size": "1000k Context · Proprietary Model",
-    "summary": "Claude Fable 5.2 is Anthropic's most capable model for the most demanding technical work, with gains over Fable 5.1 in coding, reasoning, and vision. In prerelease testing it compl.",
-    "architecture": "Proprietary frontier neural architecture developed by Anthropic, featuring native 1000k Context token window support and optimized reasoning chains.",
-    "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/claude-fable-5-2",
-    "benchmarks": "Context Window: 1000k Context, Intelligence Index: 56.4, Benchmarked on Artificial Analysis Leaderboard",
-    "limitations": "Cloud API access subject to provider rate limits and compute quotas.",
-    "url": "https://artificialanalysis.ai/models/claude-fable-5-2",
+    "size": "Open Weights",
+    "summary": "DeepSeek AI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 32, Briefcase Elo of 1570, and a massive 1M context window.",
+    "architecture": "DeepSeek image text to text architecture with community-tuned weights.",
+    "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"deepseek-ai/DeepSeek-V4.1-Flash-1017\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"deepseek-ai/DeepSeek-V4.1-Flash-1017\")",
+    "benchmarks": "Intelligence Index: 32, Briefcase Elo: 1570, Accuracy: 40%, Non-Hallucination: 36%, FrontierCode: 28%, AutomationBench: 67%, TerminalBench 4: 34%, HLE Diamond: 25%, Speed: 175 tok/s, Context Window: 1M",
+    "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+    "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
     "citations": [
       {
-        "url": "https://artificialanalysis.ai/models/claude-fable-5-2",
-        "text": "Claude Fable 5.2 on Artificial Analysis Benchmark"
-      },
-      {
-        "url": "https://artificialanalysis.ai/models/claude-fable-5-2/providers",
-        "text": "Claude Fable 5.2 Inference Providers"
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+        "text": "deepseek-ai/DeepSeek-V4.1-Flash-1017 on Hugging Face"
       }
     ],
-    "popular": false,
+    "popular": true,
     "approved": true,
-    "description": "Claude Fable 5.2 is Anthropic's most capable model for the most demanding technical work, with gains over Fable 5.1 in coding, reasoning, and vision. In prerelease testing it compl."
+    "description": "DeepSeek AI's frontier nlp model featured on the Artificial Analysis leaderboard with an Intelligence Index of 32, Briefcase Elo of 1570, and a massive 1M context window."
   }
 }

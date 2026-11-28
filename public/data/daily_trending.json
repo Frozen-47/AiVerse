@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-28T03:40:34.766Z",
+  "timestamp": "2026-11-28T13:48:35.201Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -47,19 +47,19 @@
       "source": "OpenRouter"
     },
     {
-      "id": "Solar Pro 4 Contributor",
-      "author": "Upstage",
+      "id": "MiMo-V2.6-Flash-MOPD",
+      "author": "Xiaomi (MiMo)",
       "likes": 120,
-      "downloads": 524288,
+      "downloads": 1048576,
       "pipeline_tag": "Cloud Model API",
-      "url": "https://openrouter.ai/upstage/solar-pro-4-contributor",
+      "url": "https://openrouter.ai/xiaomi/mimo-v2.6-flash-mopd",
       "source": "OpenRouter"
     },
     {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "Thinking Machines",
-      "likes": 6479,
-      "downloads": 155741,
+      "likes": 6536,
+      "downloads": 177012,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
       "source": "Hugging Face"
@@ -67,10 +67,28 @@
     {
       "id": "SulphurAI/Sulphur-3",
       "author": "SulphurAI",
-      "likes": 1374,
-      "downloads": 539421,
+      "likes": 1403,
+      "downloads": 759937,
       "pipeline_tag": "open-weights",
       "url": "https://huggingface.co/SulphurAI/Sulphur-3",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "inworld/voice-isolator",
+      "author": "Inworld AI",
+      "likes": 1021,
+      "downloads": 22810,
+      "pipeline_tag": "audio-to-audio",
+      "url": "https://huggingface.co/inworld/voice-isolator",
+      "source": "Hugging Face"
+    },
+    {
+      "id": "Lightricks/LTX-2.5",
+      "author": "Lightricks",
+      "likes": 13781,
+      "downloads": 3088512,
+      "pipeline_tag": "image-to-video",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5",
       "source": "Hugging Face"
     }
   ],
@@ -78,14 +96,14 @@
     {
       "title": "LayoutRecall: Preserving Appearance in Multi-Round 3D Layout-Controlled Image Editing",
       "summary": "LayoutRecall is a multi-round 3D layout-controlled image editor that preserves object appearance across edits by storing and retrieving latents in 3D box coordinate systems and conditioning a FLUX.2 editor with geometry-aligned memory.",
-      "upvotes": 0,
+      "upvotes": 4,
       "arxiv_id": "2611.33885",
       "url": "https://huggingface.co/papers/2611.33885",
       "githubRepo": null
     },
     {
       "title": "Damped Atomic Wave Integration Neurons (DAWIN): A Universal Primitive for Continuous-Time Spatiotemporal Learning",
-      "summary": "Conventional artificial neurons separate spatial feature aggregation from continuous physical time, limiting their ability to model irregular observations.",
+      "summary": "Conventional artificial neurons separate spatial feature aggregation from continuous physical time, limiting their ability to model irregular observations. We i...",
       "upvotes": 2,
       "arxiv_id": "2611.30025",
       "url": "https://huggingface.co/papers/2611.30025",
@@ -93,7 +111,7 @@
     },
     {
       "title": "BiSAT: Bidirectionally Aligned Semantic-Acoustic Tokenization for Speech Language Models",
-      "summary": "Speech language models (LMs) generate speech as sequences of discrete tokens.",
+      "summary": "Speech language models (LMs) generate speech as sequences of discrete tokens. Their tokenizer must therefore preserve both acoustic detail and linguistic conten...",
       "upvotes": 2,
       "arxiv_id": "2611.30723",
       "url": "https://huggingface.co/papers/2611.30723",
@@ -101,16 +119,16 @@
     },
     {
       "title": "Markdown Is Not a Firewall: four coding agents, one rules file, four boundaries",
-      "summary": "Teams put a one-page rules file in a repository and call it a control on coding agents.",
-      "upvotes": 0,
+      "summary": "Teams put a one-page rules file in a repository and call it a control on coding agents. A registered study found agents rarely look up a repository's contributi...",
+      "upvotes": 1,
       "arxiv_id": "2611.27112",
       "url": "https://huggingface.co/papers/2611.27112",
       "githubRepo": null
     },
     {
       "title": "Revisiting LLMs as Context Engineers",
-      "summary": "As large language models (LLMs) are used in more and more new tasks, context engineering becomes a fundamental method to efficiently steer LLMs by constructing.",
-      "upvotes": 4,
+      "summary": "As large language models (LLMs) are used in more and more new tasks, context engineering becomes a fundamental method to efficiently steer LLMs by constructing ...",
+      "upvotes": 5,
       "arxiv_id": "2611.30494",
       "url": "https://huggingface.co/papers/2611.30494",
       "githubRepo": "https://github.com/costa-nus/LCEBench"
