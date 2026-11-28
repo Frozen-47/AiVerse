@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo, useEffect } from "react";
+import React, { useRef, useState, useMemo } from "react";
 import { Search, X } from "lucide-react";
 import { useTokens, useTheme, typeBadge, TYPE_GLYPH, typeIcon } from "../lib/theme";
 import type { Entry } from "../types";
@@ -24,18 +24,13 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   const { resolvedTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number>(-1);
-  const [isMac, setIsMac] = useState(true);
+  const [isMac] = useState(() => {
+    if (typeof window === "undefined") return true;
+    const platform = navigator.platform || "";
+    const userAgent = navigator.userAgent || "";
+    return /mac|ipod|ipad|iphone/i.test(platform) || /mac|ipod|ipad|iphone/i.test(userAgent);
+  });
   const inputRef = useRef<HTMLInputElement>(null);
-
-  // Detect OS for shortcut indicator
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const platform = navigator.platform || "";
-      const userAgent = navigator.userAgent || "";
-      const macRegex = /mac|ipod|ipad|iphone/i;
-      setIsMac(macRegex.test(platform) || macRegex.test(userAgent));
-    }
-  }, []);
 
   const results = useMemo(() => {
     if (!query.trim()) return [];
@@ -51,14 +46,10 @@ export const SearchBar: React.FC<SearchBarProps> = ({
       .slice(0, 7);
   }, [query, entries]);
 
-  // Reset activeIndex when query or results change
-  useEffect(() => {
-    setActiveIndex(-1);
-  }, [query, results]);
-
   const handleSelect = (e: Entry) => {
     onSelect(e);
     onChange("");
+    setActiveIndex(-1);
     setOpen(false);
   };
 
@@ -100,7 +91,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <div className="relative w-full">
       <div
-        className="flex items-center gap-3 px-4 py-3 rounded-2xl glass-search"
+        className="flex items-center gap-3 px-4 py-3 rounded-2xl glass-search focus-within:border-indigo-500/40 focus-within:ring-2 focus-within:ring-indigo-500/15 transition-all"
       >
         <Search size={15} className={t.textMuted} />
         <input
@@ -110,6 +101,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           value={query}
           onChange={(e) => {
             onChange(e.target.value);
+            setActiveIndex(-1);
             setOpen(true);
           }}
           onFocus={() => setOpen(true)}
@@ -120,13 +112,13 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         />
         {query && (
           <button
-            onClick={() => { onChange(""); inputRef.current?.focus(); }}
+            onClick={() => { onChange(""); setActiveIndex(-1); inputRef.current?.focus(); }}
             className={`w-5 h-5 flex items-center justify-center rounded-full ${t.textMuted} hover:${t.textSecondary} transition-colors`}
           >
             <X size={12} />
           </button>
         )}
-        <kbd className={`hidden sm:inline-flex items-center text-[10px] border rounded px-1.5 py-0.5 font-mono ${t.textMuted} ${t.border}`}>
+        <kbd className={`hidden sm:inline-flex items-center text-[10px] border rounded-md px-1.5 py-0.5 font-mono ${t.textMuted} ${t.border}`}>
           {isMac ? "⌘K" : "Ctrl+K"}
         </kbd>
       </div>
@@ -135,7 +127,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
       {showDropdown && open && query && (
         <div
           className={`
-            absolute top-[calc(100%+8px)] left-0 right-0 z-50 rounded-2xl border shadow-2xl overflow-hidden
+            absolute top-[calc(100%+8px)] left-0 right-0 z-50 rounded-2xl border shadow-2xl overflow-hidden backdrop-blur-xl
             ${t.modal} ${t.border}
           `}
         >
@@ -157,7 +149,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
                   onMouseEnter={() => setActiveIndex(i)}
                   className={`
                     flex items-center gap-3 px-4 py-3 cursor-pointer transition-colors
-                    ${isHighlighted ? (resolvedTheme === "light" ? "bg-slate-100/90" : "bg-white/[0.08]") : ""}
+                    ${isHighlighted ? (resolvedTheme === "light" ? "bg-indigo-50/80" : "bg-indigo-500/15") : ""}
                     hover:${t.surfaceHover} border-b last:border-0 ${t.border}
                   `}
                 >

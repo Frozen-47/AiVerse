@@ -99,7 +99,7 @@ const getRoleConfig = (role: string, isDark: boolean) => {
     badgeCls: isDark
       ? "text-sky-400 bg-sky-500/10 border-sky-500/30"
       : "text-sky-700 bg-sky-50 border-sky-200",
-    accentBg: "from-sky-600/20 via-blue-600/10 to-indigo-600/20",
+    accentBg: "from-indigo-600/20 via-violet-600/10 to-cyan-600/20",
   };
 };
 
@@ -421,13 +421,13 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
     ...(profile?.linkedin ? [{ name: "LinkedIn", url: profile.linkedin, icon: LinkedinLogo, colorCls: "text-[#0a66c2] bg-[#0a66c2]/10" }] : []),
     ...(profile?.medium ? [{ name: "Medium", url: profile.medium, icon: MediumLogo, colorCls: isDark ? "text-neutral-200 bg-white/10" : "text-neutral-900 bg-neutral-100" }] : []),
     ...(profile?.devto ? [{ name: "Dev.to", url: profile.devto, icon: DevToLogo, colorCls: isDark ? "text-neutral-200 bg-white/10" : "text-neutral-900 bg-neutral-100" }] : []),
-    ...(profile?.portfolio ? [{ name: "Portfolio", url: profile.portfolio, icon: Globe, colorCls: "text-blue-500 bg-blue-500/10" }] : []),
+    ...(profile?.portfolio ? [{ name: "Portfolio", url: profile.portfolio, icon: Globe, colorCls: "text-indigo-500 bg-indigo-500/10" }] : []),
   ];
 
   const roleStyle = profile ? getRoleConfig(profile.role, isDark) : getRoleConfig("developer", isDark);
 
   return (
-    <div className="w-full flex-1 flex flex-col bg-[#f8f9fa] dark:bg-[#131314] text-[#202124] dark:text-[#e3e3e3] transition-colors min-h-[calc(100vh-64px)] animate-fade-in relative">
+    <div className="w-full flex-1 flex flex-col bg-neutral-50 dark:bg-[#050507] text-neutral-900 dark:text-neutral-100 transition-colors min-h-[calc(100vh-60px)] animate-fade-in relative">
       {/* Success Toast */}
       {saveSuccessToast && (
         <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-2xl bg-emerald-600 text-white shadow-xl text-xs font-semibold animate-fade-in">
@@ -437,11 +437,11 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
       )}
 
       {/* ── 1. Top Breadcrumbs Sub-Header ─────────────────────────────── */}
-      <header className="sticky top-14 sm:top-16 z-20 px-4 sm:px-6 xl:px-12 h-14 border-b border-[#dadce0] dark:border-[#3c4043]/50 bg-white/95 dark:bg-[#131314]/95 backdrop-blur-md flex items-center justify-between gap-3 shadow-2xs">
+      <header className="sticky top-14 sm:top-15 z-20 px-4 sm:px-6 xl:px-12 h-14 border-b border-neutral-200/80 dark:border-white/[0.08] bg-white/90 dark:bg-[#090a0e]/90 backdrop-blur-xl flex items-center justify-between gap-3">
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <button
             onClick={onBackToHome}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#1a73e8] dark:text-[#a8c7fa] hover:bg-[#e8f0fe] dark:hover:bg-[#1a2e4c] transition-colors cursor-pointer shrink-0 shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/15 hover:border-indigo-500/30 transition-colors cursor-pointer shrink-0 shadow-2xs"
             title="Return to Directory (Esc)"
           >
             <ArrowLeft size={14} />
@@ -449,7 +449,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
             <span className="sm:hidden">Back</span>
           </button>
 
-          <div className="h-4 w-px bg-[#dadce0] dark:bg-[#3c4043] hidden sm:block" />
+          <div className="h-4 w-px bg-neutral-200 dark:bg-white/[0.08] hidden sm:block" />
 
           <nav aria-label="Breadcrumb" className="hidden sm:flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400 font-medium truncate">
             <span className="text-neutral-600 dark:text-neutral-300">AiVerse Builders</span>
@@ -467,7 +467,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer shadow-2xs ${
               copiedLink
                 ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-600 dark:text-emerald-400"
-                : "border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-neutral-700 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-white/5"
+                : "border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
             }`}
             title="Share profile link"
           >
@@ -478,7 +478,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
           {isOwnProfile && (
             <button
               onClick={openEditModal}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] text-white transition-all cursor-pointer shadow-xs"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition-all cursor-pointer shadow-sm shadow-indigo-500/20"
               title="Edit Profile Details"
             >
               <Edit3 size={13} />
@@ -493,17 +493,17 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
         {/* Loading Skeleton */}
         {loading && (
           <div className="w-full space-y-6 animate-pulse">
-            <div className="h-48 sm:h-56 rounded-3xl bg-neutral-200 dark:bg-white/[0.04]" />
+            <div className="h-48 sm:h-56 rounded-2xl bg-neutral-200/80 dark:bg-[#0c0d11] border border-neutral-200/60 dark:border-white/[0.06]" />
             <div className="flex items-center gap-4 px-4">
-              <div className="w-24 h-24 rounded-3xl bg-neutral-300 dark:bg-white/[0.08]" />
+              <div className="w-24 h-24 rounded-2xl bg-neutral-300 dark:bg-[#121319]" />
               <div className="space-y-2 flex-1">
-                <div className="h-6 w-48 rounded-lg bg-neutral-300 dark:bg-white/[0.08]" />
-                <div className="h-4 w-32 rounded-lg bg-neutral-200 dark:bg-white/[0.04]" />
+                <div className="h-6 w-48 rounded-lg bg-neutral-300 dark:bg-[#121319]" />
+                <div className="h-4 w-32 rounded-lg bg-neutral-200 dark:bg-[#0c0d11]" />
               </div>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[...Array(4)].map((_, i) => (
-                <div key={i} className="h-24 rounded-2xl bg-neutral-200 dark:bg-white/[0.04]" />
+                <div key={i} className="h-24 rounded-2xl bg-neutral-200/80 dark:bg-[#0c0d11] border border-neutral-200/60 dark:border-white/[0.06]" />
               ))}
             </div>
           </div>
@@ -512,7 +512,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
         {/* Error / Not Found */}
         {!loading && (error || !profile) && (
           <div className="flex-1 flex flex-col items-center justify-center py-20 px-6 text-center">
-            <div className="w-16 h-16 rounded-3xl flex items-center justify-center bg-red-500/10 text-red-500 border border-red-500/20 mb-4 shadow-sm">
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-rose-500/10 text-rose-500 border border-rose-500/20 mb-4 shadow-sm">
               <AlertCircle size={28} />
             </div>
             <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">Profile Not Found</h2>
@@ -522,14 +522,14 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
             <div className="flex items-center gap-3 mt-6">
               <button
                 onClick={onBackToHome}
-                className="px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#1a73e8] text-white hover:bg-[#1557b0] transition-all cursor-pointer shadow-xs"
+                className="px-5 py-2.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white hover:bg-indigo-500 transition-all cursor-pointer shadow-sm shadow-indigo-500/20"
               >
                 Return to Directory
               </button>
               {onExploreCatalog && (
                 <button
                   onClick={onExploreCatalog}
-                  className="px-5 py-2.5 rounded-xl text-xs font-semibold border border-neutral-300 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/5 transition-all cursor-pointer"
+                  className="px-5 py-2.5 rounded-xl text-xs font-semibold border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer"
                 >
                   Explore Catalog
                 </button>
@@ -542,13 +542,13 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
         {!loading && profile && (
           <>
             {/* ── Hero Banner & Identity Card ────────────────────────── */}
-            <div className="w-full rounded-3xl border border-neutral-200/90 dark:border-white/10 bg-white dark:bg-[#1c1d1f] shadow-sm overflow-hidden transition-all">
+            <div className="w-full rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] shadow-sm overflow-hidden transition-all">
               {/* Cover Gradient Mesh */}
-              <div className="h-44 sm:h-52 w-full relative overflow-hidden bg-linear-to-r from-blue-600/20 via-indigo-600/15 to-purple-600/20 dark:from-blue-600/25 dark:via-purple-600/20 dark:to-indigo-600/25 border-b border-neutral-200/60 dark:border-white/[0.06]">
-                <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] opacity-25" />
+              <div className="h-44 sm:h-52 w-full relative overflow-hidden bg-linear-to-br from-indigo-600/15 via-violet-600/10 to-cyan-600/15 dark:from-indigo-600/20 dark:via-violet-600/15 dark:to-cyan-500/15 border-b border-neutral-200/60 dark:border-white/[0.06]">
+                <div className="absolute inset-0 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:16px_16px] opacity-25" />
                 <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-white/80 dark:bg-black/50 backdrop-blur-md text-neutral-800 dark:text-neutral-200 border border-black/5 dark:border-white/10 shadow-2xs">
-                    <ShieldCheck size={13} className="text-[#1a73e8] dark:text-[#8ab4f8]" />
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-white/85 dark:bg-[#090a0e]/85 backdrop-blur-md text-neutral-800 dark:text-neutral-200 border border-black/5 dark:border-white/[0.1] shadow-2xs">
+                    <ShieldCheck size={13} className="text-indigo-600 dark:text-indigo-400" />
                     Verified Builder Directory
                   </span>
                 </div>
@@ -560,7 +560,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                   {/* Left: Avatar & Primary Info */}
                   <div className="flex flex-col sm:flex-row sm:items-end gap-5">
                     {/* Big Avatar with robust onError fallback */}
-                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl ring-4 ring-white dark:ring-[#1c1d1f] shadow-xl overflow-hidden shrink-0 bg-neutral-900 relative z-10 flex items-center justify-center">
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl ring-4 ring-white dark:ring-[#0c0d11] shadow-xl overflow-hidden shrink-0 bg-[#121319] relative z-10 flex items-center justify-center">
                       {profile.avatarUrl && !avatarFailed ? (
                         <img
                           src={profile.avatarUrl}
@@ -569,7 +569,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                           className="w-full h-full object-cover"
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-[#1a73e8] via-[#6366f1] to-[#8b5cf6] text-white font-black text-2xl sm:text-3xl tracking-wider select-none shadow-inner">
+                        <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-indigo-500 via-violet-500 to-cyan-500 text-white font-black text-2xl sm:text-3xl tracking-wider select-none shadow-inner">
                           {initials}
                         </div>
                       )}
@@ -586,7 +586,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                           {roleStyle.label}
                         </span>
                         {isOwnProfile && (
-                          <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                          <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
                             You
                           </span>
                         )}
@@ -595,7 +595,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                       <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
                         <button
                           onClick={handleCopyHandle}
-                          className="font-mono font-medium hover:text-[#1a73e8] dark:hover:text-[#8ab4f8] transition-colors flex items-center gap-1 cursor-pointer"
+                          className="font-mono font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center gap-1 cursor-pointer"
                           title="Click to copy handle"
                         >
                           <span>{profile.username?.startsWith("@") ? profile.username : `@${profile.username}`}</span>
@@ -621,7 +621,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                             href={link.url.startsWith("http") ? link.url : `https://${link.url}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`p-2.5 rounded-xl border border-neutral-200/80 dark:border-white/10 hover:border-blue-500/40 hover:scale-105 transition-all cursor-pointer shadow-2xs ${link.colorCls}`}
+                            className={`p-2.5 rounded-xl border border-neutral-200/80 dark:border-white/[0.08] hover:border-indigo-500/40 hover:scale-105 transition-all cursor-pointer shadow-2xs ${link.colorCls}`}
                             title={`Open ${link.name}`}
                           >
                             <Icon className="w-4 h-4" />
@@ -648,7 +648,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                     {profile.interests.map((interest) => (
                       <span
                         key={interest}
-                        className="text-xs font-medium px-3 py-1 rounded-full bg-neutral-100 dark:bg-white/[0.05] text-neutral-700 dark:text-neutral-300 border border-neutral-200/70 dark:border-white/10 hover:border-blue-500/30 transition-colors"
+                        className="text-xs font-medium px-3 py-1 rounded-full bg-neutral-100 dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 border border-neutral-200/80 dark:border-white/[0.08] hover:border-indigo-500/30 transition-colors"
                       >
                         #{interest}
                       </span>
@@ -660,10 +660,10 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
 
             {/* ── 3. Proportional Stats Grid ─────────────────────────── */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <div className="p-4 sm:p-5 rounded-2xl border border-neutral-200/90 dark:border-white/10 bg-white dark:bg-[#1c1d1f] shadow-2xs flex flex-col justify-between">
+              <div className="p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] shadow-2xs flex flex-col justify-between">
                 <div className="flex items-center justify-between text-neutral-400">
                   <span className="text-xs font-semibold">Submissions</span>
-                  <LayoutGrid size={16} className="text-[#1a73e8]" />
+                  <LayoutGrid size={16} className="text-indigo-500 dark:text-indigo-400" />
                 </div>
                 <div className="mt-3">
                   <div className="text-2xl sm:text-3xl font-extrabold text-neutral-900 dark:text-white tabular-nums">
@@ -673,7 +673,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                 </div>
               </div>
 
-              <div className="p-4 sm:p-5 rounded-2xl border border-neutral-200/90 dark:border-white/10 bg-white dark:bg-[#1c1d1f] shadow-2xs flex flex-col justify-between">
+              <div className="p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] shadow-2xs flex flex-col justify-between">
                 <div className="flex items-center justify-between text-neutral-400">
                   <span className="text-xs font-semibold">Saved Library</span>
                   <Bookmark size={16} className="text-amber-500" />
@@ -686,7 +686,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                 </div>
               </div>
 
-              <div className="p-4 sm:p-5 rounded-2xl border border-neutral-200/90 dark:border-white/10 bg-white dark:bg-[#1c1d1f] shadow-2xs flex flex-col justify-between">
+              <div className="p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] shadow-2xs flex flex-col justify-between">
                 <div className="flex items-center justify-between text-neutral-400">
                   <span className="text-xs font-semibold">Connected Web</span>
                   <Globe size={16} className="text-emerald-500" />
@@ -699,7 +699,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                 </div>
               </div>
 
-              <div className="p-4 sm:p-5 rounded-2xl border border-neutral-200/90 dark:border-white/10 bg-white dark:bg-[#1c1d1f] shadow-2xs flex flex-col justify-between">
+              <div className="p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] shadow-2xs flex flex-col justify-between">
                 <div className="flex items-center justify-between text-neutral-400">
                   <span className="text-xs font-semibold">Builder Status</span>
                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -718,10 +718,10 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
               {/* Left Sidebar: About & Web Connections */}
               <div className="space-y-6 lg:col-span-1">
                 {/* Connected Accounts Card */}
-                <div className="p-5 rounded-2xl border border-neutral-200/90 dark:border-white/10 bg-white dark:bg-[#1c1d1f] shadow-2xs space-y-4">
+                <div className="p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] shadow-2xs space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className="text-sm font-bold text-neutral-900 dark:text-white flex items-center gap-2">
-                      <Globe size={15} className="text-[#1a73e8]" />
+                      <Globe size={15} className="text-indigo-500 dark:text-indigo-400" />
                       Connected Profiles
                     </h3>
                     <span className="text-[11px] text-neutral-400 font-medium">
@@ -740,14 +740,14 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                             href={link.url.startsWith("http") ? link.url : `https://${link.url}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-3 rounded-xl border border-neutral-200/70 dark:border-white/10 bg-neutral-50/60 dark:bg-white/[0.02] hover:border-blue-500/40 hover:bg-white dark:hover:bg-white/[0.05] transition-all flex items-center justify-between group cursor-pointer"
+                            className="p-3 rounded-xl border border-neutral-200/70 dark:border-white/[0.06] bg-neutral-50/70 dark:bg-[#121319] hover:border-indigo-500/40 hover:bg-white dark:hover:bg-[#161822] transition-all flex items-center justify-between group cursor-pointer"
                           >
                             <div className="flex items-center gap-3 min-w-0 pr-2">
                               <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${link.colorCls}`}>
                                 <Icon className="w-4 h-4" />
                               </div>
                               <div className="min-w-0">
-                                <span className="text-xs font-semibold text-neutral-900 dark:text-white block group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors truncate">
+                                <span className="text-xs font-semibold text-neutral-900 dark:text-white block group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors truncate">
                                   {link.name}
                                 </span>
                                 <span className="text-[11px] text-neutral-500 dark:text-neutral-400 block truncate">
@@ -755,18 +755,18 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                                 </span>
                               </div>
                             </div>
-                            <ExternalLink size={13} className="text-neutral-400 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] shrink-0 transition-colors" />
+                            <ExternalLink size={13} className="text-neutral-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 shrink-0 transition-colors" />
                           </a>
                         );
                       })}
                     </div>
                   ) : (
-                    <div className="py-6 text-center rounded-xl border border-dashed border-neutral-200 dark:border-white/10 p-4">
+                    <div className="py-6 text-center rounded-xl border border-dashed border-neutral-200 dark:border-white/[0.08] p-4">
                       <p className="text-xs font-medium text-neutral-600 dark:text-neutral-400">No public accounts linked yet</p>
                       {isOwnProfile && (
                         <button
                           onClick={openEditModal}
-                          className="mt-3 text-xs font-semibold text-[#1a73e8] dark:text-[#8ab4f8] hover:underline cursor-pointer"
+                          className="mt-3 text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline cursor-pointer"
                         >
                           + Link GitHub or LinkedIn
                         </button>
@@ -776,15 +776,15 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                 </div>
 
                 {/* AiVerse Credentials & Recognition Card */}
-                <div className="p-5 rounded-2xl border border-neutral-200/90 dark:border-white/10 bg-white dark:bg-[#1c1d1f] shadow-2xs space-y-4">
+                <div className="p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] shadow-2xs space-y-4">
                   <h3 className="text-sm font-bold text-neutral-900 dark:text-white flex items-center gap-2">
                     <Award size={15} className="text-amber-500" />
                     Builder Credentials
                   </h3>
 
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 rounded-xl border border-neutral-100 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02]">
-                      <div className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center shrink-0">
+                    <div className="flex items-center gap-3 p-3 rounded-xl border border-neutral-100 dark:border-white/[0.06] bg-neutral-50/60 dark:bg-[#121319]">
+                      <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-500 dark:text-indigo-400 flex items-center justify-center shrink-0">
                         <CheckCircle2 size={16} />
                       </div>
                       <div>
@@ -793,7 +793,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3 p-3 rounded-xl border border-neutral-100 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02]">
+                    <div className="flex items-center gap-3 p-3 rounded-xl border border-neutral-100 dark:border-white/[0.06] bg-neutral-50/60 dark:bg-[#121319]">
                       <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center shrink-0">
                         <FolderGit2 size={16} />
                       </div>
@@ -809,43 +809,43 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
               {/* Right Content Column: Tabs & Cards */}
               <div className="space-y-6 lg:col-span-2">
                 {/* Segmented Tab Bar */}
-                <div className="p-1 rounded-2xl flex gap-1 border border-neutral-200/90 dark:border-white/10 bg-neutral-200/50 dark:bg-white/[0.04]">
+                <div className="p-1.5 rounded-2xl flex gap-1 border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-200/60 dark:bg-[#121319]">
                   <button
                     onClick={() => setActiveTab("submissions")}
-                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold transition-all cursor-pointer border ${
                       activeTab === "submissions"
-                        ? "bg-white dark:bg-[#202124] text-neutral-900 dark:text-white shadow-xs"
-                        : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                        ? "bg-white dark:bg-[#0c0d11] text-indigo-600 dark:text-indigo-300 border-neutral-200/80 dark:border-white/[0.08] shadow-xs"
+                        : "border-transparent text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                     }`}
                   >
                     <LayoutGrid size={14} />
                     <span>Submissions</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/10 font-bold">
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.08] font-bold">
                       {submitHistory.length}
                     </span>
                   </button>
 
                   <button
                     onClick={() => setActiveTab("bookmarks")}
-                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold transition-all cursor-pointer border ${
                       activeTab === "bookmarks"
-                        ? "bg-white dark:bg-[#202124] text-neutral-900 dark:text-white shadow-xs"
-                        : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                        ? "bg-white dark:bg-[#0c0d11] text-indigo-600 dark:text-indigo-300 border-neutral-200/80 dark:border-white/[0.08] shadow-xs"
+                        : "border-transparent text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                     }`}
                   >
                     <Bookmark size={14} />
                     <span>Saved Library</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/10 font-bold">
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.08] font-bold">
                       {savedEntries.length}
                     </span>
                   </button>
 
                   <button
                     onClick={() => setActiveTab("about")}
-                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold transition-all cursor-pointer border ${
                       activeTab === "about"
-                        ? "bg-white dark:bg-[#202124] text-neutral-900 dark:text-white shadow-xs"
-                        : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                        ? "bg-white dark:bg-[#0c0d11] text-indigo-600 dark:text-indigo-300 border-neutral-200/80 dark:border-white/[0.08] shadow-xs"
+                        : "border-transparent text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                     }`}
                   >
                     <Sparkles size={14} />
@@ -864,11 +864,11 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                             <div
                               key={entry.name}
                               onClick={() => !isLoading && handleSelectEntry(entry)}
-                              className="p-5 rounded-2xl border border-neutral-200/90 dark:border-white/10 bg-white dark:bg-[#1c1d1f] hover:border-blue-500/40 hover:shadow-md transition-all flex flex-col justify-between group cursor-pointer"
+                              className="p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] hover:border-indigo-500/40 hover:shadow-md transition-all flex flex-col justify-between group cursor-pointer"
                             >
                               <div>
                                 <div className="flex items-center justify-between gap-2 mb-2">
-                                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
                                     {entry.type}
                                   </span>
                                   {entry.approved ? (
@@ -881,7 +881,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                                     </span>
                                   )}
                                 </div>
-                                <h4 className="text-base font-bold text-neutral-900 dark:text-white group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors">
+                                <h4 className="text-base font-bold text-neutral-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                                   {entry.name}
                                 </h4>
                                 <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2 sm:line-clamp-3 mt-1.5 leading-relaxed">
@@ -891,7 +891,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
 
                               <div className="flex items-center justify-between pt-4 mt-4 border-t border-neutral-100 dark:border-white/[0.06] text-xs text-neutral-500">
                                 <span className="font-medium">{entry.task}</span>
-                                <div className="flex items-center gap-1 text-[#1a73e8] dark:text-[#8ab4f8] font-semibold group-hover:translate-x-0.5 transition-transform">
+                                <div className="flex items-center gap-1 text-indigo-600 dark:text-indigo-400 font-semibold group-hover:translate-x-0.5 transition-transform">
                                   {isLoading ? <Loader2 size={13} className="animate-spin" /> : <span>Inspect Specs →</span>}
                                 </div>
                               </div>
@@ -900,9 +900,9 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                         })}
                       </div>
                     ) : (
-                      /* Expansive, beautiful Empty State */
-                      <div className="py-16 px-6 text-center rounded-3xl border border-neutral-200/90 dark:border-white/10 bg-white dark:bg-[#1c1d1f] shadow-2xs">
-                        <div className="w-16 h-16 rounded-3xl bg-blue-500/10 text-[#1a73e8] dark:text-[#8ab4f8] flex items-center justify-center mx-auto mb-4 border border-blue-500/20 shadow-xs">
+                      /* Expansive Empty State */
+                      <div className="py-16 px-6 text-center rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] shadow-2xs">
+                        <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mx-auto mb-4 border border-indigo-500/20 shadow-xs">
                           <Rocket size={28} />
                         </div>
                         <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
@@ -916,7 +916,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                           <div className="flex items-center justify-center gap-3 mt-6">
                             <button
                               onClick={onExploreCatalog}
-                              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#1a73e8] text-white hover:bg-[#1557b0] transition-all cursor-pointer shadow-xs"
+                              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white hover:bg-indigo-500 transition-all cursor-pointer shadow-sm shadow-indigo-500/20"
                             >
                               <Compass size={14} />
                               <span>Explore Directory Models</span>
@@ -939,16 +939,16 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                             <div
                               key={entry.name}
                               onClick={() => !isLoading && handleSelectEntry(entry)}
-                              className="p-5 rounded-2xl border border-neutral-200/90 dark:border-white/10 bg-white dark:bg-[#1c1d1f] hover:border-blue-500/40 hover:shadow-md transition-all flex flex-col justify-between group cursor-pointer"
+                              className="p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] hover:border-indigo-500/40 hover:shadow-md transition-all flex flex-col justify-between group cursor-pointer"
                             >
                               <div>
                                 <div className="flex items-center justify-between gap-2 mb-2">
-                                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-neutral-100 dark:bg-white/10 text-neutral-700 dark:text-neutral-300">
+                                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-neutral-100 dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 border border-neutral-200/80 dark:border-white/[0.08]">
                                     {entry.type}
                                   </span>
                                   <Bookmark size={14} className="text-amber-500 fill-amber-500" />
                                 </div>
-                                <h4 className="text-base font-bold text-neutral-900 dark:text-white group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors">
+                                <h4 className="text-base font-bold text-neutral-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                                   {entry.name}
                                 </h4>
                                 <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2 sm:line-clamp-3 mt-1.5 leading-relaxed">
@@ -958,7 +958,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
 
                               <div className="flex items-center justify-between pt-4 mt-4 border-t border-neutral-100 dark:border-white/[0.06] text-xs text-neutral-500">
                                 <span className="font-medium">{entry.org || "Community"}</span>
-                                <div className="flex items-center gap-1 text-[#1a73e8] dark:text-[#8ab4f8] font-semibold group-hover:translate-x-0.5 transition-transform">
+                                <div className="flex items-center gap-1 text-indigo-600 dark:text-indigo-400 font-semibold group-hover:translate-x-0.5 transition-transform">
                                   {isLoading ? <Loader2 size={13} className="animate-spin" /> : <span>Open Tool →</span>}
                                 </div>
                               </div>
@@ -967,8 +967,8 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                         })}
                       </div>
                     ) : (
-                      <div className="py-16 px-6 text-center rounded-3xl border border-neutral-200/90 dark:border-white/10 bg-white dark:bg-[#1c1d1f] shadow-2xs">
-                        <div className="w-16 h-16 rounded-3xl bg-amber-500/10 text-amber-500 flex items-center justify-center mx-auto mb-4 border border-amber-500/20 shadow-xs">
+                      <div className="py-16 px-6 text-center rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] shadow-2xs">
+                        <div className="w-16 h-16 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center mx-auto mb-4 border border-amber-500/20 shadow-xs">
                           <Bookmark size={28} />
                         </div>
                         <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
@@ -980,7 +980,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                         {onExploreCatalog && (
                           <button
                             onClick={onExploreCatalog}
-                            className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#1a73e8] text-white hover:bg-[#1557b0] transition-all cursor-pointer shadow-xs"
+                            className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white hover:bg-indigo-500 transition-all cursor-pointer shadow-sm shadow-indigo-500/20"
                           >
                             <Compass size={14} />
                             <span>Browse Models to Save</span>
@@ -993,7 +993,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
 
                 {/* Tab 3: About & Focus Areas */}
                 {activeTab === "about" && (
-                  <div className="p-6 sm:p-8 rounded-3xl border border-neutral-200/90 dark:border-white/10 bg-white dark:bg-[#1c1d1f] shadow-2xs space-y-6">
+                  <div className="p-6 sm:p-8 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] shadow-2xs space-y-6">
                     <div>
                       <h3 className="text-base font-bold text-neutral-900 dark:text-white mb-2">
                         About {profile.displayName}
@@ -1012,7 +1012,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                           profile.interests.map((tag) => (
                             <span
                               key={tag}
-                              className="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-neutral-100 dark:bg-white/[0.05] text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-white/10"
+                              className="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-neutral-100 dark:bg-[#121319] text-neutral-800 dark:text-neutral-200 border border-neutral-200/80 dark:border-white/[0.08]"
                             >
                               {tag}
                             </span>
@@ -1037,12 +1037,17 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
 
       {/* ── 5. Dedicated In-Profile Edit Profile Modal ────────────────────────── */}
       {isEditing && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto animate-fade-in">
-          <div className="relative w-full max-w-lg rounded-3xl bg-white dark:bg-[#1e1f20] border border-neutral-200 dark:border-white/10 shadow-2xl overflow-hidden my-8">
+        <div
+          className="fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto animate-fade-in"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setIsEditing(false);
+          }}
+        >
+          <div className="relative w-full max-w-lg rounded-2xl bg-white dark:bg-[#0d0e12] border border-neutral-200/90 dark:border-white/[0.1] shadow-2xl overflow-hidden my-8">
             {/* Modal Header */}
-            <div className="px-6 py-4 border-b border-neutral-200/80 dark:border-white/10 bg-neutral-50/80 dark:bg-white/[0.02] flex items-center justify-between">
+            <div className="px-6 py-4 border-b border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/90 dark:bg-[#090a0e] flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-blue-500/10 text-[#1a73e8] dark:text-[#8ab4f8] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 flex items-center justify-center">
                   <Edit3 size={15} />
                 </div>
                 <div>
@@ -1058,7 +1063,8 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
               <button
                 type="button"
                 onClick={() => setIsEditing(false)}
-                className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-200/70 dark:hover:bg-white/10 text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-colors cursor-pointer"
+                className="w-8 h-8 rounded-xl flex items-center justify-center hover:bg-neutral-200/70 dark:hover:bg-white/10 text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-colors cursor-pointer"
+                aria-label="Close modal"
               >
                 <X size={16} />
               </button>
@@ -1082,7 +1088,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                     onChange={(e) => setEditName(e.target.value)}
                     maxLength={50}
                     placeholder="Your name or organization"
-                    className="w-full pl-9 pr-3.5 py-2.5 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8] focus:border-[#1a73e8]"
+                    className="w-full pl-9 pr-3.5 py-2.5 rounded-xl text-xs border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all"
                   />
                 </div>
               </div>
@@ -1101,7 +1107,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                     disabled
                     readOnly
                     value={profile?.username || username}
-                    className="w-full pl-9 pr-3.5 py-2.5 rounded-xl text-xs border border-neutral-200 dark:border-white/5 bg-neutral-100 dark:bg-white/[0.04] text-neutral-500 dark:text-neutral-400 cursor-not-allowed opacity-80"
+                    className="w-full pl-9 pr-3.5 py-2.5 rounded-xl text-xs border border-neutral-200 dark:border-white/[0.06] bg-neutral-100 dark:bg-[#121319]/60 text-neutral-500 dark:text-neutral-400 cursor-not-allowed opacity-80"
                   />
                 </div>
                 <p className="text-[10px] text-neutral-400">Handle is verified and tied to your account</p>
@@ -1115,7 +1121,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                 <select
                   value={editRole}
                   onChange={(e) => setEditRole(e.target.value as UserRole)}
-                  className="w-full px-3.5 py-2.5 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8] focus:border-[#1a73e8]"
+                  className="w-full px-3.5 py-2.5 rounded-xl text-xs border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all"
                 >
                   {ROLE_OPTIONS.map((r) => (
                     <option key={r.id} value={r.id}>
@@ -1141,7 +1147,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                   onChange={(e) => setEditBio(e.target.value)}
                   maxLength={160}
                   placeholder="Tell other builders about your background, models you train, or frameworks you build..."
-                  className="w-full px-3.5 py-2.5 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8] focus:border-[#1a73e8] resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl text-xs border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 resize-none transition-all"
                 />
               </div>
 
@@ -1160,8 +1166,8 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                         onClick={() => toggleEditInterest(opt.id)}
                         className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition-all cursor-pointer ${
                           isSelected
-                            ? "bg-blue-500 text-white border-blue-600 shadow-2xs font-semibold"
-                            : "border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-white/[0.03] text-neutral-700 dark:text-neutral-300 hover:border-blue-500/40"
+                            ? "bg-indigo-600 text-white border-indigo-500 shadow-sm shadow-indigo-500/20 font-semibold"
+                            : "border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50 dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 hover:border-indigo-500/40"
                         }`}
                       >
                         {opt.label}
@@ -1172,14 +1178,14 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
               </div>
 
               {/* Connected Web Profiles */}
-              <div className="space-y-2.5 pt-2 border-t border-neutral-200/80 dark:border-white/10">
+              <div className="space-y-2.5 pt-2 border-t border-neutral-200/80 dark:border-white/[0.08]">
                 <span className="block text-xs font-bold text-neutral-700 dark:text-neutral-300">
                   Connected Web Profiles
                 </span>
 
                 {/* GitHub */}
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-neutral-900 text-white flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-neutral-900 dark:bg-[#121319] border border-neutral-800 dark:border-white/10 text-white flex items-center justify-center shrink-0">
                     <GithubLogo className="w-4 h-4" />
                   </div>
                   <input
@@ -1187,7 +1193,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                     value={editGithub}
                     onChange={(e) => setEditGithub(e.target.value)}
                     placeholder="https://github.com/your-username"
-                    className="flex-1 px-3 py-2 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8]"
+                    className="flex-1 px-3 py-2 rounded-xl text-xs border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all"
                   />
                 </div>
 
@@ -1201,13 +1207,13 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                     value={editLinkedin}
                     onChange={(e) => setEditLinkedin(e.target.value)}
                     placeholder="https://linkedin.com/in/your-profile"
-                    className="flex-1 px-3 py-2 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8]"
+                    className="flex-1 px-3 py-2 rounded-xl text-xs border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all"
                   />
                 </div>
 
                 {/* Portfolio Website */}
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center shrink-0">
                     <Globe size={15} />
                   </div>
                   <input
@@ -1215,13 +1221,13 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                     value={editPortfolio}
                     onChange={(e) => setEditPortfolio(e.target.value)}
                     placeholder="https://yourportfolio.dev"
-                    className="flex-1 px-3 py-2 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8]"
+                    className="flex-1 px-3 py-2 rounded-xl text-xs border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all"
                   />
                 </div>
 
                 {/* Dev.to */}
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-neutral-800 text-white flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-neutral-800 dark:bg-[#121319] border border-neutral-700 dark:border-white/10 text-white flex items-center justify-center shrink-0">
                     <DevToLogo className="w-4 h-4" />
                   </div>
                   <input
@@ -1229,13 +1235,13 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                     value={editDevto}
                     onChange={(e) => setEditDevto(e.target.value)}
                     placeholder="https://dev.to/your-username"
-                    className="flex-1 px-3 py-2 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8]"
+                    className="flex-1 px-3 py-2 rounded-xl text-xs border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all"
                   />
                 </div>
 
                 {/* Medium */}
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-neutral-900 text-white flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-neutral-900 dark:bg-[#121319] border border-neutral-800 dark:border-white/10 text-white flex items-center justify-center shrink-0">
                     <MediumLogo className="w-4 h-4" />
                   </div>
                   <input
@@ -1243,24 +1249,24 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
                     value={editMedium}
                     onChange={(e) => setEditMedium(e.target.value)}
                     placeholder="https://medium.com/@your-username"
-                    className="flex-1 px-3 py-2 rounded-xl text-xs border border-neutral-300 dark:border-white/10 bg-white dark:bg-[#282a2d] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#1a73e8]"
+                    className="flex-1 px-3 py-2 rounded-xl text-xs border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all"
                   />
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center justify-end gap-2.5 pt-4 border-t border-neutral-200/80 dark:border-white/10">
+              <div className="flex items-center justify-end gap-2.5 pt-4 border-t border-neutral-200/80 dark:border-white/[0.08]">
                 <button
                   type="button"
                   onClick={() => setIsEditing(false)}
-                  className="px-4 py-2 rounded-xl text-xs font-semibold border border-neutral-300 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/5 text-neutral-700 dark:text-neutral-300 transition-colors cursor-pointer"
+                  className="px-4 py-2 rounded-xl text-xs font-semibold border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#121319] hover:bg-neutral-100 dark:hover:bg-white/[0.06] text-neutral-700 dark:text-neutral-300 transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSaving || !editName.trim()}
-                  className="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] disabled:opacity-50 text-white transition-all cursor-pointer shadow-xs"
+                  className="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white transition-all cursor-pointer shadow-sm shadow-indigo-500/20"
                 >
                   {isSaving ? <Loader2 size={13} className="animate-spin" /> : <Check size={13} />}
                   <span>{isSaving ? "Saving..." : "Save Changes"}</span>

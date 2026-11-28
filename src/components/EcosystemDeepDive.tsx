@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { 
   ArrowLeft, 
   ExternalLink, 
@@ -67,28 +67,25 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
     return allFamilies.filter((f) => f.id === selectedFamilyFilter);
   }, [allFamilies, selectedFamilyFilter]);
 
-  // Open / expanded by default so all assets are immediately visible and browsable
-  const [expandedFamilies, setExpandedFamilies] = useState<Set<string>>(() => {
-    return new Set(allFamilies.map((f) => f.id));
-  });
-
-  // Whenever families change (e.g. filter switched), ensure they remain open for browsing
-  useEffect(() => {
-    setExpandedFamilies(new Set(allFamilies.map((f) => f.id)));
-  }, [allFamilies]);
+  // Open / expanded by default: track only explicitly collapsed family IDs
+  const [collapsedFamilies, setCollapsedFamilies] = useState<Set<string>>(() => new Set());
+  const expandedFamilies = useMemo(
+    () => new Set(allFamilies.map((f) => f.id).filter((id) => !collapsedFamilies.has(id))),
+    [allFamilies, collapsedFamilies]
+  );
 
   const allExpanded = families.length > 0 && families.every((f) => expandedFamilies.has(f.id));
 
   const toggleAllFamilies = () => {
     if (allExpanded) {
-      setExpandedFamilies(new Set());
+      setCollapsedFamilies(new Set(allFamilies.map((f) => f.id)));
     } else {
-      setExpandedFamilies(new Set(families.map((f) => f.id)));
+      setCollapsedFamilies(new Set());
     }
   };
 
   const toggleFamily = (familyId: string) => {
-    setExpandedFamilies((prev) => {
+    setCollapsedFamilies((prev) => {
       const next = new Set(prev);
       if (next.has(familyId)) {
         next.delete(familyId);
@@ -115,7 +112,7 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
         <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
           <button
             onClick={onBack}
-            className="hover:text-blue-500 hover:underline cursor-pointer flex items-center gap-1 transition-colors"
+            className="hover:text-indigo-600 dark:hover:text-indigo-400 hover:underline cursor-pointer flex items-center gap-1 transition-colors"
           >
             <ArrowLeft size={14} />
             <span>AI Labs & Ecosystems</span>
@@ -128,7 +125,7 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
 
         <button
           onClick={onBack}
-          className="self-start sm:self-auto flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer shadow-2xs"
+          className="self-start sm:self-auto flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer shadow-2xs"
         >
           <ArrowLeft size={13} />
           <span>Back to All Labs</span>
@@ -138,8 +135,8 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
       {/* Lab Banner Header */}
       <div className={`p-5 sm:p-6 rounded-2xl border transition-all ${
         isAmoled 
-          ? "bg-[#18191b] border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.5)]" 
-          : "bg-white/80 border-neutral-200/90 shadow-xs backdrop-blur-xl"
+          ? "bg-[#0c0d11] border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.5)]" 
+          : "bg-white border-neutral-200/80 shadow-xs"
       }`}>
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 sm:gap-6">
           <div className="flex items-start gap-4">
@@ -162,7 +159,7 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
                     href={ecosystem.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                    className="inline-flex items-center gap-1 text-xs text-indigo-600 dark:text-indigo-400 hover:underline font-medium"
                   >
                     <span>Official Portal</span>
                     <ExternalLink size={11} className="opacity-70" />
@@ -210,16 +207,16 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
                   setSelectedType(opt.id);
                   setSelectedFamilyFilter("All");
                 }}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap border ${
                   isSelected
-                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold shadow-xs"
-                    : "border border-neutral-200 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
+                    ? "bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-300 dark:border-indigo-500/30 font-semibold shadow-xs"
+                    : "border-neutral-200 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
                 }`}
               >
-                <Icon size={12} className={isSelected ? "text-blue-400 dark:text-blue-600" : "opacity-60"} />
+                <Icon size={12} className={isSelected ? "text-white dark:text-indigo-400" : "opacity-60"} />
                 <span>{opt.label}</span>
-                <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
-                  isSelected ? "bg-white/20 dark:bg-black/20" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500"
+                <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.5 rounded-full ${
+                  isSelected ? "bg-white/20 dark:bg-indigo-500/20 text-white dark:text-indigo-200" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500"
                 }`}>
                   {opt.count}
                 </span>
@@ -231,12 +228,12 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
         {/* Right: View Mode Toggle (Grid vs List) + Family Count & Collapse/Expand */}
         <div className="flex items-center justify-between lg:justify-end gap-3 shrink-0">
           {/* View Mode Toggle: Grid Cards vs Compact List */}
-          <div className="flex items-center p-0.5 rounded-xl bg-neutral-100 dark:bg-white/[0.05] border border-neutral-200/80 dark:border-white/[0.08]">
+          <div className="flex items-center p-0.5 rounded-xl bg-neutral-100 dark:bg-[#121319] border border-neutral-200/80 dark:border-white/[0.08]">
             <button
               onClick={() => setViewMode("grid")}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 viewMode === "grid"
-                  ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-2xs"
+                  ? "bg-white dark:bg-[#0c0d11] text-indigo-600 dark:text-indigo-400 shadow-2xs"
                   : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
               }`}
               title="Show rich resource cards grid"
@@ -248,7 +245,7 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
               onClick={() => setViewMode("list")}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 viewMode === "list"
-                  ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-2xs"
+                  ? "bg-white dark:bg-[#0c0d11] text-indigo-600 dark:text-indigo-400 shadow-2xs"
                   : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
               }`}
               title="Show structured directory list"
@@ -265,7 +262,7 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
           <button
             type="button"
             onClick={toggleAllFamilies}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer shadow-2xs"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer shadow-2xs"
             title={allExpanded ? "Collapse all model families" : "Expand all model families"}
           >
             <ChevronsUpDown size={12} className="opacity-70" />
@@ -284,7 +281,7 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
             onClick={() => setSelectedFamilyFilter("All")}
             className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
               selectedFamilyFilter === "All"
-                ? "bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-300 font-semibold border border-blue-200 dark:border-blue-500/30"
+                ? "bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200 dark:border-indigo-500/30"
                 : "border border-neutral-200/70 dark:border-white/[0.06] text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-white/[0.02]"
             }`}
           >
@@ -296,7 +293,7 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
               onClick={() => setSelectedFamilyFilter(fam.id)}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
                 selectedFamilyFilter === fam.id
-                  ? "bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-300 font-semibold border border-blue-200 dark:border-blue-500/30"
+                  ? "bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200 dark:border-indigo-500/30"
                   : "border border-neutral-200/70 dark:border-white/[0.06] text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-white/[0.02]"
               }`}
             >
@@ -329,8 +326,8 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
                 key={family.id}
                 className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                   isAmoled
-                    ? "bg-[#18191b] border-white/10 shadow-sm"
-                    : "bg-white/80 border-neutral-200/90 shadow-2xs"
+                    ? "bg-[#0c0d11] border-white/[0.08] shadow-sm"
+                    : "bg-white border-neutral-200/80 shadow-2xs"
                 }`}
               >
                 {/* Family Header Banner */}
@@ -340,8 +337,8 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
                     isExpanded ? "border-neutral-100 dark:border-white/[0.06]" : "border-transparent"
                   } ${
                     isAmoled
-                      ? "hover:bg-white/[0.03] bg-[#1a1b1d]"
-                      : "hover:bg-neutral-50/80 bg-neutral-50/50"
+                      ? "hover:bg-white/[0.03] bg-[#121319]/60"
+                      : "hover:bg-neutral-100/70 bg-neutral-50/70"
                   }`}
                 >
                   {/* Left: Creator Accent Indicator + Lab Logo + Family Name + Badges + Subtitle */}
@@ -379,7 +376,7 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
                     )}
 
                     {family.highlightMetric && (
-                      <span className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 hidden md:inline truncate max-w-[160px]">
+                      <span className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 hidden md:inline truncate max-w-[160px]">
                         {family.highlightMetric}
                       </span>
                     )}
@@ -429,17 +426,17 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
                               onClick={() => onSelectEntry(entry.name)}
                               className={`group relative flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 sm:px-4 sm:py-3 rounded-xl border transition-all duration-200 cursor-pointer ${
                                 isAmoled
-                                  ? "bg-[#1e1f20] border-white/10 hover:border-white/20 hover:bg-[#252729] hover:shadow-md"
-                                  : "bg-white border-neutral-200/90 hover:border-neutral-300 hover:bg-neutral-50/80 hover:shadow-2xs"
+                                  ? "bg-[#121319] border-white/[0.08] hover:border-indigo-500/35 hover:bg-[#161822] hover:shadow-md"
+                                  : "bg-white border-neutral-200/80 hover:border-indigo-300 hover:bg-neutral-50/80 hover:shadow-2xs"
                               }`}
                             >
                               {/* Left: Glyph + Title + Badges + Snippet */}
                               <div className="flex items-start sm:items-center gap-3.5 min-w-0 flex-1">
                                 <div
-                                  className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold shrink-0 border ${
+                                  className={`w-8 h-8 rounded-xl flex items-center justify-center text-xs font-semibold shrink-0 border ${
                                     isAmoled
-                                      ? "bg-white/[0.08] border-white/10 text-neutral-200"
-                                      : "bg-[#f1f3f4] border-neutral-200 text-neutral-700"
+                                      ? "bg-white/[0.05] border-white/[0.08] text-indigo-300"
+                                      : "bg-indigo-50 border-indigo-200/80 text-indigo-600"
                                   }`}
                                 >
                                   {TYPE_GLYPH[entry.type] ?? "◆"}
@@ -447,7 +444,7 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
 
                                 <div className="flex flex-col min-w-0 flex-1">
                                   <div className="flex items-center gap-2 flex-wrap mb-1">
-                                    <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:underline transition-colors truncate">
+                                    <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:underline transition-colors truncate">
                                       {entry.name}
                                     </span>
 
@@ -506,10 +503,10 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
                                       e.stopPropagation();
                                       onToggleBookmark(entry.name);
                                     }}
-                                    className={`p-1.5 rounded-lg border transition-colors cursor-pointer ${
+                                    className={`p-1.5 rounded-xl border transition-colors cursor-pointer ${
                                       isBookmarked
-                                        ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/10 border-blue-200 dark:border-blue-500/20"
-                                        : "text-neutral-400 hover:text-neutral-700 dark:hover:text-white border-transparent hover:bg-neutral-100 dark:hover:bg-white/10"
+                                        ? "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/15 border-indigo-200 dark:border-indigo-500/25"
+                                        : "text-neutral-400 hover:text-neutral-700 dark:hover:text-white border-transparent hover:bg-neutral-100 dark:hover:bg-white/[0.08]"
                                     }`}
                                     aria-label={isBookmarked ? "Remove bookmark" : "Bookmark"}
                                     title={isBookmarked ? "Remove bookmark" : "Bookmark this asset"}
@@ -517,7 +514,7 @@ export const EcosystemDeepDive: React.FC<EcosystemDeepDiveProps> = ({
                                     <Bookmark size={13} className={isBookmarked ? "fill-current" : ""} />
                                   </button>
 
-                                  <div className="flex items-center gap-1 text-xs font-semibold text-blue-600 dark:text-blue-400 group-hover:translate-x-0.5 transition-transform">
+                                  <div className="flex items-center gap-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400 group-hover:translate-x-0.5 transition-transform">
                                     <span>Inspect</span>
                                     <ChevronRight size={13} />
                                   </div>

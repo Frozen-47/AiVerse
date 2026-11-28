@@ -89,12 +89,12 @@ export const Sidebar = memo(function Sidebar({
 
   return (
     <aside className="w-full flex flex-col gap-4">
-      {/* Google Cloud Resource Filter Panel */}
-      <div className="rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl p-4 space-y-5 shadow-xs">
+      {/* Control Plane Resource Filter Panel */}
+      <div className="rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/90 dark:bg-[#0c0d11]/90 backdrop-blur-xl p-4 space-y-5 shadow-xs">
         {/* Panel Header */}
         <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-white/[0.06]">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-blue-500" />
+            <span className="w-2 h-2 rounded-full bg-indigo-500" />
             <span className="text-xs font-bold tracking-tight text-neutral-900 dark:text-white uppercase">
               Filter Resources
             </span>
@@ -102,7 +102,7 @@ export const Sidebar = memo(function Sidebar({
           {hasActiveFilters && (
             <button
               onClick={handleReset}
-              className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 cursor-pointer transition-all"
+              className="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1 cursor-pointer transition-all"
             >
               <RotateCcw size={10} />
               Reset
@@ -118,18 +118,18 @@ export const Sidebar = memo(function Sidebar({
             </p>
             <button
               onClick={() => onSelectDisplayMode("assets")}
-              className={`w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+              className={`w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer border ${
                 catalogDisplayMode === "assets"
-                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold shadow-xs"
-                  : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
+                  ? "bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-300 dark:border-indigo-500/30 font-semibold shadow-xs"
+                  : "border-transparent text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
               }`}
             >
               <div className="flex items-center gap-2">
-                <Box size={13} className={catalogDisplayMode === "assets" ? "text-white dark:text-neutral-950" : "opacity-70"} />
+                <Box size={13} className={catalogDisplayMode === "assets" ? "text-white dark:text-indigo-400" : "opacity-70"} />
                 <span>All Assets & Models</span>
               </div>
-              <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
-                catalogDisplayMode === "assets" ? "bg-white/20 dark:bg-black/20" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400"
+              <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.5 rounded-full ${
+                catalogDisplayMode === "assets" ? "bg-white/20 dark:bg-indigo-500/20 text-white dark:text-indigo-200" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400"
               }`}>
                 {entries.length}
               </span>
@@ -137,18 +137,18 @@ export const Sidebar = memo(function Sidebar({
 
             <button
               onClick={() => onSelectDisplayMode("ecosystems")}
-              className={`w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+              className={`w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer border ${
                 catalogDisplayMode === "ecosystems"
-                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold shadow-xs"
-                  : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
+                  ? "bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-300 dark:border-indigo-500/30 font-semibold shadow-xs"
+                  : "border-transparent text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
               }`}
             >
               <div className="flex items-center gap-2">
-                <Building2 size={13} className={catalogDisplayMode === "ecosystems" ? "text-blue-400 dark:text-blue-600" : "text-blue-500"} />
+                <Building2 size={13} className={catalogDisplayMode === "ecosystems" ? "text-white dark:text-indigo-400" : "text-indigo-500"} />
                 <span>AI Labs & Ecosystems</span>
               </div>
-              <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
-                catalogDisplayMode === "ecosystems" ? "bg-white/20 dark:bg-black/20" : "bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20"
+              <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.5 rounded-full ${
+                catalogDisplayMode === "ecosystems" ? "bg-white/20 dark:bg-indigo-500/20 text-white dark:text-indigo-200" : "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20"
               }`}>
                 {ecosystemsCount ?? 217}
               </span>
@@ -165,18 +165,18 @@ export const Sidebar = memo(function Sidebar({
             {onSavedToggle && (
               <button
                 onClick={onSavedToggle}
-                className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer border ${
                   savedOnly
-                    ? "bg-neutral-900 text-white dark:bg-white dark:text-black font-semibold shadow-xs"
-                    : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
+                    ? "bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-300 dark:border-indigo-500/30 font-semibold shadow-xs"
+                    : "border-transparent text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
                 }`}
               >
                 <div className="flex items-center gap-2">
                   <Bookmark size={13} className={savedOnly ? "fill-current" : "opacity-70"} />
                   <span>Bookmarks</span>
                 </div>
-                <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
-                  savedOnly ? "bg-white/20 dark:bg-black/20" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400"
+                <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.5 rounded-full ${
+                  savedOnly ? "bg-white/20 dark:bg-indigo-500/20 text-white dark:text-indigo-200" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400"
                 }`}>
                   {savedCount}
                 </span>
@@ -185,18 +185,18 @@ export const Sidebar = memo(function Sidebar({
 
             <button
               onClick={onPopularToggle}
-              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer border ${
                 popularOnly
-                  ? "bg-neutral-900 text-white dark:bg-white dark:text-black font-semibold shadow-xs"
-                  : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
+                  ? "bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-300 dark:border-indigo-500/30 font-semibold shadow-xs"
+                  : "border-transparent text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
               }`}
             >
               <div className="flex items-center gap-2">
-                <Star size={13} className={popularOnly ? "fill-current text-amber-400" : "opacity-70"} />
+                <Star size={13} className={popularOnly ? "fill-current text-amber-300 dark:text-amber-400" : "opacity-70"} />
                 <span>Featured</span>
               </div>
-              <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
-                popularOnly ? "bg-white/20 dark:bg-black/20" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400"
+              <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.5 rounded-full ${
+                popularOnly ? "bg-white/20 dark:bg-indigo-500/20 text-white dark:text-indigo-200" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400"
               }`}>
                 {popularCount}
               </span>
@@ -216,20 +216,20 @@ export const Sidebar = memo(function Sidebar({
                 <button
                   key={f}
                   onClick={() => onTypeFilter(f as TypeFilter)}
-                  className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                  className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer border ${
                     isSelected
-                      ? "bg-neutral-900 text-white dark:bg-white dark:text-black font-semibold shadow-xs"
-                      : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
+                      ? "bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-300 dark:border-indigo-500/30 font-semibold shadow-xs"
+                      : "border-transparent text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
                   }`}
                 >
                   <div className="flex items-center gap-2">
-                    <span className={isSelected ? "text-white dark:text-black" : "opacity-70"}>
+                    <span className={isSelected ? "text-white dark:text-indigo-400" : "opacity-70"}>
                       {TYPE_ICONS[f] ?? <Box size={13} />}
                     </span>
                     <span>{f === "All" ? "All Categories" : f}</span>
                   </div>
-                  <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
-                    isSelected ? "bg-white/20 dark:bg-black/20" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400"
+                  <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.5 rounded-full ${
+                    isSelected ? "bg-white/20 dark:bg-indigo-500/20 text-white dark:text-indigo-200" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400"
                   }`}>
                     {typeCounts[f]}
                   </span>
@@ -251,20 +251,20 @@ export const Sidebar = memo(function Sidebar({
                 <button
                   key={f}
                   onClick={() => onTaskFilter(f as TaskFilter)}
-                  className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                  className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer border ${
                     isSelected
-                      ? "bg-neutral-900 text-white dark:bg-white dark:text-black font-semibold shadow-xs"
-                      : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
+                      ? "bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-300 dark:border-indigo-500/30 font-semibold shadow-xs"
+                      : "border-transparent text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
                   }`}
                 >
                   <div className="flex items-center gap-2 truncate">
                     <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${
-                      isSelected ? "bg-blue-400" : "bg-neutral-400 dark:bg-neutral-600"
+                      isSelected ? "bg-white dark:bg-indigo-400" : "bg-neutral-400 dark:bg-neutral-600"
                     }`} />
                     <span className="truncate">{f}</span>
                   </div>
-                  <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full shrink-0 ${
-                    isSelected ? "bg-white/20 dark:bg-black/20" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400"
+                  <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.5 rounded-full shrink-0 ${
+                    isSelected ? "bg-white/20 dark:bg-indigo-500/20 text-white dark:text-indigo-200" : "bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400"
                   }`}>
                     {taskCounts[f]}
                   </span>

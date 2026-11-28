@@ -18,16 +18,16 @@ export const MetricsBar: React.FC<MetricsBarProps> = ({ entries, typeCounts }) =
       label: "Registered Entities",
       desc: "Tracked ecosystem assets",
       icon: Database,
-      accent: "text-[#1a73e8] dark:text-[#a8c7fa]",
-      bg: "bg-[#1a73e8]/10",
+      accent: "text-indigo-600 dark:text-indigo-400",
+      bg: "bg-indigo-500/10",
     },
     {
       val: typeCounts.Model,
       label: "AI Models & Weights",
       desc: "Open & proprietary LLMs",
       icon: Cpu,
-      accent: "text-purple-600 dark:text-purple-400",
-      bg: "bg-purple-500/10",
+      accent: "text-violet-600 dark:text-violet-400",
+      bg: "bg-violet-500/10",
     },
     {
       val: typeCounts.Framework,
@@ -54,21 +54,21 @@ export const MetricsBar: React.FC<MetricsBarProps> = ({ entries, typeCounts }) =
         return (
           <div
             key={i}
-            className="p-4 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] shadow-xs flex items-center justify-between gap-3 transition-all hover:border-[#1a73e8]/40 dark:hover:border-[#a8c7fa]/40"
+            className="p-4 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] shadow-xs flex items-center justify-between gap-3 transition-all hover:border-indigo-300 dark:hover:border-indigo-500/35"
           >
             <div className="flex flex-col text-left min-w-0">
-              <span className="text-xl sm:text-2xl font-bold tracking-tight text-[#202124] dark:text-[#e3e3e3] tabular-nums">
+              <span className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white tabular-nums">
                 {stat.val}
               </span>
-              <span className="text-xs font-semibold text-[#202124] dark:text-[#e3e3e3] truncate mt-0.5">
+              <span className="text-xs font-semibold text-neutral-800 dark:text-neutral-200 truncate mt-0.5">
                 {stat.label}
               </span>
-              <span className="text-[11px] text-[#5f6368] dark:text-[#8e918f] truncate">
+              <span className="text-[11px] text-neutral-500 dark:text-neutral-400 truncate">
                 {stat.desc}
               </span>
             </div>
 
-            <div className={`w-10 h-10 rounded-xl ${stat.bg} ${stat.accent} flex items-center justify-center shrink-0`}>
+            <div className={`w-10 h-10 rounded-xl ${stat.bg} ${stat.accent} border border-white/[0.06] flex items-center justify-center shrink-0`}>
               <Icon size={18} />
             </div>
           </div>

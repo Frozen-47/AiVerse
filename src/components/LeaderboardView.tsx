@@ -348,8 +348,8 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
             onClick={() => setShowMatrix(!showMatrix)}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
               showMatrix
-                ? "bg-blue-600 text-white border-blue-500 shadow-xs"
-                : "border-neutral-200 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/[0.05] text-neutral-700 dark:text-neutral-300"
+                ? "bg-indigo-600 text-white border-indigo-500 shadow-sm shadow-indigo-500/20"
+                : "border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] hover:bg-neutral-100 dark:hover:bg-white/[0.06] text-neutral-700 dark:text-neutral-300"
             }`}
           >
             <BarChart3 size={13} />
@@ -359,7 +359,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
           {onBackToHome && (
             <button
               onClick={onBackToHome}
-              className="px-3 py-1.5 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/[0.05] text-neutral-700 dark:text-neutral-300 transition-all cursor-pointer"
+              className="px-3 py-1.5 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] hover:bg-neutral-100 dark:hover:bg-white/[0.06] text-neutral-700 dark:text-neutral-300 transition-all cursor-pointer"
             >
               Back to Home
             </button>
@@ -393,9 +393,9 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
               <div
                 key={model.id}
                 onClick={() => setSelectedModel(model)}
-                className={`p-4 rounded-xl border transition-all cursor-pointer ${rankColors.border} ${
+                className={`p-4 rounded-2xl border transition-all cursor-pointer ${rankColors.border} ${
                   isAmoled
-                    ? "bg-[#161719] hover:bg-[#1c1d20]"
+                    ? "bg-[#0c0d11] hover:bg-[#121319]"
                     : "bg-white hover:bg-neutral-50 shadow-xs"
                 }`}
               >
@@ -430,12 +430,12 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
       {/* ── Optional: Pareto Value Matrix ── */}
       {showMatrix && (
         <div className={`p-5 rounded-2xl border transition-all animate-fade-in ${
-          isAmoled ? "bg-[#141517] border-white/10" : "bg-neutral-50/70 border-neutral-200"
+          isAmoled ? "bg-[#0c0d11] border-white/[0.08]" : "bg-white border-neutral-200/80 shadow-xs"
         }`}>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
             <div>
               <h3 className="text-sm font-bold text-neutral-900 dark:text-white flex items-center gap-1.5">
-                <Sparkles size={14} className="text-blue-500" />
+                <Sparkles size={14} className="text-indigo-500 dark:text-indigo-400" />
                 Value Frontier Matrix (Intelligence vs. Cost per Task)
               </h3>
               <p className="text-[11px] text-neutral-500 dark:text-neutral-400">
@@ -450,7 +450,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
             </div>
           </div>
 
-          <div className="relative h-60 w-full border border-neutral-200 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-black/40 overflow-hidden">
+          <div className="relative h-60 w-full border border-neutral-200/80 dark:border-white/[0.08] rounded-xl p-3 bg-neutral-50/70 dark:bg-[#050507] overflow-hidden">
             <span className="absolute top-2 left-3 text-[9px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
               ✦ Optimal Value (High Intel, Low Cost)
             </span>
@@ -486,7 +486,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
         </div>
       )}
 
-      {/* ── 2. Artificial Analysis Style Filters & Search Toolbar ── */}
+      {/* ── 2. Filters & Search Toolbar ── */}
       <div className="flex flex-col gap-3">
         {/* Search Input Row */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
@@ -496,12 +496,12 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Filter, e.g. GPT, Meta"
-              className="w-full px-3.5 py-1.5 rounded-lg text-xs border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:border-blue-500 shadow-2xs"
+              className="w-full px-3.5 py-2 rounded-xl text-xs border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 shadow-2xs transition-all"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-2.5 top-2 text-xs text-neutral-400 hover:text-neutral-700 dark:hover:text-white"
+                className="absolute right-2.5 top-2 text-xs text-neutral-400 hover:text-neutral-700 dark:hover:text-white cursor-pointer"
               >
                 ✕
               </button>
@@ -512,7 +512,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
           <div className="flex items-center justify-end gap-2">
             <button
               onClick={() => setExpandColumns(!expandColumns)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 transition-colors shadow-2xs cursor-pointer whitespace-nowrap"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] hover:bg-neutral-50 dark:hover:bg-white/[0.06] text-neutral-800 dark:text-neutral-200 transition-colors shadow-2xs cursor-pointer whitespace-nowrap"
             >
               <span>{expandColumns ? "Collapse columns" : "Expand columns"}</span>
               {expandColumns ? <ArrowLeft size={13} /> : <ArrowRight size={13} />}
@@ -527,7 +527,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
             <select
               value={weightsFilter}
               onChange={(e) => setWeightsFilter(e.target.value)}
-              className="appearance-none pl-3 pr-7 py-1 rounded-lg text-xs font-medium border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 focus:outline-none cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-600 shadow-2xs"
+              className="appearance-none pl-3 pr-7 py-1.5 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-800 dark:text-neutral-200 focus:outline-none focus:border-indigo-500 cursor-pointer hover:border-neutral-300 dark:hover:border-white/20 shadow-2xs"
             >
               <option value="All">Weights: All</option>
               <option value="Open">Weights: Open</option>
@@ -541,7 +541,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
             <select
               value={sizeFilter}
               onChange={(e) => setSizeFilter(e.target.value)}
-              className="appearance-none pl-3 pr-7 py-1 rounded-lg text-xs font-medium border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 focus:outline-none cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-600 shadow-2xs"
+              className="appearance-none pl-3 pr-7 py-1.5 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-800 dark:text-neutral-200 focus:outline-none focus:border-indigo-500 cursor-pointer hover:border-neutral-300 dark:hover:border-white/20 shadow-2xs"
             >
               <option value="All">Size: All</option>
               <option value="Large">Size: Large</option>
@@ -556,7 +556,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
             <select
               value={priceFilter}
               onChange={(e) => setPriceFilter(e.target.value)}
-              className="appearance-none pl-3 pr-7 py-1 rounded-lg text-xs font-medium border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 focus:outline-none cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-600 shadow-2xs"
+              className="appearance-none pl-3 pr-7 py-1.5 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-800 dark:text-neutral-200 focus:outline-none focus:border-indigo-500 cursor-pointer hover:border-neutral-300 dark:hover:border-white/20 shadow-2xs"
             >
               <option value="All">Price: All</option>
               <option value="< $2">Price: &lt; $2</option>
@@ -571,7 +571,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
             <select
               value={reasoningFilter}
               onChange={(e) => setReasoningFilter(e.target.value)}
-              className="appearance-none pl-3 pr-7 py-1 rounded-lg text-xs font-medium border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 focus:outline-none cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-600 shadow-2xs"
+              className="appearance-none pl-3 pr-7 py-1.5 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-800 dark:text-neutral-200 focus:outline-none focus:border-indigo-500 cursor-pointer hover:border-neutral-300 dark:hover:border-white/20 shadow-2xs"
             >
               <option value="All">Reasoning: All</option>
               <option value="Reasoning">Reasoning: Reasoning</option>
@@ -585,7 +585,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="appearance-none pl-3 pr-7 py-1 rounded-lg text-xs font-medium border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 focus:outline-none cursor-pointer hover:border-neutral-400 dark:hover:border-neutral-600 shadow-2xs"
+              className="appearance-none pl-3 pr-7 py-1.5 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-800 dark:text-neutral-200 focus:outline-none focus:border-indigo-500 cursor-pointer hover:border-neutral-300 dark:hover:border-white/20 shadow-2xs"
             >
               <option value="Current">Status: Current</option>
               <option value="Deprecated">Status: Deprecated</option>
@@ -626,15 +626,15 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
       </div>
 
       {/* ── 3. High-Fidelity 2-Tier Leaderboard Table ── */}
-      <div className={`rounded-xl border overflow-hidden ${
-        isAmoled ? "border-white/10 bg-[#141517]" : "border-neutral-200 bg-white shadow-2xs"
+      <div className={`rounded-2xl border overflow-hidden ${
+        isAmoled ? "border-white/[0.08] bg-[#0c0d11]" : "border-neutral-200/80 bg-white shadow-2xs"
       }`}>
         <div className="overflow-x-auto no-scrollbar">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
               {/* ── Header Tier 1: Category Groups ── */}
               <tr className={`border-b text-neutral-700 dark:text-neutral-300 ${
-                isAmoled ? "bg-white/[0.03] border-white/10" : "bg-neutral-50/80 border-neutral-200"
+                isAmoled ? "bg-[#121319] border-white/[0.08]" : "bg-neutral-50/90 border-neutral-200/80"
               }`}>
                 {/* Model Column Header */}
                 <th
@@ -871,7 +871,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-0.5 font-medium text-neutral-800 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                              className="inline-flex items-center gap-0.5 font-medium text-neutral-800 dark:text-neutral-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                             >
                               <span>Model</span>
                               <ExternalLink size={10} className="inline opacity-60" />
@@ -881,7 +881,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-0.5 font-medium text-neutral-800 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                              className="inline-flex items-center gap-0.5 font-medium text-neutral-800 dark:text-neutral-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                             >
                               <span>Providers</span>
                               <ExternalLink size={10} className="inline opacity-60" />
@@ -897,10 +897,10 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
                           onClick={() => setSelectedModel(v)}
                           className={`cursor-pointer transition-colors ${
                             selectedModel?.id === v.id
-                              ? "bg-blue-50/70 dark:bg-blue-900/20"
+                              ? "bg-indigo-50/80 dark:bg-indigo-500/15"
                               : isAmoled
-                              ? "hover:bg-white/[0.02]"
-                              : "hover:bg-neutral-50/60"
+                              ? "hover:bg-white/[0.03]"
+                              : "hover:bg-neutral-50/70"
                           }`}
                         >
                           {/* Indented Variant Suffix */}
@@ -984,9 +984,9 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
                     }}
                     className={`cursor-pointer transition-colors ${
                       selectedModel?.id === top.id
-                        ? "bg-blue-50/70 dark:bg-blue-900/20"
+                        ? "bg-indigo-50/80 dark:bg-indigo-500/15"
                         : isAmoled
-                        ? "hover:bg-white/[0.02]"
+                        ? "hover:bg-white/[0.03]"
                         : "hover:bg-neutral-50/70"
                     }`}
                   >
@@ -1092,7 +1092,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-0.5 font-medium text-neutral-800 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                          className="inline-flex items-center gap-0.5 font-medium text-neutral-800 dark:text-neutral-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                         >
                           <span>Model</span>
                           <ExternalLink size={10} className="inline opacity-60" />
@@ -1102,7 +1102,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-0.5 font-medium text-neutral-800 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                          className="inline-flex items-center gap-0.5 font-medium text-neutral-800 dark:text-neutral-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                         >
                           <span>Providers</span>
                           <ExternalLink size={10} className="inline opacity-60" />
@@ -1120,12 +1120,12 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
       {/* ── 4. Model Deep-Dive Modal ── */}
       {selectedModel && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-md animate-fade-in"
           onClick={() => setSelectedModel(null)}
         >
           <div
-            className={`relative w-full max-w-xl max-h-[90dvh] overflow-y-auto no-scrollbar p-5 sm:p-6 rounded-3xl border shadow-2xl ${
-              isAmoled ? "bg-[#18191b] border-white/15" : "bg-white border-neutral-200"
+            className={`relative w-full max-w-xl max-h-[90dvh] overflow-y-auto no-scrollbar p-5 sm:p-6 rounded-2xl border shadow-2xl ${
+              isAmoled ? "bg-[#0d0e12] border-white/[0.08]" : "bg-white border-neutral-200/90"
             }`}
             onClick={(e) => e.stopPropagation()}
           >
@@ -1148,7 +1148,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
               </div>
               <button
                 onClick={() => setSelectedModel(null)}
-                className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-400 hover:text-neutral-900 dark:hover:text-white cursor-pointer"
+                className="p-2 rounded-xl hover:bg-neutral-100 dark:hover:bg-white/[0.08] text-neutral-400 hover:text-neutral-900 dark:hover:text-white cursor-pointer"
               >
                 ✕
               </button>
@@ -1161,7 +1161,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
               </div>
               <div>
                 <span className="text-[10px] font-bold text-neutral-400 uppercase">Briefcase Elo</span>
-                <p className="text-xl font-black text-blue-600 dark:text-blue-400 mt-0.5">{selectedModel.briefcaseElo ?? "--"}</p>
+                <p className="text-xl font-black text-indigo-600 dark:text-indigo-400 mt-0.5">{selectedModel.briefcaseElo ?? "--"}</p>
               </div>
               <div>
                 <span className="text-[10px] font-bold text-neutral-400 uppercase">Cost / Task</span>
@@ -1178,29 +1178,29 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
             <div className="flex flex-col gap-2.5 my-4">
               <span className="text-xs font-bold uppercase tracking-wider text-neutral-400">Verified Benchmarks</span>
               <div className="grid grid-cols-2 gap-2 text-xs">
-                <div className="p-2.5 rounded-xl border border-neutral-200/80 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] flex justify-between">
+                <div className="p-2.5 rounded-xl border border-neutral-200/80 dark:border-white/[0.07] bg-neutral-50/80 dark:bg-[#121319] flex justify-between">
                   <span className="text-neutral-500">Accuracy</span>
                   <span className="font-semibold text-neutral-900 dark:text-white">{selectedModel.accuracy ? `${selectedModel.accuracy}%` : "--"}</span>
                 </div>
-                <div className="p-2.5 rounded-xl border border-neutral-200/80 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] flex justify-between">
+                <div className="p-2.5 rounded-xl border border-neutral-200/80 dark:border-white/[0.07] bg-neutral-50/80 dark:bg-[#121319] flex justify-between">
                   <span className="text-neutral-500">Non-Hallucination</span>
                   <span className="font-semibold text-neutral-900 dark:text-white">{selectedModel.nonHallucination ? `${selectedModel.nonHallucination}%` : "--"}</span>
                 </div>
-                <div className="p-2.5 rounded-xl border border-neutral-200/80 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] flex justify-between">
+                <div className="p-2.5 rounded-xl border border-neutral-200/80 dark:border-white/[0.07] bg-neutral-50/80 dark:bg-[#121319] flex justify-between">
                   <span className="text-neutral-500">FrontierCode 2.0</span>
                   <span className="font-semibold text-neutral-900 dark:text-white">{selectedModel.frontierCode ? `${selectedModel.frontierCode}%` : "--"}</span>
                 </div>
-                <div className="p-2.5 rounded-xl border border-neutral-200/80 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] flex justify-between">
+                <div className="p-2.5 rounded-xl border border-neutral-200/80 dark:border-white/[0.07] bg-neutral-50/80 dark:bg-[#121319] flex justify-between">
                   <span className="text-neutral-500">Terminal-Bench 4.0</span>
                   <span className="font-semibold text-neutral-900 dark:text-white">{selectedModel.terminalBench4 ? `${selectedModel.terminalBench4}%` : "--"}</span>
                 </div>
-                <div className="p-2.5 rounded-xl border border-neutral-200/80 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] flex justify-between">
+                <div className="p-2.5 rounded-xl border border-neutral-200/80 dark:border-white/[0.07] bg-neutral-50/80 dark:bg-[#121319] flex justify-between">
                   <span className="text-neutral-500">First Answer Token</span>
                   <span className="font-semibold text-neutral-900 dark:text-white">
                     {selectedModel.timeToFirstAnswerToken != null ? `${formatLatency(selectedModel.timeToFirstAnswerToken)}s` : "--"}
                   </span>
                 </div>
-                <div className="p-2.5 rounded-xl border border-neutral-200/80 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] flex justify-between">
+                <div className="p-2.5 rounded-xl border border-neutral-200/80 dark:border-white/[0.07] bg-neutral-50/80 dark:bg-[#121319] flex justify-between">
                   <span className="text-neutral-500">Context Window</span>
                   <span className="font-semibold text-neutral-900 dark:text-white">{selectedModel.contextWindow}</span>
                 </div>
@@ -1215,7 +1215,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
                     onSelectEntryByName(selectedModel.name);
                     setSelectedModel(null);
                   }}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/5 text-neutral-800 dark:text-neutral-200 transition-colors cursor-pointer"
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] hover:bg-neutral-100 dark:hover:bg-white/[0.06] text-neutral-800 dark:text-neutral-200 transition-colors cursor-pointer"
                 >
                   <Layers size={13} />
                   <span>Explore in Compendium</span>
@@ -1225,7 +1225,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onBackToHome, 
                 href={selectedModel.modelUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs hover:opacity-90 transition-opacity"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 transition-all"
               >
                 <span>View on Artificial Analysis</span>
                 <ExternalLink size={12} />

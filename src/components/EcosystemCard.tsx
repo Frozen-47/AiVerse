@@ -16,7 +16,7 @@ export const EcosystemCard: React.FC<EcosystemCardProps> = ({
   onSelectEntry,
 }) => {
   return (
-    <div className="group relative flex flex-col justify-between p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl hover:border-neutral-300 dark:hover:border-white/20 transition-all duration-200 shadow-xs hover:shadow-md text-left">
+    <div className="group relative flex flex-col justify-between p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] hover:border-indigo-300 dark:hover:border-indigo-500/35 hover:-translate-y-0.5 transition-all duration-200 shadow-xs hover:shadow-[0_12px_28px_rgba(15,23,42,0.06)] dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.65)] text-left">
       <div>
         {/* Top bar: Real Logo + Name + Count Badge */}
         <div className="flex items-start justify-between gap-3 mb-3">
@@ -63,7 +63,7 @@ export const EcosystemCard: React.FC<EcosystemCardProps> = ({
         {/* Flagship Models preview chips */}
         <div className="mb-4">
           <p className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-2 flex items-center gap-1">
-            <Sparkles size={10} className="text-blue-500" />
+            <Sparkles size={10} className="text-indigo-500 dark:text-indigo-400" />
             Flagship Technologies
           </p>
           <div className="flex flex-wrap gap-1.5">
@@ -74,7 +74,7 @@ export const EcosystemCard: React.FC<EcosystemCardProps> = ({
                   e.stopPropagation();
                   onSelectEntry(entry);
                 }}
-                className="px-2.5 py-1 rounded-lg text-[11px] font-semibold border border-neutral-200 dark:border-white/[0.08] bg-neutral-50 dark:bg-white/[0.04] text-neutral-700 dark:text-neutral-300 hover:border-blue-500/40 hover:text-blue-600 dark:hover:text-blue-400 transition-all cursor-pointer flex items-center gap-1"
+                className="px-2.5 py-1 rounded-lg text-[11px] font-semibold border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50 dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 hover:border-indigo-500/40 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all cursor-pointer flex items-center gap-1"
                 title={`View specs for ${entry.name}`}
               >
                 <span>{entry.name}</span>
@@ -117,7 +117,7 @@ export const EcosystemCard: React.FC<EcosystemCardProps> = ({
 
         <button
           onClick={() => onExplore(ecosystem)}
-          className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 cursor-pointer transition-all shrink-0"
+          className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1 cursor-pointer transition-all shrink-0"
         >
           <span>Explore Ecosystem</span>
           <ArrowRight size={12} />

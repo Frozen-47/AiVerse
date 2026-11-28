@@ -97,7 +97,7 @@ function CompareSelect({
         aria-expanded={open}
         aria-haspopup="listbox"
       >
-        <span className={selected ? "text-[#202124] dark:text-[#e3e3e3]" : "text-[#70757a] dark:text-[#8e918f]"}>
+        <span className={selected ? "text-neutral-900 dark:text-white" : "text-neutral-500 dark:text-neutral-400"}>
           {selected?.name ?? placeholder}
         </span>
         <ChevronDown
@@ -108,7 +108,7 @@ function CompareSelect({
       {open && (
         <ul
           role="listbox"
-          className="absolute z-30 left-0 right-0 mt-1 max-h-52 overflow-y-auto overscroll-contain rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] shadow-xl"
+          className="absolute z-30 left-0 right-0 mt-1 max-h-52 overflow-y-auto overscroll-contain rounded-xl border border-neutral-200/90 dark:border-white/[0.1] bg-white dark:bg-[#0d0e12] shadow-2xl"
         >
           <li>
             <button
@@ -121,8 +121,8 @@ function CompareSelect({
               }}
               className={`w-full px-3.5 py-2 text-left text-xs transition-colors cursor-pointer ${
                 !value
-                  ? "bg-[#f1f3f4] dark:bg-[#282a2c] text-[#1a73e8] dark:text-[#a8c7fa] font-semibold"
-                  : "text-[#70757a] dark:text-[#8e918f] hover:bg-[#f8f9fa] dark:hover:bg-[#282a2c]/60"
+                  ? "bg-indigo-50 dark:bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 font-semibold"
+                  : "text-neutral-500 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
               }`}
             >
               {placeholder}
@@ -140,8 +140,8 @@ function CompareSelect({
                 }}
                 className={`w-full px-3.5 py-2 text-left text-xs transition-colors cursor-pointer ${
                   c.name === value
-                    ? "bg-[#f1f3f4] dark:bg-[#282a2c] text-[#1a73e8] dark:text-[#a8c7fa] font-semibold"
-                    : "text-[#3c4043] dark:text-[#c4c7c5] hover:bg-[#f8f9fa] dark:hover:bg-[#282a2c]/60"
+                    ? "bg-indigo-50 dark:bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 font-semibold"
+                    : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
                 }`}
               >
                 {c.name}
@@ -162,24 +162,24 @@ function CompareTable({
   right: Entry;
 }) {
   return (
-    <div className="rounded-xl border border-[#dadce0] dark:border-[#3c4043]/60 overflow-x-auto bg-white dark:bg-[#1e1f20]">
-      <div className="grid grid-cols-[100px_minmax(130px,1fr)_minmax(130px,1fr)] sm:grid-cols-[130px_minmax(0,1fr)_minmax(0,1fr)] min-w-[360px] sm:min-w-0 gap-px text-[10px] sm:text-[11px] uppercase tracking-wider font-semibold bg-[#f1f3f4] dark:bg-[#282a2c]">
-        <div className="px-3.5 py-2.5 text-[#5f6368] dark:text-[#8e918f]">Metric</div>
-        <div className="px-3.5 py-2.5 truncate font-bold text-[#202124] dark:text-[#e3e3e3]">{left.name}</div>
-        <div className="px-3.5 py-2.5 truncate font-bold text-[#1a73e8] dark:text-[#a8c7fa]">{right.name}</div>
+    <div className="rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] overflow-x-auto bg-white dark:bg-[#0c0d11]">
+      <div className="grid grid-cols-[100px_minmax(130px,1fr)_minmax(130px,1fr)] sm:grid-cols-[130px_minmax(0,1fr)_minmax(0,1fr)] min-w-[360px] sm:min-w-0 gap-px text-[10px] sm:text-[11px] uppercase tracking-wider font-semibold bg-neutral-100 dark:bg-[#121319]">
+        <div className="px-3.5 py-2.5 text-neutral-500 dark:text-neutral-400">Metric</div>
+        <div className="px-3.5 py-2.5 truncate font-bold text-neutral-900 dark:text-white">{left.name}</div>
+        <div className="px-3.5 py-2.5 truncate font-bold text-indigo-600 dark:text-indigo-400">{right.name}</div>
       </div>
       {COMPARE_ROWS.map(({ label, get }) => (
         <div
           key={label}
-          className="grid grid-cols-[100px_minmax(130px,1fr)_minmax(130px,1fr)] sm:grid-cols-[130px_minmax(0,1fr)_minmax(0,1fr)] min-w-[360px] sm:min-w-0 gap-px border-t border-[#dadce0] dark:border-[#3c4043]/40 bg-white dark:bg-[#1e1f20]"
+          className="grid grid-cols-[100px_minmax(130px,1fr)_minmax(130px,1fr)] sm:grid-cols-[130px_minmax(0,1fr)_minmax(0,1fr)] min-w-[360px] sm:min-w-0 gap-px border-t border-neutral-200/70 dark:border-white/[0.06] bg-white dark:bg-[#0c0d11]"
         >
-          <div className="px-3.5 py-2.5 text-[10px] sm:text-[11px] uppercase tracking-wider font-semibold text-[#5f6368] dark:text-[#8e918f]">
+          <div className="px-3.5 py-2.5 text-[10px] sm:text-[11px] uppercase tracking-wider font-semibold text-neutral-500 dark:text-neutral-400">
             {label}
           </div>
-          <div className={`px-3.5 py-2.5 text-xs leading-relaxed ${label === "Benchmarks" ? "line-clamp-3" : ""} text-[#3c4043] dark:text-[#c4c7c5]`}>
+          <div className={`px-3.5 py-2.5 text-xs leading-relaxed ${label === "Benchmarks" ? "line-clamp-3" : ""} text-neutral-700 dark:text-neutral-300`}>
             {get(left)}
           </div>
-          <div className={`px-3.5 py-2.5 text-xs leading-relaxed ${label === "Benchmarks" ? "line-clamp-3" : ""} text-[#3c4043] dark:text-[#c4c7c5]`}>
+          <div className={`px-3.5 py-2.5 text-xs leading-relaxed ${label === "Benchmarks" ? "line-clamp-3" : ""} text-neutral-700 dark:text-neutral-300`}>
             {get(right)}
           </div>
         </div>
@@ -293,7 +293,7 @@ print(f"Loaded {model_id} model.")`;
     }
   }
 
-  let jsSnippet = "";
+  let jsSnippet: string;
   if (isOpenAI) {
     jsSnippet = `// Node.js Quickstart with OpenAI SDK
 import OpenAI from "openai";
@@ -365,7 +365,7 @@ const result = await hf.textGeneration({
 console.log(result.generated_text);`;
   }
 
-  let curlSnippet = "";
+  let curlSnippet: string;
   if (isOpenAI) {
     curlSnippet = `# cURL / REST API for OpenAI
 curl https://api.openai.com/v1/chat/completions \\
@@ -453,6 +453,13 @@ export const DetailModal: React.FC<DetailModalProps> = ({
   const [copied, setCopied] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
   const [compareName, setCompareName] = useState("");
+  const [trackedEntryName, setTrackedEntryName] = useState(entry.name);
+
+  if (trackedEntryName !== entry.name) {
+    setTrackedEntryName(entry.name);
+    setCompareName("");
+    setActiveTab("overview");
+  }
 
   const isNew = entry.created_at
     ? (new Date().getTime() - new Date(entry.created_at).getTime()) / (1000 * 60 * 60 * 24) <= 2
@@ -465,7 +472,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
   const codeSnippets = useMemo(() => generateCodeSnippets(entry), [entry]);
   const selectCls =
-    "w-full px-3.5 py-2.5 rounded-xl text-xs border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] focus:outline-none focus:ring-1 focus:ring-[#1a73e8] transition-all";
+    "w-full px-3.5 py-2.5 rounded-xl text-xs border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-900 dark:text-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all";
 
   // Keyboard shortcut: Escape to close
   useEffect(() => {
@@ -479,8 +486,6 @@ export const DetailModal: React.FC<DetailModalProps> = ({
   }, [onClose]);
 
   useEffect(() => {
-    setCompareName("");
-    setActiveTab("overview");
     window.scrollTo(0, 0);
   }, [entry.name]);
 
@@ -499,15 +504,15 @@ export const DetailModal: React.FC<DetailModalProps> = ({
   return (
     <div
       aria-label={`${entry.name} - Technical Specs & Architecture Details`}
-      className="w-full flex-1 flex flex-col bg-[#f8f9fa] dark:bg-[#131314] text-[#202124] dark:text-[#e3e3e3] transition-colors animate-[fadeIn_0.2s_ease-out]"
+      className="w-full flex-1 flex flex-col bg-neutral-50 dark:bg-[#050507] text-neutral-900 dark:text-neutral-100 transition-colors animate-[fadeIn_0.2s_ease-out]"
     >
-      {/* 1. Model Garden Breadcrumbs & Actions Sub-Header */}
-      <header className="sticky top-16 z-30 px-4 sm:px-6 xl:px-12 h-14 border-b border-[#dadce0] dark:border-[#3c4043]/50 bg-white/95 dark:bg-[#131314]/95 backdrop-blur-md flex items-center justify-between gap-2 sm:gap-4 transition-colors shadow-2xs">
+      {/* 1. Control Plane Breadcrumbs & Actions Sub-Header */}
+      <header className="sticky top-14 sm:top-15 z-30 px-4 sm:px-6 xl:px-12 h-14 border-b border-neutral-200/80 dark:border-white/[0.08] bg-white/90 dark:bg-[#090a0e]/90 backdrop-blur-xl flex items-center justify-between gap-2 sm:gap-4 transition-colors shadow-2xs">
         {/* Left: Back button & Breadcrumbs */}
         <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
           <button
             onClick={onClose}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#1a73e8] dark:text-[#a8c7fa] hover:bg-[#e8f0fe] dark:hover:bg-[#1a2e4c] transition-colors cursor-pointer shrink-0 shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 transition-colors cursor-pointer shrink-0 shadow-2xs"
             title="Return to Catalog (Esc)"
           >
             <ArrowLeft size={14} />
@@ -515,17 +520,17 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             <span className="sm:hidden">Back</span>
           </button>
 
-          <div className="h-4 w-px bg-[#dadce0] dark:bg-[#3c4043] hidden sm:block" />
+          <div className="h-4 w-px bg-neutral-200 dark:bg-white/[0.1] hidden sm:block" />
 
           {/* Breadcrumb path */}
           <nav
             aria-label="Breadcrumb"
-            className="flex items-center gap-1.5 text-xs text-[#5f6368] dark:text-[#8e918f] font-medium truncate"
+            className="flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400 font-medium truncate"
           >
             <button
               type="button"
               onClick={onClose}
-              className="hidden sm:flex items-center gap-1 text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#1a73e8] dark:hover:text-[#a8c7fa] shrink-0 hover:underline cursor-pointer"
+              className="hidden sm:flex items-center gap-1 text-neutral-500 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400 shrink-0 hover:underline cursor-pointer transition-colors"
               title="Return to Catalog"
             >
               <Sparkles size={12} /> Model Garden
@@ -533,7 +538,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             <span className="hidden sm:inline opacity-40">/</span>
             <span className="hidden md:inline truncate">{entry.type}</span>
             <span className="hidden md:inline opacity-40">/</span>
-            <span className="font-semibold text-[#202124] dark:text-[#e3e3e3] truncate max-w-[140px] sm:max-w-xs">
+            <span className="font-semibold text-neutral-900 dark:text-white truncate max-w-[140px] sm:max-w-xs">
               {entry.name}
             </span>
           </nav>
@@ -547,7 +552,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 onClose();
                 onViewEcosystem(entry.org);
               }}
-              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full text-xs font-semibold border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 transition-all cursor-pointer shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold border border-indigo-200 dark:border-indigo-500/25 bg-indigo-50 dark:bg-indigo-500/10 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 transition-all cursor-pointer shadow-2xs"
               title={`View ${entry.org} Ecosystem`}
             >
               <Building2 size={12} />
@@ -564,7 +569,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                   onOpenPlayground(entry.name);
                 }
               }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] shadow-xs transition-all cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 transition-all cursor-pointer"
               title="Test in Interactive Model Playground"
             >
               <Terminal size={12} />
@@ -575,10 +580,10 @@ export const DetailModal: React.FC<DetailModalProps> = ({
           <button
             onClick={handleShareLink}
             title="Share model link"
-            className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-medium border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] transition-all cursor-pointer ${
+            className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-medium border transition-all cursor-pointer ${
               linkCopied
-                ? "bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] border-[#1a73e8]/30"
-                : "text-[#5f6368] dark:text-[#c4c7c5] hover:text-[#202124] dark:hover:text-white"
+                ? "bg-indigo-50 dark:bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 border-indigo-200 dark:border-indigo-500/30"
+                : "border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-50 dark:hover:bg-white/[0.06]"
             }`}
           >
             {linkCopied ? <Check size={12} /> : <Share2 size={12} />}
@@ -595,34 +600,34 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 }
               }}
               title={isBookmarked ? "Remove bookmark" : "Bookmark this model"}
-              className={`w-7 h-7 flex items-center justify-center rounded-full border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] transition-all cursor-pointer ${
+              className={`w-8 h-8 flex items-center justify-center rounded-xl border transition-all cursor-pointer ${
                 isBookmarked
                   ? "bg-amber-500/15 border-amber-500/40 text-amber-500"
-                  : "text-[#5f6368] dark:text-[#8e918f] hover:text-[#202124] dark:hover:text-white"
+                  : "border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-50 dark:hover:bg-white/[0.06]"
               }`}
             >
-              <Bookmark size={12} className={isBookmarked ? "fill-current" : ""} />
+              <Bookmark size={13} className={isBookmarked ? "fill-current" : ""} />
             </button>
           )}
 
           <button
             onClick={onClose}
-            className="w-7 h-7 flex items-center justify-center rounded-full border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#5f6368] dark:text-[#8e918f] hover:text-[#202124] dark:hover:text-white transition-all cursor-pointer"
+            className="w-8 h-8 flex items-center justify-center rounded-xl border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-50 dark:hover:bg-white/[0.06] transition-all cursor-pointer"
             title="Close view (Esc)"
           >
-            <X size={13} />
+            <X size={14} />
           </button>
         </div>
       </header>
 
-      {/* 2. Hero Strip (Refined & Proportional) */}
-      <div className="border-b border-[#dadce0] dark:border-[#3c4043]/40 bg-white dark:bg-[#1a1b1e]/60 transition-colors">
+      {/* 2. Hero Strip */}
+      <div className="border-b border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#090a0e] transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 sm:py-9">
           <div className="flex flex-col lg:flex-row items-start justify-between gap-6">
             <div className="flex items-start gap-4 sm:gap-5 flex-1 min-w-0">
               {/* Glyph Icon */}
               <div
-                className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-bold shrink-0 border border-[#dadce0] dark:border-[#3c4043]/60 shadow-xs ${typeIcon(
+                className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-bold shrink-0 border border-neutral-200/80 dark:border-white/[0.1] shadow-xs ${typeIcon(
                   entry.type,
                   t,
                 )}`}
@@ -633,12 +638,12 @@ export const DetailModal: React.FC<DetailModalProps> = ({
               {/* Title & Metadata Badges */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap mb-2 sm:mb-2.5">
-                  <h1 className="text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight text-[#202124] dark:text-[#e3e3e3] leading-tight">
+                  <h1 className="text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight text-neutral-900 dark:text-white leading-tight">
                     {entry.name}
                   </h1>
 
                   {isNew && (
-                    <span className="inline-flex items-center text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-500/25 animate-pulse">
+                    <span className="inline-flex items-center text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 border border-indigo-500/25 animate-pulse">
                       NEW
                     </span>
                   )}
@@ -649,13 +654,13 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                     </span>
                   )}
 
-                  <span className="inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20">
                     <CheckCircle2 size={11} /> Verified Spec
                   </span>
                 </div>
 
                 {/* Subtitle Chips Row */}
-                <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs text-[#5f6368] dark:text-[#8e918f] mb-3.5">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs text-neutral-500 dark:text-neutral-400 mb-3.5">
                   <span className={`text-[10.5px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-lg border ${typeBadge(entry.type, t)}`}>
                     {entry.type}
                   </span>
@@ -669,35 +674,35 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                         onClose();
                         onViewEcosystem(entry.org);
                       }}
-                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[#dadce0] dark:border-[#3c4043]/60 bg-white/70 dark:bg-white/[0.04] hover:bg-neutral-100 dark:hover:bg-white/[0.08] hover:text-[#1a73e8] dark:hover:text-[#a8c7fa] cursor-pointer group/org transition-colors"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50 dark:bg-[#121319] hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:border-indigo-200 dark:hover:border-indigo-500/25 hover:text-indigo-600 dark:hover:text-indigo-300 cursor-pointer group/org transition-colors"
                       title={`View ${entry.org} Ecosystem`}
                     >
-                      <Building2 size={12} className="opacity-70 group-hover/org:text-[#1a73e8] dark:group-hover/org:text-[#a8c7fa]" />
-                      <span className="font-semibold text-[#202124] dark:text-[#e3e3e3] group-hover/org:text-[#1a73e8] dark:group-hover/org:text-[#a8c7fa]">{entry.org}</span>
+                      <Building2 size={12} className="opacity-70 group-hover/org:text-indigo-600 dark:group-hover/org:text-indigo-400" />
+                      <span className="font-semibold text-neutral-900 dark:text-neutral-200 group-hover/org:text-indigo-600 dark:group-hover/org:text-indigo-300">{entry.org}</span>
                     </button>
                   ) : (
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[#dadce0] dark:border-[#3c4043]/60 bg-white/70 dark:bg-white/[0.04]">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50 dark:bg-[#121319]">
                       <Building2 size={12} className="opacity-70" />
-                      <span className="font-semibold text-[#202124] dark:text-[#e3e3e3]">{entry.org}</span>
+                      <span className="font-semibold text-neutral-900 dark:text-neutral-200">{entry.org}</span>
                     </span>
                   )}
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[#dadce0] dark:border-[#3c4043]/60 bg-white/70 dark:bg-white/[0.04]">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50 dark:bg-[#121319]">
                     <Calendar size={12} className="opacity-70" />
                     <span>{entry.year}</span>
                   </span>
                   {entry.size && entry.size !== "N/A" && entry.size !== "Unknown" && (
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[#dadce0] dark:border-[#3c4043]/60 bg-white/70 dark:bg-white/[0.04]">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50 dark:bg-[#121319]">
                       <Layers size={12} className="opacity-70" />
                       <span>{entry.size}</span>
                     </span>
                   )}
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[#dadce0] dark:border-[#3c4043]/60 bg-white/70 dark:bg-white/[0.04]">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50 dark:bg-[#121319]">
                     <ShieldCheck size={12} className="opacity-70" />
                     <span>{entry.license}</span>
                   </span>
                 </div>
 
-                <p className="text-[13.5px] sm:text-[14px] leading-relaxed text-[#3c4043] dark:text-[#c4c7c5] max-w-4xl pt-1">
+                <p className="text-[13.5px] sm:text-[14px] leading-relaxed text-neutral-600 dark:text-neutral-300 max-w-4xl pt-1">
                   {entry.description || entry.summary}
                 </p>
               </div>
@@ -711,7 +716,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                     onClose();
                     onViewEcosystem(entry.org);
                   }}
-                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 transition-all cursor-pointer shadow-2xs hover:shadow-xs"
+                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold border border-indigo-200 dark:border-indigo-500/25 bg-indigo-50 dark:bg-indigo-500/10 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 transition-all cursor-pointer shadow-2xs"
                   title={`View all ${entry.org} models & assets in Ecosystem`}
                 >
                   <Building2 size={13} />
@@ -724,7 +729,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                   href={entry.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#3c4043] dark:text-[#c4c7c5] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-all shadow-2xs hover:shadow-xs"
+                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-white/[0.06] transition-all shadow-2xs"
                 >
                   <Globe size={13} />
                   <span>Docs</span>
@@ -736,8 +741,8 @@ export const DetailModal: React.FC<DetailModalProps> = ({
         </div>
       </div>
 
-      {/* 3. Google Material 3 Tabs Bar */}
-      <div className="border-b border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1a1b1e]/60 transition-colors">
+      {/* 3. Control Plane Tabs Bar */}
+      <div className="border-b border-neutral-200/80 dark:border-white/[0.08] bg-white/95 dark:bg-[#090a0e] transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-1 sm:gap-2 overflow-x-auto scrollbar-none" role="tablist">
             {[
@@ -755,11 +760,11 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                   onClick={() => setActiveTab(id as TabType)}
                   className={`flex items-center gap-1.5 px-3.5 py-3 text-xs sm:text-[13px] font-medium border-b-2 transition-all cursor-pointer whitespace-nowrap ${
                     isActive
-                      ? "border-[#1a73e8] dark:border-[#a8c7fa] text-[#1a73e8] dark:text-[#a8c7fa] font-semibold"
-                      : "border-transparent text-[#5f6368] dark:text-[#8e918f] hover:text-[#202124] dark:hover:text-[#e3e3e3] hover:border-[#dadce0] dark:hover:border-[#3c4043]"
+                      ? "border-indigo-600 dark:border-indigo-400 text-indigo-600 dark:text-indigo-400 font-semibold"
+                      : "border-transparent text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:border-neutral-300 dark:hover:border-white/20"
                   }`}
                 >
-                  <TabIcon size={14} className={isActive ? "text-[#1a73e8] dark:text-[#a8c7fa]" : "opacity-60"} />
+                  <TabIcon size={14} className={isActive ? "text-indigo-600 dark:text-indigo-400" : "opacity-60"} />
                   <span>{label}</span>
                 </button>
               );
@@ -776,7 +781,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
               {/* TAB 1: OVERVIEW */}
               {activeTab === "overview" && (
                 <div className="space-y-6">
-                  {/* Google Quick Specs Grid */}
+                  {/* Quick Specs Grid */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
                     <div
                       onClick={() => {
@@ -785,78 +790,78 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                           onViewEcosystem(entry.org);
                         }
                       }}
-                      className={`p-4 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20] transition-all ${
+                      className={`p-4 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] transition-all ${
                         onViewEcosystem && entry.org
-                          ? "cursor-pointer hover:border-blue-500/40 hover:bg-blue-500/[0.03] group/dev"
+                          ? "cursor-pointer hover:border-indigo-500/40 hover:bg-indigo-50/50 dark:hover:bg-indigo-500/[0.06] group/dev"
                           : ""
                       }`}
                       title={onViewEcosystem && entry.org ? `Explore ${entry.org} Ecosystem` : undefined}
                     >
-                      <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-[#1a73e8] dark:text-[#a8c7fa] mb-1.5">
+                      <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-1.5">
                         <div className="flex items-center gap-1.5">
                           <Building2 size={12} />
                           <span>Developer</span>
                         </div>
                         {onViewEcosystem && entry.org && (
-                          <span className="text-[10px] lowercase text-blue-600 dark:text-blue-400 font-medium group-hover/dev:underline flex items-center gap-0.5">
+                          <span className="text-[10px] lowercase text-indigo-600 dark:text-indigo-400 font-medium group-hover/dev:underline flex items-center gap-0.5">
                             view <ArrowRight size={9} />
                           </span>
                         )}
                       </div>
-                      <p className="text-xs font-bold text-[#202124] dark:text-[#e3e3e3] truncate group-hover/dev:text-[#1a73e8] dark:group-hover/dev:text-[#a8c7fa] transition-colors">
+                      <p className="text-xs font-bold text-neutral-900 dark:text-white truncate group-hover/dev:text-indigo-600 dark:group-hover/dev:text-indigo-400 transition-colors">
                         {entry.org}
                       </p>
                     </div>
 
-                    <div className="p-4 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-purple-500 mb-1.5">
+                    <div className="p-4 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11]">
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-violet-500 mb-1.5">
                         <Layers size={12} />
                         <span>Parameters</span>
                       </div>
-                      <p className="text-xs font-bold text-[#202124] dark:text-[#e3e3e3] truncate">
+                      <p className="text-xs font-bold text-neutral-900 dark:text-white truncate">
                         {entry.size && entry.size !== "N/A" && entry.size !== "Unknown" ? entry.size : "SaaS / Service"}
                       </p>
                     </div>
 
-                    <div className="p-4 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-[#1a73e8] dark:text-[#a8c7fa] mb-1.5">
+                    <div className="p-4 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11]">
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400 mb-1.5">
                         <Sparkles size={12} />
                         <span>Primary Task</span>
                       </div>
-                      <p className="text-xs font-bold text-[#202124] dark:text-[#e3e3e3] truncate">
+                      <p className="text-xs font-bold text-neutral-900 dark:text-white truncate">
                         {entry.task}
                       </p>
                     </div>
 
-                    <div className="p-4 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
+                    <div className="p-4 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11]">
                       <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-500 mb-1.5">
                         <ShieldCheck size={12} />
                         <span>License</span>
                       </div>
-                      <p className="text-xs font-bold text-[#202124] dark:text-[#e3e3e3] truncate">
+                      <p className="text-xs font-bold text-neutral-900 dark:text-white truncate">
                         {entry.license}
                       </p>
                     </div>
                   </div>
 
                   {/* Architecture & Engineering Card */}
-                  <section className="p-5 sm:p-6 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
+                  <section className="p-5 sm:p-6 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11]">
                     <div className="flex items-center gap-2 mb-3">
-                      <Cpu size={16} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
-                      <h2 className="text-sm font-bold text-[#202124] dark:text-[#e3e3e3]">
+                      <Cpu size={16} className="text-indigo-600 dark:text-indigo-400" />
+                      <h2 className="text-sm font-bold text-neutral-900 dark:text-white">
                         Technical Architecture
                       </h2>
                     </div>
-                    <p className="text-xs sm:text-[13.5px] leading-relaxed text-[#3c4043] dark:text-[#c4c7c5]">
+                    <p className="text-xs sm:text-[13.5px] leading-relaxed text-neutral-600 dark:text-neutral-300">
                       {entry.architecture}
                     </p>
                   </section>
 
                   {/* Responsible AI & Safety Limitations */}
-                  <section className="p-5 sm:p-6 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
+                  <section className="p-5 sm:p-6 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11]">
                     <div className="flex items-center gap-2 mb-3.5">
                       <ShieldAlert size={17} className="text-amber-500" />
-                      <h2 className="text-sm font-bold text-[#202124] dark:text-[#e3e3e3]">
+                      <h2 className="text-sm font-bold text-neutral-900 dark:text-white">
                         Responsible AI & Constraints
                       </h2>
                     </div>
@@ -883,10 +888,10 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
                   {/* Official Links & Resources */}
                   {entry.url && (
-                    <section className="p-5 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
+                    <section className="p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11]">
                       <div className="flex items-center gap-2 mb-2.5">
-                        <ExternalLink size={16} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
-                        <h2 className="text-sm font-bold text-[#202124] dark:text-[#e3e3e3]">
+                        <ExternalLink size={16} className="text-indigo-600 dark:text-indigo-400" />
+                        <h2 className="text-sm font-bold text-neutral-900 dark:text-white">
                           Official Documentation & Registry
                         </h2>
                       </div>
@@ -894,23 +899,23 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                         href={entry.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-between gap-3 p-3.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/40 bg-[#f8f9fa] dark:bg-[#282a2c]/40 hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-colors group"
+                        className="flex items-center justify-between gap-3 p-3.5 rounded-xl border border-neutral-200/70 dark:border-white/[0.07] bg-neutral-50/80 dark:bg-[#121319] hover:bg-neutral-100 dark:hover:bg-[#161822] hover:border-indigo-300 dark:hover:border-indigo-500/30 transition-colors group"
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
-                          <Globe size={15} className="text-[#1a73e8] dark:text-[#a8c7fa] shrink-0" />
-                          <span className="text-xs font-medium text-[#202124] dark:text-[#e3e3e3] truncate">
+                          <Globe size={15} className="text-indigo-600 dark:text-indigo-400 shrink-0" />
+                          <span className="text-xs font-medium text-neutral-900 dark:text-neutral-100 truncate">
                             {entry.url}
                           </span>
                         </div>
-                        <ExternalLink size={13} className="text-[#70757a] group-hover:text-[#1a73e8] dark:group-hover:text-[#a8c7fa] transition-colors shrink-0" />
+                        <ExternalLink size={13} className="text-neutral-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors shrink-0" />
                       </a>
                     </section>
                   )}
 
                   {/* Research Citations */}
                   {entry.citations.length > 0 && (
-                    <section className="p-5 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
-                      <h2 className="text-sm font-bold text-[#202124] dark:text-[#e3e3e3] mb-3">
+                    <section className="p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11]">
+                      <h2 className="text-sm font-bold text-neutral-900 dark:text-white mb-3">
                         Research Papers & Literature
                       </h2>
                       <div className="space-y-2">
@@ -920,11 +925,11 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                             href={c.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/40 bg-[#f8f9fa] dark:bg-[#282a2c]/40 hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-colors group"
+                            className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl border border-neutral-200/70 dark:border-white/[0.07] bg-neutral-50/80 dark:bg-[#121319] hover:bg-neutral-100 dark:hover:bg-[#161822] hover:border-indigo-300 dark:hover:border-indigo-500/30 transition-colors group"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#1a73e8] dark:bg-[#a8c7fa] shrink-0" />
-                            <span className="flex-1 text-xs text-[#3c4043] dark:text-[#c4c7c5]">{c.text}</span>
-                            <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity text-[#1a73e8] dark:text-[#a8c7fa] shrink-0" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0" />
+                            <span className="flex-1 text-xs text-neutral-700 dark:text-neutral-300">{c.text}</span>
+                            <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-600 dark:text-indigo-400 shrink-0" />
                           </a>
                         ))}
                       </div>
@@ -937,11 +942,11 @@ export const DetailModal: React.FC<DetailModalProps> = ({
               {activeTab === "specs" && (
                 <div className="space-y-5">
                   {/* Technical Specifications Matrix */}
-                  <section className="rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 overflow-hidden bg-white dark:bg-[#1e1f20]">
-                    <div className="px-5 py-3 border-b border-[#dadce0] dark:border-[#3c4043]/50 text-xs font-bold uppercase tracking-wider bg-[#f1f3f4] dark:bg-[#282a2c] text-[#202124] dark:text-[#e3e3e3]">
+                  <section className="rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] overflow-hidden bg-white dark:bg-[#0c0d11]">
+                    <div className="px-5 py-3 border-b border-neutral-200/80 dark:border-white/[0.08] text-xs font-bold uppercase tracking-wider bg-neutral-50 dark:bg-[#121319] text-neutral-800 dark:text-neutral-200">
                       Model Garden Technical Specification Sheet
                     </div>
-                    <div className="divide-y divide-[#dadce0] dark:divide-[#3c4043]/40 text-xs">
+                    <div className="divide-y divide-neutral-200/70 dark:divide-white/[0.06] text-xs">
                       {[
                         { label: "Model Asset Name", value: entry.name },
                         { label: "Resource Category", value: entry.type },
@@ -952,11 +957,11 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                         { label: "Release Year", value: String(entry.year) },
                         { label: "License & Commercial Usage", value: entry.license },
                       ].map(({ label, value }) => (
-                        <div key={label} className="grid grid-cols-1 sm:grid-cols-3 p-3.5 bg-white dark:bg-[#1e1f20]">
-                          <span className="font-medium text-[#5f6368] dark:text-[#8e918f]">
+                        <div key={label} className="grid grid-cols-1 sm:grid-cols-3 p-3.5 bg-white dark:bg-[#0c0d11]">
+                          <span className="font-medium text-neutral-500 dark:text-neutral-400">
                             {label}
                           </span>
-                          <span className="sm:col-span-2 font-semibold text-[#202124] dark:text-[#e3e3e3]">
+                          <span className="sm:col-span-2 font-semibold text-neutral-900 dark:text-white">
                             {value}
                           </span>
                         </div>
@@ -965,28 +970,28 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                   </section>
 
                   {/* Benchmarks & Performance Metrics */}
-                  <section className="p-5 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
+                  <section className="p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11]">
                     <div className="flex items-center gap-2 mb-2.5">
-                      <BarChart3 size={16} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
-                      <h2 className="text-sm font-bold text-[#202124] dark:text-[#e3e3e3]">
+                      <BarChart3 size={16} className="text-indigo-600 dark:text-indigo-400" />
+                      <h2 className="text-sm font-bold text-neutral-900 dark:text-white">
                         Evaluation Benchmarks & Performance
                       </h2>
                     </div>
-                    <div className="p-4 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/40 bg-[#f8f9fa] dark:bg-[#282a2c]/40 text-xs leading-relaxed font-mono text-[#202124] dark:text-[#e3e3e3]">
+                    <div className="p-4 rounded-xl border border-neutral-200/70 dark:border-white/[0.07] bg-neutral-50/80 dark:bg-[#121319] text-xs leading-relaxed font-mono text-neutral-800 dark:text-neutral-200">
                       {entry.benchmarks}
                     </div>
                   </section>
 
                   {/* Side-by-Side Model Comparator */}
                   {compareCandidates.length > 0 && (
-                    <section className="p-5 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
+                    <section className="p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11]">
                       <div className="flex items-center gap-2 mb-1.5">
-                        <Sliders size={16} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
-                        <h2 className="text-sm font-bold text-[#202124] dark:text-[#e3e3e3]">
+                        <Sliders size={16} className="text-indigo-600 dark:text-indigo-400" />
+                        <h2 className="text-sm font-bold text-neutral-900 dark:text-white">
                           Model Garden Comparator
                         </h2>
                       </div>
-                      <p className="text-xs text-[#5f6368] dark:text-[#8e918f] mb-3">
+                      <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-3">
                         Compare technical attributes side-by-side with another asset in the ecosystem:
                       </p>
 
@@ -1014,14 +1019,14 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                   <section className="space-y-3">
                     <div className="flex items-center justify-between gap-3">
                       <div>
-                        <h2 className="text-sm font-bold text-[#202124] dark:text-[#e3e3e3] flex items-center gap-1.5">
-                          <Terminal size={15} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
+                        <h2 className="text-sm font-bold text-neutral-900 dark:text-white flex items-center gap-1.5">
+                          <Terminal size={15} className="text-indigo-600 dark:text-indigo-400" />
                           SDK Quickstart & Inference
                         </h2>
                       </div>
 
                       {/* Language Selector Tabs */}
-                      <div className="flex items-center p-0.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-[#f1f3f4] dark:bg-[#282a2c] text-xs">
+                      <div className="flex items-center p-0.5 rounded-xl border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-100 dark:bg-[#121319] text-xs">
                         {(["python", "javascript", "curl"] as CodeLang[]).map((lang) => {
                           const isLangActive = activeCodeLang === lang;
                           return (
@@ -1030,8 +1035,8 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                               onClick={() => setActiveCodeLang(lang)}
                               className={`px-3 py-1 rounded-lg font-medium capitalize transition-all cursor-pointer ${
                                 isLangActive
-                                  ? "bg-white dark:bg-[#1e1f20] text-[#1a73e8] dark:text-[#a8c7fa] font-semibold shadow-xs"
-                                  : "text-[#5f6368] dark:text-[#8e918f] hover:text-[#202124] dark:hover:text-white"
+                                  ? "bg-white dark:bg-[#0c0d11] text-indigo-600 dark:text-indigo-400 font-semibold shadow-xs"
+                                  : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                               }`}
                             >
                               {lang === "javascript" ? "Node.js" : lang}
@@ -1042,16 +1047,16 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                     </div>
 
                     {/* Code Container */}
-                    <div className="rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 overflow-hidden shadow-xs bg-[#1e1f20]">
+                    <div className="rounded-2xl border border-neutral-800 dark:border-white/[0.08] overflow-hidden shadow-xs bg-[#090a0e]">
                       {/* Editor Toolbar */}
-                      <div className="flex items-center justify-between px-4 py-2.5 border-b border-[#3c4043]/50 bg-[#282a2c]/60">
+                      <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.08] bg-[#121319]">
                         <div className="flex items-center gap-2">
                           <div className="flex gap-1.5">
-                            <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-                            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-                            <span className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/70" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
                           </div>
-                          <span className="text-[11px] font-mono font-medium ml-1.5 text-[#8e918f]">
+                          <span className="text-[11px] font-mono font-medium ml-1.5 text-neutral-400">
                             {activeCodeLang === "python"
                               ? "quickstart.py"
                               : activeCodeLang === "javascript"
@@ -1062,35 +1067,35 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
                         <button
                           onClick={handleCopyCode}
-                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border border-[#3c4043] bg-[#1e1f20] text-xs font-medium text-[#c4c7c5] hover:text-white transition-all cursor-pointer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border border-white/[0.1] bg-[#0c0d11] text-xs font-medium text-neutral-300 hover:text-white transition-all cursor-pointer"
                         >
-                          {copied ? <Check size={12} className="text-[#1a73e8] dark:text-[#a8c7fa]" /> : <Copy size={12} />}
+                          {copied ? <Check size={12} className="text-indigo-400" /> : <Copy size={12} />}
                           <span>{copied ? "Copied" : "Copy Code"}</span>
                         </button>
                       </div>
 
                       {/* Code body */}
-                      <pre className="p-4 text-xs font-mono overflow-x-auto leading-relaxed max-h-[380px] bg-[#1e1f20] text-[#e3e3e3]">
+                      <pre className="p-4 text-xs font-mono overflow-x-auto leading-relaxed max-h-[380px] bg-[#090a0e] text-neutral-200">
                         <code>{codeSnippets[activeCodeLang]}</code>
                       </pre>
                     </div>
                   </section>
 
                   {/* Playground Launch Banner */}
-                  <section className="p-5 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-gradient-to-r from-blue-500/10 via-purple-500/5 to-transparent">
+                  <section className="p-5 rounded-2xl border border-indigo-200/80 dark:border-indigo-500/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-gradient-to-r from-indigo-500/10 via-violet-500/5 to-transparent">
                     <div>
-                      <h3 className="text-sm font-bold text-[#202124] dark:text-[#e3e3e3] flex items-center gap-1.5">
-                        <Sparkles size={15} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
+                      <h3 className="text-sm font-bold text-neutral-900 dark:text-white flex items-center gap-1.5">
+                        <Sparkles size={15} className="text-indigo-600 dark:text-indigo-400" />
                         Interactive Model Playground
                       </h3>
-                      <p className="text-xs mt-0.5 text-[#5f6368] dark:text-[#c4c7c5]">
+                      <p className="text-xs mt-0.5 text-neutral-600 dark:text-neutral-300">
                         Test model inference, compare outputs, and tune temperature live without installing anything.
                       </p>
                     </div>
                     {onOpenPlayground && (
                       <button
                         onClick={() => onOpenPlayground(entry.name)}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] shadow-xs transition-all cursor-pointer shrink-0"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 transition-all cursor-pointer shrink-0"
                       >
                         <span>Open Playground</span>
                         <ArrowRight size={13} />
@@ -1102,7 +1107,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
               {/* TAB 4: REVIEWS & COMMUNITY */}
               {activeTab === "reviews" && (
-                <section className="p-5 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
+                <section className="p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11]">
                   <EntryFeedback
                     entryName={entry.name}
                     onRatingSummaryChange={onRatingSummaryChange}
@@ -1113,16 +1118,16 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
               {/* Community Callout Banner for Unauthenticated Users */}
               {!user && (
-                <div className="p-5 sm:p-6 rounded-2xl border border-blue-500/20 bg-gradient-to-r from-blue-500/10 via-purple-500/5 to-transparent flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-2xs">
+                <div className="p-5 sm:p-6 rounded-2xl border border-indigo-200/80 dark:border-indigo-500/25 bg-gradient-to-r from-indigo-500/10 via-violet-500/5 to-transparent flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-2xs">
                   <div className="flex items-start sm:items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-[#1a73e8] dark:bg-[#a8c7fa] text-white dark:text-[#041e49] flex items-center justify-center shrink-0 shadow-xs">
+                    <div className="w-10 h-10 rounded-xl bg-indigo-600 dark:bg-indigo-500 text-white flex items-center justify-center shrink-0 shadow-sm shadow-indigo-500/20">
                       <Sparkles size={18} />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-[#202124] dark:text-[#e3e3e3]">
+                      <h4 className="text-sm font-bold text-neutral-900 dark:text-white">
                         Join the AiVerse Community
                       </h4>
-                      <p className="text-xs text-[#5f6368] dark:text-[#c4c7c5] mt-0.5">
+                      <p className="text-xs text-neutral-600 dark:text-neutral-300 mt-0.5">
                         Sign in to test models in the Playground, submit peer reviews, and bookmark assets to your profile.
                       </p>
                     </div>
@@ -1130,13 +1135,13 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                   <div className="flex items-center gap-2.5 shrink-0 w-full sm:w-auto">
                     <button
                       onClick={() => openAuthModal("signin")}
-                      className="flex-1 sm:flex-initial px-4 py-2 rounded-full text-xs font-semibold border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-colors cursor-pointer"
+                      className="flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-white/[0.06] transition-colors cursor-pointer"
                     >
                       Sign In
                     </button>
                     <button
                       onClick={() => openAuthModal("signup")}
-                      className="flex-1 sm:flex-initial px-4 py-2 rounded-full text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] shadow-xs transition-colors cursor-pointer"
+                      className="flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 transition-colors cursor-pointer"
                     >
                       Create Free Account
                     </button>
@@ -1149,54 +1154,54 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             <aside className="lg:col-span-4 space-y-4">
               <div className="sticky top-28 space-y-4">
                 {/* Card 1: Resource Information */}
-                <div className="p-5 sm:p-6 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#5f6368] dark:text-[#8e918f] mb-4 flex items-center gap-1.5">
-                    <Sparkles size={13} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
+                <div className="p-5 sm:p-6 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11]">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-4 flex items-center gap-1.5">
+                    <Sparkles size={13} className="text-indigo-600 dark:text-indigo-400" />
                     Resource Information
                   </h3>
 
                   <div className="space-y-3 text-xs">
-                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
-                      <span className="text-[#5f6368] dark:text-[#8e918f] flex items-center gap-1.5">
+                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-neutral-200/70 dark:border-white/[0.06]">
+                      <span className="text-neutral-500 dark:text-neutral-400 flex items-center gap-1.5">
                         <Building2 size={13} /> Organization
                       </span>
-                      <span className="font-semibold text-[#202124] dark:text-[#e3e3e3] truncate">
+                      <span className="font-semibold text-neutral-900 dark:text-white truncate">
                         {entry.org}
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
-                      <span className="text-[#5f6368] dark:text-[#8e918f] flex items-center gap-1.5">
+                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-neutral-200/70 dark:border-white/[0.06]">
+                      <span className="text-neutral-500 dark:text-neutral-400 flex items-center gap-1.5">
                         <Layers size={13} /> Size / Parameters
                       </span>
-                      <span className="font-semibold text-[#202124] dark:text-[#e3e3e3]">
+                      <span className="font-semibold text-neutral-900 dark:text-white">
                         {entry.size && entry.size !== "N/A" && entry.size !== "Unknown" ? entry.size : "Not Applicable"}
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
-                      <span className="text-[#5f6368] dark:text-[#8e918f] flex items-center gap-1.5">
+                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-neutral-200/70 dark:border-white/[0.06]">
+                      <span className="text-neutral-500 dark:text-neutral-400 flex items-center gap-1.5">
                         <Sparkles size={13} /> Task
                       </span>
-                      <span className="font-semibold text-[#202124] dark:text-[#e3e3e3]">
+                      <span className="font-semibold text-neutral-900 dark:text-white">
                         {entry.task}
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
-                      <span className="text-[#5f6368] dark:text-[#8e918f] flex items-center gap-1.5">
+                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-neutral-200/70 dark:border-white/[0.06]">
+                      <span className="text-neutral-500 dark:text-neutral-400 flex items-center gap-1.5">
                         <ShieldCheck size={13} /> License
                       </span>
-                      <span className="font-semibold text-[#202124] dark:text-[#e3e3e3]">
+                      <span className="font-semibold text-neutral-900 dark:text-white">
                         {entry.license}
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
-                      <span className="text-[#5f6368] dark:text-[#8e918f] flex items-center gap-1.5">
+                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-neutral-200/70 dark:border-white/[0.06]">
+                      <span className="text-neutral-500 dark:text-neutral-400 flex items-center gap-1.5">
                         <Calendar size={13} /> Release Year
                       </span>
-                      <span className="font-semibold text-[#202124] dark:text-[#e3e3e3]">
+                      <span className="font-semibold text-neutral-900 dark:text-white">
                         {entry.year}
                       </span>
                     </div>
@@ -1209,7 +1214,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                             onClose();
                             onViewEcosystem(entry.org);
                           }}
-                          className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-xs hover:shadow transition-all cursor-pointer"
+                          className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 transition-all cursor-pointer"
                         >
                           <Building2 size={13} />
                           <span>View {entry.org} Ecosystem</span>
@@ -1224,7 +1229,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                           href={entry.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-[#f1f3f4] hover:bg-[#e8eaed] dark:bg-[#282a2c] dark:hover:bg-[#323639] text-[#202124] dark:text-[#e3e3e3] border border-[#dadce0] dark:border-[#3c4043]/60 transition-colors"
+                          className="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-neutral-100 hover:bg-neutral-200/80 dark:bg-[#121319] dark:hover:bg-white/[0.08] text-neutral-800 dark:text-neutral-200 border border-neutral-200/80 dark:border-white/[0.08] transition-colors"
                         >
                           <ExternalLink size={12} />
                           <span>Visit Official Website</span>
@@ -1236,12 +1241,12 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
                 {/* Card 2: Similar Models in Garden */}
                 {relatedEntries.length > 0 && onSelectRelated && (
-                  <div className="p-4 sm:p-5 rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/50 bg-white dark:bg-[#1e1f20]">
+                  <div className="p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11]">
                     <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-xs font-bold uppercase tracking-wider text-[#5f6368] dark:text-[#8e918f]">
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
                         Similar in Garden
                       </h3>
-                      <span className="text-[11px] text-[#70757a] dark:text-[#8e918f]">
+                      <span className="text-[11px] text-neutral-400 dark:text-neutral-500">
                         {relatedEntries.length} items
                       </span>
                     </div>
@@ -1257,19 +1262,19 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                             key={related.name}
                             type="button"
                             onClick={() => onSelectRelated(related)}
-                            className="w-full text-left p-2.5 rounded-xl border border-[#dadce0]/70 dark:border-[#3c4043]/40 bg-[#f8f9fa] hover:bg-[#f1f3f4] dark:bg-[#282a2c]/30 dark:hover:bg-[#282a2c] transition-all cursor-pointer group"
+                            className="w-full text-left p-2.5 rounded-xl border border-neutral-200/70 dark:border-white/[0.06] bg-neutral-50/80 hover:bg-indigo-50/60 dark:bg-[#121319] dark:hover:bg-[#161822] hover:border-indigo-300 dark:hover:border-indigo-500/30 transition-all cursor-pointer group"
                           >
                             <div className="flex items-center justify-between gap-1.5 mb-0.5">
-                              <span className="text-xs font-bold text-[#202124] dark:text-[#e3e3e3] group-hover:text-[#1a73e8] dark:group-hover:text-[#a8c7fa] transition-colors truncate">
+                              <span className="text-xs font-bold text-neutral-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors truncate">
                                 {related.name}
                               </span>
                               {isRelatedNew && (
-                                <span className="text-[8px] font-black uppercase px-1 py-0.5 rounded-full bg-blue-500/15 text-blue-600 dark:text-blue-400 shrink-0">
+                                <span className="text-[8px] font-black uppercase px-1.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 shrink-0">
                                   NEW
                                 </span>
                               )}
                             </div>
-                            <p className="text-[10px] sm:text-[11px] text-[#5f6368] dark:text-[#8e918f] truncate">
+                            <p className="text-[10px] sm:text-[11px] text-neutral-500 dark:text-neutral-400 truncate">
                               {related.type} · {related.task} · {related.org}
                             </p>
                           </button>

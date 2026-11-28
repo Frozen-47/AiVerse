@@ -16,7 +16,7 @@ import { EntryCard } from "./EntryCard";
 import { groupEntriesByEcosystem, type EcosystemGroup } from "../lib/ecosystems";
 import { EcosystemLogo } from "./EcosystemLogo";
 
-export interface CategoryConfig {
+interface CategoryConfig {
   id: string;
   label: string;
   singular: string;
@@ -27,7 +27,7 @@ export interface CategoryConfig {
   curated: string[];
 }
 
-export const SHOWCASE_CATEGORIES: CategoryConfig[] = [
+const SHOWCASE_CATEGORIES: CategoryConfig[] = [
   {
     id: "All",
     label: "All Assets",
@@ -322,7 +322,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">
             {searchResults ? (
               <span>
-                Search: <span className="text-blue-600 dark:text-blue-400">&ldquo;{searchQuery}&rdquo;</span>
+                Search: <span className="text-indigo-600 dark:text-indigo-400">&ldquo;{searchQuery}&rdquo;</span>
               </span>
             ) : (
               currentConfig.title
@@ -340,8 +340,8 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
           {!searchResults && (
             <div className={`p-1 rounded-2xl border flex items-center overflow-x-auto no-scrollbar max-w-full w-full sm:w-auto ${
               isAmoled 
-                ? "bg-neutral-800/90 border-white/10 shadow-xs" 
-                : "bg-neutral-100/90 border-neutral-200/90 shadow-2xs"
+                ? "bg-[#0c0d11] border-white/[0.08] shadow-xs" 
+                : "bg-neutral-100/90 border-neutral-200/80 shadow-2xs"
             }`}>
               {SHOWCASE_CATEGORIES.map((cat) => {
                 const isActive = currentCategory === cat.id;
@@ -350,12 +350,12 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
                   <button
                     key={cat.id}
                     onClick={() => handleCategoryChange(cat.id)}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all duration-150 cursor-pointer whitespace-nowrap ${
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all duration-150 cursor-pointer whitespace-nowrap border ${
                       isActive
                         ? isAmoled
-                          ? "bg-white text-neutral-950 font-semibold shadow-xs"
-                          : "bg-neutral-900 text-white font-semibold shadow-xs"
-                        : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/50 dark:hover:bg-white/[0.08]"
+                          ? "bg-indigo-500/15 text-indigo-300 border-indigo-500/30 font-semibold shadow-xs"
+                          : "bg-white text-indigo-600 border-neutral-200/80 font-semibold shadow-xs"
+                        : "border-transparent text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/50 dark:hover:bg-white/[0.06]"
                     }`}
                   >
                     <Icon size={12} className="shrink-0" />
@@ -368,7 +368,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
 
           <button
             onClick={() => onViewAll(currentCategory)}
-            className="px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 whitespace-nowrap shrink-0 w-full sm:w-auto"
+            className="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 transition-all cursor-pointer flex items-center justify-center gap-1.5 whitespace-nowrap shrink-0 w-full sm:w-auto"
             title={`Open complete ${currentConfig.label} directory`}
           >
             <span>
@@ -384,8 +384,8 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
       {/* ── 2. Content Grid: Top 6 for Selected Category ── */}
       {searchResults ? (
         searchResults.length === 0 ? (
-          <div className={`p-12 text-center rounded-3xl border flex flex-col items-center justify-center ${
-            isAmoled ? "bg-white/[0.02] border-white/10" : "bg-neutral-50 border-neutral-200/80"
+          <div className={`p-12 text-center rounded-2xl border flex flex-col items-center justify-center ${
+            isAmoled ? "bg-[#0c0d11] border-white/[0.08]" : "bg-neutral-50 border-neutral-200/80"
           }`}>
             <p className="text-base font-semibold text-neutral-900 dark:text-white mb-1.5">
               No assets found matching &ldquo;{searchQuery}&rdquo;
@@ -395,7 +395,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
             </p>
             <button
               onClick={() => onViewAll("All")}
-              className="px-4 py-2 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black cursor-pointer shadow-xs"
+              className="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer shadow-sm shadow-indigo-500/20"
             >
               Browse Complete Directory
             </button>
@@ -426,16 +426,16 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
               onClick={() => onViewEcosystem(eco.name)}
               className={`group flex flex-col justify-between p-5 rounded-2xl border text-left transition-all duration-200 cursor-pointer ${
                 isAmoled
-                  ? "bg-white/[0.02] border-white/10 hover:border-white/25 hover:bg-white/[0.05]"
-                  : "bg-white border-neutral-200/80 hover:border-neutral-300 shadow-2xs hover:shadow-xs"
-              }`}
+                  ? "bg-[#0c0d11] border-white/[0.08] hover:border-indigo-500/35 hover:bg-[#101218]"
+                  : "bg-white border-neutral-200/80 hover:border-indigo-300 shadow-2xs hover:shadow-xs"
+              } hover:-translate-y-0.5`}
             >
               <div>
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div className="flex items-center gap-3">
                     <EcosystemLogo name={eco.name} website={eco.website} size={40} />
                     <div>
-                      <h3 className="font-bold text-sm sm:text-base text-neutral-900 dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      <h3 className="font-bold text-sm sm:text-base text-neutral-900 dark:text-white tracking-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                         {eco.name}
                       </h3>
                       <p className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400">
@@ -459,7 +459,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
                       key={f.name}
                       className={`text-[10px] font-medium px-2 py-0.5 rounded-md border ${
                         isAmoled
-                          ? "bg-white/[0.03] text-neutral-300 border-white/5"
+                          ? "bg-[#121319] text-neutral-300 border-white/[0.06]"
                           : "bg-neutral-100/80 text-neutral-700 border-neutral-200/60"
                       }`}
                     >
@@ -469,7 +469,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
                 </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-neutral-100 dark:border-white/[0.06] flex items-center justify-between text-xs font-semibold text-neutral-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              <div className="mt-4 pt-3 border-t border-neutral-100 dark:border-white/[0.06] flex items-center justify-between text-xs font-semibold text-neutral-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                 <span>Explore Ecosystem</span>
                 <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
               </div>
@@ -496,16 +496,16 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
       )}
 
       {/* ── 3. Artful, Aesthetic Discovery Callout ── */}
-      <div className={`p-6 sm:p-8 rounded-3xl border flex flex-col md:flex-row md:items-center justify-between gap-5 transition-all ${
+      <div className={`p-6 sm:p-8 rounded-2xl border flex flex-col md:flex-row md:items-center justify-between gap-5 transition-all ${
         isAmoled
-          ? "bg-gradient-to-r from-blue-950/20 via-white/[0.02] to-indigo-950/20 border-white/10"
-          : "bg-gradient-to-r from-blue-50/60 via-white to-indigo-50/60 border-neutral-200/90 shadow-2xs"
+          ? "bg-gradient-to-r from-indigo-950/30 via-[#0c0d11] to-violet-950/20 border-white/[0.08]"
+          : "bg-gradient-to-r from-indigo-50/70 via-white to-violet-50/60 border-indigo-200/70 shadow-2xs"
       }`}>
         <div className="flex items-start sm:items-center gap-4">
           <div className={`w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 border ${
             isAmoled
-              ? "bg-blue-500/15 border-blue-500/30 text-blue-400"
-              : "bg-blue-50 border-blue-200 text-blue-600 shadow-2xs"
+              ? "bg-indigo-500/15 border-indigo-500/30 text-indigo-400"
+              : "bg-indigo-50 border-indigo-200 text-indigo-600 shadow-2xs"
           }`}>
             <Layers size={20} />
           </div>
@@ -525,7 +525,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
 
         <button
           onClick={() => onViewAll(currentCategory)}
-          className="px-5 py-2.5 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 hover:opacity-90 transition-all cursor-pointer flex items-center gap-2 shrink-0 shadow-xs self-start sm:self-auto"
+          className="px-5 py-2.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 transition-all cursor-pointer flex items-center gap-2 shrink-0 self-start sm:self-auto"
         >
           <span>
             {currentCategory === "Ecosystems"

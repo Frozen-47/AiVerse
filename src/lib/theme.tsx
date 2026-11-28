@@ -14,40 +14,40 @@ type TokenMap = Record<string, string>;
 
 const darkTokens: TokenMap = {
   // Layout
-  page: "bg-neutral-900 text-white",
-  surface: "bg-white/[0.03] border border-white/8",
-  surface2: "bg-white/[0.05] border border-white/8",
-  surfaceHover: "hover:bg-white/[0.07]",
+  page: "bg-[#050507] text-neutral-100",
+  surface: "bg-[#0c0d11] border border-white/[0.08]",
+  surface2: "bg-[#121319] border border-white/[0.08]",
+  surfaceHover: "hover:bg-white/[0.05]",
   // Text
   textPrimary: "text-white",
-  textSecondary: "text-white/55",
-  textMuted: "text-white/35",
+  textSecondary: "text-neutral-400",
+  textMuted: "text-neutral-500",
   textAccent: "text-white",
   // Borders
-  border: "border-white/7",
+  border: "border-white/[0.08]",
   borderHover: "hover:border-white/20",
   // Input
-  input: "bg-neutral-900 border-white/8 text-white placeholder:text-white/25 focus:border-white/20 focus:ring-1 focus:ring-white/10",
+  input: "bg-[#0c0d11] border border-white/10 text-white placeholder:text-neutral-500 focus:border-indigo-500/60 focus:ring-2 focus:ring-indigo-500/15",
   // Buttons
-  btnPrimary: "bg-white hover:bg-white/90 text-black font-bold",
-  btnSecondary: "border-white/10 text-white/60 hover:text-white hover:border-white/25 hover:bg-white/4",
-  btnGhost: "text-white/40 hover:text-white/80",
+  btnPrimary: "bg-white hover:bg-neutral-200 text-neutral-950 font-semibold",
+  btnSecondary: "border border-white/10 text-neutral-300 hover:text-white hover:border-white/25 hover:bg-white/[0.05]",
+  btnGhost: "text-neutral-400 hover:text-white",
   // Pill active/inactive
-  pillActive: "bg-white/10 border-white/20 text-white",
-  pillInactive: "border-white/7 text-white/35 hover:border-white/15 hover:text-white/65",
+  pillActive: "bg-white text-neutral-950 border border-white font-semibold",
+  pillInactive: "border border-white/10 text-neutral-400 hover:border-white/25 hover:text-white",
   // Card
-  card: "bg-white/[0.03] border border-white/8 hover:border-white/15 hover:bg-white/[0.05]",
+  card: "bg-[#0c0d11] border border-white/[0.08] hover:border-white/20 hover:bg-[#11131a]",
   // Modal
-  modal: "bg-neutral-800 border border-white/8",
-  modalOverlay: "fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-neutral-950/80 backdrop-blur-md animate-[fadeIn_0.15s_ease-out]",
-  sectionLabel: "text-[10px] font-semibold uppercase tracking-widest mb-3 text-white/35",
-  iconBg: "bg-white/6 text-white/50",
-  iconBgSolid: "bg-white/8 text-white",
-  pillSmall: "text-[11px] px-2 py-0.5 rounded-full bg-white/5 text-white/50 border border-white/8",
+  modal: "bg-[#0d0e12] border border-white/10 shadow-2xl",
+  modalOverlay: "fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-black/70 backdrop-blur-md animate-[fadeIn_0.15s_ease-out]",
+  sectionLabel: "text-[10px] font-semibold uppercase tracking-widest mb-3 text-neutral-500",
+  iconBg: "bg-white/[0.06] text-neutral-300",
+  iconBgSolid: "bg-white/[0.09] text-white",
+  pillSmall: "text-[11px] px-2 py-0.5 rounded-full bg-white/[0.06] text-neutral-300 border border-white/[0.08]",
   // Nav
-  nav: "bg-neutral-900 border border-white/8",
+  nav: "bg-[#090a0e]/90 border-b border-white/[0.08]",
   // Code
-  code: "bg-neutral-950 text-neutral-200 border border-white/5",
+  code: "bg-neutral-950 text-neutral-200 border border-white/10",
   // Stats
   statValue: "text-white",
   // Badge type
@@ -100,9 +100,9 @@ const amoled: TokenMap = { ...darkTokens };
 
 const light: TokenMap = {
   // Layout
-  page: "bg-white text-neutral-900",
-  surface: "bg-neutral-50/50 border border-neutral-200",
-  surface2: "bg-neutral-100 border border-neutral-200",
+  page: "bg-neutral-50 text-neutral-900",
+  surface: "bg-white border border-neutral-200/80",
+  surface2: "bg-neutral-100/80 border border-neutral-200/80",
   surfaceHover: "hover:bg-neutral-100/70",
   // Text
   textPrimary: "text-neutral-900",
@@ -110,28 +110,28 @@ const light: TokenMap = {
   textMuted: "text-neutral-400",
   textAccent: "text-neutral-900",
   // Borders
-  border: "border-neutral-200",
+  border: "border-neutral-200/80",
   borderHover: "hover:border-neutral-300",
   // Input
-  input: "bg-white border border-neutral-200 text-neutral-900 placeholder:text-neutral-400 focus:border-neutral-400 focus:ring-1 focus:ring-neutral-200",
+  input: "bg-neutral-50/70 border border-neutral-200 text-neutral-900 placeholder:text-neutral-400 focus:bg-white focus:border-indigo-500/60 focus:ring-2 focus:ring-indigo-500/15",
   // Buttons
-  btnPrimary: "bg-neutral-900 hover:bg-neutral-800 text-white font-bold",
+  btnPrimary: "bg-neutral-900 hover:bg-neutral-800 text-white font-semibold",
   btnSecondary: "border border-neutral-200 text-neutral-600 hover:text-neutral-900 hover:border-neutral-300 hover:bg-neutral-50",
   btnGhost: "text-neutral-400 hover:text-neutral-700",
   // Pill active/inactive
-  pillActive: "bg-neutral-950/10 border border-neutral-300 text-neutral-900",
-  pillInactive: "border border-neutral-200 text-neutral-400 hover:border-neutral-300 hover:text-neutral-700",
+  pillActive: "bg-neutral-900 border border-neutral-900 text-white font-semibold",
+  pillInactive: "border border-neutral-200 text-neutral-500 hover:border-neutral-300 hover:text-neutral-900",
   // Card
-  card: "bg-white border border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50/30",
+  card: "bg-white border border-neutral-200/80 hover:border-neutral-300 hover:shadow-xs",
   // Modal
-  modal: "bg-white border border-neutral-200 shadow-xl",
-  modalOverlay: "fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-neutral-950/45 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]",
+  modal: "bg-white border border-neutral-200 shadow-2xl",
+  modalOverlay: "fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-black/50 backdrop-blur-sm animate-[fadeIn_0.15s_ease-out]",
   sectionLabel: "text-[10px] font-semibold uppercase tracking-widest mb-3 text-neutral-400",
   iconBg: "bg-neutral-100 text-neutral-500",
   iconBgSolid: "bg-neutral-200 text-neutral-900",
   pillSmall: "text-[11px] px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-600 border border-neutral-200",
   // Nav
-  nav: "bg-white border-b border-neutral-200",
+  nav: "bg-white/90 border-b border-neutral-200/80",
   // Code
   code: "bg-neutral-50 text-neutral-800 border border-neutral-200",
   // Stats

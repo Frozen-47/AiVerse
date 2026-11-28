@@ -110,13 +110,13 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onBackToHome }) 
 
   return (
     <div className="w-full max-w-[1880px] 2xl:max-w-[2040px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-6 animate-[fadeUp_0.3s_ease-out]">
-      {/* Top Google Command Bar & Breadcrumbs */}
+      {/* Top Control Plane Command Bar & Breadcrumbs */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-neutral-200/80 dark:border-white/[0.08] mb-8">
         <div className="flex flex-col gap-1.5">
           <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
             <button
               onClick={onBackToHome}
-              className="hover:text-blue-500 hover:underline cursor-pointer flex items-center gap-1 transition-colors"
+              className="hover:text-indigo-500 dark:hover:text-indigo-400 hover:underline cursor-pointer flex items-center gap-1 transition-colors"
             >
               <ArrowLeft size={12} />
               Dashboard
@@ -138,7 +138,7 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onBackToHome }) 
 
         <button
           onClick={onBackToHome}
-          className="shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer shadow-xs w-fit"
+          className="shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer shadow-xs w-fit"
         >
           <ArrowLeft size={13} />
           Back to Dashboard
@@ -146,9 +146,9 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onBackToHome }) 
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8 w-full items-start">
-        {/* Left Column: Google Docs Table of Contents */}
+        {/* Left Column: Table of Contents */}
         <div className="w-full lg:w-72 shrink-0 lg:sticky lg:top-20 space-y-4">
-          <div className="p-4 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xs">
+          <div className="p-4 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white/90 dark:bg-[#0c0d11]/90 backdrop-blur-xl shadow-xs">
             <p className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-3 px-1">
               Table of Contents
             </p>
@@ -163,15 +163,15 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onBackToHome }) 
                     onClick={() => scrollToSection(sect.id)}
                     className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-left transition-all cursor-pointer ${
                       isActive
-                        ? "bg-blue-500/10 text-blue-600 dark:text-blue-400 font-semibold"
-                        : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
+                        ? "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-semibold border border-indigo-500/20"
+                        : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04] border border-transparent"
                     }`}
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
-                      <Icon size={14} className={isActive ? "text-blue-500" : "opacity-60"} />
+                      <Icon size={14} className={isActive ? "text-indigo-500 dark:text-indigo-400" : "opacity-60"} />
                       <span className="truncate">{sect.label}</span>
                     </div>
-                    {isActive && <ChevronRight size={12} className="text-blue-500 shrink-0" />}
+                    {isActive && <ChevronRight size={12} className="text-indigo-500 dark:text-indigo-400 shrink-0" />}
                   </button>
                 );
               })}
@@ -179,9 +179,9 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onBackToHome }) 
           </div>
 
           {/* Help Box */}
-          <div className="hidden lg:block p-4 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/60 dark:bg-white/[0.02]">
+          <div className="hidden lg:block p-4 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/80 dark:bg-[#0c0d11]">
             <h4 className="text-xs font-bold text-neutral-900 dark:text-white mb-1 flex items-center gap-1.5">
-              <Sparkles size={12} className="text-blue-500" /> Have Questions?
+              <Sparkles size={12} className="text-indigo-500 dark:text-indigo-400" /> Have Questions?
             </h4>
             <p className="text-[11px] leading-relaxed text-neutral-500 dark:text-neutral-400 mb-3">
               Inspect our open-source codebase, review platform specifications, or submit questions.
@@ -191,13 +191,13 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onBackToHome }) 
                 href="https://github.com/Frozen-47/AiVerse"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-1.5 rounded-lg text-[11px] font-semibold text-center border border-neutral-200 dark:border-white/[0.08] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all"
+                className="w-full py-1.5 rounded-lg text-[11px] font-semibold text-center border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all"
               >
                 GitHub Repository
               </a>
               <a
                 href="mailto:frozennheart47@gmail.com"
-                className="w-full py-1.5 rounded-lg text-[11px] font-semibold text-center border border-blue-500/20 bg-blue-500/5 text-blue-600 dark:text-blue-400 hover:bg-blue-500/10 transition-all"
+                className="w-full py-1.5 rounded-lg text-[11px] font-semibold text-center border border-indigo-500/20 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-500/15 transition-all"
               >
                 Email Legal Team
               </a>
@@ -206,7 +206,7 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ onBackToHome }) 
         </div>
 
         {/* Right Column: Complete Immersive content */}
-        <div className="flex-1 min-w-0 border border-neutral-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl rounded-2xl p-6 sm:p-10 shadow-xs space-y-12">
+        <div className="flex-1 min-w-0 border border-neutral-200/80 dark:border-white/[0.08] bg-white/90 dark:bg-[#0c0d11] backdrop-blur-xl rounded-2xl p-6 sm:p-10 shadow-xs space-y-12">
           {/* Top Notice */}
           <div className="p-4 rounded-xl border border-emerald-500/20 bg-emerald-500/5 text-xs text-neutral-700 dark:text-neutral-300 flex items-start gap-3">
             <Scale size={18} className="shrink-0 text-emerald-500 mt-0.5" />

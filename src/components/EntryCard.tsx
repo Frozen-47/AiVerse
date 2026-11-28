@@ -35,8 +35,8 @@ export const EntryCard = memo(function EntryCard({
       className={`
         group flex flex-col rounded-2xl p-4 sm:p-5 cursor-pointer transition-all duration-200 border ${
           isAmoled
-            ? "bg-[#1e1f20] border-white/10 hover:border-white/20 hover:bg-[#252729] hover:shadow-[0_4px_24px_rgba(0,0,0,0.6)]"
-            : "bg-white border-neutral-200 hover:border-neutral-300 hover:shadow-[0_4px_16px_rgba(32,33,36,0.1)]"
+            ? "bg-[#0c0d11] border-white/[0.08] hover:border-indigo-500/35 hover:bg-[#101218] hover:shadow-[0_12px_32px_rgba(0,0,0,0.65)]"
+            : "bg-white border-neutral-200/80 hover:border-indigo-300 hover:shadow-[0_12px_28px_rgba(15,23,42,0.06)]"
         }
         hover:-translate-y-0.5
         [content-visibility:auto]
@@ -44,12 +44,12 @@ export const EntryCard = memo(function EntryCard({
       `}
     >
       {/* ── 1. Breadcrumb & Favicon Row ── */}
-      <div className="flex items-center justify-between gap-2 mb-2">
+      <div className="flex items-center justify-between gap-2 mb-2.5">
         <div className="flex items-center gap-2.5 min-w-0">
-          <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold shrink-0 border ${
+          <div className={`w-7 h-7 rounded-xl flex items-center justify-center text-xs font-semibold shrink-0 border ${
             isAmoled
-              ? "bg-white/[0.08] border-white/10 text-neutral-200"
-              : "bg-[#f1f3f4] border-neutral-200 text-neutral-700"
+              ? "bg-white/[0.05] border-white/[0.08] text-indigo-300"
+              : "bg-neutral-100 border-neutral-200/80 text-indigo-600"
           }`}>
             {TYPE_GLYPH[entry.type] ?? "◆"}
           </div>
@@ -61,7 +61,7 @@ export const EntryCard = memo(function EntryCard({
                   e.stopPropagation();
                   onViewEcosystem(entry.org);
                 }}
-                className="text-xs font-medium text-neutral-900 dark:text-neutral-100 truncate leading-tight hover:text-blue-600 dark:hover:text-blue-400 hover:underline cursor-pointer text-left"
+                className="text-xs font-medium text-neutral-900 dark:text-neutral-100 truncate leading-tight hover:text-indigo-600 dark:hover:text-indigo-400 hover:underline cursor-pointer text-left transition-colors"
                 title={`View ${entry.org} Ecosystem`}
               >
                 {entry.org}
@@ -82,7 +82,7 @@ export const EntryCard = memo(function EntryCard({
             <span className={`inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full border ${
               isAmoled
                 ? "bg-amber-500/10 text-amber-300 border-amber-500/20"
-                : "bg-amber-50 text-amber-800 border-amber-200"
+                : "bg-amber-50 text-amber-700 border-amber-200"
             }`}>
               <Star size={8} className="fill-current text-amber-500" /> Top Choice
             </span>
@@ -95,12 +95,12 @@ export const EntryCard = memo(function EntryCard({
                 e.stopPropagation();
                 onToggleBookmark(entryName);
               }}
-              className={`p-1.5 rounded-full transition-colors cursor-pointer ${
+              className={`p-1.5 rounded-xl transition-colors cursor-pointer ${
                 isBookmarked
                   ? isAmoled
-                    ? "text-[#8ab4f8] bg-blue-500/10"
-                    : "text-[#1a73e8] bg-blue-50"
-                  : "text-neutral-400 hover:text-neutral-700 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/10"
+                    ? "text-indigo-400 bg-indigo-500/15 border border-indigo-500/25"
+                    : "text-indigo-600 bg-indigo-50 border border-indigo-200"
+                  : "text-neutral-400 hover:text-neutral-700 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
               }`}
               aria-label={isBookmarked ? "Remove bookmark" : "Bookmark"}
             >
@@ -110,44 +110,44 @@ export const EntryCard = memo(function EntryCard({
         </div>
       </div>
 
-      {/* ── 2. Search Result Title ── */}
-      <h3 className="text-base sm:text-[17px] font-medium tracking-normal text-[#1a0dab] dark:text-[#8ab4f8] group-hover:underline leading-snug mb-1.5">
+      {/* ── 2. Resource Title ── */}
+      <h3 className="text-base sm:text-[17px] font-semibold tracking-tight text-neutral-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 leading-snug mb-1.5 transition-colors">
         {entry.name}
       </h3>
 
       {/* ── 3. Snippet Description ── */}
-      <p className="text-xs sm:text-[13px] leading-relaxed text-[#4d5156] dark:text-[#bdc1c6] line-clamp-2 sm:line-clamp-3 mb-3 flex-1 font-normal">
+      <p className="text-xs sm:text-[13px] leading-relaxed text-neutral-600 dark:text-neutral-400 line-clamp-2 sm:line-clamp-3 mb-3 flex-1 font-normal">
         {entry.description || entry.summary}
       </p>
 
-      {/* ── 4. Attribute Sitelinks / Chips ── */}
+      {/* ── 4. Attribute Pills ── */}
       <div className="flex flex-wrap items-center gap-1.5 mb-3.5">
         <span className={`text-[11px] font-medium px-2.5 py-0.5 rounded-full border ${
           isAmoled
-            ? "bg-white/[0.05] text-neutral-300 border-white/10"
-            : "bg-[#f1f3f4] text-[#3c4043] border-neutral-200/80"
+            ? "bg-indigo-500/10 text-indigo-300 border-indigo-500/20"
+            : "bg-indigo-50 text-indigo-700 border-indigo-200/80"
         }`}>
           {entry.task}
         </span>
         {entry.size && entry.size !== "N/A" && entry.size !== "Unknown" && entry.size.trim() !== "" && (
           <span className={`text-[11px] font-mono px-2 py-0.5 rounded-full border ${
             isAmoled
-              ? "bg-white/[0.02] text-neutral-400 border-white/5"
-              : "bg-[#f8f9fa] text-neutral-600 border-neutral-200/60"
+              ? "bg-white/[0.04] text-neutral-300 border-white/[0.07]"
+              : "bg-neutral-100 text-neutral-700 border-neutral-200/70"
           }`}>
             {entry.size}
           </span>
         )}
         <span className={`text-[11px] px-2 py-0.5 rounded-full border ${
           isAmoled
-            ? "bg-white/[0.02] text-neutral-400 border-white/5"
-            : "bg-[#f8f9fa] text-neutral-600 border-neutral-200/60"
+            ? "bg-white/[0.02] text-neutral-400 border-white/[0.06]"
+            : "bg-neutral-50 text-neutral-600 border-neutral-200/60"
         }`}>
           {entry.type}
         </span>
       </div>
 
-      {/* ── 5. Structured Data / Rating & Meta Row ── */}
+      {/* ── 5. Rating & Meta Row ── */}
       <div className="flex items-center justify-between pt-2.5 border-t border-neutral-100 dark:border-white/[0.06] text-xs text-neutral-500 dark:text-neutral-400">
         <div className="flex items-center gap-2">
           {ratingSummary && ratingSummary.count > 0 ? (
@@ -165,7 +165,7 @@ export const EntryCard = memo(function EntryCard({
           <span>{entry.year}</span>
         </div>
 
-        <div className="flex items-center gap-1 text-[#1a73e8] dark:text-[#8ab4f8] font-medium text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="flex items-center gap-1 text-indigo-600 dark:text-indigo-400 font-medium text-xs opacity-0 group-hover:opacity-100 transition-opacity">
           <span>Overview</span>
           <ChevronRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
         </div>

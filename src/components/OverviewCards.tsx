@@ -40,11 +40,16 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
       })();
     };
 
-    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
-      const id = (window as any).requestIdleCallback(loadStats, { timeout: 3000 });
+    type IdleWindow = Window & {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    const idleWin = typeof window !== "undefined" ? (window as IdleWindow) : undefined;
+    if (idleWin?.requestIdleCallback) {
+      const id = idleWin.requestIdleCallback(loadStats, { timeout: 3000 });
       return () => {
         isMounted = false;
-        (window as any).cancelIdleCallback(id);
+        idleWin.cancelIdleCallback?.(id);
       };
     } else {
       const timer = setTimeout(loadStats, 1500);
@@ -136,14 +141,14 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
   ];
 
   return (
-    <div className={`p-6 sm:p-7 rounded-3xl border transition-all duration-200 ${
+    <div className={`p-6 sm:p-7 rounded-2xl border transition-all duration-200 ${
       isAmoled
-        ? "bg-neutral-900/40 border-white/[0.08]"
-        : "bg-neutral-50/70 border-neutral-200/80 shadow-2xs"
+        ? "bg-[#0c0d11] border-white/[0.08]"
+        : "bg-white/95 border-neutral-200/80 shadow-xs"
     }`}>
-      <div className="flex items-center justify-between mb-5 pb-3 border-b border-neutral-200/60 dark:border-white/[0.06]">
+      <div className="flex items-center justify-between mb-5 pb-3 border-b border-neutral-200/70 dark:border-white/[0.06]">
         <div className="flex items-center gap-2.5">
-          <span className="w-2 h-2 rounded-full bg-emerald-500" />
+          <span className="w-2 h-2 rounded-full bg-indigo-500" />
           <h3 className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
             Platform Telemetry & Verified Intelligence
           </h3>
@@ -164,11 +169,11 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
               onClick={isRegisteredCard ? onViewAllEntries : undefined}
               title={isRegisteredCard ? `${c.title} — Click to view all entries in catalog` : c.title}
               className={`p-4.5 rounded-2xl border flex items-center justify-between gap-4 transition-all duration-150 ${
-                isRegisteredCard ? "cursor-pointer group hover:scale-[1.01]" : ""
+                isRegisteredCard ? "cursor-pointer group hover:-translate-y-0.5" : ""
               } ${
                 isAmoled
-                  ? `bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04] ${isRegisteredCard ? "hover:border-white/20" : ""}`
-                  : `bg-white border-neutral-200/70 shadow-2xs hover:shadow-xs ${isRegisteredCard ? "hover:border-neutral-400" : ""}`
+                  ? `bg-[#121319] border-white/[0.07] hover:bg-[#161822] ${isRegisteredCard ? "hover:border-indigo-500/35" : ""}`
+                  : `bg-neutral-50/80 border-neutral-200/80 hover:bg-white shadow-2xs hover:shadow-xs ${isRegisteredCard ? "hover:border-indigo-300" : ""}`
               }`}
             >
               <div className="flex items-center gap-3.5">
@@ -177,8 +182,8 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
                     isRegisteredCard ? "group-hover:scale-105" : ""
                   } ${
                     isAmoled
-                      ? "bg-white/[0.05] border-white/10 text-neutral-300"
-                      : "bg-neutral-100 border-neutral-200 text-neutral-700"
+                      ? "bg-indigo-500/10 border-indigo-500/20 text-indigo-400"
+                      : "bg-indigo-50 border-indigo-200/80 text-indigo-600"
                   }`}
                 >
                   <Icon size={16} />
@@ -187,7 +192,7 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
                   <div className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white leading-none flex items-center gap-1.5">
                     <span>{c.value}</span>
                     {isRegisteredCard && (
-                      <span className="text-[10px] font-semibold text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span className="text-[10px] font-semibold text-indigo-600 dark:text-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity">
                         View All →
                       </span>
                     )}
@@ -199,8 +204,8 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
               </div>
               <span className={`inline-flex items-center text-[10px] font-medium px-2.5 py-1 rounded-full border shrink-0 ${
                 isAmoled
-                  ? "bg-white/[0.04] text-neutral-300 border-white/10"
-                  : "bg-neutral-100 text-neutral-700 border-neutral-200"
+                  ? "bg-white/[0.04] text-neutral-300 border-white/[0.08]"
+                  : "bg-white text-neutral-700 border-neutral-200"
               }`}>
                 {c.trend}
               </span>

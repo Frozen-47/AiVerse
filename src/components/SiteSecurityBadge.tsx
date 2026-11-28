@@ -34,8 +34,8 @@ export const SiteSecurityBadge: React.FC<SiteSecurityBadgeProps> = ({ variant = 
   }, [showInfo]);
 
   const PopoverContent = (
-    <div className="w-68 p-4 bg-white dark:bg-[#1a1b1e] rounded-2xl border border-neutral-200/90 dark:border-white/15 shadow-2xl backdrop-blur-2xl text-neutral-900 dark:text-white text-xs animate-[fadeUp_0.15s_ease-out]">
-      <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-neutral-100 dark:border-white/10">
+    <div className="w-68 p-4 bg-white dark:bg-[#0d0e12] rounded-2xl border border-neutral-200/90 dark:border-white/[0.1] shadow-2xl backdrop-blur-2xl text-neutral-900 dark:text-white text-xs animate-[fadeUp_0.15s_ease-out]">
+      <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-neutral-100 dark:border-white/[0.08]">
         <div className="flex items-center gap-2 font-semibold text-xs text-neutral-900 dark:text-white">
           <span className="w-2 h-2 rounded-full bg-emerald-500" />
           <span>Cloudflare Protected</span>
@@ -71,7 +71,7 @@ export const SiteSecurityBadge: React.FC<SiteSecurityBadgeProps> = ({ variant = 
         href="https://www.cloudflare.com/products/turnstile/"
         target="_blank"
         rel="noreferrer"
-        className="mt-3.5 inline-flex items-center gap-1.5 text-[11px] text-[#f6821f] hover:underline font-medium pt-2 border-t border-neutral-100 dark:border-white/10 w-full"
+        className="mt-3.5 inline-flex items-center gap-1.5 text-[11px] text-[#f6821f] hover:underline font-medium pt-2 border-t border-neutral-100 dark:border-white/[0.08] w-full"
       >
         <span>Learn about Cloudflare Turnstile</span>
         <ExternalLink size={10} />
@@ -85,7 +85,7 @@ export const SiteSecurityBadge: React.FC<SiteSecurityBadgeProps> = ({ variant = 
       <div ref={badgeRef} className="relative hidden md:inline-flex items-center">
         <button
           onClick={() => setShowInfo((prev) => !prev)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/10 bg-neutral-100/80 dark:bg-white/[0.04] text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-white/[0.08] transition-all cursor-pointer shadow-2xs"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-100/80 dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-white/[0.08] transition-all cursor-pointer shadow-2xs"
           title="Cloudflare Protection Details"
           aria-expanded={showInfo}
         >

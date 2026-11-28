@@ -30,9 +30,12 @@ export const AuthModal: React.FC = () => {
     isSessionHumanVerified() ? 'session_verified' : null
   );
 
-  // Reset fields on open/close
-  useEffect(() => {
-    if (isAuthModalOpen) {
+  // Render-time state reset when modal opens (avoids setState in effect)
+  const [trackedOpenKey, setTrackedOpenKey] = useState<string | null>(null);
+  const openKey = isAuthModalOpen ? (authMode || 'signin') : null;
+  if (openKey !== trackedOpenKey) {
+    setTrackedOpenKey(openKey);
+    if (openKey !== null) {
       setMode(authMode || 'signin');
       setError(null);
       setEmail('');
@@ -45,19 +48,21 @@ export const AuthModal: React.FC = () => {
       setResetPasswordSuccess(false);
       setTurnstileToken(isSessionHumanVerified() ? 'session_verified' : null);
     }
-  }, [authMode, isAuthModalOpen]);
+  }
 
-  // Block background scroll when modal is open
+  // Block background scroll and support Escape key when modal is open
   useEffect(() => {
-    if (isAuthModalOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    if (!isAuthModalOpen) return;
+    document.body.style.overflow = 'hidden';
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeAuthModal();
+    };
+    window.addEventListener('keydown', handleKeyDown);
     return () => {
       document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isAuthModalOpen]);
+  }, [isAuthModalOpen, closeAuthModal]);
 
   if (!isAuthModalOpen) return null;
 
@@ -127,8 +132,8 @@ export const AuthModal: React.FC = () => {
           closeAuthModal();
         }, 2500);
       }
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong. Please try again.');
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -139,51 +144,48 @@ export const AuthModal: React.FC = () => {
     setError(null);
     try {
       await signInWithOAuth(provider);
-    } catch (err: any) {
-      setError(err.message || 'OAuth sign-in failed.');
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'OAuth sign-in failed.');
       setLoading(false);
     }
   };
 
   /* ─── Derived theme values ──────────────────────────────────── */
-  const surface = isDark ? '#0c0c0c' : '#ffffff';
-  const border  = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)';
-  const fg      = isDark ? '#ffffff' : '#0c0c0c';
-  const fgMid   = isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.45)';
+  const surface = isDark ? '#0d0e12' : '#ffffff';
+  const border  = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)';
+  const fg      = isDark ? '#ffffff' : '#0f172a';
+  const fgMid   = isDark ? 'rgba(255,255,255,0.5)' : 'rgba(15,23,42,0.55)';
 
   /* ─── CSS helpers (Tailwind) ────────────────────────────────── */
   const inputCls = [
-    'w-full px-4 py-3 rounded-xl border bg-transparent outline-none',
+    'w-full px-4 py-3 rounded-xl border outline-none',
     'text-[13px] font-medium transition-all duration-200',
     'placeholder:font-normal',
     isDark
-      ? 'border-white/[0.08] text-white placeholder:text-white/30 focus:border-white/25 focus:bg-white/[0.03]'
-      : 'border-black/[0.08] text-black placeholder:text-black/30 focus:border-black/25 focus:bg-black/[0.02]',
+      ? 'border-white/[0.1] bg-[#121319] text-white placeholder:text-white/30 focus:border-indigo-500/60 focus:ring-2 focus:ring-indigo-500/20'
+      : 'border-neutral-200 bg-neutral-50/70 text-neutral-900 placeholder:text-neutral-400 focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20',
   ].join(' ');
 
   const primaryBtnCls = [
     'w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl',
     'text-[12px] font-bold tracking-wide uppercase transition-all duration-200',
     'active:scale-[0.98] disabled:opacity-40 disabled:pointer-events-none cursor-pointer',
-    'shadow-lg',
-    isDark
-      ? 'bg-white text-black hover:bg-white/90 shadow-white/10'
-      : 'bg-black text-white hover:bg-black/85 shadow-black/10',
+    'shadow-lg shadow-indigo-500/20 bg-indigo-600 text-white hover:bg-indigo-500',
   ].join(' ');
 
   const oauthBtnCls = [
     'flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl border',
     'text-[12px] font-semibold transition-all duration-200 active:scale-[0.98] cursor-pointer',
     isDark
-      ? 'border-white/[0.08] text-white/70 hover:bg-white/[0.05] hover:text-white'
-      : 'border-black/[0.08] text-black/60 hover:bg-black/[0.04] hover:text-black',
+      ? 'border-white/[0.1] bg-[#121319] text-white/80 hover:bg-white/[0.06] hover:border-indigo-500/35 hover:text-white'
+      : 'border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-50 hover:border-indigo-500/35 hover:text-neutral-900',
   ].join(' ');
 
   return (
     /* ── Backdrop ─────────────────────────────────────────────── */
     <div
-      className={`${t.modalOverlay} !z-[110] flex items-center justify-center p-4 backdrop-blur-sm`}
-      style={{ backgroundColor: isDark ? 'rgba(0,0,0,0.7)' : 'rgba(0,0,0,0.4)' }}
+      className={`${t.modalOverlay} !z-[110] flex items-center justify-center p-4 backdrop-blur-md`}
+      style={{ backgroundColor: isDark ? 'rgba(0,0,0,0.78)' : 'rgba(15,23,42,0.45)' }}
       onClick={(e) => { if (e.target === e.currentTarget) closeAuthModal(); }}
     >
       {/*
@@ -194,7 +196,7 @@ export const AuthModal: React.FC = () => {
       */}
       <div
         className={`
-          relative w-full max-w-[840px] flex rounded-3xl overflow-hidden
+          relative w-full max-w-[840px] flex rounded-2xl overflow-hidden
           border shadow-2xl
           animate-[modalIn_0.25s_cubic-bezier(0.22,1,0.36,1)_both]
         `}
@@ -211,10 +213,10 @@ export const AuthModal: React.FC = () => {
           className={`
             absolute top-5 right-5 z-50 w-8 h-8 rounded-xl
             flex items-center justify-center transition-all duration-150
-            active:scale-90 cursor-pointer border
+            active:scale-90 cursor-pointer border hover:bg-white/5
           `}
           style={{
-            background: 'transparent',
+            background: isDark ? '#121319' : 'transparent',
             borderColor: border,
             color: fgMid,
           }}
@@ -228,28 +230,28 @@ export const AuthModal: React.FC = () => {
             HERO PANEL — always left, fixed width on desktop
         ════════════════════════════════════════════════════════ */}
         <div
-          className="hidden md:flex relative md:w-[42%] flex-shrink-0 flex-col justify-between p-9 select-none overflow-hidden"
-          style={{ background: '#050505' }}
+          className="hidden md:flex relative md:w-[42%] flex-shrink-0 flex-col justify-between p-9 select-none overflow-hidden border-r border-white/[0.08]"
+          style={{ background: '#050507' }}
         >
           {/* Ambient gradient blob */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
               background: `
-                radial-gradient(ellipse 70% 55% at 30% 65%, rgba(255,255,255,0.04) 0%, transparent 70%),
-                radial-gradient(ellipse 50% 40% at 80% 20%, rgba(255,255,255,0.025) 0%, transparent 70%)
+                radial-gradient(ellipse 75% 60% at 25% 70%, rgba(99,102,241,0.16) 0%, transparent 70%),
+                radial-gradient(ellipse 55% 45% at 85% 20%, rgba(6,182,212,0.10) 0%, transparent 70%)
               `,
             }}
           />
 
           {/* Micro grid */}
           <svg
-            className="absolute inset-0 w-full h-full pointer-events-none opacity-30"
+            className="absolute inset-0 w-full h-full pointer-events-none opacity-35"
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
               <pattern id="microgrid" width="24" height="24" patternUnits="userSpaceOnUse">
-                <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(255,255,255,0.045)" strokeWidth="0.5" />
+                <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(129,140,248,0.08)" strokeWidth="0.5" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#microgrid)" />
@@ -270,56 +272,57 @@ export const AuthModal: React.FC = () => {
               'M120 160 L80 230', 'M80 230 L160 210', 'M160 210 L120 160',
               'M130 60 L170 110',
             ].map((d, i) => (
-              <path key={i} d={d} stroke="rgba(255,255,255,0.07)" strokeWidth="0.8" />
+              <path key={i} d={d} stroke="rgba(129,140,248,0.16)" strokeWidth="0.8" />
             ))}
             {/* Nodes */}
             {[
-              { cx: 60,  cy: 80,  r: 2.5, o: 0.4  },
-              { cx: 130, cy: 60,  r: 2,   o: 0.35 },
-              { cx: 170, cy: 110, r: 3,   o: 0.5  },
-              { cx: 120, cy: 160, r: 3.5, o: 0.6  },
-              { cx: 80,  cy: 230, r: 2,   o: 0.3  },
-              { cx: 160, cy: 210, r: 2.5, o: 0.35 },
+              { cx: 60,  cy: 80,  r: 2.5, o: 0.45 },
+              { cx: 130, cy: 60,  r: 2,   o: 0.4  },
+              { cx: 170, cy: 110, r: 3,   o: 0.55 },
+              { cx: 120, cy: 160, r: 3.5, o: 0.7  },
+              { cx: 80,  cy: 230, r: 2,   o: 0.35 },
+              { cx: 160, cy: 210, r: 2.5, o: 0.4  },
             ].map((n, i) => (
               <circle
                 key={i}
                 cx={n.cx} cy={n.cy} r={n.r}
-                fill="#050505"
-                stroke={`rgba(255,255,255,${n.o})`}
+                fill="#050507"
+                stroke={`rgba(129,140,248,${n.o})`}
                 strokeWidth="1"
               />
             ))}
             {/* Dashed orbit rings */}
-            <circle cx="120" cy="160" r="22" stroke="rgba(255,255,255,0.04)" strokeWidth="0.6" strokeDasharray="3 3" />
-            <circle cx="120" cy="160" r="38" stroke="rgba(255,255,255,0.025)" strokeWidth="0.6" />
+            <circle cx="120" cy="160" r="22" stroke="rgba(99,102,241,0.15)" strokeWidth="0.6" strokeDasharray="3 3" />
+            <circle cx="120" cy="160" r="38" stroke="rgba(6,182,212,0.10)" strokeWidth="0.6" />
           </svg>
 
           {/* Logo */}
-          <div className="relative z-10">
-            <span className="text-white font-black text-xl tracking-tight">AIVerse</span>
+          <div className="relative z-10 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-indigo-500 shadow-[0_0_12px_rgba(99,102,241,0.8)]" />
+            <span className="text-white font-black text-xl tracking-tight">AiVerse</span>
           </div>
 
           {/* Tagline block */}
           <div className="relative z-10">
-            <div className="inline-flex items-center gap-1.5 mb-5 px-3 py-1 rounded-full border border-white/10 bg-white/5">
-              <span className="w-1.5 h-1.5 rounded-full bg-white/60 animate-pulse" />
-              <span className="text-[9px] font-semibold uppercase tracking-widest text-white/50">
+            <div className="inline-flex items-center gap-1.5 mb-5 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10">
+              <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+              <span className="text-[9px] font-semibold uppercase tracking-widest text-indigo-300">
                 AI Knowledge Base
               </span>
             </div>
 
             <h3 className="text-[26px] font-black text-white leading-[1.15] tracking-tight mb-3">
               Every AI tool,<br />
-              <span className="text-white/40">one universe.</span>
+              <span className="bg-linear-to-r from-indigo-300 to-cyan-300 bg-clip-text text-transparent">one universe.</span>
             </h3>
 
-            <p className="text-[12px] text-white/35 font-medium leading-relaxed max-w-[220px]">
+            <p className="text-[12px] text-neutral-400 font-medium leading-relaxed max-w-[220px]">
               A citation-backed encyclopedia of models, frameworks, and datasets — built for builders.
             </p>
 
             {/* Progress dots */}
             <div className="flex gap-1.5 mt-8">
-              <span className="w-4 h-1.5 rounded-full bg-white/80" />
+              <span className="w-5 h-1.5 rounded-full bg-indigo-500" />
               <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
               <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
             </div>
@@ -333,7 +336,7 @@ export const AuthModal: React.FC = () => {
         <div className="relative flex-1 overflow-hidden">
 
           {/* ── SIGN UP FORM ──────────────────────────────────── */}
-          <FormPanel visible={mode === 'signup'} surface={surface} isDark={isDark}>
+          <FormPanel visible={mode === 'signup'} surface={surface}>
             <FormHeader
               title="Create account"
               sub="Already have one?"
@@ -397,14 +400,12 @@ export const AuthModal: React.FC = () => {
                     className={`
                       w-4 h-4 rounded-md border transition-all duration-150
                       flex items-center justify-center
-                      peer-checked:border-transparent
-                      ${isDark
-                        ? 'border-white/15 peer-checked:bg-white'
-                        : 'border-black/15 peer-checked:bg-black'}
+                      peer-checked:border-indigo-600 peer-checked:bg-indigo-600
+                      ${isDark ? 'border-white/20 bg-[#121319]' : 'border-neutral-300 bg-white'}
                     `}
                   >
                     <svg
-                      className={`w-2.5 h-2.5 opacity-0 peer-checked:opacity-100 transition-opacity ${isDark ? 'text-black' : 'text-white'}`}
+                      className="w-2.5 h-2.5 opacity-0 peer-checked:opacity-100 transition-opacity text-white"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="3"
@@ -419,8 +420,7 @@ export const AuthModal: React.FC = () => {
                   <a
                     href="/terms"
                     target="_blank"
-                    className="underline underline-offset-2 transition-colors"
-                    style={{ color: isDark ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.65)' }}
+                    className="text-indigo-600 dark:text-indigo-400 underline underline-offset-2 transition-colors"
                     onClick={(e) => e.stopPropagation()}
                   >
                     Terms & Conditions
@@ -453,7 +453,7 @@ export const AuthModal: React.FC = () => {
           </FormPanel>
 
           {/* ── SIGN IN FORM ──────────────────────────────────── */}
-          <FormPanel visible={mode === 'signin'} surface={surface} isDark={isDark}>
+          <FormPanel visible={mode === 'signin'} surface={surface}>
             <FormHeader
               title="Welcome back"
               sub="No account yet?"
@@ -486,8 +486,7 @@ export const AuthModal: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => switchMode('forgot')}
-                  className="text-[12px] font-medium transition-colors hover:underline cursor-pointer"
-                  style={{ color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.55)' }}
+                  className="text-[12px] font-medium text-indigo-600 dark:text-indigo-400 transition-colors hover:underline cursor-pointer"
                 >
                   Forgot password?
                 </button>
@@ -518,7 +517,7 @@ export const AuthModal: React.FC = () => {
           </FormPanel>
 
           {/* ── FORGOT PASSWORD FORM ───────────────────────────── */}
-          <FormPanel visible={mode === 'forgot'} surface={surface} isDark={isDark}>
+          <FormPanel visible={mode === 'forgot'} surface={surface}>
             <FormHeader
               title="Reset password"
               sub="Remembered your password?"
@@ -529,7 +528,7 @@ export const AuthModal: React.FC = () => {
 
             {forgotEmailSent ? (
               <div className="text-center py-6 space-y-4">
-                <div className="w-12 h-12 rounded-full mx-auto flex items-center justify-center bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                <div className="w-12 h-12 rounded-2xl mx-auto flex items-center justify-center bg-indigo-500/10 text-indigo-500 dark:text-indigo-400 border border-indigo-500/20">
                   <CheckCircle2 size={24} />
                 </div>
                 <div>
@@ -585,7 +584,7 @@ export const AuthModal: React.FC = () => {
           </FormPanel>
 
           {/* ── SET NEW PASSWORD FORM (RECOVERY) ───────────────── */}
-          <FormPanel visible={mode === 'reset'} surface={surface} isDark={isDark}>
+          <FormPanel visible={mode === 'reset'} surface={surface}>
             <div className="mb-6">
               <h2 className="text-[24px] font-black tracking-tight mb-1" style={{ color: fg }}>
                 Set new password
@@ -597,7 +596,7 @@ export const AuthModal: React.FC = () => {
 
             {resetPasswordSuccess ? (
               <div className="text-center py-6 space-y-4">
-                <div className="w-12 h-12 rounded-full mx-auto flex items-center justify-center bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                <div className="w-12 h-12 rounded-2xl mx-auto flex items-center justify-center bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                   <CheckCircle2 size={24} />
                 </div>
                 <div>
@@ -672,7 +671,6 @@ export const AuthModal: React.FC = () => {
 const FormPanel: React.FC<{
   visible: boolean;
   surface: string;
-  isDark: boolean;
   children: React.ReactNode;
 }> = ({ visible, surface, children }) => (
   <div
@@ -703,17 +701,16 @@ const FormHeader: React.FC<{
   <div className="mb-7">
     <h2
       className="text-[24px] font-black tracking-tight mb-1.5"
-      style={{ color: isDark ? '#fff' : '#0c0c0c' }}
+      style={{ color: isDark ? '#fff' : '#0f172a' }}
     >
       {title}
     </h2>
-    <p className="text-[12px] font-medium" style={{ color: isDark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.4)' }}>
+    <p className="text-[12px] font-medium" style={{ color: isDark ? 'rgba(255,255,255,0.45)' : 'rgba(15,23,42,0.5)' }}>
       {sub}{' '}
       <button
         type="button"
         onClick={onLink}
-        className="font-bold underline underline-offset-2 cursor-pointer transition-opacity hover:opacity-70"
-        style={{ color: isDark ? '#fff' : '#0c0c0c' }}
+        className="font-bold text-indigo-600 dark:text-indigo-400 hover:underline underline-offset-2 cursor-pointer transition-opacity"
       >
         {linkLabel}
       </button>
@@ -747,7 +744,7 @@ const PasswordField: React.FC<{
       onClick={toggle}
       tabIndex={-1}
       className="absolute right-3.5 top-1/2 -translate-y-1/2 cursor-pointer transition-opacity hover:opacity-70"
-      style={{ color: isDark ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)' }}
+      style={{ color: isDark ? 'rgba(255,255,255,0.35)' : 'rgba(15,23,42,0.35)' }}
     >
       {show ? <EyeOff size={15} /> : <Eye size={15} />}
     </button>
@@ -759,7 +756,7 @@ const ErrorMsg: React.FC<{ msg: string | null }> = ({ msg }) => {
   if (!msg) return null;
   return (
     <div
-      className="px-4 py-3 rounded-xl border border-red-500/20 bg-red-500/8 text-red-400 text-[11.5px] font-medium leading-normal"
+      className="px-4 py-3 rounded-xl border border-rose-500/20 bg-rose-500/10 text-rose-500 dark:text-rose-400 text-[11.5px] font-medium leading-normal"
       style={{ animation: 'panelIn 0.2s ease both' }}
     >
       {msg}
@@ -773,13 +770,13 @@ const Divider: React.FC<{ label: string; isDark: boolean; surface: string }> = (
     <div className="absolute inset-0 flex items-center">
       <div
         className="w-full border-t"
-        style={{ borderColor: isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)' }}
+        style={{ borderColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.08)' }}
       />
     </div>
     <div className="relative flex justify-center">
       <span
         className="px-3 text-[10px] font-bold uppercase tracking-widest"
-        style={{ background: surface, color: isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)' }}
+        style={{ background: surface, color: isDark ? 'rgba(255,255,255,0.3)' : 'rgba(15,23,42,0.35)' }}
       >
         {label}
       </span>

@@ -95,19 +95,19 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
         </div>
 
         {/* Segmented Control */}
-        <div className={`inline-flex items-center p-1 rounded-full border shrink-0 overflow-x-auto no-scrollbar max-w-full ${
+        <div className={`inline-flex items-center p-1 rounded-2xl border shrink-0 overflow-x-auto no-scrollbar max-w-full ${
           isAmoled 
-            ? "bg-white/[0.04] border-white/10" 
-            : "bg-neutral-100 border-neutral-200"
+            ? "bg-[#0c0d11] border-white/[0.08]" 
+            : "bg-neutral-100 border-neutral-200/80"
         }`}>
           <button
             onClick={() => setActiveTab("spotlight")}
-            className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer shrink-0 whitespace-nowrap ${
+            className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer shrink-0 whitespace-nowrap ${
               activeTab === "spotlight"
                 ? isAmoled
-                  ? "bg-neutral-800 text-white shadow-xs font-semibold"
-                  : "bg-white text-neutral-900 shadow-xs font-semibold"
-                : "text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white"
+                  ? "bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 shadow-xs font-semibold"
+                  : "bg-white text-indigo-600 shadow-xs font-semibold"
+                : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white border border-transparent"
             }`}
           >
             <Sparkles size={13} />
@@ -115,12 +115,12 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
           </button>
           <button
             onClick={() => setActiveTab("models")}
-            className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer shrink-0 whitespace-nowrap ${
+            className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer shrink-0 whitespace-nowrap ${
               activeTab === "models"
                 ? isAmoled
-                  ? "bg-neutral-800 text-white shadow-xs font-semibold"
-                  : "bg-white text-neutral-900 shadow-xs font-semibold"
-                : "text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white"
+                  ? "bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 shadow-xs font-semibold"
+                  : "bg-white text-indigo-600 shadow-xs font-semibold"
+                : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white border border-transparent"
             }`}
           >
             <Flame size={13} />
@@ -128,12 +128,12 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
           </button>
           <button
             onClick={() => setActiveTab("papers")}
-            className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer shrink-0 whitespace-nowrap ${
+            className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer shrink-0 whitespace-nowrap ${
               activeTab === "papers"
                 ? isAmoled
-                  ? "bg-neutral-800 text-white shadow-xs font-semibold"
-                  : "bg-white text-neutral-900 shadow-xs font-semibold"
-                : "text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white"
+                  ? "bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 shadow-xs font-semibold"
+                  : "bg-white text-indigo-600 shadow-xs font-semibold"
+                : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white border border-transparent"
             }`}
           >
             <FileText size={13} />
@@ -146,29 +146,29 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
       {activeTab === "spotlight" && spotlight && (
         <div className={`p-6 md:p-8 rounded-2xl border transition-all duration-200 ${
           isAmoled
-            ? "bg-neutral-900/40 border-white/[0.08]"
-            : "bg-neutral-50/70 border-neutral-200/80"
+            ? "bg-[#0c0d11] border-white/[0.08]"
+            : "bg-white/95 border-neutral-200/80 shadow-xs"
         }`}>
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div className="flex-1 max-w-3xl">
               <div className="flex flex-wrap items-center gap-2 mb-3">
                 <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium border flex items-center gap-1 ${
                   isAmoled
-                    ? "bg-white/[0.08] text-white border-white/15"
-                    : "bg-white text-neutral-900 border-neutral-200 shadow-xs"
+                    ? "bg-indigo-500/15 text-indigo-300 border-indigo-500/30"
+                    : "bg-indigo-50 text-indigo-600 border-indigo-200/80 shadow-xs"
                 }`}>
                   <Sparkles size={11} /> Spotlight of the Day
                 </span>
                 <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium border ${
                   isAmoled
-                    ? "bg-white/[0.04] text-neutral-300 border-white/10"
+                    ? "bg-white/[0.04] text-neutral-300 border-white/[0.08]"
                     : "bg-neutral-100 text-neutral-700 border-neutral-200"
                 }`}>
                   {spotlight.type}
                 </span>
                 <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium border ${
                   isAmoled
-                    ? "bg-white/[0.04] text-neutral-300 border-white/10"
+                    ? "bg-white/[0.04] text-neutral-300 border-white/[0.08]"
                     : "bg-neutral-100 text-neutral-700 border-neutral-200"
                 }`}>
                   {spotlight.task}
@@ -191,12 +191,12 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
                 {spotlight.architecture && (
                   <div className={`p-3.5 rounded-xl border flex items-start gap-3 ${
                     isAmoled
-                      ? "bg-white/[0.02] border-white/[0.07]"
-                      : "bg-white border-neutral-200/80 shadow-xs"
+                      ? "bg-[#121319] border-white/[0.07]"
+                      : "bg-neutral-50/80 border-neutral-200/80 shadow-xs"
                   }`}>
-                    <Cpu size={16} className="text-neutral-500 dark:text-neutral-400 shrink-0 mt-0.5" />
+                    <Cpu size={16} className="text-indigo-500 dark:text-indigo-400 shrink-0 mt-0.5" />
                     <div>
-                      <span className="block text-[10px] uppercase font-semibold tracking-wider text-neutral-600 dark:text-neutral-300">
+                      <span className="block text-[10px] uppercase font-semibold tracking-wider text-neutral-500 dark:text-neutral-400">
                         Architecture Specs
                       </span>
                       <span className="text-xs font-medium text-neutral-900 dark:text-white line-clamp-2 mt-0.5">
@@ -208,12 +208,12 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
                 {spotlight.benchmarks && (
                   <div className={`p-3.5 rounded-xl border flex items-start gap-3 ${
                     isAmoled
-                      ? "bg-white/[0.02] border-white/[0.07]"
-                      : "bg-white border-neutral-200/80 shadow-xs"
+                      ? "bg-[#121319] border-white/[0.07]"
+                      : "bg-neutral-50/80 border-neutral-200/80 shadow-xs"
                   }`}>
-                    <Layers size={16} className="text-neutral-500 dark:text-neutral-400 shrink-0 mt-0.5" />
+                    <Layers size={16} className="text-cyan-600 dark:text-cyan-400 shrink-0 mt-0.5" />
                     <div>
-                      <span className="block text-[10px] uppercase font-semibold tracking-wider text-neutral-600 dark:text-neutral-300">
+                      <span className="block text-[10px] uppercase font-semibold tracking-wider text-neutral-500 dark:text-neutral-400">
                         Verified Benchmarks
                       </span>
                       <span className="text-xs font-medium text-neutral-900 dark:text-white line-clamp-2 mt-0.5">
@@ -230,11 +230,7 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
               {onSelectEntry && (
                 <button
                   onClick={() => onSelectEntry(spotlight)}
-                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer ${
-                    isAmoled
-                      ? "bg-white text-black hover:bg-neutral-200"
-                      : "bg-neutral-900 text-white hover:bg-neutral-800"
-                  } shadow-xs`}
+                  className="px-5 py-2.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   Inspect Details <ArrowRight size={13} />
                 </button>
@@ -244,9 +240,9 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
                   href={spotlight.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`px-5 py-2.5 rounded-full text-xs font-medium border transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                  className={`px-5 py-2.5 rounded-xl text-xs font-medium border transition-all flex items-center justify-center gap-2 cursor-pointer ${
                     isAmoled
-                      ? "border-white/15 text-neutral-200 hover:bg-white/[0.06] hover:border-white/25"
+                      ? "border-white/[0.1] bg-[#121319] text-neutral-200 hover:bg-white/[0.06] hover:border-white/20"
                       : "border-neutral-200 bg-white text-neutral-800 hover:bg-neutral-100"
                   }`}
                 >
@@ -270,16 +266,16 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
                 rel="noopener noreferrer"
                 className={`group p-5 rounded-2xl border transition-all duration-200 flex flex-col justify-between cursor-pointer ${
                   isAmoled
-                    ? "bg-neutral-900/40 border-white/[0.08] hover:border-white/[0.18] hover:bg-neutral-900/70"
-                    : "bg-neutral-50/70 border-neutral-200/80 hover:border-neutral-300 hover:bg-white"
-                } hover:-translate-y-0.5 hover:shadow-xs`}
+                    ? "bg-[#0c0d11] border-white/[0.08] hover:border-indigo-500/35 hover:bg-[#101218]"
+                    : "bg-white border-neutral-200/80 hover:border-indigo-300 shadow-2xs hover:shadow-xs"
+                } hover:-translate-y-0.5`}
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
                     <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium uppercase tracking-wider border ${
                       isAmoled 
-                        ? "bg-white/[0.04] text-neutral-300 border-white/10" 
-                        : "bg-neutral-100 text-neutral-600 border-neutral-200"
+                        ? "bg-indigo-500/10 text-indigo-300 border-indigo-500/20" 
+                        : "bg-indigo-50 text-indigo-700 border-indigo-200/80"
                     }`}>
                       {m.pipeline_tag}
                     </span>
@@ -287,22 +283,22 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
                       by <span className="text-neutral-700 dark:text-neutral-300">{m.author}</span>
                     </span>
                   </div>
-                  <h4 className="text-sm font-semibold mb-2 group-hover:text-neutral-950 dark:group-hover:text-white transition-colors text-neutral-900 dark:text-white break-all">
+                  <h4 className="text-sm font-semibold mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors text-neutral-900 dark:text-white break-all">
                     {m.id}
                   </h4>
                 </div>
-                <div className="mt-4 pt-3 border-t border-neutral-100 dark:border-white/[0.05] flex items-center justify-between text-xs text-neutral-400 dark:text-neutral-400">
+                <div className="mt-4 pt-3 border-t border-neutral-100 dark:border-white/[0.06] flex items-center justify-between text-xs text-neutral-400">
                   <div className="flex items-center gap-3">
                     <span className="flex items-center gap-1 font-medium text-neutral-600 dark:text-neutral-300">
-                      <Heart size={12} className="text-neutral-400 dark:text-neutral-400" />
+                      <Heart size={12} className="text-neutral-400" />
                       {m.likes.toLocaleString()}
                     </span>
                     <span className="flex items-center gap-1 font-medium text-neutral-600 dark:text-neutral-300">
-                      <Download size={12} className="text-neutral-400 dark:text-neutral-400" />
+                      <Download size={12} className="text-neutral-400" />
                       {m.downloads.toLocaleString()}
                     </span>
                   </div>
-                  <span className="flex items-center gap-1 font-medium text-neutral-700 dark:text-neutral-300 group-hover:gap-1.5 transition-all">
+                  <span className="flex items-center gap-1 font-medium text-indigo-600 dark:text-indigo-400 group-hover:gap-1.5 transition-all">
                     {m.source || "Hugging Face"} <ExternalLink size={11} />
                   </span>
                 </div>
@@ -310,7 +306,7 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
             ))
           ) : (
             <div className={`col-span-2 p-8 text-center rounded-2xl border ${
-              isAmoled ? "bg-neutral-900/40 border-white/[0.08]" : "bg-neutral-50/70 border-neutral-200/80"
+              isAmoled ? "bg-[#0c0d11] border-white/[0.08]" : "bg-neutral-50/70 border-neutral-200/80"
             } text-neutral-400`}>
               Daily models feed updating. Check back shortly.
             </div>
@@ -330,16 +326,16 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
                 rel="noopener noreferrer"
                 className={`group p-5 rounded-2xl border transition-all duration-200 flex flex-col justify-between cursor-pointer ${
                   isAmoled
-                    ? "bg-neutral-900/40 border-white/[0.08] hover:border-white/[0.18] hover:bg-neutral-900/70"
-                    : "bg-neutral-50/70 border-neutral-200/80 hover:border-neutral-300 hover:bg-white"
-                } hover:-translate-y-0.5 hover:shadow-xs`}
+                    ? "bg-[#0c0d11] border-white/[0.08] hover:border-indigo-500/35 hover:bg-[#101218]"
+                    : "bg-white border-neutral-200/80 hover:border-indigo-300 shadow-2xs hover:shadow-xs"
+                } hover:-translate-y-0.5`}
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2.5">
                     <span className={`text-[10px] px-2.5 py-0.5 rounded-full font-medium uppercase tracking-wider border flex items-center gap-1 ${
                       isAmoled
-                        ? "bg-white/[0.04] text-neutral-300 border-white/10"
-                        : "bg-neutral-100 text-neutral-600 border-neutral-200"
+                        ? "bg-indigo-500/10 text-indigo-300 border-indigo-500/20"
+                        : "bg-indigo-50 text-indigo-700 border-indigo-200/80"
                     }`}>
                       <FileText size={10} /> Research Paper
                     </span>
@@ -347,14 +343,14 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
                       <ThumbsUp size={11} /> {p.upvotes}
                     </span>
                   </div>
-                  <h4 className="text-sm font-semibold mb-2 group-hover:text-neutral-950 dark:group-hover:text-white transition-colors text-neutral-900 dark:text-white line-clamp-2">
+                  <h4 className="text-sm font-semibold mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors text-neutral-900 dark:text-white line-clamp-2">
                     {p.title}
                   </h4>
                   <p className="text-xs leading-relaxed text-neutral-500 dark:text-neutral-400 line-clamp-3 mb-4 font-normal">
                     {p.summary}
                   </p>
                 </div>
-                <div className="pt-3 border-t border-neutral-100 dark:border-white/[0.05] flex items-center justify-between text-xs text-neutral-700 dark:text-neutral-300 font-medium">
+                <div className="pt-3 border-t border-neutral-100 dark:border-white/[0.06] flex items-center justify-between text-xs text-indigo-600 dark:text-indigo-400 font-medium">
                   <span>Read on ArXiv / HF Papers</span>
                   <ExternalLink size={11} className="group-hover:translate-x-0.5 transition-transform" />
                 </div>
@@ -362,7 +358,7 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({ onSelectEn
             ))
           ) : (
             <div className={`col-span-2 p-8 text-center rounded-2xl border ${
-              isAmoled ? "bg-neutral-900/40 border-white/[0.08]" : "bg-neutral-50/70 border-neutral-200/80"
+              isAmoled ? "bg-[#0c0d11] border-white/[0.08]" : "bg-neutral-50/70 border-neutral-200/80"
             } text-neutral-400`}>
               Daily papers feed updating. Check back shortly.
             </div>

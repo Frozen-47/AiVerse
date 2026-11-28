@@ -304,14 +304,6 @@ const Halftone: React.FC<{ dark: boolean }> = ({ dark }) => {
   );
 };
 
-const useCountUp = (to: number) => {
-  const [v, setV] = React.useState(to);
-  React.useEffect(() => {
-    setV(to);
-  }, [to]);
-  return v;
-};
-
 export const DashboardHero: React.FC<DashboardHeroProps> = ({
   totalEntries,
   onScrollToCatalog,
@@ -319,13 +311,12 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
   const { resolvedTheme } = useTheme();
   const isAmoled = resolvedTheme === "amoled";
   const isDark = isAmoled;
-  const total = totalEntries > 0 ? totalEntries : 477;
-  const shown = useCountUp(total);
+  const shown = totalEntries > 0 ? totalEntries : 477;
 
   return (
     <section
       className={`dh-hero relative flex min-h-[calc(100vh-4rem)] min-h-[calc(100dvh-4rem)] w-full flex-col overflow-hidden border-b text-neutral-950 transition-colors dark:text-white ${
-        isAmoled ? "border-white/10 bg-black" : "border-neutral-200 bg-white dark:border-white/[0.08] dark:bg-[#0f1115]"
+        isAmoled ? "border-white/[0.08] bg-[#050507]" : "border-neutral-200/80 bg-white dark:border-white/[0.08] dark:bg-[#050507]"
       }`}
     >
       <style>{CSS}</style>

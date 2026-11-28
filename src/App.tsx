@@ -870,13 +870,13 @@ const Inner: React.FC = () => {
   if (isLoading) {
     const isDark = resolvedTheme === "amoled";
     const skeletonBg = isDark ? "bg-white/[0.07]" : "bg-neutral-200/80";
-    const skeletonBorder = isDark ? "border-white/[0.08]" : "border-neutral-200/90";
-    const pageBg = isDark ? "bg-black text-white" : "bg-white text-neutral-900";
+    const skeletonBorder = isDark ? "border-white/[0.08]" : "border-neutral-200/80";
+    const pageBg = isDark ? "bg-[#050507] text-white" : "bg-neutral-50 text-neutral-900";
 
     return (
       <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${pageBg}`}>
-        {/* 1. Navbar Skeleton (Matching Modern Navbar) */}
-        <div className={`sticky top-0 z-40 h-16 border-b backdrop-blur-xl flex items-center justify-between px-4 sm:px-6 xl:px-12 ${skeletonBorder} ${isDark ? "bg-black/80" : "bg-white/80"}`}>
+        {/* 1. Navbar Skeleton */}
+        <div className={`sticky top-0 z-40 h-14 sm:h-15 border-b backdrop-blur-xl flex items-center justify-between px-4 sm:px-6 xl:px-12 ${skeletonBorder} ${isDark ? "bg-[#090a0e]/85" : "bg-white/85"}`}>
           {/* Brand Logo & Asset Pill */}
           <div className="flex items-center gap-3">
             <div className={`w-28 h-6 rounded-md animate-pulse ${skeletonBg}`} />
@@ -1239,7 +1239,7 @@ const Inner: React.FC = () => {
         <Suspense
           fallback={
             <div className="flex-1 min-h-[60vh] flex items-center justify-center p-12">
-              <RefreshCw className="animate-spin text-[#1a73e8]" size={28} />
+              <RefreshCw className="animate-spin text-indigo-600 dark:text-indigo-400" size={28} />
             </div>
           }
         >
@@ -1350,11 +1350,11 @@ const Inner: React.FC = () => {
           />
         ) : (
           <div className="min-h-[70vh] flex items-center justify-center p-6">
-            <div className="max-w-md w-full p-8 rounded-2xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-center space-y-4 shadow-xl">
-              <div className="w-14 h-14 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center mx-auto border border-red-500/20">
+            <div className="max-w-md w-full p-8 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] text-center space-y-4 shadow-2xl">
+              <div className="w-14 h-14 rounded-2xl bg-rose-500/10 text-rose-500 flex items-center justify-center mx-auto border border-rose-500/20">
                 <ShieldAlert size={28} />
               </div>
-              <h2 className="text-lg font-bold text-neutral-900 dark:text-neutral-100">
+              <h2 className="text-lg font-bold text-neutral-900 dark:text-white">
                 Administrator Access Required
               </h2>
               <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed font-light">
@@ -1367,7 +1367,7 @@ const Inner: React.FC = () => {
                   onClick={() => {
                     navigate("/dashboard");
                   }}
-                  className="w-full py-2.5 rounded-xl text-xs font-medium border border-[#dadce0] dark:border-[#3c4043] hover:bg-neutral-100 dark:hover:bg-white/5 text-neutral-700 dark:text-neutral-300 transition-colors cursor-pointer"
+                  className="w-full py-2.5 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/[0.1] bg-neutral-50 dark:bg-[#121319] hover:bg-neutral-100 dark:hover:bg-white/[0.06] text-neutral-700 dark:text-neutral-200 transition-colors cursor-pointer"
                 >
                   Return to AiVerse
                 </button>
@@ -1493,24 +1493,22 @@ const Inner: React.FC = () => {
 
                     <div className="flex flex-wrap items-center gap-3">
                       {/* View Switcher: Individual vs By Lab */}
-                      <div className="flex items-center p-1 rounded-xl bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08] w-full sm:w-auto justify-between sm:justify-start">
+                      <div className="flex items-center p-1 rounded-xl bg-neutral-100 dark:bg-[#0c0d11] border border-neutral-200/80 dark:border-white/[0.08] w-full sm:w-auto justify-between sm:justify-start">
                         <button
                           onClick={() => {
                             setCatalogDisplayMode("assets");
                             setCurrentPage(1);
                           }}
-                          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer border ${
                             catalogDisplayMode === "assets"
-                              ? resolvedTheme === "amoled"
-                                ? "bg-white text-black shadow-xs"
-                                : "bg-neutral-900 text-white shadow-xs"
-                              : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                              ? "bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-300 dark:border-indigo-500/30 shadow-xs"
+                              : "border-transparent text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                           }`}
                         >
                           <Box size={13} />
                           <span><span className="hidden sm:inline">All </span>Assets</span>
-                          <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
-                            catalogDisplayMode === "assets" ? "bg-white/20 dark:bg-black/20" : "bg-neutral-200/60 dark:bg-white/[0.08]"
+                          <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.5 rounded-full ${
+                            catalogDisplayMode === "assets" ? "bg-white/20 dark:bg-indigo-500/20 text-white dark:text-indigo-200" : "bg-neutral-200/60 dark:bg-white/[0.08]"
                           }`}>
                             {entries.length}
                           </span>
@@ -1520,18 +1518,16 @@ const Inner: React.FC = () => {
                             setCatalogDisplayMode("ecosystems");
                             setCurrentPage(1);
                           }}
-                          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer border ${
                             catalogDisplayMode === "ecosystems"
-                              ? resolvedTheme === "amoled"
-                                ? "bg-white text-black shadow-xs"
-                                : "bg-neutral-900 text-white shadow-xs"
-                              : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                              ? "bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-300 dark:border-indigo-500/30 shadow-xs"
+                              : "border-transparent text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                           }`}
                         >
-                          <Building2 size={13} className={catalogDisplayMode === "ecosystems" ? "text-blue-400 dark:text-blue-600" : "text-blue-500"} />
+                          <Building2 size={13} className={catalogDisplayMode === "ecosystems" ? "text-white dark:text-indigo-400" : "text-indigo-500"} />
                           <span><span className="hidden sm:inline">AI </span>Ecosystems</span>
-                          <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full ${
-                            catalogDisplayMode === "ecosystems" ? "bg-white/20 dark:bg-black/20" : "bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20"
+                          <span className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.5 rounded-full ${
+                            catalogDisplayMode === "ecosystems" ? "bg-white/20 dark:bg-indigo-500/20 text-white dark:text-indigo-200" : "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20"
                           }`}>
                             {ecosystemsCount}
                           </span>
@@ -1613,20 +1609,20 @@ const Inner: React.FC = () => {
                   <div className="flex mb-4 lg:hidden">
                     <button
                       onClick={() => setShowMobileSidebar(true)}
-                      className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white shadow-xs cursor-pointer"
+                      className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-900 dark:text-white shadow-xs cursor-pointer"
                     >
                       <Filter size={13} />
                       Filter Resources
                       {(typeFilter !== "All" || taskFilter !== "All Tasks" || popularOnly || savedOnly) && (
-                        <span className="w-2 h-2 rounded-full bg-blue-500 ml-1" />
+                        <span className="w-2 h-2 rounded-full bg-indigo-500 ml-1" />
                       )}
                     </button>
                   </div>
 
                   {/* AI Ecosystems Callout in All Entries Section */}
-                  <div className="mb-6 p-4 rounded-2xl border border-blue-500/20 bg-blue-500/[0.04] dark:bg-blue-500/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+                  <div className="mb-6 p-4 rounded-2xl border border-indigo-200/80 dark:border-indigo-500/25 bg-gradient-to-r from-indigo-500/[0.06] via-violet-500/[0.03] to-transparent flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                      <div className="w-10 h-10 rounded-xl bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 border border-indigo-500/20">
                         <Building2 size={19} />
                       </div>
                       <div>
@@ -1634,7 +1630,7 @@ const Inner: React.FC = () => {
                           <h3 className="text-xs font-bold text-neutral-900 dark:text-white uppercase tracking-wider">
                             Explore AI Labs & Ecosystems
                           </h3>
-                          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
                             {ecosystemsCount} AI Organizations
                           </span>
                         </div>
@@ -1649,7 +1645,7 @@ const Inner: React.FC = () => {
                         setCurrentPage(1);
                         window.scrollTo({ top: 0, behavior: "smooth" });
                       }}
-                      className="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 hover:opacity-90 transition-all cursor-pointer shadow-xs"
+                      className="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition-all cursor-pointer shadow-sm shadow-indigo-500/20"
                     >
                       <Building2 size={13} />
                       <span>View AI Ecosystems</span>
@@ -1674,7 +1670,7 @@ const Inner: React.FC = () => {
                           setSearchInput("");
                           setCurrentPage(1);
                         }}
-                        className="px-4 py-2 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black shadow-xs cursor-pointer hover:opacity-90 transition-all"
+                        className="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 cursor-pointer transition-all"
                       >
                         Reset All Filters
                       </button>
@@ -1717,7 +1713,7 @@ const Inner: React.FC = () => {
                       <section>
                         {pageForYou.length > 0 && (
                           <div className="flex items-center gap-2 mb-4 pb-2 border-b border-neutral-100 dark:border-white/[0.04]">
-                            <span className="w-2 h-2 rounded-full bg-blue-500" />
+                            <span className="w-2 h-2 rounded-full bg-indigo-500" />
                             <h2 className="text-sm font-bold tracking-tight text-neutral-900 dark:text-white">
                               All Resources
                             </h2>
@@ -1756,9 +1752,9 @@ const Inner: React.FC = () => {
                                   setItemsPerPage(size);
                                   setCurrentPage(1);
                                 }}
-                                className={`px-2 py-0.5 rounded text-[11px] font-semibold transition-colors cursor-pointer ${
+                                className={`px-2 py-0.5 rounded-md text-[11px] font-semibold transition-colors cursor-pointer ${
                                   itemsPerPage === size
-                                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
+                                    ? "bg-indigo-600 text-white dark:bg-indigo-500/15 dark:text-indigo-300 dark:border dark:border-indigo-500/30 shadow-xs"
                                     : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
                                 }`}
                               >
@@ -1776,7 +1772,7 @@ const Inner: React.FC = () => {
                                 window.scrollTo({ top: 0, behavior: "smooth" });
                               }}
                               disabled={currentPage === 1}
-                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-xs"
+                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-xs"
                             >
                               <ChevronLeft size={13} />
                               <span>Previous</span>
@@ -1806,10 +1802,10 @@ const Inner: React.FC = () => {
                                       setCurrentPage(pageNum);
                                       window.scrollTo({ top: 0, behavior: "smooth" });
                                     }}
-                                    className={`min-w-8 h-8 flex items-center justify-center rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                                    className={`min-w-8 h-8 flex items-center justify-center rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                                       isCurrent
-                                        ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
-                                        : "border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05]"
+                                        ? "bg-indigo-600 text-white dark:bg-indigo-500/15 dark:text-indigo-300 dark:border dark:border-indigo-500/30 shadow-xs"
+                                        : "border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05]"
                                     }`}
                                   >
                                     {pageNum}
@@ -1824,7 +1820,7 @@ const Inner: React.FC = () => {
                                 window.scrollTo({ top: 0, behavior: "smooth" });
                               }}
                               disabled={currentPage === totalPages}
-                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-xs"
+                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-xs"
                             >
                               <span>Next</span>
                               <ChevronRight size={13} />
@@ -1846,14 +1842,14 @@ const Inner: React.FC = () => {
       {/* ─── Global Footer ─── */}
       <footer className={`relative z-10 border-t ${
         resolvedTheme === 'amoled' 
-          ? 'border-white/10 bg-[#171717] text-neutral-300' 
-          : 'border-neutral-300/80 bg-[#f8f9fa] text-neutral-700'
+          ? 'border-white/[0.08] bg-[#090a0e] text-neutral-300' 
+          : 'border-neutral-200/80 bg-white text-neutral-700'
       }`}>
         {/* Tier 1: Status & Directory Strip */}
         <div className={`px-4 sm:px-8 xl:px-12 py-3 border-b ${
           resolvedTheme === 'amoled' 
-            ? 'border-white/10 bg-[#141517] text-neutral-400' 
-            : 'border-neutral-200/90 bg-[#f1f3f4] text-neutral-600'
+            ? 'border-white/[0.08] bg-[#050507] text-neutral-400' 
+            : 'border-neutral-200/80 bg-neutral-50 text-neutral-600'
         } text-xs flex flex-wrap items-center justify-between gap-3`}>
           <div className="flex items-center gap-2">
             <span className="font-semibold text-neutral-800 dark:text-neutral-200">Global AI Directory</span>
@@ -2240,12 +2236,12 @@ const Inner: React.FC = () => {
           className="group fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 px-3.5 py-2.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.18)] dark:shadow-[0_8px_30px_rgba(255,255,255,0.12)] bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 border border-neutral-800 dark:border-white/20 hover:border-neutral-700 dark:hover:border-white/40 transition-colors duration-150 cursor-pointer"
           aria-label="Open Vox AI Assistant"
         >
-          <div className="relative flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-tr from-amber-500 to-orange-500 text-white shadow-xs">
+          <div className="relative flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-tr from-indigo-500 to-violet-500 text-white shadow-xs">
             <Zap size={13} className="fill-white" />
-            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#1a73e8] dark:bg-[#a8c7fa] ring-2 ring-neutral-900 dark:ring-white" />
+            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-neutral-900 dark:ring-white" />
           </div>
           <span className="text-xs font-semibold tracking-wide">Ask Vox</span>
-          <span className="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 dark:text-amber-500 border border-amber-500/30">
+          <span className="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 dark:text-indigo-600 border border-indigo-500/30">
             Groq LPU
           </span>
         </button>
@@ -2324,7 +2320,7 @@ const Inner: React.FC = () => {
             <div className="sticky bottom-0 pt-4 mt-6 border-t border-neutral-200 dark:border-white/10 bg-inherit pb-2">
               <button
                 onClick={() => setShowMobileSidebar(false)}
-                className="w-full py-2.5 rounded-xl text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black shadow-xs text-center cursor-pointer hover:opacity-90 transition-opacity"
+                className="w-full py-2.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 text-center cursor-pointer transition-all"
               >
                 Show {filtered.length} Resources
               </button>

@@ -1,33 +1,34 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
-  Database,
-  HardDrive,
   Activity,
-  RefreshCw,
-  Copy,
+  AlertTriangle,
   Check,
+  ChevronRight,
+  Code,
+  Copy,
+  Database,
+  Download,
+  ExternalLink,
   Eye,
   EyeOff,
-  ExternalLink,
-  Search,
-  Download,
-  UploadCloud,
-  Trash2,
+  FileCode,
+  FileText,
   Folder,
   FolderPlus,
-  FileText,
-  Image as ImageIcon,
-  FileCode,
-  ShieldCheck,
-  AlertTriangle,
-  X,
-  Code,
-  Table,
-  ChevronRight,
-  Key,
   Globe,
+  HardDrive,
+  Image as ImageIcon,
+  Key,
+  RefreshCw,
+  Search,
+  ShieldCheck,
+  Table,
+  Trash2,
+  UploadCloud,
+  X,
 } from "lucide-react";
 import { supabase } from "../lib/supabase";
+import { toErrorMessage } from "../lib/adminCatalog";
 import { useAuth } from "./AuthContext";
 
 interface SupabaseConsoleProps {
@@ -48,7 +49,8 @@ const SYSTEM_TABLES: TableMetadata[] = [
   {
     name: "entries",
     label: "AI Catalog Directory",
-    description: "Verified and community-submitted AI models, frameworks, datasets, platforms, and applications.",
+    description:
+      "Verified and community-submitted AI models, frameworks, datasets, platforms, and applications.",
     primaryKey: "name",
     rlsEnabled: true,
     category: "Catalog",
@@ -56,7 +58,8 @@ const SYSTEM_TABLES: TableMetadata[] = [
   {
     name: "user_preferences",
     label: "Builder Accounts & Roles",
-    description: "User profile metadata, assigned IAM roles, developer bio, social links, and security access states.",
+    description:
+      "User profile metadata, assigned IAM roles, developer bio, social links, and security access states.",
     primaryKey: "user_key",
     rlsEnabled: true,
     category: "Identity",
@@ -64,7 +67,8 @@ const SYSTEM_TABLES: TableMetadata[] = [
   {
     name: "user_chats",
     label: "AI Conversation Sessions",
-    description: "Cloud-synchronized AI chat widget conversation threads, messages, and model metadata per user account.",
+    description:
+      "Cloud-synchronized AI chat conversation threads, messages, and model metadata per account.",
     primaryKey: "id",
     rlsEnabled: true,
     category: "Communication",
@@ -101,8 +105,6 @@ interface StorageBucketInfo {
   public: boolean;
   created_at?: string;
   updated_at?: string;
-  file_size_limit?: number | null;
-  allowed_mime_types?: string[] | null;
 }
 
 interface StorageFileInfo {
@@ -110,13 +112,20 @@ interface StorageFileInfo {
   id?: string;
   updated_at?: string;
   created_at?: string;
-  last_accessed_at?: string;
   metadata?: {
     size?: number;
     mimetype?: string;
-    cacheControl?: string;
   };
 }
+
+type TableRowRecord = Record<string, unknown>;
+
+const SURFACE_CARD =
+  "rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11]";
+const SUBTLE_PANEL =
+  "rounded-xl border border-neutral-200/70 dark:border-white/[0.07] bg-neutral-50/70 dark:bg-white/[0.02]";
+const MODAL_OVERLAY =
+  "fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-md animate-[fadeIn_0.15s_ease-out]";
 
 export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
   showToast,
@@ -124,22 +133,22 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
 }) => {
   const { user } = useAuth();
 
-  // Navigation tab state: "telemetry" | "storage" | "data_explorer" | "rpc_security"
-  const [activeTab, setActiveTab] = useState<"telemetry" | "storage" | "data_explorer" | "rpc_security">("telemetry");
+  const [activeTab, setActiveTab] = useState<
+    "telemetry" | "storage" | "data_explorer" | "rpc_security"
+  >("telemetry");
 
-  // Supabase Connection & Ping State
   const [pingLatency, setPingLatency] = useState<number | null>(null);
   const [pinging, setPinging] = useState(false);
   const [lastPingTime, setLastPingTime] = useState<string | null>(null);
-  const [connectionStatus, setConnectionStatus] = useState<"connected" | "degraded" | "checking">("checking");
+  const [connectionStatus, setConnectionStatus] = useState<
+    "connected" | "degraded" | "checking"
+  >("checking");
   const [showAnonKey, setShowAnonKey] = useState(false);
   const [copiedKey, setCopiedKey] = useState(false);
 
-  // Table Row Counts
   const [tableCounts, setTableCounts] = useState<Record<string, number | null>>({});
   const [loadingCounts, setLoadingCounts] = useState(false);
 
-  // Storage Buckets & Files State
   const [buckets, setBuckets] = useState<StorageBucketInfo[]>([]);
   const [selectedBucket, setSelectedBucket] = useState<string>("");
   const [customBucketInput, setCustomBucketInput] = useState<string>("");
@@ -147,35 +156,41 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
   const [bucketFiles, setBucketFiles] = useState<StorageFileInfo[]>([]);
   const [loadingFiles, setLoadingFiles] = useState(false);
   const [filesSearch, setFilesSearch] = useState("");
-  const [previewFile, setPreviewFile] = useState<{ name: string; url: string; isImage: boolean } | null>(null);
+  const [previewFile, setPreviewFile] = useState<{
+    name: string;
+    url: string;
+    isImage: boolean;
+  } | null>(null);
   const [deletingFileName, setDeletingFileName] = useState<string | null>(null);
   const [uploadingFile, setUploadingFile] = useState(false);
   const [newBucketModalOpen, setNewBucketModalOpen] = useState(false);
   const [newBucketName, setNewBucketName] = useState("");
   const [newBucketIsPublic, setNewBucketIsPublic] = useState(true);
 
-  // Live Table Data Explorer State
   const [selectedTable, setSelectedTable] = useState<string>("entries");
   const [customTableInput, setCustomTableInput] = useState<string>("");
-  const [tableRows, setTableRows] = useState<any[]>([]);
+  const [tableRows, setTableRows] = useState<TableRowRecord[]>([]);
   const [loadingRows, setLoadingRows] = useState(false);
   const [rowsLimit, setRowsLimit] = useState<number>(25);
   const [rowsSearch, setRowsSearch] = useState<string>("");
-  const [inspectingRow, setInspectingRow] = useState<any | null>(null);
+  const [inspectingRow, setInspectingRow] = useState<TableRowRecord | null>(null);
   const [copiedJson, setCopiedJson] = useState(false);
 
-  // RPC Health Test State
-  const [rpcStatus, setRpcStatus] = useState<Record<string, "ok" | "untested" | "error">>({
+  const [rpcStatus, setRpcStatus] = useState<
+    Record<string, "ok" | "untested" | "error" | "protected">
+  >({
     clear_user_chats_by_admin: "untested",
     delete_user_by_admin: "untested",
-    request_account_deletion: "untested",
+    request_account_deletion: "protected",
     get_admin_users: "untested",
   });
   const [testingRpc, setTestingRpc] = useState(false);
 
-  // Supabase Project metadata
-  const supabaseUrl = (import.meta.env.VITE_SUPABASE_URL as string) || "https://iajivjjzfvkhullzfsom.supabase.co";
-  const supabaseAnonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY as string) || "";
+  const supabaseUrl =
+    (import.meta.env.VITE_SUPABASE_URL as string) ||
+    "https://iajivjjzfvkhullzfsom.supabase.co";
+  const supabaseAnonKey =
+    (import.meta.env.VITE_SUPABASE_ANON_KEY as string) || "";
   const projectId = useMemo(() => {
     try {
       const parsed = new URL(supabaseUrl);
@@ -185,13 +200,11 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
     }
   }, [supabaseUrl]);
 
-  // Copy helper
   const copyToClipboard = (text: string, label: string) => {
     navigator.clipboard.writeText(text);
     showToast("success", `${label} copied to clipboard.`);
   };
 
-  // Ping Test
   const testConnection = useCallback(async () => {
     setPinging(true);
     const start = performance.now();
@@ -213,29 +226,23 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
     }
   }, []);
 
-  // Fetch Table Row Counts
   const fetchTableCounts = useCallback(async () => {
     setLoadingCounts(true);
     const newCounts: Record<string, number | null> = {};
-    for (const t of SYSTEM_TABLES) {
+    for (const tbl of SYSTEM_TABLES) {
       try {
         const { count, error } = await supabase
-          .from(t.name)
+          .from(tbl.name)
           .select("*", { count: "exact", head: true });
-        if (error) {
-          newCounts[t.name] = null;
-        } else {
-          newCounts[t.name] = count ?? 0;
-        }
+        newCounts[tbl.name] = error ? null : count ?? 0;
       } catch {
-        newCounts[t.name] = null;
+        newCounts[tbl.name] = null;
       }
     }
     setTableCounts(newCounts);
     setLoadingCounts(false);
   }, []);
 
-  // Fetch Storage Buckets
   const fetchBuckets = useCallback(async () => {
     setLoadingBuckets(true);
     try {
@@ -255,89 +262,115 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
     }
   }, [selectedBucket]);
 
-  // Fetch Files for selected bucket
-  const fetchBucketFiles = useCallback(async (bucketId: string) => {
-    if (!bucketId) {
-      setBucketFiles([]);
-      return;
-    }
-    setLoadingFiles(true);
-    try {
-      const { data, error } = await supabase.storage.from(bucketId).list("", {
-        limit: 100,
-        offset: 0,
-        sortBy: { column: "name", order: "asc" },
-      });
-
-      if (error) {
-        showToast("error", `Could not list files in "${bucketId}": ${error.message}`);
+  const fetchBucketFiles = useCallback(
+    async (bucketId: string) => {
+      if (!bucketId) {
         setBucketFiles([]);
-      } else {
-        // Filter out placeholder '.emptyFolderPlaceholder' if any
-        setBucketFiles(
-          ((data as StorageFileInfo[]) || []).filter(
-            (f) => f.name !== ".emptyFolderPlaceholder"
-          )
-        );
+        return;
       }
-    } catch (err: any) {
-      setBucketFiles([]);
-      showToast("error", `Error reading bucket: ${err?.message || err}`);
-    } finally {
-      setLoadingFiles(false);
-    }
-  }, [showToast]);
+      setLoadingFiles(true);
+      try {
+        const { data, error } = await supabase.storage.from(bucketId).list("", {
+          limit: 100,
+          offset: 0,
+          sortBy: { column: "name", order: "asc" },
+        });
+        if (error) {
+          showToast("error", `Could not list files in "${bucketId}": ${error.message}`);
+          setBucketFiles([]);
+        } else {
+          setBucketFiles(
+            ((data as StorageFileInfo[]) || []).filter(
+              (f) => f.name !== ".emptyFolderPlaceholder",
+            ),
+          );
+        }
+      } catch (err: unknown) {
+        setBucketFiles([]);
+        showToast("error", `Error reading bucket: ${toErrorMessage(err)}`);
+      } finally {
+        setLoadingFiles(false);
+      }
+    },
+    [showToast],
+  );
 
-  // Load Data Rows for Table Data Explorer
-  const fetchTableRows = useCallback(async (tableName: string, limit: number) => {
-    if (!tableName) return;
-    setLoadingRows(true);
-    try {
-      const { data, error } = await supabase
-        .from(tableName)
-        .select("*")
-        .limit(limit);
+  const fetchTableRows = useCallback(
+    async (tableName: string, limit: number) => {
+      if (!tableName) return;
+      setLoadingRows(true);
+      try {
+        const { data, error } = await supabase
+          .from(tableName)
+          .select("*")
+          .limit(limit);
 
-      if (error) {
-        showToast("error", `Failed to load table "${tableName}": ${error.message}`);
+        if (error) {
+          showToast("error", `Failed to load table "${tableName}": ${error.message}`);
+          setTableRows([]);
+        } else {
+          setTableRows((data as TableRowRecord[]) || []);
+        }
+      } catch (err: unknown) {
+        showToast("error", `Error querying "${tableName}": ${toErrorMessage(err)}`);
         setTableRows([]);
-      } else {
-        setTableRows(data || []);
+      } finally {
+        setLoadingRows(false);
       }
-    } catch (err: any) {
-      showToast("error", `Error querying "${tableName}": ${err?.message || err}`);
-      setTableRows([]);
-    } finally {
-      setLoadingRows(false);
-    }
-  }, [showToast]);
+    },
+    [showToast],
+  );
 
-  // Initial load
   useEffect(() => {
-    testConnection();
-    fetchTableCounts();
-    fetchBuckets();
+    let cancelled = false;
+    void Promise.resolve().then(() => {
+      if (!cancelled) {
+        void testConnection();
+        void fetchTableCounts();
+        void fetchBuckets();
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [testConnection, fetchTableCounts, fetchBuckets]);
 
-  // When selected bucket changes, load its files
   useEffect(() => {
-    if (selectedBucket) {
-      fetchBucketFiles(selectedBucket);
-    }
+    if (!selectedBucket) return;
+    let cancelled = false;
+    void Promise.resolve().then(() => {
+      if (!cancelled) {
+        void fetchBucketFiles(selectedBucket);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [selectedBucket, fetchBucketFiles]);
 
-  // When selected table or limit changes, load table rows
   useEffect(() => {
-    if (activeTab === "data_explorer" && selectedTable) {
-      fetchTableRows(selectedTable, rowsLimit);
-    }
+    if (activeTab !== "data_explorer" || !selectedTable) return;
+    let cancelled = false;
+    void Promise.resolve().then(() => {
+      if (!cancelled) {
+        void fetchTableRows(selectedTable, rowsLimit);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [activeTab, selectedTable, rowsLimit, fetchTableRows]);
 
-  // Handle Bucket Creation
   const handleCreateBucket = async () => {
-    const bucketName = newBucketName.trim().toLowerCase().replace(/[^a-z0-9_-]/g, "-");
+    const bucketName = newBucketName
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9_-]/g, "-");
     if (!bucketName) {
-      showToast("error", "Please provide a valid bucket name (lowercase letters, numbers, hyphens).");
+      showToast(
+        "error",
+        "Please provide a valid bucket name (lowercase letters, numbers, hyphens).",
+      );
       return;
     }
 
@@ -350,18 +383,20 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
         showToast("error", `Bucket creation failed: ${error.message}`);
       } else {
         showToast("success", `Storage bucket "${bucketName}" created successfully!`);
-        logAudit?.("CREATE_STORAGE_BUCKET", `Created storage bucket: ${bucketName} (public: ${newBucketIsPublic})`);
+        logAudit?.(
+          "CREATE_STORAGE_BUCKET",
+          `Created storage bucket: ${bucketName} (public: ${newBucketIsPublic})`,
+        );
         setNewBucketModalOpen(false);
         setNewBucketName("");
-        fetchBuckets();
+        void fetchBuckets();
         setSelectedBucket(bucketName);
       }
-    } catch (err: any) {
-      showToast("error", `Bucket creation error: ${err?.message || err}`);
+    } catch (err: unknown) {
+      showToast("error", `Bucket creation error: ${toErrorMessage(err)}`);
     }
   };
 
-  // Handle File Upload into selected bucket
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file || !selectedBucket) return;
@@ -369,27 +404,28 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
     setUploadingFile(true);
     try {
       const sanitizedName = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
-      const { error } = await supabase.storage.from(selectedBucket).upload(sanitizedName, file, {
-        upsert: true,
-      });
+      const { error } = await supabase.storage
+        .from(selectedBucket)
+        .upload(sanitizedName, file, { upsert: true });
 
       if (error) {
         showToast("error", `Upload failed: ${error.message}`);
       } else {
         showToast("success", `Uploaded "${file.name}" to ${selectedBucket}`);
-        logAudit?.("UPLOAD_STORAGE_FILE", `Uploaded file ${sanitizedName} to bucket ${selectedBucket}`);
-        fetchBucketFiles(selectedBucket);
+        logAudit?.(
+          "UPLOAD_STORAGE_FILE",
+          `Uploaded file ${sanitizedName} to bucket ${selectedBucket}`,
+        );
+        void fetchBucketFiles(selectedBucket);
       }
-    } catch (err: any) {
-      showToast("error", `Upload error: ${err?.message || err}`);
+    } catch (err: unknown) {
+      showToast("error", `Upload error: ${toErrorMessage(err)}`);
     } finally {
       setUploadingFile(false);
-      // Reset input
       event.target.value = "";
     }
   };
 
-  // Handle File Deletion
   const handleDeleteFile = async (fileName: string) => {
     if (!selectedBucket) return;
     try {
@@ -398,23 +434,24 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
         showToast("error", `Delete failed: ${error.message}`);
       } else {
         showToast("success", `Deleted "${fileName}" from ${selectedBucket}`);
-        logAudit?.("DELETE_STORAGE_FILE", `Deleted file ${fileName} from bucket ${selectedBucket}`);
+        logAudit?.(
+          "DELETE_STORAGE_FILE",
+          `Deleted file ${fileName} from bucket ${selectedBucket}`,
+        );
         setDeletingFileName(null);
-        fetchBucketFiles(selectedBucket);
+        void fetchBucketFiles(selectedBucket);
       }
-    } catch (err: any) {
-      showToast("error", `Delete error: ${err?.message || err}`);
+    } catch (err: unknown) {
+      showToast("error", `Delete error: ${toErrorMessage(err)}`);
     }
   };
 
-  // Filtered files in selected bucket
   const filteredFiles = useMemo(() => {
     if (!filesSearch.trim()) return bucketFiles;
     const q = filesSearch.toLowerCase();
     return bucketFiles.filter((f) => f.name.toLowerCase().includes(q));
   }, [bucketFiles, filesSearch]);
 
-  // Filtered rows in Table Explorer
   const filteredRows = useMemo(() => {
     if (!rowsSearch.trim()) return tableRows;
     const q = rowsSearch.toLowerCase();
@@ -427,7 +464,6 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
     });
   }, [tableRows, rowsSearch]);
 
-  // Dynamic table columns from rows
   const tableColumns = useMemo(() => {
     if (tableRows.length === 0) return [];
     const keys = new Set<string>();
@@ -439,12 +475,12 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
     return Array.from(keys);
   }, [tableRows]);
 
-  // Test RPC functions non-destructively
   const runRpcTests = async () => {
     setTestingRpc(true);
-    const updatedStatus: Record<string, "ok" | "untested" | "error"> = { ...rpcStatus };
+    const updatedStatus: Record<string, "ok" | "untested" | "error" | "protected"> = {
+      ...rpcStatus,
+    };
 
-    // 1. Test get_admin_users
     try {
       const { error } = await supabase.rpc("get_admin_users");
       updatedStatus.get_admin_users = error ? "error" : "ok";
@@ -452,86 +488,74 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
       updatedStatus.get_admin_users = "error";
     }
 
-    // 2. Test is_username_available
-    try {
-      const { error } = await supabase.rpc("is_username_available", {
-        target_username: "ping_check_test_admin",
-      });
-      updatedStatus.is_username_available = error ? "error" : "ok";
-    } catch {
-      updatedStatus.is_username_available = "error";
-    }
-
-    // 3. Test clear_user_chats_by_admin (with dummy uuid, expected to handle gracefully or return 0)
     try {
       const { error } = await supabase.rpc("clear_user_chats_by_admin", {
-        target_user_id: "00000000-0000-0000-0000-000000000000",
+        target_user_key: "supabase_00000000-0000-0000-0000-000000000000",
       });
-      // If unauthorized or permission denied, it flags error, otherwise ok
       updatedStatus.clear_user_chats_by_admin = error ? "error" : "ok";
     } catch {
       updatedStatus.clear_user_chats_by_admin = "error";
     }
 
-    // 4. Test delete_user_by_admin
     try {
       const { error } = await supabase.rpc("delete_user_by_admin", {
-        target_user_id: "00000000-0000-0000-0000-000000000000",
+        target_user_key: "supabase_00000000-0000-0000-0000-000000000000",
       });
       updatedStatus.delete_user_by_admin = error ? "error" : "ok";
     } catch {
       updatedStatus.delete_user_by_admin = "error";
     }
 
+    updatedStatus.request_account_deletion = "protected";
     setRpcStatus(updatedStatus);
     setTestingRpc(false);
     showToast("success", "Supabase RPC function diagnostics completed.");
   };
 
-  // Helper format file size
   const formatBytes = (bytes?: number) => {
     if (!bytes || bytes === 0) return "0 B";
     const k = 1024;
     const sizes = ["B", "KB", "MB", "GB"];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + " " + sizes[i];
+    return `${parseFloat((bytes / Math.pow(k, i)).toFixed(1))} ${sizes[i]}`;
   };
 
   return (
-    <div className="space-y-6">
-      {/* ── Console Header ─────────────────────────────────────────────────── */}
+    <div className="space-y-5">
+      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#1a73e8] text-white flex items-center justify-center font-bold text-sm shadow-xs">
-              <Database size={18} />
-            </div>
-            <div>
-              <h2 className="text-lg font-semibold text-[#202124] dark:text-[#e8eaed]">
-                Supabase & Cloud Storage Console
-              </h2>
-              <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                Real-time database telemetry, storage buckets, table records explorer, and security RPC services.
-              </p>
-            </div>
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-600 text-white flex items-center justify-center shadow-xs shrink-0">
+            <Database size={18} />
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-white">
+              Supabase & Cloud Storage Console
+            </h2>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400">
+              Live database telemetry, object storage buckets, record explorer, and RPC security diagnostics.
+            </p>
           </div>
         </div>
 
-        {/* Global Quick Actions */}
         <div className="flex items-center gap-2">
           <button
+            type="button"
             onClick={() => {
-              testConnection();
-              fetchTableCounts();
-              fetchBuckets();
-              if (selectedBucket) fetchBucketFiles(selectedBucket);
-              if (selectedTable) fetchTableRows(selectedTable, rowsLimit);
+              void testConnection();
+              void fetchTableCounts();
+              void fetchBuckets();
+              if (selectedBucket) void fetchBucketFiles(selectedBucket);
+              if (selectedTable) void fetchTableRows(selectedTable, rowsLimit);
               showToast("success", "Supabase metrics re-synced.");
             }}
             disabled={pinging || loadingCounts}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] hover:bg-neutral-50 dark:hover:bg-neutral-800 text-[#3c4043] dark:text-[#e8eaed] cursor-pointer transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/10 bg-white dark:bg-[#0c0d11] hover:bg-neutral-50 dark:hover:bg-white/[0.05] text-neutral-700 dark:text-neutral-200 cursor-pointer transition-colors"
           >
-            <RefreshCw size={13} className={pinging || loadingCounts ? "animate-spin" : ""} />
+            <RefreshCw
+              size={13}
+              className={pinging || loadingCounts ? "animate-spin" : ""}
+            />
             <span>Sync All</span>
           </button>
 
@@ -539,7 +563,7 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
             href="https://supabase.com/dashboard"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-[#1a73e8] hover:bg-[#1557b0] text-white cursor-pointer shadow-xs transition-colors"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer shadow-xs transition-colors"
           >
             <span>Supabase Dashboard</span>
             <ExternalLink size={12} />
@@ -547,111 +571,96 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
         </div>
       </div>
 
-      {/* ── Tab Switcher ───────────────────────────────────────────────────── */}
-      <div className="border-b border-[#dadce0] dark:border-[#3c4043] flex items-center gap-1 overflow-x-auto text-xs font-medium">
-        <button
-          onClick={() => setActiveTab("telemetry")}
-          className={`flex items-center gap-2 px-4 py-2.5 border-b-2 font-medium transition-colors cursor-pointer whitespace-nowrap ${
-            activeTab === "telemetry"
-              ? "border-[#1a73e8] text-[#1a73e8] dark:text-[#8ab4f8] font-semibold"
-              : "border-transparent text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#202124] dark:hover:text-[#e8eaed]"
-          }`}
-        >
-          <Activity size={14} />
-          <span>Telemetry & Architecture</span>
-        </button>
-
-        <button
-          onClick={() => setActiveTab("storage")}
-          className={`flex items-center gap-2 px-4 py-2.5 border-b-2 font-medium transition-colors cursor-pointer whitespace-nowrap ${
-            activeTab === "storage"
-              ? "border-[#1a73e8] text-[#1a73e8] dark:text-[#8ab4f8] font-semibold"
-              : "border-transparent text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#202124] dark:hover:text-[#e8eaed]"
-          }`}
-        >
-          <HardDrive size={14} />
-          <span>Cloud Storage Buckets</span>
-          {buckets.length > 0 && (
-            <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-neutral-100 dark:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6]">
-              {buckets.length}
-            </span>
-          )}
-        </button>
-
-        <button
-          onClick={() => setActiveTab("data_explorer")}
-          className={`flex items-center gap-2 px-4 py-2.5 border-b-2 font-medium transition-colors cursor-pointer whitespace-nowrap ${
-            activeTab === "data_explorer"
-              ? "border-[#1a73e8] text-[#1a73e8] dark:text-[#8ab4f8] font-semibold"
-              : "border-transparent text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#202124] dark:hover:text-[#e8eaed]"
-          }`}
-        >
-          <Table size={14} />
-          <span>Live Table Data Explorer</span>
-        </button>
-
-        <button
-          onClick={() => setActiveTab("rpc_security")}
-          className={`flex items-center gap-2 px-4 py-2.5 border-b-2 font-medium transition-colors cursor-pointer whitespace-nowrap ${
-            activeTab === "rpc_security"
-              ? "border-[#1a73e8] text-[#1a73e8] dark:text-[#8ab4f8] font-semibold"
-              : "border-transparent text-[#5f6368] dark:text-[#9aa0a6] hover:text-[#202124] dark:hover:text-[#e8eaed]"
-          }`}
-        >
-          <ShieldCheck size={14} />
-          <span>Security & RPC Diagnostics</span>
-        </button>
+      {/* Segmented Tab Pills */}
+      <div className="inline-flex flex-wrap items-center gap-1.5 p-1 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-100/70 dark:bg-white/[0.03]">
+        {(
+          [
+            { id: "telemetry", label: "Telemetry & Architecture", icon: <Activity size={13} /> },
+            {
+              id: "storage",
+              label: "Storage Buckets",
+              icon: <HardDrive size={13} />,
+              badge: buckets.length > 0 ? buckets.length : undefined,
+            },
+            { id: "data_explorer", label: "Table Data Explorer", icon: <Table size={13} /> },
+            { id: "rpc_security", label: "Security & RPCs", icon: <ShieldCheck size={13} /> },
+          ] as const
+        ).map((tab) => {
+          const active = activeTab === tab.id;
+          return (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => setActiveTab(tab.id)}
+              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                active
+                  ? "bg-white dark:bg-[#14161f] text-neutral-900 dark:text-white shadow-xs font-semibold"
+                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+              }`}
+            >
+              <span className={active ? "text-indigo-500" : ""}>{tab.icon}</span>
+              <span>{tab.label}</span>
+              {"badge" in tab && tab.badge !== undefined && (
+                <span className="px-1.5 py-0.2 rounded-full text-[10px] font-mono bg-neutral-200/70 dark:bg-white/10">
+                  {tab.badge}
+                </span>
+              )}
+            </button>
+          );
+        })}
       </div>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          TAB 1: TELEMETRY & ARCHITECTURE (SUPABASE DETAILS)
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* TAB 1: TELEMETRY */}
       {activeTab === "telemetry" && (
         <div className="space-y-6">
-          {/* Connection Status & Infrastructure Bar */}
-          <div className="p-4 sm:p-5 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] space-y-4">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#dadce0]/60 dark:border-[#3c4043]/60">
+          <div className={`${SURFACE_CARD} p-5 space-y-4`}>
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-neutral-100 dark:border-white/[0.06]">
               <div className="flex items-center gap-3">
                 <div
-                  className={`w-3.5 h-3.5 rounded-full ${
+                  className={`w-3 h-3 rounded-full ${
                     connectionStatus === "connected"
-                      ? "bg-[#1e8e3e] shadow-[0_0_8px_rgba(30,142,62,0.6)]"
-                      : "bg-[#f9ab00] shadow-[0_0_8px_rgba(249,171,0,0.6)]"
+                      ? "bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.7)]"
+                      : "bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.7)]"
                   }`}
                 />
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold text-[#202124] dark:text-[#e8eaed]">
-                      {connectionStatus === "connected" ? "Supabase PostgreSQL Connected" : "Connection Checking"}
+                    <span className="text-sm font-semibold text-neutral-900 dark:text-white">
+                      {connectionStatus === "connected"
+                        ? "Supabase PostgreSQL Connected"
+                        : "Checking Connection..."}
                     </span>
-                    <span className="px-2 py-0.5 rounded text-[11px] font-mono bg-[#e6f4ea] text-[#137333] dark:bg-[#0d3419] dark:text-[#81c995]">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/12 text-emerald-600 dark:text-emerald-300 border border-emerald-500/20">
                       HTTP/2 SSL
                     </span>
                   </div>
-                  <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                    Endpoint: <span className="font-mono text-[#202124] dark:text-[#e8eaed]">{supabaseUrl}</span>
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                    Endpoint:{" "}
+                    <span className="font-mono text-neutral-800 dark:text-neutral-200">
+                      {supabaseUrl}
+                    </span>
                   </p>
                 </div>
               </div>
 
-              {/* Ping Latency Metric & Trigger */}
               <div className="flex items-center gap-3 self-start md:self-auto">
                 <div className="text-right">
-                  <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider font-semibold">
+                  <p className="text-[10px] text-neutral-400 uppercase tracking-wider font-semibold">
                     Round-Trip Ping
                   </p>
-                  <p className="text-lg font-bold font-mono text-[#1a73e8] dark:text-[#8ab4f8]">
+                  <p className="text-lg font-bold font-mono tabular-nums text-indigo-600 dark:text-indigo-400">
                     {pingLatency !== null ? `${pingLatency} ms` : "---"}
                   </p>
                   {lastPingTime && (
-                    <p className="text-[10px] text-[#5f6368] dark:text-[#9aa0a6]">at {lastPingTime}</p>
+                    <p className="text-[10px] text-neutral-400">at {lastPingTime}</p>
                   )}
                 </div>
 
                 <button
-                  onClick={testConnection}
+                  type="button"
+                  onClick={() => void testConnection()}
                   disabled={pinging}
-                  className="px-3 py-1.5 rounded-md text-xs font-medium bg-[#1a73e8] hover:bg-[#1557b0] text-white cursor-pointer shadow-xs transition-colors flex items-center gap-1.5"
+                  className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer shadow-xs transition-colors flex items-center gap-1.5"
                 >
                   <Activity size={13} className={pinging ? "animate-spin" : ""} />
                   <span>{pinging ? "Testing..." : "Test Ping"}</span>
@@ -659,143 +668,155 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
               </div>
             </div>
 
-            {/* Project Environment Details Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-              <div className="p-3 rounded-lg bg-[#f8f9fa] dark:bg-[#202124] border border-[#dadce0]/60 dark:border-[#3c4043]/60 space-y-1">
-                <div className="flex items-center justify-between text-[#5f6368] dark:text-[#9aa0a6]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 text-xs">
+              <div className={`${SUBTLE_PANEL} p-3.5 space-y-1`}>
+                <div className="flex items-center justify-between text-neutral-500 dark:text-neutral-400">
                   <span className="flex items-center gap-1.5 font-medium">
                     <Globe size={13} /> Project Reference ID
                   </span>
                   <button
+                    type="button"
                     onClick={() => copyToClipboard(projectId, "Project ID")}
-                    className="p-1 hover:text-[#1a73e8] cursor-pointer"
+                    className="p-1 hover:text-indigo-500 cursor-pointer"
                     title="Copy Project ID"
                   >
                     <Copy size={12} />
                   </button>
                 </div>
-                <p className="font-mono font-semibold text-[#202124] dark:text-[#e8eaed] text-sm truncate">
+                <p className="font-mono font-semibold text-neutral-900 dark:text-white text-sm truncate">
                   {projectId}
                 </p>
-                <p className="text-[10px] text-[#5f6368] dark:text-[#9aa0a6]">Cloud Region: Hosted Supabase</p>
+                <p className="text-[10px] text-neutral-500">Cloud Region: Hosted Supabase</p>
               </div>
 
-              <div className="p-3 rounded-lg bg-[#f8f9fa] dark:bg-[#202124] border border-[#dadce0]/60 dark:border-[#3c4043]/60 space-y-1">
-                <div className="flex items-center justify-between text-[#5f6368] dark:text-[#9aa0a6]">
+              <div className={`${SUBTLE_PANEL} p-3.5 space-y-1`}>
+                <div className="flex items-center justify-between text-neutral-500 dark:text-neutral-400">
                   <span className="flex items-center gap-1.5 font-medium">
-                    <Key size={13} /> Public Anon API Key
+                    <Key size={13} /> Public Anon Key
                   </span>
                   <div className="flex items-center gap-1">
                     <button
+                      type="button"
                       onClick={() => setShowAnonKey((s) => !s)}
-                      className="p-1 hover:text-[#1a73e8] cursor-pointer"
+                      className="p-1 hover:text-indigo-500 cursor-pointer"
                       title={showAnonKey ? "Hide Key" : "Reveal Key"}
                     >
                       {showAnonKey ? <EyeOff size={12} /> : <Eye size={12} />}
                     </button>
                     <button
+                      type="button"
                       onClick={() => {
                         copyToClipboard(supabaseAnonKey, "Anon Key");
                         setCopiedKey(true);
                         setTimeout(() => setCopiedKey(false), 2000);
                       }}
-                      className="p-1 hover:text-[#1a73e8] cursor-pointer"
+                      className="p-1 hover:text-indigo-500 cursor-pointer"
                       title="Copy Key"
                     >
-                      {copiedKey ? <Check size={12} className="text-[#1e8e3e]" /> : <Copy size={12} />}
+                      {copiedKey ? (
+                        <Check size={12} className="text-emerald-500" />
+                      ) : (
+                        <Copy size={12} />
+                      )}
                     </button>
                   </div>
                 </div>
-                <p className="font-mono text-[#202124] dark:text-[#e8eaed] truncate">
+                <p className="font-mono text-neutral-900 dark:text-white truncate">
                   {showAnonKey
                     ? supabaseAnonKey
                     : supabaseAnonKey
-                    ? `${supabaseAnonKey.slice(0, 16)}••••••••••••••••${supabaseAnonKey.slice(-8)}`
+                    ? `${supabaseAnonKey.slice(0, 16)}••••••••${supabaseAnonKey.slice(-8)}`
                     : "No Key Configured"}
                 </p>
-                <p className="text-[10px] text-[#1e8e3e] font-medium">Role: anon (Safe for client browsers)</p>
+                <p className="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">
+                  Role: anon (RLS enforced)
+                </p>
               </div>
 
-              <div className="p-3 rounded-lg bg-[#f8f9fa] dark:bg-[#202124] border border-[#dadce0]/60 dark:border-[#3c4043]/60 space-y-1">
-                <div className="flex items-center justify-between text-[#5f6368] dark:text-[#9aa0a6]">
+              <div className={`${SUBTLE_PANEL} p-3.5 space-y-1`}>
+                <div className="flex items-center justify-between text-neutral-500 dark:text-neutral-400">
                   <span className="flex items-center gap-1.5 font-medium">
                     <ShieldCheck size={13} /> Auth Session Officer
                   </span>
-                  <span className="w-2 h-2 rounded-full bg-[#1e8e3e]" />
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
                 </div>
-                <p className="font-medium text-[#202124] dark:text-[#e8eaed] truncate">
+                <p className="font-medium text-neutral-900 dark:text-white truncate">
                   {user?.email || "Admin User"}
                 </p>
-                <p className="text-[10px] text-[#5f6368] dark:text-[#9aa0a6] truncate font-mono">
+                <p className="text-[10px] text-neutral-500 truncate font-mono">
                   UID: {user?.id || "Local Security Context"}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Database Tables & Live Telemetry Grid */}
+          {/* Tables Row Count Grid */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-semibold text-[#202124] dark:text-[#e8eaed]">
-                  PostgreSQL Tables Telemetry & Row Counts
+                <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">
+                  PostgreSQL Tables & Live Row Counts
                 </h3>
-                <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                  Live row counts queried directly from Supabase via exact head scans.
+                <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                  Exact head scans queried directly from Supabase.
                 </p>
               </div>
               <button
-                onClick={fetchTableCounts}
+                type="button"
+                onClick={() => void fetchTableCounts()}
                 disabled={loadingCounts}
-                className="text-xs text-[#1a73e8] dark:text-[#8ab4f8] hover:underline flex items-center gap-1 cursor-pointer"
+                className="text-xs text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1 cursor-pointer font-medium"
               >
                 <RefreshCw size={12} className={loadingCounts ? "animate-spin" : ""} />
                 <span>Refresh Counts</span>
               </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {SYSTEM_TABLES.map((t) => {
-                const count = tableCounts[t.name];
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              {SYSTEM_TABLES.map((tbl) => {
+                const count = tableCounts[tbl.name];
                 return (
                   <div
-                    key={t.name}
-                    className="p-4 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] hover:border-[#1a73e8] transition-all flex flex-col justify-between space-y-3"
+                    key={tbl.name}
+                    className={`${SURFACE_CARD} p-4 hover:border-indigo-500/40 transition-all flex flex-col justify-between space-y-3`}
                   >
                     <div>
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex items-center gap-2">
-                          <Table size={15} className="text-[#1a73e8] shrink-0" />
-                          <span className="font-mono font-bold text-xs text-[#202124] dark:text-[#e8eaed]">
-                            {t.name}
+                          <Table size={15} className="text-indigo-500 shrink-0" />
+                          <span className="font-mono font-bold text-xs text-neutral-900 dark:text-white">
+                            {tbl.name}
                           </span>
                         </div>
-                        <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8]">
-                          {t.category}
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-500/12 text-indigo-600 dark:text-indigo-300">
+                          {tbl.category}
                         </span>
                       </div>
-                      <p className="text-xs font-medium text-[#202124] dark:text-[#e8eaed] mt-1.5">
-                        {t.label}
+                      <p className="text-xs font-semibold text-neutral-900 dark:text-white mt-2">
+                        {tbl.label}
                       </p>
-                      <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] line-clamp-2 mt-0.5">
-                        {t.description}
+                      <p className="text-[11px] text-neutral-500 dark:text-neutral-400 line-clamp-2 mt-0.5">
+                        {tbl.description}
                       </p>
                     </div>
 
-                    <div className="pt-2 border-t border-[#dadce0]/60 dark:border-[#3c4043]/60 flex items-center justify-between text-xs">
+                    <div className="pt-2.5 border-t border-neutral-100 dark:border-white/[0.06] flex items-center justify-between text-xs">
                       <div>
-                        <span className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6]">Total Rows: </span>
-                        <span className="font-mono font-bold text-sm text-[#202124] dark:text-[#e8eaed]">
-                          {count !== undefined && count !== null ? count.toLocaleString() : "..."}
+                        <span className="text-[11px] text-neutral-500">Rows: </span>
+                        <span className="font-mono font-bold text-sm text-neutral-900 dark:text-white tabular-nums">
+                          {count !== undefined && count !== null
+                            ? count.toLocaleString()
+                            : "..."}
                         </span>
                       </div>
 
                       <button
+                        type="button"
                         onClick={() => {
-                          setSelectedTable(t.name);
+                          setSelectedTable(tbl.name);
                           setActiveTab("data_explorer");
                         }}
-                        className="inline-flex items-center gap-1 text-[11px] font-medium text-[#1a73e8] dark:text-[#8ab4f8] hover:underline cursor-pointer"
+                        className="inline-flex items-center gap-1 text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 hover:underline cursor-pointer"
                       >
                         <span>Explore Rows</span>
                         <ChevronRight size={13} />
@@ -809,36 +830,37 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
         </div>
       )}
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          TAB 2: CLOUD STORAGE BUCKETS & OBJECT EXPLORER ("STORAGES")
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* TAB 2: CLOUD STORAGE BUCKETS */}
       {activeTab === "storage" && (
-        <div className="space-y-6">
-          {/* Storage Header & Actions */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20]">
+        <div className="space-y-5">
+          <div
+            className={`${SURFACE_CARD} p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3`}
+          >
             <div>
-              <h3 className="text-sm font-semibold text-[#202124] dark:text-[#e8eaed] flex items-center gap-2">
-                <HardDrive size={16} className="text-[#1a73e8]" />
+              <h3 className="text-sm font-semibold text-neutral-900 dark:text-white flex items-center gap-2">
+                <HardDrive size={16} className="text-indigo-500" />
                 <span>Supabase Storage Buckets</span>
               </h3>
-              <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                Inspect binary files, user avatars, model attachments, and CDN cached media.
+              <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                Inspect binary files, user avatars, and CDN-cached assets.
               </p>
             </div>
 
             <div className="flex items-center gap-2">
               <button
-                onClick={fetchBuckets}
+                type="button"
+                onClick={() => void fetchBuckets()}
                 disabled={loadingBuckets}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] hover:bg-neutral-50 dark:hover:bg-neutral-800 text-[#3c4043] dark:text-[#e8eaed] cursor-pointer transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/10 hover:bg-neutral-50 dark:hover:bg-white/[0.05] text-neutral-700 dark:text-neutral-200 cursor-pointer"
               >
                 <RefreshCw size={12} className={loadingBuckets ? "animate-spin" : ""} />
-                <span>Refresh Buckets</span>
+                <span>Refresh</span>
               </button>
 
               <button
+                type="button"
                 onClick={() => setNewBucketModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-[#1a73e8] hover:bg-[#1557b0] text-white cursor-pointer shadow-xs transition-colors"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer shadow-xs"
               >
                 <FolderPlus size={14} />
                 <span>New Bucket</span>
@@ -846,31 +868,30 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
             </div>
           </div>
 
-          {/* Buckets Layout: Bucket Selector + File Explorer */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            {/* Left: Bucket List */}
-            <div className="space-y-3 lg:col-span-1">
-              <div className="p-3 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] space-y-2">
-                <p className="text-[11px] font-semibold text-[#5f6368] dark:text-[#9aa0a6] uppercase tracking-wider">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
+            <div className="lg:col-span-1">
+              <div className={`${SURFACE_CARD} p-3.5 space-y-2.5`}>
+                <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-wider">
                   Available Buckets ({buckets.length})
                 </p>
 
                 {loadingBuckets ? (
-                  <div className="py-6 text-center text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                    <RefreshCw size={16} className="animate-spin mx-auto mb-2 text-[#1a73e8]" />
+                  <div className="py-6 text-center text-xs text-neutral-500">
+                    <RefreshCw size={16} className="animate-spin mx-auto mb-2 text-indigo-500" />
                     Scanning buckets...
                   </div>
                 ) : buckets.length === 0 ? (
-                  <div className="py-4 px-3 rounded bg-[#f8f9fa] dark:bg-[#202124] text-center space-y-2">
-                    <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                      No buckets returned by <span className="font-mono">listBuckets()</span>.
+                  <div className={`${SUBTLE_PANEL} py-4 px-3 text-center space-y-2`}>
+                    <p className="text-xs text-neutral-500">
+                      No buckets returned by <code className="font-mono">listBuckets()</code>.
                     </p>
                     <button
+                      type="button"
                       onClick={() => {
                         setSelectedBucket("avatars");
-                        fetchBucketFiles("avatars");
+                        void fetchBucketFiles("avatars");
                       }}
-                      className="px-2 py-1 rounded text-[11px] bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8] font-medium cursor-pointer"
+                      className="px-2.5 py-1 rounded-lg text-[11px] bg-indigo-500/12 text-indigo-600 dark:text-indigo-300 font-semibold cursor-pointer"
                     >
                       Inspect "avatars" Bucket
                     </button>
@@ -882,22 +903,26 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
                       return (
                         <button
                           key={b.id || b.name}
+                          type="button"
                           onClick={() => setSelectedBucket(b.id || b.name)}
-                          className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-xs font-medium transition-colors cursor-pointer text-left ${
+                          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-colors cursor-pointer text-left ${
                             isSelected
-                              ? "bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8] font-semibold"
-                              : "text-[#3c4043] dark:text-[#e8eaed] hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                              ? "bg-indigo-50 text-indigo-700 dark:bg-white/[0.09] dark:text-white font-semibold"
+                              : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100/70 dark:hover:bg-white/[0.04]"
                           }`}
                         >
                           <div className="flex items-center gap-2 truncate">
-                            <Folder size={14} className={isSelected ? "text-[#1a73e8]" : "text-[#5f6368]"} />
+                            <Folder
+                              size={14}
+                              className={isSelected ? "text-indigo-500" : "text-neutral-400"}
+                            />
                             <span className="truncate">{b.name}</span>
                           </div>
                           <span
-                            className={`px-1.5 py-0.2 rounded text-[10px] font-mono ${
+                            className={`px-1.5 py-0.2 rounded-full text-[10px] font-mono ${
                               b.public
-                                ? "bg-[#e6f4ea] text-[#137333] dark:bg-[#0d3419] dark:text-[#81c995]"
-                                : "bg-neutral-100 text-[#5f6368] dark:bg-neutral-800"
+                                ? "bg-emerald-500/12 text-emerald-600 dark:text-emerald-300"
+                                : "bg-neutral-100 dark:bg-white/10 text-neutral-500"
                             }`}
                           >
                             {b.public ? "Public" : "Private"}
@@ -908,26 +933,24 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
                   </div>
                 )}
 
-                {/* Direct Bucket Name Input */}
-                <div className="pt-2 border-t border-[#dadce0]/60 dark:border-[#3c4043]/60 space-y-1.5">
-                  <p className="text-[10px] text-[#5f6368] dark:text-[#9aa0a6]">
-                    Or inspect bucket directly by name:
-                  </p>
-                  <div className="flex items-center gap-1">
+                <div className="pt-2 border-t border-neutral-100 dark:border-white/[0.06] space-y-1.5">
+                  <p className="text-[10px] text-neutral-500">Or inspect bucket by name:</p>
+                  <div className="flex items-center gap-1.5">
                     <input
                       type="text"
                       value={customBucketInput}
                       onChange={(e) => setCustomBucketInput(e.target.value)}
-                      placeholder="e.g. avatars, media"
-                      className="flex-1 px-2 py-1 rounded border border-[#dadce0] dark:border-[#5f6368] bg-[#f8f9fa] dark:bg-[#202124] text-xs outline-none"
+                      placeholder="e.g. avatars"
+                      className="flex-1 px-2.5 py-1.5 rounded-xl border border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-white/[0.03] text-xs outline-none"
                     />
                     <button
+                      type="button"
                       onClick={() => {
                         if (customBucketInput.trim()) {
                           setSelectedBucket(customBucketInput.trim());
                         }
                       }}
-                      className="px-2 py-1 rounded bg-[#1a73e8] text-white text-xs cursor-pointer font-medium"
+                      className="px-2.5 py-1.5 rounded-xl bg-indigo-600 text-white text-xs cursor-pointer font-semibold"
                     >
                       Go
                     </button>
@@ -936,35 +959,40 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
               </div>
             </div>
 
-            {/* Right: Bucket File Explorer */}
             <div className="lg:col-span-3 space-y-3">
-              <div className="p-3 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] flex flex-col sm:flex-row items-center justify-between gap-3">
+              <div
+                className={`${SURFACE_CARD} p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3`}
+              >
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">Active Bucket:</span>
-                  <span className="px-2 py-0.5 rounded text-xs font-mono font-bold bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8]">
+                  <span className="text-xs text-neutral-500">Active Bucket:</span>
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-indigo-500/12 text-indigo-600 dark:text-indigo-300">
                     {selectedBucket || "None selected"}
                   </span>
-                  <span className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
+                  <span className="text-xs text-neutral-500">
                     ({filteredFiles.length} files)
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2 w-full sm:w-auto">
-                  {/* Search in Bucket */}
                   <div className="relative flex-1 sm:w-48">
+                    <Search
+                      size={12}
+                      className="absolute left-2.5 top-1/2 -translate-y-1/2 text-neutral-400"
+                    />
                     <input
                       type="text"
                       value={filesSearch}
                       onChange={(e) => setFilesSearch(e.target.value)}
                       placeholder="Search files..."
-                      className="w-full pl-7 pr-2 py-1 rounded border border-[#dadce0] dark:border-[#5f6368] bg-[#f8f9fa] dark:bg-[#202124] text-xs outline-none"
+                      className="w-full pl-8 pr-2.5 py-1.5 rounded-xl border border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-white/[0.03] text-xs outline-none"
                     />
-                    <Search className="absolute left-2 top-1.5 text-[#5f6368]" size={12} />
                   </div>
 
-                  {/* Upload File to Bucket */}
-                  <label className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-medium bg-[#1e8e3e] hover:bg-[#15712e] text-white cursor-pointer shadow-xs transition-colors shrink-0">
-                    <UploadCloud size={13} className={uploadingFile ? "animate-bounce" : ""} />
+                  <label className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white cursor-pointer shrink-0 transition-colors">
+                    <UploadCloud
+                      size={13}
+                      className={uploadingFile ? "animate-bounce" : ""}
+                    />
                     <span>{uploadingFile ? "Uploading..." : "Upload File"}</span>
                     <input
                       type="file"
@@ -976,26 +1004,27 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
                 </div>
               </div>
 
-              {/* Files Table */}
-              <div className="rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] overflow-hidden">
+              <div className={`${SURFACE_CARD} overflow-hidden`}>
                 {loadingFiles ? (
-                  <div className="py-16 text-center text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                    <RefreshCw size={20} className="animate-spin mx-auto mb-2 text-[#1a73e8]" />
+                  <div className="py-16 text-center text-xs text-neutral-500">
+                    <RefreshCw size={20} className="animate-spin mx-auto mb-2 text-indigo-500" />
                     Loading files from "{selectedBucket}"...
                   </div>
                 ) : filteredFiles.length === 0 ? (
-                  <div className="py-14 text-center space-y-2 text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                    <HardDrive size={28} className="mx-auto text-[#9aa0a6] stroke-[1.5]" />
-                    <p className="font-medium text-[#202124] dark:text-[#e8eaed]">Bucket is empty</p>
+                  <div className="py-14 text-center space-y-2 text-xs text-neutral-500">
+                    <HardDrive size={28} className="mx-auto text-neutral-400 stroke-[1.5]" />
+                    <p className="font-semibold text-neutral-900 dark:text-white">
+                      Bucket is empty
+                    </p>
                     <p className="text-[11px]">
-                      No files found in bucket "{selectedBucket}". Click "Upload File" above to add assets.
+                      No files found in "{selectedBucket}".
                     </p>
                   </div>
                 ) : (
                   <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                       <thead>
-                        <tr className="border-b border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] text-[11px] font-semibold uppercase tracking-wider text-[#5f6368] dark:text-[#9aa0a6]">
+                        <tr className="border-b border-neutral-200/80 dark:border-white/[0.07] bg-neutral-50/80 dark:bg-white/[0.02] text-[11px] font-semibold uppercase tracking-wider text-neutral-500">
                           <th className="px-4 py-2.5">File Name</th>
                           <th className="px-3 py-2.5">Size</th>
                           <th className="px-3 py-2.5">MIME Type</th>
@@ -1003,7 +1032,7 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
                           <th className="px-4 py-2.5 text-right">Actions</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-[#dadce0]/60 dark:divide-[#3c4043]/60 text-xs">
+                      <tbody className="divide-y divide-neutral-100 dark:divide-white/[0.05] text-xs">
                         {filteredFiles.map((file) => {
                           const isImage = /\.(png|jpe?g|gif|webp|svg)$/i.test(file.name);
                           const { data: publicUrlData } = supabase.storage
@@ -1014,35 +1043,35 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
                           return (
                             <tr
                               key={file.name}
-                              className="hover:bg-[#f8f9fa] dark:hover:bg-[#282a2d] transition-colors"
+                              className="hover:bg-neutral-50/80 dark:hover:bg-white/[0.03] transition-colors"
                             >
-                              <td className="px-4 py-2.5 font-medium text-[#202124] dark:text-[#e8eaed]">
+                              <td className="px-4 py-2.5 font-medium text-neutral-900 dark:text-white">
                                 <div className="flex items-center gap-2">
                                   {isImage ? (
-                                    <ImageIcon size={14} className="text-[#1a73e8] shrink-0" />
+                                    <ImageIcon size={14} className="text-indigo-500 shrink-0" />
                                   ) : file.name.endsWith(".json") ? (
-                                    <FileCode size={14} className="text-[#f9ab00] shrink-0" />
+                                    <FileCode size={14} className="text-amber-500 shrink-0" />
                                   ) : (
-                                    <FileText size={14} className="text-[#5f6368] shrink-0" />
+                                    <FileText size={14} className="text-neutral-400 shrink-0" />
                                   )}
                                   <span className="truncate max-w-xs">{file.name}</span>
                                 </div>
                               </td>
-
-                              <td className="px-3 py-2.5 font-mono text-[#5f6368] dark:text-[#9aa0a6]">
+                              <td className="px-3 py-2.5 font-mono text-neutral-500">
                                 {formatBytes(file.metadata?.size)}
                               </td>
-
-                              <td className="px-3 py-2.5 text-[#5f6368] dark:text-[#9aa0a6]">
-                                {file.metadata?.mimetype || (isImage ? "image/*" : "application/octet-stream")}
+                              <td className="px-3 py-2.5 text-neutral-500">
+                                {file.metadata?.mimetype ||
+                                  (isImage ? "image/*" : "application/octet-stream")}
                               </td>
-
-                              <td className="px-3 py-2.5 text-[#5f6368] dark:text-[#9aa0a6] font-mono text-[11px]">
-                                {file.updated_at ? new Date(file.updated_at).toLocaleString() : "Unknown"}
+                              <td className="px-3 py-2.5 text-neutral-500 font-mono text-[11px]">
+                                {file.updated_at
+                                  ? new Date(file.updated_at).toLocaleString()
+                                  : "Unknown"}
                               </td>
-
                               <td className="px-4 py-2.5 text-right space-x-1 whitespace-nowrap">
                                 <button
+                                  type="button"
                                   onClick={() =>
                                     setPreviewFile({
                                       name: file.name,
@@ -1050,34 +1079,33 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
                                       isImage,
                                     })
                                   }
-                                  className="p-1 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-[#1a73e8] cursor-pointer"
+                                  className="p-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/10 text-indigo-500 cursor-pointer"
                                   title="Preview File"
                                 >
                                   <Eye size={13} />
                                 </button>
-
                                 <button
+                                  type="button"
                                   onClick={() => copyToClipboard(publicUrl, "Public CDN URL")}
-                                  className="p-1 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-[#5f6368] dark:text-[#9aa0a6] cursor-pointer"
+                                  className="p-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-500 cursor-pointer"
                                   title="Copy Public URL"
                                 >
                                   <Copy size={13} />
                                 </button>
-
                                 <a
                                   href={publicUrl}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   download={file.name}
-                                  className="inline-block p-1 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-[#5f6368] dark:text-[#9aa0a6] cursor-pointer"
-                                  title="Open / Download"
+                                  className="inline-block p-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-500 cursor-pointer"
+                                  title="Download"
                                 >
                                   <Download size={13} />
                                 </a>
-
                                 <button
+                                  type="button"
                                   onClick={() => setDeletingFileName(file.name)}
-                                  className="p-1 rounded hover:bg-[#fce8e6] dark:hover:bg-[#3c1716] text-[#d93025] cursor-pointer"
+                                  className="p-1.5 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-500/10 text-rose-500 cursor-pointer"
                                   title="Delete File"
                                 >
                                   <Trash2 size={13} />
@@ -1096,57 +1124,53 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
         </div>
       )}
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          TAB 3: LIVE TABLE DATA EXPLORER ("EVERYTHING")
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* TAB 3: LIVE TABLE DATA EXPLORER */}
       {activeTab === "data_explorer" && (
         <div className="space-y-4">
-          {/* Controls Bar */}
-          <div className="p-4 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] space-y-3">
+          <div className={`${SURFACE_CARD} p-4 space-y-3`}>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
-              {/* Table Selector */}
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-semibold text-[#5f6368] dark:text-[#9aa0a6]">Table:</span>
+                <span className="text-xs font-semibold text-neutral-500">Table:</span>
                 <select
                   value={selectedTable}
                   onChange={(e) => setSelectedTable(e.target.value)}
-                  className="px-3 py-1.5 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-[#f8f9fa] dark:bg-[#202124] text-xs font-mono font-medium outline-none cursor-pointer"
+                  className="px-3 py-1.5 rounded-xl border border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-[#111319] text-xs font-mono font-medium outline-none cursor-pointer"
                 >
-                  {SYSTEM_TABLES.map((t) => (
-                    <option key={t.name} value={t.name}>
-                      {t.name} ({t.label})
+                  {SYSTEM_TABLES.map((tbl) => (
+                    <option key={tbl.name} value={tbl.name}>
+                      {tbl.name} ({tbl.label})
                     </option>
                   ))}
                 </select>
 
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1.5">
                   <input
                     type="text"
                     value={customTableInput}
                     onChange={(e) => setCustomTableInput(e.target.value)}
-                    placeholder="or type custom table..."
-                    className="px-2 py-1 rounded border border-[#dadce0] dark:border-[#5f6368] bg-[#f8f9fa] dark:bg-[#202124] text-xs font-mono outline-none w-36"
+                    placeholder="custom table..."
+                    className="px-2.5 py-1.5 rounded-xl border border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-white/[0.03] text-xs font-mono outline-none w-36"
                   />
                   <button
+                    type="button"
                     onClick={() => {
                       if (customTableInput.trim()) {
                         setSelectedTable(customTableInput.trim());
                       }
                     }}
-                    className="px-2 py-1 rounded bg-[#1a73e8] text-white text-xs cursor-pointer font-medium"
+                    className="px-3 py-1.5 rounded-xl bg-indigo-600 text-white text-xs cursor-pointer font-semibold"
                   >
                     Load
                   </button>
                 </div>
               </div>
 
-              {/* Limit & Export Actions */}
               <div className="flex items-center gap-2">
-                <span className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">Rows Limit:</span>
+                <span className="text-xs text-neutral-500">Limit:</span>
                 <select
                   value={rowsLimit}
                   onChange={(e) => setRowsLimit(Number(e.target.value))}
-                  className="px-2 py-1 rounded border border-[#dadce0] dark:border-[#5f6368] bg-[#f8f9fa] dark:bg-[#202124] text-xs font-mono outline-none cursor-pointer"
+                  className="px-2.5 py-1.5 rounded-xl border border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-[#111319] text-xs font-mono outline-none cursor-pointer"
                 >
                   <option value={10}>10</option>
                   <option value={25}>25</option>
@@ -1155,15 +1179,17 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
                 </select>
 
                 <button
-                  onClick={() => fetchTableRows(selectedTable, rowsLimit)}
+                  type="button"
+                  onClick={() => void fetchTableRows(selectedTable, rowsLimit)}
                   disabled={loadingRows}
-                  className="p-1.5 rounded border border-[#dadce0] dark:border-[#5f6368] hover:bg-neutral-50 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6] cursor-pointer"
+                  className="p-1.5 rounded-xl border border-neutral-200 dark:border-white/10 hover:bg-neutral-50 dark:hover:bg-white/[0.05] text-neutral-500 cursor-pointer"
                   title="Reload table rows"
                 >
                   <RefreshCw size={13} className={loadingRows ? "animate-spin" : ""} />
                 </button>
 
                 <button
+                  type="button"
                   onClick={() => {
                     const blob = new Blob([JSON.stringify(tableRows, null, 2)], {
                       type: "application/json",
@@ -1177,7 +1203,7 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
                     showToast("success", `Exported ${tableRows.length} rows as JSON.`);
                   }}
                   disabled={tableRows.length === 0}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] hover:bg-neutral-50 dark:hover:bg-neutral-800 text-[#3c4043] dark:text-[#e8eaed] cursor-pointer disabled:opacity-40"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/10 hover:bg-neutral-50 dark:hover:bg-white/[0.05] text-neutral-700 dark:text-neutral-200 cursor-pointer disabled:opacity-40"
                 >
                   <Download size={12} />
                   <span>Export JSON</span>
@@ -1185,37 +1211,42 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
               </div>
             </div>
 
-            {/* Filter Search */}
             <div className="relative">
+              <Search
+                size={13}
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400"
+              />
               <input
                 type="text"
                 value={rowsSearch}
                 onChange={(e) => setRowsSearch(e.target.value)}
-                placeholder={`Search ${filteredRows.length} loaded records in "${selectedTable}"...`}
-                className="w-full pl-8 pr-3 py-1.5 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-[#f8f9fa] dark:bg-[#202124] text-xs outline-none focus:border-[#1a73e8]"
+                placeholder={`Filter ${filteredRows.length} loaded records in "${selectedTable}"...`}
+                className="w-full pl-9 pr-3 py-2 rounded-xl border border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-white/[0.03] text-xs outline-none focus:border-indigo-500/60"
               />
-              <Search className="absolute left-2.5 top-2 text-[#5f6368]" size={13} />
             </div>
           </div>
 
-          {/* Table Data Matrix */}
-          <div className="rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] overflow-hidden">
+          <div className={`${SURFACE_CARD} overflow-hidden`}>
             {loadingRows ? (
-              <div className="py-16 text-center text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                <RefreshCw size={20} className="animate-spin mx-auto mb-2 text-[#1a73e8]" />
+              <div className="py-16 text-center text-xs text-neutral-500">
+                <RefreshCw size={20} className="animate-spin mx-auto mb-2 text-indigo-500" />
                 Scanning table records from "{selectedTable}"...
               </div>
             ) : filteredRows.length === 0 ? (
-              <div className="py-14 text-center space-y-2 text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                <Table size={28} className="mx-auto text-[#9aa0a6] stroke-[1.5]" />
-                <p className="font-medium text-[#202124] dark:text-[#e8eaed]">No records returned</p>
-                <p className="text-[11px]">Table "{selectedTable}" has 0 rows or is restricted by RLS.</p>
+              <div className="py-14 text-center space-y-2 text-xs text-neutral-500">
+                <Table size={28} className="mx-auto text-neutral-400 stroke-[1.5]" />
+                <p className="font-semibold text-neutral-900 dark:text-white">
+                  No records returned
+                </p>
+                <p className="text-[11px]">
+                  Table "{selectedTable}" has 0 rows or is restricted by RLS.
+                </p>
               </div>
             ) : (
               <div className="overflow-x-auto max-h-[560px]">
                 <table className="w-full text-left border-collapse">
-                  <thead className="sticky top-0 bg-[#f8f9fa] dark:bg-[#202124] z-10 border-b border-[#dadce0] dark:border-[#3c4043]">
-                    <tr className="text-[11px] font-semibold uppercase tracking-wider text-[#5f6368] dark:text-[#9aa0a6]">
+                  <thead className="sticky top-0 bg-neutral-50/95 dark:bg-[#101218]/95 backdrop-blur-sm z-10 border-b border-neutral-200/80 dark:border-white/[0.07]">
+                    <tr className="text-[11px] font-semibold uppercase tracking-wider text-neutral-500">
                       <th className="px-3 py-2.5">#</th>
                       {tableColumns.map((col) => (
                         <th key={col} className="px-3 py-2.5 font-mono">
@@ -1225,19 +1256,18 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
                       <th className="px-3 py-2.5 text-right">Inspect</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#dadce0]/60 dark:divide-[#3c4043]/60 text-xs">
+                  <tbody className="divide-y divide-neutral-100 dark:divide-white/[0.05] text-xs">
                     {filteredRows.map((row, idx) => (
                       <tr
                         key={idx}
-                        className="hover:bg-[#f8f9fa] dark:hover:bg-[#282a2d] transition-colors"
+                        className="hover:bg-neutral-50/80 dark:hover:bg-white/[0.03] transition-colors"
                       >
-                        <td className="px-3 py-2 text-[11px] font-mono text-[#5f6368] dark:text-[#9aa0a6]">
+                        <td className="px-3 py-2 text-[11px] font-mono text-neutral-400">
                           {idx + 1}
                         </td>
-
                         {tableColumns.map((col) => {
                           const val = row[col];
-                          let formattedVal = "";
+                          let formattedVal: string;
                           let isBadge = false;
                           let badgeClass = "";
 
@@ -1246,12 +1276,13 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
                           } else if (typeof val === "boolean") {
                             isBadge = true;
                             badgeClass = val
-                              ? "bg-[#e6f4ea] text-[#137333] dark:bg-[#0d3419] dark:text-[#81c995]"
-                              : "bg-neutral-100 text-[#5f6368] dark:bg-neutral-800";
+                              ? "bg-emerald-500/12 text-emerald-600 dark:text-emerald-300"
+                              : "bg-neutral-100 dark:bg-white/10 text-neutral-500";
                             formattedVal = val ? "true" : "false";
                           } else if (typeof val === "object") {
                             isBadge = true;
-                            badgeClass = "bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8]";
+                            badgeClass =
+                              "bg-indigo-500/12 text-indigo-600 dark:text-indigo-300";
                             formattedVal = Array.isArray(val)
                               ? `[${val.length} items]`
                               : `{${Object.keys(val).length} keys}`;
@@ -1262,11 +1293,17 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
                           return (
                             <td
                               key={col}
-                              className="px-3 py-2 max-w-xs truncate text-[#202124] dark:text-[#e8eaed]"
-                              title={typeof val === "object" ? JSON.stringify(val) : String(val)}
+                              className="px-3 py-2 max-w-xs truncate text-neutral-800 dark:text-neutral-200"
+                              title={
+                                typeof val === "object"
+                                  ? JSON.stringify(val)
+                                  : String(val)
+                              }
                             >
                               {isBadge ? (
-                                <span className={`px-1.5 py-0.2 rounded text-[10px] font-mono font-medium ${badgeClass}`}>
+                                <span
+                                  className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-medium ${badgeClass}`}
+                                >
                                   {formattedVal}
                                 </span>
                               ) : (
@@ -1280,8 +1317,9 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
 
                         <td className="px-3 py-2 text-right">
                           <button
+                            type="button"
                             onClick={() => setInspectingRow(row)}
-                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-[#e8f0fe] text-[#1a73e8] dark:bg-[#1a2e4c] dark:text-[#8ab4f8] hover:bg-[#d2e3fc] cursor-pointer"
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-medium bg-indigo-500/12 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-500/20 cursor-pointer"
                           >
                             <Code size={11} />
                             <span>JSON</span>
@@ -1297,80 +1335,83 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
         </div>
       )}
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          TAB 4: SECURITY & RPC DIAGNOSTICS
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* TAB 4: SECURITY & RPC DIAGNOSTICS */}
       {activeTab === "rpc_security" && (
         <div className="space-y-6">
-          {/* RPC Functions Inventory */}
-          <div className="p-5 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] space-y-4">
+          <div className={`${SURFACE_CARD} p-5 space-y-4`}>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <h3 className="text-sm font-semibold text-[#202124] dark:text-[#e8eaed] flex items-center gap-2">
-                  <ShieldCheck size={16} className="text-[#1a73e8]" />
-                  <span>Admin Security Definier RPC Functions</span>
+                <h3 className="text-sm font-semibold text-neutral-900 dark:text-white flex items-center gap-2">
+                  <ShieldCheck size={16} className="text-indigo-500" />
+                  <span>Admin Security Definer RPC Functions</span>
                 </h3>
-                <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                  Inventory of custom PostgreSQL functions deployed for admin governance and account management.
+                <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                  Inventory of PostgreSQL RPCs governing account lifecycle, user chats, and admin authorization.
                 </p>
               </div>
 
               <button
-                onClick={runRpcTests}
+                type="button"
+                onClick={() => void runRpcTests()}
                 disabled={testingRpc}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-[#1a73e8] hover:bg-[#1557b0] text-white cursor-pointer shadow-xs transition-colors shrink-0"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer shadow-xs transition-colors shrink-0"
               >
                 <Activity size={13} className={testingRpc ? "animate-spin" : ""} />
                 <span>{testingRpc ? "Testing RPCs..." : "Test RPC Connectivity"}</span>
               </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
               {[
                 {
-                  fn: "clear_user_chats_by_admin(target_user_id)",
-                  desc: "Deletes all synced chat conversation records and message payloads for a specific user ID.",
+                  fn: "clear_user_chats_by_admin(target_user_key)",
+                  desc: "Deletes synced chat sessions for a specific user key.",
                   statusKey: "clear_user_chats_by_admin",
                 },
                 {
-                  fn: "delete_user_by_admin(target_user_id)",
-                  desc: "Permanently purges a user record from auth.users, user_preferences, and cascades all data.",
+                  fn: "delete_user_by_admin(target_user_key)",
+                  desc: "Permanently purges a user from auth.users and cascades app data.",
                   statusKey: "delete_user_by_admin",
                 },
                 {
                   fn: "request_account_deletion(reason)",
-                  desc: "Enables authenticated users to submit a deletion request into the admin review queue.",
+                  desc: "Submits an authenticated user's deletion request to the admin queue.",
                   statusKey: "request_account_deletion",
                 },
                 {
                   fn: "get_admin_users()",
-                  desc: "Allows admins to read verified builder accounts and identity providers.",
+                  desc: "Queries verified builder accounts joined with preferences.",
                   statusKey: "get_admin_users",
                 },
               ].map((rpc) => {
                 const status = rpcStatus[rpc.statusKey];
                 return (
-                  <div
-                    key={rpc.fn}
-                    className="p-3.5 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] space-y-1.5"
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono font-semibold text-xs text-[#202124] dark:text-[#e8eaed]">
+                  <div key={rpc.fn} className={`${SUBTLE_PANEL} p-3.5 space-y-1.5`}>
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-mono font-semibold text-xs text-neutral-900 dark:text-white truncate">
                         {rpc.fn}
                       </span>
                       <span
-                        className={`px-1.5 py-0.2 rounded text-[10px] font-semibold ${
+                        className={`px-2 py-0.5 rounded-full text-[10px] font-semibold shrink-0 ${
                           status === "ok"
-                            ? "bg-[#e6f4ea] text-[#137333] dark:bg-[#0d3419] dark:text-[#81c995]"
+                            ? "bg-emerald-500/12 text-emerald-600 dark:text-emerald-300"
                             : status === "error"
-                            ? "bg-[#fce8e6] text-[#c5221f] dark:bg-[#3c1716] dark:text-[#f28b82]"
-                            : "bg-neutral-200 text-[#5f6368] dark:bg-neutral-800"
+                            ? "bg-rose-500/12 text-rose-600 dark:text-rose-300"
+                            : status === "protected"
+                            ? "bg-indigo-500/12 text-indigo-600 dark:text-indigo-300"
+                            : "bg-neutral-200 dark:bg-white/10 text-neutral-500"
                         }`}
                       >
-                        {status === "ok" ? "Available" : status === "error" ? "Warning" : "Untested"}
+                        {status === "ok"
+                          ? "Available"
+                          : status === "error"
+                          ? "Warning"
+                          : status === "protected"
+                          ? "User-Scoped"
+                          : "Untested"}
                       </span>
                     </div>
-                    <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] leading-relaxed">
+                    <p className="text-[11px] text-neutral-500 dark:text-neutral-400 leading-relaxed">
                       {rpc.desc}
                     </p>
                   </div>
@@ -1379,49 +1420,48 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
             </div>
           </div>
 
-          {/* RLS Policies Quick Matrix */}
-          <div className="p-5 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] space-y-3">
-            <h3 className="text-sm font-semibold text-[#202124] dark:text-[#e8eaed]">
-              Row-Level Security (RLS) Policy Architecture
+          <div className={`${SURFACE_CARD} p-5 space-y-3`}>
+            <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">
+              Row-Level Security (RLS) Policy Matrix
             </h3>
-            <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-              All tables in AiVerse are fortified with PostgreSQL Row Level Security.
+            <p className="text-xs text-neutral-500 dark:text-neutral-400">
+              All public tables enforce PostgreSQL Row Level Security via <code className="font-mono">private.is_admin()</code>.
             </p>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="border-b border-[#dadce0] dark:border-[#3c4043] bg-[#f8f9fa] dark:bg-[#202124] text-[11px] font-semibold uppercase tracking-wider text-[#5f6368] dark:text-[#9aa0a6]">
-                    <th className="px-3 py-2">Table</th>
-                    <th className="px-3 py-2">Anon Read</th>
-                    <th className="px-3 py-2">Auth Write</th>
-                    <th className="px-3 py-2">Admin Governance</th>
+                  <tr className="border-b border-neutral-200/80 dark:border-white/[0.07] bg-neutral-50/80 dark:bg-white/[0.02] text-[11px] font-semibold uppercase tracking-wider text-neutral-500">
+                    <th className="px-3 py-2.5">Table</th>
+                    <th className="px-3 py-2.5">Anon Read</th>
+                    <th className="px-3 py-2.5">Auth Write</th>
+                    <th className="px-3 py-2.5">Admin Governance</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#dadce0]/60 dark:divide-[#3c4043]/60">
+                <tbody className="divide-y divide-neutral-100 dark:divide-white/[0.05]">
                   <tr>
-                    <td className="px-3 py-2 font-mono font-medium">public.entries</td>
-                    <td className="px-3 py-2 text-[#1e8e3e]">Approved only</td>
-                    <td className="px-3 py-2 text-[#1a73e8]">Submit review</td>
-                    <td className="px-3 py-2 text-[#b06000]">Full CRUD</td>
+                    <td className="px-3 py-2.5 font-mono font-medium">public.entries</td>
+                    <td className="px-3 py-2.5 text-emerald-600 dark:text-emerald-400">Approved only</td>
+                    <td className="px-3 py-2.5 text-indigo-600 dark:text-indigo-400">Submit unapproved</td>
+                    <td className="px-3 py-2.5 text-amber-600 dark:text-amber-400">Full CRUD</td>
                   </tr>
                   <tr>
-                    <td className="px-3 py-2 font-mono font-medium">public.user_preferences</td>
-                    <td className="px-3 py-2 text-[#1e8e3e]">Public profiles</td>
-                    <td className="px-3 py-2 text-[#1a73e8]">Own profile only</td>
-                    <td className="px-3 py-2 text-[#b06000]">Role & ban control</td>
+                    <td className="px-3 py-2.5 font-mono font-medium">public.user_preferences</td>
+                    <td className="px-3 py-2.5 text-emerald-600 dark:text-emerald-400">Public profiles</td>
+                    <td className="px-3 py-2.5 text-indigo-600 dark:text-indigo-400">Own profile only</td>
+                    <td className="px-3 py-2.5 text-amber-600 dark:text-amber-400">Role & ban control</td>
                   </tr>
                   <tr>
-                    <td className="px-3 py-2 font-mono font-medium">public.user_chats</td>
-                    <td className="px-3 py-2 text-[#d93025]">Denied</td>
-                    <td className="px-3 py-2 text-[#1a73e8]">Own chats only</td>
-                    <td className="px-3 py-2 text-[#b06000]">Admin clear RPC</td>
+                    <td className="px-3 py-2.5 font-mono font-medium">public.user_chats</td>
+                    <td className="px-3 py-2.5 text-rose-600 dark:text-rose-400">Denied</td>
+                    <td className="px-3 py-2.5 text-indigo-600 dark:text-indigo-400">Own chats only</td>
+                    <td className="px-3 py-2.5 text-amber-600 dark:text-amber-400">Admin clear RPC</td>
                   </tr>
                   <tr>
-                    <td className="px-3 py-2 font-mono font-medium">storage.buckets</td>
-                    <td className="px-3 py-2 text-[#1e8e3e]">Public buckets</td>
-                    <td className="px-3 py-2 text-[#1a73e8]">Upload own avatar</td>
-                    <td className="px-3 py-2 text-[#b06000]">Storage Console</td>
+                    <td className="px-3 py-2.5 font-mono font-medium">storage.buckets</td>
+                    <td className="px-3 py-2.5 text-emerald-600 dark:text-emerald-400">Public buckets</td>
+                    <td className="px-3 py-2.5 text-indigo-600 dark:text-indigo-400">Upload own avatar</td>
+                    <td className="px-3 py-2.5 text-amber-600 dark:text-amber-400">Storage Console</td>
                   </tr>
                 </tbody>
               </table>
@@ -1430,48 +1470,52 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
         </div>
       )}
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          MODAL 1: ROW JSON & DETAIL INSPECTOR
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* MODAL 1: ROW JSON INSPECTOR */}
       {inspectingRow && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
-          <div className="relative w-full max-w-2xl max-h-[85vh] flex flex-col p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-[#dadce0]/60 dark:border-[#3c4043]/60 pb-3">
+        <div className={MODAL_OVERLAY} onClick={() => setInspectingRow(null)}>
+          <div
+            className="relative w-full max-w-2xl max-h-[85vh] flex flex-col p-6 rounded-2xl bg-white dark:bg-[#0d0e12] border border-neutral-200 dark:border-white/10 shadow-2xl space-y-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-neutral-200/80 dark:border-white/[0.08] pb-3">
               <div className="flex items-center gap-2">
-                <Code size={18} className="text-[#1a73e8]" />
-                <h3 className="text-base font-semibold text-[#202124] dark:text-[#e8eaed]">
+                <Code size={18} className="text-indigo-500" />
+                <h3 className="text-base font-semibold text-neutral-900 dark:text-white">
                   Row JSON Telemetry ({selectedTable})
                 </h3>
               </div>
               <button
+                type="button"
                 onClick={() => setInspectingRow(null)}
-                className="p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6] cursor-pointer"
+                className="p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-500 cursor-pointer"
               >
                 <X size={16} />
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-3 rounded-lg bg-[#202124] text-[#8ab4f8] font-mono text-xs leading-relaxed select-text border border-neutral-800">
+            <div className="flex-1 overflow-y-auto p-3.5 rounded-xl bg-neutral-950 text-indigo-300 font-mono text-xs leading-relaxed select-text border border-white/10">
               <pre>{JSON.stringify(inspectingRow, null, 2)}</pre>
             </div>
 
-            <div className="flex items-center justify-between pt-2 border-t border-[#dadce0]/60 dark:border-[#3c4043]/60">
+            <div className="flex items-center justify-between pt-2 border-t border-neutral-200/80 dark:border-white/[0.08]">
               <button
+                type="button"
                 onClick={() => {
                   navigator.clipboard.writeText(JSON.stringify(inspectingRow, null, 2));
                   setCopiedJson(true);
                   setTimeout(() => setCopiedJson(false), 2000);
                   showToast("success", "Row JSON copied to clipboard.");
                 }}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-[#1a73e8] hover:bg-[#1557b0] text-white cursor-pointer shadow-xs"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer"
               >
                 {copiedJson ? <Check size={13} /> : <Copy size={13} />}
                 <span>{copiedJson ? "Copied!" : "Copy JSON"}</span>
               </button>
 
               <button
+                type="button"
                 onClick={() => setInspectingRow(null)}
-                className="px-3 py-1.5 rounded-md text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#3c4043] dark:text-[#e8eaed] cursor-pointer"
+                className="px-3.5 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-700 dark:text-neutral-200 cursor-pointer"
               >
                 Close
               </button>
@@ -1480,52 +1524,53 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
         </div>
       )}
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          MODAL 2: STORAGE FILE PREVIEW
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* MODAL 2: STORAGE FILE PREVIEW */}
       {previewFile && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
-          <div className="relative w-full max-w-xl p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-[#dadce0]/60 dark:border-[#3c4043]/60 pb-3">
+        <div className={MODAL_OVERLAY} onClick={() => setPreviewFile(null)}>
+          <div
+            className="relative w-full max-w-xl p-6 rounded-2xl bg-white dark:bg-[#0d0e12] border border-neutral-200 dark:border-white/10 shadow-2xl space-y-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-neutral-200/80 dark:border-white/[0.08] pb-3">
               <div className="flex items-center gap-2 truncate">
-                <ImageIcon size={18} className="text-[#1a73e8]" />
-                <h3 className="text-sm font-semibold text-[#202124] dark:text-[#e8eaed] truncate">
+                <ImageIcon size={18} className="text-indigo-500" />
+                <h3 className="text-sm font-semibold text-neutral-900 dark:text-white truncate">
                   {previewFile.name}
                 </h3>
               </div>
               <button
+                type="button"
                 onClick={() => setPreviewFile(null)}
-                className="p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6] cursor-pointer"
+                className="p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-500 cursor-pointer"
               >
                 <X size={16} />
               </button>
             </div>
 
-            <div className="p-4 rounded-lg bg-[#f8f9fa] dark:bg-[#202124] flex items-center justify-center min-h-[200px] max-h-[400px] overflow-hidden">
+            <div className="p-4 rounded-xl bg-neutral-100 dark:bg-white/[0.03] flex items-center justify-center min-h-[200px] max-h-[400px] overflow-hidden">
               {previewFile.isImage ? (
                 <img
                   src={previewFile.url}
                   alt={previewFile.name}
-                  className="max-h-[360px] max-w-full object-contain rounded"
+                  className="max-h-[360px] max-w-full object-contain rounded-lg"
                 />
               ) : (
                 <div className="text-center space-y-2">
-                  <FileText size={48} className="mx-auto text-[#5f6368]" />
-                  <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6]">
-                    Binary / Non-image asset
-                  </p>
+                  <FileText size={48} className="mx-auto text-neutral-400" />
+                  <p className="text-xs text-neutral-500">Binary / Non-image asset</p>
                 </div>
               )}
             </div>
 
-            <div className="p-2 rounded bg-neutral-100 dark:bg-neutral-800 font-mono text-[11px] text-[#5f6368] dark:text-[#9aa0a6] truncate">
+            <div className="p-2.5 rounded-xl bg-neutral-100 dark:bg-white/[0.04] font-mono text-[11px] text-neutral-500 truncate">
               {previewFile.url}
             </div>
 
             <div className="flex items-center justify-between pt-2">
               <button
+                type="button"
                 onClick={() => copyToClipboard(previewFile.url, "Public URL")}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#3c4043] dark:text-[#e8eaed] hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/10 cursor-pointer"
               >
                 <Copy size={13} />
                 <span>Copy URL</span>
@@ -1535,7 +1580,7 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
                 href={previewFile.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-[#1a73e8] hover:bg-[#1557b0] text-white cursor-pointer shadow-xs"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer"
               >
                 <span>Open in Tab</span>
                 <ExternalLink size={13} />
@@ -1545,34 +1590,45 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
         </div>
       )}
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          MODAL 3: DELETE FILE CONFIRMATION
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* MODAL 3: DELETE FILE CONFIRM */}
       {deletingFileName && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
-          <div className="relative w-full max-w-md p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] shadow-2xl space-y-4">
-            <div className="flex items-center gap-3 text-[#d93025]">
+        <div className={MODAL_OVERLAY} onClick={() => setDeletingFileName(null)}>
+          <div
+            className="relative w-full max-w-md p-6 rounded-2xl bg-white dark:bg-[#0d0e12] border border-neutral-200 dark:border-white/10 shadow-2xl space-y-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-3 text-rose-500">
               <AlertTriangle size={24} />
-              <h3 className="text-base font-semibold">Delete Storage Object?</h3>
+              <h3 className="text-base font-semibold text-neutral-900 dark:text-white">
+                Delete Storage Object?
+              </h3>
             </div>
 
-            <p className="text-xs text-[#5f6368] dark:text-[#9aa0a6] leading-relaxed">
-              Are you sure you want to permanently delete{" "}
-              <strong className="font-mono text-[#202124] dark:text-[#e8eaed]">{deletingFileName}</strong> from bucket{" "}
-              <strong className="font-mono text-[#202124] dark:text-[#e8eaed]">{selectedBucket}</strong>? This action cannot be undone.
+            <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+              Permanently delete{" "}
+              <strong className="font-mono text-neutral-900 dark:text-white">
+                {deletingFileName}
+              </strong>{" "}
+              from bucket{" "}
+              <strong className="font-mono text-neutral-900 dark:text-white">
+                {selectedBucket}
+              </strong>
+              ? This action cannot be undone.
             </p>
 
             <div className="flex items-center justify-end gap-2 pt-2">
               <button
+                type="button"
                 onClick={() => setDeletingFileName(null)}
-                className="px-3 py-1.5 rounded-md text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#3c4043] dark:text-[#e8eaed] hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer"
+                className="px-3.5 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/10 cursor-pointer"
               >
                 Cancel
               </button>
 
               <button
-                onClick={() => handleDeleteFile(deletingFileName)}
-                className="px-3 py-1.5 rounded-md text-xs font-semibold bg-[#d93025] hover:bg-[#b31412] text-white cursor-pointer shadow-xs"
+                type="button"
+                onClick={() => void handleDeleteFile(deletingFileName)}
+                className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-rose-600 hover:bg-rose-500 text-white cursor-pointer"
               >
                 Delete File
               </button>
@@ -1581,22 +1637,24 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
         </div>
       )}
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          MODAL 4: CREATE BUCKET DIALOG
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* MODAL 4: CREATE BUCKET */}
       {newBucketModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease-out]">
-          <div className="relative w-full max-w-md p-6 rounded-2xl bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043] shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-[#dadce0]/60 dark:border-[#3c4043]/60 pb-3">
+        <div className={MODAL_OVERLAY} onClick={() => setNewBucketModalOpen(false)}>
+          <div
+            className="relative w-full max-w-md p-6 rounded-2xl bg-white dark:bg-[#0d0e12] border border-neutral-200 dark:border-white/10 shadow-2xl space-y-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-neutral-200/80 dark:border-white/[0.08] pb-3">
               <div className="flex items-center gap-2">
-                <FolderPlus size={18} className="text-[#1a73e8]" />
-                <h3 className="text-base font-semibold text-[#202124] dark:text-[#e8eaed]">
+                <FolderPlus size={18} className="text-indigo-500" />
+                <h3 className="text-base font-semibold text-neutral-900 dark:text-white">
                   Create Storage Bucket
                 </h3>
               </div>
               <button
+                type="button"
                 onClick={() => setNewBucketModalOpen(false)}
-                className="p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[#5f6368] dark:text-[#9aa0a6] cursor-pointer"
+                className="p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-500 cursor-pointer"
               >
                 <X size={16} />
               </button>
@@ -1604,50 +1662,48 @@ export const SupabaseConsole: React.FC<SupabaseConsoleProps> = ({
 
             <div className="space-y-3">
               <div>
-                <label className="block text-xs font-medium text-[#202124] dark:text-[#e8eaed] mb-1">
+                <label className="block text-xs font-medium text-neutral-900 dark:text-white mb-1">
                   Bucket Name (lowercase, numbers, hyphens)
                 </label>
                 <input
                   type="text"
                   value={newBucketName}
                   onChange={(e) => setNewBucketName(e.target.value)}
-                  placeholder="e.g. avatars, catalog-assets, media"
-                  className="w-full px-3 py-2 rounded-md border border-[#dadce0] dark:border-[#5f6368] bg-[#f8f9fa] dark:bg-[#202124] text-xs font-mono outline-none focus:border-[#1a73e8]"
+                  placeholder="e.g. avatars, catalog-assets"
+                  className="w-full px-3 py-2 rounded-xl border border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-white/[0.03] text-xs font-mono outline-none focus:border-indigo-500/60"
                 />
               </div>
 
-              <div className="flex items-center gap-2 pt-1">
+              <label className="flex items-center gap-2 pt-1 text-xs text-neutral-900 dark:text-white cursor-pointer">
                 <input
                   type="checkbox"
-                  id="bucket-public-chk"
                   checked={newBucketIsPublic}
                   onChange={(e) => setNewBucketIsPublic(e.target.checked)}
-                  className="rounded text-[#1a73e8] cursor-pointer"
+                  className="rounded text-indigo-600 cursor-pointer"
                 />
-                <label
-                  htmlFor="bucket-public-chk"
-                  className="text-xs text-[#202124] dark:text-[#e8eaed] cursor-pointer"
-                >
-                  Public Bucket (allows public read access via CDN URL)
-                </label>
-              </div>
+                Public Bucket (allows public read access via CDN URL)
+              </label>
 
-              <p className="text-[11px] text-[#5f6368] dark:text-[#9aa0a6] bg-[#f8f9fa] dark:bg-[#202124] p-2.5 rounded-lg border border-[#dadce0]/60 dark:border-[#3c4043]/60">
-                Tip: Standard buckets like <code className="font-mono text-[#1a73e8]">avatars</code> or <code className="font-mono text-[#1a73e8]">catalog-assets</code> are recommended for media storage.
+              <p className={`${SUBTLE_PANEL} p-3 text-[11px] text-neutral-500`}>
+                Tip: Standard buckets like{" "}
+                <code className="font-mono text-indigo-500">avatars</code> or{" "}
+                <code className="font-mono text-indigo-500">catalog-assets</code> are recommended.
               </p>
             </div>
 
-            <div className="flex items-center justify-end gap-2 pt-2 border-t border-[#dadce0]/60 dark:border-[#3c4043]/60">
+            <div className="flex items-center justify-end gap-2 pt-2 border-t border-neutral-200/80 dark:border-white/[0.08]">
               <button
+                type="button"
                 onClick={() => setNewBucketModalOpen(false)}
-                className="px-3 py-1.5 rounded-md text-xs font-medium border border-[#dadce0] dark:border-[#5f6368] text-[#3c4043] dark:text-[#e8eaed] hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer"
+                className="px-3.5 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/10 cursor-pointer"
               >
                 Cancel
               </button>
 
               <button
-                onClick={handleCreateBucket}
-                className="px-3 py-1.5 rounded-md text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] text-white cursor-pointer shadow-xs"
+                type="button"
+                onClick={() => void handleCreateBucket()}
+                className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer"
               >
                 Create Bucket
               </button>

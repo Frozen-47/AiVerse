@@ -13,6 +13,12 @@ interface AccountDeletionModalProps {
   onStatusChange?: (requested: boolean) => void;
 }
 
+interface DeletionMetaRecord {
+  deletionRequested?: boolean;
+  deletion_requested?: boolean;
+  deletionReason?: string;
+}
+
 export const AccountDeletionModal: React.FC<AccountDeletionModalProps> = ({
   isOpen,
   onClose,
@@ -23,38 +29,29 @@ export const AccountDeletionModal: React.FC<AccountDeletionModalProps> = ({
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "amoled";
 
-  const [deletionRequested, setDeletionRequested] = useState(false);
-  const [deletionReason, setDeletionReason] = useState("");
+  const parsedMeta = React.useMemo(
+    () => parseProfileMeta(onboardingProfile?.referralSource) as DeletionMetaRecord | null,
+    [onboardingProfile?.referralSource]
+  );
+
+  const userMeta = user?.user_metadata as DeletionMetaRecord | undefined;
+  const derivedRequested = Boolean(
+    parsedMeta?.deletionRequested ||
+    parsedMeta?.deletion_requested ||
+    userMeta?.deletionRequested
+  );
+  const derivedReason = parsedMeta?.deletionReason || userMeta?.deletionReason || "";
+
+  const [localRequested, setLocalRequested] = useState<boolean | null>(null);
+  const [deletionReasonDraft, setDeletionReasonDraft] = useState<string | null>(null);
+  const deletionRequested = localRequested ?? derivedRequested;
+  const deletionReason = deletionReasonDraft ?? derivedReason;
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState<{
     type: "success" | "error" | "info";
     message: string;
   } | null>(null);
-
-  const parsedMeta = React.useMemo(
-    () => parseProfileMeta(onboardingProfile?.referralSource),
-    [onboardingProfile?.referralSource]
-  );
-
-  // Sync deletion status whenever user or metadata changes
-  useEffect(() => {
-    if (parsedMeta || user) {
-      const isReq = Boolean(
-        (parsedMeta as any)?.deletionRequested ||
-        (parsedMeta as any)?.deletion_requested ||
-        (user?.user_metadata as any)?.deletionRequested
-      );
-      setDeletionRequested(isReq);
-
-      const existingReason =
-        (parsedMeta as any)?.deletionReason ||
-        (user?.user_metadata as any)?.deletionReason ||
-        "";
-      if (existingReason && !deletionReason) {
-        setDeletionReason(existingReason);
-      }
-    }
-  }, [parsedMeta, user]);
 
   // Lock body scroll while modal is open
   useEffect(() => {
@@ -101,17 +98,19 @@ export const AccountDeletionModal: React.FC<AccountDeletionModalProps> = ({
         .or(`user_key.eq.${userKey},user_key.eq.${user.id}`)
         .maybeSingle();
 
-      let meta: any = {};
+      let meta: Record<string, unknown> = {};
       if (prefData?.referral_source) {
         try {
-          meta = JSON.parse(prefData.referral_source);
+          meta = JSON.parse(prefData.referral_source) as Record<string, unknown>;
         } catch {
           meta = { source: prefData.referral_source };
         }
       } else if (onboardingProfile?.referralSource) {
         try {
-          meta = JSON.parse(onboardingProfile.referralSource);
-        } catch {}
+          meta = JSON.parse(onboardingProfile.referralSource) as Record<string, unknown>;
+        } catch {
+          // ignore non-JSON legacy referral source
+        }
       }
 
       meta.deletionRequested = true;
@@ -141,19 +140,22 @@ export const AccountDeletionModal: React.FC<AccountDeletionModalProps> = ({
             deletionRequestedAt: meta.deletionRequestedAt,
           },
         });
-      } catch {}
+      } catch {
+        // metadata sync fallback
+      }
 
-      setDeletionRequested(true);
+      setLocalRequested(true);
       onStatusChange?.(true);
       setFeedback({
         type: "success",
         message: "Deletion request submitted. An administrator will review and process your request.",
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Account deletion request error:", err);
+      const message = err instanceof Error ? err.message : "Failed to submit deletion request. Please try again.";
       setFeedback({
         type: "error",
-        message: err.message || "Failed to submit deletion request. Please try again.",
+        message,
       });
     } finally {
       setIsSubmitting(false);
@@ -178,11 +180,13 @@ export const AccountDeletionModal: React.FC<AccountDeletionModalProps> = ({
         .or(`user_key.eq.${userKey},user_key.eq.${user.id}`)
         .maybeSingle();
 
-      let meta: any = {};
+      let meta: Record<string, unknown> = {};
       if (prefData?.referral_source) {
         try {
-          meta = JSON.parse(prefData.referral_source);
-        } catch {}
+          meta = JSON.parse(prefData.referral_source) as Record<string, unknown>;
+        } catch {
+          // ignore non-JSON legacy referral source
+        }
       }
 
       delete meta.deletionRequested;
@@ -209,19 +213,23 @@ export const AccountDeletionModal: React.FC<AccountDeletionModalProps> = ({
             deletionRequestedAt: null,
           },
         });
-      } catch {}
+      } catch {
+        // metadata sync fallback
+      }
 
-      setDeletionRequested(false);
+      setLocalRequested(false);
+      setDeletionReasonDraft("");
       onStatusChange?.(false);
       setFeedback({
         type: "info",
         message: "Your account deletion request has been withdrawn.",
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Cancel deletion request error:", err);
+      const message = err instanceof Error ? err.message : "Failed to cancel deletion request.";
       setFeedback({
         type: "error",
-        message: err.message || "Failed to cancel deletion request.",
+        message,
       });
     } finally {
       setIsSubmitting(false);
@@ -241,23 +249,18 @@ export const AccountDeletionModal: React.FC<AccountDeletionModalProps> = ({
       }}
     >
       <div
-        className={`relative w-full max-w-lg p-6 sm:p-7 rounded-3xl shadow-2xl space-y-4 my-auto max-h-[92vh] overflow-y-auto border transition-all animate-[fadeIn_0.15s_ease-out] ${
+        className={`relative w-full max-w-lg p-6 sm:p-7 rounded-2xl shadow-2xl space-y-4 my-auto max-h-[92vh] overflow-y-auto border transition-all animate-[fadeIn_0.15s_ease-out] ${
           isDark
-            ? "bg-[#1e1f20] border-[#3c4043] text-white"
-            : "bg-white border-[#dadce0] text-neutral-900"
+            ? "bg-[#0d0e12] border-white/[0.08] text-white"
+            : "bg-white border-neutral-200/90 text-neutral-900"
         }`}
-        style={{
-          boxShadow: isDark
-            ? "0 25px 60px -15px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.08)"
-            : "0 25px 60px -15px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.06)",
-        }}
       >
         {/* Close Button */}
         <button
           type="button"
           disabled={isSubmitting}
           onClick={onClose}
-          className="absolute top-4 sm:top-5 right-4 sm:right-5 w-8 h-8 rounded-full flex items-center justify-center text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/10 transition-colors cursor-pointer disabled:opacity-40"
+          className="absolute top-4 sm:top-5 right-4 sm:right-5 w-8 h-8 rounded-xl flex items-center justify-center text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/[0.08] transition-colors cursor-pointer disabled:opacity-40"
           title="Close dialog (Esc)"
         >
           <X size={16} />
@@ -265,7 +268,7 @@ export const AccountDeletionModal: React.FC<AccountDeletionModalProps> = ({
 
         {/* Header with Icon */}
         <div className="flex items-center gap-3.5 pr-8">
-          <div className="w-11 h-11 rounded-2xl bg-red-500/10 text-red-600 dark:text-red-400 flex items-center justify-center shrink-0 border border-red-500/20 shadow-xs">
+          <div className="w-11 h-11 rounded-2xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0 border border-rose-500/20 shadow-xs">
             <ShieldAlert size={22} className="stroke-[2.2px]" />
           </div>
           <div>
@@ -282,12 +285,12 @@ export const AccountDeletionModal: React.FC<AccountDeletionModalProps> = ({
         <div
           className={`p-3.5 rounded-2xl border text-xs space-y-1.5 ${
             isDark
-              ? "bg-[#131314] border-[#3c4043] text-neutral-300"
-              : "bg-[#f8fafd] border-[#c2e7ff] text-[#001d35]"
+              ? "bg-[#121319] border-white/[0.08] text-neutral-300"
+              : "bg-indigo-50/70 border-indigo-200/80 text-indigo-950"
           }`}
         >
           <div className="flex items-center gap-2 font-semibold">
-            <Shield size={14} className={isDark ? "text-[#a8c7fa]" : "text-[#1a73e8]"} />
+            <Shield size={14} className={isDark ? "text-indigo-400" : "text-indigo-600"} />
             <span>Security & Governance Policy</span>
           </div>
           <p className="text-[11.5px] leading-relaxed opacity-90 font-light">
@@ -302,8 +305,8 @@ export const AccountDeletionModal: React.FC<AccountDeletionModalProps> = ({
               feedback.type === "success"
                 ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-600 dark:text-emerald-400"
                 : feedback.type === "error"
-                ? "bg-red-500/10 border-red-500/20 text-red-600 dark:text-red-400"
-                : "bg-blue-500/10 border-blue-500/20 text-blue-600 dark:text-blue-400"
+                ? "bg-rose-500/10 border-rose-500/20 text-rose-600 dark:text-rose-400"
+                : "bg-indigo-500/10 border-indigo-500/20 text-indigo-600 dark:text-indigo-300"
             }`}
           >
             {feedback.type === "success" ? (
@@ -340,7 +343,7 @@ export const AccountDeletionModal: React.FC<AccountDeletionModalProps> = ({
                 type="button"
                 disabled={isSubmitting}
                 onClick={onClose}
-                className="px-4 py-2 rounded-xl text-xs font-medium border border-neutral-300 dark:border-[#3c4043] hover:bg-neutral-100 dark:hover:bg-white/5 transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.1] hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-colors cursor-pointer"
               >
                 Close
               </button>
@@ -348,7 +351,7 @@ export const AccountDeletionModal: React.FC<AccountDeletionModalProps> = ({
                 type="button"
                 disabled={isSubmitting}
                 onClick={handleCancelDeletionRequest}
-                className="px-4 py-2 rounded-xl text-xs font-semibold text-neutral-700 dark:text-neutral-200 border border-neutral-300 dark:border-[#3c4043] hover:bg-neutral-100 dark:hover:bg-white/10 transition-colors cursor-pointer disabled:opacity-50"
+                className="px-4 py-2 rounded-xl text-xs font-semibold text-neutral-700 dark:text-neutral-200 border border-neutral-200 dark:border-white/[0.1] hover:bg-neutral-100 dark:hover:bg-white/[0.08] transition-colors cursor-pointer disabled:opacity-50"
               >
                 {isSubmitting ? "Cancelling..." : "Cancel Deletion Request"}
               </button>
@@ -376,12 +379,12 @@ export const AccountDeletionModal: React.FC<AccountDeletionModalProps> = ({
               <textarea
                 rows={3}
                 value={deletionReason}
-                onChange={(e) => setDeletionReason(e.target.value)}
+                onChange={(e) => setDeletionReasonDraft(e.target.value)}
                 placeholder="Tell the administrator why you are requesting account deletion..."
-                className={`w-full p-3 rounded-2xl border text-xs resize-none outline-none transition-all ${
+                className={`w-full p-3 rounded-xl border text-xs resize-none outline-none transition-all ${
                   isDark
-                    ? "bg-[#131314] border-[#3c4043] text-white placeholder:text-neutral-500 focus:border-[#a8c7fa]"
-                    : "bg-white border-[#dadce0] text-neutral-900 placeholder:text-neutral-400 focus:border-[#1a73e8]"
+                    ? "bg-[#121319] border-white/[0.1] text-white placeholder:text-neutral-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                    : "bg-white border-neutral-200 text-neutral-900 placeholder:text-neutral-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
                 }`}
               />
             </div>
@@ -391,7 +394,7 @@ export const AccountDeletionModal: React.FC<AccountDeletionModalProps> = ({
                 type="button"
                 disabled={isSubmitting}
                 onClick={onClose}
-                className="px-4 py-2 rounded-xl text-xs font-medium border border-neutral-300 dark:border-[#3c4043] hover:bg-neutral-100 dark:hover:bg-white/5 transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.1] hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-colors cursor-pointer"
               >
                 Keep Account
               </button>
@@ -399,7 +402,7 @@ export const AccountDeletionModal: React.FC<AccountDeletionModalProps> = ({
                 type="button"
                 disabled={isSubmitting}
                 onClick={handleRequestDeletion}
-                className="px-4 py-2 rounded-xl text-xs font-bold bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] transition-colors cursor-pointer disabled:opacity-50 shadow-xs"
+                className="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition-colors cursor-pointer disabled:opacity-50 shadow-sm shadow-indigo-500/20"
               >
                 {isSubmitting ? "Submitting..." : "Submit Deletion Request"}
               </button>

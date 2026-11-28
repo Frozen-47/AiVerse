@@ -77,7 +77,7 @@ const ROLE_DETAILS: Record<
   {
     label: string;
     description: string;
-    icon: React.ComponentType<any>;
+    icon: React.ComponentType<{ size?: number; className?: string }>;
     color: string;
   }
 > = {
@@ -193,40 +193,33 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
 
   const [socialsExpanded, setSocialsExpanded] = useState(false);
   const [showDeletionModal, setShowDeletionModal] = useState(false);
-  const [deletionRequested, setDeletionRequested] = useState(() =>
-    Boolean(
-      (parsedMeta as any)?.deletionRequested ||
-      (parsedMeta as any)?.deletion_requested ||
-      (user?.user_metadata as any)?.deletionRequested
-    )
+  const metaRecord = parsedMeta as { deletionRequested?: boolean; deletion_requested?: boolean } | null;
+  const userMetaRecord = user?.user_metadata as { deletionRequested?: boolean } | undefined;
+  const derivedDeletionRequested = Boolean(
+    metaRecord?.deletionRequested ||
+    metaRecord?.deletion_requested ||
+    userMetaRecord?.deletionRequested
   );
+  const [localDeletionRequested, setLocalDeletionRequested] = useState<boolean | null>(null);
+  const deletionRequested = localDeletionRequested ?? derivedDeletionRequested;
+
   const [deletionFeedback, setDeletionFeedback] = useState<{
     type: "success" | "error" | "info";
     message: string;
   } | null>(null);
-  useEffect(() => {
-    if (parsedMeta || user) {
-      const isReq = Boolean(
-        (parsedMeta as any)?.deletionRequested ||
-        (parsedMeta as any)?.deletion_requested ||
-        (user?.user_metadata as any)?.deletionRequested
-      );
-      setDeletionRequested(isReq);
-    }
-  }, [parsedMeta, user]);
 
   const wrapperCls = (readOnly: boolean) => [
     "relative flex items-center rounded-xl border transition-all duration-200 w-full",
     readOnly
       ? (isDark
-          ? "bg-white/[0.03] border-[#3c4043]/50 opacity-60"
+          ? "bg-white/[0.03] border-white/[0.06] opacity-60"
           : "bg-neutral-100 border-neutral-200 opacity-60")
       : (isDark
-          ? "bg-[#18191a] border-[#3c4043] hover:border-[#5f6368] focus-within:border-[#a8c7fa] focus-within:ring-1 focus-within:ring-[#a8c7fa]/25"
-          : "bg-white border-[#dadce0] hover:border-[#bdc1c6] focus-within:border-[#1a73e8] focus-within:ring-1 focus-within:ring-[#1a73e8]/25")
+          ? "bg-[#121319] border-white/[0.1] hover:border-white/20 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20"
+          : "bg-white border-neutral-200 hover:border-neutral-300 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20")
   ].join(" ");
 
-  const dividerCls = isDark ? "border-r border-[#3c4043] text-neutral-400" : "border-r border-[#dadce0] text-neutral-500";
+  const dividerCls = isDark ? "border-r border-white/[0.08] text-neutral-400" : "border-r border-neutral-200 text-neutral-500";
 
   const innerInputCls = [
     "w-full bg-transparent px-3 py-2 text-xs font-normal outline-none border-none focus:ring-0 focus:outline-none",
@@ -239,7 +232,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   ].join(" ");
 
   const renderInputWrapper = (
-    icon: React.ComponentType<any>,
+    icon: React.ComponentType<{ size?: number; className?: string }>,
     label: string,
     children: React.ReactNode,
     readOnly = false,
@@ -372,7 +365,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   const separatorCls = `h-px my-1.5 mx-1 border-t ${isDark ? "border-white/10" : "border-neutral-200"}`;
 
   const saveBtnCls = [
-    "w-full py-2.5 rounded-full text-xs font-semibold cursor-pointer transition-all duration-200 shadow-xs hover:shadow-md disabled:opacity-40 disabled:cursor-not-allowed bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49]",
+    "w-full py-2.5 rounded-xl text-xs font-semibold cursor-pointer transition-all duration-200 shadow-sm shadow-indigo-500/20 disabled:opacity-40 disabled:cursor-not-allowed bg-indigo-600 hover:bg-indigo-500 text-white",
   ].join(" ");
 
   // ---------------------------------------------------------------------------
@@ -522,21 +515,21 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
                 value: portfolio,
                 onChange: setPortfolio,
                 icon: Globe,
-                badgeBg: "bg-[#1a73e8]/10 text-[#1a73e8] border border-[#1a73e8]/25 dark:bg-[#a8c7fa]/15 dark:text-[#a8c7fa]",
+                badgeBg: "bg-indigo-500/10 text-indigo-600 border border-indigo-500/25 dark:bg-indigo-500/15 dark:text-indigo-300",
               },
             ];
 
             const connectedSocialsCount = [github, linkedin, medium, devto, portfolio].filter((v) => Boolean(v?.trim())).length;
 
             return (
-              <div className="rounded-2xl border border-[#dadce0] dark:border-[#3c4043] bg-[#fafafa] dark:bg-[#202124] overflow-hidden transition-all shadow-2xs">
+              <div className="rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/70 dark:bg-[#121319] overflow-hidden transition-all shadow-2xs">
                 <button
                   type="button"
                   onClick={() => setSocialsExpanded(!socialsExpanded)}
-                  className="w-full flex items-center justify-between p-3 text-left cursor-pointer hover:bg-neutral-100/70 dark:hover:bg-[#282a2c] transition-colors"
+                  className="w-full flex items-center justify-between p-3 text-left cursor-pointer hover:bg-neutral-100/70 dark:hover:bg-white/[0.05] transition-colors"
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-7 h-7 rounded-full bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] flex items-center justify-center shrink-0 border border-[#1a73e8]/20">
+                    <div className="w-7 h-7 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 border border-indigo-500/20">
                       <Link2 size={13} />
                     </div>
                     <div className="min-w-0">
@@ -550,7 +543,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
                             {connectedSocialsCount} linked
                           </span>
                         ) : (
-                          <span className="text-[10px] font-normal px-1.5 py-0.2 rounded-full bg-neutral-200/60 dark:bg-white/10 text-neutral-600 dark:text-neutral-400">
+                          <span className="text-[10px] font-normal px-1.5 py-0.5 rounded-full bg-neutral-200/60 dark:bg-white/10 text-neutral-600 dark:text-neutral-400">
                             Optional
                           </span>
                         )}
@@ -566,7 +559,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
                 </button>
 
                 {socialsExpanded && (
-                  <div className="p-3 border-t border-[#dadce0] dark:border-[#3c4043] space-y-2.5 bg-white dark:bg-[#1e1f20]">
+                  <div className="p-3 border-t border-neutral-200/80 dark:border-white/[0.08] space-y-2.5 bg-white dark:bg-[#0d0e12]">
                     {socialConfigs.map((soc) => {
                       const Icon = soc.icon;
                       const hasVal = Boolean(soc.value?.trim());
@@ -581,7 +574,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
                                 href={soc.value.startsWith("http") ? soc.value : `https://${soc.value}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-0.5 text-[#1a73e8] dark:text-[#a8c7fa] hover:underline"
+                                className="inline-flex items-center gap-0.5 text-indigo-600 dark:text-indigo-400 hover:underline"
                                 title={`Open ${soc.name} profile in new tab`}
                               >
                                 <span>Test link</span>
@@ -589,7 +582,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
                               </a>
                             )}
                           </div>
-                          <div className="flex items-center gap-2 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#131314] px-2.5 py-1.5 focus-within:border-[#1a73e8] dark:focus-within:border-[#a8c7fa] focus-within:ring-1 focus-within:ring-[#1a73e8]/20 transition-all">
+                          <div className="flex items-center gap-2 rounded-xl border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] px-2.5 py-1.5 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all">
                             <div className={`w-5.5 h-5.5 rounded-lg flex items-center justify-center shrink-0 ${soc.badgeBg}`}>
                               <Icon className="w-3.5 h-3.5" />
                             </div>
@@ -644,7 +637,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
         <div className="flex items-center gap-2.5 mb-3.5 px-2">
           <button
             onClick={() => setCurrentView("main")}
-            className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-neutral-100 dark:hover:bg-[#282a2c] text-neutral-600 dark:text-neutral-300 transition-colors cursor-pointer"
+            className="w-7 h-7 rounded-xl flex items-center justify-center hover:bg-neutral-100 dark:hover:bg-white/[0.08] text-neutral-600 dark:text-neutral-300 transition-colors cursor-pointer"
             aria-label="Back"
           >
             <ChevronLeft size={16} />
@@ -680,15 +673,15 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
                     onClick={() => setRole(roleId as UserRole)}
                     className={`flex items-start gap-3 p-2.5 rounded-2xl border text-left cursor-pointer transition-all ${
                       isSelected
-                        ? "border-[#1a73e8] dark:border-[#a8c7fa] bg-[#1a73e8]/8 dark:bg-[#a8c7fa]/12 ring-1 ring-[#1a73e8] dark:ring-[#a8c7fa]"
-                        : "border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] hover:bg-[#f8f9fa] dark:hover:bg-[#282a2c]"
+                        ? "border-indigo-500/40 bg-indigo-500/10 ring-1 ring-indigo-500/40"
+                        : "border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#121319] hover:bg-neutral-50 dark:hover:bg-white/[0.05]"
                     }`}
                   >
                     <div
-                      className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${
+                      className={`w-7 h-7 rounded-xl flex items-center justify-center shrink-0 ${
                         isSelected
-                          ? "bg-[#1a73e8] dark:bg-[#a8c7fa] text-white dark:text-[#041e49]"
-                          : "bg-neutral-100 dark:bg-white/10 text-neutral-600 dark:text-neutral-400"
+                          ? "bg-indigo-600 text-white dark:bg-indigo-500"
+                          : "bg-neutral-100 dark:bg-white/[0.08] text-neutral-600 dark:text-neutral-400"
                       }`}
                     >
                       <RoleIcon size={14} />
@@ -698,7 +691,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
                         <p
                           className={`text-xs font-semibold ${
                             isSelected
-                              ? "text-[#1a73e8] dark:text-[#a8c7fa]"
+                              ? "text-indigo-600 dark:text-indigo-300"
                               : "text-neutral-900 dark:text-neutral-100"
                           }`}
                         >
@@ -707,12 +700,12 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
                         <div
                           className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
                             isSelected
-                              ? "border-[#1a73e8] dark:border-[#a8c7fa] bg-white dark:bg-[#1e1f20]"
-                              : "border-[#dadce0] dark:border-[#5f6368]"
+                              ? "border-indigo-600 dark:border-indigo-400 bg-white dark:bg-[#0d0e12]"
+                              : "border-neutral-300 dark:border-neutral-600"
                           }`}
                         >
                           {isSelected && (
-                            <div className="w-2 h-2 rounded-full bg-[#1a73e8] dark:bg-[#a8c7fa]" />
+                            <div className="w-2 h-2 rounded-full bg-indigo-600 dark:bg-indigo-400" />
                           )}
                         </div>
                       </div>
@@ -746,8 +739,8 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
                     onClick={() => toggleInterest(item.id)}
                     className={`text-[11px] font-medium px-3 py-1 rounded-full border transition-all cursor-pointer flex items-center gap-1.5 ${
                       selected
-                        ? "bg-[#c2e7ff] text-[#001d35] dark:bg-[#004a77] dark:text-[#c2e7ff] border-transparent shadow-2xs font-semibold"
-                        : "bg-white dark:bg-[#202124] text-neutral-700 dark:text-neutral-300 border-[#dadce0] dark:border-[#3c4043] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c]"
+                        ? "bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-200 dark:border-indigo-500/40 shadow-2xs font-semibold"
+                        : "bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 border-neutral-200 dark:border-white/[0.08] hover:bg-neutral-100 dark:hover:bg-white/[0.05]"
                     }`}
                   >
                     {selected && <Check size={11} className="stroke-[2.5]" />}
@@ -782,9 +775,9 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
         <div
           className={`mx-3 mt-1 mb-2 p-2.5 rounded-xl border text-xs flex items-center justify-between gap-2 animate-[fadeIn_0.15s_ease-out] ${
             deletionFeedback.type === "success"
-              ? "bg-[#e8f0fe] dark:bg-[#1a2733] border-[#1a73e8]/30 text-[#1a73e8] dark:text-[#a8c7fa]"
+              ? "bg-indigo-50 dark:bg-indigo-500/15 border-indigo-200 dark:border-indigo-500/30 text-indigo-700 dark:text-indigo-300"
               : deletionFeedback.type === "error"
-              ? "bg-red-500/10 border-red-500/20 text-red-500"
+              ? "bg-rose-500/10 border-rose-500/20 text-rose-500"
               : "bg-neutral-100 dark:bg-white/5 border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300"
           }`}
         >
@@ -809,12 +802,12 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
             {avatarUrl ? (
               <img src={avatarUrl} alt="" className="w-full h-full object-cover" />
             ) : (
-              <div className={`w-full h-full flex items-center justify-center font-bold text-lg ${isDark ? "bg-[#8ab4f8] text-[#1f1f1f]" : "bg-[#1a73e8] text-white"}`}>
+              <div className="w-full h-full flex items-center justify-center font-bold text-lg bg-gradient-to-br from-indigo-600 to-violet-600 text-white">
                 {initials}
               </div>
             )}
           </div>
-          <div className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white dark:border-[#1e1f20]" title="Active" />
+          <div className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white dark:border-[#0d0e12]" title="Active" />
         </div>
 
         <p className="text-[13.5px] font-semibold text-neutral-900 dark:text-white truncate max-w-[240px]">
@@ -864,7 +857,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
             }
             if (onClose) onClose();
           }}
-          className="w-full py-1 px-3 rounded-full border border-neutral-300 dark:border-white/20 text-[11px] font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/5 transition-all text-center cursor-pointer shadow-2xs hover:border-[#1a73e8] dark:hover:border-[#a8c7fa] hover:text-[#1a73e8] dark:hover:text-[#a8c7fa]"
+          className="w-full py-1.5 px-3 rounded-xl border border-neutral-200 dark:border-white/[0.12] bg-neutral-50 dark:bg-[#121319] text-[11px] font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all text-center cursor-pointer shadow-2xs hover:border-indigo-500/40 hover:text-indigo-600 dark:hover:text-indigo-400"
         >
           Manage your AiVerse Profile
         </button>
@@ -939,10 +932,10 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
             }}
             className={menuItemCls}
           >
-            <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 bg-blue-500/10 text-blue-500">
+            <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 bg-indigo-500/10 text-indigo-500 dark:text-indigo-400">
               <Shield size={13} />
             </div>
-            <span className="flex-1 font-medium text-blue-600 dark:text-blue-400">Admin Console</span>
+            <span className="flex-1 font-medium text-indigo-600 dark:text-indigo-400">Admin Console</span>
           </button>
         )}
 
@@ -1050,7 +1043,7 @@ export const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
         isOpen={showDeletionModal}
         onClose={() => setShowDeletionModal(false)}
         onboardingProfile={onboardingProfile}
-        onStatusChange={(req) => setDeletionRequested(req)}
+        onStatusChange={(req) => setLocalDeletionRequested(req)}
       />
     </div>
   );

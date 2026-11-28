@@ -214,7 +214,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, [isDropdownOpen]);
 
   return (
-    <nav className="sticky top-0 z-40 border-b backdrop-blur-xl bg-white/85 dark:bg-neutral-950/85 border-neutral-200/80 dark:border-white/[0.08] transition-colors">
+    <nav className="sticky top-0 z-40 border-b backdrop-blur-xl bg-white/85 dark:bg-[#090a0e]/85 border-neutral-200/80 dark:border-white/[0.08] transition-colors">
       <div className="w-full px-4 sm:px-6 xl:px-10 h-14 sm:h-15 flex items-center justify-between gap-3">
         {/* Left Side: Brand Logo & Navigation Links */}
         <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
@@ -291,7 +291,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                 {isFeaturesOpen && (
                   <div
-                    className="absolute left-0 top-full mt-2 w-[390px] rounded-3xl p-3 z-50 border border-neutral-200/90 dark:border-white/10 bg-white/95 dark:bg-[#121316]/95 backdrop-blur-2xl shadow-2xl animate-[fadeIn_0.15s_ease-out]"
+                    className="absolute left-0 top-full mt-2 w-[390px] rounded-3xl p-3 z-50 border border-neutral-200/90 dark:border-white/10 bg-white/95 dark:bg-[#0d0e12]/95 backdrop-blur-2xl shadow-2xl animate-[fadeIn_0.15s_ease-out]"
                     style={{
                       boxShadow: "0 20px 50px -10px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06)",
                     }}
@@ -628,7 +628,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* ── Mobile Navigation Drawer ── */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden flex justify-end">
+        <div className="fixed inset-0 z-50 lg:hidden flex justify-end">
           {/* Dimmed backdrop */}
           <div
             className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity animate-[fadeIn_0.15s_ease-out]"
@@ -636,7 +636,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           />
 
           {/* Drawer Sheet */}
-          <div className="relative w-[85%] max-w-sm h-full bg-white dark:bg-[#141518] border-l border-neutral-200/90 dark:border-white/10 shadow-2xl p-5 flex flex-col justify-between overflow-y-auto no-scrollbar z-50 animate-[slideInRight_0.25s_ease-out]">
+          <div className="relative w-[85%] max-w-sm h-full bg-white dark:bg-[#090a0e] border-l border-neutral-200/90 dark:border-white/10 shadow-2xl p-5 flex flex-col justify-between overflow-y-auto no-scrollbar z-50 animate-[slideInRight_0.25s_ease-out]">
             {/* Top drawer header */}
             <div className="flex flex-col gap-5">
               <div className="flex items-center justify-between pb-4 border-b border-neutral-200/80 dark:border-white/[0.08]">

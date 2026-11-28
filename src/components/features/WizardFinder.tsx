@@ -71,10 +71,6 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
   setWizardCustomLicense,
   wizardRecommendations,
   setSelected,
-  setTypeFilter: _setTypeFilter,
-  setSearchInput: _setSearchInput,
-  setBrowseAll: _setBrowseAll,
-  setActiveView: _setActiveView,
   bookmarks,
   onToggleBookmark,
   setCompareToolA,
@@ -148,30 +144,30 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
   return (
     <div
       id="wizard"
-      className="relative rounded-2xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] transition-all scroll-mt-24 overflow-hidden shadow-xs"
+      className="relative rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] text-neutral-900 dark:text-neutral-100 transition-all scroll-mt-24 overflow-hidden shadow-xs"
     >
       {/* ── Lock overlay if not logged in ── */}
       {!user && (
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center backdrop-blur-md bg-white/95 dark:bg-[#131314]/95 text-[#202124] dark:text-[#e3e3e3] rounded-2xl transition-colors">
-          <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3.5 shadow-sm bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] border border-[#1a73e8]/20">
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center backdrop-blur-md bg-white/95 dark:bg-[#090a0e]/95 text-neutral-900 dark:text-white rounded-2xl transition-colors">
+          <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3.5 shadow-sm bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
             <Lock size={22} />
           </div>
-          <h3 className="text-lg sm:text-xl font-bold mb-1.5 tracking-tight text-[#202124] dark:text-[#e3e3e3]">
+          <h3 className="text-lg sm:text-xl font-bold mb-1.5 tracking-tight text-neutral-900 dark:text-white">
             Guided AI Architecture Advisor
           </h3>
-          <p className="text-xs sm:text-sm mb-6 max-w-md leading-relaxed mx-auto text-[#5f6368] dark:text-[#c4c7c5]">
-            Sign in to access Google-style personalized recommendation paths matched directly to your performance goals, tech stack, and licensing policies.
+          <p className="text-xs sm:text-sm mb-6 max-w-md leading-relaxed mx-auto text-neutral-600 dark:text-neutral-300">
+            Sign in to access personalized recommendation paths matched directly to your performance goals, tech stack, and licensing policies.
           </p>
           <div className="flex items-center gap-3">
             <button 
               onClick={() => openAuthModal("signin")}
-              className="px-5 py-2.5 rounded-full text-xs font-semibold border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-colors cursor-pointer"
+              className="px-5 py-2.5 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#121319] text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-colors cursor-pointer"
             >
               Sign In
             </button>
             <button 
               onClick={() => openAuthModal("signup")}
-              className="px-5 py-2.5 rounded-full text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] transition-colors shadow-xs cursor-pointer"
+              className="px-5 py-2.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition-colors shadow-sm shadow-indigo-500/20 cursor-pointer"
             >
               Create Free Account
             </button>
@@ -185,35 +181,35 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
         {...(!user ? { inert: true } : {})}
       >
         {/* ── Top Header & Step Progress Bar ── */}
-        <div className="mb-7 pb-5 border-b border-[#dadce0]/70 dark:border-[#3c4043]/40">
+        <div className="mb-7 pb-5 border-b border-neutral-200/70 dark:border-white/[0.06]">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 flex items-center justify-center shrink-0">
                 <Compass size={18} />
               </div>
               <div>
-                <h3 className="text-sm sm:text-base font-bold text-[#202124] dark:text-[#e3e3e3] tracking-tight">
+                <h3 className="text-sm sm:text-base font-bold text-neutral-900 dark:text-white tracking-tight">
                   Guided Model & Stack Selector
                 </h3>
-                <p className="text-[11px] text-[#5f6368] dark:text-[#8e918f]">
-                  Interactive workload discovery based on Google Cloud architectural standards
+                <p className="text-[11px] text-neutral-500 dark:text-neutral-400">
+                  Interactive workload discovery calibrated for production AI systems
                 </p>
               </div>
             </div>
 
             {wizardStep > 0 && (
               <div className="flex items-center gap-2.5 self-start sm:self-auto">
-                <span className="text-xs font-medium text-[#5f6368] dark:text-[#8e918f]">
+                <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400">
                   Step {wizardStep} of 3
                 </span>
-                <span className="text-xs font-bold font-mono text-[#1a73e8] dark:text-[#a8c7fa] bg-[#1a73e8]/10 dark:bg-[#a8c7fa]/10 px-2 py-0.5 rounded-full border border-[#1a73e8]/20 dark:border-[#a8c7fa]/20">
+                <span className="text-xs font-bold font-mono text-indigo-600 dark:text-indigo-300 bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20">
                   {Math.round(((Math.min(wizardStep, 3) - 1) / 3) * 100)}% Complete
                 </span>
               </div>
             )}
           </div>
 
-          {/* Stepper Navigation (Google Material 3 Linear Stepper) */}
+          {/* Stepper Navigation */}
           {wizardStep > 0 && (
             <div className="mt-4">
               <div className="grid grid-cols-4 gap-2">
@@ -226,10 +222,10 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                       disabled={!isCompleted}
                       onClick={() => setWizardStep(s.step)}
                       className={`text-left p-2 sm:px-3 sm:py-2.5 rounded-xl transition-all ${
-                        isCompleted ? "cursor-pointer hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c]/60" : "cursor-default"
+                        isCompleted ? "cursor-pointer hover:bg-neutral-100 dark:hover:bg-white/[0.05]" : "cursor-default"
                       } ${
                         isActive
-                          ? "bg-[#1a73e8]/[0.08] dark:bg-[#a8c7fa]/[0.08] border border-[#1a73e8]/30 dark:border-[#a8c7fa]/30"
+                          ? "bg-indigo-500/10 border border-indigo-500/30"
                           : "border border-transparent"
                       }`}
                     >
@@ -237,10 +233,10 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                         <div
                           className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 transition-colors ${
                             isActive
-                              ? "bg-[#1a73e8] text-white dark:bg-[#a8c7fa] dark:text-[#041e49]"
+                              ? "bg-indigo-600 text-white dark:bg-indigo-500"
                               : isCompleted
-                              ? "bg-[#1a73e8]/20 text-[#1a73e8] dark:bg-[#a8c7fa]/20 dark:text-[#a8c7fa]"
-                              : "bg-[#dadce0] dark:bg-[#3c4043] text-[#5f6368] dark:text-[#8e918f]"
+                              ? "bg-indigo-500/20 text-indigo-600 dark:text-indigo-300"
+                              : "bg-neutral-200 dark:bg-white/[0.08] text-neutral-500 dark:text-neutral-400"
                           }`}
                         >
                           {isCompleted ? <Check size={11} strokeWidth={3} /> : s.step}
@@ -248,19 +244,19 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                         <span
                           className={`text-xs font-semibold truncate ${
                             isActive
-                              ? "text-[#1a73e8] dark:text-[#a8c7fa]"
+                              ? "text-indigo-600 dark:text-indigo-300"
                               : isCompleted
-                              ? "text-[#202124] dark:text-[#e3e3e3]"
-                              : "text-[#70757a] dark:text-[#8e918f]"
+                              ? "text-neutral-900 dark:text-white"
+                              : "text-neutral-500 dark:text-neutral-400"
                           }`}
                         >
                           {s.label}
                         </span>
                       </div>
-                      <div className="w-full h-1 rounded-full bg-[#dadce0]/60 dark:bg-[#3c4043]/40 overflow-hidden">
+                      <div className="w-full h-1 rounded-full bg-neutral-200/80 dark:bg-white/[0.08] overflow-hidden">
                         <div
                           className={`h-full transition-all duration-300 ${
-                            isCompleted || isActive ? "bg-[#1a73e8] dark:bg-[#a8c7fa]" : "bg-transparent"
+                            isCompleted || isActive ? "bg-indigo-600 dark:bg-indigo-400" : "bg-transparent"
                           }`}
                         />
                       </div>
@@ -272,33 +268,33 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
           )}
         </div>
 
-        {/* ── STEP 0: Clean Google Cloud Solution Finder Hero ── */}
+        {/* ── STEP 0: Solution Finder Hero ── */}
         {wizardStep === 0 && (
           <div className="py-3 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="max-w-2xl text-left">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] border border-[#1a73e8]/20 mb-3">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border border-indigo-500/20 mb-3">
                 <Sparkles size={13} />
                 <span>Decision Intelligence</span>
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#202124] dark:text-[#e3e3e3] mb-2">
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white mb-2">
                 Find the ideal AI tools for your workload
               </h2>
-              <p className="text-xs sm:text-sm text-[#5f6368] dark:text-[#c4c7c5] leading-relaxed mb-5">
-                Answer 3 quick questions about your deployment objective, tech stack layer, and open-source licensing policy. Our advisory engine analyzes 150+ catalogued models and frameworks to pinpoint optimal fits.
+              <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-5">
+                Answer 3 quick questions about your deployment objective, tech stack layer, and open-source licensing policy. Our advisory engine analyzes catalogued models and frameworks to pinpoint optimal fits.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div className="p-3 rounded-xl border border-[#dadce0]/80 dark:border-[#3c4043]/50 bg-[#f8f9fa] dark:bg-[#282a2c]/30">
-                  <p className="text-xs font-bold text-[#202124] dark:text-[#e3e3e3] mb-0.5">1. Target Objective</p>
-                  <p className="text-[11px] text-[#5f6368] dark:text-[#8e918f]">Agents, tuning, or API inference</p>
+                <div className="p-3 rounded-xl border border-neutral-200/80 dark:border-white/[0.07] bg-neutral-50/80 dark:bg-[#121319]">
+                  <p className="text-xs font-bold text-neutral-900 dark:text-white mb-0.5">1. Target Objective</p>
+                  <p className="text-[11px] text-neutral-500 dark:text-neutral-400">Agents, tuning, or API inference</p>
                 </div>
-                <div className="p-3 rounded-xl border border-[#dadce0]/80 dark:border-[#3c4043]/50 bg-[#f8f9fa] dark:bg-[#282a2c]/30">
-                  <p className="text-xs font-bold text-[#202124] dark:text-[#e3e3e3] mb-0.5">2. Stack Layer</p>
-                  <p className="text-[11px] text-[#5f6368] dark:text-[#8e918f]">Base weights, SDKs, or runtimes</p>
+                <div className="p-3 rounded-xl border border-neutral-200/80 dark:border-white/[0.07] bg-neutral-50/80 dark:bg-[#121319]">
+                  <p className="text-xs font-bold text-neutral-900 dark:text-white mb-0.5">2. Stack Layer</p>
+                  <p className="text-[11px] text-neutral-500 dark:text-neutral-400">Base weights, SDKs, or runtimes</p>
                 </div>
-                <div className="p-3 rounded-xl border border-[#dadce0]/80 dark:border-[#3c4043]/50 bg-[#f8f9fa] dark:bg-[#282a2c]/30">
-                  <p className="text-xs font-bold text-[#202124] dark:text-[#e3e3e3] mb-0.5">3. Compliance</p>
-                  <p className="text-[11px] text-[#5f6368] dark:text-[#8e918f]">Permissive Apache vs proprietary</p>
+                <div className="p-3 rounded-xl border border-neutral-200/80 dark:border-white/[0.07] bg-neutral-50/80 dark:bg-[#121319]">
+                  <p className="text-xs font-bold text-neutral-900 dark:text-white mb-0.5">3. Compliance</p>
+                  <p className="text-[11px] text-neutral-500 dark:text-neutral-400">Permissive Apache vs proprietary</p>
                 </div>
               </div>
             </div>
@@ -306,7 +302,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
             <div className="shrink-0">
               <button
                 onClick={() => setWizardStep(1)}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-full font-semibold text-xs sm:text-sm bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] shadow-xs flex items-center justify-center gap-2 transition-all cursor-pointer"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-semibold text-xs sm:text-sm bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 flex items-center justify-center gap-2 transition-all cursor-pointer"
               >
                 <span>Start Guided Advisor</span>
                 <ArrowRight size={15} />
@@ -320,10 +316,10 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
           <div className="flex flex-col gap-6 animate-[fadeIn_0.2s_ease-out]">
             <div className="flex items-center justify-between">
               <div className="text-left">
-                <span className="text-[11px] font-semibold text-[#1a73e8] dark:text-[#a8c7fa] uppercase tracking-wider">
+                <span className="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
                   Step 1 • Target Goal
                 </span>
-                <h4 className="text-base sm:text-lg font-bold text-[#202124] dark:text-[#e3e3e3] mt-0.5">
+                <h4 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-white mt-0.5">
                   What is your primary development objective?
                 </h4>
               </div>
@@ -333,7 +329,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                   setWizardGoal(null);
                   setWizardCustomGoal("");
                 }} 
-                className="text-xs font-medium text-[#5f6368] dark:text-[#8e918f] hover:text-[#202124] dark:hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
+                className="text-xs font-medium text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
               >
                 <ArrowLeft size={13} /> Cancel
               </button>
@@ -359,33 +355,33 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                         setWizardStep(2);
                       }
                     }}
-                    className={`relative text-left p-4 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
+                    className={`relative text-left p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
                       isSelected
-                        ? "border-2 border-[#1a73e8] dark:border-[#a8c7fa] bg-[#1a73e8]/[0.06] dark:bg-[#a8c7fa]/[0.08] shadow-xs"
-                        : "border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] hover:border-[#1a73e8]/60 dark:hover:border-[#a8c7fa]/60 hover:bg-[#f8f9fa] dark:hover:bg-[#282a2c]/30"
+                        ? "border-2 border-indigo-500 bg-indigo-500/[0.08] shadow-xs"
+                        : "border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/70 dark:bg-[#121319] hover:border-indigo-400 dark:hover:border-indigo-500/40 hover:bg-white dark:hover:bg-[#161822]"
                     }`}
                   >
                     <div>
                       <div className="flex items-center justify-between mb-3">
                         <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
                           isSelected
-                            ? "bg-[#1a73e8] text-white dark:bg-[#a8c7fa] dark:text-[#041e49]"
-                            : "bg-[#f1f3f4] dark:bg-[#282a2c] text-[#1a73e8] dark:text-[#a8c7fa]"
+                            ? "bg-indigo-600 text-white dark:bg-indigo-500"
+                            : "bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400"
                         }`}>
                           <Icon size={18} />
                         </div>
                         {isSelected && (
-                          <div className="w-5 h-5 rounded-full bg-[#1a73e8] text-white dark:bg-[#a8c7fa] dark:text-[#041e49] flex items-center justify-center">
+                          <div className="w-5 h-5 rounded-full bg-indigo-600 text-white dark:bg-indigo-500 flex items-center justify-center">
                             <Check size={11} strokeWidth={3} />
                           </div>
                         )}
                       </div>
                       <h5 className={`font-semibold text-xs sm:text-[13px] mb-1 leading-snug ${
-                        isSelected ? "text-[#1a73e8] dark:text-[#a8c7fa] font-bold" : "text-[#202124] dark:text-[#e3e3e3]"
+                        isSelected ? "text-indigo-600 dark:text-indigo-300 font-bold" : "text-neutral-900 dark:text-white"
                       }`}>
                         {opt.title}
                       </h5>
-                      <p className="text-[11px] leading-relaxed text-[#5f6368] dark:text-[#8e918f]">
+                      <p className="text-[11px] leading-relaxed text-neutral-500 dark:text-neutral-400">
                         {opt.desc}
                       </p>
                     </div>
@@ -395,8 +391,8 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
             </div>
 
             {wizardGoal === "other" && (
-              <div className="p-4 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-[#f8f9fa] dark:bg-[#282a2c]/30 text-left animate-[fadeIn_0.15s_ease-out]">
-                <label className="block text-xs font-semibold text-[#202124] dark:text-[#e3e3e3] mb-2">
+              <div className="p-4 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/80 dark:bg-[#121319] text-left animate-[fadeIn_0.15s_ease-out]">
+                <label className="block text-xs font-semibold text-neutral-900 dark:text-white mb-2">
                   Describe your target application or enter keywords:
                 </label>
                 <div className="flex flex-col sm:flex-row gap-2.5">
@@ -405,7 +401,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                     placeholder="e.g. Graph neural networks, biomedical RAG, Rust dev tools..."
                     value={wizardCustomGoal}
                     onChange={(e) => setWizardCustomGoal(e.target.value)}
-                    className="flex-1 px-3.5 py-2.5 rounded-lg text-xs border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] focus:outline-none focus:border-[#1a73e8] dark:focus:border-[#a8c7fa]"
+                    className="flex-1 px-3.5 py-2.5 rounded-xl text-xs border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#090a0e] text-neutral-900 dark:text-white focus:outline-none focus:border-indigo-500"
                     onKeyDown={(e) => {
                       if (e.key === "Enter" && wizardCustomGoal.trim()) {
                         setWizardStep(2);
@@ -415,10 +411,10 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                   <button
                     disabled={!wizardCustomGoal.trim()}
                     onClick={() => setWizardStep(2)}
-                    className={`px-5 py-2.5 rounded-lg font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer ${
+                    className={`px-5 py-2.5 rounded-xl font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer ${
                       wizardCustomGoal.trim()
-                        ? "bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49]"
-                        : "opacity-40 cursor-not-allowed bg-neutral-200 dark:bg-neutral-800 text-neutral-400"
+                        ? "bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20"
+                        : "opacity-40 cursor-not-allowed bg-neutral-200 dark:bg-white/[0.06] text-neutral-400"
                     }`}
                   >
                     <span>Continue</span>
@@ -435,16 +431,16 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
           <div className="flex flex-col gap-6 animate-[fadeIn_0.2s_ease-out]">
             <div className="flex items-center justify-between">
               <div className="text-left">
-                <span className="text-[11px] font-semibold text-[#1a73e8] dark:text-[#a8c7fa] uppercase tracking-wider">
+                <span className="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
                   Step 2 • Architectural Component
                 </span>
-                <h4 className="text-base sm:text-lg font-bold text-[#202124] dark:text-[#e3e3e3] mt-0.5">
+                <h4 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-white mt-0.5">
                   Which layer of the stack are you targeting?
                 </h4>
               </div>
               <button 
                 onClick={() => setWizardStep(1)} 
-                className="text-xs font-medium text-[#5f6368] dark:text-[#8e918f] hover:text-[#202124] dark:hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
+                className="text-xs font-medium text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
               >
                 <ArrowLeft size={13} /> Back
               </button>
@@ -468,33 +464,33 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                       setWizardType(opt.key); 
                       setWizardStep(3); 
                     }}
-                    className={`relative text-left p-4 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
+                    className={`relative text-left p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
                       isSelected
-                        ? "border-2 border-[#1a73e8] dark:border-[#a8c7fa] bg-[#1a73e8]/[0.06] dark:bg-[#a8c7fa]/[0.08] shadow-xs"
-                        : "border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] hover:border-[#1a73e8]/60 dark:hover:border-[#a8c7fa]/60 hover:bg-[#f8f9fa] dark:hover:bg-[#282a2c]/30"
+                        ? "border-2 border-indigo-500 bg-indigo-500/[0.08] shadow-xs"
+                        : "border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/70 dark:bg-[#121319] hover:border-indigo-400 dark:hover:border-indigo-500/40 hover:bg-white dark:hover:bg-[#161822]"
                     }`}
                   >
                     <div>
                       <div className="flex items-center justify-between mb-3">
                         <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
                           isSelected
-                            ? "bg-[#1a73e8] text-white dark:bg-[#a8c7fa] dark:text-[#041e49]"
-                            : "bg-[#f1f3f4] dark:bg-[#282a2c] text-[#1a73e8] dark:text-[#a8c7fa]"
+                            ? "bg-indigo-600 text-white dark:bg-indigo-500"
+                            : "bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400"
                         }`}>
                           <Icon size={18} />
                         </div>
                         {isSelected && (
-                          <div className="w-5 h-5 rounded-full bg-[#1a73e8] text-white dark:bg-[#a8c7fa] dark:text-[#041e49] flex items-center justify-center">
+                          <div className="w-5 h-5 rounded-full bg-indigo-600 text-white dark:bg-indigo-500 flex items-center justify-center">
                             <Check size={11} strokeWidth={3} />
                           </div>
                         )}
                       </div>
                       <h5 className={`font-semibold text-xs sm:text-[13px] mb-1 leading-snug ${
-                        isSelected ? "text-[#1a73e8] dark:text-[#a8c7fa] font-bold" : "text-[#202124] dark:text-[#e3e3e3]"
+                        isSelected ? "text-indigo-600 dark:text-indigo-300 font-bold" : "text-neutral-900 dark:text-white"
                       }`}>
                         {opt.title}
                       </h5>
-                      <p className="text-[11px] leading-relaxed text-[#5f6368] dark:text-[#8e918f]">
+                      <p className="text-[11px] leading-relaxed text-neutral-500 dark:text-neutral-400">
                         {opt.desc}
                       </p>
                     </div>
@@ -510,16 +506,16 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
           <div className="flex flex-col gap-6 animate-[fadeIn_0.2s_ease-out]">
             <div className="flex items-center justify-between">
               <div className="text-left">
-                <span className="text-[11px] font-semibold text-[#1a73e8] dark:text-[#a8c7fa] uppercase tracking-wider">
+                <span className="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
                   Step 3 • Governance & Licensing
                 </span>
-                <h4 className="text-base sm:text-lg font-bold text-[#202124] dark:text-[#e3e3e3] mt-0.5">
+                <h4 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-white mt-0.5">
                   What are your licensing and compliance requirements?
                 </h4>
               </div>
               <button 
                 onClick={() => setWizardStep(2)} 
-                className="text-xs font-medium text-[#5f6368] dark:text-[#8e918f] hover:text-[#202124] dark:hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
+                className="text-xs font-medium text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
               >
                 <ArrowLeft size={13} /> Back
               </button>
@@ -543,33 +539,33 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                         setWizardStep(4);
                       }
                     }}
-                    className={`relative text-left p-4 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
+                    className={`relative text-left p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
                       isSelected
-                        ? "border-2 border-[#1a73e8] dark:border-[#a8c7fa] bg-[#1a73e8]/[0.06] dark:bg-[#a8c7fa]/[0.08] shadow-xs"
-                        : "border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] hover:border-[#1a73e8]/60 dark:hover:border-[#a8c7fa]/60 hover:bg-[#f8f9fa] dark:hover:bg-[#282a2c]/30"
+                        ? "border-2 border-indigo-500 bg-indigo-500/[0.08] shadow-xs"
+                        : "border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/70 dark:bg-[#121319] hover:border-indigo-400 dark:hover:border-indigo-500/40 hover:bg-white dark:hover:bg-[#161822]"
                     }`}
                   >
                     <div>
                       <div className="flex items-center justify-between mb-3">
                         <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
                           isSelected
-                            ? "bg-[#1a73e8] text-white dark:bg-[#a8c7fa] dark:text-[#041e49]"
-                            : "bg-[#f1f3f4] dark:bg-[#282a2c] text-[#1a73e8] dark:text-[#a8c7fa]"
+                            ? "bg-indigo-600 text-white dark:bg-indigo-500"
+                            : "bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400"
                         }`}>
                           <Icon size={18} />
                         </div>
                         {isSelected && (
-                          <div className="w-5 h-5 rounded-full bg-[#1a73e8] text-white dark:bg-[#a8c7fa] dark:text-[#041e49] flex items-center justify-center">
+                          <div className="w-5 h-5 rounded-full bg-indigo-600 text-white dark:bg-indigo-500 flex items-center justify-center">
                             <Check size={11} strokeWidth={3} />
                           </div>
                         )}
                       </div>
                       <h5 className={`font-semibold text-xs sm:text-[13px] mb-1 leading-snug ${
-                        isSelected ? "text-[#1a73e8] dark:text-[#a8c7fa] font-bold" : "text-[#202124] dark:text-[#e3e3e3]"
+                        isSelected ? "text-indigo-600 dark:text-indigo-300 font-bold" : "text-neutral-900 dark:text-white"
                       }`}>
                         {opt.title}
                       </h5>
-                      <p className="text-[11px] leading-relaxed text-[#5f6368] dark:text-[#8e918f]">
+                      <p className="text-[11px] leading-relaxed text-neutral-500 dark:text-neutral-400">
                         {opt.desc}
                       </p>
                     </div>
@@ -579,8 +575,8 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
             </div>
 
             {wizardLicense === "other" && (
-              <div className="p-4 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-[#f8f9fa] dark:bg-[#282a2c]/30 text-left animate-[fadeIn_0.15s_ease-out]">
-                <label className="block text-xs font-semibold text-[#202124] dark:text-[#e3e3e3] mb-2">
+              <div className="p-4 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/80 dark:bg-[#121319] text-left animate-[fadeIn_0.15s_ease-out]">
+                <label className="block text-xs font-semibold text-neutral-900 dark:text-white mb-2">
                   Enter target license keywords:
                 </label>
                 <div className="flex flex-col sm:flex-row gap-2.5">
@@ -589,7 +585,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                     placeholder="e.g. GPL-3.0, Llama 3.3 Community, Creative Commons..."
                     value={wizardCustomLicense}
                     onChange={(e) => setWizardCustomLicense(e.target.value)}
-                    className="flex-1 px-3.5 py-2.5 rounded-lg text-xs border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] focus:outline-none focus:border-[#1a73e8] dark:focus:border-[#a8c7fa]"
+                    className="flex-1 px-3.5 py-2.5 rounded-xl text-xs border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#090a0e] text-neutral-900 dark:text-white focus:outline-none focus:border-indigo-500"
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
                         setWizardStep(4);
@@ -598,7 +594,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                   />
                   <button
                     onClick={() => setWizardStep(4)}
-                    className="px-5 py-2.5 rounded-lg font-semibold text-xs bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="px-5 py-2.5 rounded-xl font-semibold text-xs bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     <span>View Recommendations</span>
                     <ArrowRight size={13} />
@@ -609,30 +605,30 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
           </div>
         )}
 
-        {/* ── STEP 4: Google Model Garden Style Recommendations ── */}
+        {/* ── STEP 4: Recommendations ── */}
         {wizardStep === 4 && (
           <div className="flex flex-col gap-6 animate-[fadeIn_0.2s_ease-out]">
             {/* Results Header Bar */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-[#f8f9fa] dark:bg-[#282a2c]/40 text-left">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/80 dark:bg-[#121319] text-left">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="w-2 h-2 rounded-full bg-[#1a73e8] dark:bg-[#a8c7fa]" />
-                  <span className="text-xs font-bold text-[#1a73e8] dark:text-[#a8c7fa] uppercase tracking-wider">
+                  <span className="w-2 h-2 rounded-full bg-indigo-500" />
+                  <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
                     Discovery Complete
                   </span>
                 </div>
-                <h4 className="text-base sm:text-lg font-bold text-[#202124] dark:text-[#e3e3e3]">
+                <h4 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-white">
                   {wizardRecommendations.length} Architectural Matches Found
                 </h4>
-                <div className="flex items-center gap-2 flex-wrap mt-1 text-[11px] text-[#5f6368] dark:text-[#8e918f]">
+                <div className="flex items-center gap-2 flex-wrap mt-1 text-[11px] text-neutral-500 dark:text-neutral-400">
                   <span>Criteria:</span>
-                  <span className="px-2 py-0.5 rounded-md bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043]/60 font-medium">
+                  <span className="px-2 py-0.5 rounded-md bg-white dark:bg-[#0c0d11] border border-neutral-200/80 dark:border-white/[0.08] font-medium">
                     Goal: {getGoalLabel()}
                   </span>
-                  <span className="px-2 py-0.5 rounded-md bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043]/60 font-medium">
+                  <span className="px-2 py-0.5 rounded-md bg-white dark:bg-[#0c0d11] border border-neutral-200/80 dark:border-white/[0.08] font-medium">
                     Layer: {wizardType || "All"}
                   </span>
-                  <span className="px-2 py-0.5 rounded-md bg-white dark:bg-[#1e1f20] border border-[#dadce0] dark:border-[#3c4043]/60 font-medium">
+                  <span className="px-2 py-0.5 rounded-md bg-white dark:bg-[#0c0d11] border border-neutral-200/80 dark:border-white/[0.08] font-medium">
                     License: {wizardLicense === "permissive" ? "Permissive OSS" : wizardLicense === "other" ? (wizardCustomLicense || "Custom") : "Any"}
                   </span>
                 </div>
@@ -647,28 +643,28 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                   setWizardLicense(null);
                   setWizardCustomLicense("");
                 }}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-xs font-semibold text-[#5f6368] dark:text-[#c4c7c5] hover:text-[#202124] dark:hover:text-white hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] transition-colors cursor-pointer self-start sm:self-auto shrink-0 shadow-xs"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#0c0d11] text-xs font-semibold text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-colors cursor-pointer self-start sm:self-auto shrink-0 shadow-xs"
               >
                 <RefreshCw size={13} />
                 <span>Adjust Criteria</span>
               </button>
             </div>
 
-            {/* Top 3 Featured Google Model Garden Cards */}
+            {/* Top 3 Featured Recommendation Cards */}
             <div className="text-left">
               <div className="flex items-center justify-between mb-3.5">
-                <h5 className="text-xs font-bold uppercase tracking-wider text-[#5f6368] dark:text-[#8e918f] flex items-center gap-1.5">
-                  <Sparkles size={13} className="text-[#1a73e8] dark:text-[#a8c7fa]" />
+                <h5 className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 flex items-center gap-1.5">
+                  <Sparkles size={13} className="text-indigo-600 dark:text-indigo-400" />
                   <span>Primary Recommendations</span>
                 </h5>
-                <span className="text-[11px] text-[#70757a] dark:text-[#8e918f]">
+                <span className="text-[11px] text-neutral-500 dark:text-neutral-400">
                   Ranked by objective compatibility
                 </span>
               </div>
               
               {topMatches.length === 0 ? (
-                <div className="p-8 text-center border border-[#dadce0] dark:border-[#3c4043]/60 rounded-2xl bg-white dark:bg-[#1e1f20]">
-                  <p className="text-sm text-[#5f6368] dark:text-[#8e918f]">
+                <div className="p-8 text-center border border-neutral-200/80 dark:border-white/[0.08] rounded-2xl bg-neutral-50/70 dark:bg-[#121319]">
+                  <p className="text-sm text-neutral-500 dark:text-neutral-400">
                     No entries match this specific criteria. Try selecting "Cross-Stack" or "Any License".
                   </p>
                 </div>
@@ -682,7 +678,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                     return (
                       <div
                         key={idx}
-                        className="p-5 rounded-2xl flex flex-col justify-between border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] hover:border-[#1a73e8]/60 dark:hover:border-[#a8c7fa]/60 transition-all shadow-xs"
+                        className="p-5 rounded-2xl flex flex-col justify-between border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/60 dark:bg-[#121319] hover:border-indigo-400 dark:hover:border-indigo-500/40 transition-all shadow-xs"
                       >
                         <div>
                           {/* Card Header: Logo, Name, Match pill */}
@@ -690,47 +686,47 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                             <div className="flex items-center gap-2.5 min-w-0">
                               <EcosystemLogo name={entry.org || entry.name} website={entry.url} size={28} />
                               <div className="min-w-0">
-                                <h5 className="font-bold text-sm text-[#202124] dark:text-[#e3e3e3] truncate">
+                                <h5 className="font-bold text-sm text-neutral-900 dark:text-white truncate">
                                   {entry.name}
                                 </h5>
-                                <p className="text-[11px] text-[#5f6368] dark:text-[#8e918f] truncate">
+                                <p className="text-[11px] text-neutral-500 dark:text-neutral-400 truncate">
                                   by {entry.org}
                                 </p>
                               </div>
                             </div>
-                            <span className="inline-flex items-center text-[10.5px] font-bold px-2 py-0.5 rounded-full border border-[#1a73e8]/20 bg-[#1a73e8]/10 text-[#1a73e8] dark:text-[#a8c7fa] shrink-0">
+                            <span className="inline-flex items-center text-[10.5px] font-bold px-2 py-0.5 rounded-full border border-indigo-500/20 bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 shrink-0">
                               {matchPercent}% Match
                             </span>
                           </div>
 
                           {/* Classification badges */}
                           <div className="flex items-center gap-1.5 flex-wrap mb-3">
-                            <span className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-[#f1f3f4] dark:bg-[#282a2c] text-[#5f6368] dark:text-[#c4c7c5]">
+                            <span className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-white dark:bg-[#0c0d11] border border-neutral-200/80 dark:border-white/[0.06] text-neutral-600 dark:text-neutral-300">
                               {entry.type}
                             </span>
-                            <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#f1f3f4] dark:bg-[#282a2c] text-[#5f6368] dark:text-[#c4c7c5]">
+                            <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white dark:bg-[#0c0d11] border border-neutral-200/80 dark:border-white/[0.06] text-neutral-600 dark:text-neutral-300">
                               {entry.license}
                             </span>
                             {entry.size && (
-                              <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#f1f3f4] dark:bg-[#282a2c] text-[#5f6368] dark:text-[#c4c7c5]">
+                              <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white dark:bg-[#0c0d11] border border-neutral-200/80 dark:border-white/[0.06] text-neutral-600 dark:text-neutral-300">
                                 {entry.size}
                               </span>
                             )}
                           </div>
 
-                          <p className="text-xs leading-relaxed text-[#5f6368] dark:text-[#c4c7c5] line-clamp-3 mb-4">
+                          <p className="text-xs leading-relaxed text-neutral-600 dark:text-neutral-300 line-clamp-3 mb-4">
                             {entry.description || entry.summary}
                           </p>
 
-                          {/* Match Insights Google Callout */}
-                          <div className="mb-4 p-3 rounded-xl border border-[#dadce0]/70 dark:border-[#3c4043]/40 bg-[#f8f9fa] dark:bg-[#282a2c]/50 text-left">
-                            <p className="font-semibold text-[10px] uppercase tracking-wider text-[#70757a] dark:text-[#8e918f] mb-1.5">
+                          {/* Match Insights Callout */}
+                          <div className="mb-4 p-3 rounded-xl border border-neutral-200/80 dark:border-white/[0.06] bg-white dark:bg-[#0c0d11] text-left">
+                            <p className="font-semibold text-[10px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1.5">
                               Why it matches your stack
                             </p>
                             <ul className="space-y-1 list-none p-0 m-0">
                               {insights.map((ins, i) => (
-                                <li key={i} className="flex items-center gap-1.5 text-[11px] text-[#202124] dark:text-[#e3e3e3]">
-                                  <CheckCircle2 size={13} className="text-[#1a73e8] dark:text-[#a8c7fa] shrink-0" />
+                                <li key={i} className="flex items-center gap-1.5 text-[11px] text-neutral-800 dark:text-neutral-200">
+                                  <CheckCircle2 size={13} className="text-indigo-600 dark:text-indigo-400 shrink-0" />
                                   <span className="truncate">{ins}</span>
                                 </li>
                               ))}
@@ -739,13 +735,13 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                         </div>
 
                         {/* Card Actions */}
-                        <div className="pt-3 border-t border-[#dadce0]/70 dark:border-[#3c4043]/40 flex items-center justify-between gap-2">
+                        <div className="pt-3 border-t border-neutral-200/70 dark:border-white/[0.06] flex items-center justify-between gap-2">
                           <button
                             onClick={() => onToggleBookmark(entry.name)}
                             className={`p-2 rounded-lg border transition-colors cursor-pointer flex items-center justify-center shrink-0 ${
                               isB
                                 ? "border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400"
-                                : "border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#5f6368] dark:text-[#8e918f] hover:text-[#202124] dark:hover:text-white"
+                                : "border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#0c0d11] text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                             }`}
                             title={isB ? "Remove Bookmark" : "Bookmark Entry"}
                           >
@@ -765,7 +761,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                                   if (el) el.scrollIntoView({ behavior: "smooth" });
                                 }, 100);
                               }}
-                              className="px-2.5 py-1.5 rounded-lg border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#1e1f20] text-[#202124] dark:text-[#e3e3e3] hover:bg-[#f1f3f4] dark:hover:bg-[#282a2c] text-[11px] font-semibold transition-colors cursor-pointer flex items-center gap-1"
+                              className="px-2.5 py-1.5 rounded-lg border border-neutral-200 dark:border-white/[0.1] bg-white dark:bg-[#0c0d11] text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/[0.06] text-[11px] font-semibold transition-colors cursor-pointer flex items-center gap-1"
                               title="Compare side-by-side"
                             >
                               <GitCompare size={12} />
@@ -774,7 +770,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
 
                             <button
                               onClick={() => setSelected(entry)}
-                              className="px-3.5 py-1.5 rounded-lg bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] text-[11px] font-semibold transition-colors shadow-xs cursor-pointer flex items-center gap-1"
+                              className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-semibold transition-colors shadow-sm shadow-indigo-500/20 cursor-pointer flex items-center gap-1"
                             >
                               <span>Inspect</span>
                               <ArrowRight size={12} />
@@ -792,7 +788,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
             {otherMatches.length > 0 && (
               <div className="mt-2 text-left">
                 <div className="flex items-center justify-between mb-3">
-                  <h5 className="text-xs font-bold uppercase tracking-wider text-[#5f6368] dark:text-[#8e918f] flex items-center gap-1.5">
+                  <h5 className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 flex items-center gap-1.5">
                     <Layers size={13} />
                     <span>Alternative Matches ({otherMatches.length})</span>
                   </h5>
@@ -803,27 +799,27 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                     return (
                       <div
                         key={idx + 3}
-                        className="p-3.5 rounded-xl border border-[#dadce0] dark:border-[#3c4043]/60 bg-white dark:bg-[#1e1f20] flex flex-col justify-between hover:border-[#dadce0] dark:hover:border-[#3c4043] transition-all"
+                        className="p-3.5 rounded-xl border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/70 dark:bg-[#121319] flex flex-col justify-between hover:border-indigo-300 dark:hover:border-indigo-500/35 transition-all"
                       >
                         <div>
                           <div className="flex items-center justify-between gap-2 mb-2">
                             <div className="flex items-center gap-2 min-w-0">
                               <EcosystemLogo name={entry.org || entry.name} website={entry.url} size={18} />
-                              <h5 className="font-bold text-xs text-[#202124] dark:text-[#e3e3e3] truncate">
+                              <h5 className="font-bold text-xs text-neutral-900 dark:text-white truncate">
                                 {entry.name}
                               </h5>
                             </div>
-                            <span className="text-[10px] font-medium text-[#5f6368] dark:text-[#8e918f] shrink-0">
+                            <span className="text-[10px] font-medium text-neutral-500 dark:text-neutral-400 shrink-0">
                               {entry.type}
                             </span>
                           </div>
-                          <p className="text-[11px] text-[#5f6368] dark:text-[#c4c7c5] line-clamp-2 leading-relaxed mb-3">
+                          <p className="text-[11px] text-neutral-600 dark:text-neutral-300 line-clamp-2 leading-relaxed mb-3">
                             {entry.description || entry.summary}
                           </p>
                         </div>
 
-                        <div className="pt-2 border-t border-[#dadce0]/60 dark:border-[#3c4043]/30 flex items-center justify-between gap-2">
-                          <span className="text-[10px] font-mono text-[#70757a] dark:text-[#8e918f]">
+                        <div className="pt-2 border-t border-neutral-200/60 dark:border-white/[0.06] flex items-center justify-between gap-2">
+                          <span className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400">
                             {entry.license}
                           </span>
                           <div className="flex items-center gap-1">
@@ -832,7 +828,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                               className={`p-1.5 rounded-md border transition-colors cursor-pointer ${
                                 isB
                                   ? "border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400"
-                                  : "border-[#dadce0] dark:border-[#3c4043] text-[#5f6368] dark:text-[#8e918f]"
+                                  : "border-neutral-200 dark:border-white/[0.1] text-neutral-500 dark:text-neutral-400"
                               }`}
                               title={isB ? "Remove Bookmark" : "Bookmark Entry"}
                             >
@@ -840,7 +836,7 @@ export const WizardFinder: React.FC<WizardFinderProps> = ({
                             </button>
                             <button
                               onClick={() => setSelected(entry)}
-                              className="px-2.5 py-1 rounded-md text-[11px] font-semibold text-[#1a73e8] dark:text-[#a8c7fa] hover:bg-[#1a73e8]/10 transition-colors cursor-pointer"
+                              className="px-2.5 py-1 rounded-md text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 hover:bg-indigo-500/10 transition-colors cursor-pointer"
                             >
                               Inspect →
                             </button>

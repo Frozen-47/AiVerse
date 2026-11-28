@@ -270,10 +270,10 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
               <button
                 key={pill.id}
                 onClick={() => handleFilterFocus(pill.id)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap border ${
                   isSelected
-                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold shadow-xs"
-                    : "border border-neutral-200 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
+                    ? "bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-300 dark:border-indigo-500/30 font-semibold shadow-xs"
+                    : "border-neutral-200 dark:border-white/[0.08] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
                 }`}
               >
                 <span>{pill.label}</span>
@@ -288,7 +288,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
             <button
               type="button"
               onClick={toggleAllTiers}
-              className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer shadow-xs"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer shadow-xs"
               title={allTiersExpanded ? "Collapse all tiers" : "Expand all tiers"}
             >
               <ChevronsUpDown size={12} className="opacity-70" />
@@ -303,12 +303,12 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
           </span>
 
           {/* View Mode Toggle: Organized Tiers first, then Grid, then Line by Line */}
-          <div className="flex items-center p-1 rounded-xl bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08] shrink-0">
+          <div className="flex items-center p-1 rounded-xl bg-neutral-100 dark:bg-[#121319] border border-neutral-200 dark:border-white/[0.08] shrink-0">
             <button
               onClick={() => setViewMode("tiers")}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 viewMode === "tiers"
-                  ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-xs"
+                  ? "bg-white dark:bg-[#0c0d11] text-indigo-600 dark:text-indigo-400 shadow-xs"
                   : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
               }`}
               title="Organized by Tiers (Collapsible)"
@@ -320,7 +320,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
               onClick={() => setViewMode("grid")}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 viewMode === "grid"
-                  ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-xs"
+                  ? "bg-white dark:bg-[#0c0d11] text-indigo-600 dark:text-indigo-400 shadow-xs"
                   : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
               }`}
               title="Grid view"
@@ -332,7 +332,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
               onClick={() => setViewMode("list")}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 viewMode === "list"
-                  ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-xs"
+                  ? "bg-white dark:bg-[#0c0d11] text-indigo-600 dark:text-indigo-400 shadow-xs"
                   : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
               }`}
               title="Line-by-line list view"
@@ -346,7 +346,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
 
       {/* Empty State */}
       {filteredEcosystems.length === 0 ? (
-        <div className="p-12 text-center rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/50 dark:bg-white/[0.01] flex flex-col items-center justify-center my-4">
+        <div className="p-12 text-center rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-neutral-50/50 dark:bg-[#0c0d11] flex flex-col items-center justify-center my-4">
           <p className="text-base font-semibold text-neutral-900 dark:text-white mb-2">
             No AI Labs matched your search
           </p>
@@ -359,7 +359,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
               setFilterFocus("All");
               setCurrentPage(1);
             }}
-            className="px-4 py-2 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black shadow-xs cursor-pointer hover:opacity-90 transition-all flex items-center gap-1.5"
+            className="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 cursor-pointer transition-all flex items-center gap-1.5"
           >
             <RotateCcw size={12} />
             Reset Filters
@@ -375,7 +375,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
             return (
               <div
                 key={tier.id}
-                className="rounded-2xl border border-neutral-200/90 dark:border-white/10 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl shadow-2xs overflow-hidden transition-all duration-200"
+                className="rounded-2xl border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#0c0d11] shadow-2xs overflow-hidden transition-all duration-200"
               >
                 {/* Tier Header (Click to Expand / Collapse) */}
                 <button
@@ -386,7 +386,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
                 >
                   {/* Left: Icon + Tier Name + Badges + Subtitle */}
                   <div className="flex items-center gap-3.5 min-w-0 flex-1">
-                    <div className="w-8 h-8 rounded-xl bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 border border-blue-500/20">
+                    <div className="w-8 h-8 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 border border-indigo-500/20">
                       <Icon size={16} />
                     </div>
 
@@ -420,7 +420,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
 
                 {/* Sub-Content: Ecosystem Cards in that Tier */}
                 {isExpanded && (
-                  <div className="p-4 sm:p-5 pt-2 border-t border-neutral-100 dark:border-white/[0.06] bg-neutral-50/40 dark:bg-black/20 animate-[fadeUp_0.2s_ease-out]">
+                  <div className="p-4 sm:p-5 pt-2 border-t border-neutral-100 dark:border-white/[0.06] bg-neutral-50/60 dark:bg-[#090a0e] animate-[fadeUp_0.2s_ease-out]">
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                       {tier.ecosystems.map((eco) => (
                         <EcosystemCard
@@ -469,9 +469,9 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
                         setPageSize(size);
                         setCurrentPage(1);
                       }}
-                      className={`px-2 py-0.5 rounded text-[11px] font-semibold transition-colors cursor-pointer ${
+                      className={`px-2 py-0.5 rounded-md text-[11px] font-semibold transition-colors cursor-pointer ${
                         pageSize === size
-                          ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
+                          ? "bg-indigo-600 text-white dark:bg-indigo-500/15 dark:text-indigo-300 dark:border dark:border-indigo-500/30 shadow-xs"
                           : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
                       }`}
                     >
@@ -486,7 +486,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
                 <button
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={currentPage === 1}
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-xs"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-xs"
                 >
                   <ChevronLeft size={13} />
                   <span>Previous</span>
@@ -507,10 +507,10 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
                       <button
                         key={pageNum}
                         onClick={() => handlePageChange(pageNum)}
-                        className={`min-w-8 h-8 flex items-center justify-center rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                        className={`min-w-8 h-8 flex items-center justify-center rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                           isCurrent
-                            ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
-                            : "border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05]"
+                            ? "bg-indigo-600 text-white dark:bg-indigo-500/15 dark:text-indigo-300 dark:border dark:border-indigo-500/30 shadow-xs"
+                            : "border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05]"
                         }`}
                       >
                         {pageNum}
@@ -522,7 +522,7 @@ export const EcosystemsSection: React.FC<EcosystemsSectionProps> = ({
                 <button
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={currentPage === totalPages}
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-xs"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.05] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-xs"
                 >
                   <span>Next</span>
                   <ChevronRight size={13} />

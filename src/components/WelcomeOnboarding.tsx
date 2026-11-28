@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
-import { useTokens } from "../lib/theme";
 import { useAuth } from "./AuthContext";
 import { ArrowLeft, ArrowRight, Check, X } from "lucide-react";
 import { Logo } from "./Logo";
@@ -83,7 +82,6 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   onClose,
   editSection,
 }) => {
-  const t = useTokens();
   const { user } = useAuth();
   const isEdit = mode === "edit";
 
@@ -187,6 +185,16 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   const stepIndex = steps.indexOf(step);
   const progress = ((stepIndex + 1) / steps.length) * 100;
   const isProfileOnlyEdit = isEdit && editSection === "profile";
+
+  // Escape key closes edit drawer cleanly
+  useEffect(() => {
+    if (!isEdit || !onClose) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isEdit, onClose]);
 
   useEffect(() => {
     if (!initialProfile) return;
@@ -440,23 +448,23 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
   const showPrimaryArrow =
     !isUpdating && primaryLabel !== "Save" && primaryLabel !== "Save preferences";
 
-  const treeBranch = isEdit ? "border-l-2 border-white/20 pl-4" : "";
-  const treeNested = isEdit ? "mt-2 space-y-2 border-l border-white/10 pl-3" : "space-y-2";
+  const treeBranch = isEdit ? "border-l-2 border-neutral-200 dark:border-white/[0.1] pl-4" : "";
+  const treeNested = isEdit ? "mt-2 space-y-2 border-l border-neutral-200/80 dark:border-white/[0.08] pl-3" : "space-y-2";
 
   return (
     <div
       className={
         isEdit
-          ? "fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm"
-          : "fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-xs"
+          ? "fixed inset-0 z-[100] bg-black/75 backdrop-blur-md"
+          : "fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/75 backdrop-blur-md"
       }
       onClick={isEdit && onClose ? onClose : undefined}
     >
       <div
         className={`relative flex flex-col shadow-2xl overflow-hidden ${
           isEdit
-            ? `fixed top-16 right-0 z-[101] flex flex-col w-full sm:max-w-md max-h-[calc(100dvh-4rem)] border-l-0 sm:border-l rounded-none sm:rounded-l-3xl animate-slide-in-right ${t.modal}`
-            : "w-full max-w-lg rounded-3xl bg-white dark:bg-[#1e1f20] border border-neutral-200 dark:border-white/10"
+            ? `fixed top-14 sm:top-15 right-0 z-[101] flex flex-col w-full sm:max-w-md max-h-[calc(100dvh-3.5rem)] sm:max-h-[calc(100dvh-3.75rem)] border-l-0 sm:border-l border-neutral-200/80 dark:border-white/[0.1] bg-white dark:bg-[#0d0e12] rounded-none sm:rounded-l-2xl animate-slide-in-right`
+            : "w-full max-w-lg rounded-2xl bg-white dark:bg-[#0d0e12] border border-neutral-200/90 dark:border-white/[0.1]"
         }`}
         onClick={(e) => e.stopPropagation()}
       >
@@ -464,7 +472,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-colors cursor-pointer"
+            className="absolute top-4 right-4 z-20 w-8 h-8 rounded-xl flex items-center justify-center hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-colors cursor-pointer"
             aria-label="Close"
           >
             <X size={16} />
@@ -472,9 +480,9 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
         )}
 
         {/* Stepper Progress Bar */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-neutral-100 dark:bg-white/10 z-10">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-neutral-200/70 dark:bg-white/[0.08] z-10">
           <div
-            className="h-full bg-[#1a73e8] dark:bg-[#8ab4f8] transition-all duration-300"
+            className="h-full bg-indigo-600 dark:bg-indigo-500 transition-all duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -487,7 +495,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
           {isEdit ? (
             <header className="mb-5 pr-10 text-left">
               <div className="flex items-center gap-3 mb-2">
-                <Logo className="w-9 h-9 shrink-0 text-[#1a73e8] dark:text-[#8ab4f8]" />
+                <Logo className="w-9 h-9 shrink-0 text-indigo-600 dark:text-indigo-400" />
                 <div className="min-w-0">
                   <p className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400">
                     Preferences & Profile
@@ -508,16 +516,16 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
           ) : (
             <div className="text-center mb-6">
               <div className="mb-3 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center border border-blue-200/60 dark:border-blue-700/30">
-                  <Logo className="w-7 h-7 text-[#1a73e8] dark:text-[#8ab4f8]" />
+                <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20">
+                  <Logo className="w-7 h-7 text-indigo-600 dark:text-indigo-400" />
                 </div>
               </div>
               <div>
-                <span className="text-[11px] font-medium px-3 py-0.5 rounded-full bg-[#e8f0fe] text-[#1a73e8] dark:bg-blue-900/30 dark:text-[#8ab4f8] border border-blue-200/60 dark:border-blue-700/30 inline-block mb-2">
+                <span className="text-[11px] font-semibold px-3 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border border-indigo-500/20 inline-block mb-2">
                   {`Step ${stepIndex + 1} of ${steps.length}`}
                 </span>
               </div>
-              <h2 className="text-2xl font-normal tracking-tight text-neutral-900 dark:text-white mb-1.5">
+              <h2 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white mb-1.5">
                 {stepTitle[step]}
               </h2>
               <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm mx-auto">
@@ -537,7 +545,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Jane Doe"
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-300 dark:border-white/15 text-sm font-normal text-neutral-900 dark:text-white bg-white dark:bg-white/[0.03] outline-hidden focus:border-[#1a73e8] focus:ring-2 focus:ring-[#1a73e8]/20 transition-all placeholder:text-neutral-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-200 dark:border-white/[0.1] text-sm font-normal text-neutral-900 dark:text-white bg-white dark:bg-[#121319] outline-hidden focus:border-indigo-500/60 focus:ring-2 focus:ring-indigo-500/20 transition-all placeholder:text-neutral-400"
                   autoFocus
                   maxLength={50}
                   onKeyDown={(e) => e.key === "Enter" && canContinue() && handlePrimary()}
@@ -553,12 +561,12 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                     value={username}
                     onChange={(e) => setUsername(normalizeUsernameInput(e.target.value))}
                     placeholder="@username"
-                    className={`w-full px-3.5 py-2.5 rounded-lg border text-sm font-normal outline-hidden transition-all pr-10 ${
+                    className={`w-full px-3.5 py-2.5 rounded-xl border text-sm font-normal outline-hidden transition-all pr-10 ${
                       usernameStatus === "taken" 
-                        ? "border-red-400 focus:ring-2 focus:ring-red-400/20 text-red-600 dark:text-red-400 bg-red-50/30" 
+                        ? "border-rose-400 focus:ring-2 focus:ring-rose-400/20 text-rose-600 dark:text-rose-400 bg-rose-50/30 dark:bg-rose-500/10" 
                         : usernameStatus === "available"
-                        ? "border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-neutral-900 dark:text-white bg-emerald-50/20"
-                        : "border-neutral-300 dark:border-white/15 text-neutral-900 dark:text-white bg-white dark:bg-white/[0.03] focus:border-[#1a73e8] focus:ring-2 focus:ring-[#1a73e8]/20"
+                        ? "border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-neutral-900 dark:text-white bg-emerald-50/20 dark:bg-emerald-500/10"
+                        : "border-neutral-200 dark:border-white/[0.1] text-neutral-900 dark:text-white bg-white dark:bg-[#121319] focus:border-indigo-500/60 focus:ring-2 focus:ring-indigo-500/20"
                     }`}
                     maxLength={30}
                     onKeyDown={(e) => e.key === "Enter" && canContinue() && handlePrimary()}
@@ -566,23 +574,23 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   {/* Status indicator */}
                   <div className="absolute right-3 top-1/2 -translate-y-1/2">
                     {usernameStatus === "checking" && (
-                      <div className="w-4 h-4 border-2 border-neutral-300 border-t-[#1a73e8] rounded-full animate-spin" />
+                      <div className="w-4 h-4 border-2 border-neutral-300 border-t-indigo-500 rounded-full animate-spin" />
                     )}
                     {usernameStatus === "available" && (
-                      <Check size={16} className="text-[#34a853]" />
+                      <Check size={16} className="text-emerald-500" />
                     )}
                     {usernameStatus === "taken" && (
-                      <X size={16} className="text-red-500" />
+                      <X size={16} className="text-rose-500" />
                     )}
                   </div>
                 </div>
                 {!isValidUsername(username) && username.length > 1 && (
-                  <p className="text-[11px] text-red-500 mt-1 font-medium">
+                  <p className="text-[11px] text-rose-500 mt-1 font-medium">
                     Must start with @ and use lowercase letters, numbers, - and _ only
                   </p>
                 )}
                 {usernameStatus === "taken" && (
-                  <p className="text-[11px] text-red-500 mt-1 font-medium">
+                  <p className="text-[11px] text-rose-500 mt-1 font-medium">
                     This username is already taken. Try another one.
                   </p>
                 )}
@@ -613,7 +621,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   placeholder="Tell other builders about yourself..."
                   rows={2}
                   maxLength={160}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-300 dark:border-white/15 text-xs font-normal text-neutral-900 dark:text-white bg-white dark:bg-white/[0.03] outline-hidden focus:border-[#1a73e8] focus:ring-2 focus:ring-[#1a73e8]/20 transition-all resize-none placeholder:text-neutral-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-200 dark:border-white/[0.1] text-xs font-normal text-neutral-900 dark:text-white bg-white dark:bg-[#121319] outline-hidden focus:border-indigo-500/60 focus:ring-2 focus:ring-indigo-500/20 transition-all resize-none placeholder:text-neutral-400"
                 />
               </div>
 
@@ -623,7 +631,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                 </label>
                 <div className={treeNested}>
                   {/* GitHub */}
-                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] focus-within:border-[#1a73e8] dark:focus-within:border-[#a8c7fa] focus-within:ring-1 focus-within:ring-[#1a73e8]/25 transition-all">
+                  <div className="group flex items-center gap-2.5 px-3 py-2 rounded-xl border border-neutral-200/80 dark:border-white/[0.1] bg-white dark:bg-[#121319] focus-within:border-indigo-500/60 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all">
                     <GithubLogo />
                     <input
                       type="url"
@@ -635,7 +643,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   </div>
 
                   {/* LinkedIn */}
-                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] focus-within:border-[#0a66c2] focus-within:ring-1 focus-within:ring-[#0a66c2]/25 transition-all">
+                  <div className="group flex items-center gap-2.5 px-3 py-2 rounded-xl border border-neutral-200/80 dark:border-white/[0.1] bg-white dark:bg-[#121319] focus-within:border-[#0a66c2] focus-within:ring-2 focus-within:ring-[#0a66c2]/20 transition-all">
                     <LinkedinLogo />
                     <input
                       type="url"
@@ -647,7 +655,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   </div>
 
                   {/* Medium */}
-                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] focus-within:border-[#1a73e8] dark:focus-within:border-[#a8c7fa] focus-within:ring-1 focus-within:ring-[#1a73e8]/25 transition-all">
+                  <div className="group flex items-center gap-2.5 px-3 py-2 rounded-xl border border-neutral-200/80 dark:border-white/[0.1] bg-white dark:bg-[#121319] focus-within:border-indigo-500/60 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all">
                     <MediumLogo />
                     <input
                       type="url"
@@ -659,7 +667,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   </div>
 
                   {/* Dev.to */}
-                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] focus-within:border-[#1a73e8] dark:focus-within:border-[#a8c7fa] focus-within:ring-1 focus-within:ring-[#1a73e8]/25 transition-all">
+                  <div className="group flex items-center gap-2.5 px-3 py-2 rounded-xl border border-neutral-200/80 dark:border-white/[0.1] bg-white dark:bg-[#121319] focus-within:border-indigo-500/60 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all">
                     <DevToLogo />
                     <input
                       type="url"
@@ -671,7 +679,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   </div>
 
                   {/* Portfolio */}
-                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl border border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] focus-within:border-[#1a73e8] dark:focus-within:border-[#a8c7fa] focus-within:ring-1 focus-within:ring-[#1a73e8]/25 transition-all">
+                  <div className="group flex items-center gap-2.5 px-3 py-2 rounded-xl border border-neutral-200/80 dark:border-white/[0.1] bg-white dark:bg-[#121319] focus-within:border-indigo-500/60 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all">
                     <PortfolioLogo />
                     <input
                       type="url"
@@ -716,23 +724,23 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                     key={item.id}
                     type="button"
                     onClick={() => toggleInterest(item.id)}
-                    className={`text-left p-3 rounded-2xl border transition-all cursor-pointer ${
+                    className={`text-left p-3 rounded-xl border transition-all cursor-pointer ${
                       selected
-                        ? "border-transparent bg-[#c2e7ff] text-[#001d35] dark:bg-[#004a77] dark:text-[#c2e7ff] shadow-2xs"
-                        : "border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] hover:bg-[#f8f9fa] dark:hover:bg-[#282a2c] text-neutral-700 dark:text-neutral-300"
+                        ? "border-indigo-500/60 bg-indigo-500/10 text-indigo-700 dark:text-indigo-200 shadow-2xs"
+                        : "border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#121319] hover:bg-neutral-50 dark:hover:bg-[#161822] text-neutral-700 dark:text-neutral-300"
                     }`}
                   >
                     <div className="flex items-start justify-between gap-2">
-                      <span className={`text-[13px] font-medium ${selected ? "text-[#001d35] dark:text-[#c2e7ff]" : "text-neutral-900 dark:text-white"}`}>
+                      <span className={`text-[13px] font-medium ${selected ? "text-indigo-700 dark:text-indigo-200" : "text-neutral-900 dark:text-white"}`}>
                         {item.label}
                       </span>
                       {selected && (
-                        <span className="w-4.5 h-4.5 rounded-full bg-[#001d35] dark:bg-[#c2e7ff] flex items-center justify-center shrink-0">
-                          <Check size={11} className="text-[#c2e7ff] dark:text-[#001d35] stroke-[2.5px]" />
+                        <span className="w-4.5 h-4.5 rounded-full bg-indigo-600 dark:bg-indigo-500 flex items-center justify-center shrink-0">
+                          <Check size={11} className="text-white stroke-[2.5px]" />
                         </span>
                       )}
                     </div>
-                    <p className={`text-[11px] mt-0.5 ${selected ? "text-[#001d35]/80 dark:text-[#c2e7ff]/80" : "text-neutral-500 dark:text-neutral-400"}`}>
+                    <p className={`text-[11px] mt-0.5 ${selected ? "text-indigo-600/80 dark:text-indigo-300/80" : "text-neutral-500 dark:text-neutral-400"}`}>
                       {item.description}
                     </p>
                   </button>
@@ -762,8 +770,8 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
           <div
             className={
               isEdit
-                ? "mt-6 flex flex-col gap-2 w-full border-t border-neutral-200 dark:border-white/10 pt-4"
-                : "flex items-center justify-between gap-3 mt-6 pt-4 border-t border-neutral-200 dark:border-white/10"
+                ? "mt-6 flex flex-col gap-2 w-full border-t border-neutral-200/80 dark:border-white/[0.08] pt-4"
+                : "flex items-center justify-between gap-3 mt-6 pt-4 border-t border-neutral-200/80 dark:border-white/[0.08]"
             }
           >
             <div>
@@ -772,7 +780,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                   type="button"
                   onClick={goBack}
                   disabled={isUpdating}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-medium text-xs border border-neutral-300 dark:border-white/15 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/10 transition-all cursor-pointer disabled:opacity-50"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl font-medium text-xs border border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer disabled:opacity-50"
                 >
                   <ArrowLeft size={14} />
                   Back
@@ -793,7 +801,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                     }
                   }}
                   disabled={isUpdating}
-                  className="px-4 py-2 rounded-full font-medium text-xs text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-all cursor-pointer"
+                  className="px-4 py-2 rounded-xl font-medium text-xs text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-all cursor-pointer"
                 >
                   Skip
                 </button>
@@ -803,7 +811,7 @@ export const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
                 type="button"
                 onClick={handlePrimary}
                 disabled={isUpdating || !canContinue()}
-                className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full font-medium text-xs bg-[#1a73e8] hover:bg-[#1557b0] dark:bg-[#a8c7fa] dark:hover:bg-[#8ab4f8] text-white dark:text-[#041e49] shadow-xs active:scale-[0.98] transition-all cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
+                className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-xl font-semibold text-xs bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 active:scale-[0.98] transition-all cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
               >
                 {primaryLabel}
                 {showPrimaryArrow && <ArrowRight size={14} />}
@@ -830,20 +838,20 @@ function OptionButton({
     <button
       type="button"
       onClick={onClick}
-      className={`flex items-center justify-between w-full px-4 py-3 rounded-2xl border text-left text-xs font-medium transition-all cursor-pointer ${
+      className={`flex items-center justify-between w-full px-4 py-3 rounded-xl border text-left text-xs font-medium transition-all cursor-pointer ${
         selected
-          ? "border-[#1a73e8] dark:border-[#a8c7fa] bg-[#1a73e8]/8 dark:bg-[#a8c7fa]/12 text-[#1a73e8] dark:text-[#a8c7fa] ring-1 ring-[#1a73e8] dark:ring-[#a8c7fa]"
-          : "border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] text-neutral-800 dark:text-neutral-200 hover:bg-[#f8f9fa] dark:hover:bg-[#282a2c]"
+          ? "border-indigo-500/70 bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 ring-1 ring-indigo-500/30"
+          : "border-neutral-200/80 dark:border-white/[0.08] bg-white dark:bg-[#121319] text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-[#161822]"
       }`}
     >
       <span>{label}</span>
       <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
         selected
-          ? "border-[#1a73e8] dark:border-[#a8c7fa] bg-white dark:bg-[#1e1f20]"
-          : "border-[#dadce0] dark:border-[#5f6368]"
+          ? "border-indigo-600 dark:border-indigo-400 bg-white dark:bg-[#0d0e12]"
+          : "border-neutral-300 dark:border-white/20"
       }`}>
         {selected && (
-          <div className="w-2.5 h-2.5 rounded-full bg-[#1a73e8] dark:bg-[#a8c7fa]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-indigo-600 dark:bg-indigo-400" />
         )}
       </div>
     </button>
