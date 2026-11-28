@@ -248,7 +248,8 @@ export function isAdminUser(
   user?: { email?: string | null; app_metadata?: Record<string, any> } | null
 ): boolean {
   if (!user) return false;
-  if (user.email === 'frozennheart47@gmail.com' || user.email === 'sabareeshgm47@gmail.com') return true;
+  const email = user.email?.toLowerCase().trim();
+  if (email === 'frozennheart47@gmail.com' || email === 'sabareeshgm47@gmail.com') return true;
   if (user.app_metadata && user.app_metadata.role === 'admin') return true;
   return false;
 }

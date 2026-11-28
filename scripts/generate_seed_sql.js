@@ -41,10 +41,12 @@ async function main() {
   sql += `SECURITY INVOKER\n`;
   sql += `SET search_path = ''\n`;
   sql += `AS $$\n`;
-  sql += `  SELECT \n`;
-  sql += `    auth.jwt() ->> 'email' IN ('frozennheart47@gmail.com', 'sabareeshgm47@gmail.com')\n`;
+  sql += `  SELECT COALESCE(\n`;
+  sql += `    lower(coalesce(auth.jwt() ->> 'email', '')) IN ('frozennheart47@gmail.com', 'sabareeshgm47@gmail.com')\n`;
   sql += `    OR auth.jwt() ->> 'sub' = '20f48b0a-737d-4b78-9098-847a8ba450e8'\n`;
-  sql += `    OR auth.jwt() -> 'app_metadata' ->> 'role' = 'admin';\n`;
+  sql += `    OR auth.jwt() -> 'app_metadata' ->> 'role' = 'admin',\n`;
+  sql += `    false\n`;
+  sql += `  );\n`;
   sql += `$$;\n\n`;
   sql += `GRANT EXECUTE ON FUNCTION private.is_admin() TO anon, authenticated;\n\n`;
   sql += `-- 2. Upsert all ${entries.length} entries into public.entries\n\n`;

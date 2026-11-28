@@ -5,6 +5,7 @@ describe('Admin Authorization Security (SEC-02)', () => {
   it('approves the platform owner email', () => {
     expect(isAdminUser({ email: 'frozennheart47@gmail.com' })).toBe(true);
     expect(isAdminUser({ email: 'sabareeshgm47@gmail.com' })).toBe(true);
+    expect(isAdminUser({ email: 'SabareeshGM47@gmail.com' })).toBe(true);
     expect(isAdminUser({ email: 'frozennheart47@gmail.com', user_metadata: { role: 'developer' } } as any)).toBe(true);
   });
 

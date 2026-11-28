@@ -52,9 +52,12 @@ STABLE
 SECURITY INVOKER
 SET search_path = ''
 AS $$
-  SELECT 
-    auth.jwt() ->> 'email' IN ('frozennheart47@gmail.com', 'sabareeshgm47@gmail.com')
-    OR auth.jwt() -> 'app_metadata' ->> 'role' = 'admin';
+  SELECT COALESCE(
+    lower(coalesce(auth.jwt() ->> 'email', '')) IN ('frozennheart47@gmail.com', 'sabareeshgm47@gmail.com')
+    OR auth.jwt() ->> 'sub' = '20f48b0a-737d-4b78-9098-847a8ba450e8'
+    OR auth.jwt() -> 'app_metadata' ->> 'role' = 'admin',
+    false
+  );
 $$;
 
 REVOKE ALL ON FUNCTION private.app_user_key() FROM PUBLIC;

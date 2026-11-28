@@ -1,38 +1,27 @@
 import { describe, it, expect } from 'vitest';
 import type { Entry } from '../src/types';
-
-// Helper mirroring sanitizeEntryForCatalogDb in AdminDashboard
-const sanitizeEntryForCatalogDb = (entry: Partial<Entry>) => ({
-  name: String(entry.name || '').trim(),
-  org: entry.org ? String(entry.org).trim() : null,
-  type: String(entry.type || 'Model').trim(),
-  task: String(entry.task || 'NLP').trim(),
-  license: entry.license ? String(entry.license).trim() : null,
-  year: typeof entry.year === 'number' ? entry.year : (entry.year ? parseInt(String(entry.year), 10) || new Date().getFullYear() : new Date().getFullYear()),
-  size: entry.size ? String(entry.size).trim() : null,
-  summary: String(entry.summary || '').trim(),
-  architecture: entry.architecture ? String(entry.architecture).trim() : null,
-  usage: entry.usage ? String(entry.usage).trim() : null,
-  benchmarks: entry.benchmarks ? String(entry.benchmarks).trim() : null,
-  limitations: entry.limitations ? String(entry.limitations).trim() : null,
-  url: entry.url ? String(entry.url).trim() : null,
-  citations: Array.isArray(entry.citations) ? entry.citations : [],
-  popular: Boolean(entry.popular),
-  approved: true,
-  submitted_by: entry.submitted_by || null,
-});
+import type { UserProfile } from '../src/components/admin/types';
+import {
+  createAuditLogId,
+  filterAndSortEntries,
+  filterAndSortUsers,
+  formatCatalogDbError,
+  partitionPendingBatchForSync,
+  sanitizeEntryForCatalogDb,
+  toErrorMessage,
+} from '../src/lib/adminCatalog';
 
 describe('Admin Dashboard Optimistic Invariants', () => {
   it('correctly sanitizes entry payload for Supabase database schema', () => {
-    const raw: Partial<Entry> = {
+    const raw: Partial<Entry> & { year?: number | string } = {
       name: '  Qwen 2.5 72B  ',
       org: ' Alibaba ',
       type: 'Model',
       task: 'NLP',
-      year: '2025' as any,
+      year: '2025' as unknown as number,
       size: '72B',
       summary: ' Advanced open weights model ',
-      citations: ['Paper 1', 'Paper 2'],
+      citations: [{ text: 'Paper 1', url: 'https://example.com/1' }],
       popular: true,
       submitted_by: '20f48b0a-737d-4b78-9098-847a8ba450e8',
     };
@@ -42,7 +31,7 @@ describe('Admin Dashboard Optimistic Invariants', () => {
     expect(sanitized.org).toBe('Alibaba');
     expect(sanitized.year).toBe(2025);
     expect(sanitized.approved).toBe(true);
-    expect(sanitized.citations).toEqual(['Paper 1', 'Paper 2']);
+    expect(sanitized.citations).toEqual([{ text: 'Paper 1', url: 'https://example.com/1' }]);
     expect(sanitized.submitted_by).toBe('20f48b0a-737d-4b78-9098-847a8ba450e8');
   });
 
@@ -82,5 +71,151 @@ describe('Admin Dashboard Optimistic Invariants', () => {
     expect(chunks[1].length).toBe(25);
     expect(chunks[2].length).toBe(9);
     expect(chunks.flat().length).toBe(59);
+  });
+
+  it('partitions batch targets to exclude rows already updated in DB and deduplicates names', () => {
+    const targets: Partial<Entry>[] = [
+      { name: 'Existing Model A', type: 'Model', task: 'NLP', summary: 'A' },
+      { name: '  New Model B  ', type: 'Model', task: 'NLP', summary: 'B' },
+      { name: 'new model b', type: 'Model', task: 'NLP', summary: 'Duplicate' },
+      { name: 'New Dataset C', type: 'Dataset', task: 'AI Coding', summary: 'C' },
+    ];
+
+    const missing = partitionPendingBatchForSync(targets, ['  existing model a ']);
+    expect(missing.map((m) => m.name)).toEqual(['New Model B', 'New Dataset C']);
+    expect(missing.every((m) => m.approved === true)).toBe(true);
+  });
+
+  it('formats RLS 42501 errors with actionable SQL remediation guidance', () => {
+    const formatted = formatCatalogDbError(
+      { code: '42501', message: 'new row violates row-level security policy for table "entries"' },
+      'sabareeshgm47@gmail.com',
+    );
+    expect(formatted).toContain('new row violates row-level security policy for table "entries"');
+    expect(formatted).toContain('supabase/rls_policies.sql');
+    expect(formatted).toContain('sabareeshgm47@gmail.com');
+
+    const generic = formatCatalogDbError({ message: 'Network timeout' }, 'sabareeshgm47@gmail.com');
+    expect(generic).toBe('Network timeout');
+  });
+
+  it('filters and sorts users by status, role, search, and sort key', () => {
+    const users: UserProfile[] = [
+      {
+        userKey: 'u1',
+        displayName: 'Zara Chen',
+        username: '@zara',
+        description: '',
+        github: '',
+        linkedin: '',
+        medium: '',
+        devto: '',
+        portfolio: '',
+        role: 'researcher',
+        interests: [],
+        updatedAt: '2026-11-20T10:00:00Z',
+        isBlocked: false,
+        deletionRequested: false,
+      },
+      {
+        userKey: 'u2',
+        displayName: 'Alex Mercer',
+        username: '@alex',
+        description: '',
+        github: '',
+        linkedin: '',
+        medium: '',
+        devto: '',
+        portfolio: '',
+        role: 'developer',
+        interests: [],
+        updatedAt: '2026-11-25T10:00:00Z',
+        isBlocked: true,
+        deletionRequested: false,
+      },
+      {
+        userKey: 'u3',
+        displayName: 'Maya Patel',
+        username: '@maya',
+        description: '',
+        github: '',
+        linkedin: '',
+        medium: '',
+        devto: '',
+        portfolio: '',
+        role: 'developer',
+        interests: [],
+        updatedAt: '2026-11-26T10:00:00Z',
+        isBlocked: false,
+        deletionRequested: true,
+        deletionReason: 'Switching accounts',
+      },
+    ];
+
+    expect(filterAndSortUsers(users, '', 'all', 'suspended', 'recent').map((u) => u.userKey)).toEqual(['u2']);
+    expect(filterAndSortUsers(users, '', 'all', 'deletion', 'recent').map((u) => u.userKey)).toEqual(['u3']);
+    expect(filterAndSortUsers(users, '', 'developer', 'all', 'name').map((u) => u.userKey)).toEqual(['u2', 'u3']);
+    expect(filterAndSortUsers(users, 'switching', 'all', 'all', 'recent').map((u) => u.userKey)).toEqual(['u3']);
+  });
+
+  it('filters and sorts catalog entries by type, task, featured, and year', () => {
+    const sampleEntries: Entry[] = [
+      {
+        name: 'BetaNet',
+        org: 'Lab B',
+        type: 'Model',
+        task: 'NLP',
+        license: 'MIT',
+        year: 2024,
+        size: '7B',
+        summary: 'Beta',
+        architecture: 'Transformer',
+        benchmarks: '90',
+        limitations: 'None',
+        citations: [],
+        popular: true,
+      },
+      {
+        name: 'AlphaVec',
+        org: 'Lab A',
+        type: 'Model',
+        task: 'NLP',
+        license: 'Apache-2.0',
+        year: 2026,
+        size: '14B',
+        summary: 'Alpha',
+        architecture: 'MoE',
+        benchmarks: '95',
+        limitations: 'None',
+        citations: [],
+        popular: false,
+      },
+      {
+        name: 'CorpusZ',
+        org: 'Lab C',
+        type: 'Dataset',
+        task: 'AI Coding',
+        license: 'CC0',
+        year: 2025,
+        size: '1M',
+        summary: 'Dataset',
+        architecture: 'Parquet',
+        benchmarks: 'N/A',
+        limitations: 'None',
+        citations: [],
+        popular: true,
+      },
+    ];
+
+    expect(filterAndSortEntries(sampleEntries, '', 'Model', 'NLP', false, 'name').map((e) => e.name)).toEqual([
+      'AlphaVec',
+      'BetaNet',
+    ]);
+    expect(filterAndSortEntries(sampleEntries, '', 'All', 'All Tasks', true, 'year').map((e) => e.name)).toEqual([
+      'CorpusZ',
+      'BetaNet',
+    ]);
+    expect(toErrorMessage(new Error('Boom'))).toBe('Boom');
+    expect(createAuditLogId()).toMatch(/^\d+_[a-z0-9]+$/);
   });
 });

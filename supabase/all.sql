@@ -184,10 +184,12 @@ STABLE
 SECURITY INVOKER
 SET search_path = ''
 AS $$
-  SELECT 
-    auth.jwt() ->> 'email' IN ('frozennheart47@gmail.com', 'sabareeshgm47@gmail.com')
+  SELECT COALESCE(
+    lower(coalesce(auth.jwt() ->> 'email', '')) IN ('frozennheart47@gmail.com', 'sabareeshgm47@gmail.com')
     OR auth.jwt() ->> 'sub' = '20f48b0a-737d-4b78-9098-847a8ba450e8'
-    OR auth.jwt() -> 'app_metadata' ->> 'role' = 'admin';
+    OR auth.jwt() -> 'app_metadata' ->> 'role' = 'admin',
+    false
+  );
 $$;
 
 REVOKE ALL ON FUNCTION private.app_user_key() FROM PUBLIC;
@@ -613,7 +615,7 @@ BEGIN
   caller_role := auth.jwt() -> 'app_metadata' ->> 'role';
 
   IF NOT (
-    caller_email IN ('frozennheart47@gmail.com', 'sabareeshgm47@gmail.com')
+    lower(coalesce(caller_email, '')) IN ('frozennheart47@gmail.com', 'sabareeshgm47@gmail.com')
     OR caller_sub = '20f48b0a-737d-4b78-9098-847a8ba450e8'
     OR caller_role = 'admin'
     OR private.is_admin()

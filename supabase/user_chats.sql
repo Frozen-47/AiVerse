@@ -105,7 +105,7 @@ BEGIN
   caller_role := auth.jwt() -> 'app_metadata' ->> 'role';
 
   IF NOT (
-    caller_email = 'frozennheart47@gmail.com'
+    lower(coalesce(caller_email, '')) IN ('frozennheart47@gmail.com', 'sabareeshgm47@gmail.com')
     OR caller_sub = '20f48b0a-737d-4b78-9098-847a8ba450e8'
     OR caller_role = 'admin'
     OR private.is_admin()
