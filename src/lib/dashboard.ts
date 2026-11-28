@@ -516,3 +516,14 @@ export function formatRelativeTimestamp(iso?: string): string {
   if (days < 7) return `${days}d ago`;
   return new Date(ts).toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
+
+export function decodeHtmlEntities(text: string): string {
+  if (!text || !text.includes("&")) return text;
+  return text
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&nbsp;/g, " ");
+}

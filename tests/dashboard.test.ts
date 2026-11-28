@@ -5,6 +5,7 @@ import {
   computeLicenseMix,
   computeTaxonomyBreakdown,
   computeTopTasks,
+  decodeHtmlEntities,
   formatRelativeTimestamp,
   getTopFrontierModels,
   searchCatalogQuickMatches,
@@ -175,5 +176,12 @@ describe("Dashboard Intelligence & Analytics Helpers", () => {
     expect(formatRelativeTimestamp("not-a-date")).toBe("Synced recently");
     const twoHoursAgo = new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString();
     expect(formatRelativeTimestamp(twoHoursAgo)).toBe("2h ago");
+  });
+
+  it("decodes common HTML entities cleanly", () => {
+    expect(decodeHtmlEntities("Models &lt;15B &amp; &quot;fast&quot; &#39;evals&#39;")).toBe(
+      "Models <15B & \"fast\" 'evals'",
+    );
+    expect(decodeHtmlEntities("Plain summary")).toBe("Plain summary");
   });
 });

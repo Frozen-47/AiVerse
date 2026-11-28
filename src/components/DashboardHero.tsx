@@ -359,7 +359,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
       <style>{CSS}</style>
       <Halftone dark={isAmoled} />
 
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-12 text-center">
+      <div className="relative z-20 flex flex-1 flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-12 text-center">
         {/* Live Telemetry Pill */}
         <button
           type="button"
@@ -392,8 +392,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
 
         {/* Hero Instant Command Search */}
         <div
-          className="dh-cutout dh-fade relative mt-6 sm:mt-7 w-full max-w-xl"
-          style={{ animationDelay: "0.22s" }}
+          className="dh-cutout relative z-40 mt-6 sm:mt-7 w-full max-w-xl"
         >
           <div
             className={`flex items-center gap-2.5 rounded-2xl border px-3.5 py-2.5 backdrop-blur-xl transition-all ${
@@ -415,7 +414,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
               onFocus={() => setDropdownOpen(true)}
               onBlur={() => window.setTimeout(() => setDropdownOpen(false), 180)}
               onKeyDown={handleKeyDown}
-              placeholder={`Search ${shown}+ AI models, frameworks, datasets, labs…`}
+              placeholder={`Search ${shown}+ AI models, labs, datasets…`}
               aria-label="Search AI catalog from dashboard hero"
               className="flex-1 min-w-0 bg-transparent text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none"
             />
@@ -562,7 +561,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
 
         {/* Primary CTA + Quick Action Launchers */}
         <div
-          className="dh-cutout dh-fade mt-6 flex flex-wrap items-center justify-center gap-2.5"
+          className="dh-cutout dh-fade relative z-10 mt-6 flex flex-wrap items-center justify-center gap-2.5"
           style={{ animationDelay: "0.3s" }}
         >
           <button
@@ -607,7 +606,7 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
               <button
                 type="button"
                 onClick={() => onNavigateFeatures("wizard")}
-                className={`hidden sm:inline-flex items-center gap-1.5 rounded-full border px-4 py-2.5 text-xs font-semibold transition-all cursor-pointer ${
+                className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2.5 text-xs font-semibold transition-all cursor-pointer ${
                   isAmoled
                     ? "border-white/12 bg-[#0c0d11]/80 text-neutral-200 hover:border-indigo-400/40 hover:text-white"
                     : "border-neutral-200 bg-white/90 text-neutral-700 hover:border-neutral-300 hover:text-neutral-950 shadow-2xs"
@@ -636,9 +635,9 @@ export const DashboardHero: React.FC<DashboardHeroProps> = ({
         </div>
       </div>
 
-      {/* Interactive Ecosystem marquee */}
+      {/* Interactive Ecosystem marquee; bottom padding keeps it clear of floating controls */}
       <div
-        className="dh-fade relative z-10 pb-14 pt-3 sm:pb-12"
+        className="dh-fade relative z-10 pb-20 pt-4 sm:pb-16"
         style={{ animationDelay: "0.45s" }}
         role="region"
         aria-label="Model ecosystems"

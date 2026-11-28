@@ -1155,6 +1155,7 @@ const Inner: React.FC = () => {
         }}
         entryCount={entries.length}
         ecosystemsCount={ecosystemsCount}
+        bookmarksCount={bookmarks.length}
         onBrowseAll={() => {
           handleSelectEntry(null);
           navigate("/entries");

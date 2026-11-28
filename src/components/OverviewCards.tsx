@@ -225,12 +225,12 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
               />
               <div className="relative flex items-start justify-between gap-3">
                 <div className="space-y-1.5 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                  <div className="flex items-center flex-wrap gap-2">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 whitespace-nowrap">
                       {card.label}
                     </span>
                     <span
-                      className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${
+                      className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border whitespace-nowrap shrink-0 ${
                         isAmoled
                           ? "border-white/10 bg-white/[0.04] text-neutral-300"
                           : "border-neutral-200/80 bg-white text-neutral-600"

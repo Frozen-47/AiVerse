@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { Star, ChevronRight, Bookmark, ArrowLeftRight } from "lucide-react";
+import { decodeHtmlEntities } from "../lib/dashboard";
 import { useTheme, TYPE_GLYPH } from "../lib/theme";
 import type { Entry, EntryRatingSummary } from "../types";
 
@@ -147,7 +148,7 @@ export const EntryCard = memo(function EntryCard({
 
       {/* ── 3. Snippet Description ── */}
       <p className="text-xs sm:text-[13px] leading-relaxed text-neutral-600 dark:text-neutral-400 line-clamp-2 sm:line-clamp-3 mb-3 flex-1 font-normal">
-        {entry.description || entry.summary}
+        {decodeHtmlEntities(entry.description || entry.summary)}
       </p>
 
       {/* ── 4. Attribute Pills ── */}

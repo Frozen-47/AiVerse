@@ -16,6 +16,7 @@ import {
   type OnboardingInterest,
   type OnboardingProfile,
 } from "../../lib/onboarding";
+import { decodeHtmlEntities } from "../../lib/dashboard";
 import { TYPE_GLYPH, useTheme } from "../../lib/theme";
 import type { Entry, EntryRatingSummary } from "../../types";
 
@@ -354,7 +355,7 @@ export const DashboardPersonalHub: React.FC<DashboardPersonalHubProps> = ({
                     {entry.name}
                   </h4>
                   <p className="text-xs text-neutral-500 dark:text-neutral-400 line-clamp-2 mt-1 leading-relaxed">
-                    {entry.description || entry.summary}
+                    {decodeHtmlEntities(entry.description || entry.summary)}
                   </p>
                 </div>
 

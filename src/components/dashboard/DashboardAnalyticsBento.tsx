@@ -360,7 +360,7 @@ export const DashboardAnalyticsBento: React.FC<DashboardAnalyticsBentoProps> = (
             : "bg-white border-neutral-200/85 shadow-xs"
         }`}
       >
-        <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-3 pb-3.5 border-b border-neutral-200/70 dark:border-white/[0.06]">
+        <div className="flex flex-col 2xl:flex-row 2xl:items-center justify-between gap-3 pb-3.5 border-b border-neutral-200/70 dark:border-white/[0.06]">
           <div>
             <div className="flex items-center gap-2 mb-1">
               <Trophy size={14} className="text-amber-500" />

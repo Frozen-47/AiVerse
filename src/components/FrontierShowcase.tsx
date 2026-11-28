@@ -351,7 +351,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
   return (
     <section className="flex flex-col gap-6 w-full text-left">
       {/* ── 1. Clean, Artful Header ── */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 pb-5 border-b border-neutral-200/80 dark:border-white/[0.08]">
+      <div className="flex flex-col 2xl:flex-row 2xl:items-end justify-between gap-5 pb-5 border-b border-neutral-200/80 dark:border-white/[0.08]">
         <div>
           <div className="flex items-center gap-2 mb-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -496,7 +496,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
                   <button
                     type="button"
                     onClick={() => onLaunchCompare(compareSelection[0], compareSelection[1])}
-                    className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer"
+                    className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer whitespace-nowrap shrink-0"
                   >
                     Compare →
                   </button>

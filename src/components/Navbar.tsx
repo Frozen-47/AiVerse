@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
+import { createPortal } from "react-dom";
 import { SignedIn, SignedOut, useAuth } from "./AuthContext";
 import {
   Plus,
@@ -13,8 +14,6 @@ import {
   Home,
   Bookmark,
   Zap,
-  Sparkles,
-  ChevronDown,
   Terminal,
   Swords,
   Wand2,
@@ -45,6 +44,7 @@ interface NavbarProps {
   onSearchClick?: () => void;
   currentRoute?: AppRoute | null;
   ecosystemsCount?: number;
+  bookmarksCount?: number;
   entryCount: number;
   onboardingProfile?: OnboardingProfile | null;
   onSaveProfile?: (
@@ -62,6 +62,31 @@ interface NavbarProps {
   ) => Promise<void>;
 }
 
+/** 3x3 9-dot Studio Apps launcher waffle glyph */
+const StudioAppsGridIcon: React.FC<{ size?: number; className?: string }> = ({
+  size = 18,
+  className = "",
+}) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    aria-hidden="true"
+  >
+    <circle cx="5" cy="5" r="2" />
+    <circle cx="12" cy="5" r="2" />
+    <circle cx="19" cy="5" r="2" />
+    <circle cx="5" cy="12" r="2" />
+    <circle cx="12" cy="12" r="2" />
+    <circle cx="19" cy="12" r="2" />
+    <circle cx="5" cy="19" r="2" />
+    <circle cx="12" cy="19" r="2" />
+    <circle cx="19" cy="19" r="2" />
+  </svg>
+);
+
 export const Navbar: React.FC<NavbarProps> = ({
   onAddEntry,
   onEditPreferences,
@@ -77,6 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSearchClick,
   currentRoute = null,
   ecosystemsCount,
+  bookmarksCount = 0,
   entryCount,
   onboardingProfile = null,
   onSaveProfile,
@@ -84,74 +110,98 @@ export const Navbar: React.FC<NavbarProps> = ({
   const t = useTokens();
   const { resolvedTheme, setTheme } = useTheme();
   const { user, openAuthModal } = useAuth();
+  const isAmoled = resolvedTheme === "amoled";
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showGreeting, setShowGreeting] = useState(false);
-  const [isFeaturesOpen, setIsFeaturesOpen] = useState(false);
+  const [isAppsOpen, setIsAppsOpen] = useState(false);
   const [isDeletionModalOpen, setIsDeletionModalOpen] = useState(false);
+
+  const [isMac] = useState(() => {
+    if (typeof window === "undefined") return true;
+    const platform = navigator.platform || "";
+    const ua = navigator.userAgent || "";
+    return /mac|ipod|ipad|iphone/i.test(platform) || /mac|ipod|ipad|iphone/i.test(ua);
+  });
 
   const prevUserRef = useRef<typeof user>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const avatarButtonRef = useRef<HTMLButtonElement>(null);
-  const featuresRef = useRef<HTMLDivElement>(null);
+  const appsRef = useRef<HTMLDivElement>(null);
   const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hoverOpenedAtRef = useRef<number>(0);
 
+  const isDashboardActive = currentRoute?.type === "dashboard" || currentRoute === null;
   const isAllEntriesActive = currentRoute?.type === "entries" && currentRoute.tab === "assets";
   const isEcosystemsActive = currentRoute?.type === "entries" && currentRoute.tab === "ecosystems";
+  const isSavedActive = currentRoute?.type === "entries" && currentRoute.tab === "saved";
   const isLeaderboardActive = currentRoute?.type === "leaderboard";
   const isChatActive = currentRoute?.type === "chat";
   const isFeaturesActive = currentRoute?.type === "features";
   const activeFeatureSubpage = currentRoute?.type === "features" ? currentRoute.subpage : null;
 
-  const handleMouseEnterFeatures = () => {
+  const handleMouseEnterApps = () => {
     if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
-    setIsFeaturesOpen(true);
+    if (!isAppsOpen) {
+      hoverOpenedAtRef.current = Date.now();
+      setIsAppsOpen(true);
+    }
   };
 
-  const handleMouseLeaveFeatures = () => {
+  const handleMouseLeaveApps = () => {
     hoverTimeoutRef.current = setTimeout(() => {
-      setIsFeaturesOpen(false);
-    }, 160);
+      setIsAppsOpen(false);
+    }, 180);
   };
 
-  // Keyboard shortcut: Cmd/Ctrl + K to trigger search
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    };
+  }, []);
+
+  // Keyboard shortcut: Cmd/Ctrl + K to trigger command palette (defer to Admin palette on /admin)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        if (currentRoute?.type === "admin") return;
         e.preventDefault();
         onSearchClick?.();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [onSearchClick]);
+  }, [onSearchClick, currentRoute?.type]);
 
-  // Click outside for Features dropdown
+  // Click outside for 9-dot Apps launcher
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
-        isFeaturesOpen &&
-        featuresRef.current &&
-        !featuresRef.current.contains(event.target as Node)
+        isAppsOpen &&
+        appsRef.current &&
+        !appsRef.current.contains(event.target as Node)
       ) {
-        setIsFeaturesOpen(false);
+        setIsAppsOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isFeaturesOpen]);
+  }, [isAppsOpen]);
 
-  // Close mobile drawer on ESC or route change
+  // Close open menus on Escape
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isMobileMenuOpen) {
-        setIsMobileMenuOpen(false);
+      if (e.key === "Escape") {
+        if (isAppsOpen) setIsAppsOpen(false);
+        if (isDropdownOpen) setIsDropdownOpen(false);
+        if (isMobileMenuOpen) setIsMobileMenuOpen(false);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isMobileMenuOpen]);
+  }, [isAppsOpen, isDropdownOpen, isMobileMenuOpen]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -175,7 +225,12 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const displayName = parsedMeta?.displayName || firstName || email.split("@")[0] || "User";
   const initials = displayName
-    ? (displayName.split(/\s+/).map((n: string) => n[0]).slice(0, 2).join("")).toUpperCase()
+    ? displayName
+        .split(/\s+/)
+        .map((n: string) => n[0])
+        .slice(0, 2)
+        .join("")
+        .toUpperCase()
     : (email ? email[0] : "U").toUpperCase();
   const greetingName = displayName;
 
@@ -188,8 +243,13 @@ export const Navbar: React.FC<NavbarProps> = ({
     prevUserRef.current = user;
   }, [user]);
 
+  // Scroll elevation tracking
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -213,11 +273,33 @@ export const Navbar: React.FC<NavbarProps> = ({
     };
   }, [isDropdownOpen]);
 
+  // AiVerse Indigo Tonal Active vs Subtle Neutral Hover Classes
+  const navActiveClass = isAmoled
+    ? "bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 font-semibold"
+    : "bg-indigo-50 text-indigo-600 border border-indigo-200/70 font-semibold";
+
+  const navInactiveClass = isAmoled
+    ? "border border-transparent text-neutral-300 hover:text-white hover:bg-white/[0.06] font-medium"
+    : "border border-transparent text-neutral-600 hover:text-neutral-950 hover:bg-neutral-100/80 font-medium";
+
+  const shortcutHint = isMac ? "⌘K" : "Ctrl K";
+
   return (
-    <nav className="sticky top-0 z-40 border-b backdrop-blur-xl bg-white/85 dark:bg-[#090a0e]/85 border-neutral-200/80 dark:border-white/[0.08] transition-colors">
-      <div className="w-full px-4 sm:px-6 xl:px-10 h-14 sm:h-15 flex items-center justify-between gap-3">
-        {/* Left Side: Brand Logo & Navigation Links */}
-        <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
+    <nav
+      aria-label="Primary navigation"
+      className={`sticky top-0 z-40 border-b backdrop-blur-2xl transition-all duration-200 ${
+        isScrolled
+          ? isAmoled
+            ? "bg-[#090a0e]/95 border-white/[0.1] shadow-[0_8px_30px_rgba(0,0,0,0.6)]"
+            : "bg-white/95 border-neutral-200/90 shadow-[0_4px_24px_rgba(15,23,42,0.06)]"
+          : isAmoled
+          ? "bg-[#090a0e]/85 border-white/[0.08]"
+          : "bg-white/85 border-neutral-200/80"
+      }`}
+    >
+      <div className="w-full max-w-[1960px] mx-auto px-3 sm:px-5 xl:px-8 h-15 sm:h-16 flex items-center justify-between gap-2">
+        {/* ── Left Zone: Signature Morph Brand + AiVerse Tonal Nav Links ── */}
+        <div className="flex items-center gap-1.5 lg:gap-3 min-w-0 shrink-0">
           <a
             href="/dashboard"
             onClick={(e) => {
@@ -226,8 +308,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onHomeClick();
               }
             }}
+            aria-label="AiVerse Home Dashboard"
             className={`flex items-center shrink-0 ${t.textPrimary} hover:opacity-85 transition-opacity`}
-            style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "1.35rem", lineHeight: 1, letterSpacing: "-0.02em" }}
+            style={{
+              fontFamily: "'Poppins', sans-serif",
+              fontWeight: 700,
+              fontSize: "1.35rem",
+              lineHeight: 1,
+              letterSpacing: "-0.02em",
+            }}
           >
             <span
               className="inline-block transform rotate-180 relative"
@@ -248,214 +337,119 @@ export const Navbar: React.FC<NavbarProps> = ({
             </span>
             <span className="relative">V</span>
             <span className="flex items-center">
-              <span className="overflow-hidden transition-all duration-75" style={{ maxWidth: isScrolled ? "0px" : "20px", opacity: isScrolled ? 0 : 1, transitionDelay: isScrolled ? "225ms" : "75ms" }}>e</span>
-              <span className="overflow-hidden transition-all duration-75" style={{ maxWidth: isScrolled ? "0px" : "20px", opacity: isScrolled ? 0 : 1, transitionDelay: isScrolled ? "150ms" : "150ms" }}>r</span>
-              <span className="overflow-hidden transition-all duration-75" style={{ maxWidth: isScrolled ? "0px" : "20px", opacity: isScrolled ? 0 : 1, transitionDelay: isScrolled ? "75ms" : "225ms" }}>s</span>
-              <span className="overflow-hidden transition-all duration-75" style={{ maxWidth: isScrolled ? "0px" : "20px", opacity: isScrolled ? 0 : 1, transitionDelay: isScrolled ? "0ms" : "300ms" }}>e</span>
+              <span
+                className="overflow-hidden transition-all duration-75"
+                style={{
+                  maxWidth: isScrolled ? "0px" : "20px",
+                  opacity: isScrolled ? 0 : 1,
+                  transitionDelay: isScrolled ? "225ms" : "75ms",
+                }}
+              >
+                e
+              </span>
+              <span
+                className="overflow-hidden transition-all duration-75"
+                style={{
+                  maxWidth: isScrolled ? "0px" : "20px",
+                  opacity: isScrolled ? 0 : 1,
+                  transitionDelay: isScrolled ? "150ms" : "150ms",
+                }}
+              >
+                r
+              </span>
+              <span
+                className="overflow-hidden transition-all duration-75"
+                style={{
+                  maxWidth: isScrolled ? "0px" : "20px",
+                  opacity: isScrolled ? 0 : 1,
+                  transitionDelay: isScrolled ? "75ms" : "225ms",
+                }}
+              >
+                s
+              </span>
+              <span
+                className="overflow-hidden transition-all duration-75"
+                style={{
+                  maxWidth: isScrolled ? "0px" : "20px",
+                  opacity: isScrolled ? 0 : 1,
+                  transitionDelay: isScrolled ? "0ms" : "300ms",
+                }}
+              >
+                e
+              </span>
             </span>
           </a>
 
-          <span className="hidden sm:inline-flex items-center gap-1.5 text-[10.5px] font-semibold px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.04] text-neutral-700 dark:text-neutral-300 border border-neutral-200/70 dark:border-white/[0.06] whitespace-nowrap shrink-0">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>{entryCount} assets</span>
-          </span>
+          {onBrowseAll && (
+            <button
+              type="button"
+              onClick={onBrowseAll}
+              title={`Browse all ${entryCount} verified AI assets`}
+              className={`hidden 2xl:inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-0.5 rounded-full border transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
+                isAmoled
+                  ? "bg-white/[0.04] text-neutral-300 border-white/[0.08] hover:border-indigo-500/40 hover:text-white"
+                  : "bg-neutral-100/90 text-neutral-700 border-neutral-200/80 hover:border-indigo-300 hover:bg-indigo-50/70"
+              }`}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="tabular-nums">{entryCount} assets</span>
+            </button>
+          )}
 
-          {/* Central Nav Menu Items */}
-          <div className="hidden lg:flex items-center gap-1 ml-1.5 pl-3 border-l border-neutral-200/70 dark:border-white/[0.08]">
-            {/* 1. Features Mega-Dropdown */}
-            {onViewFeatures && (
-              <div
-                className="relative"
-                ref={featuresRef}
-                onMouseEnter={handleMouseEnterFeatures}
-                onMouseLeave={handleMouseLeaveFeatures}
+          {/* Primary Navigation Links (Google AI Studio structure, AiVerse Indigo tokens) */}
+          <div className="hidden lg:flex items-center gap-0.5 xl:gap-1 pl-2 xl:pl-3 border-l border-neutral-200/80 dark:border-white/[0.08]">
+            {onHomeClick && (
+              <button
+                type="button"
+                onClick={onHomeClick}
+                aria-current={isDashboardActive ? "page" : undefined}
+                className={`flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 rounded-full text-xs transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                  isDashboardActive ? navActiveClass : navInactiveClass
+                }`}
+                title="AiVerse Intelligence Dashboard"
               >
-                <button
-                  type="button"
-                  onClick={() => setIsFeaturesOpen((prev) => !prev)}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                    isFeaturesActive || isFeaturesOpen
-                      ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs"
-                      : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100/80 dark:hover:bg-white/[0.06]"
-                  }`}
-                  aria-expanded={isFeaturesOpen}
-                  aria-haspopup="true"
-                >
-                  <Sparkles size={13} className={isFeaturesActive || isFeaturesOpen ? "" : "text-amber-500"} />
-                  <span>Features</span>
-                  <ChevronDown
-                    size={12}
-                    className={`transition-transform duration-200 opacity-60 ${isFeaturesOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-
-                {isFeaturesOpen && (
-                  <div
-                    className="absolute left-0 top-full mt-2 w-[390px] rounded-3xl p-3 z-50 border border-neutral-200/90 dark:border-white/10 bg-white/95 dark:bg-[#0d0e12]/95 backdrop-blur-2xl shadow-2xl animate-[fadeIn_0.15s_ease-out]"
-                    style={{
-                      boxShadow: "0 20px 50px -10px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06)",
-                    }}
-                  >
-                    <div className="px-3 py-1.5 border-b border-neutral-200/80 dark:border-white/[0.06] mb-1.5">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
-                        Platform Capabilities
-                      </span>
-                    </div>
-
-                    <div className="space-y-1">
-                      {/* Model Playground */}
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setIsFeaturesOpen(false);
-                          onViewFeatures("playground");
-                        }}
-                        className={`w-full flex items-start gap-3 p-2.5 rounded-2xl transition-all text-left group cursor-pointer ${
-                          activeFeatureSubpage === "playground"
-                            ? "bg-blue-500/10 dark:bg-blue-500/15"
-                            : "hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
-                        }`}
-                      >
-                        <div className="w-8.5 h-8.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform shadow-xs">
-                          <Terminal size={16} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs font-bold text-neutral-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                              Model Playground
-                            </span>
-                            <span className="text-[9px] font-black uppercase px-1.5 py-0.2 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/25 flex items-center gap-1">
-                              <span className="w-1 h-1 rounded-full bg-emerald-500 animate-ping" />
-                              LIVE
-                            </span>
-                          </div>
-                          <p className="text-[11px] text-neutral-500 dark:text-neutral-400 leading-snug line-clamp-1 mt-0.5">
-                            Live prompt inference, streaming tokens, and latency testing
-                          </p>
-                        </div>
-                      </button>
-
-                      {/* Comparison Arena */}
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setIsFeaturesOpen(false);
-                          onViewFeatures("compare");
-                        }}
-                        className={`w-full flex items-start gap-3 p-2.5 rounded-2xl transition-all text-left group cursor-pointer ${
-                          activeFeatureSubpage === "compare"
-                            ? "bg-purple-500/10 dark:bg-purple-500/15"
-                            : "hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
-                        }`}
-                      >
-                        <div className="w-8.5 h-8.5 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform shadow-xs">
-                          <Swords size={16} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs font-bold text-neutral-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
-                              Comparison Arena
-                            </span>
-                            <span className="text-[9px] font-bold uppercase px-1.5 py-0.2 rounded-full bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/25">
-                              ARENA
-                            </span>
-                          </div>
-                          <p className="text-[11px] text-neutral-500 dark:text-neutral-400 leading-snug line-clamp-1 mt-0.5">
-                            Head-to-head model benchmark comparison, latency analysis & specs
-                          </p>
-                        </div>
-                      </button>
-
-                      {/* Discovery Wizard */}
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setIsFeaturesOpen(false);
-                          onViewFeatures("wizard");
-                        }}
-                        className={`w-full flex items-start gap-3 p-2.5 rounded-2xl transition-all text-left group cursor-pointer ${
-                          activeFeatureSubpage === "wizard"
-                            ? "bg-amber-500/10 dark:bg-amber-500/15"
-                            : "hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
-                        }`}
-                      >
-                        <div className="w-8.5 h-8.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform shadow-xs">
-                          <Wand2 size={16} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs font-bold text-neutral-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
-                              Discovery Wizard
-                            </span>
-                            <span className="text-[9px] font-bold uppercase px-1.5 py-0.2 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-400 border border-amber-500/25">
-                              ADVISOR
-                            </span>
-                          </div>
-                          <p className="text-[11px] text-neutral-500 dark:text-neutral-400 leading-snug line-clamp-1 mt-0.5">
-                            Interactive recommendation engine to find ideal models for your use case
-                          </p>
-                        </div>
-                      </button>
-                    </div>
-
-                    <div className="pt-2 mt-1 border-t border-neutral-200/80 dark:border-white/[0.06]">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setIsFeaturesOpen(false);
-                          onViewFeatures("overview");
-                        }}
-                        className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-colors cursor-pointer"
-                      >
-                        <span className="flex items-center gap-1.5">
-                          <Layers size={13} className="text-neutral-400" />
-                          <span>Explore All Platform Tools</span>
-                        </span>
-                        <ArrowUpRight size={13} className="opacity-60" />
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
+                <Home size={14} className="shrink-0" />
+                <span>Dashboard</span>
+              </button>
             )}
 
-            {/* 2. All Entries */}
             {onBrowseAll && (
               <button
                 type="button"
                 onClick={onBrowseAll}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                  isAllEntriesActive
-                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs"
-                    : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100/80 dark:hover:bg-white/[0.06]"
+                aria-current={isAllEntriesActive ? "page" : undefined}
+                className={`flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 rounded-full text-xs transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                  isAllEntriesActive ? navActiveClass : navInactiveClass
                 }`}
-                title="View all verified entries in catalog"
+                title="Browse full AI catalog"
               >
-                <LayoutGrid size={13} />
-                <span>All Entries</span>
+                <LayoutGrid size={14} className="shrink-0" />
+                <span>Catalog</span>
               </button>
             )}
 
-            {/* 3. AI Ecosystems */}
             {onViewEcosystems && (
               <button
                 type="button"
                 onClick={onViewEcosystems}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                  isEcosystemsActive
-                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs"
-                    : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100/80 dark:hover:bg-white/[0.06]"
+                aria-current={isEcosystemsActive ? "page" : undefined}
+                className={`flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 rounded-full text-xs transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                  isEcosystemsActive ? navActiveClass : navInactiveClass
                 }`}
                 title="Explore AI Labs & Ecosystems"
               >
-                <Building2 size={13} className={isEcosystemsActive ? "" : "text-blue-500"} />
-                <span>AI Ecosystems</span>
+                <Building2 size={14} className={`shrink-0 ${isEcosystemsActive ? "" : "text-sky-500"}`} />
+                <span>Labs</span>
                 {ecosystemsCount && (
                   <span
-                    className={`text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full border ${
+                    className={`hidden 2xl:inline-flex text-[10px] tabular-nums font-semibold px-1.5 py-0.2 rounded-full border ${
                       isEcosystemsActive
-                        ? "bg-white/20 text-white border-white/30"
-                        : "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20"
+                        ? isAmoled
+                          ? "bg-indigo-500/20 text-indigo-200 border-indigo-400/30"
+                          : "bg-white/90 text-indigo-700 border-indigo-200"
+                        : isAmoled
+                        ? "bg-white/[0.05] text-neutral-300 border-white/[0.08]"
+                        : "bg-neutral-100 text-neutral-600 border-neutral-200/80"
                     }`}
                   >
                     {ecosystemsCount}
@@ -464,109 +458,385 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             )}
 
-            {/* 4. Leaderboard */}
             {onViewLeaderboard && (
               <button
                 type="button"
                 onClick={onViewLeaderboard}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                  isLeaderboardActive
-                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs"
-                    : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100/80 dark:hover:bg-white/[0.06]"
+                aria-current={isLeaderboardActive ? "page" : undefined}
+                className={`flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 rounded-full text-xs transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                  isLeaderboardActive ? navActiveClass : navInactiveClass
                 }`}
                 title="Frontier AI Benchmarks & Performance Leaderboard"
               >
-                <Trophy size={13} className={isLeaderboardActive ? "" : "text-amber-500"} />
+                <Trophy size={14} className={`shrink-0 ${isLeaderboardActive ? "" : "text-amber-500"}`} />
                 <span>Leaderboard</span>
               </button>
             )}
 
-            {/* 5. Vox AI Assistant */}
             {onViewChat && (
               <button
                 type="button"
                 onClick={onViewChat}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                  isChatActive
-                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-2xs"
-                    : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100/80 dark:hover:bg-white/[0.06]"
+                aria-current={isChatActive ? "page" : undefined}
+                className={`flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 rounded-full text-xs transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                  isChatActive ? navActiveClass : navInactiveClass
                 }`}
                 title="Vox AI Assistant (Groq LPU)"
               >
-                <Zap size={13} className={isChatActive ? "" : "text-amber-500"} />
+                <Zap size={14} className={`shrink-0 ${isChatActive ? "" : "text-emerald-500"}`} />
                 <span>Vox</span>
-                <span
-                  className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded-full border ${
-                    isChatActive
-                      ? "bg-white/20 text-white border-white/30"
-                      : "bg-amber-500/10 text-amber-800 dark:text-amber-400 border-amber-500/25"
-                  }`}
-                >
-                  Groq LPU
-                </span>
               </button>
             )}
           </div>
         </div>
 
-        {/* Right Side: Quick Search Action & Auth / User Controls */}
-        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+        {/* ── Right Zone: Utility Cluster (Quick Search, Theme, Bookmarks, 9-Dot Studio Launcher, Account) ── */}
+        <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
+          {/* Compact Search Trigger Button (opens Command Palette / Ctrl+K) */}
           {onSearchClick && (
             <button
               type="button"
               onClick={onSearchClick}
-              className="flex items-center gap-1.5 h-8.5 px-2.5 sm:px-3 rounded-full border border-neutral-200/80 dark:border-white/10 bg-neutral-100/70 dark:bg-white/[0.04] hover:bg-neutral-200/60 dark:hover:bg-white/[0.08] text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white text-xs transition-all cursor-pointer shadow-2xs group shrink-0"
-              title="Search Catalog Entries (⌘K)"
-              aria-label="Search Catalog"
+              className={`flex items-center justify-center w-9 h-9 rounded-full transition-colors cursor-pointer shrink-0 ${
+                isAmoled
+                  ? "text-neutral-300 hover:text-white hover:bg-white/[0.06]"
+                  : "text-neutral-600 hover:text-neutral-950 hover:bg-neutral-100"
+              }`}
+              title={`Quick Search (${shortcutHint})`}
+              aria-label={`Quick Search (${shortcutHint})`}
             >
-              <Search size={13} className="text-neutral-500 group-hover:text-neutral-800 dark:group-hover:text-neutral-200 transition-colors" />
-              <span className="text-xs font-semibold">Search</span>
-              <kbd className="hidden sm:inline-block text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-white dark:bg-white/10 border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 shadow-2xs">
-                ⌘K
-              </kbd>
+              <Search size={18} />
             </button>
           )}
 
-          <SignedIn>
-            <button
-              onClick={onAddEntry}
-              className="inline-flex items-center gap-1.5 h-8.5 px-3 sm:px-3.5 rounded-full text-xs font-semibold border border-neutral-200/80 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer shadow-2xs shrink-0"
-              title="Add new AI model or tool"
-            >
-              <Plus size={14} />
-              <span className="hidden sm:inline">Add Entry</span>
-            </button>
+          {/* Quick Theme Switcher */}
+          <button
+            type="button"
+            onClick={() => setTheme(isAmoled ? "light" : "amoled")}
+            className={`hidden sm:inline-flex items-center justify-center w-9 h-9 rounded-full transition-colors cursor-pointer shrink-0 ${
+              isAmoled
+                ? "text-amber-300 hover:bg-white/[0.06]"
+                : "text-neutral-600 hover:text-neutral-950 hover:bg-neutral-100"
+            }`}
+            title={isAmoled ? "Switch to Light Theme" : "Switch to AMOLED Dark Theme"}
+            aria-label={isAmoled ? "Switch to Light Theme" : "Switch to AMOLED Dark Theme"}
+          >
+            {isAmoled ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
 
+          <SignedIn>
+            {onViewSaved && (
+              <button
+                type="button"
+                onClick={onViewSaved}
+                aria-current={isSavedActive ? "page" : undefined}
+                title={`Saved Bookmarks (${bookmarksCount})`}
+                aria-label={`Saved Bookmarks (${bookmarksCount})`}
+                className={`hidden md:inline-flex items-center gap-1 h-9 px-2.5 rounded-full text-xs font-semibold transition-colors cursor-pointer shrink-0 ${
+                  isSavedActive
+                    ? navActiveClass
+                    : isAmoled
+                    ? "text-neutral-300 hover:text-white hover:bg-white/[0.06]"
+                    : "text-neutral-600 hover:text-neutral-950 hover:bg-neutral-100"
+                }`}
+              >
+                <Bookmark
+                  size={16}
+                  className={bookmarksCount > 0 ? "fill-current text-indigo-600 dark:text-indigo-400" : ""}
+                />
+                {bookmarksCount > 0 && (
+                  <span className="text-[11px] font-mono tabular-nums">{bookmarksCount}</span>
+                )}
+              </button>
+            )}
+
+            <button
+              type="button"
+              onClick={onAddEntry}
+              className={`hidden sm:inline-flex items-center gap-1 h-9 px-3 rounded-full text-xs font-semibold border transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
+                isAmoled
+                  ? "border-white/12 bg-[#121319] text-neutral-200 hover:bg-white/[0.06] hover:border-indigo-500/40"
+                  : "border-neutral-200/90 bg-white text-neutral-700 hover:bg-neutral-100 hover:border-indigo-300"
+              }`}
+              title="Submit a new AI model or tool"
+            >
+              <Plus size={15} className="text-indigo-600 dark:text-indigo-400" />
+              <span>Submit</span>
+            </button>
+          </SignedIn>
+
+          {/* 9-Dot Studio Apps Launcher */}
+          {onViewFeatures && (
+            <div
+              className="relative hidden sm:block shrink-0"
+              ref={appsRef}
+              onMouseEnter={handleMouseEnterApps}
+              onMouseLeave={handleMouseLeaveApps}
+            >
+              <button
+                type="button"
+                onClick={() => {
+                  if (isAppsOpen && Date.now() - hoverOpenedAtRef.current < 350) {
+                    return;
+                  }
+                  setIsAppsOpen((prev) => !prev);
+                }}
+                aria-expanded={isAppsOpen}
+                aria-haspopup="true"
+                aria-label="AiVerse Studio Apps Launcher"
+                title="AiVerse Studio Apps"
+                className={`flex items-center justify-center w-9 h-9 rounded-full transition-colors cursor-pointer ${
+                  isAppsOpen || isFeaturesActive
+                    ? isAmoled
+                      ? "bg-indigo-500/20 text-indigo-300"
+                      : "bg-indigo-50 text-indigo-600"
+                    : isAmoled
+                    ? "text-neutral-300 hover:text-white hover:bg-white/[0.06]"
+                    : "text-neutral-600 hover:text-neutral-950 hover:bg-neutral-100"
+                }`}
+              >
+                <StudioAppsGridIcon size={18} />
+              </button>
+
+              {isAppsOpen && (
+                <div
+                  className={`absolute right-0 top-full mt-2.5 w-[336px] rounded-[28px] p-2.5 z-50 border shadow-2xl animate-[fadeIn_0.15s_ease-out] ${
+                    isAmoled
+                      ? "bg-[#121319] border-white/[0.1] text-white"
+                      : "bg-neutral-100/95 border-neutral-200/90 text-neutral-900"
+                  }`}
+                  style={{
+                    boxShadow: isAmoled
+                      ? "0 20px 50px rgba(0,0,0,0.75)"
+                      : "0 16px 40px rgba(15,23,42,0.14)",
+                  }}
+                >
+                  <div
+                    className={`rounded-[22px] p-2.5 border ${
+                      isAmoled
+                        ? "bg-[#0c0d11] border-white/[0.06]"
+                        : "bg-white border-neutral-200/60"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between px-2 pb-2 mb-2 border-b border-neutral-200/70 dark:border-white/[0.06]">
+                      <span className="text-[11px] font-semibold tracking-tight text-neutral-500 dark:text-neutral-400">
+                        AiVerse Studio Apps
+                      </span>
+                      <span
+                        className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${
+                          isAmoled
+                            ? "bg-indigo-500/15 text-indigo-300 border-indigo-500/25"
+                            : "bg-indigo-50 text-indigo-600 border-indigo-200/70"
+                        }`}
+                      >
+                        Suite
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-1.5">
+                      {/* 1. Playground */}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsAppsOpen(false);
+                          onViewFeatures("playground");
+                        }}
+                        className={`flex flex-col items-center gap-1.5 p-2.5 rounded-2xl text-center transition-colors cursor-pointer ${
+                          activeFeatureSubpage === "playground"
+                            ? isAmoled
+                              ? "bg-indigo-500/15"
+                              : "bg-indigo-50"
+                            : isAmoled
+                            ? "hover:bg-white/[0.05]"
+                            : "hover:bg-neutral-100/80"
+                        }`}
+                      >
+                        <div className="w-10 h-10 rounded-2xl bg-emerald-500/12 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                          <Terminal size={19} />
+                        </div>
+                        <span className="text-[11px] font-medium leading-tight">Playground</span>
+                      </button>
+
+                      {/* 2. Compare Arena */}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsAppsOpen(false);
+                          onViewFeatures("compare");
+                        }}
+                        className={`flex flex-col items-center gap-1.5 p-2.5 rounded-2xl text-center transition-colors cursor-pointer ${
+                          activeFeatureSubpage === "compare"
+                            ? isAmoled
+                              ? "bg-indigo-500/15"
+                              : "bg-indigo-50"
+                            : isAmoled
+                            ? "hover:bg-white/[0.05]"
+                            : "hover:bg-neutral-100/80"
+                        }`}
+                      >
+                        <div className="w-10 h-10 rounded-2xl bg-purple-500/12 border border-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+                          <Swords size={19} />
+                        </div>
+                        <span className="text-[11px] font-medium leading-tight">Compare</span>
+                      </button>
+
+                      {/* 3. Discovery Wizard */}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsAppsOpen(false);
+                          onViewFeatures("wizard");
+                        }}
+                        className={`flex flex-col items-center gap-1.5 p-2.5 rounded-2xl text-center transition-colors cursor-pointer ${
+                          activeFeatureSubpage === "wizard"
+                            ? isAmoled
+                              ? "bg-indigo-500/15"
+                              : "bg-indigo-50"
+                            : isAmoled
+                            ? "hover:bg-white/[0.05]"
+                            : "hover:bg-neutral-100/80"
+                        }`}
+                      >
+                        <div className="w-10 h-10 rounded-2xl bg-amber-500/12 border border-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center">
+                          <Wand2 size={19} />
+                        </div>
+                        <span className="text-[11px] font-medium leading-tight">Wizard</span>
+                      </button>
+
+                      {/* 4. Feature Suite */}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsAppsOpen(false);
+                          onViewFeatures("overview");
+                        }}
+                        className={`flex flex-col items-center gap-1.5 p-2.5 rounded-2xl text-center transition-colors cursor-pointer ${
+                          activeFeatureSubpage === "overview"
+                            ? isAmoled
+                              ? "bg-indigo-500/15"
+                              : "bg-indigo-50"
+                            : isAmoled
+                            ? "hover:bg-white/[0.05]"
+                            : "hover:bg-neutral-100/80"
+                        }`}
+                      >
+                        <div className="w-10 h-10 rounded-2xl bg-indigo-500/12 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                          <Layers size={19} />
+                        </div>
+                        <span className="text-[11px] font-medium leading-tight">Suite</span>
+                      </button>
+
+                      {/* 5. Leaderboard */}
+                      {onViewLeaderboard && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setIsAppsOpen(false);
+                            onViewLeaderboard();
+                          }}
+                          className={`flex flex-col items-center gap-1.5 p-2.5 rounded-2xl text-center transition-colors cursor-pointer ${
+                            isLeaderboardActive
+                              ? isAmoled
+                                ? "bg-indigo-500/15"
+                                : "bg-indigo-50"
+                              : isAmoled
+                              ? "hover:bg-white/[0.05]"
+                              : "hover:bg-neutral-100/80"
+                          }`}
+                        >
+                          <div className="w-10 h-10 rounded-2xl bg-sky-500/12 border border-sky-500/20 text-sky-600 dark:text-sky-400 flex items-center justify-center">
+                            <Trophy size={19} />
+                          </div>
+                          <span className="text-[11px] font-medium leading-tight">Rankings</span>
+                        </button>
+                      )}
+
+                      {/* 6. Vox Chat */}
+                      {onViewChat && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setIsAppsOpen(false);
+                            onViewChat();
+                          }}
+                          className={`flex flex-col items-center gap-1.5 p-2.5 rounded-2xl text-center transition-colors cursor-pointer ${
+                            isChatActive
+                              ? isAmoled
+                                ? "bg-indigo-500/15"
+                                : "bg-indigo-50"
+                              : isAmoled
+                              ? "hover:bg-white/[0.05]"
+                              : "hover:bg-neutral-100/80"
+                          }`}
+                        >
+                          <div className="w-10 h-10 rounded-2xl bg-violet-500/12 border border-violet-500/20 text-violet-600 dark:text-violet-400 flex items-center justify-center">
+                            <Zap size={19} />
+                          </div>
+                          <span className="text-[11px] font-medium leading-tight">Vox Chat</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsAppsOpen(false);
+                      onViewFeatures("overview");
+                    }}
+                    className={`mt-2 w-full flex items-center justify-center gap-1.5 py-2 rounded-full text-xs font-semibold transition-colors cursor-pointer ${
+                      isAmoled
+                        ? "text-indigo-300 hover:bg-white/[0.06]"
+                        : "text-indigo-600 hover:bg-white"
+                    }`}
+                  >
+                    <span>Explore all platform capabilities</span>
+                    <ArrowUpRight size={13} />
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Signed-In Account Avatar with AiVerse Indigo-Violet-Emerald Ring */}
+          <SignedIn>
             <div className="relative flex items-center shrink-0">
               {showGreeting && (
-                <span className="hidden xl:inline text-xs font-medium text-neutral-500 dark:text-neutral-400 mr-2 whitespace-nowrap">
+                <span className="hidden 2xl:inline text-xs font-medium text-neutral-500 dark:text-neutral-400 mr-2 whitespace-nowrap">
                   Hi, {greetingName}
                 </span>
               )}
               <button
                 ref={avatarButtonRef}
+                type="button"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="relative flex items-center justify-center w-8.5 h-8.5 rounded-full overflow-hidden ring-1 ring-neutral-200 dark:ring-white/15 hover:ring-neutral-400 dark:hover:ring-white/30 transition-all focus:outline-hidden cursor-pointer shrink-0"
+                className="relative flex items-center justify-center w-9 h-9 rounded-full p-[2px] bg-gradient-to-tr from-indigo-500 via-violet-500 to-emerald-400 hover:shadow-md transition-all focus:outline-hidden cursor-pointer shrink-0"
                 aria-label="User profile menu"
                 aria-expanded={isDropdownOpen}
               >
-                {effectiveAvatar ? (
-                  <img src={effectiveAvatar} alt="User avatar" className="w-full h-full object-cover" />
-                ) : (
-                  <div className={`w-full h-full flex items-center justify-center font-bold text-xs ${resolvedTheme === 'amoled' ? 'bg-white text-black' : 'bg-black text-white'}`}>
-                    {initials}
-                  </div>
-                )}
+                <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-[#090a0e] p-[1.5px]">
+                  {effectiveAvatar ? (
+                    <img
+                      src={effectiveAvatar}
+                      alt="User avatar"
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  ) : (
+                    <div className="w-full h-full rounded-full flex items-center justify-center font-bold text-xs bg-indigo-600 text-white">
+                      {initials}
+                    </div>
+                  )}
+                </div>
               </button>
 
               {isDropdownOpen && onSaveProfile && (
                 <div
                   ref={dropdownRef}
-                  className={`absolute right-0 top-11 w-80 sm:w-88 rounded-3xl shadow-2xl p-2 z-50 border border-neutral-200 dark:border-white/10 ${t.modal} overflow-hidden`}
+                  className={`absolute right-0 top-12 w-80 sm:w-88 rounded-3xl shadow-2xl p-2 z-50 border border-neutral-200 dark:border-white/10 ${t.modal} overflow-hidden`}
                   style={{
-                    boxShadow: `0 20px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px ${
-                      resolvedTheme === "amoled" ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.08)"
-                    }`,
+                    boxShadow: isAmoled
+                      ? "0 20px 50px -12px rgba(0, 0, 0, 0.75)"
+                      : "0 16px 40px -8px rgba(15, 23, 42, 0.2)",
                   }}
                 >
                   <UserProfileMenu
@@ -597,296 +867,363 @@ export const Navbar: React.FC<NavbarProps> = ({
             />
           </SignedIn>
 
+          {/* Signed-Out AiVerse Indigo Action Buttons */}
           <SignedOut>
-            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
               <button
+                type="button"
                 onClick={() => openAuthModal("signin")}
-                className="inline-flex items-center h-8.5 px-3 sm:px-3.5 rounded-full text-xs font-semibold text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-all cursor-pointer"
+                className={`inline-flex items-center h-9 px-2.5 sm:px-3.5 rounded-full text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap ${
+                  isAmoled
+                    ? "text-neutral-200 hover:bg-white/[0.06] hover:text-white"
+                    : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"
+                }`}
               >
-                Sign In
+                Sign in
               </button>
               <button
+                type="button"
                 onClick={() => openAuthModal("signup")}
-                className="inline-flex items-center h-8.5 px-3.5 sm:px-4 rounded-full text-xs font-semibold bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 hover:opacity-90 transition-all shadow-2xs cursor-pointer shrink-0"
+                className="inline-flex items-center h-9 px-3.5 sm:px-4.5 rounded-full text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 transition-all cursor-pointer shrink-0 whitespace-nowrap"
               >
-                <span>Get Started</span>
+                <span>Get started</span>
               </button>
             </div>
           </SignedOut>
 
-          {/* Mobile Navigation Toggle Button - visible up to lg screens */}
+          {/* Mobile Navigation Toggle Button (< lg) */}
           <button
+            type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden w-8.5 h-8.5 rounded-full flex items-center justify-center border border-neutral-200/80 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.06] transition-colors cursor-pointer shrink-0"
+            className={`lg:hidden w-9 h-9 rounded-full flex items-center justify-center transition-colors cursor-pointer shrink-0 ${
+              isAmoled
+                ? "text-neutral-300 hover:text-white hover:bg-white/[0.06]"
+                : "text-neutral-600 hover:text-neutral-950 hover:bg-neutral-100"
+            }`}
             aria-label="Toggle mobile navigation menu"
             aria-expanded={isMobileMenuOpen}
           >
-            {isMobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
+            {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
 
-      {/* ── Mobile Navigation Drawer ── */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden flex justify-end">
-          {/* Dimmed backdrop */}
+      {/* ── Mobile Navigation Drawer (Portaled out of backdrop-blur nav so fixed inset-0 fills 100vh) ── */}
+      {isMobileMenuOpen &&
+        typeof document !== "undefined" &&
+        createPortal(
           <div
-            className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity animate-[fadeIn_0.15s_ease-out]"
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
+            className="fixed inset-0 z-50 lg:hidden flex justify-end"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation menu"
+          >
+            {/* Dimmed backdrop */}
+            <div
+              className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity animate-[fadeIn_0.15s_ease-out]"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
 
-          {/* Drawer Sheet */}
-          <div className="relative w-[85%] max-w-sm h-full bg-white dark:bg-[#090a0e] border-l border-neutral-200/90 dark:border-white/10 shadow-2xl p-5 flex flex-col justify-between overflow-y-auto no-scrollbar z-50 animate-[slideInRight_0.25s_ease-out]">
-            {/* Top drawer header */}
-            <div className="flex flex-col gap-5">
-              <div className="flex items-center justify-between pb-4 border-b border-neutral-200/80 dark:border-white/[0.08]">
-                <div className="flex items-center gap-2">
-                  <span className="font-bold text-lg text-neutral-900 dark:text-white">AiVerse</span>
-                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
-                    {entryCount} Assets
-                  </span>
+            {/* Drawer Sheet */}
+            <div className="relative w-[85%] max-w-sm h-full bg-white dark:bg-[#090a0e] border-l border-neutral-200/90 dark:border-white/[0.08] shadow-2xl p-5 flex flex-col justify-between overflow-y-auto no-scrollbar z-50 animate-[slideInRight_0.25s_ease-out]">
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center justify-between pb-3.5 border-b border-neutral-200/80 dark:border-white/[0.08]">
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-lg text-neutral-900 dark:text-white">AiVerse</span>
+                    <span className="inline-flex items-center gap-1.5 text-[10.5px] font-semibold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-200/70 dark:bg-indigo-500/15 dark:text-indigo-300 dark:border-indigo-500/30">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      {entryCount} Assets
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-white/[0.06] text-neutral-500 dark:text-neutral-400 transition-colors cursor-pointer"
+                    aria-label="Close menu"
+                  >
+                    <X size={18} />
+                  </button>
                 </div>
-                <button
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
-                  aria-label="Close menu"
-                >
-                  <X size={18} />
-                </button>
+
+                {/* Primary Navigation Links */}
+                <nav className="flex flex-col gap-1" aria-label="Mobile menu">
+                  <button
+                    type="button"
+                    aria-current={isDashboardActive ? "page" : undefined}
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      onHomeClick?.();
+                    }}
+                    className={`w-full flex items-center justify-between px-4 py-2.5 rounded-full text-sm transition-colors cursor-pointer text-left ${
+                      isDashboardActive ? navActiveClass : navInactiveClass
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <Home size={17} />
+                      <span>Dashboard</span>
+                    </div>
+                  </button>
+
+                  {onBrowseAll && (
+                    <button
+                      type="button"
+                      aria-current={isAllEntriesActive ? "page" : undefined}
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        onBrowseAll();
+                      }}
+                      className={`w-full flex items-center justify-between px-4 py-2.5 rounded-full text-sm transition-colors cursor-pointer text-left ${
+                        isAllEntriesActive ? navActiveClass : navInactiveClass
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <LayoutGrid size={17} />
+                        <span>All Entries & Models</span>
+                      </div>
+                      <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.06] text-neutral-600 dark:text-neutral-300 tabular-nums">
+                        {entryCount}
+                      </span>
+                    </button>
+                  )}
+
+                  {onViewEcosystems && (
+                    <button
+                      type="button"
+                      aria-current={isEcosystemsActive ? "page" : undefined}
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        onViewEcosystems();
+                      }}
+                      className={`w-full flex items-center justify-between px-4 py-2.5 rounded-full text-sm transition-colors cursor-pointer text-left ${
+                        isEcosystemsActive ? navActiveClass : navInactiveClass
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <Building2 size={17} className={isEcosystemsActive ? "" : "text-sky-500"} />
+                        <span>AI Labs & Ecosystems</span>
+                      </div>
+                      {ecosystemsCount && (
+                        <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 tabular-nums">
+                          {ecosystemsCount}
+                        </span>
+                      )}
+                    </button>
+                  )}
+
+                  {onViewLeaderboard && (
+                    <button
+                      type="button"
+                      aria-current={isLeaderboardActive ? "page" : undefined}
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        onViewLeaderboard();
+                      }}
+                      className={`w-full flex items-center justify-between px-4 py-2.5 rounded-full text-sm transition-colors cursor-pointer text-left ${
+                        isLeaderboardActive ? navActiveClass : navInactiveClass
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <Trophy size={17} className={isLeaderboardActive ? "" : "text-amber-500"} />
+                        <span>Frontier Leaderboard</span>
+                      </div>
+                    </button>
+                  )}
+
+                  {onViewFeatures && (
+                    <div className="pt-2.5 mt-1.5 border-t border-neutral-200/80 dark:border-white/[0.08] flex flex-col gap-1">
+                      <span className="px-4 text-[10px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-0.5">
+                        AiVerse Studio Apps
+                      </span>
+
+                      <button
+                        type="button"
+                        aria-current={activeFeatureSubpage === "playground" ? "page" : undefined}
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onViewFeatures("playground");
+                        }}
+                        className={`w-full flex items-center justify-between px-4 py-2.5 rounded-full text-sm transition-colors cursor-pointer text-left ${
+                          activeFeatureSubpage === "playground" ? navActiveClass : navInactiveClass
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <Terminal size={17} className="text-emerald-500" />
+                          <span>Model Playground</span>
+                        </div>
+                        <span className="text-[9px] font-bold uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25">
+                          LIVE
+                        </span>
+                      </button>
+
+                      <button
+                        type="button"
+                        aria-current={activeFeatureSubpage === "compare" ? "page" : undefined}
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onViewFeatures("compare");
+                        }}
+                        className={`w-full flex items-center justify-between px-4 py-2.5 rounded-full text-sm transition-colors cursor-pointer text-left ${
+                          activeFeatureSubpage === "compare" ? navActiveClass : navInactiveClass
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <Swords size={17} className="text-purple-500" />
+                          <span>Comparison Arena</span>
+                        </div>
+                      </button>
+
+                      <button
+                        type="button"
+                        aria-current={activeFeatureSubpage === "wizard" ? "page" : undefined}
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onViewFeatures("wizard");
+                        }}
+                        className={`w-full flex items-center justify-between px-4 py-2.5 rounded-full text-sm transition-colors cursor-pointer text-left ${
+                          activeFeatureSubpage === "wizard" ? navActiveClass : navInactiveClass
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <Wand2 size={17} className="text-amber-500" />
+                          <span>Discovery Wizard</span>
+                        </div>
+                      </button>
+
+                      <button
+                        type="button"
+                        aria-current={activeFeatureSubpage === "overview" ? "page" : undefined}
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onViewFeatures("overview");
+                        }}
+                        className={`w-full flex items-center justify-between px-4 py-2 rounded-full text-xs transition-colors cursor-pointer text-left ${
+                          activeFeatureSubpage === "overview" ? navActiveClass : navInactiveClass
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <Layers size={15} />
+                          <span>All Platform Capabilities</span>
+                        </div>
+                        <ArrowRight size={13} className="opacity-65" />
+                      </button>
+                    </div>
+                  )}
+
+                  {onViewChat && (
+                    <button
+                      type="button"
+                      aria-current={isChatActive ? "page" : undefined}
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        onViewChat();
+                      }}
+                      className={`w-full flex items-center justify-between px-4 py-2.5 rounded-full text-sm transition-colors cursor-pointer text-left ${
+                        isChatActive ? navActiveClass : navInactiveClass
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <Zap size={17} className="text-emerald-500" />
+                        <span>Vox AI Assistant</span>
+                      </div>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400">
+                        Groq LPU
+                      </span>
+                    </button>
+                  )}
+
+                  {onViewSaved && (
+                    <button
+                      type="button"
+                      aria-current={isSavedActive ? "page" : undefined}
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        onViewSaved();
+                      }}
+                      className={`w-full flex items-center justify-between px-4 py-2.5 rounded-full text-sm transition-colors cursor-pointer text-left ${
+                        isSavedActive ? navActiveClass : navInactiveClass
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <Bookmark size={17} />
+                        <span>Saved Bookmarks</span>
+                      </div>
+                      {bookmarksCount > 0 && (
+                        <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-500/15 text-indigo-600 dark:text-indigo-300">
+                          {bookmarksCount}
+                        </span>
+                      )}
+                    </button>
+                  )}
+                </nav>
               </div>
 
-              {/* Primary Navigation Links */}
-              <nav className="flex flex-col gap-1.5">
-                <button
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    onHomeClick?.();
-                  }}
-                  className="w-full flex items-center justify-between px-3.5 py-3 rounded-2xl text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer text-left"
-                >
-                  <div className="flex items-center gap-3">
-                    <Home size={17} className="text-neutral-500 dark:text-neutral-400" />
-                    <span className="font-semibold">Dashboard</span>
-                  </div>
-                </button>
-
-                {onBrowseAll && (
-                  <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      onBrowseAll();
-                    }}
-                    className="w-full flex items-center justify-between px-3.5 py-3 rounded-2xl text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer text-left"
-                  >
-                    <div className="flex items-center gap-3">
-                      <LayoutGrid size={17} className="text-neutral-500 dark:text-neutral-400" />
-                      <span className="font-semibold">All Entries & Models</span>
-                    </div>
-                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.06] text-neutral-600 dark:text-neutral-300">
-                      {entryCount}
-                    </span>
-                  </button>
-                )}
-
-                {onViewEcosystems && (
-                  <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      onViewEcosystems();
-                    }}
-                    className="w-full flex items-center justify-between px-3.5 py-3 rounded-2xl text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer text-left"
-                  >
-                    <div className="flex items-center gap-3">
-                      <Building2 size={17} className="text-blue-500" />
-                      <span className="font-semibold">AI Labs & Ecosystems</span>
-                    </div>
-                    {ecosystemsCount && (
-                      <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
-                        {ecosystemsCount}
-                      </span>
-                    )}
-                  </button>
-                )}
-
-                {onViewLeaderboard && (
-                  <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      onViewLeaderboard();
-                    }}
-                    className="w-full flex items-center justify-between px-3.5 py-3 rounded-2xl text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-amber-500/10 hover:text-amber-600 dark:hover:text-amber-400 transition-all cursor-pointer text-left"
-                  >
-                    <div className="flex items-center gap-3">
-                      <Trophy size={17} className="text-amber-500" />
-                      <span className="font-semibold">Frontier Leaderboard</span>
-                    </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-400 border border-amber-500/25">
-                      Benchmarks
-                    </span>
-                  </button>
-                )}
-
-                {/* AI Platform Features */}
-                {onViewFeatures && (
-                  <div className="pt-2.5 mt-1 border-t border-neutral-200/60 dark:border-white/[0.06] flex flex-col gap-1">
-                    <span className="px-3 text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-0.5">
-                      Platform Features
-                    </span>
-
+              {/* Bottom Actions & Preferences */}
+              <div className="flex flex-col gap-3 pt-4 border-t border-neutral-200/80 dark:border-white/[0.08] pb-safe">
+                <SignedOut>
+                  <div className="flex flex-col gap-2">
                     <button
+                      type="button"
                       onClick={() => {
                         setIsMobileMenuOpen(false);
-                        onViewFeatures("playground");
+                        openAuthModal("signup");
                       }}
-                      className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer text-left"
+                      className="w-full py-2.5 rounded-full text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 text-center cursor-pointer"
                     >
-                      <div className="flex items-center gap-3">
-                        <Terminal size={17} className="text-blue-500" />
-                        <span className="font-semibold">Model Playground</span>
-                      </div>
-                      <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/25">
-                        LIVE
-                      </span>
+                      Get started free
                     </button>
-
                     <button
+                      type="button"
                       onClick={() => {
                         setIsMobileMenuOpen(false);
-                        onViewFeatures("compare");
+                        openAuthModal("signin");
                       }}
-                      className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer text-left"
+                      className="w-full py-2.5 rounded-full text-xs font-semibold border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/[0.06] text-center cursor-pointer"
                     >
-                      <div className="flex items-center gap-3">
-                        <Swords size={17} className="text-purple-500" />
-                        <span className="font-semibold">Comparison Arena</span>
-                      </div>
-                      <span className="text-[9px] font-bold uppercase px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/25">
-                        ARENA
-                      </span>
-                    </button>
-
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        onViewFeatures("wizard");
-                      }}
-                      className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer text-left"
-                    >
-                      <div className="flex items-center gap-3">
-                        <Wand2 size={17} className="text-amber-500" />
-                        <span className="font-semibold">Discovery Wizard</span>
-                      </div>
-                      <span className="text-[9px] font-bold uppercase px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-400 border border-amber-500/25">
-                        ADVISOR
-                      </span>
-                    </button>
-
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        onViewFeatures("overview");
-                      }}
-                      className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs font-medium text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer text-left"
-                    >
-                      <div className="flex items-center gap-3">
-                        <Layers size={15} className="text-neutral-400" />
-                        <span>All Platform Capabilities</span>
-                      </div>
-                      <ArrowRight size={13} className="opacity-60" />
+                      Sign in
                     </button>
                   </div>
-                )}
+                </SignedOut>
 
-                {onViewChat && (
-                  <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      onViewChat();
-                    }}
-                    className="w-full flex items-center justify-between px-3.5 py-3 rounded-2xl text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer text-left"
-                  >
-                    <div className="flex items-center gap-3">
-                      <Zap size={17} className="text-amber-500" />
-                      <span className="font-semibold">Vox AI Assistant</span>
-                    </div>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/[0.06] text-neutral-500">
-                      /chat
-                    </span>
-                  </button>
-                )}
+                <SignedIn>
+                  <div className="flex flex-col gap-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        onAddEntry();
+                      }}
+                      className="w-full flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-full text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 cursor-pointer"
+                    >
+                      <Plus size={14} />
+                      <span>Submit AI Asset</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        onEditPreferences("profile");
+                      }}
+                      className="w-full flex items-center justify-between px-4 py-2 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/[0.06] text-neutral-700 dark:text-neutral-200 cursor-pointer"
+                    >
+                      <span>Edit Profile & Preferences</span>
+                      <SlidersHorizontal size={13} />
+                    </button>
+                  </div>
+                </SignedIn>
 
-                {onViewSaved && (
-                  <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      onViewSaved();
-                    }}
-                    className="w-full flex items-center justify-between px-3.5 py-3 rounded-2xl text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/[0.05] transition-all cursor-pointer text-left"
-                  >
-                    <div className="flex items-center gap-3">
-                      <Bookmark size={17} className="text-neutral-500 dark:text-neutral-400" />
-                      <span className="font-semibold">Saved Bookmarks</span>
-                    </div>
-                  </button>
-                )}
-              </nav>
-            </div>
-
-            {/* Bottom Actions & Preferences */}
-            <div className="flex flex-col gap-4 pt-4 border-t border-neutral-200/80 dark:border-white/[0.08] pb-safe">
-              <SignedOut>
-                <div className="flex flex-col gap-2">
-                  <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      openAuthModal("signup");
-                    }}
-                    className="w-full py-2.5 rounded-xl text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-black shadow-xs text-center cursor-pointer"
-                  >
-                    Get Started Free
-                  </button>
-                  <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      openAuthModal("signin");
-                    }}
-                    className="w-full py-2.5 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.06] text-center cursor-pointer"
-                  >
-                    Sign In
-                  </button>
-                </div>
-              </SignedOut>
-
-              <SignedIn>
-                <div className="flex flex-col gap-2">
-                  <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      onEditPreferences("profile");
-                    }}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/[0.05] text-neutral-700 dark:text-neutral-300 cursor-pointer"
-                  >
-                    <span>Edit Profile & Preferences</span>
-                    <SlidersHorizontal size={13} />
-                  </button>
-                </div>
-              </SignedIn>
-
-              {/* Theme toggle */}
-              <div className="flex items-center justify-start pt-2">
                 <button
-                  onClick={() => setTheme(resolvedTheme === "amoled" ? "light" : "amoled")}
-                  className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/[0.06] cursor-pointer"
+                  type="button"
+                  onClick={() => setTheme(isAmoled ? "light" : "amoled")}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-full text-xs font-medium border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-white/[0.06] cursor-pointer"
                 >
-                  {resolvedTheme === "amoled" ? <Sun size={14} /> : <Moon size={14} />}
-                  <span>{resolvedTheme === "amoled" ? "Dark Theme" : "Light Theme"}</span>
+                  {isAmoled ? <Sun size={14} className="text-amber-300" /> : <Moon size={14} />}
+                  <span>{isAmoled ? "Switch to Light Mode" : "Switch to AMOLED Dark"}</span>
                 </button>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </nav>
   );
-
 };

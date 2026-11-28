@@ -17,6 +17,7 @@ import {
   ThumbsUp,
 } from "lucide-react";
 import {
+  decodeHtmlEntities,
   fetchDashboardRadarBundle,
   formatRelativeTimestamp,
   type DashboardRadarBundle,
@@ -234,7 +235,7 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({
               </h4>
 
               <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-6 font-normal">
-                {spotlight.summary}
+                {decodeHtmlEntities(spotlight.summary)}
               </p>
 
               {/* Badges / Metrics */}
@@ -487,7 +488,7 @@ export const DailyPulseSection: React.FC<DailyPulseSectionProps> = ({
                         {asset.name}
                       </h5>
                       <p className="text-[11px] text-neutral-500 dark:text-neutral-400 line-clamp-2 leading-relaxed">
-                        {asset.summary}
+                        {decodeHtmlEntities(asset.summary)}
                       </p>
                     </div>
                     <div className="flex items-center justify-between text-[10px] pt-2 border-t border-neutral-200/60 dark:border-white/[0.06] text-neutral-500 dark:text-neutral-400">
