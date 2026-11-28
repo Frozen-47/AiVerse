@@ -1,5 +1,58 @@
 [
   {
+    "id": "action_1795837272060_btjbo",
+    "created_at": "2026-11-28T03:41:12.060Z",
+    "timestamp": "2026-11-28T03:41:12.060Z",
+    "workflow": "AI Radar & Ecosystem Sync",
+    "action": "AI_RADAR_SYNC",
+    "status": "success",
+    "actor_email": "github-actions[bot]",
+    "summary": "AI Radar pulse executed: 766 entries audited, 5 new asset(s) queued",
+    "details": "Ingested 5 asset(s): Command A+, KT: Mi:dm K 3.0 Pro, MAGI-2-preview, Wan_2.2_I2V_14B_Custom_Lora, fineweb-2. Checked health for 25 links (3 broken). Trending: 10 models, 5 papers. Security score: 100%. Duration: 38531ms.",
+    "metadata": {
+      "totalCatalogEntries": 766,
+      "newlyIngestedCount": 5,
+      "newlyIngested": [
+        {
+          "name": "Command A+",
+          "type": "Model",
+          "org": "Cohere"
+        },
+        {
+          "name": "KT: Mi:dm K 3.0 Pro",
+          "type": "Model",
+          "org": "kt"
+        },
+        {
+          "name": "MAGI-2-preview",
+          "type": "Model",
+          "org": "sand-ai"
+        },
+        {
+          "name": "Wan_2.2_I2V_14B_Custom_Lora",
+          "type": "Platform",
+          "org": "traderharikrishna"
+        },
+        {
+          "name": "fineweb-2",
+          "type": "Dataset",
+          "org": "HuggingFaceFW"
+        }
+      ],
+      "brokenLinks": 3,
+      "trendingModels": 10,
+      "trendingPapers": 5,
+      "trendingCount": 15,
+      "securityScore": 100,
+      "durationMs": 38531,
+      "runId": "46103973256",
+      "runNumber": "159",
+      "sha": "a335259",
+      "ref": "refs/heads/main",
+      "workflow": "AI Radar & Ecosystem Sync"
+    }
+  },
+  {
     "id": "action_1795811675418_lrmbf",
     "created_at": "2026-11-27T20:34:35.418Z",
     "timestamp": "2026-11-27T20:34:35.418Z",

@@ -1,7 +1,23 @@
 {
-  "timestamp": "2026-11-27T20:33:45.235Z",
+  "timestamp": "2026-11-28T03:40:34.975Z",
   "checked": 25,
-  "healthy": 25,
-  "broken": 0,
-  "issues": []
+  "healthy": 22,
+  "broken": 3,
+  "issues": [
+    {
+      "name": "Midjourney (Platform)",
+      "url": "https://www.midjourney.com/",
+      "status": 403
+    },
+    {
+      "name": "DeepSeek Chat",
+      "url": "https://chat.deepseek.com",
+      "status": 403
+    },
+    {
+      "name": "Tabnine",
+      "url": "https://www.tabnine.com",
+      "status": "Network Error"
+    }
+  ]
 }

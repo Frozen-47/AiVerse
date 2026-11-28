@@ -1,5 +1,135 @@
 [
   {
+    "date": "2026-11-28",
+    "status": "queued_in_review_list",
+    "assets": [
+      {
+        "name": "Command A+",
+        "type": "Model",
+        "summary": "Frontier Research model by Cohere benchmarked on Artificial Analysis with an Intelligence Index of 6.24120025576958 and a verified 192k Context window.",
+        "task": "Research",
+        "license": "Open Weights",
+        "year": 2026,
+        "org": "Cohere",
+        "size": "192k Context · Open Model",
+        "architecture": "Open-weights frontier neural architecture developed by Cohere, featuring native 192k Context token window support and optimized reasoning chains.",
+        "usage": "Explore benchmarks and inference providers directly on Artificial Analysis: https://artificialanalysis.ai/models/command-a-plus",
+        "benchmarks": "Context Window: 192k Context, Intelligence Index: 6.24120025576958, Benchmarked on Artificial Analysis Leaderboard",
+        "limitations": "Requires multi-GPU tensor-parallel nodes or local quantization for high-throughput deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://artificialanalysis.ai/models/command-a-plus",
+        "citations": [
+          {
+            "text": "Command A+ on Artificial Analysis Benchmark",
+            "url": "https://artificialanalysis.ai/models/command-a-plus"
+          },
+          {
+            "text": "Command A+ Inference Providers",
+            "url": "https://artificialanalysis.ai/models/command-a-plus/providers"
+          }
+        ]
+      },
+      {
+        "name": "KT: Mi:dm K 3.0 Pro",
+        "type": "Model",
+        "summary": "Mi:dm K 3.0 Pro is a Mixture-of-Experts reasoning model from KT, with 120B total and 12B active parameters. It uses a hybrid architecture that mixes Mamba, MoE and attention layers",
+        "task": "NLP",
+        "license": "Proprietary",
+        "year": 2026,
+        "org": "kt",
+        "size": "262k Context · Available via API",
+        "architecture": "Modern foundation model hosted on OpenRouter with native 262k Context support and structured output generation.",
+        "usage": "import OpenAI from \"openai\";\nconst openai = new OpenAI({\n  baseURL: \"https://openrouter.ai/api/v1\",\n  apiKey: process.env.OPENROUTER_API_KEY\n});\nconst response = await openai.chat.completions.create({\n  model: \"kt/midm-k-3.0-pro\",\n  messages: [{ role: \"user\", content: \"Hello!\" }]\n});",
+        "benchmarks": "Context Window: 262k Context, Available across global OpenRouter inference nodes.",
+        "limitations": "Requires OpenRouter API key and token credits.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://openrouter.ai/kt/midm-k-3.0-pro",
+        "citations": [
+          {
+            "text": "KT: Mi:dm K 3.0 Pro on OpenRouter",
+            "url": "https://openrouter.ai/kt/midm-k-3.0-pro"
+          }
+        ]
+      },
+      {
+        "name": "MAGI-2-preview",
+        "type": "Model",
+        "summary": "High-performance Multimodal open-weights model by sand-ai, trending with over 361 community likes and 0 downloads on Hugging Face.",
+        "task": "Multimodal",
+        "license": "APACHE-2.0",
+        "year": 2026,
+        "org": "sand-ai",
+        "size": "Open Weights",
+        "architecture": "sand-ai image text to video architecture with community-tuned weights.",
+        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"sand-ai/MAGI-2-preview\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"sand-ai/MAGI-2-preview\")",
+        "benchmarks": "Trending Score: 163, Likes: 361, Downloads: 0",
+        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/sand-ai/MAGI-2-preview",
+        "citations": [
+          {
+            "text": "sand-ai/MAGI-2-preview on Hugging Face",
+            "url": "https://huggingface.co/sand-ai/MAGI-2-preview"
+          }
+        ]
+      },
+      {
+        "name": "Wan_2.2_I2V_14B_Custom_Lora",
+        "type": "Platform",
+        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by traderharikrishna. Trending with 62 community stars.",
+        "task": "Multimodal",
+        "license": "Community Hosted",
+        "year": 2026,
+        "org": "traderharikrishna",
+        "size": "GRADIO Platform",
+        "architecture": "GRADIO cloud runtime container with interactive browser interface.",
+        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/traderharikrishna/Wan_2.2_I2V_14B_Custom_Lora",
+        "benchmarks": "Trending Score: 22, Community Likes: 62",
+        "limitations": "Cloud container subject to community traffic quotas and queue times.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/spaces/traderharikrishna/Wan_2.2_I2V_14B_Custom_Lora",
+        "citations": [
+          {
+            "text": "traderharikrishna/Wan_2.2_I2V_14B_Custom_Lora on Hugging Face Spaces",
+            "url": "https://huggingface.co/spaces/traderharikrishna/Wan_2.2_I2V_14B_Custom_Lora"
+          }
+        ]
+      },
+      {
+        "name": "fineweb-2",
+        "type": "Dataset",
+        "summary": "🥂 FineWeb2 \t      A sparkling update with 1000s of languages \t \t\t \t \t \t\tWhat is it? \t This is the second iteration of the popular 🍷 FineWeb dataset, bringing high qua (1,036 likes, 234,335 downloads).",
+        "task": "NLP",
+        "license": "ODC-BY",
+        "year": 2026,
+        "org": "HuggingFaceFW",
+        "size": "1B<n<10B",
+        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
+        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"HuggingFaceFW/fineweb-2\")",
+        "benchmarks": "Trending Score: 6, Likes: 1,036, Downloads: 234,335",
+        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
+        "popular": false,
+        "approved": false,
+        "submitted_by": "daily-pulse-bot",
+        "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-2",
+        "citations": [
+          {
+            "text": "HuggingFaceFW/fineweb-2 on Hugging Face Datasets",
+            "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-2"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-11-27",
     "status": "queued_in_review_list",
     "assets": [
@@ -8048,84 +8178,6 @@
           {
             "text": "hongzhuyi/VDEBench on Hugging Face Datasets",
             "url": "https://huggingface.co/datasets/hongzhuyi/VDEBench"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-28",
-    "status": "approved_in_catalog",
-    "assets": [
-      {
-        "name": "flint-GGUF",
-        "type": "Model",
-        "summary": "High-performance NLP open-weights model by unsloth, trending with over 301 community likes and 178,000 downloads on Hugging Face.",
-        "task": "NLP",
-        "license": "APACHE-2.0",
-        "year": 2026,
-        "org": "unsloth",
-        "size": "Open Weights",
-        "architecture": "unsloth text generation architecture with community-tuned weights.",
-        "usage": "from transformers import AutoModelForCausalLM, AutoTokenizer\n\nmodel = AutoModelForCausalLM.from_pretrained(\"unsloth/flint-GGUF\", device_map=\"auto\")\ntokenizer = AutoTokenizer.from_pretrained(\"unsloth/flint-GGUF\")",
-        "benchmarks": "Trending Score: 283, Likes: 301, Downloads: 178,000",
-        "limitations": "Requires GPU VRAM or quantization for efficient local deployment.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/unsloth/flint-GGUF",
-        "citations": [
-          {
-            "text": "unsloth/flint-GGUF on Hugging Face",
-            "url": "https://huggingface.co/unsloth/flint-GGUF"
-          }
-        ]
-      },
-      {
-        "name": "GEAR",
-        "type": "Platform",
-        "summary": "Interactive AI web platform and demonstration hosted on Hugging Face Spaces by WizardTY. Trending with 58 community stars.",
-        "task": "NLP",
-        "license": "Community Hosted",
-        "year": 2026,
-        "org": "WizardTY",
-        "size": "STATIC Platform",
-        "architecture": "STATIC cloud runtime container with interactive browser interface.",
-        "usage": "Launch and explore the platform directly in your browser: https://huggingface.co/spaces/WizardTY/GEAR",
-        "benchmarks": "Trending Score: 46, Community Likes: 58",
-        "limitations": "Cloud container subject to community traffic quotas and queue times.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/spaces/WizardTY/GEAR",
-        "citations": [
-          {
-            "text": "WizardTY/GEAR on Hugging Face Spaces",
-            "url": "https://huggingface.co/spaces/WizardTY/GEAR"
-          }
-        ]
-      },
-      {
-        "name": "text-to-3d-with-llm-code",
-        "type": "Dataset",
-        "summary": "Rapidata Text-to-3D with LLM code Benchmark \t Built by Rapidata, collected with the Rapidata Python SDK. To evaluate your own models and create a leaderboard, check out (42 likes, 2,399 downloads).",
-        "task": "Computer Vision",
-        "license": "CC-BY-4.0",
-        "year": 2026,
-        "org": "Rapidata",
-        "size": "10K<n<100K",
-        "architecture": "Parquet / Arrow structured tabular & tokenized dataset.",
-        "usage": "from datasets import load_dataset\n\ndataset = load_dataset(\"Rapidata/text-to-3d-with-llm-code\")",
-        "benchmarks": "Trending Score: 31, Likes: 42, Downloads: 2,399",
-        "limitations": "Subject to licensing compliance and dataset-specific terms of use.",
-        "popular": false,
-        "approved": false,
-        "submitted_by": "daily-pulse-bot",
-        "url": "https://huggingface.co/datasets/Rapidata/text-to-3d-with-llm-code",
-        "citations": [
-          {
-            "text": "Rapidata/text-to-3d-with-llm-code on Hugging Face Datasets",
-            "url": "https://huggingface.co/datasets/Rapidata/text-to-3d-with-llm-code"
           }
         ]
       }

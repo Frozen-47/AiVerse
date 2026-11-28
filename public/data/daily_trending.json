@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-27T20:33:44.964Z",
+  "timestamp": "2026-11-28T03:40:34.766Z",
   "models": [
     {
       "id": "JT-35B-Flash",
@@ -58,7 +58,7 @@
     {
       "id": "thinkingmachines/Inkling-2-Mini",
       "author": "thinkingmachines",
-      "likes": 6444,
+      "likes": 6479,
       "downloads": 155741,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
@@ -67,7 +67,7 @@
     {
       "id": "unsloth/Inkling-2-Mini-GGUF",
       "author": "unsloth",
-      "likes": 1594,
+      "likes": 1617,
       "downloads": 3302340,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
@@ -76,7 +76,7 @@
     {
       "id": "SulphurAI/Sulphur-3",
       "author": "SulphurAI",
-      "likes": 1362,
+      "likes": 1374,
       "downloads": 539421,
       "pipeline_tag": "open-weights",
       "url": "https://huggingface.co/SulphurAI/Sulphur-3",
@@ -85,7 +85,7 @@
     {
       "id": "AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
       "author": "AtomicChat",
-      "likes": 1025,
+      "likes": 1045,
       "downloads": 1059763,
       "pipeline_tag": "image-text-to-text",
       "url": "https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF",
@@ -94,9 +94,17 @@
   ],
   "papers": [
     {
+      "title": "LayoutRecall: Preserving Appearance in Multi-Round 3D Layout-Controlled Image Editing",
+      "summary": "LayoutRecall is a multi-round 3D layout-controlled image editor that preserves object appearance across edits by storing and retrieving latents in 3D box coordinate systems and conditioning a FLUX.2 editor with geometry-aligned memory.",
+      "upvotes": 0,
+      "arxiv_id": "2611.33885",
+      "url": "https://huggingface.co/papers/2611.33885",
+      "githubRepo": null
+    },
+    {
       "title": "Damped Atomic Wave Integration Neurons (DAWIN): A Universal Primitive for Continuous-Time Spatiotemporal Learning",
       "summary": "Conventional artificial neurons separate spatial feature aggregation from continuous physical time, limiting their ability to model irregular observations. We i...",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2611.30025",
       "url": "https://huggingface.co/papers/2611.30025",
       "githubRepo": "https://github.com/yumakemore/DAWIN"
@@ -104,7 +112,7 @@
     {
       "title": "BiSAT: Bidirectionally Aligned Semantic-Acoustic Tokenization for Speech Language Models",
       "summary": "Speech language models (LMs) generate speech as sequences of discrete tokens. Their tokenizer must therefore preserve both acoustic detail and linguistic conten...",
-      "upvotes": 1,
+      "upvotes": 2,
       "arxiv_id": "2611.30723",
       "url": "https://huggingface.co/papers/2611.30723",
       "githubRepo": null
@@ -124,14 +132,6 @@
       "arxiv_id": "2611.30494",
       "url": "https://huggingface.co/papers/2611.30494",
       "githubRepo": "https://github.com/costa-nus/LCEBench"
-    },
-    {
-      "title": "InitFree-SfM: When Initialization-Free Bundle Adjustment meets Learned Structure-from-Motion",
-      "summary": "Initialization-free bundle adjustment (InitFree BA) aims to jointly recover camera poses and scene structure without requiring an initial global estimate. It is...",
-      "upvotes": 1,
-      "arxiv_id": "2611.31516",
-      "url": "https://huggingface.co/papers/2611.31516",
-      "githubRepo": "https://github.com/simonwebertum/initfree-sfm"
     }
   ],
   "sources": [
