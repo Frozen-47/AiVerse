@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Star, ChevronRight, Bookmark } from "lucide-react";
+import { Star, ChevronRight, Bookmark, ArrowLeftRight } from "lucide-react";
 import { useTheme, TYPE_GLYPH } from "../lib/theme";
 import type { Entry, EntryRatingSummary } from "../types";
 
@@ -12,6 +12,8 @@ interface EntryCardProps {
   isBookmarked?: boolean;
   onToggleBookmark?: (name: string) => void;
   onViewEcosystem?: (orgName: string) => void;
+  isCompared?: boolean;
+  onToggleCompare?: (entry: Entry) => void;
 }
 
 export const EntryCard = memo(function EntryCard({
@@ -23,6 +25,8 @@ export const EntryCard = memo(function EntryCard({
   isBookmarked,
   onToggleBookmark,
   onViewEcosystem,
+  isCompared,
+  onToggleCompare,
 }: EntryCardProps) {
   const { resolvedTheme } = useTheme();
   const isAmoled = resolvedTheme === "amoled";
@@ -34,7 +38,11 @@ export const EntryCard = memo(function EntryCard({
       style={animate ? { animationDelay: `${index * 30}ms` } : undefined}
       className={`
         group flex flex-col rounded-2xl p-4 sm:p-5 cursor-pointer transition-all duration-200 border ${
-          isAmoled
+          isCompared
+            ? isAmoled
+              ? "bg-[#11131d] border-indigo-500/60 ring-1 ring-indigo-500/25 shadow-[0_12px_32px_rgba(79,70,229,0.2)]"
+              : "bg-indigo-50/40 border-indigo-500 ring-1 ring-indigo-500/20 shadow-sm"
+            : isAmoled
             ? "bg-[#0c0d11] border-white/[0.08] hover:border-indigo-500/35 hover:bg-[#101218] hover:shadow-[0_12px_32px_rgba(0,0,0,0.65)]"
             : "bg-white border-neutral-200/80 hover:border-indigo-300 hover:shadow-[0_12px_28px_rgba(15,23,42,0.06)]"
         }
@@ -86,6 +94,28 @@ export const EntryCard = memo(function EntryCard({
             }`}>
               <Star size={8} className="fill-current text-amber-500" /> Top Choice
             </span>
+          )}
+
+          {onToggleCompare && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggleCompare(entry);
+              }}
+              title={isCompared ? "Remove from Quick Compare" : "Add to Quick Compare"}
+              aria-label={isCompared ? "Remove from Quick Compare" : "Add to Quick Compare"}
+              aria-pressed={isCompared}
+              className={`p-1.5 rounded-xl transition-colors cursor-pointer ${
+                isCompared
+                  ? isAmoled
+                    ? "text-indigo-300 bg-indigo-500/20 border border-indigo-500/35"
+                    : "text-indigo-600 bg-indigo-50 border border-indigo-200"
+                  : "text-neutral-400 hover:text-neutral-700 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.06]"
+              }`}
+            >
+              <ArrowLeftRight size={12} />
+            </button>
           )}
 
           {onToggleBookmark && (

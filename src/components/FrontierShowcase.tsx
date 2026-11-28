@@ -1,20 +1,23 @@
-import React, { useState, useMemo } from "react";
-import { 
-  Sparkles, 
-  Building2, 
-  ArrowRight, 
-  Layers, 
-  Globe, 
-  Cpu, 
-  Zap, 
-  Database, 
-  Cloud 
+import React, { useMemo, useState } from "react";
+import {
+  ArrowLeftRight,
+  ArrowRight,
+  Building2,
+  Cloud,
+  Cpu,
+  Database,
+  Globe,
+  Layers,
+  Sparkles,
+  X,
+  Zap,
 } from "lucide-react";
-import type { Entry, EntryRatingSummary } from "../types";
-import { useTheme } from "../lib/theme";
-import { EntryCard } from "./EntryCard";
+import { classifyLicenseBucket } from "../lib/dashboard";
 import { groupEntriesByEcosystem, type EcosystemGroup } from "../lib/ecosystems";
+import { useTheme } from "../lib/theme";
+import type { Entry, EntryRatingSummary } from "../types";
 import { EcosystemLogo } from "./EcosystemLogo";
+import { EntryCard } from "./EntryCard";
 
 interface CategoryConfig {
   id: string;
@@ -26,6 +29,8 @@ interface CategoryConfig {
   icon: React.ComponentType<{ size?: number; className?: string }>;
   curated: string[];
 }
+
+type SliceMode = "curated" | "latest" | "open" | "rated";
 
 const SHOWCASE_CATEGORIES: CategoryConfig[] = [
   {
@@ -157,6 +162,7 @@ interface FrontierShowcaseProps {
   ratingSummaries: Record<string, EntryRatingSummary>;
   onViewEcosystem: (orgName: string) => void;
   onViewAll: (category?: string) => void;
+  onLaunchCompare?: (toolA: string, toolB: string) => void;
   searchQuery?: string;
   activeCategory?: string;
   onSelectCategory?: (category: string) => void;
@@ -170,6 +176,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
   ratingSummaries,
   onViewEcosystem,
   onViewAll,
+  onLaunchCompare,
   searchQuery = "",
   activeCategory = "All",
   onSelectCategory,
@@ -177,8 +184,10 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
   const { resolvedTheme } = useTheme();
   const isAmoled = resolvedTheme === "amoled";
 
-  // Local fallback if activeCategory is not passed from parent
   const [internalCategory, setInternalCategory] = useState<string>("All");
+  const [sliceMode, setSliceMode] = useState<SliceMode>("curated");
+  const [compareSelection, setCompareSelection] = useState<string[]>([]);
+
   const currentCategory = activeCategory || internalCategory;
 
   const handleCategoryChange = (catId: string) => {
@@ -189,7 +198,18 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
     }
   };
 
-  // Active configuration meta
+  const toggleCompareCandidate = (entry: Entry) => {
+    setCompareSelection((prev) => {
+      if (prev.includes(entry.name)) {
+        return prev.filter((n) => n !== entry.name);
+      }
+      if (prev.length >= 2) {
+        return [prev[1], entry.name];
+      }
+      return [...prev, entry.name];
+    });
+  };
+
   const currentConfig = useMemo(() => {
     return (
       SHOWCASE_CATEGORIES.find((c) => c.id === currentCategory) ||
@@ -197,12 +217,10 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
     );
   }, [currentCategory]);
 
-  // All ecosystems grouped
   const allEcosystems = useMemo(() => {
     return groupEntriesByEcosystem(entries);
   }, [entries]);
 
-  // Category counts
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {
       All: entries.length,
@@ -221,20 +239,26 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
     return counts;
   }, [entries, allEcosystems]);
 
-  // Curated 6 AI Labs (for Ecosystems view)
   const showcaseLabs = useMemo(() => {
     const map = new Map(allEcosystems.map((e) => [e.name, e]));
     const list: EcosystemGroup[] = [];
     const curatedNames =
       SHOWCASE_CATEGORIES.find((c) => c.id === "Ecosystems")?.curated || [];
 
-    for (const lab of curatedNames) {
-      const found = map.get(lab);
-      if (found) list.push(found);
+    if (sliceMode === "curated") {
+      for (const lab of curatedNames) {
+        const found = map.get(lab);
+        if (found) list.push(found);
+      }
     }
 
+    const sortedLabs =
+      sliceMode === "latest"
+        ? [...allEcosystems].sort((a, b) => b.latestYear - a.latestYear || b.totalCount - a.totalCount)
+        : allEcosystems;
+
     if (list.length < 6) {
-      for (const eco of allEcosystems) {
+      for (const eco of sortedLabs) {
         if (!list.some((item) => item.name === eco.name)) {
           list.push(eco);
           if (list.length === 6) break;
@@ -243,14 +267,45 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
     }
 
     return list.slice(0, 6);
-  }, [allEcosystems]);
+  }, [allEcosystems, sliceMode]);
 
-  // Curated 6 items for the active category
   const showcaseEntries = useMemo(() => {
+    const pool =
+      currentCategory === "All"
+        ? entries
+        : entries.filter((e) => e.type === currentCategory);
+
+    if (sliceMode === "latest") {
+      return [...pool]
+        .sort((a, b) => b.year - a.year || Number(b.popular) - Number(a.popular))
+        .slice(0, 6);
+    }
+
+    if (sliceMode === "open") {
+      const openOnly = pool.filter((e) => {
+        const bucket = classifyLicenseBucket(e.license);
+        return bucket === "open_source" || bucket === "open_weights";
+      });
+      return [...openOnly]
+        .sort((a, b) => Number(b.popular) - Number(a.popular) || b.year - a.year)
+        .slice(0, 6);
+    }
+
+    if (sliceMode === "rated") {
+      return [...pool]
+        .sort((a, b) => {
+          const rA = ratingSummaries[a.name];
+          const rB = ratingSummaries[b.name];
+          const scoreA = (rA?.average || 0) * 10 + (rA?.count || 0) + (a.popular ? 5 : 0);
+          const scoreB = (rB?.average || 0) * 10 + (rB?.count || 0) + (b.popular ? 5 : 0);
+          return scoreB - scoreA || b.year - a.year;
+        })
+        .slice(0, 6);
+    }
+
     const map = new Map(entries.map((e) => [e.name, e]));
     const list: Entry[] = [];
 
-    // 1. Prioritize curated flagships
     for (const name of currentConfig.curated) {
       const found = map.get(name);
       if (found && !list.some((item) => item.name === found.name)) {
@@ -258,13 +313,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
       }
     }
 
-    // 2. Backfill with popular entries of the matching category
     if (list.length < 6) {
-      const pool =
-        currentCategory === "All"
-          ? entries
-          : entries.filter((e) => e.type === currentCategory);
-
       for (const e of pool) {
         if (!list.some((item) => item.name === e.name) && e.popular) {
           list.push(e);
@@ -273,13 +322,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
       }
     }
 
-    // 3. Fallback to any in category if still under 6
     if (list.length < 6) {
-      const pool =
-        currentCategory === "All"
-          ? entries
-          : entries.filter((e) => e.type === currentCategory);
-
       for (const e of pool) {
         if (!list.some((item) => item.name === e.name)) {
           list.push(e);
@@ -289,9 +332,8 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
     }
 
     return list.slice(0, 6);
-  }, [entries, currentCategory, currentConfig]);
+  }, [entries, currentCategory, currentConfig, sliceMode, ratingSummaries]);
 
-  // Live search filtering if searchQuery is provided
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return null;
     const q = searchQuery.toLowerCase();
@@ -300,14 +342,14 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
         e.name.toLowerCase().includes(q) ||
         (e.org && e.org.toLowerCase().includes(q)) ||
         e.task.toLowerCase().includes(q) ||
-        e.summary.toLowerCase().includes(q)
+        e.summary.toLowerCase().includes(q),
     );
   }, [entries, searchQuery]);
 
   const activeTotalCount = categoryCounts[currentCategory] || entries.length;
 
   return (
-    <section className="flex flex-col gap-7 w-full text-left">
+    <section className="flex flex-col gap-6 w-full text-left">
       {/* ── 1. Clean, Artful Header ── */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 pb-5 border-b border-neutral-200/80 dark:border-white/[0.08]">
         <div>
@@ -330,7 +372,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
           </h2>
           <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1 max-w-2xl leading-relaxed">
             {searchResults
-              ? `Displaying verified AI technologies matching your search query.`
+              ? "Displaying verified AI technologies matching your search query."
               : currentConfig.subtitle}
           </p>
         </div>
@@ -338,17 +380,20 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
         {/* Action Controls & Dynamic Category Selector */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 shrink-0 w-full sm:w-auto">
           {!searchResults && (
-            <div className={`p-1 rounded-2xl border flex items-center overflow-x-auto no-scrollbar max-w-full w-full sm:w-auto ${
-              isAmoled 
-                ? "bg-[#0c0d11] border-white/[0.08] shadow-xs" 
-                : "bg-neutral-100/90 border-neutral-200/80 shadow-2xs"
-            }`}>
+            <div
+              className={`p-1 rounded-2xl border flex items-center overflow-x-auto no-scrollbar max-w-full w-full sm:w-auto ${
+                isAmoled
+                  ? "bg-[#0c0d11] border-white/[0.08] shadow-xs"
+                  : "bg-neutral-100/90 border-neutral-200/80 shadow-2xs"
+              }`}
+            >
               {SHOWCASE_CATEGORIES.map((cat) => {
                 const isActive = currentCategory === cat.id;
                 const Icon = cat.icon;
                 return (
                   <button
                     key={cat.id}
+                    type="button"
                     onClick={() => handleCategoryChange(cat.id)}
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all duration-150 cursor-pointer whitespace-nowrap border ${
                       isActive
@@ -367,6 +412,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
           )}
 
           <button
+            type="button"
             onClick={() => onViewAll(currentCategory)}
             className="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 transition-all cursor-pointer flex items-center justify-center gap-1.5 whitespace-nowrap shrink-0 w-full sm:w-auto"
             title={`Open complete ${currentConfig.label} directory`}
@@ -381,12 +427,102 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
         </div>
       </div>
 
+      {/* Slice Mode + Quick Compare Dock Row */}
+      {!searchResults && (
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="text-[11px] font-semibold text-neutral-500 dark:text-neutral-400 mr-1">
+              View slice:
+            </span>
+            {(
+              [
+                { id: "curated", label: "Curated Flagships" },
+                { id: "latest", label: "Latest Releases" },
+                { id: "open", label: "Open Weights / OSS" },
+                { id: "rated", label: "Top Community Rated" },
+              ] as const
+            ).map((mode) => (
+              <button
+                key={mode.id}
+                type="button"
+                onClick={() => setSliceMode(mode.id)}
+                className={`px-3 py-1 rounded-full text-[11px] font-semibold border transition-all cursor-pointer ${
+                  sliceMode === mode.id
+                    ? "bg-neutral-900 text-white border-neutral-900 dark:bg-white dark:text-neutral-950 dark:border-white"
+                    : isAmoled
+                    ? "border-white/[0.08] bg-[#0c0d11] text-neutral-400 hover:text-white"
+                    : "border-neutral-200 bg-white text-neutral-600 hover:text-neutral-900"
+                }`}
+              >
+                {mode.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Quick Compare Staging Bar */}
+          {onLaunchCompare && currentCategory !== "Ecosystems" && (
+            <div
+              className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs ${
+                isAmoled
+                  ? "bg-[#0c0d11] border-white/[0.08] text-neutral-300"
+                  : "bg-white border-neutral-200/85 text-neutral-700 shadow-2xs"
+              }`}
+            >
+              <ArrowLeftRight size={13} className="text-indigo-500 shrink-0" />
+              {compareSelection.length === 0 ? (
+                <span className="text-[11px] text-neutral-500 dark:text-neutral-400">
+                  Click <span className="font-semibold">⇄</span> on 2 cards to compare
+                </span>
+              ) : compareSelection.length === 1 ? (
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-semibold text-indigo-600 dark:text-indigo-300 truncate max-w-[140px]">
+                    {compareSelection[0]}
+                  </span>
+                  <span className="text-[11px] text-neutral-400">· pick 1 more</span>
+                  <button
+                    type="button"
+                    onClick={() => setCompareSelection([])}
+                    className="p-0.5 rounded hover:bg-neutral-200/60 dark:hover:bg-white/10 cursor-pointer"
+                    aria-label="Clear compare selection"
+                  >
+                    <X size={11} />
+                  </button>
+                </div>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-semibold truncate max-w-[200px]">
+                    {compareSelection[0]} vs {compareSelection[1]}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => onLaunchCompare(compareSelection[0], compareSelection[1])}
+                    className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer"
+                  >
+                    Compare →
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCompareSelection([])}
+                    className="p-0.5 rounded hover:bg-neutral-200/60 dark:hover:bg-white/10 cursor-pointer"
+                    aria-label="Clear compare selection"
+                  >
+                    <X size={11} />
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
       {/* ── 2. Content Grid: Top 6 for Selected Category ── */}
       {searchResults ? (
         searchResults.length === 0 ? (
-          <div className={`p-12 text-center rounded-2xl border flex flex-col items-center justify-center ${
-            isAmoled ? "bg-[#0c0d11] border-white/[0.08]" : "bg-neutral-50 border-neutral-200/80"
-          }`}>
+          <div
+            className={`p-12 text-center rounded-2xl border flex flex-col items-center justify-center ${
+              isAmoled ? "bg-[#0c0d11] border-white/[0.08]" : "bg-neutral-50 border-neutral-200/80"
+            }`}
+          >
             <p className="text-base font-semibold text-neutral-900 dark:text-white mb-1.5">
               No assets found matching &ldquo;{searchQuery}&rdquo;
             </p>
@@ -394,6 +530,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
               Explore the full directory to filter by license, parameter size, or research category.
             </p>
             <button
+              type="button"
               onClick={() => onViewAll("All")}
               className="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer shadow-sm shadow-indigo-500/20"
             >
@@ -413,6 +550,8 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
                 isBookmarked={bookmarks.includes(entry.name)}
                 onToggleBookmark={onToggleBookmark}
                 onViewEcosystem={onViewEcosystem}
+                isCompared={compareSelection.includes(entry.name)}
+                onToggleCompare={onLaunchCompare ? toggleCompareCandidate : undefined}
               />
             ))}
           </div>
@@ -452,7 +591,6 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
                   {eco.description}
                 </p>
 
-                {/* Flagship chips */}
                 <div className="flex flex-wrap gap-1.5 mb-2">
                   {eco.flagships.slice(0, 3).map((f) => (
                     <span
@@ -477,7 +615,6 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
           ))}
         </div>
       ) : (
-        /* Top 6 Entries for the active category (Models, Frameworks, Datasets, Platforms, Applications, or All) */
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {showcaseEntries.map((entry, i) => (
             <EntryCard
@@ -490,23 +627,29 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
               isBookmarked={bookmarks.includes(entry.name)}
               onToggleBookmark={onToggleBookmark}
               onViewEcosystem={onViewEcosystem}
+              isCompared={compareSelection.includes(entry.name)}
+              onToggleCompare={onLaunchCompare ? toggleCompareCandidate : undefined}
             />
           ))}
         </div>
       )}
 
       {/* ── 3. Artful, Aesthetic Discovery Callout ── */}
-      <div className={`p-6 sm:p-8 rounded-2xl border flex flex-col md:flex-row md:items-center justify-between gap-5 transition-all ${
-        isAmoled
-          ? "bg-gradient-to-r from-indigo-950/30 via-[#0c0d11] to-violet-950/20 border-white/[0.08]"
-          : "bg-gradient-to-r from-indigo-50/70 via-white to-violet-50/60 border-indigo-200/70 shadow-2xs"
-      }`}>
+      <div
+        className={`p-6 sm:p-8 rounded-2xl border flex flex-col md:flex-row md:items-center justify-between gap-5 transition-all ${
+          isAmoled
+            ? "bg-gradient-to-r from-indigo-950/30 via-[#0c0d11] to-violet-950/20 border-white/[0.08]"
+            : "bg-gradient-to-r from-indigo-50/70 via-white to-violet-50/60 border-indigo-200/70 shadow-2xs"
+        }`}
+      >
         <div className="flex items-start sm:items-center gap-4">
-          <div className={`w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 border ${
-            isAmoled
-              ? "bg-indigo-500/15 border-indigo-500/30 text-indigo-400"
-              : "bg-indigo-50 border-indigo-200 text-indigo-600 shadow-2xs"
-          }`}>
+          <div
+            className={`w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 border ${
+              isAmoled
+                ? "bg-indigo-500/15 border-indigo-500/30 text-indigo-400"
+                : "bg-indigo-50 border-indigo-200 text-indigo-600 shadow-2xs"
+            }`}
+          >
             <Layers size={20} />
           </div>
           <div>
@@ -524,6 +667,7 @@ export const FrontierShowcase: React.FC<FrontierShowcaseProps> = ({
         </div>
 
         <button
+          type="button"
           onClick={() => onViewAll(currentCategory)}
           className="px-5 py-2.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/20 transition-all cursor-pointer flex items-center gap-2 shrink-0 self-start sm:self-auto"
         >

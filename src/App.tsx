@@ -13,6 +13,11 @@ import { WelcomeOnboarding } from "./components/WelcomeOnboarding";
 import { OverviewCards } from "./components/OverviewCards";
 import { DailyPulseSection } from "./components/DailyPulseSection";
 import { DashboardHero } from "./components/DashboardHero";
+import { FeatureRibbon } from "./components/FeatureRibbon";
+import { DashboardAnalyticsBento } from "./components/dashboard/DashboardAnalyticsBento";
+import { DashboardPersonalHub } from "./components/dashboard/DashboardPersonalHub";
+import { DashboardCommandPalette } from "./components/dashboard/DashboardCommandPalette";
+import { loadRecentViewedNames, recordRecentViewedName } from "./lib/dashboard";
 import { PreferencesLoginPrompt } from "./components/PreferencesLoginPrompt";
 import { AuthProvider, useAuth } from "./components/AuthContext";
 import { AuthModal } from "./components/AuthModal";
@@ -65,10 +70,13 @@ import { fetchRatingSummaries } from "./lib/entryFeedback";
 import { fetchEntries, isAdminUser } from "./lib/supabase";
 import { typeFilters as staticTypeFilters, taskFilters as staticTaskFilters, entries as staticEntries } from "./data";
 import {
+  loadGuestOnboarding,
   partitionByInterests,
   persistOnboardingProfile,
   preferencesUserKey,
+  saveGuestOnboarding,
   sortByInterestMatch,
+  type OnboardingInterest,
   type OnboardingProfile,
 } from "./lib/onboarding";
 import { fetchUserPreferences, supabase } from "./lib/supabase";
@@ -98,8 +106,12 @@ function checkBlockStatus(profile: OnboardingProfile | null) {
 const Inner: React.FC = () => {
   const t = useTokens();
   const { resolvedTheme, setTheme } = useTheme();
-  const { user, isLoaded } = useAuth();
+  const { user, isLoaded, openAuthModal } = useAuth();
   const [entries, setEntries] = useState<Entry[]>(() => staticEntries || []);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+  const [recentViewedNames, setRecentViewedNames] = useState<string[]>(() =>
+    loadRecentViewedNames(),
+  );
   const [blockedStatus, setBlockedStatus] = useState<{ isBlocked: boolean; blockedUntil?: string } | null>(null);
   const [typeFilters, setTypeFilters] = useState<string[]>(() => staticTypeFilters || ["All"]);
   const [taskFilters, setTaskFilters] = useState<string[]>(() => staticTaskFilters || ["All Tasks"]);
@@ -167,6 +179,7 @@ const Inner: React.FC = () => {
     (entry: Entry | null) => {
       setSelected(entry);
       if (entry) {
+        setRecentViewedNames(recordRecentViewedName(entry.name));
         navigate(route, { entry: entry.name });
         window.scrollTo(0, 0);
       } else {
@@ -412,7 +425,7 @@ const Inner: React.FC = () => {
     (async () => {
       if (!user) {
         if (!cancelled) {
-          setOnboardingProfile(null);
+          setOnboardingProfile(loadGuestOnboarding());
           setShowOnboarding(false);
           setBlockedStatus(null);
         }
@@ -553,6 +566,24 @@ const Inner: React.FC = () => {
     // Transition user to catalog view
     navigate("/dashboard");
   };
+
+  const handleQuickInterestsChange = useCallback(
+    (interests: OnboardingInterest[]) => {
+      const nextProfile: OnboardingProfile = {
+        interests,
+        role: onboardingProfile?.role ?? "developer",
+        referralSource: onboardingProfile?.referralSource ?? "search",
+        completedAt: onboardingProfile?.completedAt ?? new Date().toISOString(),
+      };
+      setOnboardingProfile(nextProfile);
+      if (user) {
+        void persistOnboardingProfile(nextProfile, { user, isGuest: false }).catch(() => {});
+      } else {
+        saveGuestOnboarding(nextProfile);
+      }
+    },
+    [onboardingProfile, user],
+  );
 
   const handleSearchChange = (val: string) => {
     setSearchInput(val);
@@ -758,14 +789,11 @@ const Inner: React.FC = () => {
     setCurrentPage(1);
   }, [typeFilter, taskFilter, popularOnly, debouncedSearch, savedOnly]);
 
-  // ⌘K shortcut
+  // Global Escape handler (⌘K is routed via Navbar -> Command Palette)
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
-        (document.querySelector<HTMLInputElement>("[data-search]"))?.focus();
-      }
       if (e.key === "Escape") {
+        setCommandPaletteOpen(false);
         handleSelectEntry(null);
         setIsAdding(false);
       }
@@ -775,7 +803,7 @@ const Inner: React.FC = () => {
     return () => {
       document.removeEventListener("keydown", handler);
     };
-  }, []);
+  }, [handleSelectEntry]);
 
   // Sync document body and meta tags for an orderly global theme switch
   useEffect(() => {
@@ -1163,17 +1191,8 @@ const Inner: React.FC = () => {
           window.scrollTo(0, 0);
         }}
         onSearchClick={() => {
-          handleSelectEntry(null);
-          if (route.type !== "entries") {
-            navigate("/entries");
-          }
-          setTimeout(() => {
-            const input = document.querySelector('input[type="text"], input[type="search"]') as HTMLInputElement | null;
-            if (input) {
-              input.focus();
-              input.scrollIntoView({ behavior: "smooth", block: "center" });
-            }
-          }, 120);
+          if (isAdminDashboard) return;
+          setCommandPaletteOpen((prev) => !prev);
         }}
         onboardingProfile={onboardingProfile}
         onSaveProfile={handleProfileComplete}
@@ -1399,63 +1418,173 @@ const Inner: React.FC = () => {
           {/* 1. Full-Bleed First Page Hero (Edge-to-Edge & 100vh fold) */}
           <DashboardHero
             totalEntries={entries.length > 0 ? entries.length : staticEntries.length}
+            ecosystemsCount={ecosystemsCount}
+            entries={entries}
             onScrollToCatalog={scrollToCatalog}
+            onSelectEntry={handleSelectEntry}
+            onSelectEcosystem={handleViewEcosystem}
+            onOpenCommandPalette={() => setCommandPaletteOpen(true)}
+            onNavigateDirectory={(query) => {
+              if (query) setSearchInput(query);
+              setCatalogDisplayMode("assets");
+              setCurrentPage(1);
+              navigate("/entries");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            onNavigateLeaderboard={() => {
+              navigate("/leaderboard");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            onNavigateFeatures={(subpage) => {
+              navigate(`/features/${subpage}`);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            onNavigateChat={() => {
+              navigate("/chat");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
           />
 
           {/* 2. Content Sections Below the Fold */}
-          <div className="w-full max-w-[1880px] 2xl:max-w-[2040px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-12 sm:py-16 flex flex-col gap-14 sm:gap-20">
-            {/* Curated Frontier Highlights & Ecosystem Showcase */}
-            <div ref={catalogSectionRef} className="scroll-mt-20 w-full">
-              <FrontierShowcase
-                entries={entries}
-                onSelectEntry={handleSelectEntry}
-                bookmarks={bookmarks}
-                onToggleBookmark={handleToggleBookmark}
-                ratingSummaries={ratingSummaries}
-                onViewEcosystem={handleViewEcosystem}
-                onViewAll={(targetCat) => {
-                  if (targetCat === "Ecosystems") {
-                    setCatalogDisplayMode("ecosystems");
-                    navigate("/entries?view=ecosystems");
-                  } else {
-                    setCatalogDisplayMode("assets");
-                    if (targetCat && targetCat !== "All") {
-                      setTypeFilter(targetCat as TypeFilter);
-                    }
-                    navigate("/entries");
-                  }
-                  setCurrentPage(1);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-                searchQuery={searchInput}
-                activeCategory={catalogDisplayMode === "ecosystems" ? "Ecosystems" : typeFilter}
-                onSelectCategory={(cat) => {
-                  if (cat === "Ecosystems") {
-                    setCatalogDisplayMode("ecosystems");
-                  } else {
-                    setCatalogDisplayMode("assets");
-                    setTypeFilter(cat as TypeFilter);
-                  }
-                }}
-              />
-            </div>
+          <div
+            ref={catalogSectionRef}
+            className="scroll-mt-20 w-full max-w-[1880px] 2xl:max-w-[2040px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10 sm:py-14 flex flex-col gap-10 sm:gap-14"
+          >
+            {/* Live Platform Telemetry KPI Strip */}
+            <OverviewCards
+              totalEntriesCount={entries.length}
+              ecosystemsCount={ecosystemsCount}
+              entries={entries}
+              ratingSummaries={ratingSummaries}
+              onViewAllEntries={() => {
+                setCatalogDisplayMode("assets");
+                navigate("/entries");
+                setCurrentPage(1);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              onViewEcosystems={() => {
+                setCatalogDisplayMode("ecosystems");
+                navigate("/entries?view=ecosystems");
+                setCurrentPage(1);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              onScrollToRadar={() => {
+                document.getElementById("radar-pulse")?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+            />
 
-            {/* Live Daily AI Pulse & Model Spotlight */}
+            {/* Personalized Workspace Rail (Picked For You / Saved / Recently Viewed) */}
+            <DashboardPersonalHub
+              entries={entries}
+              bookmarks={bookmarks}
+              recentNames={recentViewedNames}
+              onboardingProfile={onboardingProfile}
+              ratingSummaries={ratingSummaries}
+              isSignedIn={Boolean(user)}
+              onSelectEntry={handleSelectEntry}
+              onToggleBookmark={handleToggleBookmark}
+              onViewSaved={() => {
+                navigate("/entries?tab=saved");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              onOpenAuth={(mode) => openAuthModal(mode)}
+              onOpenWizard={() => {
+                navigate("/features/wizard");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              onQuickInterestsChange={handleQuickInterestsChange}
+            />
+
+            {/* Curated Frontier Highlights & Ecosystem Showcase */}
+            <FrontierShowcase
+              entries={entries}
+              onSelectEntry={handleSelectEntry}
+              bookmarks={bookmarks}
+              onToggleBookmark={handleToggleBookmark}
+              ratingSummaries={ratingSummaries}
+              onViewEcosystem={handleViewEcosystem}
+              onLaunchCompare={(toolA, toolB) => {
+                setCompareToolA(toolA);
+                setCompareToolB(toolB);
+                navigate("/features/compare");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              onViewAll={(targetCat) => {
+                if (targetCat === "Ecosystems") {
+                  setCatalogDisplayMode("ecosystems");
+                  navigate("/entries?view=ecosystems");
+                } else {
+                  setCatalogDisplayMode("assets");
+                  if (targetCat && targetCat !== "All") {
+                    setTypeFilter(targetCat as TypeFilter);
+                  }
+                  navigate("/entries");
+                }
+                setCurrentPage(1);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              searchQuery={searchInput}
+              activeCategory={catalogDisplayMode === "ecosystems" ? "Ecosystems" : typeFilter}
+              onSelectCategory={(cat) => {
+                if (cat === "Ecosystems") {
+                  setCatalogDisplayMode("ecosystems");
+                } else {
+                  setCatalogDisplayMode("assets");
+                  setTypeFilter(cat as TypeFilter);
+                }
+              }}
+            />
+
+            {/* Interactive Catalog Architecture & Frontier Benchmark Pulse Bento */}
+            <DashboardAnalyticsBento
+              entries={entries}
+              onSelectEntry={handleSelectEntry}
+              onFilterByType={(targetType) => {
+                setCatalogDisplayMode("assets");
+                setTypeFilter(targetType);
+                setTaskFilter("All Tasks");
+                navigate("/entries");
+                setCurrentPage(1);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              onFilterByTask={(targetTask) => {
+                setCatalogDisplayMode("assets");
+                setTypeFilter("All");
+                setTaskFilter(targetTask);
+                navigate("/entries");
+                setCurrentPage(1);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              onOpenLeaderboard={() => {
+                navigate("/leaderboard");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            />
+
+            {/* Live Daily AI Pulse, Research Papers & Radar Health */}
             <DailyPulseSection entries={entries} onSelectEntry={handleSelectEntry} />
 
-            {/* Clean Platform Telemetry Overview */}
-            <div className="pt-8 border-t border-neutral-200/80 dark:border-white/[0.08] w-full">
-              <OverviewCards
-                totalEntriesCount={entries.length}
-                entries={entries}
-                ratingSummaries={ratingSummaries}
-                onViewAllEntries={() => {
-                  navigate("/entries");
-                  setCurrentPage(1);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-              />
-            </div>
+            {/* Integrated Studio Command Workflows */}
+            <FeatureRibbon
+              user={user}
+              onOpenAuth={(mode) => openAuthModal(mode)}
+              onOpenWizard={() => {
+                navigate("/features/wizard");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              onOpenArena={() => {
+                navigate("/features/compare");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              onOpenPlayground={() => {
+                navigate("/features/playground");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              onOpenSuite={() => {
+                navigate("/features");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            />
           </div>
         </div>
       ) : (
@@ -2327,6 +2456,36 @@ const Inner: React.FC = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {!isAdminDashboard && commandPaletteOpen && (
+        <DashboardCommandPalette
+          open={commandPaletteOpen}
+          onClose={() => setCommandPaletteOpen(false)}
+          entries={entries}
+          onSelectEntry={handleSelectEntry}
+          onSelectEcosystem={handleViewEcosystem}
+          onNavigateDirectory={(query) => {
+            if (query) setSearchInput(query);
+            setCatalogDisplayMode("assets");
+            setCurrentPage(1);
+            navigate("/entries");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          onNavigateLeaderboard={() => {
+            navigate("/leaderboard");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          onNavigateFeatures={(subpage) => {
+            navigate(subpage === "overview" ? "/features" : `/features/${subpage}`);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          onNavigateChat={() => {
+            navigate("/chat");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          onAddEntry={handleAddClick}
+        />
       )}
 
       <style>{`

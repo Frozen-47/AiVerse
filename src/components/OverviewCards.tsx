@@ -1,41 +1,60 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { ArrowUpRight, Award, Building2, Database, ShieldCheck } from "lucide-react";
+import {
+  computeLicenseMix,
+  fetchDashboardRadarBundle,
+  fetchDashboardStats,
+  type DashboardRadarBundle,
+  type DashboardStats,
+} from "../lib/dashboard";
 import { useTheme } from "../lib/theme";
-import { fetchDashboardStats, type DashboardStats } from "../lib/dashboard";
-import { Database, Users, Award } from "lucide-react";
 import type { Entry, EntryRatingSummary } from "../types";
 
 interface OverviewCardsProps {
   totalEntriesCount?: number;
+  ecosystemsCount?: number;
   entries?: Entry[];
   ratingSummaries?: Record<string, EntryRatingSummary>;
   onViewAllEntries?: () => void;
+  onViewEcosystems?: () => void;
+  onScrollToRadar?: () => void;
 }
 
 export const OverviewCards: React.FC<OverviewCardsProps> = ({
   totalEntriesCount,
-  entries,
+  ecosystemsCount = 200,
+  entries = [],
   ratingSummaries,
   onViewAllEntries,
+  onViewEcosystems,
+  onScrollToRadar,
 }) => {
+  const { resolvedTheme } = useTheme();
+  const isAmoled = resolvedTheme === "amoled";
+
   const [stats, setStats] = useState<DashboardStats>({
-    totalEntries: 331,
+    totalEntries: entries.length || 766,
     totalUsers: 10,
     averageRating: 4.38,
     totalRatings: 8,
     activeToday: 0,
     activeThisWeek: 2,
-    newEntriesCount: 15,
+    newEntriesCount: 504,
   });
-  const { resolvedTheme } = useTheme();
-  const isAmoled = resolvedTheme === "amoled";
+
+  const [radarBundle, setRadarBundle] = useState<DashboardRadarBundle | null>(null);
 
   useEffect(() => {
     let isMounted = true;
     const loadStats = () => {
-      (async () => {
-        const data = await fetchDashboardStats();
+      void (async () => {
+        const [data, radar] = await Promise.all([
+          fetchDashboardStats(),
+          fetchDashboardRadarBundle(),
+        ]);
         if (isMounted) {
           setStats(data);
+          setRadarBundle(radar);
         }
       })();
     };
@@ -46,46 +65,51 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
     };
     const idleWin = typeof window !== "undefined" ? (window as IdleWindow) : undefined;
     if (idleWin?.requestIdleCallback) {
-      const id = idleWin.requestIdleCallback(loadStats, { timeout: 3000 });
+      const id = idleWin.requestIdleCallback(loadStats, { timeout: 2500 });
       return () => {
         isMounted = false;
         idleWin.cancelIdleCallback?.(id);
       };
-    } else {
-      const timer = setTimeout(loadStats, 1500);
-      return () => {
-        isMounted = false;
-        clearTimeout(timer);
-      };
     }
+
+    const timer = window.setTimeout(loadStats, 900);
+    return () => {
+      isMounted = false;
+      window.clearTimeout(timer);
+    };
   }, []);
 
-  // 1. Registered Entries: Real catalog count
-  const catalogCount = entries ? entries.length : (totalEntriesCount || 0);
-  const displayEntries = Math.max(catalogCount, stats.totalEntries, 331);
-
+  const catalogCount = entries.length > 0 ? entries.length : totalEntriesCount || 0;
+  const displayEntries = Math.max(catalogCount, stats.totalEntries);
   const currentYear = new Date().getFullYear();
+
   const displayNewEntries = useMemo(() => {
-    if (entries && entries.length > 0) {
+    if (entries.length > 0) {
       const count = entries.filter((e) => e.year === currentYear).length;
-      return count > 0 ? count : (stats.newEntriesCount || 11);
+      if (count > 0) return count;
     }
-    return stats.newEntriesCount || 11;
+    return stats.newEntriesCount;
   }, [entries, currentYear, stats.newEntriesCount]);
 
-  // 2. Active Builders
-  const displayUsers = stats.totalUsers > 0 ? stats.totalUsers : 10;
-  const builderTrend = useMemo(() => {
-    if (stats.activeToday > 0) {
-      return `+${stats.activeToday} today`;
+  const popularCount = useMemo(() => {
+    if (entries.length > 0) {
+      return entries.filter((e) => e.popular).length;
     }
-    if (stats.activeThisWeek > 0) {
-      return `+${stats.activeThisWeek} this week`;
-    }
-    return "Verified community";
-  }, [stats.activeToday, stats.activeThisWeek]);
+    return radarBundle?.catalogStats?.popularEntries ?? 368;
+  }, [entries, radarBundle]);
 
-  // 3. Average Rating
+  const openShare = useMemo(() => {
+    if (entries.length === 0) return { pct: 64, count: 490 };
+    const mix = computeLicenseMix(entries);
+    const openCount =
+      (mix.find((m) => m.id === "open_source")?.count ?? 0) +
+      (mix.find((m) => m.id === "open_weights")?.count ?? 0);
+    return {
+      pct: Math.round((openCount / entries.length) * 100),
+      count: openCount,
+    };
+  }, [entries]);
+
   const { displayAvgRating, displayRatingCount } = useMemo(() => {
     let avg = stats.averageRating;
     let count = stats.totalRatings;
@@ -106,116 +130,149 @@ export const OverviewCards: React.FC<OverviewCardsProps> = ({
     }
 
     return {
-      displayAvgRating: avg > 0 ? avg.toFixed(2) : "5.00",
+      displayAvgRating: avg > 0 ? avg.toFixed(2) : "4.38",
       displayRatingCount: count,
     };
   }, [stats.averageRating, stats.totalRatings, ratingSummaries]);
 
-  const ratingTrend =
-    displayRatingCount > 0
-      ? `${displayRatingCount} ${displayRatingCount === 1 ? "review" : "reviews"}`
-      : "out of 5.0";
+  const linksHealth = radarBundle?.linksHealth;
+  const healthPct =
+    linksHealth && linksHealth.checked > 0
+      ? Math.round((linksHealth.healthy / linksHealth.checked) * 100)
+      : 88;
 
   const cards = [
     {
-      label: "Registered Assets",
-      value: displayEntries,
+      label: "Verified Assets",
+      value: displayEntries.toLocaleString(),
+      hint: `+${displayNewEntries} in ${currentYear} · ${popularCount} flagships`,
+      badge: "Catalog",
       icon: Database,
-      trend: `+${displayNewEntries} in ${currentYear}`,
-      title: `${displayEntries} verified AI models, platforms, and datasets (${displayNewEntries} released in ${currentYear})`,
+      accent: isAmoled
+        ? "from-indigo-500/20 via-violet-500/5 to-transparent"
+        : "from-indigo-500/10 via-violet-500/5 to-transparent",
+      iconColor: isAmoled
+        ? "bg-indigo-500/15 border-indigo-500/25 text-indigo-300"
+        : "bg-indigo-50 border-indigo-200/80 text-indigo-600",
+      onClick: onViewAllEntries,
     },
     {
-      label: "Active Builders",
-      value: displayUsers,
-      icon: Users,
-      trend: builderTrend,
-      title: `${displayUsers} registered builder profiles (${builderTrend})`,
+      label: "Pioneer AI Labs",
+      value: ecosystemsCount.toLocaleString(),
+      hint: "Organizations & research teams",
+      badge: "Ecosystems",
+      icon: Building2,
+      accent: isAmoled
+        ? "from-sky-500/20 via-cyan-500/5 to-transparent"
+        : "from-sky-500/10 via-cyan-500/5 to-transparent",
+      iconColor: isAmoled
+        ? "bg-sky-500/15 border-sky-500/25 text-sky-300"
+        : "bg-sky-50 border-sky-200/80 text-sky-600",
+      onClick: onViewEcosystems,
     },
     {
-      label: "Community Rating",
-      value: displayAvgRating,
+      label: "Open Ecosystem",
+      value: `${openShare.pct}%`,
+      hint: `${openShare.count.toLocaleString()} open-source & open-weights`,
+      badge: "Permissive",
+      icon: ShieldCheck,
+      accent: isAmoled
+        ? "from-emerald-500/20 via-teal-500/5 to-transparent"
+        : "from-emerald-500/10 via-teal-500/5 to-transparent",
+      iconColor: isAmoled
+        ? "bg-emerald-500/15 border-emerald-500/25 text-emerald-300"
+        : "bg-emerald-50 border-emerald-200/80 text-emerald-600",
+      progress: openShare.pct,
+      onClick: onViewAllEntries,
+    },
+    {
+      label: "Community & Pulse",
+      value: `${displayAvgRating}★`,
+      hint: `${displayRatingCount} reviews · ${stats.totalUsers} builders · ${healthPct}% link health`,
+      badge: linksHealth ? `${linksHealth.healthy}/${linksHealth.checked} URLs` : "Verified",
       icon: Award,
-      trend: ratingTrend,
-      title: `Average rating of ${displayAvgRating} out of 5.0 from ${displayRatingCount} verified reviews`,
+      accent: isAmoled
+        ? "from-amber-500/20 via-orange-500/5 to-transparent"
+        : "from-amber-500/10 via-orange-500/5 to-transparent",
+      iconColor: isAmoled
+        ? "bg-amber-500/15 border-amber-500/25 text-amber-300"
+        : "bg-amber-50 border-amber-200/80 text-amber-600",
+      onClick: onScrollToRadar,
     },
   ];
 
   return (
-    <div className={`p-6 sm:p-7 rounded-2xl border transition-all duration-200 ${
-      isAmoled
-        ? "bg-[#0c0d11] border-white/[0.08]"
-        : "bg-white/95 border-neutral-200/80 shadow-xs"
-    }`}>
-      <div className="flex items-center justify-between mb-5 pb-3 border-b border-neutral-200/70 dark:border-white/[0.06]">
-        <div className="flex items-center gap-2.5">
-          <span className="w-2 h-2 rounded-full bg-indigo-500" />
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
-            Platform Telemetry & Verified Intelligence
-          </h3>
-        </div>
-        <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          Live Network Sync
-        </span>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {cards.map((c, i) => {
-          const Icon = c.icon;
-          const isRegisteredCard = i === 0 && Boolean(onViewAllEntries);
+    <section aria-label="Platform Telemetry KPIs" className="w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+        {cards.map((card) => {
+          const Icon = card.icon;
+          const InteractiveTag = card.onClick ? "button" : "div";
           return (
-            <div
-              key={i}
-              onClick={isRegisteredCard ? onViewAllEntries : undefined}
-              title={isRegisteredCard ? `${c.title} — Click to view all entries in catalog` : c.title}
-              className={`p-4.5 rounded-2xl border flex items-center justify-between gap-4 transition-all duration-150 ${
-                isRegisteredCard ? "cursor-pointer group hover:-translate-y-0.5" : ""
+            <InteractiveTag
+              key={card.label}
+              type={card.onClick ? "button" : undefined}
+              onClick={card.onClick}
+              className={`group relative overflow-hidden rounded-2xl border p-5 text-left transition-all duration-200 ${
+                card.onClick ? "cursor-pointer hover:-translate-y-0.5" : ""
               } ${
                 isAmoled
-                  ? `bg-[#121319] border-white/[0.07] hover:bg-[#161822] ${isRegisteredCard ? "hover:border-indigo-500/35" : ""}`
-                  : `bg-neutral-50/80 border-neutral-200/80 hover:bg-white shadow-2xs hover:shadow-xs ${isRegisteredCard ? "hover:border-indigo-300" : ""}`
+                  ? "bg-[#0c0d11] border-white/[0.08] hover:border-indigo-500/35"
+                  : "bg-white border-neutral-200/85 hover:border-indigo-300 shadow-2xs hover:shadow-xs"
               }`}
             >
-              <div className="flex items-center gap-3.5">
-                <div
-                  className={`w-10 h-10 rounded-xl flex items-center justify-center border shrink-0 transition-transform ${
-                    isRegisteredCard ? "group-hover:scale-105" : ""
-                  } ${
-                    isAmoled
-                      ? "bg-indigo-500/10 border-indigo-500/20 text-indigo-400"
-                      : "bg-indigo-50 border-indigo-200/80 text-indigo-600"
-                  }`}
-                >
-                  <Icon size={16} />
-                </div>
-                <div>
-                  <div className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white leading-none flex items-center gap-1.5">
-                    <span>{c.value}</span>
-                    {isRegisteredCard && (
-                      <span className="text-[10px] font-semibold text-indigo-600 dark:text-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                        View All →
-                      </span>
-                    )}
+              <div
+                className={`pointer-events-none absolute inset-0 bg-gradient-to-br opacity-75 ${card.accent}`}
+              />
+              <div className="relative flex items-start justify-between gap-3">
+                <div className="space-y-1.5 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                      {card.label}
+                    </span>
+                    <span
+                      className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${
+                        isAmoled
+                          ? "border-white/10 bg-white/[0.04] text-neutral-300"
+                          : "border-neutral-200/80 bg-white text-neutral-600"
+                      }`}
+                    >
+                      {card.badge}
+                    </span>
                   </div>
-                  <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400 mt-1 block">
-                    {c.label}
-                  </span>
+                  <div className="text-2xl sm:text-3xl font-bold tracking-tight tabular-nums text-neutral-900 dark:text-white">
+                    {card.value}
+                  </div>
+                </div>
+
+                <div
+                  className={`w-10 h-10 rounded-xl border flex items-center justify-center shrink-0 transition-transform group-hover:scale-105 ${card.iconColor}`}
+                >
+                  <Icon size={17} />
                 </div>
               </div>
-              <span className={`inline-flex items-center text-[10px] font-medium px-2.5 py-1 rounded-full border shrink-0 ${
-                isAmoled
-                  ? "bg-white/[0.04] text-neutral-300 border-white/[0.08]"
-                  : "bg-white text-neutral-700 border-neutral-200"
-              }`}>
-                {c.trend}
-              </span>
-            </div>
+
+              {card.progress !== undefined && (
+                <div className="relative mt-3 h-1.5 w-full rounded-full bg-neutral-200/80 dark:bg-white/[0.07] overflow-hidden">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-500"
+                    style={{ width: `${card.progress}%` }}
+                  />
+                </div>
+              )}
+
+              <div className="relative mt-3 flex items-center justify-between gap-2 text-[11px] text-neutral-500 dark:text-neutral-400">
+                <span className="truncate">{card.hint}</span>
+                {card.onClick && (
+                  <ArrowUpRight
+                    size={13}
+                    className="shrink-0 opacity-40 group-hover:opacity-100 group-hover:text-indigo-500 transition-all"
+                  />
+                )}
+              </div>
+            </InteractiveTag>
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
-
-
-
